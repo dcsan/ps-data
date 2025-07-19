@@ -1,0 +1,804 @@
+{
+  "id": "-6nfhGj4p_k",
+  "title": "404: The Transcription Challenge: Building Infrastructure That Scales With The World",
+  "channelId": "UCB6s-V1Ls4vc_mXEF-4Lz_Q",
+  "publishedAt": "2025-07-18T10:06:45.000Z",
+  "cleanText": "Hey, it's Arvid, and this is The Bootstrapped Founder.\n\n[Music]\n\nToday we'll talk about keeping up with an avalanche of audio data and how I built Podscan's transcription infrastructure. This episode is sponsored by Paddle.com, my merchant of record payment provider of choice, who's been helping me focus on Podscan from day one. They're taking care of all the little things related to money so that founders like you and me can focus on building the things that only we can build, like a massive podcast transcription infrastructure. Paddle handles all the rest: sales tax, credit cards, those kind of things. Don't need to do with it because they do. I highly recommend checking it out. So, please go to paddle.com and take a look.\n\nNow, when I started building the first prototype of Podscan, I very quickly realized that this was going to be a different business than any that I've built before. The difference had everything to do with one fundamental challenge in this field. Unlike most software service businesses, the resources that I would need from the start wouldn't scale with the number of customers I had, but would scale with something completely out of my control: the number of new podcast episodes being released worldwide every single day. So no matter if I had one customer or a hundred, if they wanted to track every podcast out there for a keyword, I needed to deal with this from day one. And that's hard because if you ever investigated the idea of stoicism, you will know that there are certain things you can control that you should care about and certain things that you cannot control that you shouldn't fret about at all. That's kind of the idea. Like a very rough description of stoicism here, but you know, like it's deal with the things you could deal with and don't whine about the others. So that's exactly what I did. I focused on what I could do to make transcribing every single podcast out there a reality. And I didn't complain about the fact that there are tens of thousands, millions of shows being released all the time with tens of thousands of shows being released every day. That's kind of the framework here. I had to deal with it. I think I'm currently tracking 3.8 million shows, and roughly every day there's somewhere between 30 to 70,000 being released. Depends on the day of the week. And I want to talk about this herculean effort of building transcription infrastructure, how I got it from being extremely expensive to manageably cheap comparatively, what the trade-offs were along the way, and how much of the development of new technologies has impacted the feasibility of this entire project for me. Now, for my first prototype, I obviously didn't try to transcribe everything at once. Like, I knew that that didn't make sense to try it all, but I had found my source of podcast feed data, just a couple of good podcast feeds to try it out with through the podcast index project. It's very interesting. If you're into podcasting, check it out. It's an open-source approach to listing all the podcasts everywhere. It's free and it's openly available as an API and a database of podcasts that provides where they're hosted, the names, descriptions, and links to episodes as well. I think maybe not necessarily all of them, but some. And they even have a full SQLite export, like 4 GB of just one big file with all this data makes it very easy to jump start any system. But they even have a great API, and the podcast index API has a very beneficial endpoint for trending shows and newly released episodes. So my first prototype used that API and just grabbed the most recently or most popular released episodes and transcribed those with the existing resources that I had. And when it comes to the tech, I'm just going to share everything here because why not? I already had been experimenting with an open-source library called Whisper for a previous project called Podline, a voice messaging tool for podcast. That was the idea. I was going to take in voice messages through the browser, transcribe them on the back end, and then send a notification to my customers. And I had found that Whisper, which is supposed to be run on GPUs, could also be run on a CPU, so without a graphics card at all, through a project called Whisper.cpp, albeit quite slowly. But for Podline, where I needed to occasionally transcribe a short one-minute clip, this worked perfectly. It may have taken 5 minutes to transcribe it on one CPU core, but that's okay. There's many cores in modern CPUs. And if I have 5 minutes, sure that people will take the notification a bit after. That's all right. And since Podscan, my current business, was initially a marketing effort for Podline because I wanted to know where people already talk about having voicemail. So, I built a tool that would figure out where people talked about it. I had all the tech laying around, but obviously there's a stark difference in transcription scale here, right? Podline needed to handle occasional short clips, but Podscan needed to reliably transcribe 50,000 shows per day. And those are often shows that go for 40 to 80 minutes, right? That's not just 30 seconds. That is hours of material. And if you look at Joe Rogan who reliably puts out four-plus hour shows, that system needed to be fast and good enough to get the whole conversation and transcribe it. So the first smart choice that I needed to make was treating this as a queueing system, not as something that would happen synchronously to when stuff was released. I needed a queue of podcast episodes that would just wait to be transcribed, and whenever I had time and resources, I would transcribe the next one in descending priority. And this required a priority system to determine which episodes should be handled first. That is a whole thing that I could probably do a full episode on. I've come to a system where I have three cues right now that are high priority, middle priority, and low priority. And the high-priority shows would be the Joe Rogan's of this world that would get like a preferential treatment because I know that anything set on this show, if it triggers an alert, then that would have the biggest impact on whatever my customers might need to do with it. So, I need these episodes to be transcribed early. But then there are maybe mid-tier podcasts that can wait a half an hour or so before they get transcribed or that could even wait a couple days because they're just not that important. And that descends them in priority. There's also an immediate priority queue which skips all the other cues for like custom retranscriptions. If I ever have an episode that needs to be retranscribed or somebody really needs this episode right now, there's a bypass version, but effectively that's the priority system that I have. And for that queue, my initial setup was really just one consumer, and that was the Mac Studio that I was developing the software on. And that has right now a microphone that I'm speaking into where I'm recording this podcast. Like I was running my full queue for my production system on a local computer. So running whisper.cpp locally on a Mac. That's really cool because it will use the GPU if I can connect to it. And the MacBook's unified memory system like the MPS system is capable of running these models really, really quickly. And I was getting about 200 words per second, which is really something. And this meant I could fetch a couple hundred episodes per hour with some parallel processing on my local system. So then I realized that to deploy this as a business properly, I needed a transcription server running on a different cloud system very likely because I couldn't just keep it running locally at home. If my internet ever goes out, my company wouldn't work, right? So I started exploring companies that would offer access to computers with graphics cards where I could install whatever stack I had locally and keep it running there 24/7. So the first thing I tried was AWS with their G-type instances. The G, I guess, stands for graphics cards, I presume. I don't know. But these were quite expensive instances that didn't really have much power for the work that I was doing. The ones I could afford, I think it was around $400 a month, just weren't powerful enough, particularly compared to my local server here. I would have preferred them to be either cheaper or better. So, I quickly stepped away from AWS. And even to get them, you have to apply for quota there and they have to verify it. It's quite hard to get there. So, I looked for alternative, easier solutions. So, I looked into Lambda Labs, which was one of the first reliable options for GPU systems that I found, and I used them for quite a while. Lambda was helpful because they offered different servers with different GPUs attached. So, you could rent an H100, like one of the most powerful Nvidia GPUs at the time, for about a,000 bucks a month or a bit more, which was quite expensive obviously to rent a GPU. Or you could have an A100 or an A10, which were much cheaper and actually perfect for transcription purposes. So, I spent a couple months experimenting with my own personal money, testing whether an A10 would outperform an A100 or an H100, not in terms of raw throughput, but in terms of words per dollar. That's kind of the unit that I had. And I think I shared this on Twitter where I did some math there. I deployed my transcription systems to different hosts with different graphics cards and I ran experiments with a very number of parallel transcriptions just to see how it worked. And I found a working solution eventually. I think I settled on 12 to 16ish servers with A10 graphics cards. That was just uh the best. These became my transcription fleet for a while, but even then got quite expensive, which made me realize that I needed to do something about this price cuz that was also pre-funding for me. I didn't have any funding at that point just yet, but I was paying thousands of dollars a month personally for my personal money. So, I needed to figure something out. And the most effective thing that I did was to look for hosted servers outside of services that are focused on renting AI. That I just needed to look for other people that had GPU-based servers that were not yet in the AI hype space. And those services tended to offer sizable graphics cards like that. The ones that do AI for inference, which is great if you need impressive GPU power, but in most cases for transcription, that's actually not what you need. You need some graphics card that can do some transcription and the cheaper the better because transcription doesn't require a lot of VRAM. It just requires some time on a GPU. And I found this solution in Hetzner, the German company well known for being an affordable hosting company. They had just started offering GPU servers and they also have auction systems where you can get really great hardware quite cheaply. But they offer servers I think what is it called? GEX-44.\nThat's the one that I use. They have an RTX 4000 SFFF ADA generation GPU and I think they cost €200 a month just to rent. And these servers are spectacular. They have 64 GB of DDR4 RAM, 4 TB of disk space, like for $200ish dollars a month to rent this. That's really cool. Like you can rent, how much do I have right now? Like 10ish of them and have a significant GPU-based workload running 24/7 on many different servers for $2,000 or less. The key insight from all these experiments was that transcription has very different requirements from other AI tasks like inference. You can run transcription quite reliably by using somewhere between 4 and 20 GB of RAM. Depends on the model that you use, which is something that if you use Whisper, you can choose different models, right? There's a tiny, a small, a medium, a large model, and they all use different sizes of gigabytes of this RAM that these GPUs use. And the smaller ones obviously are faster and use less of that RAM. So, you can run a couple in parallel. And it really doesn't mean that much if it's just a couple of gigabytes, but it's definitely enough to get the highest quality transcription data, particularly if you use a model called Whisper V3 large Turbo. That's the one I currently use: fastest and best quality. And when I switched all my transcription servers from these A10s at London Labs to the Hetzner systems, I picked up steam dramatically with these. It was so much more effective. So I could get by with half the number of servers and still have a higher throughput than before. So that's where I'm now. Self-maintained servers running transcription scripts 24/7 on the Hetzner platform being highly efficient over time. And the solution that I had with Whisper CPP, that was great in the beginning, but as Podscan started gaining customers, they had more requirements than just default transcription. So I needed diarization, which is a fancy term for determining different speakers in an audio file and word-level timestamps for precise interactivity. People wanted to be able to have like exact cuts in videos or in audio, I guess, so they can extract stuff. So they needed to know exactly where the sentence starts and where it ends. So for that and knowing who's speaking, I needed something bigger. So I switched from whisper CPP to another implementation running on top of faster whisper, which is a library that uses these models more efficiently that includes both diarization capabilities and granular timing data. But this revealed a couple of surprising technical challenges. So if you're into transcription, this is going to be very, very useful so you don't have to fall into the traps yourself. Diorization is more resource intensive than transcription. Detecting speakers takes much longer than actually transcribing what they're saying. You would think it would be easier to determine somebody's speaking here, then somebody else is speaking there. But it's actually harder to figure out if it's person one, two, or three than it is to determine the actual words that this person is speaking. And from the start, I needed a careful prioritization system here because I only could diarize what I really needed. If I know that a podcast has only one speaker and has had for the last 200 episodes, well, I don't need to diarize it and I can save over 50% of the time. But if it's a popular show with different guests all the time, then I guess I need to prioritize it and it's going to take double the time. At scale. Turning off dorization for some shows where it doesn't matter or has not yet proven to matter means that I can transcribe twice as many podcasts in any given day. And that's massive. If that means that I can do all the shows in a day and still have resources left, then I can step back in time and get some of the older episodes that might be still very interesting for search purposes. So, that's the trade-off that I'm dealing with here. Finally, there's something that I learned after a couple of weeks of experimenting with this. GPU\n\n\nMemory limits affect the quality of the transcription.\nIf you do a lot of parallelized transcription, the GPU reaching its memory limit, where it gets full, that can cause transcription quality to decline.\nI initially had a thought like this: graphics cards have 20 GB of RAM.\nEach transcription process uses at most 4 gigabytes, so it can run five at a time, fill up the whole graphics card, right?\nThe whole RAM.\nThat tends to be true most of the time that it works.\nBut if one process runs a little bit longer, maybe it's a three-hour Joe Rogan podcast yet again, and then another process spawns and five or six processes are fighting for memory, or even just the five on there that should have four, one of them is like 4.2, right?\nQuality quickly degrades on all of them simultaneously because there's something in there that just breaks down and then it just hallucinates stuff.\nI have since reduced parallel processes to two or three podcasts at any given time.\nThere's a small chance the GPU isn't fully utilized when you know all of them spin up at the same time.\nBut that's okay.\nMost of the time it's in full use anyway without quality degradation, and I would rather not risk it because I want these transcripts to be reliably good.\nBiggest learning in all of this has been that bigger GPUs aren't necessarily faster or better.\nAnd not just from a words to dollar ratio, just even from a usage of the GPU.\nJust because the GPU is bigger doesn't mean it's faster at transcribing.\nSurprisingly, you would think, but it's not.\nWhen I ran transcription on my local machine and then on A10 and A100 GPUs, I got quite similar results, like always between 150-200 words per second.\nAnd those things cost 200 bucks a month max.\nBut then I rented an H100 GPU and the word count stayed almost the same, maybe going up to 225 to 250 words per second.\nBut that GPU had 5 to 10 times the monthly cost.\nAnd you couldn't really run it in parallel there either because then it would start degrading quality.\nSo for transcription specifically, it is way more effective to run on smaller and maybe slightly slower GPUs at scale.\nAnd this has turned out to be the only feasible way for me to do this.\nAnd we're just talking about like self-managed transcription here because there's an alternative that puts everything into perspective.\nIf I were to transcribe all 50,000 episodes that come in every day using OpenAI's platform, their AI platform, their whisper endpoint there, I would pay a five-figure amount every single day.\nAfter many months of optimizing and experimenting with transcription setups, I have obviously not done this.\nI have turned the whole thing into just a few thousand in expenses a month by having my own infrastructure.\nThe cost savings are significant because when you run your own infrastructure, even though you aren't able to do as many parallel things as you could by using Whisper and Open AI or other transcription systems like Deepgram, but instead of paying like a $100,000 a month, you pay four or two, right?\nIf you do it well, the daily cost that these commercial models can incur for you is easily in the thousands of dollars.\nAnd I've gotten it down to just a hundred and change on a per day basis, which is quite significant.\nThe biggest expense for Podscan at this point is not transcription capacity.\nYou would think, right, that this would be the most impactful expense.\nBut it's a database where all of this information is stored.\nAnd that's the next big challenge that I didn't ever think about in the beginning because when I initially started tracking a couple hundred podcasts, yeah, it was totally fine to have my SQL database store all of this data without doing anything specific around data storage, right?\nJust throw it in and figure it out.\nBut once I turn on the full fire hose of podcast data, all 50k a day, it became a massive challenge.\nIf every transcript is like 200 kilobytes to one megabyte in text size because that's what text is.\nIt gets massive, right?\nIt can be megabytes of data.\nAgain, Joe Rogan, thank you so much for filling my database with massive transcripts here.\nThen every day you're adding several gigabytes to a database.\nSo if you're trying to do full text search or quick lookups with some filtering, this becomes a problem.\nEven if you have index there for a full text index or just regular string index, it is so hard to get this right.\nI had to build infrastructure that prevents my database from overgrowing or slowing down to a halt.\nOlder transcripts are actually transferred to an S3-based storage and loaded by the main process when they are requested by a user on the front end or in the API.\nI don't keep all my transcripts in the database 'cause that would easily be 6 terabytes right now just in raw size, which is super expensive to maintain and super clunky for database access.\nNow all transcripts live on S3 as JSON files and can be loaded on demand for anything older than a couple months for regular transcripts and anything older than just a couple days for the word level timestamp transcripts that we also save.\nThat is probably the biggest one.\nJSON data for every second of a show, and this has been very helpful in ensuring that the database stays at least a little nimble in comparison.\nWhen it comes to search, I'm using an open search cluster also in AWS where I just pipe the full transcript in there and then have its own inverted index.\nI think that's what it's called, built to be able to search for full text there.\nSo we're not doing full text search in the database.\nWe have an additional secondary database that we feed all these transcripts into and facilitate search by just having what is kind of an elastic search fork deal with all of that.\nIt would never, never, ever work in this MySQL database and probably also not in Postgres if I were to have a full text search there just because data is so massive.\nI was using mighty search for a while and that also works like all these search engines that can deal with large text, they are good at it, but transcript data is so big that even those databases struggle a little bit.\nSo you have to build something that works right, you have to save them in a way that they can be looked up reliably, and you have to save them in a way that they can be searched reliably too.\nNow there are other challenges, not just storage.\nThere's also a quality problem.\nYet again, podcasting is full of quality problems.\nThere's no normal standard for quality in podcasts.\nAnd I mean the audio data for that matter.\nSome people record into what feels like a potato and others have extremely high-end setups like this fine podcast.\nAnd you never know reliably which one you will encounter if you listen to one or if you try to transcribe it.\nSo transcription systems expect at least a certain kind of quality and they struggle with low-quality audio or non-speech content like music that people throw into this as well.\nSo I had to implement a transcription quality checking system that tries to determine if a transcript is acceptable or if you need to retranscribe it with different settings.\nWhisper is pretty good by default, but there are edge cases where you need multiple attempts to get it right and that all costs money.\nBiggest problem, and that's probably also why Podscan is actually so impactful for the people using it, is that transcription systems like Whisper, but also others, struggle with names and brands.\nAnything that a human could easily get right from context, they don't get right because they don't have context.\nThey just have a voice pattern, an audio waveform, and they don't get it right most of the time.\nAnd what works really well here, but is extremely expensive, is taking the full transcript from Whisper with all the little mistakes in there and having an AI do a pass over it with context from the podcast name, the description, and maybe prior episodes data.\nAnd you get extremely high-quality transcripts that way, but at scale.\nThis costs several dollars per episode.\nBecause imagine what this would mean to use an AI system.\nLet's say you have 500 kilobytes of text, that is, I don't know, 2 hours of a podcast, and you pipe that into even a cheap LLM that is hosted on, I don't know, on Anthropic or in OpenAI's platforms.\nSo you have like half a million input tokens and then it does some stuff and then it has half a million output tokens, and that's the expensive part.\nOutput tokens are probably the most expensive stuff for LM right now to create, and that does not work at scale because that again would cost me $50,000 a day.\nWhere am I going to take that money?\nNot happening.\nThat might be very limited to a very limited number of shows, but even then it gets super expensive.\nSo that's an unsolved challenge.\nCurrently, Whisper can take 120 or so tokens of context, just like things like the title of the show, maybe the episode title, and a couple of names of people that will be mentioned.\nSo, that's what I throw in.\nI just give it what I know is true about the episode.\nAnd back in the day, I experimented with giving it all the brands names from all the possible.\nBut Whisper actually started finding these words in places where they weren't actually there.\nIt was gaslighting me into believing that it found certain words where they didn't exist.\nSo I quickly stopped piping all of these brand names in there.\nSince then, I only provide context that I can reliably infer that will be in that particular episode.\nAnd the big benefit of the system that I've built so far, like the whole installable on some VPC somewhere system, is that it's pretty easy to set up.\nIt's a Laravel application that I can deploy through Laravel Forge onto any new server.\nI have an install script that fetches a couple Python libraries, and I can spin up a new server quite easily that then automatically attaches to my API and starts fetching and transcribing new episodes.\nIt's really nice, quite scalable.\nIt's not on a Docker container level scalable, but I'll get to that in the future, too.\nAnd as Podscan's infrastructure grows, we can quickly add more systems so new episodes are transcribed faster with even more quality because, you know, they can be run in less parallel with less little outlier errors faster.\nAnd as models evolve, they might even become better at transcribing.\nEventually, I think I can increase the number to get diarized and get more good data that can then be fed into AI systems for what my customers want.\nWhen I first set up the fleet of servers to transcribe all my podcasts that I wanted to transcribe, all podcasts everywhere, it probably would have cost me $30,000 a month, even on my own hardware.\nBut I'm now at a point where through proper optimization and balancing my customer needs with the expense requirements, I can reliably capture the majority of podcasts at good quality for just a couple thousand a month in expenses.\nAnd I think that's really cool.\nThe fact that that is even possible for a solopreneur to build.\nI don't think that would have been a thing a couple years ago, but the tools are all out there.\nIt just takes a year and a half of 24/7 work.\nSo, yeah, it takes a while, but it still is possible.\nThe key insight for all of this is that when you're building a business that scales with these factors outside of your control, like the global output of an entire medium, you just need to think differently about infrastructure optimization and trade-offs.\nSometimes the most expensive solution will not be the best one, like OpenAI's hosted whisper just doesn't work.\nAnd sometimes the constraints that you think are impossible to work with actually force you into more creative and ultimately better solutions.\nThe kind of challenge that makes building businesses both terrifying and accelerating.\nThat's exactly this.\nYou can't control how many podcasts get published worldwide every day, but you can control how cleverly and effectively you solve the problems that stem from this.\nAnd that's it for today.\nThank you so much for listening to The Bootstrapped Founder.\nYou can find me on Twitter at Arvid.\nIf you want to support me in this show, please share podscan.fm with your peers and those who you think will benefit from tracking brands, competitors, their products, all kinds of things and names on podcasts out there.\nPodscan is this near real-time podcast database with a really solid integration system.\nWe allow a lot of people to build solutions to get leads, to get information on their clients and all of that.\nSo, please share the word with those who need to stay on top of the podcast ecosystem.\nThank you so much for listening.\nHave a wonderful day and bye-bye.\n[Music]\n",
+  "metadata": {
+    "summary": "The episode delves into the technical hurdles of transcribing an enormous amount of audio data, specifically focusing on the infrastructure behind Podscan. The host shares insights into the evolution of the transcription process, from initial experiments with Whisper on CPUs to the eventual deployment of GPU-based servers. The discussion covers the challenges of managing a massive influx of podcast episodes, the importance of prioritizing transcriptions, and the optimization strategies employed to balance speed, cost, and quality. The host also highlights the significance of database design and the use of open search clusters for efficient data management, while also touching on the limitations of transcription systems, particularly with names and brands.",
+    "topClaims": [
+      {
+        "text": "Running transcriptions on smaller, slower GPUs at scale is the only feasible way for me to do this.",
+        "rating": 9.1,
+        "chunkId": "ck--6nfhGj4p_k-13"
+      },
+      {
+        "text": "I have turned the whole thing into just a few thousand in expenses a month by having my own infrastructure.",
+        "rating": 8.5,
+        "chunkId": "ck--6nfhGj4p_k-14"
+      },
+      {
+        "text": "Transcription systems struggle with names and brands, which is the biggest problem.",
+        "rating": 7.9,
+        "chunkId": "ck--6nfhGj4p_k-18"
+      }
+    ],
+    "topQuotes": [
+      {
+        "text": "Biggest learning in all of this has been that bigger GPUs aren't necessarily faster or better.",
+        "chunkId": "ck--6nfhGj4p_k-12",
+        "chunkNum": 12,
+        "relevance": 9.2,
+        "interesting": 8.7
+      },
+      {
+        "text": "I have turned the whole thing into just a few thousand in expenses a month by having my own infrastructure.",
+        "chunkId": "ck--6nfhGj4p_k-14",
+        "chunkNum": 14,
+        "relevance": 8.1,
+        "interesting": 7.8
+      },
+      {
+        "text": "If I were to transcribe all 50,000 episodes that come in every day using OpenAI's platform, I would pay a five-figure amount every single day.",
+        "chunkId": "ck--6nfhGj4p_k-13",
+        "chunkNum": 13,
+        "relevance": 7.5,
+        "interesting": 6.9
+      }
+    ],
+    "topTopics": [
+      {
+        "name": "whisper library",
+        "count": 7,
+        "description": "The open-source Whisper library for audio transcription."
+      },
+      {
+        "name": "gpu transcription",
+        "count": 6,
+        "description": "The use of GPUs for audio transcription."
+      },
+      {
+        "name": "podcast transcription",
+        "count": 5,
+        "description": "The challenges of podcast transcription at scale."
+      },
+      {
+        "name": "hetzner systems",
+        "count": 4,
+        "description": "The use of Hetzner systems for transcription."
+      },
+      {
+        "name": "podcast diarization",
+        "count": 3,
+        "description": "The importance of diarization in transcription."
+      }
+    ],
+    "videoInfo": {
+      "id": "-6nfhGj4p_k",
+      "etag": "6cyRnuSXysKYoBO5D4Hf2AGoOJM",
+      "kind": "youtube#video",
+      "snippet": {
+        "tags": [
+          "Cost-effectiveness",
+          "Efficiency",
+          "Open-source Tools",
+          "Podcast Index Project API",
+          "Podcasts",
+          "Podscan",
+          "Queuing Process",
+          "Transcription",
+          "podcast"
+        ],
+        "title": "404: The Transcription Challenge: Building Infrastructure That Scales With The World",
+        "channelId": "UCB6s-V1Ls4vc_mXEF-4Lz_Q",
+        "localized": {
+          "title": "404: The Transcription Challenge: Building Infrastructure That Scales With The World",
+          "description": "Today we’ll talk about keeping up with an avalanche of audio data and how I built Podscan’s transcription infrastructure.\n\nThis episode of The Bootstraped Founder is sponsored by Paddle.com ( https://www.paddle.com/ )\n\nThe blog post: https://thebootstrappedfounder.com/the-transcription-challenge-building-infrastructure-that-scales-with-the-world/ ( https://thebootstrappedfounder.com/the-transcription-challenge-building-infrastructure-that-scales-with-the-world/ )\nThe podcast episode: https://tbf.fm/episodes/404-the-transcription-challenge-building-infrastructure-that-scales-with-the-world ( https://tbf.fm/episodes/404-the-transcription-challenge-building-infrastructure-that-scales-with-the-world )\nCheck out Podscan, the Podcast database that transcribes every podcast episode out there minutes after it gets released: https://podscan.fm ( https://podscan.fm/ )\nSend me a voicemail on Podline: https://podline.fm/arvid ( https://podline.fm/arvid )\n\nYou'll find my weekly article on my blog: https://thebootstrappedfounder.com ( https://thebootstrappedfounder.com/ )Podcast: https://thebootstrappedfounder.com/podcast ( https://thebootstrappedfounder.com/podcast )Newsletter: https://thebootstrappedfounder.com/newsletter ( https://thebootstrappedfounder.com/newsletter )\nMy book Zero to Sold: https://zerotosold.com/ ( https://zerotosold.com/ )My book The Embedded Entrepreneur: https://embeddedentrepreneur.com/ ( https://embeddedentrepreneur.com/ )My course Find Your Following: https://findyourfollowing.com ( https://findyourfollowing.com/ )\n\nHere are a few tools I use. Using my affiliate links will support my work at no additional cost to you.\n- Notion ( https://affiliate.notion.so/465mv1536drx ) (which I use to organize, write, coordinate, and archive my podcast + newsletter): https://affiliate.notion.so/465mv1536drx ( https://affiliate.notion.so/465mv1536drx )\n- Riverside.fm ( https://riverside.fm/?via=arvid ) (that's what I recorded this episode with): https://riverside.fm/?via=arvid ( https://riverside.fm/?via=arvid )\n- TweetHunter ( http://tweethunter.io/?via=arvid ) (for speedy scheduling and writing Tweets): http://tweethunter.io/?via=arvid ( http://tweethunter.io/?via=arvid )\n- HypeFury ( https://hypefury.com/?via=arvid60 ) (for massive Twitter analytics and scheduling): https://hypefury.com/?via=arvid60 ( https://hypefury.com/?via=arvid60 )\n- AudioPen ( https://audiopen.ai/?aff=PXErZ ) (for taking voice notes and getting amazing summaries): https://audiopen.ai/?aff=PXErZ ( https://audiopen.ai/?aff=PXErZ )\n- Descript ( https://www.descript.com/?lmref=3cf39Q ) (for word-based video editing, subtitles, and clips): https://www.descript.com/?lmref=3cf39Q ( https://www.descript.com/?lmref=3cf39Q )\n- ConvertKit ( https://convertkit.com/?lmref=bN9CZw ) (for email lists, newsletters, even finding sponsors): https://convertkit.com?lmref=bN9CZw ( https://convertkit.com/?lmref=bN9CZw )\n\nThe Bootstrapped Founder\nEpisode 404\nJuly 18, 2025\n\n★ Episode details: https://share.transistor.fm/s/526d928e\n\n★ Additional episodes: https://thebootstrappedfounder.com/"
+        },
+        "categoryId": "28",
+        "thumbnails": {
+          "high": {
+            "url": "https://i.ytimg.com/vi/-6nfhGj4p_k/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          },
+          "maxres": {
+            "url": "https://i.ytimg.com/vi/-6nfhGj4p_k/maxresdefault.jpg",
+            "width": 1280,
+            "height": 720
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/-6nfhGj4p_k/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "default": {
+            "url": "https://i.ytimg.com/vi/-6nfhGj4p_k/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "standard": {
+            "url": "https://i.ytimg.com/vi/-6nfhGj4p_k/sddefault.jpg",
+            "width": 640,
+            "height": 480
+          }
+        },
+        "description": "Today we’ll talk about keeping up with an avalanche of audio data and how I built Podscan’s transcription infrastructure.\n\nThis episode of The Bootstraped Founder is sponsored by Paddle.com ( https://www.paddle.com/ )\n\nThe blog post: https://thebootstrappedfounder.com/the-transcription-challenge-building-infrastructure-that-scales-with-the-world/ ( https://thebootstrappedfounder.com/the-transcription-challenge-building-infrastructure-that-scales-with-the-world/ )\nThe podcast episode: https://tbf.fm/episodes/404-the-transcription-challenge-building-infrastructure-that-scales-with-the-world ( https://tbf.fm/episodes/404-the-transcription-challenge-building-infrastructure-that-scales-with-the-world )\nCheck out Podscan, the Podcast database that transcribes every podcast episode out there minutes after it gets released: https://podscan.fm ( https://podscan.fm/ )\nSend me a voicemail on Podline: https://podline.fm/arvid ( https://podline.fm/arvid )\n\nYou'll find my weekly article on my blog: https://thebootstrappedfounder.com ( https://thebootstrappedfounder.com/ )Podcast: https://thebootstrappedfounder.com/podcast ( https://thebootstrappedfounder.com/podcast )Newsletter: https://thebootstrappedfounder.com/newsletter ( https://thebootstrappedfounder.com/newsletter )\nMy book Zero to Sold: https://zerotosold.com/ ( https://zerotosold.com/ )My book The Embedded Entrepreneur: https://embeddedentrepreneur.com/ ( https://embeddedentrepreneur.com/ )My course Find Your Following: https://findyourfollowing.com ( https://findyourfollowing.com/ )\n\nHere are a few tools I use. Using my affiliate links will support my work at no additional cost to you.\n- Notion ( https://affiliate.notion.so/465mv1536drx ) (which I use to organize, write, coordinate, and archive my podcast + newsletter): https://affiliate.notion.so/465mv1536drx ( https://affiliate.notion.so/465mv1536drx )\n- Riverside.fm ( https://riverside.fm/?via=arvid ) (that's what I recorded this episode with): https://riverside.fm/?via=arvid ( https://riverside.fm/?via=arvid )\n- TweetHunter ( http://tweethunter.io/?via=arvid ) (for speedy scheduling and writing Tweets): http://tweethunter.io/?via=arvid ( http://tweethunter.io/?via=arvid )\n- HypeFury ( https://hypefury.com/?via=arvid60 ) (for massive Twitter analytics and scheduling): https://hypefury.com/?via=arvid60 ( https://hypefury.com/?via=arvid60 )\n- AudioPen ( https://audiopen.ai/?aff=PXErZ ) (for taking voice notes and getting amazing summaries): https://audiopen.ai/?aff=PXErZ ( https://audiopen.ai/?aff=PXErZ )\n- Descript ( https://www.descript.com/?lmref=3cf39Q ) (for word-based video editing, subtitles, and clips): https://www.descript.com/?lmref=3cf39Q ( https://www.descript.com/?lmref=3cf39Q )\n- ConvertKit ( https://convertkit.com/?lmref=bN9CZw ) (for email lists, newsletters, even finding sponsors): https://convertkit.com?lmref=bN9CZw ( https://convertkit.com/?lmref=bN9CZw )\n\nThe Bootstrapped Founder\nEpisode 404\nJuly 18, 2025\n\n★ Episode details: https://share.transistor.fm/s/526d928e\n\n★ Additional episodes: https://thebootstrappedfounder.com/",
+        "publishedAt": "2025-07-18T10:06:45Z",
+        "channelTitle": "Arvid Kahl — The Bootstrapped Founder",
+        "liveBroadcastContent": "none"
+      },
+      "statistics": {
+        "likeCount": "2",
+        "viewCount": "10",
+        "commentCount": "0",
+        "favoriteCount": "0"
+      },
+      "contentDetails": {
+        "caption": "false",
+        "duration": "PT27M47S",
+        "dimension": "2d",
+        "definition": "hd",
+        "projection": "rectangular",
+        "contentRating": {},
+        "licensedContent": false
+      }
+    },
+    "checkCount": 1,
+    "nodeCounts": [
+      {
+        "node": "podscan",
+        "count": 5
+      },
+      {
+        "node": "graphics-card",
+        "count": 4
+      },
+      {
+        "node": "whisper-cpp",
+        "count": 3
+      },
+      {
+        "node": "joe-rogan",
+        "count": 3
+      },
+      {
+        "node": "transcription-infrastructure",
+        "count": 2
+      },
+      {
+        "node": "podcast-episodes",
+        "count": 2
+      },
+      {
+        "node": "podcast-shows",
+        "count": 2
+      },
+      {
+        "node": "podcast-feed-data",
+        "count": 2
+      },
+      {
+        "node": "podline",
+        "count": 2
+      },
+      {
+        "node": "api",
+        "count": 2
+      },
+      {
+        "node": "gpu",
+        "count": 2
+      },
+      {
+        "node": "parallel-processing",
+        "count": 2
+      },
+      {
+        "node": "a100",
+        "count": 2
+      },
+      {
+        "node": "a10",
+        "count": 2
+      },
+      {
+        "node": "transcription-systems",
+        "count": 2
+      },
+      {
+        "node": "parallel-transcriptions",
+        "count": 2
+      },
+      {
+        "node": "diarization",
+        "count": 2
+      },
+      {
+        "node": "transcripts",
+        "count": 2
+      },
+      {
+        "node": "gpu-performance",
+        "count": 2
+      },
+      {
+        "node": "sql-database",
+        "count": 2
+      },
+      {
+        "node": "data-storage",
+        "count": 2
+      },
+      {
+        "node": "paddle-com",
+        "count": 1
+      },
+      {
+        "node": "bootstrapped-founder",
+        "count": 1
+      },
+      {
+        "node": "arvid",
+        "count": 1
+      },
+      {
+        "node": "audio-data",
+        "count": 1
+      },
+      {
+        "node": "stoicism",
+        "count": 1
+      },
+      {
+        "node": "controllable-aspects",
+        "count": 1
+      },
+      {
+        "node": "podcast-transcription",
+        "count": 1
+      },
+      {
+        "node": "challenges",
+        "count": 1
+      },
+      {
+        "node": "podcast-index-project",
+        "count": 1
+      },
+      {
+        "node": "podcast-index-api",
+        "count": 1
+      },
+      {
+        "node": "database-of-podcasts",
+        "count": 1
+      },
+      {
+        "node": "podcast-api",
+        "count": 1
+      },
+      {
+        "node": "new-episodes",
+        "count": 1
+      },
+      {
+        "node": "trending-shows",
+        "count": 1
+      },
+      {
+        "node": "sqlite-export",
+        "count": 1
+      },
+      {
+        "node": "podcast",
+        "count": 1
+      },
+      {
+        "node": "voice-messages",
+        "count": 1
+      },
+      {
+        "node": "notification",
+        "count": 1
+      },
+      {
+        "node": "cpu-core",
+        "count": 1
+      },
+      {
+        "node": "queueing-system",
+        "count": 1
+      },
+      {
+        "node": "audio-transcription",
+        "count": 1
+      },
+      {
+        "node": "priority-system",
+        "count": 1
+      },
+      {
+        "node": "immediate-priority",
+        "count": 1
+      },
+      {
+        "node": "custom-retranscriptions",
+        "count": 1
+      },
+      {
+        "node": "high-priority",
+        "count": 1
+      },
+      {
+        "node": "mid-tier-podcasts",
+        "count": 1
+      },
+      {
+        "node": "low-priority",
+        "count": 1
+      },
+      {
+        "node": "preferential-treatment",
+        "count": 1
+      },
+      {
+        "node": "retranscription",
+        "count": 1
+      },
+      {
+        "node": "customer-impact",
+        "count": 1
+      },
+      {
+        "node": "mac-studio",
+        "count": 1
+      },
+      {
+        "node": "mps-system",
+        "count": 1
+      },
+      {
+        "node": "transcription-server",
+        "count": 1
+      },
+      {
+        "node": "microphone",
+        "count": 1
+      },
+      {
+        "node": "aws",
+        "count": 1
+      },
+      {
+        "node": "g-type-instances",
+        "count": 1
+      },
+      {
+        "node": "lambda-labs",
+        "count": 1
+      },
+      {
+        "node": "h100",
+        "count": 1
+      },
+      {
+        "node": "nvidia",
+        "count": 1
+      },
+      {
+        "node": "local-server",
+        "count": 1
+      },
+      {
+        "node": "a10-a100-h100",
+        "count": 1
+      },
+      {
+        "node": "hosted-servers",
+        "count": 1
+      },
+      {
+        "node": "gpu-based-servers",
+        "count": 1
+      },
+      {
+        "node": "ai-inference",
+        "count": 1
+      },
+      {
+        "node": "vram-requirements",
+        "count": 1
+      },
+      {
+        "node": "hetzner",
+        "count": 1
+      },
+      {
+        "node": "gex-44",
+        "count": 1
+      },
+      {
+        "node": "rtx-4000-sfff",
+        "count": 1
+      },
+      {
+        "node": "whisper-v3-large-turbo",
+        "count": 1
+      },
+      {
+        "node": "a10s",
+        "count": 1
+      },
+      {
+        "node": "london-labs",
+        "count": 1
+      },
+      {
+        "node": "prioritize",
+        "count": 1
+      },
+      {
+        "node": "experimenting",
+        "count": 1
+      },
+      {
+        "node": "joe-rogan-podcast",
+        "count": 1
+      },
+      {
+        "node": "quality-degrades",
+        "count": 1
+      },
+      {
+        "node": "transcription-hallucinating",
+        "count": 1
+      },
+      {
+        "node": "gpu-memory-limit",
+        "count": 1
+      },
+      {
+        "node": "gpu-utilization",
+        "count": 1
+      },
+      {
+        "node": "quality-degradation",
+        "count": 1
+      },
+      {
+        "node": "dollar-ratio",
+        "count": 1
+      },
+      {
+        "node": "h100-gpu",
+        "count": 1
+      },
+      {
+        "node": "openai-platform",
+        "count": 1
+      },
+      {
+        "node": "whisper-endpoint",
+        "count": 1
+      },
+      {
+        "node": "transcription-episodes",
+        "count": 1
+      },
+      {
+        "node": "transcription-scalability",
+        "count": 1
+      },
+      {
+        "node": "transcription-setups",
+        "count": 1
+      },
+      {
+        "node": "infrastructure-expenses",
+        "count": 1
+      },
+      {
+        "node": "cost-savings",
+        "count": 1
+      },
+      {
+        "node": "whisper-open-ai",
+        "count": 1
+      },
+      {
+        "node": "deepgram",
+        "count": 1
+      },
+      {
+        "node": "commercial-models-cost",
+        "count": 1
+      },
+      {
+        "node": "self-managed-infrastructure",
+        "count": 1
+      },
+      {
+        "node": "kilobytes",
+        "count": 1
+      },
+      {
+        "node": "megabytes",
+        "count": 1
+      },
+      {
+        "node": "fire-hose",
+        "count": 1
+      },
+      {
+        "node": "database-infrastructure",
+        "count": 1
+      },
+      {
+        "node": "s3-based-storage",
+        "count": 1
+      },
+      {
+        "node": "json-files",
+        "count": 1
+      },
+      {
+        "node": "timestamp-transcripts",
+        "count": 1
+      },
+      {
+        "node": "database-access",
+        "count": 1
+      },
+      {
+        "node": "transcripts-on-demand",
+        "count": 1
+      },
+      {
+        "node": "json-data",
+        "count": 1
+      },
+      {
+        "node": "open-search-cluster",
+        "count": 1
+      },
+      {
+        "node": "full-transcript",
+        "count": 1
+      },
+      {
+        "node": "inverted-index",
+        "count": 1
+      },
+      {
+        "node": "secondary-database",
+        "count": 1
+      },
+      {
+        "node": "elastic-search-fork",
+        "count": 1
+      },
+      {
+        "node": "postgres",
+        "count": 1
+      },
+      {
+        "node": "transcript-data",
+        "count": 1
+      },
+      {
+        "node": "audio-quality",
+        "count": 1
+      },
+      {
+        "node": "quality-checking",
+        "count": 1
+      },
+      {
+        "node": "names-and-brands",
+        "count": 1
+      }
+    ],
+    "topicGroups": {
+      "groups": [
+        {
+          "topics": [
+            "podscan",
+            "joe-rogan",
+            "podcast-episodes",
+            "podcast-shows",
+            "podcast-feed-data",
+            "podline",
+            "podcast",
+            "podcast-index-project",
+            "podcast-index-api",
+            "database-of-podcasts",
+            "podcast-api",
+            "new-episodes",
+            "trending-shows",
+            "mid-tier-podcasts",
+            "joe-rogan-podcast",
+            "podcast-transcription",
+            "transcription-episodes"
+          ],
+          "category": {
+            "id": "podcast",
+            "name": "Podcast",
+            "description": "Podcast related topics"
+          }
+        },
+        {
+          "topics": [
+            "transcription-infrastructure",
+            "transcription-systems",
+            "parallel-transcriptions",
+            "transcripts",
+            "audio-transcription",
+            "retranscription",
+            "custom-retranscriptions",
+            "transcription-server",
+            "transcription-hallucinating",
+            "transcription-scalability",
+            "transcription-setups",
+            "timestamp-transcripts"
+          ],
+          "category": {
+            "id": "transcription",
+            "name": "Transcription",
+            "description": "Transcription related topics"
+          }
+        },
+        {
+          "topics": [
+            "audio-data",
+            "voice-messages",
+            "kilobytes",
+            "megabytes",
+            "fire-hose",
+            "json-files"
+          ],
+          "category": {
+            "id": "audio-and-data",
+            "name": "Audio and Data",
+            "description": "Audio and Data related topics"
+          }
+        },
+        {
+          "topics": [
+            "graphics-card",
+            "gpu",
+            "a100",
+            "a10",
+            "gpu-performance",
+            "mps-system",
+            "nvidia",
+            "h100",
+            "gpu-based-servers",
+            "ai-inference",
+            "vram-requirements",
+            "gex-44",
+            "rtx-4000-sfff",
+            "a10s",
+            "h100-gpu",
+            "gpu-memory-limit",
+            "gpu-utilization",
+            "a10-a100-h100"
+          ],
+          "category": {
+            "id": "gpu-and-ai",
+            "name": "GPU and AI",
+            "description": "GPU and AI related topics"
+          }
+        },
+        {
+          "topics": [
+            "whisper-cpp",
+            "whisper-v3-large-turbo",
+            "whisper-endpoint",
+            "whisper-open-ai",
+            "deepgram",
+            "paddle-com"
+          ],
+          "category": {
+            "id": "software-and-models",
+            "name": "Software and Models",
+            "description": "Software and Models"
+          }
+        },
+        {
+          "topics": [
+            "api",
+            "parallel-processing",
+            "cpu-core",
+            "mac-studio",
+            "microphone",
+            "aws",
+            "g-type-instances",
+            "lambda-labs",
+            "local-server",
+            "hosted-servers",
+            "hetzner",
+            "london-labs",
+            "openai-platform",
+            "s3-based-storage",
+            "database-infrastructure"
+          ],
+          "category": {
+            "id": "infrastructure-and-hardware",
+            "name": "Infrastructure and Hardware",
+            "description": "Infrastructure and Hardware"
+          }
+        },
+        {
+          "topics": [
+            "sql-database",
+            "data-storage",
+            "sqlite-export"
+          ],
+          "category": {
+            "id": "database-and-storage",
+            "name": "Database and Storage",
+            "description": "Database and Storage"
+          }
+        },
+        {
+          "topics": [
+            "infrastructure-expenses",
+            "cost-savings",
+            "commercial-models-cost",
+            "self-managed-infrastructure",
+            "dollar-ratio"
+          ],
+          "category": {
+            "id": "cost-and-optimization",
+            "name": "Cost and Optimization",
+            "description": "Cost and Optimization"
+          }
+        },
+        {
+          "topics": [
+            "queueing-system",
+            "priority-system",
+            "immediate-priority",
+            "high-priority",
+            "low-priority",
+            "preferential-treatment",
+            "prioritize"
+          ],
+          "category": {
+            "id": "prioritization-and-queueing",
+            "name": "Prioritization and Queueing",
+            "description": "Prioritization and Queueing"
+          }
+        },
+        {
+          "topics": [
+            "bootstrapped-founder",
+            "stoicism",
+            "controllable-aspects",
+            "challenges",
+            "arvid",
+            "experimenting",
+            "customer-impact",
+            "quality-degrades",
+            "quality-degradation",
+            "notification"
+          ],
+          "category": {
+            "id": "business-and-personal-development",
+            "name": "Business and Personal Development",
+            "description": "Business and Personal Development"
+          }
+        }
+      ]
+    },
+    "shortSummary": "In this episode, the host discusses the challenges of building scalable transcription infrastructure for Podscan, a podcast database that transcribes every episode.",
+    "lastStoryCheck": "2025-07-18T13:33:13.319Z",
+    "storyCheckResults": {
+      "missingChunks": [],
+      "missingStories": [],
+      "totalCategories": 8,
+      "totalChunksChecked": 19
+    }
+  }
+}
