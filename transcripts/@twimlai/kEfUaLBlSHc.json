@@ -1,0 +1,7042 @@
+{
+  "episodeId": "kEfUaLBlSHc",
+  "channelSlug": "@twimlai",
+  "title": "Inside s1: An o1-Style Reasoning Model That Cost Under $50 to Train with Niklas Muennighoff - 721",
+  "publishedAt": "2025-03-03T23:37:01.000Z",
+  "rawLines": [
+    {
+      "lang": "en",
+      "text": "at a high level both S1 and R1 are",
+      "offset": 0.04,
+      "duration": 6.719
+    },
+    {
+      "lang": "en",
+      "text": "attempts to replicate o1 from open Ai",
+      "offset": 3.12,
+      "duration": 6.04
+    },
+    {
+      "lang": "en",
+      "text": "and I think the key difference is that",
+      "offset": 6.759,
+      "duration": 3.361
+    },
+    {
+      "lang": "en",
+      "text": "for",
+      "offset": 9.16,
+      "duration": 6.359
+    },
+    {
+      "lang": "en",
+      "text": "R1 they try to go the full way replicate",
+      "offset": 10.12,
+      "duration": 7.56
+    },
+    {
+      "lang": "en",
+      "text": "the entire pipeline as much as they",
+      "offset": 15.519,
+      "duration": 5.481
+    },
+    {
+      "lang": "en",
+      "text": "could whereas for S1 we focused on what",
+      "offset": 17.68,
+      "duration": 6.519
+    },
+    {
+      "lang": "en",
+      "text": "is the minimal approach the simplest way",
+      "offset": 21,
+      "duration": 6.48
+    },
+    {
+      "lang": "en",
+      "text": "to get those two exciting things about",
+      "offset": 24.199,
+      "duration": 4.681
+    },
+    {
+      "lang": "en",
+      "text": "o1 which is the strong reasoning",
+      "offset": 27.48,
+      "duration": 3.719
+    },
+    {
+      "lang": "en",
+      "text": "performance and thech time scaling what",
+      "offset": 28.88,
+      "duration": 6.04
+    },
+    {
+      "lang": "en",
+      "text": "is the minimal recipe to get",
+      "offset": 31.199,
+      "duration": 3.721
+    },
+    {
+      "lang": "en",
+      "text": "that all right everyone welcome to",
+      "offset": 45.44,
+      "duration": 4.599
+    },
+    {
+      "lang": "en",
+      "text": "another episode of the twiml AI podcast",
+      "offset": 47.8,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "I your host Sam charington and today I'm",
+      "offset": 50.039,
+      "duration": 5.16
+    },
+    {
+      "lang": "en",
+      "text": "joined by Nicholas munoff Nicholas is a",
+      "offset": 52.44,
+      "duration": 5.84
+    },
+    {
+      "lang": "en",
+      "text": "PhD student at Stanford University",
+      "offset": 55.199,
+      "duration": 4.401
+    },
+    {
+      "lang": "en",
+      "text": "before we get going be sure to take a",
+      "offset": 58.28,
+      "duration": 3.079
+    },
+    {
+      "lang": "en",
+      "text": "moment to hit that subscribe button",
+      "offset": 59.6,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "wherever you're listening to Today's",
+      "offset": 61.359,
+      "duration": 4.481
+    },
+    {
+      "lang": "en",
+      "text": "Show Nicholas welcome to the podcast",
+      "offset": 62.96,
+      "duration": 5.159
+    },
+    {
+      "lang": "en",
+      "text": "thanks for having me uh you are welcome",
+      "offset": 65.84,
+      "duration": 3.88
+    },
+    {
+      "lang": "en",
+      "text": "to be on I'm looking forward to digging",
+      "offset": 68.119,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "into the conversation we are going to be",
+      "offset": 69.72,
+      "duration": 5.6
+    },
+    {
+      "lang": "en",
+      "text": "talking about your very recent paper on",
+      "offset": 71.479,
+      "duration": 6.68
+    },
+    {
+      "lang": "en",
+      "text": "S1 uh simple test time",
+      "offset": 75.32,
+      "duration": 5.6
+    },
+    {
+      "lang": "en",
+      "text": "scaling um I'd love to have you share a",
+      "offset": 78.159,
+      "duration": 5.481
+    },
+    {
+      "lang": "en",
+      "text": "little bit about your background and",
+      "offset": 80.92,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "kind of how you got started in the field",
+      "offset": 83.64,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "you're a first year student there at",
+      "offset": 86.2,
+      "duration": 3.879
+    },
+    {
+      "lang": "en",
+      "text": "Stanford right I originally did my my",
+      "offset": 87.72,
+      "duration": 5.039
+    },
+    {
+      "lang": "en",
+      "text": "bachelor's at picking University and I",
+      "offset": 90.079,
+      "duration": 5.521
+    },
+    {
+      "lang": "en",
+      "text": "was focused on business and finance but",
+      "offset": 92.759,
+      "duration": 5
+    },
+    {
+      "lang": "en",
+      "text": "then Midway through I realized that",
+      "offset": 95.6,
+      "duration": 4.28
+    },
+    {
+      "lang": "en",
+      "text": "artificial intelligence was going to be",
+      "offset": 97.759,
+      "duration": 3.841
+    },
+    {
+      "lang": "en",
+      "text": "probably the most important Paradigm of",
+      "offset": 99.88,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "our time so I decided to completely",
+      "offset": 101.6,
+      "duration": 4.159
+    },
+    {
+      "lang": "en",
+      "text": "switch my focus and do AI research",
+      "offset": 103.24,
+      "duration": 5.199
+    },
+    {
+      "lang": "en",
+      "text": "instead and then after graduating I",
+      "offset": 105.759,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "spent some time in Industry at hugging",
+      "offset": 108.439,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "face and others and eventually landed",
+      "offset": 110.159,
+      "duration": 5.401
+    },
+    {
+      "lang": "en",
+      "text": "here in the Stanford PhD program as a",
+      "offset": 113.399,
+      "duration": 3.961
+    },
+    {
+      "lang": "en",
+      "text": "first year student let's talk a little",
+      "offset": 115.56,
+      "duration": 5.08
+    },
+    {
+      "lang": "en",
+      "text": "bit about S1 and how this project came",
+      "offset": 117.36,
+      "duration": 5.719
+    },
+    {
+      "lang": "en",
+      "text": "about you saw what was happening with",
+      "offset": 120.64,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "the 01 models presumably and was that",
+      "offset": 123.079,
+      "duration": 5.721
+    },
+    {
+      "lang": "en",
+      "text": "the impetus yeah it was uh interestingly",
+      "offset": 125.6,
+      "duration": 5.6
+    },
+    {
+      "lang": "en",
+      "text": "it was right at the start of the PHD",
+      "offset": 128.8,
+      "duration": 5.519
+    },
+    {
+      "lang": "en",
+      "text": "that they announced 01 so it felt like",
+      "offset": 131.2,
+      "duration": 5.88
+    },
+    {
+      "lang": "en",
+      "text": "the perfect thing to jump on and do",
+      "offset": 134.319,
+      "duration": 6.601
+    },
+    {
+      "lang": "en",
+      "text": "research on this topic and I think there",
+      "offset": 137.08,
+      "duration": 5.56
+    },
+    {
+      "lang": "en",
+      "text": "were two things that we were really",
+      "offset": 140.92,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "excited about with the 01 release the",
+      "offset": 142.64,
+      "duration": 4.84
+    },
+    {
+      "lang": "en",
+      "text": "first one was the really strong",
+      "offset": 146.28,
+      "duration": 3
+    },
+    {
+      "lang": "en",
+      "text": "reasoning performance that they showed",
+      "offset": 147.48,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "so game on math tasks but also science",
+      "offset": 149.28,
+      "duration": 6.28
+    },
+    {
+      "lang": "en",
+      "text": "questions and the second really exciting",
+      "offset": 152.84,
+      "duration": 5.56
+    },
+    {
+      "lang": "en",
+      "text": "one was that those gains seem to get",
+      "offset": 155.56,
+      "duration": 5.72
+    },
+    {
+      "lang": "en",
+      "text": "better with more compute at test time or",
+      "offset": 158.4,
+      "duration": 4.839
+    },
+    {
+      "lang": "en",
+      "text": "test time scaling can you talk about",
+      "offset": 161.28,
+      "duration": 4.319
+    },
+    {
+      "lang": "en",
+      "text": "other approaches that folks have taken",
+      "offset": 163.239,
+      "duration": 6.08
+    },
+    {
+      "lang": "en",
+      "text": "to dig into test time scaling and um try",
+      "offset": 165.599,
+      "duration": 6.401
+    },
+    {
+      "lang": "en",
+      "text": "to replicate what open AI did with 01 at",
+      "offset": 169.319,
+      "duration": 4.881
+    },
+    {
+      "lang": "en",
+      "text": "a high level there's two different",
+      "offset": 172,
+      "duration": 5.48
+    },
+    {
+      "lang": "en",
+      "text": "approaches to test time scaling one is",
+      "offset": 174.2,
+      "duration": 5.679
+    },
+    {
+      "lang": "en",
+      "text": "you scale in parallel and the other is",
+      "offset": 177.48,
+      "duration": 5.759
+    },
+    {
+      "lang": "en",
+      "text": "you scale sequentially in parallel means",
+      "offset": 179.879,
+      "duration": 4.681
+    },
+    {
+      "lang": "en",
+      "text": "that you're running multiple",
+      "offset": 183.239,
+      "duration": 3
+    },
+    {
+      "lang": "en",
+      "text": "computations independently so for",
+      "offset": 184.56,
+      "duration": 4.28
+    },
+    {
+      "lang": "en",
+      "text": "example you take one model and run the",
+      "offset": 186.239,
+      "duration": 3.961
+    },
+    {
+      "lang": "en",
+      "text": "question through it multiple times and",
+      "offset": 188.84,
+      "duration": 3.759
+    },
+    {
+      "lang": "en",
+      "text": "then you aggregate those answers somehow",
+      "offset": 190.2,
+      "duration": 4.52
+    },
+    {
+      "lang": "en",
+      "text": "the most common way to aggregate them is",
+      "offset": 192.599,
+      "duration": 3.64
+    },
+    {
+      "lang": "en",
+      "text": "majority voting where you just take the",
+      "offset": 194.72,
+      "duration": 4.36
+    },
+    {
+      "lang": "en",
+      "text": "majority answer and similar to classical",
+      "offset": 196.239,
+      "duration": 5
+    },
+    {
+      "lang": "en",
+      "text": "embling techniques in machine learning",
+      "offset": 199.08,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "this will slightly improve the",
+      "offset": 201.239,
+      "duration": 3.441
+    },
+    {
+      "lang": "en",
+      "text": "performance of the model because you're",
+      "offset": 202.84,
+      "duration": 5
+    },
+    {
+      "lang": "en",
+      "text": "not bound to oneoff errors or mishaps of",
+      "offset": 204.68,
+      "duration": 5.6
+    },
+    {
+      "lang": "en",
+      "text": "the model and you can do more fancy",
+      "offset": 207.84,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "things there like have a reward model",
+      "offset": 210.28,
+      "duration": 4.879
+    },
+    {
+      "lang": "en",
+      "text": "decide which output to pick and so on",
+      "offset": 211.84,
+      "duration": 6.319
+    },
+    {
+      "lang": "en",
+      "text": "and on the sequential side you have the",
+      "offset": 215.159,
+      "duration": 6.241
+    },
+    {
+      "lang": "en",
+      "text": "model generate a single reasoning trace",
+      "offset": 218.159,
+      "duration": 5.481
+    },
+    {
+      "lang": "en",
+      "text": "or Reason in a single chain and then",
+      "offset": 221.4,
+      "duration": 4.759
+    },
+    {
+      "lang": "en",
+      "text": "iteratively iteratively refine what it's",
+      "offset": 223.64,
+      "duration": 5.08
+    },
+    {
+      "lang": "en",
+      "text": "doing and improve on its previous",
+      "offset": 226.159,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "current answer and intuitively this one",
+      "offset": 228.72,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "should scale better because you're not",
+      "offset": 231.439,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "making potentially the same mistake",
+      "offset": 233.28,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "multiple times in parallel but the",
+      "offset": 235.519,
+      "duration": 5.161
+    },
+    {
+      "lang": "en",
+      "text": "model is reasoning in one continuous",
+      "offset": 237.84,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "chain so it can build on intermediate",
+      "offset": 240.68,
+      "duration": 4.44
+    },
+    {
+      "lang": "en",
+      "text": "steps and try to arrive at a better",
+      "offset": 242.56,
+      "duration": 4.36
+    },
+    {
+      "lang": "en",
+      "text": "answer but the two of them are not",
+      "offset": 245.12,
+      "duration": 4.039
+    },
+    {
+      "lang": "en",
+      "text": "exclusive you can combine them and there",
+      "offset": 246.92,
+      "duration": 4.679
+    },
+    {
+      "lang": "en",
+      "text": "is some Synergy and in the open1 block",
+      "offset": 249.159,
+      "duration": 5.881
+    },
+    {
+      "lang": "en",
+      "text": "post even though the 01 model with its",
+      "offset": 251.599,
+      "duration": 4.801
+    },
+    {
+      "lang": "en",
+      "text": "long chains of thoughts that it",
+      "offset": 255.04,
+      "duration": 4.36
+    },
+    {
+      "lang": "en",
+      "text": "generates it is sequential test time",
+      "offset": 256.4,
+      "duration": 4.92
+    },
+    {
+      "lang": "en",
+      "text": "scaling they do show that they can add",
+      "offset": 259.4,
+      "duration": 4.6
+    },
+    {
+      "lang": "en",
+      "text": "test time uh parallel scaling on top of",
+      "offset": 261.32,
+      "duration": 4.439
+    },
+    {
+      "lang": "en",
+      "text": "it with majority vode and further",
+      "offset": 264,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "improve the performance so they generate",
+      "offset": 265.759,
+      "duration": 4.481
+    },
+    {
+      "lang": "en",
+      "text": "multiple chains in parallel and then",
+      "offset": 267.52,
+      "duration": 5.32
+    },
+    {
+      "lang": "en",
+      "text": "aggregate them with majority voting uh",
+      "offset": 270.24,
+      "duration": 6.799
+    },
+    {
+      "lang": "en",
+      "text": "is there work being done that looks at",
+      "offset": 272.84,
+      "duration": 7
+    },
+    {
+      "lang": "en",
+      "text": "rather than aggregating via voting",
+      "offset": 277.039,
+      "duration": 4.561
+    },
+    {
+      "lang": "en",
+      "text": "aggregating",
+      "offset": 279.84,
+      "duration": 5.56
+    },
+    {
+      "lang": "en",
+      "text": "via an additional model processing stage",
+      "offset": 281.6,
+      "duration": 5.92
+    },
+    {
+      "lang": "en",
+      "text": "so maybe you know summarization or",
+      "offset": 285.4,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "something like that or training a model",
+      "offset": 287.52,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "to look at the output of these",
+      "offset": 290.36,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "individual parallel runs and kind of",
+      "offset": 292.24,
+      "duration": 5.519
+    },
+    {
+      "lang": "en",
+      "text": "synthesize them so there is a there are",
+      "offset": 294.44,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "approaches that leverage reward models",
+      "offset": 297.759,
+      "duration": 5.121
+    },
+    {
+      "lang": "en",
+      "text": "in this process so I think best of n or",
+      "offset": 299.72,
+      "duration": 5.199
+    },
+    {
+      "lang": "en",
+      "text": "even some tree-based approaches like",
+      "offset": 302.88,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "rebase which we also explore in the S1",
+      "offset": 304.919,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "paper where there's a a second reward",
+      "offset": 307.12,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "model that assigns a reward to the",
+      "offset": 309.639,
+      "duration": 5.081
+    },
+    {
+      "lang": "en",
+      "text": "current intermediate or the final output",
+      "offset": 312.32,
+      "duration": 6.04
+    },
+    {
+      "lang": "en",
+      "text": "of the model and then based on that you",
+      "offset": 314.72,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "just take the one with the highest score",
+      "offset": 318.36,
+      "duration": 3.32
+    },
+    {
+      "lang": "en",
+      "text": "or the few ones with the highest score",
+      "offset": 320.08,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "or something like that and that way",
+      "offset": 321.68,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "hopefully arrive at a better answer yeah",
+      "offset": 324,
+      "duration": 3.919
+    },
+    {
+      "lang": "en",
+      "text": "I think I was thinking less of like",
+      "offset": 325.84,
+      "duration": 4.6
+    },
+    {
+      "lang": "en",
+      "text": "using the reward model to scores and",
+      "offset": 327.919,
+      "duration": 6.521
+    },
+    {
+      "lang": "en",
+      "text": "more like using a model to synthesize",
+      "offset": 330.44,
+      "duration": 7
+    },
+    {
+      "lang": "en",
+      "text": "the text that the other model spits out",
+      "offset": 334.44,
+      "duration": 5.68
+    },
+    {
+      "lang": "en",
+      "text": "um because if the models are you",
+      "offset": 337.44,
+      "duration": 4.12
+    },
+    {
+      "lang": "en",
+      "text": "mentioned how if the models are just",
+      "offset": 340.12,
+      "duration": 6.6
+    },
+    {
+      "lang": "en",
+      "text": "generating text in parallel then you",
+      "offset": 341.56,
+      "duration": 8.4
+    },
+    {
+      "lang": "en",
+      "text": "um a disadvantage relative to sequential",
+      "offset": 346.72,
+      "duration": 7.08
+    },
+    {
+      "lang": "en",
+      "text": "is that the you know other models aren't",
+      "offset": 349.96,
+      "duration": 6.04
+    },
+    {
+      "lang": "en",
+      "text": "necessarily learning from the output of",
+      "offset": 353.8,
+      "duration": 4.399
+    },
+    {
+      "lang": "en",
+      "text": "the you know the other n minus one",
+      "offset": 356,
+      "duration": 3.88
+    },
+    {
+      "lang": "en",
+      "text": "models but if you've got a model sitting",
+      "offset": 358.199,
+      "duration": 3.521
+    },
+    {
+      "lang": "en",
+      "text": "in front of that they can potentially",
+      "offset": 359.88,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "learn from all of the output maybe it",
+      "offset": 361.72,
+      "duration": 4.319
+    },
+    {
+      "lang": "en",
+      "text": "can generate a higher",
+      "offset": 364.52,
+      "duration": 4.84
+    },
+    {
+      "lang": "en",
+      "text": "quality uh output oh that seems like an",
+      "offset": 366.039,
+      "duration": 5.041
+    },
+    {
+      "lang": "en",
+      "text": "interesting research idea so",
+      "offset": 369.36,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "maybe we should maybe explore that so it",
+      "offset": 371.08,
+      "duration": 4.399
+    },
+    {
+      "lang": "en",
+      "text": "could be I guess it could either be at",
+      "offset": 373.44,
+      "duration": 4.12
+    },
+    {
+      "lang": "en",
+      "text": "the very output level or even as you",
+      "offset": 375.479,
+      "duration": 5.241
+    },
+    {
+      "lang": "en",
+      "text": "hinted at during the generation of each",
+      "offset": 377.56,
+      "duration": 4.44
+    },
+    {
+      "lang": "en",
+      "text": "of these models in parallel maybe",
+      "offset": 380.72,
+      "duration": 4.12
+    },
+    {
+      "lang": "en",
+      "text": "there's some synchronization step where",
+      "offset": 382,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "all of the models say okay this is where",
+      "offset": 384.84,
+      "duration": 2.919
+    },
+    {
+      "lang": "en",
+      "text": "I'm currently at this is the mistakes",
+      "offset": 386.24,
+      "duration": 3.359
+    },
+    {
+      "lang": "en",
+      "text": "I've made and then sort of they try to",
+      "offset": 387.759,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "improve based off of that I think that's",
+      "offset": 389.599,
+      "duration": 6.88
+    },
+    {
+      "lang": "en",
+      "text": "very exciting um yeah trying to either",
+      "offset": 392.479,
+      "duration": 5.961
+    },
+    {
+      "lang": "en",
+      "text": "put another model at the end and improve",
+      "offset": 396.479,
+      "duration": 5.481
+    },
+    {
+      "lang": "en",
+      "text": "based on all of these parallel tries I",
+      "offset": 398.44,
+      "duration": 5.8
+    },
+    {
+      "lang": "en",
+      "text": "haven't seen any work on that yet but I",
+      "offset": 401.96,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "think it's very exciting your work came",
+      "offset": 404.24,
+      "duration": 5.679
+    },
+    {
+      "lang": "en",
+      "text": "out right around the time of the deep",
+      "offset": 407,
+      "duration": 4.039
+    },
+    {
+      "lang": "en",
+      "text": "seek",
+      "offset": 409.919,
+      "duration": 6.081
+    },
+    {
+      "lang": "en",
+      "text": "R1 uh you know excitement well it came",
+      "offset": 411.039,
+      "duration": 7.16
+    },
+    {
+      "lang": "en",
+      "text": "out around the time of deep deep seek",
+      "offset": 416,
+      "duration": 5.039
+    },
+    {
+      "lang": "en",
+      "text": "ran and the subsequent EXC I should say",
+      "offset": 418.199,
+      "duration": 7
+    },
+    {
+      "lang": "en",
+      "text": "can you contextualize S1 with R1 and",
+      "offset": 421.039,
+      "duration": 5.641
+    },
+    {
+      "lang": "en",
+      "text": "like how those projects relate to one",
+      "offset": 425.199,
+      "duration": 4.521
+    },
+    {
+      "lang": "en",
+      "text": "another I think at a high level both S1",
+      "offset": 426.68,
+      "duration": 6.76
+    },
+    {
+      "lang": "en",
+      "text": "and R1 are attempts to replicate o1 from",
+      "offset": 429.72,
+      "duration": 4.84
+    },
+    {
+      "lang": "en",
+      "text": "open",
+      "offset": 433.44,
+      "duration": 5.64
+    },
+    {
+      "lang": "en",
+      "text": "Ai and and I think the key difference is",
+      "offset": 434.56,
+      "duration": 5.88
+    },
+    {
+      "lang": "en",
+      "text": "that for",
+      "offset": 439.08,
+      "duration": 6.76
+    },
+    {
+      "lang": "en",
+      "text": "R1 they try to go the full way replicate",
+      "offset": 440.44,
+      "duration": 7.56
+    },
+    {
+      "lang": "en",
+      "text": "the entire pipeline as much as they",
+      "offset": 445.84,
+      "duration": 5.479
+    },
+    {
+      "lang": "en",
+      "text": "could whereas for S1 we focused on what",
+      "offset": 448,
+      "duration": 6.479
+    },
+    {
+      "lang": "en",
+      "text": "is the minimal approach the simplest way",
+      "offset": 451.319,
+      "duration": 6.481
+    },
+    {
+      "lang": "en",
+      "text": "to get those two exciting things about",
+      "offset": 454.479,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "01 which is the strong reasoning",
+      "offset": 457.8,
+      "duration": 3.64
+    },
+    {
+      "lang": "en",
+      "text": "performance and the test time scaling",
+      "offset": 459.199,
+      "duration": 4.601
+    },
+    {
+      "lang": "en",
+      "text": "what is the minimal recipe to get that",
+      "offset": 461.44,
+      "duration": 4.759
+    },
+    {
+      "lang": "en",
+      "text": "and in terms of the results that you saw",
+      "offset": 463.8,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "I think the headline was that S1 was",
+      "offset": 466.199,
+      "duration": 6.161
+    },
+    {
+      "lang": "en",
+      "text": "trained with about $50 worth of compute",
+      "offset": 468.52,
+      "duration": 8.28
+    },
+    {
+      "lang": "en",
+      "text": "and uh exceeded matched or exceeded the",
+      "offset": 472.36,
+      "duration": 7.519
+    },
+    {
+      "lang": "en",
+      "text": "01 preview scores on some benchmarks on",
+      "offset": 476.8,
+      "duration": 6.839
+    },
+    {
+      "lang": "en",
+      "text": "what you saw so on the cost front our",
+      "offset": 479.879,
+      "duration": 7.841
+    },
+    {
+      "lang": "en",
+      "text": "final training run took 26 minutes on 16",
+      "offset": 483.639,
+      "duration": 8.641
+    },
+    {
+      "lang": "en",
+      "text": "h100s and if you rent 16 h100s on one",
+      "offset": 487.72,
+      "duration": 6.319
+    },
+    {
+      "lang": "en",
+      "text": "online platform so I looked at Prime",
+      "offset": 492.28,
+      "duration": 4.68
+    },
+    {
+      "lang": "en",
+      "text": "intellect for example it costs around I",
+      "offset": 494.039,
+      "duration": 3.681
+    },
+    {
+      "lang": "en",
+      "text": "think",
+      "offset": 496.96,
+      "duration": 4.44
+    },
+    {
+      "lang": "en",
+      "text": "$40 per hour so that would be 20 for 26",
+      "offset": 497.72,
+      "duration": 6.96
+    },
+    {
+      "lang": "en",
+      "text": "minutes so very cheap for that final",
+      "offset": 501.4,
+      "duration": 5.88
+    },
+    {
+      "lang": "en",
+      "text": "run and I think that's where that's a",
+      "offset": 504.68,
+      "duration": 5.519
+    },
+    {
+      "lang": "en",
+      "text": "cost for 16 that's a cost for two node",
+      "offset": 507.28,
+      "duration": 5.679
+    },
+    {
+      "lang": "en",
+      "text": "16 yeah on Prime intellect it's a great",
+      "offset": 510.199,
+      "duration": 5.921
+    },
+    {
+      "lang": "en",
+      "text": "platform and we of course also use",
+      "offset": 512.959,
+      "duration": 6.121
+    },
+    {
+      "lang": "en",
+      "text": "resources to generate the data and and",
+      "offset": 516.12,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "create other parts but for the final",
+      "offset": 519.08,
+      "duration": 2.519
+    },
+    {
+      "lang": "en",
+      "text": "training run that's all you need and",
+      "offset": 520.44,
+      "duration": 3.24
+    },
+    {
+      "lang": "en",
+      "text": "since we published all of our data sets",
+      "offset": 521.599,
+      "duration": 3.881
+    },
+    {
+      "lang": "en",
+      "text": "anyone should be able to replicate our",
+      "offset": 523.68,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "results with those 26 minutes of 16",
+      "offset": 525.48,
+      "duration": 8.2
+    },
+    {
+      "lang": "en",
+      "text": "h100s yeah I think the performance was",
+      "offset": 528.32,
+      "duration": 7.16
+    },
+    {
+      "lang": "en",
+      "text": "better than 01 preview on some math",
+      "offset": 533.68,
+      "duration": 5.92
+    },
+    {
+      "lang": "en",
+      "text": "benchmarks like am and Math 500 but on G",
+      "offset": 535.48,
+      "duration": 6.12
+    },
+    {
+      "lang": "en",
+      "text": "QA which is like common PhD science",
+      "offset": 539.6,
+      "duration": 5.32
+    },
+    {
+      "lang": "en",
+      "text": "questions it was worse and also preview",
+      "offset": 541.6,
+      "duration": 5.6
+    },
+    {
+      "lang": "en",
+      "text": "is an older version so I think at this",
+      "offset": 544.92,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "point in time they're already at 03 so",
+      "offset": 547.2,
+      "duration": 3.879
+    },
+    {
+      "lang": "en",
+      "text": "of course need to contextualize the",
+      "offset": 549.48,
+      "duration": 3.28
+    },
+    {
+      "lang": "en",
+      "text": "results a little bit but nonetheless I",
+      "offset": 551.079,
+      "duration": 3.88
+    },
+    {
+      "lang": "en",
+      "text": "think given the very cheap recipe uh it",
+      "offset": 552.76,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "is quite impressive that we could get uh",
+      "offset": 554.959,
+      "duration": 4.081
+    },
+    {
+      "lang": "en",
+      "text": "this strong performance awesome awesome",
+      "offset": 557,
+      "duration": 3.64
+    },
+    {
+      "lang": "en",
+      "text": "and we'll talk a little bit later on I",
+      "offset": 559.04,
+      "duration": 4.039
+    },
+    {
+      "lang": "en",
+      "text": "think about how you might go about",
+      "offset": 560.64,
+      "duration": 6.56
+    },
+    {
+      "lang": "en",
+      "text": "evolving your approach to keep up with",
+      "offset": 563.079,
+      "duration": 7.32
+    },
+    {
+      "lang": "en",
+      "text": "the advances but I did want to dig into",
+      "offset": 567.2,
+      "duration": 5.759
+    },
+    {
+      "lang": "en",
+      "text": "the training recipe in particular and a",
+      "offset": 570.399,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "couple of the major steps there one of",
+      "offset": 572.959,
+      "duration": 5.281
+    },
+    {
+      "lang": "en",
+      "text": "them was the data set curation and then",
+      "offset": 575.279,
+      "duration": 4.841
+    },
+    {
+      "lang": "en",
+      "text": "uh this interesting bit that you did",
+      "offset": 578.24,
+      "duration": 3.839
+    },
+    {
+      "lang": "en",
+      "text": "with uh that you called budget forcing",
+      "offset": 580.12,
+      "duration": 4.36
+    },
+    {
+      "lang": "en",
+      "text": "but let's start with the data set how",
+      "offset": 582.079,
+      "duration": 5.401
+    },
+    {
+      "lang": "en",
+      "text": "did you pull that together initially we",
+      "offset": 584.48,
+      "duration": 4.76
+    },
+    {
+      "lang": "en",
+      "text": "collected some of the hardest questions",
+      "offset": 587.48,
+      "duration": 4.479
+    },
+    {
+      "lang": "en",
+      "text": "we could find online so we took some",
+      "offset": 589.24,
+      "duration": 6.2
+    },
+    {
+      "lang": "en",
+      "text": "really hard Olympiad questions from",
+      "offset": 591.959,
+      "duration": 5.601
+    },
+    {
+      "lang": "en",
+      "text": "covering subjects like math uh physics",
+      "offset": 595.44,
+      "duration": 4.68
+    },
+    {
+      "lang": "en",
+      "text": "and others but also",
+      "offset": 597.56,
+      "duration": 5.68
+    },
+    {
+      "lang": "en",
+      "text": "brain teasers from Quant interviews and",
+      "offset": 600.12,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "these kinds of difficult problems where",
+      "offset": 603.24,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "you think that a lot of reasoning is",
+      "offset": 605,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "necessary and we assembled 59,000 of",
+      "offset": 606.76,
+      "duration": 6.28
+    },
+    {
+      "lang": "en",
+      "text": "those and then we went through a process",
+      "offset": 609.8,
+      "duration": 6.159
+    },
+    {
+      "lang": "en",
+      "text": "to filter them down to just 1,000 and",
+      "offset": 613.04,
+      "duration": 5.64
+    },
+    {
+      "lang": "en",
+      "text": "the key criteria in this process were",
+      "offset": 615.959,
+      "duration": 4.041
+    },
+    {
+      "lang": "en",
+      "text": "focusing on",
+      "offset": 618.68,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "quality diversity and that are very",
+      "offset": 620,
+      "duration": 7.76
+    },
+    {
+      "lang": "en",
+      "text": "difficult and the way we quantifi these",
+      "offset": 623.8,
+      "duration": 7.12
+    },
+    {
+      "lang": "en",
+      "text": "three metrics is that for for difficulty",
+      "offset": 627.76,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "we looked whether previous models could",
+      "offset": 630.92,
+      "duration": 4.159
+    },
+    {
+      "lang": "en",
+      "text": "solve them and if they can't then we",
+      "offset": 632.64,
+      "duration": 4.68
+    },
+    {
+      "lang": "en",
+      "text": "thought these would be very challenging",
+      "offset": 635.079,
+      "duration": 4.601
+    },
+    {
+      "lang": "en",
+      "text": "so ideally like a previous poor model",
+      "offset": 637.32,
+      "duration": 4.319
+    },
+    {
+      "lang": "en",
+      "text": "cannot solve them but we still know that",
+      "offset": 639.68,
+      "duration": 4.36
+    },
+    {
+      "lang": "en",
+      "text": "they are solvable either by a really",
+      "offset": 641.639,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "strong model being able to solve them or",
+      "offset": 644.04,
+      "duration": 3.919
+    },
+    {
+      "lang": "en",
+      "text": "some indication that there's a solution",
+      "offset": 645.959,
+      "duration": 3.961
+    },
+    {
+      "lang": "en",
+      "text": "or something like that and then for",
+      "offset": 647.959,
+      "duration": 4.721
+    },
+    {
+      "lang": "en",
+      "text": "diversity we made sure to sample from",
+      "offset": 649.92,
+      "duration": 4.719
+    },
+    {
+      "lang": "en",
+      "text": "very different fields so not just math",
+      "offset": 652.68,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "but also astronomy biology and various",
+      "offset": 654.639,
+      "duration": 4.76
+    },
+    {
+      "lang": "en",
+      "text": "others",
+      "offset": 657.56,
+      "duration": 5.24
+    },
+    {
+      "lang": "en",
+      "text": "and finally for Quality we had some very",
+      "offset": 659.399,
+      "duration": 5.721
+    },
+    {
+      "lang": "en",
+      "text": "simple filters like ensuring that",
+      "offset": 662.8,
+      "duration": 6.479
+    },
+    {
+      "lang": "en",
+      "text": "there's no duplication of questions that",
+      "offset": 665.12,
+      "duration": 5.88
+    },
+    {
+      "lang": "en",
+      "text": "the questions are all properly formatted",
+      "offset": 669.279,
+      "duration": 3.721
+    },
+    {
+      "lang": "en",
+      "text": "and so on and ultimately this led to our",
+      "offset": 671,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "final 1,000 example selection and that",
+      "offset": 673,
+      "duration": 7.079
+    },
+    {
+      "lang": "en",
+      "text": "number 1,000 was that uh did that come",
+      "offset": 676.44,
+      "duration": 5.639
+    },
+    {
+      "lang": "en",
+      "text": "from your intuition you know we should",
+      "offset": 680.079,
+      "duration": 3.721
+    },
+    {
+      "lang": "en",
+      "text": "you know let's see what we can do with a",
+      "offset": 682.079,
+      "duration": 3.481
+    },
+    {
+      "lang": "en",
+      "text": "TH or we should be able to get this down",
+      "offset": 683.8,
+      "duration": 4.44
+    },
+    {
+      "lang": "en",
+      "text": "to a th like where did that come from",
+      "offset": 685.56,
+      "duration": 5.48
+    },
+    {
+      "lang": "en",
+      "text": "there's a great prior paper called",
+      "offset": 688.24,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "Lima less is more for alignment and in",
+      "offset": 691.04,
+      "duration": 5.64
+    },
+    {
+      "lang": "en",
+      "text": "that paper they showed that with just",
+      "offset": 694.24,
+      "duration": 5.88
+    },
+    {
+      "lang": "en",
+      "text": "1,000 samples they were able to train a",
+      "offset": 696.68,
+      "duration": 6.12
+    },
+    {
+      "lang": "en",
+      "text": "model that was a pretty good chatbot So",
+      "offset": 700.12,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "based off of the original llama models",
+      "offset": 702.8,
+      "duration": 4.719
+    },
+    {
+      "lang": "en",
+      "text": "they use these 1,000 samples to find",
+      "offset": 705.88,
+      "duration": 5
+    },
+    {
+      "lang": "en",
+      "text": "unit and they framed this as The",
+      "offset": 707.519,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "Superficial alignment hypothesis which",
+      "offset": 710.88,
+      "duration": 3.639
+    },
+    {
+      "lang": "en",
+      "text": "is that to align a model you actually",
+      "offset": 712.639,
+      "duration": 3.2
+    },
+    {
+      "lang": "en",
+      "text": "don't need that much data you can make",
+      "offset": 714.519,
+      "duration": 4.601
+    },
+    {
+      "lang": "en",
+      "text": "it much simpler and we wanted to revive",
+      "offset": 715.839,
+      "duration": 5.56
+    },
+    {
+      "lang": "en",
+      "text": "that but for reasoning and that's where",
+      "offset": 719.12,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "the 1,000 number came from and it's also",
+      "offset": 721.399,
+      "duration": 5.041
+    },
+    {
+      "lang": "en",
+      "text": "somewhat catchy if we can do 1,000 um so",
+      "offset": 723.68,
+      "duration": 5.719
+    },
+    {
+      "lang": "en",
+      "text": "you generated this data set of a",
+      "offset": 726.44,
+      "duration": 6.8
+    },
+    {
+      "lang": "en",
+      "text": "thousand questions or 59,000 questions",
+      "offset": 729.399,
+      "duration": 6.361
+    },
+    {
+      "lang": "en",
+      "text": "but then you filtered that down to a",
+      "offset": 733.24,
+      "duration": 3.599
+    },
+    {
+      "lang": "en",
+      "text": "thousand",
+      "offset": 735.76,
+      "duration": 5.72
+    },
+    {
+      "lang": "en",
+      "text": "questions um you mentioned",
+      "offset": 736.839,
+      "duration": 9.12
+    },
+    {
+      "lang": "en",
+      "text": "um and then the next step I think was uh",
+      "offset": 741.48,
+      "duration": 6.4
+    },
+    {
+      "lang": "en",
+      "text": "doing distillation and you did that",
+      "offset": 745.959,
+      "duration": 3.841
+    },
+    {
+      "lang": "en",
+      "text": "against Gemini can you talk a little bit",
+      "offset": 747.88,
+      "duration": 5.16
+    },
+    {
+      "lang": "en",
+      "text": "about distillation and the inspiration",
+      "offset": 749.8,
+      "duration": 7.08
+    },
+    {
+      "lang": "en",
+      "text": "for that and um you know how that",
+      "offset": 753.04,
+      "duration": 6.72
+    },
+    {
+      "lang": "en",
+      "text": "process worked yeah of course initially",
+      "offset": 756.88,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "we used the Google Gemini flash thinking",
+      "offset": 759.76,
+      "duration": 7.24
+    },
+    {
+      "lang": "en",
+      "text": "API and we just ran it over even the",
+      "offset": 762.88,
+      "duration": 7.28
+    },
+    {
+      "lang": "en",
+      "text": "entire 59,000 questions and then we took",
+      "offset": 767,
+      "duration": 5.88
+    },
+    {
+      "lang": "en",
+      "text": "from the API the thinking trace and the",
+      "offset": 770.16,
+      "duration": 4.479
+    },
+    {
+      "lang": "en",
+      "text": "solution so at the at that point in time",
+      "offset": 772.88,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "they already had a reasoning model and",
+      "offset": 774.639,
+      "duration": 5.721
+    },
+    {
+      "lang": "en",
+      "text": "we directly took the traces and answers",
+      "offset": 777.76,
+      "duration": 6.079
+    },
+    {
+      "lang": "en",
+      "text": "from that model but later after R1 was",
+      "offset": 780.36,
+      "duration": 6.32
+    },
+    {
+      "lang": "en",
+      "text": "released we switched to the R1 reasoning",
+      "offset": 783.839,
+      "duration": 5.961
+    },
+    {
+      "lang": "en",
+      "text": "traces and found that yeah okay and",
+      "offset": 786.68,
+      "duration": 5.48
+    },
+    {
+      "lang": "en",
+      "text": "found that actually they're much better",
+      "offset": 789.8,
+      "duration": 3.719
+    },
+    {
+      "lang": "en",
+      "text": "and we were able to train a slightly",
+      "offset": 792.16,
+      "duration": 2.479
+    },
+    {
+      "lang": "en",
+      "text": "better model with that that we just",
+      "offset": 793.519,
+      "duration": 3.281
+    },
+    {
+      "lang": "en",
+      "text": "released recently called",
+      "offset": 794.639,
+      "duration": 6.44
+    },
+    {
+      "lang": "en",
+      "text": "s1.1 you use the the Gemini thinking",
+      "offset": 796.8,
+      "duration": 10.159
+    },
+    {
+      "lang": "en",
+      "text": "experimental and I am curious if you've",
+      "offset": 801.079,
+      "duration": 8.641
+    },
+    {
+      "lang": "en",
+      "text": "gone back to look at that and I'm only",
+      "offset": 806.959,
+      "duration": 4.481
+    },
+    {
+      "lang": "en",
+      "text": "asking this because in my own",
+      "offset": 809.72,
+      "duration": 4.6
+    },
+    {
+      "lang": "en",
+      "text": "experiences with that model it's changed",
+      "offset": 811.44,
+      "duration": 5.079
+    },
+    {
+      "lang": "en",
+      "text": "a bit over time and you know when you",
+      "offset": 814.32,
+      "duration": 3.56
+    },
+    {
+      "lang": "en",
+      "text": "talk to Google it's like it's",
+      "offset": 816.519,
+      "duration": 3.201
+    },
+    {
+      "lang": "en",
+      "text": "experimental we're going to change it",
+      "offset": 817.88,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "without notice it's not version that",
+      "offset": 819.72,
+      "duration": 4.119
+    },
+    {
+      "lang": "en",
+      "text": "kind of thing but when I've used it for",
+      "offset": 821.56,
+      "duration": 4.519
+    },
+    {
+      "lang": "en",
+      "text": "coding I noticed like some pretty",
+      "offset": 823.839,
+      "duration": 5.321
+    },
+    {
+      "lang": "en",
+      "text": "dramatic changes in the way it responds",
+      "offset": 826.079,
+      "duration": 5.56
+    },
+    {
+      "lang": "en",
+      "text": "to questions you know over the course of",
+      "offset": 829.16,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "the past like say five weeks or four",
+      "offset": 831.639,
+      "duration": 4.601
+    },
+    {
+      "lang": "en",
+      "text": "weeks have you did you ever ever go back",
+      "offset": 833.88,
+      "duration": 4.519
+    },
+    {
+      "lang": "en",
+      "text": "and look at it again yeah or did you",
+      "offset": 836.24,
+      "duration": 5.039
+    },
+    {
+      "lang": "en",
+      "text": "notice a while you in the course of the",
+      "offset": 838.399,
+      "duration": 6.721
+    },
+    {
+      "lang": "en",
+      "text": "project that kind of changed the way you",
+      "offset": 841.279,
+      "duration": 4.961
+    },
+    {
+      "lang": "en",
+      "text": "Chang the kind of results you were",
+      "offset": 845.12,
+      "duration": 2.88
+    },
+    {
+      "lang": "en",
+      "text": "seeing out of that model yeah the",
+      "offset": 846.24,
+      "duration": 4.68
+    },
+    {
+      "lang": "en",
+      "text": "biggest change was it seems like after",
+      "offset": 848,
+      "duration": 5.519
+    },
+    {
+      "lang": "en",
+      "text": "our paper got released they removed the",
+      "offset": 850.92,
+      "duration": 4.279
+    },
+    {
+      "lang": "en",
+      "text": "option to get the thinking traits from",
+      "offset": 853.519,
+      "duration": 2.001
+    },
+    {
+      "lang": "en",
+      "text": "their",
+      "offset": 855.199,
+      "duration": 3.361
+    },
+    {
+      "lang": "en",
+      "text": "[Laughter]",
+      "offset": 855.52,
+      "duration": 6.319
+    },
+    {
+      "lang": "en",
+      "text": "API and besides that they've also",
+      "offset": 858.56,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "followed up with newer and presumably",
+      "offset": 861.839,
+      "duration": 4.881
+    },
+    {
+      "lang": "en",
+      "text": "better thinking models so maybe that",
+      "offset": 864,
+      "duration": 6.16
+    },
+    {
+      "lang": "en",
+      "text": "also motivated that change and and yeah",
+      "offset": 866.72,
+      "duration": 4.84
+    },
+    {
+      "lang": "en",
+      "text": "it's changing a lot can you get the",
+      "offset": 870.16,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "thinking Trace from those models no I",
+      "offset": 871.56,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "think they removed that option for now",
+      "offset": 874.32,
+      "duration": 5.759
+    },
+    {
+      "lang": "en",
+      "text": "okay but that's also partly the reason",
+      "offset": 876.68,
+      "duration": 5.64
+    },
+    {
+      "lang": "en",
+      "text": "why R1 is a much better option if you",
+      "offset": 880.079,
+      "duration": 4.2
+    },
+    {
+      "lang": "en",
+      "text": "want to generate thinking traces besides",
+      "offset": 882.32,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "the reason that it leads to better",
+      "offset": 884.279,
+      "duration": 3
+    },
+    {
+      "lang": "en",
+      "text": "performance as we showed with our",
+      "offset": 885.68,
+      "duration": 3.88
+    },
+    {
+      "lang": "en",
+      "text": "followup because you can because they",
+      "offset": 887.279,
+      "duration": 4.161
+    },
+    {
+      "lang": "en",
+      "text": "make the thinking traces available",
+      "offset": 889.56,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "exactly yeah in talking about the data",
+      "offset": 891.44,
+      "duration": 5.079
+    },
+    {
+      "lang": "en",
+      "text": "set curation you mentioned difficulty",
+      "offset": 894.04,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "and the criteria was roughly you know",
+      "offset": 896.519,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "models have a hard time with these",
+      "offset": 899.56,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "questions but then the distillation",
+      "offset": 901.079,
+      "duration": 4.721
+    },
+    {
+      "lang": "en",
+      "text": "process is let's ask a model these",
+      "offset": 903.24,
+      "duration": 5
+    },
+    {
+      "lang": "en",
+      "text": "questions and then capture its answer",
+      "offset": 905.8,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "and its reasoning Trace you know",
+      "offset": 908.24,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "presumably those are kind of at odds",
+      "offset": 910.6,
+      "duration": 3.799
+    },
+    {
+      "lang": "en",
+      "text": "with one another like the models are",
+      "offset": 912.32,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "going to generate wrong answers and",
+      "offset": 914.399,
+      "duration": 4.041
+    },
+    {
+      "lang": "en",
+      "text": "think about them in wrong ways but then",
+      "offset": 916,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "you're using that information for",
+      "offset": 918.44,
+      "duration": 4.639
+    },
+    {
+      "lang": "en",
+      "text": "training talk a little bit about that uh",
+      "offset": 920,
+      "duration": 4.839
+    },
+    {
+      "lang": "en",
+      "text": "Paradox I",
+      "offset": 923.079,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "think one hypothesis is that you're",
+      "offset": 924.839,
+      "duration": 5.201
+    },
+    {
+      "lang": "en",
+      "text": "bottleneck by the capability of your",
+      "offset": 927.639,
+      "duration": 5.281
+    },
+    {
+      "lang": "en",
+      "text": "teacher so in our case for Gemini on one",
+      "offset": 930.04,
+      "duration": 6.52
+    },
+    {
+      "lang": "en",
+      "text": "of the benchmarks Amy it got 60% and",
+      "offset": 932.92,
+      "duration": 6.52
+    },
+    {
+      "lang": "en",
+      "text": "after distillation we got 57 with our",
+      "offset": 936.56,
+      "duration": 5.959
+    },
+    {
+      "lang": "en",
+      "text": "model so we decided to stop there at",
+      "offset": 939.44,
+      "duration": 5.68
+    },
+    {
+      "lang": "en",
+      "text": "that point in time because it felt like",
+      "offset": 942.519,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "there's not that much room to go further",
+      "offset": 945.12,
+      "duration": 3.959
+    },
+    {
+      "lang": "en",
+      "text": "if we keep distilling from Gemini",
+      "offset": 947.079,
+      "duration": 3.161
+    },
+    {
+      "lang": "en",
+      "text": "because we're already very close to its",
+      "offset": 949.079,
+      "duration": 3
+    },
+    {
+      "lang": "en",
+      "text": "performance we're just using its",
+      "offset": 950.24,
+      "duration": 4.599
+    },
+    {
+      "lang": "en",
+      "text": "thinking traces and its answers so how",
+      "offset": 952.079,
+      "duration": 5.401
+    },
+    {
+      "lang": "en",
+      "text": "much further are we able to go but then",
+      "offset": 954.839,
+      "duration": 4.201
+    },
+    {
+      "lang": "en",
+      "text": "with R1 which had much better",
+      "offset": 957.48,
+      "duration": 4.2
+    },
+    {
+      "lang": "en",
+      "text": "performance than Gemini uh we went a lot",
+      "offset": 959.04,
+      "duration": 5
+    },
+    {
+      "lang": "en",
+      "text": "further and and performance improved so",
+      "offset": 961.68,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "I think that is a an important thing to",
+      "offset": 964.04,
+      "duration": 4.479
+    },
+    {
+      "lang": "en",
+      "text": "think about is how good is your teacher",
+      "offset": 966.72,
+      "duration": 4.119
+    },
+    {
+      "lang": "en",
+      "text": "ideally of course it's as good as",
+      "offset": 968.519,
+      "duration": 4.601
+    },
+    {
+      "lang": "en",
+      "text": "possible but not to say that you can't",
+      "offset": 970.839,
+      "duration": 5.641
+    },
+    {
+      "lang": "en",
+      "text": "be better maybe it is possible to get",
+      "offset": 973.12,
+      "duration": 4.279
+    },
+    {
+      "lang": "en",
+      "text": "better than the teacher you're",
+      "offset": 976.48,
+      "duration": 3.88
+    },
+    {
+      "lang": "en",
+      "text": "distilling from but with 1,000 samples",
+      "offset": 977.399,
+      "duration": 5.321
+    },
+    {
+      "lang": "en",
+      "text": "that's especially difficult yeah yeah so",
+      "offset": 980.36,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "the the veracity of the answers that the",
+      "offset": 982.72,
+      "duration": 6.76
+    },
+    {
+      "lang": "en",
+      "text": "teacher produces is a challenge for uh",
+      "offset": 985.88,
+      "duration": 6.24
+    },
+    {
+      "lang": "en",
+      "text": "this training yeah and it does get many",
+      "offset": 989.48,
+      "duration": 5.96
+    },
+    {
+      "lang": "en",
+      "text": "of these questions wrong so in our case",
+      "offset": 992.12,
+      "duration": 5.279
+    },
+    {
+      "lang": "en",
+      "text": "we actually trained on many wrong",
+      "offset": 995.44,
+      "duration": 4.12
+    },
+    {
+      "lang": "en",
+      "text": "questions from the teacher because we",
+      "offset": 997.399,
+      "duration": 4.201
+    },
+    {
+      "lang": "en",
+      "text": "didn't find there to be a big difference",
+      "offset": 999.56,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "if the questions are actually correct by",
+      "offset": 1001.6,
+      "duration": 2.52
+    },
+    {
+      "lang": "en",
+      "text": "the teacher or not it's much more",
+      "offset": 1003,
+      "duration": 3
+    },
+    {
+      "lang": "en",
+      "text": "important to show the model how to do",
+      "offset": 1004.12,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "the reasoning and arrive at at some",
+      "offset": 1006,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "answer even if some of them some of them",
+      "offset": 1008.36,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "are wrong that's usually fine oh",
+      "offset": 1010.88,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "interesting and did",
+      "offset": 1012.6,
+      "duration": 5.679
+    },
+    {
+      "lang": "en",
+      "text": "you did you um kind of capture and track",
+      "offset": 1014.88,
+      "duration": 4.6
+    },
+    {
+      "lang": "en",
+      "text": "a metric",
+      "offset": 1018.279,
+      "duration": 3.04
+    },
+    {
+      "lang": "en",
+      "text": "you know you know correctness of the",
+      "offset": 1019.48,
+      "duration": 3.8
+    },
+    {
+      "lang": "en",
+      "text": "training data and like what was that",
+      "offset": 1021.319,
+      "duration": 4.321
+    },
+    {
+      "lang": "en",
+      "text": "percentage Yeah we didn't capture that",
+      "offset": 1023.28,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "but I recall a recent paper called",
+      "offset": 1025.64,
+      "duration": 5.799
+    },
+    {
+      "lang": "en",
+      "text": "stream of search where they also show",
+      "offset": 1028,
+      "duration": 5.679
+    },
+    {
+      "lang": "en",
+      "text": "that with if I remember correctly around",
+      "offset": 1031.439,
+      "duration": 5.561
+    },
+    {
+      "lang": "en",
+      "text": "50% of answers being incorrect they are",
+      "offset": 1033.679,
+      "duration": 4.961
+    },
+    {
+      "lang": "en",
+      "text": "they were able to train a better model",
+      "offset": 1037,
+      "duration": 4.039
+    },
+    {
+      "lang": "en",
+      "text": "than one that was only trained on 100%",
+      "offset": 1038.64,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "correct reasoning traces and answers and",
+      "offset": 1041.039,
+      "duration": 4.721
+    },
+    {
+      "lang": "en",
+      "text": "part of the reason there was also that I",
+      "offset": 1044.16,
+      "duration": 3.919
+    },
+    {
+      "lang": "en",
+      "text": "think the incorrect ones they had a lot",
+      "offset": 1045.76,
+      "duration": 5.08
+    },
+    {
+      "lang": "en",
+      "text": "more reasoning and backtracking because",
+      "offset": 1048.079,
+      "duration": 6.041
+    },
+    {
+      "lang": "en",
+      "text": "presumably the mdle knows it's quite the",
+      "offset": 1050.84,
+      "duration": 5.199
+    },
+    {
+      "lang": "en",
+      "text": "yeah exactly and so like goes a lot",
+      "offset": 1054.12,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "further and that's potentially why it",
+      "offset": 1056.039,
+      "duration": 3.961
+    },
+    {
+      "lang": "en",
+      "text": "leads to better performance so the",
+      "offset": 1058.12,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "intuition is like you're fun what you're",
+      "offset": 1060,
+      "duration": 7.4
+    },
+    {
+      "lang": "en",
+      "text": "trying to do with the um with the",
+      "offset": 1062.76,
+      "duration": 6.6
+    },
+    {
+      "lang": "en",
+      "text": "supervision is to teach the model how to",
+      "offset": 1067.4,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "think and even if it doesn't get the",
+      "offset": 1069.36,
+      "duration": 3.88
+    },
+    {
+      "lang": "en",
+      "text": "right answer if you're seeing it kind of",
+      "offset": 1070.76,
+      "duration": 6.279
+    },
+    {
+      "lang": "en",
+      "text": "go through thinking Cycles um that's",
+      "offset": 1073.24,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "going to provide some signal to the",
+      "offset": 1077.039,
+      "duration": 3.481
+    },
+    {
+      "lang": "en",
+      "text": "model yeah and especially the",
+      "offset": 1078.36,
+      "duration": 4.12
+    },
+    {
+      "lang": "en",
+      "text": "backtracking in the thinking is really",
+      "offset": 1080.52,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "important so moments where the model",
+      "offset": 1082.48,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "goes wait is this correct let me go",
+      "offset": 1084.6,
+      "duration": 5.199
+    },
+    {
+      "lang": "en",
+      "text": "through it once more and these are of",
+      "offset": 1087.44,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "course more likely with really hard",
+      "offset": 1089.799,
+      "duration": 3.401
+    },
+    {
+      "lang": "en",
+      "text": "questions maybe even where the model",
+      "offset": 1091.44,
+      "duration": 3.56
+    },
+    {
+      "lang": "en",
+      "text": "ends up with the wrong answer talk a",
+      "offset": 1093.2,
+      "duration": 4.28
+    },
+    {
+      "lang": "en",
+      "text": "little bit about the budget forcing",
+      "offset": 1095,
+      "duration": 5.64
+    },
+    {
+      "lang": "en",
+      "text": "aspect of the training process yeah so",
+      "offset": 1097.48,
+      "duration": 7.28
+    },
+    {
+      "lang": "en",
+      "text": "after training on those 1,000 samples we",
+      "offset": 1100.64,
+      "duration": 6.399
+    },
+    {
+      "lang": "en",
+      "text": "got a good reasoning model with strong",
+      "offset": 1104.76,
+      "duration": 4.2
+    },
+    {
+      "lang": "en",
+      "text": "performance on math and science",
+      "offset": 1107.039,
+      "duration": 5.041
+    },
+    {
+      "lang": "en",
+      "text": "questions similar to 01 and o1 preview",
+      "offset": 1108.96,
+      "duration": 5.32
+    },
+    {
+      "lang": "en",
+      "text": "but we didn't yet have the test time",
+      "offset": 1112.08,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "scaling so the second goal how do we get",
+      "offset": 1114.28,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "better performance if we give the model",
+      "offset": 1116.88,
+      "duration": 4.679
+    },
+    {
+      "lang": "en",
+      "text": "more test time compute and we can go",
+      "offset": 1119,
+      "duration": 4.679
+    },
+    {
+      "lang": "en",
+      "text": "into details why this is desirable but",
+      "offset": 1121.559,
+      "duration": 4.721
+    },
+    {
+      "lang": "en",
+      "text": "the way we got there is well yeah let's",
+      "offset": 1123.679,
+      "duration": 5.921
+    },
+    {
+      "lang": "en",
+      "text": "let's let's do that and get started by",
+      "offset": 1126.28,
+      "duration": 6.84
+    },
+    {
+      "lang": "en",
+      "text": "elaborating on what you mean so",
+      "offset": 1129.6,
+      "duration": 8.76
+    },
+    {
+      "lang": "en",
+      "text": "you you have um a model that you're",
+      "offset": 1133.12,
+      "duration": 6.28
+    },
+    {
+      "lang": "en",
+      "text": "training",
+      "offset": 1138.36,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "you you're distilling um the kind of",
+      "offset": 1139.4,
+      "duration": 6.159
+    },
+    {
+      "lang": "en",
+      "text": "curated data set and like you're",
+      "offset": 1143.88,
+      "duration": 4.44
+    },
+    {
+      "lang": "en",
+      "text": "fine-tuning this models when you say you",
+      "offset": 1145.559,
+      "duration": 6.081
+    },
+    {
+      "lang": "en",
+      "text": "didn't have test time scaling what does",
+      "offset": 1148.32,
+      "duration": 6.08
+    },
+    {
+      "lang": "en",
+      "text": "that mean specifically yeah it means",
+      "offset": 1151.64,
+      "duration": 6.6
+    },
+    {
+      "lang": "en",
+      "text": "that we run the model on those math",
+      "offset": 1154.4,
+      "duration": 6.92
+    },
+    {
+      "lang": "en",
+      "text": "benchmarks but it always uses the same",
+      "offset": 1158.24,
+      "duration": 5.6
+    },
+    {
+      "lang": "en",
+      "text": "compute so say we ask it what is 10 plus",
+      "offset": 1161.32,
+      "duration": 6.239
+    },
+    {
+      "lang": "en",
+      "text": "10 no matter what we do in the simple",
+      "offset": 1163.84,
+      "duration": 6.56
+    },
+    {
+      "lang": "en",
+      "text": "setup it just always does a forward pass",
+      "offset": 1167.559,
+      "duration": 4.6
+    },
+    {
+      "lang": "en",
+      "text": "through the model and then provides an",
+      "offset": 1170.4,
+      "duration": 3.72
+    },
+    {
+      "lang": "en",
+      "text": "answer there was",
+      "offset": 1172.159,
+      "duration": 4.921
+    },
+    {
+      "lang": "en",
+      "text": "no clear way at the time for us to",
+      "offset": 1174.12,
+      "duration": 5.4
+    },
+    {
+      "lang": "en",
+      "text": "change the test time compute so how much",
+      "offset": 1177.08,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "time does it spend to think about this",
+      "offset": 1179.52,
+      "duration": 4.039
+    },
+    {
+      "lang": "en",
+      "text": "answer and and the reason through the",
+      "offset": 1181.32,
+      "duration": 4.76
+    },
+    {
+      "lang": "en",
+      "text": "question and of course for very hard",
+      "offset": 1183.559,
+      "duration": 4.761
+    },
+    {
+      "lang": "en",
+      "text": "questions intuitively we'd like the",
+      "offset": 1186.08,
+      "duration": 4.52
+    },
+    {
+      "lang": "en",
+      "text": "model to think for longer because they",
+      "offset": 1188.32,
+      "duration": 3.64
+    },
+    {
+      "lang": "en",
+      "text": "are harder it should take more time and",
+      "offset": 1190.6,
+      "duration": 3.12
+    },
+    {
+      "lang": "en",
+      "text": "for simple questions we don't want it to",
+      "offset": 1191.96,
+      "duration": 4.04
+    },
+    {
+      "lang": "en",
+      "text": "spend that much test time compute so it",
+      "offset": 1193.72,
+      "duration": 4.28
+    },
+    {
+      "lang": "en",
+      "text": "should give us an answer very quickly",
+      "offset": 1196,
+      "duration": 4.52
+    },
+    {
+      "lang": "en",
+      "text": "and so can we produce like a plot that",
+      "offset": 1198,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "shows that if we provide the model with",
+      "offset": 1200.52,
+      "duration": 4.76
+    },
+    {
+      "lang": "en",
+      "text": "more of this test time compute its",
+      "offset": 1203.2,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "performance",
+      "offset": 1205.28,
+      "duration": 5.08
+    },
+    {
+      "lang": "en",
+      "text": "improves continuously got it so relating",
+      "offset": 1206.96,
+      "duration": 6.16
+    },
+    {
+      "lang": "en",
+      "text": "back to the whole Thinking Fast and Slow",
+      "offset": 1210.36,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "idea that kind of kicked off some of",
+      "offset": 1213.12,
+      "duration": 6.96
+    },
+    {
+      "lang": "en",
+      "text": "this test time scaling yeah work awesome",
+      "offset": 1215.24,
+      "duration": 8.12
+    },
+    {
+      "lang": "en",
+      "text": "awesome um and so how did you implement",
+      "offset": 1220.08,
+      "duration": 7.12
+    },
+    {
+      "lang": "en",
+      "text": "that yeah so the way we went about it is",
+      "offset": 1223.36,
+      "duration": 6.48
+    },
+    {
+      "lang": "en",
+      "text": "again trying to find a very simple",
+      "offset": 1227.2,
+      "duration": 6.08
+    },
+    {
+      "lang": "en",
+      "text": "approach and the one we put forth is",
+      "offset": 1229.84,
+      "duration": 5.68
+    },
+    {
+      "lang": "en",
+      "text": "called budget forcing and the idea is we",
+      "offset": 1233.28,
+      "duration": 4.68
+    },
+    {
+      "lang": "en",
+      "text": "have some test time compute budget and",
+      "offset": 1235.52,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "we usually measure that one in tokens",
+      "offset": 1237.96,
+      "duration": 4.28
+    },
+    {
+      "lang": "en",
+      "text": "which is how many text units the model",
+      "offset": 1239.52,
+      "duration": 7.08
+    },
+    {
+      "lang": "en",
+      "text": "produces and given this budget we just",
+      "offset": 1242.24,
+      "duration": 6.72
+    },
+    {
+      "lang": "en",
+      "text": "force the model to generate that long of",
+      "offset": 1246.6,
+      "duration": 5.199
+    },
+    {
+      "lang": "en",
+      "text": "a reasoning Trace so either we cut it",
+      "offset": 1248.96,
+      "duration": 5.839
+    },
+    {
+      "lang": "en",
+      "text": "off so after it has generated say a th",
+      "offset": 1251.799,
+      "duration": 5.441
+    },
+    {
+      "lang": "en",
+      "text": "tokens we just cut off the thinking and",
+      "offset": 1254.799,
+      "duration": 4.481
+    },
+    {
+      "lang": "en",
+      "text": "then the model will be for to provide",
+      "offset": 1257.24,
+      "duration": 4.679
+    },
+    {
+      "lang": "en",
+      "text": "its current best guess current best",
+      "offset": 1259.28,
+      "duration": 5.32
+    },
+    {
+      "lang": "en",
+      "text": "answer and that works well for cutting",
+      "offset": 1261.919,
+      "duration": 5.601
+    },
+    {
+      "lang": "en",
+      "text": "it short but the key question for us was",
+      "offset": 1264.6,
+      "duration": 5.6
+    },
+    {
+      "lang": "en",
+      "text": "how do we extrapolate it so how do we",
+      "offset": 1267.52,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "make the model think longer when it",
+      "offset": 1270.2,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "wants to stop and wants to provide its",
+      "offset": 1271.84,
+      "duration": 5.48
+    },
+    {
+      "lang": "en",
+      "text": "current answer and for that",
+      "offset": 1274.12,
+      "duration": 7.439
+    },
+    {
+      "lang": "en",
+      "text": "we force the model to continue Thinking",
+      "offset": 1277.32,
+      "duration": 6.92
+    },
+    {
+      "lang": "en",
+      "text": "by injecting weight into its current",
+      "offset": 1281.559,
+      "duration": 5.161
+    },
+    {
+      "lang": "en",
+      "text": "reasoning trace and when we inject",
+      "offset": 1284.24,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "weight into the model's reasoning Trace",
+      "offset": 1286.72,
+      "duration": 4.6
+    },
+    {
+      "lang": "en",
+      "text": "and to be clear sorry for interrupting",
+      "offset": 1288.64,
+      "duration": 4.399
+    },
+    {
+      "lang": "en",
+      "text": "we're talking about the word or like the",
+      "offset": 1291.32,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "token weight not weights as in parameter",
+      "offset": 1293.039,
+      "duration": 5.321
+    },
+    {
+      "lang": "en",
+      "text": "weights or anything like that yeah of",
+      "offset": 1296.6,
+      "duration": 2.8
+    },
+    {
+      "lang": "en",
+      "text": "course we're talking about the word",
+      "offset": 1298.36,
+      "duration": 3.439
+    },
+    {
+      "lang": "en",
+      "text": "weight and actually the string which is",
+      "offset": 1299.4,
+      "duration": 4.759
+    },
+    {
+      "lang": "en",
+      "text": "then transformed into a token just right",
+      "offset": 1301.799,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "when the model is currently generating",
+      "offset": 1304.159,
+      "duration": 4.721
+    },
+    {
+      "lang": "en",
+      "text": "it's answer to some question we give it",
+      "offset": 1306.039,
+      "duration": 5.24
+    },
+    {
+      "lang": "en",
+      "text": "and so the model might be something like",
+      "offset": 1308.88,
+      "duration": 4.919
+    },
+    {
+      "lang": "en",
+      "text": "okay given what I've reasoned above the",
+      "offset": 1311.279,
+      "duration": 4.721
+    },
+    {
+      "lang": "en",
+      "text": "final answer should be three and then it",
+      "offset": 1313.799,
+      "duration": 4.841
+    },
+    {
+      "lang": "en",
+      "text": "wants to finish and stop the generation",
+      "offset": 1316,
+      "duration": 5.039
+    },
+    {
+      "lang": "en",
+      "text": "and what we do is we disallow that and",
+      "offset": 1318.64,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "just put weight and then let the model",
+      "offset": 1321.039,
+      "duration": 3.681
+    },
+    {
+      "lang": "en",
+      "text": "continue reasoning through it and",
+      "offset": 1323.52,
+      "duration": 4.159
+    },
+    {
+      "lang": "en",
+      "text": "generate further and of course what the",
+      "offset": 1324.72,
+      "duration": 6.6
+    },
+    {
+      "lang": "en",
+      "text": "model will do is it will be like wait is",
+      "offset": 1327.679,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "this correct let me go through it once",
+      "offset": 1331.32,
+      "duration": 3
+    },
+    {
+      "lang": "en",
+      "text": "more because the way we train these",
+      "offset": 1333.039,
+      "duration": 3.921
+    },
+    {
+      "lang": "en",
+      "text": "models is through next token prediction",
+      "offset": 1334.32,
+      "duration": 6.04
+    },
+    {
+      "lang": "en",
+      "text": "where they learn to predict future words",
+      "offset": 1336.96,
+      "duration": 6.12
+    },
+    {
+      "lang": "en",
+      "text": "and so if we provided the word weight",
+      "offset": 1340.36,
+      "duration": 5.4
+    },
+    {
+      "lang": "en",
+      "text": "then the future word after that is most",
+      "offset": 1343.08,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "likely something like wait is this",
+      "offset": 1345.76,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "correct wait let me do this once more",
+      "offset": 1347.96,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "and we actually have some of these",
+      "offset": 1350.72,
+      "duration": 3.24
+    },
+    {
+      "lang": "en",
+      "text": "weight examples even in the 1,000",
+      "offset": 1352.2,
+      "duration": 3.359
+    },
+    {
+      "lang": "en",
+      "text": "samples so some of the reasoning traces",
+      "offset": 1353.96,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "they are naturally something like wait",
+      "offset": 1355.559,
+      "duration": 5.681
+    },
+    {
+      "lang": "en",
+      "text": "let me recheck this and so the model",
+      "offset": 1358.12,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "learns to generate these tokens after",
+      "offset": 1361.24,
+      "duration": 4.319
+    },
+    {
+      "lang": "en",
+      "text": "waight and then of course when it",
+      "offset": 1364.12,
+      "duration": 3.559
+    },
+    {
+      "lang": "en",
+      "text": "rechecks it goes through it once more",
+      "offset": 1365.559,
+      "duration": 4.801
+    },
+    {
+      "lang": "en",
+      "text": "and if the previous answer was incorrect",
+      "offset": 1367.679,
+      "duration": 5.88
+    },
+    {
+      "lang": "en",
+      "text": "then it is likely that it will change it",
+      "offset": 1370.36,
+      "duration": 5.24
+    },
+    {
+      "lang": "en",
+      "text": "and improve on its answer to get a",
+      "offset": 1373.559,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "correct answer versus if it is already",
+      "offset": 1375.6,
+      "duration": 5.199
+    },
+    {
+      "lang": "en",
+      "text": "at a correct answer you might think that",
+      "offset": 1378.679,
+      "duration": 3.761
+    },
+    {
+      "lang": "en",
+      "text": "okay might",
+      "offset": 1380.799,
+      "duration": 4.561
+    },
+    {
+      "lang": "en",
+      "text": "this impair the model and Lead it to an",
+      "offset": 1382.44,
+      "duration": 4.719
+    },
+    {
+      "lang": "en",
+      "text": "incorrect answer and while this can",
+      "offset": 1385.36,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "happen it's generally less likely uh it",
+      "offset": 1387.159,
+      "duration": 4.241
+    },
+    {
+      "lang": "en",
+      "text": "might do something like wait let me",
+      "offset": 1389.76,
+      "duration": 3.159
+    },
+    {
+      "lang": "en",
+      "text": "double check this and then it'll be like",
+      "offset": 1391.4,
+      "duration": 3.879
+    },
+    {
+      "lang": "en",
+      "text": "it seems my original answer was correct",
+      "offset": 1392.919,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "and the reason we think that it's less",
+      "offset": 1395.279,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "likely to change an incorrect answer is",
+      "offset": 1398.039,
+      "duration": 4.161
+    },
+    {
+      "lang": "en",
+      "text": "because verification is easier than",
+      "offset": 1399.919,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "solving so when the model verifies its",
+      "offset": 1402.2,
+      "duration": 5.56
+    },
+    {
+      "lang": "en",
+      "text": "current answer then it's easier for the",
+      "offset": 1405.279,
+      "duration": 3.721
+    },
+    {
+      "lang": "en",
+      "text": "model to know whether or not it's",
+      "offset": 1407.76,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "already correct did you try other words",
+      "offset": 1409,
+      "duration": 5.72
+    },
+    {
+      "lang": "en",
+      "text": "uh besides weight yeah we tried",
+      "offset": 1412,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "alternatively",
+      "offset": 1414.72,
+      "duration": 5.48
+    },
+    {
+      "lang": "en",
+      "text": "H and also no word at all like just",
+      "offset": 1416.88,
+      "duration": 6.08
+    },
+    {
+      "lang": "en",
+      "text": "letting the model continue and weights",
+      "offset": 1420.2,
+      "duration": 4.52
+    },
+    {
+      "lang": "en",
+      "text": "seem to provide the best performance but",
+      "offset": 1422.96,
+      "duration": 3.4
+    },
+    {
+      "lang": "en",
+      "text": "we definitely haven't exhausted the list",
+      "offset": 1424.72,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "of possible words there and yeah I'm",
+      "offset": 1426.36,
+      "duration": 5.48
+    },
+    {
+      "lang": "en",
+      "text": "excited to see what other people try and",
+      "offset": 1429.84,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "can you elaborate a little bit on how",
+      "offset": 1431.84,
+      "duration": 7.16
+    },
+    {
+      "lang": "en",
+      "text": "exactly that word is injected in is that",
+      "offset": 1435.2,
+      "duration": 6.56
+    },
+    {
+      "lang": "en",
+      "text": "in kind of the inference generation Loop",
+      "offset": 1439,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "itself or someplace else yeah exactly",
+      "offset": 1441.76,
+      "duration": 5.56
+    },
+    {
+      "lang": "en",
+      "text": "it's in the inference Loop generation",
+      "offset": 1444.2,
+      "duration": 7.44
+    },
+    {
+      "lang": "en",
+      "text": "specifically we set the end of thinking",
+      "offset": 1447.32,
+      "duration": 6.359
+    },
+    {
+      "lang": "en",
+      "text": "token so the the way our generation",
+      "offset": 1451.64,
+      "duration": 4.2
+    },
+    {
+      "lang": "en",
+      "text": "works is that we put in a question and",
+      "offset": 1453.679,
+      "duration": 3.88
+    },
+    {
+      "lang": "en",
+      "text": "then after the question there's a",
+      "offset": 1455.84,
+      "duration": 3.839
+    },
+    {
+      "lang": "en",
+      "text": "delimiter that denotes the beginning of",
+      "offset": 1457.559,
+      "duration": 3.72
+    },
+    {
+      "lang": "en",
+      "text": "the reasoning process or thinking",
+      "offset": 1459.679,
+      "duration": 4.921
+    },
+    {
+      "lang": "en",
+      "text": "process and then there's a end token for",
+      "offset": 1461.279,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "this one or end of thinking token after",
+      "offset": 1464.6,
+      "duration": 3.88
+    },
+    {
+      "lang": "en",
+      "text": "which the model will generate its final",
+      "offset": 1466.559,
+      "duration": 4.921
+    },
+    {
+      "lang": "en",
+      "text": "answer based on its thinking process and",
+      "offset": 1468.48,
+      "duration": 4.84
+    },
+    {
+      "lang": "en",
+      "text": "whenever the model tries to generate",
+      "offset": 1471.48,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "this end of thinking token delimiter we",
+      "offset": 1473.32,
+      "duration": 5.68
+    },
+    {
+      "lang": "en",
+      "text": "disallow that so we have it as a stop",
+      "offset": 1476.36,
+      "duration": 6.439
+    },
+    {
+      "lang": "en",
+      "text": "token in our generation Pipeline and",
+      "offset": 1479,
+      "duration": 7.2
+    },
+    {
+      "lang": "en",
+      "text": "then instead inject weight right into",
+      "offset": 1482.799,
+      "duration": 4.921
+    },
+    {
+      "lang": "en",
+      "text": "the model's current generation and then",
+      "offset": 1486.2,
+      "duration": 3.16
+    },
+    {
+      "lang": "en",
+      "text": "it'll just continue generating off from",
+      "offset": 1487.72,
+      "duration": 3.839
+    },
+    {
+      "lang": "en",
+      "text": "there and of course after weight it's",
+      "offset": 1489.36,
+      "duration": 3.88
+    },
+    {
+      "lang": "en",
+      "text": "very unlikely that the model will just",
+      "offset": 1491.559,
+      "duration": 3.641
+    },
+    {
+      "lang": "en",
+      "text": "try to put the end of thinking token",
+      "offset": 1493.24,
+      "duration": 3.72
+    },
+    {
+      "lang": "en",
+      "text": "again because now it a new sentence",
+      "offset": 1495.2,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "started so it'll do some more thinking",
+      "offset": 1496.96,
+      "duration": 4.28
+    },
+    {
+      "lang": "en",
+      "text": "and reasoning and hopefully get a better",
+      "offset": 1499.36,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "answer and now the insertion of weight",
+      "offset": 1501.24,
+      "duration": 5.679
+    },
+    {
+      "lang": "en",
+      "text": "doesn't have anything to do with the",
+      "offset": 1504.24,
+      "duration": 5
+    },
+    {
+      "lang": "en",
+      "text": "correctness of the answer how far the",
+      "offset": 1506.919,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "model had gotten or any of that it's",
+      "offset": 1509.24,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "just random we do it whenever the model",
+      "offset": 1511.559,
+      "duration": 4.401
+    },
+    {
+      "lang": "en",
+      "text": "wants to finish so presumably it already",
+      "offset": 1513.72,
+      "duration": 5.199
+    },
+    {
+      "lang": "en",
+      "text": "has an answer and the question is just",
+      "offset": 1515.96,
+      "duration": 4.599
+    },
+    {
+      "lang": "en",
+      "text": "is the answer correct or not and for",
+      "offset": 1518.919,
+      "duration": 3.801
+    },
+    {
+      "lang": "en",
+      "text": "that we didn't do any further optim",
+      "offset": 1520.559,
+      "duration": 4.401
+    },
+    {
+      "lang": "en",
+      "text": "optimization but I think you could do",
+      "offset": 1522.72,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "something like check with a reward model",
+      "offset": 1524.96,
+      "duration": 5.56
+    },
+    {
+      "lang": "en",
+      "text": "first or or have the model check itself",
+      "offset": 1527.44,
+      "duration": 5.599
+    },
+    {
+      "lang": "en",
+      "text": "is it worth continuing further or should",
+      "offset": 1530.52,
+      "duration": 4.399
+    },
+    {
+      "lang": "en",
+      "text": "I just end the thinking here and and",
+      "offset": 1533.039,
+      "duration": 3.601
+    },
+    {
+      "lang": "en",
+      "text": "provide my final answer I think there's",
+      "offset": 1534.919,
+      "duration": 3.441
+    },
+    {
+      "lang": "en",
+      "text": "definitely optimizations there to be",
+      "offset": 1536.64,
+      "duration": 5.519
+    },
+    {
+      "lang": "en",
+      "text": "done okay",
+      "offset": 1538.36,
+      "duration": 8.36
+    },
+    {
+      "lang": "en",
+      "text": "so are you are you always providing some",
+      "offset": 1542.159,
+      "duration": 7.201
+    },
+    {
+      "lang": "en",
+      "text": "constant number of Weights uh for each",
+      "offset": 1546.72,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "generation or is is the number of",
+      "offset": 1549.36,
+      "duration": 5.199
+    },
+    {
+      "lang": "en",
+      "text": "Weights variable or random yeah we",
+      "offset": 1551.84,
+      "duration": 5.68
+    },
+    {
+      "lang": "en",
+      "text": "always pick the same number and found in",
+      "offset": 1554.559,
+      "duration": 5.761
+    },
+    {
+      "lang": "en",
+      "text": "our experiments that up to four can lead",
+      "offset": 1557.52,
+      "duration": 5.24
+    },
+    {
+      "lang": "en",
+      "text": "to Performance gains but beyond four",
+      "offset": 1560.32,
+      "duration": 4.359
+    },
+    {
+      "lang": "en",
+      "text": "times eventually the model will go crazy",
+      "offset": 1562.76,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "because it's like getting weighted all",
+      "offset": 1564.679,
+      "duration": 3.841
+    },
+    {
+      "lang": "en",
+      "text": "the time and then it'll just go off into",
+      "offset": 1566.44,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "an infinite Loop and bad things happen",
+      "offset": 1568.52,
+      "duration": 3.72
+    },
+    {
+      "lang": "en",
+      "text": "but up to four times it's still",
+      "offset": 1570.76,
+      "duration": 3.159
+    },
+    {
+      "lang": "en",
+      "text": "relatively natural and the model will",
+      "offset": 1572.24,
+      "duration": 3.319
+    },
+    {
+      "lang": "en",
+      "text": "propably use them to improve its",
+      "offset": 1573.919,
+      "duration": 3.841
+    },
+    {
+      "lang": "en",
+      "text": "performance so yeah we got pretty",
+      "offset": 1575.559,
+      "duration": 4.681
+    },
+    {
+      "lang": "en",
+      "text": "consistent math gains up to that degree",
+      "offset": 1577.76,
+      "duration": 4.44
+    },
+    {
+      "lang": "en",
+      "text": "when I'm hearing this I'm hearing like",
+      "offset": 1580.24,
+      "duration": 3.799
+    },
+    {
+      "lang": "en",
+      "text": "okay for this training run you're always",
+      "offset": 1582.2,
+      "duration": 5.839
+    },
+    {
+      "lang": "en",
+      "text": "saying wait four times that is training",
+      "offset": 1584.039,
+      "duration": 7.921
+    },
+    {
+      "lang": "en",
+      "text": "the model to always think you know for",
+      "offset": 1588.039,
+      "duration": 5.921
+    },
+    {
+      "lang": "en",
+      "text": "lengths worth but I",
+      "offset": 1591.96,
+      "duration": 5.68
+    },
+    {
+      "lang": "en",
+      "text": "guess what is not true there is that the",
+      "offset": 1593.96,
+      "duration": 6.56
+    },
+    {
+      "lang": "en",
+      "text": "length of thinking tokens is constant",
+      "offset": 1597.64,
+      "duration": 4.399
+    },
+    {
+      "lang": "en",
+      "text": "the length of thinking tokens is just",
+      "offset": 1600.52,
+      "duration": 4.039
+    },
+    {
+      "lang": "en",
+      "text": "whatever the model generated based on",
+      "offset": 1602.039,
+      "duration": 4.12
+    },
+    {
+      "lang": "en",
+      "text": "next token prediction and so that's",
+      "offset": 1604.559,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "going to be variable even if it's for",
+      "offset": 1606.159,
+      "duration": 2.841
+    },
+    {
+      "lang": "en",
+      "text": "always",
+      "offset": 1608.159,
+      "duration": 4.441
+    },
+    {
+      "lang": "en",
+      "text": "for uh weights yeah that's a great point",
+      "offset": 1609,
+      "duration": 6.64
+    },
+    {
+      "lang": "en",
+      "text": "so we can combine it with a maximum or",
+      "offset": 1612.6,
+      "duration": 5.679
+    },
+    {
+      "lang": "en",
+      "text": "we could also set a minimum token budget",
+      "offset": 1615.64,
+      "duration": 5.84
+    },
+    {
+      "lang": "en",
+      "text": "for the thinking Trace but generally we",
+      "offset": 1618.279,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "find just adding weight is enough to get",
+      "offset": 1621.48,
+      "duration": 3.96
+    },
+    {
+      "lang": "en",
+      "text": "us some additional test time compute",
+      "offset": 1623.559,
+      "duration": 3.881
+    },
+    {
+      "lang": "en",
+      "text": "with better performance and varying that",
+      "offset": 1625.44,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "a lot doesn't bring out further gains",
+      "offset": 1627.44,
+      "duration": 4.44
+    },
+    {
+      "lang": "en",
+      "text": "and maybe to tie back to the budget",
+      "offset": 1629.44,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "forcing and cutting off the generation",
+      "offset": 1631.88,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "so if we put these together then what we",
+      "offset": 1634.24,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "arrive at is like a plot where we have",
+      "offset": 1636.52,
+      "duration": 5.039
+    },
+    {
+      "lang": "en",
+      "text": "different test time compute budgets so",
+      "offset": 1639.36,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "either say we cut off at 1,000 tokens we",
+      "offset": 1641.559,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "cut off at 2,000 tokens we cut off at",
+      "offset": 1643.76,
+      "duration": 4.799
+    },
+    {
+      "lang": "en",
+      "text": "3,000 tokens and then we force weight",
+      "offset": 1646.039,
+      "duration": 4.401
+    },
+    {
+      "lang": "en",
+      "text": "one time we force weight two times three",
+      "offset": 1648.559,
+      "duration": 4.321
+    },
+    {
+      "lang": "en",
+      "text": "times four times and each of those dots",
+      "offset": 1650.44,
+      "duration": 4.119
+    },
+    {
+      "lang": "en",
+      "text": "has better performance and we get a very",
+      "offset": 1652.88,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "clean test time scaling Trend",
+      "offset": 1654.559,
+      "duration": 8.201
+    },
+    {
+      "lang": "en",
+      "text": "meaning each of those is a separate",
+      "offset": 1658.08,
+      "duration": 8.92
+    },
+    {
+      "lang": "en",
+      "text": "independent test um and so if you're",
+      "offset": 1662.76,
+      "duration": 7.36
+    },
+    {
+      "lang": "en",
+      "text": "waiting four times you're not using the",
+      "offset": 1667,
+      "duration": 5.159
+    },
+    {
+      "lang": "en",
+      "text": "the cut off that's a separate thing",
+      "offset": 1670.12,
+      "duration": 4.439
+    },
+    {
+      "lang": "en",
+      "text": "exactly we run separate evaluations so",
+      "offset": 1672.159,
+      "duration": 5
+    },
+    {
+      "lang": "en",
+      "text": "the idea is that ahead of time you have",
+      "offset": 1674.559,
+      "duration": 6.36
+    },
+    {
+      "lang": "en",
+      "text": "an idea of how expensive your question",
+      "offset": 1677.159,
+      "duration": 5.4
+    },
+    {
+      "lang": "en",
+      "text": "is to the model or how much you want the",
+      "offset": 1680.919,
+      "duration": 4.441
+    },
+    {
+      "lang": "en",
+      "text": "model to think about it and based on",
+      "offset": 1682.559,
+      "duration": 5.281
+    },
+    {
+      "lang": "en",
+      "text": "that you set your test time compute",
+      "offset": 1685.36,
+      "duration": 4.52
+    },
+    {
+      "lang": "en",
+      "text": "budget constraints for the model and",
+      "offset": 1687.84,
+      "duration": 3.959
+    },
+    {
+      "lang": "en",
+      "text": "then let it go with that you could make",
+      "offset": 1689.88,
+      "duration": 4.12
+    },
+    {
+      "lang": "en",
+      "text": "it variable as well so having the model",
+      "offset": 1691.799,
+      "duration": 4.801
+    },
+    {
+      "lang": "en",
+      "text": "itself decide but that's kind of already",
+      "offset": 1694,
+      "duration": 4.919
+    },
+    {
+      "lang": "en",
+      "text": "happening in the original thinking Trace",
+      "offset": 1696.6,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "so naturally the model will use",
+      "offset": 1698.919,
+      "duration": 4.36
+    },
+    {
+      "lang": "en",
+      "text": "different amounts of tokens for",
+      "offset": 1701.64,
+      "duration": 3.399
+    },
+    {
+      "lang": "en",
+      "text": "different questions so we already have",
+      "offset": 1703.279,
+      "duration": 3.28
+    },
+    {
+      "lang": "en",
+      "text": "that it's just if you additionally want",
+      "offset": 1705.039,
+      "duration": 3.801
+    },
+    {
+      "lang": "en",
+      "text": "to set a budget constraint",
+      "offset": 1706.559,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "to enforce something you might say the",
+      "offset": 1708.84,
+      "duration": 4.76
+    },
+    {
+      "lang": "en",
+      "text": "model should answer in one minute or 10",
+      "offset": 1711.519,
+      "duration": 4.201
+    },
+    {
+      "lang": "en",
+      "text": "minutes then you should use that is it",
+      "offset": 1713.6,
+      "duration": 4.28
+    },
+    {
+      "lang": "en",
+      "text": "minutes or is it tokens is it it is",
+      "offset": 1715.72,
+      "duration": 4.559
+    },
+    {
+      "lang": "en",
+      "text": "tokens but okay yeah it is tokens but at",
+      "offset": 1717.88,
+      "duration": 3.56
+    },
+    {
+      "lang": "en",
+      "text": "the end of the day but you've got a",
+      "offset": 1720.279,
+      "duration": 3.28
+    },
+    {
+      "lang": "en",
+      "text": "constant tokens per second exactly so",
+      "offset": 1721.44,
+      "duration": 4.04
+    },
+    {
+      "lang": "en",
+      "text": "depending on how fast your gpus are or",
+      "offset": 1723.559,
+      "duration": 4.521
+    },
+    {
+      "lang": "en",
+      "text": "how you're deploying it you can convert",
+      "offset": 1725.48,
+      "duration": 4.36
+    },
+    {
+      "lang": "en",
+      "text": "that I assume in a UI interface you",
+      "offset": 1728.08,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "would turn it into minutes or as open AI",
+      "offset": 1729.84,
+      "duration": 5.92
+    },
+    {
+      "lang": "en",
+      "text": "is doing in their API they have three",
+      "offset": 1732.48,
+      "duration": 6.4
+    },
+    {
+      "lang": "en",
+      "text": "parameters for a reasoning effort",
+      "offset": 1735.76,
+      "duration": 5.399
+    },
+    {
+      "lang": "en",
+      "text": "key they're low medium and high and so",
+      "offset": 1738.88,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "people can choose what they want there",
+      "offset": 1741.159,
+      "duration": 4.081
+    },
+    {
+      "lang": "en",
+      "text": "not exact time control but also some",
+      "offset": 1743.36,
+      "duration": 4.679
+    },
+    {
+      "lang": "en",
+      "text": "amount of control going back to the data",
+      "offset": 1745.24,
+      "duration": 7.72
+    },
+    {
+      "lang": "en",
+      "text": "set there was uh a mention in the paper",
+      "offset": 1748.039,
+      "duration": 8.161
+    },
+    {
+      "lang": "en",
+      "text": "about Dam decontaminating samples talk a",
+      "offset": 1752.96,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "little bit about that and what that",
+      "offset": 1756.2,
+      "duration": 5.16
+    },
+    {
+      "lang": "en",
+      "text": "means sure one big problem in large",
+      "offset": 1757.44,
+      "duration": 5.4
+    },
+    {
+      "lang": "en",
+      "text": "language model training is that we're",
+      "offset": 1761.36,
+      "duration": 3.199
+    },
+    {
+      "lang": "en",
+      "text": "training these models in huge amounts of",
+      "offset": 1762.84,
+      "duration": 5.8
+    },
+    {
+      "lang": "en",
+      "text": "data and when we evaluate them there's a",
+      "offset": 1764.559,
+      "duration": 5.921
+    },
+    {
+      "lang": "en",
+      "text": "chance that some of that evaluation data",
+      "offset": 1768.64,
+      "duration": 4.639
+    },
+    {
+      "lang": "en",
+      "text": "was in the training data and then the",
+      "offset": 1770.48,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "evaluation isn't really proper anymore",
+      "offset": 1773.279,
+      "duration": 2.961
+    },
+    {
+      "lang": "en",
+      "text": "because the model has seen these things",
+      "offset": 1774.88,
+      "duration": 3.639
+    },
+    {
+      "lang": "en",
+      "text": "already it might just be reciting its",
+      "offset": 1776.24,
+      "duration": 4.319
+    },
+    {
+      "lang": "en",
+      "text": "training data and not generalizing or",
+      "offset": 1778.519,
+      "duration": 4.361
+    },
+    {
+      "lang": "en",
+      "text": "really improving performance and so",
+      "offset": 1780.559,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "that's why we employ de contamination in",
+      "offset": 1782.88,
+      "duration": 4.84
+    },
+    {
+      "lang": "en",
+      "text": "our case what we do is we take all of",
+      "offset": 1785.039,
+      "duration": 5.841
+    },
+    {
+      "lang": "en",
+      "text": "the evaluation samples and check for any",
+      "offset": 1787.72,
+      "duration": 6.439
+    },
+    {
+      "lang": "en",
+      "text": "matches in our training data and if",
+      "offset": 1790.88,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "there's any match then we discard the",
+      "offset": 1794.159,
+      "duration": 4.201
+    },
+    {
+      "lang": "en",
+      "text": "sample from our training data there's",
+      "offset": 1796.24,
+      "duration": 5.6
+    },
+    {
+      "lang": "en",
+      "text": "any overlap and since we only have 1,000",
+      "offset": 1798.36,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "samples that's relatively easy to do but",
+      "offset": 1801.84,
+      "duration": 4.319
+    },
+    {
+      "lang": "en",
+      "text": "for pre-training that's a pretty big",
+      "offset": 1803.88,
+      "duration": 4.399
+    },
+    {
+      "lang": "en",
+      "text": "problem you need to decontaminate",
+      "offset": 1806.159,
+      "duration": 4.561
+    },
+    {
+      "lang": "en",
+      "text": "against trillions of tokens which is a",
+      "offset": 1808.279,
+      "duration": 6.24
+    },
+    {
+      "lang": "en",
+      "text": "very expensive process with regard to",
+      "offset": 1810.72,
+      "duration": 7.319
+    },
+    {
+      "lang": "en",
+      "text": "budget forcing you also",
+      "offset": 1814.519,
+      "duration": 6.921
+    },
+    {
+      "lang": "en",
+      "text": "um in the paper compared that to other",
+      "offset": 1818.039,
+      "duration": 5.041
+    },
+    {
+      "lang": "en",
+      "text": "potential approaches like rejection",
+      "offset": 1821.44,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "sampling can you talk about um kind of",
+      "offset": 1823.08,
+      "duration": 4.92
+    },
+    {
+      "lang": "en",
+      "text": "the compare contrast for those other",
+      "offset": 1826,
+      "duration": 5.32
+    },
+    {
+      "lang": "en",
+      "text": "approaches one very simple idea is to do",
+      "offset": 1828,
+      "duration": 5.519
+    },
+    {
+      "lang": "en",
+      "text": "rejection sampling and we thought that",
+      "offset": 1831.32,
+      "duration": 4.76
+    },
+    {
+      "lang": "en",
+      "text": "rather than having to have explicit",
+      "offset": 1833.519,
+      "duration": 5.601
+    },
+    {
+      "lang": "en",
+      "text": "control before we test the model we just",
+      "offset": 1836.08,
+      "duration": 5.719
+    },
+    {
+      "lang": "en",
+      "text": "do it ad hoc after we tested the model",
+      "offset": 1839.12,
+      "duration": 4.2
+    },
+    {
+      "lang": "en",
+      "text": "so we just sample from the model",
+      "offset": 1841.799,
+      "duration": 4.041
+    },
+    {
+      "lang": "en",
+      "text": "multiple times and naturally for the",
+      "offset": 1843.32,
+      "duration": 5.479
+    },
+    {
+      "lang": "en",
+      "text": "same sample if we for the same question",
+      "offset": 1845.84,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "if we sample from the model again so we",
+      "offset": 1848.799,
+      "duration": 4.681
+    },
+    {
+      "lang": "en",
+      "text": "let it try to solve the question again",
+      "offset": 1851.2,
+      "duration": 4.079
+    },
+    {
+      "lang": "en",
+      "text": "then it will solve it slightly",
+      "offset": 1853.48,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "differently as long as there's some",
+      "offset": 1855.279,
+      "duration": 3.161
+    },
+    {
+      "lang": "en",
+      "text": "non-determinate",
+      "offset": 1857.32,
+      "duration": 2.8
+    },
+    {
+      "lang": "en",
+      "text": "which usually happens by having",
+      "offset": 1858.44,
+      "duration": 3.239
+    },
+    {
+      "lang": "en",
+      "text": "temperature sampling or something like",
+      "offset": 1860.12,
+      "duration": 4.84
+    },
+    {
+      "lang": "en",
+      "text": "that and then this way we have a a",
+      "offset": 1861.679,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "length of a different a chain of a",
+      "offset": 1864.96,
+      "duration": 3.439
+    },
+    {
+      "lang": "en",
+      "text": "different length and we do this multiple",
+      "offset": 1866.559,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "times and then we just sort them such",
+      "offset": 1868.399,
+      "duration": 5.24
+    },
+    {
+      "lang": "en",
+      "text": "that we get chains of different length",
+      "offset": 1870.799,
+      "duration": 5.88
+    },
+    {
+      "lang": "en",
+      "text": "for all the problem and look at how the",
+      "offset": 1873.639,
+      "duration": 5.561
+    },
+    {
+      "lang": "en",
+      "text": "scaling behaves and surprisingly what we",
+      "offset": 1876.679,
+      "duration": 5.161
+    },
+    {
+      "lang": "en",
+      "text": "found is that it's actually inverse so",
+      "offset": 1879.2,
+      "duration": 5.199
+    },
+    {
+      "lang": "en",
+      "text": "it's scales the exact opposite as we'd",
+      "offset": 1881.84,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "like it to with more test on compute",
+      "offset": 1884.399,
+      "duration": 4.081
+    },
+    {
+      "lang": "en",
+      "text": "performance gets worse if we sample",
+      "offset": 1886.32,
+      "duration": 5.68
+    },
+    {
+      "lang": "en",
+      "text": "and rearrange this way and my hypothesis",
+      "offset": 1888.48,
+      "duration": 6.12
+    },
+    {
+      "lang": "en",
+      "text": "for why this is happening is that when",
+      "offset": 1892,
+      "duration": 5.399
+    },
+    {
+      "lang": "en",
+      "text": "we just try to choose the longest",
+      "offset": 1894.6,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "Generations from the model then often",
+      "offset": 1897.399,
+      "duration": 3.12
+    },
+    {
+      "lang": "en",
+      "text": "these are the generations where the",
+      "offset": 1899.32,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "model was going off on a wrong track and",
+      "offset": 1900.519,
+      "duration": 4.12
+    },
+    {
+      "lang": "en",
+      "text": "backtracking multiple times and",
+      "offset": 1903.32,
+      "duration": 2.76
+    },
+    {
+      "lang": "en",
+      "text": "ultimately ending up with a completely",
+      "offset": 1904.639,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "wrong answer whereas the ones where it",
+      "offset": 1906.08,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "was correct maybe it just jumped to the",
+      "offset": 1908.799,
+      "duration": 3.521
+    },
+    {
+      "lang": "en",
+      "text": "right answer right away and that's why",
+      "offset": 1910.88,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "they're pretty short and so there's this",
+      "offset": 1912.32,
+      "duration": 3.599
+    },
+    {
+      "lang": "en",
+      "text": "inverse scaling trend for rejection",
+      "offset": 1914.48,
+      "duration": 3.799
+    },
+    {
+      "lang": "en",
+      "text": "sampling and also it's not a very clean",
+      "offset": 1915.919,
+      "duration": 5
+    },
+    {
+      "lang": "en",
+      "text": "method because you can control it prior",
+      "offset": 1918.279,
+      "duration": 4.201
+    },
+    {
+      "lang": "en",
+      "text": "to prompting the model which is what we",
+      "offset": 1920.919,
+      "duration": 3.961
+    },
+    {
+      "lang": "en",
+      "text": "want but only after uh generating",
+      "offset": 1922.48,
+      "duration": 4.6
+    },
+    {
+      "lang": "en",
+      "text": "multiple times now you've released this",
+      "offset": 1924.88,
+      "duration": 5.88
+    },
+    {
+      "lang": "en",
+      "text": "model and the training data as open",
+      "offset": 1927.08,
+      "duration": 7.76
+    },
+    {
+      "lang": "en",
+      "text": "source uh is everything that is required",
+      "offset": 1930.76,
+      "duration": 6.68
+    },
+    {
+      "lang": "en",
+      "text": "to replicate this available in the repo",
+      "offset": 1934.84,
+      "duration": 4.199
+    },
+    {
+      "lang": "en",
+      "text": "and have you had any reports of folks",
+      "offset": 1937.44,
+      "duration": 3.719
+    },
+    {
+      "lang": "en",
+      "text": "successfully doing it yeah we've",
+      "offset": 1939.039,
+      "duration": 4.6
+    },
+    {
+      "lang": "en",
+      "text": "replicated we've we've released",
+      "offset": 1941.159,
+      "duration": 4.321
+    },
+    {
+      "lang": "en",
+      "text": "everything and there have been people",
+      "offset": 1943.639,
+      "duration": 4.241
+    },
+    {
+      "lang": "en",
+      "text": "that submitted issues and uh rep",
+      "offset": 1945.48,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "replicated parts of it I haven't seen a",
+      "offset": 1947.88,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "full replication but I'm I'm pretty sure",
+      "offset": 1950.36,
+      "duration": 3.559
+    },
+    {
+      "lang": "en",
+      "text": "it should be possible everything is open",
+      "offset": 1952.44,
+      "duration": 3.56
+    },
+    {
+      "lang": "en",
+      "text": "source and the training only takes 26",
+      "offset": 1953.919,
+      "duration": 5.88
+    },
+    {
+      "lang": "en",
+      "text": "minutes so if you can afford the gpus",
+      "offset": 1956,
+      "duration": 5.72
+    },
+    {
+      "lang": "en",
+      "text": "for those 26 minutes which is roughly",
+      "offset": 1959.799,
+      "duration": 5.321
+    },
+    {
+      "lang": "en",
+      "text": "$20 then you should be able to do that I",
+      "offset": 1961.72,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "think one part that we cannot open",
+      "offset": 1965.12,
+      "duration": 4.439
+    },
+    {
+      "lang": "en",
+      "text": "source is related to the base model",
+      "offset": 1967.48,
+      "duration": 3.72
+    },
+    {
+      "lang": "en",
+      "text": "because we didn't train that ourselves",
+      "offset": 1969.559,
+      "duration": 4.6
+    },
+    {
+      "lang": "en",
+      "text": "so we used the quen model from Alibaba",
+      "offset": 1971.2,
+      "duration": 4.76
+    },
+    {
+      "lang": "en",
+      "text": "and we don't have the pre-training data",
+      "offset": 1974.159,
+      "duration": 4.041
+    },
+    {
+      "lang": "en",
+      "text": "for that one but everything we do on top",
+      "offset": 1975.96,
+      "duration": 4.28
+    },
+    {
+      "lang": "en",
+      "text": "of that model which is our",
+      "offset": 1978.2,
+      "duration": 5.479
+    },
+    {
+      "lang": "en",
+      "text": "paper is fully open source yeah and did",
+      "offset": 1980.24,
+      "duration": 6.159
+    },
+    {
+      "lang": "en",
+      "text": "you explore other base models we did not",
+      "offset": 1983.679,
+      "duration": 4.36
+    },
+    {
+      "lang": "en",
+      "text": "explore other base models but there have",
+      "offset": 1986.399,
+      "duration": 3.24
+    },
+    {
+      "lang": "en",
+      "text": "been some people trying smaller versions",
+      "offset": 1988.039,
+      "duration": 3.681
+    },
+    {
+      "lang": "en",
+      "text": "of quen and they also reported some",
+      "offset": 1989.639,
+      "duration": 4.801
+    },
+    {
+      "lang": "en",
+      "text": "gains but it seems like quen is a really",
+      "offset": 1991.72,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "great model for for these experiments",
+      "offset": 1994.44,
+      "duration": 4.079
+    },
+    {
+      "lang": "en",
+      "text": "probably because it had very long",
+      "offset": 1996.6,
+      "duration": 4.199
+    },
+    {
+      "lang": "en",
+      "text": "pre-training with lots of potentially",
+      "offset": 1998.519,
+      "duration": 5
+    },
+    {
+      "lang": "en",
+      "text": "already reasoning like questions in",
+      "offset": 2000.799,
+      "duration": 5.561
+    },
+    {
+      "lang": "en",
+      "text": "there and so at this in this post",
+      "offset": 2003.519,
+      "duration": 4.28
+    },
+    {
+      "lang": "en",
+      "text": "training stage we're able to really",
+      "offset": 2006.36,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "track this Behavior with just 1,000",
+      "offset": 2007.799,
+      "duration": 6.24
+    },
+    {
+      "lang": "en",
+      "text": "samples in this example you distilled",
+      "offset": 2010.12,
+      "duration": 9
+    },
+    {
+      "lang": "en",
+      "text": "off of well uh Gemini and then R1 and",
+      "offset": 2014.039,
+      "duration": 8.721
+    },
+    {
+      "lang": "en",
+      "text": "then use that to train uh",
+      "offset": 2019.12,
+      "duration": 7
+    },
+    {
+      "lang": "en",
+      "text": "S1 based on quen like",
+      "offset": 2022.76,
+      "duration": 6.039
+    },
+    {
+      "lang": "en",
+      "text": "is I'm trying to think of if it makes",
+      "offset": 2026.12,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "sense to like distill R1 and train a",
+      "offset": 2028.799,
+      "duration": 6.561
+    },
+    {
+      "lang": "en",
+      "text": "smaller R1 or tune a smaller R1 or or",
+      "offset": 2032.12,
+      "duration": 5.96
+    },
+    {
+      "lang": "en",
+      "text": "something like that like the",
+      "offset": 2035.36,
+      "duration": 6.24
+    },
+    {
+      "lang": "en",
+      "text": "and kind of you know based on that like",
+      "offset": 2038.08,
+      "duration": 5.599
+    },
+    {
+      "lang": "en",
+      "text": "any thoughts on like Crossing model",
+      "offset": 2041.6,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "families and that kind of thing and how",
+      "offset": 2043.679,
+      "duration": 4.801
+    },
+    {
+      "lang": "en",
+      "text": "that might play out yeah for the R1",
+      "offset": 2045.44,
+      "duration": 6.88
+    },
+    {
+      "lang": "en",
+      "text": "model I think they used their deep seek",
+      "offset": 2048.48,
+      "duration": 6.72
+    },
+    {
+      "lang": "en",
+      "text": "V3 model as the Baseline and then",
+      "offset": 2052.32,
+      "duration": 5.72
+    },
+    {
+      "lang": "en",
+      "text": "further train that and that might be a",
+      "offset": 2055.2,
+      "duration": 5.199
+    },
+    {
+      "lang": "en",
+      "text": "better choice than our quen model",
+      "offset": 2058.04,
+      "duration": 4.52
+    },
+    {
+      "lang": "en",
+      "text": "because it's a lot larger a lot more",
+      "offset": 2060.399,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "powerful so we might be able to get",
+      "offset": 2062.56,
+      "duration": 5.519
+    },
+    {
+      "lang": "en",
+      "text": "better performance if we were to find",
+      "offset": 2065.599,
+      "duration": 3.8
+    },
+    {
+      "lang": "en",
+      "text": "you in that one though it's a lot bigger",
+      "offset": 2068.079,
+      "duration": 2.641
+    },
+    {
+      "lang": "en",
+      "text": "and a lot more",
+      "offset": 2069.399,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "expensive and then there's of course the",
+      "offset": 2070.72,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "Llama model family which is very popular",
+      "offset": 2072.919,
+      "duration": 4.841
+    },
+    {
+      "lang": "en",
+      "text": "but based on some very small scale",
+      "offset": 2075.44,
+      "duration": 3.88
+    },
+    {
+      "lang": "en",
+      "text": "experiments we did and experiments I've",
+      "offset": 2077.76,
+      "duration": 3.319
+    },
+    {
+      "lang": "en",
+      "text": "heard from others they don't seem to",
+      "offset": 2079.32,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "work quite as well for these reasoning",
+      "offset": 2081.079,
+      "duration": 4.361
+    },
+    {
+      "lang": "en",
+      "text": "tasks and that's why we didn't use them",
+      "offset": 2083.24,
+      "duration": 5.119
+    },
+    {
+      "lang": "en",
+      "text": "and I haven't seen any other replication",
+      "offset": 2085.44,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "attempts of 01 that were based on these",
+      "offset": 2088.359,
+      "duration": 4.641
+    },
+    {
+      "lang": "en",
+      "text": "models with big success I remember",
+      "offset": 2090.96,
+      "duration": 6.28
+    },
+    {
+      "lang": "en",
+      "text": "seeing the uh tweet I think about uh",
+      "offset": 2093,
+      "duration": 5.8
+    },
+    {
+      "lang": "en",
+      "text": "paper",
+      "offset": 2097.24,
+      "duration": 5.96
+    },
+    {
+      "lang": "en",
+      "text": "that looked at um I guess the context",
+      "offset": 2098.8,
+      "duration": 7.4
+    },
+    {
+      "lang": "en",
+      "text": "was like LM as judge and it was it",
+      "offset": 2103.2,
+      "duration": 6.12
+    },
+    {
+      "lang": "en",
+      "text": "seemed to be implying that like um",
+      "offset": 2106.2,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "asking a model to judge answers from the",
+      "offset": 2109.32,
+      "duration": 6.2
+    },
+    {
+      "lang": "en",
+      "text": "same the same type of model like doesn't",
+      "offset": 2111.96,
+      "duration": 5.08
+    },
+    {
+      "lang": "en",
+      "text": "perform as well because there's some",
+      "offset": 2115.52,
+      "duration": 3.079
+    },
+    {
+      "lang": "en",
+      "text": "kind of bias there and I guess that's",
+      "offset": 2117.04,
+      "duration": 4.76
+    },
+    {
+      "lang": "en",
+      "text": "what I was thinking of like are there",
+      "offset": 2118.599,
+      "duration": 5.48
+    },
+    {
+      "lang": "en",
+      "text": "you know biases or interplays you know",
+      "offset": 2121.8,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "between model families such that you",
+      "offset": 2124.079,
+      "duration": 3.801
+    },
+    {
+      "lang": "en",
+      "text": "know it's either better or worse to",
+      "offset": 2125.96,
+      "duration": 5.08
+    },
+    {
+      "lang": "en",
+      "text": "train across model families in this way",
+      "offset": 2127.88,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "yeah maybe one intuition is that it",
+      "offset": 2131.04,
+      "duration": 4.84
+    },
+    {
+      "lang": "en",
+      "text": "could be better to cross multiple model",
+      "offset": 2132.92,
+      "duration": 4.439
+    },
+    {
+      "lang": "en",
+      "text": "families so you get some of these",
+      "offset": 2135.88,
+      "duration": 5.08
+    },
+    {
+      "lang": "en",
+      "text": "embling advantages where you have models",
+      "offset": 2137.359,
+      "duration": 5.281
+    },
+    {
+      "lang": "en",
+      "text": "with different capabilities and ideally",
+      "offset": 2140.96,
+      "duration": 3.119
+    },
+    {
+      "lang": "en",
+      "text": "you get the best out of",
+      "offset": 2142.64,
+      "duration": 5.84
+    },
+    {
+      "lang": "en",
+      "text": "each but I haven't seen exact attempts",
+      "offset": 2144.079,
+      "duration": 6.24
+    },
+    {
+      "lang": "en",
+      "text": "on that one one more thing on the",
+      "offset": 2148.48,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "evolation side is I think this is a",
+      "offset": 2150.319,
+      "duration": 4.52
+    },
+    {
+      "lang": "en",
+      "text": "pretty big issue especially because we",
+      "offset": 2152.88,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "often use chat GPT or clot to do our",
+      "offset": 2154.839,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "evaluation",
+      "offset": 2157.28,
+      "duration": 3.16
+    },
+    {
+      "lang": "en",
+      "text": "so we asked them is this correct for",
+      "offset": 2158.359,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "questions where maybe there's no ground",
+      "offset": 2160.44,
+      "duration": 5.879
+    },
+    {
+      "lang": "en",
+      "text": "truth arithmetic answer or something and",
+      "offset": 2162.599,
+      "duration": 5.041
+    },
+    {
+      "lang": "en",
+      "text": "yeah if we then evaluate the models",
+      "offset": 2166.319,
+      "duration": 3
+    },
+    {
+      "lang": "en",
+      "text": "themselves maybe there's some bias and",
+      "offset": 2167.64,
+      "duration": 3.28
+    },
+    {
+      "lang": "en",
+      "text": "that could of course make the",
+      "offset": 2169.319,
+      "duration": 3.361
+    },
+    {
+      "lang": "en",
+      "text": "evaluations pretty difficult yeah and",
+      "offset": 2170.92,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "did that come into play in your evals or",
+      "offset": 2172.68,
+      "duration": 5.919
+    },
+    {
+      "lang": "en",
+      "text": "were your evals um relative to",
+      "offset": 2174.92,
+      "duration": 6.439
+    },
+    {
+      "lang": "en",
+      "text": "benchmarks that had answers yeah are",
+      "offset": 2178.599,
+      "duration": 6.201
+    },
+    {
+      "lang": "en",
+      "text": "evals all had answers but because the",
+      "offset": 2181.359,
+      "duration": 5.521
+    },
+    {
+      "lang": "en",
+      "text": "answers are very difficult to extract",
+      "offset": 2184.8,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "sometimes so when the model generates a",
+      "offset": 2186.88,
+      "duration": 3.719
+    },
+    {
+      "lang": "en",
+      "text": "long math reasoning trace and then it",
+      "offset": 2188.96,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "uses some formula to express its answer",
+      "offset": 2190.599,
+      "duration": 5.081
+    },
+    {
+      "lang": "en",
+      "text": "then it's very hard to just do a basic",
+      "offset": 2193.28,
+      "duration": 5.039
+    },
+    {
+      "lang": "en",
+      "text": "string match in Python but rather what",
+      "offset": 2195.68,
+      "duration": 5.32
+    },
+    {
+      "lang": "en",
+      "text": "we do is we ask open AI models so maybe",
+      "offset": 2198.319,
+      "duration": 5.321
+    },
+    {
+      "lang": "en",
+      "text": "GPD 4 uh tell us if these two answers",
+      "offset": 2201,
+      "duration": 5.4
+    },
+    {
+      "lang": "en",
+      "text": "are the same and if yes then then we",
+      "offset": 2203.64,
+      "duration": 4.84
+    },
+    {
+      "lang": "en",
+      "text": "give it a go so tell us if the ground",
+      "offset": 2206.4,
+      "duration": 3.56
+    },
+    {
+      "lang": "en",
+      "text": "truth solution we provided and their",
+      "offset": 2208.48,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "answer from our model are equivalent",
+      "offset": 2209.96,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "yeah so we do use them but probably no",
+      "offset": 2212.4,
+      "duration": 5.56
+    },
+    {
+      "lang": "en",
+      "text": "bias from that a couple of things that",
+      "offset": 2214.92,
+      "duration": 6.679
+    },
+    {
+      "lang": "en",
+      "text": "um came up that I wanted to touch on",
+      "offset": 2217.96,
+      "duration": 7.6
+    },
+    {
+      "lang": "en",
+      "text": "were uh sft supervised fine-tuning",
+      "offset": 2221.599,
+      "duration": 6.561
+    },
+    {
+      "lang": "en",
+      "text": "versus reinforcement learning which is",
+      "offset": 2225.56,
+      "duration": 8.16
+    },
+    {
+      "lang": "en",
+      "text": "what uh the R1 folks did as well as um I",
+      "offset": 2228.16,
+      "duration": 7.919
+    },
+    {
+      "lang": "en",
+      "text": "think there's an effort at hugging phase",
+      "offset": 2233.72,
+      "duration": 4.399
+    },
+    {
+      "lang": "en",
+      "text": "to replicate ran I think it's called",
+      "offset": 2236.079,
+      "duration": 4.921
+    },
+    {
+      "lang": "en",
+      "text": "like open ran or something like that and",
+      "offset": 2238.119,
+      "duration": 5.24
+    },
+    {
+      "lang": "en",
+      "text": "I was wondering if you can kind of you",
+      "offset": 2241,
+      "duration": 6.079
+    },
+    {
+      "lang": "en",
+      "text": "know compare contrast sft and RL uh and",
+      "offset": 2243.359,
+      "duration": 4.881
+    },
+    {
+      "lang": "en",
+      "text": "also",
+      "offset": 2247.079,
+      "duration": 2.921
+    },
+    {
+      "lang": "en",
+      "text": "what hugging face is doing with regard",
+      "offset": 2248.24,
+      "duration": 3.64
+    },
+    {
+      "lang": "en",
+      "text": "to replicating R1 relative to what",
+      "offset": 2250,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "you've done yeah sure so for the RL",
+      "offset": 2251.88,
+      "duration": 6.479
+    },
+    {
+      "lang": "en",
+      "text": "versus sft one as you mentioned R1 they",
+      "offset": 2254.88,
+      "duration": 6.04
+    },
+    {
+      "lang": "en",
+      "text": "did RL as open AI also claimed in their",
+      "offset": 2258.359,
+      "duration": 6.641
+    },
+    {
+      "lang": "en",
+      "text": "block post and we only did sft and while",
+      "offset": 2260.92,
+      "duration": 5.88
+    },
+    {
+      "lang": "en",
+      "text": "we can get really good performance with",
+      "offset": 2265,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "sft there's some speculation that RL",
+      "offset": 2266.8,
+      "duration": 6.48
+    },
+    {
+      "lang": "en",
+      "text": "generalizes better and the intuition",
+      "offset": 2270.44,
+      "duration": 6.6
+    },
+    {
+      "lang": "en",
+      "text": "behind that is that RL incentivizes the",
+      "offset": 2273.28,
+      "duration": 6.36
+    },
+    {
+      "lang": "en",
+      "text": "model to arrive at a better answer",
+      "offset": 2277.04,
+      "duration": 5.079
+    },
+    {
+      "lang": "en",
+      "text": "regardless of its approach versus for",
+      "offset": 2279.64,
+      "duration": 6.08
+    },
+    {
+      "lang": "en",
+      "text": "sft we force it to follow a certain",
+      "offset": 2282.119,
+      "duration": 5.921
+    },
+    {
+      "lang": "en",
+      "text": "approach because we train it on the",
+      "offset": 2285.72,
+      "duration": 4.84
+    },
+    {
+      "lang": "en",
+      "text": "tokens themselves that lead to a certain",
+      "offset": 2288.04,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "answer and that could even be an",
+      "offset": 2290.56,
+      "duration": 4.759
+    },
+    {
+      "lang": "en",
+      "text": "incorrect answer and so potentially with",
+      "offset": 2292.68,
+      "duration": 5.84
+    },
+    {
+      "lang": "en",
+      "text": "more compute the RL approach uh might be",
+      "offset": 2295.319,
+      "duration": 5.841
+    },
+    {
+      "lang": "en",
+      "text": "better than the sft approach there's an",
+      "offset": 2298.52,
+      "duration": 5.319
+    },
+    {
+      "lang": "en",
+      "text": "interesting saying uh I heard this from",
+      "offset": 2301.16,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "hungan that might give some more Nuance",
+      "offset": 2303.839,
+      "duration": 5.441
+    },
+    {
+      "lang": "en",
+      "text": "to this uh which is we have this comment",
+      "offset": 2306.68,
+      "duration": 4.679
+    },
+    {
+      "lang": "en",
+      "text": "saying give a man a fish you feed him",
+      "offset": 2309.28,
+      "duration": 4.559
+    },
+    {
+      "lang": "en",
+      "text": "for a day teach him how to fish and you",
+      "offset": 2311.359,
+      "duration": 6.161
+    },
+    {
+      "lang": "en",
+      "text": "feed him for a lifetime and teaching him",
+      "offset": 2313.839,
+      "duration": 6.401
+    },
+    {
+      "lang": "en",
+      "text": "how to fish is a little bit like sft so",
+      "offset": 2317.52,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "you directly show him how to fish and",
+      "offset": 2320.24,
+      "duration": 4.839
+    },
+    {
+      "lang": "en",
+      "text": "then maybe the r version of that would",
+      "offset": 2323.04,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "be teach him the taste of fish and make",
+      "offset": 2325.079,
+      "duration": 6.121
+    },
+    {
+      "lang": "en",
+      "text": "him hungry and so the model or the the",
+      "offset": 2328,
+      "duration": 6.2
+    },
+    {
+      "lang": "en",
+      "text": "Fisher will develop its own methods to",
+      "offset": 2331.2,
+      "duration": 6.28
+    },
+    {
+      "lang": "en",
+      "text": "fish and just to get at that goal right",
+      "offset": 2334.2,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "doesn't matter what exactly is the",
+      "offset": 2337.48,
+      "duration": 3.2
+    },
+    {
+      "lang": "en",
+      "text": "process and maybe he'll figure out that",
+      "offset": 2339.24,
+      "duration": 2.8
+    },
+    {
+      "lang": "en",
+      "text": "the best way to get there is to have a",
+      "offset": 2340.68,
+      "duration": 3.439
+    },
+    {
+      "lang": "en",
+      "text": "big fish farm rather than fishing",
+      "offset": 2342.04,
+      "duration": 4.68
+    },
+    {
+      "lang": "en",
+      "text": "themselves and that maybe captures the",
+      "offset": 2344.119,
+      "duration": 4.601
+    },
+    {
+      "lang": "en",
+      "text": "Nuance why RL might be better at",
+      "offset": 2346.72,
+      "duration": 3.639
+    },
+    {
+      "lang": "en",
+      "text": "generalizing but I think there's more",
+      "offset": 2348.72,
+      "duration": 4.399
+    },
+    {
+      "lang": "en",
+      "text": "research to be done on this and before",
+      "offset": 2350.359,
+      "duration": 6.24
+    },
+    {
+      "lang": "en",
+      "text": "you take on that next part can you um",
+      "offset": 2353.119,
+      "duration": 6.72
+    },
+    {
+      "lang": "en",
+      "text": "dig a little bit deeper into how RL is",
+      "offset": 2356.599,
+      "duration": 7.72
+    },
+    {
+      "lang": "en",
+      "text": "used in the context of R1 yeah so for R1",
+      "offset": 2359.839,
+      "duration": 6.801
+    },
+    {
+      "lang": "en",
+      "text": "they also have an sft stage so they",
+      "offset": 2364.319,
+      "duration": 5.921
+    },
+    {
+      "lang": "en",
+      "text": "start with sft and then follow up with",
+      "offset": 2366.64,
+      "duration": 6.16
+    },
+    {
+      "lang": "en",
+      "text": "an RL face and that leads to their R1",
+      "offset": 2370.24,
+      "duration": 5.96
+    },
+    {
+      "lang": "en",
+      "text": "model they also have another r10 model",
+      "offset": 2372.8,
+      "duration": 6.36
+    },
+    {
+      "lang": "en",
+      "text": "that skips the sft and directly does RL",
+      "offset": 2376.2,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "but the R1 model performs better so",
+      "offset": 2379.16,
+      "duration": 4.76
+    },
+    {
+      "lang": "en",
+      "text": "there's definitely some some trade of",
+      "offset": 2381.16,
+      "duration": 4.6
+    },
+    {
+      "lang": "en",
+      "text": "there where if you don't have this sft",
+      "offset": 2383.92,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "face then maybe the model goes on into a",
+      "offset": 2385.76,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "very different direction one problem for",
+      "offset": 2388.72,
+      "duration": 3.879
+    },
+    {
+      "lang": "en",
+      "text": "example is that the model might not be",
+      "offset": 2390.8,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "using the right format you want because",
+      "offset": 2392.599,
+      "duration": 3.401
+    },
+    {
+      "lang": "en",
+      "text": "you never explicitly force it to use",
+      "offset": 2394.16,
+      "duration": 3.88
+    },
+    {
+      "lang": "en",
+      "text": "certain tokens and then the model might",
+      "offset": 2396,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "just go off and generate text that's",
+      "offset": 2398.04,
+      "duration": 4.44
+    },
+    {
+      "lang": "en",
+      "text": "really hard to read or or hard to hard",
+      "offset": 2400.64,
+      "duration": 4.52
+    },
+    {
+      "lang": "en",
+      "text": "to format uh when you try to use it and",
+      "offset": 2402.48,
+      "duration": 5.359
+    },
+    {
+      "lang": "en",
+      "text": "how how is RL used specifically in the",
+      "offset": 2405.16,
+      "duration": 5.72
+    },
+    {
+      "lang": "en",
+      "text": "context of the training recipe here they",
+      "offset": 2407.839,
+      "duration": 4.841
+    },
+    {
+      "lang": "en",
+      "text": "use an algorithm called",
+      "offset": 2410.88,
+      "duration": 4.76
+    },
+    {
+      "lang": "en",
+      "text": "grpo group reference policy optimization",
+      "offset": 2412.68,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "and I think it builds on an earlier",
+      "offset": 2415.64,
+      "duration": 3.8
+    },
+    {
+      "lang": "en",
+      "text": "algorithm from open AI called",
+      "offset": 2417.16,
+      "duration": 6.32
+    },
+    {
+      "lang": "en",
+      "text": "po and that one is used during training",
+      "offset": 2419.44,
+      "duration": 7
+    },
+    {
+      "lang": "en",
+      "text": "uh of R1 is it choosing between you know",
+      "offset": 2423.48,
+      "duration": 5.32
+    },
+    {
+      "lang": "en",
+      "text": "generated response es is it somehow",
+      "offset": 2426.44,
+      "duration": 5.24
+    },
+    {
+      "lang": "en",
+      "text": "influencing the generation itself is it",
+      "offset": 2428.8,
+      "duration": 4.92
+    },
+    {
+      "lang": "en",
+      "text": "like where is what is the algorithm",
+      "offset": 2431.68,
+      "duration": 5.56
+    },
+    {
+      "lang": "en",
+      "text": "optimizing so with po the way it works",
+      "offset": 2433.72,
+      "duration": 6.72
+    },
+    {
+      "lang": "en",
+      "text": "is that there's a separate reward model",
+      "offset": 2437.24,
+      "duration": 5.64
+    },
+    {
+      "lang": "en",
+      "text": "and the model generates something and",
+      "offset": 2440.44,
+      "duration": 5.32
+    },
+    {
+      "lang": "en",
+      "text": "then that reward model will tell how",
+      "offset": 2442.88,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "good that generation is and then we",
+      "offset": 2445.76,
+      "duration": 3.88
+    },
+    {
+      "lang": "en",
+      "text": "optimize based on that so the model just",
+      "offset": 2447.92,
+      "duration": 4.12
+    },
+    {
+      "lang": "en",
+      "text": "gets a reward for its full text",
+      "offset": 2449.64,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "generation without forcing it to",
+      "offset": 2452.04,
+      "duration": 5
+    },
+    {
+      "lang": "en",
+      "text": "generate some text in particular but",
+      "offset": 2454.52,
+      "duration": 4.2
+    },
+    {
+      "lang": "en",
+      "text": "just it can generate whatever it wants",
+      "offset": 2457.04,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "but then it will be graded based on how",
+      "offset": 2458.72,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "good that generation is and that's then",
+      "offset": 2460.8,
+      "duration": 4.6
+    },
+    {
+      "lang": "en",
+      "text": "back propagated into the model as a",
+      "offset": 2462.88,
+      "duration": 4.36
+    },
+    {
+      "lang": "en",
+      "text": "signal so it wants to maximize that",
+      "offset": 2465.4,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "reward and if the reward model is really",
+      "offset": 2467.24,
+      "duration": 5.48
+    },
+    {
+      "lang": "en",
+      "text": "good so it grades text that leads to the",
+      "offset": 2470.04,
+      "duration": 5
+    },
+    {
+      "lang": "en",
+      "text": "right answer and has the right",
+      "offset": 2472.72,
+      "duration": 4.2
+    },
+    {
+      "lang": "en",
+      "text": "formatting or reasoning trace or",
+      "offset": 2475.04,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "whatever we want then that should lead",
+      "offset": 2476.92,
+      "duration": 4.439
+    },
+    {
+      "lang": "en",
+      "text": "to a model that will be really really",
+      "offset": 2479.2,
+      "duration": 4.36
+    },
+    {
+      "lang": "en",
+      "text": "good but of course you can hack the",
+      "offset": 2481.359,
+      "duration": 4.081
+    },
+    {
+      "lang": "en",
+      "text": "reward model which is often referred to",
+      "offset": 2483.56,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "as reward hacking maybe there's some way",
+      "offset": 2485.44,
+      "duration": 3.72
+    },
+    {
+      "lang": "en",
+      "text": "where the model it'll generate some",
+      "offset": 2487.48,
+      "duration": 3.16
+    },
+    {
+      "lang": "en",
+      "text": "really weird things but nonetheless that",
+      "offset": 2489.16,
+      "duration": 3.48
+    },
+    {
+      "lang": "en",
+      "text": "leads to a really high reward because it",
+      "offset": 2490.64,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "exploits some weakness of the reward",
+      "offset": 2492.64,
+      "duration": 4.92
+    },
+    {
+      "lang": "en",
+      "text": "model and I think that's also why RL is",
+      "offset": 2494.88,
+      "duration": 4.76
+    },
+    {
+      "lang": "en",
+      "text": "generally a bit harder to get to work",
+      "offset": 2497.56,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "and sometimes very unstable and for",
+      "offset": 2499.64,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "replication approaches it's much simpler",
+      "offset": 2501.8,
+      "duration": 5.16
+    },
+    {
+      "lang": "en",
+      "text": "to just start with sft and it seems like",
+      "offset": 2503.96,
+      "duration": 5.159
+    },
+    {
+      "lang": "en",
+      "text": "the reward function would have to be",
+      "offset": 2506.96,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "like a model inference in order to you",
+      "offset": 2509.119,
+      "duration": 4.841
+    },
+    {
+      "lang": "en",
+      "text": "know judge the generated text and that",
+      "offset": 2511.76,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "sounds very expensive to do at scale",
+      "offset": 2513.96,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "yeah that's a great which is kind of at",
+      "offset": 2516.72,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "odds with like R1 you know being much",
+      "offset": 2518.52,
+      "duration": 6.559
+    },
+    {
+      "lang": "en",
+      "text": "cheaper than uh prior efforts that's a",
+      "offset": 2521.28,
+      "duration": 5.079
+    },
+    {
+      "lang": "en",
+      "text": "great point it's also much more",
+      "offset": 2525.079,
+      "duration": 3.24
+    },
+    {
+      "lang": "en",
+      "text": "expensive because you need to have that",
+      "offset": 2526.359,
+      "duration": 4.641
+    },
+    {
+      "lang": "en",
+      "text": "second reward model in memory and",
+      "offset": 2528.319,
+      "duration": 5.121
+    },
+    {
+      "lang": "en",
+      "text": "depending on whether you use grpo or PPO",
+      "offset": 2531,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "or other algorithms there are other",
+      "offset": 2533.44,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "things you need to keep in memory too so",
+      "offset": 2535.4,
+      "duration": 4.719
+    },
+    {
+      "lang": "en",
+      "text": "it's a lot more expensive and training",
+      "offset": 2537.28,
+      "duration": 5.039
+    },
+    {
+      "lang": "en",
+      "text": "is more difficult to get to work and",
+      "offset": 2540.119,
+      "duration": 4.361
+    },
+    {
+      "lang": "en",
+      "text": "that's why for I think the simplest",
+      "offset": 2542.319,
+      "duration": 5.321
+    },
+    {
+      "lang": "en",
+      "text": "approach S1 that shouldn't have any",
+      "offset": 2544.48,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "place there but we just go with",
+      "offset": 2547.64,
+      "duration": 2.32
+    },
+    {
+      "lang": "en",
+      "text": "something that just uses the model",
+      "offset": 2548.8,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "itself and simple sft and with regards",
+      "offset": 2549.96,
+      "duration": 6.119
+    },
+    {
+      "lang": "en",
+      "text": "to the hugging face open R1 have you",
+      "offset": 2553.04,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "taken a look at that yeah I think that",
+      "offset": 2556.079,
+      "duration": 4.561
+    },
+    {
+      "lang": "en",
+      "text": "ties back to the discussion on R1 versus",
+      "offset": 2557.92,
+      "duration": 6.36
+    },
+    {
+      "lang": "en",
+      "text": "S1 which is that for open R1 from what I",
+      "offset": 2560.64,
+      "duration": 5.84
+    },
+    {
+      "lang": "en",
+      "text": "can tell they're also trying to go all",
+      "offset": 2564.28,
+      "duration": 5.559
+    },
+    {
+      "lang": "en",
+      "text": "the way to replicate uh R1 and then",
+      "offset": 2566.48,
+      "duration": 6.839
+    },
+    {
+      "lang": "en",
+      "text": "potentially O3 and so on whereas for S1",
+      "offset": 2569.839,
+      "duration": 5.401
+    },
+    {
+      "lang": "en",
+      "text": "we wanted to find out what's the",
+      "offset": 2573.319,
+      "duration": 4.321
+    },
+    {
+      "lang": "en",
+      "text": "simplest approach so no RL",
+      "offset": 2575.24,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "pure sft whereas for open R1 they're",
+      "offset": 2577.64,
+      "duration": 5
+    },
+    {
+      "lang": "en",
+      "text": "going to involve a lot of RL I presume",
+      "offset": 2579.72,
+      "duration": 4.76
+    },
+    {
+      "lang": "en",
+      "text": "but other other than that they're very",
+      "offset": 2582.64,
+      "duration": 4.12
+    },
+    {
+      "lang": "en",
+      "text": "similar open R1 and S1 in terms of",
+      "offset": 2584.48,
+      "duration": 4.839
+    },
+    {
+      "lang": "en",
+      "text": "openness and sharing everything and",
+      "offset": 2586.76,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "maybe we'll also go in that direction of",
+      "offset": 2589.319,
+      "duration": 4.961
+    },
+    {
+      "lang": "en",
+      "text": "open R1 with S2 or further so in the",
+      "offset": 2591.72,
+      "duration": 3.8
+    },
+    {
+      "lang": "en",
+      "text": "nutshell is kind of the difference",
+      "offset": 2594.28,
+      "duration": 4.2
+    },
+    {
+      "lang": "en",
+      "text": "between replicating the methodology",
+      "offset": 2595.52,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "versus replicating the results with the",
+      "offset": 2598.48,
+      "duration": 4.68
+    },
+    {
+      "lang": "en",
+      "text": "simpler approach yeah with the simpler",
+      "offset": 2600.88,
+      "duration": 4.76
+    },
+    {
+      "lang": "en",
+      "text": "approach and also I think they're more",
+      "offset": 2603.16,
+      "duration": 4.12
+    },
+    {
+      "lang": "en",
+      "text": "more interested in the reasoning",
+      "offset": 2605.64,
+      "duration": 3.28
+    },
+    {
+      "lang": "en",
+      "text": "performance so what's the Bott bottom",
+      "offset": 2607.28,
+      "duration": 4.839
+    },
+    {
+      "lang": "en",
+      "text": "line performance you get versus for S1",
+      "offset": 2608.92,
+      "duration": 5.159
+    },
+    {
+      "lang": "en",
+      "text": "we cared a lot about the scaling so do",
+      "offset": 2612.119,
+      "duration": 4.321
+    },
+    {
+      "lang": "en",
+      "text": "we get test time scaling where better",
+      "offset": 2614.079,
+      "duration": 4.201
+    },
+    {
+      "lang": "en",
+      "text": "per better better performance can be",
+      "offset": 2616.44,
+      "duration": 5.919
+    },
+    {
+      "lang": "en",
+      "text": "achieved by more test time compute and I",
+      "offset": 2618.28,
+      "duration": 7
+    },
+    {
+      "lang": "en",
+      "text": "haven't seen open R1 focusing on that",
+      "offset": 2622.359,
+      "duration": 4.76
+    },
+    {
+      "lang": "en",
+      "text": "but we will definitely focus on it I",
+      "offset": 2625.28,
+      "duration": 4.319
+    },
+    {
+      "lang": "en",
+      "text": "think for S2 and so on along those lines",
+      "offset": 2627.119,
+      "duration": 5.121
+    },
+    {
+      "lang": "en",
+      "text": "like is there a generation time like is",
+      "offset": 2629.599,
+      "duration": 5.041
+    },
+    {
+      "lang": "en",
+      "text": "there a signal like a tunable parameter",
+      "offset": 2632.24,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "that you're giving to the model to tell",
+      "offset": 2634.64,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "it um um to that it can spend more time",
+      "offset": 2636.48,
+      "duration": 6.72
+    },
+    {
+      "lang": "en",
+      "text": "on compute yeah I think currently it is",
+      "offset": 2640,
+      "duration": 7.2
+    },
+    {
+      "lang": "en",
+      "text": "only the budget foring for a final model",
+      "offset": 2643.2,
+      "duration": 5.399
+    },
+    {
+      "lang": "en",
+      "text": "but we did experiment with other",
+      "offset": 2647.2,
+      "duration": 3.96
+    },
+    {
+      "lang": "en",
+      "text": "approaches one very simple idea we had",
+      "offset": 2648.599,
+      "duration": 4.321
+    },
+    {
+      "lang": "en",
+      "text": "was let's just tell the model in the",
+      "offset": 2651.16,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "prompt you've got 10,000 tokens go",
+      "offset": 2652.92,
+      "duration": 5.399
+    },
+    {
+      "lang": "en",
+      "text": "reason figure it out but unfortunately",
+      "offset": 2656.04,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "the model doesn't really care what we",
+      "offset": 2658.319,
+      "duration": 3.24
+    },
+    {
+      "lang": "en",
+      "text": "tell it and it'll just reason for much",
+      "offset": 2659.72,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "longer or do whatever it wants even",
+      "offset": 2661.559,
+      "duration": 5.161
+    },
+    {
+      "lang": "en",
+      "text": "though we tried to sft that in so we",
+      "offset": 2664.44,
+      "duration": 4.119
+    },
+    {
+      "lang": "en",
+      "text": "trained the model on these kinds of",
+      "offset": 2666.72,
+      "duration": 3.399
+    },
+    {
+      "lang": "en",
+      "text": "prompts and then the reasoning traits we",
+      "offset": 2668.559,
+      "duration": 3.321
+    },
+    {
+      "lang": "en",
+      "text": "trained it on would always adhere to",
+      "offset": 2670.119,
+      "duration": 3.601
+    },
+    {
+      "lang": "en",
+      "text": "that limit but at inference it didn't",
+      "offset": 2671.88,
+      "duration": 4.199
+    },
+    {
+      "lang": "en",
+      "text": "care maybe it's just an issue of scale",
+      "offset": 2673.72,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "maybe we need to have a better model in",
+      "offset": 2676.079,
+      "duration": 5.121
+    },
+    {
+      "lang": "en",
+      "text": "the first place but that would be a very",
+      "offset": 2678.04,
+      "duration": 5.279
+    },
+    {
+      "lang": "en",
+      "text": "intuitive way to do it and we experiment",
+      "offset": 2681.2,
+      "duration": 4.44
+    },
+    {
+      "lang": "en",
+      "text": "it with some other things in the paper",
+      "offset": 2683.319,
+      "duration": 5.161
+    },
+    {
+      "lang": "en",
+      "text": "like having steps instead of tokens and",
+      "offset": 2685.64,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "so on but ultimately the budget forcing",
+      "offset": 2688.48,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "one led to the best scaling do you see",
+      "offset": 2690.28,
+      "duration": 5.16
+    },
+    {
+      "lang": "en",
+      "text": "S1",
+      "offset": 2693.92,
+      "duration": 6.439
+    },
+    {
+      "lang": "en",
+      "text": "as the result of you know an experiment",
+      "offset": 2695.44,
+      "duration": 7
+    },
+    {
+      "lang": "en",
+      "text": "and interesting for what it teaches you",
+      "offset": 2700.359,
+      "duration": 4.641
+    },
+    {
+      "lang": "en",
+      "text": "or do you think it is a useful model for",
+      "offset": 2702.44,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "folks to to use for some specific types",
+      "offset": 2705,
+      "duration": 6.2
+    },
+    {
+      "lang": "en",
+      "text": "of problems yeah I think it is useful",
+      "offset": 2707.72,
+      "duration": 7
+    },
+    {
+      "lang": "en",
+      "text": "for a lot of research where knowing what",
+      "offset": 2711.2,
+      "duration": 6.08
+    },
+    {
+      "lang": "en",
+      "text": "is the exact reasoning data is important",
+      "offset": 2714.72,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "so if you want to look at what parts of",
+      "offset": 2717.28,
+      "duration": 5.039
+    },
+    {
+      "lang": "en",
+      "text": "the training data led to certain",
+      "offset": 2720,
+      "duration": 5.68
+    },
+    {
+      "lang": "en",
+      "text": "capabilities then S1 as far as I know is",
+      "offset": 2722.319,
+      "duration": 5.481
+    },
+    {
+      "lang": "en",
+      "text": "the best model right available where",
+      "offset": 2725.68,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "where the data where the data is open so",
+      "offset": 2727.8,
+      "duration": 4.519
+    },
+    {
+      "lang": "en",
+      "text": "for o1 you don't know and for R1 we",
+      "offset": 2729.92,
+      "duration": 3.679
+    },
+    {
+      "lang": "en",
+      "text": "don't know but if you only care about",
+      "offset": 2732.319,
+      "duration": 3
+    },
+    {
+      "lang": "en",
+      "text": "the capabilities then you should",
+      "offset": 2733.599,
+      "duration": 5.641
+    },
+    {
+      "lang": "en",
+      "text": "probably use o03 or R1 but I think",
+      "offset": 2735.319,
+      "duration": 6.24
+    },
+    {
+      "lang": "en",
+      "text": "similar to the pre-training regime there",
+      "offset": 2739.24,
+      "duration": 7
+    },
+    {
+      "lang": "en",
+      "text": "is room for one fully open version of",
+      "offset": 2741.559,
+      "duration": 7.681
+    },
+    {
+      "lang": "en",
+      "text": "this reasoning Paradigm so since R1 and",
+      "offset": 2746.24,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "o1 they probably won't release their",
+      "offset": 2749.24,
+      "duration": 4.359
+    },
+    {
+      "lang": "en",
+      "text": "data or their code fully open source",
+      "offset": 2750.88,
+      "duration": 4.76
+    },
+    {
+      "lang": "en",
+      "text": "there's definitely room for one line of",
+      "offset": 2753.599,
+      "duration": 5.081
+    },
+    {
+      "lang": "en",
+      "text": "work be it S1 s 2s3 that makes",
+      "offset": 2755.64,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "everything fully open and tries to keep",
+      "offset": 2758.68,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "Pace with the others so kind of like the",
+      "offset": 2760.44,
+      "duration": 5.919
+    },
+    {
+      "lang": "en",
+      "text": "Elmo or Elmo for reasoning yeah exactly",
+      "offset": 2763,
+      "duration": 5.079
+    },
+    {
+      "lang": "en",
+      "text": "like yeah in pre-training there's ELO",
+      "offset": 2766.359,
+      "duration": 3.681
+    },
+    {
+      "lang": "en",
+      "text": "sort of trying to do that whereas llama",
+      "offset": 2768.079,
+      "duration": 3.361
+    },
+    {
+      "lang": "en",
+      "text": "and quen and so on they don't share",
+      "offset": 2770.04,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "their data is that the direction that",
+      "offset": 2771.44,
+      "duration": 4.36
+    },
+    {
+      "lang": "en",
+      "text": "you're trying to go with this or you",
+      "offset": 2773.4,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "know how do you see this project in your",
+      "offset": 2775.8,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "research broadly evolving yeah we",
+      "offset": 2778.28,
+      "duration": 5.279
+    },
+    {
+      "lang": "en",
+      "text": "definitely thinking about that to me the",
+      "offset": 2781,
+      "duration": 4.599
+    },
+    {
+      "lang": "en",
+      "text": "most it's a big commitment I think it's",
+      "offset": 2783.559,
+      "duration": 3.961
+    },
+    {
+      "lang": "en",
+      "text": "a big commitment it's",
+      "offset": 2785.599,
+      "duration": 3.72
+    },
+    {
+      "lang": "en",
+      "text": "might be the rest of my PhD just trying",
+      "offset": 2787.52,
+      "duration": 5
+    },
+    {
+      "lang": "en",
+      "text": "to it on that but I think it is very",
+      "offset": 2789.319,
+      "duration": 4.401
+    },
+    {
+      "lang": "en",
+      "text": "exciting it might be a bit",
+      "offset": 2792.52,
+      "duration": 4.319
+    },
+    {
+      "lang": "en",
+      "text": "nontraditional because usually in phds",
+      "offset": 2793.72,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "and also many people told me when",
+      "offset": 2796.839,
+      "duration": 3.361
+    },
+    {
+      "lang": "en",
+      "text": "starting this project is that you want",
+      "offset": 2798.28,
+      "duration": 3.279
+    },
+    {
+      "lang": "en",
+      "text": "to do something novel you don't just",
+      "offset": 2800.2,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "want to try to replicate other models",
+      "offset": 2801.559,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "and we ended up doing something novel",
+      "offset": 2805.24,
+      "duration": 3.64
+    },
+    {
+      "lang": "en",
+      "text": "which is the budget forcing and I think",
+      "offset": 2806.599,
+      "duration": 5.561
+    },
+    {
+      "lang": "en",
+      "text": "replication efforts are often much more",
+      "offset": 2808.88,
+      "duration": 5.679
+    },
+    {
+      "lang": "en",
+      "text": "important and impactful rather than just",
+      "offset": 2812.16,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "trying to do something novel for the",
+      "offset": 2814.559,
+      "duration": 3.361
+    },
+    {
+      "lang": "en",
+      "text": "sake of of",
+      "offset": 2816,
+      "duration": 5.24
+    },
+    {
+      "lang": "en",
+      "text": "so I'm willing to kind of depart from",
+      "offset": 2817.92,
+      "duration": 5.6
+    },
+    {
+      "lang": "en",
+      "text": "the norm there but what I'm really",
+      "offset": 2821.24,
+      "duration": 5.359
+    },
+    {
+      "lang": "en",
+      "text": "excited about is making the test time",
+      "offset": 2823.52,
+      "duration": 6.16
+    },
+    {
+      "lang": "en",
+      "text": "scaling that we've shown more clean and",
+      "offset": 2826.599,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "scale further so right now there's two",
+      "offset": 2829.68,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "key problems with it one is that it does",
+      "offset": 2832.599,
+      "duration": 4.76
+    },
+    {
+      "lang": "en",
+      "text": "eventually flatten out we briefly",
+      "offset": 2835.2,
+      "duration": 4.639
+    },
+    {
+      "lang": "en",
+      "text": "touched on those but if you do wait too",
+      "offset": 2837.359,
+      "duration": 4.081
+    },
+    {
+      "lang": "en",
+      "text": "much then eventually the model will just",
+      "offset": 2839.839,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "go into a repetitive Loop and it won't",
+      "offset": 2841.44,
+      "duration": 4.679
+    },
+    {
+      "lang": "en",
+      "text": "get to the correct answer so how can we",
+      "offset": 2844.319,
+      "duration": 3.681
+    },
+    {
+      "lang": "en",
+      "text": "scale further when we want the model to",
+      "offset": 2846.119,
+      "duration": 5.161
+    },
+    {
+      "lang": "en",
+      "text": "think for not just minutes but for hours",
+      "offset": 2848,
+      "duration": 5.68
+    },
+    {
+      "lang": "en",
+      "text": "or days or a few years even for really",
+      "offset": 2851.28,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "really hard questions and the second",
+      "offset": 2853.68,
+      "duration": 4.28
+    },
+    {
+      "lang": "en",
+      "text": "part is which is kind of related to that",
+      "offset": 2855.76,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "is that our model will run out of",
+      "offset": 2857.96,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "context window if it things for too long",
+      "offset": 2860.24,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "the technical detail here is that these",
+      "offset": 2862.92,
+      "duration": 4.04
+    },
+    {
+      "lang": "en",
+      "text": "models have a fixed context window that",
+      "offset": 2864.24,
+      "duration": 5.56
+    },
+    {
+      "lang": "en",
+      "text": "they can operate on and if they generate",
+      "offset": 2866.96,
+      "duration": 5.72
+    },
+    {
+      "lang": "en",
+      "text": "too much then it doesn't work anymore at",
+      "offset": 2869.8,
+      "duration": 4.36
+    },
+    {
+      "lang": "en",
+      "text": "least for most models some models have",
+      "offset": 2872.68,
+      "duration": 3.12
+    },
+    {
+      "lang": "en",
+      "text": "an architectural change that fixes that",
+      "offset": 2874.16,
+      "duration": 2.72
+    },
+    {
+      "lang": "en",
+      "text": "but most models still have this",
+      "offset": 2875.8,
+      "duration": 3.96
+    },
+    {
+      "lang": "en",
+      "text": "limitation and so for us we weren't able",
+      "offset": 2876.88,
+      "duration": 6.08
+    },
+    {
+      "lang": "en",
+      "text": "to scale Beyond 32,000 tokens with",
+      "offset": 2879.76,
+      "duration": 4.799
+    },
+    {
+      "lang": "en",
+      "text": "sequential scaling at least but we were",
+      "offset": 2882.96,
+      "duration": 3.599
+    },
+    {
+      "lang": "en",
+      "text": "able to use parallel scaling techniques",
+      "offset": 2884.559,
+      "duration": 4.161
+    },
+    {
+      "lang": "en",
+      "text": "like majority voting to scale further so",
+      "offset": 2886.559,
+      "duration": 4.04
+    },
+    {
+      "lang": "en",
+      "text": "we just generate multiple times in",
+      "offset": 2888.72,
+      "duration": 4.119
+    },
+    {
+      "lang": "en",
+      "text": "parallel and even though all of them",
+      "offset": 2890.599,
+      "duration": 5.801
+    },
+    {
+      "lang": "en",
+      "text": "Reach 32k Max together they do a lot",
+      "offset": 2892.839,
+      "duration": 5.801
+    },
+    {
+      "lang": "en",
+      "text": "more than 32k and then we just aggregate",
+      "offset": 2896.4,
+      "duration": 3.919
+    },
+    {
+      "lang": "en",
+      "text": "them to hopefully arrive at a better",
+      "offset": 2898.64,
+      "duration": 4.52
+    },
+    {
+      "lang": "en",
+      "text": "answer so solving these two issues is",
+      "offset": 2900.319,
+      "duration": 4.881
+    },
+    {
+      "lang": "en",
+      "text": "really exciting to me such that we can",
+      "offset": 2903.16,
+      "duration": 4.12
+    },
+    {
+      "lang": "en",
+      "text": "use these models to Sol some of our",
+      "offset": 2905.2,
+      "duration": 4.04
+    },
+    {
+      "lang": "en",
+      "text": "hardest questions like curing cancer and",
+      "offset": 2907.28,
+      "duration": 4.319
+    },
+    {
+      "lang": "en",
+      "text": "so on great great well Nicholas thanks",
+      "offset": 2909.24,
+      "duration": 5
+    },
+    {
+      "lang": "en",
+      "text": "so much for jumping on and sharing a bit",
+      "offset": 2911.599,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "about what you've been up to thanks a",
+      "offset": 2914.24,
+      "duration": 6.72
+    },
+    {
+      "lang": "en",
+      "text": "lot for having me thank you",
+      "offset": 2916.319,
+      "duration": 4.641
+    },
+    {
+      "lang": "en",
+      "text": "[Music]",
+      "offset": 2936.7,
+      "duration": 3.19
+    }
+  ],
+  "cleanText": null,
+  "dumpedAt": "2025-07-21T18:43:24.807Z"
+}

@@ -1,0 +1,3850 @@
+{
+  "episodeId": "RQWpF2Gb-gU",
+  "channelSlug": "@3blue1brown",
+  "title": "But what is Quantum Computing?  (Grover's Algorithm)",
+  "publishedAt": "2025-04-30T12:32:19.000Z",
+  "rawLines": [
+    {
+      "lang": "en",
+      "text": "A lot of pop science outlets give a certain summary of quantum",
+      "offset": 0,
+      "duration": 2.956
+    },
+    {
+      "lang": "en",
+      "text": "computing that I can almost guarantee leads to misconceptions.",
+      "offset": 2.956,
+      "duration": 3.004
+    },
+    {
+      "lang": "en",
+      "text": "The summary goes something like this.",
+      "offset": 6.42,
+      "duration": 1.6
+    },
+    {
+      "lang": "en",
+      "text": "In a classical computer, data is stored with bits, some sequence of ones and zeros,",
+      "offset": 8.44,
+      "duration": 4.558
+    },
+    {
+      "lang": "en",
+      "text": "but in a quantum computer, you are able to represent every possible sequence of",
+      "offset": 12.998,
+      "duration": 4.394
+    },
+    {
+      "lang": "en",
+      "text": "bits of some fixed length all at once in one big thing known as a superposition.",
+      "offset": 17.392,
+      "duration": 4.448
+    },
+    {
+      "lang": "en",
+      "text": "And sometimes the implication of these summaries is that quantum",
+      "offset": 22.28,
+      "duration": 3.314
+    },
+    {
+      "lang": "en",
+      "text": "computers can be faster by basically doing whatever a classical computer would do,",
+      "offset": 25.594,
+      "duration": 4.298
+    },
+    {
+      "lang": "en",
+      "text": "but to all of these sequences in parallel.",
+      "offset": 29.892,
+      "duration": 2.227
+    },
+    {
+      "lang": "en",
+      "text": "Now, this does gesture at something that's kind of true,",
+      "offset": 33.22,
+      "duration": 2.73
+    },
+    {
+      "lang": "en",
+      "text": "but let me see if I can prove to you why I think this leads to misconceptions,",
+      "offset": 35.95,
+      "duration": 3.85
+    },
+    {
+      "lang": "en",
+      "text": "and I'll prove it using a quiz.",
+      "offset": 39.8,
+      "duration": 1.56
+    },
+    {
+      "lang": "en",
+      "text": "To set it up, I want you to imagine that I have a mystery function,",
+      "offset": 41.78,
+      "duration": 3.475
+    },
+    {
+      "lang": "en",
+      "text": "and I tell you that there's a certain secret number among all the numbers",
+      "offset": 45.255,
+      "duration": 3.837
+    },
+    {
+      "lang": "en",
+      "text": "from 0 up to n-1, where if you plug that value into my function,",
+      "offset": 49.092,
+      "duration": 3.371
+    },
+    {
+      "lang": "en",
+      "text": "it returns true, but if you were to plug in any other value, it returns false.",
+      "offset": 52.463,
+      "duration": 4.097
+    },
+    {
+      "lang": "en",
+      "text": "And let's say you can't look at the innards of the function to learn anything about it,",
+      "offset": 57.08,
+      "duration": 3.115
+    },
+    {
+      "lang": "en",
+      "text": "the only thing you're allowed to do with it is just try it out on numbers.",
+      "offset": 60.195,
+      "duration": 2.685
+    },
+    {
+      "lang": "en",
+      "text": "The warmup question is, how many times, on average,",
+      "offset": 63.38,
+      "duration": 2.597
+    },
+    {
+      "lang": "en",
+      "text": "would you have to apply this mystery function in order to find the secret key?",
+      "offset": 65.977,
+      "duration": 4.023
+    },
+    {
+      "lang": "en",
+      "text": "Well, if the setup was in an ordinary classical computer,",
+      "offset": 71.14,
+      "duration": 2.818
+    },
+    {
+      "lang": "en",
+      "text": "there's really nothing better that you can do than guess and check.",
+      "offset": 73.958,
+      "duration": 3.362
+    },
+    {
+      "lang": "en",
+      "text": "You go through all the numbers, and maybe you're lucky and find it early,",
+      "offset": 77.8,
+      "duration": 3.615
+    },
+    {
+      "lang": "en",
+      "text": "maybe you're unlucky and it doesn't come up until later, but on average,",
+      "offset": 81.415,
+      "duration": 3.614
+    },
+    {
+      "lang": "en",
+      "text": "with a list of n possibilities, it takes one half of n attempts to find the key.",
+      "offset": 85.029,
+      "duration": 4.011
+    },
+    {
+      "lang": "en",
+      "text": "Now, in computer science, people care about how runtimes scale.",
+      "offset": 89.62,
+      "duration": 2.96
+    },
+    {
+      "lang": "en",
+      "text": "If you had a list ten times as big, how much longer would it take?",
+      "offset": 92.96,
+      "duration": 3.16
+    },
+    {
+      "lang": "en",
+      "text": "And computer scientists have a way of categorizing runtimes.",
+      "offset": 96.48,
+      "duration": 2.68
+    },
+    {
+      "lang": "en",
+      "text": "They would call this one O of n, where that big O communicates that maybe",
+      "offset": 99.32,
+      "duration": 4.048
+    },
+    {
+      "lang": "en",
+      "text": "there's some constants like the one half, or maybe some factors that grow slower than n,",
+      "offset": 103.368,
+      "duration": 4.935
+    },
+    {
+      "lang": "en",
+      "text": "but the factor of n is what explains how quickly it scales as n grows.",
+      "offset": 108.303,
+      "duration": 3.937
+    },
+    {
+      "lang": "en",
+      "text": "If n goes up by a factor of ten, the runtime also goes up by a factor of ten.",
+      "offset": 112.58,
+      "duration": 3.64
+    },
+    {
+      "lang": "en",
+      "text": "Now, here's your quiz.",
+      "offset": 116.7,
+      "duration": 1.16
+    },
+    {
+      "lang": "en",
+      "text": "For the equivalent of this setup, but in a quantum computer,",
+      "offset": 118.28,
+      "duration": 3.171
+    },
+    {
+      "lang": "en",
+      "text": "what's the best runtime for finding the secret key?",
+      "offset": 121.451,
+      "duration": 2.749
+    },
+    {
+      "lang": "en",
+      "text": "I've asked a variant of this quiz many times in a certain lecture that I've given",
+      "offset": 124.6,
+      "duration": 4.244
+    },
+    {
+      "lang": "en",
+      "text": "over the years, and the options I typically offer are O of square root of n,",
+      "offset": 128.844,
+      "duration": 4.034
+    },
+    {
+      "lang": "en",
+      "text": "O of log of n, O of log of log of n, and O of one,",
+      "offset": 132.878,
+      "duration": 2.671
+    },
+    {
+      "lang": "en",
+      "text": "where here O of one would mean that the runtime is just some constant that",
+      "offset": 135.549,
+      "duration": 3.93
+    },
+    {
+      "lang": "en",
+      "text": "doesn't actually grow as n grows.",
+      "offset": 139.479,
+      "duration": 1.781
+    },
+    {
+      "lang": "en",
+      "text": "Now, to be fair, I have not defined quantum computing.",
+      "offset": 141.8,
+      "duration": 2.3
+    },
+    {
+      "lang": "en",
+      "text": "In fact, doing so from the ground up is going to be the goal of this video.",
+      "offset": 144.5,
+      "duration": 3.14
+    },
+    {
+      "lang": "en",
+      "text": "So without showing you what this mystery function would look like in that setting,",
+      "offset": 147.98,
+      "duration": 3.556
+    },
+    {
+      "lang": "en",
+      "text": "it's kind of an incoherent question.",
+      "offset": 151.536,
+      "duration": 1.604
+    },
+    {
+      "lang": "en",
+      "text": "But it's not really meant as a quiz that I'm grading you on or anything,",
+      "offset": 153.38,
+      "duration": 3.005
+    },
+    {
+      "lang": "en",
+      "text": "it's just meant to be a gut check of intuition before we dive in.",
+      "offset": 156.385,
+      "duration": 2.755
+    },
+    {
+      "lang": "en",
+      "text": "In principle, it's the same task.",
+      "offset": 159.36,
+      "duration": 2.04
+    },
+    {
+      "lang": "en",
+      "text": "Finding a needle in a haystack, where you want to discover",
+      "offset": 161.68,
+      "duration": 2.961
+    },
+    {
+      "lang": "en",
+      "text": "which value out of many options uniquely triggers some function.",
+      "offset": 164.641,
+      "duration": 3.319
+    },
+    {
+      "lang": "en",
+      "text": "I asked this as a YouTube post last month, which 100,000 of you kindly answered.",
+      "offset": 168.46,
+      "duration": 4.1
+    },
+    {
+      "lang": "en",
+      "text": "The most recent time I gave it live was to a group of Stanford students.",
+      "offset": 172.8,
+      "duration": 3.08
+    },
+    {
+      "lang": "en",
+      "text": "I also posed it to those attending the International Math Olympiad.",
+      "offset": 176.14,
+      "duration": 2.64
+    },
+    {
+      "lang": "en",
+      "text": "And in all of these and many other instances, the answer distribution looks very similar.",
+      "offset": 179.02,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "The most common answer is always O of one.",
+      "offset": 183.76,
+      "duration": 2.62
+    },
+    {
+      "lang": "en",
+      "text": "And this is wrong, and I'm pretty sure that it stems from that misleading summary.",
+      "offset": 186.66,
+      "duration": 3.66
+    },
+    {
+      "lang": "en",
+      "text": "That summary implies that you would put all of the n values that you need",
+      "offset": 190.78,
+      "duration": 3.531
+    },
+    {
+      "lang": "en",
+      "text": "to search into this mysterious superposition,",
+      "offset": 194.311,
+      "duration": 2.225
+    },
+    {
+      "lang": "en",
+      "text": "and then you would process them all in parallel,",
+      "offset": 196.536,
+      "duration": 2.371
+    },
+    {
+      "lang": "en",
+      "text": "and then somehow the answer would be revealed.",
+      "offset": 198.907,
+      "duration": 2.273
+    },
+    {
+      "lang": "en",
+      "text": "The second most common answer is typically O of log of n, and this is also wrong.",
+      "offset": 201.8,
+      "duration": 4.06
+    },
+    {
+      "lang": "en",
+      "text": "You would call this an exponential speedup.",
+      "offset": 206.36,
+      "duration": 2.06
+    },
+    {
+      "lang": "en",
+      "text": "For example, if you increase the size of the list by factors of 10,",
+      "offset": 208.72,
+      "duration": 3.797
+    },
+    {
+      "lang": "en",
+      "text": "an O of log n runtime would only tick up by the same additive increment each time.",
+      "offset": 212.517,
+      "duration": 4.703
+    },
+    {
+      "lang": "en",
+      "text": "Now this wrong answer I suspect stems from a misconception",
+      "offset": 217.88,
+      "duration": 3.012
+    },
+    {
+      "lang": "en",
+      "text": "about how much better quantum computers are in general.",
+      "offset": 220.892,
+      "duration": 2.908
+    },
+    {
+      "lang": "en",
+      "text": "There are very certain special problems where you can achieve an exponential speedup.",
+      "offset": 223.8,
+      "duration": 4.12
+    },
+    {
+      "lang": "en",
+      "text": "The most famous case is probably Shor's algorithm for factoring large numbers.",
+      "offset": 228.2,
+      "duration": 3.42
+    },
+    {
+      "lang": "en",
+      "text": "But most problems are not like that.",
+      "offset": 232.02,
+      "duration": 1.86
+    },
+    {
+      "lang": "en",
+      "text": "In this case, the correct answer is O of square root of n.",
+      "offset": 234.22,
+      "duration": 2.66
+    },
+    {
+      "lang": "en",
+      "text": "And this is a lot more representative of the typical",
+      "offset": 237.26,
+      "duration": 2.18
+    },
+    {
+      "lang": "en",
+      "text": "speedup that you could get with a quantum computer.",
+      "offset": 239.44,
+      "duration": 2.18
+    },
+    {
+      "lang": "en",
+      "text": "In 1994, it was proven that a quantum computer could not",
+      "offset": 242.26,
+      "duration": 3.416
+    },
+    {
+      "lang": "en",
+      "text": "possibly do any better than O of square root of n on this task.",
+      "offset": 245.676,
+      "duration": 3.904
+    },
+    {
+      "lang": "en",
+      "text": "And then two years later, Lav Grover found a specific",
+      "offset": 249.58,
+      "duration": 2.904
+    },
+    {
+      "lang": "en",
+      "text": "procedure that actually achieves that runtime.",
+      "offset": 252.484,
+      "duration": 2.576
+    },
+    {
+      "lang": "en",
+      "text": "So searching through a bag of a million options takes on the order of a thousand steps.",
+      "offset": 255.48,
+      "duration": 3.32
+    },
+    {
+      "lang": "en",
+      "text": "A bag of a trillion options takes on the order of a million.",
+      "offset": 259.16,
+      "duration": 2.56
+    },
+    {
+      "lang": "en",
+      "text": "This big O actually hides something that's pretty fun,",
+      "offset": 262.22,
+      "duration": 2.7
+    },
+    {
+      "lang": "en",
+      "text": "which is the constant of pi fourths in the precise runtime,",
+      "offset": 264.92,
+      "duration": 3
+    },
+    {
+      "lang": "en",
+      "text": "and that pi has its own whole fun story to tell, which I'll get to later.",
+      "offset": 267.92,
+      "duration": 3.7
+    },
+    {
+      "lang": "en",
+      "text": "You might think that this puzzle with a mystery function",
+      "offset": 272.48,
+      "duration": 2.924
+    },
+    {
+      "lang": "en",
+      "text": "triggered by one specific value is super contrived.",
+      "offset": 275.404,
+      "duration": 2.716
+    },
+    {
+      "lang": "en",
+      "text": "But I want you to keep in mind this is meant to be a generic stand-in",
+      "offset": 278.46,
+      "duration": 3.705
+    },
+    {
+      "lang": "en",
+      "text": "for any problem where you know how to quickly verify a solution,",
+      "offset": 282.165,
+      "duration": 3.49
+    },
+    {
+      "lang": "en",
+      "text": "even if you don't know how to find that solution in the first place.",
+      "offset": 285.655,
+      "duration": 3.705
+    },
+    {
+      "lang": "en",
+      "text": "This describes an enormous class of problems in computer science known as NP problems.",
+      "offset": 289.78,
+      "duration": 4.76
+    },
+    {
+      "lang": "en",
+      "text": "So while a square root speedup is frankly not as earth-shattering as an exponential",
+      "offset": 295.16,
+      "duration": 4.193
+    },
+    {
+      "lang": "en",
+      "text": "speedup would be, and while big O runtimes are often a lot less important than other",
+      "offset": 299.353,
+      "duration": 4.294
+    },
+    {
+      "lang": "en",
+      "text": "practical considerations, it is thought-provoking that something like Grover's algorithm",
+      "offset": 303.647,
+      "duration": 4.497
+    },
+    {
+      "lang": "en",
+      "text": "is even possible at all, providing this catch-all method for speeding up any NP problem.",
+      "offset": 308.144,
+      "duration": 4.496
+    },
+    {
+      "lang": "en",
+      "text": "My goal with this lesson is to build up to a step-by-step",
+      "offset": 313.76,
+      "duration": 2.85
+    },
+    {
+      "lang": "en",
+      "text": "walkthrough of how that algorithm works.",
+      "offset": 316.61,
+      "duration": 2.05
+    },
+    {
+      "lang": "en",
+      "text": "It's actually very geometric and very beautiful.",
+      "offset": 318.94,
+      "duration": 1.8
+    },
+    {
+      "lang": "en",
+      "text": "But we need to build up a lot of background in order to get there.",
+      "offset": 321.14,
+      "duration": 2.74
+    },
+    {
+      "lang": "en",
+      "text": "The first two-thirds or so of the video will be spent building up the fundamentals",
+      "offset": 324.14,
+      "duration": 3.93
+    },
+    {
+      "lang": "en",
+      "text": "of quantum computing, not with a set of analogies,",
+      "offset": 328.07,
+      "duration": 2.444
+    },
+    {
+      "lang": "en",
+      "text": "which as we've seen can lead to misconceptions, but as a piece of math,",
+      "offset": 330.514,
+      "duration": 3.451
+    },
+    {
+      "lang": "en",
+      "text": "which I think offers you a pair of glasses through which you can see a much more",
+      "offset": 333.965,
+      "duration": 3.882
+    },
+    {
+      "lang": "en",
+      "text": "honest depiction of the whole field.",
+      "offset": 337.847,
+      "duration": 1.773
+    },
+    {
+      "lang": "en",
+      "text": "This is one of those topics that has a few premises that are just going to feel a",
+      "offset": 340.16,
+      "duration": 3.346
+    },
+    {
+      "lang": "en",
+      "text": "little bit strange at first, and I should warn you they take a little getting used to.",
+      "offset": 343.506,
+      "duration": 3.594
+    },
+    {
+      "lang": "en",
+      "text": "My current plan is to follow this lesson with another one",
+      "offset": 347.52,
+      "duration": 2.531
+    },
+    {
+      "lang": "en",
+      "text": "about some of the underlying physics, which hopefully can",
+      "offset": 350.051,
+      "duration": 2.574
+    },
+    {
+      "lang": "en",
+      "text": "help motivate a few of the odd-looking rules that you'll see here.",
+      "offset": 352.625,
+      "duration": 2.975
+    },
+    {
+      "lang": "en",
+      "text": "But today the goal is to provide the minimal viable path to seeing a genuine,",
+      "offset": 356.02,
+      "duration": 4.228
+    },
+    {
+      "lang": "en",
+      "text": "bona fide quantum algorithm.",
+      "offset": 360.248,
+      "duration": 1.592
+    },
+    {
+      "lang": "en",
+      "text": "Let me pull up again that contrast between classical computing and quantum computing,",
+      "offset": 364.44,
+      "duration": 3.807
+    },
+    {
+      "lang": "en",
+      "text": "and let's see if we can build up something of a more representative mental model.",
+      "offset": 368.247,
+      "duration": 3.673
+    },
+    {
+      "lang": "en",
+      "text": "It is true of course that data in a classical computer looks like a series",
+      "offset": 372.24,
+      "duration": 3.72
+    },
+    {
+      "lang": "en",
+      "text": "of ones and zeros, and at a higher layer of abstraction that might represent",
+      "offset": 375.96,
+      "duration": 3.871
+    },
+    {
+      "lang": "en",
+      "text": "an actual data type, like an integer or some text, and at a lower layer of abstraction,",
+      "offset": 379.831,
+      "duration": 4.424
+    },
+    {
+      "lang": "en",
+      "text": "those ones and zeros represent some actual thing in the physical world,",
+      "offset": 384.255,
+      "duration": 3.62
+    },
+    {
+      "lang": "en",
+      "text": "like voltages across a capacitor or something like that.",
+      "offset": 387.875,
+      "duration": 2.865
+    },
+    {
+      "lang": "en",
+      "text": "These same layers of abstraction provide a pretty",
+      "offset": 390.74,
+      "duration": 2.656
+    },
+    {
+      "lang": "en",
+      "text": "helpful framing when we discuss quantum computing.",
+      "offset": 393.396,
+      "duration": 2.764
+    },
+    {
+      "lang": "en",
+      "text": "Over there, there's also some underlying physical measurement,",
+      "offset": 396.6,
+      "duration": 3.092
+    },
+    {
+      "lang": "en",
+      "text": "and again you represent the outcome of that measurement with some sequence of ones",
+      "offset": 399.692,
+      "duration": 4.14
+    },
+    {
+      "lang": "en",
+      "text": "and zeros, and again this might implement some actual data type that you care about,",
+      "offset": 403.832,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "like a number.",
+      "offset": 408.072,
+      "duration": 0.748
+    },
+    {
+      "lang": "en",
+      "text": "This symbol that I'm showing by the way is called a ket.",
+      "offset": 409.42,
+      "duration": 2.36
+    },
+    {
+      "lang": "en",
+      "text": "I'll explain it properly in a couple minutes, but for right now just",
+      "offset": 412.08,
+      "duration": 2.986
+    },
+    {
+      "lang": "en",
+      "text": "think of it as conveying that something is coming from a quantum computer.",
+      "offset": 415.066,
+      "duration": 3.294
+    },
+    {
+      "lang": "en",
+      "text": "Let's start things off with a description of quantum computing through the lens of that",
+      "offset": 418.36,
+      "duration": 3.985
+    },
+    {
+      "lang": "en",
+      "text": "middle layer of abstraction, meaning we're going to postpone all of the underlying",
+      "offset": 422.345,
+      "duration": 3.801
+    },
+    {
+      "lang": "en",
+      "text": "physics for now, which is a little bit like teaching computer science without discussing",
+      "offset": 426.146,
+      "duration": 4.076
+    },
+    {
+      "lang": "en",
+      "text": "hardware.",
+      "offset": 430.222,
+      "duration": 0.5
+    },
+    {
+      "lang": "en",
+      "text": "In a classical computer, there's no need to distinguish between the state of",
+      "offset": 431.66,
+      "duration": 3.531
+    },
+    {
+      "lang": "en",
+      "text": "memory and what you read out from the memory,",
+      "offset": 435.191,
+      "duration": 2.138
+    },
+    {
+      "lang": "en",
+      "text": "both of them just look like the same sequence of bits,",
+      "offset": 437.329,
+      "duration": 2.555
+    },
+    {
+      "lang": "en",
+      "text": "but it's a very different story in a quantum computer.",
+      "offset": 439.884,
+      "duration": 2.556
+    },
+    {
+      "lang": "en",
+      "text": "Our main job today is going to be to understand something called the state vector,",
+      "offset": 442.88,
+      "duration": 3.911
+    },
+    {
+      "lang": "en",
+      "text": "which is continuous, this is the thing the computer actually operates on,",
+      "offset": 446.791,
+      "duration": 3.529
+    },
+    {
+      "lang": "en",
+      "text": "but it has a very unusual relationship with the values that you actually read out,",
+      "offset": 450.32,
+      "duration": 3.958
+    },
+    {
+      "lang": "en",
+      "text": "those discrete sequences of bits.",
+      "offset": 454.278,
+      "duration": 1.622
+    },
+    {
+      "lang": "en",
+      "text": "Before I can define this state vector, you need to know one other key",
+      "offset": 456.24,
+      "duration": 3.245
+    },
+    {
+      "lang": "en",
+      "text": "difference from classical computers, which is that this value that you read out,",
+      "offset": 459.485,
+      "duration": 3.809
+    },
+    {
+      "lang": "en",
+      "text": "which again just looks like some sequence of ones and zeros, is random.",
+      "offset": 463.294,
+      "duration": 3.386
+    },
+    {
+      "lang": "en",
+      "text": "Or to be a little more accurate, I should say it's typically random.",
+      "offset": 467.14,
+      "duration": 3.04
+    },
+    {
+      "lang": "en",
+      "text": "The way you can think about this is that if you run a program on a quantum computer,",
+      "offset": 470.54,
+      "duration": 4.468
+    },
+    {
+      "lang": "en",
+      "text": "that program doesn't necessarily determine a particular output,",
+      "offset": 475.008,
+      "duration": 3.404
+    },
+    {
+      "lang": "en",
+      "text": "instead it determines a probability distribution across all possible outputs.",
+      "offset": 478.412,
+      "duration": 4.148
+    },
+    {
+      "lang": "en",
+      "text": "So for the example I'm showing on screen, this would be a very small quantum",
+      "offset": 483.1,
+      "duration": 4.009
+    },
+    {
+      "lang": "en",
+      "text": "computer where the thing that you read out has four bits,",
+      "offset": 487.109,
+      "duration": 3.06
+    },
+    {
+      "lang": "en",
+      "text": "meaning that there are 2 to the 4, or 16 possible outputs,",
+      "offset": 490.169,
+      "duration": 3.112
+    },
+    {
+      "lang": "en",
+      "text": "and the specific program you run determines some kind of distribution across",
+      "offset": 493.281,
+      "duration": 4.062
+    },
+    {
+      "lang": "en",
+      "text": "all those possible outputs.",
+      "offset": 497.343,
+      "duration": 1.477
+    },
+    {
+      "lang": "en",
+      "text": "Some programs might manage to concentrate more probability on just one of those outputs,",
+      "offset": 499.26,
+      "duration": 4.174
+    },
+    {
+      "lang": "en",
+      "text": "but other programs might give a more even spread across everything.",
+      "offset": 503.434,
+      "duration": 3.226
+    },
+    {
+      "lang": "en",
+      "text": "This example, by the way, where the thing you read out has four bits,",
+      "offset": 507.34,
+      "duration": 3.726
+    },
+    {
+      "lang": "en",
+      "text": "would be called a 4-qubit quantum computer, and more generally,",
+      "offset": 511.066,
+      "duration": 3.455
+    },
+    {
+      "lang": "en",
+      "text": "if you have a k-qubit quantum computer, that means there are 2 to the k distinct",
+      "offset": 514.521,
+      "duration": 4.374
+    },
+    {
+      "lang": "en",
+      "text": "possible outputs, and any program gives a distribution across all of those,",
+      "offset": 518.895,
+      "duration": 4.103
+    },
+    {
+      "lang": "en",
+      "text": "and the thing that you read out has k distinct bits.",
+      "offset": 522.998,
+      "duration": 2.862
+    },
+    {
+      "lang": "en",
+      "text": "That word qubit, by the way, is another thing I'm",
+      "offset": 526.56,
+      "duration": 2.1
+    },
+    {
+      "lang": "en",
+      "text": "going to define more precisely in just a minute.",
+      "offset": 528.66,
+      "duration": 2.1
+    },
+    {
+      "lang": "en",
+      "text": "I do want to emphasize that this distribution is implicit.",
+      "offset": 530.76,
+      "duration": 3.16
+    },
+    {
+      "lang": "en",
+      "text": "You never actually see it directly, you instead infer",
+      "offset": 534.24,
+      "duration": 2.619
+    },
+    {
+      "lang": "en",
+      "text": "what it must be based on the program that you run.",
+      "offset": 536.859,
+      "duration": 2.521
+    },
+    {
+      "lang": "en",
+      "text": "You never see all bit strings coexisting at once in some kind of way.",
+      "offset": 539.92,
+      "duration": 3.62
+    },
+    {
+      "lang": "en",
+      "text": "You just see one of them, drawn at random, according to this distribution.",
+      "offset": 543.82,
+      "duration": 3.82
+    },
+    {
+      "lang": "en",
+      "text": "At a lower layer of abstraction, what I'm describing as reading out from memory looks",
+      "offset": 548.3,
+      "duration": 4.226
+    },
+    {
+      "lang": "en",
+      "text": "like a physical measurement, and the randomness stems from the laws of quantum mechanics.",
+      "offset": 552.526,
+      "duration": 4.474
+    },
+    {
+      "lang": "en",
+      "text": "If you're curious about the physics, that lower layer of abstraction,",
+      "offset": 557,
+      "duration": 3.167
+    },
+    {
+      "lang": "en",
+      "text": "that's exactly what the next video is for.",
+      "offset": 560.167,
+      "duration": 1.973
+    },
+    {
+      "lang": "en",
+      "text": "Up in this layer, you just think about probability",
+      "offset": 562.52,
+      "duration": 2.421
+    },
+    {
+      "lang": "en",
+      "text": "distributions over all possible bit strings.",
+      "offset": 564.941,
+      "duration": 2.179
+    },
+    {
+      "lang": "en",
+      "text": "One more funny rule here, which does bubble up from the underlying quantum mechanics,",
+      "offset": 567.86,
+      "duration": 4.326
+    },
+    {
+      "lang": "en",
+      "text": "is that after you read out from memory, and you see some particular value,",
+      "offset": 572.186,
+      "duration": 3.817
+    },
+    {
+      "lang": "en",
+      "text": "the underlying state of the computer changes such that now all of the",
+      "offset": 576.003,
+      "duration": 3.563
+    },
+    {
+      "lang": "en",
+      "text": "probability is concentrated on whatever value you read out.",
+      "offset": 579.566,
+      "duration": 3.054
+    },
+    {
+      "lang": "en",
+      "text": "So if you kept reading out from memory over and over,",
+      "offset": 582.86,
+      "duration": 2.186
+    },
+    {
+      "lang": "en",
+      "text": "you would just keep seeing that same value.",
+      "offset": 585.046,
+      "duration": 1.814
+    },
+    {
+      "lang": "en",
+      "text": "You might imagine these programs as creating a very delicate and",
+      "offset": 587.42,
+      "duration": 3.07
+    },
+    {
+      "lang": "en",
+      "text": "sensitive probability distribution, where the moment you look at it,",
+      "offset": 590.49,
+      "duration": 3.309
+    },
+    {
+      "lang": "en",
+      "text": "sampling from that distribution, the whole thing collapses to one value.",
+      "offset": 593.799,
+      "duration": 3.501
+    },
+    {
+      "lang": "en",
+      "text": "Now you might be wondering, where does this distribution come from?",
+      "offset": 598.06,
+      "duration": 2.64
+    },
+    {
+      "lang": "en",
+      "text": "This is both the most important and the most confusing part.",
+      "offset": 601.02,
+      "duration": 2.58
+    },
+    {
+      "lang": "en",
+      "text": "You think of the state of the computer as being described by a big vector.",
+      "offset": 603.96,
+      "duration": 4.04
+    },
+    {
+      "lang": "en",
+      "text": "Right now when I say the word vector, you can just think big list of numbers,",
+      "offset": 608.4,
+      "duration": 3.383
+    },
+    {
+      "lang": "en",
+      "text": "although as you'll see later on, it can be helpful to think of this",
+      "offset": 611.783,
+      "duration": 2.988
+    },
+    {
+      "lang": "en",
+      "text": "as a direction in some super high dimensional space.",
+      "offset": 614.771,
+      "duration": 2.329
+    },
+    {
+      "lang": "en",
+      "text": "Each component of this vector corresponds to one of the possible",
+      "offset": 618.42,
+      "duration": 3.566
+    },
+    {
+      "lang": "en",
+      "text": "values you might read out, one of those distinct bit strings.",
+      "offset": 621.986,
+      "duration": 3.454
+    },
+    {
+      "lang": "en",
+      "text": "So in this example where what you read out has 4 bits,",
+      "offset": 625.88,
+      "duration": 2.792
+    },
+    {
+      "lang": "en",
+      "text": "the state vector would have 16 distinct components.",
+      "offset": 628.672,
+      "duration": 2.688
+    },
+    {
+      "lang": "en",
+      "text": "The state vector is not the same thing as the probability distribution",
+      "offset": 631.9,
+      "duration": 3.321
+    },
+    {
+      "lang": "en",
+      "text": "over all possible outputs, but it is very closely related.",
+      "offset": 635.221,
+      "duration": 2.799
+    },
+    {
+      "lang": "en",
+      "text": "The fundamental rule, which I admit is going to look very strange at first,",
+      "offset": 638.38,
+      "duration": 3.875
+    },
+    {
+      "lang": "en",
+      "text": "is that if you take the magnitude of each component in that state vector and you square",
+      "offset": 642.255,
+      "duration": 4.547
+    },
+    {
+      "lang": "en",
+      "text": "it, that gives you the probability of seeing the corresponding output,",
+      "offset": 646.802,
+      "duration": 3.668
+    },
+    {
+      "lang": "en",
+      "text": "the corresponding bit string.",
+      "offset": 650.47,
+      "duration": 1.55
+    },
+    {
+      "lang": "en",
+      "text": "Let me just say up front, a lot of people learning",
+      "offset": 652.5,
+      "duration": 2.019
+    },
+    {
+      "lang": "en",
+      "text": "quantum computing find this state vector a bit weird.",
+      "offset": 654.519,
+      "duration": 2.181
+    },
+    {
+      "lang": "en",
+      "text": "What is it actually, and why are we squaring things to get probability?",
+      "offset": 657.04,
+      "duration": 3.34
+    },
+    {
+      "lang": "en",
+      "text": "As it is, for the sake of simplicity, there's a certain important",
+      "offset": 660.86,
+      "duration": 2.839
+    },
+    {
+      "lang": "en",
+      "text": "detail that I'm neglecting until the end of the video here.",
+      "offset": 663.699,
+      "duration": 2.621
+    },
+    {
+      "lang": "en",
+      "text": "I just want to flag that for most people, this takes a little getting used to.",
+      "offset": 666.56,
+      "duration": 3.14
+    },
+    {
+      "lang": "en",
+      "text": "And to be super clear on what I mean with the fundamental rule here,",
+      "offset": 670.1,
+      "duration": 4.104
+    },
+    {
+      "lang": "en",
+      "text": "let's suppose that after this program processes this vector,",
+      "offset": 674.204,
+      "duration": 3.681
+    },
+    {
+      "lang": "en",
+      "text": "maybe the component of it associated with some specific bit string, like 0011,",
+      "offset": 677.885,
+      "duration": 4.768
+    },
+    {
+      "lang": "en",
+      "text": "happened to be 0.5.",
+      "offset": 682.653,
+      "duration": 1.207
+    },
+    {
+      "lang": "en",
+      "text": "Then when you square that value, 0.5 squared is 0.25,",
+      "offset": 684.18,
+      "duration": 3.724
+    },
+    {
+      "lang": "en",
+      "text": "so the observable implication of this is that when you read out from memory,",
+      "offset": 687.904,
+      "duration": 5.411
+    },
+    {
+      "lang": "en",
+      "text": "you have a 25% chance of seeing that bit string, 0011.",
+      "offset": 693.315,
+      "duration": 3.865
+    },
+    {
+      "lang": "en",
+      "text": "One thing I'll highlight is that it is perfectly valid for the values in this state",
+      "offset": 697.84,
+      "duration": 4.131
+    },
+    {
+      "lang": "en",
+      "text": "vector to be negative, and at first you might think that has no real impact,",
+      "offset": 701.971,
+      "duration": 3.832
+    },
+    {
+      "lang": "en",
+      "text": "since flipping the sign doesn't change the square,",
+      "offset": 705.803,
+      "duration": 2.539
+    },
+    {
+      "lang": "en",
+      "text": "and therefore all the probabilities stay the same.",
+      "offset": 708.342,
+      "duration": 2.538
+    },
+    {
+      "lang": "en",
+      "text": "It is true that the probabilities stay the same,",
+      "offset": 711.34,
+      "duration": 2.282
+    },
+    {
+      "lang": "en",
+      "text": "but we absolutely consider this to be a distinct state, and as you'll see,",
+      "offset": 713.622,
+      "duration": 3.565
+    },
+    {
+      "lang": "en",
+      "text": "the idea of flipping signs plays a very central role in Grover's algorithm.",
+      "offset": 717.187,
+      "duration": 3.613
+    },
+    {
+      "lang": "en",
+      "text": "Here, this example with four qubits has kind of a lot on screen,",
+      "offset": 721.94,
+      "duration": 3.422
+    },
+    {
+      "lang": "en",
+      "text": "with not a lot of visualization to back it up,",
+      "offset": 725.362,
+      "duration": 2.513
+    },
+    {
+      "lang": "en",
+      "text": "so let's scale things down to the smallest possible case where the computer has",
+      "offset": 727.875,
+      "duration": 4.277
+    },
+    {
+      "lang": "en",
+      "text": "just two possible outputs, represented with a 0 and a 1.",
+      "offset": 732.152,
+      "duration": 3.048
+    },
+    {
+      "lang": "en",
+      "text": "In this simplest possible case, the state vector would only be two-dimensional,",
+      "offset": 735.98,
+      "duration": 4.294
+    },
+    {
+      "lang": "en",
+      "text": "so we can actually represent it geometrically as an arrow inside a 2D space.",
+      "offset": 740.274,
+      "duration": 4.186
+    },
+    {
+      "lang": "en",
+      "text": "In this case, the x-coordinate corresponds to the outcome 0,",
+      "offset": 744.86,
+      "duration": 2.969
+    },
+    {
+      "lang": "en",
+      "text": "in the sense that the square of that coordinate tells you the",
+      "offset": 747.829,
+      "duration": 3.069
+    },
+    {
+      "lang": "en",
+      "text": "probability that when you read out from the computer, you would read a 0.",
+      "offset": 750.898,
+      "duration": 3.662
+    },
+    {
+      "lang": "en",
+      "text": "Maybe it's helpful if I add a little bar to show that probability.",
+      "offset": 754.56,
+      "duration": 3.18
+    },
+    {
+      "lang": "en",
+      "text": "You'll notice that as the vector points more in the horizontal direction,",
+      "offset": 758.26,
+      "duration": 3.565
+    },
+    {
+      "lang": "en",
+      "text": "more of that probability mass is concentrated on the 0.",
+      "offset": 761.825,
+      "duration": 2.735
+    },
+    {
+      "lang": "en",
+      "text": "Similarly, the y-coordinate corresponds to a 1 in the same way.",
+      "offset": 765.2,
+      "duration": 3.5
+    },
+    {
+      "lang": "en",
+      "text": "A more vertical state vector means you're more likely",
+      "offset": 768.96,
+      "duration": 2.435
+    },
+    {
+      "lang": "en",
+      "text": "to see a 1 when you read out from the computer.",
+      "offset": 771.395,
+      "duration": 2.205
+    },
+    {
+      "lang": "en",
+      "text": "Now, notice, because the two probabilities should add up to 1, after all,",
+      "offset": 774.22,
+      "duration": 3.863
+    },
+    {
+      "lang": "en",
+      "text": "something is going to happen, x squared plus y squared should equal 1.",
+      "offset": 778.083,
+      "duration": 3.757
+    },
+    {
+      "lang": "en",
+      "text": "Geometrically, this means that the state vector has a length of 1,",
+      "offset": 782.34,
+      "duration": 3.232
+    },
+    {
+      "lang": "en",
+      "text": "so you could think of it as being confined to a unit circle.",
+      "offset": 785.572,
+      "duration": 2.988
+    },
+    {
+      "lang": "en",
+      "text": "More generally, the state vector for a quantum computer will always have a length of 1,",
+      "offset": 790.28,
+      "duration": 3.766
+    },
+    {
+      "lang": "en",
+      "text": "and you can think of it as living on some very high-dimensional unit sphere.",
+      "offset": 794.046,
+      "duration": 3.334
+    },
+    {
+      "lang": "en",
+      "text": "This two-dimensional example has a special name, which I've already mentioned.",
+      "offset": 798.5,
+      "duration": 3
+    },
+    {
+      "lang": "en",
+      "text": "It's called a qubit, short for quantum bit.",
+      "offset": 801.72,
+      "duration": 2.52
+    },
+    {
+      "lang": "en",
+      "text": "The analogy with a classical bit is that when you read out from the computer,",
+      "offset": 804.58,
+      "duration": 3.698
+    },
+    {
+      "lang": "en",
+      "text": "you see either a 0 or a 1, but other than that, it is a completely different animal.",
+      "offset": 808.278,
+      "duration": 4.082
+    },
+    {
+      "lang": "en",
+      "text": "Mathematically, a qubit is a unit vector in a two-dimensional space,",
+      "offset": 812.8,
+      "duration": 3.584
+    },
+    {
+      "lang": "en",
+      "text": "together with a coordinate system where these two perpendicular x and y",
+      "offset": 816.384,
+      "duration": 3.794
+    },
+    {
+      "lang": "en",
+      "text": "directions correspond to the two values that you might read out when you measure.",
+      "offset": 820.178,
+      "duration": 4.322
+    },
+    {
+      "lang": "en",
+      "text": "You should know there is that added bit of complexity that I'm postponing,",
+      "offset": 825.42,
+      "duration": 3.652
+    },
+    {
+      "lang": "en",
+      "text": "but this is 90% of the right idea.",
+      "offset": 829.072,
+      "duration": 1.728
+    },
+    {
+      "lang": "en",
+      "text": "And again, you have this funny rule where when you measure the qubit,",
+      "offset": 831.52,
+      "duration": 3.963
+    },
+    {
+      "lang": "en",
+      "text": "seeing either a 0 or a 1, the vector then collapses to fall onto that corresponding",
+      "offset": 835.483,
+      "duration": 4.825
+    },
+    {
+      "lang": "en",
+      "text": "direction.",
+      "offset": 840.308,
+      "duration": 0.632
+    },
+    {
+      "lang": "en",
+      "text": "So unless something is done to prepare that qubit back into a diagonal direction,",
+      "offset": 841.5,
+      "duration": 4.124
+    },
+    {
+      "lang": "en",
+      "text": "any follow-on observations that you make are always going to show the same outcome.",
+      "offset": 845.624,
+      "duration": 4.276
+    },
+    {
+      "lang": "en",
+      "text": "It's very possible that at this point you're thinking something like, okay, grant,",
+      "offset": 850.82,
+      "duration": 3.818
+    },
+    {
+      "lang": "en",
+      "text": "this is a super bizarre set of premises you're asking me to accept, and if so,",
+      "offset": 854.638,
+      "duration": 3.677
+    },
+    {
+      "lang": "en",
+      "text": "you are not alone.",
+      "offset": 858.315,
+      "duration": 0.885
+    },
+    {
+      "lang": "en",
+      "text": "What I'm describing, as you can no doubt probably tell,",
+      "offset": 859.4,
+      "duration": 2.428
+    },
+    {
+      "lang": "en",
+      "text": "are basically the postulates of quantum mechanics.",
+      "offset": 861.828,
+      "duration": 2.252
+    },
+    {
+      "lang": "en",
+      "text": "There are many systems throughout physics, like the spin of an electron or the",
+      "offset": 864.08,
+      "duration": 4.228
+    },
+    {
+      "lang": "en",
+      "text": "polarization of a photon, that have this property,",
+      "offset": 868.308,
+      "duration": 2.764
+    },
+    {
+      "lang": "en",
+      "text": "where the outcome of a measurement is random,",
+      "offset": 871.072,
+      "duration": 2.494
+    },
+    {
+      "lang": "en",
+      "text": "and our best laws of physics have us model the state of that system using a vector,",
+      "offset": 873.566,
+      "duration": 4.553
+    },
+    {
+      "lang": "en",
+      "text": "just like the one I'm describing here, where squaring the magnitudes of that vector's",
+      "offset": 878.119,
+      "duration": 4.661
+    },
+    {
+      "lang": "en",
+      "text": "components give you the probabilities for seeing various possible outcomes.",
+      "offset": 882.78,
+      "duration": 4.12
+    },
+    {
+      "lang": "en",
+      "text": "That actually has a special name, it's called the Born rule.",
+      "offset": 887.24,
+      "duration": 2.44
+    },
+    {
+      "lang": "en",
+      "text": "This idea of a qubit is basically meant to be an abstraction over many possible",
+      "offset": 889.68,
+      "duration": 4.431
+    },
+    {
+      "lang": "en",
+      "text": "systems like this, in just the same way that a bit is meant to be an abstraction",
+      "offset": 894.111,
+      "duration": 4.543
+    },
+    {
+      "lang": "en",
+      "text": "over many possible physical systems that can toggle one of two directions.",
+      "offset": 898.654,
+      "duration": 4.206
+    },
+    {
+      "lang": "en",
+      "text": "The symbol I've been showing, by the way, is used throughout any subject with",
+      "offset": 903.96,
+      "duration": 4.016
+    },
+    {
+      "lang": "en",
+      "text": "the word quantum in its name to refer to a unit vector in this state space.",
+      "offset": 907.976,
+      "duration": 3.964
+    },
+    {
+      "lang": "en",
+      "text": "What you put inside that ket is often going to give some",
+      "offset": 912.52,
+      "duration": 2.731
+    },
+    {
+      "lang": "en",
+      "text": "kind of readable meaning for what that vector represents.",
+      "offset": 915.251,
+      "duration": 2.829
+    },
+    {
+      "lang": "en",
+      "text": "So in our example with a qubit, the unit vector to the right is often",
+      "offset": 918.08,
+      "duration": 3.548
+    },
+    {
+      "lang": "en",
+      "text": "shown with a zero inside the ket, because if that's the state vector,",
+      "offset": 921.628,
+      "duration": 3.599
+    },
+    {
+      "lang": "en",
+      "text": "it means you deterministically read out a zero from the computer.",
+      "offset": 925.227,
+      "duration": 3.393
+    },
+    {
+      "lang": "en",
+      "text": "Likewise, the unit vector in the vertical direction is",
+      "offset": 929.06,
+      "duration": 2.629
+    },
+    {
+      "lang": "en",
+      "text": "represented with a ket that has a one inside of it.",
+      "offset": 931.689,
+      "duration": 2.531
+    },
+    {
+      "lang": "en",
+      "text": "And if you go on and read more about this, something that you'll very commonly",
+      "offset": 934.58,
+      "duration": 3.669
+    },
+    {
+      "lang": "en",
+      "text": "see is that instead of writing down a general qubit with a column vector,",
+      "offset": 938.249,
+      "duration": 3.481
+    },
+    {
+      "lang": "en",
+      "text": "the way I've been showing you, a lot of people like to write it as an explicit",
+      "offset": 941.73,
+      "duration": 3.716
+    },
+    {
+      "lang": "en",
+      "text": "weighted sum of these two unit vectors in the two coordinate directions.",
+      "offset": 945.446,
+      "duration": 3.434
+    },
+    {
+      "lang": "en",
+      "text": "That's a very physicist kind of convention.",
+      "offset": 949.3,
+      "duration": 1.86
+    },
+    {
+      "lang": "en",
+      "text": "Now classical computing has this idea of logic gates,",
+      "offset": 952.46,
+      "duration": 2.808
+    },
+    {
+      "lang": "en",
+      "text": "certain basic operations like AND, OR, and NOT that you can use to",
+      "offset": 955.268,
+      "duration": 3.55
+    },
+    {
+      "lang": "en",
+      "text": "process bits and that you can string together to create arbitrarily",
+      "offset": 958.818,
+      "duration": 3.603
+    },
+    {
+      "lang": "en",
+      "text": "complicated functions.",
+      "offset": 962.421,
+      "duration": 1.219
+    },
+    {
+      "lang": "en",
+      "text": "Analogously we have what are called quantum gates,",
+      "offset": 964.32,
+      "duration": 2.859
+    },
+    {
+      "lang": "en",
+      "text": "which are certain fundamental operations that you can apply to a qubit or to",
+      "offset": 967.179,
+      "duration": 4.403
+    },
+    {
+      "lang": "en",
+      "text": "a system of multiple qubits.",
+      "offset": 971.582,
+      "duration": 1.658
+    },
+    {
+      "lang": "en",
+      "text": "And they always look like somehow flipping or rotating the state vector.",
+      "offset": 973.24,
+      "duration": 3.86
+    },
+    {
+      "lang": "en",
+      "text": "Now I'm not going to delve too deeply into the details of all the different quantum",
+      "offset": 977.58,
+      "duration": 3.262
+    },
+    {
+      "lang": "en",
+      "text": "gates, but if you are curious, I'll show you an example of what one of them looks like.",
+      "offset": 980.842,
+      "duration": 3.458
+    },
+    {
+      "lang": "en",
+      "text": "Here's a very standard one known as a Hadamard gate.",
+      "offset": 984.62,
+      "duration": 2.66
+    },
+    {
+      "lang": "en",
+      "text": "What it does is it maps the unit vector in that horizontal zero direction",
+      "offset": 987.68,
+      "duration": 4.159
+    },
+    {
+      "lang": "en",
+      "text": "into the diagonal northeast direction, and it maps the unit vector in",
+      "offset": 991.839,
+      "duration": 3.988
+    },
+    {
+      "lang": "en",
+      "text": "the vertical one direction into that kind of diagonal southeast direction.",
+      "offset": 995.827,
+      "duration": 4.273
+    },
+    {
+      "lang": "en",
+      "text": "You would very commonly use this to take a deterministic state,",
+      "offset": 1000.42,
+      "duration": 3.146
+    },
+    {
+      "lang": "en",
+      "text": "something that's either a zero or a one, and turn it into something with a 50-50 equal",
+      "offset": 1003.566,
+      "duration": 4.346
+    },
+    {
+      "lang": "en",
+      "text": "balance, or vice versa, too.",
+      "offset": 1007.912,
+      "duration": 1.448
+    },
+    {
+      "lang": "en",
+      "text": "This is just one example, but there are a number of others forming the building blocks",
+      "offset": 1009.8,
+      "duration": 4.402
+    },
+    {
+      "lang": "en",
+      "text": "for quantum computing, and the art of writing an algorithm in this setting is to somehow",
+      "offset": 1014.202,
+      "duration": 4.555
+    },
+    {
+      "lang": "en",
+      "text": "compose a bunch of different quantum gates together that will progressively manipulate",
+      "offset": 1018.757,
+      "duration": 4.452
+    },
+    {
+      "lang": "en",
+      "text": "and flip and massage this vector until it points almost entirely in one particular",
+      "offset": 1023.209,
+      "duration": 4.248
+    },
+    {
+      "lang": "en",
+      "text": "coordinate direction, presumably one that actually answers a question you care about.",
+      "offset": 1027.457,
+      "duration": 4.402
+    },
+    {
+      "lang": "en",
+      "text": "Now down with the simplest example of a qubit,",
+      "offset": 1032.92,
+      "duration": 2.043
+    },
+    {
+      "lang": "en",
+      "text": "you only have two coordinate directions to work with,",
+      "offset": 1034.963,
+      "duration": 2.399
+    },
+    {
+      "lang": "en",
+      "text": "so you would be constrained to answer simple yes-no questions.",
+      "offset": 1037.362,
+      "duration": 2.798
+    },
+    {
+      "lang": "en",
+      "text": "And although I can't illustrate a geometric vector with more than three dimensions,",
+      "offset": 1040.5,
+      "duration": 4.802
+    },
+    {
+      "lang": "en",
+      "text": "in principle, a system with k qubits is going to have 2 to the k",
+      "offset": 1045.302,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "distinct coordinate directions, one for each bit string.",
+      "offset": 1049.062,
+      "duration": 3.298
+    },
+    {
+      "lang": "en",
+      "text": "So if you can somehow manage to coerce this vector to point",
+      "offset": 1052.7,
+      "duration": 3.102
+    },
+    {
+      "lang": "en",
+      "text": "along just one of those directions, you could potentially",
+      "offset": 1055.802,
+      "duration": 3.048
+    },
+    {
+      "lang": "en",
+      "text": "answer some more interesting question, carrying more information.",
+      "offset": 1058.85,
+      "duration": 3.47
+    },
+    {
+      "lang": "en",
+      "text": "Maybe one of them represents a prime divisor in a very large",
+      "offset": 1062.8,
+      "duration": 2.724
+    },
+    {
+      "lang": "en",
+      "text": "number you're trying to factor, or maybe one of them represents",
+      "offset": 1065.524,
+      "duration": 2.906
+    },
+    {
+      "lang": "en",
+      "text": "that secret key value from the opening puzzle of this video.",
+      "offset": 1068.43,
+      "duration": 2.77
+    },
+    {
+      "lang": "en",
+      "text": "Even though the potential power of quantum computers has a long tradition now of",
+      "offset": 1071.66,
+      "duration": 4.245
+    },
+    {
+      "lang": "en",
+      "text": "being greatly exaggerated, insofar as there really is potentially more power there,",
+      "offset": 1075.905,
+      "duration": 4.457
+    },
+    {
+      "lang": "en",
+      "text": "one of the key reasons is that the size of the state vector grows exponentially.",
+      "offset": 1080.362,
+      "duration": 4.298
+    },
+    {
+      "lang": "en",
+      "text": "As few as 100 qubits would already imply a mind-bogglingly massive state vector.",
+      "offset": 1085.02,
+      "duration": 5.62
+    },
+    {
+      "lang": "en",
+      "text": "But the catch is that you have no direct access to the values inside this vector.",
+      "offset": 1091.14,
+      "duration": 4.12
+    },
+    {
+      "lang": "en",
+      "text": "It's effectively invisible to you.",
+      "offset": 1095.6,
+      "duration": 1.54
+    },
+    {
+      "lang": "en",
+      "text": "The only way it can be useful is if you have a way to manipulate it in such a way that",
+      "offset": 1097.46,
+      "duration": 4.576
+    },
+    {
+      "lang": "en",
+      "text": "all of the probability, or at least most of it,",
+      "offset": 1102.036,
+      "duration": 2.553
+    },
+    {
+      "lang": "en",
+      "text": "gets concentrated on one single component, and if that component corresponds to an",
+      "offset": 1104.589,
+      "duration": 4.416
+    },
+    {
+      "lang": "en",
+      "text": "answer to a question that you care about.",
+      "offset": 1109.005,
+      "duration": 2.235
+    },
+    {
+      "lang": "en",
+      "text": "Grover's algorithm offers us a really great example to actually see how this looks,",
+      "offset": 1111.76,
+      "duration": 4.075
+    },
+    {
+      "lang": "en",
+      "text": "and it's high time that we get there.",
+      "offset": 1115.835,
+      "duration": 1.865
+    },
+    {
+      "lang": "en",
+      "text": "Let me offer you a very high-level preview for how it looks.",
+      "offset": 1121.3,
+      "duration": 2.78
+    },
+    {
+      "lang": "en",
+      "text": "I promise I will explain all of this in more detail, but here's the bird's eye view.",
+      "offset": 1124.36,
+      "duration": 3.8
+    },
+    {
+      "lang": "en",
+      "text": "It initializes this state vector in such a way that there's",
+      "offset": 1128.64,
+      "duration": 3.316
+    },
+    {
+      "lang": "en",
+      "text": "an equal balance of probability across all possible outcomes.",
+      "offset": 1131.956,
+      "duration": 3.484
+    },
+    {
+      "lang": "en",
+      "text": "One of those outcomes is going to be the secret key that you're searching for,",
+      "offset": 1135.88,
+      "duration": 3.82
+    },
+    {
+      "lang": "en",
+      "text": "and the tool that you'll have available, which I promise to motivate later,",
+      "offset": 1139.7,
+      "duration": 3.722
+    },
+    {
+      "lang": "en",
+      "text": "is to flip the sign of the state vector at that coordinate.",
+      "offset": 1143.422,
+      "duration": 2.938
+    },
+    {
+      "lang": "en",
+      "text": "This doesn't immediately affect the probabilities,",
+      "offset": 1147.1,
+      "duration": 2.498
+    },
+    {
+      "lang": "en",
+      "text": "but when you interleave this with a certain other operation,",
+      "offset": 1149.598,
+      "duration": 3.047
+    },
+    {
+      "lang": "en",
+      "text": "and you kind of go back and forth between the two of these,",
+      "offset": 1152.645,
+      "duration": 2.997
+    },
+    {
+      "lang": "en",
+      "text": "what happens is that the probability mass slowly starts to get concentrated over that",
+      "offset": 1155.642,
+      "duration": 4.296
+    },
+    {
+      "lang": "en",
+      "text": "secret key value, and at a certain point, almost all of it will be there,",
+      "offset": 1159.938,
+      "duration": 3.697
+    },
+    {
+      "lang": "en",
+      "text": "so when you read out from the computer, you will almost certainly see the secret key",
+      "offset": 1163.635,
+      "duration": 4.246
+    },
+    {
+      "lang": "en",
+      "text": "you're looking for.",
+      "offset": 1167.881,
+      "duration": 0.999
+    },
+    {
+      "lang": "en",
+      "text": "Okay, so that's the high level, but let's unpack it in some more detail.",
+      "offset": 1169.76,
+      "duration": 3.08
+    },
+    {
+      "lang": "en",
+      "text": "The first thing to address is this idea of flipping the",
+      "offset": 1173.18,
+      "duration": 2.785
+    },
+    {
+      "lang": "en",
+      "text": "sign of the component associated with the secret key.",
+      "offset": 1175.965,
+      "duration": 2.735
+    },
+    {
+      "lang": "en",
+      "text": "That might feel a little bit weird.",
+      "offset": 1179.08,
+      "duration": 1.22
+    },
+    {
+      "lang": "en",
+      "text": "Why would we assume that that operation is available to us?",
+      "offset": 1180.58,
+      "duration": 2.68
+    },
+    {
+      "lang": "en",
+      "text": "Backing up, remember that Grover's algorithm is meant to apply to any problem where you",
+      "offset": 1183.72,
+      "duration": 4.586
+    },
+    {
+      "lang": "en",
+      "text": "can verify a solution quickly, even if finding a solution in the first place is hard.",
+      "offset": 1188.306,
+      "duration": 4.534
+    },
+    {
+      "lang": "en",
+      "text": "Examples here would include solving Sudokus, finding a valid coloring of",
+      "offset": 1193.24,
+      "duration": 3.723
+    },
+    {
+      "lang": "en",
+      "text": "a map where no two border regions share a color,",
+      "offset": 1196.963,
+      "duration": 2.534
+    },
+    {
+      "lang": "en",
+      "text": "or countless tasks throughout cryptography, where security often depends",
+      "offset": 1199.497,
+      "duration": 3.775
+    },
+    {
+      "lang": "en",
+      "text": "on a certain value being hard to find, even though for pragmatism it has",
+      "offset": 1203.272,
+      "duration": 3.775
+    },
+    {
+      "lang": "en",
+      "text": "to be easily verifiable.",
+      "offset": 1207.047,
+      "duration": 1.293
+    },
+    {
+      "lang": "en",
+      "text": "We began this video with a generic stand-in for all of these problems,",
+      "offset": 1208.8,
+      "duration": 3.969
+    },
+    {
+      "lang": "en",
+      "text": "where you imagine some function that takes in any number from",
+      "offset": 1212.769,
+      "duration": 3.516
+    },
+    {
+      "lang": "en",
+      "text": "0 to n-1 and returns true on one and only one of those.",
+      "offset": 1216.285,
+      "duration": 3.175
+    },
+    {
+      "lang": "en",
+      "text": "In principle, we'll think of such a function as",
+      "offset": 1219.68,
+      "duration": 2.162
+    },
+    {
+      "lang": "en",
+      "text": "being built out of a bunch of classical logic gates.",
+      "offset": 1221.842,
+      "duration": 2.438
+    },
+    {
+      "lang": "en",
+      "text": "Those logic gates act on some binary representation of the inputs,",
+      "offset": 1224.58,
+      "duration": 3.545
+    },
+    {
+      "lang": "en",
+      "text": "and the final output is either 0 or 1.",
+      "offset": 1228.125,
+      "duration": 2.095
+    },
+    {
+      "lang": "en",
+      "text": "Now here's the key point.",
+      "offset": 1230.56,
+      "duration": 0.94
+    },
+    {
+      "lang": "en",
+      "text": "Grover knew that given any ensemble of logic gates like this,",
+      "offset": 1231.84,
+      "duration": 3.504
+    },
+    {
+      "lang": "en",
+      "text": "you can translate it into a system of quantum gates so that if in the classical case the",
+      "offset": 1235.344,
+      "duration": 5.114
+    },
+    {
+      "lang": "en",
+      "text": "function takes in some binary input and returns a 1, for true,",
+      "offset": 1240.458,
+      "duration": 3.619
+    },
+    {
+      "lang": "en",
+      "text": "then in the quantum case the effect of all of these gates is to flip the sign of that",
+      "offset": 1244.077,
+      "duration": 4.941
+    },
+    {
+      "lang": "en",
+      "text": "state, the state associated with the same bit string.",
+      "offset": 1249.018,
+      "duration": 3.102
+    },
+    {
+      "lang": "en",
+      "text": "Similarly, if in the classical case the function maps some binary input to 0,",
+      "offset": 1252.12,
+      "duration": 4.555
+    },
+    {
+      "lang": "en",
+      "text": "for false, then in this quantum translation the effect on the",
+      "offset": 1256.675,
+      "duration": 3.669
+    },
+    {
+      "lang": "en",
+      "text": "corresponding state would be to leave it unchanged.",
+      "offset": 1260.344,
+      "duration": 3.076
+    },
+    {
+      "lang": "en",
+      "text": "More generally, because all of these quantum operations are linear,",
+      "offset": 1263.94,
+      "duration": 3.43
+    },
+    {
+      "lang": "en",
+      "text": "if the state is a combination of multiple pure coordinate directions,",
+      "offset": 1267.37,
+      "duration": 3.584
+    },
+    {
+      "lang": "en",
+      "text": "then the effect is to simply flip the sign for the component associated with whatever",
+      "offset": 1270.954,
+      "duration": 4.402
+    },
+    {
+      "lang": "en",
+      "text": "bit string triggers that classical function.",
+      "offset": 1275.356,
+      "duration": 2.304
+    },
+    {
+      "lang": "en",
+      "text": "It means that if you have any NP problem, anything where you can quickly verify",
+      "offset": 1278.06,
+      "duration": 4.47
+    },
+    {
+      "lang": "en",
+      "text": "solutions, you're able to create an operation on a quantum computer that flips the",
+      "offset": 1282.53,
+      "duration": 4.697
+    },
+    {
+      "lang": "en",
+      "text": "sign of a state vector at the position corresponding to a solution of that problem.",
+      "offset": 1287.227,
+      "duration": 4.753
+    },
+    {
+      "lang": "en",
+      "text": "This might feel kind of useless at first.",
+      "offset": 1292.56,
+      "duration": 1.76
+    },
+    {
+      "lang": "en",
+      "text": "After all, flipping signs doesn't affect the probabilities.",
+      "offset": 1294.6,
+      "duration": 2.72
+    },
+    {
+      "lang": "en",
+      "text": "But Grover realized that this could be used in conjunction with",
+      "offset": 1297.8,
+      "duration": 3.572
+    },
+    {
+      "lang": "en",
+      "text": "another step that slowly amplifies the probability of that key value.",
+      "offset": 1301.372,
+      "duration": 3.968
+    },
+    {
+      "lang": "en",
+      "text": "There's actually a really nice way to visualize his algorithm.",
+      "offset": 1305.9,
+      "duration": 2.48
+    },
+    {
+      "lang": "en",
+      "text": "To set it up, let's imagine that our state vector has only three dimensions.",
+      "offset": 1308.74,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "Obviously in principle it would be way bigger, but this lets me draw the first picture.",
+      "offset": 1312.6,
+      "duration": 3.66
+    },
+    {
+      "lang": "en",
+      "text": "The three directions here would correspond to the values 0,",
+      "offset": 1316.62,
+      "duration": 2.898
+    },
+    {
+      "lang": "en",
+      "text": "1, and 2, and the whole problem statement here is that one",
+      "offset": 1319.518,
+      "duration": 2.898
+    },
+    {
+      "lang": "en",
+      "text": "of those values would be a secret key that we're searching for.",
+      "offset": 1322.416,
+      "duration": 3.144
+    },
+    {
+      "lang": "en",
+      "text": "Many different quantum algorithms will begin by putting that state vector into",
+      "offset": 1326.1,
+      "duration": 3.592
+    },
+    {
+      "lang": "en",
+      "text": "a kind of equal balance, where all of the components have the same value.",
+      "offset": 1329.692,
+      "duration": 3.408
+    },
+    {
+      "lang": "en",
+      "text": "I want to give that equal balance vector a name.",
+      "offset": 1333.7,
+      "duration": 2.4
+    },
+    {
+      "lang": "en",
+      "text": "Let's call it B.",
+      "offset": 1336.36,
+      "duration": 0.64
+    },
+    {
+      "lang": "en",
+      "text": "I hope you don't object too much to me simply declaring that this is possible",
+      "offset": 1337.42,
+      "duration": 3.09
+    },
+    {
+      "lang": "en",
+      "text": "without dwelling on the underlying quantum gates that make it happen.",
+      "offset": 1340.51,
+      "duration": 2.81
+    },
+    {
+      "lang": "en",
+      "text": "In this case it essentially looks like a big pile of Hadamard gates,",
+      "offset": 1343.68,
+      "duration": 3.13
+    },
+    {
+      "lang": "en",
+      "text": "but all you need to know is that this equal balance direction is abundantly accessible.",
+      "offset": 1346.81,
+      "duration": 4.05
+    },
+    {
+      "lang": "en",
+      "text": "So starting from here, the goal is to somehow coerce this",
+      "offset": 1351.62,
+      "duration": 3.24
+    },
+    {
+      "lang": "en",
+      "text": "vector to instead point up in that secret key direction.",
+      "offset": 1354.86,
+      "duration": 3.24
+    },
+    {
+      "lang": "en",
+      "text": "And what's very helpful for the visualization purposes here",
+      "offset": 1358.54,
+      "duration": 3.404
+    },
+    {
+      "lang": "en",
+      "text": "is that throughout Grover's algorithm, the vector only ever",
+      "offset": 1361.944,
+      "duration": 3.461
+    },
+    {
+      "lang": "en",
+      "text": "moves inside the 2D plane that's spanned by these two vectors.",
+      "offset": 1365.405,
+      "duration": 3.635
+    },
+    {
+      "lang": "en",
+      "text": "So what I'm going to do is draw everything on that two-dimensional slice.",
+      "offset": 1369.52,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "And this is going to give us a faithful representation even when",
+      "offset": 1373.32,
+      "duration": 3.055
+    },
+    {
+      "lang": "en",
+      "text": "the full dimension is way too big for me to draw literally.",
+      "offset": 1376.375,
+      "duration": 2.865
+    },
+    {
+      "lang": "en",
+      "text": "The convention I'll use here in drawing that slice will be to put the secret key",
+      "offset": 1379.64,
+      "duration": 4.173
+    },
+    {
+      "lang": "en",
+      "text": "direction, whatever it is, along this y-axis,",
+      "offset": 1383.813,
+      "duration": 2.399
+    },
+    {
+      "lang": "en",
+      "text": "and then the x-axis is going to represent something that's an equal balance of all",
+      "offset": 1386.212,
+      "duration": 4.329
+    },
+    {
+      "lang": "en",
+      "text": "of the other states, the non-key states.",
+      "offset": 1390.541,
+      "duration": 2.139
+    },
+    {
+      "lang": "en",
+      "text": "So in our very small three-dimensional example,",
+      "offset": 1393,
+      "duration": 2.57
+    },
+    {
+      "lang": "en",
+      "text": "if that secret key was the 2 state up in the z direction,",
+      "offset": 1395.57,
+      "duration": 3.171
+    },
+    {
+      "lang": "en",
+      "text": "that would mean this perpendicular is an equal balance of 0 and 1,",
+      "offset": 1398.741,
+      "duration": 3.663
+    },
+    {
+      "lang": "en",
+      "text": "which sits on the xy plane perpendicular to that z-axis.",
+      "offset": 1402.404,
+      "duration": 3.116
+    },
+    {
+      "lang": "en",
+      "text": "Notice the fully equally balanced state, b, has some component in that secret key",
+      "offset": 1406.18,
+      "duration": 4.665
+    },
+    {
+      "lang": "en",
+      "text": "direction, since by its definition it has a little bit of that secret key within it.",
+      "offset": 1410.845,
+      "duration": 4.895
+    },
+    {
+      "lang": "en",
+      "text": "Instead of drawing this slice from three dimensions,",
+      "offset": 1415.74,
+      "duration": 2.442
+    },
+    {
+      "lang": "en",
+      "text": "here's what it would look like if it was taken from some larger number of dimensions.",
+      "offset": 1418.182,
+      "duration": 4.038
+    },
+    {
+      "lang": "en",
+      "text": "It's almost identical, but the main difference is that that equal balance state",
+      "offset": 1422.72,
+      "duration": 4.151
+    },
+    {
+      "lang": "en",
+      "text": "vector gets closer and closer to being perpendicular to the secret key direction.",
+      "offset": 1426.871,
+      "duration": 4.309
+    },
+    {
+      "lang": "en",
+      "text": "Crucially though, this angle is never quite 90 degrees,",
+      "offset": 1431.6,
+      "duration": 2.938
+    },
+    {
+      "lang": "en",
+      "text": "since that balance state always has a little bit of that secret key value inside of it.",
+      "offset": 1434.538,
+      "duration": 4.702
+    },
+    {
+      "lang": "en",
+      "text": "In fact, calculating this angle is going to be essential",
+      "offset": 1439.64,
+      "duration": 2.764
+    },
+    {
+      "lang": "en",
+      "text": "for understanding the runtime of Grover's algorithm.",
+      "offset": 1442.404,
+      "duration": 2.616
+    },
+    {
+      "lang": "en",
+      "text": "This is the main bit of math you actually have to do for it.",
+      "offset": 1445.02,
+      "duration": 2.68
+    },
+    {
+      "lang": "en",
+      "text": "You can find this angle by taking a dot product",
+      "offset": 1447.98,
+      "duration": 2.203
+    },
+    {
+      "lang": "en",
+      "text": "between the balance state and the key direction.",
+      "offset": 1450.183,
+      "duration": 2.297
+    },
+    {
+      "lang": "en",
+      "text": "The components of that balance state vector are all going to look like",
+      "offset": 1453.06,
+      "duration": 3.5
+    },
+    {
+      "lang": "en",
+      "text": "1 divided by the square root of n, since remember it needs to be true",
+      "offset": 1456.56,
+      "duration": 3.5
+    },
+    {
+      "lang": "en",
+      "text": "that when you add the squares of all of these, it would give you 1.",
+      "offset": 1460.06,
+      "duration": 3.4
+    },
+    {
+      "lang": "en",
+      "text": "Since the key vector is 0 almost everywhere but 1 in one of the components,",
+      "offset": 1464.08,
+      "duration": 3.885
+    },
+    {
+      "lang": "en",
+      "text": "it means that the dot product between these two is 1 divided by the square root of n.",
+      "offset": 1467.965,
+      "duration": 4.455
+    },
+    {
+      "lang": "en",
+      "text": "If you know a little about dot products, you'll know that this",
+      "offset": 1472.42,
+      "duration": 3.228
+    },
+    {
+      "lang": "en",
+      "text": "is also the cosine of the angle between those two vectors.",
+      "offset": 1475.648,
+      "duration": 3.072
+    },
+    {
+      "lang": "en",
+      "text": "I'm going to translate this fact a little to make it more useful for our purposes later.",
+      "offset": 1479.44,
+      "duration": 3.16
+    },
+    {
+      "lang": "en",
+      "text": "This is the same as saying the sine of the complementary angle down over here,",
+      "offset": 1483.1,
+      "duration": 3.929
+    },
+    {
+      "lang": "en",
+      "text": "which I'll call theta, is 1 over the square root of n.",
+      "offset": 1487.029,
+      "duration": 2.771
+    },
+    {
+      "lang": "en",
+      "text": "For really small angles, the sine of theta and theta are approximately the same,",
+      "offset": 1490.42,
+      "duration": 4.132
+    },
+    {
+      "lang": "en",
+      "text": "so if n is very large, we can safely say that this angle is about 1",
+      "offset": 1494.552,
+      "duration": 3.512
+    },
+    {
+      "lang": "en",
+      "text": "divided by the square root of n, as long as it's measured in radians.",
+      "offset": 1498.064,
+      "duration": 3.616
+    },
+    {
+      "lang": "en",
+      "text": "This value for theta is ultimately where the square",
+      "offset": 1502.2,
+      "duration": 2.474
+    },
+    {
+      "lang": "en",
+      "text": "root in the runtime is going to come from.",
+      "offset": 1504.674,
+      "duration": 2.086
+    },
+    {
+      "lang": "en",
+      "text": "So let's remember it.",
+      "offset": 1507.22,
+      "duration": 1
+    },
+    {
+      "lang": "en",
+      "text": "I'll throw it up in the corner here.",
+      "offset": 1508.32,
+      "duration": 1.38
+    },
+    {
+      "lang": "en",
+      "text": "Okay, having spent a while setting up the actual picture,",
+      "offset": 1510.44,
+      "duration": 2.219
+    },
+    {
+      "lang": "en",
+      "text": "let me show you the procedure here.",
+      "offset": 1512.659,
+      "duration": 1.401
+    },
+    {
+      "lang": "en",
+      "text": "It's surprisingly simple.",
+      "offset": 1514.18,
+      "duration": 1.2
+    },
+    {
+      "lang": "en",
+      "text": "Remember that key operation we were looking at earlier?",
+      "offset": 1515.76,
+      "duration": 2.38
+    },
+    {
+      "lang": "en",
+      "text": "The one where you take the verification function for whatever NP problem",
+      "offset": 1518.46,
+      "duration": 3.548
+    },
+    {
+      "lang": "en",
+      "text": "you're trying to solve, and you translate it into some quantum gates,",
+      "offset": 1522.008,
+      "duration": 3.45
+    },
+    {
+      "lang": "en",
+      "text": "and the effect is to flip the sine associated with that key value?",
+      "offset": 1525.458,
+      "duration": 3.302
+    },
+    {
+      "lang": "en",
+      "text": "Well, what does that look like inside our diagram?",
+      "offset": 1529.18,
+      "duration": 2.34
+    },
+    {
+      "lang": "en",
+      "text": "In this diagram, if you flip the sine for the component associated with the key value,",
+      "offset": 1532.24,
+      "duration": 4.973
+    },
+    {
+      "lang": "en",
+      "text": "but all other components stay the same, what it looks like is flipping about the x-axis.",
+      "offset": 1537.213,
+      "duration": 5.147
+    },
+    {
+      "lang": "en",
+      "text": "And the final ingredient you need to know is that it is also possible",
+      "offset": 1544.62,
+      "duration": 3.659
+    },
+    {
+      "lang": "en",
+      "text": "to flip this state vector around this equal balance direction.",
+      "offset": 1548.279,
+      "duration": 3.341
+    },
+    {
+      "lang": "en",
+      "text": "I realize it might be a little unsatisfying for me to keep declaring that certain",
+      "offset": 1552.4,
+      "duration": 4.035
+    },
+    {
+      "lang": "en",
+      "text": "operations are available, but one thing to know is that in general,",
+      "offset": 1556.435,
+      "duration": 3.387
+    },
+    {
+      "lang": "en",
+      "text": "if you can clearly describe and access one of these state vectors,",
+      "offset": 1559.822,
+      "duration": 3.338
+    },
+    {
+      "lang": "en",
+      "text": "it's also perfectly possible to reflect around it.",
+      "offset": 1563.16,
+      "duration": 2.54
+    },
+    {
+      "lang": "en",
+      "text": "There are some quantum gates, they let you flip around this balance direction,",
+      "offset": 1566.1,
+      "duration": 3.266
+    },
+    {
+      "lang": "en",
+      "text": "but trust me that dwelling on the details of how those look isn't really",
+      "offset": 1569.366,
+      "duration": 3.056
+    },
+    {
+      "lang": "en",
+      "text": "going to add much clarity or intuition to the whole algorithm.",
+      "offset": 1572.422,
+      "duration": 2.638
+    },
+    {
+      "lang": "en",
+      "text": "The insight really just comes from geometry.",
+      "offset": 1575.46,
+      "duration": 1.68
+    },
+    {
+      "lang": "en",
+      "text": "Notice how if you first flip around the x-axis,",
+      "offset": 1577.54,
+      "duration": 2.524
+    },
+    {
+      "lang": "en",
+      "text": "and then flip around this off-diagonal direction,",
+      "offset": 1580.064,
+      "duration": 2.686
+    },
+    {
+      "lang": "en",
+      "text": "the state now points slightly more in the vertical direction.",
+      "offset": 1582.75,
+      "duration": 3.33
+    },
+    {
+      "lang": "en",
+      "text": "If you were to read out from memory now, you would have a slightly",
+      "offset": 1586.54,
+      "duration": 3.15
+    },
+    {
+      "lang": "en",
+      "text": "larger chance of seeing the secret key value than all the others.",
+      "offset": 1589.69,
+      "duration": 3.15
+    },
+    {
+      "lang": "en",
+      "text": "Here, maybe it's helpful if I show the actual coordinates,",
+      "offset": 1593.38,
+      "duration": 2.681
+    },
+    {
+      "lang": "en",
+      "text": "in this case where n equals 100, along with some probability bars based on the",
+      "offset": 1596.061,
+      "duration": 3.652
+    },
+    {
+      "lang": "en",
+      "text": "squares of those coordinates.",
+      "offset": 1599.713,
+      "duration": 1.387
+    },
+    {
+      "lang": "en",
+      "text": "Notice how each time I flip around the x-axis,",
+      "offset": 1601.54,
+      "duration": 2.455
+    },
+    {
+      "lang": "en",
+      "text": "and then flip around this off-diagonal axis, the component associated with that",
+      "offset": 1603.995,
+      "duration": 4.27
+    },
+    {
+      "lang": "en",
+      "text": "secret key gets a little bit larger.",
+      "offset": 1608.265,
+      "duration": 1.975
+    },
+    {
+      "lang": "en",
+      "text": "So Grover's algorithm is remarkably simple.",
+      "offset": 1610.24,
+      "duration": 2.94
+    },
+    {
+      "lang": "en",
+      "text": "All you do is repeat this over and over until the vector",
+      "offset": 1613.54,
+      "duration": 2.902
+    },
+    {
+      "lang": "en",
+      "text": "points as close as it can get to the secret key direction.",
+      "offset": 1616.442,
+      "duration": 3.058
+    },
+    {
+      "lang": "en",
+      "text": "The final bit of reasoning you have to do is to",
+      "offset": 1620,
+      "duration": 1.969
+    },
+    {
+      "lang": "en",
+      "text": "figure out how many repetitions that should be.",
+      "offset": 1621.969,
+      "duration": 2.011
+    },
+    {
+      "lang": "en",
+      "text": "A wonderful fact from geometry is that if you successively flip about two",
+      "offset": 1624.66,
+      "duration": 4.321
+    },
+    {
+      "lang": "en",
+      "text": "different lines like this, the overall effect is the same as a rotation,",
+      "offset": 1628.981,
+      "duration": 4.321
+    },
+    {
+      "lang": "en",
+      "text": "more specifically a rotation by two times the angle between those two lines.",
+      "offset": 1633.302,
+      "duration": 4.558
+    },
+    {
+      "lang": "en",
+      "text": "So in our case, applying the two operations we have available one after the other,",
+      "offset": 1638.48,
+      "duration": 4.572
+    },
+    {
+      "lang": "en",
+      "text": "the net effect is to rotate the state vector by two times theta,",
+      "offset": 1643.052,
+      "duration": 3.624
+    },
+    {
+      "lang": "en",
+      "text": "where again theta is that little angle that we calculated earlier,",
+      "offset": 1646.676,
+      "duration": 3.735
+    },
+    {
+      "lang": "en",
+      "text": "approximately one over the square root of n.",
+      "offset": 1650.411,
+      "duration": 2.509
+    },
+    {
+      "lang": "en",
+      "text": "The ultimate goal is to rotate our initial state a little under 90 degrees,",
+      "offset": 1653.32,
+      "duration": 3.99
+    },
+    {
+      "lang": "en",
+      "text": "or about pi halves radians.",
+      "offset": 1657.31,
+      "duration": 1.49
+    },
+    {
+      "lang": "en",
+      "text": "This means the optimal number of repetitions looks like pi halves divided by two theta,",
+      "offset": 1659.38,
+      "duration": 4.704
+    },
+    {
+      "lang": "en",
+      "text": "which is pi fourths times one over theta, and critically,",
+      "offset": 1664.084,
+      "duration": 3.136
+    },
+    {
+      "lang": "en",
+      "text": "because theta is about one divided by the square root of n,",
+      "offset": 1667.22,
+      "duration": 3.244
+    },
+    {
+      "lang": "en",
+      "text": "it means the total number of steps looks like pi fourths times the square root of n.",
+      "offset": 1670.464,
+      "duration": 4.596
+    },
+    {
+      "lang": "en",
+      "text": "So what Grover's algorithm says is first find whatever whole number is closest to",
+      "offset": 1675.7,
+      "duration": 4.682
+    },
+    {
+      "lang": "en",
+      "text": "this value and then repeat your two available flips that specific number of times.",
+      "offset": 1680.382,
+      "duration": 4.798
+    },
+    {
+      "lang": "en",
+      "text": "As a concrete example, let's say that n was two to the power of twenty,",
+      "offset": 1685.58,
+      "duration": 3.32
+    },
+    {
+      "lang": "en",
+      "text": "meaning you're searching for a secret key out of about a million options.",
+      "offset": 1688.9,
+      "duration": 3.46
+    },
+    {
+      "lang": "en",
+      "text": "You would be running this on a computer with at least twenty qubits,",
+      "offset": 1692.36,
+      "duration": 3.069
+    },
+    {
+      "lang": "en",
+      "text": "and what the algorithm would say is first compute pi fourths times the square",
+      "offset": 1695.429,
+      "duration": 3.521
+    },
+    {
+      "lang": "en",
+      "text": "root of this number, which is around eight hundred and four,",
+      "offset": 1698.95,
+      "duration": 2.753
+    },
+    {
+      "lang": "en",
+      "text": "meaning you now repeat those two operations you have available,",
+      "offset": 1701.703,
+      "duration": 2.889
+    },
+    {
+      "lang": "en",
+      "text": "the one flipping the sign of the key state and the one that's flipping around",
+      "offset": 1704.592,
+      "duration": 3.521
+    },
+    {
+      "lang": "en",
+      "text": "the balance direction eight hundred and four times.",
+      "offset": 1708.113,
+      "duration": 2.347
+    },
+    {
+      "lang": "en",
+      "text": "Now remember, this state vector is invisible to you.",
+      "offset": 1710.86,
+      "duration": 2.7
+    },
+    {
+      "lang": "en",
+      "text": "There is nothing that you can do that will read out the values that it has.",
+      "offset": 1713.72,
+      "duration": 3.12
+    },
+    {
+      "lang": "en",
+      "text": "You instead have to infer where it must be through reasoning, and in this case,",
+      "offset": 1717.14,
+      "duration": 3.963
+    },
+    {
+      "lang": "en",
+      "text": "through all the geometric reasoning, you can conclude that after this specific number",
+      "offset": 1721.103,
+      "duration": 4.313
+    },
+    {
+      "lang": "en",
+      "text": "of times, the vector should be pointed almost entirely in that secret key direction.",
+      "offset": 1725.416,
+      "duration": 4.264
+    },
+    {
+      "lang": "en",
+      "text": "So when you read out from the computer, you are",
+      "offset": 1730.08,
+      "duration": 2.157
+    },
+    {
+      "lang": "en",
+      "text": "almost guaranteed to see that secret key value.",
+      "offset": 1732.237,
+      "duration": 2.203
+    },
+    {
+      "lang": "en",
+      "text": "Now to be clear, you're not guaranteed to see it.",
+      "offset": 1735.2,
+      "duration": 2.18
+    },
+    {
+      "lang": "en",
+      "text": "There is some small chance that after reading out,",
+      "offset": 1737.56,
+      "duration": 2.119
+    },
+    {
+      "lang": "en",
+      "text": "you would see something that's not the secret key.",
+      "offset": 1739.679,
+      "duration": 2.161
+    },
+    {
+      "lang": "en",
+      "text": "So to be sure, you could always quickly verify the answer, since after all,",
+      "offset": 1742.18,
+      "duration": 3.5
+    },
+    {
+      "lang": "en",
+      "text": "the whole premise of this situation is that you have some quick way of verifying answers.",
+      "offset": 1745.68,
+      "duration": 4.2
+    },
+    {
+      "lang": "en",
+      "text": "You can just do that on a classical computer.",
+      "offset": 1749.88,
+      "duration": 2.02
+    },
+    {
+      "lang": "en",
+      "text": "Worst case, if you got unlucky and sampled a different number,",
+      "offset": 1752.48,
+      "duration": 2.725
+    },
+    {
+      "lang": "en",
+      "text": "you run the whole thing again, and it becomes vanishingly unlikely",
+      "offset": 1755.205,
+      "duration": 2.946
+    },
+    {
+      "lang": "en",
+      "text": "that you would ever need to run this more than just a couple times.",
+      "offset": 1758.151,
+      "duration": 2.989
+    },
+    {
+      "lang": "en",
+      "text": "To wrap up, I want to come clean about a lie that I've been telling you,",
+      "offset": 1762.46,
+      "duration": 3.17
+    },
+    {
+      "lang": "en",
+      "text": "and also reflect a little bit about where this speedup came from,",
+      "offset": 1765.63,
+      "duration": 2.905
+    },
+    {
+      "lang": "en",
+      "text": "and then highlight a surprising analogy.",
+      "offset": 1768.535,
+      "duration": 1.805
+    },
+    {
+      "lang": "en",
+      "text": "Before I do, now might be as good a time as any to say a",
+      "offset": 1770.92,
+      "duration": 2.712
+    },
+    {
+      "lang": "en",
+      "text": "thanks to the community of channel supporters on Patreon.",
+      "offset": 1773.632,
+      "duration": 2.808
+    },
+    {
+      "lang": "en",
+      "text": "Putting together visualized lessons like this takes an enormous amount of time.",
+      "offset": 1776.74,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "As you probably know, most YouTubers monetize their content with in-video sponsorships,",
+      "offset": 1780.7,
+      "duration": 3.985
+    },
+    {
+      "lang": "en",
+      "text": "but for many years now that's something that I've opted to decline.",
+      "offset": 1784.685,
+      "duration": 3.115
+    },
+    {
+      "lang": "en",
+      "text": "I think it makes the videos better, and the only reason it's not a wildly costly decision",
+      "offset": 1788.18,
+      "duration": 4.38
+    },
+    {
+      "lang": "en",
+      "text": "is that enough viewers who agree with that directly support the channel through Patreon.",
+      "offset": 1792.56,
+      "duration": 4.38
+    },
+    {
+      "lang": "en",
+      "text": "In exchange, I offer supporters early views of new content,",
+      "offset": 1797.4,
+      "duration": 2.504
+    },
+    {
+      "lang": "en",
+      "text": "which is actually very helpful for developing it, and there's other perks in there too.",
+      "offset": 1799.904,
+      "duration": 3.736
+    },
+    {
+      "lang": "en",
+      "text": "In general though, if you like this content, it",
+      "offset": 1803.64,
+      "duration": 1.963
+    },
+    {
+      "lang": "en",
+      "text": "would mean a lot if you considered joining.",
+      "offset": 1805.603,
+      "duration": 1.837
+    },
+    {
+      "lang": "en",
+      "text": "No pressure though, one of the big values is that the content can be free.",
+      "offset": 1807.78,
+      "duration": 2.88
+    },
+    {
+      "lang": "en",
+      "text": "Anyway, back to those three finishing points.",
+      "offset": 1812.06,
+      "duration": 1.94
+    },
+    {
+      "lang": "en",
+      "text": "The lie is a lie by omission.",
+      "offset": 1814.54,
+      "duration": 1.88
+    },
+    {
+      "lang": "en",
+      "text": "I've been showing these state vectors with positive and negative real number values,",
+      "offset": 1816.94,
+      "duration": 4.067
+    },
+    {
+      "lang": "en",
+      "text": "but more generally, these components can be complex numbers.",
+      "offset": 1821.007,
+      "duration": 2.953
+    },
+    {
+      "lang": "en",
+      "text": "Now my hope is to motivate why that's the case in the follow-on video about physics.",
+      "offset": 1824.4,
+      "duration": 3.48
+    },
+    {
+      "lang": "en",
+      "text": "The general idea is that any time you're working with waves,",
+      "offset": 1828.18,
+      "duration": 2.984
+    },
+    {
+      "lang": "en",
+      "text": "you care about both amplitude and phase, and a complex number",
+      "offset": 1831.164,
+      "duration": 3.084
+    },
+    {
+      "lang": "en",
+      "text": "is a really elegant way to encode an amplitude and phase together.",
+      "offset": 1834.248,
+      "duration": 3.332
+    },
+    {
+      "lang": "en",
+      "text": "So if you look at one of the components inside the state vector,",
+      "offset": 1838.06,
+      "duration": 3.097
+    },
+    {
+      "lang": "en",
+      "text": "the fuller picture for how to think about it is that it has some magnitude",
+      "offset": 1841.157,
+      "duration": 3.629
+    },
+    {
+      "lang": "en",
+      "text": "and some phase.",
+      "offset": 1844.786,
+      "duration": 0.774
+    },
+    {
+      "lang": "en",
+      "text": "The magnitude is the thing that you square to get the probability,",
+      "offset": 1845.9,
+      "duration": 3.121
+    },
+    {
+      "lang": "en",
+      "text": "and the phase is essentially a more general version of our",
+      "offset": 1849.021,
+      "duration": 2.789
+    },
+    {
+      "lang": "en",
+      "text": "whole discussion here around positive and negative values.",
+      "offset": 1851.81,
+      "duration": 2.79
+    },
+    {
+      "lang": "en",
+      "text": "Changing phase doesn't immediately affect the probabilities,",
+      "offset": 1854.94,
+      "duration": 2.807
+    },
+    {
+      "lang": "en",
+      "text": "but it does affect the state, which in turn affects how it gets processed and how it",
+      "offset": 1857.747,
+      "duration": 3.977
+    },
+    {
+      "lang": "en",
+      "text": "interacts with the world.",
+      "offset": 1861.724,
+      "duration": 1.216
+    },
+    {
+      "lang": "en",
+      "text": "Now needless to say, throwing in a bunch of complex numbers adds",
+      "offset": 1863.44,
+      "duration": 2.692
+    },
+    {
+      "lang": "en",
+      "text": "a lot of potential confusion to an already complicated topic.",
+      "offset": 1866.132,
+      "duration": 2.608
+    },
+    {
+      "lang": "en",
+      "text": "That's why I avoided it.",
+      "offset": 1868.96,
+      "duration": 1.08
+    },
+    {
+      "lang": "en",
+      "text": "But we were safe to ignore complex values for the purposes of Grover's algorithm,",
+      "offset": 1870.24,
+      "duration": 4.092
+    },
+    {
+      "lang": "en",
+      "text": "since very mercifully, during that algorithm,",
+      "offset": 1874.332,
+      "duration": 2.323
+    },
+    {
+      "lang": "en",
+      "text": "you only ever see positive and negative values.",
+      "offset": 1876.655,
+      "duration": 2.425
+    },
+    {
+      "lang": "en",
+      "text": "I want you to know, though, that this availability of complex values plays a",
+      "offset": 1879.44,
+      "duration": 3.924
+    },
+    {
+      "lang": "en",
+      "text": "crucial role in other quantum algorithms, like Shor's for factoring numbers.",
+      "offset": 1883.364,
+      "duration": 3.976
+    },
+    {
+      "lang": "en",
+      "text": "Next, even if you understood everything that I described with this whole algorithm,",
+      "offset": 1887.34,
+      "duration": 4.461
+    },
+    {
+      "lang": "en",
+      "text": "it's not easy to summarize where exactly the speedup came from.",
+      "offset": 1891.801,
+      "duration": 3.439
+    },
+    {
+      "lang": "en",
+      "text": "The fact that you begin by applying a certain operation to this",
+      "offset": 1895.7,
+      "duration": 3.224
+    },
+    {
+      "lang": "en",
+      "text": "equal balance state makes it very tempting to say that the speedup",
+      "offset": 1898.924,
+      "duration": 3.429
+    },
+    {
+      "lang": "en",
+      "text": "comes from parallelizing the operation over all possible inputs.",
+      "offset": 1902.353,
+      "duration": 3.327
+    },
+    {
+      "lang": "en",
+      "text": "But like I mentioned at the start, that summary, at least to me,",
+      "offset": 1906.02,
+      "duration": 2.928
+    },
+    {
+      "lang": "en",
+      "text": "just really doesn't feel right, and it definitely leads to misconceptions.",
+      "offset": 1908.948,
+      "duration": 3.432
+    },
+    {
+      "lang": "en",
+      "text": "As you now know, that step, on its own, does nothing to reveal the key value.",
+      "offset": 1912.98,
+      "duration": 4.54
+    },
+    {
+      "lang": "en",
+      "text": "I'll leave it up to your interpretation whether it feels apt to describe this",
+      "offset": 1917.86,
+      "duration": 3.758
+    },
+    {
+      "lang": "en",
+      "text": "first step as applying a function to many inputs in parallel,",
+      "offset": 1921.618,
+      "duration": 3.026
+    },
+    {
+      "lang": "en",
+      "text": "or if it feels better to say that the balance state is just its own new thing,",
+      "offset": 1924.644,
+      "duration": 3.855
+    },
+    {
+      "lang": "en",
+      "text": "and the function we have always applies to individual inputs one at a time,",
+      "offset": 1928.499,
+      "duration": 3.71
+    },
+    {
+      "lang": "en",
+      "text": "never multiple at once.",
+      "offset": 1932.209,
+      "duration": 1.171
+    },
+    {
+      "lang": "en",
+      "text": "It's just that those inputs are now a new kind of thing.",
+      "offset": 1933.6,
+      "duration": 2.44
+    },
+    {
+      "lang": "en",
+      "text": "In my view, for this algorithm, if you want the one-word summary for",
+      "offset": 1936.6,
+      "duration": 3.215
+    },
+    {
+      "lang": "en",
+      "text": "where the speedup comes from, I think a better choice would be Pythagoras.",
+      "offset": 1939.815,
+      "duration": 3.545
+    },
+    {
+      "lang": "en",
+      "text": "As a loose analogy, if you want to get from one corner of a unit square to the opposite,",
+      "offset": 1943.72,
+      "duration": 4.309
+    },
+    {
+      "lang": "en",
+      "text": "if you're limited to move only in the x and y directions, you have to walk two units.",
+      "offset": 1948.029,
+      "duration": 4.211
+    },
+    {
+      "lang": "en",
+      "text": "But if you're allowed to move diagonally, you can get there in the square root of two.",
+      "offset": 1952.64,
+      "duration": 3.46
+    },
+    {
+      "lang": "en",
+      "text": "And more generally, if you're up in n dimensions,",
+      "offset": 1956.42,
+      "duration": 2.338
+    },
+    {
+      "lang": "en",
+      "text": "you would have to walk n units to get from one corner of a cube to the opposite",
+      "offset": 1958.758,
+      "duration": 3.816
+    },
+    {
+      "lang": "en",
+      "text": "one if you can only move along the edges, but if you can go diagonally,",
+      "offset": 1962.574,
+      "duration": 3.435
+    },
+    {
+      "lang": "en",
+      "text": "you can get there in the square root of n.",
+      "offset": 1966.009,
+      "duration": 2.051
+    },
+    {
+      "lang": "en",
+      "text": "In the worldview of quantum mechanics, different observable states",
+      "offset": 1968.62,
+      "duration": 4.117
+    },
+    {
+      "lang": "en",
+      "text": "all represent perpendicular directions in some state space.",
+      "offset": 1972.737,
+      "duration": 3.743
+    },
+    {
+      "lang": "en",
+      "text": "So viewed from this framework, what the classical deterministic world looks",
+      "offset": 1976.94,
+      "duration": 3.834
+    },
+    {
+      "lang": "en",
+      "text": "like is one where you only have access to these pure coordinate directions.",
+      "offset": 1980.774,
+      "duration": 3.886
+    },
+    {
+      "lang": "en",
+      "text": "If you think about it, anytime you're doing computation,",
+      "offset": 1985.22,
+      "duration": 2.726
+    },
+    {
+      "lang": "en",
+      "text": "your computer is somehow walking through a series of different states",
+      "offset": 1987.946,
+      "duration": 3.407
+    },
+    {
+      "lang": "en",
+      "text": "that are available to it, and algorithmic runtime is all about",
+      "offset": 1991.353,
+      "duration": 3.067
+    },
+    {
+      "lang": "en",
+      "text": "understanding how many steps you have to walk in the space of all possible states.",
+      "offset": 1994.42,
+      "duration": 4.04
+    },
+    {
+      "lang": "en",
+      "text": "So from this quantum worldview, where classical states look like pure coordinate",
+      "offset": 1998.92,
+      "duration": 4.062
+    },
+    {
+      "lang": "en",
+      "text": "directions, the key difference with quantum computing is that you now also have",
+      "offset": 2002.982,
+      "duration": 4.062
+    },
+    {
+      "lang": "en",
+      "text": "available to you a panoply of additional diagonal directions that you can work with.",
+      "offset": 2007.044,
+      "duration": 4.316
+    },
+    {
+      "lang": "en",
+      "text": "Now, to be clear, the analogy is not too literal, you should take it with a grain of salt.",
+      "offset": 2012.1,
+      "duration": 3.22
+    },
+    {
+      "lang": "en",
+      "text": "It's not like runtime necessarily looks like a distance",
+      "offset": 2015.62,
+      "duration": 2.567
+    },
+    {
+      "lang": "en",
+      "text": "travelled through this particular state space.",
+      "offset": 2018.187,
+      "duration": 2.193
+    },
+    {
+      "lang": "en",
+      "text": "But it is true that if you follow the state vector throughout Grover's algorithm,",
+      "offset": 2020.68,
+      "duration": 4.338
+    },
+    {
+      "lang": "en",
+      "text": "what it's doing is slowly walking along a quarter circle arc from an initial",
+      "offset": 2025.018,
+      "duration": 4.123
+    },
+    {
+      "lang": "en",
+      "text": "condition to the target condition, tracing a path that would be entirely",
+      "offset": 2029.141,
+      "duration": 3.909
+    },
+    {
+      "lang": "en",
+      "text": "unavailable if you were limited to move only in pure coordinate directions.",
+      "offset": 2033.05,
+      "duration": 4.07
+    },
+    {
+      "lang": "en",
+      "text": "And the effect is to provide this square root-sized shortcut.",
+      "offset": 2037.44,
+      "duration": 3.14
+    },
+    {
+      "lang": "en",
+      "text": "And as the very last point before I let you go,",
+      "offset": 2041.24,
+      "duration": 2.172
+    },
+    {
+      "lang": "en",
+      "text": "regular viewers will know that one of my reasons for covering this topic is because of",
+      "offset": 2043.412,
+      "duration": 4.02
+    },
+    {
+      "lang": "en",
+      "text": "a promised analogy between this algorithm and something we covered last video,",
+      "offset": 2047.432,
+      "duration": 3.65
+    },
+    {
+      "lang": "en",
+      "text": "about two colliding blocks that can compute pi.",
+      "offset": 2051.082,
+      "duration": 2.218
+    },
+    {
+      "lang": "en",
+      "text": "In that video, we are also studying a point in a certain two-dimensional state",
+      "offset": 2053.8,
+      "duration": 3.93
+    },
+    {
+      "lang": "en",
+      "text": "space bouncing around a circle, and in fact, the series of bounces that it",
+      "offset": 2057.73,
+      "duration": 3.779
+    },
+    {
+      "lang": "en",
+      "text": "took is essentially identical to what we just saw here with Grover's algorithm.",
+      "offset": 2061.509,
+      "duration": 4.031
+    },
+    {
+      "lang": "en",
+      "text": "The story here is that when a physicist friend of mine, Adam Brown,",
+      "offset": 2065.96,
+      "duration": 3.004
+    },
+    {
+      "lang": "en",
+      "text": "saw the first version of that video, he had recently been reading up on",
+      "offset": 2068.964,
+      "duration": 3.229
+    },
+    {
+      "lang": "en",
+      "text": "Grover's algorithm and immediately realized that both processes were identical.",
+      "offset": 2072.193,
+      "duration": 3.587
+    },
+    {
+      "lang": "en",
+      "text": "Now I had this whole cockamamie plan for this video where I was",
+      "offset": 2075.78,
+      "duration": 2.938
+    },
+    {
+      "lang": "en",
+      "text": "going to explain quantum computing and Grover's algorithm in the",
+      "offset": 2078.718,
+      "duration": 3.031
+    },
+    {
+      "lang": "en",
+      "text": "context of that analogy, but it turned out to be just a terrible idea.",
+      "offset": 2081.749,
+      "duration": 3.311
+    },
+    {
+      "lang": "en",
+      "text": "The whole thing only really made sense if you already understood Grover's algorithm.",
+      "offset": 2085.3,
+      "duration": 3.359
+    },
+    {
+      "lang": "en",
+      "text": "So instead, now that you have seen both topics in isolation,",
+      "offset": 2089.199,
+      "duration": 2.873
+    },
+    {
+      "lang": "en",
+      "text": "what I'll do is leave up a rough outline of how the analogy looks.",
+      "offset": 2092.072,
+      "duration": 3.208
+    },
+    {
+      "lang": "en",
+      "text": "Think of this as an open-ended homework puzzle,",
+      "offset": 2095.58,
+      "duration": 2.12
+    },
+    {
+      "lang": "en",
+      "text": "where the task is to draw the connection for yourself.",
+      "offset": 2097.7,
+      "duration": 2.48
+    },
+    {
+      "lang": "en",
+      "text": "As an answer key of sorts, I will link to the very delightful paper",
+      "offset": 2100.56,
+      "duration": 3.376
+    },
+    {
+      "lang": "en",
+      "text": "by Adam Brown outlining precisely what that analogy looks like.",
+      "offset": 2103.936,
+      "duration": 3.224
+    },
+    {
+      "lang": "en",
+      "text": "If you want to learn more of the fundamentals of quantum computing,",
+      "offset": 2108.02,
+      "duration": 3.059
+    },
+    {
+      "lang": "en",
+      "text": "several years ago two very smart friends of mine, Andy Matuszczak and Michael Nielsen,",
+      "offset": 2111.079,
+      "duration": 3.973
+    },
+    {
+      "lang": "en",
+      "text": "put together a really nice resource for learning the topic,",
+      "offset": 2115.052,
+      "duration": 2.739
+    },
+    {
+      "lang": "en",
+      "text": "offering a pretty unique approach to making sure that you actually remember",
+      "offset": 2117.791,
+      "duration": 3.47
+    },
+    {
+      "lang": "en",
+      "text": "it in the long term.",
+      "offset": 2121.261,
+      "duration": 0.959
+    },
+    {
+      "lang": "en",
+      "text": "To learn some of the fundamental quantum mechanics,",
+      "offset": 2122.64,
+      "duration": 2.141
+    },
+    {
+      "lang": "en",
+      "text": "Mithina Yoganathan from the channel Looking Glass Universe",
+      "offset": 2124.781,
+      "duration": 2.477
+    },
+    {
+      "lang": "en",
+      "text": "has been putting together a very beginner-friendly course on the topic.",
+      "offset": 2127.258,
+      "duration": 3.022
+    },
+    {
+      "lang": "en",
+      "text": "She was actually the one to teach me how Grover's algorithm works many years ago,",
+      "offset": 2130.64,
+      "duration": 3.638
+    },
+    {
+      "lang": "en",
+      "text": "and honestly I owe a lot of the content of this video to many helpful conversations with",
+      "offset": 2134.278,
+      "duration": 3.997
+    },
+    {
+      "lang": "en",
+      "text": "her.",
+      "offset": 2138.275,
+      "duration": 0.5
+    },
+    {
+      "lang": "en",
+      "text": "And as a very last note to end on, one of the conversations I had",
+      "offset": 2139.08,
+      "duration": 3.24
+    },
+    {
+      "lang": "en",
+      "text": "while making this video was with Scott Aaronson,",
+      "offset": 2142.32,
+      "duration": 2.442
+    },
+    {
+      "lang": "en",
+      "text": "a very widely respected researcher and utterly delightful author on the topic.",
+      "offset": 2144.762,
+      "duration": 3.938
+    },
+    {
+      "lang": "en",
+      "text": "I recorded the Zoom call for notes, and there's one",
+      "offset": 2148.9,
+      "duration": 1.984
+    },
+    {
+      "lang": "en",
+      "text": "little piece of it which I just wanted to share with you.",
+      "offset": 2150.884,
+      "duration": 2.256
+    },
+    {
+      "lang": "en",
+      "text": "You know, I have this dream of writing a science fiction novel where I know",
+      "offset": 2153.32,
+      "duration": 4.696
+    },
+    {
+      "lang": "en",
+      "text": "it's going to be the climactic scene, where the heroes will be, you know,",
+      "offset": 2158.016,
+      "duration": 4.633
+    },
+    {
+      "lang": "en",
+      "text": "Ron and Grover's algorithm to try to find this cryptographic key, right?",
+      "offset": 2162.649,
+      "duration": 4.571
+    },
+    {
+      "lang": "en",
+      "text": "The whole fate of the world will depend on whether they can find it, OK?",
+      "offset": 2167.44,
+      "duration": 3.48
+    },
+    {
+      "lang": "en",
+      "text": "The bad guys have surrounded their base, you know, they're bashing down the walls.",
+      "offset": 2171.18,
+      "duration": 5.22
+    },
+    {
+      "lang": "en",
+      "text": "But Grover's algorithm is still running, and it has only like a",
+      "offset": 2176.78,
+      "duration": 3.575
+    },
+    {
+      "lang": "en",
+      "text": "30 percent probability of giving you the solution if you measure.",
+      "offset": 2180.355,
+      "duration": 3.745
+    },
+    {
+      "lang": "en",
+      "text": "So the question is, like, do you measure now or do you let it run for another minute?",
+      "offset": 2184.22,
+      "duration": 3.86
+    },
+    {
+      "lang": "en",
+      "text": "Right?",
+      "offset": 2188.48,
+      "duration": 0.5
+    },
+    {
+      "lang": "en",
+      "text": "And if you measure now, you know, and you don't get it, then you've lost everything.",
+      "offset": 2189.08,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "Then you have to restart from the beginning.",
+      "offset": 2192.92,
+      "duration": 1.84
+    },
+    {
+      "lang": "en",
+      "text": "So this is this is not a plot that you could have with any classical algorithm.",
+      "offset": 2195.6,
+      "duration": 3.82
+    },
+    {
+      "lang": "en",
+      "text": "Right.",
+      "offset": 2199.7,
+      "duration": 0.5
+    }
+  ],
+  "cleanText": null,
+  "dumpedAt": "2025-07-21T18:43:25.212Z"
+}

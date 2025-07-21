@@ -1,0 +1,2344 @@
+{
+  "episodeId": "D7_ipDqhtwk",
+  "channelSlug": "@aidotengineer",
+  "title": "How We Build Effective Agents: Barry Zhang, Anthropic",
+  "publishedAt": "2025-04-04T18:46:36.000Z",
+  "rawLines": [
+    {
+      "lang": "en",
+      "text": "[Music]",
+      "offset": 0.49,
+      "duration": 18.629
+    },
+    {
+      "lang": "en",
+      "text": "wow it's uh incredible to be on the same",
+      "offset": 17.039,
+      "duration": 3.761
+    },
+    {
+      "lang": "en",
+      "text": "stage as uh so many people i've learned",
+      "offset": 19.119,
+      "duration": 4.721
+    },
+    {
+      "lang": "en",
+      "text": "so much from let's get into it my name",
+      "offset": 20.8,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "is barry and today we're going to be",
+      "offset": 23.84,
+      "duration": 4.359
+    },
+    {
+      "lang": "en",
+      "text": "talking about how we build effective",
+      "offset": 25.6,
+      "duration": 5.519
+    },
+    {
+      "lang": "en",
+      "text": "agents about two months ago eric and i",
+      "offset": 28.199,
+      "duration": 4.52
+    },
+    {
+      "lang": "en",
+      "text": "wrote a blog post called building",
+      "offset": 31.119,
+      "duration": 4.321
+    },
+    {
+      "lang": "en",
+      "text": "effective agents in there we shared some",
+      "offset": 32.719,
+      "duration": 4.961
+    },
+    {
+      "lang": "en",
+      "text": "opinionated take on what an agent is and",
+      "offset": 35.44,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "isn't and we give some practical",
+      "offset": 37.68,
+      "duration": 3.559
+    },
+    {
+      "lang": "en",
+      "text": "learnings that we have gained along the",
+      "offset": 39.6,
+      "duration": 4.799
+    },
+    {
+      "lang": "en",
+      "text": "way today i'd like to go deeper on three",
+      "offset": 41.239,
+      "duration": 5.16
+    },
+    {
+      "lang": "en",
+      "text": "core ideas from the blog post and",
+      "offset": 44.399,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "provide you with some personal musings",
+      "offset": 46.399,
+      "duration": 3.561
+    },
+    {
+      "lang": "en",
+      "text": "at the",
+      "offset": 48.239,
+      "duration": 3.8
+    },
+    {
+      "lang": "en",
+      "text": "end here are those",
+      "offset": 49.96,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "ideas first don't build agents for",
+      "offset": 52.039,
+      "duration": 6.921
+    },
+    {
+      "lang": "en",
+      "text": "everything second keep it simple and",
+      "offset": 55.48,
+      "duration": 6.399
+    },
+    {
+      "lang": "en",
+      "text": "third think like your",
+      "offset": 58.96,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "agents let's first start with a recap of",
+      "offset": 61.879,
+      "duration": 5.721
+    },
+    {
+      "lang": "en",
+      "text": "how we got here most of us probably",
+      "offset": 64.96,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "started building very simple features",
+      "offset": 67.6,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "things like summarization classification",
+      "offset": 69.68,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "extraction just really simple things",
+      "offset": 71.92,
+      "duration": 3.519
+    },
+    {
+      "lang": "en",
+      "text": "that felt like magic two to three years",
+      "offset": 73.76,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "ago and have now become table stakes",
+      "offset": 75.439,
+      "duration": 5.281
+    },
+    {
+      "lang": "en",
+      "text": "then as we got more sophisticated and as",
+      "offset": 78.56,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "products mature we got more creative one",
+      "offset": 80.72,
+      "duration": 5.759
+    },
+    {
+      "lang": "en",
+      "text": "model call often wasn't enough so we",
+      "offset": 83.52,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "started orchestrating multiple model",
+      "offset": 86.479,
+      "duration": 5.201
+    },
+    {
+      "lang": "en",
+      "text": "calls in predefined control flows this",
+      "offset": 88.08,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "basically gave us a way to trade off",
+      "offset": 91.68,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "cause and latency for better performance",
+      "offset": 93.28,
+      "duration": 4.68
+    },
+    {
+      "lang": "en",
+      "text": "and we call these",
+      "offset": 95.84,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "workflows we believe this is the",
+      "offset": 97.96,
+      "duration": 4.159
+    },
+    {
+      "lang": "en",
+      "text": "beginning of agentic",
+      "offset": 99.92,
+      "duration": 5.519
+    },
+    {
+      "lang": "en",
+      "text": "systems now models are even more capable",
+      "offset": 102.119,
+      "duration": 5.96
+    },
+    {
+      "lang": "en",
+      "text": "and we are seeing more and more domain",
+      "offset": 105.439,
+      "duration": 4.801
+    },
+    {
+      "lang": "en",
+      "text": "domain specific agents start to pop up",
+      "offset": 108.079,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "in production unlike workflows agents",
+      "offset": 110.24,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "can decide their own trajectory and",
+      "offset": 113.439,
+      "duration": 4.081
+    },
+    {
+      "lang": "en",
+      "text": "operate almost independently based on",
+      "offset": 115.28,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "environment feedback this is going to be",
+      "offset": 117.52,
+      "duration": 4.44
+    },
+    {
+      "lang": "en",
+      "text": "our focus",
+      "offset": 119.92,
+      "duration": 4.239
+    },
+    {
+      "lang": "en",
+      "text": "today it's probably a little bit too",
+      "offset": 121.96,
+      "duration": 3.799
+    },
+    {
+      "lang": "en",
+      "text": "early to name what the next phase of",
+      "offset": 124.159,
+      "duration": 3.121
+    },
+    {
+      "lang": "en",
+      "text": "agentic system is going to look like",
+      "offset": 125.759,
+      "duration": 3.761
+    },
+    {
+      "lang": "en",
+      "text": "especially in production single agents",
+      "offset": 127.28,
+      "duration": 3.759
+    },
+    {
+      "lang": "en",
+      "text": "could become a lot more general purpose",
+      "offset": 129.52,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "and more capable or we can start to see",
+      "offset": 131.039,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "collaboration and delegation in multi-",
+      "offset": 133.12,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "aent settings regardless i think the",
+      "offset": 134.879,
+      "duration": 5.681
+    },
+    {
+      "lang": "en",
+      "text": "broad trend here is that as we give",
+      "offset": 137.84,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "these systems a lot more agency they",
+      "offset": 140.56,
+      "duration": 4.319
+    },
+    {
+      "lang": "en",
+      "text": "become more useful and more capable but",
+      "offset": 142.64,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "as a result the cost the latency the",
+      "offset": 144.879,
+      "duration": 4.521
+    },
+    {
+      "lang": "en",
+      "text": "consequences of errors also go",
+      "offset": 147.04,
+      "duration": 5.279
+    },
+    {
+      "lang": "en",
+      "text": "up and that brings us to the first point",
+      "offset": 149.4,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "don't build agents for",
+      "offset": 152.319,
+      "duration": 5.841
+    },
+    {
+      "lang": "en",
+      "text": "everything well why not we think of",
+      "offset": 154.68,
+      "duration": 5.72
+    },
+    {
+      "lang": "en",
+      "text": "agents as a way to scale complex and",
+      "offset": 158.16,
+      "duration": 4.719
+    },
+    {
+      "lang": "en",
+      "text": "valuable tasks they shouldn't be a drop",
+      "offset": 160.4,
+      "duration": 5.68
+    },
+    {
+      "lang": "en",
+      "text": "in upgrade for every use case if uh if",
+      "offset": 162.879,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "you have read the blog post you'll know",
+      "offset": 166.08,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "that we talked a lot about workflows and",
+      "offset": 167.519,
+      "duration": 3.841
+    },
+    {
+      "lang": "en",
+      "text": "that's because we really like them and",
+      "offset": 169.76,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "they're a great concrete way to deliver",
+      "offset": 171.36,
+      "duration": 3.4
+    },
+    {
+      "lang": "en",
+      "text": "values",
+      "offset": 173.68,
+      "duration": 3.88
+    },
+    {
+      "lang": "en",
+      "text": "today well so when should you build an",
+      "offset": 174.76,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "agent here's our",
+      "offset": 177.56,
+      "duration": 4.44
+    },
+    {
+      "lang": "en",
+      "text": "checklist the first thing to consider is",
+      "offset": 179.64,
+      "duration": 4.92
+    },
+    {
+      "lang": "en",
+      "text": "the complexity of your task agents",
+      "offset": 182,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "really thrive in ambiguous problem",
+      "offset": 184.56,
+      "duration": 4.399
+    },
+    {
+      "lang": "en",
+      "text": "spaces and if you can map out the entire",
+      "offset": 186.48,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "decision tree pretty easily just build",
+      "offset": 188.959,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "that explicitly and then optimize every",
+      "offset": 191.44,
+      "duration": 4.719
+    },
+    {
+      "lang": "en",
+      "text": "node of that decision tree it's a lot",
+      "offset": 193.599,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "more cost- effective and it's going to",
+      "offset": 196.159,
+      "duration": 3.08
+    },
+    {
+      "lang": "en",
+      "text": "give you a lot more",
+      "offset": 197.599,
+      "duration": 3.841
+    },
+    {
+      "lang": "en",
+      "text": "control next thing to consider is the",
+      "offset": 199.239,
+      "duration": 4.441
+    },
+    {
+      "lang": "en",
+      "text": "value of your task that exploration i",
+      "offset": 201.44,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "just mentioned is going to cost you a",
+      "offset": 203.68,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "lot of tokens so the task really needs",
+      "offset": 205.2,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "to justify the cost if your budget per",
+      "offset": 207.76,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "task is around 10 cents for example",
+      "offset": 211.2,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "you're building a u high volume customer",
+      "offset": 213.12,
+      "duration": 5.199
+    },
+    {
+      "lang": "en",
+      "text": "support system that only affords you 30",
+      "offset": 215.44,
+      "duration": 6.079
+    },
+    {
+      "lang": "en",
+      "text": "to 50,000 tokens in that case just use a",
+      "offset": 218.319,
+      "duration": 4.721
+    },
+    {
+      "lang": "en",
+      "text": "workflow to solve the most common",
+      "offset": 221.519,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "scenarios and you're able to capture the",
+      "offset": 223.04,
+      "duration": 5.119
+    },
+    {
+      "lang": "en",
+      "text": "majority of the values from there on the",
+      "offset": 224.959,
+      "duration": 4.721
+    },
+    {
+      "lang": "en",
+      "text": "other hand though if you look at this",
+      "offset": 228.159,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "question and your first thought is i",
+      "offset": 229.68,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "don't care how many tokens i spend i",
+      "offset": 231.599,
+      "duration": 3.681
+    },
+    {
+      "lang": "en",
+      "text": "just want to get the task done please",
+      "offset": 233.28,
+      "duration": 3.679
+    },
+    {
+      "lang": "en",
+      "text": "see me after the talk our go to market",
+      "offset": 235.28,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "team would love to speak with you",
+      "offset": 236.959,
+      "duration": 5.521
+    },
+    {
+      "lang": "en",
+      "text": "from there we want to derisk the",
+      "offset": 240.56,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "critical capabilities this is to make",
+      "offset": 242.48,
+      "duration": 3.759
+    },
+    {
+      "lang": "en",
+      "text": "sure that there aren't any significant",
+      "offset": 244.72,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "bottlenecks in the agent's trajectory if",
+      "offset": 246.239,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "you're doing a coding agent you want to",
+      "offset": 249.36,
+      "duration": 2.879
+    },
+    {
+      "lang": "en",
+      "text": "make sure it's able to write good code",
+      "offset": 250.799,
+      "duration": 3.121
+    },
+    {
+      "lang": "en",
+      "text": "it's able to debug and it's able to",
+      "offset": 252.239,
+      "duration": 3.641
+    },
+    {
+      "lang": "en",
+      "text": "recover from its",
+      "offset": 253.92,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "errors if you do have bottlenecks that's",
+      "offset": 255.88,
+      "duration": 4.599
+    },
+    {
+      "lang": "en",
+      "text": "probably not going to be fatal but they",
+      "offset": 258.88,
+      "duration": 4.319
+    },
+    {
+      "lang": "en",
+      "text": "will multiply your cost and latency so",
+      "offset": 260.479,
+      "duration": 4.961
+    },
+    {
+      "lang": "en",
+      "text": "in that case we normally just reduce the",
+      "offset": 263.199,
+      "duration": 6.72
+    },
+    {
+      "lang": "en",
+      "text": "scope simplify the task and try again",
+      "offset": 265.44,
+      "duration": 4.479
+    },
+    {
+      "lang": "en",
+      "text": "finally the the the last important thing",
+      "offset": 269.96,
+      "duration": 4.76
+    },
+    {
+      "lang": "en",
+      "text": "to consider is the cost of error and",
+      "offset": 272.32,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "error discovery if your errors are going",
+      "offset": 274.72,
+      "duration": 4.479
+    },
+    {
+      "lang": "en",
+      "text": "to be high stake and very hard to",
+      "offset": 277.52,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "discover it's going to be very difficult",
+      "offset": 279.199,
+      "duration": 3.041
+    },
+    {
+      "lang": "en",
+      "text": "for you to trust the agent to take",
+      "offset": 280.88,
+      "duration": 3.8
+    },
+    {
+      "lang": "en",
+      "text": "actions on your behalf and to have more",
+      "offset": 282.24,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "autonomy you can always mitigate this by",
+      "offset": 284.68,
+      "duration": 4.519
+    },
+    {
+      "lang": "en",
+      "text": "limiting the scope right you can have",
+      "offset": 287.28,
+      "duration": 3.919
+    },
+    {
+      "lang": "en",
+      "text": "read only access you can have more human",
+      "offset": 289.199,
+      "duration": 4.881
+    },
+    {
+      "lang": "en",
+      "text": "in the loop but this will also limit how",
+      "offset": 291.199,
+      "duration": 4.641
+    },
+    {
+      "lang": "en",
+      "text": "well you're able to scale your agent in",
+      "offset": 294.08,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "your use case",
+      "offset": 295.84,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "let's see this checklist in in action",
+      "offset": 298.4,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "why is coding a great agent use case",
+      "offset": 300.88,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "first to go from design doc to a pr is",
+      "offset": 303.44,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "obviously a very ambiguous and very",
+      "offset": 306.4,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "complex task and second um we're a lot",
+      "offset": 308,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "of us are developers here so we know",
+      "offset": 311.6,
+      "duration": 4.84
+    },
+    {
+      "lang": "en",
+      "text": "that good code has a lot of value and",
+      "offset": 313.36,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "third many of us already use cloud for",
+      "offset": 316.44,
+      "duration": 4.52
+    },
+    {
+      "lang": "en",
+      "text": "coding so we know that it's great at",
+      "offset": 318.88,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "many parts of the coding workflow and",
+      "offset": 320.96,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "last coding has this really nice",
+      "offset": 323.6,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "property where the output is easily",
+      "offset": 325.84,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "verifiable through unit test and ci and",
+      "offset": 328.16,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "that's probably why we're seeing so many",
+      "offset": 331.84,
+      "duration": 3.919
+    },
+    {
+      "lang": "en",
+      "text": "creative and successful coding agents",
+      "offset": 333.6,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "right",
+      "offset": 335.759,
+      "duration": 2.241
+    },
+    {
+      "lang": "en",
+      "text": "now once you find a good use case for",
+      "offset": 338.199,
+      "duration": 6.041
+    },
+    {
+      "lang": "en",
+      "text": "agents this is the second core idea",
+      "offset": 341.24,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "which is to keep it as simple as",
+      "offset": 344.24,
+      "duration": 4.76
+    },
+    {
+      "lang": "en",
+      "text": "possible let me show you what i",
+      "offset": 346.68,
+      "duration": 5.64
+    },
+    {
+      "lang": "en",
+      "text": "mean this is what agents look like to us",
+      "offset": 349,
+      "duration": 6.68
+    },
+    {
+      "lang": "en",
+      "text": "they're models using tools in a loop and",
+      "offset": 352.32,
+      "duration": 5.84
+    },
+    {
+      "lang": "en",
+      "text": "in this frame three components define",
+      "offset": 355.68,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "what an agent really looks like first is",
+      "offset": 358.16,
+      "duration": 5.039
+    },
+    {
+      "lang": "en",
+      "text": "the environment this is a system that",
+      "offset": 361.12,
+      "duration": 3.639
+    },
+    {
+      "lang": "en",
+      "text": "the agent is operating",
+      "offset": 363.199,
+      "duration": 4.241
+    },
+    {
+      "lang": "en",
+      "text": "in then we have a set of tools which",
+      "offset": 364.759,
+      "duration": 4.761
+    },
+    {
+      "lang": "en",
+      "text": "offer an interface for the agent to take",
+      "offset": 367.44,
+      "duration": 3.8
+    },
+    {
+      "lang": "en",
+      "text": "action and get",
+      "offset": 369.52,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "feedback then we have the system prompt",
+      "offset": 371.24,
+      "duration": 4.679
+    },
+    {
+      "lang": "en",
+      "text": "which defines the goals the constraints",
+      "offset": 373.84,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "and the ideal behavior for the agent to",
+      "offset": 375.919,
+      "duration": 4.801
+    },
+    {
+      "lang": "en",
+      "text": "actually work in this environment",
+      "offset": 378.16,
+      "duration": 5.92
+    },
+    {
+      "lang": "en",
+      "text": "then the model gets called in a loop and",
+      "offset": 380.72,
+      "duration": 4.28
+    },
+    {
+      "lang": "en",
+      "text": "that's",
+      "offset": 384.08,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "agents we have learned the hard way to",
+      "offset": 385,
+      "duration": 4.84
+    },
+    {
+      "lang": "en",
+      "text": "keep this simple because any complexity",
+      "offset": 387.52,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "up front is really going to kill",
+      "offset": 389.84,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "iteration speed iterating on just these",
+      "offset": 391.28,
+      "duration": 4.479
+    },
+    {
+      "lang": "en",
+      "text": "three basic components is going to give",
+      "offset": 394.24,
+      "duration": 3.519
+    },
+    {
+      "lang": "en",
+      "text": "you by far the highest roi and",
+      "offset": 395.759,
+      "duration": 5.601
+    },
+    {
+      "lang": "en",
+      "text": "optimizations can come",
+      "offset": 397.759,
+      "duration": 3.601
+    },
+    {
+      "lang": "en",
+      "text": "later here are examples of three agent",
+      "offset": 401.56,
+      "duration": 4.199
+    },
+    {
+      "lang": "en",
+      "text": "use cases that we have built for",
+      "offset": 404.319,
+      "duration": 3.521
+    },
+    {
+      "lang": "en",
+      "text": "ourselves or or our customers just to",
+      "offset": 405.759,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "make it more concrete they're going to",
+      "offset": 407.84,
+      "duration": 3.199
+    },
+    {
+      "lang": "en",
+      "text": "look very different on the product",
+      "offset": 409.759,
+      "duration": 2.56
+    },
+    {
+      "lang": "en",
+      "text": "surface they're going to look very",
+      "offset": 411.039,
+      "duration": 2.641
+    },
+    {
+      "lang": "en",
+      "text": "different in their scope they're going",
+      "offset": 412.319,
+      "duration": 3.361
+    },
+    {
+      "lang": "en",
+      "text": "to look different in the capability but",
+      "offset": 413.68,
+      "duration": 3.959
+    },
+    {
+      "lang": "en",
+      "text": "they share almost exactly the same",
+      "offset": 415.68,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "backbone they they actually share almost",
+      "offset": 417.639,
+      "duration": 4.161
+    },
+    {
+      "lang": "en",
+      "text": "the exact same",
+      "offset": 420.56,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "code the environment largely depends on",
+      "offset": 421.8,
+      "duration": 5.16
+    },
+    {
+      "lang": "en",
+      "text": "your use case so really the only two",
+      "offset": 424.4,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "design decisions is what are the set of",
+      "offset": 426.96,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "tools you want to offer to the agent and",
+      "offset": 428.88,
+      "duration": 3.439
+    },
+    {
+      "lang": "en",
+      "text": "what is the prompt that you want to",
+      "offset": 430.8,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "instruct your agent to follow",
+      "offset": 432.319,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "um on this note if you want to learn",
+      "offset": 436,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "more about tools my friend mahes is",
+      "offset": 437.599,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "going to be giving a workshop on model",
+      "offset": 439.44,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "context protocol mcp tomorrow morning um",
+      "offset": 441.199,
+      "duration": 4.161
+    },
+    {
+      "lang": "en",
+      "text": "i've seen that workshop it's going to be",
+      "offset": 444,
+      "duration": 2.96
+    },
+    {
+      "lang": "en",
+      "text": "really fun so i highly encourage you",
+      "offset": 445.36,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "guys to to check that out um but back to",
+      "offset": 446.96,
+      "duration": 4.799
+    },
+    {
+      "lang": "en",
+      "text": "our talk once you have figured out these",
+      "offset": 449.68,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "three basic components you have a lot of",
+      "offset": 451.759,
+      "duration": 3.921
+    },
+    {
+      "lang": "en",
+      "text": "optimizations to do from there uh for",
+      "offset": 453.52,
+      "duration": 4.079
+    },
+    {
+      "lang": "en",
+      "text": "coding and computer use uh you might",
+      "offset": 455.68,
+      "duration": 4.079
+    },
+    {
+      "lang": "en",
+      "text": "want to uh catch the trajectory to",
+      "offset": 457.599,
+      "duration": 4.801
+    },
+    {
+      "lang": "en",
+      "text": "reduce cost for search where you have a",
+      "offset": 459.759,
+      "duration": 4.401
+    },
+    {
+      "lang": "en",
+      "text": "lot of tool calls you can parallelize a",
+      "offset": 462.4,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "lot of those to reduce latency and for",
+      "offset": 464.16,
+      "duration": 4.319
+    },
+    {
+      "lang": "en",
+      "text": "almost all of these we want to make sure",
+      "offset": 466.56,
+      "duration": 4.079
+    },
+    {
+      "lang": "en",
+      "text": "to present the agents progress in such a",
+      "offset": 468.479,
+      "duration": 5.201
+    },
+    {
+      "lang": "en",
+      "text": "way that gain user trust but that's it",
+      "offset": 470.639,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "keep it as simple as possible as you're",
+      "offset": 473.68,
+      "duration": 3.519
+    },
+    {
+      "lang": "en",
+      "text": "iterating build these three components",
+      "offset": 475.199,
+      "duration": 4.641
+    },
+    {
+      "lang": "en",
+      "text": "first and then optimize once you have",
+      "offset": 477.199,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "the behaviors",
+      "offset": 479.84,
+      "duration": 2.799
+    },
+    {
+      "lang": "en",
+      "text": "down all right this is the last idea um",
+      "offset": 483.4,
+      "duration": 6.44
+    },
+    {
+      "lang": "en",
+      "text": "is to think like your agents i've seen a",
+      "offset": 486.96,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "lot of builders and myself included who",
+      "offset": 489.84,
+      "duration": 4.639
+    },
+    {
+      "lang": "en",
+      "text": "develop agents from our own perspectives",
+      "offset": 492.4,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "and get confused when agents make a",
+      "offset": 494.479,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "mistake it seems counterintuitive to us",
+      "offset": 496.8,
+      "duration": 4.959
+    },
+    {
+      "lang": "en",
+      "text": "and that's why we always recommend to",
+      "offset": 499.919,
+      "duration": 4.521
+    },
+    {
+      "lang": "en",
+      "text": "put yourself in the agents context",
+      "offset": 501.759,
+      "duration": 5.361
+    },
+    {
+      "lang": "en",
+      "text": "window agents can exhibit some really",
+      "offset": 504.44,
+      "duration": 4.28
+    },
+    {
+      "lang": "en",
+      "text": "sophisticated behavior it could look",
+      "offset": 507.12,
+      "duration": 5.359
+    },
+    {
+      "lang": "en",
+      "text": "incredibly complex but at each step what",
+      "offset": 508.72,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "the model is doing is still just running",
+      "offset": 512.479,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "inference on a very limited set of",
+      "offset": 514.08,
+      "duration": 3.839
+    },
+    {
+      "lang": "en",
+      "text": "contexts",
+      "offset": 515.919,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "everything that the model knows about",
+      "offset": 517.919,
+      "duration": 3.441
+    },
+    {
+      "lang": "en",
+      "text": "the current state of the world is going",
+      "offset": 519.519,
+      "duration": 5.041
+    },
+    {
+      "lang": "en",
+      "text": "to be explained in that 10 to 20k tokens",
+      "offset": 521.36,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "and it's really helpful to limit",
+      "offset": 524.56,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "ourselves in that context and see if",
+      "offset": 526.32,
+      "duration": 4.959
+    },
+    {
+      "lang": "en",
+      "text": "it's actually sufficient and coherent",
+      "offset": 528.48,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "this will give you a much better",
+      "offset": 531.279,
+      "duration": 3.441
+    },
+    {
+      "lang": "en",
+      "text": "understanding of how agents see the",
+      "offset": 532.72,
+      "duration": 3.679
+    },
+    {
+      "lang": "en",
+      "text": "world and then kind of bridge the gap",
+      "offset": 534.72,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "between our understanding and",
+      "offset": 536.399,
+      "duration": 3.681
+    },
+    {
+      "lang": "en",
+      "text": "theirs let's imagine for a second that",
+      "offset": 540.44,
+      "duration": 4.2
+    },
+    {
+      "lang": "en",
+      "text": "we're computer use agents now and then",
+      "offset": 542.72,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "see what that feels like all we're going",
+      "offset": 544.64,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "to get is a static screenshot and a very",
+      "offset": 546.8,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "poorly written description this is by",
+      "offset": 549.68,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "yours truly let's read through it you",
+      "offset": 551.36,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "know you're a computer use agent you",
+      "offset": 553.44,
+      "duration": 4.2
+    },
+    {
+      "lang": "en",
+      "text": "have a set of tools and you have a task",
+      "offset": 554.8,
+      "duration": 5.68
+    },
+    {
+      "lang": "en",
+      "text": "terrible uh we can think and talk and",
+      "offset": 557.64,
+      "duration": 5
+    },
+    {
+      "lang": "en",
+      "text": "reason all we want but the only thing",
+      "offset": 560.48,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "that's going to take effect in the",
+      "offset": 562.64,
+      "duration": 3.16
+    },
+    {
+      "lang": "en",
+      "text": "environment are our",
+      "offset": 564.16,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "tools so we attempt a click without",
+      "offset": 565.8,
+      "duration": 5.4
+    },
+    {
+      "lang": "en",
+      "text": "really seeing what's happening and while",
+      "offset": 568.88,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "the inference is happening while the two",
+      "offset": 571.2,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "execution is happening this is basically",
+      "offset": 572.88,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "equivalent to us closing our eyes for",
+      "offset": 574.88,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "three to five seconds and using the",
+      "offset": 576.72,
+      "duration": 4.799
+    },
+    {
+      "lang": "en",
+      "text": "computer in the dark then you open up",
+      "offset": 578.72,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "your eyes and you see another screenshot",
+      "offset": 581.519,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "whatever you did could have worked or",
+      "offset": 583.6,
+      "duration": 3.28
+    },
+    {
+      "lang": "en",
+      "text": "you could have shut down the computer",
+      "offset": 585.519,
+      "duration": 3.121
+    },
+    {
+      "lang": "en",
+      "text": "you just don't know this is a huge",
+      "offset": 586.88,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "lethal phase and the cycle kind of",
+      "offset": 588.64,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "starts again i highly recommend just",
+      "offset": 590.64,
+      "duration": 5.68
+    },
+    {
+      "lang": "en",
+      "text": "trying doing a full task from the",
+      "offset": 593.76,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "agent's perspective like this i promise",
+      "offset": 596.32,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "you it's a fascinating and only mildly",
+      "offset": 598.88,
+      "duration": 4.639
+    },
+    {
+      "lang": "en",
+      "text": "uncomfortable",
+      "offset": 600.88,
+      "duration": 2.639
+    },
+    {
+      "lang": "en",
+      "text": "experience however once you go through",
+      "offset": 604.6,
+      "duration": 4.04
+    },
+    {
+      "lang": "en",
+      "text": "that mildly uncomfortable experience uh",
+      "offset": 606.72,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "i think it becomes very clear what the",
+      "offset": 608.64,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "agents would have actually needed it's",
+      "offset": 610.24,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "clearly very crucial to know uh what the",
+      "offset": 612.24,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "screen resolution is so i know how to",
+      "offset": 614.56,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "click um it's also good to have",
+      "offset": 616.48,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "recommended actions and limitations just",
+      "offset": 619.04,
+      "duration": 4.479
+    },
+    {
+      "lang": "en",
+      "text": "so that you know uh we can uh put some",
+      "offset": 621.36,
+      "duration": 4.479
+    },
+    {
+      "lang": "en",
+      "text": "guardrails around uh what we should be",
+      "offset": 623.519,
+      "duration": 4.601
+    },
+    {
+      "lang": "en",
+      "text": "exploring and we can avoid unnecessary",
+      "offset": 625.839,
+      "duration": 4.481
+    },
+    {
+      "lang": "en",
+      "text": "exploration these are just some examples",
+      "offset": 628.12,
+      "duration": 4.2
+    },
+    {
+      "lang": "en",
+      "text": "and you know do this exercise for your",
+      "offset": 630.32,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "own own agent use case and figure out",
+      "offset": 632.32,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "what kind of context do you actually",
+      "offset": 634.48,
+      "duration": 4.12
+    },
+    {
+      "lang": "en",
+      "text": "want to provide for the",
+      "offset": 635.92,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "agent fortunately though um we are",
+      "offset": 638.6,
+      "duration": 4.919
+    },
+    {
+      "lang": "en",
+      "text": "building systems that speak our language",
+      "offset": 641.44,
+      "duration": 3.8
+    },
+    {
+      "lang": "en",
+      "text": "so we could just ask cloud to understand",
+      "offset": 643.519,
+      "duration": 4.481
+    },
+    {
+      "lang": "en",
+      "text": "cloud you can throw in your your system",
+      "offset": 645.24,
+      "duration": 4.68
+    },
+    {
+      "lang": "en",
+      "text": "prompt and ask well is any of this",
+      "offset": 648,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "instruction ambiguous does it make sense",
+      "offset": 649.92,
+      "duration": 4.159
+    },
+    {
+      "lang": "en",
+      "text": "to you are you able to follow this you",
+      "offset": 651.6,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "can throw in a two description and see",
+      "offset": 654.079,
+      "duration": 3.521
+    },
+    {
+      "lang": "en",
+      "text": "whether the agent knows how to use the",
+      "offset": 656,
+      "duration": 3.12
+    },
+    {
+      "lang": "en",
+      "text": "tool you can see if it wants more",
+      "offset": 657.6,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "parameter fewer parameter and one thing",
+      "offset": 659.12,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "that we do quite frequently is we throw",
+      "offset": 662.24,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "the entire agent's trajectory into cloud",
+      "offset": 664,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "and just ask it hey why do you think we",
+      "offset": 666.24,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "made this decision right here and is",
+      "offset": 668.48,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "there anything that we can do to help",
+      "offset": 670.56,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "you make better decisions",
+      "offset": 672.32,
+      "duration": 3.759
+    },
+    {
+      "lang": "en",
+      "text": "this shouldn't replace your own",
+      "offset": 674.8,
+      "duration": 3.039
+    },
+    {
+      "lang": "en",
+      "text": "understanding of the context but you'll",
+      "offset": 676.079,
+      "duration": 3.681
+    },
+    {
+      "lang": "en",
+      "text": "help you gain a much closer perspective",
+      "offset": 677.839,
+      "duration": 4.481
+    },
+    {
+      "lang": "en",
+      "text": "on how the agent is seeing the world so",
+      "offset": 679.76,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "once again think like your agent as",
+      "offset": 682.32,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "you're",
+      "offset": 684.48,
+      "duration": 2.16
+    },
+    {
+      "lang": "en",
+      "text": "iterating all right uh i've i've spent",
+      "offset": 686.68,
+      "duration": 4.44
+    },
+    {
+      "lang": "en",
+      "text": "most of the talk about very practical",
+      "offset": 689.279,
+      "duration": 3.921
+    },
+    {
+      "lang": "en",
+      "text": "stuff uh i'm going to indulge myself and",
+      "offset": 691.12,
+      "duration": 4.719
+    },
+    {
+      "lang": "en",
+      "text": "spend one slide on personal musings this",
+      "offset": 693.2,
+      "duration": 4.639
+    },
+    {
+      "lang": "en",
+      "text": "is going to be my view on how this might",
+      "offset": 695.839,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "evolve and some open questions i think",
+      "offset": 697.839,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "we need to answer together as ai",
+      "offset": 699.519,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "engineers",
+      "offset": 701.279,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "these are the top three things that are",
+      "offset": 703.519,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "always on my mind first i think we need",
+      "offset": 704.959,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "to make agents a lot more budget aare",
+      "offset": 707.279,
+      "duration": 5.281
+    },
+    {
+      "lang": "en",
+      "text": "unlike workflows we don't really have a",
+      "offset": 710.079,
+      "duration": 4.161
+    },
+    {
+      "lang": "en",
+      "text": "great sense of control for the cost and",
+      "offset": 712.56,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "latency for agents i think figuring this",
+      "offset": 714.24,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "out will enable a lot more use cases as",
+      "offset": 716.8,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "it gives us the necessary control to",
+      "offset": 719.12,
+      "duration": 4.159
+    },
+    {
+      "lang": "en",
+      "text": "deploy them in production the open",
+      "offset": 720.64,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "question is just what's the best way to",
+      "offset": 723.279,
+      "duration": 3.921
+    },
+    {
+      "lang": "en",
+      "text": "define and enforce budgets in terms of",
+      "offset": 725.2,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "time in terms of money in terms of",
+      "offset": 727.2,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "tokens the things that we care about",
+      "offset": 728.88,
+      "duration": 5.72
+    },
+    {
+      "lang": "en",
+      "text": "next up is this concept of self-evolving",
+      "offset": 732,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "tools i've i've already hinted at this",
+      "offset": 734.6,
+      "duration": 4.2
+    },
+    {
+      "lang": "en",
+      "text": "two slides ago but uh we are already",
+      "offset": 736.72,
+      "duration": 4.44
+    },
+    {
+      "lang": "en",
+      "text": "using models to help iterate on the two",
+      "offset": 738.8,
+      "duration": 4.479
+    },
+    {
+      "lang": "en",
+      "text": "description but this should generalize",
+      "offset": 741.16,
+      "duration": 4.119
+    },
+    {
+      "lang": "en",
+      "text": "pretty well into a meta tool where",
+      "offset": 743.279,
+      "duration": 3.841
+    },
+    {
+      "lang": "en",
+      "text": "agents can design and improve their own",
+      "offset": 745.279,
+      "duration": 2.761
+    },
+    {
+      "lang": "en",
+      "text": "tool",
+      "offset": 747.12,
+      "duration": 3.279
+    },
+    {
+      "lang": "en",
+      "text": "ergonomics this will make agents a lot",
+      "offset": 748.04,
+      "duration": 4.919
+    },
+    {
+      "lang": "en",
+      "text": "more general purpose as they can adopt",
+      "offset": 750.399,
+      "duration": 5.801
+    },
+    {
+      "lang": "en",
+      "text": "the tools that they need for each use",
+      "offset": 752.959,
+      "duration": 6.161
+    },
+    {
+      "lang": "en",
+      "text": "case finally um i don't even think this",
+      "offset": 756.2,
+      "duration": 4.84
+    },
+    {
+      "lang": "en",
+      "text": "is a hot take anymore i have a personal",
+      "offset": 759.12,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "conviction that we will see a lot more",
+      "offset": 761.04,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "multi- aent uh collaborations in",
+      "offset": 762.72,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "production by the end of this year",
+      "offset": 764.72,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "they're well parallelized they have very",
+      "offset": 766.8,
+      "duration": 4.479
+    },
+    {
+      "lang": "en",
+      "text": "nice separation of concerns and having",
+      "offset": 768.72,
+      "duration": 4.799
+    },
+    {
+      "lang": "en",
+      "text": "sub agent for example will really",
+      "offset": 771.279,
+      "duration": 4.68
+    },
+    {
+      "lang": "en",
+      "text": "protect the main agents context",
+      "offset": 773.519,
+      "duration": 6.081
+    },
+    {
+      "lang": "en",
+      "text": "window um but i think a big open",
+      "offset": 775.959,
+      "duration": 6.281
+    },
+    {
+      "lang": "en",
+      "text": "question here is um how how do these",
+      "offset": 779.6,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "agents actually communicate with each",
+      "offset": 782.24,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "other we're currently in this very rigid",
+      "offset": 783.68,
+      "duration": 5.839
+    },
+    {
+      "lang": "en",
+      "text": "frame of having mostly synchronous user",
+      "offset": 786.32,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "assistant terms and i think most of our",
+      "offset": 789.519,
+      "duration": 3.921
+    },
+    {
+      "lang": "en",
+      "text": "systems are built around that so how do",
+      "offset": 791.44,
+      "duration": 3.519
+    },
+    {
+      "lang": "en",
+      "text": "we expand from there and build in",
+      "offset": 793.44,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "asynchronous communication and and",
+      "offset": 794.959,
+      "duration": 3.841
+    },
+    {
+      "lang": "en",
+      "text": "enable more roles that that afford",
+      "offset": 796.8,
+      "duration": 3.279
+    },
+    {
+      "lang": "en",
+      "text": "agents to communicate with each other",
+      "offset": 798.8,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "and recognize each other i think that's",
+      "offset": 800.079,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "going to be a big open question as we",
+      "offset": 802.24,
+      "duration": 4.12
+    },
+    {
+      "lang": "en",
+      "text": "explore this more multi- aent",
+      "offset": 803.839,
+      "duration": 4.881
+    },
+    {
+      "lang": "en",
+      "text": "future these are the areas that take up",
+      "offset": 806.36,
+      "duration": 4.599
+    },
+    {
+      "lang": "en",
+      "text": "a lot of my mind space if you're also",
+      "offset": 808.72,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "thinking about this uh please shoot me a",
+      "offset": 810.959,
+      "duration": 5
+    },
+    {
+      "lang": "en",
+      "text": "text i would love to",
+      "offset": 813.2,
+      "duration": 5.759
+    },
+    {
+      "lang": "en",
+      "text": "chat okay let's uh bring it all together",
+      "offset": 815.959,
+      "duration": 4.841
+    },
+    {
+      "lang": "en",
+      "text": "if you forget everything i said today",
+      "offset": 818.959,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "these are the three takeaways first",
+      "offset": 820.8,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "don't build agents for everything if you",
+      "offset": 823.279,
+      "duration": 4.081
+    },
+    {
+      "lang": "en",
+      "text": "do find a good use case and want to",
+      "offset": 825.92,
+      "duration": 3.919
+    },
+    {
+      "lang": "en",
+      "text": "build an agent keep it as simple for as",
+      "offset": 827.36,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "long as possible and finally as you",
+      "offset": 829.839,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "iterate try to think like your agent",
+      "offset": 832.88,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "gain their perspective and help them do",
+      "offset": 834.959,
+      "duration": 5
+    },
+    {
+      "lang": "en",
+      "text": "their job",
+      "offset": 836.8,
+      "duration": 3.159
+    },
+    {
+      "lang": "en",
+      "text": "i would love to keep in touch with",
+      "offset": 840.399,
+      "duration": 2.961
+    },
+    {
+      "lang": "en",
+      "text": "everyone of you if you want to chat",
+      "offset": 841.839,
+      "duration": 2.961
+    },
+    {
+      "lang": "en",
+      "text": "about agents especially those open",
+      "offset": 843.36,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "questions that i talked about uh you'll",
+      "offset": 844.8,
+      "duration": 4.159
+    },
+    {
+      "lang": "en",
+      "text": "be incredibly lovely you can just you",
+      "offset": 846.8,
+      "duration": 5.599
+    },
+    {
+      "lang": "en",
+      "text": "know uh jam on some of these ideas uh",
+      "offset": 848.959,
+      "duration": 5.041
+    },
+    {
+      "lang": "en",
+      "text": "these are my socials if you want to get",
+      "offset": 852.399,
+      "duration": 3.521
+    },
+    {
+      "lang": "en",
+      "text": "connected and i'm going to end the",
+      "offset": 854,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "presentation on a personal anecdote so",
+      "offset": 855.92,
+      "duration": 5.039
+    },
+    {
+      "lang": "en",
+      "text": "back in 2023 i was building ai product",
+      "offset": 858.72,
+      "duration": 4.239
+    },
+    {
+      "lang": "en",
+      "text": "at meta and we had this funny thing",
+      "offset": 860.959,
+      "duration": 3.12
+    },
+    {
+      "lang": "en",
+      "text": "where we could change our job",
+      "offset": 862.959,
+      "duration": 3.761
+    },
+    {
+      "lang": "en",
+      "text": "description to anything we want um after",
+      "offset": 864.079,
+      "duration": 4.641
+    },
+    {
+      "lang": "en",
+      "text": "reading that blog post from swix i",
+      "offset": 866.72,
+      "duration": 3.799
+    },
+    {
+      "lang": "en",
+      "text": "decided i was going to be the first ai",
+      "offset": 868.72,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "engineer uh i i really love the focus on",
+      "offset": 870.519,
+      "duration": 5.641
+    },
+    {
+      "lang": "en",
+      "text": "practicality and just making ai actually",
+      "offset": 873.68,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "useful to the world and i think that",
+      "offset": 876.16,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "aspiration brought me here today so i",
+      "offset": 878.48,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "hope you enjoy the rest of the ai",
+      "offset": 881.36,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "engineer summit and in the meantime",
+      "offset": 883.12,
+      "duration": 6.519
+    },
+    {
+      "lang": "en",
+      "text": "let's keep building thank you",
+      "offset": 885.36,
+      "duration": 4.279
+    },
+    {
+      "lang": "en",
+      "text": "[Music]",
+      "offset": 891.7,
+      "duration": 19
+    }
+  ],
+  "cleanText": null,
+  "dumpedAt": "2025-07-21T18:43:25.076Z"
+}

@@ -1,0 +1,4642 @@
+{
+  "episodeId": "mCmwqhvsyUg",
+  "channelSlug": "@bytegrad",
+  "title": "Always Use DAL Authentication In Next.js (Data Access Layer)",
+  "publishedAt": "2025-04-17T13:03:50.000Z",
+  "rawLines": [
+    {
+      "lang": "en",
+      "text": "Everyone, let's talk a little bit more",
+      "offset": 0.08,
+      "duration": 3.599
+    },
+    {
+      "lang": "en",
+      "text": "about authentication in Nex.js.",
+      "offset": 1.28,
+      "duration": 4.559
+    },
+    {
+      "lang": "en",
+      "text": "Unfortunately, recently there has been",
+      "offset": 3.679,
+      "duration": 5.521
+    },
+    {
+      "lang": "en",
+      "text": "an issue with middleware in Nex.js where",
+      "offset": 5.839,
+      "duration": 5.361
+    },
+    {
+      "lang": "en",
+      "text": "it may have been possible that some",
+      "offset": 9.2,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "attacker could have been able to bypass",
+      "offset": 11.2,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "middleware. So, if you were only doing",
+      "offset": 14.08,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "the authentication check in middleware,",
+      "offset": 16.08,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "that could potentially have been a",
+      "offset": 18.24,
+      "duration": 3.199
+    },
+    {
+      "lang": "en",
+      "text": "problem. So, I've seen some people",
+      "offset": 19.92,
+      "duration": 3.599
+    },
+    {
+      "lang": "en",
+      "text": "wonder about how to do authentication.",
+      "offset": 21.439,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "Should you still do it in middleware or",
+      "offset": 23.519,
+      "duration": 4.401
+    },
+    {
+      "lang": "en",
+      "text": "only in the page component or how to how",
+      "offset": 25.199,
+      "duration": 4.801
+    },
+    {
+      "lang": "en",
+      "text": "to structure everything? So, I want to",
+      "offset": 27.92,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "talk about it in this video, but I can",
+      "offset": 30,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "already tell you that you probably want",
+      "offset": 31.84,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "to look into a so-called data access",
+      "offset": 33.76,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "layer. I've mentioned it before, and",
+      "offset": 36.48,
+      "duration": 3.04
+    },
+    {
+      "lang": "en",
+      "text": "this is also something that is",
+      "offset": 38.16,
+      "duration": 3.919
+    },
+    {
+      "lang": "en",
+      "text": "recommended here by the Nex.js team",
+      "offset": 39.52,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "themselves. And by using a data access",
+      "offset": 42.079,
+      "duration": 4.561
+    },
+    {
+      "lang": "en",
+      "text": "layer, you can build much more robust",
+      "offset": 44.64,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "Nex.js applications. So, I want to dive",
+      "offset": 46.64,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "a little bit deeper into a data access",
+      "offset": 49.2,
+      "duration": 3.999
+    },
+    {
+      "lang": "en",
+      "text": "layer and look at some tips and tricks.",
+      "offset": 51.44,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "So, let's quickly recap with why we even",
+      "offset": 53.199,
+      "duration": 4.641
+    },
+    {
+      "lang": "en",
+      "text": "want this. What is wrong with just doing",
+      "offset": 56,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "authentication in middleware or the p or",
+      "offset": 57.84,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "page component? Because that's probably",
+      "offset": 60.8,
+      "duration": 3.2
+    },
+    {
+      "lang": "en",
+      "text": "what you've been using so far. Either",
+      "offset": 62.48,
+      "duration": 3.28
+    },
+    {
+      "lang": "en",
+      "text": "middleware or you do it directly in the",
+      "offset": 64,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "page component. But there are some",
+      "offset": 65.76,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "pitfalls. So let's take a look at an",
+      "offset": 67.76,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "example. We have a super simple app for",
+      "offset": 69.52,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "storing secret documents. The secret",
+      "offset": 72.08,
+      "duration": 5.359
+    },
+    {
+      "lang": "en",
+      "text": "documents fault. And you can view the",
+      "offset": 74.56,
+      "duration": 5.84
+    },
+    {
+      "lang": "en",
+      "text": "documents on the route/ documents. Here",
+      "offset": 77.439,
+      "duration": 4.881
+    },
+    {
+      "lang": "en",
+      "text": "we have three documents but they are top",
+      "offset": 80.4,
+      "duration": 4.719
+    },
+    {
+      "lang": "en",
+      "text": "secret. So we need to protect this data.",
+      "offset": 82.32,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "So if we zoom out a little bit and take",
+      "offset": 85.119,
+      "duration": 4.801
+    },
+    {
+      "lang": "en",
+      "text": "a look at how a nextjs app is typically",
+      "offset": 87.2,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "structured. Basically this entire thing",
+      "offset": 89.92,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "here is one next.js app. We have a",
+      "offset": 92.32,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "client side as well as a server side.",
+      "offset": 94.88,
+      "duration": 3.12
+    },
+    {
+      "lang": "en",
+      "text": "And we also have something called",
+      "offset": 96.72,
+      "duration": 2.8
+    },
+    {
+      "lang": "en",
+      "text": "middleware. Right? So if we send a",
+      "offset": 98,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "request from the client side to the",
+      "offset": 99.52,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "server side, we can let it go through",
+      "offset": 101.36,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "middleware first and then we can do",
+      "offset": 102.96,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "other stuff. Right? So the recent",
+      "offset": 105.28,
+      "duration": 4.159
+    },
+    {
+      "lang": "en",
+      "text": "security vulnerability basically had to",
+      "offset": 106.88,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "do with bypassing middleware that should",
+      "offset": 109.439,
+      "duration": 4.161
+    },
+    {
+      "lang": "en",
+      "text": "have been resolved. Now what we want to",
+      "offset": 111.92,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "protect is the data, right? So the data",
+      "offset": 113.6,
+      "duration": 5.119
+    },
+    {
+      "lang": "en",
+      "text": "is the most important thing. So if a",
+      "offset": 116.56,
+      "duration": 4.159
+    },
+    {
+      "lang": "en",
+      "text": "user is able to change something in the",
+      "offset": 118.719,
+      "duration": 4.961
+    },
+    {
+      "lang": "en",
+      "text": "UI or rerender the wrong button, let's",
+      "offset": 120.719,
+      "duration": 5.601
+    },
+    {
+      "lang": "en",
+      "text": "say, all of that is not really a huge",
+      "offset": 123.68,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "issue as long as the user is not able to",
+      "offset": 126.32,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "get access to data that they should not",
+      "offset": 128.72,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "have access to. Right? So the data is",
+      "offset": 131.2,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "really I would say the core part that we",
+      "offset": 133.2,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "really need to protect. Everything else",
+      "offset": 135.36,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "around it is essentially just UI. In",
+      "offset": 137.04,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "this case, we have secret documents. So",
+      "offset": 139.36,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "this content here could be you know very",
+      "offset": 141.68,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "could be top secret right could be could",
+      "offset": 144.56,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "be the launch codes we need to be really",
+      "offset": 146.8,
+      "duration": 4.159
+    },
+    {
+      "lang": "en",
+      "text": "careful with who gets access to this and",
+      "offset": 148.64,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "right now it's a public route everybody",
+      "offset": 150.959,
+      "duration": 4.161
+    },
+    {
+      "lang": "en",
+      "text": "can go here right so if I go to the",
+      "offset": 153.28,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "homepage this is a public route and in",
+      "offset": 155.12,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "nextg we have uh well the pagets access",
+      "offset": 157.2,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "right here right just the homepage okay",
+      "offset": 160.4,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "and then we have that documents route",
+      "offset": 162.72,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "which should absolutely not be publicly",
+      "offset": 164.64,
+      "duration": 4.239
+    },
+    {
+      "lang": "en",
+      "text": "accessible but right now it is we have",
+      "offset": 166.56,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "that right here what am I doing in this",
+      "offset": 168.879,
+      "duration": 3.601
+    },
+    {
+      "lang": "en",
+      "text": "page Well, I'm just grabbing all the",
+      "offset": 170.64,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "documents from my database. I'm just",
+      "offset": 172.48,
+      "duration": 3.28
+    },
+    {
+      "lang": "en",
+      "text": "using Prisma here, but works the same",
+      "offset": 174,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "with any other OM or whatever you're",
+      "offset": 175.76,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "using to access your database. And here",
+      "offset": 177.76,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "I get all the secret documents and I'm",
+      "offset": 179.76,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "just mapping over them here. So for each",
+      "offset": 181.44,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "one, I'm just uh creating some markup",
+      "offset": 183.68,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "here. And here you can see I'm",
+      "offset": 185.84,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "outputting doc.content. That's some",
+      "offset": 187.76,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "really sensitive data that we should not",
+      "offset": 189.76,
+      "duration": 6.559
+    },
+    {
+      "lang": "en",
+      "text": "be just loosely throwing around. So how",
+      "offset": 192,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "would we protect this route? Let's say",
+      "offset": 196.319,
+      "duration": 3.56
+    },
+    {
+      "lang": "en",
+      "text": "we have a very simple authentication",
+      "offset": 198,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "strategy. We only want to allow logged",
+      "offset": 199.879,
+      "duration": 6.761
+    },
+    {
+      "lang": "en",
+      "text": "in users to access this data. Right? So",
+      "offset": 203.04,
+      "duration": 5.839
+    },
+    {
+      "lang": "en",
+      "text": "when I say logged in, it basically just",
+      "offset": 206.64,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "means that they have some valid access",
+      "offset": 208.879,
+      "duration": 3.761
+    },
+    {
+      "lang": "en",
+      "text": "token. Right? Typically we have",
+      "offset": 211.28,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "so-called session. So if as long as the",
+      "offset": 212.64,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "user can keep showing a valid access",
+      "offset": 214.64,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "token which can be a JSON web token JWT",
+      "offset": 216.56,
+      "duration": 6.64
+    },
+    {
+      "lang": "en",
+      "text": "typically stored in a cookie and so then",
+      "offset": 219.92,
+      "duration": 5.92
+    },
+    {
+      "lang": "en",
+      "text": "on every request to the server side that",
+      "offset": 223.2,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "cookie will be sent with it and so let's",
+      "offset": 225.84,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "try to protect this route so that only",
+      "offset": 228.08,
+      "duration": 4.239
+    },
+    {
+      "lang": "en",
+      "text": "logged in users can access it. So for",
+      "offset": 230.08,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "authentication typically you have",
+      "offset": 232.319,
+      "duration": 4.721
+    },
+    {
+      "lang": "en",
+      "text": "probably used the page components in",
+      "offset": 234.48,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "nextJS which are just server components",
+      "offset": 237.04,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "or you've been doing it in middleware.",
+      "offset": 239.36,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "These are the two common approaches.",
+      "offset": 241.76,
+      "duration": 3.28
+    },
+    {
+      "lang": "en",
+      "text": "Now, what I want to show you in this",
+      "offset": 243.84,
+      "duration": 3.28
+    },
+    {
+      "lang": "en",
+      "text": "video is actually that doing it in",
+      "offset": 245.04,
+      "duration": 3.759
+    },
+    {
+      "lang": "en",
+      "text": "either of these two is actually not",
+      "offset": 247.12,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "going to be sufficient in most cases.",
+      "offset": 248.799,
+      "duration": 3.921
+    },
+    {
+      "lang": "en",
+      "text": "You you should view this more as your",
+      "offset": 251.2,
+      "duration": 3.599
+    },
+    {
+      "lang": "en",
+      "text": "first line of defense, but you want to",
+      "offset": 252.72,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "have a so-called data access layer in",
+      "offset": 254.799,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "addition to that to make it more robust.",
+      "offset": 256.88,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "So, let's try to protect this like how",
+      "offset": 259.759,
+      "duration": 3.681
+    },
+    {
+      "lang": "en",
+      "text": "you would traditionally perhaps uh start",
+      "offset": 261.12,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "off. Well, you would do it either",
+      "offset": 263.44,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "directly here in the page or you would",
+      "offset": 265.28,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "create a middleware file and do it in",
+      "offset": 267.36,
+      "duration": 3.839
+    },
+    {
+      "lang": "en",
+      "text": "middleware. But let's say we do it in",
+      "offset": 269.6,
+      "duration": 3.28
+    },
+    {
+      "lang": "en",
+      "text": "the page component here. So I need some",
+      "offset": 271.199,
+      "duration": 3.601
+    },
+    {
+      "lang": "en",
+      "text": "kind of authentication solution and I",
+      "offset": 272.88,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "will use KINT in this video. I'm a brand",
+      "offset": 274.8,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "ambassador for Kind. It's a paid",
+      "offset": 276.8,
+      "duration": 3.2
+    },
+    {
+      "lang": "en",
+      "text": "sponsorship but had a great time working",
+      "offset": 278.16,
+      "duration": 3.28
+    },
+    {
+      "lang": "en",
+      "text": "with them. But the things we talk about",
+      "offset": 280,
+      "duration": 2.96
+    },
+    {
+      "lang": "en",
+      "text": "here are relevant for the other",
+      "offset": 281.44,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "solutions you may be using as well. So",
+      "offset": 282.96,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "no matter what authentication solution",
+      "offset": 284.8,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "you use, what we talk about here is",
+      "offset": 286.4,
+      "duration": 3.519
+    },
+    {
+      "lang": "en",
+      "text": "relevant for all of them. So in this",
+      "offset": 288.24,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "case, I like using Kite. Super fast to",
+      "offset": 289.919,
+      "duration": 3.521
+    },
+    {
+      "lang": "en",
+      "text": "set up. I have other videos with them.",
+      "offset": 291.84,
+      "duration": 2.88
+    },
+    {
+      "lang": "en",
+      "text": "If you want me to walk you through how",
+      "offset": 293.44,
+      "duration": 2.64
+    },
+    {
+      "lang": "en",
+      "text": "to set it up, I have other videos with",
+      "offset": 294.72,
+      "duration": 3.039
+    },
+    {
+      "lang": "en",
+      "text": "Kite. Make sure to check them out. But",
+      "offset": 296.08,
+      "duration": 3.679
+    },
+    {
+      "lang": "en",
+      "text": "basically any authentication solution",
+      "offset": 297.759,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "will allow you to check the incoming",
+      "offset": 299.759,
+      "duration": 4.401
+    },
+    {
+      "lang": "en",
+      "text": "request to see if the user is logged in",
+      "offset": 301.919,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "or not. So if the user is not logged in",
+      "offset": 304.16,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "typically we do want to redirect them to",
+      "offset": 305.919,
+      "duration": 4.801
+    },
+    {
+      "lang": "en",
+      "text": "the login page. This is the route I can",
+      "offset": 308.24,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "redirect to. By the way, Nexj has a",
+      "offset": 310.72,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "redirect and works by throwing an error.",
+      "offset": 312.56,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "So if the code reaches this line, it",
+      "offset": 315.28,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "will throw an error. It will not",
+      "offset": 317.68,
+      "duration": 3.519
+    },
+    {
+      "lang": "en",
+      "text": "continue down here. Right? So if you",
+      "offset": 319.52,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "really want to be explicit about it uh",
+      "offset": 321.199,
+      "duration": 4.241
+    },
+    {
+      "lang": "en",
+      "text": "because it's unreachable code. Okay.",
+      "offset": 323.6,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "Okay. So this is how a lot of people do",
+      "offset": 325.44,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "it and it's not inherently bad. So now",
+      "offset": 327.12,
+      "duration": 4.799
+    },
+    {
+      "lang": "en",
+      "text": "we have homepage as public. Now if I try",
+      "offset": 329.52,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "to go to /documents, it should be",
+      "offset": 331.919,
+      "duration": 3.521
+    },
+    {
+      "lang": "en",
+      "text": "protected, right? So let's see what we",
+      "offset": 333.84,
+      "duration": 4.079
+    },
+    {
+      "lang": "en",
+      "text": "get and waiting. Yeah. So now indeed I",
+      "offset": 335.44,
+      "duration": 4.319
+    },
+    {
+      "lang": "en",
+      "text": "cannot access it. I'm not logged in. I'm",
+      "offset": 337.919,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "redirected here to a login page. So this",
+      "offset": 339.759,
+      "duration": 5.761
+    },
+    {
+      "lang": "en",
+      "text": "is now properly protecting the data. So",
+      "offset": 342.639,
+      "duration": 4.481
+    },
+    {
+      "lang": "en",
+      "text": "this is the default login page I get",
+      "offset": 345.52,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "with kind. I can decide how users can",
+      "offset": 347.12,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "login. So in this case I enabled uh",
+      "offset": 349.52,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "GitHub login. But here are all the other",
+      "offset": 351.52,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "options I have as well. So I can add",
+      "offset": 353.44,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "phone, username and code, username,",
+      "offset": 355.44,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "email and password and other social",
+      "offset": 357.68,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "connections as well. All from the",
+      "offset": 359.6,
+      "duration": 3.12
+    },
+    {
+      "lang": "en",
+      "text": "dashboard here in kind. Really nice.",
+      "offset": 361.36,
+      "duration": 3.279
+    },
+    {
+      "lang": "en",
+      "text": "They now also allow you to design a",
+      "offset": 362.72,
+      "duration": 3.599
+    },
+    {
+      "lang": "en",
+      "text": "custom login page. They even help you",
+      "offset": 364.639,
+      "duration": 3.12
+    },
+    {
+      "lang": "en",
+      "text": "out with some nice templates here as",
+      "offset": 366.319,
+      "duration": 3.361
+    },
+    {
+      "lang": "en",
+      "text": "well. So you can pretty much customize",
+      "offset": 367.759,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "this almost in any way you want. All",
+      "offset": 369.68,
+      "duration": 2.88
+    },
+    {
+      "lang": "en",
+      "text": "right, but let me actually log in here",
+      "offset": 371.199,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "and see if our app is still working. All",
+      "offset": 372.56,
+      "duration": 3.759
+    },
+    {
+      "lang": "en",
+      "text": "right, so I just logged in and I'm being",
+      "offset": 374.639,
+      "duration": 4.081
+    },
+    {
+      "lang": "en",
+      "text": "redirected here to the homepage. Now if",
+      "offset": 376.319,
+      "duration": 5.281
+    },
+    {
+      "lang": "en",
+      "text": "I go to slash uh documents, let's see",
+      "offset": 378.72,
+      "duration": 5.68
+    },
+    {
+      "lang": "en",
+      "text": "what we get. All right. So now I can see",
+      "offset": 381.6,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "the data again. It is protected now and",
+      "offset": 384.4,
+      "duration": 5.519
+    },
+    {
+      "lang": "en",
+      "text": "I can still access it because now I am",
+      "offset": 386.8,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "logged in. Meaning I have these tokens,",
+      "offset": 389.919,
+      "duration": 4.641
+    },
+    {
+      "lang": "en",
+      "text": "right? Particularly the access token",
+      "offset": 392.24,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "which is just a JSON web token. As long",
+      "offset": 394.56,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "as I can show this and it's still valid,",
+      "offset": 397.52,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "I can access the data right now. Now",
+      "offset": 399.28,
+      "duration": 3.759
+    },
+    {
+      "lang": "en",
+      "text": "what is the risk with this? Because this",
+      "offset": 400.96,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "is how a lot of people do it actually.",
+      "offset": 403.039,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "Well, the biggest risk is that over time",
+      "offset": 404.72,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "you will switch up your code. The way",
+      "offset": 407.759,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "that we do it right here is we fetch the",
+      "offset": 410,
+      "duration": 5.039
+    },
+    {
+      "lang": "en",
+      "text": "data also directly here on the page and",
+      "offset": 411.919,
+      "duration": 5.921
+    },
+    {
+      "lang": "en",
+      "text": "then uh we map over it here on the page.",
+      "offset": 415.039,
+      "duration": 4.961
+    },
+    {
+      "lang": "en",
+      "text": "But typically you structure your react",
+      "offset": 417.84,
+      "duration": 3.919
+    },
+    {
+      "lang": "en",
+      "text": "applications a bit differently. For",
+      "offset": 420,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "example, you often create dedicated",
+      "offset": 421.759,
+      "duration": 4.481
+    },
+    {
+      "lang": "en",
+      "text": "component. So for this list for example,",
+      "offset": 424,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "we could create a dedicated component",
+      "offset": 426.24,
+      "duration": 4.959
+    },
+    {
+      "lang": "en",
+      "text": "called documents list in the components",
+      "offset": 428.56,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "folder or wherever. I can create a",
+      "offset": 431.199,
+      "duration": 3.761
+    },
+    {
+      "lang": "en",
+      "text": "component. Let's just call it documents",
+      "offset": 433.28,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "list. Let me remove that. Right? That's",
+      "offset": 434.96,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "typically how you structure React",
+      "offset": 436.88,
+      "duration": 3.96
+    },
+    {
+      "lang": "en",
+      "text": "applications. You want to have nice,",
+      "offset": 438.72,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "clean, reusable components. That's one",
+      "offset": 440.84,
+      "duration": 4.919
+    },
+    {
+      "lang": "en",
+      "text": "of the reasons why React became so",
+      "offset": 444.08,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "popular. It's because uh you were able",
+      "offset": 445.759,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "to reason about your application as a",
+      "offset": 447.52,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "tree of components. Now I have the",
+      "offset": 449.759,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "markup here now, but it needs the data",
+      "offset": 451.52,
+      "duration": 4.399
+    },
+    {
+      "lang": "en",
+      "text": "here, right? So I could pass it as a",
+      "offset": 453.919,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "prop, right? So we will have our",
+      "offset": 455.919,
+      "duration": 3.601
+    },
+    {
+      "lang": "en",
+      "text": "component here. Now we could pass it as",
+      "offset": 457.759,
+      "duration": 4.801
+    },
+    {
+      "lang": "en",
+      "text": "a prop, but we can also fetch data",
+      "offset": 459.52,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "directly in this in a React server",
+      "offset": 462.56,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "component. Right? Right. So in nextJS we",
+      "offset": 464.56,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "can mark it as async a server component",
+      "offset": 466.56,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "and then just get data directly reach",
+      "offset": 468.72,
+      "duration": 4.479
+    },
+    {
+      "lang": "en",
+      "text": "out to our database directly like like",
+      "offset": 470.88,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "this not only on the page component we",
+      "offset": 473.199,
+      "duration": 4.161
+    },
+    {
+      "lang": "en",
+      "text": "can do that in any react server",
+      "offset": 475.36,
+      "duration": 4.239
+    },
+    {
+      "lang": "en",
+      "text": "component. So I could also do that in",
+      "offset": 477.36,
+      "duration": 3.519
+    },
+    {
+      "lang": "en",
+      "text": "here and actually there are some good",
+      "offset": 479.599,
+      "duration": 3.761
+    },
+    {
+      "lang": "en",
+      "text": "arguments to be made to do it in here.",
+      "offset": 480.879,
+      "duration": 4.401
+    },
+    {
+      "lang": "en",
+      "text": "So I can just mark this as async as",
+      "offset": 483.36,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "well. I can fetch the data in my react",
+      "offset": 485.28,
+      "duration": 4.319
+    },
+    {
+      "lang": "en",
+      "text": "server component like this. Right? So",
+      "offset": 488,
+      "duration": 3.28
+    },
+    {
+      "lang": "en",
+      "text": "now I don't even have to pass a prop.",
+      "offset": 489.599,
+      "duration": 3.761
+    },
+    {
+      "lang": "en",
+      "text": "And now my app is structured like this.",
+      "offset": 491.28,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "And there are some good arguments to be",
+      "offset": 493.36,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "made to do it this way actually because",
+      "offset": 494.8,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "you can now also wrap it in suspense. So",
+      "offset": 497.12,
+      "duration": 4.479
+    },
+    {
+      "lang": "en",
+      "text": "then you can show a fallback as this is",
+      "offset": 499.28,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "fetching the data and we're waiting for",
+      "offset": 501.599,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "it for it to finish. Right? And there",
+      "offset": 503.28,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "are some other reasons but we can get",
+      "offset": 505.039,
+      "duration": 3.201
+    },
+    {
+      "lang": "en",
+      "text": "rid of Prisma here because we are not",
+      "offset": 506.72,
+      "duration": 3.599
+    },
+    {
+      "lang": "en",
+      "text": "using Prisma in this file anymore. All",
+      "offset": 508.24,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "right. Now what you could say what is",
+      "offset": 510.319,
+      "duration": 2.801
+    },
+    {
+      "lang": "en",
+      "text": "the problem? We still have",
+      "offset": 511.84,
+      "duration": 3.199
+    },
+    {
+      "lang": "en",
+      "text": "authentication here in this page right",
+      "offset": 513.12,
+      "duration": 3.359
+    },
+    {
+      "lang": "en",
+      "text": "this component. Yeah. Okay. Now it's",
+      "offset": 515.039,
+      "duration": 2.961
+    },
+    {
+      "lang": "en",
+      "text": "sitting in a different file but",
+      "offset": 516.479,
+      "duration": 3.281
+    },
+    {
+      "lang": "en",
+      "text": "everything here is still protected.",
+      "offset": 518,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "Right? If we go to this page it will",
+      "offset": 519.76,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "still run. If we go to this page, if",
+      "offset": 522.08,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "somebody goes here, it will still run",
+      "offset": 524.08,
+      "duration": 4.319
+    },
+    {
+      "lang": "en",
+      "text": "this code first before we get to here.",
+      "offset": 525.6,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "So, this is all uh this is all safe,",
+      "offset": 528.399,
+      "duration": 5.521
+    },
+    {
+      "lang": "en",
+      "text": "right? Well, now what could happen is",
+      "offset": 530.8,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "you or somebody else on your team or",
+      "offset": 533.92,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "importantly AI, right? An insane amount",
+      "offset": 535.92,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "of code these days is being generated",
+      "offset": 538.8,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "with AI and AI is really good and it is",
+      "offset": 540.88,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "still getting better of course, but",
+      "offset": 543.92,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "sometimes if it's if it's if something",
+      "offset": 545.68,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "is really tricky, it may not do it",
+      "offset": 547.92,
+      "duration": 3.599
+    },
+    {
+      "lang": "en",
+      "text": "properly. So what could happen is that",
+      "offset": 549.76,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "somebody could reuse this component",
+      "offset": 551.519,
+      "duration": 4.76
+    },
+    {
+      "lang": "en",
+      "text": "because that's what we do with React",
+      "offset": 554.48,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "components very often. We reuse them. So",
+      "offset": 556.279,
+      "duration": 4.521
+    },
+    {
+      "lang": "en",
+      "text": "somebody could use that on some other",
+      "offset": 559.04,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "page. Let's say the homepage or any uh",
+      "offset": 560.8,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "public page. Maybe somebody's like, &quot;Oh,",
+      "offset": 563.44,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "we need a documents list here.&quot; I can",
+      "offset": 565.36,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "just reuse that component. But now this",
+      "offset": 567.6,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "page does not have an authentication",
+      "offset": 570.08,
+      "duration": 3.439
+    },
+    {
+      "lang": "en",
+      "text": "check. If I log out here, let me",
+      "offset": 571.76,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "actually also add a log out button. So",
+      "offset": 573.519,
+      "duration": 5.041
+    },
+    {
+      "lang": "en",
+      "text": "kind just gives me this log out link. So",
+      "offset": 576.48,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "then if I click there, it will clear out",
+      "offset": 578.56,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "my cookies and just log log me out. And",
+      "offset": 580.56,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "you can see I'm redirected now to the",
+      "offset": 583.44,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "homepage. But what do I see on this",
+      "offset": 585.36,
+      "duration": 5.599
+    },
+    {
+      "lang": "en",
+      "text": "public homepage? I see the launch codes.",
+      "offset": 587.36,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "I see all these secret documents. This",
+      "offset": 590.959,
+      "duration": 3.681
+    },
+    {
+      "lang": "en",
+      "text": "is now publicly available. And I would",
+      "offset": 592.88,
+      "duration": 4.399
+    },
+    {
+      "lang": "en",
+      "text": "say this is a reasonable risk. I",
+      "offset": 594.64,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "wouldn't say it's extremely likely that",
+      "offset": 597.279,
+      "duration": 3.521
+    },
+    {
+      "lang": "en",
+      "text": "it's going to happen, but it's still",
+      "offset": 598.88,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "likely enough that you need to have some",
+      "offset": 600.8,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "kind of safeguard against this. So what",
+      "offset": 603.44,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "is the reason this could happen? Well,",
+      "offset": 605.68,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "it's because the place where we are",
+      "offset": 607.68,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "doing the authentication check, where we",
+      "offset": 609.2,
+      "duration": 4.319
+    },
+    {
+      "lang": "en",
+      "text": "are accessing data, those two things are",
+      "offset": 611.2,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "in different places, right? They are in",
+      "offset": 613.519,
+      "duration": 2.88
+    },
+    {
+      "lang": "en",
+      "text": "different files. They're in different",
+      "offset": 615.2,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "places. So, there is a gap between the",
+      "offset": 616.399,
+      "duration": 4.961
+    },
+    {
+      "lang": "en",
+      "text": "authentication check and where we access",
+      "offset": 618.88,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "our data. And because of that gap, there",
+      "offset": 621.36,
+      "duration": 4.719
+    },
+    {
+      "lang": "en",
+      "text": "is some risk that something sort of gets",
+      "offset": 623.68,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "in that gap. Well, in this case, what",
+      "offset": 626.079,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "happened is where we access the data, we",
+      "offset": 627.68,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "reuse that on some other place in some",
+      "offset": 630.399,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "other place where there was no",
+      "offset": 632.48,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "authentication check before there. Now,",
+      "offset": 633.839,
+      "duration": 4.081
+    },
+    {
+      "lang": "en",
+      "text": "of course, you can you can prevent this",
+      "offset": 635.92,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "by making sure that you always do the",
+      "offset": 637.92,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "authentication check before you access",
+      "offset": 640.72,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "data. I could technically try to add it",
+      "offset": 643.12,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "here, but it makes more sense to have a",
+      "offset": 645.12,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "dedicated uh place in your app. So, that",
+      "offset": 647.12,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "was an example with the page component,",
+      "offset": 649.44,
+      "duration": 2.88
+    },
+    {
+      "lang": "en",
+      "text": "but maybe you were wondering about",
+      "offset": 650.88,
+      "duration": 2.959
+    },
+    {
+      "lang": "en",
+      "text": "middleware. So, we could technically",
+      "offset": 652.32,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "also do authentication in middleware.",
+      "offset": 653.839,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "So, with kind, I can uh wrap the request",
+      "offset": 655.68,
+      "duration": 4.399
+    },
+    {
+      "lang": "en",
+      "text": "with with O. Now, client will give you",
+      "offset": 657.839,
+      "duration": 4.961
+    },
+    {
+      "lang": "en",
+      "text": "the path that they recommend to use. But",
+      "offset": 660.079,
+      "duration": 4.641
+    },
+    {
+      "lang": "en",
+      "text": "just as an example here, let's say I",
+      "offset": 662.8,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "only want to protect the slashdocuments",
+      "offset": 664.72,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "route, right? You would do something",
+      "offset": 667.04,
+      "duration": 2.96
+    },
+    {
+      "lang": "en",
+      "text": "like this, right? So it it would match",
+      "offset": 668.24,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "for the slash document because on the",
+      "offset": 670,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "slash documents route, we had that",
+      "offset": 671.76,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "secret data, right? But now what",
+      "offset": 674.48,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "happened was with re with react, we",
+      "offset": 676.24,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "actually put the data in a react",
+      "offset": 678.88,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "component and then we reused that on the",
+      "offset": 680.56,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "homepage and the homepage you can see",
+      "offset": 682.88,
+      "duration": 4.079
+    },
+    {
+      "lang": "en",
+      "text": "here in middleware is also not",
+      "offset": 685.2,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "protected. So we would have the same",
+      "offset": 686.959,
+      "duration": 3.361
+    },
+    {
+      "lang": "en",
+      "text": "issue whether you use middleware or you",
+      "offset": 688.72,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "do authentication directly in the page",
+      "offset": 690.32,
+      "duration": 3.519
+    },
+    {
+      "lang": "en",
+      "text": "component it would be the same result",
+      "offset": 692.16,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "because you could technically reuse that",
+      "offset": 693.839,
+      "duration": 4.081
+    },
+    {
+      "lang": "en",
+      "text": "component on the homepage or any public",
+      "offset": 695.76,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "page and you can see we are not we are",
+      "offset": 697.92,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "not protecting right we don't we don't",
+      "offset": 700,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "have this as in our metro here we only",
+      "offset": 701.68,
+      "duration": 4.159
+    },
+    {
+      "lang": "en",
+      "text": "have / documents so we would have had",
+      "offset": 704,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "the same issue if we were using",
+      "offset": 705.839,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "middleware doing authentication in",
+      "offset": 707.68,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "middleware or in the page component",
+      "offset": 709.279,
+      "duration": 3.841
+    },
+    {
+      "lang": "en",
+      "text": "should probably only be your first line",
+      "offset": 711.2,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "of defense so ideally we can have a more",
+      "offset": 713.12,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "robust solution for is. So this is where",
+      "offset": 715.68,
+      "duration": 5.599
+    },
+    {
+      "lang": "en",
+      "text": "a data access layer comes into play. But",
+      "offset": 718.32,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "there are various ways that you can",
+      "offset": 721.279,
+      "duration": 3.12
+    },
+    {
+      "lang": "en",
+      "text": "implement a data access layer. I'm just",
+      "offset": 722.64,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "going to give you one example here. It's",
+      "offset": 724.399,
+      "duration": 3.921
+    },
+    {
+      "lang": "en",
+      "text": "basically a dedicated place where we do",
+      "offset": 726.16,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "all of our data access. So whenever we",
+      "offset": 728.32,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "reach out to our database, all of that",
+      "offset": 730.56,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "is going to go in here in one",
+      "offset": 732.32,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "centralized place. I can literally call",
+      "offset": 734,
+      "duration": 5.6
+    },
+    {
+      "lang": "en",
+      "text": "it data access or abbreviated Dell. Now",
+      "offset": 736.32,
+      "duration": 6.24
+    },
+    {
+      "lang": "en",
+      "text": "in this case, I only have one uh table",
+      "offset": 739.6,
+      "duration": 5.039
+    },
+    {
+      "lang": "en",
+      "text": "right in my database secret document. So",
+      "offset": 742.56,
+      "duration": 7.12
+    },
+    {
+      "lang": "en",
+      "text": "I could create uh a a file uh per table",
+      "offset": 744.639,
+      "duration": 7.121
+    },
+    {
+      "lang": "en",
+      "text": "let's say and then here all of the",
+      "offset": 749.68,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "operations that I want to do on that",
+      "offset": 751.76,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "table will be done with functions in",
+      "offset": 753.92,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "here. So for example I can have a",
+      "offset": 756,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "function to get all secret documents",
+      "offset": 758.72,
+      "duration": 4.559
+    },
+    {
+      "lang": "en",
+      "text": "right we can just call that get secret",
+      "offset": 761.44,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "documents or maybe even more explicit",
+      "offset": 763.279,
+      "duration": 5.041
+    },
+    {
+      "lang": "en",
+      "text": "get all secret documents and it will go",
+      "offset": 766.16,
+      "duration": 4.479
+    },
+    {
+      "lang": "en",
+      "text": "into my database and just return that.",
+      "offset": 768.32,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "And importantly remember why we had that",
+      "offset": 770.639,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "issue. This was it was because there was",
+      "offset": 772.8,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "a gap between where we do the O check",
+      "offset": 774.399,
+      "duration": 4.081
+    },
+    {
+      "lang": "en",
+      "text": "and where we access our data. So what I",
+      "offset": 776.48,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "could do here is I can include the",
+      "offset": 778.48,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "authentication check right in here. So",
+      "offset": 781.36,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "now there is no gap right before I",
+      "offset": 783.76,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "access my data. I'm first going to check",
+      "offset": 785.92,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "my authentication status. So that's for",
+      "offset": 788,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "getting all the secret documents. But",
+      "offset": 790.32,
+      "duration": 3.28
+    },
+    {
+      "lang": "en",
+      "text": "you can imagine uh we can have other",
+      "offset": 791.92,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "things like creating a secret document",
+      "offset": 793.6,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "or deleting one or editing one or all",
+      "offset": 796,
+      "duration": 4.959
+    },
+    {
+      "lang": "en",
+      "text": "your CRUD operations whatever you want",
+      "offset": 798.88,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "to do. But in my example here, I'm doing",
+      "offset": 800.959,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "an authentication check right before I",
+      "offset": 803.68,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "access the data. So now, as long as I",
+      "offset": 805.839,
+      "duration": 5.521
+    },
+    {
+      "lang": "en",
+      "text": "only use functions from this file, deal",
+      "offset": 808.72,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "with my data, I should be safe, right?",
+      "offset": 811.36,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "So let me see. So I removed the",
+      "offset": 814,
+      "duration": 4.079
+    },
+    {
+      "lang": "en",
+      "text": "middleware. So let's go back to our page",
+      "offset": 815.6,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "authentication. So let me actually",
+      "offset": 818.079,
+      "duration": 3.361
+    },
+    {
+      "lang": "en",
+      "text": "remove it from the homepage and let's",
+      "offset": 819.68,
+      "duration": 3.839
+    },
+    {
+      "lang": "en",
+      "text": "see what we had before. So on the slash",
+      "offset": 821.44,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "document, we have this uh documents",
+      "offset": 823.519,
+      "duration": 4.241
+    },
+    {
+      "lang": "en",
+      "text": "list. Here is where we were currently",
+      "offset": 825.76,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "getting the data. But but now we only",
+      "offset": 827.76,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "want to use functions from this file,",
+      "offset": 829.6,
+      "duration": 5.919
+    },
+    {
+      "lang": "en",
+      "text": "right? So only functions from my data",
+      "offset": 832.72,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "access layer. So in this case, if we",
+      "offset": 835.519,
+      "duration": 3.521
+    },
+    {
+      "lang": "en",
+      "text": "want to get all the secret documents, I",
+      "offset": 837.36,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "have to use this function. So I don't",
+      "offset": 839.04,
+      "duration": 4.479
+    },
+    {
+      "lang": "en",
+      "text": "want to see Prisma elsewhere in my app",
+      "offset": 841.04,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "anymore, right? I only want to see",
+      "offset": 843.519,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "Prisma in this file. We can even try to",
+      "offset": 845.12,
+      "duration": 3.839
+    },
+    {
+      "lang": "en",
+      "text": "set up an ESLint rule. I'll show that in",
+      "offset": 847.199,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "a second. If I want to get uh docu, if I",
+      "offset": 848.959,
+      "duration": 3.521
+    },
+    {
+      "lang": "en",
+      "text": "want to get data, I would use that",
+      "offset": 851.199,
+      "duration": 2.801
+    },
+    {
+      "lang": "en",
+      "text": "function, right? So I can remove the",
+      "offset": 852.48,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "Prisma import here as well. As long as I",
+      "offset": 854,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "use that. Now if I use this uh component",
+      "offset": 855.92,
+      "duration": 5.84
+    },
+    {
+      "lang": "en",
+      "text": "anywhere let's say on uh let's say on /",
+      "offset": 858.48,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "document right of course we already had",
+      "offset": 861.76,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "an authentication check we were saved",
+      "offset": 863.6,
+      "duration": 3.919
+    },
+    {
+      "lang": "en",
+      "text": "but let's say you actually forgot it",
+      "offset": 865.44,
+      "duration": 3.519
+    },
+    {
+      "lang": "en",
+      "text": "that's also possible you can simply",
+      "offset": 867.519,
+      "duration": 3.281
+    },
+    {
+      "lang": "en",
+      "text": "forget to add authentication to your",
+      "offset": 868.959,
+      "duration": 3.521
+    },
+    {
+      "lang": "en",
+      "text": "page um because honestly doing",
+      "offset": 870.8,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "authentication in the page is actually",
+      "offset": 872.48,
+      "duration": 4.719
+    },
+    {
+      "lang": "en",
+      "text": "quite uh messy. It's not you don't have",
+      "offset": 874.16,
+      "duration": 5.119
+    },
+    {
+      "lang": "en",
+      "text": "a clear overview of which pages are",
+      "offset": 877.199,
+      "duration": 3.921
+    },
+    {
+      "lang": "en",
+      "text": "protected. It's quite messy. So it's",
+      "offset": 879.279,
+      "duration": 3.441
+    },
+    {
+      "lang": "en",
+      "text": "possible that you simply forget it. So",
+      "offset": 881.12,
+      "duration": 2.959
+    },
+    {
+      "lang": "en",
+      "text": "let's say you have a page and you forget",
+      "offset": 882.72,
+      "duration": 3.119
+    },
+    {
+      "lang": "en",
+      "text": "to do authentication but you do include",
+      "offset": 884.079,
+      "duration": 3.521
+    },
+    {
+      "lang": "en",
+      "text": "your documents list component here.",
+      "offset": 885.839,
+      "duration": 4.401
+    },
+    {
+      "lang": "en",
+      "text": "Well, if I now go to /documents, you",
+      "offset": 887.6,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "will see that it is still protected. So",
+      "offset": 890.24,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "let's actually see. You can see I'm",
+      "offset": 892.72,
+      "duration": 3.2
+    },
+    {
+      "lang": "en",
+      "text": "still redirected now to the login page",
+      "offset": 894,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "because how are we getting data in",
+      "offset": 895.92,
+      "duration": 4.159
+    },
+    {
+      "lang": "en",
+      "text": "there? Well, it's using this Dell",
+      "offset": 897.92,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "function and in every Dell function I",
+      "offset": 900.079,
+      "duration": 4.401
+    },
+    {
+      "lang": "en",
+      "text": "have an authentication check. So before",
+      "offset": 902.56,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "I actually access data, it has a uh",
+      "offset": 904.48,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "authentication check. Even if I forgot",
+      "offset": 907.04,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "it here, I would still be protected.",
+      "offset": 909.04,
+      "duration": 3.919
+    },
+    {
+      "lang": "en",
+      "text": "That's why I said that authentication in",
+      "offset": 910.72,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "your page component or in middleware",
+      "offset": 912.959,
+      "duration": 3.841
+    },
+    {
+      "lang": "en",
+      "text": "that's more like a first line of",
+      "offset": 915.12,
+      "duration": 3.519
+    },
+    {
+      "lang": "en",
+      "text": "defense. Now how about that other issue?",
+      "offset": 916.8,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "If you actually reuse it on a public",
+      "offset": 918.639,
+      "duration": 3.521
+    },
+    {
+      "lang": "en",
+      "text": "route, right? So we have a homepage. If",
+      "offset": 920.24,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "I go here, I have a homepage here.",
+      "offset": 922.16,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "Remember this is a public route. So if I",
+      "offset": 924.24,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "go to the homepage, it's a public route.",
+      "offset": 926,
+      "duration": 4.399
+    },
+    {
+      "lang": "en",
+      "text": "Now what if somebody maybe you or an AI",
+      "offset": 927.92,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "reuses that component here documents",
+      "offset": 930.399,
+      "duration": 4.481
+    },
+    {
+      "lang": "en",
+      "text": "list. Now previously we leaked all the",
+      "offset": 932.88,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "data. But now if I add it to the",
+      "offset": 934.88,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "homepage here, you can see actually I'm",
+      "offset": 936.88,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "already being redirected. If I try to go",
+      "offset": 938.72,
+      "duration": 4.239
+    },
+    {
+      "lang": "en",
+      "text": "to the homepage now, it is actually uh",
+      "offset": 940.48,
+      "duration": 4.479
+    },
+    {
+      "lang": "en",
+      "text": "going to redirect me because this",
+      "offset": 942.959,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "documents list component to get the data",
+      "offset": 944.959,
+      "duration": 4.641
+    },
+    {
+      "lang": "en",
+      "text": "is using my Dell function and my Dell",
+      "offset": 947.199,
+      "duration": 4.481
+    },
+    {
+      "lang": "en",
+      "text": "function has the authentication check",
+      "offset": 949.6,
+      "duration": 3.919
+    },
+    {
+      "lang": "en",
+      "text": "right here. I was not logged in so I'm",
+      "offset": 951.68,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "being redirected, right? And if you were",
+      "offset": 953.519,
+      "duration": 3.361
+    },
+    {
+      "lang": "en",
+      "text": "using middleware, right, and you",
+      "offset": 955.36,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "accidentally added a documents list on",
+      "offset": 956.88,
+      "duration": 4.639
+    },
+    {
+      "lang": "en",
+      "text": "the homepage, which we would not protect",
+      "offset": 959.12,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "with middleware right now, that would",
+      "offset": 961.519,
+      "duration": 3.601
+    },
+    {
+      "lang": "en",
+      "text": "not be the end of the world because to",
+      "offset": 963.44,
+      "duration": 3.759
+    },
+    {
+      "lang": "en",
+      "text": "get data, it's using a function from my",
+      "offset": 965.12,
+      "duration": 4.719
+    },
+    {
+      "lang": "en",
+      "text": "data access layer and that has already",
+      "offset": 967.199,
+      "duration": 4.721
+    },
+    {
+      "lang": "en",
+      "text": "built in the authentication check. So",
+      "offset": 969.839,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "the data would still be protected in",
+      "offset": 971.92,
+      "duration": 2.719
+    },
+    {
+      "lang": "en",
+      "text": "that case, right? So if you do",
+      "offset": 973.519,
+      "duration": 3.521
+    },
+    {
+      "lang": "en",
+      "text": "authentication with middleware or your",
+      "offset": 974.639,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "page component, you can still I think",
+      "offset": 977.04,
+      "duration": 4.159
+    },
+    {
+      "lang": "en",
+      "text": "you can still keep doing that. But I",
+      "offset": 979.279,
+      "duration": 4.161
+    },
+    {
+      "lang": "en",
+      "text": "would build in some kind of data access",
+      "offset": 981.199,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "layer. So if there is some request going",
+      "offset": 983.44,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "to the database or to interact with my",
+      "offset": 986.079,
+      "duration": 4.641
+    },
+    {
+      "lang": "en",
+      "text": "data, there is like an additional check",
+      "offset": 987.92,
+      "duration": 5.919
+    },
+    {
+      "lang": "en",
+      "text": "to see if the user should have access or",
+      "offset": 990.72,
+      "duration": 5.359
+    },
+    {
+      "lang": "en",
+      "text": "not. Now I can then use that a function",
+      "offset": 993.839,
+      "duration": 5.201
+    },
+    {
+      "lang": "en",
+      "text": "from my data access layer not only in a",
+      "offset": 996.079,
+      "duration": 4.801
+    },
+    {
+      "lang": "en",
+      "text": "server component, right? So I used it",
+      "offset": 999.04,
+      "duration": 3.599
+    },
+    {
+      "lang": "en",
+      "text": "here in the documents list, but I could",
+      "offset": 1000.88,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "also use this function in a server",
+      "offset": 1002.639,
+      "duration": 3.681
+    },
+    {
+      "lang": "en",
+      "text": "action, let's say, or in a route",
+      "offset": 1004.72,
+      "duration": 4.479
+    },
+    {
+      "lang": "en",
+      "text": "handler, right? So my entire Nex.js",
+      "offset": 1006.32,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "server side would then only use",
+      "offset": 1009.199,
+      "duration": 5.121
+    },
+    {
+      "lang": "en",
+      "text": "functions for my Dell data access layer,",
+      "offset": 1011.44,
+      "duration": 5.199
+    },
+    {
+      "lang": "en",
+      "text": "right? So maybe you have a server action",
+      "offset": 1014.32,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "and a server action in Next.js is",
+      "offset": 1016.639,
+      "duration": 4.401
+    },
+    {
+      "lang": "en",
+      "text": "basically just a post API endpoint. It",
+      "offset": 1018.48,
+      "duration": 4.159
+    },
+    {
+      "lang": "en",
+      "text": "has some built-in security, but",
+      "offset": 1021.04,
+      "duration": 3.999
+    },
+    {
+      "lang": "en",
+      "text": "technically somebody could perhaps be",
+      "offset": 1022.639,
+      "duration": 4.961
+    },
+    {
+      "lang": "en",
+      "text": "able to trigger this uh function to run",
+      "offset": 1025.039,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "on the server. We do want to have an",
+      "offset": 1027.6,
+      "duration": 3.359
+    },
+    {
+      "lang": "en",
+      "text": "authentication check here if only logged",
+      "offset": 1029.199,
+      "duration": 4.401
+    },
+    {
+      "lang": "en",
+      "text": "in users should be able to access this.",
+      "offset": 1030.959,
+      "duration": 4.401
+    },
+    {
+      "lang": "en",
+      "text": "You may forget that, right? Oops, I",
+      "offset": 1033.6,
+      "duration": 3.199
+    },
+    {
+      "lang": "en",
+      "text": "forgot to do that. So that's potentially",
+      "offset": 1035.36,
+      "duration": 2.719
+    },
+    {
+      "lang": "en",
+      "text": "a problem because here we are",
+      "offset": 1036.799,
+      "duration": 3.201
+    },
+    {
+      "lang": "en",
+      "text": "interacting with our database again. But",
+      "offset": 1038.079,
+      "duration": 5.041
+    },
+    {
+      "lang": "en",
+      "text": "if we have a Dell function that we can",
+      "offset": 1040,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "use instead and all of them have that",
+      "offset": 1043.12,
+      "duration": 4.319
+    },
+    {
+      "lang": "en",
+      "text": "authentication check built in then as",
+      "offset": 1045.36,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "long as we just use that and we don't",
+      "offset": 1047.439,
+      "duration": 4.081
+    },
+    {
+      "lang": "en",
+      "text": "use Prisma in here then even if we",
+      "offset": 1049.28,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "forget to do authentication in here",
+      "offset": 1051.52,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "since this function right before we",
+      "offset": 1053.28,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "access our data still has the O check in",
+      "offset": 1055.36,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "here we would still be saved by that. So",
+      "offset": 1057.52,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "we can use those Dell functions anywhere",
+      "offset": 1059.84,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "in our app actually not just in server",
+      "offset": 1061.84,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "components but also server actions and",
+      "offset": 1064,
+      "duration": 4.799
+    },
+    {
+      "lang": "en",
+      "text": "these API route handler. So with this",
+      "offset": 1066.24,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "data access layer we built a more robust",
+      "offset": 1068.799,
+      "duration": 5.201
+    },
+    {
+      "lang": "en",
+      "text": "resilient app protecting better against",
+      "offset": 1071.44,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "potential developer error and also",
+      "offset": 1074,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "removes a lot of stress actually because",
+      "offset": 1076.48,
+      "duration": 3.04
+    },
+    {
+      "lang": "en",
+      "text": "maybe you were thinking oh where should",
+      "offset": 1078.24,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "I do authentication or did I really",
+      "offset": 1079.52,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "protect that route or not? Well you have",
+      "offset": 1082.4,
+      "duration": 3.279
+    },
+    {
+      "lang": "en",
+      "text": "a little bit more safety now. The only",
+      "offset": 1084.08,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "downside that I found so far with Adele",
+      "offset": 1085.679,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "is if you have a page that you want to",
+      "offset": 1088.16,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "protect, but the page should stay",
+      "offset": 1091.039,
+      "duration": 4.081
+    },
+    {
+      "lang": "en",
+      "text": "statically rendered. So the downside",
+      "offset": 1092.96,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "with this is that um with your",
+      "offset": 1095.12,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "authentication solution is most likely",
+      "offset": 1097.2,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "just going to use the cookies and",
+      "offset": 1099.6,
+      "duration": 3.439
+    },
+    {
+      "lang": "en",
+      "text": "headers of the incoming request and that",
+      "offset": 1100.96,
+      "duration": 4.079
+    },
+    {
+      "lang": "en",
+      "text": "can only happen during runtime. So as",
+      "offset": 1103.039,
+      "duration": 3.841
+    },
+    {
+      "lang": "en",
+      "text": "the request comes in, it needs to check",
+      "offset": 1105.039,
+      "duration": 3.441
+    },
+    {
+      "lang": "en",
+      "text": "the cookies. So if you have some kind of",
+      "offset": 1106.88,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "authentication check on /document in the",
+      "offset": 1108.48,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "page component or you're using a",
+      "offset": 1111.28,
+      "duration": 3.519
+    },
+    {
+      "lang": "en",
+      "text": "function from Dell with the",
+      "offset": 1113.28,
+      "duration": 3.56
+    },
+    {
+      "lang": "en",
+      "text": "authentication check built in that",
+      "offset": 1114.799,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "slashdocument route is going to be",
+      "offset": 1116.84,
+      "duration": 3.64
+    },
+    {
+      "lang": "en",
+      "text": "dynamically rendered. It's going to be",
+      "offset": 1119.039,
+      "duration": 3.361
+    },
+    {
+      "lang": "en",
+      "text": "opted out of static rendering. However,",
+      "offset": 1120.48,
+      "duration": 3.96
+    },
+    {
+      "lang": "en",
+      "text": "if you only use middleware for",
+      "offset": 1122.4,
+      "duration": 4.399
+    },
+    {
+      "lang": "en",
+      "text": "authentication in that case the route",
+      "offset": 1124.44,
+      "duration": 4.04
+    },
+    {
+      "lang": "en",
+      "text": "can actually stay statically rendered.",
+      "offset": 1126.799,
+      "duration": 3.601
+    },
+    {
+      "lang": "en",
+      "text": "So from my understanding you can only",
+      "offset": 1128.48,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "leave the route statically rendered with",
+      "offset": 1130.4,
+      "duration": 4.159
+    },
+    {
+      "lang": "en",
+      "text": "middleware authentication only. So if",
+      "offset": 1132.24,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "you have some kind of content website or",
+      "offset": 1134.559,
+      "duration": 4.081
+    },
+    {
+      "lang": "en",
+      "text": "some kind of gated content, something",
+      "offset": 1136.64,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "that needs some static data that needs",
+      "offset": 1138.64,
+      "duration": 4.399
+    },
+    {
+      "lang": "en",
+      "text": "to be protected, it may be a problem",
+      "offset": 1141.2,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "because it's going to turn it into a",
+      "offset": 1143.039,
+      "duration": 3.841
+    },
+    {
+      "lang": "en",
+      "text": "dynamically rendered page. So in that",
+      "offset": 1144.72,
+      "duration": 4.079
+    },
+    {
+      "lang": "en",
+      "text": "case, from my from my personal",
+      "offset": 1146.88,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "understanding can do authentication in",
+      "offset": 1148.799,
+      "duration": 4.081
+    },
+    {
+      "lang": "en",
+      "text": "middleware and in that case it can stay",
+      "offset": 1150.64,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "statically rendered. But for all other",
+      "offset": 1152.88,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "cases, I would uh I would use a Dell.",
+      "offset": 1154.64,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "Right? So again this is just a simple",
+      "offset": 1157.36,
+      "duration": 3.199
+    },
+    {
+      "lang": "en",
+      "text": "example. I could also add other rules",
+      "offset": 1158.72,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "here like the roles and permissions.",
+      "offset": 1160.559,
+      "duration": 4.081
+    },
+    {
+      "lang": "en",
+      "text": "Right? So if we only want to allow admin",
+      "offset": 1162.16,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "users to get all the secret documents,",
+      "offset": 1164.64,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "we could build that in here. And as long",
+      "offset": 1166.64,
+      "duration": 3.2
+    },
+    {
+      "lang": "en",
+      "text": "as we use this function throughout our",
+      "offset": 1168.16,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "application, that should be fine. So",
+      "offset": 1169.84,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "let's talk about some uh tips here or",
+      "offset": 1172.08,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "maybe some things to pay attention to.",
+      "offset": 1174.64,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "So we only want to use these functions",
+      "offset": 1176.48,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "now to to interact with our database,",
+      "offset": 1178.32,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "right? So we do need to sort of enforce",
+      "offset": 1180.72,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "that if the developer in the app is",
+      "offset": 1182.96,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "going to do something with data that",
+      "offset": 1185.12,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "they use these functions because these",
+      "offset": 1187.36,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "all have the authentication check,",
+      "offset": 1189.28,
+      "duration": 2.96
+    },
+    {
+      "lang": "en",
+      "text": "right? So we don't want to have a",
+      "offset": 1190.72,
+      "duration": 4.319
+    },
+    {
+      "lang": "en",
+      "text": "developer on our team or AI right so in",
+      "offset": 1192.24,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "a component like this here we are",
+      "offset": 1195.039,
+      "duration": 3.841
+    },
+    {
+      "lang": "en",
+      "text": "properly using that function from the",
+      "offset": 1197.2,
+      "duration": 3.599
+    },
+    {
+      "lang": "en",
+      "text": "Dell but you can imagine that if you're",
+      "offset": 1198.88,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "using AI right so maybe using some kind",
+      "offset": 1200.799,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "of AI co-pilot and they're really good",
+      "offset": 1202.88,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "actually but sometimes they make some",
+      "offset": 1205.039,
+      "duration": 2.88
+    },
+    {
+      "lang": "en",
+      "text": "mistakes so one of them could",
+      "offset": 1206.72,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "technically do something like this right",
+      "offset": 1207.919,
+      "duration": 4.081
+    },
+    {
+      "lang": "en",
+      "text": "this is what they often this this is",
+      "offset": 1210.08,
+      "duration": 3.599
+    },
+    {
+      "lang": "en",
+      "text": "what they've seen in a lot of code and",
+      "offset": 1212,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "so they could actually still use Prisma",
+      "offset": 1213.679,
+      "duration": 4.161
+    },
+    {
+      "lang": "en",
+      "text": "and and not use the function from the",
+      "offset": 1215.6,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "Dell are there maybe some ways that we",
+      "offset": 1217.84,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "can sort of enforce force it to use uh",
+      "offset": 1219.76,
+      "duration": 4.159
+    },
+    {
+      "lang": "en",
+      "text": "only functions from here. Now when you",
+      "offset": 1222,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "think of it, we basically don't want to",
+      "offset": 1223.919,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "see Prisma outside this file right now.",
+      "offset": 1225.44,
+      "duration": 5.599
+    },
+    {
+      "lang": "en",
+      "text": "So we can maybe set up an ESLint rule.",
+      "offset": 1228.559,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "So we get a warning if we try to use",
+      "offset": 1231.039,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "Prisma outside this file. So we actually",
+      "offset": 1233.039,
+      "duration": 5.041
+    },
+    {
+      "lang": "en",
+      "text": "have an ESLint file here as part of the",
+      "offset": 1235.919,
+      "duration": 4.561
+    },
+    {
+      "lang": "en",
+      "text": "default next.js setup. And eslint",
+      "offset": 1238.08,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "linting is basically just checking if",
+      "offset": 1240.48,
+      "duration": 5.439
+    },
+    {
+      "lang": "en",
+      "text": "you are conforming to some style or some",
+      "offset": 1242.32,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "convention. And you can create your own",
+      "offset": 1245.919,
+      "duration": 3.681
+    },
+    {
+      "lang": "en",
+      "text": "rules. Now I've been trying some things.",
+      "offset": 1247.6,
+      "duration": 4.559
+    },
+    {
+      "lang": "en",
+      "text": "I'm not an ESLint expert unfortunately,",
+      "offset": 1249.6,
+      "duration": 4.559
+    },
+    {
+      "lang": "en",
+      "text": "so I can't guarantee that this is 100%",
+      "offset": 1252.159,
+      "duration": 3.921
+    },
+    {
+      "lang": "en",
+      "text": "correct. So it could be something like",
+      "offset": 1254.159,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "this. Uh and basically it will check for",
+      "offset": 1256.08,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "all of these files to see if you have",
+      "offset": 1258.799,
+      "duration": 3.841
+    },
+    {
+      "lang": "en",
+      "text": "some kind of import like this, right?",
+      "offset": 1260.96,
+      "duration": 3.839
+    },
+    {
+      "lang": "en",
+      "text": "Except for the actual Dell layer where",
+      "offset": 1262.64,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "we actually do want to allow that,",
+      "offset": 1264.799,
+      "duration": 3.841
+    },
+    {
+      "lang": "en",
+      "text": "right? So then for example um if you",
+      "offset": 1266,
+      "duration": 6.08
+    },
+    {
+      "lang": "en",
+      "text": "were trying to import from at lib.db",
+      "offset": 1268.64,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "outside the Dell layer, we would get",
+      "offset": 1272.08,
+      "duration": 3.839
+    },
+    {
+      "lang": "en",
+      "text": "that warning here from ESLint. Right?",
+      "offset": 1273.84,
+      "duration": 4.719
+    },
+    {
+      "lang": "en",
+      "text": "also here um if you try to import from",
+      "offset": 1275.919,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "at Prisma client directly you would also",
+      "offset": 1278.559,
+      "duration": 4.081
+    },
+    {
+      "lang": "en",
+      "text": "get that warning here and so you could",
+      "offset": 1281.039,
+      "duration": 3.281
+    },
+    {
+      "lang": "en",
+      "text": "set up something like this also in your",
+      "offset": 1282.64,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "CI/CD pipeline now about the Dell folder",
+      "offset": 1284.32,
+      "duration": 5.92
+    },
+    {
+      "lang": "en",
+      "text": "structure I just have one uh file here",
+      "offset": 1287.6,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "well where is the Prisma variable here",
+      "offset": 1290.24,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "coming from well actually I set up",
+      "offset": 1292.88,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "Prisma in a separate file here in a",
+      "offset": 1294.64,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "library folder this is a code snippet",
+      "offset": 1297.84,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "that Prisma gives on the website this is",
+      "offset": 1300.08,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "basically where the Prisma client is",
+      "offset": 1302.08,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "being instantiated so the idea is that",
+      "offset": 1304,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "you instantiate it once for your whole",
+      "offset": 1306,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "app and then you would just uh import",
+      "offset": 1307.52,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "this variable to use it. So you're not",
+      "offset": 1309.76,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "necessarily instantiating it over and",
+      "offset": 1311.52,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "over again. So that's why they have the",
+      "offset": 1313.76,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "snippet. Now in this case I only I don't",
+      "offset": 1315.28,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "want to use it in all parts of my app. I",
+      "offset": 1317.36,
+      "duration": 3.679
+    },
+    {
+      "lang": "en",
+      "text": "only want to use it in this file let's",
+      "offset": 1319.6,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "say or only in the Dell folder. So I",
+      "offset": 1321.039,
+      "duration": 6.321
+    },
+    {
+      "lang": "en",
+      "text": "could actually also just uh instantiate",
+      "offset": 1323.76,
+      "duration": 6.08
+    },
+    {
+      "lang": "en",
+      "text": "it right here in this file. Something",
+      "offset": 1327.36,
+      "duration": 4.559
+    },
+    {
+      "lang": "en",
+      "text": "like this. And actually just for",
+      "offset": 1329.84,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "simplicity here as an example this is",
+      "offset": 1331.919,
+      "duration": 3.601
+    },
+    {
+      "lang": "en",
+      "text": "what it would look like. So now I would",
+      "offset": 1334,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "not be using Prisma as an import. I",
+      "offset": 1335.52,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "would actually delete it to be uh to be",
+      "offset": 1337.76,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "certain. And now Prisma is only",
+      "offset": 1340.48,
+      "duration": 4.079
+    },
+    {
+      "lang": "en",
+      "text": "available in this file this variable.",
+      "offset": 1342.64,
+      "duration": 4.159
+    },
+    {
+      "lang": "en",
+      "text": "I'm not exporting. Right? So now if you",
+      "offset": 1344.559,
+      "duration": 4.641
+    },
+    {
+      "lang": "en",
+      "text": "try using Prisma, you will get a warning",
+      "offset": 1346.799,
+      "duration": 4.641
+    },
+    {
+      "lang": "en",
+      "text": "here. There is no lip dB anymore. So if",
+      "offset": 1349.2,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "I remove that, now I get a warning.",
+      "offset": 1351.44,
+      "duration": 4.479
+    },
+    {
+      "lang": "en",
+      "text": "Prisma Prisma cannot be I cannot just",
+      "offset": 1353.6,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "import it here. Right? There's no export",
+      "offset": 1355.919,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "with the Prisma variable like that. It's",
+      "offset": 1358.32,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "only available internally here. Right?",
+      "offset": 1360.159,
+      "duration": 2.88
+    },
+    {
+      "lang": "en",
+      "text": "And again, you need to take a look at",
+      "offset": 1362,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "how Prisma recommends that you set it up",
+      "offset": 1363.039,
+      "duration": 4.721
+    },
+    {
+      "lang": "en",
+      "text": "in Nex.js. So, there may be a better way",
+      "offset": 1365.6,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "of doing this, but uh this may be",
+      "offset": 1367.76,
+      "duration": 4.159
+    },
+    {
+      "lang": "en",
+      "text": "something to take a look at. Now, about",
+      "offset": 1370,
+      "duration": 4.159
+    },
+    {
+      "lang": "en",
+      "text": "the Dell folder structure, I just have",
+      "offset": 1371.919,
+      "duration": 4.801
+    },
+    {
+      "lang": "en",
+      "text": "one uh file here, but you can also do it",
+      "offset": 1374.159,
+      "duration": 4.241
+    },
+    {
+      "lang": "en",
+      "text": "differently, right? So, you have maybe",
+      "offset": 1376.72,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "uh a folder for secret document, for a",
+      "offset": 1378.4,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "table, and then you could have let's say",
+      "offset": 1380.72,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "one file for all your queries. So, we",
+      "offset": 1382.48,
+      "duration": 5.679
+    },
+    {
+      "lang": "en",
+      "text": "would have get all documents, get by ID,",
+      "offset": 1384.88,
+      "duration": 5.039
+    },
+    {
+      "lang": "en",
+      "text": "all your reads essentially. And then you",
+      "offset": 1388.159,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "would have your mutations. So all your",
+      "offset": 1389.919,
+      "duration": 4.321
+    },
+    {
+      "lang": "en",
+      "text": "rights, editing, deleting, adding",
+      "offset": 1391.919,
+      "duration": 4.321
+    },
+    {
+      "lang": "en",
+      "text": "something you would have that in this",
+      "offset": 1394.24,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "file. Now by the way on a side note for",
+      "offset": 1396.24,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "the types actually depending on your OM",
+      "offset": 1398.72,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "but at least with Prisma when you",
+      "offset": 1401.2,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "generate the client based on your",
+      "offset": 1402.96,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "schema. So my secret documents are",
+      "offset": 1404.96,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "structured like this with an ID and",
+      "offset": 1407.52,
+      "duration": 3.279
+    },
+    {
+      "lang": "en",
+      "text": "content and so on. When you want to",
+      "offset": 1409.12,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "allow users to create a secret document,",
+      "offset": 1410.799,
+      "duration": 5.041
+    },
+    {
+      "lang": "en",
+      "text": "they do not have to specify an ID,",
+      "offset": 1413.76,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "right? Because it's not created yet. So",
+      "offset": 1415.84,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "it wouldn't make sense to add an ID. So",
+      "offset": 1417.44,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "that can actually complicate the types a",
+      "offset": 1419.84,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "little bit because it's not just a type",
+      "offset": 1421.6,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "of uh secret document, right? Because a",
+      "offset": 1423.44,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "secret document type um also would have",
+      "offset": 1426.08,
+      "duration": 3.599
+    },
+    {
+      "lang": "en",
+      "text": "the ID, right? And we don't want to",
+      "offset": 1428.24,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "force that when we create one. So that",
+      "offset": 1429.679,
+      "duration": 3.921
+    },
+    {
+      "lang": "en",
+      "text": "complicates things a little bit, but",
+      "offset": 1431.84,
+      "duration": 4.079
+    },
+    {
+      "lang": "en",
+      "text": "Prisma actually automatically generate",
+      "offset": 1433.6,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "types from this as well that you can use",
+      "offset": 1435.919,
+      "duration": 4.561
+    },
+    {
+      "lang": "en",
+      "text": "in your application to type these sorts",
+      "offset": 1438.4,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "of functions actually very easily. So",
+      "offset": 1440.48,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "here for example, it has a type for",
+      "offset": 1442.64,
+      "duration": 4.399
+    },
+    {
+      "lang": "en",
+      "text": "creating a document. So then the ID is",
+      "offset": 1444.64,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "actually optional, right? So that that",
+      "offset": 1447.039,
+      "duration": 2.961
+    },
+    {
+      "lang": "en",
+      "text": "makes sense. Actually quite an",
+      "offset": 1448.88,
+      "duration": 3.039
+    },
+    {
+      "lang": "en",
+      "text": "underrated feature. Now one other thing",
+      "offset": 1450,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "I should mention as well is here I'm",
+      "offset": 1451.919,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "redirecting always to the login page.",
+      "offset": 1454.64,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "Now this is probably not ideal because",
+      "offset": 1457.039,
+      "duration": 4.081
+    },
+    {
+      "lang": "en",
+      "text": "we don't know exactly where this",
+      "offset": 1459.52,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "function will be called. There may be",
+      "offset": 1461.12,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "some cases where we call this function",
+      "offset": 1462.96,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "and if it turns out the user is not",
+      "offset": 1465.2,
+      "duration": 3.04
+    },
+    {
+      "lang": "en",
+      "text": "logged in, we actually don't want to",
+      "offset": 1466.72,
+      "duration": 3.839
+    },
+    {
+      "lang": "en",
+      "text": "redirect. We want to do something else.",
+      "offset": 1468.24,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "Maybe we're calling this in an API",
+      "offset": 1470.559,
+      "duration": 3.441
+    },
+    {
+      "lang": "en",
+      "text": "route. For example, if the user is not",
+      "offset": 1472,
+      "duration": 4.159
+    },
+    {
+      "lang": "en",
+      "text": "logged in, we just want to return like a",
+      "offset": 1474,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "40 like a 401 error. But now this would",
+      "offset": 1476.159,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "redirect the user all of a sudden,",
+      "offset": 1479.76,
+      "duration": 3.919
+    },
+    {
+      "lang": "en",
+      "text": "right? So we may want to allow the",
+      "offset": 1481.679,
+      "duration": 4.561
+    },
+    {
+      "lang": "en",
+      "text": "caller of the function to decide what to",
+      "offset": 1483.679,
+      "duration": 4.801
+    },
+    {
+      "lang": "en",
+      "text": "do with it. So perhaps uh you want to",
+      "offset": 1486.24,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "throw an error, right? Um so then if you",
+      "offset": 1488.48,
+      "duration": 4.559
+    },
+    {
+      "lang": "en",
+      "text": "use that function, you would have a try",
+      "offset": 1491.2,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "catch around here and then when you",
+      "offset": 1493.039,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "catch an error, you can check what type",
+      "offset": 1494.96,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "of error it is or what the message is",
+      "offset": 1496.799,
+      "duration": 4.641
+    },
+    {
+      "lang": "en",
+      "text": "and then still redirect if in case you",
+      "offset": 1498.96,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "want to do that. You can also abstract.",
+      "offset": 1501.44,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "You can then also abstract that away in",
+      "offset": 1503.52,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "some utility functions. So now we don't",
+      "offset": 1505.36,
+      "duration": 3.28
+    },
+    {
+      "lang": "en",
+      "text": "want to run these functions on the",
+      "offset": 1507.2,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "client side. So this is all server side",
+      "offset": 1508.64,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "code. It should stay on the server side.",
+      "offset": 1510.88,
+      "duration": 3.2
+    },
+    {
+      "lang": "en",
+      "text": "So there is a utility package that we",
+      "offset": 1512.4,
+      "duration": 4.12
+    },
+    {
+      "lang": "en",
+      "text": "can use here called server",
+      "offset": 1514.08,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "only. We can import it like this. And I",
+      "offset": 1516.52,
+      "duration": 4.44
+    },
+    {
+      "lang": "en",
+      "text": "can install it like this. Right? So this",
+      "offset": 1519.2,
+      "duration": 3.2
+    },
+    {
+      "lang": "en",
+      "text": "is different from server actions. Right?",
+      "offset": 1520.96,
+      "duration": 3.28
+    },
+    {
+      "lang": "en",
+      "text": "Server actions have use server. That's",
+      "offset": 1522.4,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "actually really powerful. This is more",
+      "offset": 1524.24,
+      "duration": 4.799
+    },
+    {
+      "lang": "en",
+      "text": "like a quick utility that we can add",
+      "offset": 1526.24,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "here. So if you try to use this from a",
+      "offset": 1529.039,
+      "duration": 5.361
+    },
+    {
+      "lang": "en",
+      "text": "client component for example, you will",
+      "offset": 1532.24,
+      "duration": 4.559
+    },
+    {
+      "lang": "en",
+      "text": "get an error. Now maybe you're worried",
+      "offset": 1534.4,
+      "duration": 5.279
+    },
+    {
+      "lang": "en",
+      "text": "about performance because on one page",
+      "offset": 1536.799,
+      "duration": 4.801
+    },
+    {
+      "lang": "en",
+      "text": "you could have lots of components that",
+      "offset": 1539.679,
+      "duration": 4.401
+    },
+    {
+      "lang": "en",
+      "text": "need data and so you may use a lot of",
+      "offset": 1541.6,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "these functions on each page and so you",
+      "offset": 1544.08,
+      "duration": 2.959
+    },
+    {
+      "lang": "en",
+      "text": "may be worried that you're going to do",
+      "offset": 1546.08,
+      "duration": 2.88
+    },
+    {
+      "lang": "en",
+      "text": "an authentication check many times",
+      "offset": 1547.039,
+      "duration": 3.361
+    },
+    {
+      "lang": "en",
+      "text": "before you actually have finished",
+      "offset": 1548.96,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "rendering the page. Well, that's not",
+      "offset": 1550.4,
+      "duration": 3.759
+    },
+    {
+      "lang": "en",
+      "text": "necessarily a problem. So here actually",
+      "offset": 1552.32,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "in the next documentation they also show",
+      "offset": 1554.159,
+      "duration": 4.081
+    },
+    {
+      "lang": "en",
+      "text": "you an example of a data access layer.",
+      "offset": 1556.08,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "And here they actually have an example",
+      "offset": 1558.24,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "with the react cache function. So this",
+      "offset": 1559.6,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "is react actually not next.js but",
+      "offset": 1562.08,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "basically if there's an incoming request",
+      "offset": 1564.48,
+      "duration": 3.679
+    },
+    {
+      "lang": "en",
+      "text": "to your server side and you're going to",
+      "offset": 1566.08,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "render out that page the function that",
+      "offset": 1568.159,
+      "duration": 4.241
+    },
+    {
+      "lang": "en",
+      "text": "should only run once during that render",
+      "offset": 1570.32,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "pass in cache here. So then rendering of",
+      "offset": 1572.4,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "the page it's only going to run that",
+      "offset": 1575.12,
+      "duration": 4.559
+    },
+    {
+      "lang": "en",
+      "text": "code once and reuse that result and when",
+      "offset": 1577.36,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "the request has finished the next time",
+      "offset": 1579.679,
+      "duration": 3.521
+    },
+    {
+      "lang": "en",
+      "text": "it would uh check the authentication",
+      "offset": 1581.36,
+      "duration": 3.199
+    },
+    {
+      "lang": "en",
+      "text": "again. So if you're a little bit",
+      "offset": 1583.2,
+      "duration": 2.959
+    },
+    {
+      "lang": "en",
+      "text": "confused I think that's totally normal.",
+      "offset": 1584.559,
+      "duration": 3.841
+    },
+    {
+      "lang": "en",
+      "text": "It's a complicated topic, but hopefully",
+      "offset": 1586.159,
+      "duration": 3.681
+    },
+    {
+      "lang": "en",
+      "text": "it helps you out. I want to thank you",
+      "offset": 1588.4,
+      "duration": 2.8
+    },
+    {
+      "lang": "en",
+      "text": "for watching. I want to thank Kind for",
+      "offset": 1589.84,
+      "duration": 2.64
+    },
+    {
+      "lang": "en",
+      "text": "sponsoring the video. Make sure to check",
+      "offset": 1591.2,
+      "duration": 2.56
+    },
+    {
+      "lang": "en",
+      "text": "them out. You can find a link in the",
+      "offset": 1592.48,
+      "duration": 2.72
+    },
+    {
+      "lang": "en",
+      "text": "description. They actually have a",
+      "offset": 1593.76,
+      "duration": 3.12
+    },
+    {
+      "lang": "en",
+      "text": "wonderful solution here. Instead of",
+      "offset": 1595.2,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "doing authentication myself, a lot of",
+      "offset": 1596.88,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "people think authentication is just oh,",
+      "offset": 1598.72,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "it's just user email and password,",
+      "offset": 1600.32,
+      "duration": 3.599
+    },
+    {
+      "lang": "en",
+      "text": "right? And actually, no, there's way",
+      "offset": 1602.32,
+      "duration": 3.599
+    },
+    {
+      "lang": "en",
+      "text": "more to it. You get a massive feature",
+      "offset": 1603.919,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "set out of the box, including roles and",
+      "offset": 1605.919,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "permissions and way more. But recently,",
+      "offset": 1607.919,
+      "duration": 3.521
+    },
+    {
+      "lang": "en",
+      "text": "they have now also released their",
+      "offset": 1609.919,
+      "duration": 3.441
+    },
+    {
+      "lang": "en",
+      "text": "workflows feature. So, you get a lot of",
+      "offset": 1611.44,
+      "duration": 3.2
+    },
+    {
+      "lang": "en",
+      "text": "things out of the box, but still",
+      "offset": 1613.36,
+      "duration": 3.12
+    },
+    {
+      "lang": "en",
+      "text": "customize many things. In any case,",
+      "offset": 1614.64,
+      "duration": 3.519
+    },
+    {
+      "lang": "en",
+      "text": "thank you for watching and I hope to see",
+      "offset": 1616.48,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "you the next one.",
+      "offset": 1618.159,
+      "duration": 2.481
+    }
+  ],
+  "cleanText": null,
+  "dumpedAt": "2025-07-21T18:43:25.282Z"
+}

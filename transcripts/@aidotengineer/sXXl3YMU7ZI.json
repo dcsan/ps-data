@@ -1,0 +1,1186 @@
+{
+  "episodeId": "sXXl3YMU7ZI",
+  "channelSlug": "@aidotengineer",
+  "title": "Building Reliable Support Agents Using the Effect Typescript Library - Michael Fester",
+  "publishedAt": "2025-06-03T22:22:29.000Z",
+  "rawLines": [
+    {
+      "lang": "en",
+      "text": "Hi, I'm Michael, co-founder and CTO of",
+      "offset": 0.88,
+      "duration": 4.959
+    },
+    {
+      "lang": "en",
+      "text": "14.ai, where we're building an AI native",
+      "offset": 3.48,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "customer support",
+      "offset": 5.839,
+      "duration": 3.521
+    },
+    {
+      "lang": "en",
+      "text": "platform. Our systems interact directly",
+      "offset": 7,
+      "duration": 4.519
+    },
+    {
+      "lang": "en",
+      "text": "with end users, rely on LLMs in",
+      "offset": 9.36,
+      "duration": 4.399
+    },
+    {
+      "lang": "en",
+      "text": "production, and have to operate reliably",
+      "offset": 11.519,
+      "duration": 5.281
+    },
+    {
+      "lang": "en",
+      "text": "under uncertain conditions. To manage",
+      "offset": 13.759,
+      "duration": 4.961
+    },
+    {
+      "lang": "en",
+      "text": "that complexity, we use effect, a",
+      "offset": 16.8,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "TypeScript library designed for building",
+      "offset": 18.72,
+      "duration": 4.319
+    },
+    {
+      "lang": "en",
+      "text": "robust, type- safe, and composable",
+      "offset": 20.88,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "systems. The TypeScript language itself",
+      "offset": 23.039,
+      "duration": 4.881
+    },
+    {
+      "lang": "en",
+      "text": "gives us a great foundation, but it",
+      "offset": 26,
+      "duration": 3.679
+    },
+    {
+      "lang": "en",
+      "text": "starts to fall short when we're dealing",
+      "offset": 27.92,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "with unreliable APIs, complex",
+      "offset": 29.679,
+      "duration": 4.241
+    },
+    {
+      "lang": "en",
+      "text": "dependencies between systems,",
+      "offset": 32,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "non-deterministic model outputs, or",
+      "offset": 33.92,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "longunning workflows. Effect gives us",
+      "offset": 36,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "the tools to handle such situations",
+      "offset": 38.8,
+      "duration": 5.279
+    },
+    {
+      "lang": "en",
+      "text": "confidently as our platform evolves.",
+      "offset": 40.96,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "Among other things, it provides strong",
+      "offset": 44.079,
+      "duration": 3.921
+    },
+    {
+      "lang": "en",
+      "text": "type guarantees across the stack,",
+      "offset": 45.76,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "powerful composition primitives,",
+      "offset": 48,
+      "duration": 4.079
+    },
+    {
+      "lang": "en",
+      "text": "built-in concurrency streaming",
+      "offset": 50.16,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "interruptions and retry mechanisms,",
+      "offset": 52.079,
+      "duration": 5.201
+    },
+    {
+      "lang": "en",
+      "text": "structured error modeling, and a clean",
+      "offset": 54.96,
+      "duration": 4.079
+    },
+    {
+      "lang": "en",
+      "text": "dependency injection system that makes",
+      "offset": 57.28,
+      "duration": 4.799
+    },
+    {
+      "lang": "en",
+      "text": "testing and modernization much easier.",
+      "offset": 59.039,
+      "duration": 6.001
+    },
+    {
+      "lang": "en",
+      "text": "It also offers very easy observability",
+      "offset": 62.079,
+      "duration": 5.841
+    },
+    {
+      "lang": "en",
+      "text": "via open telemetry.",
+      "offset": 65.04,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "In addition to helping us build more",
+      "offset": 67.92,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "stable, testable, and maintainable code",
+      "offset": 69.52,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "at scale, we chose effect also because",
+      "offset": 71.6,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "it can be gradually adopted in an",
+      "offset": 74,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "existing codebase and feels like a",
+      "offset": 76,
+      "duration": 4.92
+    },
+    {
+      "lang": "en",
+      "text": "natural extension of TypeScript",
+      "offset": 77.84,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "itself. So quickly about our",
+      "offset": 80.92,
+      "duration": 4.6
+    },
+    {
+      "lang": "en",
+      "text": "architecture, we use effect across our",
+      "offset": 83.28,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "entire stack. Here are how the main",
+      "offset": 85.52,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "components fit together. We have a React",
+      "offset": 88.4,
+      "duration": 3.679
+    },
+    {
+      "lang": "en",
+      "text": "front end that powers everything from",
+      "offset": 90.08,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "dashboards to the agents ID, a knowledge",
+      "offset": 92.079,
+      "duration": 5.561
+    },
+    {
+      "lang": "en",
+      "text": "management, insights, analytics, and",
+      "offset": 95.28,
+      "duration": 4.879
+    },
+    {
+      "lang": "en",
+      "text": "SDKs. Then we have an internal RPC",
+      "offset": 97.64,
+      "duration": 5.08
+    },
+    {
+      "lang": "en",
+      "text": "server that handles app logic built on",
+      "offset": 100.159,
+      "duration": 4.881
+    },
+    {
+      "lang": "en",
+      "text": "effect RPC and a modified version of",
+      "offset": 102.72,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "tanstack query on the front end. Our",
+      "offset": 105.04,
+      "duration": 5.68
+    },
+    {
+      "lang": "en",
+      "text": "public API server uses effect HTTP with",
+      "offset": 107.92,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "an open API docs autogenerated from",
+      "offset": 110.72,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "annotated schemas. Our data processing",
+      "offset": 113.04,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "engine syncs data from CRM, docs, and",
+      "offset": 115.68,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "databases and process it for real-time",
+      "offset": 118,
+      "duration": 5.119
+    },
+    {
+      "lang": "en",
+      "text": "analytics and reporting. Agent workflows",
+      "offset": 120.24,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "are written in a custom DSL built on",
+      "offset": 123.119,
+      "duration": 4.401
+    },
+    {
+      "lang": "en",
+      "text": "effect, allowing us to mix deterministic",
+      "offset": 125.2,
+      "duration": 4.479
+    },
+    {
+      "lang": "en",
+      "text": "and nondeterministic behavior. And",
+      "offset": 127.52,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "finally, we use a postgress database for",
+      "offset": 129.679,
+      "duration": 3.521
+    },
+    {
+      "lang": "en",
+      "text": "both data and vector storage with",
+      "offset": 131.52,
+      "duration": 3.719
+    },
+    {
+      "lang": "en",
+      "text": "effects SQL handling",
+      "offset": 133.2,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "queries. Everything is modeled using",
+      "offset": 135.239,
+      "duration": 4.041
+    },
+    {
+      "lang": "en",
+      "text": "effect schemas. So we get runtime",
+      "offset": 137.36,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "validation, encoding, decoding, type",
+      "offset": 139.28,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "safe input and output handling across",
+      "offset": 141.76,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "the stack and even autogenerated",
+      "offset": 143.68,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "documentation for free. Our agents are",
+      "offset": 145.84,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "basically planners. They take input from",
+      "offset": 148.64,
+      "duration": 4.879
+    },
+    {
+      "lang": "en",
+      "text": "the user, come up with a plan, choose",
+      "offset": 151.2,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "the right action, workflow or sub agent,",
+      "offset": 153.519,
+      "duration": 5.681
+    },
+    {
+      "lang": "en",
+      "text": "executes them and repeats until the task",
+      "offset": 156.56,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "is complete.",
+      "offset": 159.2,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "Actions are small focused units of",
+      "offset": 160.72,
+      "duration": 5.599
+    },
+    {
+      "lang": "en",
+      "text": "execution like fetching payment info or",
+      "offset": 163.76,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "searching through logs. You can think of",
+      "offset": 166.319,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "them like tool calls. Workflows are",
+      "offset": 168.56,
+      "duration": 5.84
+    },
+    {
+      "lang": "en",
+      "text": "deterministic multi-step processes. For",
+      "offset": 171.599,
+      "duration": 4.401
+    },
+    {
+      "lang": "en",
+      "text": "instance, cancelling a subscription",
+      "offset": 174.4,
+      "duration": 3.839
+    },
+    {
+      "lang": "en",
+      "text": "might involve collecting a reason,",
+      "offset": 176,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "offering a retention option if",
+      "offset": 178.239,
+      "duration": 3.601
+    },
+    {
+      "lang": "en",
+      "text": "applicable, checking eligibility, and",
+      "offset": 179.76,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "then performing the cancellation.",
+      "offset": 181.84,
+      "duration": 4.319
+    },
+    {
+      "lang": "en",
+      "text": "Finally, sub agents group together",
+      "offset": 183.84,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "related actions and workflows into",
+      "offset": 186.159,
+      "duration": 3.601
+    },
+    {
+      "lang": "en",
+      "text": "larger domain specific modules like a",
+      "offset": 187.84,
+      "duration": 4.52
+    },
+    {
+      "lang": "en",
+      "text": "building agent or a log retrieval",
+      "offset": 189.76,
+      "duration": 4.92
+    },
+    {
+      "lang": "en",
+      "text": "agent. In order to model this",
+      "offset": 192.36,
+      "duration": 4.68
+    },
+    {
+      "lang": "en",
+      "text": "complexity, we built a domain specific",
+      "offset": 194.68,
+      "duration": 5.08
+    },
+    {
+      "lang": "en",
+      "text": "language from workflows using effects",
+      "offset": 197.04,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "functional pipe based system as the",
+      "offset": 199.76,
+      "duration": 4.399
+    },
+    {
+      "lang": "en",
+      "text": "foundation. And this lets us express",
+      "offset": 202,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "things like branching, sequencing,",
+      "offset": 204.159,
+      "duration": 4.401
+    },
+    {
+      "lang": "en",
+      "text": "retries, state transitions, and memory",
+      "offset": 206,
+      "duration": 6.319
+    },
+    {
+      "lang": "en",
+      "text": "in a very clear and composable way. Now,",
+      "offset": 208.56,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "as you're powering mission critical",
+      "offset": 212.319,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "systems, reliability really is key. If",
+      "offset": 213.84,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "one LM provider fails, for instance, we",
+      "offset": 216.319,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "fall back to another provider with",
+      "offset": 218.48,
+      "duration": 3.28
+    },
+    {
+      "lang": "en",
+      "text": "similar performance characteristics. For",
+      "offset": 220.159,
+      "duration": 3.841
+    },
+    {
+      "lang": "en",
+      "text": "instance, GPT4 mini could fall back to",
+      "offset": 221.76,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "GD flash 2.0 for tool calling. We model",
+      "offset": 224,
+      "duration": 5.92
+    },
+    {
+      "lang": "en",
+      "text": "this with retry policies which also",
+      "offset": 227.76,
+      "duration": 4.839
+    },
+    {
+      "lang": "en",
+      "text": "track state. So, we avoid retrying fail",
+      "offset": 229.92,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "providers. Often times, answers are",
+      "offset": 232.599,
+      "duration": 5.64
+    },
+    {
+      "lang": "en",
+      "text": "streamed to the end user. We for that",
+      "offset": 235.44,
+      "duration": 5.359
+    },
+    {
+      "lang": "en",
+      "text": "purpose duplicate token streams. One",
+      "offset": 238.239,
+      "duration": 4.801
+    },
+    {
+      "lang": "en",
+      "text": "directly to the user and one for storage",
+      "offset": 240.799,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "on our side. For instance, analytics",
+      "offset": 243.04,
+      "duration": 5.399
+    },
+    {
+      "lang": "en",
+      "text": "effect allows us to do that very",
+      "offset": 245.519,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "easily. For testing, we make heavy use",
+      "offset": 248.439,
+      "duration": 4.44
+    },
+    {
+      "lang": "en",
+      "text": "of dependency injection to mock LM",
+      "offset": 250.879,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "providers and simulate failure",
+      "offset": 252.879,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "scenarios. With this DI approach, we can",
+      "offset": 254.239,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "easily swap services providers with mock",
+      "offset": 256.799,
+      "duration": 4.481
+    },
+    {
+      "lang": "en",
+      "text": "versions without actually affecting the",
+      "offset": 259.199,
+      "duration": 4.121
+    },
+    {
+      "lang": "en",
+      "text": "internals of our",
+      "offset": 261.28,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "system. This brings us to developer",
+      "offset": 263.32,
+      "duration": 3.96
+    },
+    {
+      "lang": "en",
+      "text": "experience. With all these tools",
+      "offset": 265.52,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "available, the developer experience for",
+      "offset": 267.28,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "building agentic systems in effect",
+      "offset": 269.28,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "really is excellent. First of all, it's",
+      "offset": 270.88,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "schema centric. So we define input,",
+      "offset": 272.96,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "output, and error types up front. And",
+      "offset": 274.88,
+      "duration": 3.599
+    },
+    {
+      "lang": "en",
+      "text": "those schemas come with powerful",
+      "offset": 277.04,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "encoding and decoding built in. They",
+      "offset": 278.479,
+      "duration": 4.881
+    },
+    {
+      "lang": "en",
+      "text": "provide strong type safety guarantees",
+      "offset": 280.88,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "and they're automatically documented so",
+      "offset": 283.36,
+      "duration": 3.119
+    },
+    {
+      "lang": "en",
+      "text": "we can get clarity and consistency",
+      "offset": 285.04,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "without extra effort. Dependency",
+      "offset": 286.479,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "injection obviously is also a strong",
+      "offset": 288.72,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "point. So services are provided at the",
+      "offset": 290.479,
+      "duration": 4.641
+    },
+    {
+      "lang": "en",
+      "text": "entry point of our systems. that can be",
+      "offset": 292.8,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "composed however we need and easily",
+      "offset": 295.12,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "marked for testing. Dependencies are",
+      "offset": 296.88,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "present at the type level guaranteed at",
+      "offset": 299.36,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "compile time that all required services",
+      "offset": 301.44,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "are provided. Services themselves are",
+      "offset": 303.36,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "modular and composable which makes it",
+      "offset": 306.24,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "easy to override behavior or swap in",
+      "offset": 308,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "different implementations without",
+      "offset": 310.24,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "affecting the internals of our system.",
+      "offset": 311.52,
+      "duration": 5.679
+    },
+    {
+      "lang": "en",
+      "text": "And finally, effect provides very strong",
+      "offset": 314,
+      "duration": 5.68
+    },
+    {
+      "lang": "en",
+      "text": "guard rails. Engineers who are new to",
+      "offset": 317.199,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "Typescript can become productive quickly",
+      "offset": 319.68,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "because the framework helps prevent",
+      "offset": 321.759,
+      "duration": 3.761
+    },
+    {
+      "lang": "en",
+      "text": "common mistakes. Once you get past the",
+      "offset": 323.28,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "initial learning curve, it's harder to",
+      "offset": 325.52,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "fall into bad",
+      "offset": 326.96,
+      "duration": 2.72
+    },
+    {
+      "lang": "en",
+      "text": "patterns. A bit about the lessons",
+      "offset": 329.72,
+      "duration": 4.36
+    },
+    {
+      "lang": "en",
+      "text": "learned here. So, effect is powerful,",
+      "offset": 331.84,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "but using it well takes discipline. It's",
+      "offset": 334.08,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "really nice to write code for the happy",
+      "offset": 337.28,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "path. Things look really clean and",
+      "offset": 338.96,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "explicit, and everything seems to just",
+      "offset": 341.12,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "flow. But that can also give you a false",
+      "offset": 342.96,
+      "duration": 6.079
+    },
+    {
+      "lang": "en",
+      "text": "sense of safety. It's easy to",
+      "offset": 346.88,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "accidentally catch errors somewhere",
+      "offset": 349.039,
+      "duration": 4.081
+    },
+    {
+      "lang": "en",
+      "text": "upstream or out of sight and silently",
+      "offset": 350.8,
+      "duration": 4.2
+    },
+    {
+      "lang": "en",
+      "text": "lose important failures if you're not",
+      "offset": 353.12,
+      "duration": 4.639
+    },
+    {
+      "lang": "en",
+      "text": "careful. Dependency injection is another",
+      "offset": 355,
+      "duration": 5.16
+    },
+    {
+      "lang": "en",
+      "text": "area I would say where it can be hard",
+      "offset": 357.759,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "sometimes to grasp at scale. It's great",
+      "offset": 360.16,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "in principle but tracing where services",
+      "offset": 362.479,
+      "duration": 3.601
+    },
+    {
+      "lang": "en",
+      "text": "are provided especially when you're",
+      "offset": 364.8,
+      "duration": 2.839
+    },
+    {
+      "lang": "en",
+      "text": "dealing with multiple layers or",
+      "offset": 366.08,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "subsystems can become kind of hard to",
+      "offset": 367.639,
+      "duration": 5.56
+    },
+    {
+      "lang": "en",
+      "text": "follow. The learning curve is real.",
+      "offset": 370.24,
+      "duration": 4.959
+    },
+    {
+      "lang": "en",
+      "text": "effect is a big ecosystem with a lot of",
+      "offset": 373.199,
+      "duration": 4.081
+    },
+    {
+      "lang": "en",
+      "text": "concepts and tools. It can be",
+      "offset": 375.199,
+      "duration": 4.241
+    },
+    {
+      "lang": "en",
+      "text": "overwhelming at first, but really once",
+      "offset": 377.28,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "you get past this initial bump, things",
+      "offset": 379.44,
+      "duration": 5.199
+    },
+    {
+      "lang": "en",
+      "text": "just somehow start to click and from",
+      "offset": 382,
+      "duration": 5.68
+    },
+    {
+      "lang": "en",
+      "text": "that point on, the benefits compound.",
+      "offset": 384.639,
+      "duration": 4.881
+    },
+    {
+      "lang": "en",
+      "text": "So, at the end of the day, effect helps",
+      "offset": 387.68,
+      "duration": 3.28
+    },
+    {
+      "lang": "en",
+      "text": "us build systems that are predictable",
+      "offset": 389.52,
+      "duration": 3.519
+    },
+    {
+      "lang": "en",
+      "text": "and resilient, but it's not magic. You",
+      "offset": 390.96,
+      "duration": 3.799
+    },
+    {
+      "lang": "en",
+      "text": "still have to",
+      "offset": 393.039,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "think. One of the great things about",
+      "offset": 394.759,
+      "duration": 4.121
+    },
+    {
+      "lang": "en",
+      "text": "effect is that you don't have to go all",
+      "offset": 397.039,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "in on day one. You can adopt it",
+      "offset": 398.88,
+      "duration": 4.159
+    },
+    {
+      "lang": "en",
+      "text": "incrementally. Start with a single",
+      "offset": 401.199,
+      "duration": 3.681
+    },
+    {
+      "lang": "en",
+      "text": "service or endpoint and build from",
+      "offset": 403.039,
+      "duration": 4.081
+    },
+    {
+      "lang": "en",
+      "text": "there. Effect is especially useful for",
+      "offset": 404.88,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "LLM and AI based systems where",
+      "offset": 407.12,
+      "duration": 3.639
+    },
+    {
+      "lang": "en",
+      "text": "reliability and coping with",
+      "offset": 409.28,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "non-determinism really matter. You want",
+      "offset": 410.759,
+      "duration": 4.681
+    },
+    {
+      "lang": "en",
+      "text": "your systems to be predictable and",
+      "offset": 413.68,
+      "duration": 3.359
+    },
+    {
+      "lang": "en",
+      "text": "observable and effect gives you the",
+      "offset": 415.44,
+      "duration": 3.08
+    },
+    {
+      "lang": "en",
+      "text": "right tools to make it",
+      "offset": 417.039,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "happen. It also brings the rigor of",
+      "offset": 418.52,
+      "duration": 4.6
+    },
+    {
+      "lang": "en",
+      "text": "functional programming into real world",
+      "offset": 421.039,
+      "duration": 4.241
+    },
+    {
+      "lang": "en",
+      "text": "TypeScript but in a way that's practical",
+      "offset": 423.12,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "for production use. You don't have to be",
+      "offset": 425.28,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "a functional programming purist to get a",
+      "offset": 427.12,
+      "duration": 3.919
+    },
+    {
+      "lang": "en",
+      "text": "lot of value. Just start small and let",
+      "offset": 428.88,
+      "duration": 4.12
+    },
+    {
+      "lang": "en",
+      "text": "the benefits build up over",
+      "offset": 431.039,
+      "duration": 4.321
+    },
+    {
+      "lang": "en",
+      "text": "time. So if you're building with agents,",
+      "offset": 433,
+      "duration": 4.68
+    },
+    {
+      "lang": "en",
+      "text": "LLMs or exploring effect, feel free to",
+      "offset": 435.36,
+      "duration": 6.92
+    },
+    {
+      "lang": "en",
+      "text": "get in touch. Thank you.",
+      "offset": 437.68,
+      "duration": 4.6
+    }
+  ],
+  "cleanText": null,
+  "dumpedAt": "2025-07-21T18:43:26.048Z"
+}

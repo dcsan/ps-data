@@ -1,0 +1,8314 @@
+{
+  "episodeId": "kDlqpN1JyIw",
+  "channelSlug": "@aidotengineer",
+  "title": "Vercel AI SDK Masterclass: From Fundamentals to Deep Research",
+  "publishedAt": "2025-04-20T21:39:01.000Z",
+  "rawLines": [
+    {
+      "lang": "en",
+      "text": "hey folks my name is Nico I work on the",
+      "offset": 0.08,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "AI SDK at Verscell And in this session",
+      "offset": 2.56,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "today we're going to be looking at",
+      "offset": 6.08,
+      "duration": 5.679
+    },
+    {
+      "lang": "en",
+      "text": "building agents with the AI SDK Now this",
+      "offset": 7.6,
+      "duration": 5.999
+    },
+    {
+      "lang": "en",
+      "text": "session is roughly divided into two",
+      "offset": 11.759,
+      "duration": 3.361
+    },
+    {
+      "lang": "en",
+      "text": "sections We're going to start with a",
+      "offset": 13.599,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "fundamental section This is going to",
+      "offset": 15.12,
+      "duration": 3.28
+    },
+    {
+      "lang": "en",
+      "text": "introduce you to the building blocks",
+      "offset": 17.039,
+      "duration": 3.121
+    },
+    {
+      "lang": "en",
+      "text": "that you need to understand about using",
+      "offset": 18.4,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "the AI SDK before we jump into building",
+      "offset": 20.16,
+      "duration": 5.279
+    },
+    {
+      "lang": "en",
+      "text": "agents And then we're going to be",
+      "offset": 23.76,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "building a deep research clone uh in",
+      "offset": 25.439,
+      "duration": 6.64
+    },
+    {
+      "lang": "en",
+      "text": "Node.js JS So without further ado let's",
+      "offset": 28.88,
+      "duration": 6.24
+    },
+    {
+      "lang": "en",
+      "text": "get right into it To follow along the",
+      "offset": 32.079,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "first thing that you're going to have to",
+      "offset": 35.12,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "do is clone the repository here install",
+      "offset": 36.079,
+      "duration": 5.601
+    },
+    {
+      "lang": "en",
+      "text": "the dependencies copy over uh any",
+      "offset": 39.04,
+      "duration": 5.359
+    },
+    {
+      "lang": "en",
+      "text": "environment variables um and then you'll",
+      "offset": 41.68,
+      "duration": 5.6
+    },
+    {
+      "lang": "en",
+      "text": "be ready to go In this project we have",
+      "offset": 44.399,
+      "duration": 6.16
+    },
+    {
+      "lang": "en",
+      "text": "just one file index.ts And you can run",
+      "offset": 47.28,
+      "duration": 6.36
+    },
+    {
+      "lang": "en",
+      "text": "this file by just running pmpp",
+      "offset": 50.559,
+      "duration": 6.64
+    },
+    {
+      "lang": "en",
+      "text": "rundev I have this alias to just pd So",
+      "offset": 53.64,
+      "duration": 5.399
+    },
+    {
+      "lang": "en",
+      "text": "if you see me typing that that's just",
+      "offset": 57.199,
+      "duration": 5.121
+    },
+    {
+      "lang": "en",
+      "text": "running the script Great So let's start",
+      "offset": 59.039,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "with the first primitive that we're",
+      "offset": 62.32,
+      "duration": 4.799
+    },
+    {
+      "lang": "en",
+      "text": "going to be looking at the generate text",
+      "offset": 64.559,
+      "duration": 5.6
+    },
+    {
+      "lang": "en",
+      "text": "function Now this is as it sounds a way",
+      "offset": 67.119,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "for you to call a larger language model",
+      "offset": 70.159,
+      "duration": 4.561
+    },
+    {
+      "lang": "en",
+      "text": "and generate some text So let's take a",
+      "offset": 72.479,
+      "duration": 4.721
+    },
+    {
+      "lang": "en",
+      "text": "look In this session rather than typing",
+      "offset": 74.72,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "everything out line by line I'm going to",
+      "offset": 77.2,
+      "duration": 3.919
+    },
+    {
+      "lang": "en",
+      "text": "be copying over snippets so we can get",
+      "offset": 79.28,
+      "duration": 3.519
+    },
+    {
+      "lang": "en",
+      "text": "through things a little bit faster and",
+      "offset": 81.119,
+      "duration": 3.521
+    },
+    {
+      "lang": "en",
+      "text": "focus on the core concepts rather than",
+      "offset": 82.799,
+      "duration": 3.521
+    },
+    {
+      "lang": "en",
+      "text": "necessarily remembering to type",
+      "offset": 84.64,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "everything out properly So let's start",
+      "offset": 86.32,
+      "duration": 4.479
+    },
+    {
+      "lang": "en",
+      "text": "with the first",
+      "offset": 88.32,
+      "duration": 2.479
+    },
+    {
+      "lang": "en",
+      "text": "snippet What we've got here is a single",
+      "offset": 93.159,
+      "duration": 4.6
+    },
+    {
+      "lang": "en",
+      "text": "function called main It's asynchronous",
+      "offset": 95.52,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "And inside this function we call",
+      "offset": 97.759,
+      "duration": 3.841
+    },
+    {
+      "lang": "en",
+      "text": "generate text which we import from the",
+      "offset": 99.68,
+      "duration": 4.799
+    },
+    {
+      "lang": "en",
+      "text": "AI SDK We specify the model we want to",
+      "offset": 101.6,
+      "duration": 6.64
+    },
+    {
+      "lang": "en",
+      "text": "use in this case OpenAI's GPT40 mini Um",
+      "offset": 104.479,
+      "duration": 6.96
+    },
+    {
+      "lang": "en",
+      "text": "and then we pass in a prompt hello world",
+      "offset": 108.24,
+      "duration": 6.159
+    },
+    {
+      "lang": "en",
+      "text": "Finally we log out the resulting text",
+      "offset": 111.439,
+      "duration": 5.841
+    },
+    {
+      "lang": "en",
+      "text": "that is generated and call the function",
+      "offset": 114.399,
+      "duration": 5.921
+    },
+    {
+      "lang": "en",
+      "text": "So we can head into the terminal run",
+      "offset": 117.28,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "pmppm rundev and we should see a message",
+      "offset": 120.32,
+      "duration": 5.439
+    },
+    {
+      "lang": "en",
+      "text": "back from GPT4 mini Hello how can I",
+      "offset": 123.04,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "assist you today",
+      "offset": 125.759,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "now each of these generate text",
+      "offset": 127.92,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "functions and uh stream text and",
+      "offset": 129.759,
+      "duration": 4.401
+    },
+    {
+      "lang": "en",
+      "text": "generate object and stream object as",
+      "offset": 132.16,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "we'll see later uh can take in either a",
+      "offset": 134.16,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "prompt as input or messages and in this",
+      "offset": 136.56,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "case messages is just an array of",
+      "offset": 139.68,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "messages where a message has a role and",
+      "offset": 141.52,
+      "duration": 6.32
+    },
+    {
+      "lang": "en",
+      "text": "then some content So this would be the",
+      "offset": 144.8,
+      "duration": 6.32
+    },
+    {
+      "lang": "en",
+      "text": "same as we had before if we change this",
+      "offset": 147.84,
+      "duration": 5.679
+    },
+    {
+      "lang": "en",
+      "text": "to user",
+      "offset": 151.12,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "For the rest of this session we'll be",
+      "offset": 153.519,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "using mostly the prompt key So one of",
+      "offset": 154.8,
+      "duration": 6.96
+    },
+    {
+      "lang": "en",
+      "text": "the core features of the AI SDK is its",
+      "offset": 157.599,
+      "duration": 6.161
+    },
+    {
+      "lang": "en",
+      "text": "unified interface And what that means is",
+      "offset": 161.76,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "that we're able to switch between",
+      "offset": 163.76,
+      "duration": 3.759
+    },
+    {
+      "lang": "en",
+      "text": "language models by just changing one",
+      "offset": 165.36,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "single line of code Now there are many",
+      "offset": 167.519,
+      "duration": 4.481
+    },
+    {
+      "lang": "en",
+      "text": "reasons why you might want to do this It",
+      "offset": 170.08,
+      "duration": 4.879
+    },
+    {
+      "lang": "en",
+      "text": "might be because a model is cheaper",
+      "offset": 172,
+      "duration": 6.56
+    },
+    {
+      "lang": "en",
+      "text": "faster um better at your specific use",
+      "offset": 174.959,
+      "duration": 6.801
+    },
+    {
+      "lang": "en",
+      "text": "case Um and speaking of better one thing",
+      "offset": 178.56,
+      "duration": 6.56
+    },
+    {
+      "lang": "en",
+      "text": "that we can try asking this model in",
+      "offset": 181.76,
+      "duration": 6.479
+    },
+    {
+      "lang": "en",
+      "text": "particular is uh something that we know",
+      "offset": 185.12,
+      "duration": 7.28
+    },
+    {
+      "lang": "en",
+      "text": "it might struggle with like when was the",
+      "offset": 188.239,
+      "duration": 8.681
+    },
+    {
+      "lang": "en",
+      "text": "AI engineer summit in",
+      "offset": 192.4,
+      "duration": 8.24
+    },
+    {
+      "lang": "en",
+      "text": "2025 Now I know for a fact that GPT40",
+      "offset": 196.92,
+      "duration": 5.56
+    },
+    {
+      "lang": "en",
+      "text": "Mini is not going to be able to do this",
+      "offset": 200.64,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "because it doesn't have access to the",
+      "offset": 202.48,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "web and its training data cutoff is",
+      "offset": 204.56,
+      "duration": 5.84
+    },
+    {
+      "lang": "en",
+      "text": "somewhere in 2024 So we can see I'm",
+      "offset": 207.28,
+      "duration": 5.679
+    },
+    {
+      "lang": "en",
+      "text": "sorry but I don't have information about",
+      "offset": 210.4,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "events scheduled for 2025 including the",
+      "offset": 212.959,
+      "duration": 5.041
+    },
+    {
+      "lang": "en",
+      "text": "AI engineer summit So how could we solve",
+      "offset": 215.36,
+      "duration": 5.519
+    },
+    {
+      "lang": "en",
+      "text": "this well we could and we'll look into",
+      "offset": 218,
+      "duration": 5.84
+    },
+    {
+      "lang": "en",
+      "text": "later add a tool and that tool could",
+      "offset": 220.879,
+      "duration": 5.201
+    },
+    {
+      "lang": "en",
+      "text": "call the web and return those results",
+      "offset": 223.84,
+      "duration": 4.319
+    },
+    {
+      "lang": "en",
+      "text": "and pipe those into the context of the",
+      "offset": 226.08,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "conversation and then the language model",
+      "offset": 228.159,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "can deduce from there But we could also",
+      "offset": 229.92,
+      "duration": 5.84
+    },
+    {
+      "lang": "en",
+      "text": "just pick a model that has web search",
+      "offset": 232.959,
+      "duration": 5.681
+    },
+    {
+      "lang": "en",
+      "text": "built in something like perplexity So",
+      "offset": 235.76,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "how do we change to a different model",
+      "offset": 238.64,
+      "duration": 5.64
+    },
+    {
+      "lang": "en",
+      "text": "well all we have to do",
+      "offset": 241.04,
+      "duration": 6.24
+    },
+    {
+      "lang": "en",
+      "text": "is change the model that we specify here",
+      "offset": 244.28,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "to",
+      "offset": 247.28,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "perplexity invoke that model provider",
+      "offset": 248.36,
+      "duration": 5
+    },
+    {
+      "lang": "en",
+      "text": "instance and then select the model that",
+      "offset": 251.28,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "we want to use So in this case we've",
+      "offset": 253.36,
+      "duration": 5.279
+    },
+    {
+      "lang": "en",
+      "text": "imported a new uh provider this time",
+      "offset": 255.68,
+      "duration": 4.76
+    },
+    {
+      "lang": "en",
+      "text": "from",
+      "offset": 258.639,
+      "duration": 4.161
+    },
+    {
+      "lang": "en",
+      "text": "AISDK/perplexity Uh and then we specify",
+      "offset": 260.44,
+      "duration": 4.759
+    },
+    {
+      "lang": "en",
+      "text": "we want to use sonar pro So if we run",
+      "offset": 262.8,
+      "duration": 4.959
+    },
+    {
+      "lang": "en",
+      "text": "this again",
+      "offset": 265.199,
+      "duration": 2.56
+    },
+    {
+      "lang": "en",
+      "text": "now the model will come back The AI",
+      "offset": 268.04,
+      "duration": 5.24
+    },
+    {
+      "lang": "en",
+      "text": "engineer summit in 2025 took place from",
+      "offset": 270.479,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "February 19th to February 22nd 2025 in",
+      "offset": 273.28,
+      "duration": 5.16
+    },
+    {
+      "lang": "en",
+      "text": "New York City This is",
+      "offset": 276.479,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "right One thing that's interesting here",
+      "offset": 278.44,
+      "duration": 4.6
+    },
+    {
+      "lang": "en",
+      "text": "is that unlike the OpenAI response",
+      "offset": 280.639,
+      "duration": 5.041
+    },
+    {
+      "lang": "en",
+      "text": "because Perplexity is using sources it's",
+      "offset": 283.04,
+      "duration": 6.08
+    },
+    {
+      "lang": "en",
+      "text": "actually named them or referenced them",
+      "offset": 285.68,
+      "duration": 6.239
+    },
+    {
+      "lang": "en",
+      "text": "in its response How do we access them",
+      "offset": 289.12,
+      "duration": 6.32
+    },
+    {
+      "lang": "en",
+      "text": "well the AI SDK makes this accessible",
+      "offset": 291.919,
+      "duration": 5.081
+    },
+    {
+      "lang": "en",
+      "text": "with",
+      "offset": 295.44,
+      "duration": 5.68
+    },
+    {
+      "lang": "en",
+      "text": "the sources property So we can save run",
+      "offset": 297,
+      "duration": 6.6
+    },
+    {
+      "lang": "en",
+      "text": "the script",
+      "offset": 301.12,
+      "duration": 2.48
+    },
+    {
+      "lang": "en",
+      "text": "again and we'll see the sources in line",
+      "offset": 303.96,
+      "duration": 6.76
+    },
+    {
+      "lang": "en",
+      "text": "Very very very cool And this isn't just",
+      "offset": 307.919,
+      "duration": 4.801
+    },
+    {
+      "lang": "en",
+      "text": "limited to perplexity We support a ton",
+      "offset": 310.72,
+      "duration": 3.759
+    },
+    {
+      "lang": "en",
+      "text": "of providers and you can check all of",
+      "offset": 312.72,
+      "duration": 3.919
+    },
+    {
+      "lang": "en",
+      "text": "them out at our documentation If you",
+      "offset": 314.479,
+      "duration": 5.601
+    },
+    {
+      "lang": "en",
+      "text": "head to a uh SDK.forell.ai AI and head",
+      "offset": 316.639,
+      "duration": 5.921
+    },
+    {
+      "lang": "en",
+      "text": "to our providers page You can see we",
+      "offset": 320.08,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "have a whole host of providers here Um",
+      "offset": 322.56,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "many of which support web search as well",
+      "offset": 325.52,
+      "duration": 6.56
+    },
+    {
+      "lang": "en",
+      "text": "So if for example you wanted to use",
+      "offset": 328.32,
+      "duration": 4.84
+    },
+    {
+      "lang": "en",
+      "text": "let's",
+      "offset": 332.08,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "say Google's Gemini So we can import the",
+      "offset": 333.16,
+      "duration": 5.479
+    },
+    {
+      "lang": "en",
+      "text": "Google provider here and use Gemini",
+      "offset": 336.24,
+      "duration": 5.519
+    },
+    {
+      "lang": "en",
+      "text": "flash uh 1.5 and then specify that we",
+      "offset": 338.639,
+      "duration": 5.241
+    },
+    {
+      "lang": "en",
+      "text": "want to use search",
+      "offset": 341.759,
+      "duration": 6.401
+    },
+    {
+      "lang": "en",
+      "text": "grounding Save Run the script again and",
+      "offset": 343.88,
+      "duration": 6.48
+    },
+    {
+      "lang": "en",
+      "text": "we'll see this same prompt with the same",
+      "offset": 348.16,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "configuration going off to a different",
+      "offset": 350.36,
+      "duration": 4.36
+    },
+    {
+      "lang": "en",
+      "text": "model at a different provider and",
+      "offset": 352.56,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "getting what we hope is a similar",
+      "offset": 354.72,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "accurate answer AI engineer summit took",
+      "offset": 357.28,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "place from February 19th to 2025 and a",
+      "offset": 359.68,
+      "duration": 5.92
+    },
+    {
+      "lang": "en",
+      "text": "bunch of sources in line to confirm this",
+      "offset": 362.56,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "really really cool and really powerful",
+      "offset": 365.6,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "stuff So that was the first primitive",
+      "offset": 367.6,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "that we looked at something as basic and",
+      "offset": 369.6,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "simple as just generating text from a",
+      "offset": 371.6,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "language model But what if we want to go",
+      "offset": 373.68,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "beyond generating text and use language",
+      "offset": 375.6,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "models to interact with the outside",
+      "offset": 378.16,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "world and to perform actions this is",
+      "offset": 380.24,
+      "duration": 5.6
+    },
+    {
+      "lang": "en",
+      "text": "where tools or function calling comes in",
+      "offset": 382.8,
+      "duration": 5.519
+    },
+    {
+      "lang": "en",
+      "text": "While tools may seem complicated at the",
+      "offset": 385.84,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "core it's a very simple idea We give the",
+      "offset": 388.319,
+      "duration": 5.121
+    },
+    {
+      "lang": "en",
+      "text": "model a prompt and then we also pass as",
+      "offset": 390.88,
+      "duration": 5.039
+    },
+    {
+      "lang": "en",
+      "text": "part of the conversation context a list",
+      "offset": 393.44,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "of tools that it has available to it",
+      "offset": 395.919,
+      "duration": 4.481
+    },
+    {
+      "lang": "en",
+      "text": "Each of these tools will be provided",
+      "offset": 398.56,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "with the name of the tool as well as a",
+      "offset": 400.4,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "description of what the tool does so the",
+      "offset": 402.72,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "model knows when to use it And finally",
+      "offset": 404.56,
+      "duration": 5.84
+    },
+    {
+      "lang": "en",
+      "text": "any data that it requires in order to",
+      "offset": 407.6,
+      "duration": 5.439
+    },
+    {
+      "lang": "en",
+      "text": "use those tools Let's say the model",
+      "offset": 410.4,
+      "duration": 4.799
+    },
+    {
+      "lang": "en",
+      "text": "decides it needs to use one of the tools",
+      "offset": 413.039,
+      "duration": 5.201
+    },
+    {
+      "lang": "en",
+      "text": "to solve the user's query Rather than",
+      "offset": 415.199,
+      "duration": 5.84
+    },
+    {
+      "lang": "en",
+      "text": "generating some text as a response it",
+      "offset": 418.24,
+      "duration": 4.959
+    },
+    {
+      "lang": "en",
+      "text": "would generate a tool call Meaning it",
+      "offset": 421.039,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "would generate the the name of the tool",
+      "offset": 423.199,
+      "duration": 4.481
+    },
+    {
+      "lang": "en",
+      "text": "it wants to use and any arguments or",
+      "offset": 425.199,
+      "duration": 5.921
+    },
+    {
+      "lang": "en",
+      "text": "data that it can parse from the context",
+      "offset": 427.68,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "of the conversation necessary to run",
+      "offset": 431.12,
+      "duration": 5.199
+    },
+    {
+      "lang": "en",
+      "text": "those tools It's then on you the",
+      "offset": 433.68,
+      "duration": 6.079
+    },
+    {
+      "lang": "en",
+      "text": "developer to parse that tool call run",
+      "offset": 436.319,
+      "duration": 6.88
+    },
+    {
+      "lang": "en",
+      "text": "that code and then do with that as you",
+      "offset": 439.759,
+      "duration": 5.84
+    },
+    {
+      "lang": "en",
+      "text": "please So how do we do this with the AI",
+      "offset": 443.199,
+      "duration": 4.481
+    },
+    {
+      "lang": "en",
+      "text": "SDK well let's check out a very simple",
+      "offset": 445.599,
+      "duration": 4.241
+    },
+    {
+      "lang": "en",
+      "text": "example And when I say simple I mean",
+      "offset": 447.68,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "simple We're going to ask a language",
+      "offset": 449.84,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "model to add two numbers together So",
+      "offset": 451.52,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "copy in some code here We've got our",
+      "offset": 455.12,
+      "duration": 4.079
+    },
+    {
+      "lang": "en",
+      "text": "same main function as before We're",
+      "offset": 457.52,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "calling generate text again We're",
+      "offset": 459.199,
+      "duration": 4.801
+    },
+    {
+      "lang": "en",
+      "text": "specifying our our model as GPT40 Our",
+      "offset": 460.96,
+      "duration": 6.16
+    },
+    {
+      "lang": "en",
+      "text": "prompt this time is what's 10 + 5 very",
+      "offset": 464,
+      "duration": 5.199
+    },
+    {
+      "lang": "en",
+      "text": "difficult question but this time we are",
+      "offset": 467.12,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "passing a tool Now to pass tools to the",
+      "offset": 469.199,
+      "duration": 5.68
+    },
+    {
+      "lang": "en",
+      "text": "generate text or stream text function",
+      "offset": 472.4,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "you pass a tools object Within that",
+      "offset": 474.879,
+      "duration": 5.841
+    },
+    {
+      "lang": "en",
+      "text": "object you specify a key or the name of",
+      "offset": 477.68,
+      "duration": 6.48
+    },
+    {
+      "lang": "en",
+      "text": "the tool In this case add numbers Then",
+      "offset": 480.72,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "you can as the value use this tool",
+      "offset": 484.16,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "utility function which I'll explain in a",
+      "offset": 486.72,
+      "duration": 5.199
+    },
+    {
+      "lang": "en",
+      "text": "second to then uh define what the tool",
+      "offset": 488.8,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "should be So the tool is going to have a",
+      "offset": 491.919,
+      "duration": 3.521
+    },
+    {
+      "lang": "en",
+      "text": "description This is what the tool does",
+      "offset": 493.68,
+      "duration": 2.88
+    },
+    {
+      "lang": "en",
+      "text": "and this is really important because",
+      "offset": 495.44,
+      "duration": 3.12
+    },
+    {
+      "lang": "en",
+      "text": "this is what the language model uses to",
+      "offset": 496.56,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "decide whether it should invoke that",
+      "offset": 498.56,
+      "duration": 5.199
+    },
+    {
+      "lang": "en",
+      "text": "tool Uh parameters this is the data",
+      "offset": 500.16,
+      "duration": 6.24
+    },
+    {
+      "lang": "en",
+      "text": "necessary for the language model to run",
+      "offset": 503.759,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "this tool And this is what the language",
+      "offset": 506.4,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "model is going to have to parse from the",
+      "offset": 508.319,
+      "duration": 4.241
+    },
+    {
+      "lang": "en",
+      "text": "conversation context in order to use the",
+      "offset": 510.72,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "tool And then you have the execute",
+      "offset": 512.56,
+      "duration": 4.359
+    },
+    {
+      "lang": "en",
+      "text": "function This can be any arbitrary",
+      "offset": 514.24,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "asynchronous JavaScript code that will",
+      "offset": 516.919,
+      "duration": 5.401
+    },
+    {
+      "lang": "en",
+      "text": "be run when the language model generates",
+      "offset": 519.68,
+      "duration": 6.159
+    },
+    {
+      "lang": "en",
+      "text": "a tool call And what this tool function",
+      "offset": 522.32,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "does here is this is completely",
+      "offset": 525.839,
+      "duration": 5.521
+    },
+    {
+      "lang": "en",
+      "text": "unnecessary but is a really nice DX um",
+      "offset": 527.36,
+      "duration": 6.479
+    },
+    {
+      "lang": "en",
+      "text": "improvement here And what it does is",
+      "offset": 531.36,
+      "duration": 4.479
+    },
+    {
+      "lang": "en",
+      "text": "that it provides tape type safety",
+      "offset": 533.839,
+      "duration": 3.841
+    },
+    {
+      "lang": "en",
+      "text": "between the parameters that you define",
+      "offset": 535.839,
+      "duration": 5.601
+    },
+    {
+      "lang": "en",
+      "text": "here and the arguments that uh come into",
+      "offset": 537.68,
+      "duration": 5.839
+    },
+    {
+      "lang": "en",
+      "text": "your execute function So to showcase",
+      "offset": 541.44,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "this if we change this to string if I",
+      "offset": 543.519,
+      "duration": 6.081
+    },
+    {
+      "lang": "en",
+      "text": "can spell you can see I can't spell Um",
+      "offset": 545.92,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "but we can see that num one is still a",
+      "offset": 549.6,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "number where num two is a string Uh so",
+      "offset": 551.68,
+      "duration": 6.32
+    },
+    {
+      "lang": "en",
+      "text": "again this is not necessary at all Um",
+      "offset": 554.48,
+      "duration": 6.16
+    },
+    {
+      "lang": "en",
+      "text": "but it does make building and uh working",
+      "offset": 558,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "with these tools a lot easier Now what's",
+      "offset": 560.64,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "going on behind the scenes is that the",
+      "offset": 563.44,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "AI SDK is going to parse any tool calls",
+      "offset": 564.8,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "and then it's going to automatically",
+      "offset": 568,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "invoke the execute function and return",
+      "offset": 570.24,
+      "duration": 6.88
+    },
+    {
+      "lang": "en",
+      "text": "that in a tool results array as we can",
+      "offset": 573.36,
+      "duration": 6.24
+    },
+    {
+      "lang": "en",
+      "text": "see right here And that's what we're",
+      "offset": 577.12,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "logging out to the console So if we head",
+      "offset": 579.6,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "to the console clear it out and run the",
+      "offset": 582.08,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "script we should see a tool result",
+      "offset": 584.16,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "logged out to the console And that",
+      "offset": 586.88,
+      "duration": 5.079
+    },
+    {
+      "lang": "en",
+      "text": "indeed we do We see tool result uh add",
+      "offset": 588.24,
+      "duration": 5.92
+    },
+    {
+      "lang": "en",
+      "text": "numbers We see the arguments that are",
+      "offset": 591.959,
+      "duration": 4.44
+    },
+    {
+      "lang": "en",
+      "text": "parsed from the conversation context and",
+      "offset": 594.16,
+      "duration": 5.4
+    },
+    {
+      "lang": "en",
+      "text": "then we see the result",
+      "offset": 596.399,
+      "duration": 7.44
+    },
+    {
+      "lang": "en",
+      "text": "itself But notice that we have logged",
+      "offset": 599.56,
+      "duration": 5.88
+    },
+    {
+      "lang": "en",
+      "text": "out the tool results this time and",
+      "offset": 603.839,
+      "duration": 4.641
+    },
+    {
+      "lang": "en",
+      "text": "instead of instead of the the text",
+      "offset": 605.44,
+      "duration": 6.079
+    },
+    {
+      "lang": "en",
+      "text": "generated and and I had said before it's",
+      "offset": 608.48,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "kind of a nuanced thing here but the",
+      "offset": 611.519,
+      "duration": 3.681
+    },
+    {
+      "lang": "en",
+      "text": "language model isn't generating text",
+      "offset": 613.36,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "anymore It's generating a tool call And",
+      "offset": 615.2,
+      "duration": 4.639
+    },
+    {
+      "lang": "en",
+      "text": "we can see that if we said console.log",
+      "offset": 617.44,
+      "duration": 4.399
+    },
+    {
+      "lang": "en",
+      "text": "actually we just delete this al together",
+      "offset": 619.839,
+      "duration": 5
+    },
+    {
+      "lang": "en",
+      "text": "and we log out the resulting",
+      "offset": 621.839,
+      "duration": 5.281
+    },
+    {
+      "lang": "en",
+      "text": "text we won't see anything in the",
+      "offset": 624.839,
+      "duration": 4.921
+    },
+    {
+      "lang": "en",
+      "text": "console It's completely empty So how can",
+      "offset": 627.12,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "we get the model to actually incorporate",
+      "offset": 629.76,
+      "duration": 5.519
+    },
+    {
+      "lang": "en",
+      "text": "the tool results into a generated text",
+      "offset": 631.92,
+      "duration": 6.479
+    },
+    {
+      "lang": "en",
+      "text": "answer right we want it to synthesize",
+      "offset": 635.279,
+      "duration": 5.521
+    },
+    {
+      "lang": "en",
+      "text": "this action whatever it's performed and",
+      "offset": 638.399,
+      "duration": 6.241
+    },
+    {
+      "lang": "en",
+      "text": "communicate that back to the user",
+      "offset": 640.8,
+      "duration": 4.76
+    },
+    {
+      "lang": "en",
+      "text": "We",
+      "offset": 644.64,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "could look at the last tool result So",
+      "offset": 645.56,
+      "duration": 7.68
+    },
+    {
+      "lang": "en",
+      "text": "con's last tool result equals",
+      "offset": 649.68,
+      "duration": 6.64
+    },
+    {
+      "lang": "en",
+      "text": "result.tool results And we pop we take",
+      "offset": 653.24,
+      "duration": 6.64
+    },
+    {
+      "lang": "en",
+      "text": "that last one And then we say if last",
+      "offset": 656.32,
+      "duration": 5.079
+    },
+    {
+      "lang": "en",
+      "text": "tool",
+      "offset": 659.88,
+      "duration": 7.28
+    },
+    {
+      "lang": "en",
+      "text": "result equal uh dot dot name dot tool",
+      "offset": 661.399,
+      "duration": 8.361
+    },
+    {
+      "lang": "en",
+      "text": "name uh equals And it's cool We've got",
+      "offset": 667.16,
+      "duration": 5.16
+    },
+    {
+      "lang": "en",
+      "text": "full type safety here Um and then we can",
+      "offset": 669.76,
+      "duration": 6.56
+    },
+    {
+      "lang": "en",
+      "text": "say oh maybe we want to await and and",
+      "offset": 672.32,
+      "duration": 5.92
+    },
+    {
+      "lang": "en",
+      "text": "generate text further and return that to",
+      "offset": 676.32,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "the user But as you can see this is",
+      "offset": 678.24,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "errorprone I've made like three mistakes",
+      "offset": 681.04,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "already But also it doesn't scale right",
+      "offset": 682.72,
+      "duration": 6.4
+    },
+    {
+      "lang": "en",
+      "text": "if we add 10 15 20 100 tools in here We",
+      "offset": 685.2,
+      "duration": 6.079
+    },
+    {
+      "lang": "en",
+      "text": "don't want to write out 100 of these",
+      "offset": 689.12,
+      "duration": 4.719
+    },
+    {
+      "lang": "en",
+      "text": "conditional statements So what we can do",
+      "offset": 691.279,
+      "duration": 6.761
+    },
+    {
+      "lang": "en",
+      "text": "instead is use a property called max",
+      "offset": 693.839,
+      "duration": 6.401
+    },
+    {
+      "lang": "en",
+      "text": "steps And we're going to set this to a",
+      "offset": 698.04,
+      "duration": 5.88
+    },
+    {
+      "lang": "en",
+      "text": "number Now max steps can seem again a",
+      "offset": 700.24,
+      "duration": 6.159
+    },
+    {
+      "lang": "en",
+      "text": "little bit confusing but what it is at",
+      "offset": 703.92,
+      "duration": 6.159
+    },
+    {
+      "lang": "en",
+      "text": "its core is that if the language model",
+      "offset": 706.399,
+      "duration": 6.481
+    },
+    {
+      "lang": "en",
+      "text": "decides to generate a tool call and",
+      "offset": 710.079,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "therefore there is a tool result we are",
+      "offset": 712.88,
+      "duration": 5.84
+    },
+    {
+      "lang": "en",
+      "text": "going to send that tool result alongside",
+      "offset": 715.519,
+      "duration": 5.521
+    },
+    {
+      "lang": "en",
+      "text": "the previous conversation context back",
+      "offset": 718.72,
+      "duration": 4.359
+    },
+    {
+      "lang": "en",
+      "text": "to the model and trigger another",
+      "offset": 721.04,
+      "duration": 4.239
+    },
+    {
+      "lang": "en",
+      "text": "generation and the model will continue",
+      "offset": 723.079,
+      "duration": 5.481
+    },
+    {
+      "lang": "en",
+      "text": "doing this until it either generates",
+      "offset": 725.279,
+      "duration": 6.081
+    },
+    {
+      "lang": "en",
+      "text": "just plain text i.e there's no tool",
+      "offset": 728.56,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "result or we reach the threshold for the",
+      "offset": 731.36,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "maximum number of steps So this is quite",
+      "offset": 734.32,
+      "duration": 7.12
+    },
+    {
+      "lang": "en",
+      "text": "a um a a simple but powerful way to",
+      "offset": 736.72,
+      "duration": 7.119
+    },
+    {
+      "lang": "en",
+      "text": "allow the model to keep running",
+      "offset": 741.44,
+      "duration": 5.199
+    },
+    {
+      "lang": "en",
+      "text": "autonomously picking the next step in",
+      "offset": 743.839,
+      "duration": 5.921
+    },
+    {
+      "lang": "en",
+      "text": "the process um without necessarily",
+      "offset": 746.639,
+      "duration": 7.561
+    },
+    {
+      "lang": "en",
+      "text": "having to add any logic or rerouting",
+      "offset": 749.76,
+      "duration": 8.72
+    },
+    {
+      "lang": "en",
+      "text": "repiping output here So if we run this",
+      "offset": 754.2,
+      "duration": 5.8
+    },
+    {
+      "lang": "en",
+      "text": "code now and and what we're going to do",
+      "offset": 758.48,
+      "duration": 6.2
+    },
+    {
+      "lang": "en",
+      "text": "is we're actually going to log out the",
+      "offset": 760,
+      "duration": 6.32
+    },
+    {
+      "lang": "en",
+      "text": "result.steps.length and actually we",
+      "offset": 764.68,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "could even log out the",
+      "offset": 766.32,
+      "duration": 5.56
+    },
+    {
+      "lang": "en",
+      "text": "whole steps so we can see what's really",
+      "offset": 769.16,
+      "duration": 5.16
+    },
+    {
+      "lang": "en",
+      "text": "happening And we're going to stringify",
+      "offset": 771.88,
+      "duration": 5
+    },
+    {
+      "lang": "en",
+      "text": "this so it looks nice uh we should see",
+      "offset": 774.32,
+      "duration": 4.36
+    },
+    {
+      "lang": "en",
+      "text": "that the language model is going to",
+      "offset": 776.88,
+      "duration": 3.88
+    },
+    {
+      "lang": "en",
+      "text": "respond to",
+      "offset": 778.68,
+      "duration": 5.719
+    },
+    {
+      "lang": "en",
+      "text": "our if we go up all of the the crux uh",
+      "offset": 780.76,
+      "duration": 6.519
+    },
+    {
+      "lang": "en",
+      "text": "we can see 10 + 5 equals 15 So it",
+      "offset": 784.399,
+      "duration": 5.201
+    },
+    {
+      "lang": "en",
+      "text": "responded with plain text and now we can",
+      "offset": 787.279,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "see the different steps We've got the",
+      "offset": 789.6,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "initial step which generated a tool call",
+      "offset": 790.959,
+      "duration": 5.761
+    },
+    {
+      "lang": "en",
+      "text": "add numbers 10 and five and then we can",
+      "offset": 793.6,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "see the the the tool result that we had",
+      "offset": 796.72,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "logged out to the console A bunch of uh",
+      "offset": 799.36,
+      "duration": 5.599
+    },
+    {
+      "lang": "en",
+      "text": "stuff here Uh cool note that you can tap",
+      "offset": 802.24,
+      "duration": 5.599
+    },
+    {
+      "lang": "en",
+      "text": "into literally the the raw request and",
+      "offset": 804.959,
+      "duration": 4.801
+    },
+    {
+      "lang": "en",
+      "text": "response body with the AIS SDK so you",
+      "offset": 807.839,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "can see exactly what's being sent to",
+      "offset": 809.76,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "language models if you ever need to",
+      "offset": 811.839,
+      "duration": 4.12
+    },
+    {
+      "lang": "en",
+      "text": "debug But that's aside",
+      "offset": 813.6,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "um and then we should see the second",
+      "offset": 815.959,
+      "duration": 4.68
+    },
+    {
+      "lang": "en",
+      "text": "step Uh and the second step was step",
+      "offset": 818.56,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "type tool result Um and we can see that",
+      "offset": 820.639,
+      "duration": 7.561
+    },
+    {
+      "lang": "en",
+      "text": "there is text actually in this uh",
+      "offset": 823.76,
+      "duration": 7.04
+    },
+    {
+      "lang": "en",
+      "text": "generation So cool We've now seen how we",
+      "offset": 828.2,
+      "duration": 4.759
+    },
+    {
+      "lang": "en",
+      "text": "can build what we're going to call a",
+      "offset": 830.8,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "multi-step agent because that's what",
+      "offset": 832.959,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "this is This this language model has",
+      "offset": 834.88,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "been given the ability to choose the",
+      "offset": 836.959,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "number of steps that it wants to use and",
+      "offset": 838.56,
+      "duration": 4.399
+    },
+    {
+      "lang": "en",
+      "text": "choose the the tools or the direction it",
+      "offset": 840.399,
+      "duration": 4.721
+    },
+    {
+      "lang": "en",
+      "text": "wants to go down But obviously having",
+      "offset": 842.959,
+      "duration": 4.961
+    },
+    {
+      "lang": "en",
+      "text": "just one tool here doesn't show doesn't",
+      "offset": 845.12,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "showcase this very well So why don't we",
+      "offset": 847.92,
+      "duration": 4.44
+    },
+    {
+      "lang": "en",
+      "text": "add another tool here to see this",
+      "offset": 850,
+      "duration": 5.839
+    },
+    {
+      "lang": "en",
+      "text": "agentic behavior in action What we're",
+      "offset": 852.36,
+      "duration": 5.32
+    },
+    {
+      "lang": "en",
+      "text": "going to do is again I'm going to just",
+      "offset": 855.839,
+      "duration": 5.281
+    },
+    {
+      "lang": "en",
+      "text": "copy over some code We are going to add",
+      "offset": 857.68,
+      "duration": 6.519
+    },
+    {
+      "lang": "en",
+      "text": "a tool that has the ability to get",
+      "offset": 861.12,
+      "duration": 6.88
+    },
+    {
+      "lang": "en",
+      "text": "weather description here kind of obvious",
+      "offset": 864.199,
+      "duration": 5.721
+    },
+    {
+      "lang": "en",
+      "text": "Get the current weather at a location",
+      "offset": 868,
+      "duration": 4.959
+    },
+    {
+      "lang": "en",
+      "text": "The parameters here we need the latitude",
+      "offset": 869.92,
+      "duration": 5.599
+    },
+    {
+      "lang": "en",
+      "text": "longitude and city Um and then finally",
+      "offset": 872.959,
+      "duration": 4.081
+    },
+    {
+      "lang": "en",
+      "text": "in the execute function we're going to",
+      "offset": 875.519,
+      "duration": 3.521
+    },
+    {
+      "lang": "en",
+      "text": "make a fetch request passing in the",
+      "offset": 877.04,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "latitude and longitude And then we are",
+      "offset": 879.04,
+      "duration": 4.479
+    },
+    {
+      "lang": "en",
+      "text": "going to unwrap the weather data and",
+      "offset": 881.44,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "return it in the in the tool result Now",
+      "offset": 883.519,
+      "duration": 6.481
+    },
+    {
+      "lang": "en",
+      "text": "a lot of people might be uh thinking in",
+      "offset": 886.8,
+      "duration": 3.88
+    },
+    {
+      "lang": "en",
+      "text": "their",
+      "offset": 890,
+      "duration": 3.12
+    },
+    {
+      "lang": "en",
+      "text": "head we're not providing the latitude",
+      "offset": 890.68,
+      "duration": 4.2
+    },
+    {
+      "lang": "en",
+      "text": "and we're not providing the longitude",
+      "offset": 893.12,
+      "duration": 4.719
+    },
+    {
+      "lang": "en",
+      "text": "like is this going to fail and this taps",
+      "offset": 894.88,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "into a really cool uh inference",
+      "offset": 897.839,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "capability that we can use uh in these",
+      "offset": 900.16,
+      "duration": 5.679
+    },
+    {
+      "lang": "en",
+      "text": "parameters in that we can let the",
+      "offset": 903.199,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "language model infer these parameters",
+      "offset": 905.839,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "from the context of the conversation So",
+      "offset": 908.959,
+      "duration": 3.921
+    },
+    {
+      "lang": "en",
+      "text": "we're fairly certain that the user is",
+      "offset": 911.279,
+      "duration": 5.601
+    },
+    {
+      "lang": "en",
+      "text": "going to give city as as part of their",
+      "offset": 912.88,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "prompt And in this case we're going to",
+      "offset": 916.88,
+      "duration": 4.319
+    },
+    {
+      "lang": "en",
+      "text": "be asking for the weather in two cities",
+      "offset": 918.24,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "and then we're going to want to add them",
+      "offset": 921.199,
+      "duration": 2.961
+    },
+    {
+      "lang": "en",
+      "text": "together So we'll know that we'll have",
+      "offset": 922.72,
+      "duration": 4.559
+    },
+    {
+      "lang": "en",
+      "text": "the city and we'll let the the language",
+      "offset": 924.16,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "model use its training data to",
+      "offset": 927.279,
+      "duration": 4.321
+    },
+    {
+      "lang": "en",
+      "text": "effectively infer what these might be",
+      "offset": 929.6,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "Now I wouldn't suggest doing this",
+      "offset": 931.6,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "particular example in production but",
+      "offset": 933.44,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "there are a lot of really cool use cases",
+      "offset": 936.32,
+      "duration": 6.72
+    },
+    {
+      "lang": "en",
+      "text": "that you can use this pattern with So I",
+      "offset": 938.24,
+      "duration": 6.8
+    },
+    {
+      "lang": "en",
+      "text": "foreshadowed a little bit our prompt",
+      "offset": 943.04,
+      "duration": 3.28
+    },
+    {
+      "lang": "en",
+      "text": "here is going to be get the weather in",
+      "offset": 945.04,
+      "duration": 2.96
+    },
+    {
+      "lang": "en",
+      "text": "San Francisco and New York and then add",
+      "offset": 946.32,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "them together So we have two tools",
+      "offset": 948,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "available here Get weather and add",
+      "offset": 950.16,
+      "duration": 4.479
+    },
+    {
+      "lang": "en",
+      "text": "numbers And we have a maximum number of",
+      "offset": 952.72,
+      "duration": 4.479
+    },
+    {
+      "lang": "en",
+      "text": "steps of three So we'd expect probably",
+      "offset": 954.639,
+      "duration": 4.681
+    },
+    {
+      "lang": "en",
+      "text": "well actually let's not even guess Let's",
+      "offset": 957.199,
+      "duration": 5.08
+    },
+    {
+      "lang": "en",
+      "text": "see We can",
+      "offset": 959.32,
+      "duration": 6.6
+    },
+    {
+      "lang": "en",
+      "text": "um print out the steps the length of the",
+      "offset": 962.279,
+      "duration": 6.68
+    },
+    {
+      "lang": "en",
+      "text": "steps uh the steps themselves and then",
+      "offset": 965.92,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "uh the resulting text generation So I",
+      "offset": 968.959,
+      "duration": 5.281
+    },
+    {
+      "lang": "en",
+      "text": "save run the",
+      "offset": 971.04,
+      "duration": 3.2
+    },
+    {
+      "lang": "en",
+      "text": "script and we'll see a response The",
+      "offset": 975.24,
+      "duration": 4.12
+    },
+    {
+      "lang": "en",
+      "text": "current temperature in San Francisco is",
+      "offset": 977.839,
+      "duration": 5.68
+    },
+    {
+      "lang": "en",
+      "text": "12.3° C In New York it's 15.2 When you",
+      "offset": 979.36,
+      "duration": 6.44
+    },
+    {
+      "lang": "en",
+      "text": "add these temperatures together you get",
+      "offset": 983.519,
+      "duration": 5.361
+    },
+    {
+      "lang": "en",
+      "text": "27.5 degrees CC So let's see how many",
+      "offset": 985.8,
+      "duration": 6.039
+    },
+    {
+      "lang": "en",
+      "text": "steps we had Three steps We had an",
+      "offset": 988.88,
+      "duration": 5.68
+    },
+    {
+      "lang": "en",
+      "text": "initial step which was a tool call step",
+      "offset": 991.839,
+      "duration": 5.68
+    },
+    {
+      "lang": "en",
+      "text": "Uh we didn't unwrap this in the in the",
+      "offset": 994.56,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "in the console log but I know exactly",
+      "offset": 997.519,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "what these are because I have done this",
+      "offset": 999.68,
+      "duration": 3.519
+    },
+    {
+      "lang": "en",
+      "text": "demo before Uh and this is cool We're",
+      "offset": 1001.199,
+      "duration": 5.521
+    },
+    {
+      "lang": "en",
+      "text": "using parallel tool calls here Um so the",
+      "offset": 1003.199,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "actually we can see in the body We can",
+      "offset": 1006.72,
+      "duration": 5.359
+    },
+    {
+      "lang": "en",
+      "text": "see in the body right here Um uh or it's",
+      "offset": 1008.399,
+      "duration": 5.601
+    },
+    {
+      "lang": "en",
+      "text": "probably going to be in the in the",
+      "offset": 1012.079,
+      "duration": 4.241
+    },
+    {
+      "lang": "en",
+      "text": "response actually which is also wrapped",
+      "offset": 1014,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "in in here not unwrapped Uh but what's",
+      "offset": 1016.32,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "happening here is that we're doing our",
+      "offset": 1019.44,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "get weather our our get weather call",
+      "offset": 1020.8,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "twice We're doing for New York and then",
+      "offset": 1024,
+      "duration": 4.319
+    },
+    {
+      "lang": "en",
+      "text": "San Francisco And then in our second",
+      "offset": 1026,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "step we're going to be doing our add two",
+      "offset": 1028.319,
+      "duration": 4.961
+    },
+    {
+      "lang": "en",
+      "text": "numbers together And then for our final",
+      "offset": 1030.88,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "step we actually uh have the the text",
+      "offset": 1033.28,
+      "duration": 7.36
+    },
+    {
+      "lang": "en",
+      "text": "generation itself Um and I can even if",
+      "offset": 1036.88,
+      "duration": 7.12
+    },
+    {
+      "lang": "en",
+      "text": "we do it again here just to show you Uh",
+      "offset": 1040.64,
+      "duration": 8.08
+    },
+    {
+      "lang": "en",
+      "text": "let's stringify this out Um just in case",
+      "offset": 1044,
+      "duration": 6.88
+    },
+    {
+      "lang": "en",
+      "text": "people don't believe me we'll do it one",
+      "offset": 1048.72,
+      "duration": 3.839
+    },
+    {
+      "lang": "en",
+      "text": "more time And this time we'll see",
+      "offset": 1050.88,
+      "duration": 6.76
+    },
+    {
+      "lang": "en",
+      "text": "exactly what is what is coming out",
+      "offset": 1052.559,
+      "duration": 5.081
+    },
+    {
+      "lang": "en",
+      "text": "So if we jump it's good good sign that",
+      "offset": 1058.48,
+      "duration": 4.079
+    },
+    {
+      "lang": "en",
+      "text": "we're getting exactly the same response",
+      "offset": 1060.96,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "It means that the data is correct Um and",
+      "offset": 1062.559,
+      "duration": 6.24
+    },
+    {
+      "lang": "en",
+      "text": "if we scroll up to the where are we the",
+      "offset": 1066.08,
+      "duration": 4.28
+    },
+    {
+      "lang": "en",
+      "text": "first",
+      "offset": 1068.799,
+      "duration": 4.641
+    },
+    {
+      "lang": "en",
+      "text": "step so three steps here And yeah you",
+      "offset": 1070.36,
+      "duration": 5.08
+    },
+    {
+      "lang": "en",
+      "text": "can see so we've got two tool tool calls",
+      "offset": 1073.44,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "We've got get weather for uh the",
+      "offset": 1075.44,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "latitude and longitude and the city of",
+      "offset": 1077.84,
+      "duration": 6.16
+    },
+    {
+      "lang": "en",
+      "text": "San Francisco The same for oops scrolled",
+      "offset": 1080,
+      "duration": 7.6
+    },
+    {
+      "lang": "en",
+      "text": "too fast for New York And then we have",
+      "offset": 1084,
+      "duration": 7.64
+    },
+    {
+      "lang": "en",
+      "text": "the add to numbers",
+      "offset": 1087.6,
+      "duration": 7
+    },
+    {
+      "lang": "en",
+      "text": "step If we get",
+      "offset": 1091.64,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "there let's scroll",
+      "offset": 1094.6,
+      "duration": 6.439
+    },
+    {
+      "lang": "en",
+      "text": "down There we go Add numbers Number one",
+      "offset": 1097.4,
+      "duration": 6.32
+    },
+    {
+      "lang": "en",
+      "text": "Number two We get our result And then",
+      "offset": 1101.039,
+      "duration": 5.161
+    },
+    {
+      "lang": "en",
+      "text": "finally we have",
+      "offset": 1103.72,
+      "duration": 5.56
+    },
+    {
+      "lang": "en",
+      "text": "our actual text generation which comes",
+      "offset": 1106.2,
+      "duration": 5.8
+    },
+    {
+      "lang": "en",
+      "text": "at the very end So awesome That's two",
+      "offset": 1109.28,
+      "duration": 5.279
+    },
+    {
+      "lang": "en",
+      "text": "major fundamental building blocks out of",
+      "offset": 1112,
+      "duration": 4.799
+    },
+    {
+      "lang": "en",
+      "text": "the way Generating text and using tool",
+      "offset": 1114.559,
+      "duration": 3.761
+    },
+    {
+      "lang": "en",
+      "text": "calls The final thing that we're going",
+      "offset": 1116.799,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "to look at is generating structured data",
+      "offset": 1118.32,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "also known as structured outputs There",
+      "offset": 1121.039,
+      "duration": 3.841
+    },
+    {
+      "lang": "en",
+      "text": "are two ways to generate structured",
+      "offset": 1123.36,
+      "duration": 4.319
+    },
+    {
+      "lang": "en",
+      "text": "outputs with the AI SDK We can one use",
+      "offset": 1124.88,
+      "duration": 4.799
+    },
+    {
+      "lang": "en",
+      "text": "generate text with its experimental",
+      "offset": 1127.679,
+      "duration": 3.921
+    },
+    {
+      "lang": "en",
+      "text": "output option which we'll look at first",
+      "offset": 1129.679,
+      "duration": 4.081
+    },
+    {
+      "lang": "en",
+      "text": "and two which we'll be using more later",
+      "offset": 1131.6,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "in the session using the generate object",
+      "offset": 1133.76,
+      "duration": 4.159
+    },
+    {
+      "lang": "en",
+      "text": "function which is a function dedicated",
+      "offset": 1136.24,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "to structured outputs The generate",
+      "offset": 1137.919,
+      "duration": 5.041
+    },
+    {
+      "lang": "en",
+      "text": "object function I will I will tell you",
+      "offset": 1140.24,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "is my favorite function in the entire AI",
+      "offset": 1142.96,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "SDK Absolute workhorse of a function and",
+      "offset": 1145.44,
+      "duration": 4.479
+    },
+    {
+      "lang": "en",
+      "text": "we'll see it later So let's take a look",
+      "offset": 1148.16,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "at our existing tool calling example",
+      "offset": 1149.919,
+      "duration": 3.041
+    },
+    {
+      "lang": "en",
+      "text": "where we're getting the weather in two",
+      "offset": 1151.6,
+      "duration": 2.959
+    },
+    {
+      "lang": "en",
+      "text": "locations and then finally getting the",
+      "offset": 1152.96,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "sum of those two numbers added together",
+      "offset": 1154.559,
+      "duration": 5.441
+    },
+    {
+      "lang": "en",
+      "text": "and see how we could add structured",
+      "offset": 1158.16,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "outputs to make the eventual output",
+      "offset": 1160,
+      "duration": 6.08
+    },
+    {
+      "lang": "en",
+      "text": "easier to use maybe later on in our",
+      "offset": 1163.2,
+      "duration": 4.479
+    },
+    {
+      "lang": "en",
+      "text": "program So the way that we're going to",
+      "offset": 1166.08,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "introduce structured outputs here is",
+      "offset": 1167.679,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "using the experimental I think we have",
+      "offset": 1170.16,
+      "duration": 5.96
+    },
+    {
+      "lang": "en",
+      "text": "to head up here the experimental outputs",
+      "offset": 1172.799,
+      "duration": 7.561
+    },
+    {
+      "lang": "en",
+      "text": "um output key We can pull in",
+      "offset": 1176.12,
+      "duration": 7.64
+    },
+    {
+      "lang": "en",
+      "text": "output.object from AI um and then we",
+      "offset": 1180.36,
+      "duration": 6.08
+    },
+    {
+      "lang": "en",
+      "text": "define in here our",
+      "offset": 1183.76,
+      "duration": 4.799
+    },
+    {
+      "lang": "en",
+      "text": "schema We're going to be using ZOD to",
+      "offset": 1186.44,
+      "duration": 3.96
+    },
+    {
+      "lang": "en",
+      "text": "define our schema And if you've never",
+      "offset": 1188.559,
+      "duration": 4.321
+    },
+    {
+      "lang": "en",
+      "text": "used Zod before it's a TypeScript",
+      "offset": 1190.4,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "validation library that is super",
+      "offset": 1192.88,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "powerful and particularly paired with",
+      "offset": 1195.12,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "the AI SDK seems like a match made in",
+      "offset": 1197.36,
+      "duration": 5.199
+    },
+    {
+      "lang": "en",
+      "text": "heaven We'll be looking at it a lot in",
+      "offset": 1199.84,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "this session and it makes working with",
+      "offset": 1202.559,
+      "duration": 5.281
+    },
+    {
+      "lang": "en",
+      "text": "structured outputs an absolute breeze So",
+      "offset": 1205.2,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "let's define what we want our output to",
+      "offset": 1207.84,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "actually be In this case we know we want",
+      "offset": 1209.52,
+      "duration": 4.159
+    },
+    {
+      "lang": "en",
+      "text": "the sum which is going to be a number So",
+      "offset": 1211.6,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "let's define a key of sum and make it a",
+      "offset": 1213.679,
+      "duration": 6.841
+    },
+    {
+      "lang": "en",
+      "text": "zumber Finally we add our",
+      "offset": 1217.6,
+      "duration": 7.68
+    },
+    {
+      "lang": "en",
+      "text": "comma And now instead of logging out all",
+      "offset": 1220.52,
+      "duration": 6.84
+    },
+    {
+      "lang": "en",
+      "text": "of this all of the steps and instead of",
+      "offset": 1225.28,
+      "duration": 3.759
+    },
+    {
+      "lang": "en",
+      "text": "logging out the text I'm just going to",
+      "offset": 1227.36,
+      "duration": 4.559
+    },
+    {
+      "lang": "en",
+      "text": "log out the experimental output And",
+      "offset": 1229.039,
+      "duration": 6.681
+    },
+    {
+      "lang": "en",
+      "text": "let's run the script and see what we",
+      "offset": 1231.919,
+      "duration": 6.561
+    },
+    {
+      "lang": "en",
+      "text": "get So this time instead of getting all",
+      "offset": 1235.72,
+      "duration": 5
+    },
+    {
+      "lang": "en",
+      "text": "of that extra text which we maybe could",
+      "offset": 1238.48,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "have prompted away we just have a simple",
+      "offset": 1240.72,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "type-S safe object that we can access In",
+      "offset": 1243.28,
+      "duration": 5.92
+    },
+    {
+      "lang": "en",
+      "text": "this case we've got experimental output",
+      "offset": 1246.24,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "sum which we know is going to be a",
+      "offset": 1249.2,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "number otherwise it will throw an error",
+      "offset": 1251.28,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "So you can combine tool calling with",
+      "offset": 1253.28,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "structured output to build out some",
+      "offset": 1255.12,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "really really awesome uh use cases Now",
+      "offset": 1256.72,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "let's very quickly look at the generate",
+      "offset": 1259.52,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "object function So I'm going to delete",
+      "offset": 1261.6,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "everything in our main function uh and",
+      "offset": 1264.32,
+      "duration": 6.08
+    },
+    {
+      "lang": "en",
+      "text": "copy over a generate object example So",
+      "offset": 1266.72,
+      "duration": 6.56
+    },
+    {
+      "lang": "en",
+      "text": "we'll save we'll clear everything away",
+      "offset": 1270.4,
+      "duration": 4.68
+    },
+    {
+      "lang": "en",
+      "text": "And in this case",
+      "offset": 1273.28,
+      "duration": 4.399
+    },
+    {
+      "lang": "en",
+      "text": "uh we're going to be looking and seeing",
+      "offset": 1275.08,
+      "duration": 5.959
+    },
+    {
+      "lang": "en",
+      "text": "if AI can help us with a very invogue",
+      "offset": 1277.679,
+      "duration": 6.641
+    },
+    {
+      "lang": "en",
+      "text": "problem and that is defining what an AI",
+      "offset": 1281.039,
+      "duration": 8.321
+    },
+    {
+      "lang": "en",
+      "text": "agent is I know Simon um had had posted",
+      "offset": 1284.32,
+      "duration": 9.599
+    },
+    {
+      "lang": "en",
+      "text": "a a survey on Twitter asking for",
+      "offset": 1289.36,
+      "duration": 6.319
+    },
+    {
+      "lang": "en",
+      "text": "definitions and had crowdsourced",
+      "offset": 1293.919,
+      "duration": 4.801
+    },
+    {
+      "lang": "en",
+      "text": "something like 250 different definitions",
+      "offset": 1295.679,
+      "duration": 5.521
+    },
+    {
+      "lang": "en",
+      "text": "which ended up being six categories of",
+      "offset": 1298.72,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "different definitions Anyway nobody can",
+      "offset": 1301.2,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "can agree on it And so let's see if AI",
+      "offset": 1303.44,
+      "duration": 5.119
+    },
+    {
+      "lang": "en",
+      "text": "can help us Uh spoiler alert I don't",
+      "offset": 1306.08,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "think it will But so what we've got here",
+      "offset": 1308.559,
+      "duration": 4.881
+    },
+    {
+      "lang": "en",
+      "text": "is our main function as per usual We're",
+      "offset": 1310.64,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "importing generate object from the AI",
+      "offset": 1313.44,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "SDK Uh we specify our model as GPT4 mini",
+      "offset": 1315.28,
+      "duration": 6.879
+    },
+    {
+      "lang": "en",
+      "text": "This should start to look quite uh",
+      "offset": 1318.96,
+      "duration": 4.959
+    },
+    {
+      "lang": "en",
+      "text": "similar to how we've been doing it",
+      "offset": 1322.159,
+      "duration": 3.681
+    },
+    {
+      "lang": "en",
+      "text": "previously Pass in a prompt Please come",
+      "offset": 1323.919,
+      "duration": 4.721
+    },
+    {
+      "lang": "en",
+      "text": "up with 10 definitions for AI agents And",
+      "offset": 1325.84,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "now with generate object we can define a",
+      "offset": 1328.64,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "schema In this case our schema is going",
+      "offset": 1330.64,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "to have one key It's going to be an",
+      "offset": 1333.36,
+      "duration": 4.559
+    },
+    {
+      "lang": "en",
+      "text": "object That key is definitions Every um",
+      "offset": 1334.64,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "and this is defined as an array of",
+      "offset": 1337.919,
+      "duration": 4.321
+    },
+    {
+      "lang": "en",
+      "text": "strings And then that will give us a",
+      "offset": 1340,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "type- safe resulting object that has our",
+      "offset": 1342.24,
+      "duration": 5.6
+    },
+    {
+      "lang": "en",
+      "text": "definitions key on it which is an array",
+      "offset": 1345.2,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "of strings So if we run the script wait",
+      "offset": 1347.84,
+      "duration": 6.56
+    },
+    {
+      "lang": "en",
+      "text": "a second we should see 10 probably",
+      "offset": 1350.96,
+      "duration": 5.92
+    },
+    {
+      "lang": "en",
+      "text": "pretty bad definitions of what an AI",
+      "offset": 1354.4,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "agent is An AI agent is a software",
+      "offset": 1356.88,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "entity that uses artificial intelligence",
+      "offset": 1359.84,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "techniques to perform tasks autonomously",
+      "offset": 1362.08,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "or",
+      "offset": 1365.12,
+      "duration": 2.4
+    },
+    {
+      "lang": "en",
+      "text": "semiautonomously Not as bad as I thought",
+      "offset": 1367.64,
+      "duration": 5.88
+    },
+    {
+      "lang": "en",
+      "text": "but why don't we see if we can alter",
+      "offset": 1370.559,
+      "duration": 5.6
+    },
+    {
+      "lang": "en",
+      "text": "this slightly and and the way I want to",
+      "offset": 1373.52,
+      "duration": 6.24
+    },
+    {
+      "lang": "en",
+      "text": "do this is provide some more details to",
+      "offset": 1376.159,
+      "duration": 5.361
+    },
+    {
+      "lang": "en",
+      "text": "the language model of exactly what I",
+      "offset": 1379.76,
+      "duration": 4.159
+    },
+    {
+      "lang": "en",
+      "text": "want it to do for each of the strings in",
+      "offset": 1381.52,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "this array Now we could jump into the",
+      "offset": 1383.919,
+      "duration": 6.64
+    },
+    {
+      "lang": "en",
+      "text": "prompt and say each of these definitions",
+      "offset": 1387.28,
+      "duration": 6.24
+    },
+    {
+      "lang": "en",
+      "text": "should be X But one of the really really",
+      "offset": 1390.559,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "cool features we can tap into with ZOD",
+      "offset": 1393.52,
+      "duration": 5.08
+    },
+    {
+      "lang": "en",
+      "text": "is the dotescribe function And with",
+      "offset": 1395.919,
+      "duration": 6.081
+    },
+    {
+      "lang": "en",
+      "text": "dotescribe we can as it sounds go to any",
+      "offset": 1398.6,
+      "duration": 6.68
+    },
+    {
+      "lang": "en",
+      "text": "key or any value sorry and we can chain",
+      "offset": 1402,
+      "duration": 6.96
+    },
+    {
+      "lang": "en",
+      "text": "on this.escribe function And in here we",
+      "offset": 1405.28,
+      "duration": 5.68
+    },
+    {
+      "lang": "en",
+      "text": "can describe exactly what we want for",
+      "offset": 1408.96,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "that exact value So I'm going to say",
+      "offset": 1410.96,
+      "duration": 6.32
+    },
+    {
+      "lang": "en",
+      "text": "something uh kind of cheeky and I'm",
+      "offset": 1413.84,
+      "duration": 5.079
+    },
+    {
+      "lang": "en",
+      "text": "going to say",
+      "offset": 1417.28,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "um I'm just going to paste this in I",
+      "offset": 1418.919,
+      "duration": 5.081
+    },
+    {
+      "lang": "en",
+      "text": "want the language model to use as much",
+      "offset": 1422,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "jargon as possible It should be",
+      "offset": 1424,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "completely incoherent So let's see what",
+      "offset": 1426,
+      "duration": 5.6
+    },
+    {
+      "lang": "en",
+      "text": "this can do Spoiler alert this is how I",
+      "offset": 1429.28,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "spend a lot of my time hacking on on",
+      "offset": 1431.6,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "language model stuff just like asking",
+      "offset": 1434.4,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "really ridiculous stuff And so let's see",
+      "offset": 1436.64,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "what we got here autonomous entities",
+      "offset": 1438.64,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "that leverage algorithmic huristics to",
+      "offset": 1440.4,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "optimize decision-making processes in",
+      "offset": 1442.96,
+      "duration": 3.8
+    },
+    {
+      "lang": "en",
+      "text": "dynamic",
+      "offset": 1445.52,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "environments That is complete BS Um and",
+      "offset": 1446.76,
+      "duration": 6.919
+    },
+    {
+      "lang": "en",
+      "text": "we've got 10 of them So um so this is a",
+      "offset": 1450.32,
+      "duration": 7.2
+    },
+    {
+      "lang": "en",
+      "text": "really cool thing about working with uh",
+      "offset": 1453.679,
+      "duration": 6.081
+    },
+    {
+      "lang": "en",
+      "text": "structured outputs with the AI SDK and",
+      "offset": 1457.52,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "particularly with that SOD integration",
+      "offset": 1459.76,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "It makes defining these schemas and",
+      "offset": 1461.76,
+      "duration": 5.84
+    },
+    {
+      "lang": "en",
+      "text": "providing context super simple and",
+      "offset": 1464.08,
+      "duration": 6.479
+    },
+    {
+      "lang": "en",
+      "text": "really easy to maintain as well Great",
+      "offset": 1467.6,
+      "duration": 4.559
+    },
+    {
+      "lang": "en",
+      "text": "And with that we've gone through the",
+      "offset": 1470.559,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "fundamentals of building agents with the",
+      "offset": 1472.159,
+      "duration": 6.081
+    },
+    {
+      "lang": "en",
+      "text": "AI SDK Now we're going to move on to a",
+      "offset": 1475.039,
+      "duration": 5.601
+    },
+    {
+      "lang": "en",
+      "text": "more practical project We're going to be",
+      "offset": 1478.24,
+      "duration": 5.679
+    },
+    {
+      "lang": "en",
+      "text": "trying to build a deep research clone",
+      "offset": 1480.64,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "Now obviously this isn't going to be a",
+      "offset": 1483.919,
+      "duration": 5.281
+    },
+    {
+      "lang": "en",
+      "text": "full crazy application implementation",
+      "offset": 1485.84,
+      "duration": 4.719
+    },
+    {
+      "lang": "en",
+      "text": "We're just going to be doing it in node",
+      "offset": 1489.2,
+      "duration": 2.56
+    },
+    {
+      "lang": "en",
+      "text": "So we're going to have a terminal script",
+      "offset": 1490.559,
+      "duration": 2.401
+    },
+    {
+      "lang": "en",
+      "text": "that we're going to build We're going to",
+      "offset": 1491.76,
+      "duration": 3.279
+    },
+    {
+      "lang": "en",
+      "text": "pass a query and then we're going to",
+      "offset": 1492.96,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "conduct a bunch of deep research and",
+      "offset": 1495.039,
+      "duration": 5.361
+    },
+    {
+      "lang": "en",
+      "text": "write a a markdown report into our file",
+      "offset": 1496.88,
+      "duration": 6.32
+    },
+    {
+      "lang": "en",
+      "text": "system But in doing this this should",
+      "offset": 1500.4,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "introduce us to a few things It should",
+      "offset": 1503.2,
+      "duration": 4.079
+    },
+    {
+      "lang": "en",
+      "text": "introduce us to one how we would break",
+      "offset": 1505.12,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "down this idea of of deep research into",
+      "offset": 1507.279,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "like a structured workflow Um and within",
+      "offset": 1510.08,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "this workflow uh we're going to have",
+      "offset": 1512.799,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "some autonomous agentic elements So",
+      "offset": 1514.64,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "we'll see what a production AI system",
+      "offset": 1517.679,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "might look like Um and we'll also look",
+      "offset": 1520.08,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "at how we can combine different AI SDK",
+      "offset": 1522.559,
+      "duration": 5.681
+    },
+    {
+      "lang": "en",
+      "text": "functions together to build these more",
+      "offset": 1525.84,
+      "duration": 5.64
+    },
+    {
+      "lang": "en",
+      "text": "complex AI systems that can really cater",
+      "offset": 1528.24,
+      "duration": 8.799
+    },
+    {
+      "lang": "en",
+      "text": "to interesting and honestly cool use",
+      "offset": 1531.48,
+      "duration": 8.559
+    },
+    {
+      "lang": "en",
+      "text": "cases that you can use in production to",
+      "offset": 1537.039,
+      "duration": 5.601
+    },
+    {
+      "lang": "en",
+      "text": "help build cool stuff I don't know how",
+      "offset": 1540.039,
+      "duration": 6.12
+    },
+    {
+      "lang": "en",
+      "text": "how better to to to say it than that So",
+      "offset": 1542.64,
+      "duration": 5.279
+    },
+    {
+      "lang": "en",
+      "text": "without further ado I'm going to head to",
+      "offset": 1546.159,
+      "duration": 3.681
+    },
+    {
+      "lang": "en",
+      "text": "the deep research section of the",
+      "offset": 1547.919,
+      "duration": 4.321
+    },
+    {
+      "lang": "en",
+      "text": "companion site because I've provided a",
+      "offset": 1549.84,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "nice explanation of how the workflow is",
+      "offset": 1552.24,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "going to work in in natural language and",
+      "offset": 1554.64,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "also a nice diagram to explain exactly",
+      "offset": 1557.36,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "what's going to be happening Now also if",
+      "offset": 1560.64,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "you haven't used deep research before",
+      "offset": 1562.88,
+      "duration": 4.399
+    },
+    {
+      "lang": "en",
+      "text": "one I highly suggest you check it out Um",
+      "offset": 1564.48,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "OpenAI has a version Deep Research uh",
+      "offset": 1567.279,
+      "duration": 4.241
+    },
+    {
+      "lang": "en",
+      "text": "Gemini has a version as well But roughly",
+      "offset": 1569.44,
+      "duration": 4.719
+    },
+    {
+      "lang": "en",
+      "text": "speaking what's happening is you give",
+      "offset": 1571.52,
+      "duration": 5.519
+    },
+    {
+      "lang": "en",
+      "text": "these products a topic to think about",
+      "offset": 1574.159,
+      "duration": 4.481
+    },
+    {
+      "lang": "en",
+      "text": "and it will go off for an extended",
+      "offset": 1577.039,
+      "duration": 3.441
+    },
+    {
+      "lang": "en",
+      "text": "period of time searching the web",
+      "offset": 1578.64,
+      "duration": 5.039
+    },
+    {
+      "lang": "en",
+      "text": "aggregating resources going down like",
+      "offset": 1580.48,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "webs of thought and then it will",
+      "offset": 1583.679,
+      "duration": 3.441
+    },
+    {
+      "lang": "en",
+      "text": "aggregate all of that information",
+      "offset": 1585.44,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "together and finally return it into a",
+      "offset": 1587.12,
+      "duration": 5.6
+    },
+    {
+      "lang": "en",
+      "text": "report to hopefully solve your query And",
+      "offset": 1590.08,
+      "duration": 5.479
+    },
+    {
+      "lang": "en",
+      "text": "the cool thing is this really taps into",
+      "offset": 1592.72,
+      "duration": 6.6
+    },
+    {
+      "lang": "en",
+      "text": "a fundamental a",
+      "offset": 1595.559,
+      "duration": 6.36
+    },
+    {
+      "lang": "en",
+      "text": "fundamentally strong part of of language",
+      "offset": 1599.32,
+      "duration": 4.479
+    },
+    {
+      "lang": "en",
+      "text": "models of this like",
+      "offset": 1601.919,
+      "duration": 5
+    },
+    {
+      "lang": "en",
+      "text": "synthesizing troves and troves of of",
+      "offset": 1603.799,
+      "duration": 7.161
+    },
+    {
+      "lang": "en",
+      "text": "information Um so yeah let's look at how",
+      "offset": 1606.919,
+      "duration": 5.801
+    },
+    {
+      "lang": "en",
+      "text": "this workflow is going to look like So",
+      "offset": 1610.96,
+      "duration": 2.959
+    },
+    {
+      "lang": "en",
+      "text": "the rough steps are going to be we're",
+      "offset": 1612.72,
+      "duration": 4.319
+    },
+    {
+      "lang": "en",
+      "text": "going to take an input a rough query a",
+      "offset": 1613.919,
+      "duration": 4.961
+    },
+    {
+      "lang": "en",
+      "text": "prompt We're then going to for that",
+      "offset": 1617.039,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "prompt generate a bunch of subqueries So",
+      "offset": 1618.88,
+      "duration": 4.159
+    },
+    {
+      "lang": "en",
+      "text": "let's think about like we want to do",
+      "offset": 1621.279,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "research on electric cars Uh the queries",
+      "offset": 1623.039,
+      "duration": 5.041
+    },
+    {
+      "lang": "en",
+      "text": "or the search queries that we might",
+      "offset": 1626.559,
+      "duration": 3.761
+    },
+    {
+      "lang": "en",
+      "text": "generate are like what is an electric",
+      "offset": 1628.08,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "car who are the biggest electric car",
+      "offset": 1630.32,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "producers and so on Then for each of",
+      "offset": 1632.64,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "those queries we're going to search the",
+      "offset": 1635.52,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "web for relevant result And then we're",
+      "offset": 1637.84,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "going to analyze that result for",
+      "offset": 1640,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "learnings and follow-up questions And",
+      "offset": 1642,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "then if we want to go into more depth",
+      "offset": 1644.48,
+      "duration": 5.439
+    },
+    {
+      "lang": "en",
+      "text": "which we'll look at in a second how that",
+      "offset": 1647.44,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "works uh we will take those follow-up",
+      "offset": 1649.919,
+      "duration": 4.481
+    },
+    {
+      "lang": "en",
+      "text": "questions as well as like the existing",
+      "offset": 1652.4,
+      "duration": 5.32
+    },
+    {
+      "lang": "en",
+      "text": "research generate a new query and like",
+      "offset": 1654.4,
+      "duration": 5.84
+    },
+    {
+      "lang": "en",
+      "text": "completely recursively complete that",
+      "offset": 1657.72,
+      "duration": 4.839
+    },
+    {
+      "lang": "en",
+      "text": "process Meaning like we basically start",
+      "offset": 1660.24,
+      "duration": 4.36
+    },
+    {
+      "lang": "en",
+      "text": "again while keeping all of the",
+      "offset": 1662.559,
+      "duration": 4.321
+    },
+    {
+      "lang": "en",
+      "text": "accumulated research And in this way we",
+      "offset": 1664.6,
+      "duration": 5.72
+    },
+    {
+      "lang": "en",
+      "text": "can go down these like these webs of of",
+      "offset": 1666.88,
+      "duration": 6.56
+    },
+    {
+      "lang": "en",
+      "text": "thought and of questions and and and",
+      "offset": 1670.32,
+      "duration": 6.2
+    },
+    {
+      "lang": "en",
+      "text": "build a comprehensive",
+      "offset": 1673.44,
+      "duration": 5.599
+    },
+    {
+      "lang": "en",
+      "text": "aggregated a comprehensive set of",
+      "offset": 1676.52,
+      "duration": 5.56
+    },
+    {
+      "lang": "en",
+      "text": "information about a a given topic So",
+      "offset": 1679.039,
+      "duration": 5.201
+    },
+    {
+      "lang": "en",
+      "text": "what this might look like in theory I",
+      "offset": 1682.08,
+      "duration": 4.719
+    },
+    {
+      "lang": "en",
+      "text": "like this little explanation Uh so let's",
+      "offset": 1684.24,
+      "duration": 4.159
+    },
+    {
+      "lang": "en",
+      "text": "say we have electric cars We're calling",
+      "offset": 1686.799,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "this level zero just like this is the",
+      "offset": 1688.399,
+      "duration": 4.561
+    },
+    {
+      "lang": "en",
+      "text": "initial query And at level one uh we're",
+      "offset": 1690.159,
+      "duration": 5.201
+    },
+    {
+      "lang": "en",
+      "text": "going to have a breadth Now breadth is",
+      "offset": 1692.96,
+      "duration": 5.839
+    },
+    {
+      "lang": "en",
+      "text": "just like how many different uh queries",
+      "offset": 1695.36,
+      "duration": 5.439
+    },
+    {
+      "lang": "en",
+      "text": "do we want at each step So let's say",
+      "offset": 1698.799,
+      "duration": 4.721
+    },
+    {
+      "lang": "en",
+      "text": "we're at we're at level one um and we're",
+      "offset": 1700.799,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "doing electric cars and the three search",
+      "offset": 1703.52,
+      "duration": 5.279
+    },
+    {
+      "lang": "en",
+      "text": "queries that we generate are Tesla Model",
+      "offset": 1705.679,
+      "duration": 5.681
+    },
+    {
+      "lang": "en",
+      "text": "3 specification electric car charging",
+      "offset": 1708.799,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "infrastructure and electric vehicle",
+      "offset": 1711.36,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "battery technology And then for each of",
+      "offset": 1713.279,
+      "duration": 4.561
+    },
+    {
+      "lang": "en",
+      "text": "those different queries we'd complete",
+      "offset": 1715.84,
+      "duration": 5.6
+    },
+    {
+      "lang": "en",
+      "text": "the research and maybe for Tesla Model 3",
+      "offset": 1717.84,
+      "duration": 6.559
+    },
+    {
+      "lang": "en",
+      "text": "we would then start generating uh go",
+      "offset": 1721.44,
+      "duration": 6.8
+    },
+    {
+      "lang": "en",
+      "text": "down the web have two breadth Uh like we",
+      "offset": 1724.399,
+      "duration": 7.361
+    },
+    {
+      "lang": "en",
+      "text": "want to generate two different u lines",
+      "offset": 1728.24,
+      "duration": 5.6
+    },
+    {
+      "lang": "en",
+      "text": "of inquiry to go down and then we go",
+      "offset": 1731.76,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "down Okay we want to know Model 3 range",
+      "offset": 1733.84,
+      "duration": 4.559
+    },
+    {
+      "lang": "en",
+      "text": "capacity and model 3 pricing And then",
+      "offset": 1736.24,
+      "duration": 4.319
+    },
+    {
+      "lang": "en",
+      "text": "for electric char car charging",
+      "offset": 1738.399,
+      "duration": 3.921
+    },
+    {
+      "lang": "en",
+      "text": "infrastructure we want to know fast",
+      "offset": 1740.559,
+      "duration": 3.441
+    },
+    {
+      "lang": "en",
+      "text": "charging stations in the US and home",
+      "offset": 1742.32,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "charging installation and so on And so",
+      "offset": 1744,
+      "duration": 5.919
+    },
+    {
+      "lang": "en",
+      "text": "depending on what depth and breadth",
+      "offset": 1746.64,
+      "duration": 7.08
+    },
+    {
+      "lang": "en",
+      "text": "settings we set um we're able",
+      "offset": 1749.919,
+      "duration": 8.88
+    },
+    {
+      "lang": "en",
+      "text": "to control the level of information um",
+      "offset": 1753.72,
+      "duration": 7.679
+    },
+    {
+      "lang": "en",
+      "text": "and the depth of information that we",
+      "offset": 1758.799,
+      "duration": 7.041
+    },
+    {
+      "lang": "en",
+      "text": "gather So that was a lot Let's uh let's",
+      "offset": 1761.399,
+      "duration": 6.041
+    },
+    {
+      "lang": "en",
+      "text": "jump into actually trying to build this",
+      "offset": 1765.84,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "And the first thing that we're going to",
+      "offset": 1767.44,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "look at is building a function that can",
+      "offset": 1769.36,
+      "duration": 5.199
+    },
+    {
+      "lang": "en",
+      "text": "generate some search queries So I'm",
+      "offset": 1772.32,
+      "duration": 5.56
+    },
+    {
+      "lang": "en",
+      "text": "going to dive back into",
+      "offset": 1774.559,
+      "duration": 6.081
+    },
+    {
+      "lang": "en",
+      "text": "the back into the code editor We're",
+      "offset": 1777.88,
+      "duration": 5.56
+    },
+    {
+      "lang": "en",
+      "text": "going to clear out this file and we are",
+      "offset": 1780.64,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "going to copy in our first function So",
+      "offset": 1783.44,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "the first thing like we said we want to",
+      "offset": 1786.64,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "generate a bunch of search queries This",
+      "offset": 1788.08,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "is going to be a single function called",
+      "offset": 1790,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "generate search queries I'm very",
+      "offset": 1792.32,
+      "duration": 3.839
+    },
+    {
+      "lang": "en",
+      "text": "creative Uh it's going to take in a",
+      "offset": 1794.48,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "query uh which is of type string and the",
+      "offset": 1796.159,
+      "duration": 3.921
+    },
+    {
+      "lang": "en",
+      "text": "number of search queries that we",
+      "offset": 1798.64,
+      "duration": 2.72
+    },
+    {
+      "lang": "en",
+      "text": "actually want to generate We're going to",
+      "offset": 1800.08,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "set this to be three just as default",
+      "offset": 1801.36,
+      "duration": 3.919
+    },
+    {
+      "lang": "en",
+      "text": "This is for you to play around with",
+      "offset": 1803.76,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "later if you'd like Um then we use the",
+      "offset": 1805.279,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "generate object function We're",
+      "offset": 1808.96,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "specifying a main model so that we can",
+      "offset": 1811.279,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "just uh set it once reference it",
+      "offset": 1813.44,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "everywhere and if we want to update it",
+      "offset": 1816.159,
+      "duration": 3.681
+    },
+    {
+      "lang": "en",
+      "text": "later we can in just one place So that's",
+      "offset": 1817.6,
+      "duration": 4.079
+    },
+    {
+      "lang": "en",
+      "text": "why we're doing that We have a prompt",
+      "offset": 1819.84,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "here uh we we use template strings all",
+      "offset": 1821.679,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "over the place in this and you'll",
+      "offset": 1824.72,
+      "duration": 3.439
+    },
+    {
+      "lang": "en",
+      "text": "probably end up using them a ton Super",
+      "offset": 1826.159,
+      "duration": 5.041
+    },
+    {
+      "lang": "en",
+      "text": "helpful uh for this use case So we say",
+      "offset": 1828.159,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "generate n number of search queries for",
+      "offset": 1831.2,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "the following query passing in the the",
+      "offset": 1833.279,
+      "duration": 5.361
+    },
+    {
+      "lang": "en",
+      "text": "search query and then we ask for a",
+      "offset": 1835.84,
+      "duration": 5.92
+    },
+    {
+      "lang": "en",
+      "text": "structured output which should have a uh",
+      "offset": 1838.64,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "an array of strings minimum of one",
+      "offset": 1841.76,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "maximum of five although we're setting",
+      "offset": 1844.64,
+      "duration": 5.279
+    },
+    {
+      "lang": "en",
+      "text": "it kind of loosely here at uh three and",
+      "offset": 1846.32,
+      "duration": 6.56
+    },
+    {
+      "lang": "en",
+      "text": "then we return those queries So that's",
+      "offset": 1849.919,
+      "duration": 5.281
+    },
+    {
+      "lang": "en",
+      "text": "our generate search queries function If",
+      "offset": 1852.88,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "we go back to our companion site we see",
+      "offset": 1855.2,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "the next thing that we have to do is map",
+      "offset": 1857.76,
+      "duration": 4.399
+    },
+    {
+      "lang": "en",
+      "text": "through each of those queries and search",
+      "offset": 1859.84,
+      "duration": 6.319
+    },
+    {
+      "lang": "en",
+      "text": "the web for relevant results Analyze the",
+      "offset": 1862.159,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "result for learning and follow-up",
+      "offset": 1866.159,
+      "duration": 3.041
+    },
+    {
+      "lang": "en",
+      "text": "questions and then follow up with new",
+      "offset": 1867.679,
+      "duration": 4.321
+    },
+    {
+      "lang": "en",
+      "text": "queries So let's go one at a time The",
+      "offset": 1869.2,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "first thing actually we we'll want to do",
+      "offset": 1872,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "is have a main function so that we can",
+      "offset": 1873.76,
+      "duration": 5.519
+    },
+    {
+      "lang": "en",
+      "text": "actually uh specify a prompt and then",
+      "offset": 1876.24,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "call this generate search queries So our",
+      "offset": 1879.279,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "prompt is going to be if you were at the",
+      "offset": 1881.36,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "AI engineer summit there's an awesome",
+      "offset": 1882.799,
+      "duration": 3.681
+    },
+    {
+      "lang": "en",
+      "text": "talk and actually it's I think it's",
+      "offset": 1884.88,
+      "duration": 3.519
+    },
+    {
+      "lang": "en",
+      "text": "available online from the Gemini team",
+      "offset": 1886.48,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "where they walked through uh how they",
+      "offset": 1888.399,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "went about building deep research It was",
+      "offset": 1890.64,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "a really really good talk and one of my",
+      "offset": 1893.039,
+      "duration": 3.921
+    },
+    {
+      "lang": "en",
+      "text": "favorite things from it was hearing the",
+      "offset": 1894.72,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "the prompt that they used as like the",
+      "offset": 1896.96,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "the kind of the gold standard to",
+      "offset": 1899.84,
+      "duration": 6.4
+    },
+    {
+      "lang": "en",
+      "text": "evaluate the progress of the the product",
+      "offset": 1902,
+      "duration": 7.039
+    },
+    {
+      "lang": "en",
+      "text": "and that was what do you need to be a D1",
+      "offset": 1906.24,
+      "duration": 5.6
+    },
+    {
+      "lang": "en",
+      "text": "shot put athlete So in that similar vein",
+      "offset": 1909.039,
+      "duration": 4.36
+    },
+    {
+      "lang": "en",
+      "text": "we're going to be using that",
+      "offset": 1911.84,
+      "duration": 4.319
+    },
+    {
+      "lang": "en",
+      "text": "today So we take that prompt and then we",
+      "offset": 1913.399,
+      "duration": 4.681
+    },
+    {
+      "lang": "en",
+      "text": "pass it into our generate search queries",
+      "offset": 1916.159,
+      "duration": 4.801
+    },
+    {
+      "lang": "en",
+      "text": "function Uh because we specified a",
+      "offset": 1918.08,
+      "duration": 4.719
+    },
+    {
+      "lang": "en",
+      "text": "default number of search queries as",
+      "offset": 1920.96,
+      "duration": 4.719
+    },
+    {
+      "lang": "en",
+      "text": "three we we don't need to specify one",
+      "offset": 1922.799,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "here Uh and then that's going to return",
+      "offset": 1925.679,
+      "duration": 4.161
+    },
+    {
+      "lang": "en",
+      "text": "our queries So we can do just a little",
+      "offset": 1927.679,
+      "duration": 4.801
+    },
+    {
+      "lang": "en",
+      "text": "checkin to see what's happening here and",
+      "offset": 1929.84,
+      "duration": 5.6
+    },
+    {
+      "lang": "en",
+      "text": "log out our queries",
+      "offset": 1932.48,
+      "duration": 6.16
+    },
+    {
+      "lang": "en",
+      "text": "run the script and we should see fairly",
+      "offset": 1935.44,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "quickly we've got three potential search",
+      "offset": 1938.64,
+      "duration": 5.279
+    },
+    {
+      "lang": "en",
+      "text": "queries for our prompt of what do you",
+      "offset": 1940.96,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "need to be a D1 shotput athlete These",
+      "offset": 1943.919,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "are obviously geared for a search engine",
+      "offset": 1945.76,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "So like requirements to become a D1",
+      "offset": 1947.679,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "shotput athlete training regiment for D1",
+      "offset": 1949.6,
+      "duration": 5.679
+    },
+    {
+      "lang": "en",
+      "text": "shotput athlete qualifications for NCAA",
+      "offset": 1951.919,
+      "duration": 5.441
+    },
+    {
+      "lang": "en",
+      "text": "division one shot put So three pretty",
+      "offset": 1955.279,
+      "duration": 3.441
+    },
+    {
+      "lang": "en",
+      "text": "good queries that I think would make",
+      "offset": 1957.36,
+      "duration": 4.319
+    },
+    {
+      "lang": "en",
+      "text": "sense to to look for if you wanted to",
+      "offset": 1958.72,
+      "duration": 6.64
+    },
+    {
+      "lang": "en",
+      "text": "learn more about this All right back to",
+      "offset": 1961.679,
+      "duration": 5.84
+    },
+    {
+      "lang": "en",
+      "text": "our companion site We'll see the next",
+      "offset": 1965.36,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "thing that we need to do map through",
+      "offset": 1967.519,
+      "duration": 3.201
+    },
+    {
+      "lang": "en",
+      "text": "these queries and search the web for a",
+      "offset": 1969.12,
+      "duration": 3.279
+    },
+    {
+      "lang": "en",
+      "text": "relevant result First thing that we're",
+      "offset": 1970.72,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "going to implement now is a function to",
+      "offset": 1972.399,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "actually search the web for relevant",
+      "offset": 1974.64,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "results And the service we're actually",
+      "offset": 1977.039,
+      "duration": 4.321
+    },
+    {
+      "lang": "en",
+      "text": "going to use today to do this is called",
+      "offset": 1979.36,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "Exa Uh if you haven't used it before",
+      "offset": 1981.36,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "highly rate it Um",
+      "offset": 1983.84,
+      "duration": 6.6
+    },
+    {
+      "lang": "en",
+      "text": "uh really enjoy using it It's fast cheap",
+      "offset": 1986.64,
+      "duration": 6.399
+    },
+    {
+      "lang": "en",
+      "text": "Um but judge for yourself like we'll use",
+      "offset": 1990.44,
+      "duration": 5
+    },
+    {
+      "lang": "en",
+      "text": "it now and uh I think they've got a",
+      "offset": 1993.039,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "great API and so yeah let's build a",
+      "offset": 1995.44,
+      "duration": 6.239
+    },
+    {
+      "lang": "en",
+      "text": "function to search the web with",
+      "offset": 1998.159,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "Excel So I'm going to copy over some",
+      "offset": 2002.44,
+      "duration": 5
+    },
+    {
+      "lang": "en",
+      "text": "code We'll head back to uh our codebase",
+      "offset": 2004.72,
+      "duration": 4.799
+    },
+    {
+      "lang": "en",
+      "text": "and we're going to make a few new lines",
+      "offset": 2007.44,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "here Uh so what we're going to do is",
+      "offset": 2009.519,
+      "duration": 3.841
+    },
+    {
+      "lang": "en",
+      "text": "we're going to import XA from the XAJS",
+      "offset": 2011.12,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "package We're going to instantiate XA",
+      "offset": 2013.36,
+      "duration": 7.679
+    },
+    {
+      "lang": "en",
+      "text": "extra XA passing in our XA API key Uh",
+      "offset": 2016.32,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "we're going to define a type which we're",
+      "offset": 2021.039,
+      "duration": 3.601
+    },
+    {
+      "lang": "en",
+      "text": "going to be using heavily later And then",
+      "offset": 2022.32,
+      "duration": 5.199
+    },
+    {
+      "lang": "en",
+      "text": "finally we are going to actually search",
+      "offset": 2024.64,
+      "duration": 5.279
+    },
+    {
+      "lang": "en",
+      "text": "the web So our search web function takes",
+      "offset": 2027.519,
+      "duration": 4.961
+    },
+    {
+      "lang": "en",
+      "text": "in a query which is a type string and",
+      "offset": 2029.919,
+      "duration": 4.721
+    },
+    {
+      "lang": "en",
+      "text": "then it's going to use the excess search",
+      "offset": 2032.48,
+      "duration": 5.919
+    },
+    {
+      "lang": "en",
+      "text": "and contents function uh passing in our",
+      "offset": 2034.64,
+      "duration": 6.36
+    },
+    {
+      "lang": "en",
+      "text": "query and then specifying some optional",
+      "offset": 2038.399,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "config Two optional config we have here",
+      "offset": 2041,
+      "duration": 4.84
+    },
+    {
+      "lang": "en",
+      "text": "is one the number of results we want",
+      "offset": 2043.519,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "I've left this as one just as this is a",
+      "offset": 2045.84,
+      "duration": 3.999
+    },
+    {
+      "lang": "en",
+      "text": "simple demo but you'd probably want to",
+      "offset": 2048.159,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "set this as configurable and allow the",
+      "offset": 2049.839,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "language model to infer what is",
+      "offset": 2051.679,
+      "duration": 5.121
+    },
+    {
+      "lang": "en",
+      "text": "necessary based on maybe like how",
+      "offset": 2053.839,
+      "duration": 5.121
+    },
+    {
+      "lang": "en",
+      "text": "complicated something might be I don't",
+      "offset": 2056.8,
+      "duration": 3.359
+    },
+    {
+      "lang": "en",
+      "text": "know that's something for you to",
+      "offset": 2058.96,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "experiment with Um and then the second",
+      "offset": 2060.159,
+      "duration": 5.601
+    },
+    {
+      "lang": "en",
+      "text": "option is live crawl Um and live crawl",
+      "offset": 2062.32,
+      "duration": 6.16
+    },
+    {
+      "lang": "en",
+      "text": "is kind of as it sound allows you to or",
+      "offset": 2065.76,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "ensures that the results that you're",
+      "offset": 2068.48,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "getting are live uh rather than",
+      "offset": 2070,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "something that's in their cache So you",
+      "offset": 2072.24,
+      "duration": 4.399
+    },
+    {
+      "lang": "en",
+      "text": "obviously take a little bit of a hit on",
+      "offset": 2074.56,
+      "duration": 5.92
+    },
+    {
+      "lang": "en",
+      "text": "performance or time for this uh result",
+      "offset": 2076.639,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "to be executed but you're sure that",
+      "offset": 2080.48,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "everything that is executed is is is",
+      "offset": 2082.639,
+      "duration": 4.121
+    },
+    {
+      "lang": "en",
+      "text": "live is up to",
+      "offset": 2085.2,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "date Now the other thing that I'm doing",
+      "offset": 2086.76,
+      "duration": 4.2
+    },
+    {
+      "lang": "en",
+      "text": "here is that I'm actually mapping",
+      "offset": 2089.04,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "through the results and only returning",
+      "offset": 2090.96,
+      "duration": 6.879
+    },
+    {
+      "lang": "en",
+      "text": "the information that I feel is relevant",
+      "offset": 2094.32,
+      "duration": 6.56
+    },
+    {
+      "lang": "en",
+      "text": "or necessary for completing this process",
+      "offset": 2097.839,
+      "duration": 4.721
+    },
+    {
+      "lang": "en",
+      "text": "And there are a few reasons for doing",
+      "offset": 2100.88,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "this but the main reason is to reduce",
+      "offset": 2102.56,
+      "duration": 4.2
+    },
+    {
+      "lang": "en",
+      "text": "the number of tokens that I'm sending to",
+      "offset": 2105.04,
+      "duration": 6.24
+    },
+    {
+      "lang": "en",
+      "text": "OpenAI Um two reasons for that One is",
+      "offset": 2106.76,
+      "duration": 7.88
+    },
+    {
+      "lang": "en",
+      "text": "that it's cheaper Fewer tokens just",
+      "offset": 2111.28,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "going to be cheaper Um but second and",
+      "offset": 2114.64,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "more important I found that the language",
+      "offset": 2117.04,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "model is so much more effective when you",
+      "offset": 2119.04,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "trim away all of the irrelevant",
+      "offset": 2121.28,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "information So um things like a favicon",
+      "offset": 2123.2,
+      "duration": 6.159
+    },
+    {
+      "lang": "en",
+      "text": "favicon link is going to take up a",
+      "offset": 2126.56,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "decent amount of space not necessary at",
+      "offset": 2129.359,
+      "duration": 4.081
+    },
+    {
+      "lang": "en",
+      "text": "all for the language model to actually",
+      "offset": 2131.68,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "use these resources So I tend to do this",
+      "offset": 2133.44,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "a lot whenever I have tool calls or or",
+      "offset": 2135.92,
+      "duration": 3.919
+    },
+    {
+      "lang": "en",
+      "text": "building out tools for working with",
+      "offset": 2138.4,
+      "duration": 3.439
+    },
+    {
+      "lang": "en",
+      "text": "language models ensuring that the",
+      "offset": 2139.839,
+      "duration": 3.601
+    },
+    {
+      "lang": "en",
+      "text": "information that I'm returning or",
+      "offset": 2141.839,
+      "duration": 4.561
+    },
+    {
+      "lang": "en",
+      "text": "providing as part of the context is",
+      "offset": 2143.44,
+      "duration": 6.8
+    },
+    {
+      "lang": "en",
+      "text": "entirely relevant to the generation or",
+      "offset": 2146.4,
+      "duration": 6.92
+    },
+    {
+      "lang": "en",
+      "text": "to to the task at hand we should",
+      "offset": 2150.24,
+      "duration": 6.04
+    },
+    {
+      "lang": "en",
+      "text": "say Cool So that's our search web",
+      "offset": 2153.32,
+      "duration": 7
+    },
+    {
+      "lang": "en",
+      "text": "function And now if we go back to again",
+      "offset": 2156.28,
+      "duration": 6.04
+    },
+    {
+      "lang": "en",
+      "text": "our we can think of this a bit like a",
+      "offset": 2160.32,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "checklist The next thing that we're",
+      "offset": 2162.32,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "going to have to do is analyze the",
+      "offset": 2163.76,
+      "duration": 4.319
+    },
+    {
+      "lang": "en",
+      "text": "results um the search results for",
+      "offset": 2165.68,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "learnings and follow-up questions Now",
+      "offset": 2168.079,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "this is going to be the most complicated",
+      "offset": 2170.56,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "part of the entire workflow And this is",
+      "offset": 2172.079,
+      "duration": 4.641
+    },
+    {
+      "lang": "en",
+      "text": "also going to be the agentic part of the",
+      "offset": 2174.16,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "workflow And so what we're going to do",
+      "offset": 2176.72,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "is we're going to use generate text as",
+      "offset": 2178.16,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "we did before giving it two tools We're",
+      "offset": 2180.56,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "going to have a tool for searching the",
+      "offset": 2182.64,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "web and then we're going to have a tool",
+      "offset": 2184.16,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "for evaluating the relevance of that",
+      "offset": 2186,
+      "duration": 6.4
+    },
+    {
+      "lang": "en",
+      "text": "tool call And this is kind of I I say",
+      "offset": 2188.72,
+      "duration": 6.72
+    },
+    {
+      "lang": "en",
+      "text": "this is the most interesting and equally",
+      "offset": 2192.4,
+      "duration": 6.48
+    },
+    {
+      "lang": "en",
+      "text": "also the the agentic part um because",
+      "offset": 2195.44,
+      "duration": 5.6
+    },
+    {
+      "lang": "en",
+      "text": "it's going to continue doing that flow",
+      "offset": 2198.88,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "for as long as it takes to get a a",
+      "offset": 2201.04,
+      "duration": 5.92
+    },
+    {
+      "lang": "en",
+      "text": "relevant search result So let's see how",
+      "offset": 2203.52,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "we can implement this I'm going to copy",
+      "offset": 2206.96,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "over this code and bear with me because",
+      "offset": 2209.04,
+      "duration": 5.039
+    },
+    {
+      "lang": "en",
+      "text": "there's a lot there's a a decent amount",
+      "offset": 2211.28,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "of code here Uh but we'll walk through",
+      "offset": 2214.079,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "all of it and see how it works So I'm",
+      "offset": 2216.32,
+      "duration": 5.6
+    },
+    {
+      "lang": "en",
+      "text": "going to also uh make sure that we've",
+      "offset": 2219.599,
+      "duration": 5.161
+    },
+    {
+      "lang": "en",
+      "text": "got our imports all good I'm going to",
+      "offset": 2221.92,
+      "duration": 6.88
+    },
+    {
+      "lang": "en",
+      "text": "close off uh some of our tools and now",
+      "offset": 2224.76,
+      "duration": 5.8
+    },
+    {
+      "lang": "en",
+      "text": "we're ready to go So this function is",
+      "offset": 2228.8,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "called search and process It is going to",
+      "offset": 2230.56,
+      "duration": 4.799
+    },
+    {
+      "lang": "en",
+      "text": "search and process It's going to take in",
+      "offset": 2232.8,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "our query Again remember search the web",
+      "offset": 2235.359,
+      "duration": 4.801
+    },
+    {
+      "lang": "en",
+      "text": "for a relevant result and analyze uh",
+      "offset": 2237.92,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "search the web for map through each",
+      "offset": 2240.16,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "query and search the web for a relevant",
+      "offset": 2242.72,
+      "duration": 4.879
+    },
+    {
+      "lang": "en",
+      "text": "result So we're taking in that query Uh",
+      "offset": 2244.64,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "we're going to take we're going to",
+      "offset": 2247.599,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "create two local variables for this for",
+      "offset": 2248.88,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "this function uh pending search results",
+      "offset": 2251.119,
+      "duration": 4.641
+    },
+    {
+      "lang": "en",
+      "text": "And if you can think about it like this",
+      "offset": 2253.76,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "process of searching the web and trying",
+      "offset": 2255.76,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "to figure out if it's relevant when you",
+      "offset": 2258.24,
+      "duration": 3.04
+    },
+    {
+      "lang": "en",
+      "text": "search the web you're going to add that",
+      "offset": 2259.92,
+      "duration": 3.679
+    },
+    {
+      "lang": "en",
+      "text": "result to the pending search results",
+      "offset": 2261.28,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "array And then for evaluate you're going",
+      "offset": 2263.599,
+      "duration": 5.201
+    },
+    {
+      "lang": "en",
+      "text": "to pull out whatever the most recent uh",
+      "offset": 2265.76,
+      "duration": 5.68
+    },
+    {
+      "lang": "en",
+      "text": "pending result is Check if it's relevant",
+      "offset": 2268.8,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "If it is pop it into the final search",
+      "offset": 2271.44,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "results array If it's not just discard",
+      "offset": 2274,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "it Um so that's the rough flow that",
+      "offset": 2276.48,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "we're going to be building here We use",
+      "offset": 2278.56,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "our main model as the model here Our",
+      "offset": 2280.4,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "prompt is very complicated Search the",
+      "offset": 2282.88,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "web for information about our query Uh",
+      "offset": 2285.68,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "we give it a system prompt You are a",
+      "offset": 2288.24,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "researcher For each query search the web",
+      "offset": 2290.32,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "and then evaluate if the results are",
+      "offset": 2292.88,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "relevant and will help answer the",
+      "offset": 2295.2,
+      "duration": 7.24
+    },
+    {
+      "lang": "en",
+      "text": "following query We then pass in the",
+      "offset": 2297.92,
+      "duration": 7.52
+    },
+    {
+      "lang": "en",
+      "text": "query which is right here I was looking",
+      "offset": 2302.44,
+      "duration": 5.399
+    },
+    {
+      "lang": "en",
+      "text": "for it below It's right above Um we set",
+      "offset": 2305.44,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "our max steps So we want this agentic",
+      "offset": 2307.839,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "loop to run up to five times You could",
+      "offset": 2310.4,
+      "duration": 5.199
+    },
+    {
+      "lang": "en",
+      "text": "set this higher and we can set this",
+      "offset": 2313.359,
+      "duration": 4.321
+    },
+    {
+      "lang": "en",
+      "text": "higher for now Um and that will just",
+      "offset": 2315.599,
+      "duration": 4.561
+    },
+    {
+      "lang": "en",
+      "text": "allow that process of finding a relevant",
+      "offset": 2317.68,
+      "duration": 5.6
+    },
+    {
+      "lang": "en",
+      "text": "link to continue onwards and onwards I",
+      "offset": 2320.16,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "like to keep these relatively low just",
+      "offset": 2323.28,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "to ensure that it doesn't go off the",
+      "offset": 2325.28,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "deep end but experiment experiment",
+      "offset": 2327.2,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "experiment is my like main advice for",
+      "offset": 2329.76,
+      "duration": 6.079
+    },
+    {
+      "lang": "en",
+      "text": "building with with these tools Our first",
+      "offset": 2332.4,
+      "duration": 5.679
+    },
+    {
+      "lang": "en",
+      "text": "tool that we have here I'm saying tool a",
+      "offset": 2335.839,
+      "duration": 4.561
+    },
+    {
+      "lang": "en",
+      "text": "lot uh is the search web This searches",
+      "offset": 2338.079,
+      "duration": 3.841
+    },
+    {
+      "lang": "en",
+      "text": "the web for information about a given",
+      "offset": 2340.4,
+      "duration": 3.679
+    },
+    {
+      "lang": "en",
+      "text": "query We take in a query which is a",
+      "offset": 2341.92,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "string uh our string uh we then pass",
+      "offset": 2344.079,
+      "duration": 4.801
+    },
+    {
+      "lang": "en",
+      "text": "into the search web function that we",
+      "offset": 2347.28,
+      "duration": 4.319
+    },
+    {
+      "lang": "en",
+      "text": "just created earlier Uh we get back some",
+      "offset": 2348.88,
+      "duration": 4.959
+    },
+    {
+      "lang": "en",
+      "text": "search results that type we declared uh",
+      "offset": 2351.599,
+      "duration": 4.881
+    },
+    {
+      "lang": "en",
+      "text": "at the beginning which I can show you",
+      "offset": 2353.839,
+      "duration": 7.441
+    },
+    {
+      "lang": "en",
+      "text": "here this type right there Um and then",
+      "offset": 2356.48,
+      "duration": 7.84
+    },
+    {
+      "lang": "en",
+      "text": "finally as I was saying we we take this",
+      "offset": 2361.28,
+      "duration": 4.799
+    },
+    {
+      "lang": "en",
+      "text": "local variable this pending search",
+      "offset": 2364.32,
+      "duration": 5.6
+    },
+    {
+      "lang": "en",
+      "text": "results and we push whatever these new",
+      "offset": 2366.079,
+      "duration": 6.401
+    },
+    {
+      "lang": "en",
+      "text": "uh searched web results that we get and",
+      "offset": 2369.92,
+      "duration": 5.679
+    },
+    {
+      "lang": "en",
+      "text": "we also add those to the uh conversation",
+      "offset": 2372.48,
+      "duration": 6.08
+    },
+    {
+      "lang": "en",
+      "text": "context by returning them from the tool",
+      "offset": 2375.599,
+      "duration": 5.441
+    },
+    {
+      "lang": "en",
+      "text": "And then we have the evaluate tool And",
+      "offset": 2378.56,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "this is to evaluate the search results",
+      "offset": 2381.04,
+      "duration": 5.039
+    },
+    {
+      "lang": "en",
+      "text": "It doesn't take in any parameters Um and",
+      "offset": 2382.96,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "in the execute function we are going to",
+      "offset": 2386.079,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "pull out the latest pending result Uh",
+      "offset": 2388.32,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "then run it through generate object",
+      "offset": 2391.119,
+      "duration": 3.601
+    },
+    {
+      "lang": "en",
+      "text": "asking it to evaluate whether the search",
+      "offset": 2392.88,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "results are relevant and will help",
+      "offset": 2394.72,
+      "duration": 4.399
+    },
+    {
+      "lang": "en",
+      "text": "answer the following query Uh and then",
+      "offset": 2396.56,
+      "duration": 5.559
+    },
+    {
+      "lang": "en",
+      "text": "we pass in with this XML syntax our",
+      "offset": 2399.119,
+      "duration": 5.72
+    },
+    {
+      "lang": "en",
+      "text": "stringified pending",
+      "offset": 2402.119,
+      "duration": 6.041
+    },
+    {
+      "lang": "en",
+      "text": "result Now uh the final thing here with",
+      "offset": 2404.839,
+      "duration": 4.76
+    },
+    {
+      "lang": "en",
+      "text": "this generate object rather than",
+      "offset": 2408.16,
+      "duration": 3.919
+    },
+    {
+      "lang": "en",
+      "text": "specifying the schema with zod because",
+      "offset": 2409.599,
+      "duration": 3.681
+    },
+    {
+      "lang": "en",
+      "text": "we just want to know whether it's",
+      "offset": 2412.079,
+      "duration": 2.961
+    },
+    {
+      "lang": "en",
+      "text": "relevant or irrelevant we can actually",
+      "offset": 2413.28,
+      "duration": 4.799
+    },
+    {
+      "lang": "en",
+      "text": "use generate objects enum mode to",
+      "offset": 2415.04,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "specify just the two values that we need",
+      "offset": 2418.079,
+      "duration": 3.841
+    },
+    {
+      "lang": "en",
+      "text": "Something's either going to be relevant",
+      "offset": 2420.48,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "or irrelevant Uh this is super ergonomic",
+      "offset": 2421.92,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "You could use zod here I just find this",
+      "offset": 2425.92,
+      "duration": 3.439
+    },
+    {
+      "lang": "en",
+      "text": "very easy particularly if you have just",
+      "offset": 2427.68,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "two values Um and it's also easier for",
+      "offset": 2429.359,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "the language model when it's literally",
+      "offset": 2431.92,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "restricted to two model to two values",
+      "offset": 2433.839,
+      "duration": 5.401
+    },
+    {
+      "lang": "en",
+      "text": "rather than generating a full structured",
+      "offset": 2436.16,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "object Uh then if the evaluation is",
+      "offset": 2439.24,
+      "duration": 6.359
+    },
+    {
+      "lang": "en",
+      "text": "relevant uh we will push the pending",
+      "offset": 2442.16,
+      "duration": 6.24
+    },
+    {
+      "lang": "en",
+      "text": "result to the final result because we",
+      "offset": 2445.599,
+      "duration": 4.401
+    },
+    {
+      "lang": "en",
+      "text": "know that it's now relevant So that's",
+      "offset": 2448.4,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "going to be a good sorts that we want to",
+      "offset": 2450,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "keep Uh we have some logs here And then",
+      "offset": 2451.76,
+      "duration": 5.599
+    },
+    {
+      "lang": "en",
+      "text": "this is interesting here We say if the",
+      "offset": 2454.48,
+      "duration": 5.599
+    },
+    {
+      "lang": "en",
+      "text": "evaluation is irrelevant we return the",
+      "offset": 2457.359,
+      "duration": 4.641
+    },
+    {
+      "lang": "en",
+      "text": "following string from this tool call",
+      "offset": 2460.079,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "Search results are irrelevant please",
+      "offset": 2462,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "search again with a more specific query",
+      "offset": 2464.079,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "So when max steps triggers the next",
+      "offset": 2466.24,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "generation the language model is going",
+      "offset": 2469.359,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "to see the most recent step that took",
+      "offset": 2471.28,
+      "duration": 4.319
+    },
+    {
+      "lang": "en",
+      "text": "and the last part of that most recent",
+      "offset": 2473.839,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "step i.e the tool result was please",
+      "offset": 2475.599,
+      "duration": 5.041
+    },
+    {
+      "lang": "en",
+      "text": "search again with a more specific query",
+      "offset": 2478.079,
+      "duration": 5.841
+    },
+    {
+      "lang": "en",
+      "text": "So we have this system that is repeating",
+      "offset": 2480.64,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "um but with feedback based on what's",
+      "offset": 2483.92,
+      "duration": 5.199
+    },
+    {
+      "lang": "en",
+      "text": "going on The last thing to mention here",
+      "offset": 2486.4,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "is the fact that I did not use the",
+      "offset": 2489.119,
+      "duration": 5.041
+    },
+    {
+      "lang": "en",
+      "text": "parameters here to parse out the search",
+      "offset": 2491.04,
+      "duration": 6.4
+    },
+    {
+      "lang": "en",
+      "text": "result And uh there's a very uh specific",
+      "offset": 2494.16,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "reason for doing that Search result can",
+      "offset": 2497.44,
+      "duration": 4.639
+    },
+    {
+      "lang": "en",
+      "text": "be super long right this could be a",
+      "offset": 2499.92,
+      "duration": 4.159
+    },
+    {
+      "lang": "en",
+      "text": "whole entire crawled web page that could",
+      "offset": 2502.079,
+      "duration": 4.481
+    },
+    {
+      "lang": "en",
+      "text": "be I don't know 10,000 tokens And we",
+      "offset": 2504.079,
+      "duration": 4.721
+    },
+    {
+      "lang": "en",
+      "text": "don't want the model to have to actually",
+      "offset": 2506.56,
+      "duration": 5.279
+    },
+    {
+      "lang": "en",
+      "text": "parse that out It's literally generating",
+      "offset": 2508.8,
+      "duration": 6.08
+    },
+    {
+      "lang": "en",
+      "text": "the text that already exists in the",
+      "offset": 2511.839,
+      "duration": 7.121
+    },
+    {
+      "lang": "en",
+      "text": "context above One costs money Two it",
+      "offset": 2514.88,
+      "duration": 6.08
+    },
+    {
+      "lang": "en",
+      "text": "takes a long time Three it's probably",
+      "offset": 2518.96,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "errorprone because it's literally just",
+      "offset": 2520.96,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "writing out stuff that's above It's not",
+      "offset": 2522.96,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "referencing it And that's why I like to",
+      "offset": 2525.04,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "do this um these local variables within",
+      "offset": 2527.04,
+      "duration": 6.72
+    },
+    {
+      "lang": "en",
+      "text": "this function faster cheaper more",
+      "offset": 2531.04,
+      "duration": 5.92
+    },
+    {
+      "lang": "en",
+      "text": "accurate and so on So this is the search",
+      "offset": 2533.76,
+      "duration": 6.079
+    },
+    {
+      "lang": "en",
+      "text": "and process function and we can add it",
+      "offset": 2536.96,
+      "duration": 7.639
+    },
+    {
+      "lang": "en",
+      "text": "to our main function and see how it",
+      "offset": 2539.839,
+      "duration": 7.161
+    },
+    {
+      "lang": "en",
+      "text": "works So we're going to",
+      "offset": 2544.599,
+      "duration": 6.121
+    },
+    {
+      "lang": "en",
+      "text": "console.log our search results and see",
+      "offset": 2547,
+      "duration": 7.079
+    },
+    {
+      "lang": "en",
+      "text": "see what we got So we'll clear this out",
+      "offset": 2550.72,
+      "duration": 4.76
+    },
+    {
+      "lang": "en",
+      "text": "run the function",
+      "offset": 2554.079,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "again Searching the web for requirements",
+      "offset": 2555.48,
+      "duration": 6.44
+    },
+    {
+      "lang": "en",
+      "text": "to become a D1 shotput athlete",
+      "offset": 2557.839,
+      "duration": 6.801
+    },
+    {
+      "lang": "en",
+      "text": "Found throws university benchmark lifts",
+      "offset": 2561.92,
+      "duration": 6.8
+    },
+    {
+      "lang": "en",
+      "text": "to throw 50 ft from school shotput",
+      "offset": 2564.64,
+      "duration": 7.439
+    },
+    {
+      "lang": "en",
+      "text": "Evaluation completed It's",
+      "offset": 2568.72,
+      "duration": 3.359
+    },
+    {
+      "lang": "en",
+      "text": "irrelevant So it found a new",
+      "offset": 2572.839,
+      "duration": 7.041
+    },
+    {
+      "lang": "en",
+      "text": "one Considered it irrelevant",
+      "offset": 2575.319,
+      "duration": 4.561
+    },
+    {
+      "lang": "en",
+      "text": "found another one men's track recruiting",
+      "offset": 2586.64,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "standards and considered that irrelevant",
+      "offset": 2588.72,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "or considered that relevant sorry and",
+      "offset": 2590.48,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "then it returned a bunch of oh boy we",
+      "offset": 2592.72,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "returned the whole result So this is",
+      "offset": 2596,
+      "duration": 4.079
+    },
+    {
+      "lang": "en",
+      "text": "like the whole scraped uh web page in",
+      "offset": 2597.44,
+      "duration": 6.36
+    },
+    {
+      "lang": "en",
+      "text": "here So we can see very cool it is",
+      "offset": 2600.079,
+      "duration": 7.04
+    },
+    {
+      "lang": "en",
+      "text": "working great So let's move on to the",
+      "offset": 2603.8,
+      "duration": 5.88
+    },
+    {
+      "lang": "en",
+      "text": "next step And what is the next step uh",
+      "offset": 2607.119,
+      "duration": 5.121
+    },
+    {
+      "lang": "en",
+      "text": "the next step is to analyze the results",
+      "offset": 2609.68,
+      "duration": 6.8
+    },
+    {
+      "lang": "en",
+      "text": "for learnings and follow-up questions",
+      "offset": 2612.24,
+      "duration": 6.879
+    },
+    {
+      "lang": "en",
+      "text": "So to do this we're going to again",
+      "offset": 2616.48,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "create a new function This new function",
+      "offset": 2619.119,
+      "duration": 4.401
+    },
+    {
+      "lang": "en",
+      "text": "is going to be called generate learnings",
+      "offset": 2621.68,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "It's going to take in a query which is a",
+      "offset": 2623.52,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "string and then uh the search result",
+      "offset": 2626,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "itself So this is like the the web page",
+      "offset": 2628.4,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "in the scripted content We're then going",
+      "offset": 2630.8,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "to use uh surprise surprise my favorite",
+      "offset": 2632.96,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "function generate object using our main",
+      "offset": 2635.52,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "model again and providing a prompt here",
+      "offset": 2638.48,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "This time the user is researching query",
+      "offset": 2640.8,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "the following search results were deemed",
+      "offset": 2642.96,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "relevant Generate a learning and a",
+      "offset": 2644.88,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "follow-up question from the following",
+      "offset": 2646.96,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "search result We use those XML tags",
+      "offset": 2648.88,
+      "duration": 5.439
+    },
+    {
+      "lang": "en",
+      "text": "again to nest in our search result that",
+      "offset": 2651.2,
+      "duration": 5.119
+    },
+    {
+      "lang": "en",
+      "text": "is stringified And then finally we",
+      "offset": 2654.319,
+      "duration": 5.201
+    },
+    {
+      "lang": "en",
+      "text": "specify as our schema we want uh a a",
+      "offset": 2656.319,
+      "duration": 5.201
+    },
+    {
+      "lang": "en",
+      "text": "string which is the learning itself the",
+      "offset": 2659.52,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "insight we could probably call it and",
+      "offset": 2661.52,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "then uh any follow-up questions which",
+      "offset": 2663.76,
+      "duration": 5.359
+    },
+    {
+      "lang": "en",
+      "text": "are an array of strings and we return",
+      "offset": 2666,
+      "duration": 6.079
+    },
+    {
+      "lang": "en",
+      "text": "that object which is this type safe uh",
+      "offset": 2669.119,
+      "duration": 4.681
+    },
+    {
+      "lang": "en",
+      "text": "structured",
+      "offset": 2672.079,
+      "duration": 4.881
+    },
+    {
+      "lang": "en",
+      "text": "output Cool So we can incorporate that",
+      "offset": 2673.8,
+      "duration": 6.12
+    },
+    {
+      "lang": "en",
+      "text": "into our main function again Let's",
+      "offset": 2676.96,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "replace all of that And we can see now",
+      "offset": 2679.92,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "that we are we have our prompt we have",
+      "offset": 2682.16,
+      "duration": 6.48
+    },
+    {
+      "lang": "en",
+      "text": "our queries We we for each query we're",
+      "offset": 2684.56,
+      "duration": 5.92
+    },
+    {
+      "lang": "en",
+      "text": "going to search the web search and",
+      "offset": 2688.64,
+      "duration": 3.439
+    },
+    {
+      "lang": "en",
+      "text": "process So we're searching and making",
+      "offset": 2690.48,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "sure that the the result is relevant And",
+      "offset": 2692.079,
+      "duration": 4.161
+    },
+    {
+      "lang": "en",
+      "text": "then for each of the results that are",
+      "offset": 2694.56,
+      "duration": 3.519
+    },
+    {
+      "lang": "en",
+      "text": "returned we're then going to pass it to",
+      "offset": 2696.24,
+      "duration": 3.599
+    },
+    {
+      "lang": "en",
+      "text": "our generate learnings function passing",
+      "offset": 2698.079,
+      "duration": 5.441
+    },
+    {
+      "lang": "en",
+      "text": "in that original query and then the um",
+      "offset": 2699.839,
+      "duration": 7.28
+    },
+    {
+      "lang": "en",
+      "text": "the search result So we could again test",
+      "offset": 2703.52,
+      "duration": 6.599
+    },
+    {
+      "lang": "en",
+      "text": "to see how things are",
+      "offset": 2707.119,
+      "duration": 5.48
+    },
+    {
+      "lang": "en",
+      "text": "looking Run the",
+      "offset": 2710.119,
+      "duration": 4.441
+    },
+    {
+      "lang": "en",
+      "text": "script Searching the web for",
+      "offset": 2712.599,
+      "duration": 4.121
+    },
+    {
+      "lang": "en",
+      "text": "requirements to become a D1 shop athlete",
+      "offset": 2714.56,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "Let's see how many times uh I have said",
+      "offset": 2716.72,
+      "duration": 6.8
+    },
+    {
+      "lang": "en",
+      "text": "that in um in this",
+      "offset": 2719.2,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "video So it's deemed that this is",
+      "offset": 2724.28,
+      "duration": 4.28
+    },
+    {
+      "lang": "en",
+      "text": "irrelevant but the next link that it",
+      "offset": 2726.56,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "finds is relevant So it's now processing",
+      "offset": 2728.56,
+      "duration": 5.519
+    },
+    {
+      "lang": "en",
+      "text": "this search result and then we're going",
+      "offset": 2731.76,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "to get a learning So what do we have",
+      "offset": 2734.079,
+      "duration": 3.601
+    },
+    {
+      "lang": "en",
+      "text": "here to become a D1 shop at athlete high",
+      "offset": 2735.28,
+      "duration": 4.079
+    },
+    {
+      "lang": "en",
+      "text": "school athletes typically need to have",
+      "offset": 2737.68,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "four years of varsity experience achieve",
+      "offset": 2739.359,
+      "duration": 4.161
+    },
+    {
+      "lang": "en",
+      "text": "highstate finishes or be state champions",
+      "offset": 2741.2,
+      "duration": 4.68
+    },
+    {
+      "lang": "en",
+      "text": "and participate in national events like",
+      "offset": 2743.52,
+      "duration": 6.079
+    },
+    {
+      "lang": "en",
+      "text": "USATF National Junior Olympic Outdoor",
+      "offset": 2745.88,
+      "duration": 5.32
+    },
+    {
+      "lang": "en",
+      "text": "Track and Field Championships They",
+      "offset": 2749.599,
+      "duration": 4.161
+    },
+    {
+      "lang": "en",
+      "text": "should also aim for shot put distance of",
+      "offset": 2751.2,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "around I think that's 60 feet um for",
+      "offset": 2753.76,
+      "duration": 5.359
+    },
+    {
+      "lang": "en",
+      "text": "tier one recruits Um and then we've got",
+      "offset": 2756.96,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "some follow-up questions What are the",
+      "offset": 2759.119,
+      "duration": 3.601
+    },
+    {
+      "lang": "en",
+      "text": "specific training regimens for shot put",
+      "offset": 2760.72,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "athletes how do division one recruiting",
+      "offset": 2762.72,
+      "duration": 4.399
+    },
+    {
+      "lang": "en",
+      "text": "standards differ from division two and",
+      "offset": 2765.44,
+      "duration": 3.919
+    },
+    {
+      "lang": "en",
+      "text": "three some like really interesting",
+      "offset": 2767.119,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "threads to to go down So what we're",
+      "offset": 2769.359,
+      "duration": 5.441
+    },
+    {
+      "lang": "en",
+      "text": "going to have to do naturally now is",
+      "offset": 2773.119,
+      "duration": 3.681
+    },
+    {
+      "lang": "en",
+      "text": "introduce recursion to this whole",
+      "offset": 2774.8,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "process Meaning now that we have our",
+      "offset": 2776.8,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "learnings we effectively want to take",
+      "offset": 2778.8,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "the follow-up questions create a new",
+      "offset": 2780.88,
+      "duration": 5.84
+    },
+    {
+      "lang": "en",
+      "text": "query and call the entire process again",
+      "offset": 2782.96,
+      "duration": 7.84
+    },
+    {
+      "lang": "en",
+      "text": "until uh effectively we we are happy",
+      "offset": 2786.72,
+      "duration": 7.04
+    },
+    {
+      "lang": "en",
+      "text": "with the the depth of information that",
+      "offset": 2790.8,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "we've gathered So there are going to be",
+      "offset": 2793.76,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "a few things that we need to do One we",
+      "offset": 2795.2,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "need to probably create a new function",
+      "offset": 2797.2,
+      "duration": 4.159
+    },
+    {
+      "lang": "en",
+      "text": "that can handle this recursion rather",
+      "offset": 2799.04,
+      "duration": 5.279
+    },
+    {
+      "lang": "en",
+      "text": "than doing it all in the main function",
+      "offset": 2801.359,
+      "duration": 6.161
+    },
+    {
+      "lang": "en",
+      "text": "two we're going to have to we're not",
+      "offset": 2804.319,
+      "duration": 5.921
+    },
+    {
+      "lang": "en",
+      "text": "going to be able to track all of our uh",
+      "offset": 2807.52,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "accumulated research in in the local",
+      "offset": 2810.24,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "function anymore We're going to have to",
+      "offset": 2813.28,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "create some state or a variable outside",
+      "offset": 2814.56,
+      "duration": 5.039
+    },
+    {
+      "lang": "en",
+      "text": "in in the global state to be able to",
+      "offset": 2817.44,
+      "duration": 4.159
+    },
+    {
+      "lang": "en",
+      "text": "track this as we go through And then",
+      "offset": 2819.599,
+      "duration": 3.281
+    },
+    {
+      "lang": "en",
+      "text": "we're probably going to need some types",
+      "offset": 2821.599,
+      "duration": 3.441
+    },
+    {
+      "lang": "en",
+      "text": "as well just to help make this all a bit",
+      "offset": 2822.88,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "easier So let's add those Now first",
+      "offset": 2825.04,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "things first we're going to create a new",
+      "offset": 2827.92,
+      "duration": 7.36
+    },
+    {
+      "lang": "en",
+      "text": "function uh called uh deep research to",
+      "offset": 2830.56,
+      "duration": 7.039
+    },
+    {
+      "lang": "en",
+      "text": "um to actually that will be able to",
+      "offset": 2835.28,
+      "duration": 3.839
+    },
+    {
+      "lang": "en",
+      "text": "handle our recursion So all we've done",
+      "offset": 2837.599,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "here is taken our previous logic that",
+      "offset": 2839.119,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "was within the main function and put it",
+      "offset": 2841.359,
+      "duration": 4.561
+    },
+    {
+      "lang": "en",
+      "text": "into a new function called deep research",
+      "offset": 2843.599,
+      "duration": 4.881
+    },
+    {
+      "lang": "en",
+      "text": "Um so as you can see we we're generating",
+      "offset": 2845.92,
+      "duration": 5.919
+    },
+    {
+      "lang": "en",
+      "text": "search queries we are then searching and",
+      "offset": 2848.48,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "process then we're generating learning",
+      "offset": 2851.839,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "So same as before And then in our main",
+      "offset": 2854,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "function this time we define our prompt",
+      "offset": 2856.079,
+      "duration": 5.801
+    },
+    {
+      "lang": "en",
+      "text": "and then we um call that deep research",
+      "offset": 2857.92,
+      "duration": 5.84
+    },
+    {
+      "lang": "en",
+      "text": "function So what we're going to have to",
+      "offset": 2861.88,
+      "duration": 4.6
+    },
+    {
+      "lang": "en",
+      "text": "do now is actually call this function",
+      "offset": 2863.76,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "recursively But first things first we're",
+      "offset": 2866.48,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "going to need to create",
+      "offset": 2868.64,
+      "duration": 6.08
+    },
+    {
+      "lang": "en",
+      "text": "uh a place to store our accumulated",
+      "offset": 2872,
+      "duration": 5.4
+    },
+    {
+      "lang": "en",
+      "text": "research",
+      "offset": 2874.72,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "state So I'm going to copy in some code",
+      "offset": 2877.4,
+      "duration": 5.32
+    },
+    {
+      "lang": "en",
+      "text": "here Uh we're defining two types Uh a",
+      "offset": 2879.92,
+      "duration": 4.399
+    },
+    {
+      "lang": "en",
+      "text": "learning type which we've seen before",
+      "offset": 2882.72,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "This was the the the learning the",
+      "offset": 2884.319,
+      "duration": 4.241
+    },
+    {
+      "lang": "en",
+      "text": "insight from the research and then",
+      "offset": 2886.56,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "follow-up questions Um and then research",
+      "offset": 2888.56,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "This is the core accumulated research",
+      "offset": 2890.88,
+      "duration": 6.32
+    },
+    {
+      "lang": "en",
+      "text": "object um or store um and we store in",
+      "offset": 2893.92,
+      "duration": 5.919
+    },
+    {
+      "lang": "en",
+      "text": "like our original query the queries that",
+      "offset": 2897.2,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "have been performed um or the queries",
+      "offset": 2899.839,
+      "duration": 5.361
+    },
+    {
+      "lang": "en",
+      "text": "the active queries right now the search",
+      "offset": 2902.64,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "results and accumulation of all of them",
+      "offset": 2905.2,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "uh learnings all the insights and then",
+      "offset": 2907.68,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "completed queries And at the very end as",
+      "offset": 2909.76,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "this develops we're going to pass all of",
+      "offset": 2912.24,
+      "duration": 6.079
+    },
+    {
+      "lang": "en",
+      "text": "that state that store of information to",
+      "offset": 2914.72,
+      "duration": 5.68
+    },
+    {
+      "lang": "en",
+      "text": "one large model that can synthesize all",
+      "offset": 2918.319,
+      "duration": 4.641
+    },
+    {
+      "lang": "en",
+      "text": "of that and generate our report But",
+      "offset": 2920.4,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "first we need to update our deep",
+      "offset": 2922.96,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "research function to actually update the",
+      "offset": 2924.64,
+      "duration": 5.6
+    },
+    {
+      "lang": "en",
+      "text": "store as it's iterating through these",
+      "offset": 2927.2,
+      "duration": 7.359
+    },
+    {
+      "lang": "en",
+      "text": "levels of recursion So let's head to our",
+      "offset": 2930.24,
+      "duration": 6.24
+    },
+    {
+      "lang": "en",
+      "text": "deep research function I'm going to copy",
+      "offset": 2934.559,
+      "duration": 3.601
+    },
+    {
+      "lang": "en",
+      "text": "all of this and we'll look at what we've",
+      "offset": 2936.48,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "updated here So the first thing that",
+      "offset": 2938.16,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "we've done um is we we've changed the",
+      "offset": 2940,
+      "duration": 6.48
+    },
+    {
+      "lang": "en",
+      "text": "name of one uh parameter from query to",
+      "offset": 2943.2,
+      "duration": 6.159
+    },
+    {
+      "lang": "en",
+      "text": "prompt just so you know uh we've also",
+      "offset": 2946.48,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "updated our depth and breadth uh numbers",
+      "offset": 2949.359,
+      "duration": 4.881
+    },
+    {
+      "lang": "en",
+      "text": "So depth remember are the levels deep",
+      "offset": 2952,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "that we go into the the the the strands",
+      "offset": 2954.24,
+      "duration": 5.119
+    },
+    {
+      "lang": "en",
+      "text": "that will or the levels of the strands",
+      "offset": 2957.28,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "that will go down and then breadth are",
+      "offset": 2959.359,
+      "duration": 4.401
+    },
+    {
+      "lang": "en",
+      "text": "those like individual forks how many of",
+      "offset": 2961.44,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "them will go down at each level So we",
+      "offset": 2963.76,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "first check to see if a query is",
+      "offset": 2966.24,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "undefined That will be on the first time",
+      "offset": 2968.48,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "we're ever running this Um and if it is",
+      "offset": 2970.8,
+      "duration": 5.68
+    },
+    {
+      "lang": "en",
+      "text": "we'll set it to the the prompt We then",
+      "offset": 2972.88,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "like last time we generate the search",
+      "offset": 2976.48,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "queries This time we update our queries",
+      "offset": 2978,
+      "duration": 5.839
+    },
+    {
+      "lang": "en",
+      "text": "to be that that uh whatever is returned",
+      "offset": 2980.8,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "from the search queries Um and that's a",
+      "offset": 2983.839,
+      "duration": 3.681
+    },
+    {
+      "lang": "en",
+      "text": "theme as we go through here We're going",
+      "offset": 2985.92,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "to update our accumulated research to",
+      "offset": 2987.52,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "take in our our search results our",
+      "offset": 2989.52,
+      "duration": 4.559
+    },
+    {
+      "lang": "en",
+      "text": "learnings and our completed queries And",
+      "offset": 2991.44,
+      "duration": 4.639
+    },
+    {
+      "lang": "en",
+      "text": "now that we have this all out of the way",
+      "offset": 2994.079,
+      "duration": 3.961
+    },
+    {
+      "lang": "en",
+      "text": "we can actually call deep research",
+      "offset": 2996.079,
+      "duration": 4.401
+    },
+    {
+      "lang": "en",
+      "text": "recursively Um and at the same time",
+      "offset": 2998.04,
+      "duration": 5
+    },
+    {
+      "lang": "en",
+      "text": "we're going to decrement the depth and",
+      "offset": 3000.48,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "breadth so that we can eventually get to",
+      "offset": 3003.04,
+      "duration": 4.799
+    },
+    {
+      "lang": "en",
+      "text": "a resolution Uh so this doesn't run",
+      "offset": 3005.52,
+      "duration": 4.319
+    },
+    {
+      "lang": "en",
+      "text": "forever and we don't run out of all of",
+      "offset": 3007.839,
+      "duration": 4.161
+    },
+    {
+      "lang": "en",
+      "text": "our API credits and leave the user",
+      "offset": 3009.839,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "waiting for for way too long So let's",
+      "offset": 3012,
+      "duration": 7.04
+    },
+    {
+      "lang": "en",
+      "text": "add that final recursion I'm going to",
+      "offset": 3015.359,
+      "duration": 6.96
+    },
+    {
+      "lang": "en",
+      "text": "replace the entire function again um",
+      "offset": 3019.04,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "just so I don't make any mistakes here",
+      "offset": 3022.319,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "We've added two things here First we've",
+      "offset": 3024,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "said uh if the depth is is zero uh just",
+      "offset": 3025.839,
+      "duration": 5.441
+    },
+    {
+      "lang": "en",
+      "text": "return effectively like recursion is",
+      "offset": 3029.04,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "done at this point uh return the",
+      "offset": 3031.28,
+      "duration": 5.839
+    },
+    {
+      "lang": "en",
+      "text": "accumulated research Um and now for the",
+      "offset": 3033.28,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "new stuff where before we had the",
+      "offset": 3037.119,
+      "duration": 4.401
+    },
+    {
+      "lang": "en",
+      "text": "comments saying perform the deep",
+      "offset": 3039.28,
+      "duration": 4.559
+    },
+    {
+      "lang": "en",
+      "text": "research now instead we create a new",
+      "offset": 3041.52,
+      "duration": 4.799
+    },
+    {
+      "lang": "en",
+      "text": "query saying the overall research goal",
+      "offset": 3043.839,
+      "duration": 4.401
+    },
+    {
+      "lang": "en",
+      "text": "is this These are the previous search",
+      "offset": 3046.319,
+      "duration": 4.081
+    },
+    {
+      "lang": "en",
+      "text": "queries that have been performed Here",
+      "offset": 3048.24,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "are some follow-up questions Um and then",
+      "offset": 3050.4,
+      "duration": 6.08
+    },
+    {
+      "lang": "en",
+      "text": "we pass that back and call the entire",
+      "offset": 3053.28,
+      "duration": 5.92
+    },
+    {
+      "lang": "en",
+      "text": "function again with that new prompt uh",
+      "offset": 3056.48,
+      "duration": 6.32
+    },
+    {
+      "lang": "en",
+      "text": "again decrementing the depth and the",
+      "offset": 3059.2,
+      "duration": 7.76
+    },
+    {
+      "lang": "en",
+      "text": "breadth at a more exponential",
+      "offset": 3062.8,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "rate So I think that's a good as good a",
+      "offset": 3067.559,
+      "duration": 6.921
+    },
+    {
+      "lang": "en",
+      "text": "time as any to to run the function again",
+      "offset": 3071.839,
+      "duration": 4.801
+    },
+    {
+      "lang": "en",
+      "text": "and and kind of see what's happening We",
+      "offset": 3074.48,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "should see it now going into various",
+      "offset": 3076.64,
+      "duration": 4.719
+    },
+    {
+      "lang": "en",
+      "text": "levels of depth Again I'm saying",
+      "offset": 3078.64,
+      "duration": 5.24
+    },
+    {
+      "lang": "en",
+      "text": "requirements to become a D1 shotput",
+      "offset": 3081.359,
+      "duration": 5.96
+    },
+    {
+      "lang": "en",
+      "text": "athlete So this uh source is deemed",
+      "offset": 3083.88,
+      "duration": 8
+    },
+    {
+      "lang": "en",
+      "text": "irrelevant It keeps liking to use that",
+      "offset": 3087.319,
+      "duration": 7.161
+    },
+    {
+      "lang": "en",
+      "text": "one Instead the track recruiting",
+      "offset": 3091.88,
+      "duration": 4.52
+    },
+    {
+      "lang": "en",
+      "text": "standards is deemed relevant We're now",
+      "offset": 3094.48,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "processing the search result We're going",
+      "offset": 3096.4,
+      "duration": 3.959
+    },
+    {
+      "lang": "en",
+      "text": "to be generating some",
+      "offset": 3098,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "learnings We're now searching the web",
+      "offset": 3100.359,
+      "duration": 3.801
+    },
+    {
+      "lang": "en",
+      "text": "for what physical and technical skills",
+      "offset": 3102.4,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "are essential for a D1 shot athlete So",
+      "offset": 3104.16,
+      "duration": 4.36
+    },
+    {
+      "lang": "en",
+      "text": "we're going a level of depth",
+      "offset": 3106.24,
+      "duration": 8.28
+    },
+    {
+      "lang": "en",
+      "text": "here We found uh some some relevant",
+      "offset": 3108.52,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "Now we're searching again training and",
+      "offset": 3115.52,
+      "duration": 4.2
+    },
+    {
+      "lang": "en",
+      "text": "skills needed for D1 shotput",
+      "offset": 3117.44,
+      "duration": 5.119
+    },
+    {
+      "lang": "en",
+      "text": "athletes and so on and so forth So we",
+      "offset": 3119.72,
+      "duration": 8
+    },
+    {
+      "lang": "en",
+      "text": "can see that it is indeed working",
+      "offset": 3122.559,
+      "duration": 5.161
+    },
+    {
+      "lang": "en",
+      "text": "One thing though that we haven't done",
+      "offset": 3129.04,
+      "duration": 5.68
+    },
+    {
+      "lang": "en",
+      "text": "yet is that we haven't incorporated into",
+      "offset": 3131.76,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "and funny enough we didn't see this in",
+      "offset": 3134.72,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "this example but the way that our logic",
+      "offset": 3136.64,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "works right now when the model is trying",
+      "offset": 3139.92,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "to decide whether a link is relevant it",
+      "offset": 3142.16,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "doesn't have context as to the links",
+      "offset": 3144.4,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "that have already been used in other",
+      "offset": 3146.64,
+      "duration": 3.919
+    },
+    {
+      "lang": "en",
+      "text": "steps and naturally we've been talking",
+      "offset": 3148.16,
+      "duration": 6.159
+    },
+    {
+      "lang": "en",
+      "text": "about context length price speed we",
+      "offset": 3150.559,
+      "duration": 6.481
+    },
+    {
+      "lang": "en",
+      "text": "don't we we surely do not want to",
+      "offset": 3154.319,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "provide the same source course twice",
+      "offset": 3157.04,
+      "duration": 5.039
+    },
+    {
+      "lang": "en",
+      "text": "particularly if it's taking up 10 20,000",
+      "offset": 3159.119,
+      "duration": 5.121
+    },
+    {
+      "lang": "en",
+      "text": "tokens in length So what we're going to",
+      "offset": 3162.079,
+      "duration": 5.441
+    },
+    {
+      "lang": "en",
+      "text": "do is we're going to go to our search",
+      "offset": 3164.24,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "and process function We're going to head",
+      "offset": 3167.52,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "into our evaluate tool and in this",
+      "offset": 3170.24,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "evaluate tool we're also going to pass",
+      "offset": 3172.72,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "in previously used search results And if",
+      "offset": 3174.8,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "the search result exists in that",
+      "offset": 3178.24,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "previously used search results we're",
+      "offset": 3180.24,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "going to say that's an irrelevant source",
+      "offset": 3182,
+      "duration": 5.119
+    },
+    {
+      "lang": "en",
+      "text": "and and try again",
+      "offset": 3184.4,
+      "duration": 6.959
+    },
+    {
+      "lang": "en",
+      "text": "So I'm going to copy the entire function",
+      "offset": 3187.119,
+      "duration": 7.041
+    },
+    {
+      "lang": "en",
+      "text": "replace the entire function here Um this",
+      "offset": 3191.359,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "time we're taking in a new parameter",
+      "offset": 3194.16,
+      "duration": 5.199
+    },
+    {
+      "lang": "en",
+      "text": "here accumulated sources Um and if we",
+      "offset": 3196.559,
+      "duration": 5.121
+    },
+    {
+      "lang": "en",
+      "text": "scroll down we should see our updated",
+      "offset": 3199.359,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "prompt We say if the page already exists",
+      "offset": 3201.68,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "in the existing results mark it as",
+      "offset": 3204.079,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "irrelevant And we can see we're passing",
+      "offset": 3206,
+      "duration": 5.119
+    },
+    {
+      "lang": "en",
+      "text": "it in in XML tags existing results and",
+      "offset": 3208.319,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "stringifying through passing just the",
+      "offset": 3211.119,
+      "duration": 5.121
+    },
+    {
+      "lang": "en",
+      "text": "URL because also we don't need all the",
+      "offset": 3213.599,
+      "duration": 4.561
+    },
+    {
+      "lang": "en",
+      "text": "content from the page here We literally",
+      "offset": 3216.24,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "just need the URL We have one error here",
+      "offset": 3218.16,
+      "duration": 4.399
+    },
+    {
+      "lang": "en",
+      "text": "and that's because we added a new",
+      "offset": 3220.96,
+      "duration": 3.28
+    },
+    {
+      "lang": "en",
+      "text": "argument but we haven't passed it in",
+      "offset": 3222.559,
+      "duration": 4.481
+    },
+    {
+      "lang": "en",
+      "text": "here So I'm going to just pass that in",
+      "offset": 3224.24,
+      "duration": 5.72
+    },
+    {
+      "lang": "en",
+      "text": "here Uh this will be the accumulated",
+      "offset": 3227.04,
+      "duration": 8.559
+    },
+    {
+      "lang": "en",
+      "text": "research dot um I think this is the",
+      "offset": 3229.96,
+      "duration": 10.48
+    },
+    {
+      "lang": "en",
+      "text": "search results Yeah search results",
+      "offset": 3235.599,
+      "duration": 8.081
+    },
+    {
+      "lang": "en",
+      "text": "Perfect Uh so if we were to to run this",
+      "offset": 3240.44,
+      "duration": 5.48
+    },
+    {
+      "lang": "en",
+      "text": "again what we would see we didn't see it",
+      "offset": 3243.68,
+      "duration": 4.76
+    },
+    {
+      "lang": "en",
+      "text": "in the previous example before but if it",
+      "offset": 3245.92,
+      "duration": 6.159
+    },
+    {
+      "lang": "en",
+      "text": "reused a source or if Exa returned a",
+      "offset": 3248.44,
+      "duration": 6.679
+    },
+    {
+      "lang": "en",
+      "text": "source that it had already used in a",
+      "offset": 3252.079,
+      "duration": 4.801
+    },
+    {
+      "lang": "en",
+      "text": "previous step that would now be marked",
+      "offset": 3255.119,
+      "duration": 3.761
+    },
+    {
+      "lang": "en",
+      "text": "as irrelevant and that agentic process",
+      "offset": 3256.88,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "would continue on in a loop The last",
+      "offset": 3258.88,
+      "duration": 4.239
+    },
+    {
+      "lang": "en",
+      "text": "thing that we're going to want to do",
+      "offset": 3262,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "which I actually don't have in in this",
+      "offset": 3263.119,
+      "duration": 3.921
+    },
+    {
+      "lang": "en",
+      "text": "process is that now that we have all",
+      "offset": 3265.44,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "this accumulated research we want to",
+      "offset": 3267.04,
+      "duration": 5.6
+    },
+    {
+      "lang": "en",
+      "text": "give it to a big model I I prefer a",
+      "offset": 3269.04,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "reasoning model in this case to",
+      "offset": 3272.64,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "synthesize all of this information and",
+      "offset": 3274.16,
+      "duration": 4.959
+    },
+    {
+      "lang": "en",
+      "text": "put it into a report that we can consume",
+      "offset": 3276.24,
+      "duration": 5.92
+    },
+    {
+      "lang": "en",
+      "text": "to hopefully solve our query So let's",
+      "offset": 3279.119,
+      "duration": 5.921
+    },
+    {
+      "lang": "en",
+      "text": "create a new function This function is",
+      "offset": 3282.16,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "going to be called a very creative name",
+      "offset": 3285.04,
+      "duration": 6.24
+    },
+    {
+      "lang": "en",
+      "text": "as per usual uh generate report It's",
+      "offset": 3287.92,
+      "duration": 5.199
+    },
+    {
+      "lang": "en",
+      "text": "going to take in that accumulated",
+      "offset": 3291.28,
+      "duration": 4.559
+    },
+    {
+      "lang": "en",
+      "text": "research which is typed as such Um and",
+      "offset": 3293.119,
+      "duration": 4.801
+    },
+    {
+      "lang": "en",
+      "text": "then we're going to call generate texts",
+      "offset": 3295.839,
+      "duration": 4.161
+    },
+    {
+      "lang": "en",
+      "text": "This time we're using 03 mini rather",
+      "offset": 3297.92,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "than our main model Uh again play around",
+      "offset": 3300,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "with this clone this and and see which",
+      "offset": 3302.64,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "models uh you like best for this kind of",
+      "offset": 3304.72,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "thing I found 03 mini very good at this",
+      "offset": 3307.44,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "And then our prompt here we're saying",
+      "offset": 3309.68,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "generate a report based on the following",
+      "offset": 3310.88,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "research data We've got two new lines",
+      "offset": 3313.04,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "and then we stringify the report",
+      "offset": 3315.04,
+      "duration": 5.16
+    },
+    {
+      "lang": "en",
+      "text": "returning the final generated",
+      "offset": 3317.52,
+      "duration": 6.799
+    },
+    {
+      "lang": "en",
+      "text": "text So let's actually refactor our main",
+      "offset": 3320.2,
+      "duration": 9.399
+    },
+    {
+      "lang": "en",
+      "text": "function very quickly to use this new",
+      "offset": 3324.319,
+      "duration": 6.961
+    },
+    {
+      "lang": "en",
+      "text": "uh this new function So what we're doing",
+      "offset": 3329.599,
+      "duration": 4.401
+    },
+    {
+      "lang": "en",
+      "text": "here uh we've just inlined our prompt So",
+      "offset": 3331.28,
+      "duration": 6.64
+    },
+    {
+      "lang": "en",
+      "text": "we say uh what do you need to to be a D1",
+      "offset": 3334,
+      "duration": 6.16
+    },
+    {
+      "lang": "en",
+      "text": "shop athlete we log out some status",
+      "offset": 3337.92,
+      "duration": 4.439
+    },
+    {
+      "lang": "en",
+      "text": "updates and then we pass that research",
+      "offset": 3340.16,
+      "duration": 5.84
+    },
+    {
+      "lang": "en",
+      "text": "into the generate report function await",
+      "offset": 3342.359,
+      "duration": 5.24
+    },
+    {
+      "lang": "en",
+      "text": "it and get out a report which will",
+      "offset": 3346,
+      "duration": 3.839
+    },
+    {
+      "lang": "en",
+      "text": "finally write to the file system to a",
+      "offset": 3347.599,
+      "duration": 5.601
+    },
+    {
+      "lang": "en",
+      "text": "markdown file So I'm going to import fs",
+      "offset": 3349.839,
+      "duration": 6.921
+    },
+    {
+      "lang": "en",
+      "text": "from fs and then we're ready to go",
+      "offset": 3353.2,
+      "duration": 9.24
+    },
+    {
+      "lang": "en",
+      "text": "So let's see let's see what this does",
+      "offset": 3356.76,
+      "duration": 5.68
+    },
+    {
+      "lang": "en",
+      "text": "Great So after about a minute we've got",
+      "offset": 3372.319,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "our report Below is an integrated report",
+      "offset": 3375.04,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "summarizing the research findings on",
+      "offset": 3378.319,
+      "duration": 3.921
+    },
+    {
+      "lang": "en",
+      "text": "what it takes to become a division one",
+      "offset": 3380,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "shotput athlete along with a with",
+      "offset": 3382.24,
+      "duration": 4.079
+    },
+    {
+      "lang": "en",
+      "text": "related insights on technique training",
+      "offset": 3384.48,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "and common beginner pitfalls So okay",
+      "offset": 3386.319,
+      "duration": 7.201
+    },
+    {
+      "lang": "en",
+      "text": "we've got our our entire report here Um",
+      "offset": 3388.88,
+      "duration": 6.88
+    },
+    {
+      "lang": "en",
+      "text": "and to be honest given all of the",
+      "offset": 3393.52,
+      "duration": 4.799
+    },
+    {
+      "lang": "en",
+      "text": "information that we gave it it's it's",
+      "offset": 3395.76,
+      "duration": 5.68
+    },
+    {
+      "lang": "en",
+      "text": "pretty it's pretty great But one thing",
+      "offset": 3398.319,
+      "duration": 4.881
+    },
+    {
+      "lang": "en",
+      "text": "that we'll note here is that we didn't",
+      "offset": 3401.44,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "give the model any guidance on what",
+      "offset": 3403.2,
+      "duration": 4.159
+    },
+    {
+      "lang": "en",
+      "text": "exactly we wanted this report to look",
+      "offset": 3405.28,
+      "duration": 6.4
+    },
+    {
+      "lang": "en",
+      "text": "like And so the model had to infer Um",
+      "offset": 3407.359,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "and when when you're working with",
+      "offset": 3411.68,
+      "duration": 3.119
+    },
+    {
+      "lang": "en",
+      "text": "language models in order to get the best",
+      "offset": 3412.799,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "response you want to leave as little up",
+      "offset": 3414.799,
+      "duration": 7.201
+    },
+    {
+      "lang": "en",
+      "text": "to the model to infer as possible So one",
+      "offset": 3417.599,
+      "duration": 5.921
+    },
+    {
+      "lang": "en",
+      "text": "thing I want this to be in a markdown",
+      "offset": 3422,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "format Two I'd like it to to form a bit",
+      "offset": 3423.52,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "more of a structure um that I want to",
+      "offset": 3426.64,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "specify And so what we're going to do",
+      "offset": 3429.28,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "here is we're going to head back to our",
+      "offset": 3430.88,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "uh generate research function And we're",
+      "offset": 3434.16,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "going to do two things We're going to",
+      "offset": 3436.16,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "actually just one thing sorry We're",
+      "offset": 3438.88,
+      "duration": 4.239
+    },
+    {
+      "lang": "en",
+      "text": "going to create a system prompt We're",
+      "offset": 3440.96,
+      "duration": 3.839
+    },
+    {
+      "lang": "en",
+      "text": "going to tell it give it a persona You",
+      "offset": 3443.119,
+      "duration": 3.121
+    },
+    {
+      "lang": "en",
+      "text": "are an expert researcher We're going to",
+      "offset": 3444.799,
+      "duration": 3.04
+    },
+    {
+      "lang": "en",
+      "text": "give it today's date We're going to tell",
+      "offset": 3446.24,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "it to follow these instructions exactly",
+      "offset": 3447.839,
+      "duration": 5.121
+    },
+    {
+      "lang": "en",
+      "text": "Um and a few key things in here We're",
+      "offset": 3450.48,
+      "duration": 4.2
+    },
+    {
+      "lang": "en",
+      "text": "going to say use markdown",
+      "offset": 3452.96,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "formatting You may use high levels of",
+      "offset": 3454.68,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "speculation or prediction Just flag it",
+      "offset": 3457.28,
+      "duration": 5.92
+    },
+    {
+      "lang": "en",
+      "text": "Um and and in general we just give it",
+      "offset": 3460.04,
+      "duration": 7.24
+    },
+    {
+      "lang": "en",
+      "text": "these these uh guidelines that are very",
+      "offset": 3463.2,
+      "duration": 7.44
+    },
+    {
+      "lang": "en",
+      "text": "research uh analyst oriented So I'm",
+      "offset": 3467.28,
+      "duration": 5.279
+    },
+    {
+      "lang": "en",
+      "text": "going to run this entire thing again and",
+      "offset": 3470.64,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "we're going to see the difference in the",
+      "offset": 3472.559,
+      "duration": 4.921
+    },
+    {
+      "lang": "en",
+      "text": "output",
+      "offset": 3474.48,
+      "duration": 3
+    },
+    {
+      "lang": "en",
+      "text": "And here it is We have our new report So",
+      "offset": 3492.24,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "let's jump into it And what can we",
+      "offset": 3495.2,
+      "duration": 3.359
+    },
+    {
+      "lang": "en",
+      "text": "notice right off the bat we're using",
+      "offset": 3496.96,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "markdown which is awesome Much more",
+      "offset": 3498.559,
+      "duration": 5.921
+    },
+    {
+      "lang": "en",
+      "text": "structured Uh we can see that we've got",
+      "offset": 3501.2,
+      "duration": 6.72
+    },
+    {
+      "lang": "en",
+      "text": "date and line kind of helpful to have Um",
+      "offset": 3504.48,
+      "duration": 7.28
+    },
+    {
+      "lang": "en",
+      "text": "but like the the level of quality of",
+      "offset": 3507.92,
+      "duration": 5.84
+    },
+    {
+      "lang": "en",
+      "text": "this kind of report even just with this",
+      "offset": 3511.76,
+      "duration": 4.799
+    },
+    {
+      "lang": "en",
+      "text": "basic workflow really astounds me So you",
+      "offset": 3513.76,
+      "duration": 4.799
+    },
+    {
+      "lang": "en",
+      "text": "can see to be considered like right at",
+      "offset": 3516.559,
+      "duration": 3.601
+    },
+    {
+      "lang": "en",
+      "text": "the top level to be considered a",
+      "offset": 3518.559,
+      "duration": 3.921
+    },
+    {
+      "lang": "en",
+      "text": "division one shot pro prospect athletes",
+      "offset": 3520.16,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "are expected to demonstrate a high level",
+      "offset": 3522.48,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "of competitive success varsity",
+      "offset": 3524.24,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "experience um typically four years of",
+      "offset": 3526.16,
+      "duration": 4.959
+    },
+    {
+      "lang": "en",
+      "text": "varsity participation competitive",
+      "offset": 3528.88,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "exposure Uh we have performance",
+      "offset": 3531.119,
+      "duration": 5.041
+    },
+    {
+      "lang": "en",
+      "text": "benchmarks a benchmark throw of 55 ft",
+      "offset": 3533.44,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "elite or top tier recruits tend to have",
+      "offset": 3536.16,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "distances around 60 feet and 18 inches",
+      "offset": 3538.16,
+      "duration": 4.959
+    },
+    {
+      "lang": "en",
+      "text": "Like this is uh and the difference",
+      "offset": 3540.96,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "between men's and women It it is so so",
+      "offset": 3543.119,
+      "duration": 5.68
+    },
+    {
+      "lang": "en",
+      "text": "so cool how uh we were able to build",
+      "offset": 3546.16,
+      "duration": 8.48
+    },
+    {
+      "lang": "en",
+      "text": "this in just 218 lines of code Um so",
+      "offset": 3548.799,
+      "duration": 8
+    },
+    {
+      "lang": "en",
+      "text": "yeah this is this is it This is a",
+      "offset": 3554.64,
+      "duration": 4.159
+    },
+    {
+      "lang": "en",
+      "text": "session I hope you enjoyed this If you",
+      "offset": 3556.799,
+      "duration": 5.921
+    },
+    {
+      "lang": "en",
+      "text": "have any questions you can reach me on",
+      "offset": 3558.799,
+      "duration": 8.121
+    },
+    {
+      "lang": "en",
+      "text": "um X the everything platform at niko",
+      "offset": 3562.72,
+      "duration": 7.119
+    },
+    {
+      "lang": "en",
+      "text": "albanese10 Uh feel free to send me a DM",
+      "offset": 3566.92,
+      "duration": 5.08
+    },
+    {
+      "lang": "en",
+      "text": "Uh if you have any questions on building",
+      "offset": 3569.839,
+      "duration": 5.24
+    },
+    {
+      "lang": "en",
+      "text": "with the SDK head to",
+      "offset": 3572,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "SDK.purcell.ai check out our docs We got",
+      "offset": 3575.079,
+      "duration": 4.601
+    },
+    {
+      "lang": "en",
+      "text": "some awesome uh guides in the cookbook",
+      "offset": 3577.2,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "as well Um and yeah I hope you enjoyed",
+      "offset": 3579.68,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "this I want to thank Swix for asking me",
+      "offset": 3582.16,
+      "duration": 5.679
+    },
+    {
+      "lang": "en",
+      "text": "to to do this uh session and I really",
+      "offset": 3584.48,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "hope you enjoyed it and hope to see you",
+      "offset": 3587.839,
+      "duration": 5.361
+    },
+    {
+      "lang": "en",
+      "text": "at the next one Take care",
+      "offset": 3589.68,
+      "duration": 3.52
+    }
+  ],
+  "cleanText": null,
+  "dumpedAt": "2025-07-21T18:43:24.619Z"
+}

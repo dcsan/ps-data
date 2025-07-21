@@ -1,0 +1,5758 @@
+{
+  "episodeId": "pGc6x3Z-xM0",
+  "channelSlug": "@syntaxfm",
+  "title": "Handling and Throwing Errors",
+  "publishedAt": "2025-06-09T11:01:31.000Z",
+  "rawLines": [
+    {
+      "lang": "en",
+      "text": "Welcome to Syntax. Today we have an",
+      "offset": 0.24,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "episode for you on errors. Um how to",
+      "offset": 2.56,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "handle them, how to throw them, what",
+      "offset": 5.12,
+      "duration": 3.24
+    },
+    {
+      "lang": "en",
+      "text": "what they",
+      "offset": 7.04,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "contain. Our application is full of of",
+      "offset": 8.36,
+      "duration": 5
+    },
+    {
+      "lang": "en",
+      "text": "errors. I I I write a lot of errors",
+      "offset": 11.36,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "myself and how to structure your",
+      "offset": 13.36,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "application so that you can handle them",
+      "offset": 16.4,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "appropriately on the client, on the",
+      "offset": 18.32,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "server, how to throw your own custom",
+      "offset": 20.32,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "errors, what to do with them, when you",
+      "offset": 22.16,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "should be throwing one versus returning",
+      "offset": 24.32,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "some data just with some errors in it.",
+      "offset": 26.48,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "is is kind of a tricky thing. So, we're",
+      "offset": 29.76,
+      "duration": 4.479
+    },
+    {
+      "lang": "en",
+      "text": "gonna we're gonna dive on into it and I",
+      "offset": 31.76,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "try to explain all of those pieces. My",
+      "offset": 34.239,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "name is West Boss, developer from",
+      "offset": 36.16,
+      "duration": 3.919
+    },
+    {
+      "lang": "en",
+      "text": "Canada. With me as always is Scott. How",
+      "offset": 38.079,
+      "duration": 4.721
+    },
+    {
+      "lang": "en",
+      "text": "you doing today, Scott? Doing all right.",
+      "offset": 40.079,
+      "duration": 5.521
+    },
+    {
+      "lang": "en",
+      "text": "Uh quick trip to the uh urgent care for",
+      "offset": 42.8,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "cut finger this morning, but hey, man.",
+      "offset": 45.6,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "Yeah. Not the first time, Wes. First",
+      "offset": 48.16,
+      "duration": 4.719
+    },
+    {
+      "lang": "en",
+      "text": "time. Oh my gosh. I know how many I",
+      "offset": 50,
+      "duration": 4.239
+    },
+    {
+      "lang": "en",
+      "text": "don't know how many times Wes has gotten",
+      "offset": 52.879,
+      "duration": 4.081
+    },
+    {
+      "lang": "en",
+      "text": "the message that, hey, I'm going to be a",
+      "offset": 54.239,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "little bit late. Got to head to the",
+      "offset": 56.96,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "urgent care, hurt myself in some way. Uh",
+      "offset": 58.399,
+      "duration": 5.921
+    },
+    {
+      "lang": "en",
+      "text": "so yeah, they glued they glued me up. Uh",
+      "offset": 60.96,
+      "duration": 6.56
+    },
+    {
+      "lang": "en",
+      "text": "I'm good to go and uh yeah, feeling",
+      "offset": 64.32,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "feeling like this is just my life. Uh",
+      "offset": 67.52,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "that's just how it goes. I got to chill",
+      "offset": 70.08,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "out, I",
+      "offset": 71.76,
+      "duration": 7.32
+    },
+    {
+      "lang": "en",
+      "text": "[Music]",
+      "offset": 73.84,
+      "duration": 7.52
+    },
+    {
+      "lang": "en",
+      "text": "think. All right. Well, let's get on",
+      "offset": 79.08,
+      "duration": 3.96
+    },
+    {
+      "lang": "en",
+      "text": "into it. Um we're first going to dive",
+      "offset": 81.36,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "into explaining a few specific words",
+      "offset": 83.04,
+      "duration": 6.24
+    },
+    {
+      "lang": "en",
+      "text": "about error and error handling. Um then",
+      "offset": 86.72,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "we'll get into what's in an error and",
+      "offset": 89.28,
+      "duration": 4.479
+    },
+    {
+      "lang": "en",
+      "text": "then we'll dive into all the different",
+      "offset": 91.36,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "types of errors that can be thrown. How",
+      "offset": 93.759,
+      "duration": 3.441
+    },
+    {
+      "lang": "en",
+      "text": "to deal with the synchronous versus",
+      "offset": 95.84,
+      "duration": 3.12
+    },
+    {
+      "lang": "en",
+      "text": "synchronous code, client side versus",
+      "offset": 97.2,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "server side and then like what do you",
+      "offset": 98.96,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "actually do with them. So first of all",
+      "offset": 101.2,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "the wording around errors specifically",
+      "offset": 103.52,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "we're talking about JavaScript here but",
+      "offset": 106.24,
+      "duration": 2.879
+    },
+    {
+      "lang": "en",
+      "text": "this will will work in a lot of other",
+      "offset": 107.6,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "languages is the whole idea of like",
+      "offset": 109.119,
+      "duration": 6.241
+    },
+    {
+      "lang": "en",
+      "text": "thrown and catching. So when you have an",
+      "offset": 111.36,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "error whether it's in your own code",
+      "offset": 115.36,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "whether it's in like a a module that you",
+      "offset": 117.36,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "you have have done or whether it's like",
+      "offset": 119.52,
+      "duration": 3.919
+    },
+    {
+      "lang": "en",
+      "text": "something that you did not totally",
+      "offset": 121.84,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "expect like your your application has a",
+      "offset": 123.439,
+      "duration": 5.921
+    },
+    {
+      "lang": "en",
+      "text": "syntax error in it somewhere that is the",
+      "offset": 125.84,
+      "duration": 5.119
+    },
+    {
+      "lang": "en",
+      "text": "word that we use there is is thrown",
+      "offset": 129.36,
+      "duration": 3.599
+    },
+    {
+      "lang": "en",
+      "text": "right an error is thrown and then when",
+      "offset": 130.959,
+      "duration": 5.041
+    },
+    {
+      "lang": "en",
+      "text": "you want to handle that error the word",
+      "offset": 132.959,
+      "duration": 6.161
+    },
+    {
+      "lang": "en",
+      "text": "that we use there is is catch so simply",
+      "offset": 136,
+      "duration": 4.959
+    },
+    {
+      "lang": "en",
+      "text": "like it's Scott has here it's like",
+      "offset": 139.12,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "throwing a ball but it makes you sad",
+      "offset": 140.959,
+      "duration": 4.241
+    },
+    {
+      "lang": "en",
+      "text": "um something went wrong, you simply",
+      "offset": 143.36,
+      "duration": 3.519
+    },
+    {
+      "lang": "en",
+      "text": "throw it. Ah, this didn't work. You",
+      "offset": 145.2,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "throw it out there and then somewhere",
+      "offset": 146.879,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "else in your application, you are going",
+      "offset": 148.64,
+      "duration": 4.319
+    },
+    {
+      "lang": "en",
+      "text": "to need to handle that. You're going to",
+      "offset": 150.879,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "have to catch that specific error um and",
+      "offset": 152.959,
+      "duration": 4.881
+    },
+    {
+      "lang": "en",
+      "text": "then do something with it. Whether that",
+      "offset": 155.599,
+      "duration": 3.841
+    },
+    {
+      "lang": "en",
+      "text": "is logging it out, whether that is",
+      "offset": 157.84,
+      "duration": 3.759
+    },
+    {
+      "lang": "en",
+      "text": "displaying some UI to your user, whether",
+      "offset": 159.44,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "that is retrying that specific logic.",
+      "offset": 161.599,
+      "duration": 5.041
+    },
+    {
+      "lang": "en",
+      "text": "Yeah, I do like that that visual of",
+      "offset": 164.4,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "throwing a ball because it is just like",
+      "offset": 166.64,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "I got a problem over here. Sad. Yes.",
+      "offset": 168.8,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "Yeah. uh you're going to have a problem",
+      "offset": 171.04,
+      "duration": 5.6
+    },
+    {
+      "lang": "en",
+      "text": "over there and and how you handle it uh",
+      "offset": 173.28,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "is is up to you. But there's a numerous",
+      "offset": 176.64,
+      "duration": 4.879
+    },
+    {
+      "lang": "en",
+      "text": "ways of taking care of that from there.",
+      "offset": 179.28,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "Uh inside of an error is a few things",
+      "offset": 181.519,
+      "duration": 5.921
+    },
+    {
+      "lang": "en",
+      "text": "because when you throw an error, you are",
+      "offset": 185.28,
+      "duration": 4.84
+    },
+    {
+      "lang": "en",
+      "text": "using the keyword throw and you",
+      "offset": 187.44,
+      "duration": 4.879
+    },
+    {
+      "lang": "en",
+      "text": "sometimes you have in here that you",
+      "offset": 190.12,
+      "duration": 3.8
+    },
+    {
+      "lang": "en",
+      "text": "don't need to use the word new.",
+      "offset": 192.319,
+      "duration": 3.521
+    },
+    {
+      "lang": "en",
+      "text": "Sometimes you use the word throw new and",
+      "offset": 193.92,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "then capital E error and then what",
+      "offset": 195.84,
+      "duration": 4.319
+    },
+    {
+      "lang": "en",
+      "text": "happened? But like why don't you need",
+      "offset": 197.76,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "the keyword new? I'm curious about that.",
+      "offset": 200.159,
+      "duration": 4.961
+    },
+    {
+      "lang": "en",
+      "text": "Yeah. Yeah. You don't need the new",
+      "offset": 203.2,
+      "duration": 3.679
+    },
+    {
+      "lang": "en",
+      "text": "keyword when you are throwing. So if",
+      "offset": 205.12,
+      "duration": 4.479
+    },
+    {
+      "lang": "en",
+      "text": "you're simply just throwing a new error,",
+      "offset": 206.879,
+      "duration": 5.521
+    },
+    {
+      "lang": "en",
+      "text": "you can you can just throw error. Um if",
+      "offset": 209.599,
+      "duration": 4.881
+    },
+    {
+      "lang": "en",
+      "text": "you do want to construct the error ahead",
+      "offset": 212.4,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "of time, you're creating a new class and",
+      "offset": 214.48,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "in that case you have to then create a",
+      "offset": 217.68,
+      "duration": 3.279
+    },
+    {
+      "lang": "en",
+      "text": "new one and then you can throw it at a",
+      "offset": 219.44,
+      "duration": 3.519
+    },
+    {
+      "lang": "en",
+      "text": "later point, but the new keyword is not",
+      "offset": 220.959,
+      "duration": 4.401
+    },
+    {
+      "lang": "en",
+      "text": "necessary, which I had no idea. I was",
+      "offset": 222.959,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "adding new for probably my entire",
+      "offset": 225.36,
+      "duration": 4.239
+    },
+    {
+      "lang": "en",
+      "text": "career, but think of the PF I could have",
+      "offset": 226.959,
+      "duration": 5.92
+    },
+    {
+      "lang": "en",
+      "text": "and the time I could have saved without",
+      "offset": 229.599,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "constructing a new instance. And and",
+      "offset": 232.879,
+      "duration": 4.481
+    },
+    {
+      "lang": "en",
+      "text": "even if there there's some, you know,",
+      "offset": 234.959,
+      "duration": 4.721
+    },
+    {
+      "lang": "en",
+      "text": "thought there too, if if you're catching",
+      "offset": 237.36,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "an error that exists and then throwing",
+      "offset": 239.68,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "that same error, if you're not modifying",
+      "offset": 242.56,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "at all, you just throw the error without",
+      "offset": 244.64,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "even creating a new error. But we'll get",
+      "offset": 247.04,
+      "duration": 4.199
+    },
+    {
+      "lang": "en",
+      "text": "to that in a minute. So, inside of this",
+      "offset": 248.72,
+      "duration": 4.799
+    },
+    {
+      "lang": "en",
+      "text": "this class instance, inside of this",
+      "offset": 251.239,
+      "duration": 5
+    },
+    {
+      "lang": "en",
+      "text": "bundle here is a few things. There's a",
+      "offset": 253.519,
+      "duration": 5.761
+    },
+    {
+      "lang": "en",
+      "text": "name. The default is capital E error.",
+      "offset": 256.239,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "Um, there's a message. That message is",
+      "offset": 259.28,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "the message that was written when the",
+      "offset": 261.519,
+      "duration": 4.721
+    },
+    {
+      "lang": "en",
+      "text": "error was thrown. So, you could think of",
+      "offset": 264.24,
+      "duration": 5.64
+    },
+    {
+      "lang": "en",
+      "text": "this being like uh user not found,",
+      "offset": 266.24,
+      "duration": 6.239
+    },
+    {
+      "lang": "en",
+      "text": "unauthorized, or just simply something",
+      "offset": 269.88,
+      "duration": 4.759
+    },
+    {
+      "lang": "en",
+      "text": "failed here or there, whatever. Uh,",
+      "offset": 272.479,
+      "duration": 3.921
+    },
+    {
+      "lang": "en",
+      "text": "these types of things could get thrown",
+      "offset": 274.639,
+      "duration": 3.681
+    },
+    {
+      "lang": "en",
+      "text": "inside of your application. And then",
+      "offset": 276.4,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "there's the stack. Uh Wes, do you want",
+      "offset": 278.32,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "to explain what the stack is? Yeah, the",
+      "offset": 280.56,
+      "duration": 5.68
+    },
+    {
+      "lang": "en",
+      "text": "stack is a stack trace leading up sort",
+      "offset": 283.04,
+      "duration": 6.159
+    },
+    {
+      "lang": "en",
+      "text": "of a treasure trail for where it went",
+      "offset": 286.24,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "wrong. And it will show you essentially",
+      "offset": 289.199,
+      "duration": 4.081
+    },
+    {
+      "lang": "en",
+      "text": "what function called what function, what",
+      "offset": 291.36,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "called what function, and it will show",
+      "offset": 293.28,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "you which files and line numbers they",
+      "offset": 294.96,
+      "duration": 4.959
+    },
+    {
+      "lang": "en",
+      "text": "were actually thrown on. That can be",
+      "offset": 297.28,
+      "duration": 5.68
+    },
+    {
+      "lang": "en",
+      "text": "very helpful because sometimes your",
+      "offset": 299.919,
+      "duration": 5.441
+    },
+    {
+      "lang": "en",
+      "text": "stack trace is going to be is going to",
+      "offset": 302.96,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "show you that the error went wrong",
+      "offset": 305.36,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "either in like a node module or in a a a",
+      "offset": 307.28,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "module library or it's going to show you",
+      "offset": 310.32,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "that it like happened like deep within",
+      "offset": 312.16,
+      "duration": 5.599
+    },
+    {
+      "lang": "en",
+      "text": "the internals of V8 or Node.js JS which",
+      "offset": 314.56,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "is not that helpful. But if you can sort",
+      "offset": 317.759,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "of back it up a several levels and and",
+      "offset": 320,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "read the stack trace then you can see",
+      "offset": 322.639,
+      "duration": 5.681
+    },
+    {
+      "lang": "en",
+      "text": "okay it happened in my code you know the",
+      "offset": 325.36,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "stuff that I can control it happened at",
+      "offset": 328.32,
+      "duration": 4.159
+    },
+    {
+      "lang": "en",
+      "text": "this point and you can kind of take it",
+      "offset": 330.8,
+      "duration": 5
+    },
+    {
+      "lang": "en",
+      "text": "from there. Yeah. And and I found",
+      "offset": 332.479,
+      "duration": 6.881
+    },
+    {
+      "lang": "en",
+      "text": "personally this to be a situation where",
+      "offset": 335.8,
+      "duration": 5.72
+    },
+    {
+      "lang": "en",
+      "text": "AI can actually really help you because",
+      "offset": 339.36,
+      "duration": 4.559
+    },
+    {
+      "lang": "en",
+      "text": "sometimes the stack trace can get a",
+      "offset": 341.52,
+      "duration": 6.08
+    },
+    {
+      "lang": "en",
+      "text": "little bit ugly. um or it's not clear",
+      "offset": 343.919,
+      "duration": 7.28
+    },
+    {
+      "lang": "en",
+      "text": "where exactly the error is take like",
+      "offset": 347.6,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "actually taking place cuz the error can",
+      "offset": 351.199,
+      "duration": 3.921
+    },
+    {
+      "lang": "en",
+      "text": "originate or end up somewhere and like",
+      "offset": 352.88,
+      "duration": 5.039
+    },
+    {
+      "lang": "en",
+      "text": "the actual bug or you know whatever in",
+      "offset": 355.12,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "your code might not necessarily be super",
+      "offset": 357.919,
+      "duration": 4.641
+    },
+    {
+      "lang": "en",
+      "text": "obvious even if you have like minified",
+      "offset": 360.32,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "code or any of that stuff like you had",
+      "offset": 362.56,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "mentioned the the error could take place",
+      "offset": 364.72,
+      "duration": 5.599
+    },
+    {
+      "lang": "en",
+      "text": "on line one character you know 2 million",
+      "offset": 366.96,
+      "duration": 5.359
+    },
+    {
+      "lang": "en",
+      "text": "or something like that and the minified",
+      "offset": 370.319,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "those errors are the absolute worst have",
+      "offset": 372.319,
+      "duration": 4.801
+    },
+    {
+      "lang": "en",
+      "text": "to debug and when there's like no source",
+      "offset": 374.639,
+      "duration": 5.041
+    },
+    {
+      "lang": "en",
+      "text": "maps available or the source maps aren't",
+      "offset": 377.12,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "working and like I I feel sorry for",
+      "offset": 379.68,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "anyone who has to spend their days I",
+      "offset": 382,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "know a lot of folks at Sentry have to",
+      "offset": 383.68,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "deal with this but man try having to",
+      "offset": 386,
+      "duration": 5.039
+    },
+    {
+      "lang": "en",
+      "text": "like figure out these obtuse source map",
+      "offset": 388.88,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "errors that are just like not pointing",
+      "offset": 391.039,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "to the wrong right part is is really",
+      "offset": 392.88,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "tricky. Yeah. So, I found that you can",
+      "offset": 395.759,
+      "duration": 4.481
+    },
+    {
+      "lang": "en",
+      "text": "often times if you are having a hard",
+      "offset": 398.16,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "time understanding your stack trace, you",
+      "offset": 400.24,
+      "duration": 3.679
+    },
+    {
+      "lang": "en",
+      "text": "can just copy and paste that whole",
+      "offset": 402.8,
+      "duration": 3.28
+    },
+    {
+      "lang": "en",
+      "text": "thing, throw it into any AI of your",
+      "offset": 403.919,
+      "duration": 4.481
+    },
+    {
+      "lang": "en",
+      "text": "choice and say, &quot;What's the deal here?",
+      "offset": 406.08,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "What's going on? Hey, uh, throw me a",
+      "offset": 408.4,
+      "duration": 3.919
+    },
+    {
+      "lang": "en",
+      "text": "bone. Throw me a freaking bone here.&quot;",
+      "offset": 410.72,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "Yeah, let me uh let me know what's going",
+      "offset": 412.319,
+      "duration": 4.561
+    },
+    {
+      "lang": "en",
+      "text": "on. And uh I found it to be very",
+      "offset": 414.72,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "excellent at being able to tell me in",
+      "offset": 416.88,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "plain English oftent times which is",
+      "offset": 418.56,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "probably one of the reasons why Century",
+      "offset": 421.12,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "has been adding you know AI features",
+      "offset": 423.36,
+      "duration": 5.6
+    },
+    {
+      "lang": "en",
+      "text": "into their their application because",
+      "offset": 426.16,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "it's good at that kind of stuff. It's",
+      "offset": 428.96,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "parsing a lot of information. There's",
+      "offset": 430.56,
+      "duration": 4.479
+    },
+    {
+      "lang": "en",
+      "text": "also a handful of node system specific",
+      "offset": 432.72,
+      "duration": 3.599
+    },
+    {
+      "lang": "en",
+      "text": "errors but we don't need to get into",
+      "offset": 435.039,
+      "duration": 4.081
+    },
+    {
+      "lang": "en",
+      "text": "them too much. uh like code you",
+      "offset": 436.319,
+      "duration": 6.72
+    },
+    {
+      "lang": "en",
+      "text": "sometimes see those as error no ent uh",
+      "offset": 439.12,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "if you're dealing with the file system",
+      "offset": 443.039,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "there's sys call path desk these are",
+      "offset": 445.12,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "types of things that you may see",
+      "offset": 447.599,
+      "duration": 2.72
+    },
+    {
+      "lang": "en",
+      "text": "frequently in node apps if you're",
+      "offset": 448.72,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "working with fs or any of the uh given",
+      "offset": 450.319,
+      "duration": 5.521
+    },
+    {
+      "lang": "en",
+      "text": "node uh system packages one more thing",
+      "offset": 453.12,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "is is when you're throwing an error or",
+      "offset": 455.84,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "or when errors are thrown generally the",
+      "offset": 457.84,
+      "duration": 5.6
+    },
+    {
+      "lang": "en",
+      "text": "message is going to be a string or it's",
+      "offset": 460.8,
+      "duration": 5.6
+    },
+    {
+      "lang": "en",
+      "text": "going to be something that can be parsed",
+      "offset": 463.44,
+      "duration": 5.84
+    },
+    {
+      "lang": "en",
+      "text": "into a string but the message itself can",
+      "offset": 466.4,
+      "duration": 5.519
+    },
+    {
+      "lang": "en",
+      "text": "be it can be several types right you",
+      "offset": 469.28,
+      "duration": 4.319
+    },
+    {
+      "lang": "en",
+      "text": "could you can throw an object in there",
+      "offset": 471.919,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "as as well if you are creating a custom",
+      "offset": 473.599,
+      "duration": 5.841
+    },
+    {
+      "lang": "en",
+      "text": "error so you use a class like validation",
+      "offset": 476.319,
+      "duration": 6.961
+    },
+    {
+      "lang": "en",
+      "text": "error extends error um you can override",
+      "offset": 479.44,
+      "duration": 6.72
+    },
+    {
+      "lang": "en",
+      "text": "the two-string property on that class",
+      "offset": 483.28,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "and that will when the two-string",
+      "offset": 486.16,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "property gets called on that error",
+      "offset": 488.4,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "because they want to display a string",
+      "offset": 490.16,
+      "duration": 3.759
+    },
+    {
+      "lang": "en",
+      "text": "version of the message then you can uh",
+      "offset": 491.84,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "implement your own logic there as to to",
+      "offset": 493.919,
+      "duration": 6.321
+    },
+    {
+      "lang": "en",
+      "text": "how to display that. Yeah. Uh throwing",
+      "offset": 497.12,
+      "duration": 5.519
+    },
+    {
+      "lang": "en",
+      "text": "errors. Let's talk about it. So you when",
+      "offset": 500.24,
+      "duration": 5.92
+    },
+    {
+      "lang": "en",
+      "text": "you're writing your logic in your your",
+      "offset": 502.639,
+      "duration": 6.881
+    },
+    {
+      "lang": "en",
+      "text": "JavaScript um you may want to throw an",
+      "offset": 506.16,
+      "duration": 5.999
+    },
+    {
+      "lang": "en",
+      "text": "error versus have to handle it directly",
+      "offset": 509.52,
+      "duration": 5.199
+    },
+    {
+      "lang": "en",
+      "text": "in that function. So if you are um",
+      "offset": 512.159,
+      "duration": 4.481
+    },
+    {
+      "lang": "en",
+      "text": "writing logic and you say I don't",
+      "offset": 514.719,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "necessarily care how this error is",
+      "offset": 516.64,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "handle handled because I am simply doing",
+      "offset": 518.959,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "some validation or doing a database",
+      "offset": 521.68,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "lookup. If anything goes wrong at any",
+      "offset": 523.599,
+      "duration": 4.641
+    },
+    {
+      "lang": "en",
+      "text": "point, I am simply just going to throw",
+      "offset": 526.08,
+      "duration": 3.759
+    },
+    {
+      "lang": "en",
+      "text": "I'm going to throw an error. You can",
+      "offset": 528.24,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "pass along the message of that error and",
+      "offset": 529.839,
+      "duration": 4.641
+    },
+    {
+      "lang": "en",
+      "text": "any other additional details that may be",
+      "offset": 531.76,
+      "duration": 6.24
+    },
+    {
+      "lang": "en",
+      "text": "helpful in that error. And then at a",
+      "offset": 534.48,
+      "duration": 6.24
+    },
+    {
+      "lang": "en",
+      "text": "generally at a higher level, um you're",
+      "offset": 538,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "going to then go ahead and and catch",
+      "offset": 540.72,
+      "duration": 6.48
+    },
+    {
+      "lang": "en",
+      "text": "that error and decide how it happens. So",
+      "offset": 542.88,
+      "duration": 6.72
+    },
+    {
+      "lang": "en",
+      "text": "sometimes it makes more sense to just",
+      "offset": 547.2,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "handle it right away inside of your",
+      "offset": 549.6,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "application. Um, but if you're not at a",
+      "offset": 551.6,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "layer of your application, especially",
+      "offset": 554.16,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "with like library code, I don't",
+      "offset": 556.48,
+      "duration": 5.359
+    },
+    {
+      "lang": "en",
+      "text": "necessarily know how uh the user of this",
+      "offset": 558.8,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "library wants to deal with something",
+      "offset": 561.839,
+      "duration": 4.401
+    },
+    {
+      "lang": "en",
+      "text": "going wrong. So therefore, I am simply",
+      "offset": 564,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "going to throw and you have to figure it",
+      "offset": 566.24,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "out at a different point. Yeah. And",
+      "offset": 568.8,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "sometimes, you know, if you're dealing",
+      "offset": 570.8,
+      "duration": 4.159
+    },
+    {
+      "lang": "en",
+      "text": "with like library code that fails, in",
+      "offset": 572.32,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "the library code, you call a method or",
+      "offset": 574.959,
+      "duration": 2.961
+    },
+    {
+      "lang": "en",
+      "text": "you call a function or something and",
+      "offset": 576.72,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "that fails, um the error might not",
+      "offset": 577.92,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "always be something you want to continue",
+      "offset": 580.56,
+      "duration": 5.839
+    },
+    {
+      "lang": "en",
+      "text": "to to throw up. Um so like you could",
+      "offset": 582.56,
+      "duration": 7.92
+    },
+    {
+      "lang": "en",
+      "text": "catch the error from uh a library,",
+      "offset": 586.399,
+      "duration": 6.88
+    },
+    {
+      "lang": "en",
+      "text": "method or function and then create a new",
+      "offset": 590.48,
+      "duration": 5.84
+    },
+    {
+      "lang": "en",
+      "text": "error based on something that you uh",
+      "offset": 593.279,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "would rather handle in a specific way.",
+      "offset": 596.32,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "like for instance like insert failed or",
+      "offset": 599.279,
+      "duration": 3.441
+    },
+    {
+      "lang": "en",
+      "text": "something like that rather than",
+      "offset": 601.76,
+      "duration": 3.28
+    },
+    {
+      "lang": "en",
+      "text": "something that has more context because",
+      "offset": 602.72,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "you can certainly then log that error in",
+      "offset": 605.04,
+      "duration": 6.08
+    },
+    {
+      "lang": "en",
+      "text": "a way that makes sense for uh you know",
+      "offset": 607.92,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "error handlers or um you know logging",
+      "offset": 611.12,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "software like Sentry or something to",
+      "offset": 613.68,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "handle that like like actually give you",
+      "offset": 615.36,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "the insight to that information but the",
+      "offset": 617.44,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "application might not the rest of the",
+      "offset": 619.6,
+      "duration": 3.359
+    },
+    {
+      "lang": "en",
+      "text": "application might not need to know about",
+      "offset": 621.04,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "the exact specific cause. Yeah. And it",
+      "offset": 622.959,
+      "duration": 6.401
+    },
+    {
+      "lang": "en",
+      "text": "there's many cases in your logic where",
+      "offset": 626.24,
+      "duration": 6.64
+    },
+    {
+      "lang": "en",
+      "text": "some errors are are to be expected and",
+      "offset": 629.36,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "you do want to continue. Um like for",
+      "offset": 632.88,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "example a unique constraint on a",
+      "offset": 635.36,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "database. If you're trying to save like",
+      "offset": 637.6,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "an account and that email is already",
+      "offset": 640.16,
+      "duration": 5.359
+    },
+    {
+      "lang": "en",
+      "text": "existing in the database, then you may",
+      "offset": 642.64,
+      "duration": 6.08
+    },
+    {
+      "lang": "en",
+      "text": "want to just catch that and then oh that",
+      "offset": 645.519,
+      "duration": 4.721
+    },
+    {
+      "lang": "en",
+      "text": "already exists. Let me look it up and",
+      "offset": 648.72,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "and continue on. I probably would look",
+      "offset": 650.24,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "it up first, but that's kind of besides",
+      "offset": 652.56,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "the point, right? you may say okay that",
+      "offset": 654.48,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "that error we can we can handle um in a",
+      "offset": 656.56,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "specific way and we can continue on",
+      "offset": 659.44,
+      "duration": 4.639
+    },
+    {
+      "lang": "en",
+      "text": "while others where it's like I don't",
+      "offset": 661.6,
+      "duration": 4.239
+    },
+    {
+      "lang": "en",
+      "text": "know database out of room or simply",
+      "offset": 664.079,
+      "duration": 4.561
+    },
+    {
+      "lang": "en",
+      "text": "cannot connect to it then then you're in",
+      "offset": 665.839,
+      "duration": 4.44
+    },
+    {
+      "lang": "en",
+      "text": "a little bit more trouble and you need",
+      "offset": 668.64,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "to abandon all ship and and send",
+      "offset": 670.279,
+      "duration": 4.68
+    },
+    {
+      "lang": "en",
+      "text": "something back to the user. Yeah, you",
+      "offset": 673.04,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "could think about it like someone's",
+      "offset": 674.959,
+      "duration": 3.921
+    },
+    {
+      "lang": "en",
+      "text": "throwing me a ball, I catch it. I can",
+      "offset": 676.8,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "either then throw that ball again or",
+      "offset": 678.88,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "maybe I can take that ball and put it in",
+      "offset": 680.72,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "a bucket and handle it later or just",
+      "offset": 682.88,
+      "duration": 4.079
+    },
+    {
+      "lang": "en",
+      "text": "drop it on the ground and pretend it",
+      "offset": 685.2,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "didn't happen. Or providing like if you",
+      "offset": 686.959,
+      "duration": 7.041
+    },
+    {
+      "lang": "en",
+      "text": "are providing a additional uh message to",
+      "offset": 689.76,
+      "duration": 6.24
+    },
+    {
+      "lang": "en",
+      "text": "it or you're like trying to rephrase it,",
+      "offset": 694,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "um it is helpful to pass the cause",
+      "offset": 696,
+      "duration": 5.6
+    },
+    {
+      "lang": "en",
+      "text": "property to your error. And what that",
+      "offset": 699.04,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "will do is it will not gum up your stack",
+      "offset": 701.6,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "trace. Um meaning that if you're if",
+      "offset": 705.04,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "you're catching it and simply throwing",
+      "offset": 707.36,
+      "duration": 4.719
+    },
+    {
+      "lang": "en",
+      "text": "it again, passing the original error to",
+      "offset": 708.72,
+      "duration": 5.679
+    },
+    {
+      "lang": "en",
+      "text": "the cause property of your your error",
+      "offset": 712.079,
+      "duration": 4.401
+    },
+    {
+      "lang": "en",
+      "text": "will make sure that your stack traces",
+      "offset": 714.399,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "stay intact and you're not accidentally",
+      "offset": 716.48,
+      "duration": 5.039
+    },
+    {
+      "lang": "en",
+      "text": "losing any information word. So, okay,",
+      "offset": 718.959,
+      "duration": 4.161
+    },
+    {
+      "lang": "en",
+      "text": "we've talked a lot about throwing here,",
+      "offset": 721.519,
+      "duration": 4.081
+    },
+    {
+      "lang": "en",
+      "text": "but and we've kind of alluded directly",
+      "offset": 723.12,
+      "duration": 5.519
+    },
+    {
+      "lang": "en",
+      "text": "to promises, and we're using a lot of",
+      "offset": 725.6,
+      "duration": 5.359
+    },
+    {
+      "lang": "en",
+      "text": "the language like catch and and so",
+      "offset": 728.639,
+      "duration": 4.161
+    },
+    {
+      "lang": "en",
+      "text": "typically one of the ways that you're",
+      "offset": 730.959,
+      "duration": 4.401
+    },
+    {
+      "lang": "en",
+      "text": "interacting with errors is via promises",
+      "offset": 732.8,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "in your app, whether that is through a",
+      "offset": 735.36,
+      "duration": 7.12
+    },
+    {
+      "lang": "en",
+      "text": "try catch block or a a catch on a",
+      "offset": 738.16,
+      "duration": 7.76
+    },
+    {
+      "lang": "en",
+      "text": "promise uh that will then be called the",
+      "offset": 742.48,
+      "duration": 5.84
+    },
+    {
+      "lang": "en",
+      "text": "moment that an error has happened. So",
+      "offset": 745.92,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "typically when we are trying to catch an",
+      "offset": 748.32,
+      "duration": 6.16
+    },
+    {
+      "lang": "en",
+      "text": "error, you want to wrap your code,",
+      "offset": 751.44,
+      "duration": 5.519
+    },
+    {
+      "lang": "en",
+      "text": "especially if there's a promise involved",
+      "offset": 754.48,
+      "duration": 5.039
+    },
+    {
+      "lang": "en",
+      "text": "in a try catch because that allows you",
+      "offset": 756.959,
+      "duration": 4.801
+    },
+    {
+      "lang": "en",
+      "text": "to say like, &quot;All right, in this block",
+      "offset": 759.519,
+      "duration": 5.601
+    },
+    {
+      "lang": "en",
+      "text": "of code, I I got my hands up ready to",
+      "offset": 761.76,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "ready to catch it in case this thing uh",
+      "offset": 765.12,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "starts throwing.&quot; So and then you can",
+      "offset": 767.04,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "handle that how how you may. Exactly.",
+      "offset": 769.04,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "And the other benefit of a try catch",
+      "offset": 771.36,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "block is that you can put so you can put",
+      "offset": 774,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "a lot of logic inside of a try and then",
+      "offset": 775.92,
+      "duration": 5.599
+    },
+    {
+      "lang": "en",
+      "text": "you can put the catch below it and say",
+      "offset": 779.44,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "if any of these things, you know, if any",
+      "offset": 781.519,
+      "duration": 4.081
+    },
+    {
+      "lang": "en",
+      "text": "of these things were to go wrong, you",
+      "offset": 784.16,
+      "duration": 2.76
+    },
+    {
+      "lang": "en",
+      "text": "don't have to handle every single one",
+      "offset": 785.6,
+      "duration": 3.359
+    },
+    {
+      "lang": "en",
+      "text": "individually. Then you can go ahead and",
+      "offset": 786.92,
+      "duration": 4.039
+    },
+    {
+      "lang": "en",
+      "text": "and catch it. The the alternative to",
+      "offset": 788.959,
+      "duration": 5.201
+    },
+    {
+      "lang": "en",
+      "text": "that is you can chain a catch onto it.",
+      "offset": 790.959,
+      "duration": 6.401
+    },
+    {
+      "lang": "en",
+      "text": "So even if you're using a sync await, I",
+      "offset": 794.16,
+      "duration": 4.799
+    },
+    {
+      "lang": "en",
+      "text": "like to call this the mix and match",
+      "offset": 797.36,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "where you could say like const user",
+      "offset": 798.959,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "equals await get user, but then you can",
+      "offset": 800.72,
+      "duration": 6.64
+    },
+    {
+      "lang": "en",
+      "text": "also just tack a catch onto the end of",
+      "offset": 803.279,
+      "duration": 7.521
+    },
+    {
+      "lang": "en",
+      "text": "that asynchronous function um or that",
+      "offset": 807.36,
+      "duration": 6.56
+    },
+    {
+      "lang": "en",
+      "text": "promisebased function. Now both the try",
+      "offset": 810.8,
+      "duration": 6.4
+    },
+    {
+      "lang": "en",
+      "text": "catch and the catch are they have their",
+      "offset": 813.92,
+      "duration": 5.719
+    },
+    {
+      "lang": "en",
+      "text": "own use cases uh where they may be",
+      "offset": 817.2,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "useful but sometimes both of those can",
+      "offset": 819.639,
+      "duration": 5.64
+    },
+    {
+      "lang": "en",
+      "text": "gum up your flow control quite a bit or",
+      "offset": 822.72,
+      "duration": 7.28
+    },
+    {
+      "lang": "en",
+      "text": "to a point where um it both of them will",
+      "offset": 825.279,
+      "duration": 7.68
+    },
+    {
+      "lang": "en",
+      "text": "scope the error inside of either inside",
+      "offset": 830,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "of a function or inside of a block and",
+      "offset": 832.959,
+      "duration": 5.041
+    },
+    {
+      "lang": "en",
+      "text": "then it can be hard to return from a",
+      "offset": 835.04,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "catch. It's it's hard to return from the",
+      "offset": 838,
+      "duration": 4.079
+    },
+    {
+      "lang": "en",
+      "text": "parent. you can't return from the parent",
+      "offset": 840.56,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "function, right? And then a try catch is",
+      "offset": 842.079,
+      "duration": 6.241
+    },
+    {
+      "lang": "en",
+      "text": "now you have your errors and your your",
+      "offset": 845.12,
+      "duration": 6.079
+    },
+    {
+      "lang": "en",
+      "text": "code and all of your variables scoped to",
+      "offset": 848.32,
+      "duration": 6.72
+    },
+    {
+      "lang": "en",
+      "text": "the the curly bracket scope. So one way",
+      "offset": 851.199,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "that I like to do is use a package",
+      "offset": 855.04,
+      "duration": 6.4
+    },
+    {
+      "lang": "en",
+      "text": "called awaited to. And I've also written",
+      "offset": 857.199,
+      "duration": 6.561
+    },
+    {
+      "lang": "en",
+      "text": "this one many times. And essentially",
+      "offset": 861.44,
+      "duration": 5.24
+    },
+    {
+      "lang": "en",
+      "text": "what it does is it",
+      "offset": 863.76,
+      "duration": 5.68
+    },
+    {
+      "lang": "en",
+      "text": "will it's a function that wraps your",
+      "offset": 866.68,
+      "duration": 6.12
+    },
+    {
+      "lang": "en",
+      "text": "promises and will return to you a tupole",
+      "offset": 869.44,
+      "duration": 5.6
+    },
+    {
+      "lang": "en",
+      "text": "meaning an array of two pieces of data.",
+      "offset": 872.8,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "The first piece being an error, the",
+      "offset": 875.04,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "second piece being the actual data. And",
+      "offset": 877.04,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "that's really nice because then you can",
+      "offset": 879.44,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "have both your error and your successful",
+      "offset": 882.32,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "return data available at the same level",
+      "offset": 885.44,
+      "duration": 5.839
+    },
+    {
+      "lang": "en",
+      "text": "without any weird scoping things. So",
+      "offset": 888.32,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "that's my like favorite way. There's",
+      "offset": 891.279,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "been a couple proposals in JavaScript to",
+      "offset": 893.12,
+      "duration": 5.519
+    },
+    {
+      "lang": "en",
+      "text": "add this natively and I sure hope that",
+      "offset": 895.519,
+      "duration": 6.88
+    },
+    {
+      "lang": "en",
+      "text": "we have it. Yeah, I I personally I like",
+      "offset": 898.639,
+      "duration": 6.721
+    },
+    {
+      "lang": "en",
+      "text": "that flow a lot. It makes a lot of it",
+      "offset": 902.399,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "makes too much sense honestly to be able",
+      "offset": 905.36,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "to have your error and everything at the",
+      "offset": 907.279,
+      "duration": 4.161
+    },
+    {
+      "lang": "en",
+      "text": "same level. Uh there there's also",
+      "offset": 909.6,
+      "duration": 3.359
+    },
+    {
+      "lang": "en",
+      "text": "something that's not explicitly related",
+      "offset": 911.44,
+      "duration": 2.8
+    },
+    {
+      "lang": "en",
+      "text": "to errors, but I feel like I should",
+      "offset": 912.959,
+      "duration": 3.281
+    },
+    {
+      "lang": "en",
+      "text": "mention it cuz I don't know if a lot of",
+      "offset": 914.24,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "people end up actually using this. um",
+      "offset": 916.24,
+      "duration": 4.399
+    },
+    {
+      "lang": "en",
+      "text": "because we always see the try catch, but",
+      "offset": 918.48,
+      "duration": 3.919
+    },
+    {
+      "lang": "en",
+      "text": "there's also both. There's also a",
+      "offset": 920.639,
+      "duration": 4.161
+    },
+    {
+      "lang": "en",
+      "text": "finally too. So there's a finally block",
+      "offset": 922.399,
+      "duration": 4.481
+    },
+    {
+      "lang": "en",
+      "text": "you can do after the catch or a dot",
+      "offset": 924.8,
+      "duration": 5.599
+    },
+    {
+      "lang": "en",
+      "text": "finally as well off of uh just a normal",
+      "offset": 926.88,
+      "duration": 6.959
+    },
+    {
+      "lang": "en",
+      "text": "promise. But this runs after a",
+      "offset": 930.399,
+      "duration": 6.721
+    },
+    {
+      "lang": "en",
+      "text": "successful or an error. So basically the",
+      "offset": 933.839,
+      "duration": 6.881
+    },
+    {
+      "lang": "en",
+      "text": "the the catch has happened or the catch",
+      "offset": 937.12,
+      "duration": 5.68
+    },
+    {
+      "lang": "en",
+      "text": "has not been triggered. But this will",
+      "offset": 940.72,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "then always run no matter what after",
+      "offset": 942.8,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "regardless of if it was successful or",
+      "offset": 945.6,
+      "duration": 3.359
+    },
+    {
+      "lang": "en",
+      "text": "not. That can be really handy for like",
+      "offset": 947.36,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "tear down. You want to remove event",
+      "offset": 948.959,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "listeners or Yes. regardless of of what",
+      "offset": 950.72,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "happened. Sometimes like you may ex",
+      "offset": 953.199,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "something might error like a a very",
+      "offset": 955.92,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "common one would be if you're trying to",
+      "offset": 958.959,
+      "duration": 6.8
+    },
+    {
+      "lang": "en",
+      "text": "report some data to a analytic server",
+      "offset": 961.68,
+      "duration": 5.68
+    },
+    {
+      "lang": "en",
+      "text": "service, right? There's there's a high",
+      "offset": 965.759,
+      "duration": 3.281
+    },
+    {
+      "lang": "en",
+      "text": "probability that the user will have an",
+      "offset": 967.36,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "ad blocker on and that fetch or that",
+      "offset": 969.04,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "that post request is going to fail. Um,",
+      "offset": 971.68,
+      "duration": 5.68
+    },
+    {
+      "lang": "en",
+      "text": "and if you if you know ah it's it's half",
+      "offset": 974.56,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "of these are going to fail anyways, it",
+      "offset": 977.36,
+      "duration": 3.919
+    },
+    {
+      "lang": "en",
+      "text": "can be helpful just to stick that final",
+      "offset": 979.36,
+      "duration": 4.68
+    },
+    {
+      "lang": "en",
+      "text": "logic in your finally so that you know",
+      "offset": 981.279,
+      "duration": 5.201
+    },
+    {
+      "lang": "en",
+      "text": "it's regardless of what happens I'm",
+      "offset": 984.04,
+      "duration": 4.919
+    },
+    {
+      "lang": "en",
+      "text": "going to display this to the user. Yes,",
+      "offset": 986.48,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "totally. Um, we also have promise.try",
+      "offset": 988.959,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "try um which is relatively new and if",
+      "offset": 991.44,
+      "duration": 5.759
+    },
+    {
+      "lang": "en",
+      "text": "you are writing a bunch of like",
+      "offset": 994.399,
+      "duration": 6.321
+    },
+    {
+      "lang": "en",
+      "text": "promisebased code and you have a",
+      "offset": 997.199,
+      "duration": 5.681
+    },
+    {
+      "lang": "en",
+      "text": "function that you don't necessarily know",
+      "offset": 1000.72,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "if it is promise or not or if you simply",
+      "offset": 1002.88,
+      "duration": 4.959
+    },
+    {
+      "lang": "en",
+      "text": "just want to maintain the same syntax",
+      "offset": 1006,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "for everything wrapping your function in",
+      "offset": 1007.839,
+      "duration": 7.841
+    },
+    {
+      "lang": "en",
+      "text": "a promise.try will allow you to handle",
+      "offset": 1010.8,
+      "duration": 8.08
+    },
+    {
+      "lang": "en",
+      "text": "your errors as if it were a promise or",
+      "offset": 1015.68,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "not. So if you're chaining a whole bunch",
+      "offset": 1018.88,
+      "duration": 4.879
+    },
+    {
+      "lang": "en",
+      "text": "of stuff and somewhere in that chain you",
+      "offset": 1020.88,
+      "duration": 5.84
+    },
+    {
+      "lang": "en",
+      "text": "have a synchronous function that is not",
+      "offset": 1023.759,
+      "duration": 6.001
+    },
+    {
+      "lang": "en",
+      "text": "returning a promise, you can kind of",
+      "offset": 1026.72,
+      "duration": 5.359
+    },
+    {
+      "lang": "en",
+      "text": "fake it into a promise with by wrapping",
+      "offset": 1029.76,
+      "duration": 4.12
+    },
+    {
+      "lang": "en",
+      "text": "it in a promise.",
+      "offset": 1032.079,
+      "duration": 4.801
+    },
+    {
+      "lang": "en",
+      "text": "Yeah, we also mentioned this already",
+      "offset": 1033.88,
+      "duration": 5.24
+    },
+    {
+      "lang": "en",
+      "text": "briefly, but in this scenario where you",
+      "offset": 1036.88,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "are like awaiting something or you're",
+      "offset": 1039.12,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "inside of a try catch block, when you",
+      "offset": 1041.12,
+      "duration": 4.959
+    },
+    {
+      "lang": "en",
+      "text": "catch that error, sometimes it makes",
+      "offset": 1043.36,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "sense to just rethrow it. And to rethrow",
+      "offset": 1046.079,
+      "duration": 5.761
+    },
+    {
+      "lang": "en",
+      "text": "it, you don't need to create a new error",
+      "offset": 1049.12,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "or anything. You just say throw and then",
+      "offset": 1051.84,
+      "duration": 4.959
+    },
+    {
+      "lang": "en",
+      "text": "the error that comes in from the catch.",
+      "offset": 1054.24,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "So, you don't have to create a new one.",
+      "offset": 1056.799,
+      "duration": 4.161
+    },
+    {
+      "lang": "en",
+      "text": "Uh you will see this code a lot where",
+      "offset": 1058.72,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "people are catching the error and then",
+      "offset": 1060.96,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "throwing a new error that has not been",
+      "offset": 1063.12,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "modified at all. You don't need to do",
+      "offset": 1064.96,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "that. You just throw the error. Um if",
+      "offset": 1066.88,
+      "duration": 4.799
+    },
+    {
+      "lang": "en",
+      "text": "you do need to add additional context",
+      "offset": 1069.44,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "then it makes sense to create a new",
+      "offset": 1071.679,
+      "duration": 5.521
+    },
+    {
+      "lang": "en",
+      "text": "error from that error and then you can",
+      "offset": 1074.96,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "just pass the current error in. You can",
+      "offset": 1077.2,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "give it a cause maybe about what",
+      "offset": 1080.08,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "whatever additional context you're",
+      "offset": 1082.4,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "trying to give it. But yes, you do not",
+      "offset": 1084.24,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "need to to create a new error if you're",
+      "offset": 1086.48,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "catching and just continue it down the",
+      "offset": 1089.6,
+      "duration": 5.199
+    },
+    {
+      "lang": "en",
+      "text": "line. Let's talk about client side",
+      "offset": 1091.76,
+      "duration": 6.159
+    },
+    {
+      "lang": "en",
+      "text": "errors. You may want to catch errors at",
+      "offset": 1094.799,
+      "duration": 5.521
+    },
+    {
+      "lang": "en",
+      "text": "different levels depending on what it is",
+      "offset": 1097.919,
+      "duration": 4.401
+    },
+    {
+      "lang": "en",
+      "text": "you're doing. Especially client side,",
+      "offset": 1100.32,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "you you may be thinking about I want to",
+      "offset": 1102.32,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "catch these at a UI level where I can",
+      "offset": 1105.44,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "display them, right? you may have uh",
+      "offset": 1107.36,
+      "duration": 5.679
+    },
+    {
+      "lang": "en",
+      "text": "form submission, validation errors, um",
+      "offset": 1109.2,
+      "duration": 6.479
+    },
+    {
+      "lang": "en",
+      "text": "instant feedback that you want to",
+      "offset": 1113.039,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "display to your user. So, generally",
+      "offset": 1115.679,
+      "duration": 5.801
+    },
+    {
+      "lang": "en",
+      "text": "you'll put those as as close as possible",
+      "offset": 1118.559,
+      "duration": 6.24
+    },
+    {
+      "lang": "en",
+      "text": "to the UI where where it's happening.",
+      "offset": 1121.48,
+      "duration": 5.24
+    },
+    {
+      "lang": "en",
+      "text": "But at other levels, you simply just",
+      "offset": 1124.799,
+      "duration": 4.561
+    },
+    {
+      "lang": "en",
+      "text": "want to have like a a sitewide error",
+      "offset": 1126.72,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "that you want to want to display, right?",
+      "offset": 1129.36,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "So back in the olden days before React",
+      "offset": 1131.2,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "and whatnot, we had this idea of like",
+      "offset": 1134.32,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "flash messages which you would just you",
+      "offset": 1136,
+      "duration": 5.039
+    },
+    {
+      "lang": "en",
+      "text": "would throw a flash message on the",
+      "offset": 1138.88,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "session and then the next time a page",
+      "offset": 1141.039,
+      "duration": 4.561
+    },
+    {
+      "lang": "en",
+      "text": "loaded that error would show up and that",
+      "offset": 1143.28,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "was really helpful for like your",
+      "offset": 1145.6,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "password has been reset successfully or",
+      "offset": 1147.2,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "sorry I I can't delete that item because",
+      "offset": 1150.16,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "you don't have have access to it. Now",
+      "offset": 1152.48,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "those have been replaced mostly with",
+      "offset": 1154.64,
+      "duration": 4.159
+    },
+    {
+      "lang": "en",
+      "text": "toast errors which can be really",
+      "offset": 1156.64,
+      "duration": 4.159
+    },
+    {
+      "lang": "en",
+      "text": "helpful. the little popup in the bottom",
+      "offset": 1158.799,
+      "duration": 4.161
+    },
+    {
+      "lang": "en",
+      "text": "right hand corner. Those are really nice",
+      "offset": 1160.799,
+      "duration": 5.521
+    },
+    {
+      "lang": "en",
+      "text": "because you don't always have a good UI",
+      "offset": 1162.96,
+      "duration": 7.599
+    },
+    {
+      "lang": "en",
+      "text": "for displaying an error, but throwing it",
+      "offset": 1166.32,
+      "duration": 6.719
+    },
+    {
+      "lang": "en",
+      "text": "in a pop-up's always an option, right?",
+      "offset": 1170.559,
+      "duration": 5.041
+    },
+    {
+      "lang": "en",
+      "text": "Yeah. Yeah. No, totally. It's important",
+      "offset": 1173.039,
+      "duration": 5.201
+    },
+    {
+      "lang": "en",
+      "text": "to know like when to use certain types",
+      "offset": 1175.6,
+      "duration": 4.959
+    },
+    {
+      "lang": "en",
+      "text": "of errors, right? Because often times",
+      "offset": 1178.24,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "like a toast message or popup or any of",
+      "offset": 1180.559,
+      "duration": 3.921
+    },
+    {
+      "lang": "en",
+      "text": "those things, those things are like good",
+      "offset": 1182.88,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "for errors that you kind of just want to",
+      "offset": 1184.48,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "alert the user of that will be gone in a",
+      "offset": 1187.12,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "moment, right? Like or maybe you give",
+      "offset": 1189.52,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "them an X and has a timer like, you",
+      "offset": 1191.52,
+      "duration": 5.519
+    },
+    {
+      "lang": "en",
+      "text": "know, try again or something, right? But",
+      "offset": 1194.32,
+      "duration": 4.479
+    },
+    {
+      "lang": "en",
+      "text": "then there's also like inline errors",
+      "offset": 1197.039,
+      "duration": 3.121
+    },
+    {
+      "lang": "en",
+      "text": "like when you're when you're working in",
+      "offset": 1198.799,
+      "duration": 4.321
+    },
+    {
+      "lang": "en",
+      "text": "a form. And the reason why you would",
+      "offset": 1200.16,
+      "duration": 6.96
+    },
+    {
+      "lang": "en",
+      "text": "most likely rather use a inline error",
+      "offset": 1203.12,
+      "duration": 6.4
+    },
+    {
+      "lang": "en",
+      "text": "when you're working in in a form is that",
+      "offset": 1207.12,
+      "duration": 3.96
+    },
+    {
+      "lang": "en",
+      "text": "it provides",
+      "offset": 1209.52,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "contextual information and instant",
+      "offset": 1211.08,
+      "duration": 5
+    },
+    {
+      "lang": "en",
+      "text": "feedback to the user, right? where like",
+      "offset": 1213.52,
+      "duration": 6.399
+    },
+    {
+      "lang": "en",
+      "text": "if if I if I submitted my password and I",
+      "offset": 1216.08,
+      "duration": 5.92
+    },
+    {
+      "lang": "en",
+      "text": "expected it to work and I look away from",
+      "offset": 1219.919,
+      "duration": 4.401
+    },
+    {
+      "lang": "en",
+      "text": "my phone cuz I'm have ADHD and I get",
+      "offset": 1222,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "distracted and I look back and it didn't",
+      "offset": 1224.32,
+      "duration": 4.239
+    },
+    {
+      "lang": "en",
+      "text": "submit. I would not know what would",
+      "offset": 1226.24,
+      "duration": 3.919
+    },
+    {
+      "lang": "en",
+      "text": "happen if you were using a toast message",
+      "offset": 1228.559,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "cuz they're usually ephemeral where that",
+      "offset": 1230.159,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "happens to me a lot. Yeah. Where it goes",
+      "offset": 1232.159,
+      "duration": 5.281
+    },
+    {
+      "lang": "en",
+      "text": "away and I I wasn't looking or like I've",
+      "offset": 1233.919,
+      "duration": 6.481
+    },
+    {
+      "lang": "en",
+      "text": "screen. Yeah. Yeah. That drives me nuts.",
+      "offset": 1237.44,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "Drives me nuts. So in those types of",
+      "offset": 1240.4,
+      "duration": 3.279
+    },
+    {
+      "lang": "en",
+      "text": "instances, it makes way more sense to",
+      "offset": 1242,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "put that in line contextually. So that",
+      "offset": 1243.679,
+      "duration": 4.321
+    },
+    {
+      "lang": "en",
+      "text": "way when your user looks at it, it shows",
+      "offset": 1246.08,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "you. I had an issue. I had a contextual",
+      "offset": 1248,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "inline error the other day, Wes, on a",
+      "offset": 1251.36,
+      "duration": 4.799
+    },
+    {
+      "lang": "en",
+      "text": "just one of those cheap smartome apps.",
+      "offset": 1253.76,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "Um I got like a smart IR blaster and",
+      "offset": 1256.159,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "man, it would not let me create an",
+      "offset": 1259.52,
+      "duration": 3.56
+    },
+    {
+      "lang": "en",
+      "text": "account. It was",
+      "offset": 1261.679,
+      "duration": 3.841
+    },
+    {
+      "lang": "en",
+      "text": "like, you know, you get all the it says",
+      "offset": 1263.08,
+      "duration": 4.28
+    },
+    {
+      "lang": "en",
+      "text": "here's the things you got to do. Got I",
+      "offset": 1265.52,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "got all the check boxes. All the check",
+      "offset": 1267.36,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "boxes are green. I use one password to",
+      "offset": 1269.2,
+      "duration": 4.479
+    },
+    {
+      "lang": "en",
+      "text": "generate a password. I click go and it",
+      "offset": 1271.28,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "says the error message pops up and it's",
+      "offset": 1273.679,
+      "duration": 4.641
+    },
+    {
+      "lang": "en",
+      "text": "just password is not valid. What do you",
+      "offset": 1276,
+      "duration": 3.919
+    },
+    {
+      "lang": "en",
+      "text": "mean my password? Like I could not be",
+      "offset": 1278.32,
+      "duration": 3.28
+    },
+    {
+      "lang": "en",
+      "text": "more valid and I tried it several",
+      "offset": 1279.919,
+      "duration": 3.201
+    },
+    {
+      "lang": "en",
+      "text": "different ways could not get past it.",
+      "offset": 1281.6,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "I'm sure it was probably some kind of",
+      "offset": 1283.12,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "error on their side. Oh, that's that's a",
+      "offset": 1285.12,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "really frustrating part is that the what",
+      "offset": 1287.28,
+      "duration": 3.759
+    },
+    {
+      "lang": "en",
+      "text": "might have happened there is that the",
+      "offset": 1289.6,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "their server code Yes. simply just wrap",
+      "offset": 1291.039,
+      "duration": 5.921
+    },
+    {
+      "lang": "en",
+      "text": "the whole route in like a try catch and",
+      "offset": 1294,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "they're like, &quot;Well, we should probably",
+      "offset": 1296.96,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "wrap this whole thing. I think we've",
+      "offset": 1298.64,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "covered all of our bases, but just in",
+      "offset": 1300.32,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "case.&quot; And then they throw some sort of",
+      "offset": 1302.88,
+      "duration": 4.159
+    },
+    {
+      "lang": "en",
+      "text": "like generic error or or something that",
+      "offset": 1304.4,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "is misleading and we'll say like",
+      "offset": 1307.039,
+      "duration": 5.041
+    },
+    {
+      "lang": "en",
+      "text": "password cannot be created. And that's",
+      "offset": 1309.28,
+      "duration": 5.92
+    },
+    {
+      "lang": "en",
+      "text": "really frustrating cuz you have no idea",
+      "offset": 1312.08,
+      "duration": 6.079
+    },
+    {
+      "lang": "en",
+      "text": "about what went wrong in that case or in",
+      "offset": 1315.2,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "in some cases what's happening and maybe",
+      "offset": 1318.159,
+      "duration": 4.481
+    },
+    {
+      "lang": "en",
+      "text": "I'll talk about this right now is that",
+      "offset": 1320.24,
+      "duration": 6.16
+    },
+    {
+      "lang": "en",
+      "text": "if you are trying to transform server",
+      "offset": 1322.64,
+      "duration": 6.8
+    },
+    {
+      "lang": "en",
+      "text": "errors into client errors, you often",
+      "offset": 1326.4,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "have to like translate them because you",
+      "offset": 1329.44,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "don't necessarily want to send like your",
+      "offset": 1331.76,
+      "duration": 5.919
+    },
+    {
+      "lang": "en",
+      "text": "your database thing. You may have stack",
+      "offset": 1335.2,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "traces in there that that are are",
+      "offset": 1337.679,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "sensitive. you may have like an actual",
+      "offset": 1339.44,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "error message that is sensitive and",
+      "offset": 1341.039,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "those should not be actually displayed",
+      "offset": 1343.12,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "to your end user. So often what you'll",
+      "offset": 1344.799,
+      "duration": 5.521
+    },
+    {
+      "lang": "en",
+      "text": "have to do is you'll have to like have",
+      "offset": 1348,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "like a database lookup or like a like",
+      "offset": 1350.32,
+      "duration": 4.239
+    },
+    {
+      "lang": "en",
+      "text": "not a not database lookup but like a map",
+      "offset": 1352.4,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "lookup meaning that like these are the",
+      "offset": 1354.559,
+      "duration": 4.081
+    },
+    {
+      "lang": "en",
+      "text": "possible errors that I know of and here",
+      "offset": 1356.32,
+      "duration": 5.359
+    },
+    {
+      "lang": "en",
+      "text": "are the friendly texts that I can do and",
+      "offset": 1358.64,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "often those are translated into multiple",
+      "offset": 1361.679,
+      "duration": 5.841
+    },
+    {
+      "lang": "en",
+      "text": "languages as well. But then if there is",
+      "offset": 1364.4,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "something that pops up that is not",
+      "offset": 1367.52,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "expected, you'll often fall back to like",
+      "offset": 1369.52,
+      "duration": 5.84
+    },
+    {
+      "lang": "en",
+      "text": "a a very generic error message that gets",
+      "offset": 1372,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "displayed to the user which is so",
+      "offset": 1375.36,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "frustrating to get. Yeah. Error messages",
+      "offset": 1376.72,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "you do not want to uh give your users",
+      "offset": 1379.12,
+      "duration": 5.84
+    },
+    {
+      "lang": "en",
+      "text": "are like email exists wrong password or",
+      "offset": 1381.6,
+      "duration": 5.439
+    },
+    {
+      "lang": "en",
+      "text": "something to indicate if the user",
+      "offset": 1384.96,
+      "duration": 4.719
+    },
+    {
+      "lang": "en",
+      "text": "actually has an account there or like",
+      "offset": 1387.039,
+      "duration": 4.961
+    },
+    {
+      "lang": "en",
+      "text": "Yeah. you you don't want to give uh",
+      "offset": 1389.679,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "people anything that they could then use",
+      "offset": 1392,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "to turn that information and use it to",
+      "offset": 1393.919,
+      "duration": 5.601
+    },
+    {
+      "lang": "en",
+      "text": "attack user accounts or or try to hack",
+      "offset": 1397.12,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "into somebody. You want that you want",
+      "offset": 1399.52,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "typically like yeah the the helpful",
+      "offset": 1401.84,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "messages for authentication and stuff",
+      "offset": 1404.08,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "like that would be something like",
+      "offset": 1406.24,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "password invalid but not like account",
+      "offset": 1408.08,
+      "duration": 5.68
+    },
+    {
+      "lang": "en",
+      "text": "already exists because that is a",
+      "offset": 1410.96,
+      "duration": 6.16
+    },
+    {
+      "lang": "en",
+      "text": "security issue. Yes. And that's why",
+      "offset": 1413.76,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "sometimes when you get an error, you'll",
+      "offset": 1417.12,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "get like a reference ID as well. Um",
+      "offset": 1418.72,
+      "duration": 4.959
+    },
+    {
+      "lang": "en",
+      "text": "because sometimes though they're they're",
+      "offset": 1421.44,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "trying to protect bad people from using",
+      "offset": 1423.679,
+      "duration": 5.681
+    },
+    {
+      "lang": "en",
+      "text": "those errors to know what h what is",
+      "offset": 1427.44,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "actually happening. But then you also if",
+      "offset": 1429.36,
+      "duration": 4.6
+    },
+    {
+      "lang": "en",
+      "text": "somebody were to email you that that is",
+      "offset": 1432.08,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "legitimate, you need to be able to",
+      "offset": 1433.96,
+      "duration": 4.04
+    },
+    {
+      "lang": "en",
+      "text": "translate that like obtuse error that",
+      "offset": 1435.84,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "they got to actually help them out. So",
+      "offset": 1438,
+      "duration": 3.919
+    },
+    {
+      "lang": "en",
+      "text": "that's why sometimes you'll get like a",
+      "offset": 1440.4,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "reference like a hex value or something",
+      "offset": 1441.919,
+      "duration": 5.201
+    },
+    {
+      "lang": "en",
+      "text": "weird in there or a unique value where",
+      "offset": 1444.32,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "they can just go ahead and look up what",
+      "offset": 1447.12,
+      "duration": 3.919
+    },
+    {
+      "lang": "en",
+      "text": "actually happened and and then help you",
+      "offset": 1448.64,
+      "duration": 5.919
+    },
+    {
+      "lang": "en",
+      "text": "from there. Um error boundaries. This is",
+      "offset": 1451.039,
+      "duration": 7.281
+    },
+    {
+      "lang": "en",
+      "text": "something that many React has it. Uh",
+      "offset": 1454.559,
+      "duration": 5.921
+    },
+    {
+      "lang": "en",
+      "text": "spelt is getting it or spelt does have",
+      "offset": 1458.32,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "it now I believe.",
+      "offset": 1460.48,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "This is the idea that in your UI you can",
+      "offset": 1462.64,
+      "duration": 7.039
+    },
+    {
+      "lang": "en",
+      "text": "write a error boundary tag or component",
+      "offset": 1466,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "that will catch any errors that are",
+      "offset": 1469.679,
+      "duration": 3.761
+    },
+    {
+      "lang": "en",
+      "text": "happening inside of it. And that's",
+      "offset": 1471.44,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "really nice because you could wrap an",
+      "offset": 1473.44,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "error boundary around a component like a",
+      "offset": 1475.12,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "form and catch anything that happens",
+      "offset": 1477.44,
+      "duration": 4.239
+    },
+    {
+      "lang": "en",
+      "text": "inside of there. Uh but then you can",
+      "offset": 1479.44,
+      "duration": 4.719
+    },
+    {
+      "lang": "en",
+      "text": "also have ones that are a little higher",
+      "offset": 1481.679,
+      "duration": 4.561
+    },
+    {
+      "lang": "en",
+      "text": "up that will catch values. And that's",
+      "offset": 1484.159,
+      "duration": 4.961
+    },
+    {
+      "lang": "en",
+      "text": "really helpful where for example you",
+      "offset": 1486.24,
+      "duration": 6.24
+    },
+    {
+      "lang": "en",
+      "text": "don't want to like wrap your your n you",
+      "offset": 1489.12,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "don't want your navigation to break if",
+      "offset": 1492.48,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "something like small happens on on your",
+      "offset": 1494.08,
+      "duration": 2.88
+    },
+    {
+      "lang": "en",
+      "text": "website. You don't want the whole",
+      "offset": 1496,
+      "duration": 3.12
+    },
+    {
+      "lang": "en",
+      "text": "website to break. So you'll often have",
+      "offset": 1496.96,
+      "duration": 4.959
+    },
+    {
+      "lang": "en",
+      "text": "several levels of error boundaries in",
+      "offset": 1499.12,
+      "duration": 5.679
+    },
+    {
+      "lang": "en",
+      "text": "your application that will try and catch",
+      "offset": 1501.919,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "anything that that bubbles up. And",
+      "offset": 1504.799,
+      "duration": 5.201
+    },
+    {
+      "lang": "en",
+      "text": "that's really nice because you can also",
+      "offset": 1507.919,
+      "duration": 4.321
+    },
+    {
+      "lang": "en",
+      "text": "with an error boundary, you can simply",
+      "offset": 1510,
+      "duration": 5.679
+    },
+    {
+      "lang": "en",
+      "text": "just throw like you don't care inside of",
+      "offset": 1512.24,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "a component and you knowing that",
+      "offset": 1515.679,
+      "duration": 4.561
+    },
+    {
+      "lang": "en",
+      "text": "somewhere higher in the the component",
+      "offset": 1517.76,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "tree is going to successfully catch that",
+      "offset": 1520.24,
+      "duration": 5.439
+    },
+    {
+      "lang": "en",
+      "text": "and be able to display it to your user.",
+      "offset": 1523.12,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "Yeah. You ready to get into server",
+      "offset": 1525.679,
+      "duration": 4.561
+    },
+    {
+      "lang": "en",
+      "text": "errors? Yes. Yes. Let's talk about it.",
+      "offset": 1527.44,
+      "duration": 6.4
+    },
+    {
+      "lang": "en",
+      "text": "Let's talk about server errors. Again,",
+      "offset": 1530.24,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "we we mentioned a little bit about",
+      "offset": 1533.84,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "server errors through the the course of",
+      "offset": 1535.76,
+      "duration": 4.919
+    },
+    {
+      "lang": "en",
+      "text": "this, but really again, server errors",
+      "offset": 1537.44,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "are something that you have to be",
+      "offset": 1540.679,
+      "duration": 4.681
+    },
+    {
+      "lang": "en",
+      "text": "careful about leaking into your your",
+      "offset": 1542.72,
+      "duration": 4.559
+    },
+    {
+      "lang": "en",
+      "text": "client because sometimes that things",
+      "offset": 1545.36,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "like we've mentioned several times could",
+      "offset": 1547.279,
+      "duration": 4.721
+    },
+    {
+      "lang": "en",
+      "text": "be sensitive and uh as we've mentioned",
+      "offset": 1549.12,
+      "duration": 5.6
+    },
+    {
+      "lang": "en",
+      "text": "already, it's common to have a lookup of",
+      "offset": 1552,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "error types that you can send a message",
+      "offset": 1554.72,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "to the client to let them know that",
+      "offset": 1556.88,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "something is going wrong, but then we're",
+      "offset": 1558.96,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "handling it on our own logging it or",
+      "offset": 1561.36,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "being able to fix it in the back end",
+      "offset": 1564.48,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "without exposing that to the client. So",
+      "offset": 1566.32,
+      "duration": 3.28
+    },
+    {
+      "lang": "en",
+      "text": "something very important to keep in",
+      "offset": 1568.24,
+      "duration": 3.439
+    },
+    {
+      "lang": "en",
+      "text": "mind. A JSON API, this is something that",
+      "offset": 1569.6,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "I've done quite a bit where I will like",
+      "offset": 1571.679,
+      "duration": 6.48
+    },
+    {
+      "lang": "en",
+      "text": "wrap all of my API routes for any",
+      "offset": 1574,
+      "duration": 6.64
+    },
+    {
+      "lang": "en",
+      "text": "possible uncaught errors. So inside of",
+      "offset": 1578.159,
+      "duration": 4.961
+    },
+    {
+      "lang": "en",
+      "text": "each of my API routes, I may want to",
+      "offset": 1580.64,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "handle that in that specific API route.",
+      "offset": 1583.12,
+      "duration": 7.6
+    },
+    {
+      "lang": "en",
+      "text": "But if I don't, then I wrap every single",
+      "offset": 1586.4,
+      "duration": 6.399
+    },
+    {
+      "lang": "en",
+      "text": "route in a high order function and that",
+      "offset": 1590.72,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "will then catch it and send a a JSON API",
+      "offset": 1592.799,
+      "duration": 7.201
+    },
+    {
+      "lang": "en",
+      "text": "error to it. Or even even further is",
+      "offset": 1596.72,
+      "duration": 6.24
+    },
+    {
+      "lang": "en",
+      "text": "I'll check the accept header on the",
+      "offset": 1600,
+      "duration": 6.039
+    },
+    {
+      "lang": "en",
+      "text": "request and if the request is asking for",
+      "offset": 1602.96,
+      "duration": 6.079
+    },
+    {
+      "lang": "en",
+      "text": "JSON then I'll return the error in JSON",
+      "offset": 1606.039,
+      "duration": 5.321
+    },
+    {
+      "lang": "en",
+      "text": "format. Otherwise, you can return the",
+      "offset": 1609.039,
+      "duration": 5.601
+    },
+    {
+      "lang": "en",
+      "text": "error in like an HTML format or whatever",
+      "offset": 1611.36,
+      "duration": 5.84
+    },
+    {
+      "lang": "en",
+      "text": "makes sense. So that that can be a",
+      "offset": 1614.64,
+      "duration": 5.039
+    },
+    {
+      "lang": "en",
+      "text": "helpful way if you've ever like had an",
+      "offset": 1617.2,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "error on a website and you look in your",
+      "offset": 1619.679,
+      "duration": 4.561
+    },
+    {
+      "lang": "en",
+      "text": "dev tools and it says cannot read angle",
+      "offset": 1621.6,
+      "duration": 5.679
+    },
+    {
+      "lang": "en",
+      "text": "bro bracket or cannot parse angle",
+      "offset": 1624.24,
+      "duration": 6.24
+    },
+    {
+      "lang": "en",
+      "text": "bracket. What's happening is that",
+      "offset": 1627.279,
+      "duration": 5.441
+    },
+    {
+      "lang": "en",
+      "text": "an error happened on the server. Your",
+      "offset": 1630.48,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "client code is assuming that JSON is",
+      "offset": 1632.72,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "coming back but it's it's not because",
+      "offset": 1634.88,
+      "duration": 5.84
+    },
+    {
+      "lang": "en",
+      "text": "it's it's sending some HTML back. And",
+      "offset": 1637.2,
+      "duration": 6.24
+    },
+    {
+      "lang": "en",
+      "text": "often you can you can go into the",
+      "offset": 1640.72,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "network tab and look at the HTML that",
+      "offset": 1643.44,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "was returned and it will show you what",
+      "offset": 1645.2,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "actually happened in that case. Yeah,",
+      "offset": 1647.6,
+      "duration": 4.559
+    },
+    {
+      "lang": "en",
+      "text": "that's an easy one to to have memorized",
+      "offset": 1649.76,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "if that's happening. Uh the response is",
+      "offset": 1652.159,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "coming in as HTML and then you're not",
+      "offset": 1654.4,
+      "duration": 5.519
+    },
+    {
+      "lang": "en",
+      "text": "expecting it to come back as HTML. Uh",
+      "offset": 1656.799,
+      "duration": 6.081
+    },
+    {
+      "lang": "en",
+      "text": "very common especially today. Uh so",
+      "offset": 1659.919,
+      "duration": 6.801
+    },
+    {
+      "lang": "en",
+      "text": "there's also HTTP response codes. So",
+      "offset": 1662.88,
+      "duration": 5.679
+    },
+    {
+      "lang": "en",
+      "text": "different response codes are things that",
+      "offset": 1666.72,
+      "duration": 4.559
+    },
+    {
+      "lang": "en",
+      "text": "you have to be able to handle on the",
+      "offset": 1668.559,
+      "duration": 4.961
+    },
+    {
+      "lang": "en",
+      "text": "client and having a good understanding",
+      "offset": 1671.279,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "of the response codes is something that",
+      "offset": 1673.52,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "is a foundational skill that you'll need",
+      "offset": 1676.159,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "to have. But in general, you know, the",
+      "offset": 1678,
+      "duration": 5.039
+    },
+    {
+      "lang": "en",
+      "text": "ones related to errors, um 200 through",
+      "offset": 1680.399,
+      "duration": 5.441
+    },
+    {
+      "lang": "en",
+      "text": "299 are success codes. Uh 400 through",
+      "offset": 1683.039,
+      "duration": 7.12
+    },
+    {
+      "lang": "en",
+      "text": "499 are a client error. You know, 404 um",
+      "offset": 1685.84,
+      "duration": 6.719
+    },
+    {
+      "lang": "en",
+      "text": "500 through 599 are server errors. You",
+      "offset": 1690.159,
+      "duration": 4.041
+    },
+    {
+      "lang": "en",
+      "text": "could think of it as like an",
+      "offset": 1692.559,
+      "duration": 3.921
+    },
+    {
+      "lang": "en",
+      "text": "unauthor 401. that's unauthorized,",
+      "offset": 1694.2,
+      "duration": 4.68
+    },
+    {
+      "lang": "en",
+      "text": "right? 500 is normally like something",
+      "offset": 1696.48,
+      "duration": 5.199
+    },
+    {
+      "lang": "en",
+      "text": "went wrong on the server, right? Uh and",
+      "offset": 1698.88,
+      "duration": 4.399
+    },
+    {
+      "lang": "en",
+      "text": "those can be handled in any sort of",
+      "offset": 1701.679,
+      "duration": 3.521
+    },
+    {
+      "lang": "en",
+      "text": "different ways. Um the exception to this",
+      "offset": 1703.279,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "is if you're using something like",
+      "offset": 1705.2,
+      "duration": 5.839
+    },
+    {
+      "lang": "en",
+      "text": "GraphQL, uh GraphQL will return a status",
+      "offset": 1706.799,
+      "duration": 6.961
+    },
+    {
+      "lang": "en",
+      "text": "code of 200 with like a message that",
+      "offset": 1711.039,
+      "duration": 5.041
+    },
+    {
+      "lang": "en",
+      "text": "there's an error. So it it's it's very",
+      "offset": 1713.76,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "funny how they do that, but they're like",
+      "offset": 1716.08,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "the reasoning for that is that like",
+      "offset": 1718.32,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "they're saying that the the response",
+      "offset": 1720.64,
+      "duration": 5.6
+    },
+    {
+      "lang": "en",
+      "text": "from GraphQL was success successfully",
+      "offset": 1723.2,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "took place, but that response was that",
+      "offset": 1726.24,
+      "duration": 5.679
+    },
+    {
+      "lang": "en",
+      "text": "there was a problem somewhere. Yes, that",
+      "offset": 1728.72,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "that's always a funny like successfully",
+      "offset": 1731.919,
+      "duration": 5.64
+    },
+    {
+      "lang": "en",
+      "text": "errored. If you are doing server",
+      "offset": 1734.24,
+      "duration": 6.799
+    },
+    {
+      "lang": "en",
+      "text": "validation and something went wrong in",
+      "offset": 1737.559,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "that",
+      "offset": 1741.039,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "validation, do you do you return a",
+      "offset": 1741.799,
+      "duration": 4.081
+    },
+    {
+      "lang": "en",
+      "text": "status",
+      "offset": 1745.039,
+      "duration": 3.841
+    },
+    {
+      "lang": "en",
+      "text": "code that like like something went wrong",
+      "offset": 1745.88,
+      "duration": 5.399
+    },
+    {
+      "lang": "en",
+      "text": "along with the the error message? Yes.",
+      "offset": 1748.88,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "Um or I like I think so, right? like you",
+      "offset": 1751.279,
+      "duration": 5.841
+    },
+    {
+      "lang": "en",
+      "text": "can you can return a status code that is",
+      "offset": 1754,
+      "duration": 6.399
+    },
+    {
+      "lang": "en",
+      "text": "an error but still return JSON or",
+      "offset": 1757.12,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "whatever format like a React server",
+      "offset": 1760.399,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "component payload that that you're",
+      "offset": 1762.48,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "looking for. Plus like in GraphQL world",
+      "offset": 1764.159,
+      "duration": 5.441
+    },
+    {
+      "lang": "en",
+      "text": "is there's a possibility that part of",
+      "offset": 1767.12,
+      "duration": 6.4
+    },
+    {
+      "lang": "en",
+      "text": "your payload will have an error and then",
+      "offset": 1769.6,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "other parts will be successful. So it's",
+      "offset": 1773.52,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "it's a wild world there. But often what",
+      "offset": 1775.6,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "that means at the end of the day is",
+      "offset": 1778.72,
+      "duration": 3.439
+    },
+    {
+      "lang": "en",
+      "text": "before you go ahead and as you get the",
+      "offset": 1780,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "the payload back, you're simply going to",
+      "offset": 1782.159,
+      "duration": 4.481
+    },
+    {
+      "lang": "en",
+      "text": "be checking what that payload looks",
+      "offset": 1784.64,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "like. And hopefully your TypeScript",
+      "offset": 1786.64,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "types are telling you that you have a",
+      "offset": 1788.32,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "tupil or or something like that of",
+      "offset": 1790.72,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "either an error or data, not both. The",
+      "offset": 1792.48,
+      "duration": 4.799
+    },
+    {
+      "lang": "en",
+      "text": "problem here is that people can just do",
+      "offset": 1795.84,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "anything. So sometimes people do the",
+      "offset": 1797.279,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "wackiest stuff and uh if it's not your",
+      "offset": 1800.24,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "code, it's good to know exactly what's",
+      "offset": 1803.039,
+      "duration": 5.041
+    },
+    {
+      "lang": "en",
+      "text": "going on. Uh otherwise it's best to",
+      "offset": 1805.52,
+      "duration": 5.84
+    },
+    {
+      "lang": "en",
+      "text": "follow best practices. Um but what about",
+      "offset": 1808.08,
+      "duration": 6.319
+    },
+    {
+      "lang": "en",
+      "text": "fixing and logging these errors? Um this",
+      "offset": 1811.36,
+      "duration": 7.439
+    },
+    {
+      "lang": "en",
+      "text": "is something that you know as uh Century",
+      "offset": 1814.399,
+      "duration": 6.64
+    },
+    {
+      "lang": "en",
+      "text": "employees um or at least I'm a Century",
+      "offset": 1818.799,
+      "duration": 3.681
+    },
+    {
+      "lang": "en",
+      "text": "employee. We're we're able I guess",
+      "offset": 1821.039,
+      "duration": 4.161
+    },
+    {
+      "lang": "en",
+      "text": "you're a Sentry Century SHs is the",
+      "offset": 1822.48,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "correct word. As Century shills this is",
+      "offset": 1825.2,
+      "duration": 4.719
+    },
+    {
+      "lang": "en",
+      "text": "something we're very familiar with. So",
+      "offset": 1827.84,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "logging and uh being able to solve these",
+      "offset": 1829.919,
+      "duration": 4.321
+    },
+    {
+      "lang": "en",
+      "text": "errors is something that you'll want to",
+      "offset": 1832.64,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "do in production specifically because",
+      "offset": 1834.24,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "yeah in development you you you might be",
+      "offset": 1836.96,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "incurring these errors and typically",
+      "offset": 1839.2,
+      "duration": 3.28
+    },
+    {
+      "lang": "en",
+      "text": "it's happening while you're using the",
+      "offset": 1841.2,
+      "duration": 2.959
+    },
+    {
+      "lang": "en",
+      "text": "app. So maybe you can go find it and fix",
+      "offset": 1842.48,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "it. Uh but in in production code errors",
+      "offset": 1844.159,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "just be happening and you might not know",
+      "offset": 1847.6,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "about it uh because you might not",
+      "offset": 1849.279,
+      "duration": 4.241
+    },
+    {
+      "lang": "en",
+      "text": "encounter every use case in development.",
+      "offset": 1851.36,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "So, the fact that things can be",
+      "offset": 1853.52,
+      "duration": 3.399
+    },
+    {
+      "lang": "en",
+      "text": "happening without you knowing it",
+      "offset": 1854.96,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "involves well potentially users just not",
+      "offset": 1856.919,
+      "duration": 5.801
+    },
+    {
+      "lang": "en",
+      "text": "using your stuff because it's not",
+      "offset": 1860.48,
+      "duration": 4.319
+    },
+    {
+      "lang": "en",
+      "text": "working and you might be using it",
+      "offset": 1862.72,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "yourself and be like, &quot;It's working for",
+      "offset": 1864.799,
+      "duration": 3.041
+    },
+    {
+      "lang": "en",
+      "text": "me.&quot; Next thing you know, you're like,",
+      "offset": 1866.08,
+      "duration": 3.599
+    },
+    {
+      "lang": "en",
+      "text": "&quot;Oh, wait. I have a special flag on my",
+      "offset": 1867.84,
+      "duration": 3.28
+    },
+    {
+      "lang": "en",
+      "text": "account specifically or I have some",
+      "offset": 1869.679,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "logic that targets my my account",
+      "offset": 1871.12,
+      "duration": 3.679
+    },
+    {
+      "lang": "en",
+      "text": "specifically or not another users or",
+      "offset": 1873.039,
+      "duration": 3.441
+    },
+    {
+      "lang": "en",
+      "text": "whatever.&quot; There's there's some mismatch",
+      "offset": 1874.799,
+      "duration": 5.441
+    },
+    {
+      "lang": "en",
+      "text": "there. So being able to handle and store",
+      "offset": 1876.48,
+      "duration": 5.84
+    },
+    {
+      "lang": "en",
+      "text": "and log these errors is something that I",
+      "offset": 1880.24,
+      "duration": 4.319
+    },
+    {
+      "lang": "en",
+      "text": "think is very important. Um obviously",
+      "offset": 1882.32,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "I'm going to say but I truly believe",
+      "offset": 1884.559,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "because we used Sentry before we were",
+      "offset": 1886.88,
+      "duration": 5.6
+    },
+    {
+      "lang": "en",
+      "text": "sponsored by them uh before this podcast",
+      "offset": 1889.919,
+      "duration": 5.281
+    },
+    {
+      "lang": "en",
+      "text": "was presented by Century like way back",
+      "offset": 1892.48,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "when I've been using Sentry forever",
+      "offset": 1895.2,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "because it it makes so much sense to log",
+      "offset": 1897.84,
+      "duration": 3.839
+    },
+    {
+      "lang": "en",
+      "text": "and store these errors and it's only",
+      "offset": 1900.24,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "gotten better. So they handle logging",
+      "offset": 1901.679,
+      "duration": 4.801
+    },
+    {
+      "lang": "en",
+      "text": "and storing the errors, telling you how",
+      "offset": 1904.32,
+      "duration": 4.239
+    },
+    {
+      "lang": "en",
+      "text": "many times they've happened, how many",
+      "offset": 1906.48,
+      "duration": 4.079
+    },
+    {
+      "lang": "en",
+      "text": "users or which user they happened to,",
+      "offset": 1908.559,
+      "duration": 4.561
+    },
+    {
+      "lang": "en",
+      "text": "what browser, uh what version of your",
+      "offset": 1910.559,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "application. And it makes it makes",
+      "offset": 1913.12,
+      "duration": 4.559
+    },
+    {
+      "lang": "en",
+      "text": "fixing these things way easier cuz let's",
+      "offset": 1915.279,
+      "duration": 5.361
+    },
+    {
+      "lang": "en",
+      "text": "say a a bug showed up 100 times in a",
+      "offset": 1917.679,
+      "duration": 5.281
+    },
+    {
+      "lang": "en",
+      "text": "specific version of your app and somehow",
+      "offset": 1920.64,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "got fixed without you even knowing it,",
+      "offset": 1922.96,
+      "duration": 3.599
+    },
+    {
+      "lang": "en",
+      "text": "you would be able to see, oh, this isn't",
+      "offset": 1924.88,
+      "duration": 3.12
+    },
+    {
+      "lang": "en",
+      "text": "something I need to investigate right",
+      "offset": 1926.559,
+      "duration": 4.36
+    },
+    {
+      "lang": "en",
+      "text": "now. Um they also just like today",
+      "offset": 1928,
+      "duration": 6.399
+    },
+    {
+      "lang": "en",
+      "text": "announced logging generally in Sentry is",
+      "offset": 1930.919,
+      "duration": 7.041
+    },
+    {
+      "lang": "en",
+      "text": "in is an open beta. So logging is",
+      "offset": 1934.399,
+      "duration": 6.081
+    },
+    {
+      "lang": "en",
+      "text": "basically anytime you do any type of",
+      "offset": 1937.96,
+      "duration": 5.4
+    },
+    {
+      "lang": "en",
+      "text": "log, it's being stored. And there's a",
+      "offset": 1940.48,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "lot of other services that do logging,",
+      "offset": 1943.36,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "whether it's like paper trail or any of",
+      "offset": 1945.36,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "these things. And they just basically",
+      "offset": 1946.88,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "say if you're console logging or console",
+      "offset": 1949.2,
+      "duration": 3.359
+    },
+    {
+      "lang": "en",
+      "text": "airing anything, I'm just going to",
+      "offset": 1951.12,
+      "duration": 3.279
+    },
+    {
+      "lang": "en",
+      "text": "collect all those logs and I'm going to",
+      "offset": 1952.559,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "give you an interface to be able to find",
+      "offset": 1954.399,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "and search for specific logs to be able",
+      "offset": 1955.919,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "to determine what happened. But with",
+      "offset": 1958.559,
+      "duration": 4.161
+    },
+    {
+      "lang": "en",
+      "text": "Sentry, it's kind of cool because again,",
+      "offset": 1960.399,
+      "duration": 4.961
+    },
+    {
+      "lang": "en",
+      "text": "this sounds like an ad. uh is I",
+      "offset": 1962.72,
+      "duration": 4.319
+    },
+    {
+      "lang": "en",
+      "text": "genuinely think this is cool. They can",
+      "offset": 1965.36,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "attach it directly to your spans and",
+      "offset": 1967.039,
+      "duration": 4.721
+    },
+    {
+      "lang": "en",
+      "text": "errors to be like contextually this",
+      "offset": 1968.88,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "error and this log are related to each",
+      "offset": 1971.76,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "other. This explicit one you can you can",
+      "offset": 1974,
+      "duration": 4.799
+    },
+    {
+      "lang": "en",
+      "text": "when an error happened to a specific",
+      "offset": 1976.88,
+      "duration": 5.279
+    },
+    {
+      "lang": "en",
+      "text": "user. Yes, you can look at what was what",
+      "offset": 1978.799,
+      "duration": 5.281
+    },
+    {
+      "lang": "en",
+      "text": "your logs on the server were doing. You",
+      "offset": 1982.159,
+      "duration": 4.081
+    },
+    {
+      "lang": "en",
+      "text": "don't have to like piece those things",
+      "offset": 1984.08,
+      "duration": 3.839
+    },
+    {
+      "lang": "en",
+      "text": "together which can can be really",
+      "offset": 1986.24,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "helpful. a big fan of that cuz like",
+      "offset": 1987.919,
+      "duration": 5.281
+    },
+    {
+      "lang": "en",
+      "text": "obviously I think you should be able to",
+      "offset": 1991.6,
+      "duration": 4.959
+    },
+    {
+      "lang": "en",
+      "text": "solve a lot of your problems with just a",
+      "offset": 1993.2,
+      "duration": 6.16
+    },
+    {
+      "lang": "en",
+      "text": "regular issues in something like Sentry,",
+      "offset": 1996.559,
+      "duration": 4.801
+    },
+    {
+      "lang": "en",
+      "text": "but every now and then you you simply",
+      "offset": 1999.36,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "just need logs or you need to be able to",
+      "offset": 2001.36,
+      "duration": 3.919
+    },
+    {
+      "lang": "en",
+      "text": "like look up your logs and see how often",
+      "offset": 2003.2,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "something happens. So I'm actually",
+      "offset": 2005.279,
+      "duration": 5.601
+    },
+    {
+      "lang": "en",
+      "text": "excited about having that. Yeah, if",
+      "offset": 2007.84,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "you're putting on on the scale of like",
+      "offset": 2010.88,
+      "duration": 3.12
+    },
+    {
+      "lang": "en",
+      "text": "what's most important to least",
+      "offset": 2012.64,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "important, I think logging and capturing",
+      "offset": 2014,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "errors specifically is is the most",
+      "offset": 2016.96,
+      "duration": 6.48
+    },
+    {
+      "lang": "en",
+      "text": "important and like logging is less",
+      "offset": 2019.76,
+      "duration": 5.56
+    },
+    {
+      "lang": "en",
+      "text": "important. But when they when they're",
+      "offset": 2023.44,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "contextual and and there's more",
+      "offset": 2025.32,
+      "duration": 4.28
+    },
+    {
+      "lang": "en",
+      "text": "information, they become I think logging",
+      "offset": 2027.36,
+      "duration": 4.159
+    },
+    {
+      "lang": "en",
+      "text": "becomes more useful, which not more",
+      "offset": 2029.6,
+      "duration": 4.559
+    },
+    {
+      "lang": "en",
+      "text": "useful than capturing errors, but like",
+      "offset": 2031.519,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "more useful than if it's just a big old",
+      "offset": 2034.159,
+      "duration": 4.561
+    },
+    {
+      "lang": "en",
+      "text": "dump all the logs. We should also say",
+      "offset": 2036.559,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "there's like kind of like two different",
+      "offset": 2038.72,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "ways to like log an error. Like",
+      "offset": 2041.679,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "sometimes you may you may catch an error",
+      "offset": 2043.44,
+      "duration": 4.239
+    },
+    {
+      "lang": "en",
+      "text": "and you like you don't want to log that",
+      "offset": 2045.919,
+      "duration": 3.041
+    },
+    {
+      "lang": "en",
+      "text": "because you you successfully caught it",
+      "offset": 2047.679,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "and you successfully dealt with it. Um",
+      "offset": 2048.96,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "and and sometimes you may you may catch",
+      "offset": 2051.359,
+      "duration": 5.361
+    },
+    {
+      "lang": "en",
+      "text": "an error and go that shouldn't this",
+      "offset": 2053.44,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "should never happen. Like if you ever",
+      "offset": 2056.72,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "have code where you have this should",
+      "offset": 2058.24,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "never happen or or whatever.",
+      "offset": 2060.24,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "That's the point where I still send it",
+      "offset": 2063.44,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "off to Sentry because I'm like, I know",
+      "offset": 2065.04,
+      "duration": 4.639
+    },
+    {
+      "lang": "en",
+      "text": "this should never happen, but I'm going",
+      "offset": 2067.76,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "to go send it off because if it does,",
+      "offset": 2069.679,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "I'm certainly going to need to know what",
+      "offset": 2071.52,
+      "duration": 6.48
+    },
+    {
+      "lang": "en",
+      "text": "happened um in this use case. So, never",
+      "offset": 2074.079,
+      "duration": 6.721
+    },
+    {
+      "lang": "en",
+      "text": "write code where you don't think an",
+      "offset": 2078,
+      "duration": 4.399
+    },
+    {
+      "lang": "en",
+      "text": "error should happen. I'll I'll tell you",
+      "offset": 2080.8,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "that because I've I've had my course",
+      "offset": 2082.399,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "platform crash several times where there",
+      "offset": 2085.2,
+      "duration": 6.08
+    },
+    {
+      "lang": "en",
+      "text": "was simple things where I just expected",
+      "offset": 2088.399,
+      "duration": 5.041
+    },
+    {
+      "lang": "en",
+      "text": "that to never happen. Like one example",
+      "offset": 2091.28,
+      "duration": 6.96
+    },
+    {
+      "lang": "en",
+      "text": "was I expected my email SMTP to never be",
+      "offset": 2093.44,
+      "duration": 7.76
+    },
+    {
+      "lang": "en",
+      "text": "down. Um or I didn't I didn't account",
+      "offset": 2098.24,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "for that possibly being an issue, right?",
+      "offset": 2101.2,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "It just pings the API and and sent it.",
+      "offset": 2103.68,
+      "duration": 6.159
+    },
+    {
+      "lang": "en",
+      "text": "But if it if if it can't do that, then",
+      "offset": 2107.2,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "it was it was interfering with some of",
+      "offset": 2109.839,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "the other logic that needed to happen.",
+      "offset": 2111.52,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "So in that case, I had to catch that",
+      "offset": 2113.359,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "specific error and then throw it into a",
+      "offset": 2116.16,
+      "duration": 5.6
+    },
+    {
+      "lang": "en",
+      "text": "queue to to retry at a different point.",
+      "offset": 2119.119,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "Yeah. Yeah. Totally. Um I will say",
+      "offset": 2121.76,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "having a tool, whatever that tool may",
+      "offset": 2125.119,
+      "duration": 3.841
+    },
+    {
+      "lang": "en",
+      "text": "be, does not have to be Sentry to",
+      "offset": 2127.28,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "capture these errors, I do think goes a",
+      "offset": 2128.96,
+      "duration": 5.6
+    },
+    {
+      "lang": "en",
+      "text": "long way for um not I just think it goes",
+      "offset": 2131.44,
+      "duration": 4.639
+    },
+    {
+      "lang": "en",
+      "text": "a long way. You know, your users",
+      "offset": 2134.56,
+      "duration": 2.559
+    },
+    {
+      "lang": "en",
+      "text": "probably aren't going to be aware of",
+      "offset": 2136.079,
+      "duration": 2.401
+    },
+    {
+      "lang": "en",
+      "text": "this either way. You want to make sure",
+      "offset": 2137.119,
+      "duration": 3.681
+    },
+    {
+      "lang": "en",
+      "text": "your users are handled carefully, but it",
+      "offset": 2138.48,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "does like the worst possible thing is",
+      "offset": 2140.8,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "for your your app to be causing numerous",
+      "offset": 2143.68,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "issues for several users and for you not",
+      "offset": 2146.24,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "to be aware of it. Yeah. You have no",
+      "offset": 2148.4,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "idea. Yeah, you have no idea. In fact,",
+      "offset": 2149.92,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "uh I do I was playing a game, Claire",
+      "offset": 2152.8,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "Obscure Expedition 33. Fantastic game.",
+      "offset": 2154.96,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "I've been playing it for a bit. And uh I",
+      "offset": 2157.76,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "recently found out they are a customer",
+      "offset": 2160.72,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "of centuries. And my game crashed last",
+      "offset": 2162.64,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "night. And I was just like, &quot;All right,",
+      "offset": 2165.28,
+      "duration": 3.2
+    },
+    {
+      "lang": "en",
+      "text": "they're going to be they're going to fix",
+      "offset": 2167.28,
+      "duration": 2.96
+    },
+    {
+      "lang": "en",
+      "text": "this. Whatever this is, they'll fix it.",
+      "offset": 2168.48,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "Uh and I'll move on from this crash.&quot;",
+      "offset": 2170.24,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "But they got that crash. I'm very",
+      "offset": 2172.56,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "confident they got that crash. All",
+      "offset": 2174.24,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "right. We'll talk real quick about not",
+      "offset": 2176.48,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "about TypeScript errors or errors in",
+      "offset": 2178.88,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "Typescript. Not necessarily like like",
+      "offset": 2181.04,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "the the errors when you hover over top",
+      "offset": 2183.44,
+      "duration": 3.12
+    },
+    {
+      "lang": "en",
+      "text": "of something that is broken in",
+      "offset": 2185.44,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "Typescript, but when you are catching",
+      "offset": 2186.56,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "your errors in Typescript and you want",
+      "offset": 2189.2,
+      "duration": 5.6
+    },
+    {
+      "lang": "en",
+      "text": "to go ahead and use them, those errors",
+      "offset": 2191.2,
+      "duration": 5.68
+    },
+    {
+      "lang": "en",
+      "text": "are going to be typed as unknown by",
+      "offset": 2194.8,
+      "duration": 5.6
+    },
+    {
+      "lang": "en",
+      "text": "default because the reality is that",
+      "offset": 2196.88,
+      "duration": 5.84
+    },
+    {
+      "lang": "en",
+      "text": "Typescript has no idea what the shape of",
+      "offset": 2200.4,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "that is going to be. There is no way to",
+      "offset": 2202.72,
+      "duration": 6.24
+    },
+    {
+      "lang": "en",
+      "text": "type the type of a thrown error um in",
+      "offset": 2204.48,
+      "duration": 7.359
+    },
+    {
+      "lang": "en",
+      "text": "Typescript. Meaning that you cannot say",
+      "offset": 2208.96,
+      "duration": 4.879
+    },
+    {
+      "lang": "en",
+      "text": "um JS talk you can but you cannot say",
+      "offset": 2211.839,
+      "duration": 5.041
+    },
+    {
+      "lang": "en",
+      "text": "this function throws an error of this",
+      "offset": 2213.839,
+      "duration": 5.201
+    },
+    {
+      "lang": "en",
+      "text": "type um if it were to go I I kind of",
+      "offset": 2216.88,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "really want that but if that happens the",
+      "offset": 2219.04,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "errors are unknown by default meaning",
+      "offset": 2222.16,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "that before you go ahead and use them",
+      "offset": 2224.4,
+      "duration": 6.24
+    },
+    {
+      "lang": "en",
+      "text": "you need to check for the type of it you",
+      "offset": 2227.44,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "need to do a little bit of narrowing.",
+      "offset": 2230.64,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "Maybe you'll have a type predicate",
+      "offset": 2232.32,
+      "duration": 5.519
+    },
+    {
+      "lang": "en",
+      "text": "function that will first check if it is",
+      "offset": 2234.24,
+      "duration": 6.08
+    },
+    {
+      "lang": "en",
+      "text": "an instance of an error or instance of",
+      "offset": 2237.839,
+      "duration": 4.721
+    },
+    {
+      "lang": "en",
+      "text": "your custom error. And then once you",
+      "offset": 2240.32,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "have that, you'll be able to then go",
+      "offset": 2242.56,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "ahead and work with it. you know,",
+      "offset": 2244.56,
+      "duration": 4.84
+    },
+    {
+      "lang": "en",
+      "text": "display a specific message or",
+      "offset": 2246.48,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "or like you said, and you can do you can",
+      "offset": 2249.4,
+      "duration": 3.719
+    },
+    {
+      "lang": "en",
+      "text": "do whatever you want with the errors,",
+      "offset": 2251.92,
+      "duration": 3.679
+    },
+    {
+      "lang": "en",
+      "text": "but you got to first check what there",
+      "offset": 2253.119,
+      "duration": 4.801
+    },
+    {
+      "lang": "en",
+      "text": "is, which is sometimes very frustrating",
+      "offset": 2255.599,
+      "duration": 5.441
+    },
+    {
+      "lang": "en",
+      "text": "inside of Typescript, but believe me,",
+      "offset": 2257.92,
+      "duration": 6.48
+    },
+    {
+      "lang": "en",
+      "text": "I've hit many instances where I assumed",
+      "offset": 2261.04,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "something would be of a specific type",
+      "offset": 2264.4,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "because I can't imagine a I can't fathom",
+      "offset": 2266.56,
+      "duration": 5.039
+    },
+    {
+      "lang": "en",
+      "text": "why it would ever look like that. But um",
+      "offset": 2268.88,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "these things happen and it's good to",
+      "offset": 2271.599,
+      "duration": 4.321
+    },
+    {
+      "lang": "en",
+      "text": "have the those things in place that you",
+      "offset": 2273.76,
+      "duration": 4.319
+    },
+    {
+      "lang": "en",
+      "text": "can check for them. These things do",
+      "offset": 2275.92,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "happen. That's just how it goes. Cool.",
+      "offset": 2278.079,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "Uh well, anything else on errors from",
+      "offset": 2280.8,
+      "duration": 6.319
+    },
+    {
+      "lang": "en",
+      "text": "your end. I think that's it. Uh let us",
+      "offset": 2283.599,
+      "duration": 5.601
+    },
+    {
+      "lang": "en",
+      "text": "know your tips on on how to handle",
+      "offset": 2287.119,
+      "duration": 4.401
+    },
+    {
+      "lang": "en",
+      "text": "errors or also like your design patterns",
+      "offset": 2289.2,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "as to like where how do you throw where",
+      "offset": 2291.52,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "do you throw how do you display them? I",
+      "offset": 2293.92,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "think that's also really useful because",
+      "offset": 2296,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "I've certainly been in lots of",
+      "offset": 2298.16,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "applications where there's no like",
+      "offset": 2299.76,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "structure to how to handle them. It's",
+      "offset": 2302.8,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "just a bit of a mishmash. Um, and that",
+      "offset": 2304.88,
+      "duration": 5.84
+    },
+    {
+      "lang": "en",
+      "text": "can be a bit bit of a problem as well",
+      "offset": 2307.44,
+      "duration": 6.639
+    },
+    {
+      "lang": "en",
+      "text": "where uh there's no nice way to do it",
+      "offset": 2310.72,
+      "duration": 7.28
+    },
+    {
+      "lang": "en",
+      "text": "and and the UI is all all gked up. Yeah.",
+      "offset": 2314.079,
+      "duration": 5.841
+    },
+    {
+      "lang": "en",
+      "text": "Yeah. All right, cool. Well, I I don't",
+      "offset": 2318,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "got anything else. Thank you so much for",
+      "offset": 2319.92,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "watching. I'm I'm curious like you said,",
+      "offset": 2321.76,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "strategies, all that kind of stuff. So,",
+      "offset": 2323.92,
+      "duration": 4.159
+    },
+    {
+      "lang": "en",
+      "text": "leave a comment below um and just let us",
+      "offset": 2325.68,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "know what you what you're doing. Um and",
+      "offset": 2328.079,
+      "duration": 3.481
+    },
+    {
+      "lang": "en",
+      "text": "go to",
+      "offset": 2330.24,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "centri.io/sintaxfm to get two months for",
+      "offset": 2331.56,
+      "duration": 4.36
+    },
+    {
+      "lang": "en",
+      "text": "free of the team plan. Peace. Yeah, do",
+      "offset": 2333.68,
+      "duration": 5.88
+    },
+    {
+      "lang": "en",
+      "text": "that. Peace.",
+      "offset": 2335.92,
+      "duration": 3.64
+    }
+  ],
+  "cleanText": "Welcome to Syntax. Today we have an episode for you on errors. How to handle them, how to throw them, what they contain. Our application is full of errors. I write a lot of errors myself and how to structure your application so that you can handle them appropriately on the client, on the server, how to throw your own custom errors, what to do with them, when you should be throwing one versus returning some data just with some errors in it is kind of a tricky thing. So, we're going to dive on into it and I try to explain all of those pieces. My name is West Boss, developer from Canada. With me as always is Scott. How you doing today, Scott? Doing all right. Uh quick trip to the urgent care for cut finger this morning, but hey, man. Yeah. Not the first time, Wes. First time. Oh my gosh. I know how many times Wes has gotten the message that, hey, I'm going to be a little bit late. Got to head to the urgent care, hurt myself in some way. Uh so yeah, they glued me up. Uh I'm good to go and uh yeah, feeling feeling like this is just my life. Uh that's just how it goes. I got to chill out, I think. All right. Well, let's get on into it. Um we're first going to dive into explaining a few specific words about error and error handling. Um then we'll get into what's in an error and then we'll dive into all the different types of errors that can be thrown. How to deal with the synchronous versus synchronous code, client side versus server side and then like what do you actually do with them. So first of all the wording around errors specifically, we're talking about JavaScript here, but this will work in a lot of other languages is the whole idea of like thrown and catching. So when you have an error, whether it's in your own code, whether it's in like a module that you have done or whether it's like something that you did not totally expect, like your application has a syntax error in it somewhere, that is the word that we use there is thrown, right? An error is thrown and then when you want to handle that error, the word that we use there is catch. So simply like it's Scott has here, it's like throwing a ball, but it makes you sad. Um something went wrong, you simply throw it. Ah, this didn't work. You throw it out there and then somewhere else in your application, you are going to need to handle that. You're going to have to catch that specific error um and then do something with it. Whether that is logging it out, whether that is displaying some UI to your user, whether that is retrying that specific logic. Yeah, I do like that visual of throwing a ball because it is just like I got a problem over here. Sad. Yes. Yeah. Uh you're going to have a problem over there and and how you handle it uh is is up to you. But there's a numerous ways of taking care of that from there. Uh inside of an error is a few things because when you throw an error, you are using the keyword throw and you sometimes you have in here that you don't need to use the word new. Sometimes you use the word throw new and then capital E error and then what happened? But like why don't you need the keyword new? I'm curious about that. Yeah. Yeah. You don't need the new keyword when you are throwing. So if you're simply just throwing a new error, you can you can just throw error. Um if you do want to construct the error ahead of time, you're creating a new class and in that case you have to then create a new one and then you can throw it at a later point, but the new keyword is not necessary, which I had no idea. I was adding new for probably my entire career, but think of the time I could have saved without constructing a new instance. And and even if there there's some, you know, thought there too, if if you're catching an error that exists and then throwing that same error, if you're not modifying at all, you just throw the error without even creating a new error. But we'll get to that in a minute. So, inside of this class instance, inside of this bundle here is a few things. There's a name. The default is capital E error. Um, there's a message. That message is the message that was written when the error was thrown. So, you could think of this being like uh user not found, unauthorized, or just simply something failed here or there, whatever. Uh, these types of things could get thrown inside of your application. And then there's the stack. Uh Wes, do you want to explain what the stack is? Yeah, the stack is a stack trace leading up sort of a treasure trail for where it went wrong. And it will show you essentially what function called what function, what called what function, and it will show you which files and line numbers they were actually thrown on. That can be very helpful because sometimes your stack trace is going to be is going to show you that the error went wrong either in like a Node module or in a a a module library or it's going to show you that it like happened like deep within the internals of V8 or Node.js JS which is not that helpful. But if you can sort of back it up a several levels and and read the stack trace then you can see okay it happened in my code, you know, the stuff that I can control, it happened at this point and you can kind of take it from there. Yeah. And and I found personally this to be a situation where AI can actually really help you because sometimes the stack trace can get a little bit ugly. um or it's not clear where exactly the error is take actually taking place cuz the error can originate or end up somewhere and like the actual bug or you know whatever in your code might not necessarily be super obvious even if you have like minified code or any of that stuff like you had mentioned, the the error could take place on line one character you know 2 million or something like that and the minified those errors are the absolute worst have to debug and when there's like no source maps available or the source maps aren't working and like I I feel sorry for anyone who has to spend their days. I know a lot of folks at Sentry have to deal with this, but man, try having to like figure out these obtuse source map errors that are just like not pointing to the wrong right part is is really tricky. Yeah. So, I found that you can often times if you are having a hard time understanding your stack trace, you can just copy and paste that whole thing, throw it into any AI of your choice and say, \"What's the deal here? What's going on? Hey, uh, throw me a bone. Throw me a freaking bone here.\" Yeah, let me uh let me know what's going on. And uh I found it to be very excellent at being able to tell me in plain English oftentimes which is probably one of the reasons why Sentry has been adding, you know, AI features into their application because it's good at that kind of stuff. It's parsing a lot of information. There's also a handful of node system specific errors, but we don't need to get into them too much. Uh like code, you sometimes see those as error no ent. Uh if you're dealing with the file system, there's sys call path desk. These are types of things that you may see frequently in Node apps if you're working with fs or any of the uh given node uh system packages. One more thing is is when you're throwing an error or or when errors are thrown, generally the message is going to be a string or it's going to be something that can be parsed into a string, but the message itself can be it can be several types, right? You could you can throw an object in there as as well if you are creating a custom error. So you use a class like validation error extends error, um you can override the two-string property on that class and that will, when the two-string property gets called on that error because they want to display a string version of the message, then you can uh implement your own logic there as to how to display that. Yeah. Uh throwing errors. Let's talk about it. So you when you're writing your logic in your JavaScript, um you may want to throw an error versus have to handle it directly in that function. So if you are um writing logic and you say I don't necessarily care how this error is handled because I am simply doing some validation or doing a database lookup. If anything goes wrong at any point, I am simply just going to throw, I'm going to throw an error. You can pass along the message of that error and any other additional details that may be helpful in that error. And then at a generally at a higher level, um you're going to then go ahead and and catch that error and decide how it happens. So sometimes it makes more sense to just handle it right away inside of your application. Um, but if you're not at a layer of your application, especially with like library code, I don't necessarily know how uh the user of this library wants to deal with something going wrong. So therefore, I am simply going to throw and you have to figure it out at a different point. Yeah. And sometimes, you know, if you're dealing with like library code that fails, in the library code, you call a method or you call a function or something and that fails, um the error might not always be something you want to continue to throw up. Um so like you could catch the error from uh a library, method or function and then create a new error based on something that you uh would rather handle in a specific way. Like for instance, like insert failed or something like that rather than something that has more context because you can certainly then log that error in a way that makes sense for uh you know error handlers or um you know logging software like Sentry or something to handle that like like actually give you the insight to that information, but the application might not the rest of the application might not need to know about the exact specific cause. Yeah. And it there's many cases in your logic where some errors are are to be expected and you do want to continue. Um like for example a unique constraint on a database. If you're trying to save like an account and that email is already existing in the database, then you may want to just catch that and then oh that already exists. Let me look it up and and continue on. I probably would look it up first, but that's kind of besides the point, right? You may say okay that that error we can we can handle um in a specific way and we can continue on while others where it's like I don't know database out of room or simply cannot connect to it, then then you're in a little bit more trouble and you need to abandon all ship and and send something back to the user. Yeah, you could think about it like someone's throwing me a ball, I catch it. I can either then throw that ball again or maybe I can take that ball and put it in a bucket and handle it later or just drop it on the ground and pretend it didn't happen. Or providing like if you are providing a additional uh message to it or you're like trying to rephrase it, um it is helpful to pass the cause property to your error. And what that will do is it will not gum up your stack trace. Um meaning that if you're if you're catching it and simply throwing it again, passing the original error to the cause property of your your error will make sure that your stack traces stay intact and you're not accidentally losing any information. So, okay, we've talked a lot about throwing here, but and we've kind of alluded directly to promises, and we're using a lot of the language like catch and and so typically one of the ways that you're interacting with errors is via promises in your app, whether that is through a try catch block or a catch on a promise uh that will then be called the moment that an error has happened. So typically when we are trying to catch an error, you want to wrap your code, especially if there's a promise involved in a try catch because that allows you to say like, \"All right, in this block of code, I I got my hands up ready to ready to catch it in case this thing uh starts throwing.\" So and then you can handle that how how you may. Exactly. And the other benefit of a try catch block is that you can put so you can put a lot of logic inside of a try and then you can put the catch below it and say if any of these things, you know, if any of these things were to go wrong, you don't have to handle every single one individually. Then you can go ahead and and catch it. The the alternative to that is you can chain a catch onto it. So even if you're using a sync await, I like to call this the mix and match where you could say like const user equals await get user, but then you can also just tack a catch onto the end of that asynchronous function um or that promise-based function. Now both the try catch and the catch are they have their own use cases uh where they may be useful but sometimes both of those can gum up your flow control quite a bit or to a point where um it both of them will scope the error inside of either inside of a function or inside of a block and then it can be hard to return from a catch. It's it's hard to return from the parent. You can't return from the parent function, right? And then a try catch is now you have your errors and your your code and all of your variables scoped to the the curly bracket scope. So one way that I like to do is use a package called awaited to. And I've also written this one many times. And essentially what it does is it will it's a function that wraps your promises and will return to you a tuple, meaning an array of two pieces of data. The first piece being an error, the second piece being the actual data. And that's really nice because then you can have both your error and your successful return data available at the same level without any weird scoping things. So that's my like favorite way. There's been a couple proposals in JavaScript to add this natively and I sure hope that we have it. Yeah, I I personally I like that flow a lot. It makes a lot of it makes too much sense honestly to be able to have your error and everything at the same level. Uh there there's also something that's not explicitly related to errors, but I feel like I should mention it cuz I don't know if a lot of people end up actually using this. um because we always see the try catch, but there's also both. There's also a finally too. So there's a finally block you can do after the catch or a dot finally as well off of uh just a normal promise. But this runs after a successful or an error. So basically the the catch has happened or the catch has not been triggered. But this will then always run no matter what after regardless of if it was successful or not. That\n\n\nCan be really handy for, like,\ntear down. You want to remove event\nlisteners or yes, regardless of what\nhappened. Sometimes, like, you may ex\nsomething might error, like, a very\ncommon one would be if you're trying to\nreport some data to an analytic server\nservice, right? There's a high\nprobability that the user will have an\nad blocker on and that fetch or that\nthat post request is going to fail. Um,\nand if you if you know, ah, it's it's half\nof these are going to fail anyways, it\ncan be helpful just to stick that final\nlogic in your finally so that you know\nit's regardless of what happens, I'm\ngoing to display this to the user. Yes,\ntotally. Um, we also have promise.try\ntry, um, which is relatively new, and if\nyou are writing a bunch of, like,\npromise-based code and you have a\nfunction that you don't necessarily know\nif it is promise or not, or if you simply\njust want to maintain the same syntax\nfor everything, wrapping your function in\na promise.try will allow you to handle\nyour errors as if it were a promise or\nnot. So if you're chaining a whole bunch\nof stuff and somewhere in that chain you\nhave a synchronous function that is not\nreturning a promise, you can kind of\nfake it into a promise with by wrapping\nit in a promise.\nYeah, we also mentioned this already\nbriefly, but in this scenario where you\nare, like, awaiting something or you're\ninside of a try-catch block, when you\ncatch that error, sometimes it makes\nsense to just rethrow it. And to rethrow\nit, you don't need to create a new error\nor anything. You just say throw and then\nthe error that comes in from the catch.\nSo, you don't have to create a new one.\nUh, you will see this code a lot where\npeople are catching the error and then\nthrowing a new error that has not been\nmodified at all. You don't need to do\nthat. You just throw the error. Um, if\nyou do need to add additional context,\nthen it makes sense to create a new\nerror from that error, and then you can\njust pass the current error in. You can\ngive it a cause, maybe, about what\nwhatever additional context you're\ntrying to give it. But yes, you do not\nneed to create a new error if you're\ncatching and just continue it down the\nline. Let's talk about client-side\nerrors. You may want to catch errors at\ndifferent levels, depending on what it is\nyou're doing. Especially client-side,\nyou, you may be thinking about, I want to\ncatch these at a UI level where I can\ndisplay them, right? You may have, uh,\nform submission, validation errors, um,\ninstant feedback that you want to\ndisplay to your user. So, generally,\nyou'll put those as as close as possible\nto the UI where where it's happening.\nBut at other levels, you simply just\nwant to have, like, a sitewide error\nthat you want to want to display, right?\nSo back in the olden days before React\nand whatnot, we had this idea of, like,\nflash messages, which you would just, you\nwould throw a flash message on the\nsession, and then the next time a page\nloaded, that error would show up, and that\nwas really helpful for, like, your\npassword has been reset successfully, or\nsorry, I, I can't delete that item because\nyou don't have access to it. Now,\nthose have been replaced mostly with\ntoast errors, which can be really\nhelpful, the little popup in the bottom\nright-hand corner. Those are really nice\nbecause you don't always have a good UI\nfor displaying an error, but throwing it\nin a pop-up's always an option, right?\nYeah. Yeah. No, totally. It's important\nto know, like, when to use certain types\nof errors, right? Because often times,\nlike, a toast message or popup or any of\nthose things, those things are, like, good\nfor errors that you kind of just want to\nalert the user of that will be gone in a\nmoment, right? Like, or maybe you give\nthem an X and has a timer, like, you\nknow, try again or something, right? But\nthen there's also, like, inline errors\nlike when you're when you're working in\na form. And the reason why you would\nmost likely rather use an inline error\nwhen you're working in in a form is that\nit provides\ncontextual information and instant\nfeedback to the user, right? Where, like,\nif if I if I submitted my password and I\nexpected it to work and I look away from\nmy phone 'cause I'm have ADHD and I get\ndistracted and I look back and it didn't\nsubmit, I would not know what would\nhappen if you were using a toast message\n'cause they're usually ephemeral where\nthat happens to me a lot. Yeah. Where it goes\naway and I I wasn't looking or, like, I've\nscreen. Yeah. Yeah. That drives me nuts.\nDrives me nuts. So in those types of\ninstances, it makes way more sense to\nput that in line contextually. So that\nway when your user looks at it, it shows\nyou. I had an issue. I had a contextual\ninline error the other day, Wes, on a\njust one of those cheap smart home apps.\nUm, I got, like, a smart IR blaster and\nman, it would not let me create an\naccount. It was\nlike, you know, you get all the it says\nhere's the things you got to do. Got I\ngot all the check boxes. All the check\nboxes are green. I use one password to\ngenerate a password. I click go and it\nsays the error message pops up and it's\njust password is not valid. What do you\nmean my password? Like, I could not be\nmore valid, and I tried it several\ndifferent ways, could not get past it.\nI'm sure it was probably some kind of\nerror on their side. Oh, that's that's a\nreally frustrating part is that the what\nmight have happened there is that the\ntheir server code Yes. simply just wrap\nthe whole route in, like, a try-catch, and\nthey're like, \"Well, we should probably\nwrap this whole thing. I think we've\ncovered all of our bases, but just in\ncase.\" And then they throw some sort of\nlike generic error or or something that\nis misleading and we'll say, like,\npassword cannot be created. And that's\nreally frustrating 'cause you have no idea\nabout what went wrong in that case or in\nin some cases what's happening, and maybe\nI'll talk about this right now is that\nif you are trying to transform server\nerrors into client errors, you often\nhave to, like, translate them because you\ndon't necessarily want to send, like, your\nyour database thing. You may have stack\ntraces in there that that are are\nsensitive. You may have, like, an actual\nerror message that is sensitive, and\nthose should not be actually displayed\nto your end user. So often what you'll\nhave to do is you'll have to, like, have\nlike a database lookup or, like, a, like,\nnot a not database lookup, but, like, a map\nlookup, meaning that, like, these are the\npossible errors that I know of, and here\nare the friendly texts that I can do, and\noften those are translated into multiple\nlanguages as well. But then if there is\nsomething that pops up that is not\nexpected, you'll often fall back to, like,\na very generic error message that gets\ndisplayed to the user, which is so\nfrustrating to get. Yeah. Error messages\nyou do not want to, uh, give your users\nare, like, email exists, wrong password, or\nsomething to indicate if the user\nactually has an account there or, like,\nYeah. You, you don't want to give, uh,\npeople anything that they could then use\nto turn that information and use it to\nattack user accounts or or try to hack\ninto somebody. You want that, you want\ntypically, like, yeah, the the helpful\nmessages for authentication and stuff\nlike that would be something like\npassword invalid, but not, like, account\nalready exists, because that is a\nsecurity issue. Yes. And that's why\nsometimes when you get an error, you'll\nget, like, a reference ID as well. Um,\nbecause sometimes though they're they're\ntrying to protect bad people from using\nthose errors to know what h what is\nactually happening. But then you also, if\nsomebody were to email you that that is\nlegitimate, you need to be able to\ntranslate that, like, obtuse error that\nthey got to actually help them out. So\nthat's why sometimes you'll get, like, a\nreference, like, a hex value or something\nweird in there or a unique value where\nthey can just go ahead and look up what\nactually happened and and then help you\nfrom there. Um, error boundaries. This is\nsomething that many React has it. Uh,\nSpelt is getting it or Spelt does have\nit now, I believe.\nThis is the idea that in your UI you can\nwrite an error boundary tag or component\nthat will catch any errors that are\nhappening inside of it. And that's\nreally nice because you could wrap an\nerror boundary around a component, like, a\nform and catch anything that happens\ninside of there. Uh, but then you can\nalso have ones that are a little higher\nup that will catch values. And that's\nreally helpful where, for example, you\ndon't want to, like, wrap your your n, you\ndon't want your navigation to break if\nsomething, like, small happens on on your\nwebsite. You don't want the whole\nwebsite to break. So you'll often have\nseveral levels of error boundaries in\nyour application that will try and catch\nanything that that bubbles up. And\nthat's really nice because you can also\nwith an error boundary, you can simply\njust throw, like, you don't care inside of\na component and you knowing that\nsomewhere higher in the the component\ntree is going to successfully catch that\nand be able to display it to your user.\nYeah. You ready to get into server\nerrors? Yes. Yes. Let's talk about it.\nLet's talk about server errors. Again,\nwe, we mentioned a little bit about\nserver errors through the the course of\nthis, but really, again, server errors\nare something that you have to be\ncareful about leaking into your your\nclient because sometimes that things,\nlike, we've mentioned several times, could\nbe sensitive, and, uh, as we've mentioned\nalready, it's common to have a lookup of\nerror types that you can send a message\nto the client to let them know that\nsomething is going wrong, but then we're\nhandling it on our own, logging it or\nbeing able to fix it in the back end\nwithout exposing that to the client. So\nsomething very important to keep in\nmind. A JSON API, this is something that\nI've done quite a bit where I will, like,\nwrap all of my API routes for any\npossible uncaught errors. So inside of\neach of my API routes, I may want to\nhandle that in that specific API route.\nBut if I don't, then I wrap every single\nroute in a high-order function, and that\nwill then catch it and send a a JSON API\nerror to it. Or even even further is\nI'll check the accept header on the\nrequest, and if the request is asking for\nJSON, then I'll return the error in JSON\nformat. Otherwise, you can return the\nerror in, like, an HTML format or whatever\nmakes sense. So that that can be a\nhelpful way if you've ever, like, had an\nerror on a website and you look in your\ndev tools and it says cannot read angle\nbro bracket or cannot parse angle\nbracket. What's happening is that\nan error happened on the server. Your\nclient code is assuming that JSON is\ncoming back, but it's it's not because\nit's it's sending some HTML back. And\noften you can you can go into the\nnetwork tab and look at the HTML that\nwas returned, and it will show you what\nactually happened in that case. Yeah,\nthat's an easy one to to have memorized\nif that's happening. Uh, the response is\ncoming in as HTML, and then you're not\nexpecting it to come back as HTML. Uh,\nvery common, especially today. Uh, so\nthere's also HTTP response codes. So\ndifferent response codes are things that\nyou have to be able to handle on the\nclient, and having a good understanding\nof the response codes is something that\nis a foundational skill that you'll need\nto have. But in general, you know, the\nones related to errors, um, 200 through\n299 are success codes. Uh, 400 through\n499 are a client error. You know, 404, um,\n500 through 599 are server errors. You\ncould think of it as, like, an\nunauthor 401. That's unauthorized,\nright? 500 is normally, like, something\nwent wrong on the server, right? Uh, and\nthose can be handled in any sort of\ndifferent ways. Um, the exception to this\nis if you're using something like\nGraphQL, uh, GraphQL will return a status\ncode of 200 with, like, a message that\nthere's an error. So it it's it's very\nfunny how they do that, but they're like\nthe reasoning for that is that, like,\nthey're saying that the the response\nfrom GraphQL was success successfully\ntook place, but that response was that\nthere was a problem somewhere. Yes, that\nthat's always a funny, like, successfully\nerrored. If you are doing server\nvalidation and something went wrong in\nthat\nvalidation, do you do you return a\nstatus\ncode that, like, like something went wrong\nalong with the the error message? Yes.\nUm, or I like I think so, right? Like, you\ncan you can return a status code that is\nan error but still return JSON or\nwhatever format, like, a React server\ncomponent payload that that you're\nlooking for. Plus, like, in GraphQL world\nis there's a possibility that part of\nyour payload will have an error and then\nother parts will be successful. So it's\nit's a wild world there. But often what\nthat means at the end of the day is\nbefore you go ahead and as you get the\nthe payload back, you're simply going to\nbe checking what that payload looks\nlike. And hopefully your TypeScript\ntypes are telling you that you have a\ntupil or or something like that of\neither an error or data, not both. The\nproblem here is that people can just do\nanything. So sometimes people do the\nwackiest stuff, and, uh, if it's not your\ncode, it's good to know exactly what's\ngoing on. Uh, otherwise, it's best to\nfollow best practices. Um, but what about\nfixing and logging these errors? Um, this\nis something that, you know, as, uh,\nSentry employees, um, or at least I'm a\nSentry employee. We're we're able, I guess\nyou're a Sentry. Sentry is the\ncorrect word. As Sentry shills, this is\nsomething we're very familiar with. So\nlogging and, uh, being able to solve these\nerrors is something that you'll want to\ndo in production specifically because,\nyeah, in development, you, you, you might\nbe incurring these errors, and typically\nit's happening while you're using the\napp. So maybe you can go find it and fix\nit. Uh, but in in production code errors\njust be happening, and you might not know\nabout it, uh, because you might not\nencounter every use case in development.\nSo, the fact that things can be\nhappening without you knowing it\ninvolves, well, potentially users just not\nusing your stuff because it's not\nworking, and you might be using it\nyourself and be like, \"It's working for\nme.\" Next thing you know, you're like,\n\"Oh, wait. I have a special flag on my\naccount specifically, or I have some\nlogic that targets my my account\nspecifically or not another users or\nwhatever.\" There's there's some mismatch\nthere. So being able to handle and store\nand log these errors is something that I\nthink is very important. Um, obviously,\nI'm going to say, but I truly believe\nbecause we used Sentry before we were\nsponsored by them, uh, before this podcast\nwas presented by Sentry, like, way back\nwhen, I've been using Sentry forever\nbecause it it makes so much sense to log\nand store these errors, and it's only\ngotten better. So they handle logging\nand storing the errors, telling you how\nmany times they've\n\n\nHappened, how many users or which user they happened to, what browser, uh, what version of your application.\nAnd it makes fixing these things way easier, cuz let's say a bug showed up 100 times in a specific version of your app and somehow got fixed without you even knowing it, you would be able to see, \"Oh, this isn't something I need to investigate right now.\"\nUm, they also just like today announced logging generally in Sentry is in is an open beta.\nSo logging is basically anytime you do any type of log, it's being stored.\nAnd there's a lot of other services that do logging, whether it's like paper trail or any of these things.\nAnd they just basically say if you're console logging or console airing anything, I'm just going to collect all those logs and I'm going to give you an interface to be able to find and search for specific logs to be able to determine what happened.\nBut with Sentry, it's kind of cool because again, this sounds like an ad.\nUh, is I genuinely think this is cool.\nThey can attach it directly to your spans and errors to be like contextually, this error and this log are related to each other.\nThis explicit one, you can, you can, when an error happened to a specific user.\nYes, you can look at what was what your logs on the server were doing.\nYou don't have to like piece those things together, which can can be really helpful.\nI'm a big fan of that, cuz like, obviously, I think you should be able to solve a lot of your problems with just a regular issues in something like Sentry, but every now and then you, you simply just need logs or you need to be able to like look up your logs and see how often something happens.\nSo I'm actually excited about having that.\nYeah, if you're putting on on the scale of like what's most important to least important, I think logging and capturing errors specifically is is the most important and like logging is less important.\nBut when they when they're contextual and and there's more information, they become, I think logging becomes more useful, which not more useful than capturing errors, but like more useful than if it's just a big old dump all the logs.\nWe should also say there's like kind of like two different ways to like log an error.\nLike sometimes you may, you may catch an error and you like you don't want to log that because you you successfully caught it and you successfully dealt with it.\nUm, and and sometimes you may, you may catch an error and go, \"That shouldn't, this should never happen.\"\nLike if you ever have code where you have \"this should never happen\" or or whatever.\nThat's the point where I still send it off to Sentry because I'm like, \"I know this should never happen, but I'm going to go send it off because if it does, I'm certainly going to need to know what happened\" um, in this use case.\nSo, never write code where you don't think an error should happen.\nI'll I'll tell you that because I've I've had my course platform crash several times where there were simple things where I just expected that to never happen.\nLike one example was I expected my email SMTP to never be down.\nUm, or I didn't, I didn't account for that possibly being an issue, right?\nIt just pings the API and and sent it.\nBut if it, if if it can't do that, then it was, it was interfering with some of the other logic that needed to happen.\nSo in that case, I had to catch that specific error and then throw it into a queue to to retry at a different point.\nYeah.\nYeah.\nTotally.\nUm, I will say having a tool, whatever that tool may be, does not have to be Sentry to capture these errors, I do think goes a long way for um, not, I just think it goes a long way.\nYou know, your users probably aren't going to be aware of this either way.\nYou want to make sure your users are handled carefully, but it does like the worst possible thing is for your your app to be causing numerous issues for several users and for you not to be aware of it.\nYeah.\nYou have no idea.\nYeah, you have no idea.\nIn fact, uh, I do, I was playing a game, Claire Obscure Expedition 33.\nFantastic game.\nI've been playing it for a bit.\nAnd uh, I recently found out they are a customer of Sentry.\nAnd my game crashed last night.\nAnd I was just like, \"All right, they're going to be, they're going to fix this.\nWhatever this is, they'll fix it.\nUh, and I'll move on from this crash.\"\nBut they got that crash.\nI'm very confident they got that crash.\nAll right.\nWe'll talk real quick about not about TypeScript errors or errors in Typescript.\nNot necessarily like like the the errors when you hover over top of something that is broken in Typescript, but when you are catching your errors in Typescript and you want to go ahead and use them, those errors are going to be typed as unknown by default because the reality is that Typescript has no idea what the shape of that is going to be.\nThere is no way to type the type of a thrown error um in Typescript.\nMeaning that you cannot say um, JS talk, you can, but you cannot say this function throws an error of this type.\nUm, if it were to go, I, I kind of really want that, but if that happens, the errors are unknown by default, meaning that before you go ahead and use them, you need to check for the type of it, you need to do a little bit of narrowing.\nMaybe you'll have a type predicate function that will first check if it is an instance of an error or instance of your custom error.\nAnd then once you have that, you'll be able to then go ahead and work with it.\nYou know, display a specific message or or like you said, and you can do, you can do whatever you want with the errors, but you got to first check what there is, which is sometimes very frustrating inside of Typescript, but believe me, I've hit many instances where I assumed something would be of a specific type because I can't imagine a, I can't fathom why it would ever look like that.\nBut um, these things happen and it's good to have the those things in place that you can check for them.\nThese things do happen.\nThat's just how it goes.\nCool.\nUh, well, anything else on errors from your end?\nI think that's it.\nUh, let us know your tips on on how to handle errors or also like your design patterns as to like where, how do you throw, where do you throw, how do you display them?\nI think that's also really useful because I've certainly been in lots of applications where there's no like structure to how to handle them.\nIt's just a bit of a mishmash.\nUm, and that can be a bit, bit of a problem as well where uh, there's no nice way to do it and and the UI is all all gked up.\nYeah.\nYeah.\nAll right, cool.\nWell, I, I don't got anything else.\nThank you so much for watching.\nI'm I'm curious, like you said, strategies, all that kind of stuff.\nSo, leave a comment below um, and just let us know what you what you're doing.\nUm, and go to centri.io/sintaxfm to get two months for free of the team plan.\nPeace.\nYeah, do that.\nPeace.\n",
+  "dumpedAt": "2025-07-21T18:43:25.592Z"
+}

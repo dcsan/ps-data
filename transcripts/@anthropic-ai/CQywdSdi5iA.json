@@ -1,0 +1,2944 @@
+{
+  "episodeId": "CQywdSdi5iA",
+  "channelSlug": "@anthropic-ai",
+  "title": "The Model Context Protocol (MCP)",
+  "publishedAt": "2025-06-16T13:03:20.000Z",
+  "rawLines": [
+    {
+      "lang": "en",
+      "text": "- Around the time, like in September,",
+      "offset": 0.09,
+      "duration": 1.2
+    },
+    {
+      "lang": "en",
+      "text": "we had like an internal hackathon,",
+      "offset": 1.29,
+      "duration": 1.86
+    },
+    {
+      "lang": "en",
+      "text": "and everyone was free to build",
+      "offset": 3.15,
+      "duration": 2.01
+    },
+    {
+      "lang": "en",
+      "text": "basically whatever we wanted to build.",
+      "offset": 5.16,
+      "duration": 2.19
+    },
+    {
+      "lang": "en",
+      "text": "But it turns out everyone\njust built an MCP,",
+      "offset": 7.35,
+      "duration": 1.537
+    },
+    {
+      "lang": "en",
+      "text": "and it was-\n- It was crazy.",
+      "offset": 8.887,
+      "duration": 1.733
+    },
+    {
+      "lang": "en",
+      "text": "Like everyone's ideas were,",
+      "offset": 10.62,
+      "duration": 2.293
+    },
+    {
+      "lang": "en",
+      "text": "&quot;Oh, but what if we made\nthis an MCP server?&quot;",
+      "offset": 12.913,
+      "duration": 2.713
+    },
+    {
+      "lang": "en",
+      "text": "- Hey, I'm Alex.",
+      "offset": 18.42,
+      "duration": 0.84
+    },
+    {
+      "lang": "en",
+      "text": "I lead Claude Relations here at Anthropic.",
+      "offset": 19.26,
+      "duration": 2.34
+    },
+    {
+      "lang": "en",
+      "text": "- Hi, I'm Theo, I'm a\nproduct manager on MCP.",
+      "offset": 21.6,
+      "duration": 2.58
+    },
+    {
+      "lang": "en",
+      "text": "- Hey, I'm David, member of\ntechnical staff at Anthropic",
+      "offset": 24.18,
+      "duration": 2.76
+    },
+    {
+      "lang": "en",
+      "text": "and one of the co-creators of MCP.",
+      "offset": 26.94,
+      "duration": 1.749
+    },
+    {
+      "lang": "en",
+      "text": "- Today we're gonna be talking",
+      "offset": 28.689,
+      "duration": 1.251
+    },
+    {
+      "lang": "en",
+      "text": "about the Model Context Protocol",
+      "offset": 29.94,
+      "duration": 1.53
+    },
+    {
+      "lang": "en",
+      "text": "and diving in deep into\nwhat it is and what's next.",
+      "offset": 31.47,
+      "duration": 3.57
+    },
+    {
+      "lang": "en",
+      "text": "Thank you both for coming on.",
+      "offset": 35.04,
+      "duration": 1.5
+    },
+    {
+      "lang": "en",
+      "text": "Very excited to talk about MCP,",
+      "offset": 36.54,
+      "duration": 1.9
+    },
+    {
+      "lang": "en",
+      "text": "but first there's a lot of talk about MCP",
+      "offset": 38.44,
+      "duration": 4.28
+    },
+    {
+      "lang": "en",
+      "text": "and not a lot of maybe\nreal deep understanding",
+      "offset": 42.72,
+      "duration": 2.91
+    },
+    {
+      "lang": "en",
+      "text": "of what it is.",
+      "offset": 45.63,
+      "duration": 1.38
+    },
+    {
+      "lang": "en",
+      "text": "Can we dive into how you view MCP",
+      "offset": 47.01,
+      "duration": 3.27
+    },
+    {
+      "lang": "en",
+      "text": "and like what it really means",
+      "offset": 50.28,
+      "duration": 1.44
+    },
+    {
+      "lang": "en",
+      "text": "to be using MCP or building on it?",
+      "offset": 51.72,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "- MCP is just a way for, you know,",
+      "offset": 55.32,
+      "duration": 2.67
+    },
+    {
+      "lang": "en",
+      "text": "putting my workflow into\nlike an AI applications",
+      "offset": 57.99,
+      "duration": 2.82
+    },
+    {
+      "lang": "en",
+      "text": "in a very simple way.",
+      "offset": 60.81,
+      "duration": 1.23
+    },
+    {
+      "lang": "en",
+      "text": "I think that's how I really\nwanted it to be initially,",
+      "offset": 62.04,
+      "duration": 2.28
+    },
+    {
+      "lang": "en",
+      "text": "or that's how we want it to be,",
+      "offset": 64.32,
+      "duration": 1.29
+    },
+    {
+      "lang": "en",
+      "text": "but it's just a way to give context",
+      "offset": 65.61,
+      "duration": 2.34
+    },
+    {
+      "lang": "en",
+      "text": "to an application that uses an LLM.",
+      "offset": 67.95,
+      "duration": 2.807
+    },
+    {
+      "lang": "en",
+      "text": "And that's just as simple as that.",
+      "offset": 70.757,
+      "duration": 1.633
+    },
+    {
+      "lang": "en",
+      "text": "And that can be, you know, tools,",
+      "offset": 72.39,
+      "duration": 2.22
+    },
+    {
+      "lang": "en",
+      "text": "it can be just raw context,\nwhatever you like it to be.",
+      "offset": 74.61,
+      "duration": 2.94
+    },
+    {
+      "lang": "en",
+      "text": "- How is that different\nthan you calling an API",
+      "offset": 77.55,
+      "duration": 3.63
+    },
+    {
+      "lang": "en",
+      "text": "or something like that?",
+      "offset": 81.18,
+      "duration": 0.99
+    },
+    {
+      "lang": "en",
+      "text": "It's passing this\ninformation from one place",
+      "offset": 82.17,
+      "duration": 2.64
+    },
+    {
+      "lang": "en",
+      "text": "into the prompt basically of the model.",
+      "offset": 84.81,
+      "duration": 2.34
+    },
+    {
+      "lang": "en",
+      "text": "What makes MCP special here?",
+      "offset": 87.15,
+      "duration": 2.31
+    },
+    {
+      "lang": "en",
+      "text": "- I think the question is\nwhat do models interact with?",
+      "offset": 89.46,
+      "duration": 3.3
+    },
+    {
+      "lang": "en",
+      "text": "And they don't interact\ndirectly with APIs.",
+      "offset": 92.76,
+      "duration": 1.503
+    },
+    {
+      "lang": "en",
+      "text": "They interact with prompts\nand tools and you know,",
+      "offset": 94.263,
+      "duration": 4.287
+    },
+    {
+      "lang": "en",
+      "text": "whatever you're giving\nthe model to ingest.",
+      "offset": 98.55,
+      "duration": 3.48
+    },
+    {
+      "lang": "en",
+      "text": "And so MCP standardizes how\nyou take that data from,",
+      "offset": 102.03,
+      "duration": 4.5
+    },
+    {
+      "lang": "en",
+      "text": "whether it's an API or\nsome internal data source",
+      "offset": 106.53,
+      "duration": 2.1
+    },
+    {
+      "lang": "en",
+      "text": "or whatever it is, how you take that data",
+      "offset": 108.63,
+      "duration": 2.43
+    },
+    {
+      "lang": "en",
+      "text": "and then actually give it to the model.",
+      "offset": 111.06,
+      "duration": 1.65
+    },
+    {
+      "lang": "en",
+      "text": "- So, this is a protocol then.",
+      "offset": 112.71,
+      "duration": 1.08
+    },
+    {
+      "lang": "en",
+      "text": "So it's defining that sort\nof interaction pattern.",
+      "offset": 113.79,
+      "duration": 3.087
+    },
+    {
+      "lang": "en",
+      "text": "What are the main aspects of this protocol",
+      "offset": 116.877,
+      "duration": 1.516
+    },
+    {
+      "lang": "en",
+      "text": "that like you have, that has to follow?",
+      "offset": 118.393,
+      "duration": 3.137
+    },
+    {
+      "lang": "en",
+      "text": "- The main part is that it's a protocol",
+      "offset": 121.53,
+      "duration": 1.98
+    },
+    {
+      "lang": "en",
+      "text": "between the AI application\nthat uses an LLM,",
+      "offset": 123.51,
+      "duration": 2.097
+    },
+    {
+      "lang": "en",
+      "text": "and it exposes like\nbasically three main thing.",
+      "offset": 125.607,
+      "duration": 3.093
+    },
+    {
+      "lang": "en",
+      "text": "It's tools, it's a set,\na thing called resources,",
+      "offset": 128.7,
+      "duration": 3.93
+    },
+    {
+      "lang": "en",
+      "text": "which is just raw data\nthat you could like ingest",
+      "offset": 132.63,
+      "duration": 2.4
+    },
+    {
+      "lang": "en",
+      "text": "into a RAG pipeline or\nwhatever you want it to do,",
+      "offset": 135.03,
+      "duration": 2.76
+    },
+    {
+      "lang": "en",
+      "text": "and there's prompts.",
+      "offset": 137.79,
+      "duration": 0.99
+    },
+    {
+      "lang": "en",
+      "text": "And that's the three main things",
+      "offset": 138.78,
+      "duration": 1.26
+    },
+    {
+      "lang": "en",
+      "text": "that a server can expose for now, yeah.",
+      "offset": 140.04,
+      "duration": 2.28
+    },
+    {
+      "lang": "en",
+      "text": "- So tools are like actions",
+      "offset": 142.32,
+      "duration": 2.334
+    },
+    {
+      "lang": "en",
+      "text": "that the model can take out in the world.",
+      "offset": 144.654,
+      "duration": 3.606
+    },
+    {
+      "lang": "en",
+      "text": "Resources could be files, texts.",
+      "offset": 148.26,
+      "duration": 3.917
+    },
+    {
+      "lang": "en",
+      "text": "- Files, data, whatever kind of context",
+      "offset": 152.177,
+      "duration": 4.017
+    },
+    {
+      "lang": "en",
+      "text": "you wanna give the model.",
+      "offset": 156.194,
+      "duration": 1.936
+    },
+    {
+      "lang": "en",
+      "text": "- And then prompts are?",
+      "offset": 158.13,
+      "duration": 2.25
+    },
+    {
+      "lang": "en",
+      "text": "- Just like what a user wants\nto put into the context window",
+      "offset": 160.38,
+      "duration": 4.68
+    },
+    {
+      "lang": "en",
+      "text": "by themself and just like\ntriggered by the user",
+      "offset": 165.06,
+      "duration": 2.82
+    },
+    {
+      "lang": "en",
+      "text": "and just put into the context window,",
+      "offset": 167.88,
+      "duration": 1.83
+    },
+    {
+      "lang": "en",
+      "text": "and then they can edit it as they want to.",
+      "offset": 169.71,
+      "duration": 1.44
+    },
+    {
+      "lang": "en",
+      "text": "That's really what prompts are for,",
+      "offset": 171.15,
+      "duration": 0.93
+    },
+    {
+      "lang": "en",
+      "text": "like prompt templates\nat the end of the day.",
+      "offset": 172.08,
+      "duration": 1.71
+    },
+    {
+      "lang": "en",
+      "text": "- Prompt templates, I see.",
+      "offset": 173.79,
+      "duration": 1.08
+    },
+    {
+      "lang": "en",
+      "text": "So literally defining the prompt itself.",
+      "offset": 174.87,
+      "duration": 2.092
+    },
+    {
+      "lang": "en",
+      "text": "- We typically see that being implemented",
+      "offset": 176.962,
+      "duration": 1.898
+    },
+    {
+      "lang": "en",
+      "text": "as a slash command.",
+      "offset": 178.86,
+      "duration": 1.353
+    },
+    {
+      "lang": "en",
+      "text": "- Oh, okay, I see.",
+      "offset": 180.213,
+      "duration": 1.767
+    },
+    {
+      "lang": "en",
+      "text": "So if you're in the AI\napplication of your choice,",
+      "offset": 181.98,
+      "duration": 2.61
+    },
+    {
+      "lang": "en",
+      "text": "you would do a slash command,",
+      "offset": 184.59,
+      "duration": 1.17
+    },
+    {
+      "lang": "en",
+      "text": "and it pull in the prompt template.",
+      "offset": 185.76,
+      "duration": 1.56
+    },
+    {
+      "lang": "en",
+      "text": "- Exactly.\n- Save you time",
+      "offset": 187.32,
+      "duration": 0.9
+    },
+    {
+      "lang": "en",
+      "text": "from having to write\nthat out, whatever it is.",
+      "offset": 188.22,
+      "duration": 1.89
+    },
+    {
+      "lang": "en",
+      "text": "Okay, that's MCP at its most basic form.",
+      "offset": 190.11,
+      "duration": 2.85
+    },
+    {
+      "lang": "en",
+      "text": "There's definitely a\nlot of nuance in there.",
+      "offset": 192.96,
+      "duration": 1.62
+    },
+    {
+      "lang": "en",
+      "text": "What was the origin of all this?",
+      "offset": 194.58,
+      "duration": 1.29
+    },
+    {
+      "lang": "en",
+      "text": "Like how did this come about?",
+      "offset": 195.87,
+      "duration": 1.29
+    },
+    {
+      "lang": "en",
+      "text": "- The origin I think is like,",
+      "offset": 197.16,
+      "duration": 1.911
+    },
+    {
+      "lang": "en",
+      "text": "the most basic thing is that,",
+      "offset": 199.071,
+      "duration": 2.414
+    },
+    {
+      "lang": "en",
+      "text": "that I worked on like\ninternal developer stuff,",
+      "offset": 201.485,
+      "duration": 2.995
+    },
+    {
+      "lang": "en",
+      "text": "and I got very quickly frustrated",
+      "offset": 204.48,
+      "duration": 1.44
+    },
+    {
+      "lang": "en",
+      "text": "about like having to copy things",
+      "offset": 205.92,
+      "duration": 2.64
+    },
+    {
+      "lang": "en",
+      "text": "in and out of Claude desktop",
+      "offset": 208.56,
+      "duration": 1.29
+    },
+    {
+      "lang": "en",
+      "text": "and then copying things back\nand forth between my IDE,",
+      "offset": 209.85,
+      "duration": 2.85
+    },
+    {
+      "lang": "en",
+      "text": "and that's just really what\nI would thinking about,",
+      "offset": 212.7,
+      "duration": 2.43
+    },
+    {
+      "lang": "en",
+      "text": "like how can I solve copy\nand pasting the things",
+      "offset": 215.13,
+      "duration": 3.03
+    },
+    {
+      "lang": "en",
+      "text": "I care about the most between\nthese two applications.",
+      "offset": 218.16,
+      "duration": 2.76
+    },
+    {
+      "lang": "en",
+      "text": "And that's really the absolute\norigin of where MCP started,",
+      "offset": 220.92,
+      "duration": 4.05
+    },
+    {
+      "lang": "en",
+      "text": "at least in my mind.",
+      "offset": 224.97,
+      "duration": 1.53
+    },
+    {
+      "lang": "en",
+      "text": "And then from there, I\nexplained that to Justin,",
+      "offset": 226.5,
+      "duration": 2.76
+    },
+    {
+      "lang": "en",
+      "text": "who's the other co-creator,",
+      "offset": 229.26,
+      "duration": 1.53
+    },
+    {
+      "lang": "en",
+      "text": "and he really took it and ran it.",
+      "offset": 230.79,
+      "duration": 2.676
+    },
+    {
+      "lang": "en",
+      "text": "And then we together, just build it out",
+      "offset": 233.466,
+      "duration": 2.124
+    },
+    {
+      "lang": "en",
+      "text": "and build into Claude desktop.",
+      "offset": 235.59,
+      "duration": 1.29
+    },
+    {
+      "lang": "en",
+      "text": "And I think there was a pivotal\nmoment that you alluded to.",
+      "offset": 236.88,
+      "duration": 2.07
+    },
+    {
+      "lang": "en",
+      "text": "Do you wanna talk about the hack week?",
+      "offset": 238.95,
+      "duration": 1.9
+    },
+    {
+      "lang": "en",
+      "text": "- I feel like you should take the story.",
+      "offset": 241.95,
+      "duration": 1.86
+    },
+    {
+      "lang": "en",
+      "text": "- Okay, yeah, hack week was fun.",
+      "offset": 243.81,
+      "duration": 2.483
+    },
+    {
+      "lang": "en",
+      "text": "We weren't really sure,\nis this gonna work?",
+      "offset": 246.293,
+      "duration": 3.653
+    },
+    {
+      "lang": "en",
+      "text": "And, but at the round the time,",
+      "offset": 249.946,
+      "duration": 2.084
+    },
+    {
+      "lang": "en",
+      "text": "like in September we had\nlike an internal hackathon,",
+      "offset": 252.03,
+      "duration": 2.43
+    },
+    {
+      "lang": "en",
+      "text": "and everyone was free",
+      "offset": 254.46,
+      "duration": 1.65
+    },
+    {
+      "lang": "en",
+      "text": "to build basically whatever\nthey wanted to build.",
+      "offset": 256.11,
+      "duration": 2.55
+    },
+    {
+      "lang": "en",
+      "text": "But it turns out everyone\njust built an MCP,",
+      "offset": 258.66,
+      "duration": 1.92
+    },
+    {
+      "lang": "en",
+      "text": "and it was-\n- It was crazy.",
+      "offset": 260.58,
+      "duration": 1.41
+    },
+    {
+      "lang": "en",
+      "text": "Like everyone's ideas were,",
+      "offset": 261.99,
+      "duration": 2.27
+    },
+    {
+      "lang": "en",
+      "text": "&quot;Oh, but what if we made\nthis an MCP server?&quot;",
+      "offset": 264.26,
+      "duration": 3.01
+    },
+    {
+      "lang": "en",
+      "text": "- Yeah, yeah.",
+      "offset": 267.27,
+      "duration": 0.833
+    },
+    {
+      "lang": "en",
+      "text": "- And we had everything\nfrom people, you know,",
+      "offset": 268.103,
+      "duration": 2.167
+    },
+    {
+      "lang": "en",
+      "text": "doing, you know, very standard\nthings like Slack integration",
+      "offset": 270.27,
+      "duration": 3.57
+    },
+    {
+      "lang": "en",
+      "text": "or things you would think\nof when you think MCP",
+      "offset": 273.84,
+      "duration": 2.49
+    },
+    {
+      "lang": "en",
+      "text": "up to like people",
+      "offset": 276.33,
+      "duration": 0.99
+    },
+    {
+      "lang": "en",
+      "text": "who like steered their\n3D printer with MCP.",
+      "offset": 277.32,
+      "duration": 3.72
+    },
+    {
+      "lang": "en",
+      "text": "And I love this like when\nit got into the real world,",
+      "offset": 281.04,
+      "duration": 3.93
+    },
+    {
+      "lang": "en",
+      "text": "when like Claude got into the real world",
+      "offset": 284.97,
+      "duration": 2.13
+    },
+    {
+      "lang": "en",
+      "text": "because of an MCP server.",
+      "offset": 287.1,
+      "duration": 1.877
+    },
+    {
+      "lang": "en",
+      "text": "- What was it?",
+      "offset": 288.977,
+      "duration": 0.833
+    },
+    {
+      "lang": "en",
+      "text": "Because I remember that too\nwhen we were doing these,",
+      "offset": 289.81,
+      "duration": 2.303
+    },
+    {
+      "lang": "en",
+      "text": "all these hackathon projects,",
+      "offset": 292.95,
+      "duration": 1.05
+    },
+    {
+      "lang": "en",
+      "text": "and there was no mandate\nto force people to use MCP.",
+      "offset": 294,
+      "duration": 2.88
+    },
+    {
+      "lang": "en",
+      "text": "This was just like an\nentirely organic thing.",
+      "offset": 296.88,
+      "duration": 2.855
+    },
+    {
+      "lang": "en",
+      "text": "Why did people gravitate towards\nMCP for all their projects?",
+      "offset": 299.735,
+      "duration": 3.595
+    },
+    {
+      "lang": "en",
+      "text": "- I think it really was\nthat standardization layer",
+      "offset": 303.33,
+      "duration": 1.86
+    },
+    {
+      "lang": "en",
+      "text": "just made it so much easier",
+      "offset": 305.19,
+      "duration": 1.92
+    },
+    {
+      "lang": "en",
+      "text": "to add context to the application,",
+      "offset": 307.11,
+      "duration": 2.279
+    },
+    {
+      "lang": "en",
+      "text": "because the moment that\nClaude is now integrated",
+      "offset": 309.389,
+      "duration": 4.172
+    },
+    {
+      "lang": "en",
+      "text": "against MCP, that means\nas the server builder",
+      "offset": 313.561,
+      "duration": 3.37
+    },
+    {
+      "lang": "en",
+      "text": "you can build 1 to 10, 20,\nhowever many servers you want,",
+      "offset": 316.931,
+      "duration": 3.739
+    },
+    {
+      "lang": "en",
+      "text": "and you know that it\nwill automatically work",
+      "offset": 320.67,
+      "duration": 1.68
+    },
+    {
+      "lang": "en",
+      "text": "with that application.",
+      "offset": 322.35,
+      "duration": 0.833
+    },
+    {
+      "lang": "en",
+      "text": "And so I think that just\ngives you the ability",
+      "offset": 323.183,
+      "duration": 2.527
+    },
+    {
+      "lang": "en",
+      "text": "to only think about one side",
+      "offset": 325.71,
+      "duration": 1.32
+    },
+    {
+      "lang": "en",
+      "text": "and not have to think\nabout the other side.",
+      "offset": 327.03,
+      "duration": 1.44
+    },
+    {
+      "lang": "en",
+      "text": "- I think there's a bit of a magic moment",
+      "offset": 328.47,
+      "duration": 1.59
+    },
+    {
+      "lang": "en",
+      "text": "when you teach Claude something new",
+      "offset": 330.06,
+      "duration": 3.12
+    },
+    {
+      "lang": "en",
+      "text": "using an MCP server for the first time,",
+      "offset": 333.18,
+      "duration": 2.73
+    },
+    {
+      "lang": "en",
+      "text": "and you see it takes action\nabout something you care about.",
+      "offset": 335.91,
+      "duration": 4.05
+    },
+    {
+      "lang": "en",
+      "text": "And I feel that's a little\nbit of moment of magic",
+      "offset": 339.96,
+      "duration": 3.299
+    },
+    {
+      "lang": "en",
+      "text": "that I think MCP captures really well,",
+      "offset": 343.259,
+      "duration": 2.221
+    },
+    {
+      "lang": "en",
+      "text": "which makes people so excited,",
+      "offset": 345.48,
+      "duration": 1.92
+    },
+    {
+      "lang": "en",
+      "text": "because within five minutes\nthere's something going.",
+      "offset": 347.4,
+      "duration": 2.61
+    },
+    {
+      "lang": "en",
+      "text": "- Right, right, yeah, I've seen it myself,",
+      "offset": 350.01,
+      "duration": 2.7
+    },
+    {
+      "lang": "en",
+      "text": "and I mean even experienced it",
+      "offset": 352.71,
+      "duration": 1.77
+    },
+    {
+      "lang": "en",
+      "text": "where it almost feels like you take Claude",
+      "offset": 354.48,
+      "duration": 2.25
+    },
+    {
+      "lang": "en",
+      "text": "out of the the box, so to speak.",
+      "offset": 356.73,
+      "duration": 2.053
+    },
+    {
+      "lang": "en",
+      "text": "And all of a sudden,",
+      "offset": 358.783,
+      "duration": 1.733
+    },
+    {
+      "lang": "en",
+      "text": "instead of just being this thing",
+      "offset": 360.516,
+      "duration": 1.944
+    },
+    {
+      "lang": "en",
+      "text": "that is just right there outputting text,",
+      "offset": 362.46,
+      "duration": 2.627
+    },
+    {
+      "lang": "en",
+      "text": "it's doing other things,",
+      "offset": 365.087,
+      "duration": 1.693
+    },
+    {
+      "lang": "en",
+      "text": "it's calling other applications,\nfetching on their data,",
+      "offset": 366.78,
+      "duration": 2.49
+    },
+    {
+      "lang": "en",
+      "text": "or even like operating a 3D printer,",
+      "offset": 369.27,
+      "duration": 2.31
+    },
+    {
+      "lang": "en",
+      "text": "which is a really crazy thing.",
+      "offset": 371.58,
+      "duration": 1.563
+    },
+    {
+      "lang": "en",
+      "text": "And that does feel really special.",
+      "offset": 374.425,
+      "duration": 2.045
+    },
+    {
+      "lang": "en",
+      "text": "And I guess MCP allows that",
+      "offset": 376.47,
+      "duration": 1.98
+    },
+    {
+      "lang": "en",
+      "text": "pretty seamlessly to some degree.",
+      "offset": 378.45,
+      "duration": 1.92
+    },
+    {
+      "lang": "en",
+      "text": "So this was back in end\nof summer, early fall,",
+      "offset": 380.37,
+      "duration": 3.96
+    },
+    {
+      "lang": "en",
+      "text": "as we were doing these hack\nweek and these other things.",
+      "offset": 384.33,
+      "duration": 3.42
+    },
+    {
+      "lang": "en",
+      "text": "When did we launch MCP, and\nwhat did that look like?",
+      "offset": 387.75,
+      "duration": 3.48
+    },
+    {
+      "lang": "en",
+      "text": "- We launched MCP around Thanksgiving.",
+      "offset": 391.23,
+      "duration": 2.19
+    },
+    {
+      "lang": "en",
+      "text": "- Yeah, November.\n- 2024.",
+      "offset": 393.42,
+      "duration": 2.31
+    },
+    {
+      "lang": "en",
+      "text": "- And how was that launch?",
+      "offset": 395.73,
+      "duration": 2.4
+    },
+    {
+      "lang": "en",
+      "text": "What was the reception?",
+      "offset": 398.13,
+      "duration": 1.02
+    },
+    {
+      "lang": "en",
+      "text": "- Slow at first.",
+      "offset": 399.15,
+      "duration": 1.29
+    },
+    {
+      "lang": "en",
+      "text": "I think everyone's response\nis, as you can imagine,",
+      "offset": 400.44,
+      "duration": 3.06
+    },
+    {
+      "lang": "en",
+      "text": "well, some people still have\nthis response is, what's MCP?",
+      "offset": 403.5,
+      "duration": 2.43
+    },
+    {
+      "lang": "en",
+      "text": "- Right?\n- Mm-hmm.",
+      "offset": 405.93,
+      "duration": 0.93
+    },
+    {
+      "lang": "en",
+      "text": "- We, naming is hard.",
+      "offset": 406.86,
+      "duration": 1.56
+    },
+    {
+      "lang": "en",
+      "text": "We definitely could have named it better.",
+      "offset": 408.42,
+      "duration": 3.765
+    },
+    {
+      "lang": "en",
+      "text": "- It's arguable now, it's\nkind of caught its storm.",
+      "offset": 412.185,
+      "duration": 2.985
+    },
+    {
+      "lang": "en",
+      "text": "- I know.\n- That's fair.",
+      "offset": 415.17,
+      "duration": 1.714
+    },
+    {
+      "lang": "en",
+      "text": "But you still get the\nlike MPC instead of MCP,",
+      "offset": 416.884,
+      "duration": 3.917
+    },
+    {
+      "lang": "en",
+      "text": "and then it makes me\nthink NPC, and you know?",
+      "offset": 420.801,
+      "duration": 2.559
+    },
+    {
+      "lang": "en",
+      "text": "- Yeah, acronyms are hard.",
+      "offset": 423.36,
+      "duration": 1.44
+    },
+    {
+      "lang": "en",
+      "text": "- But, yeah, acronyms are hard.",
+      "offset": 424.8,
+      "duration": 1.5
+    },
+    {
+      "lang": "en",
+      "text": "But you had a lot of\npeople asking what is MCP,",
+      "offset": 426.3,
+      "duration": 3.353
+    },
+    {
+      "lang": "en",
+      "text": "not just externally, but\nI also think internally,",
+      "offset": 429.653,
+      "duration": 3.157
+    },
+    {
+      "lang": "en",
+      "text": "because it was such a bottoms up movement.",
+      "offset": 432.81,
+      "duration": 2.91
+    },
+    {
+      "lang": "en",
+      "text": "You know, initially people were like,",
+      "offset": 435.72,
+      "duration": 1.08
+    },
+    {
+      "lang": "en",
+      "text": "oh, what is this thing?",
+      "offset": 436.8,
+      "duration": 0.833
+    },
+    {
+      "lang": "en",
+      "text": "What does it mean to ask or\nto give the model context?",
+      "offset": 437.633,
+      "duration": 3.937
+    },
+    {
+      "lang": "en",
+      "text": "And then as people started\nplaying around with it",
+      "offset": 441.57,
+      "duration": 2.4
+    },
+    {
+      "lang": "en",
+      "text": "and seeing it for themselves,",
+      "offset": 443.97,
+      "duration": 0.99
+    },
+    {
+      "lang": "en",
+      "text": "I think that's where it\nactually slowly caught steam.",
+      "offset": 444.96,
+      "duration": 2.61
+    },
+    {
+      "lang": "en",
+      "text": "And the turning point was",
+      "offset": 447.57,
+      "duration": 1.89
+    },
+    {
+      "lang": "en",
+      "text": "when more and more clients\nkind of started adopting.",
+      "offset": 449.46,
+      "duration": 4.68
+    },
+    {
+      "lang": "en",
+      "text": "So I think the IDEs were\nthe first to adopt.",
+      "offset": 454.14,
+      "duration": 2.76
+    },
+    {
+      "lang": "en",
+      "text": "More recently we've seen a lot",
+      "offset": 456.9,
+      "duration": 1.02
+    },
+    {
+      "lang": "en",
+      "text": "of adoption from model providers,",
+      "offset": 457.92,
+      "duration": 1.44
+    },
+    {
+      "lang": "en",
+      "text": "and that's kind of created\na lot of kind of waves",
+      "offset": 459.36,
+      "duration": 2.97
+    },
+    {
+      "lang": "en",
+      "text": "in the market to incentivize\na lot more server providers",
+      "offset": 462.33,
+      "duration": 3.3
+    },
+    {
+      "lang": "en",
+      "text": "to actually build servers.",
+      "offset": 465.63,
+      "duration": 1.8
+    },
+    {
+      "lang": "en",
+      "text": "- I think one of that part is like you see",
+      "offset": 467.43,
+      "duration": 1.68
+    },
+    {
+      "lang": "en",
+      "text": "so many times on like social\nmedia, like what is MCP?",
+      "offset": 469.11,
+      "duration": 4.59
+    },
+    {
+      "lang": "en",
+      "text": "Why would I ever want this?",
+      "offset": 473.7,
+      "duration": 1.26
+    },
+    {
+      "lang": "en",
+      "text": "And then like a month\nlater, a few days later,",
+      "offset": 474.96,
+      "duration": 2.34
+    },
+    {
+      "lang": "en",
+      "text": "they're gonna be like, this\nis the best thing ever,",
+      "offset": 477.3,
+      "duration": 2.393
+    },
+    {
+      "lang": "en",
+      "text": "have so many of these\nstories, and it's so funny.",
+      "offset": 479.693,
+      "duration": 2.437
+    },
+    {
+      "lang": "en",
+      "text": "- Yeah, so it's now become,\nI think it's fair to say",
+      "offset": 482.13,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "like industry standard of\nlike integration protocol.",
+      "offset": 485.73,
+      "duration": 4.26
+    },
+    {
+      "lang": "en",
+      "text": "I mean, there's nothing else in my mind",
+      "offset": 489.99,
+      "duration": 1.41
+    },
+    {
+      "lang": "en",
+      "text": "that kind of rivals it,",
+      "offset": 491.4,
+      "duration": 1.65
+    },
+    {
+      "lang": "en",
+      "text": "but I think like going back to the launch,",
+      "offset": 493.05,
+      "duration": 2.13
+    },
+    {
+      "lang": "en",
+      "text": "a key decision here was to\nactually make this open source.",
+      "offset": 495.18,
+      "duration": 5
+    },
+    {
+      "lang": "en",
+      "text": "And that was pretty different",
+      "offset": 500.191,
+      "duration": 3.269
+    },
+    {
+      "lang": "en",
+      "text": "in comparison to maybe previous efforts",
+      "offset": 503.46,
+      "duration": 1.74
+    },
+    {
+      "lang": "en",
+      "text": "in this area that had been launched.",
+      "offset": 505.2,
+      "duration": 2.34
+    },
+    {
+      "lang": "en",
+      "text": "Can you explain the reasoning\nbehind that decision",
+      "offset": 507.54,
+      "duration": 1.8
+    },
+    {
+      "lang": "en",
+      "text": "and why did we open source it?",
+      "offset": 509.34,
+      "duration": 2.67
+    },
+    {
+      "lang": "en",
+      "text": "- Yeah, if you have a closed\necosystem for integrations",
+      "offset": 512.01,
+      "duration": 5
+    },
+    {
+      "lang": "en",
+      "text": "and for a context to be\nprovided to AI applications,",
+      "offset": 517.47,
+      "duration": 3.3
+    },
+    {
+      "lang": "en",
+      "text": "then a isn't clear to the,\nyou know, server builders",
+      "offset": 520.77,
+      "duration": 5
+    },
+    {
+      "lang": "en",
+      "text": "or the integration builders, you know,",
+      "offset": 526.722,
+      "duration": 2.778
+    },
+    {
+      "lang": "en",
+      "text": "is that AI application\ngonna be around forever?",
+      "offset": 529.5,
+      "duration": 1.98
+    },
+    {
+      "lang": "en",
+      "text": "Should they invest in that?",
+      "offset": 531.48,
+      "duration": 2.006
+    },
+    {
+      "lang": "en",
+      "text": "Which ones should they invest in?",
+      "offset": 533.486,
+      "duration": 2.254
+    },
+    {
+      "lang": "en",
+      "text": "And so by making it an open standard,",
+      "offset": 535.74,
+      "duration": 2.22
+    },
+    {
+      "lang": "en",
+      "text": "you really kind of decrease the friction",
+      "offset": 537.96,
+      "duration": 2.73
+    },
+    {
+      "lang": "en",
+      "text": "to even building those integrations.",
+      "offset": 540.69,
+      "duration": 1.68
+    },
+    {
+      "lang": "en",
+      "text": "And we believe that the value",
+      "offset": 542.37,
+      "duration": 3.467
+    },
+    {
+      "lang": "en",
+      "text": "of building an AI application\nis not necessarily",
+      "offset": 545.837,
+      "duration": 2.413
+    },
+    {
+      "lang": "en",
+      "text": "which integrations you have access to,",
+      "offset": 548.25,
+      "duration": 1.77
+    },
+    {
+      "lang": "en",
+      "text": "but the model's intelligence",
+      "offset": 550.02,
+      "duration": 1.5
+    },
+    {
+      "lang": "en",
+      "text": "and the workflow that you\nbuild on top of the model.",
+      "offset": 551.52,
+      "duration": 2.04
+    },
+    {
+      "lang": "en",
+      "text": "So we wanted to focus the\nindustry on those two things",
+      "offset": 553.56,
+      "duration": 2.04
+    },
+    {
+      "lang": "en",
+      "text": "and not necessarily on\nbuilding integrations.",
+      "offset": 555.6,
+      "duration": 2.13
+    },
+    {
+      "lang": "en",
+      "text": "- That makes sense.",
+      "offset": 557.73,
+      "duration": 1.14
+    },
+    {
+      "lang": "en",
+      "text": "And there also seems potentially\nlike with open source,",
+      "offset": 558.87,
+      "duration": 2.79
+    },
+    {
+      "lang": "en",
+      "text": "there's this kind of\ncycle you can get into",
+      "offset": 561.66,
+      "duration": 2.58
+    },
+    {
+      "lang": "en",
+      "text": "where somebody contributes to a server",
+      "offset": 564.24,
+      "duration": 2.611
+    },
+    {
+      "lang": "en",
+      "text": "and then like somebody uses\nit and they notice bugs in it",
+      "offset": 566.851,
+      "duration": 3.059
+    },
+    {
+      "lang": "en",
+      "text": "and then they're like, oh,\nI can just go fix it myself.",
+      "offset": 569.91,
+      "duration": 2.34
+    },
+    {
+      "lang": "en",
+      "text": "And that maybe speeds it all up.",
+      "offset": 572.25,
+      "duration": 2.07
+    },
+    {
+      "lang": "en",
+      "text": "- There's another part to that is Justin",
+      "offset": 574.32,
+      "duration": 1.783
+    },
+    {
+      "lang": "en",
+      "text": "and I just like open source.",
+      "offset": 576.103,
+      "duration": 2.087
+    },
+    {
+      "lang": "en",
+      "text": "- Hey, sometimes it's the simplest thing.",
+      "offset": 578.19,
+      "duration": 1.74
+    },
+    {
+      "lang": "en",
+      "text": "- Yeah.\n- Yeah.",
+      "offset": 579.93,
+      "duration": 1.29
+    },
+    {
+      "lang": "en",
+      "text": "So now we have, you know,",
+      "offset": 581.22,
+      "duration": 2.31
+    },
+    {
+      "lang": "en",
+      "text": "lots of companies adopting\nMCP into their own products.",
+      "offset": 583.53,
+      "duration": 2.762
+    },
+    {
+      "lang": "en",
+      "text": "We have lots of other developers",
+      "offset": 586.292,
+      "duration": 2.786
+    },
+    {
+      "lang": "en",
+      "text": "and companies creating servers\nto be able to use all these",
+      "offset": 589.078,
+      "duration": 3.512
+    },
+    {
+      "lang": "en",
+      "text": "or to be plugged into all these clients.",
+      "offset": 592.59,
+      "duration": 2.373
+    },
+    {
+      "lang": "en",
+      "text": "What does this look like\nacross the industry now?",
+      "offset": 596.341,
+      "duration": 2.429
+    },
+    {
+      "lang": "en",
+      "text": "What's like the current state of MCP?",
+      "offset": 598.77,
+      "duration": 1.77
+    },
+    {
+      "lang": "en",
+      "text": "- The current state is that\nwe have major players adopt it",
+      "offset": 600.54,
+      "duration": 3.39
+    },
+    {
+      "lang": "en",
+      "text": "across like their products.",
+      "offset": 603.93,
+      "duration": 2.46
+    },
+    {
+      "lang": "en",
+      "text": "We have a really big ecosystem\nof MCP server builders.",
+      "offset": 606.39,
+      "duration": 3.57
+    },
+    {
+      "lang": "en",
+      "text": "It's like 10,000-plus.",
+      "offset": 609.96,
+      "duration": 1.68
+    },
+    {
+      "lang": "en",
+      "text": "And it's like at this\ninteresting intersection",
+      "offset": 611.64,
+      "duration": 2.7
+    },
+    {
+      "lang": "en",
+      "text": "that initially was like\nmostly focused on developers",
+      "offset": 614.34,
+      "duration": 2.46
+    },
+    {
+      "lang": "en",
+      "text": "and a very local experience",
+      "offset": 616.8,
+      "duration": 1.74
+    },
+    {
+      "lang": "en",
+      "text": "where the servers would run local",
+      "offset": 618.54,
+      "duration": 1.441
+    },
+    {
+      "lang": "en",
+      "text": "and the software they\nuse it would run local.",
+      "offset": 619.981,
+      "duration": 3.119
+    },
+    {
+      "lang": "en",
+      "text": "And I think we have this inflection point",
+      "offset": 623.1,
+      "duration": 1.35
+    },
+    {
+      "lang": "en",
+      "text": "where we're starting to see",
+      "offset": 624.45,
+      "duration": 3.453
+    },
+    {
+      "lang": "en",
+      "text": "these servers being\nhosted like in the cloud,",
+      "offset": 627.903,
+      "duration": 4.287
+    },
+    {
+      "lang": "en",
+      "text": "like as a web thing through\nwhat we call remote MCP,",
+      "offset": 632.19,
+      "duration": 3.42
+    },
+    {
+      "lang": "en",
+      "text": "and a Claude AI integrations is like",
+      "offset": 635.61,
+      "duration": 2.67
+    },
+    {
+      "lang": "en",
+      "text": "really the first big entry to that",
+      "offset": 638.28,
+      "duration": 2.16
+    },
+    {
+      "lang": "en",
+      "text": "that allows you to connect\njust like a website,",
+      "offset": 640.44,
+      "duration": 2.19
+    },
+    {
+      "lang": "en",
+      "text": "like that offers an MCP server",
+      "offset": 642.63,
+      "duration": 1.984
+    },
+    {
+      "lang": "en",
+      "text": "into your day-to-day Claude AI workflow.",
+      "offset": 644.614,
+      "duration": 2.876
+    },
+    {
+      "lang": "en",
+      "text": "And I feel this is like a pivotal moment",
+      "offset": 647.49,
+      "duration": 1.8
+    },
+    {
+      "lang": "en",
+      "text": "where it can be like a\ntrue standard for the web",
+      "offset": 649.29,
+      "duration": 2.88
+    },
+    {
+      "lang": "en",
+      "text": "for how like LLMs interact with that.",
+      "offset": 652.17,
+      "duration": 2.1
+    },
+    {
+      "lang": "en",
+      "text": "I think that's to see what\nthis is gonna work out.",
+      "offset": 654.27,
+      "duration": 2.43
+    },
+    {
+      "lang": "en",
+      "text": "But yeah, I think that's\nwhere we're currently at,",
+      "offset": 656.7,
+      "duration": 2.764
+    },
+    {
+      "lang": "en",
+      "text": "and we do of course have",
+      "offset": 659.464,
+      "duration": 2.408
+    },
+    {
+      "lang": "en",
+      "text": "a increasingly bigger community\nbeing built around us,",
+      "offset": 661.872,
+      "duration": 2.865
+    },
+    {
+      "lang": "en",
+      "text": "and this is like big companies,",
+      "offset": 664.737,
+      "duration": 1.923
+    },
+    {
+      "lang": "en",
+      "text": "but it's also like sometimes\njust open source people",
+      "offset": 666.66,
+      "duration": 1.737
+    },
+    {
+      "lang": "en",
+      "text": "who just like working on MCP,",
+      "offset": 668.397,
+      "duration": 2.133
+    },
+    {
+      "lang": "en",
+      "text": "and that's just becoming bigger.",
+      "offset": 670.53,
+      "duration": 1.83
+    },
+    {
+      "lang": "en",
+      "text": "- The craziest thing is someone\nfixed our docs this morning",
+      "offset": 672.36,
+      "duration": 3.208
+    },
+    {
+      "lang": "en",
+      "text": "'cause we had a image\nthat was out of date,",
+      "offset": 675.568,
+      "duration": 1.952
+    },
+    {
+      "lang": "en",
+      "text": "and they just submitted the PR, we accept.",
+      "offset": 677.52,
+      "duration": 1.8
+    },
+    {
+      "lang": "en",
+      "text": "- That's why you want\nto do it open source.",
+      "offset": 679.32,
+      "duration": 1.254
+    },
+    {
+      "lang": "en",
+      "text": "- Yeah, that's, I love that.",
+      "offset": 680.574,
+      "duration": 1.296
+    },
+    {
+      "lang": "en",
+      "text": "- I love that the community gets behind it",
+      "offset": 681.87,
+      "duration": 1.2
+    },
+    {
+      "lang": "en",
+      "text": "and they also feel ownership",
+      "offset": 683.07,
+      "duration": 1.8
+    },
+    {
+      "lang": "en",
+      "text": "and wanting to maintain it as well.",
+      "offset": 684.87,
+      "duration": 2.37
+    },
+    {
+      "lang": "en",
+      "text": "And it seems like, I mean,",
+      "offset": 687.24,
+      "duration": 1.23
+    },
+    {
+      "lang": "en",
+      "text": "we were chatting about this\nbefore we started filming,",
+      "offset": 688.47,
+      "duration": 3.09
+    },
+    {
+      "lang": "en",
+      "text": "there's a lot of things\nhappening in the MCP world too",
+      "offset": 691.56,
+      "duration": 3.48
+    },
+    {
+      "lang": "en",
+      "text": "outside of just like\nworking on the protocol.",
+      "offset": 695.04,
+      "duration": 1.95
+    },
+    {
+      "lang": "en",
+      "text": "What's going on in your\nworld these days with MCP?",
+      "offset": 696.99,
+      "duration": 2.793
+    },
+    {
+      "lang": "en",
+      "text": "- Yeah, it has a lot, right?",
+      "offset": 700.667,
+      "duration": 1.783
+    },
+    {
+      "lang": "en",
+      "text": "There's conferences on MCP.",
+      "offset": 702.45,
+      "duration": 3.159
+    },
+    {
+      "lang": "en",
+      "text": "There's just like a lot of conversation.",
+      "offset": 705.609,
+      "duration": 2.751
+    },
+    {
+      "lang": "en",
+      "text": "There's like partnerships where\nwe work with like, you know,",
+      "offset": 708.36,
+      "duration": 3.39
+    },
+    {
+      "lang": "en",
+      "text": "big companies on like\nevolution of the specification",
+      "offset": 711.75,
+      "duration": 2.91
+    },
+    {
+      "lang": "en",
+      "text": "and what their problems are.",
+      "offset": 714.66,
+      "duration": 1.53
+    },
+    {
+      "lang": "en",
+      "text": "I learned a lot about like\nenterprise deployments",
+      "offset": 716.19,
+      "duration": 2.28
+    },
+    {
+      "lang": "en",
+      "text": "and the needs for identity",
+      "offset": 718.47,
+      "duration": 1.32
+    },
+    {
+      "lang": "en",
+      "text": "and authorization in that\nspace over the last few months",
+      "offset": 719.79,
+      "duration": 3.63
+    },
+    {
+      "lang": "en",
+      "text": "and had like help from\nsome of the best people",
+      "offset": 723.42,
+      "duration": 2.76
+    },
+    {
+      "lang": "en",
+      "text": "in the world around this.",
+      "offset": 726.18,
+      "duration": 0.96
+    },
+    {
+      "lang": "en",
+      "text": "And that's just like a\nlittle bit of that world",
+      "offset": 727.14,
+      "duration": 2.4
+    },
+    {
+      "lang": "en",
+      "text": "of MCP at the moment.",
+      "offset": 729.54,
+      "duration": 1.74
+    },
+    {
+      "lang": "en",
+      "text": "- That's awesome.",
+      "offset": 731.28,
+      "duration": 1.05
+    },
+    {
+      "lang": "en",
+      "text": "Yeah, I'm just like blown\naway by like the response,",
+      "offset": 732.33,
+      "duration": 3.96
+    },
+    {
+      "lang": "en",
+      "text": "and like I'm starting to\nsee now online of posts",
+      "offset": 736.29,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "around like is this what it looks like",
+      "offset": 740.13,
+      "duration": 1.59
+    },
+    {
+      "lang": "en",
+      "text": "to witness like the birth\nof like a new protocol?",
+      "offset": 741.72,
+      "duration": 2.04
+    },
+    {
+      "lang": "en",
+      "text": "Is this like what it was like to be around",
+      "offset": 743.76,
+      "duration": 1.5
+    },
+    {
+      "lang": "en",
+      "text": "for HTTP or something like that?",
+      "offset": 745.26,
+      "duration": 2.944
+    },
+    {
+      "lang": "en",
+      "text": "How would you guys\nliken those comparisons?",
+      "offset": 748.204,
+      "duration": 2.456
+    },
+    {
+      "lang": "en",
+      "text": "Like is this a new protocol of that sense,",
+      "offset": 750.66,
+      "duration": 2.34
+    },
+    {
+      "lang": "en",
+      "text": "or how can we expect to\nframe this in comparison",
+      "offset": 753,
+      "duration": 3.06
+    },
+    {
+      "lang": "en",
+      "text": "to things we've seen in the past?",
+      "offset": 756.06,
+      "duration": 1.56
+    },
+    {
+      "lang": "en",
+      "text": "- I mean, I would hope so.",
+      "offset": 757.62,
+      "duration": 1.02
+    },
+    {
+      "lang": "en",
+      "text": "None of us can see the future.",
+      "offset": 758.64,
+      "duration": 2.04
+    },
+    {
+      "lang": "en",
+      "text": "You know, knock on wood",
+      "offset": 760.68,
+      "duration": 1.11
+    },
+    {
+      "lang": "en",
+      "text": "that we've landed on the right thing.",
+      "offset": 761.79,
+      "duration": 1.59
+    },
+    {
+      "lang": "en",
+      "text": "But I think that's where the\ncommunity can help guide us.",
+      "offset": 763.38,
+      "duration": 4.59
+    },
+    {
+      "lang": "en",
+      "text": "The hope is that we have\nhit on the right problem",
+      "offset": 767.97,
+      "duration": 3.99
+    },
+    {
+      "lang": "en",
+      "text": "of providing context to LLMs",
+      "offset": 771.96,
+      "duration": 2.475
+    },
+    {
+      "lang": "en",
+      "text": "and that we have thought far enough ahead",
+      "offset": 774.435,
+      "duration": 3.315
+    },
+    {
+      "lang": "en",
+      "text": "that all the right\nbuilding blocks are there,",
+      "offset": 777.75,
+      "duration": 1.53
+    },
+    {
+      "lang": "en",
+      "text": "and the community can help\nguide us as we're evolving it",
+      "offset": 779.28,
+      "duration": 3.48
+    },
+    {
+      "lang": "en",
+      "text": "into kind of the next few steps.",
+      "offset": 782.76,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "- I think from my perspective,",
+      "offset": 786.36,
+      "duration": 1.29
+    },
+    {
+      "lang": "en",
+      "text": "we just need to build something\nthat people want to use",
+      "offset": 787.65,
+      "duration": 3.15
+    },
+    {
+      "lang": "en",
+      "text": "and build this together with\npeople who care about this.",
+      "offset": 790.8,
+      "duration": 3.03
+    },
+    {
+      "lang": "en",
+      "text": "And I think like you don't\nneed to compare it to HTP",
+      "offset": 793.83,
+      "duration": 2.25
+    },
+    {
+      "lang": "en",
+      "text": "or anything else, it's just like,",
+      "offset": 796.08,
+      "duration": 1.32
+    },
+    {
+      "lang": "en",
+      "text": "just make something\nthat people want to use,",
+      "offset": 797.4,
+      "duration": 1.89
+    },
+    {
+      "lang": "en",
+      "text": "and that's in the end of the day.",
+      "offset": 799.29,
+      "duration": 0.93
+    },
+    {
+      "lang": "en",
+      "text": "- So if I'm a developer,",
+      "offset": 800.22,
+      "duration": 3
+    },
+    {
+      "lang": "en",
+      "text": "and I'm new to MCP, and\nI wanna become involved,",
+      "offset": 803.22,
+      "duration": 2.7
+    },
+    {
+      "lang": "en",
+      "text": "and I also wanna learn a little bit",
+      "offset": 805.92,
+      "duration": 1.05
+    },
+    {
+      "lang": "en",
+      "text": "about how to work with MCP,",
+      "offset": 806.97,
+      "duration": 2.37
+    },
+    {
+      "lang": "en",
+      "text": "do you have any tips for this person?",
+      "offset": 809.34,
+      "duration": 2.58
+    },
+    {
+      "lang": "en",
+      "text": "- I think the first thing\nthat I would do is go look",
+      "offset": 811.92,
+      "duration": 5
+    },
+    {
+      "lang": "en",
+      "text": "at an existing server that is online.",
+      "offset": 817.149,
+      "duration": 3.637
+    },
+    {
+      "lang": "en",
+      "text": "Go play around with it, see\nhow it works with Claude AI,",
+      "offset": 820.786,
+      "duration": 4.895
+    },
+    {
+      "lang": "en",
+      "text": "or Claude desktop if you wanna\nplay around with local MCPs.",
+      "offset": 825.681,
+      "duration": 4.239
+    },
+    {
+      "lang": "en",
+      "text": "But just get a feel",
+      "offset": 829.92,
+      "duration": 0.84
+    },
+    {
+      "lang": "en",
+      "text": "for what that interaction\npattern is first,",
+      "offset": 830.76,
+      "duration": 2.4
+    },
+    {
+      "lang": "en",
+      "text": "and that will make it much easier",
+      "offset": 833.16,
+      "duration": 1.56
+    },
+    {
+      "lang": "en",
+      "text": "for you to then build your own MCP.",
+      "offset": 834.72,
+      "duration": 2.16
+    },
+    {
+      "lang": "en",
+      "text": "And start with the classic,\nyou know, hello world.",
+      "offset": 836.88,
+      "duration": 2.22
+    },
+    {
+      "lang": "en",
+      "text": "Just do one tool, just\nrespond with, &quot;Hello world.&quot;",
+      "offset": 839.1,
+      "duration": 3.527
+    },
+    {
+      "lang": "en",
+      "text": "Do the same thing for you\nknow, prompts, resources.",
+      "offset": 842.627,
+      "duration": 3.973
+    },
+    {
+      "lang": "en",
+      "text": "Just try the very basic thing for each",
+      "offset": 846.6,
+      "duration": 2.28
+    },
+    {
+      "lang": "en",
+      "text": "before you go into anything more complex.",
+      "offset": 848.88,
+      "duration": 2.19
+    },
+    {
+      "lang": "en",
+      "text": "And I think once people\nget a feel for that,",
+      "offset": 851.07,
+      "duration": 1.74
+    },
+    {
+      "lang": "en",
+      "text": "they realize how easy it is.",
+      "offset": 852.81,
+      "duration": 1.29
+    },
+    {
+      "lang": "en",
+      "text": "- Yeah, I would certainly\njust start local,",
+      "offset": 854.1,
+      "duration": 1.62
+    },
+    {
+      "lang": "en",
+      "text": "just whip out Claude Code",
+      "offset": 855.72,
+      "duration": 2.13
+    },
+    {
+      "lang": "en",
+      "text": "and just write code like an MCP server",
+      "offset": 857.85,
+      "duration": 2.46
+    },
+    {
+      "lang": "en",
+      "text": "and just go from there.",
+      "offset": 860.31,
+      "duration": 0.93
+    },
+    {
+      "lang": "en",
+      "text": "I think that works\nactually surprisingly well,",
+      "offset": 861.24,
+      "duration": 1.65
+    },
+    {
+      "lang": "en",
+      "text": "with like 10 minutes\nyou can have something,",
+      "offset": 862.89,
+      "duration": 2.04
+    },
+    {
+      "lang": "en",
+      "text": "and then yes, what Theo said,",
+      "offset": 864.93,
+      "duration": 1.38
+    },
+    {
+      "lang": "en",
+      "text": "just like look at great\nservers and what they do",
+      "offset": 866.31,
+      "duration": 2.668
+    },
+    {
+      "lang": "en",
+      "text": "and make the modification from there.",
+      "offset": 868.978,
+      "duration": 2.012
+    },
+    {
+      "lang": "en",
+      "text": "- Yeah, it's funny you say that.",
+      "offset": 870.99,
+      "duration": 1.47
+    },
+    {
+      "lang": "en",
+      "text": "I was experimenting the other day",
+      "offset": 872.46,
+      "duration": 1.35
+    },
+    {
+      "lang": "en",
+      "text": "with just getting the docs\nModel Context Protocol, the IO,",
+      "offset": 873.81,
+      "duration": 4.325
+    },
+    {
+      "lang": "en",
+      "text": "pasting it into Claude Code,\nand then like make me a server.",
+      "offset": 878.135,
+      "duration": 4.765
+    },
+    {
+      "lang": "en",
+      "text": "And I didn't even have to like",
+      "offset": 882.9,
+      "duration": 1.95
+    },
+    {
+      "lang": "en",
+      "text": "paste in the content or anything.",
+      "offset": 884.85,
+      "duration": 1.08
+    },
+    {
+      "lang": "en",
+      "text": "Claude Code went, grabbed it, fetched it,",
+      "offset": 885.93,
+      "duration": 1.86
+    },
+    {
+      "lang": "en",
+      "text": "brought it in, made the server.",
+      "offset": 887.79,
+      "duration": 2.475
+    },
+    {
+      "lang": "en",
+      "text": "It was like a very easy\nexample right there",
+      "offset": 890.265,
+      "duration": 2.645
+    },
+    {
+      "lang": "en",
+      "text": "of just how quickly you can get started",
+      "offset": 892.91,
+      "duration": 2.11
+    },
+    {
+      "lang": "en",
+      "text": "with some of these things,",
+      "offset": 895.02,
+      "duration": 0.84
+    },
+    {
+      "lang": "en",
+      "text": "especially when you've Claude\nunder the hood powering it.",
+      "offset": 895.86,
+      "duration": 2.76
+    },
+    {
+      "lang": "en",
+      "text": "Any favorite MCP servers",
+      "offset": 898.62,
+      "duration": 1.56
+    },
+    {
+      "lang": "en",
+      "text": "that you guys have seen\nout in the world so far?",
+      "offset": 900.18,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "- I really like those MCP servers",
+      "offset": 903.78,
+      "duration": 1.53
+    },
+    {
+      "lang": "en",
+      "text": "that bridge the gap to\nlike the real world.",
+      "offset": 905.31,
+      "duration": 2.61
+    },
+    {
+      "lang": "en",
+      "text": "Like I'm a person who likes music,",
+      "offset": 907.92,
+      "duration": 1.95
+    },
+    {
+      "lang": "en",
+      "text": "and I have synthesizers at home,",
+      "offset": 909.87,
+      "duration": 1.35
+    },
+    {
+      "lang": "en",
+      "text": "and there's an MCP server\nthat someone created",
+      "offset": 911.22,
+      "duration": 2.4
+    },
+    {
+      "lang": "en",
+      "text": "to like create basically like,",
+      "offset": 913.62,
+      "duration": 2.55
+    },
+    {
+      "lang": "en",
+      "text": "control their like synthesizer.",
+      "offset": 916.17,
+      "duration": 2.55
+    },
+    {
+      "lang": "en",
+      "text": "And I just love that.",
+      "offset": 918.72,
+      "duration": 1.085
+    },
+    {
+      "lang": "en",
+      "text": "It's just like,",
+      "offset": 919.805,
+      "duration": 0.833
+    },
+    {
+      "lang": "en",
+      "text": "here's Claude interacting\nwith a physical device",
+      "offset": 920.638,
+      "duration": 2.462
+    },
+    {
+      "lang": "en",
+      "text": "that later makes music, and\nthat's just so cool in my mind.",
+      "offset": 923.1,
+      "duration": 2.46
+    },
+    {
+      "lang": "en",
+      "text": "I love those, and I\nlove the creative ones.",
+      "offset": 925.56,
+      "duration": 2.76
+    },
+    {
+      "lang": "en",
+      "text": "I love the ones where people\nplay around with Blender.",
+      "offset": 928.32,
+      "duration": 2.49
+    },
+    {
+      "lang": "en",
+      "text": "I love the quirky ones.",
+      "offset": 930.81,
+      "duration": 1.26
+    },
+    {
+      "lang": "en",
+      "text": "Like one of our team members\nhas Claude control his door",
+      "offset": 932.07,
+      "duration": 4.655
+    },
+    {
+      "lang": "en",
+      "text": "through like an MCP server\nand like role-play a doorman,",
+      "offset": 936.725,
+      "duration": 3.985
+    },
+    {
+      "lang": "en",
+      "text": "and it's just like I love that creativity.",
+      "offset": 940.71,
+      "duration": 2.37
+    },
+    {
+      "lang": "en",
+      "text": "- I mean really with that,",
+      "offset": 943.08,
+      "duration": 1.08
+    },
+    {
+      "lang": "en",
+      "text": "it's like the possibilities are endless.",
+      "offset": 944.16,
+      "duration": 1.29
+    },
+    {
+      "lang": "en",
+      "text": "Anything that you could ping\nthrough an API or anything,",
+      "offset": 945.45,
+      "duration": 2.46
+    },
+    {
+      "lang": "en",
+      "text": "you could wrap in an MCP server",
+      "offset": 947.91,
+      "duration": 2.365
+    },
+    {
+      "lang": "en",
+      "text": "and then control it with\nClaude or another LLM.",
+      "offset": 950.275,
+      "duration": 3.695
+    },
+    {
+      "lang": "en",
+      "text": "And the Blender one, explain that.",
+      "offset": 953.97,
+      "duration": 3.54
+    },
+    {
+      "lang": "en",
+      "text": "So somebody was actually using Claude",
+      "offset": 957.51,
+      "duration": 2.67
+    },
+    {
+      "lang": "en",
+      "text": "to control Blender just through MCP?",
+      "offset": 960.18,
+      "duration": 2.37
+    },
+    {
+      "lang": "en",
+      "text": "- Yeah, basically is just like",
+      "offset": 962.55,
+      "duration": 1.5
+    },
+    {
+      "lang": "en",
+      "text": "the MCP server just writes like\nBlender scripts into Blender",
+      "offset": 964.05,
+      "duration": 3.54
+    },
+    {
+      "lang": "en",
+      "text": "and you see in, you know,\nthere's lots of videos.",
+      "offset": 967.59,
+      "duration": 2.73
+    },
+    {
+      "lang": "en",
+      "text": "You should check it out.",
+      "offset": 970.32,
+      "duration": 0.87
+    },
+    {
+      "lang": "en",
+      "text": "It is like you just see\nClaude calling these tools,",
+      "offset": 971.19,
+      "duration": 3.03
+    },
+    {
+      "lang": "en",
+      "text": "and on the side Blender\njust creates like a scene",
+      "offset": 974.22,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "out of nowhere, and it's\nactually just not the person.",
+      "offset": 977.58,
+      "duration": 2.31
+    },
+    {
+      "lang": "en",
+      "text": "It's Claude creating it, and I love it.",
+      "offset": 979.89,
+      "duration": 1.95
+    },
+    {
+      "lang": "en",
+      "text": "- That's awesome, I love that.",
+      "offset": 981.84,
+      "duration": 2.25
+    },
+    {
+      "lang": "en",
+      "text": "Let's switch gears a little bit.",
+      "offset": 984.09,
+      "duration": 1.47
+    },
+    {
+      "lang": "en",
+      "text": "So we just recently released Claude 4,",
+      "offset": 985.56,
+      "duration": 2.97
+    },
+    {
+      "lang": "en",
+      "text": "so Opus and the new Sonnet.",
+      "offset": 988.53,
+      "duration": 2.05
+    },
+    {
+      "lang": "en",
+      "text": "What does this enable for MCP,",
+      "offset": 990.58,
+      "duration": 2.599
+    },
+    {
+      "lang": "en",
+      "text": "and how does this connect\ninto this broader theme",
+      "offset": 993.179,
+      "duration": 3.031
+    },
+    {
+      "lang": "en",
+      "text": "we're seeing around agents and AIs",
+      "offset": 996.21,
+      "duration": 2.85
+    },
+    {
+      "lang": "en",
+      "text": "that can kind of operate\non longer time horizons?",
+      "offset": 999.06,
+      "duration": 2.76
+    },
+    {
+      "lang": "en",
+      "text": "- As we get into models\nwith more intelligence,",
+      "offset": 1001.82,
+      "duration": 3.18
+    },
+    {
+      "lang": "en",
+      "text": "it can do longer running tasks,",
+      "offset": 1005,
+      "duration": 1.44
+    },
+    {
+      "lang": "en",
+      "text": "I think some of the primitives\nthat we've actually built",
+      "offset": 1006.44,
+      "duration": 2.49
+    },
+    {
+      "lang": "en",
+      "text": "into MCP are going to become more used",
+      "offset": 1008.93,
+      "duration": 1.71
+    },
+    {
+      "lang": "en",
+      "text": "that right now may not have\ngotten as much adoption.",
+      "offset": 1010.64,
+      "duration": 3.81
+    },
+    {
+      "lang": "en",
+      "text": "So, you know, things\nrelated to statefulness,",
+      "offset": 1014.45,
+      "duration": 4.2
+    },
+    {
+      "lang": "en",
+      "text": "things related to actually doing sampling,",
+      "offset": 1018.65,
+      "duration": 2.903
+    },
+    {
+      "lang": "en",
+      "text": "but those are the primitives\nthat we thought about",
+      "offset": 1021.553,
+      "duration": 2.767
+    },
+    {
+      "lang": "en",
+      "text": "in the beginning that actually\nhelp in an agent's world,",
+      "offset": 1024.32,
+      "duration": 2.85
+    },
+    {
+      "lang": "en",
+      "text": "but do require the models to\nhave the amount of intelligence",
+      "offset": 1027.17,
+      "duration": 2.34
+    },
+    {
+      "lang": "en",
+      "text": "where they can kind of start\ndoing longer running tasks.",
+      "offset": 1029.51,
+      "duration": 2.85
+    },
+    {
+      "lang": "en",
+      "text": "- That's interesting.",
+      "offset": 1032.36,
+      "duration": 0.833
+    },
+    {
+      "lang": "en",
+      "text": "So some of these things that\nmaybe haven't been utilized",
+      "offset": 1033.193,
+      "duration": 2.287
+    },
+    {
+      "lang": "en",
+      "text": "so much just yet will become\nmore and more important",
+      "offset": 1035.48,
+      "duration": 3.57
+    },
+    {
+      "lang": "en",
+      "text": "because the models just get more capable,",
+      "offset": 1039.05,
+      "duration": 1.71
+    },
+    {
+      "lang": "en",
+      "text": "and they're able to use 'em.",
+      "offset": 1040.76,
+      "duration": 1.41
+    },
+    {
+      "lang": "en",
+      "text": "- It also just makes it probably easier",
+      "offset": 1042.17,
+      "duration": 1.44
+    },
+    {
+      "lang": "en",
+      "text": "to like put more MCP\nservers, like attach it,",
+      "offset": 1043.61,
+      "duration": 3.24
+    },
+    {
+      "lang": "en",
+      "text": "and Claude is just gonna\nget better and better",
+      "offset": 1046.85,
+      "duration": 2.1
+    },
+    {
+      "lang": "en",
+      "text": "at like distinguishing which one it needs",
+      "offset": 1048.95,
+      "duration": 3.27
+    },
+    {
+      "lang": "en",
+      "text": "to make to take action.",
+      "offset": 1052.22,
+      "duration": 2.072
+    },
+    {
+      "lang": "en",
+      "text": "- How many MCP servers can\nyou throw at Claude at once?",
+      "offset": 1054.292,
+      "duration": 4.498
+    },
+    {
+      "lang": "en",
+      "text": "How does it know how\nto choose between them?",
+      "offset": 1058.79,
+      "duration": 2.01
+    },
+    {
+      "lang": "en",
+      "text": "- Depends.\n- Good question.",
+      "offset": 1060.8,
+      "duration": 1.26
+    },
+    {
+      "lang": "en",
+      "text": "- It depends because it\ndepends on, you know,",
+      "offset": 1062.06,
+      "duration": 2.76
+    },
+    {
+      "lang": "en",
+      "text": "how are the tools written,\nare they overlapping?",
+      "offset": 1064.82,
+      "duration": 2.49
+    },
+    {
+      "lang": "en",
+      "text": "If you put like three\nissue tracker MCP servers",
+      "offset": 1067.31,
+      "duration": 2.37
+    },
+    {
+      "lang": "en",
+      "text": "next to each other, of course\nthe model can get confused,",
+      "offset": 1069.68,
+      "duration": 2.91
+    },
+    {
+      "lang": "en",
+      "text": "but if it's like, you know,\nan issue tracker thing",
+      "offset": 1072.59,
+      "duration": 2.607
+    },
+    {
+      "lang": "en",
+      "text": "and I don't know, something\ncompletely different,",
+      "offset": 1075.197,
+      "duration": 2.673
+    },
+    {
+      "lang": "en",
+      "text": "like I don't, you know, whatever,",
+      "offset": 1077.87,
+      "duration": 2.34
+    },
+    {
+      "lang": "en",
+      "text": "and I think then it becomes,\nyou know, pretty easy,",
+      "offset": 1080.21,
+      "duration": 3.15
+    },
+    {
+      "lang": "en",
+      "text": "then you can put a lot\nof it next to each other.",
+      "offset": 1083.36,
+      "duration": 1.89
+    },
+    {
+      "lang": "en",
+      "text": "Just a matter of like of your workflow",
+      "offset": 1085.25,
+      "duration": 1.68
+    },
+    {
+      "lang": "en",
+      "text": "and how overlapping they\nare on the end of the day.",
+      "offset": 1086.93,
+      "duration": 2.43
+    },
+    {
+      "lang": "en",
+      "text": "- I see.",
+      "offset": 1089.36,
+      "duration": 0.833
+    },
+    {
+      "lang": "en",
+      "text": "And I'm assuming as models get\nmore capable and intelligent,",
+      "offset": 1090.193,
+      "duration": 3.427
+    },
+    {
+      "lang": "en",
+      "text": "it becomes like you can throw\nmore and more at them too.",
+      "offset": 1093.62,
+      "duration": 2.85
+    },
+    {
+      "lang": "en",
+      "text": "So what's next for MCP?",
+      "offset": 1096.47,
+      "duration": 2.07
+    },
+    {
+      "lang": "en",
+      "text": "- The protocol is now live.",
+      "offset": 1098.54,
+      "duration": 1.685
+    },
+    {
+      "lang": "en",
+      "text": "There's good adoption,\nbut we can do a better job",
+      "offset": 1100.225,
+      "duration": 2.905
+    },
+    {
+      "lang": "en",
+      "text": "of helping people understand what it is.",
+      "offset": 1103.13,
+      "duration": 1.35
+    },
+    {
+      "lang": "en",
+      "text": "So we're definitely going to invest",
+      "offset": 1104.48,
+      "duration": 1.17
+    },
+    {
+      "lang": "en",
+      "text": "in more examples, better documentation.",
+      "offset": 1105.65,
+      "duration": 2.926
+    },
+    {
+      "lang": "en",
+      "text": "We're also investing in\nkey security primitives.",
+      "offset": 1108.576,
+      "duration": 4.696
+    },
+    {
+      "lang": "en",
+      "text": "So the thing I think most people\nare gonna be excited about",
+      "offset": 1113.272,
+      "duration": 3.718
+    },
+    {
+      "lang": "en",
+      "text": "is agents and how we're\nthinking about agents.",
+      "offset": 1116.99,
+      "duration": 2.07
+    },
+    {
+      "lang": "en",
+      "text": "So for agents, one really big ship",
+      "offset": 1119.06,
+      "duration": 3.99
+    },
+    {
+      "lang": "en",
+      "text": "that's coming is the registry API.",
+      "offset": 1123.05,
+      "duration": 1.77
+    },
+    {
+      "lang": "en",
+      "text": "So that is going to allow models",
+      "offset": 1124.82,
+      "duration": 2.16
+    },
+    {
+      "lang": "en",
+      "text": "to actually go and search\nfor additional servers",
+      "offset": 1126.98,
+      "duration": 2.04
+    },
+    {
+      "lang": "en",
+      "text": "that they can then bring into the LLM.",
+      "offset": 1129.02,
+      "duration": 4.716
+    },
+    {
+      "lang": "en",
+      "text": "That then allows kind of a little bit more",
+      "offset": 1133.736,
+      "duration": 3.054
+    },
+    {
+      "lang": "en",
+      "text": "of an agentic loop",
+      "offset": 1136.79,
+      "duration": 0.833
+    },
+    {
+      "lang": "en",
+      "text": "since the client doesn't\njust get to decide, you know,",
+      "offset": 1137.623,
+      "duration": 2.347
+    },
+    {
+      "lang": "en",
+      "text": "here are the 10 things that I am aware of",
+      "offset": 1139.97,
+      "duration": 1.98
+    },
+    {
+      "lang": "en",
+      "text": "and that I want the\nmodel to have context to.",
+      "offset": 1141.95,
+      "duration": 1.92
+    },
+    {
+      "lang": "en",
+      "text": "The model can now go and search\nfor more things on demand.",
+      "offset": 1143.87,
+      "duration": 3.33
+    },
+    {
+      "lang": "en",
+      "text": "The second is long running tasks.",
+      "offset": 1147.2,
+      "duration": 2.13
+    },
+    {
+      "lang": "en",
+      "text": "So actually making it easy for you",
+      "offset": 1149.33,
+      "duration": 2.58
+    },
+    {
+      "lang": "en",
+      "text": "to do longer running things with MCP.",
+      "offset": 1151.91,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "And then the third one is elicitation.",
+      "offset": 1155.27,
+      "duration": 2.01
+    },
+    {
+      "lang": "en",
+      "text": "So how do you as a server actually go back",
+      "offset": 1157.28,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "and ask the user for more information",
+      "offset": 1160.88,
+      "duration": 1.92
+    },
+    {
+      "lang": "en",
+      "text": "if you need more information.",
+      "offset": 1162.8,
+      "duration": 1.71
+    },
+    {
+      "lang": "en",
+      "text": "- Exciting.",
+      "offset": 1164.51,
+      "duration": 0.99
+    },
+    {
+      "lang": "en",
+      "text": "Well, I'm very excited to see\nwhat the future holds for MCP.",
+      "offset": 1165.5,
+      "duration": 3.18
+    },
+    {
+      "lang": "en",
+      "text": "And thank you both for coming on.",
+      "offset": 1168.68,
+      "duration": 2.04
+    },
+    {
+      "lang": "en",
+      "text": "- Thank you.",
+      "offset": 1170.72,
+      "duration": 0.833
+    }
+  ],
+  "cleanText": "- Around the time, like in September, we had like an internal hackathon, and everyone was free to build basically whatever we wanted to build. But it turns out everyone just built an MCP, and it was-\n- It was crazy. Like everyone's ideas were, &quot;Oh, but what if we made this an MCP server?&quot;\n- Hey, I'm Alex. I lead Claude Relations here at Anthropic.\n- Hi, I'm Theo, I'm a product manager on MCP.\n- Hey, I'm David, member of technical staff at Anthropic and one of the co-creators of MCP.\n- Today we're gonna be talking about the Model Context Protocol and diving in deep into what it is and what's next. Thank you both for coming on. Very excited to talk about MCP, but first there's a lot of talk about MCP and not a lot of maybe real deep understanding of what it is. Can we dive into how you view MCP and like what it really means to be using MCP or building on it?\n- MCP is just a way for, you know, putting my workflow into like AI applications in a very simple way. I think that's how I really wanted it to be initially, or that's how we want it to be, but it's just a way to give context to an application that uses an LLM. And that's just as simple as that. And that can be, you know, tools, it can be just raw context, whatever you like it to be.\n- How is that different than you calling an API or something like that? It's passing this information from one place into the prompt basically of the model. What makes MCP special here?\n- I think the question is what do models interact with? And they don't interact directly with APIs. They interact with prompts and tools and you know, whatever you're giving the model to ingest. And so MCP standardizes how you take that data from, whether it's an API or some internal data source or whatever it is, how you take that data and then actually give it to the model.\n- So, this is a protocol then. So it's defining that sort of interaction pattern. What are the main aspects of this protocol that like you have, that has to follow?\n- The main part is that it's a protocol between the AI application that uses an LLM, and it exposes like basically three main thing. It's tools, it's a set, a thing called resources, which is just raw data that you could like ingest into a RAG pipeline or whatever you want it to do, and there's prompts. And that's the three main things that a server can expose for now, yeah.\n- So tools are like actions that the model can take out in the world. Resources could be files, texts.\n- Files, data, whatever kind of context you wanna give the model.\n- And then prompts are?\n- Just like what a user wants to put into the context window by themself and just like triggered by the user and just put into the context window, and then they can edit it as they want to. That's really what prompts are for, like prompt templates at the end of the day.\n- Prompt templates, I see. So literally defining the prompt itself.\n- We typically see that being implemented as a slash command.\n- Oh, okay, I see. So if you're in the AI application of your choice, you would do a slash command, and it pull in the prompt template.\n- Exactly.\n- Save you time from having to write that out, whatever it is. Okay, that's MCP at its most basic form. There's definitely a lot of nuance in there. What was the origin of all this? Like how did this come about?\n- The origin I think is like, the most basic thing is that, that I worked on like internal developer stuff, and I got very quickly frustrated about like having to copy things in and out of Claude desktop and then copying things back and forth between my IDE, and that's just really what I would thinking about, like how can I solve copy and pasting the things I care about the most between these two applications. And that's really the absolute origin of where MCP started, at least in my mind. And then from there, I explained that to Justin, who's the other co-creator, and he really took it and ran it. And then we together, just build it out and build into Claude desktop. And I think there was a pivotal moment that you alluded to. Do you wanna talk about the hack week?\n- I feel like you should take the story.\n- Okay, yeah, hack week was fun. We weren't really sure, is this gonna work? And, but at the round the time, like in September we had like an internal hackathon, and everyone was free to build basically whatever they wanted to build. But it turns out everyone just built an MCP, and it was-\n- It was crazy. Like everyone's ideas were, &quot;Oh, but what if we made this an MCP server?&quot;\n- Yeah, yeah.\n- And we had everything from people, you know, doing, you know, very standard things like Slack integration or things you would think of when you think MCP up to like people who like steered their 3D printer with MCP. And I love this like when it got into the real world, when like Claude got into the real world because of an MCP server.\n- What was it? Because I remember that too when we were doing these, all these hackathon projects, and there was no mandate to force people to use MCP. This was just like an entirely organic thing. Why did people gravitate towards MCP for all their projects?\n- I think it really was that standardization layer just made it so much easier to add context to the application, because the moment that Claude is now integrated against MCP, that means as the server builder you can build 1 to 10, 20, however many servers you want, and you know that it will automatically work with that application. And so I think that just gives you the ability to only think about one side and not have to think about the other side.\n- I think there's a bit of a magic moment when you teach Claude something new using an MCP server for the first time, and you see it takes action about something you care about. And I feel that's a little bit of moment of magic that I think MCP captures really well, which makes people so excited, because within five minutes there's something going.\n- Right, right, yeah, I've seen it myself, and I mean even experienced it where it almost feels like you take Claude out of the the box, so to speak. And all of a sudden, instead of just being this thing that is just right there outputting text, it's doing other things, it's calling other applications, fetching on their data, or even like operating a 3D printer, which is a really crazy thing. And that does feel really special. And I guess MCP allows that pretty seamlessly to some degree. So this was back in end of summer, early fall, as we were doing these hack week and these other things. When did we launch MCP, and what did that look like?\n- We launched MCP around Thanksgiving.\n- Yeah, November.\n- 2024.\n- And how was that launch? What was the reception?\n- Slow at first. I think everyone's response is, as you can imagine, well, some people still have this response is, what's MCP?\n- Right?\n- Mm-hmm.\n- We, naming is hard. We definitely could have named it better.\n- It's arguable now, it's kind of caught its storm.\n- I know.\n- That's fair. But you still get the like MPC instead of MCP, and then it makes me think NPC, and you know?\n- Yeah, acronyms are hard.\n- But, yeah, acronyms are hard. But you had a lot of people asking what is MCP, not just externally, but I also think internally, because it was such a bottoms up movement. You know, initially people were like, oh, what is this thing? What does it mean to ask or to give the model context? And then as people started playing around with it and seeing it for themselves, I think that's where it actually slowly caught steam. And the turning point was when more and more clients kind of started adopting. So I think the IDEs were the first to adopt. More recently we've seen a lot of adoption from model providers, and that's kind of created a lot of kind of waves in the market to incentivize a lot more server providers to actually build servers.\n- I think one of that part is like you see so many times on like social media, like what is MCP? Why would I ever want this? And then like a month later, a few days later, they're gonna be like, this is the best thing ever, have so many of these stories, and it's so funny.\n- Yeah, so it's now become, I think it's fair to say like industry standard of like integration protocol. I mean, there's nothing else in my mind that kind of rivals it, but I think like going back to the launch, a key decision here was to actually make this open source. And that was pretty different in comparison to maybe previous efforts in this area that had been launched. Can you explain the reasoning behind that decision and why did we open source it?\n- Yeah, if you have a closed ecosystem for integrations and for a context to be provided to AI applications, then a isn't clear to the, you know, server builders or the integration builders, you know, is that AI application gonna be around forever? Should they invest in that? Which ones should they invest in? And so by making it an open standard, you really kind of decrease the friction to even building those integrations. And we believe that the value of building an AI application is not necessarily which integrations you have access to, but the model's intelligence and the workflow that you build on top of the model. So we wanted to focus the industry on those two things and not necessarily on building integrations.\n- That makes sense. And there also seems potentially like with open source, there's this kind of cycle you can get into where somebody contributes to a server and then like somebody uses it and they notice bugs in it and then they're like, oh, I can just go fix it myself. And that maybe speeds it all up.\n- There's another part to that is Justin and I just like open source.\n- Hey, sometimes it's the simplest thing.\n- Yeah.\n- Yeah.\nSo now we have, you know, lots of companies adopting MCP into their own products. We have lots of other developers and companies creating servers to be able to use all these or to be plugged into all these clients. What does this look like across the industry now? What's like the current state of MCP?\n- The current state is that we have major players adopt it across like their products. We have a really big ecosystem of MCP server builders. It's like 10,000-plus. And it's like at this interesting intersection that initially was like mostly focused on developers and a very local experience where the servers would run local and the software they use it would run local. And I think we have this inflection point where we're starting to see these servers being hosted like in the cloud, like as a web thing through what we call remote MCP, and a Claude AI integrations is like really the first big entry to that that allows you to connect just like a website, like that offers an MCP server into your day-to-day Claude AI workflow. And I feel this is like a pivotal moment where it can be like a true standard for the web for how like LLMs interact with that. I think that's to see what this is gonna work out. But yeah, I think that's where we're currently at, and we do of course have a increasingly bigger community being built around us, and this is like big companies, but it's also like sometimes just open source people who just like working on MCP, and that's just becoming bigger.\n- The craziest thing is someone fixed our docs this morning 'cause we had a image that was out of date, and they just submitted the PR, we accept.\n- That's why you want to do it open source.\n- Yeah, that's, I love that.\n- I love that the community gets behind it and they also feel ownership and wanting to maintain it as well. And it seems like, I mean, we were chatting about this before we started filming, there's a lot of things happening in the MCP world too outside of just like working on the protocol. What's going on in your world these days with MCP?\n- Yeah, it has a lot, right? There's conferences on MCP. There's just like a lot of conversation. There's like partnerships where we work with like, you know, big companies on like evolution of the specification and what their problems are. I learned a lot about like enterprise deployments and the needs for identity and authorization in that space over the last few months and had like help from some of the best people in the world around this. And that's just like a little bit of that world of MCP at the moment.\n- That's awesome. Yeah, I'm just like blown away by like the response, and like I'm starting to see now online of posts around like is this what it looks like to witness like the birth of like a new protocol? Is this like what it was like to be around for HTTP or something like that? How would you guys liken those comparisons? Like is this a new protocol of that sense, or how can we expect to frame this in comparison to things we've seen in the past?\n- I mean, I would hope so. None of us can see the future. You know, knock on wood that we've landed on the right thing. But I think that's where the community can help guide us. The hope is that we have hit on the right problem of providing context to LLMs and that we have thought far enough ahead that all the right building blocks are there, and the community can help guide us as we're evolving it into kind of the next few steps.\n- I think from my perspective, we just need to build something that people want to use and build this together with people who care about this. And I think like you don't need to compare it to HTP or anything else, it's just like, just make something that people want to use, and that's in the end of the day.\n- So if I'm a developer, and I'm new to MCP, and I wanna become involved, and I also wanna learn a little bit about how to work with MCP, do you have any tips for this person?\n- I think the first thing that I would do is go look at an existing server that is online. Go play around with it, see how it works with Claude\n\n\nAI, or Claude desktop if you wanna play around with local MCPs. But just get a feel for what that interaction pattern is first, and that will make it much easier for you to then build your own MCP. And start with the classic, you know, hello world. Just do one tool, just respond with, \"Hello world.\" Do the same thing for you know, prompts, resources. Just try the very basic thing for each before you go into anything more complex. And I think once people get a feel for that, they realize how easy it is.\n- Yeah, I would certainly just start local, just whip out Claude Code and just write code like an MCP server and just go from there. I think that works actually surprisingly well, with like 10 minutes you can have something, and then yes, what Theo Chu said, just like look at great servers and what they do and make the modification from there.\n- Yeah, it's funny you say that. I was experimenting the other day with just getting the docs Model Context Protocol, the IO, pasting it into Claude Code, and then like make me a server. And I didn't even have to like paste in the content or anything. Claude Code went, grabbed it, fetched it, brought it in, made the server. It was like a very easy example right there of just how quickly you can get started with some of these things, especially when you've Claude under the hood powering it.\nAny favorite MCP servers that you guys have seen out in the world so far?\n- I really like those MCP servers that bridge the gap to like the real world. Like I'm a person who likes music, and I have synthesizers at home, and there's an MCP server that someone created to like create basically like, control their like synthesizer. And I just love that. It's just like, here's Claude interacting with a physical device that later makes music, and that's just so cool in my mind. I love those, and I love the creative ones. I love the ones where people play around with Blender. I love the quirky ones. Like one of our team members has Claude control his door through like an MCP server and like role-play a doorman, and it's just like I love that creativity.\n- I mean really with that, it's like the possibilities are endless. Anything that you could ping through an API or anything, you could wrap in an MCP server and then control it with Claude or another LLM. And the Blender one, explain that. So somebody was actually using Claude to control Blender just through MCP?\n- Yeah, basically is just like the MCP server just writes like Blender scripts into Blender and you see in, you know, there's lots of videos. You should check it out. It is like you just see Claude calling these tools, and on the side Blender just creates like a scene out of nowhere, and it's actually just not the person. It's Claude creating it, and I love it.\n- That's awesome, I love that. Let's switch gears a little bit. So we just recently released Claude 4, so Opus and the new Sonnet. What does this enable for MCP, and how does this connect into this broader theme we're seeing around agents and AIs that can kind of operate on longer time horizons?\n- As we get into models with more intelligence, it can do longer running tasks, I think some of the primitives that we've actually built into MCP are going to become more used that right now may not have gotten as much adoption. So, you know, things related to statefulness, things related to actually doing sampling, but those are the primitives that we thought about in the beginning that actually help in an agent's world, but do require the models to have the amount of intelligence where they can kind of start doing longer running tasks.\n- That's interesting. So some of these things that maybe haven't been utilized so much just yet will become more and more important because the models just get more capable, and they're able to use 'em.\n- It also just makes it probably easier to like put more MCP servers, like attach it, and Claude is just gonna get better and better at like distinguishing which one it needs to make to take action.\n- How many MCP servers can you throw at Claude at once? How does it know how to choose between them?\n- Depends.\n- Good question.\n- It depends because it depends on, you know, how are the tools written, are they overlapping? If you put like three issue tracker MCP servers next to each other, of course the model can get confused, but if it's like, you know, an issue tracker thing and I don't know, something completely different, like I don't, you know, whatever, and I think then it becomes, you know, pretty easy, then you can put a lot of it next to each other. Just a matter of like of your workflow and how overlapping they are on the end of the day.\n- I see. And I'm assuming as models get more capable and intelligent, it becomes like you can throw more and more at them too. So what's next for MCP?\n- The protocol is now live. There's good adoption, but we can do a better job of helping people understand what it is. So we're definitely going to invest in more examples, better documentation. We're also investing in key security primitives. So the thing I think most people are gonna be excited about is agents and how we're thinking about agents. So for agents, one really big ship that's coming is the registry API. So that is going to allow models to actually go and search for additional servers that they can then bring into the LLM. That then allows kind of a little bit more of an agentic loop since the client doesn't just get to decide, you know, here are the 10 things that I am aware of and that I want the model to have context to. The model can now go and search for more things on demand. The second is long running tasks. So actually making it easy for you to do longer running things with MCP. And then the third one is elicitation. So how do you as a server actually go back and ask the user for more information if you need more information.\n- Exciting. Well, I'm very excited to see what the future holds for MCP. And thank you both for coming on.\n- Thank you.\n",
+  "dumpedAt": "2025-07-21T18:43:24.274Z"
+}

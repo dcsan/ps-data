@@ -1,0 +1,1948 @@
+{
+  "episodeId": "1xm1Q8dL6zM",
+  "channelSlug": "@bytegrad",
+  "title": "File & Image Uploads For Your LMS (React / Next.js Guide)",
+  "publishedAt": "2025-05-16T14:56:14.000Z",
+  "rawLines": [
+    {
+      "lang": "en",
+      "text": "Hey everyone. In this video, we're going",
+      "offset": 0,
+      "duration": 2.72
+    },
+    {
+      "lang": "en",
+      "text": "to talk about file uploads for your",
+      "offset": 1.199,
+      "duration": 3.761
+    },
+    {
+      "lang": "en",
+      "text": "websites and apps. So, I actually run an",
+      "offset": 2.72,
+      "duration": 4.559
+    },
+    {
+      "lang": "en",
+      "text": "e-learning website. So, I have students",
+      "offset": 4.96,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "here. I've been playing around with the",
+      "offset": 7.279,
+      "duration": 3.921
+    },
+    {
+      "lang": "en",
+      "text": "idea of allowing other instructors to",
+      "offset": 8.72,
+      "duration": 4.799
+    },
+    {
+      "lang": "en",
+      "text": "upload their content as well. So, it",
+      "offset": 11.2,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "would become more like a platform with",
+      "offset": 13.519,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "multiple instructors. Now, one of the",
+      "offset": 15.28,
+      "duration": 3.839
+    },
+    {
+      "lang": "en",
+      "text": "most important features to implement",
+      "offset": 17.199,
+      "duration": 3.521
+    },
+    {
+      "lang": "en",
+      "text": "something like that is going to be file",
+      "offset": 19.119,
+      "duration": 3.441
+    },
+    {
+      "lang": "en",
+      "text": "uploads. So, these instructors will need",
+      "offset": 20.72,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "to upload their videos, their images,",
+      "offset": 22.56,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "actually, a lot of images, maybe like a",
+      "offset": 24.48,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "PDF file and these other file types. So,",
+      "offset": 26.08,
+      "duration": 3.519
+    },
+    {
+      "lang": "en",
+      "text": "I've been thinking about how to",
+      "offset": 28.24,
+      "duration": 3.439
+    },
+    {
+      "lang": "en",
+      "text": "implement that and you probably have run",
+      "offset": 29.599,
+      "duration": 4.561
+    },
+    {
+      "lang": "en",
+      "text": "into similar issues that I will run into",
+      "offset": 31.679,
+      "duration": 4.241
+    },
+    {
+      "lang": "en",
+      "text": "building this out because a lot of these",
+      "offset": 34.16,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "issues have to do with some fundamental",
+      "offset": 35.92,
+      "duration": 4.479
+    },
+    {
+      "lang": "en",
+      "text": "aspects of file uploading. So, what I",
+      "offset": 38.64,
+      "duration": 3.2
+    },
+    {
+      "lang": "en",
+      "text": "would like to do is the user should be",
+      "offset": 40.399,
+      "duration": 3.521
+    },
+    {
+      "lang": "en",
+      "text": "able to upload content here and I want",
+      "offset": 41.84,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "to have some kind of file picker. I'm",
+      "offset": 43.92,
+      "duration": 3.28
+    },
+    {
+      "lang": "en",
+      "text": "actually using file stack in this video.",
+      "offset": 45.52,
+      "duration": 3.359
+    },
+    {
+      "lang": "en",
+      "text": "They are today's sponsor. And the user",
+      "offset": 47.2,
+      "duration": 3.519
+    },
+    {
+      "lang": "en",
+      "text": "should be able to upload from a range of",
+      "offset": 48.879,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "sources. for example, from their own",
+      "offset": 50.719,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "device or from some URL on the internet,",
+      "offset": 52.239,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "uh, or some social media platform even",
+      "offset": 54.719,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "or maybe they have some other storage.",
+      "offset": 56.879,
+      "duration": 4.081
+    },
+    {
+      "lang": "en",
+      "text": "So, the user should be able to drag and",
+      "offset": 59.199,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "drop it on there or if they click, we",
+      "offset": 60.96,
+      "duration": 4.479
+    },
+    {
+      "lang": "en",
+      "text": "want to open up their OS level file",
+      "offset": 63.199,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "picker. So, I'm on Mac, so if you're on",
+      "offset": 65.439,
+      "duration": 2.961
+    },
+    {
+      "lang": "en",
+      "text": "Windows, that may look a bit different,",
+      "offset": 67.119,
+      "duration": 3.281
+    },
+    {
+      "lang": "en",
+      "text": "but this is at the platform level. And",
+      "offset": 68.4,
+      "duration": 3.759
+    },
+    {
+      "lang": "en",
+      "text": "they should be able to upload one or",
+      "offset": 70.4,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "multiple files. Let's say I'm going to",
+      "offset": 72.159,
+      "duration": 4.161
+    },
+    {
+      "lang": "en",
+      "text": "upload this image here. And then if it's",
+      "offset": 73.76,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "an image for example, we may want to",
+      "offset": 76.32,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "allow the user to edit the image like",
+      "offset": 77.92,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "cropping or circling or rotating them.",
+      "offset": 79.68,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "And then ultimately they should be able",
+      "offset": 82.56,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "to actually press upload and actually",
+      "offset": 84.72,
+      "duration": 4.079
+    },
+    {
+      "lang": "en",
+      "text": "upload it to our server perhaps or in",
+      "offset": 86.64,
+      "duration": 3.839
+    },
+    {
+      "lang": "en",
+      "text": "this case to a to the file stack",
+      "offset": 88.799,
+      "duration": 3.841
+    },
+    {
+      "lang": "en",
+      "text": "account. And then I want to display the",
+      "offset": 90.479,
+      "duration": 4.161
+    },
+    {
+      "lang": "en",
+      "text": "content that they have uploaded here. I",
+      "offset": 92.64,
+      "duration": 3.28
+    },
+    {
+      "lang": "en",
+      "text": "also want to give them the option to",
+      "offset": 94.64,
+      "duration": 2.96
+    },
+    {
+      "lang": "en",
+      "text": "delete let's say. So there are lots of",
+      "offset": 95.92,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "moving parts especially if you would",
+      "offset": 97.6,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "have to implement that yourself. So what",
+      "offset": 99.36,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "are technically speaking the things that",
+      "offset": 101.2,
+      "duration": 3.279
+    },
+    {
+      "lang": "en",
+      "text": "I would need here? Well, I would need a",
+      "offset": 102.88,
+      "duration": 3.919
+    },
+    {
+      "lang": "en",
+      "text": "CDN to actually serve the content. So,",
+      "offset": 104.479,
+      "duration": 4.241
+    },
+    {
+      "lang": "en",
+      "text": "for example, this image here is being",
+      "offset": 106.799,
+      "duration": 3.761
+    },
+    {
+      "lang": "en",
+      "text": "served from a CDN. So, I need some kind",
+      "offset": 108.72,
+      "duration": 4.719
+    },
+    {
+      "lang": "en",
+      "text": "of CDN. I also need some way to",
+      "offset": 110.56,
+      "duration": 5.519
+    },
+    {
+      "lang": "en",
+      "text": "transform the uploaded assets. So,",
+      "offset": 113.439,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "transformations because um I uploaded a",
+      "offset": 116.079,
+      "duration": 4.481
+    },
+    {
+      "lang": "en",
+      "text": "pretty large image, but I'm only",
+      "offset": 118.399,
+      "duration": 4.481
+    },
+    {
+      "lang": "en",
+      "text": "displaying it on this page here as a",
+      "offset": 120.56,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "small square image here. So, I want to",
+      "offset": 122.88,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "be able to transform the image so that",
+      "offset": 125.04,
+      "duration": 3.839
+    },
+    {
+      "lang": "en",
+      "text": "we can download a smaller version",
+      "offset": 127.36,
+      "duration": 3.039
+    },
+    {
+      "lang": "en",
+      "text": "basically. Same with videos, for",
+      "offset": 128.879,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "example. But just also some general",
+      "offset": 130.399,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "optimizations like compression. If",
+      "offset": 132.239,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "somebody would upload a PNG image, PNG",
+      "offset": 134.319,
+      "duration": 4.401
+    },
+    {
+      "lang": "en",
+      "text": "is very is very high quality. It's",
+      "offset": 136.959,
+      "duration": 4.401
+    },
+    {
+      "lang": "en",
+      "text": "lossless. We may just want to use WEBP",
+      "offset": 138.72,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "for example, which is a more optimized",
+      "offset": 141.36,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "uh format. Now for the students that",
+      "offset": 143.52,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "will actually watch the videos or will",
+      "offset": 145.28,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "display the images, especially on a",
+      "offset": 148.48,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "global platform, your actual end users",
+      "offset": 150.4,
+      "duration": 4.559
+    },
+    {
+      "lang": "en",
+      "text": "will have all sorts of different",
+      "offset": 153.12,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "devices, different capabilities. And",
+      "offset": 154.959,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "actually this has to do a lot with the",
+      "offset": 157.04,
+      "duration": 3.12
+    },
+    {
+      "lang": "en",
+      "text": "transformation. So for example they may",
+      "offset": 158.319,
+      "duration": 3.681
+    },
+    {
+      "lang": "en",
+      "text": "have a retina screen in which case we",
+      "offset": 160.16,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "can load higher quality images or they",
+      "offset": 162,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "may have a lower-end device lowerend",
+      "offset": 163.92,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "mobile phone in that case we want to",
+      "offset": 166.16,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "download smaller images smaller video so",
+      "offset": 167.68,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "we need to have some solution that",
+      "offset": 170,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "allows us to adjust these assets. So",
+      "offset": 171.36,
+      "duration": 4.959
+    },
+    {
+      "lang": "en",
+      "text": "these mostly have to do with uh actual",
+      "offset": 174,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "displaying the content but of course we",
+      "offset": 176.319,
+      "duration": 4.801
+    },
+    {
+      "lang": "en",
+      "text": "we the actual uploading part is just as",
+      "offset": 178.4,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "important. So we want to have very",
+      "offset": 181.12,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "importantly not only fast but also",
+      "offset": 182.64,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "reliable uploading especially if it's a",
+      "offset": 184.56,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "large file like a video that it's not in",
+      "offset": 186.64,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "the middle of uploading going to uh quit",
+      "offset": 188.56,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "or something. Now in terms of UI it",
+      "offset": 191.36,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "should look good. We want to have a",
+      "offset": 193.68,
+      "duration": 3.839
+    },
+    {
+      "lang": "en",
+      "text": "loading indicator and so we also want to",
+      "offset": 195.36,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "make sure that that whole process in",
+      "offset": 197.519,
+      "duration": 4.881
+    },
+    {
+      "lang": "en",
+      "text": "terms of design and user experience is",
+      "offset": 199.28,
+      "duration": 4.879
+    },
+    {
+      "lang": "en",
+      "text": "also great and there are some other",
+      "offset": 202.4,
+      "duration": 3.199
+    },
+    {
+      "lang": "en",
+      "text": "things I would say this is the core of",
+      "offset": 204.159,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "it. Now, technically, yes, you could",
+      "offset": 205.599,
+      "duration": 3.761
+    },
+    {
+      "lang": "en",
+      "text": "implement all of this yourself, but I",
+      "offset": 207.599,
+      "duration": 3.681
+    },
+    {
+      "lang": "en",
+      "text": "would say if you can find a solution",
+      "offset": 209.36,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "that does all of that for you, I would",
+      "offset": 211.28,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "highly consider using that solution. So,",
+      "offset": 213.12,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "that's why I'm using Filestack. They are",
+      "offset": 215.76,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "today's sponsor and I've actually been",
+      "offset": 217.76,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "using them for quite some time. I've",
+      "offset": 219.36,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "always had a great experience with them",
+      "offset": 221.28,
+      "duration": 4.239
+    },
+    {
+      "lang": "en",
+      "text": "and in my personal experience, they",
+      "offset": 223.12,
+      "duration": 4.399
+    },
+    {
+      "lang": "en",
+      "text": "fulfill those requirements I just laid",
+      "offset": 225.519,
+      "duration": 4.241
+    },
+    {
+      "lang": "en",
+      "text": "out. So, that's the widget that we saw",
+      "offset": 227.519,
+      "duration": 3.761
+    },
+    {
+      "lang": "en",
+      "text": "here, right? So for uploading the",
+      "offset": 229.76,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "content here, if I uh refresh here, you",
+      "offset": 231.28,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "can see this is the file picker that we",
+      "offset": 234,
+      "duration": 4.239
+    },
+    {
+      "lang": "en",
+      "text": "get from filestack and then if I upload",
+      "offset": 235.84,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "something here, it will actually go to",
+      "offset": 238.239,
+      "duration": 4.161
+    },
+    {
+      "lang": "en",
+      "text": "my file stack dashboard. So here in my",
+      "offset": 240,
+      "duration": 4.159
+    },
+    {
+      "lang": "en",
+      "text": "dashboard, I can have settings, but I",
+      "offset": 242.4,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "can also go to the content browser here",
+      "offset": 244.159,
+      "duration": 3.841
+    },
+    {
+      "lang": "en",
+      "text": "to see what has been uploaded. You can",
+      "offset": 246.08,
+      "duration": 3.439
+    },
+    {
+      "lang": "en",
+      "text": "see there's been one image uploaded",
+      "offset": 248,
+      "duration": 3.519
+    },
+    {
+      "lang": "en",
+      "text": "here. I can view all of that here. Fast",
+      "offset": 249.519,
+      "duration": 3.681
+    },
+    {
+      "lang": "en",
+      "text": "will automatically uh put this image on",
+      "offset": 251.519,
+      "duration": 3.521
+    },
+    {
+      "lang": "en",
+      "text": "a CDN. So I can see everything that's",
+      "offset": 253.2,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "been uploaded here in my account. I can",
+      "offset": 255.04,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "get an API key from here integrated into",
+      "offset": 256.88,
+      "duration": 4.639
+    },
+    {
+      "lang": "en",
+      "text": "my code. So let's actually see how we",
+      "offset": 259.44,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "can implement filestack in code. So this",
+      "offset": 261.519,
+      "duration": 3.761
+    },
+    {
+      "lang": "en",
+      "text": "is actually a react app and specifically",
+      "offset": 263.44,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "a nextjs application but you'll find",
+      "offset": 265.28,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "that it works with other javascript",
+      "offset": 267.68,
+      "duration": 2.88
+    },
+    {
+      "lang": "en",
+      "text": "frameworks and other technologies as",
+      "offset": 269.12,
+      "duration": 3.359
+    },
+    {
+      "lang": "en",
+      "text": "well. It's a very simple page I have",
+      "offset": 270.56,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "here. So here I have that button upload",
+      "offset": 272.479,
+      "duration": 4.561
+    },
+    {
+      "lang": "en",
+      "text": "content and when user clicks on that we",
+      "offset": 274.72,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "just set the picker open date to true",
+      "offset": 277.04,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "and so then we will render this picker",
+      "offset": 279.6,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "overlay. So this is actually coming from",
+      "offset": 282.16,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "file stack. So I can specify my API key.",
+      "offset": 284.4,
+      "duration": 5.84
+    },
+    {
+      "lang": "en",
+      "text": "I can then specify the options here. The",
+      "offset": 287.12,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "options is what we see in the actual",
+      "offset": 290.24,
+      "duration": 4.399
+    },
+    {
+      "lang": "en",
+      "text": "file picker. So for example, the sources",
+      "offset": 292.16,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "here, I can specify all of that here. So",
+      "offset": 294.639,
+      "duration": 3.921
+    },
+    {
+      "lang": "en",
+      "text": "if I only want to allow these sources,",
+      "offset": 296.88,
+      "duration": 3.759
+    },
+    {
+      "lang": "en",
+      "text": "if I just do that now, you can see I",
+      "offset": 298.56,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "only have this uh these three, right? So",
+      "offset": 300.639,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "not everything. But by default, it shows",
+      "offset": 303.44,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "a bunch more. I can allow how many files",
+      "offset": 305.199,
+      "duration": 4.081
+    },
+    {
+      "lang": "en",
+      "text": "they can upload. So I can also do",
+      "offset": 307.68,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "multiple, not just one, but up to 10,",
+      "offset": 309.28,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "let's say. And I can also specify the",
+      "offset": 311.6,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "type of files that they are allowed to",
+      "offset": 313.28,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "upload. So for e-learning, I think these",
+      "offset": 314.96,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "are some really important uh file type.",
+      "offset": 316.72,
+      "duration": 4.479
+    },
+    {
+      "lang": "en",
+      "text": "And so if we have this, the user can",
+      "offset": 319.12,
+      "duration": 4.079
+    },
+    {
+      "lang": "en",
+      "text": "upload a file, right? So the user can",
+      "offset": 321.199,
+      "duration": 3.601
+    },
+    {
+      "lang": "en",
+      "text": "pick some file. And so I can pick an",
+      "offset": 323.199,
+      "duration": 3.681
+    },
+    {
+      "lang": "en",
+      "text": "image file, let's say, and I can edit",
+      "offset": 324.8,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "it. But I upload here and it will show",
+      "offset": 326.88,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "me nice loading uh indicator here as",
+      "offset": 328.88,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "well. Now at some point uh Filestag will",
+      "offset": 330.96,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "have finished uploading this file to",
+      "offset": 333.28,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "their server and that's when we can do",
+      "offset": 335.52,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "something with the file that was",
+      "offset": 337.84,
+      "duration": 2.96
+    },
+    {
+      "lang": "en",
+      "text": "uploaded, right? So here we can hook",
+      "offset": 339.12,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "into the upload done event. So we may",
+      "offset": 340.8,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "want to close the picker. For example,",
+      "offset": 343.12,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "in this case I left it open, but we can",
+      "offset": 345.36,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "also programmatically close it when it's",
+      "offset": 347.52,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "finished. But what we can also do if we",
+      "offset": 349.36,
+      "duration": 3.679
+    },
+    {
+      "lang": "en",
+      "text": "scroll up a little bit here is where we",
+      "offset": 351.6,
+      "duration": 3.28
+    },
+    {
+      "lang": "en",
+      "text": "get the result. So I'm actually logging",
+      "offset": 353.039,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "that. Let's actually see what we get. So",
+      "offset": 354.88,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "we can programmatically interact with",
+      "offset": 356.479,
+      "duration": 4.241
+    },
+    {
+      "lang": "en",
+      "text": "the result of the uploading here. So",
+      "offset": 358.24,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "here we can see the files that were",
+      "offset": 360.72,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "uploaded. So there was one file with",
+      "offset": 362.32,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "this information. So here we get the URL",
+      "offset": 364.24,
+      "duration": 4.959
+    },
+    {
+      "lang": "en",
+      "text": "as well. Filestack will give each file a",
+      "offset": 366.88,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "so-called ID or handle. But this is the",
+      "offset": 369.199,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "URL that we can use to display it here",
+      "offset": 372.24,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "in our app. So it's currently being",
+      "offset": 374.639,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "displayed because we got the URL from",
+      "offset": 376,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "file stack. So this was the URL that we",
+      "offset": 378.319,
+      "duration": 3.281
+    },
+    {
+      "lang": "en",
+      "text": "got. Let's actually go there. All right.",
+      "offset": 380.16,
+      "duration": 2.8
+    },
+    {
+      "lang": "en",
+      "text": "So then here I can see the image that",
+      "offset": 381.6,
+      "duration": 3.12
+    },
+    {
+      "lang": "en",
+      "text": "was uploaded. And the way I implemented",
+      "offset": 382.96,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "this here is also that if you click on a",
+      "offset": 384.72,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "view, I'm also seeing it right here.",
+      "offset": 386.4,
+      "duration": 3.919
+    },
+    {
+      "lang": "en",
+      "text": "Right. So I have some list component to",
+      "offset": 388.56,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "display all the files that were",
+      "offset": 390.319,
+      "duration": 3.841
+    },
+    {
+      "lang": "en",
+      "text": "uploaded. In case it's an image type, I",
+      "offset": 392.08,
+      "duration": 3.839
+    },
+    {
+      "lang": "en",
+      "text": "can just render an image on the page and",
+      "offset": 394.16,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "use that URL. Notice in nextJS, we also",
+      "offset": 395.919,
+      "duration": 4.641
+    },
+    {
+      "lang": "en",
+      "text": "have the NextJS image component which is",
+      "offset": 398.56,
+      "duration": 3.919
+    },
+    {
+      "lang": "en",
+      "text": "important to know about. But for images",
+      "offset": 400.56,
+      "duration": 4.079
+    },
+    {
+      "lang": "en",
+      "text": "specifically, there are some file stack",
+      "offset": 402.479,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "things we that you should be aware of as",
+      "offset": 404.639,
+      "duration": 4.161
+    },
+    {
+      "lang": "en",
+      "text": "well. Now, the image I'm displaying here",
+      "offset": 406.479,
+      "duration": 4.401
+    },
+    {
+      "lang": "en",
+      "text": "is only like if we actually inspect",
+      "offset": 408.8,
+      "duration": 4.399
+    },
+    {
+      "lang": "en",
+      "text": "this, this one is only 40 pixels wide.",
+      "offset": 410.88,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "But what we are actually downloading",
+      "offset": 413.199,
+      "duration": 2.961
+    },
+    {
+      "lang": "en",
+      "text": "over the internet is this image. And",
+      "offset": 414.4,
+      "duration": 3.919
+    },
+    {
+      "lang": "en",
+      "text": "this image is actually way bigger. It's",
+      "offset": 416.16,
+      "duration": 4.319
+    },
+    {
+      "lang": "en",
+      "text": "it's more than a,000 pixels. And if we",
+      "offset": 418.319,
+      "duration": 5.121
+    },
+    {
+      "lang": "en",
+      "text": "take a look at the network here, if I",
+      "offset": 420.479,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "load the page here, you can see it's",
+      "offset": 423.44,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "about 600 kilobytes. Obviously, that is",
+      "offset": 425.039,
+      "duration": 4.641
+    },
+    {
+      "lang": "en",
+      "text": "not optimal. Now, if we take a look at",
+      "offset": 428.08,
+      "duration": 2.88
+    },
+    {
+      "lang": "en",
+      "text": "the image here, what was actually",
+      "offset": 429.68,
+      "duration": 2.799
+    },
+    {
+      "lang": "en",
+      "text": "downloaded. Now, the image is coming",
+      "offset": 430.96,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "from a CDN. And uh we can also check",
+      "offset": 432.479,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "that here. So, you may see two values",
+      "offset": 434.88,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "for the cache, miss, and hit. But this",
+      "offset": 437.919,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "may be just because the CDN has",
+      "offset": 440,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "different layers and one layer may be a",
+      "offset": 441.919,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "miss, but but the other layer was still",
+      "offset": 443.84,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "a hit. Um, so there seems to be a cache",
+      "offset": 445.759,
+      "duration": 4.241
+    },
+    {
+      "lang": "en",
+      "text": "here. That looks good. But the image",
+      "offset": 447.68,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "itself in terms of its dimensions is",
+      "offset": 450,
+      "duration": 3.919
+    },
+    {
+      "lang": "en",
+      "text": "still too big. So one of my favorite",
+      "offset": 452.16,
+      "duration": 3.759
+    },
+    {
+      "lang": "en",
+      "text": "things about font stack is it allows us",
+      "offset": 453.919,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "to transform these images very easily",
+      "offset": 455.919,
+      "duration": 4.801
+    },
+    {
+      "lang": "en",
+      "text": "here as well by just changing the URL a",
+      "offset": 458.479,
+      "duration": 4.401
+    },
+    {
+      "lang": "en",
+      "text": "little bit. So I have the base part of",
+      "offset": 460.72,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "the URL and the ID of my image. But in",
+      "offset": 462.88,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "between here I can transform the image.",
+      "offset": 466,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "In this case I want to resize it to a",
+      "offset": 468.4,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "width of 300. Let's say if I press enter",
+      "offset": 470.4,
+      "duration": 4.639
+    },
+    {
+      "lang": "en",
+      "text": "here you can see now I get an image that",
+      "offset": 472.72,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "is way smaller. And if I actually look",
+      "offset": 475.039,
+      "duration": 5.201
+    },
+    {
+      "lang": "en",
+      "text": "at it in terms of kilobytes network,",
+      "offset": 477.28,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "this is only 41 kilobyt. So this is way",
+      "offset": 480.24,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "smaller and way more appropriate to load",
+      "offset": 482.8,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "here in case I'm only going to display a",
+      "offset": 485.28,
+      "duration": 3.919
+    },
+    {
+      "lang": "en",
+      "text": "small image. So this resize",
+      "offset": 486.96,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "transformation is really important when",
+      "offset": 489.199,
+      "duration": 4.241
+    },
+    {
+      "lang": "en",
+      "text": "you optimize images. We can do the same",
+      "offset": 491.52,
+      "duration": 3.519
+    },
+    {
+      "lang": "en",
+      "text": "with videos. By the way, with videos, it",
+      "offset": 493.44,
+      "duration": 3.439
+    },
+    {
+      "lang": "en",
+      "text": "has an even bigger impact because videos",
+      "offset": 495.039,
+      "duration": 3.921
+    },
+    {
+      "lang": "en",
+      "text": "are much bigger in size. Now just to",
+      "offset": 496.879,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "quickly show you how we can use that to",
+      "offset": 498.96,
+      "duration": 3.919
+    },
+    {
+      "lang": "en",
+      "text": "really optimize images here. So",
+      "offset": 500.639,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "currently I'm just using the plain image",
+      "offset": 502.879,
+      "duration": 4.641
+    },
+    {
+      "lang": "en",
+      "text": "tag in HTML. However, we can also use",
+      "offset": 505.199,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "the nextJS image component. This has",
+      "offset": 507.52,
+      "duration": 3.679
+    },
+    {
+      "lang": "en",
+      "text": "some benefits, but one of the things is",
+      "offset": 509.599,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "it allows us to optimize the image even",
+      "offset": 511.199,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "further. So one of the things it will do",
+      "offset": 513.279,
+      "duration": 3.281
+    },
+    {
+      "lang": "en",
+      "text": "if we now inspect this image here, what",
+      "offset": 514.959,
+      "duration": 2.88
+    },
+    {
+      "lang": "en",
+      "text": "is actually being rendered here in the",
+      "offset": 516.56,
+      "duration": 3.12
+    },
+    {
+      "lang": "en",
+      "text": "HTML, you can see it's still an image",
+      "offset": 517.839,
+      "duration": 4.961
+    },
+    {
+      "lang": "en",
+      "text": "tag, but we now have this big source set",
+      "offset": 519.68,
+      "duration": 6.08
+    },
+    {
+      "lang": "en",
+      "text": "with basically specifying a URL for each",
+      "offset": 522.8,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "for several different widths. So for",
+      "offset": 525.76,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "example, if the image, so if there is",
+      "offset": 527.6,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "640 pixels of space for this image, we",
+      "offset": 529.68,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "are loading this particular URL for",
+      "offset": 532.72,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "that, right? That's basically what this",
+      "offset": 535.12,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "means, which allows us to specify",
+      "offset": 536.64,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "different URL for different width. So we",
+      "offset": 538.72,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "can combine that with file stack",
+      "offset": 540.88,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "transformation capability to create a",
+      "offset": 542.64,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "custom URL for each of these width. So",
+      "offset": 545.76,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "we can make it optimal here. So we can",
+      "offset": 548,
+      "duration": 3.279
+    },
+    {
+      "lang": "en",
+      "text": "provide a custom loader. We're going to",
+      "offset": 549.76,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "call it filestack loader which will give",
+      "offset": 551.279,
+      "duration": 5.361
+    },
+    {
+      "lang": "en",
+      "text": "us the URL but we want to have a custom",
+      "offset": 553.2,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "URL for each of those sizes. So we can",
+      "offset": 556.64,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "specify resize and then the width being",
+      "offset": 559.2,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "the width of the source set. So we can",
+      "offset": 561.92,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "create a custom URL for each part of the",
+      "offset": 564,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "source set. So basically just",
+      "offset": 566.24,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "transforming the uh string here for the",
+      "offset": 567.68,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "URL. All right. So now if we take a look",
+      "offset": 570.32,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "at it again what what is being rendered",
+      "offset": 572.64,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "here. Now you can see that I have a",
+      "offset": 574.56,
+      "duration": 4.399
+    },
+    {
+      "lang": "en",
+      "text": "different URL for each part of the",
+      "offset": 576.88,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "source set. So if there if there is 640",
+      "offset": 578.959,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "pixels available for that image, we can",
+      "offset": 581.44,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "load an image that is actually 640",
+      "offset": 583.839,
+      "duration": 3.841
+    },
+    {
+      "lang": "en",
+      "text": "pixels. And so in this case, how much",
+      "offset": 586,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "space is there for this image? It is",
+      "offset": 587.68,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "there's 40 pixels available. And which",
+      "offset": 589.76,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "URL was actually used for that? Well, if",
+      "offset": 591.76,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "I open this up, it was actually an image",
+      "offset": 593.44,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "with a width of 128. Why not exactly 40?",
+      "offset": 595.2,
+      "duration": 5.68
+    },
+    {
+      "lang": "en",
+      "text": "Well, it's because I'm on a MacBook",
+      "offset": 599.2,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "which has more pixels available. So it",
+      "offset": 600.88,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "may have picked a larger number, but",
+      "offset": 602.88,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "this is already much more optimized than",
+      "offset": 604.56,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "a large image we had in the beginning.",
+      "offset": 606.48,
+      "duration": 3.2
+    },
+    {
+      "lang": "en",
+      "text": "And the browser may also pick a",
+      "offset": 608.16,
+      "duration": 3.2
+    },
+    {
+      "lang": "en",
+      "text": "different size if the user's internet is",
+      "offset": 609.68,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "slow for example. So this is about as",
+      "offset": 611.36,
+      "duration": 4.719
+    },
+    {
+      "lang": "en",
+      "text": "optimal as we can make it for images. So",
+      "offset": 613.76,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "that works really nicely with file",
+      "offset": 616.079,
+      "duration": 3.921
+    },
+    {
+      "lang": "en",
+      "text": "stack. Now filestack has many other",
+      "offset": 618.16,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "transformations we can make. I have some",
+      "offset": 620,
+      "duration": 3.12
+    },
+    {
+      "lang": "en",
+      "text": "other videos as well with them. Make",
+      "offset": 621.76,
+      "duration": 2.4
+    },
+    {
+      "lang": "en",
+      "text": "sure you check out their YouTube",
+      "offset": 623.12,
+      "duration": 2.959
+    },
+    {
+      "lang": "en",
+      "text": "channel. But we can also detect things",
+      "offset": 624.16,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "like the sentiment in an image. We can",
+      "offset": 626.079,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "tag the images. We can also do OCR. So",
+      "offset": 627.76,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "if you want to extract the text from an",
+      "offset": 630.079,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "image and many other things also for",
+      "offset": 631.68,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "videos here by the way even if it's",
+      "offset": 633.839,
+      "duration": 3.841
+    },
+    {
+      "lang": "en",
+      "text": "copyright detected. So, I think this is",
+      "offset": 635.6,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "really beneficial for an e-learning",
+      "offset": 637.68,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "platform specifically, but outside of",
+      "offset": 639.36,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "that as well. So, I would say check out",
+      "offset": 641.04,
+      "duration": 3.2
+    },
+    {
+      "lang": "en",
+      "text": "Filestack. You can find a link in the",
+      "offset": 642.72,
+      "duration": 2.88
+    },
+    {
+      "lang": "en",
+      "text": "description. In any case, I hope that",
+      "offset": 644.24,
+      "duration": 2.64
+    },
+    {
+      "lang": "en",
+      "text": "you now have a better understanding of",
+      "offset": 645.6,
+      "duration": 2.88
+    },
+    {
+      "lang": "en",
+      "text": "how to do file uploads and image",
+      "offset": 646.88,
+      "duration": 3.12
+    },
+    {
+      "lang": "en",
+      "text": "uploads. I want to thank Filestack for",
+      "offset": 648.48,
+      "duration": 2.56
+    },
+    {
+      "lang": "en",
+      "text": "sponsoring the video. I want to thank",
+      "offset": 650,
+      "duration": 2.8
+    },
+    {
+      "lang": "en",
+      "text": "you for watching and I hope to see you",
+      "offset": 651.04,
+      "duration": 4.239
+    },
+    {
+      "lang": "en",
+      "text": "in the next one.",
+      "offset": 652.8,
+      "duration": 2.479
+    }
+  ],
+  "cleanText": null,
+  "dumpedAt": "2025-07-21T18:43:24.250Z"
+}

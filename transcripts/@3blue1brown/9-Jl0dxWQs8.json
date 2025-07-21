@@ -1,0 +1,2092 @@
+{
+  "episodeId": "9-Jl0dxWQs8",
+  "channelSlug": "@3blue1brown",
+  "title": "How might LLMs store facts | DL7",
+  "publishedAt": "2024-08-31T12:11:19.000Z",
+  "rawLines": [
+    {
+      "lang": "en",
+      "text": "If you feed a large language model the phrase, Michael Jordan plays the sport of blank,",
+      "offset": 0,
+      "duration": 5.038
+    },
+    {
+      "lang": "en",
+      "text": "and you have it predict what comes next, and it correctly predicts basketball,",
+      "offset": 5.038,
+      "duration": 4.522
+    },
+    {
+      "lang": "en",
+      "text": "this would suggest that somewhere, inside its hundreds of billions of parameters,",
+      "offset": 9.56,
+      "duration": 4.695
+    },
+    {
+      "lang": "en",
+      "text": "it's baked in knowledge about a specific person and his specific sport.",
+      "offset": 14.255,
+      "duration": 4.065
+    },
+    {
+      "lang": "en",
+      "text": "And I think in general, anyone who's played around with one of these",
+      "offset": 18.94,
+      "duration": 3.206
+    },
+    {
+      "lang": "en",
+      "text": "models has the clear sense that it's memorized tons and tons of facts.",
+      "offset": 22.146,
+      "duration": 3.254
+    },
+    {
+      "lang": "en",
+      "text": "So a reasonable question you could ask is, how exactly does that work?",
+      "offset": 25.7,
+      "duration": 3.46
+    },
+    {
+      "lang": "en",
+      "text": "And where do those facts live?",
+      "offset": 29.16,
+      "duration": 1.88
+    },
+    {
+      "lang": "en",
+      "text": "Last December, a few researchers from Google DeepMind posted about work on this question,",
+      "offset": 35.72,
+      "duration": 4.665
+    },
+    {
+      "lang": "en",
+      "text": "and they were using this specific example of matching athletes to their sports.",
+      "offset": 40.385,
+      "duration": 4.095
+    },
+    {
+      "lang": "en",
+      "text": "And although a full mechanistic understanding of how facts are stored remains unsolved,",
+      "offset": 44.9,
+      "duration": 4.924
+    },
+    {
+      "lang": "en",
+      "text": "they had some interesting partial results, including the very general high-level",
+      "offset": 49.824,
+      "duration": 4.533
+    },
+    {
+      "lang": "en",
+      "text": "conclusion that the facts seem to live inside a specific part of these networks,",
+      "offset": 54.357,
+      "duration": 4.533
+    },
+    {
+      "lang": "en",
+      "text": "known fancifully as the multi-layer perceptrons, or MLPs for short.",
+      "offset": 58.89,
+      "duration": 3.75
+    },
+    {
+      "lang": "en",
+      "text": "In the last couple of chapters, you and I have been digging into",
+      "offset": 63.12,
+      "duration": 3.142
+    },
+    {
+      "lang": "en",
+      "text": "the details behind transformers, the architecture underlying large language models,",
+      "offset": 66.262,
+      "duration": 4.062
+    },
+    {
+      "lang": "en",
+      "text": "and also underlying a lot of other modern AI.",
+      "offset": 70.324,
+      "duration": 2.176
+    },
+    {
+      "lang": "en",
+      "text": "In the most recent chapter, we were focusing on a piece called Attention.",
+      "offset": 73.06,
+      "duration": 3.14
+    },
+    {
+      "lang": "en",
+      "text": "And the next step for you and me is to dig into the details of what happens inside",
+      "offset": 76.84,
+      "duration": 4.124
+    },
+    {
+      "lang": "en",
+      "text": "these multi-layer perceptrons, which make up the other big portion of the network.",
+      "offset": 80.964,
+      "duration": 4.076
+    },
+    {
+      "lang": "en",
+      "text": "The computation here is actually relatively simple,",
+      "offset": 85.68,
+      "duration": 2.394
+    },
+    {
+      "lang": "en",
+      "text": "especially when you compare it to attention.",
+      "offset": 88.074,
+      "duration": 2.026
+    },
+    {
+      "lang": "en",
+      "text": "It boils down essentially to a pair of matrix",
+      "offset": 90.56,
+      "duration": 2.096
+    },
+    {
+      "lang": "en",
+      "text": "multiplications with a simple something in between.",
+      "offset": 92.656,
+      "duration": 2.324
+    },
+    {
+      "lang": "en",
+      "text": "However, interpreting what these computations are doing is exceedingly challenging.",
+      "offset": 95.72,
+      "duration": 4.74
+    },
+    {
+      "lang": "en",
+      "text": "Our main goal here is to step through the computations and make them memorable,",
+      "offset": 101.56,
+      "duration": 4.106
+    },
+    {
+      "lang": "en",
+      "text": "but I'd like to do it in the context of showing a specific example of how",
+      "offset": 105.666,
+      "duration": 3.798
+    },
+    {
+      "lang": "en",
+      "text": "one of these blocks could, at least in principle, store a concrete fact.",
+      "offset": 109.464,
+      "duration": 3.696
+    },
+    {
+      "lang": "en",
+      "text": "Specifically, it'll be storing the fact that Michael Jordan plays basketball.",
+      "offset": 113.58,
+      "duration": 3.5
+    },
+    {
+      "lang": "en",
+      "text": "I should mention the layout here is inspired by a conversation",
+      "offset": 118.08,
+      "duration": 2.688
+    },
+    {
+      "lang": "en",
+      "text": "I had with one of those DeepMind researchers, Neil Nanda.",
+      "offset": 120.768,
+      "duration": 2.432
+    },
+    {
+      "lang": "en",
+      "text": "For the most part, I will assume that you've either watched the last two chapters,",
+      "offset": 124.06,
+      "duration": 3.978
+    },
+    {
+      "lang": "en",
+      "text": "or otherwise you have a basic sense for what a transformer is,",
+      "offset": 128.038,
+      "duration": 3.019
+    },
+    {
+      "lang": "en",
+      "text": "but refreshers never hurt, so here's the quick reminder of the overall flow.",
+      "offset": 131.057,
+      "duration": 3.643
+    },
+    {
+      "lang": "en",
+      "text": "You and I have been studying a model that's trained",
+      "offset": 135.34,
+      "duration": 2.906
+    },
+    {
+      "lang": "en",
+      "text": "to take in a piece of text and predict what comes next.",
+      "offset": 138.246,
+      "duration": 3.074
+    },
+    {
+      "lang": "en",
+      "text": "That input text is first broken into a bunch of tokens,",
+      "offset": 141.72,
+      "duration": 3.245
+    },
+    {
+      "lang": "en",
+      "text": "which means little chunks that are typically words or little pieces of words,",
+      "offset": 144.965,
+      "duration": 4.52
+    },
+    {
+      "lang": "en",
+      "text": "and each token is associated with a high-dimensional vector,",
+      "offset": 149.485,
+      "duration": 3.535
+    },
+    {
+      "lang": "en",
+      "text": "which is to say a long list of numbers.",
+      "offset": 153.02,
+      "duration": 2.26
+    },
+    {
+      "lang": "en",
+      "text": "This sequence of vectors then repeatedly passes through two kinds of operation,",
+      "offset": 155.84,
+      "duration": 4.478
+    },
+    {
+      "lang": "en",
+      "text": "attention, which allows the vectors to pass information between one another,",
+      "offset": 160.318,
+      "duration": 4.311
+    },
+    {
+      "lang": "en",
+      "text": "and then the multilayer perceptrons, the thing that we're gonna dig into today,",
+      "offset": 164.629,
+      "duration": 4.479
+    },
+    {
+      "lang": "en",
+      "text": "and also there's a certain normalization step in between.",
+      "offset": 169.108,
+      "duration": 3.192
+    },
+    {
+      "lang": "en",
+      "text": "After the sequence of vectors has flowed through many,",
+      "offset": 173.3,
+      "duration": 3.131
+    },
+    {
+      "lang": "en",
+      "text": "many different iterations of both of these blocks, by the end,",
+      "offset": 176.431,
+      "duration": 3.588
+    },
+    {
+      "lang": "en",
+      "text": "the hope is that each vector has soaked up enough information, both from the context,",
+      "offset": 180.019,
+      "duration": 4.897
+    },
+    {
+      "lang": "en",
+      "text": "all of the other words in the input, and also from the general knowledge that",
+      "offset": 184.916,
+      "duration": 4.441
+    },
+    {
+      "lang": "en",
+      "text": "was baked into the model weights through training,",
+      "offset": 189.357,
+      "duration": 2.904
+    },
+    {
+      "lang": "en",
+      "text": "that it can be used to make a prediction of what token comes next.",
+      "offset": 192.261,
+      "duration": 3.759
+    },
+    {
+      "lang": "en",
+      "text": "One of the key ideas that I want you to have in your mind is that all of",
+      "offset": 196.86,
+      "duration": 3.822
+    },
+    {
+      "lang": "en",
+      "text": "these vectors live in a very, very high-dimensional space,",
+      "offset": 200.682,
+      "duration": 3.09
+    },
+    {
+      "lang": "en",
+      "text": "and when you think about that space, different directions can encode different",
+      "offset": 203.772,
+      "duration": 4.137
+    },
+    {
+      "lang": "en",
+      "text": "kinds of meaning.",
+      "offset": 207.909,
+      "duration": 0.891
+    },
+    {
+      "lang": "en",
+      "text": "So a very classic example that I like to refer back to is how if you look",
+      "offset": 210.12,
+      "duration": 3.976
+    },
+    {
+      "lang": "en",
+      "text": "at the embedding of woman and subtract the embedding of man,",
+      "offset": 214.096,
+      "duration": 3.278
+    },
+    {
+      "lang": "en",
+      "text": "and you take that little step and you add it to another masculine noun,",
+      "offset": 217.374,
+      "duration": 3.868
+    },
+    {
+      "lang": "en",
+      "text": "something like uncle, you land somewhere very,",
+      "offset": 221.242,
+      "duration": 2.526
+    },
+    {
+      "lang": "en",
+      "text": "very close to the corresponding feminine noun.",
+      "offset": 223.768,
+      "duration": 2.472
+    },
+    {
+      "lang": "en",
+      "text": "In this sense, this particular direction encodes gender information.",
+      "offset": 226.44,
+      "duration": 4.44
+    },
+    {
+      "lang": "en",
+      "text": "The idea is that many other distinct directions in this super high-dimensional",
+      "offset": 231.64,
+      "duration": 3.974
+    },
+    {
+      "lang": "en",
+      "text": "space could correspond to other features that the model might want to represent.",
+      "offset": 235.614,
+      "duration": 4.026
+    },
+    {
+      "lang": "en",
+      "text": "In a transformer, these vectors don't merely encode the meaning of a single word, though.",
+      "offset": 241.4,
+      "duration": 4.78
+    },
+    {
+      "lang": "en",
+      "text": "As they flow through the network, they imbibe a much richer meaning based",
+      "offset": 246.68,
+      "duration": 4.308
+    },
+    {
+      "lang": "en",
+      "text": "on all the context around them, and also based on the model's knowledge.",
+      "offset": 250.988,
+      "duration": 4.192
+    },
+    {
+      "lang": "en",
+      "text": "Ultimately, each one needs to encode something far,",
+      "offset": 255.88,
+      "duration": 2.626
+    },
+    {
+      "lang": "en",
+      "text": "far beyond the meaning of a single word, since it needs to be sufficient to",
+      "offset": 258.506,
+      "duration": 3.839
+    },
+    {
+      "lang": "en",
+      "text": "predict what will come next.",
+      "offset": 262.345,
+      "duration": 1.415
+    },
+    {
+      "lang": "en",
+      "text": "We've already seen how attention blocks let you incorporate context,",
+      "offset": 264.56,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "but a majority of the model parameters actually live inside the MLP blocks,",
+      "offset": 268.48,
+      "duration": 4.318
+    },
+    {
+      "lang": "en",
+      "text": "and one thought for what they might be doing is that they offer extra capacity",
+      "offset": 272.798,
+      "duration": 4.489
+    },
+    {
+      "lang": "en",
+      "text": "to store facts.",
+      "offset": 277.287,
+      "duration": 0.853
+    },
+    {
+      "lang": "en",
+      "text": "Like I said, the lesson here is gonna center on the concrete toy example",
+      "offset": 278.72,
+      "duration": 3.625
+    },
+    {
+      "lang": "en",
+      "text": "of how exactly it could store the fact that Michael Jordan plays basketball.",
+      "offset": 282.345,
+      "duration": 3.775
+    },
+    {
+      "lang": "en",
+      "text": "Now, this toy example is gonna require that you and I make",
+      "offset": 287.12,
+      "duration": 2.41
+    },
+    {
+      "lang": "en",
+      "text": "a couple of assumptions about that high-dimensional space.",
+      "offset": 289.53,
+      "duration": 2.37
+    },
+    {
+      "lang": "en",
+      "text": "First, we'll suppose that one of the directions represents the idea of a first name",
+      "offset": 292.36,
+      "duration": 4.631
+    },
+    {
+      "lang": "en",
+      "text": "Michael, and then another nearly perpendicular direction represents the idea of the",
+      "offset": 296.991,
+      "duration": 4.632
+    },
+    {
+      "lang": "en",
+      "text": "last name Jordan, and then yet a third direction will represent the idea of basketball.",
+      "offset": 301.623,
+      "duration": 4.797
+    },
+    {
+      "lang": "en",
+      "text": "So specifically, what I mean by this is if you look in the network and",
+      "offset": 307.4,
+      "duration": 3.721
+    },
+    {
+      "lang": "en",
+      "text": "you pluck out one of the vectors being processed,",
+      "offset": 311.121,
+      "duration": 2.621
+    },
+    {
+      "lang": "en",
+      "text": "if its dot product with this first name Michael direction is one,",
+      "offset": 313.742,
+      "duration": 3.46
+    },
+    {
+      "lang": "en",
+      "text": "that's what it would mean for the vector to be encoding the idea of a",
+      "offset": 317.202,
+      "duration": 3.67
+    },
+    {
+      "lang": "en",
+      "text": "person with that first name.",
+      "offset": 320.872,
+      "duration": 1.468
+    },
+    {
+      "lang": "en",
+      "text": "Otherwise, that dot product would be zero or negative,",
+      "offset": 323.8,
+      "duration": 2.343
+    },
+    {
+      "lang": "en",
+      "text": "meaning the vector doesn't really align with that direction.",
+      "offset": 326.143,
+      "duration": 2.557
+    },
+    {
+      "lang": "en",
+      "text": "And for simplicity, let's completely ignore the very reasonable",
+      "offset": 329.42,
+      "duration": 2.797
+    },
+    {
+      "lang": "en",
+      "text": "question of what it might mean if that dot product was bigger than one.",
+      "offset": 332.217,
+      "duration": 3.103
+    },
+    {
+      "lang": "en",
+      "text": "Similarly, its dot product with these other directions would",
+      "offset": 336.2,
+      "duration": 3.631
+    },
+    {
+      "lang": "en",
+      "text": "tell you whether it represents the last name Jordan or basketball.",
+      "offset": 339.831,
+      "duration": 3.929
+    },
+    {
+      "lang": "en",
+      "text": "So let's say a vector is meant to represent the full name, Michael Jordan,",
+      "offset": 344.74,
+      "duration": 4.051
+    },
+    {
+      "lang": "en",
+      "text": "then its dot product with both of these directions would have to be one.",
+      "offset": 348.791,
+      "duration": 3.889
+    },
+    {
+      "lang": "en",
+      "text": "Since the text Michael Jordan spans two different tokens,",
+      "offset": 353.48,
+      "duration": 3.178
+    },
+    {
+      "lang": "en",
+      "text": "this would also mean we have to assume that an earlier attention block has successfully",
+      "offset": 356.658,
+      "duration": 4.822
+    },
+    {
+      "lang": "en",
+      "text": "passed information to the second of these two vectors so as to ensure that it can",
+      "offset": 361.48,
+      "duration": 4.493
+    },
+    {
+      "lang": "en",
+      "text": "encode both names.",
+      "offset": 365.973,
+      "duration": 0.987
+    },
+    {
+      "lang": "en",
+      "text": "With all of those as the assumptions, let's now dive into the meat of the lesson.",
+      "offset": 367.94,
+      "duration": 3.54
+    },
+    {
+      "lang": "en",
+      "text": "What happens inside a multilayer perceptron?",
+      "offset": 371.88,
+      "duration": 3.1
+    },
+    {
+      "lang": "en",
+      "text": "You might think of this sequence of vectors flowing into the block, and remember,",
+      "offset": 377.1,
+      "duration": 4.266
+    },
+    {
+      "lang": "en",
+      "text": "each vector was originally associated with one of the tokens from the input text.",
+      "offset": 381.366,
+      "duration": 4.214
+    },
+    {
+      "lang": "en",
+      "text": "What's gonna happen is that each individual vector from that sequence",
+      "offset": 386.08,
+      "duration": 3.362
+    },
+    {
+      "lang": "en",
+      "text": "goes through a short series of operations, we'll unpack them in just a moment,",
+      "offset": 389.442,
+      "duration": 3.795
+    },
+    {
+      "lang": "en",
+      "text": "and at the end, we'll get another vector with the same dimension.",
+      "offset": 393.237,
+      "duration": 3.123
+    },
+    {
+      "lang": "en",
+      "text": "That other vector is gonna get added to the original one that flowed in,",
+      "offset": 396.88,
+      "duration": 4.119
+    },
+    {
+      "lang": "en",
+      "text": "and that sum is the result flowing out.",
+      "offset": 400.999,
+      "duration": 2.201
+    },
+    {
+      "lang": "en",
+      "text": "This sequence of operations is something you apply to every vector in the sequence,",
+      "offset": 403.72,
+      "duration": 4.226
+    },
+    {
+      "lang": "en",
+      "text": "associated with every token in the input, and it all happens in parallel.",
+      "offset": 407.946,
+      "duration": 3.674
+    },
+    {
+      "lang": "en",
+      "text": "In particular, the vectors don't talk to each other in this step,",
+      "offset": 412.1,
+      "duration": 2.505
+    },
+    {
+      "lang": "en",
+      "text": "they're all kind of doing their own thing.",
+      "offset": 414.605,
+      "duration": 1.595
+    },
+    {
+      "lang": "en",
+      "text": "And for you and me, that actually makes it a lot simpler,",
+      "offset": 416.72,
+      "duration": 2.629
+    },
+    {
+      "lang": "en",
+      "text": "because it means if we understand what happens to just one of the",
+      "offset": 419.349,
+      "duration": 2.993
+    },
+    {
+      "lang": "en",
+      "text": "vectors through this block, we effectively understand what happens to all of them.",
+      "offset": 422.342,
+      "duration": 3.718
+    },
+    {
+      "lang": "en",
+      "text": "When I say this block is gonna encode the fact that Michael Jordan plays basketball,",
+      "offset": 427.1,
+      "duration": 4.28
+    },
+    {
+      "lang": "en",
+      "text": "what I mean is that if a vector flows in that encodes first name Michael and last",
+      "offset": 431.38,
+      "duration": 4.129
+    },
+    {
+      "lang": "en",
+      "text": "name Jordan, then this sequence of computations will produce something that includes",
+      "offset": 435.509,
+      "duration": 4.28
+    },
+    {
+      "lang": "en",
+      "text": "that direction basketball, which is what will add on to the vector in that position.",
+      "offset": 439.789,
+      "duration": 4.231
+    },
+    {
+      "lang": "en",
+      "text": "The first step of this process looks like multiplying that vector by a very big matrix.",
+      "offset": 445.6,
+      "duration": 4.1
+    },
+    {
+      "lang": "en",
+      "text": "No surprises there, this is deep learning.",
+      "offset": 450.04,
+      "duration": 1.94
+    },
+    {
+      "lang": "en",
+      "text": "And this matrix, like all of the other ones we've seen,",
+      "offset": 452.68,
+      "duration": 2.555
+    },
+    {
+      "lang": "en",
+      "text": "is filled with model parameters that are learned from data,",
+      "offset": 455.235,
+      "duration": 2.738
+    },
+    {
+      "lang": "en",
+      "text": "which you might think of as a bunch of knobs and dials that get tweaked and",
+      "offset": 457.973,
+      "duration": 3.468
+    },
+    {
+      "lang": "en",
+      "text": "tuned to determine what the model behavior is.",
+      "offset": 461.441,
+      "duration": 2.099
+    },
+    {
+      "lang": "en",
+      "text": "Now, one nice way to think about matrix multiplication is to imagine each row of",
+      "offset": 464.5,
+      "duration": 4.178
+    },
+    {
+      "lang": "en",
+      "text": "that matrix as being its own vector, and taking a bunch of dot products between",
+      "offset": 468.678,
+      "duration": 4.126
+    },
+    {
+      "lang": "en",
+      "text": "those rows and the vector being processed, which I'll label as E for embedding.",
+      "offset": 472.804,
+      "duration": 4.076
+    },
+    {
+      "lang": "en",
+      "text": "For example, suppose that very first row happened to equal",
+      "offset": 477.28,
+      "duration": 3.296
+    },
+    {
+      "lang": "en",
+      "text": "this first name Michael direction that we're presuming exists.",
+      "offset": 480.576,
+      "duration": 3.464
+    },
+    {
+      "lang": "en",
+      "text": "That would mean that the first component in this output, this dot product right here,",
+      "offset": 484.32,
+      "duration": 5.091
+    },
+    {
+      "lang": "en",
+      "text": "would be one if that vector encodes the first name Michael,",
+      "offset": 489.411,
+      "duration": 3.553
+    },
+    {
+      "lang": "en",
+      "text": "and zero or negative otherwise.",
+      "offset": 492.964,
+      "duration": 1.836
+    },
+    {
+      "lang": "en",
+      "text": "Even more fun, take a moment to think about what it would mean if that",
+      "offset": 495.88,
+      "duration": 3.625
+    },
+    {
+      "lang": "en",
+      "text": "first row was this first name Michael plus last name Jordan direction.",
+      "offset": 499.505,
+      "duration": 3.575
+    },
+    {
+      "lang": "en",
+      "text": "And for simplicity, let me go ahead and write that down as M plus J.",
+      "offset": 503.7,
+      "duration": 3.72
+    },
+    {
+      "lang": "en",
+      "text": "Then, taking a dot product with this embedding E,",
+      "offset": 508.08,
+      "duration": 2.851
+    },
+    {
+      "lang": "en",
+      "text": "things distribute really nicely, so it looks like M dot E plus J dot E.",
+      "offset": 510.931,
+      "duration": 4.049
+    },
+    {
+      "lang": "en",
+      "text": "And notice how that means the ultimate value would be two if the vector encodes the",
+      "offset": 514.98,
+      "duration": 4.802
+    },
+    {
+      "lang": "en",
+      "text": "full name Michael Jordan, and otherwise it would be one or something smaller than one.",
+      "offset": 519.782,
+      "duration": 4.918
+    },
+    {
+      "lang": "en",
+      "text": "And that's just one row in this matrix.",
+      "offset": 525.34,
+      "duration": 1.92
+    },
+    {
+      "lang": "en",
+      "text": "You might think of all of the other rows as in parallel asking some other kinds of",
+      "offset": 527.6,
+      "duration": 4.271
+    },
+    {
+      "lang": "en",
+      "text": "questions, probing at some other sorts of features of the vector being processed.",
+      "offset": 531.871,
+      "duration": 4.169
+    },
+    {
+      "lang": "en",
+      "text": "Very often this step also involves adding another vector to the output,",
+      "offset": 536.7,
+      "duration": 3.216
+    },
+    {
+      "lang": "en",
+      "text": "which is full of model parameters learned from data.",
+      "offset": 539.916,
+      "duration": 2.324
+    },
+    {
+      "lang": "en",
+      "text": "This other vector is known as the bias.",
+      "offset": 542.24,
+      "duration": 2.32
+    },
+    {
+      "lang": "en",
+      "text": "For our example, I want you to imagine that the value of this",
+      "offset": 545.18,
+      "duration": 3.387
+    },
+    {
+      "lang": "en",
+      "text": "bias in that very first component is negative one,",
+      "offset": 548.567,
+      "duration": 2.786
+    },
+    {
+      "lang": "en",
+      "text": "meaning our final output looks like that relevant dot product, but minus one.",
+      "offset": 551.353,
+      "duration": 4.207
+    },
+    {
+      "lang": "en",
+      "text": "You might very reasonably ask why I would want you to assume that the",
+      "offset": 556.12,
+      "duration": 3.871
+    },
+    {
+      "lang": "en",
+      "text": "model has learned this, and in a moment you'll see why it's very clean",
+      "offset": 559.991,
+      "duration": 3.927
+    },
+    {
+      "lang": "en",
+      "text": "and nice if we have a value here which is positive if and only if a vector",
+      "offset": 563.918,
+      "duration": 4.149
+    },
+    {
+      "lang": "en",
+      "text": "encodes the full name Michael Jordan, and otherwise it's zero or negative.",
+      "offset": 568.067,
+      "duration": 4.093
+    },
+    {
+      "lang": "en",
+      "text": "The total number of rows in this matrix, which is something",
+      "offset": 573.04,
+      "duration": 3.228
+    },
+    {
+      "lang": "en",
+      "text": "like the number of questions being asked, in the case of GPT-3,",
+      "offset": 576.268,
+      "duration": 3.444
+    },
+    {
+      "lang": "en",
+      "text": "whose numbers we've been following, is just under 50,000.",
+      "offset": 579.712,
+      "duration": 3.068
+    },
+    {
+      "lang": "en",
+      "text": "In fact, it's exactly four times the number of dimensions in this embedding space.",
+      "offset": 583.1,
+      "duration": 3.54
+    },
+    {
+      "lang": "en",
+      "text": "That's a design choice.",
+      "offset": 586.92,
+      "duration": 0.98
+    },
+    {
+      "lang": "en",
+      "text": "You could make it more, you could make it less,",
+      "offset": 587.94,
+      "duration": 1.876
+    },
+    {
+      "lang": "en",
+      "text": "but having a clean multiple tends to be friendly for hardware.",
+      "offset": 589.816,
+      "duration": 2.424
+    },
+    {
+      "lang": "en",
+      "text": "Since this matrix full of weights maps us into a higher dimensional space,",
+      "offset": 592.74,
+      "duration": 4.205
+    },
+    {
+      "lang": "en",
+      "text": "I'm gonna give it the shorthand W up.",
+      "offset": 596.945,
+      "duration": 2.075
+    },
+    {
+      "lang": "en",
+      "text": "I'll continue labeling the vector we're processing as E,",
+      "offset": 599.02,
+      "duration": 3.314
+    },
+    {
+      "lang": "en",
+      "text": "and let's label this bias vector as B up and put that all back down in the diagram.",
+      "offset": 602.334,
+      "duration": 4.826
+    },
+    {
+      "lang": "en",
+      "text": "At this point, a problem is that this operation is purely linear,",
+      "offset": 609.18,
+      "duration": 3.776
+    },
+    {
+      "lang": "en",
+      "text": "but language is a very non-linear process.",
+      "offset": 612.956,
+      "duration": 2.404
+    },
+    {
+      "lang": "en",
+      "text": "If the entry that we're measuring is high for Michael plus Jordan,",
+      "offset": 615.88,
+      "duration": 3.898
+    },
+    {
+      "lang": "en",
+      "text": "it would also necessarily be somewhat triggered by Michael plus Phelps",
+      "offset": 619.778,
+      "duration": 4.132
+    },
+    {
+      "lang": "en",
+      "text": "and also Alexis plus Jordan, despite those being unrelated conceptually.",
+      "offset": 623.91,
+      "duration": 4.19
+    },
+    {
+      "lang": "en",
+      "text": "What you really want is a simple yes or no for the full name.",
+      "offset": 628.54,
+      "duration": 3.46
+    },
+    {
+      "lang": "en",
+      "text": "So the next step is to pass this large intermediate",
+      "offset": 632.9,
+      "duration": 2.543
+    },
+    {
+      "lang": "en",
+      "text": "vector through a very simple non-linear function.",
+      "offset": 635.443,
+      "duration": 2.397
+    },
+    {
+      "lang": "en",
+      "text": "A common choice is one that takes all of the negative values and",
+      "offset": 638.36,
+      "duration": 3.443
+    },
+    {
+      "lang": "en",
+      "text": "maps them to zero and leaves all of the positive values unchanged.",
+      "offset": 641.803,
+      "duration": 3.497
+    },
+    {
+      "lang": "en",
+      "text": "And continuing with the deep learning tradition of overly fancy names,",
+      "offset": 646.44,
+      "duration": 4.304
+    },
+    {
+      "lang": "en",
+      "text": "this very simple function is often called the rectified linear unit, or ReLU for short.",
+      "offset": 650.744,
+      "duration": 5.276
+    },
+    {
+      "lang": "en",
+      "text": "Here's what the graph looks like.",
+      "offset": 656.02,
+      "duration": 1.86
+    },
+    {
+      "lang": "en",
+      "text": "So taking our imagined example where this first entry of the intermediate vector is one,",
+      "offset": 658.3,
+      "duration": 5.072
+    },
+    {
+      "lang": "en",
+      "text": "if and only if the full name is Michael Jordan and zero or negative otherwise,",
+      "offset": 663.372,
+      "duration": 4.502
+    },
+    {
+      "lang": "en",
+      "text": "after you pass it through the ReLU, you end up with a very clean value where",
+      "offset": 667.874,
+      "duration": 4.389
+    },
+    {
+      "lang": "en",
+      "text": "all of the zero and negative values just get clipped to zero.",
+      "offset": 672.263,
+      "duration": 3.477
+    },
+    {
+      "lang": "en",
+      "text": "So this output would be one for the full name Michael Jordan and zero otherwise.",
+      "offset": 676.1,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "In other words, it very directly mimics the behavior of an AND gate.",
+      "offset": 680.56,
+      "duration": 3.56
+    },
+    {
+      "lang": "en",
+      "text": "Often models will use a slightly modified function that's called the GELU,",
+      "offset": 685.66,
+      "duration": 3.592
+    },
+    {
+      "lang": "en",
+      "text": "which has the same basic shape, it's just a bit smoother.",
+      "offset": 689.252,
+      "duration": 2.768
+    },
+    {
+      "lang": "en",
+      "text": "But for our purposes, it's a little bit cleaner if we only think about the ReLU.",
+      "offset": 692.5,
+      "duration": 3.22
+    },
+    {
+      "lang": "en",
+      "text": "Also, when you hear people refer to the neurons of a transformer,",
+      "offset": 696.74,
+      "duration": 3.406
+    },
+    {
+      "lang": "en",
+      "text": "they're talking about these values right here.",
+      "offset": 700.146,
+      "duration": 2.374
+    },
+    {
+      "lang": "en",
+      "text": "Whenever you see that common neural network picture with a layer of dots and a",
+      "offset": 702.9,
+      "duration": 4.49
+    },
+    {
+      "lang": "en",
+      "text": "bunch of lines connecting to the previous layer, which we had earlier in this series,",
+      "offset": 707.39,
+      "duration": 4.888
+    },
+    {
+      "lang": "en",
+      "text": "that's typically meant to convey this combination of a linear step,",
+      "offset": 712.278,
+      "duration": 3.866
+    },
+    {
+      "lang": "en",
+      "text": "a matrix multiplication, followed by some simple term-wise nonlinear function like a ReLU.",
+      "offset": 716.144,
+      "duration": 5.116
+    },
+    {
+      "lang": "en",
+      "text": "You would say that this neuron is active whenever this value",
+      "offset": 722.5,
+      "duration": 3.318
+    },
+    {
+      "lang": "en",
+      "text": "is positive and that it's inactive if that value is zero.",
+      "offset": 725.818,
+      "duration": 3.102
+    },
+    {
+      "lang": "en",
+      "text": "The next step looks very similar to the first one.",
+      "offset": 730.12,
+      "duration": 2.26
+    },
+    {
+      "lang": "en",
+      "text": "You multiply by a very large matrix and you add on a certain bias term.",
+      "offset": 732.56,
+      "duration": 4.02
+    },
+    {
+      "lang": "en",
+      "text": "In this case, the number of dimensions in the output is back down to the size of",
+      "offset": 736.98,
+      "duration": 4.167
+    },
+    {
+      "lang": "en",
+      "text": "that embedding space, so I'm gonna go ahead and call this the down projection matrix.",
+      "offset": 741.147,
+      "duration": 4.373
+    },
+    {
+      "lang": "en",
+      "text": "And this time, instead of thinking of things row by row,",
+      "offset": 746.22,
+      "duration": 2.687
+    },
+    {
+      "lang": "en",
+      "text": "it's actually nicer to think of it column by column.",
+      "offset": 748.907,
+      "duration": 2.453
+    },
+    {
+      "lang": "en",
+      "text": "You see, another way that you can hold matrix multiplication in your head is to",
+      "offset": 751.86,
+      "duration": 4.392
+    },
+    {
+      "lang": "en",
+      "text": "imagine taking each column of the matrix and multiplying it by the corresponding",
+      "offset": 756.252,
+      "duration": 4.446
+    },
+    {
+      "lang": "en",
+      "text": "term in the vector that it's processing and adding together all of those rescaled columns.",
+      "offset": 760.698,
+      "duration": 4.942
+    },
+    {
+      "lang": "en",
+      "text": "The reason it's nicer to think about this way is because here the columns have the same",
+      "offset": 766.84,
+      "duration": 4.521
+    },
+    {
+      "lang": "en",
+      "text": "dimension as the embedding space, so we can think of them as directions in that space.",
+      "offset": 771.361,
+      "duration": 4.419
+    },
+    {
+      "lang": "en",
+      "text": "For instance, we will imagine that the model has learned to make that",
+      "offset": 776.14,
+      "duration": 3.545
+    },
+    {
+      "lang": "en",
+      "text": "first column into this basketball direction that we suppose exists.",
+      "offset": 779.685,
+      "duration": 3.395
+    },
+    {
+      "lang": "en",
+      "text": "What that would mean is that when the relevant neuron in that first position is active,",
+      "offset": 784.18,
+      "duration": 4.27
+    },
+    {
+      "lang": "en",
+      "text": "we'll be adding this column to the final result.",
+      "offset": 788.45,
+      "duration": 2.33
+    },
+    {
+      "lang": "en",
+      "text": "But if that neuron was inactive, if that number was zero, then this would have no effect.",
+      "offset": 791.14,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "And it doesn't just have to be basketball.",
+      "offset": 796.5,
+      "duration": 1.56
+    },
+    {
+      "lang": "en",
+      "text": "The model could also bake into this column and many other features that",
+      "offset": 798.22,
+      "duration": 3.418
+    },
+    {
+      "lang": "en",
+      "text": "it wants to associate with something that has the full name Michael Jordan.",
+      "offset": 801.638,
+      "duration": 3.562
+    },
+    {
+      "lang": "en",
+      "text": "And at the same time, all of the other columns in this matrix are telling you",
+      "offset": 806.98,
+      "duration": 4.871
+    },
+    {
+      "lang": "en",
+      "text": "what will be added to the final result if the corresponding neuron is active.",
+      "offset": 811.851,
+      "duration": 4.809
+    },
+    {
+      "lang": "en",
+      "text": "And if you have a bias in this case, it's something that you're",
+      "offset": 817.36,
+      "duration": 3.094
+    },
+    {
+      "lang": "en",
+      "text": "just adding every single time, regardless of the neuron values.",
+      "offset": 820.454,
+      "duration": 3.046
+    },
+    {
+      "lang": "en",
+      "text": "You might wonder what's that doing.",
+      "offset": 824.06,
+      "duration": 1.22
+    },
+    {
+      "lang": "en",
+      "text": "As with all parameter-filled objects here, it's kind of hard to say exactly.",
+      "offset": 825.54,
+      "duration": 3.78
+    },
+    {
+      "lang": "en",
+      "text": "Maybe there's some bookkeeping that the network needs to do,",
+      "offset": 829.32,
+      "duration": 2.967
+    },
+    {
+      "lang": "en",
+      "text": "but you can feel free to ignore it for now.",
+      "offset": 832.287,
+      "duration": 2.093
+    },
+    {
+      "lang": "en",
+      "text": "Making our notation a little more compact again,",
+      "offset": 834.86,
+      "duration": 2.878
+    },
+    {
+      "lang": "en",
+      "text": "I'll call this big matrix W down and similarly call that bias vector B down and",
+      "offset": 837.738,
+      "duration": 4.7
+    },
+    {
+      "lang": "en",
+      "text": "put that back into our diagram.",
+      "offset": 842.438,
+      "duration": 1.822
+    },
+    {
+      "lang": "en",
+      "text": "Like I previewed earlier, what you do with this final result is add it to the vector",
+      "offset": 844.74,
+      "duration": 4.378
+    },
+    {
+      "lang": "en",
+      "text": "that flowed into the block at that position and that gets you this final result.",
+      "offset": 849.118,
+      "duration": 4.122
+    },
+    {
+      "lang": "en",
+      "text": "So for example, if the vector flowing in encoded both first name Michael and last name",
+      "offset": 853.82,
+      "duration": 5.24
+    },
+    {
+      "lang": "en",
+      "text": "Jordan, then because this sequence of operations will trigger that AND gate,",
+      "offset": 859.06,
+      "duration": 4.638
+    },
+    {
+      "lang": "en",
+      "text": "it will add on the basketball direction, so what pops out will encode all of those",
+      "offset": 863.698,
+      "duration": 4.999
+    },
+    {
+      "lang": "en",
+      "text": "together.",
+      "offset": 868.697,
+      "duration": 0.543
+    },
+    {
+      "lang": "en",
+      "text": "And remember, this is a process happening to every one of those vectors in parallel.",
+      "offset": 869.82,
+      "duration": 4.38
+    },
+    {
+      "lang": "en",
+      "text": "In particular, taking the GPT-3 numbers, it means that this block doesn't just",
+      "offset": 874.8,
+      "duration": 4.967
+    },
+    {
+      "lang": "en",
+      "text": "have 50,000 neurons in it, it has 50,000 times the number of tokens in the input.",
+      "offset": 879.767,
+      "duration": 5.093
+    },
+    {
+      "lang": "en",
+      "text": "So that is the entire operation, two matrix products,",
+      "offset": 888.18,
+      "duration": 3.176
+    },
+    {
+      "lang": "en",
+      "text": "each with a bias added and a simple clipping function in between.",
+      "offset": 891.356,
+      "duration": 3.824
+    },
+    {
+      "lang": "en",
+      "text": "Any of you who watched the earlier videos of the series will recognize this",
+      "offset": 896.08,
+      "duration": 3.335
+    },
+    {
+      "lang": "en",
+      "text": "structure as the most basic kind of neural network that we studied there.",
+      "offset": 899.415,
+      "duration": 3.205
+    },
+    {
+      "lang": "en",
+      "text": "In that example, it was trained to recognize handwritten digits.",
+      "offset": 903.08,
+      "duration": 3.02
+    },
+    {
+      "lang": "en",
+      "text": "Over here, in the context of a transformer for a large language model,",
+      "offset": 906.58,
+      "duration": 4.224
+    },
+    {
+      "lang": "en",
+      "text": "this is one piece in a larger architecture and any attempt to interpret",
+      "offset": 910.804,
+      "duration": 4.284
+    },
+    {
+      "lang": "en",
+      "text": "what exactly it's doing is heavily intertwined with the idea of encoding",
+      "offset": 915.088,
+      "duration": 4.343
+    },
+    {
+      "lang": "en",
+      "text": "information into vectors of a high-dimensional embedding space.",
+      "offset": 919.431,
+      "duration": 3.749
+    },
+    {
+      "lang": "en",
+      "text": "That is the core lesson, but I do wanna step back and reflect on two different things,",
+      "offset": 924.26,
+      "duration": 4.34
+    },
+    {
+      "lang": "en",
+      "text": "the first of which is a kind of bookkeeping, and the second of which",
+      "offset": 928.6,
+      "duration": 3.443
+    },
+    {
+      "lang": "en",
+      "text": "involves a very thought-provoking fact about higher dimensions that",
+      "offset": 932.043,
+      "duration": 3.392
+    },
+    {
+      "lang": "en",
+      "text": "I actually didn't know until I dug into transformers.",
+      "offset": 935.435,
+      "duration": 2.645
+    },
+    {
+      "lang": "en",
+      "text": "In the last two chapters, you and I started counting up the total number of parameters",
+      "offset": 941.08,
+      "duration": 4.867
+    },
+    {
+      "lang": "en",
+      "text": "in GPT-3 and seeing exactly where they live, so let's quickly finish up the game here.",
+      "offset": 945.947,
+      "duration": 4.813
+    },
+    {
+      "lang": "en",
+      "text": "I already mentioned how this up projection matrix has just under 50,000 rows and",
+      "offset": 951.4,
+      "duration": 5.39
+    },
+    {
+      "lang": "en",
+      "text": "that each row matches the size of the embedding space, which for GPT-3 is 12,288.",
+      "offset": 956.79,
+      "duration": 5.39
+    },
+    {
+      "lang": "en",
+      "text": "Multiplying those together, it gives us 604 million parameters just for that matrix,",
+      "offset": 963.24,
+      "duration": 5.277
+    },
+    {
+      "lang": "en",
+      "text": "and the down projection has the same number of parameters just with a transposed shape.",
+      "offset": 968.517,
+      "duration": 5.403
+    },
+    {
+      "lang": "en",
+      "text": "So together, they give about 1.2 billion parameters.",
+      "offset": 974.5,
+      "duration": 2.9
+    },
+    {
+      "lang": "en",
+      "text": "The bias vector also accounts for a couple more parameters,",
+      "offset": 978.28,
+      "duration": 2.605
+    },
+    {
+      "lang": "en",
+      "text": "but it's a trivial proportion of the total, so I'm not even gonna show it.",
+      "offset": 980.885,
+      "duration": 3.215
+    },
+    {
+      "lang": "en",
+      "text": "In GPT-3, this sequence of embedding vectors flows through not one,",
+      "offset": 984.66,
+      "duration": 4.952
+    },
+    {
+      "lang": "en",
+      "text": "but 96 distinct MLPs, so the total number of parameters devoted",
+      "offset": 989.612,
+      "duration": 4.661
+    },
+    {
+      "lang": "en",
+      "text": "to all of these blocks adds up to about 116 billion.",
+      "offset": 994.273,
+      "duration": 3.787
+    },
+    {
+      "lang": "en",
+      "text": "This is around 2 thirds of the total parameters in the network,",
+      "offset": 998.82,
+      "duration": 3.357
+    },
+    {
+      "lang": "en",
+      "text": "and when you add it to everything that we had before, for the attention blocks,",
+      "offset": 1002.177,
+      "duration": 4.197
+    },
+    {
+      "lang": "en",
+      "text": "the embedding, and the unembedding, you do indeed get that grand total of 175",
+      "offset": 1006.374,
+      "duration": 4.091
+    },
+    {
+      "lang": "en",
+      "text": "billion as advertised.",
+      "offset": 1010.465,
+      "duration": 1.155
+    },
+    {
+      "lang": "en",
+      "text": "It's probably worth mentioning there's another set of parameters associated",
+      "offset": 1013.06,
+      "duration": 3.577
+    },
+    {
+      "lang": "en",
+      "text": "with those normalization steps that this explanation has skipped over,",
+      "offset": 1016.637,
+      "duration": 3.342
+    },
+    {
+      "lang": "en",
+      "text": "but like the bias vector, they account for a very trivial proportion of the total.",
+      "offset": 1019.979,
+      "duration": 3.861
+    },
+    {
+      "lang": "en",
+      "text": "As to that second point of reflection, you might be wondering if",
+      "offset": 1025.9,
+      "duration": 3.26
+    },
+    {
+      "lang": "en",
+      "text": "this central toy example we've been spending so much time on",
+      "offset": 1029.16,
+      "duration": 3.059
+    },
+    {
+      "lang": "en",
+      "text": "reflects how facts are actually stored in real large language models.",
+      "offset": 1032.219,
+      "duration": 3.461
+    },
+    {
+      "lang": "en",
+      "text": "It is true that the rows of that first matrix can be thought of as",
+      "offset": 1036.319,
+      "duration": 3.449
+    },
+    {
+      "lang": "en",
+      "text": "directions in this embedding space, and that means the activation of each",
+      "offset": 1039.768,
+      "duration": 3.808
+    },
+    {
+      "lang": "en",
+      "text": "neuron tells you how much a given vector aligns with some specific direction.",
+      "offset": 1043.576,
+      "duration": 3.964
+    },
+    {
+      "lang": "en",
+      "text": "It's also true that the columns of that second matrix tell",
+      "offset": 1047.76,
+      "duration": 3.208
+    },
+    {
+      "lang": "en",
+      "text": "you what will be added to the result if that neuron is active.",
+      "offset": 1050.968,
+      "duration": 3.372
+    },
+    {
+      "lang": "en",
+      "text": "Both of those are just mathematical facts.",
+      "offset": 1054.64,
+      "duration": 2.16
+    },
+    {
+      "lang": "en",
+      "text": "However, the evidence does suggest that individual neurons very rarely",
+      "offset": 1057.74,
+      "duration": 4.066
+    },
+    {
+      "lang": "en",
+      "text": "represent a single clean feature like Michael Jordan,",
+      "offset": 1061.806,
+      "duration": 3.093
+    },
+    {
+      "lang": "en",
+      "text": "and there may actually be a very good reason this is the case,",
+      "offset": 1064.899,
+      "duration": 3.608
+    },
+    {
+      "lang": "en",
+      "text": "related to an idea floating around interpretability researchers these",
+      "offset": 1068.507,
+      "duration": 4.009
+    },
+    {
+      "lang": "en",
+      "text": "days known as superposition.",
+      "offset": 1072.516,
+      "duration": 1.604
+    },
+    {
+      "lang": "en",
+      "text": "This is a hypothesis that might help to explain both why the models are",
+      "offset": 1074.64,
+      "duration": 3.917
+    },
+    {
+      "lang": "en",
+      "text": "especially hard to interpret and also why they scale surprisingly well.",
+      "offset": 1078.557,
+      "duration": 3.863
+    },
+    {
+      "lang": "en",
+      "text": "The basic idea is that if you have an n-dimensional space and you wanna",
+      "offset": 1083.5,
+      "duration": 3.886
+    },
+    {
+      "lang": "en",
+      "text": "represent a bunch of different features using directions that are all",
+      "offset": 1087.386,
+      "duration": 3.779
+    },
+    {
+      "lang": "en",
+      "text": "perpendicular to one another in that space, you know,",
+      "offset": 1091.165,
+      "duration": 2.915
+    },
+    {
+      "lang": "en",
+      "text": "that way if you add a component in one direction,",
+      "offset": 1094.08,
+      "duration": 2.7
+    },
+    {
+      "lang": "en",
+      "text": "it doesn't influence any of the other directions,",
+      "offset": 1096.78,
+      "duration": 2.699
+    },
+    {
+      "lang": "en",
+      "text": "then the maximum number of vectors you can fit is only n, the number of dimensions.",
+      "offset": 1099.479,
+      "duration": 4.481
+    },
+    {
+      "lang": "en",
+      "text": "To a mathematician, actually, this is the definition of dimension.",
+      "offset": 1104.6,
+      "duration": 3.02
+    },
+    {
+      "lang": "en",
+      "text": "But where it gets interesting is if you relax that",
+      "offset": 1108.22,
+      "duration": 2.653
+    },
+    {
+      "lang": "en",
+      "text": "constraint a little bit and you tolerate some noise.",
+      "offset": 1110.873,
+      "duration": 2.707
+    },
+    {
+      "lang": "en",
+      "text": "Say you allow those features to be represented by vectors that aren't exactly",
+      "offset": 1114.18,
+      "duration": 4.529
+    },
+    {
+      "lang": "en",
+      "text": "perpendicular, they're just nearly perpendicular, maybe between 89 and 91 degrees apart.",
+      "offset": 1118.709,
+      "duration": 5.111
+    },
+    {
+      "lang": "en",
+      "text": "If we were in two or three dimensions, this makes no difference.",
+      "offset": 1124.82,
+      "duration": 3.2
+    },
+    {
+      "lang": "en",
+      "text": "That gives you hardly any extra wiggle room to fit more vectors in,",
+      "offset": 1128.26,
+      "duration": 3.348
+    },
+    {
+      "lang": "en",
+      "text": "which makes it all the more counterintuitive that for higher dimensions,",
+      "offset": 1131.608,
+      "duration": 3.596
+    },
+    {
+      "lang": "en",
+      "text": "the answer changes dramatically.",
+      "offset": 1135.204,
+      "duration": 1.576
+    },
+    {
+      "lang": "en",
+      "text": "I can give you a really quick and dirty illustration of this using some",
+      "offset": 1137.66,
+      "duration": 4.185
+    },
+    {
+      "lang": "en",
+      "text": "scrappy Python that's going to create a list of 100-dimensional vectors,",
+      "offset": 1141.845,
+      "duration": 4.243
+    },
+    {
+      "lang": "en",
+      "text": "each one initialized randomly, and this list is going to contain 10,000 distinct vectors,",
+      "offset": 1146.088,
+      "duration": 5.231
+    },
+    {
+      "lang": "en",
+      "text": "so 100 times as many vectors as there are dimensions.",
+      "offset": 1151.319,
+      "duration": 3.081
+    },
+    {
+      "lang": "en",
+      "text": "This plot right here shows the distribution of angles between pairs of these vectors.",
+      "offset": 1155.32,
+      "duration": 4.58
+    },
+    {
+      "lang": "en",
+      "text": "So because they started at random, those angles could be anything from 0 to 180 degrees,",
+      "offset": 1160.68,
+      "duration": 4.713
+    },
+    {
+      "lang": "en",
+      "text": "but you'll notice that already, even just for random vectors,",
+      "offset": 1165.393,
+      "duration": 3.283
+    },
+    {
+      "lang": "en",
+      "text": "there's this heavy bias for things to be closer to 90 degrees.",
+      "offset": 1168.676,
+      "duration": 3.284
+    },
+    {
+      "lang": "en",
+      "text": "Then what I'm going to do is run a certain optimization process that iteratively nudges",
+      "offset": 1172.5,
+      "duration": 4.669
+    },
+    {
+      "lang": "en",
+      "text": "all of these vectors so that they try to become more perpendicular to one another.",
+      "offset": 1177.169,
+      "duration": 4.351
+    },
+    {
+      "lang": "en",
+      "text": "After repeating this many different times, here's",
+      "offset": 1182.06,
+      "duration": 2.473
+    },
+    {
+      "lang": "en",
+      "text": "what the distribution of angles looks like.",
+      "offset": 1184.533,
+      "duration": 2.127
+    },
+    {
+      "lang": "en",
+      "text": "We have to actually zoom in on it here because all of the possible angles",
+      "offset": 1187.12,
+      "duration": 4.699
+    },
+    {
+      "lang": "en",
+      "text": "between pairs of vectors sit inside this narrow range between 89 and 91 degrees.",
+      "offset": 1191.819,
+      "duration": 5.081
+    },
+    {
+      "lang": "en",
+      "text": "In general, a consequence of something known as the Johnson-Lindenstrauss",
+      "offset": 1198.02,
+      "duration": 4.197
+    },
+    {
+      "lang": "en",
+      "text": "lemma is that the number of vectors you can cram into a space that are nearly",
+      "offset": 1202.217,
+      "duration": 4.425
+    },
+    {
+      "lang": "en",
+      "text": "perpendicular like this grows exponentially with the number of dimensions.",
+      "offset": 1206.642,
+      "duration": 4.198
+    },
+    {
+      "lang": "en",
+      "text": "This is very significant for large language models,",
+      "offset": 1211.96,
+      "duration": 2.86
+    },
+    {
+      "lang": "en",
+      "text": "which might benefit from associating independent ideas with nearly",
+      "offset": 1214.82,
+      "duration": 3.685
+    },
+    {
+      "lang": "en",
+      "text": "perpendicular directions.",
+      "offset": 1218.505,
+      "duration": 1.375
+    },
+    {
+      "lang": "en",
+      "text": "It means that it's possible for it to store many,",
+      "offset": 1220,
+      "duration": 2.596
+    },
+    {
+      "lang": "en",
+      "text": "many more ideas than there are dimensions in the space that it's allotted.",
+      "offset": 1222.596,
+      "duration": 3.844
+    },
+    {
+      "lang": "en",
+      "text": "This might partially explain why model performance seems to scale so well with size.",
+      "offset": 1227.32,
+      "duration": 4.42
+    },
+    {
+      "lang": "en",
+      "text": "A space that has 10 times as many dimensions can store way,",
+      "offset": 1232.54,
+      "duration": 3.776
+    },
+    {
+      "lang": "en",
+      "text": "way more than 10 times as many independent ideas.",
+      "offset": 1236.316,
+      "duration": 3.084
+    },
+    {
+      "lang": "en",
+      "text": "And this is relevant not just to that embedding space where the vectors",
+      "offset": 1240.42,
+      "duration": 3.451
+    },
+    {
+      "lang": "en",
+      "text": "flowing through the model live, but also to that vector full of neurons",
+      "offset": 1243.871,
+      "duration": 3.452
+    },
+    {
+      "lang": "en",
+      "text": "in the middle of that multilayer perceptron that we just studied.",
+      "offset": 1247.323,
+      "duration": 3.117
+    },
+    {
+      "lang": "en",
+      "text": "That is to say, at the sizes of GPT-3, it might not just be probing at 50,000 features,",
+      "offset": 1250.96,
+      "duration": 5.153
+    },
+    {
+      "lang": "en",
+      "text": "but if it instead leveraged this enormous added capacity by using",
+      "offset": 1256.113,
+      "duration": 3.865
+    },
+    {
+      "lang": "en",
+      "text": "nearly perpendicular directions of the space, it could be probing at many,",
+      "offset": 1259.978,
+      "duration": 4.392
+    },
+    {
+      "lang": "en",
+      "text": "many more features of the vector being processed.",
+      "offset": 1264.37,
+      "duration": 2.87
+    },
+    {
+      "lang": "en",
+      "text": "But if it was doing that, what it means is that individual",
+      "offset": 1267.78,
+      "duration": 3.146
+    },
+    {
+      "lang": "en",
+      "text": "features aren't gonna be visible as a single neuron lighting up.",
+      "offset": 1270.926,
+      "duration": 3.414
+    },
+    {
+      "lang": "en",
+      "text": "It would have to look like some specific combination of neurons instead, a superposition.",
+      "offset": 1274.66,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "For any of you curious to learn more, a key relevant search term here is sparse",
+      "offset": 1280.4,
+      "duration": 3.915
+    },
+    {
+      "lang": "en",
+      "text": "autoencoder, which is a tool that some of the interpretability people use to try to",
+      "offset": 1284.315,
+      "duration": 4.111
+    },
+    {
+      "lang": "en",
+      "text": "extract what the true features are, even if they're very superimposed on all these",
+      "offset": 1288.426,
+      "duration": 4.062
+    },
+    {
+      "lang": "en",
+      "text": "neurons.",
+      "offset": 1292.488,
+      "duration": 0.392
+    },
+    {
+      "lang": "en",
+      "text": "I'll link to a couple really great anthropic posts all about this.",
+      "offset": 1293.54,
+      "duration": 3.26
+    },
+    {
+      "lang": "en",
+      "text": "At this point, we haven't touched every detail of a transformer,",
+      "offset": 1297.88,
+      "duration": 3.09
+    },
+    {
+      "lang": "en",
+      "text": "but you and I have hit the most important points.",
+      "offset": 1300.97,
+      "duration": 2.33
+    },
+    {
+      "lang": "en",
+      "text": "The main thing that I wanna cover in a next chapter is the training process.",
+      "offset": 1303.52,
+      "duration": 4.12
+    },
+    {
+      "lang": "en",
+      "text": "On the one hand, the short answer for how training works is that it's all",
+      "offset": 1308.46,
+      "duration": 3.469
+    },
+    {
+      "lang": "en",
+      "text": "backpropagation, and we covered backpropagation in a separate context with earlier",
+      "offset": 1311.929,
+      "duration": 3.892
+    },
+    {
+      "lang": "en",
+      "text": "chapters in the series.",
+      "offset": 1315.821,
+      "duration": 1.079
+    },
+    {
+      "lang": "en",
+      "text": "But there is more to discuss, like the specific cost function used for language models,",
+      "offset": 1317.22,
+      "duration": 4.814
+    },
+    {
+      "lang": "en",
+      "text": "the idea of fine-tuning using reinforcement learning with human feedback,",
+      "offset": 1322.034,
+      "duration": 4.049
+    },
+    {
+      "lang": "en",
+      "text": "and the notion of scaling laws.",
+      "offset": 1326.083,
+      "duration": 1.697
+    },
+    {
+      "lang": "en",
+      "text": "Quick note for the active followers among you,",
+      "offset": 1328.96,
+      "duration": 2.153
+    },
+    {
+      "lang": "en",
+      "text": "there are a number of non-machine learning-related videos that I'm excited to",
+      "offset": 1331.113,
+      "duration": 3.573
+    },
+    {
+      "lang": "en",
+      "text": "sink my teeth into before I make that next chapter, so it might be a while,",
+      "offset": 1334.686,
+      "duration": 3.481
+    },
+    {
+      "lang": "en",
+      "text": "but I do promise it'll come in due time.",
+      "offset": 1338.167,
+      "duration": 1.833
+    },
+    {
+      "lang": "en",
+      "text": "Thank you.",
+      "offset": 1355.64,
+      "duration": 2.28
+    }
+  ],
+  "cleanText": null,
+  "dumpedAt": "2025-07-21T18:43:24.572Z"
+}

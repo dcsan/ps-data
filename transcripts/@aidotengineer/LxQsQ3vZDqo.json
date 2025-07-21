@@ -1,0 +1,3358 @@
+{
+  "episodeId": "LxQsQ3vZDqo",
+  "channelSlug": "@aidotengineer",
+  "title": "Teaching Gemini to Speak YouTube: Adapting LLMs for Video Recommendations to 2B+DAU - Devansh Tandon",
+  "publishedAt": "2025-07-16T18:01:50.000Z",
+  "rawLines": [
+    {
+      "lang": "en",
+      "text": "[Music]",
+      "offset": 0.33,
+      "duration": 7.479
+    },
+    {
+      "lang": "en",
+      "text": "There's a lot of attention in terms of",
+      "offset": 15.04,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "how LLMs are going to transform search.",
+      "offset": 16.8,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "Uh Google search is having a revolution.",
+      "offset": 19.6,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "Chat GPT has a big chat interface.",
+      "offset": 22.08,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "Perplexity is a product that a lot of",
+      "offset": 24.48,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "people use. Um, but I think",
+      "offset": 26.16,
+      "duration": 5.519
+    },
+    {
+      "lang": "en",
+      "text": "recommendations is uh probably a bigger",
+      "offset": 28.24,
+      "duration": 6.88
+    },
+    {
+      "lang": "en",
+      "text": "problem that is underhyped because it's",
+      "offset": 31.679,
+      "duration": 6.001
+    },
+    {
+      "lang": "en",
+      "text": "kind of transparent to the user. Um, and",
+      "offset": 35.12,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "I think the application of LLMs to",
+      "offset": 37.68,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "recommendations is going to be a bigger",
+      "offset": 39.6,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "consumer application than search. Um, so",
+      "offset": 41.2,
+      "duration": 5.199
+    },
+    {
+      "lang": "en",
+      "text": "in terms of my talk, I just want to",
+      "offset": 44.8,
+      "duration": 2.72
+    },
+    {
+      "lang": "en",
+      "text": "introduce the problem of YouTube",
+      "offset": 46.399,
+      "duration": 3.041
+    },
+    {
+      "lang": "en",
+      "text": "recommendations and then talk about how",
+      "offset": 47.52,
+      "duration": 4.879
+    },
+    {
+      "lang": "en",
+      "text": "we've built large recommener models.",
+      "offset": 49.44,
+      "duration": 5.439
+    },
+    {
+      "lang": "en",
+      "text": "We're adapting Gemini for YouTube. how",
+      "offset": 52.399,
+      "duration": 4.401
+    },
+    {
+      "lang": "en",
+      "text": "we build semantic ID and how we're using",
+      "offset": 54.879,
+      "duration": 4.241
+    },
+    {
+      "lang": "en",
+      "text": "that and then end with this recipe of",
+      "offset": 56.8,
+      "duration": 4.239
+    },
+    {
+      "lang": "en",
+      "text": "how you might use an LLM to make a",
+      "offset": 59.12,
+      "duration": 6.079
+    },
+    {
+      "lang": "en",
+      "text": "recommendation system. Um to start why",
+      "offset": 61.039,
+      "duration": 6.961
+    },
+    {
+      "lang": "en",
+      "text": "this is important. Um who here watches",
+      "offset": 65.199,
+      "duration": 5.361
+    },
+    {
+      "lang": "en",
+      "text": "YouTube every day.",
+      "offset": 68,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "It's one of the biggest consumer apps in",
+      "offset": 70.56,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "the world. Um and a large majority of",
+      "offset": 72.24,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "the watch time on YouTube is driven by",
+      "offset": 75.68,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "the recommendation system. Uh and we",
+      "offset": 78,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "serve recommendations across home watch",
+      "offset": 80.4,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "next. We have a big shorts product and",
+      "offset": 82.32,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "even a lot of our search results are",
+      "offset": 84.64,
+      "duration": 5.6
+    },
+    {
+      "lang": "en",
+      "text": "personalized in some way. Uh and so if",
+      "offset": 86.88,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "you think about consumer applications of",
+      "offset": 90.24,
+      "duration": 4.239
+    },
+    {
+      "lang": "en",
+      "text": "LLMs,",
+      "offset": 92.88,
+      "duration": 3.599
+    },
+    {
+      "lang": "en",
+      "text": "I think in terms of consumer engagement",
+      "offset": 94.479,
+      "duration": 4.481
+    },
+    {
+      "lang": "en",
+      "text": "and impact, recommendations is going to",
+      "offset": 96.479,
+      "duration": 6.96
+    },
+    {
+      "lang": "en",
+      "text": "be a much bigger uh application than",
+      "offset": 98.96,
+      "duration": 6.72
+    },
+    {
+      "lang": "en",
+      "text": "than searches. And this is true of any",
+      "offset": 103.439,
+      "duration": 5.841
+    },
+    {
+      "lang": "en",
+      "text": "consumer app with a billion doubt. Um,",
+      "offset": 105.68,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "the way I think about the recommendation",
+      "offset": 109.28,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "problem is you're trying to learn this",
+      "offset": 110.96,
+      "duration": 6.24
+    },
+    {
+      "lang": "en",
+      "text": "function of you get a user and their",
+      "offset": 112.96,
+      "duration": 6.479
+    },
+    {
+      "lang": "en",
+      "text": "context as input and you're trying to",
+      "offset": 117.2,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "give them a bunch of recommendations.",
+      "offset": 119.439,
+      "duration": 4.561
+    },
+    {
+      "lang": "en",
+      "text": "Um, at YouTube we have a bunch of user",
+      "offset": 121.68,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "information like their demographics,",
+      "offset": 124,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "their age, their gender, where they're",
+      "offset": 126.32,
+      "duration": 3.919
+    },
+    {
+      "lang": "en",
+      "text": "located. We have a lot of context about",
+      "offset": 128,
+      "duration": 4.879
+    },
+    {
+      "lang": "en",
+      "text": "them. What are the last 100 videos they",
+      "offset": 130.239,
+      "duration": 5.041
+    },
+    {
+      "lang": "en",
+      "text": "watched? How deeply did they engage with",
+      "offset": 132.879,
+      "duration": 4.321
+    },
+    {
+      "lang": "en",
+      "text": "them? What did they comment on? who are",
+      "offset": 135.28,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "they subscribed to and we use all of",
+      "offset": 137.2,
+      "duration": 5.6
+    },
+    {
+      "lang": "en",
+      "text": "that to make uh video recommendations.",
+      "offset": 139.44,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "We've tried a lot of different modeling",
+      "offset": 142.8,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "techniques here. Multi-headed rankers,",
+      "offset": 144.56,
+      "duration": 5.039
+    },
+    {
+      "lang": "en",
+      "text": "embedding models, sequencetose sequence",
+      "offset": 147.12,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "transformers, there's a there's a long",
+      "offset": 149.599,
+      "duration": 4.481
+    },
+    {
+      "lang": "en",
+      "text": "history. Um and about two years ago, we",
+      "offset": 151.52,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "started thinking how can we rethink this",
+      "offset": 154.08,
+      "duration": 6.56
+    },
+    {
+      "lang": "en",
+      "text": "recommendation system on top of Gemini,",
+      "offset": 157.04,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "which has been making incredible",
+      "offset": 160.64,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "progress in modeling. how can we adapt",
+      "offset": 162.48,
+      "duration": 5.119
+    },
+    {
+      "lang": "en",
+      "text": "that for YouTube?",
+      "offset": 164.64,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "And so we've built this system which we",
+      "offset": 167.599,
+      "duration": 6.161
+    },
+    {
+      "lang": "en",
+      "text": "call LRM large recommener model uh where",
+      "offset": 169.68,
+      "duration": 7.199
+    },
+    {
+      "lang": "en",
+      "text": "we adapt Gemini for recommendations. So",
+      "offset": 173.76,
+      "duration": 5.199
+    },
+    {
+      "lang": "en",
+      "text": "we start with this base Gemini",
+      "offset": 176.879,
+      "duration": 5.121
+    },
+    {
+      "lang": "en",
+      "text": "checkpoint um and then we are adapting",
+      "offset": 178.959,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "it for YouTube recommendations teaching",
+      "offset": 182,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "it a lot of information about YouTube to",
+      "offset": 184.319,
+      "duration": 5.601
+    },
+    {
+      "lang": "en",
+      "text": "get this kind of unified YouTube",
+      "offset": 187.2,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "specific checkpoint of Gemini which we",
+      "offset": 189.92,
+      "duration": 4.239
+    },
+    {
+      "lang": "en",
+      "text": "call LRM.",
+      "offset": 191.92,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "Then we can align it for different",
+      "offset": 194.159,
+      "duration": 4.241
+    },
+    {
+      "lang": "en",
+      "text": "recommendation related tasks like",
+      "offset": 196.48,
+      "duration": 5.759
+    },
+    {
+      "lang": "en",
+      "text": "retrieval and ranking um and basically",
+      "offset": 198.4,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "make a small custom version of this",
+      "offset": 202.239,
+      "duration": 3.201
+    },
+    {
+      "lang": "en",
+      "text": "model for all of the major",
+      "offset": 203.84,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "recommendation surfaces. Um and so this",
+      "offset": 205.44,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "is a model that we have launched in",
+      "offset": 208,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "production at YouTube for a while in",
+      "offset": 209.68,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "terms of the retrieval system and we're",
+      "offset": 211.92,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "experimenting a lot on the ranking side.",
+      "offset": 214,
+      "duration": 4.159
+    },
+    {
+      "lang": "en",
+      "text": "So I want to start with just kind of",
+      "offset": 216.72,
+      "duration": 3.12
+    },
+    {
+      "lang": "en",
+      "text": "explaining how we built this YouTube and",
+      "offset": 218.159,
+      "duration": 3.841
+    },
+    {
+      "lang": "en",
+      "text": "Gemini model and then we'll talk about",
+      "offset": 219.84,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "how we use it for retrieval.",
+      "offset": 222,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "The first step of this kind of a model",
+      "offset": 224.4,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "is you have to develop a way to tokenize",
+      "offset": 226.72,
+      "duration": 5.519
+    },
+    {
+      "lang": "en",
+      "text": "videos. So when you",
+      "offset": 229.36,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "uh",
+      "offset": 232.239,
+      "duration": 3.521
+    },
+    {
+      "lang": "en",
+      "text": "in terms of an LLM when you give it an",
+      "offset": 233.84,
+      "duration": 4.399
+    },
+    {
+      "lang": "en",
+      "text": "input it it tokenizes that text and then",
+      "offset": 235.76,
+      "duration": 5.039
+    },
+    {
+      "lang": "en",
+      "text": "is predicting the next text token. Uh",
+      "offset": 238.239,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "the ideal product we wanted to make was",
+      "offset": 240.799,
+      "duration": 5.201
+    },
+    {
+      "lang": "en",
+      "text": "we want to give this model an input of a",
+      "offset": 242.879,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "number of video tokens and then just get",
+      "offset": 246,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "video tokens out that would be good",
+      "offset": 248.319,
+      "duration": 4.881
+    },
+    {
+      "lang": "en",
+      "text": "recommendations. Um, we had to build",
+      "offset": 249.92,
+      "duration": 4.879
+    },
+    {
+      "lang": "en",
+      "text": "this because even with a million tokens",
+      "offset": 253.2,
+      "duration": 3.999
+    },
+    {
+      "lang": "en",
+      "text": "of context, when you want to reason over",
+      "offset": 254.799,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "many videos, you have to compress that",
+      "offset": 257.199,
+      "duration": 5.121
+    },
+    {
+      "lang": "en",
+      "text": "video representation in some way. Um,",
+      "offset": 259.759,
+      "duration": 4.241
+    },
+    {
+      "lang": "en",
+      "text": "and before we kind of settled on this",
+      "offset": 262.32,
+      "duration": 3.04
+    },
+    {
+      "lang": "en",
+      "text": "approach, we tried a bunch of other",
+      "offset": 264,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "things like uh predicting search queries",
+      "offset": 265.36,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "and retrieving videos through that or",
+      "offset": 268.16,
+      "duration": 3.759
+    },
+    {
+      "lang": "en",
+      "text": "trying to just uh recommend videos",
+      "offset": 269.84,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "directly. And those solutions were just",
+      "offset": 271.919,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "not good enough. And so we built",
+      "offset": 274.08,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "semantic ID which we actually wrote a",
+      "offset": 275.919,
+      "duration": 4.481
+    },
+    {
+      "lang": "en",
+      "text": "paper about last year uh and it was",
+      "offset": 278.16,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "presented at Rexus. The way that this",
+      "offset": 280.4,
+      "duration": 6.16
+    },
+    {
+      "lang": "en",
+      "text": "semantic ID works is you take a video um",
+      "offset": 283.28,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "you extract a number of features out of",
+      "offset": 286.56,
+      "duration": 3.28
+    },
+    {
+      "lang": "en",
+      "text": "it like the title, description,",
+      "offset": 288.24,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "transcript, even the audio and video",
+      "offset": 289.84,
+      "duration": 5.359
+    },
+    {
+      "lang": "en",
+      "text": "frame level data. You put all of that",
+      "offset": 292.32,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "into a multi-dimensional embedding. Um",
+      "offset": 295.199,
+      "duration": 6.321
+    },
+    {
+      "lang": "en",
+      "text": "and then you quantize it using RQVE to",
+      "offset": 298.08,
+      "duration": 7.44
+    },
+    {
+      "lang": "en",
+      "text": "give every video uh a token. Um we've",
+      "offset": 301.52,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "written a pretty detailed paper about",
+      "offset": 305.52,
+      "duration": 3.28
+    },
+    {
+      "lang": "en",
+      "text": "this if people are interested. But at a",
+      "offset": 306.8,
+      "duration": 3.2
+    },
+    {
+      "lang": "en",
+      "text": "high level, the way I think about this",
+      "offset": 308.8,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "is we're making the atomic units for a",
+      "offset": 310,
+      "duration": 6.96
+    },
+    {
+      "lang": "en",
+      "text": "new language of YouTube videos. Um once",
+      "offset": 313.12,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "we have these tokens, you can imagine",
+      "offset": 316.96,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "the whole corpus of billions of videos",
+      "offset": 318.88,
+      "duration": 5.039
+    },
+    {
+      "lang": "en",
+      "text": "on YouTube gets organized around these",
+      "offset": 320.88,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "semantically meaningful tokens. And so",
+      "offset": 323.919,
+      "duration": 3.681
+    },
+    {
+      "lang": "en",
+      "text": "you could imagine the first token",
+      "offset": 326.08,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "representing topics like music, gaming,",
+      "offset": 327.6,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "sports. Within sports, you would have",
+      "offset": 329.44,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "different different sports and then you",
+      "offset": 331.52,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "can uh get to volleyball. And so these",
+      "offset": 333.44,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "two volleyball videos would share some",
+      "offset": 336.16,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "tokens in the prefix but also then have",
+      "offset": 338.16,
+      "duration": 6.4
+    },
+    {
+      "lang": "en",
+      "text": "a unique identifier. Um and this this I",
+      "offset": 340.8,
+      "duration": 5.6
+    },
+    {
+      "lang": "en",
+      "text": "think in itself is is an interesting",
+      "offset": 344.56,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "milestone to move away from hashbased",
+      "offset": 346.4,
+      "duration": 3.519
+    },
+    {
+      "lang": "en",
+      "text": "tokenization into a semantically",
+      "offset": 348.32,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "meaningful one. Um and we use this in",
+      "offset": 349.919,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "production at YouTube.",
+      "offset": 352.56,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "Uh what we then tried to do is this",
+      "offset": 354.639,
+      "duration": 4.721
+    },
+    {
+      "lang": "en",
+      "text": "process of what we call continued",
+      "offset": 358,
+      "duration": 3.199
+    },
+    {
+      "lang": "en",
+      "text": "pre-training where we're trying to take",
+      "offset": 359.36,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "this model and have it understand both",
+      "offset": 361.199,
+      "duration": 5.601
+    },
+    {
+      "lang": "en",
+      "text": "English and this new YouTube language.",
+      "offset": 363.68,
+      "duration": 6.32
+    },
+    {
+      "lang": "en",
+      "text": "And we do this in in two big steps. One",
+      "offset": 366.8,
+      "duration": 6.56
+    },
+    {
+      "lang": "en",
+      "text": "is around linking text and SID. Um and",
+      "offset": 370,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "then the second step is around having it",
+      "offset": 373.36,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "understand sequences of watches and be",
+      "offset": 375.36,
+      "duration": 4.399
+    },
+    {
+      "lang": "en",
+      "text": "able to reason across this video space.",
+      "offset": 377.28,
+      "duration": 4.639
+    },
+    {
+      "lang": "en",
+      "text": "And so some of the example training",
+      "offset": 379.759,
+      "duration": 4.641
+    },
+    {
+      "lang": "en",
+      "text": "tasks that we're teaching this model,",
+      "offset": 381.919,
+      "duration": 4.241
+    },
+    {
+      "lang": "en",
+      "text": "you have this video, it's a tennis",
+      "offset": 384.4,
+      "duration": 3.519
+    },
+    {
+      "lang": "en",
+      "text": "highlights video which has some semantic",
+      "offset": 386.16,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "ID and you can prompt it and say, \"Hey,",
+      "offset": 387.919,
+      "duration": 5.201
+    },
+    {
+      "lang": "en",
+      "text": "this video has title XYZ.\" And the model",
+      "offset": 390.24,
+      "duration": 5.92
+    },
+    {
+      "lang": "en",
+      "text": "starts to learn to output the title. Um,",
+      "offset": 393.12,
+      "duration": 4.639
+    },
+    {
+      "lang": "en",
+      "text": "you could imagine a very similar thing",
+      "offset": 396.16,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "where you could say has creator or has",
+      "offset": 397.759,
+      "duration": 5.361
+    },
+    {
+      "lang": "en",
+      "text": "topics and so on. And so you're",
+      "offset": 401.12,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "basically trying to connect text and",
+      "offset": 403.12,
+      "duration": 4.639
+    },
+    {
+      "lang": "en",
+      "text": "this video token.",
+      "offset": 405.12,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "Then what we can try to do is we have a",
+      "offset": 407.759,
+      "duration": 4.241
+    },
+    {
+      "lang": "en",
+      "text": "corpus of all the YouTube engagement",
+      "offset": 410.08,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "data, all the paths that users took",
+      "offset": 412,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "through YouTube when they watch videos",
+      "offset": 414.4,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "together. Um, and you can prompt the",
+      "offset": 416.24,
+      "duration": 3.28
+    },
+    {
+      "lang": "en",
+      "text": "model with things like a user has",
+      "offset": 418.16,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "watched the following videos ABCD. And",
+      "offset": 419.52,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "you mask some of those videos and the",
+      "offset": 422.16,
+      "duration": 4.319
+    },
+    {
+      "lang": "en",
+      "text": "model starts to learn to predict those",
+      "offset": 424.56,
+      "duration": 3.759
+    },
+    {
+      "lang": "en",
+      "text": "masks. And now it's starting to",
+      "offset": 426.479,
+      "duration": 3.28
+    },
+    {
+      "lang": "en",
+      "text": "understand what are videos that are",
+      "offset": 428.319,
+      "duration": 4.561
+    },
+    {
+      "lang": "en",
+      "text": "watched together and make relationships",
+      "offset": 429.759,
+      "duration": 5.041
+    },
+    {
+      "lang": "en",
+      "text": "between videos on the basis of user",
+      "offset": 432.88,
+      "duration": 6.24
+    },
+    {
+      "lang": "en",
+      "text": "engagement. Right? Um, after a bunch of",
+      "offset": 434.8,
+      "duration": 6.88
+    },
+    {
+      "lang": "en",
+      "text": "pre-training tasks like this, we get",
+      "offset": 439.12,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "this really interesting model that can",
+      "offset": 441.68,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "reason across English and YouTube",
+      "offset": 443.52,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "videos. And so this is an example from a",
+      "offset": 445.84,
+      "duration": 6.32
+    },
+    {
+      "lang": "en",
+      "text": "user's watch history. Um, and we find",
+      "offset": 448.4,
+      "duration": 5.919
+    },
+    {
+      "lang": "en",
+      "text": "that this model can now reason across",
+      "offset": 452.16,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "these videos. So you could prompt it",
+      "offset": 454.319,
+      "duration": 3.921
+    },
+    {
+      "lang": "en",
+      "text": "with things like, hey, video one is",
+      "offset": 456.56,
+      "duration": 3.12
+    },
+    {
+      "lang": "en",
+      "text": "interesting to tennis fans because it's",
+      "offset": 458.24,
+      "duration": 3.359
+    },
+    {
+      "lang": "en",
+      "text": "about Wimbledon. Video two is",
+      "offset": 459.68,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "interesting for F1 because it's about",
+      "offset": 461.599,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "the Spanish Grand Prix. Video three is",
+      "offset": 463.84,
+      "duration": 3.359
+    },
+    {
+      "lang": "en",
+      "text": "interesting to math fans because it's",
+      "offset": 465.759,
+      "duration": 3.761
+    },
+    {
+      "lang": "en",
+      "text": "about pi. And then you prompt video four",
+      "offset": 467.199,
+      "duration": 3.761
+    },
+    {
+      "lang": "en",
+      "text": "is going to be interesting too. And the",
+      "offset": 469.52,
+      "duration": 4.079
+    },
+    {
+      "lang": "en",
+      "text": "model starts to be able to understand",
+      "offset": 470.96,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "that it's interesting to technology fans",
+      "offset": 473.599,
+      "duration": 4.961
+    },
+    {
+      "lang": "en",
+      "text": "because it's about AI. And this is just",
+      "offset": 475.44,
+      "duration": 7.439
+    },
+    {
+      "lang": "en",
+      "text": "based on the semantic ID uh definition",
+      "offset": 478.56,
+      "duration": 6.56
+    },
+    {
+      "lang": "en",
+      "text": "of a video. It doesn't really have a lot",
+      "offset": 482.879,
+      "duration": 4.801
+    },
+    {
+      "lang": "en",
+      "text": "of other information uh to go off of. So",
+      "offset": 485.12,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "I think this in itself is a very",
+      "offset": 487.68,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "interesting checkpoint that is starting",
+      "offset": 489.44,
+      "duration": 6.479
+    },
+    {
+      "lang": "en",
+      "text": "to reason across English and YouTube.",
+      "offset": 492.4,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "Once we have this model, we think about",
+      "offset": 495.919,
+      "duration": 5.84
+    },
+    {
+      "lang": "en",
+      "text": "how we can use this for different video",
+      "offset": 498.4,
+      "duration": 6.079
+    },
+    {
+      "lang": "en",
+      "text": "recommendation tasks at YouTube. And the",
+      "offset": 501.759,
+      "duration": 3.921
+    },
+    {
+      "lang": "en",
+      "text": "first one that we focused on is",
+      "offset": 504.479,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "generative retrieval. And so here you",
+      "offset": 505.68,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "could just construct a prompt for every",
+      "offset": 508.639,
+      "duration": 4.241
+    },
+    {
+      "lang": "en",
+      "text": "user and see what this model recommends.",
+      "offset": 510.56,
+      "duration": 5.68
+    },
+    {
+      "lang": "en",
+      "text": "And so in this example, you have a user,",
+      "offset": 512.88,
+      "duration": 6.079
+    },
+    {
+      "lang": "en",
+      "text": "they would be a 24 year old woman in the",
+      "offset": 516.24,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "US on Android. They're watching this",
+      "offset": 518.959,
+      "duration": 6.081
+    },
+    {
+      "lang": "en",
+      "text": "highlight video from the Olympics. Um,",
+      "offset": 521.36,
+      "duration": 6.24
+    },
+    {
+      "lang": "en",
+      "text": "and they have some watch history of, you",
+      "offset": 525.04,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "know, 50 videos they've watched in the",
+      "offset": 527.6,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "past, how they engaged with it. And you",
+      "offset": 529.36,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "can just construct a prompt like we have",
+      "offset": 532.08,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "on the right with this user demographic",
+      "offset": 533.68,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "information, the context video, and have",
+      "offset": 536.08,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "the model decode some video",
+      "offset": 538.48,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "recommendations as SIDs.",
+      "offset": 540.88,
+      "duration": 5.519
+    },
+    {
+      "lang": "en",
+      "text": "We find that this gives really",
+      "offset": 544,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "interesting unique recommendations,",
+      "offset": 546.399,
+      "duration": 4.481
+    },
+    {
+      "lang": "en",
+      "text": "especially for our hardest",
+      "offset": 549.44,
+      "duration": 3.839
+    },
+    {
+      "lang": "en",
+      "text": "recommendation tasks. So, in this",
+      "offset": 550.88,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "example, when you're watching uh this",
+      "offset": 553.279,
+      "duration": 4.881
+    },
+    {
+      "lang": "en",
+      "text": "highlight from the Olympics, the",
+      "offset": 556,
+      "duration": 4.959
+    },
+    {
+      "lang": "en",
+      "text": "production system before LRM would give",
+      "offset": 558.16,
+      "duration": 7.359
+    },
+    {
+      "lang": "en",
+      "text": "you other men's track races. Um, now",
+      "offset": 560.959,
+      "duration": 6.56
+    },
+    {
+      "lang": "en",
+      "text": "with this new model, it's able to find",
+      "offset": 565.519,
+      "duration": 4.161
+    },
+    {
+      "lang": "en",
+      "text": "this unique connection between the user",
+      "offset": 567.519,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "demographic and their past watch history",
+      "offset": 569.68,
+      "duration": 7.36
+    },
+    {
+      "lang": "en",
+      "text": "and find related women's uh races that",
+      "offset": 572.959,
+      "duration": 5.681
+    },
+    {
+      "lang": "en",
+      "text": "we weren't able to recommend in the",
+      "offset": 577.04,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "past. And so we find that especially for",
+      "offset": 578.64,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "users where we don't know as much about",
+      "offset": 582.16,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "them, we get very interesting and unique",
+      "offset": 584,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "recommendations out of this strategy.",
+      "offset": 586.88,
+      "duration": 6.399
+    },
+    {
+      "lang": "en",
+      "text": "Um, and so we've experimented with this",
+      "offset": 589.76,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "and launched it in a few places at",
+      "offset": 593.279,
+      "duration": 3.361
+    },
+    {
+      "lang": "en",
+      "text": "YouTube.",
+      "offset": 595.12,
+      "duration": 3.839
+    },
+    {
+      "lang": "en",
+      "text": "The big findings from this is that LRM",
+      "offset": 596.64,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "is a very powerful model, but it's",
+      "offset": 598.959,
+      "duration": 4.641
+    },
+    {
+      "lang": "en",
+      "text": "really expensive to serve. It it learns",
+      "offset": 601.12,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "very quickly. It's very training data",
+      "offset": 603.6,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "efficient. Um, and it handles our",
+      "offset": 605.44,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "toughest Rex tasks, but the biggest",
+      "offset": 607.92,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "limitation was that the serving costs",
+      "offset": 609.92,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "are too high, especially for the scale",
+      "offset": 611.92,
+      "duration": 3.599
+    },
+    {
+      "lang": "en",
+      "text": "that YouTube operates at with billions",
+      "offset": 613.76,
+      "duration": 4.079
+    },
+    {
+      "lang": "en",
+      "text": "of users. And so, after we got our first",
+      "offset": 615.519,
+      "duration": 4.481
+    },
+    {
+      "lang": "en",
+      "text": "experiments working, we spent a lot of",
+      "offset": 617.839,
+      "duration": 5.041
+    },
+    {
+      "lang": "en",
+      "text": "time just reducing the TPU serving cost.",
+      "offset": 620,
+      "duration": 5.92
+    },
+    {
+      "lang": "en",
+      "text": "And, you know, we got 95% plus cost",
+      "offset": 622.88,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "savings to be able to actually launch",
+      "offset": 625.92,
+      "duration": 3.359
+    },
+    {
+      "lang": "en",
+      "text": "this in production.",
+      "offset": 627.36,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "Um, one other strategy that we used",
+      "offset": 629.279,
+      "duration": 5.281
+    },
+    {
+      "lang": "en",
+      "text": "which I think is kind of interesting is",
+      "offset": 632.24,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "we tried to turn this into an offline",
+      "offset": 634.56,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "problem where it's the same prompt in",
+      "offset": 636.56,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "the same model. We just remove the",
+      "offset": 639.92,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "personal personalized aspects of this",
+      "offset": 641.76,
+      "duration": 5.759
+    },
+    {
+      "lang": "en",
+      "text": "prompt and we wanted to build just an",
+      "offset": 644.88,
+      "duration": 5.199
+    },
+    {
+      "lang": "en",
+      "text": "offline recommendations table where if",
+      "offset": 647.519,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "you're watching video A, what are the",
+      "offset": 650.079,
+      "duration": 3.921
+    },
+    {
+      "lang": "en",
+      "text": "candid videos that would be good to",
+      "offset": 652.399,
+      "duration": 5.521
+    },
+    {
+      "lang": "en",
+      "text": "watch next? Um, and normally these",
+      "offset": 654,
+      "duration": 5.839
+    },
+    {
+      "lang": "en",
+      "text": "unpersonalized recommendation models",
+      "offset": 657.92,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "just don't hold a candle to a",
+      "offset": 659.839,
+      "duration": 5.521
+    },
+    {
+      "lang": "en",
+      "text": "personalized recommener. But because",
+      "offset": 662.32,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "this LRM is trained from a really big",
+      "offset": 665.36,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "checkpoint, it actually gives us some",
+      "offset": 667.6,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "differentiated recommendations. Um and",
+      "offset": 670.16,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "so in the YouTube context like we can",
+      "offset": 672.48,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "take our corpus of billions of videos,",
+      "offset": 674,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "look at the head which represent a lot",
+      "offset": 676,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "of the watch time, do offline inference,",
+      "offset": 678,
+      "duration": 6.56
+    },
+    {
+      "lang": "en",
+      "text": "um make this offline rex table and then",
+      "offset": 681.76,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "we can just do a simple lookup to serve",
+      "offset": 684.56,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "some recommendations. Um and so this was",
+      "offset": 686.56,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "kind of a a complete way around our",
+      "offset": 689.12,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "serving problems.",
+      "offset": 691.12,
+      "duration": 4.719
+    },
+    {
+      "lang": "en",
+      "text": "Um, I want to talk a bit about the",
+      "offset": 693.12,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "challenges for YouTube. And I think in",
+      "offset": 695.839,
+      "duration": 5.041
+    },
+    {
+      "lang": "en",
+      "text": "some ways making an LLM based",
+      "offset": 698.64,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "recommendation system is harder than",
+      "offset": 700.88,
+      "duration": 4.959
+    },
+    {
+      "lang": "en",
+      "text": "training an LLM. Um, one of the big",
+      "offset": 702.8,
+      "duration": 5.599
+    },
+    {
+      "lang": "en",
+      "text": "differences is the vocabulary and size",
+      "offset": 705.839,
+      "duration": 4.801
+    },
+    {
+      "lang": "en",
+      "text": "of the corpus. Right? So for Gemini, if",
+      "offset": 708.399,
+      "duration": 4.081
+    },
+    {
+      "lang": "en",
+      "text": "you're training an English LLM, your",
+      "offset": 710.64,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "vocabulary is about 100,000 words in the",
+      "offset": 712.48,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "Oxford dictionary and they add about a",
+      "offset": 715.44,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "thousand words every year. Um at",
+      "offset": 717.92,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "YouTube, if you imagine the library of",
+      "offset": 721.2,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "YouTube, it has billions of videos. We",
+      "offset": 723.2,
+      "duration": 4.639
+    },
+    {
+      "lang": "en",
+      "text": "have 20 billion videos on YouTube, um",
+      "offset": 725.44,
+      "duration": 7.44
+    },
+    {
+      "lang": "en",
+      "text": "with millions added every day. Um and",
+      "offset": 727.839,
+      "duration": 6.961
+    },
+    {
+      "lang": "en",
+      "text": "the freshness of videos is really",
+      "offset": 732.88,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "important, much more so than LLMs. So if",
+      "offset": 734.8,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "you think about a new word that's added",
+      "offset": 737.36,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "to the English dictionary, word of 2023",
+      "offset": 738.8,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "was RZ. If your model Gemini doesn't",
+      "offset": 741.04,
+      "duration": 7.2
+    },
+    {
+      "lang": "en",
+      "text": "know about RZ, it can still answer 99%",
+      "offset": 744.8,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "of questions that people would have.",
+      "offset": 748.24,
+      "duration": 2.96
+    },
+    {
+      "lang": "en",
+      "text": "Maybe it misses some jokes, maybe it",
+      "offset": 749.68,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "misses some pop culture references.",
+      "offset": 751.2,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "But in the world of YouTube, if Taylor",
+      "offset": 753.76,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "Swift drops a new music video, you have",
+      "offset": 756.24,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "to be able to recommend it within the",
+      "offset": 759.04,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "next minutes or hours, otherwise a lot",
+      "offset": 760.72,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "of users are going to be upset. So even",
+      "offset": 763.12,
+      "duration": 4.959
+    },
+    {
+      "lang": "en",
+      "text": "within this large corpus you have to",
+      "offset": 765.68,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "very quickly understand what are the",
+      "offset": 768.079,
+      "duration": 3.281
+    },
+    {
+      "lang": "en",
+      "text": "videos that are important and start",
+      "offset": 769.6,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "recommending them to the right user. Um",
+      "offset": 771.36,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "and so what we do with this LRM",
+      "offset": 774.32,
+      "duration": 5.199
+    },
+    {
+      "lang": "en",
+      "text": "recommener is we have to continuously",
+      "offset": 776.72,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "pre-train it on the order of days and",
+      "offset": 779.519,
+      "duration": 4.721
+    },
+    {
+      "lang": "en",
+      "text": "hours which is very different than",
+      "offset": 781.76,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "classical LLM pre-training like Gemini",
+      "offset": 784.24,
+      "duration": 4.719
+    },
+    {
+      "lang": "en",
+      "text": "which happens maybe like once in 3 to 6",
+      "offset": 786.72,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "months. Um and so in that way it's a",
+      "offset": 788.959,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "much harder problem. Uh and then the",
+      "offset": 792.16,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "last part is scale. Um we have great",
+      "offset": 794.399,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "models in Gemini. Gemini Pro is",
+      "offset": 797.44,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "incredible, but there's no way that you",
+      "offset": 799.519,
+      "duration": 3.681
+    },
+    {
+      "lang": "en",
+      "text": "can serve that to billions of daily",
+      "offset": 801.44,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "active users. Um and so for YouTube, we",
+      "offset": 803.2,
+      "duration": 5.199
+    },
+    {
+      "lang": "en",
+      "text": "had to focus on the smaller, more",
+      "offset": 806.24,
+      "duration": 5.039
+    },
+    {
+      "lang": "en",
+      "text": "efficient models like flash and and even",
+      "offset": 808.399,
+      "duration": 5.201
+    },
+    {
+      "lang": "en",
+      "text": "smaller checkpoints than that um just to",
+      "offset": 811.279,
+      "duration": 4.081
+    },
+    {
+      "lang": "en",
+      "text": "be able to hit the latency and scale",
+      "offset": 813.6,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "requirements that we have.",
+      "offset": 815.36,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "Um, so I kind of want to summarize the",
+      "offset": 818.24,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "journey that we've been on YouTube in",
+      "offset": 820.32,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "this what I think of as a LM and Rexus",
+      "offset": 822.48,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "recipe that you can maybe adapt to your",
+      "offset": 825.2,
+      "duration": 4.319
+    },
+    {
+      "lang": "en",
+      "text": "own application. And there's three major",
+      "offset": 827.2,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "steps to this, right? The first is you",
+      "offset": 829.519,
+      "duration": 3.601
+    },
+    {
+      "lang": "en",
+      "text": "want to find a way to tokenize your",
+      "offset": 831.68,
+      "duration": 4.399
+    },
+    {
+      "lang": "en",
+      "text": "content. Um, just like LLM's tokenized",
+      "offset": 833.12,
+      "duration": 5.6
+    },
+    {
+      "lang": "en",
+      "text": "text, you want to find you want to make",
+      "offset": 836.079,
+      "duration": 4.481
+    },
+    {
+      "lang": "en",
+      "text": "some essence of your content into an",
+      "offset": 838.72,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "atomic token. Uh, one way to do that",
+      "offset": 840.56,
+      "duration": 4.639
+    },
+    {
+      "lang": "en",
+      "text": "which we've done is you find some rich",
+      "offset": 843.44,
+      "duration": 3.759
+    },
+    {
+      "lang": "en",
+      "text": "representation, a bunch of features,",
+      "offset": 845.199,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "build an embedding and then find a way",
+      "offset": 847.199,
+      "duration": 4.721
+    },
+    {
+      "lang": "en",
+      "text": "to tokenize or quantize it. And the",
+      "offset": 849.199,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "outcome of this is like you're making",
+      "offset": 851.92,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "your own domain specific language.",
+      "offset": 853.519,
+      "duration": 5.521
+    },
+    {
+      "lang": "en",
+      "text": "The second step is you then want to",
+      "offset": 856.72,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "adapt the LLM and basically make links",
+      "offset": 859.04,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "between English and your domain language",
+      "offset": 861.92,
+      "duration": 5.359
+    },
+    {
+      "lang": "en",
+      "text": "uh and find training tasks that help you",
+      "offset": 865.04,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "reason across English and these new",
+      "offset": 867.279,
+      "duration": 4.401
+    },
+    {
+      "lang": "en",
+      "text": "tokens you've built. And so the outcome",
+      "offset": 869.44,
+      "duration": 4.399
+    },
+    {
+      "lang": "en",
+      "text": "after this step in my mind is it's a",
+      "offset": 871.68,
+      "duration": 4.719
+    },
+    {
+      "lang": "en",
+      "text": "bilingual LLM that can speak English and",
+      "offset": 873.839,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "natural language but it can also speak",
+      "offset": 876.399,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "your domain specific language. Um and",
+      "offset": 878.399,
+      "duration": 4.961
+    },
+    {
+      "lang": "en",
+      "text": "then once you have this you can do the",
+      "offset": 881.519,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "third step of prompting it with user",
+      "offset": 883.36,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "information where you can just construct",
+      "offset": 884.959,
+      "duration": 4.481
+    },
+    {
+      "lang": "en",
+      "text": "personalized prompts with user",
+      "offset": 887.44,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "demographic user activity different",
+      "offset": 889.44,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "actions um and then train task specific",
+      "offset": 891.92,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "or surface specific models and you have",
+      "offset": 894.8,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "a generative recommendation system on",
+      "offset": 897.36,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "top of an LLM and there this is like a",
+      "offset": 899.92,
+      "duration": 5.279
+    },
+    {
+      "lang": "en",
+      "text": "tweet size summary of maybe two years of",
+      "offset": 902.8,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "work. Um,",
+      "offset": 905.199,
+      "duration": 4.801
+    },
+    {
+      "lang": "en",
+      "text": "maybe the last thing that I want to talk",
+      "offset": 908.56,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "about is kind of where I see this going.",
+      "offset": 910,
+      "duration": 5.199
+    },
+    {
+      "lang": "en",
+      "text": "Um, and some possible future directions",
+      "offset": 912.88,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "for LLM and Rexus. I think the stage",
+      "offset": 915.199,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "that we're at right now is that LMS are",
+      "offset": 918.32,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "just augmenting recommendations. They",
+      "offset": 920.399,
+      "duration": 4.961
+    },
+    {
+      "lang": "en",
+      "text": "bring these magical recommendation",
+      "offset": 923.12,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "experiences. They enhance the quality,",
+      "offset": 925.36,
+      "duration": 5.039
+    },
+    {
+      "lang": "en",
+      "text": "but they're largely invisible to users.",
+      "offset": 927.76,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "like your YouTube feed just got better,",
+      "offset": 930.399,
+      "duration": 4.321
+    },
+    {
+      "lang": "en",
+      "text": "but you don't really know whether a",
+      "offset": 933.04,
+      "duration": 4.159
+    },
+    {
+      "lang": "en",
+      "text": "Gemini inference happened or not. Um,",
+      "offset": 934.72,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "this is why I think the LLM application",
+      "offset": 937.199,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "of Rexus is very underhyped because",
+      "offset": 939.36,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "users don't directly know what's",
+      "offset": 941.519,
+      "duration": 5.041
+    },
+    {
+      "lang": "en",
+      "text": "happening. Um, I think we're close to a",
+      "offset": 943.68,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "world and we're experimenting with this.",
+      "offset": 946.56,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "If you have like we talked about a",
+      "offset": 948.88,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "bilingual LLM across English and",
+      "offset": 950.32,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "recommendations, users can then talk to",
+      "offset": 952.24,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "it in natural language. And I think",
+      "offset": 954.8,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "you're going to start to see experiences",
+      "offset": 956.8,
+      "duration": 4.159
+    },
+    {
+      "lang": "en",
+      "text": "where users can steer recommendations to",
+      "offset": 958.32,
+      "duration": 5.519
+    },
+    {
+      "lang": "en",
+      "text": "their own goals. The recommener can",
+      "offset": 960.959,
+      "duration": 5.68
+    },
+    {
+      "lang": "en",
+      "text": "explain why a candidate was recommended",
+      "offset": 963.839,
+      "duration": 5.281
+    },
+    {
+      "lang": "en",
+      "text": "to a user. Um, and users can start to",
+      "offset": 966.639,
+      "duration": 4.401
+    },
+    {
+      "lang": "en",
+      "text": "align it towards their own goals",
+      "offset": 969.12,
+      "duration": 4.399
+    },
+    {
+      "lang": "en",
+      "text": "expressed in natural language. Um, and I",
+      "offset": 971.04,
+      "duration": 4.159
+    },
+    {
+      "lang": "en",
+      "text": "think also the lines between search and",
+      "offset": 973.519,
+      "duration": 3.521
+    },
+    {
+      "lang": "en",
+      "text": "recommendation start to blur in this",
+      "offset": 975.199,
+      "duration": 5.281
+    },
+    {
+      "lang": "en",
+      "text": "world. Um, and then maybe a hint of the",
+      "offset": 977.04,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "future is I think you're going to see",
+      "offset": 980.48,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "recommendation and generative content",
+      "offset": 983.04,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "start to come together in the future",
+      "offset": 986,
+      "duration": 4.959
+    },
+    {
+      "lang": "en",
+      "text": "where we're going to be recommending a",
+      "offset": 988.16,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "personalized version of a piece of",
+      "offset": 990.959,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "content and in the future instead of",
+      "offset": 993.12,
+      "duration": 4.079
+    },
+    {
+      "lang": "en",
+      "text": "recommending content we may even start",
+      "offset": 995.279,
+      "duration": 3.841
+    },
+    {
+      "lang": "en",
+      "text": "creating it and you can get to really",
+      "offset": 997.199,
+      "duration": 4.241
+    },
+    {
+      "lang": "en",
+      "text": "interesting end of one content that's",
+      "offset": 999.12,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "generated for the user. Um, I think",
+      "offset": 1001.44,
+      "duration": 6.079
+    },
+    {
+      "lang": "en",
+      "text": "we're a bit away from this, but it's",
+      "offset": 1004.88,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "going to come sooner than you expect",
+      "offset": 1007.519,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "with all the advances happening in AI.",
+      "offset": 1010,
+      "duration": 6.8
+    },
+    {
+      "lang": "en",
+      "text": "Um, so yeah, thank you. I'll take any",
+      "offset": 1013.519,
+      "duration": 6.281
+    },
+    {
+      "lang": "en",
+      "text": "questions.",
+      "offset": 1016.8,
+      "duration": 3
+    },
+    {
+      "lang": "en",
+      "text": "Thank you, Danch. Um, we have time for a",
+      "offset": 1021.279,
+      "duration": 4.241
+    },
+    {
+      "lang": "en",
+      "text": "few questions.",
+      "offset": 1023.279,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "Hi, great talk. Um uh one question on",
+      "offset": 1025.52,
+      "duration": 5.84
+    },
+    {
+      "lang": "en",
+      "text": "generally how you balance the learning",
+      "offset": 1029.039,
+      "duration": 5.201
+    },
+    {
+      "lang": "en",
+      "text": "of the semantic ID embeddings within the",
+      "offset": 1031.36,
+      "duration": 5.679
+    },
+    {
+      "lang": "en",
+      "text": "model versus keeping the general",
+      "offset": 1034.24,
+      "duration": 6.4
+    },
+    {
+      "lang": "en",
+      "text": "language capability not damaged by",
+      "offset": 1037.039,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "learning through for example a tokenized",
+      "offset": 1040.64,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "user history which is a very second",
+      "offset": 1042.559,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "language very different from English.",
+      "offset": 1045.28,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "Any uh high level takeaway that you can",
+      "offset": 1047.679,
+      "duration": 4.721
+    },
+    {
+      "lang": "en",
+      "text": "share? That's a super interesting",
+      "offset": 1050.48,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "question. Um",
+      "offset": 1052.4,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "we've struggled with this a lot. Um in",
+      "offset": 1054.72,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "terms of some of our early applications,",
+      "offset": 1057.36,
+      "duration": 3.199
+    },
+    {
+      "lang": "en",
+      "text": "we mostly cared just about",
+      "offset": 1059.12,
+      "duration": 3.919
+    },
+    {
+      "lang": "en",
+      "text": "recommendation quality in which case we",
+      "offset": 1060.559,
+      "duration": 4.961
+    },
+    {
+      "lang": "en",
+      "text": "overindexed on speaking the semantic ID",
+      "offset": 1063.039,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "language. And as you overtrain on more",
+      "offset": 1065.52,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "and more of those examples actually the",
+      "offset": 1067.919,
+      "duration": 4.561
+    },
+    {
+      "lang": "en",
+      "text": "model forgets to speak English. Maybe",
+      "offset": 1070.08,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "it's reasoning in some intermediate",
+      "offset": 1072.48,
+      "duration": 4.319
+    },
+    {
+      "lang": "en",
+      "text": "layers which finally end up in semantic",
+      "offset": 1074.48,
+      "duration": 5.92
+    },
+    {
+      "lang": "en",
+      "text": "ID language. Um we are trying a bunch of",
+      "offset": 1076.799,
+      "duration": 5.201
+    },
+    {
+      "lang": "en",
+      "text": "things like you know with mixture of",
+      "offset": 1080.4,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "experts maybe we can have a few experts",
+      "offset": 1082,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "that retain the text capability",
+      "offset": 1084.48,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "while other experts focus on the",
+      "offset": 1087.36,
+      "duration": 7.04
+    },
+    {
+      "lang": "en",
+      "text": "semantic ID capability and so",
+      "offset": 1090,
+      "duration": 6.24
+    },
+    {
+      "lang": "en",
+      "text": "it's it's a balance and I think we're",
+      "offset": 1094.4,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "going to shift more towards text as we",
+      "offset": 1096.24,
+      "duration": 2.88
+    },
+    {
+      "lang": "en",
+      "text": "try to build these interactive",
+      "offset": 1097.84,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "experiences where uh text input from",
+      "offset": 1099.12,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "user is going to become more important.",
+      "offset": 1101.52,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "Thank you.",
+      "offset": 1103.6,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "So during this process, did you learn",
+      "offset": 1106.32,
+      "duration": 7.12
+    },
+    {
+      "lang": "en",
+      "text": "any uh any good suggestions for cold",
+      "offset": 1108.64,
+      "duration": 6.88
+    },
+    {
+      "lang": "en",
+      "text": "starting embeddings on these domain",
+      "offset": 1113.44,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "specific uh tokens? Yeah. So the",
+      "offset": 1115.52,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "semantic one thing is semantic ID",
+      "offset": 1118.64,
+      "duration": 3.12
+    },
+    {
+      "lang": "en",
+      "text": "training process is entirely",
+      "offset": 1120.4,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "unsupervised. We're not telling like",
+      "offset": 1121.76,
+      "duration": 5.6
+    },
+    {
+      "lang": "en",
+      "text": "it's making its own quantization of the",
+      "offset": 1124.64,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "video corpus. when you sample to see",
+      "offset": 1127.36,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "what the model is doing, we find that",
+      "offset": 1130.16,
+      "duration": 3.519
+    },
+    {
+      "lang": "en",
+      "text": "it's learning concepts like sports",
+      "offset": 1131.76,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "versus movies and entertainment. But we",
+      "offset": 1133.679,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "didn't actually try to teach that",
+      "offset": 1136.08,
+      "duration": 3.839
+    },
+    {
+      "lang": "en",
+      "text": "explicitly, which I think is very",
+      "offset": 1137.919,
+      "duration": 3.841
+    },
+    {
+      "lang": "en",
+      "text": "interesting. I think the second aspect",
+      "offset": 1139.919,
+      "duration": 5.281
+    },
+    {
+      "lang": "en",
+      "text": "is because of semantic ID, we can warm",
+      "offset": 1141.76,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "start into a semantically meaningful",
+      "offset": 1145.2,
+      "duration": 4.719
+    },
+    {
+      "lang": "en",
+      "text": "space. And what we find is performance",
+      "offset": 1147.28,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "for videos that were uploaded in the",
+      "offset": 1149.919,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "last day or the last week uh gets much",
+      "offset": 1151.76,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "better because we're better",
+      "offset": 1155.039,
+      "duration": 3.841
+    },
+    {
+      "lang": "en",
+      "text": "understanding this fresh and tail",
+      "offset": 1157.28,
+      "duration": 5.68
+    },
+    {
+      "lang": "en",
+      "text": "content. Got it. Thank you.",
+      "offset": 1158.88,
+      "duration": 6.72
+    },
+    {
+      "lang": "en",
+      "text": "Hey, quick question. So when you said",
+      "offset": 1162.96,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "you extract frames as part of making the",
+      "offset": 1165.6,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "semantic ID, are you just running a",
+      "offset": 1167.44,
+      "duration": 5.84
+    },
+    {
+      "lang": "en",
+      "text": "video at let's say 3 to 30 fps? uh",
+      "offset": 1170.16,
+      "duration": 6.639
+    },
+    {
+      "lang": "en",
+      "text": "making a grid of them, running cig",
+      "offset": 1173.28,
+      "duration": 6.32
+    },
+    {
+      "lang": "en",
+      "text": "and inserting that. We're just trying to",
+      "offset": 1176.799,
+      "duration": 7.041
+    },
+    {
+      "lang": "en",
+      "text": "sample video frames. Um",
+      "offset": 1179.6,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "we we've tried a few different",
+      "offset": 1183.84,
+      "duration": 2.959
+    },
+    {
+      "lang": "en",
+      "text": "approaches where like maybe we try to",
+      "offset": 1185.12,
+      "duration": 3.679
+    },
+    {
+      "lang": "en",
+      "text": "sample from like key moments in the",
+      "offset": 1186.799,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "video. We actually have the engagement",
+      "offset": 1188.799,
+      "duration": 3.281
+    },
+    {
+      "lang": "en",
+      "text": "data if you've seen in the YouTube",
+      "offset": 1190.559,
+      "duration": 4.081
+    },
+    {
+      "lang": "en",
+      "text": "player. Uh it can highlight what are the",
+      "offset": 1192.08,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "places where people had the most",
+      "offset": 1194.64,
+      "duration": 3.919
+    },
+    {
+      "lang": "en",
+      "text": "engagement. So we try to sample from",
+      "offset": 1196.72,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "there. um you know given the scale we",
+      "offset": 1198.559,
+      "duration": 5.521
+    },
+    {
+      "lang": "en",
+      "text": "can't sample a lot of video frames so we",
+      "offset": 1201.6,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "try to intelligently select it but we do",
+      "offset": 1204.08,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "have video frames and over time I think",
+      "offset": 1206.08,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "we'll get more in this way of selecting",
+      "offset": 1208.4,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "it are you able to highlight important",
+      "offset": 1210.96,
+      "duration": 5.839
+    },
+    {
+      "lang": "en",
+      "text": "things that are based on small objects",
+      "offset": 1214.16,
+      "duration": 5.519
+    },
+    {
+      "lang": "en",
+      "text": "in a video pretty well",
+      "offset": 1216.799,
+      "duration": 4.401
+    },
+    {
+      "lang": "en",
+      "text": "let's say it's a person in the distance",
+      "offset": 1219.679,
+      "duration": 4.641
+    },
+    {
+      "lang": "en",
+      "text": "that's of attention of this video",
+      "offset": 1221.2,
+      "duration": 5.359
+    },
+    {
+      "lang": "en",
+      "text": "hard to say because like at the end all",
+      "offset": 1224.32,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "of this video information gets",
+      "offset": 1226.559,
+      "duration": 5.041
+    },
+    {
+      "lang": "en",
+      "text": "compressed into eight tokens. So, it's",
+      "offset": 1228.24,
+      "duration": 7.28
+    },
+    {
+      "lang": "en",
+      "text": "probably learning something, but it's",
+      "offset": 1231.6,
+      "duration": 6.72
+    },
+    {
+      "lang": "en",
+      "text": "hard to know exactly, you know, what it",
+      "offset": 1235.52,
+      "duration": 6.24
+    },
+    {
+      "lang": "en",
+      "text": "picked up from that video frame. Uh",
+      "offset": 1238.32,
+      "duration": 6.88
+    },
+    {
+      "lang": "en",
+      "text": "yeah, so it it's unclear. Thank you.",
+      "offset": 1241.76,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "Yeah.",
+      "offset": 1245.2,
+      "duration": 4.479
+    },
+    {
+      "lang": "en",
+      "text": "So, yeah, it was a pretty good talk. Uh",
+      "offset": 1246.88,
+      "duration": 4.159
+    },
+    {
+      "lang": "en",
+      "text": "I have a question regarding",
+      "offset": 1249.679,
+      "duration": 4.401
+    },
+    {
+      "lang": "en",
+      "text": "pre-training. Okay. So uh did you also",
+      "offset": 1251.039,
+      "duration": 6.561
+    },
+    {
+      "lang": "en",
+      "text": "feed in a user query and what they",
+      "offset": 1254.08,
+      "duration": 6.4
+    },
+    {
+      "lang": "en",
+      "text": "watched also as a pre-training data? If",
+      "offset": 1257.6,
+      "duration": 6.48
+    },
+    {
+      "lang": "en",
+      "text": "yes then did you also use semantic ID",
+      "offset": 1260.48,
+      "duration": 6.48
+    },
+    {
+      "lang": "en",
+      "text": "for user as well in a pre-training or or",
+      "offset": 1264.08,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "just semantic ID is only for for the",
+      "offset": 1266.96,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "videos. Yeah. Yeah. So in this case we",
+      "offset": 1269.44,
+      "duration": 7.52
+    },
+    {
+      "lang": "en",
+      "text": "have only tokenized videos um and we",
+      "offset": 1272.48,
+      "duration": 6.96
+    },
+    {
+      "lang": "en",
+      "text": "focused more on",
+      "offset": 1276.96,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "sequences of watches rather than search",
+      "offset": 1279.44,
+      "duration": 7.04
+    },
+    {
+      "lang": "en",
+      "text": "query to what watch originated from that",
+      "offset": 1282.72,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "search query. You could imagine some",
+      "offset": 1286.48,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "parallel work where you try to tokenize",
+      "offset": 1288.72,
+      "duration": 5.199
+    },
+    {
+      "lang": "en",
+      "text": "users and build some kind of user token",
+      "offset": 1291.44,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "that represents like the last 500",
+      "offset": 1293.919,
+      "duration": 5.201
+    },
+    {
+      "lang": "en",
+      "text": "watches that they have had and so on. Um",
+      "offset": 1295.76,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "we've experimented with some stuff",
+      "offset": 1299.12,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "there. I think it's less far along. Um",
+      "offset": 1300.48,
+      "duration": 4.559
+    },
+    {
+      "lang": "en",
+      "text": "but yeah, I think it's a very",
+      "offset": 1303.76,
+      "duration": 2.799
+    },
+    {
+      "lang": "en",
+      "text": "interesting like research direction to",
+      "offset": 1305.039,
+      "duration": 4.241
+    },
+    {
+      "lang": "en",
+      "text": "do. So, so the pre-training was done on",
+      "offset": 1306.559,
+      "duration": 5.201
+    },
+    {
+      "lang": "en",
+      "text": "top of existing Gemini pre-trained",
+      "offset": 1309.28,
+      "duration": 5.6
+    },
+    {
+      "lang": "en",
+      "text": "model, right? Yeah, we basically take a",
+      "offset": 1311.76,
+      "duration": 5.68
+    },
+    {
+      "lang": "en",
+      "text": "Gemini checkpoint and then adapt it for",
+      "offset": 1314.88,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "this YouTube purpose and get this like",
+      "offset": 1317.44,
+      "duration": 6.4
+    },
+    {
+      "lang": "en",
+      "text": "YouTube and Gemini LRM checkpoint. Okay.",
+      "offset": 1319.76,
+      "duration": 5.84
+    },
+    {
+      "lang": "en",
+      "text": "Yeah. last. It would be cool to see",
+      "offset": 1323.84,
+      "duration": 6.319
+    },
+    {
+      "lang": "en",
+      "text": "cementing ID of videos to V3, you know.",
+      "offset": 1325.6,
+      "duration": 6.319
+    },
+    {
+      "lang": "en",
+      "text": "Yeah.",
+      "offset": 1330.159,
+      "duration": 4.241
+    },
+    {
+      "lang": "en",
+      "text": "Hey, uh I'm kind of curious how much uh",
+      "offset": 1331.919,
+      "duration": 4.161
+    },
+    {
+      "lang": "en",
+      "text": "improvement do we see compared to the",
+      "offset": 1334.4,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "non LLM or more traditional",
+      "offset": 1336.08,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "recommendation system and when should we",
+      "offset": 1337.76,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "use a more traditional one and when",
+      "offset": 1340.32,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "should we use LM based recommendation",
+      "offset": 1342.08,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "system?",
+      "offset": 1343.76,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "Yeah, I I can't really share metrics",
+      "offset": 1345.44,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "like I I was I can share everything",
+      "offset": 1348,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "except code and metrics, you know. Um,",
+      "offset": 1350.08,
+      "duration": 3.839
+    },
+    {
+      "lang": "en",
+      "text": "and so we've given you as much",
+      "offset": 1352.4,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "conceptual steps of what we did. Maybe",
+      "offset": 1353.919,
+      "duration": 4.561
+    },
+    {
+      "lang": "en",
+      "text": "what I'll say is I think it's been the",
+      "offset": 1356.72,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "biggest improvement to recommendation",
+      "offset": 1358.48,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "quality we've seen in the last few",
+      "offset": 1360.48,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "years. So I do think it's quite",
+      "offset": 1362.64,
+      "duration": 4.36
+    },
+    {
+      "lang": "en",
+      "text": "significant.",
+      "offset": 1364,
+      "duration": 3
+    },
+    {
+      "lang": "en",
+      "text": "[Music]",
+      "offset": 1370.05,
+      "duration": 2.24
+    }
+  ],
+  "cleanText": "[Music]\nThere's a lot of attention in terms of how LLMs are going to transform search. Google Search is having a revolution. ChatGPT has a big chat interface. Perplexity is a product that a lot of people use. But I think recommendations is probably a bigger problem that is underhyped because it's kind of transparent to the user. And I think the application of LLMs to recommendations is going to be a bigger consumer application than search. So in terms of my talk, I just want to introduce the problem of YouTube recommendations and then talk about how we've built large recommender models. We're adapting Gemini for YouTube, how we build SemanticID, and how we're using that, and then end with this recipe of how you might use an LLM to make a recommendation system. To start, why this is important. Who here watches YouTube every day?\n\nIt's one of the biggest consumer apps in the world. And a large majority of the watch time on YouTube is driven by the recommendation system. And we serve recommendations across home, watch next. We have a big shorts product, and even a lot of our search results are personalized in some way. And so if you think about consumer applications of LLMs, I think in terms of consumer engagement and impact, recommendations is going to be a much bigger application than searches. And this is true of any consumer app with a 2B+DAU. The way I think about the recommendation problem is you're trying to learn this function of you get a user and their context as input, and you're trying to give them a bunch of recommendations.\n\nAt YouTube, we have a bunch of user information like their demographics, their age, their gender, where they're located. We have a lot of context about them. What are the last 100 videos they watched? How deeply did they engage with them? What did they comment on? Who are they subscribed to? And we use all of that to make video recommendations. We've tried a lot of different modeling techniques here: multi-headed rankers, embedding models, sequence-to-sequence transformers, there's a long history. And about two years ago, we started thinking, how can we rethink this recommendation system on top of Gemini, which has been making incredible progress in modeling? How can we adapt that for YouTube?\n\nAnd so we've built this system which we call LRM, large recommender model, where we adapt Gemini for recommendations. So we start with this base Gemini checkpoint, and then we are adapting it for YouTube recommendations, teaching it a lot of information about YouTube to get this kind of unified YouTube-specific checkpoint of Gemini, which we call LRM. Then we can align it for different recommendation-related tasks like retrieval and ranking, and basically make a small custom version of this model for all of the major recommendation surfaces. And so this is a model that we have launched in production at YouTube for a while in terms of the retrieval system, and we're experimenting a lot on the ranking side. So I want to start with just kind of explaining how we built this YouTube and Gemini model, and then we'll talk about how we use it for retrieval.\n\nThe first step of this kind of a model is you have to develop a way to tokenize videos. So when you, in terms of an LLM, when you give it an input, it tokenizes that text and then is predicting the next text token. The ideal product we wanted to make was we want to give this model an input of a number of video tokens and then just get video tokens out that would be good recommendations. We had to build this because even with a million tokens of context, when you want to reason over many videos, you have to compress that video representation in some way. And before we kind of settled on this approach, we tried a bunch of other things like predicting search queries and retrieving videos through that or trying to just recommend videos directly. And those solutions were just not good enough. And so we built SemanticID, which we actually wrote a paper about last year, and it was presented at Rexus. The way that this SemanticID works is you take a video, you extract a number of features out of it like the title, description, transcript, even the audio and video frame level data. You put all of that into a multi-dimensional embedding. And then you quantize it using RQVE to give every video a token. We've written a pretty detailed paper about this if people are interested. But at a high level, the way I think about this is we're making the atomic units for a new language of YouTube videos. Once we have these tokens, you can imagine the whole corpus of billions of videos on YouTube gets organized around these semantically meaningful tokens. And so you could imagine the first token representing topics like music, gaming, sports. Within sports, you would have different sports, and then you can get to volleyball. And so these two volleyball videos would share some tokens in the prefix but also then have a unique identifier. And this, I think in itself, is an interesting milestone to move away from hash-based tokenization into a semantically meaningful one. And we use this in production at YouTube.\n\nWhat we then tried to do is this process of what we call continued pre-training, where we're trying to take this model and have it understand both English and this new YouTube language. And we do this in two big steps. One is around linking text and SID. And then the second step is around having it understand sequences of watches and be able to reason across this video space. And so some of the example training tasks that we're teaching this model, you have this video, it's a tennis highlights video which has some SemanticID, and you can prompt it and say, \"Hey, this video has title XYZ.\" And the model starts to learn to output the title. You could imagine a very similar thing where you could say has creator or has topics and so on. And so you're basically trying to connect text and this video token.\n\nThen what we can try to do is we have a corpus of all the YouTube engagement data, all the paths that users took through YouTube when they watch videos together. And you can prompt the model with things like a user has watched the following videos ABCD. And you mask some of those videos and the model starts to learn to predict those masks. And now it's starting to understand what are videos that are watched together and make relationships between videos on the basis of user engagement. Right? After a bunch of pre-training tasks like this, we get this really interesting model that can reason across English and YouTube videos. And so this is an example from a user's watch history. And we find that this model can now reason across these videos. So you could prompt it with things like, hey, video one is interesting to tennis fans because it's about Wimbledon. Video two is interesting for F1 because it's about the Spanish Grand Prix. Video three is interesting to math fans because it's about pi. And then you prompt video four is going to be interesting too. And the model starts to be able to understand that it's interesting to technology fans because it's about AI. And this is just based on the SemanticID definition of a video. It doesn't really have a lot of other information to go off of. So I think this in itself is a very interesting checkpoint that is starting to reason across English and YouTube.\n\nOnce we have this model, we think about how we can use this for different video recommendation tasks at YouTube. And the first one that we focused on is generative retrieval. And so here you could just construct a prompt for every user and see what this model recommends. And so in this example, you have a user, they would be a 24-year-old woman in the US on Android. They're watching this highlight video from the Olympics. And they have some watch history of, you know, 50 videos they've watched in the past, how they engaged with it. And you can just construct a prompt like we have on the right with this user demographic information, the context video, and have the model decode some video recommendations as SIDs.\n\nWe find that this gives really interesting unique recommendations, especially for our hardest recommendation tasks. So, in this example, when you're watching this highlight from the Olympics, the production system before LRM would give you other men's track races. Now with this new model, it's able to find this unique connection between the user demographic and their past watch history and find related women's races that we weren't able to recommend in the past. And so we find that especially for users where we don't know as much about them, we get very interesting and unique recommendations out of this strategy.\n\nAnd so we've experimented with this and launched it in a few places at YouTube. The big findings from this is that LRM is a very powerful model, but it's really expensive to serve. It learns very quickly. It's very training data efficient. And it handles our toughest Rex tasks, but the biggest limitation was that the serving costs are too high, especially for the scale that YouTube operates at with billions of users. And so, after we got our first experiments working, we spent a lot of time just reducing the TPU serving cost. And, you know, we got 95% plus cost savings to be able to actually launch this in production.\n\nOne other strategy that we used, which I think is kind of interesting, is we tried to turn this into an offline problem where it's the same prompt in the same model. We just remove the personalized aspects of this prompt, and we wanted to build just an offline recommendations table where if you're watching video A, what are the candid videos that would be good to watch next? And normally these unpersonalized recommendation models just don't hold a candle to a personalized recommender. But because this LRM is trained from a really big checkpoint, it actually gives us some differentiated recommendations. And so in the YouTube context, like we can take our corpus of billions of videos, look at the head which represent a lot of the watch time, do offline inference, make this offline rex table, and then we can just do a simple lookup to serve some recommendations. And so this was kind of a complete way around our serving problems.\n\nI want to talk a bit about the challenges for YouTube. And I think in some ways making an LLM-based recommendation system is harder than training an LLM. One of the big differences is the vocabulary and size of the corpus. Right? So for Gemini, if you're training an English LLM, your vocabulary is about 100,000 words in the Oxford dictionary, and they add about a thousand words every year. At YouTube, if you imagine the library of YouTube, it has billions of videos. We have 20 billion videos on YouTube, with millions added every day. And the freshness of videos is really important, much more so than LLMs. So if you think about a new word that's added to the English dictionary, word of 2023 was RZ. If your model Gemini doesn't know about RZ, it can still answer 99% of questions that people would have. Maybe it misses some jokes, maybe it misses some pop culture references. But in the world of YouTube, if Taylor Swift drops a new music video, you have to be able to recommend it within the next minutes or hours, otherwise a lot of users are going to be upset. So even within this large corpus, you have to very quickly understand what are the videos that are important and start recommending them to the right user. And so what we do with this LRM recommender is we have to continuously pre-train it on the order of days and hours, which is very different than classical LLM pre-training like Gemini, which happens maybe like once in 3 to 6 months. And so in that way, it's a much harder problem. And then the last part is scale. We have great models in Gemini. Gemini Pro is incredible, but there's no way that you can serve that to billions of daily active users. And so for YouTube, we had to focus on the smaller, more efficient models like flash and and even smaller checkpoints than that just to be able to hit the latency and scale requirements that we have.\n\nSo I kind of want to summarize the journey that we've been on YouTube in this what I think of as a LM and Rexus recipe that you can maybe adapt to your own application. And there's three major steps to this, right? The first is you want to find a way to tokenize your content. Just like LLMs tokenized text, you want to find you want to make some essence of your content into an atomic token. One way to do that, which we've done, is you find some rich representation, a bunch of features, build an embedding, and then find a way to tokenize or quantize it. And the outcome of this is like you're making your own domain-specific language.\n\nThe second step is you then want to adapt the LLM and basically make links between English and your domain language and find training tasks that help you reason across English and these new tokens you've built. And so the outcome after this step in my mind is it's a bilingual LLM that can speak English and natural language, but it can also speak your domain-specific language. And then once you have this, you can do the third step of prompting it with user information where you can just construct personalized prompts with user demographic user activity, different actions, and then train task-specific or surface-specific models, and you have a generative recommendation system on top of an LLM, and there this is like a tweet-size summary of maybe two years of work.\n\nMaybe the last thing that I want to talk about is kind of where I see this going. And some possible future directions for LLM and Rexus. I think the stage that we're at right now is that LMS are just augmenting recommendations. They bring these magical recommendation experiences. They enhance the quality, but they're largely invisible to users. Like your YouTube feed just got better, but you don't really know whether a Gemini inference happened or not. This is why I think the LLM application of Rexus is very underhyped because users don't directly know what's happening. I think we're close to a world, and we're experimenting with this. If you have, like we talked about, a bilingual LLM across English and recommendations, users can then talk to it in natural language. And I think you're going to start to see experiences where users can steer recommendations to their own goals. The recommender can explain why a candidate was recommended to a user. And users can start to align it towards their own goals expressed in natural language. And I think also the lines between search and recommendation start to blur in this world. And then maybe a hint of the future is I think you're going to see recommendation and generative content start to come together in the future where we're going to be recommending a personalized version of a piece.\n\n\nOf content, and in the future, instead of recommending content, we may even start creating it, and you can get to really interesting end of one content that's generated for the user.\nUm, I think we're a bit away from this, but it's going to come sooner than you expect with all the advances happening in AI.\nUm, so yeah, thank you.\nI'll take any questions.\nThank you, Devansh.\nUm, we have time for a few questions.\nHi, great talk.\nUm, uh, one question on generally how you balance the learning of the semantic ID embeddings within the model versus keeping the general language capability not damaged by learning through, for example, a tokenized user history, which is a very second language, very different from English.\nAny uh, high-level takeaway that you can share?\nThat's a super interesting question.\nUm, we've struggled with this a lot.\nUm, in terms of some of our early applications, we mostly cared just about recommendation quality, in which case we overindexed on speaking the semantic ID language.\nAnd as you overtrain on more and more of those examples, actually the model forgets to speak English.\nMaybe it's reasoning in some intermediate layers which finally end up in semantic ID language.\nUm, we are trying a bunch of things like, you know, with mixture of experts, maybe we can have a few experts that retain the text capability while other experts focus on the semantic ID capability, and so it's a balance, and I think we're going to shift more towards text as we try to build these interactive experiences where uh, text input from user is going to become more important.\nThank you.\nSo during this process, did you learn any uh, any good suggestions for cold starting embeddings on these domain specific uh, tokens?\nYeah.\nSo the semantic one thing is semantic ID training process is entirely unsupervised.\nWe're not telling like it's making its own quantization of the video corpus.\nWhen you sample to see what the model is doing, we find that it's learning concepts like sports versus movies and entertainment.\nBut we didn't actually try to teach that explicitly, which I think is very interesting.\nI think the second aspect is because of semantic ID, we can warm start into a semantically meaningful space.\nAnd what we find is performance for videos that were uploaded in the last day or the last week uh, gets much better because we're better understanding this fresh and tail content.\nGot it.\nThank you.\nHey, quick question.\nSo when you said you extract frames as part of making the semantic ID, are you just running a video at let's say 3 to 30 fps?\nUh, making a grid of them, running cig and inserting that.\nWe're just trying to sample video frames.\nUm, we we've tried a few different approaches where like maybe we try to sample from like key moments in the video.\nWe actually have the engagement data if you've seen in the YouTube player.\nUh, it can highlight what are the places where people had the most engagement.\nSo we try to sample from there.\nUm, you know, given the scale, we can't sample a lot of video frames, so we try to intelligently select it, but we do have video frames, and over time I think we'll get more in this way of selecting it.\nAre you able to highlight important things that are based on small objects in a video pretty well?\nLet's say it's a person in the distance that's of attention of this video.\nHard to say because like at the end, all of this video information gets compressed into eight tokens.\nSo, it's probably learning something, but it's hard to know exactly, you know, what it picked up from that video frame.\nUh, yeah, so it it's unclear.\nThank you.\nYeah.\nSo, yeah, it was a pretty good talk.\nUh, I have a question regarding pre-training.\nOkay.\nSo uh, did you also feed in a user query and what they watched also as a pre-training data?\nIf yes, then did you also use semantic ID for user as well in a pre-training or or just semantic ID is only for for the videos?\nYeah.\nYeah.\nSo in this case, we have only tokenized videos, um, and we focused more on sequences of watches rather than search query to what watch originated from that search query.\nYou could imagine some parallel work where you try to tokenize users and build some kind of user token that represents like the last 500 watches that they have had and so on.\nUm, we've experimented with some stuff there.\nI think it's less far along.\nUm, but yeah, I think it's a very interesting like research direction to do.\nSo, so the pre-training was done on top of existing Gemini pre-trained model, right?\nYeah, we basically take a Gemini checkpoint and then adapt it for this YouTube purpose and get this like YouTube and Gemini LRM checkpoint.\nOkay.\nYeah.\nLast.\nIt would be cool to see cementing ID of videos to V3, you know.\nYeah.\nHey, uh, I'm kind of curious how much uh, improvement do we see compared to the non LLM or more traditional recommendation system, and when should we use a more traditional one and when should we use LM based recommendation system?\nYeah, I I can't really share metrics like I I was I can share everything except code and metrics, you know.\nUm, and so we've given you as much conceptual steps of what we did.\nMaybe what I'll say is I think it's been the biggest improvement to recommendation quality we've seen in the last few years.\nSo I do think it's quite significant.\n[Music]\n",
+  "dumpedAt": "2025-07-21T18:43:25.284Z"
+}

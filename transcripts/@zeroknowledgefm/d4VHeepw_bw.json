@@ -1,0 +1,8092 @@
+{
+  "episodeId": "d4VHeepw_bw",
+  "channelSlug": "@zeroknowledgefm",
+  "title": "zkStudyClub - ARC: Accumulation for Reed-Solomon Codes (William Wang, NYU)",
+  "publishedAt": "2025-02-21T16:17:04.000Z",
+  "rawLines": [
+    {
+      "lang": "en",
+      "text": "so hi everyone welcome to another",
+      "offset": 0.64,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "edition of ZK Study Club it's been a",
+      "offset": 2.639,
+      "duration": 4.521
+    },
+    {
+      "lang": "en",
+      "text": "while uh today we're exciting to welcome",
+      "offset": 4.64,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "back William Wong who's been a repeat",
+      "offset": 7.16,
+      "duration": 4.76
+    },
+    {
+      "lang": "en",
+      "text": "guest here on the channel so thank you",
+      "offset": 10.16,
+      "duration": 4.359
+    },
+    {
+      "lang": "en",
+      "text": "will for coming back to talk about Arc",
+      "offset": 11.92,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "accumulation for re Solomon codes so the",
+      "offset": 14.519,
+      "duration": 4.321
+    },
+    {
+      "lang": "en",
+      "text": "work done together with Benedict bus",
+      "offset": 16.8,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "from NYU brat MRA from pen and Wilson",
+      "offset": 18.84,
+      "duration": 6.48
+    },
+    {
+      "lang": "en",
+      "text": "inan from Stanford uh so yeah thank you",
+      "offset": 22,
+      "duration": 6.96
+    },
+    {
+      "lang": "en",
+      "text": "William take it away up to you co yeah",
+      "offset": 25.32,
+      "duration": 6.199
+    },
+    {
+      "lang": "en",
+      "text": "um so I just want say yeah first of all",
+      "offset": 28.96,
+      "duration": 5.88
+    },
+    {
+      "lang": "en",
+      "text": "it's great to be back um this work is",
+      "offset": 31.519,
+      "duration": 5.921
+    },
+    {
+      "lang": "en",
+      "text": "kind of a followup to the the previous",
+      "offset": 34.84,
+      "duration": 5.48
+    },
+    {
+      "lang": "en",
+      "text": "work that we talked about in uh like a",
+      "offset": 37.44,
+      "duration": 5.639
+    },
+    {
+      "lang": "en",
+      "text": "year ago I want to say at ZK Study Club",
+      "offset": 40.32,
+      "duration": 5.32
+    },
+    {
+      "lang": "en",
+      "text": "um but here we kind of resolved the the",
+      "offset": 43.079,
+      "duration": 5.32
+    },
+    {
+      "lang": "en",
+      "text": "main limitation that was there and yeah",
+      "offset": 45.64,
+      "duration": 4.84
+    },
+    {
+      "lang": "en",
+      "text": "let's just get started uh oh and one",
+      "offset": 48.399,
+      "duration": 4.081
+    },
+    {
+      "lang": "en",
+      "text": "more thing just feel free if you have",
+      "offset": 50.48,
+      "duration": 3.8
+    },
+    {
+      "lang": "en",
+      "text": "questions to just unmute yourself and",
+      "offset": 52.48,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "ask at any time through the presentation",
+      "offset": 54.28,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "I'll just",
+      "offset": 57.12,
+      "duration": 4.119
+    },
+    {
+      "lang": "en",
+      "text": "pause Okay cool so",
+      "offset": 58.28,
+      "duration": 7.519
+    },
+    {
+      "lang": "en",
+      "text": "so let me just first start with a very",
+      "offset": 61.239,
+      "duration": 7.801
+    },
+    {
+      "lang": "en",
+      "text": "high level motivation so kind of our",
+      "offset": 65.799,
+      "duration": 7
+    },
+    {
+      "lang": "en",
+      "text": "overarching goal is to build IVC and PCD",
+      "offset": 69.04,
+      "duration": 6.04
+    },
+    {
+      "lang": "en",
+      "text": "so these are cryptographic Primitives",
+      "offset": 72.799,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "that have a lot of applications um",
+      "offset": 75.08,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "including in blockchain systems like",
+      "offset": 77.759,
+      "duration": 2.801
+    },
+    {
+      "lang": "en",
+      "text": "rollups",
+      "offset": 79.24,
+      "duration": 4.199
+    },
+    {
+      "lang": "en",
+      "text": "zkm and also more abstractly things like",
+      "offset": 80.56,
+      "duration": 5.599
+    },
+    {
+      "lang": "en",
+      "text": "paralyzed and Andor low memory",
+      "offset": 83.439,
+      "duration": 5.761
+    },
+    {
+      "lang": "en",
+      "text": "proving okay so as of today I have the",
+      "offset": 86.159,
+      "duration": 6.28
+    },
+    {
+      "lang": "en",
+      "text": "most efficient IC and PCD is built from",
+      "offset": 89.2,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "accumulation schemes uh these are also",
+      "offset": 92.439,
+      "duration": 4.881
+    },
+    {
+      "lang": "en",
+      "text": "known as folding schemes and I should",
+      "offset": 94.56,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "point out that kind of when you're",
+      "offset": 97.32,
+      "duration": 4.119
+    },
+    {
+      "lang": "en",
+      "text": "building IVC and PCD there's always this",
+      "offset": 98.96,
+      "duration": 5.519
+    },
+    {
+      "lang": "en",
+      "text": "Baseline solution which is to use um",
+      "offset": 101.439,
+      "duration": 5.801
+    },
+    {
+      "lang": "en",
+      "text": "recursive snarks and so whenever I talk",
+      "offset": 104.479,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "about accumulation or folding kind of",
+      "offset": 107.24,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "implicitly I'm assuming that we're",
+      "offset": 109.439,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "talking about some sort of non-trivial",
+      "offset": 111.56,
+      "duration": 4.559
+    },
+    {
+      "lang": "en",
+      "text": "accumulation scheme uh that does better",
+      "offset": 113.439,
+      "duration": 6.761
+    },
+    {
+      "lang": "en",
+      "text": "than a than a snark wood Okay so ation",
+      "offset": 116.119,
+      "duration": 6.121
+    },
+    {
+      "lang": "en",
+      "text": "schemes are typically based on some sort",
+      "offset": 120.2,
+      "duration": 4.559
+    },
+    {
+      "lang": "en",
+      "text": "of group based or lattice based",
+      "offset": 122.24,
+      "duration": 4.559
+    },
+    {
+      "lang": "en",
+      "text": "cryptography uh where they take",
+      "offset": 124.759,
+      "duration": 3.64
+    },
+    {
+      "lang": "en",
+      "text": "advantage of the the underlying",
+      "offset": 126.799,
+      "duration": 4.041
+    },
+    {
+      "lang": "en",
+      "text": "mathematical structure of the Assumption",
+      "offset": 128.399,
+      "duration": 4.521
+    },
+    {
+      "lang": "en",
+      "text": "and in this work we're going to be",
+      "offset": 130.84,
+      "duration": 4.2
+    },
+    {
+      "lang": "en",
+      "text": "looking at how to build hash based",
+      "offset": 132.92,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "accumulation um and our approach works",
+      "offset": 135.04,
+      "duration": 5.4
+    },
+    {
+      "lang": "en",
+      "text": "for many different constraint systems uh",
+      "offset": 137.72,
+      "duration": 5.92
+    },
+    {
+      "lang": "en",
+      "text": "in this talk I'll just focus on R1 CS",
+      "offset": 140.44,
+      "duration": 6.84
+    },
+    {
+      "lang": "en",
+      "text": "okay so why is Hash based accumulation",
+      "offset": 143.64,
+      "duration": 6.52
+    },
+    {
+      "lang": "en",
+      "text": "useful or interesting well there's I",
+      "offset": 147.28,
+      "duration": 6.239
+    },
+    {
+      "lang": "en",
+      "text": "think two main reasons one is uh it's",
+      "offset": 150.16,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "arguably a much more conservative",
+      "offset": 153.519,
+      "duration": 3.321
+    },
+    {
+      "lang": "en",
+      "text": "assumption than a lot of these other",
+      "offset": 155.12,
+      "duration": 3.72
+    },
+    {
+      "lang": "en",
+      "text": "public key assumptions it's also",
+      "offset": 156.84,
+      "duration": 4.52
+    },
+    {
+      "lang": "en",
+      "text": "postquantum secure and the second reason",
+      "offset": 158.84,
+      "duration": 5
+    },
+    {
+      "lang": "en",
+      "text": "is that we can kind of hope to achieve",
+      "offset": 161.36,
+      "duration": 4.599
+    },
+    {
+      "lang": "en",
+      "text": "some of the benefits that normal hash",
+      "offset": 163.84,
+      "duration": 4.6
+    },
+    {
+      "lang": "en",
+      "text": "based proof system have uh specifically",
+      "offset": 165.959,
+      "duration": 4.081
+    },
+    {
+      "lang": "en",
+      "text": "like a very fast",
+      "offset": 168.44,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "Pro okay and I should also mention that",
+      "offset": 170.04,
+      "duration": 5.32
+    },
+    {
+      "lang": "en",
+      "text": "in our previous work we also look at",
+      "offset": 173.64,
+      "duration": 4.679
+    },
+    {
+      "lang": "en",
+      "text": "building hash based accumulation but we",
+      "offset": 175.36,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "kind of have this this un fortunate",
+      "offset": 178.319,
+      "duration": 5.361
+    },
+    {
+      "lang": "en",
+      "text": "restriction uh which is that we can only",
+      "offset": 180.56,
+      "duration": 4.319
+    },
+    {
+      "lang": "en",
+      "text": "achieve like a weaker form of",
+      "offset": 183.68,
+      "duration": 3.639
+    },
+    {
+      "lang": "en",
+      "text": "accumulation which we call bounded depth",
+      "offset": 184.879,
+      "duration": 4.561
+    },
+    {
+      "lang": "en",
+      "text": "accumulation uh which kind of hinders",
+      "offset": 187.319,
+      "duration": 3.721
+    },
+    {
+      "lang": "en",
+      "text": "the the Practical efficiency of that",
+      "offset": 189.44,
+      "duration": 4.6
+    },
+    {
+      "lang": "en",
+      "text": "work so here we're actually just focused",
+      "offset": 191.04,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "on building a standard full-fledge",
+      "offset": 194.04,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "accumulation scheme that has unbounded",
+      "offset": 196,
+      "duration": 6.72
+    },
+    {
+      "lang": "en",
+      "text": "depth and is also hash based okay so",
+      "offset": 198.28,
+      "duration": 6.36
+    },
+    {
+      "lang": "en",
+      "text": "this is really the last time I'll",
+      "offset": 202.72,
+      "duration": 4.04
+    },
+    {
+      "lang": "en",
+      "text": "mention IVC and from now on I'll kind of",
+      "offset": 204.64,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "focus on accumulation schemes as the",
+      "offset": 206.76,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "sort of central object of interest in",
+      "offset": 209.92,
+      "duration": 4.28
+    },
+    {
+      "lang": "en",
+      "text": "this talk so what is an accumulation",
+      "offset": 211.64,
+      "duration": 4.879
+    },
+    {
+      "lang": "en",
+      "text": "scheme I think it's just helpful to view",
+      "offset": 214.2,
+      "duration": 5.72
+    },
+    {
+      "lang": "en",
+      "text": "it as a pair of reductions so you have",
+      "offset": 216.519,
+      "duration": 7.161
+    },
+    {
+      "lang": "en",
+      "text": "an initial reduction which um takes your",
+      "offset": 219.92,
+      "duration": 5.08
+    },
+    {
+      "lang": "en",
+      "text": "relation of Interest let's say your",
+      "offset": 223.68,
+      "duration": 4.199
+    },
+    {
+      "lang": "en",
+      "text": "favorite NP complete relation like R1 Cs",
+      "offset": 225,
+      "duration": 5.84
+    },
+    {
+      "lang": "en",
+      "text": "and converts it into a statement for a",
+      "offset": 227.879,
+      "duration": 4.881
+    },
+    {
+      "lang": "en",
+      "text": "central relation which I've called R",
+      "offset": 230.84,
+      "duration": 4.599
+    },
+    {
+      "lang": "en",
+      "text": "here and the second component is a many",
+      "offset": 232.76,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "to one reduction which takes multiple",
+      "offset": 235.439,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "statements in R and compresses it into a",
+      "offset": 237.64,
+      "duration": 5.679
+    },
+    {
+      "lang": "en",
+      "text": "single statement in R okay so the way",
+      "offset": 240.239,
+      "duration": 5
+    },
+    {
+      "lang": "en",
+      "text": "that you would actually see uh",
+      "offset": 243.319,
+      "duration": 4.081
+    },
+    {
+      "lang": "en",
+      "text": "accumulation scheme in action is let's",
+      "offset": 245.239,
+      "duration": 4.521
+    },
+    {
+      "lang": "en",
+      "text": "say you have some R1 CS instance you're",
+      "offset": 247.4,
+      "duration": 3.759
+    },
+    {
+      "lang": "en",
+      "text": "going to use the initial reduction to",
+      "offset": 249.76,
+      "duration": 4.119
+    },
+    {
+      "lang": "en",
+      "text": "convert it into a like a central",
+      "offset": 251.159,
+      "duration": 4.961
+    },
+    {
+      "lang": "en",
+      "text": "instance and then you're going to",
+      "offset": 253.879,
+      "duration": 4.721
+    },
+    {
+      "lang": "en",
+      "text": "repeatedly compress it with an existing",
+      "offset": 256.12,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "like running instance and you can do",
+      "offset": 258.6,
+      "duration": 3.879
+    },
+    {
+      "lang": "en",
+      "text": "this over and over again right so if I",
+      "offset": 260.68,
+      "duration": 3.28
+    },
+    {
+      "lang": "en",
+      "text": "have a new R1 CS instance I first",
+      "offset": 262.479,
+      "duration": 3.961
+    },
+    {
+      "lang": "en",
+      "text": "convert it into R and then I compress",
+      "offset": 263.96,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "again and I can do this for an unbounded",
+      "offset": 266.44,
+      "duration": 4.36
+    },
+    {
+      "lang": "en",
+      "text": "number of times",
+      "offset": 268.6,
+      "duration": 4.439
+    },
+    {
+      "lang": "en",
+      "text": "okay and just for some context in a",
+      "offset": 270.8,
+      "duration": 6.16
+    },
+    {
+      "lang": "en",
+      "text": "folding scheme like Nova for example um",
+      "offset": 273.039,
+      "duration": 5.521
+    },
+    {
+      "lang": "en",
+      "text": "the central relation here is what they",
+      "offset": 276.96,
+      "duration": 5.079
+    },
+    {
+      "lang": "en",
+      "text": "call relax committed R1 CS which in some",
+      "offset": 278.56,
+      "duration": 5.56
+    },
+    {
+      "lang": "en",
+      "text": "sense is basically equivalent to R1 Cs",
+      "offset": 282.039,
+      "duration": 4.121
+    },
+    {
+      "lang": "en",
+      "text": "and so for Nova kind of this initial",
+      "offset": 284.12,
+      "duration": 5.919
+    },
+    {
+      "lang": "en",
+      "text": "reduction is Trivial and really you",
+      "offset": 286.16,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "would be talking about this many to one",
+      "offset": 290.039,
+      "duration": 4.041
+    },
+    {
+      "lang": "en",
+      "text": "reduction as the folding scheme um",
+      "offset": 291.6,
+      "duration": 4.879
+    },
+    {
+      "lang": "en",
+      "text": "whereas for us I think it will be useful",
+      "offset": 294.08,
+      "duration": 5
+    },
+    {
+      "lang": "en",
+      "text": "to explicitly distinguish between these",
+      "offset": 296.479,
+      "duration": 5.081
+    },
+    {
+      "lang": "en",
+      "text": "two compon on of the accumulation",
+      "offset": 299.08,
+      "duration": 5.16
+    },
+    {
+      "lang": "en",
+      "text": "scheme okay so I've been talking about",
+      "offset": 301.56,
+      "duration": 5.079
+    },
+    {
+      "lang": "en",
+      "text": "reductions and now I want to formally",
+      "offset": 304.24,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "Define what an interactive reduction is",
+      "offset": 306.639,
+      "duration": 4.84
+    },
+    {
+      "lang": "en",
+      "text": "so an interactive reduction is from one",
+      "offset": 309.68,
+      "duration": 4.519
+    },
+    {
+      "lang": "en",
+      "text": "relation R to another relation RP Prime",
+      "offset": 311.479,
+      "duration": 4.401
+    },
+    {
+      "lang": "en",
+      "text": "and it's an interactive protocol between",
+      "offset": 314.199,
+      "duration": 3.641
+    },
+    {
+      "lang": "en",
+      "text": "a prover and a verifier so the prover",
+      "offset": 315.88,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "receives some statement and the verifier",
+      "offset": 317.84,
+      "duration": 5.24
+    },
+    {
+      "lang": "en",
+      "text": "receives the the instance and they",
+      "offset": 320.52,
+      "duration": 4.119
+    },
+    {
+      "lang": "en",
+      "text": "engage in some sort of interactive",
+      "offset": 323.08,
+      "duration": 4.399
+    },
+    {
+      "lang": "en",
+      "text": "protocol such that at the end the prover",
+      "offset": 324.639,
+      "duration": 4.601
+    },
+    {
+      "lang": "en",
+      "text": "outputs a new witness and the verifier",
+      "offset": 327.479,
+      "duration": 3.081
+    },
+    {
+      "lang": "en",
+      "text": "outputs a new",
+      "offset": 329.24,
+      "duration": 4.2
+    },
+    {
+      "lang": "en",
+      "text": "instance and just like in interactive",
+      "offset": 330.56,
+      "duration": 4.359
+    },
+    {
+      "lang": "en",
+      "text": "proof or an interactive argument there",
+      "offset": 333.44,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "are two Key Properties so the first is",
+      "offset": 334.919,
+      "duration": 5.4
+    },
+    {
+      "lang": "en",
+      "text": "completeness um if the statement",
+      "offset": 337.68,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "original statement was in the relation",
+      "offset": 340.319,
+      "duration": 3.521
+    },
+    {
+      "lang": "en",
+      "text": "then the new statement will be in the",
+      "offset": 342.4,
+      "duration": 2.519
+    },
+    {
+      "lang": "en",
+      "text": "new",
+      "offset": 343.84,
+      "duration": 3.12
+    },
+    {
+      "lang": "en",
+      "text": "relation and the second property is",
+      "offset": 344.919,
+      "duration": 4.881
+    },
+    {
+      "lang": "en",
+      "text": "soundness which basically says if the",
+      "offset": 346.96,
+      "duration": 4.76
+    },
+    {
+      "lang": "en",
+      "text": "original statement is not in the",
+      "offset": 349.8,
+      "duration": 4.04
+    },
+    {
+      "lang": "en",
+      "text": "language then the new statement will",
+      "offset": 351.72,
+      "duration": 3.759
+    },
+    {
+      "lang": "en",
+      "text": "also not be in the language with high",
+      "offset": 353.84,
+      "duration": 3.32
+    },
+    {
+      "lang": "en",
+      "text": "probability uh no matter what a",
+      "offset": 355.479,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "malicious PR might try to do",
+      "offset": 357.16,
+      "duration": 6.96
+    },
+    {
+      "lang": "en",
+      "text": "okay so in this work we consider a very",
+      "offset": 360.039,
+      "duration": 6.801
+    },
+    {
+      "lang": "en",
+      "text": "closely related model which we introduce",
+      "offset": 364.12,
+      "duration": 5.479
+    },
+    {
+      "lang": "en",
+      "text": "and call Interactive Oracle reductions",
+      "offset": 366.84,
+      "duration": 4.84
+    },
+    {
+      "lang": "en",
+      "text": "so intuitively you can imagine that",
+      "offset": 369.599,
+      "duration": 3.761
+    },
+    {
+      "lang": "en",
+      "text": "interactive Oracle reductions are sort",
+      "offset": 371.68,
+      "duration": 3.919
+    },
+    {
+      "lang": "en",
+      "text": "of the reduction version of interactive",
+      "offset": 373.36,
+      "duration": 5.679
+    },
+    {
+      "lang": "en",
+      "text": "Oracle proofs um where the verifier",
+      "offset": 375.599,
+      "duration": 5.561
+    },
+    {
+      "lang": "en",
+      "text": "instead of reading the Prov message in",
+      "offset": 379.039,
+      "duration": 5.72
+    },
+    {
+      "lang": "en",
+      "text": "full now gets to uh query the the Prov",
+      "offset": 381.16,
+      "duration": 6.599
+    },
+    {
+      "lang": "en",
+      "text": "messages at very specific locations and",
+      "offset": 384.759,
+      "duration": 5.401
+    },
+    {
+      "lang": "en",
+      "text": "this allows the verifier to be succinct",
+      "offset": 387.759,
+      "duration": 5.761
+    },
+    {
+      "lang": "en",
+      "text": "uh in the overall proof length Okay so",
+      "offset": 390.16,
+      "duration": 5
+    },
+    {
+      "lang": "en",
+      "text": "the cool thing in an i is that the",
+      "offset": 393.52,
+      "duration": 3.56
+    },
+    {
+      "lang": "en",
+      "text": "instances themselves can also have",
+      "offset": 395.16,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "oracles inside of them that the verifier",
+      "offset": 397.08,
+      "duration": 5.6
+    },
+    {
+      "lang": "en",
+      "text": "can query and additionally the verifier",
+      "offset": 399.72,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "can output oracles as part of the new",
+      "offset": 402.68,
+      "duration": 4.519
+    },
+    {
+      "lang": "en",
+      "text": "instance so these oracles are must be",
+      "offset": 404.52,
+      "duration": 5.799
+    },
+    {
+      "lang": "en",
+      "text": "selected from one of the PR's uh uh",
+      "offset": 407.199,
+      "duration": 5
+    },
+    {
+      "lang": "en",
+      "text": "message oracles or maybe the old",
+      "offset": 410.319,
+      "duration": 4.081
+    },
+    {
+      "lang": "en",
+      "text": "instance",
+      "offset": 412.199,
+      "duration": 6.041
+    },
+    {
+      "lang": "en",
+      "text": "oracles okay and IRS can be compiled",
+      "offset": 414.4,
+      "duration": 6.479
+    },
+    {
+      "lang": "en",
+      "text": "into standard Interactive ructions uh",
+      "offset": 418.24,
+      "duration": 5
+    },
+    {
+      "lang": "en",
+      "text": "essentially by using Merkel commitments",
+      "offset": 420.879,
+      "duration": 4.961
+    },
+    {
+      "lang": "en",
+      "text": "and this is analogous to how iops can be",
+      "offset": 423.24,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "compound to succinct arguments uh using",
+      "offset": 425.84,
+      "duration": 5.16
+    },
+    {
+      "lang": "en",
+      "text": "like the BCS",
+      "offset": 428.28,
+      "duration": 2.72
+    },
+    {
+      "lang": "en",
+      "text": "transformation cool so now that uh I've",
+      "offset": 431.28,
+      "duration": 5.56
+    },
+    {
+      "lang": "en",
+      "text": "defined the model I just want to give a",
+      "offset": 434.039,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "quick overview of what I'm going to be",
+      "offset": 436.84,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "talking about in the rest of this uh",
+      "offset": 438.199,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "presentation so our goal will be to kind",
+      "offset": 440.36,
+      "duration": 6.239
+    },
+    {
+      "lang": "en",
+      "text": "of construct interactive Oracle",
+      "offset": 443.319,
+      "duration": 7.201
+    },
+    {
+      "lang": "en",
+      "text": "reductions um for accumulations schemes",
+      "offset": 446.599,
+      "duration": 5.88
+    },
+    {
+      "lang": "en",
+      "text": "which minimize the query complexity of",
+      "offset": 450.52,
+      "duration": 4.239
+    },
+    {
+      "lang": "en",
+      "text": "the verifier and this sort of translates",
+      "offset": 452.479,
+      "duration": 3.761
+    },
+    {
+      "lang": "en",
+      "text": "into a more efficient accumulation",
+      "offset": 454.759,
+      "duration": 4.761
+    },
+    {
+      "lang": "en",
+      "text": "verifier and hence more efficient IVC",
+      "offset": 456.24,
+      "duration": 5.799
+    },
+    {
+      "lang": "en",
+      "text": "scheme so as a stepping stone we're",
+      "offset": 459.52,
+      "duration": 4.92
+    },
+    {
+      "lang": "en",
+      "text": "going to first construct a many toone",
+      "offset": 462.039,
+      "duration": 4.641
+    },
+    {
+      "lang": "en",
+      "text": "interactive Oracle reduction for read",
+      "offset": 464.44,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "Solan proximity claims uh I'll Define",
+      "offset": 466.68,
+      "duration": 4.359
+    },
+    {
+      "lang": "en",
+      "text": "what a proximity claim is in the next",
+      "offset": 469.4,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "slide and the key feature of our",
+      "offset": 471.039,
+      "duration": 5.521
+    },
+    {
+      "lang": "en",
+      "text": "reduction is that the verifier makes uh",
+      "offset": 473.24,
+      "duration": 5.359
+    },
+    {
+      "lang": "en",
+      "text": "o of Lambda queries where Lambda is the",
+      "offset": 476.56,
+      "duration": 3.639
+    },
+    {
+      "lang": "en",
+      "text": "security parameter",
+      "offset": 478.599,
+      "duration": 3.801
+    },
+    {
+      "lang": "en",
+      "text": "um now in contrast the best known read",
+      "offset": 480.199,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "Solon proximity tests like stir and were",
+      "offset": 482.4,
+      "duration": 5.519
+    },
+    {
+      "lang": "en",
+      "text": "make o of Lambda time log log nqu so",
+      "offset": 484.919,
+      "duration": 5.201
+    },
+    {
+      "lang": "en",
+      "text": "we're shaving this factor of log log n",
+      "offset": 487.919,
+      "duration": 4.081
+    },
+    {
+      "lang": "en",
+      "text": "um in practice so obviously it depends",
+      "offset": 490.12,
+      "duration": 3.199
+    },
+    {
+      "lang": "en",
+      "text": "on how you set the parameters but in",
+      "offset": 492,
+      "duration": 3.199
+    },
+    {
+      "lang": "en",
+      "text": "practice this can be quite",
+      "offset": 493.319,
+      "duration": 5.201
+    },
+    {
+      "lang": "en",
+      "text": "significant um and I should say that an",
+      "offset": 495.199,
+      "duration": 5.84
+    },
+    {
+      "lang": "en",
+      "text": "i for proximity claims is different from",
+      "offset": 498.52,
+      "duration": 4.959
+    },
+    {
+      "lang": "en",
+      "text": "a proximity test and and that it",
+      "offset": 501.039,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "performs a different uh it has a",
+      "offset": 503.479,
+      "duration": 5.72
+    },
+    {
+      "lang": "en",
+      "text": "different guarantee but in the context",
+      "offset": 507.039,
+      "duration": 4.84
+    },
+    {
+      "lang": "en",
+      "text": "of the accumulation uh their verifier",
+      "offset": 509.199,
+      "duration": 5.041
+    },
+    {
+      "lang": "en",
+      "text": "efficiencies are comparable um because",
+      "offset": 511.879,
+      "duration": 3.681
+    },
+    {
+      "lang": "en",
+      "text": "they both translate into what the",
+      "offset": 514.24,
+      "duration": 4.2
+    },
+    {
+      "lang": "en",
+      "text": "accumulation verifier would look like",
+      "offset": 515.56,
+      "duration": 4.839
+    },
+    {
+      "lang": "en",
+      "text": "okay I should also mention here that",
+      "offset": 518.44,
+      "duration": 4.279
+    },
+    {
+      "lang": "en",
+      "text": "there's also two concurrent works I",
+      "offset": 520.399,
+      "duration": 4.761
+    },
+    {
+      "lang": "en",
+      "text": "think they're called boil and deepy that",
+      "offset": 522.719,
+      "duration": 4.401
+    },
+    {
+      "lang": "en",
+      "text": "also show this sort of stepping stone",
+      "offset": 525.16,
+      "duration": 4.44
+    },
+    {
+      "lang": "en",
+      "text": "result um and our main result is that we",
+      "offset": 527.12,
+      "duration": 4.399
+    },
+    {
+      "lang": "en",
+      "text": "construct a full-fledged hash based",
+      "offset": 529.6,
+      "duration": 4.28
+    },
+    {
+      "lang": "en",
+      "text": "accumulation scheme for R1 CS um but",
+      "offset": 531.519,
+      "duration": 4.081
+    },
+    {
+      "lang": "en",
+      "text": "I'll get into that later and give some",
+      "offset": 533.88,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "comparisons at the end of the talk okay",
+      "offset": 535.6,
+      "duration": 4.76
+    },
+    {
+      "lang": "en",
+      "text": "so let's just focus on",
+      "offset": 538.44,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "what with those concurrent works again",
+      "offset": 540.36,
+      "duration": 6.36
+    },
+    {
+      "lang": "en",
+      "text": "uh one is called boil b o i l and the",
+      "offset": 543,
+      "duration": 6.92
+    },
+    {
+      "lang": "en",
+      "text": "other one is called Deep Ali and they",
+      "offset": 546.72,
+      "duration": 6.64
+    },
+    {
+      "lang": "en",
+      "text": "both they both also make this odd",
+      "offset": 549.92,
+      "duration": 6.72
+    },
+    {
+      "lang": "en",
+      "text": "preservation uh that you can get a many",
+      "offset": 553.36,
+      "duration": 5.24
+    },
+    {
+      "lang": "en",
+      "text": "to one interactive Oracle reduction for",
+      "offset": 556.64,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "read Solon proximity claims where the",
+      "offset": 558.6,
+      "duration": 4.76
+    },
+    {
+      "lang": "en",
+      "text": "verifier makes of of Lambda",
+      "offset": 560.64,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "queries",
+      "offset": 563.36,
+      "duration": 4.2
+    },
+    {
+      "lang": "en",
+      "text": "yeah thank okay",
+      "offset": 564.88,
+      "duration": 5.079
+    },
+    {
+      "lang": "en",
+      "text": "so yeah so for now let's focus on the",
+      "offset": 567.56,
+      "duration": 3.719
+    },
+    {
+      "lang": "en",
+      "text": "stepping stone and then we'll get to",
+      "offset": 569.959,
+      "duration": 3.921
+    },
+    {
+      "lang": "en",
+      "text": "like the the main result afterwards so",
+      "offset": 571.279,
+      "duration": 6.161
+    },
+    {
+      "lang": "en",
+      "text": "first of all um just for some background",
+      "offset": 573.88,
+      "duration": 5
+    },
+    {
+      "lang": "en",
+      "text": "I want to Define what a read Solomon",
+      "offset": 577.44,
+      "duration": 2.92
+    },
+    {
+      "lang": "en",
+      "text": "proximity test is and what a read",
+      "offset": 578.88,
+      "duration": 5.399
+    },
+    {
+      "lang": "en",
+      "text": "Solomon proximity claim is so just",
+      "offset": 580.36,
+      "duration": 5.88
+    },
+    {
+      "lang": "en",
+      "text": "laying out some notation I'm going to",
+      "offset": 584.279,
+      "duration": 4.12
+    },
+    {
+      "lang": "en",
+      "text": "let C be some arbitrary read Solomon",
+      "offset": 586.24,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "code and then I'm going to let F be some",
+      "offset": 588.399,
+      "duration": 4.68
+    },
+    {
+      "lang": "en",
+      "text": "arbitrary uh Vector so you can think of",
+      "offset": 590.88,
+      "duration": 5.84
+    },
+    {
+      "lang": "en",
+      "text": "this read Solomon code c as a subset of",
+      "offset": 593.079,
+      "duration": 6.361
+    },
+    {
+      "lang": "en",
+      "text": "the set of all possible length n vectors",
+      "offset": 596.72,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "in particular it will be a linear",
+      "offset": 599.44,
+      "duration": 5.6
+    },
+    {
+      "lang": "en",
+      "text": "Subspace um okay and the goal of a",
+      "offset": 602,
+      "duration": 5.72
+    },
+    {
+      "lang": "en",
+      "text": "readman proximity test is to verify a",
+      "offset": 605.04,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "proximity claim that f is uh Delta close",
+      "offset": 607.72,
+      "duration": 5.799
+    },
+    {
+      "lang": "en",
+      "text": "to C that's what this notation means um",
+      "offset": 610.8,
+      "duration": 6.2
+    },
+    {
+      "lang": "en",
+      "text": "and in words basically I'm saying uh",
+      "offset": 613.519,
+      "duration": 6.041
+    },
+    {
+      "lang": "en",
+      "text": "there exists a code word in uh in the",
+      "offset": 617,
+      "duration": 5.72
+    },
+    {
+      "lang": "en",
+      "text": "subset c read Solomon code which uh",
+      "offset": 619.56,
+      "duration": 5.959
+    },
+    {
+      "lang": "en",
+      "text": "disagrees with F at at most a Delta",
+      "offset": 622.72,
+      "duration": 5.4
+    },
+    {
+      "lang": "en",
+      "text": "fraction of points so if we set Delta to",
+      "offset": 625.519,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "be like 1/4 that I'm saying that there",
+      "offset": 628.12,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "exists some code word c which agrees",
+      "offset": 630.399,
+      "duration": 5.721
+    },
+    {
+      "lang": "en",
+      "text": "with f on at least 75% of points so",
+      "offset": 632.68,
+      "duration": 4.92
+    },
+    {
+      "lang": "en",
+      "text": "they're close to uh they're close in",
+      "offset": 636.12,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "terms of Hamming distance okay and read",
+      "offset": 637.6,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "Sol and proximity tests are a very",
+      "offset": 640.04,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "common object in the pr systems",
+      "offset": 641.68,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "literature um so some pretty well-known",
+      "offset": 643.48,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "examples are of course fry and more",
+      "offset": 646.48,
+      "duration": 4.84
+    },
+    {
+      "lang": "en",
+      "text": "recent ones like stir and were and",
+      "offset": 648.6,
+      "duration": 5.039
+    },
+    {
+      "lang": "en",
+      "text": "they're used to construct snarks uh",
+      "offset": 651.32,
+      "duration": 5.519
+    },
+    {
+      "lang": "en",
+      "text": "essentially uh by this recipe so you",
+      "offset": 653.639,
+      "duration": 5.401
+    },
+    {
+      "lang": "en",
+      "text": "first have your NP relation of Interest",
+      "offset": 656.839,
+      "duration": 4.601
+    },
+    {
+      "lang": "en",
+      "text": "like R1 Cs and you have some initial",
+      "offset": 659.04,
+      "duration": 5.08
+    },
+    {
+      "lang": "en",
+      "text": "reduction which converts it into a read",
+      "offset": 661.44,
+      "duration": 5.079
+    },
+    {
+      "lang": "en",
+      "text": "Solomon proximity claim and then",
+      "offset": 664.12,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "afterwards you run the read Solomon",
+      "offset": 666.519,
+      "duration": 3.56
+    },
+    {
+      "lang": "en",
+      "text": "proximity test to verify the readed",
+      "offset": 668.04,
+      "duration": 4.84
+    },
+    {
+      "lang": "en",
+      "text": "Solomon proximity claim so really this",
+      "offset": 670.079,
+      "duration": 4.721
+    },
+    {
+      "lang": "en",
+      "text": "the snark recipe can be thought of as",
+      "offset": 672.88,
+      "duration": 3.8
+    },
+    {
+      "lang": "en",
+      "text": "having two ingredients the initial",
+      "offset": 674.8,
+      "duration": 4.2
+    },
+    {
+      "lang": "en",
+      "text": "reduction and then the proximity",
+      "offset": 676.68,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "test okay so for us when I talk about",
+      "offset": 679,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "readed Solon proximity accumulation what",
+      "offset": 681.8,
+      "duration": 4.52
+    },
+    {
+      "lang": "en",
+      "text": "I'm talking about is a many to one",
+      "offset": 684.36,
+      "duration": 3.919
+    },
+    {
+      "lang": "en",
+      "text": "reduction for read Solon proximity",
+      "offset": 686.32,
+      "duration": 5
+    },
+    {
+      "lang": "en",
+      "text": "claims and the hope is that this",
+      "offset": 688.279,
+      "duration": 4.721
+    },
+    {
+      "lang": "en",
+      "text": "reduction can be cheaper than a",
+      "offset": 691.32,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "proximity test right the fact that it's",
+      "offset": 693,
+      "duration": 3.88
+    },
+    {
+      "lang": "en",
+      "text": "cheaper means that we can get more",
+      "offset": 695,
+      "duration": 3.279
+    },
+    {
+      "lang": "en",
+      "text": "efficient like a non-trivial",
+      "offset": 696.88,
+      "duration": 3.759
+    },
+    {
+      "lang": "en",
+      "text": "accumulation scheme and this is what the",
+      "offset": 698.279,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "accumulation recipe would look like so",
+      "offset": 700.639,
+      "duration": 4.801
+    },
+    {
+      "lang": "en",
+      "text": "we have R1 CS instances we use the",
+      "offset": 702.839,
+      "duration": 3.961
+    },
+    {
+      "lang": "en",
+      "text": "initial reduction to convert it into",
+      "offset": 705.44,
+      "duration": 3.959
+    },
+    {
+      "lang": "en",
+      "text": "rman proximity claims and then we just",
+      "offset": 706.8,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "repeatedly compress it using our many to",
+      "offset": 709.399,
+      "duration": 4.041
+    },
+    {
+      "lang": "en",
+      "text": "one reduction for the proximity",
+      "offset": 711.36,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "claims okay and I should note here that",
+      "offset": 713.44,
+      "duration": 5.199
+    },
+    {
+      "lang": "en",
+      "text": "all of these uh proximity bounds these",
+      "offset": 716.24,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "Delta values",
+      "offset": 718.639,
+      "duration": 4.481
+    },
+    {
+      "lang": "en",
+      "text": "are the same and I'll refer to this as",
+      "offset": 720.16,
+      "duration": 5.64
+    },
+    {
+      "lang": "en",
+      "text": "like a distance preserving reduction so",
+      "offset": 723.12,
+      "duration": 4.6
+    },
+    {
+      "lang": "en",
+      "text": "whereas in our previous work um",
+      "offset": 725.8,
+      "duration": 3.32
+    },
+    {
+      "lang": "en",
+      "text": "accumulation without",
+      "offset": 727.72,
+      "duration": 4.679
+    },
+    {
+      "lang": "en",
+      "text": "homomorphism uh Delta kind of degrades",
+      "offset": 729.12,
+      "duration": 5.079
+    },
+    {
+      "lang": "en",
+      "text": "over time so Delta becomes Delta minus",
+      "offset": 732.399,
+      "duration": 4.841
+    },
+    {
+      "lang": "en",
+      "text": "Epsilon minus 2 Epsilon with every step",
+      "offset": 734.199,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "um and this is what leads to this",
+      "offset": 737.24,
+      "duration": 3.959
+    },
+    {
+      "lang": "en",
+      "text": "restriction of having a bounded number",
+      "offset": 739.639,
+      "duration": 4.801
+    },
+    {
+      "lang": "en",
+      "text": "of accumulation steps uh here our",
+      "offset": 741.199,
+      "duration": 5.481
+    },
+    {
+      "lang": "en",
+      "text": "distance bound of the proximity claim",
+      "offset": 744.44,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "will always be Delta and therefore we",
+      "offset": 746.68,
+      "duration": 3.519
+    },
+    {
+      "lang": "en",
+      "text": "can continue to accumulate as much as",
+      "offset": 748.44,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "we'd",
+      "offset": 750.199,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "like",
+      "offset": 752.12,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "Okay so let's take a look at how we can",
+      "offset": 753.959,
+      "duration": 6.041
+    },
+    {
+      "lang": "en",
+      "text": "construct uh this many to one reduction",
+      "offset": 757.24,
+      "duration": 5.68
+    },
+    {
+      "lang": "en",
+      "text": "so for our first attempt uh we have",
+      "offset": 760,
+      "duration": 5.48
+    },
+    {
+      "lang": "en",
+      "text": "approver and verifier the verifier",
+      "offset": 762.92,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "receives as input the two uh input",
+      "offset": 765.48,
+      "duration": 5.039
+    },
+    {
+      "lang": "en",
+      "text": "vectors F0 and F1 and the natural",
+      "offset": 767.88,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "strategy would be to do some sort of",
+      "offset": 770.519,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "batching of the proximity claims so this",
+      "offset": 772.04,
+      "duration": 3.96
+    },
+    {
+      "lang": "en",
+      "text": "is a very common technique the idea is",
+      "offset": 773.959,
+      "duration": 3.24
+    },
+    {
+      "lang": "en",
+      "text": "that the verifier will just sample a",
+      "offset": 776,
+      "duration": 3.639
+    },
+    {
+      "lang": "en",
+      "text": "random challenge Alpha and then will",
+      "offset": 777.199,
+      "duration": 5.681
+    },
+    {
+      "lang": "en",
+      "text": "output uh the random combination of F0",
+      "offset": 779.639,
+      "duration": 5.121
+    },
+    {
+      "lang": "en",
+      "text": "and F1 under",
+      "offset": 782.88,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "Alpha okay so let's quickly analyze this",
+      "offset": 784.76,
+      "duration": 5.68
+    },
+    {
+      "lang": "en",
+      "text": "um for completeness like if these two",
+      "offset": 788.24,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "input uh vectors are indeed code words",
+      "offset": 790.44,
+      "duration": 6.36
+    },
+    {
+      "lang": "en",
+      "text": "then since the code is linear uh the",
+      "offset": 794.24,
+      "duration": 4.159
+    },
+    {
+      "lang": "en",
+      "text": "random combination will also be a code",
+      "offset": 796.8,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "word so we're happy um and for soundness",
+      "offset": 798.399,
+      "duration": 5.88
+    },
+    {
+      "lang": "en",
+      "text": "if either of the inputs are far from the",
+      "offset": 802,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "code then resolvement codes exhibit this",
+      "offset": 804.279,
+      "duration": 4.92
+    },
+    {
+      "lang": "en",
+      "text": "property which is uh called a proximity",
+      "offset": 807.12,
+      "duration": 4.76
+    },
+    {
+      "lang": "en",
+      "text": "Gap and basically this proximity G Gap",
+      "offset": 809.199,
+      "duration": 5.161
+    },
+    {
+      "lang": "en",
+      "text": "guarantees that with high probability",
+      "offset": 811.88,
+      "duration": 4.519
+    },
+    {
+      "lang": "en",
+      "text": "right over the choice of alpha the",
+      "offset": 814.36,
+      "duration": 4.599
+    },
+    {
+      "lang": "en",
+      "text": "random combination of uh oh this should",
+      "offset": 816.399,
+      "duration": 5.081
+    },
+    {
+      "lang": "en",
+      "text": "be F0 and F1 the random combination will",
+      "offset": 818.959,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "be Delta far from the",
+      "offset": 821.48,
+      "duration": 4.719
+    },
+    {
+      "lang": "en",
+      "text": "code okay and so that's good as well so",
+      "offset": 823.199,
+      "duration": 4.681
+    },
+    {
+      "lang": "en",
+      "text": "we've satisfied both completeness and",
+      "offset": 826.199,
+      "duration": 4.44
+    },
+    {
+      "lang": "en",
+      "text": "soundness um but there is a problem",
+      "offset": 827.88,
+      "duration": 4.399
+    },
+    {
+      "lang": "en",
+      "text": "which is that we haven't really shown",
+      "offset": 830.639,
+      "duration": 4.601
+    },
+    {
+      "lang": "en",
+      "text": "how the verifier outputs this new Vector",
+      "offset": 832.279,
+      "duration": 5.961
+    },
+    {
+      "lang": "en",
+      "text": "G so clearly the verifier cannot",
+      "offset": 835.24,
+      "duration": 5
+    },
+    {
+      "lang": "en",
+      "text": "literally compute G itself because it",
+      "offset": 838.24,
+      "duration": 4.599
+    },
+    {
+      "lang": "en",
+      "text": "needs to be succinct uh and the length",
+      "offset": 840.24,
+      "duration": 6.44
+    },
+    {
+      "lang": "en",
+      "text": "of G is just uh too too",
+      "offset": 842.839,
+      "duration": 6.761
+    },
+    {
+      "lang": "en",
+      "text": "long um instead what the verifier can do",
+      "offset": 846.68,
+      "duration": 4.36
+    },
+    {
+      "lang": "en",
+      "text": "is it can output the two instance",
+      "offset": 849.6,
+      "duration": 4.2
+    },
+    {
+      "lang": "en",
+      "text": "oracles like F1 and F2 I should say F0",
+      "offset": 851.04,
+      "duration": 6.2
+    },
+    {
+      "lang": "en",
+      "text": "and F1 as well as the scalar Alpha and",
+      "offset": 853.8,
+      "duration": 5.599
+    },
+    {
+      "lang": "en",
+      "text": "this virtually defines G in the sense",
+      "offset": 857.24,
+      "duration": 4.2
+    },
+    {
+      "lang": "en",
+      "text": "that whenever you would query G you can",
+      "offset": 859.399,
+      "duration": 5.88
+    },
+    {
+      "lang": "en",
+      "text": "just query uh F0 and F1 at the same",
+      "offset": 861.44,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "location and then compute the",
+      "offset": 865.279,
+      "duration": 4.881
+    },
+    {
+      "lang": "en",
+      "text": "combination um locally",
+      "offset": 866.88,
+      "duration": 4.6
+    },
+    {
+      "lang": "en",
+      "text": "now the issue is that this is not",
+      "offset": 870.16,
+      "duration": 4.039
+    },
+    {
+      "lang": "en",
+      "text": "allowed in accumulation um intuitively",
+      "offset": 871.48,
+      "duration": 4.919
+    },
+    {
+      "lang": "en",
+      "text": "because now the size of this new",
+      "offset": 874.199,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "instance is two vectors and if we",
+      "offset": 876.399,
+      "duration": 4.281
+    },
+    {
+      "lang": "en",
+      "text": "continue this process of accumulating",
+      "offset": 879.079,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "more and more things the number of",
+      "offset": 880.68,
+      "duration": 5.24
+    },
+    {
+      "lang": "en",
+      "text": "vectors um the the size of the material",
+      "offset": 882.839,
+      "duration": 5.641
+    },
+    {
+      "lang": "en",
+      "text": "in this instance G will continue to grow",
+      "offset": 885.92,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "over time and in in some sense we have",
+      "offset": 888.48,
+      "duration": 4.599
+    },
+    {
+      "lang": "en",
+      "text": "not actually achieved any sort of",
+      "offset": 891.44,
+      "duration": 5.48
+    },
+    {
+      "lang": "en",
+      "text": "compression um because the because our",
+      "offset": 893.079,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "instance is virtually defined over many",
+      "offset": 896.92,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "things things and this is not allowed in",
+      "offset": 898.839,
+      "duration": 6.321
+    },
+    {
+      "lang": "en",
+      "text": "accumulation schemes so uh to get around",
+      "offset": 901.24,
+      "duration": 5.599
+    },
+    {
+      "lang": "en",
+      "text": "this issue we're going to rely on this",
+      "offset": 905.16,
+      "duration": 4.28
+    },
+    {
+      "lang": "en",
+      "text": "uh this very common technique in rol and",
+      "offset": 906.839,
+      "duration": 3.841
+    },
+    {
+      "lang": "en",
+      "text": "proximity tests which is called",
+      "offset": 909.44,
+      "duration": 3.319
+    },
+    {
+      "lang": "en",
+      "text": "quotienting so quotienting originated",
+      "offset": 910.68,
+      "duration": 4.719
+    },
+    {
+      "lang": "en",
+      "text": "from the deep friy protocol and now it's",
+      "offset": 912.759,
+      "duration": 6.2
+    },
+    {
+      "lang": "en",
+      "text": "used uh elsewhere such as in stir uh and",
+      "offset": 915.399,
+      "duration": 6.201
+    },
+    {
+      "lang": "en",
+      "text": "here so I've explicitly defined",
+      "offset": 918.959,
+      "duration": 6.361
+    },
+    {
+      "lang": "en",
+      "text": "quotients here um so given some Vector F",
+      "offset": 921.6,
+      "duration": 6.52
+    },
+    {
+      "lang": "en",
+      "text": "and some scalers XY we we say that the",
+      "offset": 925.32,
+      "duration": 5.92
+    },
+    {
+      "lang": "en",
+      "text": "quotient of x under XY uh is also a",
+      "offset": 928.12,
+      "duration": 5.88
+    },
+    {
+      "lang": "en",
+      "text": "vector and it's defined according to",
+      "offset": 931.24,
+      "duration": 3.88
+    },
+    {
+      "lang": "en",
+      "text": "this",
+      "offset": 934,
+      "duration": 4.519
+    },
+    {
+      "lang": "en",
+      "text": "equation so I don't want to like go too",
+      "offset": 935.12,
+      "duration": 4.839
+    },
+    {
+      "lang": "en",
+      "text": "much into the specifics but for",
+      "offset": 938.519,
+      "duration": 3.12
+    },
+    {
+      "lang": "en",
+      "text": "completeness basically we can observe",
+      "offset": 939.959,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "the following uh given a valid code word",
+      "offset": 941.639,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "a valid read Solomon code word the",
+      "offset": 944.279,
+      "duration": 5.401
+    },
+    {
+      "lang": "en",
+      "text": "quotient uh of f under X and its",
+      "offset": 946.519,
+      "duration": 5.24
+    },
+    {
+      "lang": "en",
+      "text": "evaluation at X will always be in the",
+      "offset": 949.68,
+      "duration": 5.88
+    },
+    {
+      "lang": "en",
+      "text": "code uh for any choice of uh",
+      "offset": 951.759,
+      "duration": 6.32
+    },
+    {
+      "lang": "en",
+      "text": "X and for soundness we have this",
+      "offset": 955.56,
+      "duration": 5.519
+    },
+    {
+      "lang": "en",
+      "text": "observation that gives an arbitrary um",
+      "offset": 958.079,
+      "duration": 6.401
+    },
+    {
+      "lang": "en",
+      "text": "Vector F uh letting U be the the code",
+      "offset": 961.079,
+      "duration": 5.921
+    },
+    {
+      "lang": "en",
+      "text": "word which is uniquely Delta close to F",
+      "offset": 964.48,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "here I'm assuming that Delta is at most",
+      "offset": 967,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "the unique decoding radius of the code",
+      "offset": 968.72,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "um If U of X is not equal to",
+      "offset": 971.48,
+      "duration": 5.799
+    },
+    {
+      "lang": "en",
+      "text": "Y then the quotient will be Delta far",
+      "offset": 974.24,
+      "duration": 6.68
+    },
+    {
+      "lang": "en",
+      "text": "from the code okay and quotients also",
+      "offset": 977.279,
+      "duration": 5.601
+    },
+    {
+      "lang": "en",
+      "text": "generalized to more points so if I I can",
+      "offset": 980.92,
+      "duration": 5.279
+    },
+    {
+      "lang": "en",
+      "text": "quotient F by a bunch of XI y points and",
+      "offset": 982.88,
+      "duration": 6.12
+    },
+    {
+      "lang": "en",
+      "text": "if you disagrees with any of the XI Yi",
+      "offset": 986.199,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "then I get that the quotient is Delta",
+      "offset": 989,
+      "duration": 3.72
+    },
+    {
+      "lang": "en",
+      "text": "far from the",
+      "offset": 990.839,
+      "duration": 3.841
+    },
+    {
+      "lang": "en",
+      "text": "code",
+      "offset": 992.72,
+      "duration": 4.52
+    },
+    {
+      "lang": "en",
+      "text": "cool so the way that we're going to use",
+      "offset": 994.68,
+      "duration": 4.959
+    },
+    {
+      "lang": "en",
+      "text": "quotients in our protocol is uh Loosely",
+      "offset": 997.24,
+      "duration": 6.399
+    },
+    {
+      "lang": "en",
+      "text": "inspired by um stir so stir also uses",
+      "offset": 999.639,
+      "duration": 6.32
+    },
+    {
+      "lang": "en",
+      "text": "quotients and the intuition in both",
+      "offset": 1003.639,
+      "duration": 4.2
+    },
+    {
+      "lang": "en",
+      "text": "cases is that we're going to translate a",
+      "offset": 1005.959,
+      "duration": 3.721
+    },
+    {
+      "lang": "en",
+      "text": "proximity Claim about a virtual",
+      "offset": 1007.839,
+      "duration": 3.841
+    },
+    {
+      "lang": "en",
+      "text": "combination of vectors like we had in",
+      "offset": 1009.68,
+      "duration": 4.399
+    },
+    {
+      "lang": "en",
+      "text": "the many to one reduction and we're",
+      "offset": 1011.68,
+      "duration": 4.159
+    },
+    {
+      "lang": "en",
+      "text": "going to convert it into a proximity",
+      "offset": 1014.079,
+      "duration": 4.041
+    },
+    {
+      "lang": "en",
+      "text": "Claim about a single Vector which is",
+      "offset": 1015.839,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "amenable to to repeated",
+      "offset": 1018.12,
+      "duration": 5.919
+    },
+    {
+      "lang": "en",
+      "text": "accumulation so the idea is that the",
+      "offset": 1021.199,
+      "duration": 4.84
+    },
+    {
+      "lang": "en",
+      "text": "prover is going to actually recommit to",
+      "offset": 1024.039,
+      "duration": 5.4
+    },
+    {
+      "lang": "en",
+      "text": "this random combination f",
+      "offset": 1026.039,
+      "duration": 6.121
+    },
+    {
+      "lang": "en",
+      "text": "um and then the verifier is now going to",
+      "offset": 1029.439,
+      "duration": 6.36
+    },
+    {
+      "lang": "en",
+      "text": "quotient F uh by some points X iyi to",
+      "offset": 1032.16,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "define the new",
+      "offset": 1035.799,
+      "duration": 4.601
+    },
+    {
+      "lang": "en",
+      "text": "instance and these points the the XI are",
+      "offset": 1037.28,
+      "duration": 5.6
+    },
+    {
+      "lang": "en",
+      "text": "obtained by randomly sampling locations",
+      "offset": 1040.4,
+      "duration": 4.639
+    },
+    {
+      "lang": "en",
+      "text": "in the vector and then the verifier",
+      "offset": 1042.88,
+      "duration": 4.679
+    },
+    {
+      "lang": "en",
+      "text": "actually queries F0 and F1 to compute",
+      "offset": 1045.039,
+      "duration": 5.801
+    },
+    {
+      "lang": "en",
+      "text": "what uh Yi should be",
+      "offset": 1047.559,
+      "duration": 3.281
+    },
+    {
+      "lang": "en",
+      "text": "okay um and yeah the output claim is",
+      "offset": 1051.36,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "that this new quotient G is going to be",
+      "offset": 1053.96,
+      "duration": 6.52
+    },
+    {
+      "lang": "en",
+      "text": "Delta close to uh the",
+      "offset": 1056.88,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "code okay and I should note that stir",
+      "offset": 1061.24,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "also uses this sort of recommitting",
+      "offset": 1064.32,
+      "duration": 5.719
+    },
+    {
+      "lang": "en",
+      "text": "strategy but in some sense for a",
+      "offset": 1066.6,
+      "duration": 5.92
+    },
+    {
+      "lang": "en",
+      "text": "qualitatively different reason um in",
+      "offset": 1070.039,
+      "duration": 4.801
+    },
+    {
+      "lang": "en",
+      "text": "stir you kind of recommit over a larger",
+      "offset": 1072.52,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "domain and they do this to kind of",
+      "offset": 1074.84,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "improve the efficiency of their",
+      "offset": 1077.08,
+      "duration": 5
+    },
+    {
+      "lang": "en",
+      "text": "proximity test whereas for us we're just",
+      "offset": 1078.44,
+      "duration": 6.04
+    },
+    {
+      "lang": "en",
+      "text": "recommitting over the same domain um and",
+      "offset": 1082.08,
+      "duration": 4.28
+    },
+    {
+      "lang": "en",
+      "text": "the only reason why we care about this",
+      "offset": 1084.48,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "is that we need to actually achieve some",
+      "offset": 1086.36,
+      "duration": 4.439
+    },
+    {
+      "lang": "en",
+      "text": "form of compression this is necessary in",
+      "offset": 1088,
+      "duration": 4.799
+    },
+    {
+      "lang": "en",
+      "text": "accumulation um and it's actually very",
+      "offset": 1090.799,
+      "duration": 3.521
+    },
+    {
+      "lang": "en",
+      "text": "important that we recommit over the same",
+      "offset": 1092.799,
+      "duration": 3.521
+    },
+    {
+      "lang": "en",
+      "text": "domain because this is what allows us to",
+      "offset": 1094.32,
+      "duration": 4.52
+    },
+    {
+      "lang": "en",
+      "text": "kind of uniformly continue to um",
+      "offset": 1096.32,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "accumulate more and more",
+      "offset": 1098.84,
+      "duration": 6.64
+    },
+    {
+      "lang": "en",
+      "text": "things okay so let's take a look at how",
+      "offset": 1101.44,
+      "duration": 5.84
+    },
+    {
+      "lang": "en",
+      "text": "batching and quotients can be used",
+      "offset": 1105.48,
+      "duration": 4.12
+    },
+    {
+      "lang": "en",
+      "text": "together to give us our many to one",
+      "offset": 1107.28,
+      "duration": 4.279
+    },
+    {
+      "lang": "en",
+      "text": "reduction so it's the same setup as",
+      "offset": 1109.6,
+      "duration": 6.199
+    },
+    {
+      "lang": "en",
+      "text": "before can I ask a question please sorry",
+      "offset": 1111.559,
+      "duration": 7.161
+    },
+    {
+      "lang": "en",
+      "text": "y sorry just go back uh a slide real",
+      "offset": 1115.799,
+      "duration": 5.88
+    },
+    {
+      "lang": "en",
+      "text": "quick",
+      "offset": 1118.72,
+      "duration": 2.959
+    },
+    {
+      "lang": "en",
+      "text": "yeah okay so verifier defines quotient G",
+      "offset": 1121.88,
+      "duration": 5.799
+    },
+    {
+      "lang": "en",
+      "text": "but but G is still virtual and depends",
+      "offset": 1124.919,
+      "duration": 6.601
+    },
+    {
+      "lang": "en",
+      "text": "on F0 and F1 right so how have we made",
+      "offset": 1127.679,
+      "duration": 6.801
+    },
+    {
+      "lang": "en",
+      "text": "progress um yeah so you're right that g",
+      "offset": 1131.52,
+      "duration": 6.44
+    },
+    {
+      "lang": "en",
+      "text": "is virtual but G is virtual virtually",
+      "offset": 1134.48,
+      "duration": 6.84
+    },
+    {
+      "lang": "en",
+      "text": "defined only over F not F0",
+      "offset": 1137.96,
+      "duration": 7.959
+    },
+    {
+      "lang": "en",
+      "text": "F1 um well Pro it recommits to yeah so",
+      "offset": 1141.32,
+      "duration": 7.92
+    },
+    {
+      "lang": "en",
+      "text": "this this F is now sent as a new Oracle",
+      "offset": 1145.919,
+      "duration": 5.64
+    },
+    {
+      "lang": "en",
+      "text": "um and the quotient is now defined over",
+      "offset": 1149.24,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "a single Oracle which means that it's oh",
+      "offset": 1151.559,
+      "duration": 6.48
+    },
+    {
+      "lang": "en",
+      "text": "quotient F by X and Y but the x's and",
+      "offset": 1154.36,
+      "duration": 7.88
+    },
+    {
+      "lang": "en",
+      "text": "y's come from from F0 and F1 but f is is",
+      "offset": 1158.039,
+      "duration": 7.321
+    },
+    {
+      "lang": "en",
+      "text": "the recommitted thing um okay",
+      "offset": 1162.24,
+      "duration": 6.12
+    },
+    {
+      "lang": "en",
+      "text": "interesting",
+      "offset": 1165.36,
+      "duration": 3
+    },
+    {
+      "lang": "en",
+      "text": "um yeah I mean I think it'll also be",
+      "offset": 1169.96,
+      "duration": 6.04
+    },
+    {
+      "lang": "en",
+      "text": "clear uh with this visual um so the",
+      "offset": 1172.039,
+      "duration": 5.681
+    },
+    {
+      "lang": "en",
+      "text": "verifier samples the challenge now the",
+      "offset": 1176,
+      "duration": 4.2
+    },
+    {
+      "lang": "en",
+      "text": "prover is yeah going to send over the",
+      "offset": 1177.72,
+      "duration": 4.319
+    },
+    {
+      "lang": "en",
+      "text": "claimed random combination as a new",
+      "offset": 1180.2,
+      "duration": 3.959
+    },
+    {
+      "lang": "en",
+      "text": "Oracle F so at this point we don't",
+      "offset": 1182.039,
+      "duration": 3.801
+    },
+    {
+      "lang": "en",
+      "text": "actually know like for a dishonest",
+      "offset": 1184.159,
+      "duration": 3.961
+    },
+    {
+      "lang": "en",
+      "text": "prover we don't actually know if f is",
+      "offset": 1185.84,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "equal to the random combination or",
+      "offset": 1188.12,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "not but we're going to use this quotient",
+      "offset": 1190.48,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "to somehow enforce consistency between F",
+      "offset": 1193.24,
+      "duration": 4.6
+    },
+    {
+      "lang": "en",
+      "text": "and the random combination the verifier",
+      "offset": 1195.76,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "is going to randomly choose a bunch of",
+      "offset": 1197.84,
+      "duration": 4.199
+    },
+    {
+      "lang": "en",
+      "text": "indices it's going to query the original",
+      "offset": 1199.28,
+      "duration": 5.56
+    },
+    {
+      "lang": "en",
+      "text": "oracles at those indices and then it",
+      "offset": 1202.039,
+      "duration": 4.361
+    },
+    {
+      "lang": "en",
+      "text": "uses this information to Output the",
+      "offset": 1204.84,
+      "duration": 3.719
+    },
+    {
+      "lang": "en",
+      "text": "quotient uh",
+      "offset": 1206.4,
+      "duration": 5.159
+    },
+    {
+      "lang": "en",
+      "text": "G okay and again G is virtually defined",
+      "offset": 1208.559,
+      "duration": 5.321
+    },
+    {
+      "lang": "en",
+      "text": "over the new Oracle",
+      "offset": 1211.559,
+      "duration": 6.921
+    },
+    {
+      "lang": "en",
+      "text": "F so if we Analyze This protocol go uh",
+      "offset": 1213.88,
+      "duration": 8.4
+    },
+    {
+      "lang": "en",
+      "text": "how big are the um xon to",
+      "offset": 1218.48,
+      "duration": 7.16
+    },
+    {
+      "lang": "en",
+      "text": "XT oh yeah so T here I should have yeah",
+      "offset": 1222.28,
+      "duration": 5.639
+    },
+    {
+      "lang": "en",
+      "text": "I probably should have clarified this T",
+      "offset": 1225.64,
+      "duration": 3.96
+    },
+    {
+      "lang": "en",
+      "text": "will be um",
+      "offset": 1227.919,
+      "duration": 3.401
+    },
+    {
+      "lang": "en",
+      "text": "kind of a linear in the security",
+      "offset": 1229.6,
+      "duration": 4.12
+    },
+    {
+      "lang": "en",
+      "text": "parameter so you can think of t as",
+      "offset": 1231.32,
+      "duration": 5.56
+    },
+    {
+      "lang": "en",
+      "text": "Lambda I",
+      "offset": 1233.72,
+      "duration": 3.16
+    },
+    {
+      "lang": "en",
+      "text": "see yeah okay um so for the analysis",
+      "offset": 1237.2,
+      "duration": 5.8
+    },
+    {
+      "lang": "en",
+      "text": "right if for completeness it's the same",
+      "offset": 1241.24,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "as before um if the two inputs are in",
+      "offset": 1243,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "the code then the combination will be in",
+      "offset": 1246.12,
+      "duration": 5.679
+    },
+    {
+      "lang": "en",
+      "text": "the code and since the honest prover",
+      "offset": 1247.4,
+      "duration": 5.92
+    },
+    {
+      "lang": "en",
+      "text": "commits to the same",
+      "offset": 1251.799,
+      "duration": 3.681
+    },
+    {
+      "lang": "en",
+      "text": "combination uh the quotient will OB",
+      "offset": 1253.32,
+      "duration": 4.28
+    },
+    {
+      "lang": "en",
+      "text": "always be in the code as",
+      "offset": 1255.48,
+      "duration": 4.559
+    },
+    {
+      "lang": "en",
+      "text": "well now for soundness again it's the",
+      "offset": 1257.6,
+      "duration": 4.52
+    },
+    {
+      "lang": "en",
+      "text": "same as before if either of the input",
+      "offset": 1260.039,
+      "duration": 3.841
+    },
+    {
+      "lang": "en",
+      "text": "vectors are far from the code then the",
+      "offset": 1262.12,
+      "duration": 3.679
+    },
+    {
+      "lang": "en",
+      "text": "proximity Gap guarantees that the",
+      "offset": 1263.88,
+      "duration": 4.2
+    },
+    {
+      "lang": "en",
+      "text": "combination is far from the",
+      "offset": 1265.799,
+      "duration": 5.961
+    },
+    {
+      "lang": "en",
+      "text": "code and now letting you be the unique",
+      "offset": 1268.08,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "code word which is Delta close to the",
+      "offset": 1271.76,
+      "duration": 5.32
+    },
+    {
+      "lang": "en",
+      "text": "the recommitment F if it",
+      "offset": 1273.84,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "exists we know that U is going to be",
+      "offset": 1277.08,
+      "duration": 4.079
+    },
+    {
+      "lang": "en",
+      "text": "Delta far from the random combination",
+      "offset": 1279.2,
+      "duration": 3.359
+    },
+    {
+      "lang": "en",
+      "text": "right because this random combination is",
+      "offset": 1281.159,
+      "duration": 3.681
+    },
+    {
+      "lang": "en",
+      "text": "Delta far from the code and therefore",
+      "offset": 1282.559,
+      "duration": 5.801
+    },
+    {
+      "lang": "en",
+      "text": "with high probability the quotient of",
+      "offset": 1284.84,
+      "duration": 6.64
+    },
+    {
+      "lang": "en",
+      "text": "the new Oracle by the the values",
+      "offset": 1288.36,
+      "duration": 5.319
+    },
+    {
+      "lang": "en",
+      "text": "computed from the old oracles will be",
+      "offset": 1291.48,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "Delta far from the",
+      "offset": 1293.679,
+      "duration": 2.921
+    },
+    {
+      "lang": "en",
+      "text": "code okay and then we're so really there",
+      "offset": 1296.64,
+      "duration": 4.84
+    },
+    {
+      "lang": "en",
+      "text": "are two cases right there is the case",
+      "offset": 1299.36,
+      "duration": 7.28
+    },
+    {
+      "lang": "en",
+      "text": "that F0 and F1 or or F1 are far and thus",
+      "offset": 1301.48,
+      "duration": 9.88
+    },
+    {
+      "lang": "en",
+      "text": "their combination is and and thus",
+      "offset": 1306.64,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "um right but but they could also be",
+      "offset": 1311.84,
+      "duration": 5.24
+    },
+    {
+      "lang": "en",
+      "text": "close and then F just be close to a",
+      "offset": 1314.2,
+      "duration": 5.92
+    },
+    {
+      "lang": "en",
+      "text": "different code word something like that",
+      "offset": 1317.08,
+      "duration": 5.839
+    },
+    {
+      "lang": "en",
+      "text": "right yes but",
+      "offset": 1320.12,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "um sorry could you could you say that",
+      "offset": 1322.919,
+      "duration": 3.401
+    },
+    {
+      "lang": "en",
+      "text": "last sentence",
+      "offset": 1325,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "again um so so it could happen that F0",
+      "offset": 1326.32,
+      "duration": 6.16
+    },
+    {
+      "lang": "en",
+      "text": "and F1 are are close to the code or",
+      "offset": 1330.36,
+      "duration": 3.559
+    },
+    {
+      "lang": "en",
+      "text": "let's say they're even code words or",
+      "offset": 1332.48,
+      "duration": 4.04
+    },
+    {
+      "lang": "en",
+      "text": "something right um and then their",
+      "offset": 1333.919,
+      "duration": 5.64
+    },
+    {
+      "lang": "en",
+      "text": "combination is of course also close but",
+      "offset": 1336.52,
+      "duration": 4.159
+    },
+    {
+      "lang": "en",
+      "text": "then",
+      "offset": 1339.559,
+      "duration": 4.281
+    },
+    {
+      "lang": "en",
+      "text": "f f could just be close to a completely",
+      "offset": 1340.679,
+      "duration": 4.841
+    },
+    {
+      "lang": "en",
+      "text": "different code word I mean that's",
+      "offset": 1343.84,
+      "duration": 4.079
+    },
+    {
+      "lang": "en",
+      "text": "another thing the prover could do badly",
+      "offset": 1345.52,
+      "duration": 5.639
+    },
+    {
+      "lang": "en",
+      "text": "in which must which would also get",
+      "offset": 1347.919,
+      "duration": 5.081
+    },
+    {
+      "lang": "en",
+      "text": "caught in other words it looks like",
+      "offset": 1351.159,
+      "duration": 3.12
+    },
+    {
+      "lang": "en",
+      "text": "you're only you only you're only",
+      "offset": 1353,
+      "duration": 4.2
+    },
+    {
+      "lang": "en",
+      "text": "analyzing the case where F0 and F1 are",
+      "offset": 1354.279,
+      "duration": 6.321
+    },
+    {
+      "lang": "en",
+      "text": "far there's another there's another way",
+      "offset": 1357.2,
+      "duration": 6.32
+    },
+    {
+      "lang": "en",
+      "text": "to for the pr to to to be malicious",
+      "offset": 1360.6,
+      "duration": 5.64
+    },
+    {
+      "lang": "en",
+      "text": "which is",
+      "offset": 1363.52,
+      "duration": 6.6
+    },
+    {
+      "lang": "en",
+      "text": "inconsistency sure yes um yes I guess",
+      "offset": 1366.24,
+      "duration": 5.24
+    },
+    {
+      "lang": "en",
+      "text": "I've kind",
+      "offset": 1370.12,
+      "duration": 4.76
+    },
+    {
+      "lang": "en",
+      "text": "of overlook this but uh in the slide",
+      "offset": 1371.48,
+      "duration": 6.559
+    },
+    {
+      "lang": "en",
+      "text": "here but kind of you will you will",
+      "offset": 1374.88,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "always be",
+      "offset": 1378.039,
+      "duration": 2.361
+    },
+    {
+      "lang": "en",
+      "text": "since the combination is far from the",
+      "offset": 1378.96,
+      "duration": 3.199
+    },
+    {
+      "lang": "en",
+      "text": "code any possible code word it will be",
+      "offset": 1380.4,
+      "duration": 3.08
+    },
+    {
+      "lang": "en",
+      "text": "far from any possible code word",
+      "offset": 1382.159,
+      "duration": 3
+    },
+    {
+      "lang": "en",
+      "text": "regardless of what the Prov",
+      "offset": 1383.48,
+      "duration": 5.319
+    },
+    {
+      "lang": "en",
+      "text": "chooses if if it if F and f0o or F1 are",
+      "offset": 1385.159,
+      "duration": 5.801
+    },
+    {
+      "lang": "en",
+      "text": "are far but again that that's just one",
+      "offset": 1388.799,
+      "duration": 5.841
+    },
+    {
+      "lang": "en",
+      "text": "way for the pro to be to be bad the",
+      "offset": 1390.96,
+      "duration": 5.199
+    },
+    {
+      "lang": "en",
+      "text": "other way is for them to be close and",
+      "offset": 1394.64,
+      "duration": 3.56
+    },
+    {
+      "lang": "en",
+      "text": "then for f to be close to something else",
+      "offset": 1396.159,
+      "duration": 3.961
+    },
+    {
+      "lang": "en",
+      "text": "different a code word different than the",
+      "offset": 1398.2,
+      "duration": 4.479
+    },
+    {
+      "lang": "en",
+      "text": "one that their combination is close to",
+      "offset": 1400.12,
+      "duration": 4.439
+    },
+    {
+      "lang": "en",
+      "text": "yeah but I I guess we don't really care",
+      "offset": 1402.679,
+      "duration": 4.36
+    },
+    {
+      "lang": "en",
+      "text": "about this in the in the soundness case",
+      "offset": 1404.559,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "right like for soundness we want to",
+      "offset": 1407.039,
+      "duration": 4.361
+    },
+    {
+      "lang": "en",
+      "text": "assume that like it's only proximity you",
+      "offset": 1408.799,
+      "duration": 4.401
+    },
+    {
+      "lang": "en",
+      "text": "oh oh okay sorry sorry it's only",
+      "offset": 1411.4,
+      "duration": 3.96
+    },
+    {
+      "lang": "en",
+      "text": "proximity that you actually care about",
+      "offset": 1413.2,
+      "duration": 4.04
+    },
+    {
+      "lang": "en",
+      "text": "my bad yeah",
+      "offset": 1415.36,
+      "duration": 4.199
+    },
+    {
+      "lang": "en",
+      "text": "um so it will be a bit more interesting",
+      "offset": 1417.24,
+      "duration": 3.72
+    },
+    {
+      "lang": "en",
+      "text": "when we get to the main accumulation",
+      "offset": 1419.559,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "scheme um but for now yeah we only care",
+      "offset": 1420.96,
+      "duration": 5.4
+    },
+    {
+      "lang": "en",
+      "text": "about proximity yeah yeah yeah",
+      "offset": 1423.159,
+      "duration": 7.161
+    },
+    {
+      "lang": "en",
+      "text": "sorry okay um and finally I just want to",
+      "offset": 1426.36,
+      "duration": 6.96
+    },
+    {
+      "lang": "en",
+      "text": "yeah reemphasize this fact the verifier",
+      "offset": 1430.32,
+      "duration": 5.68
+    },
+    {
+      "lang": "en",
+      "text": "its output really is a proof Oracle F",
+      "offset": 1433.32,
+      "duration": 4.92
+    },
+    {
+      "lang": "en",
+      "text": "which is just taken from like selected",
+      "offset": 1436,
+      "duration": 4.12
+    },
+    {
+      "lang": "en",
+      "text": "from the previous message as well as the",
+      "offset": 1438.24,
+      "duration": 4.679
+    },
+    {
+      "lang": "en",
+      "text": "scalers X iyi and this virtually defines",
+      "offset": 1440.12,
+      "duration": 5.159
+    },
+    {
+      "lang": "en",
+      "text": "G and and since G is only virtually",
+      "offset": 1442.919,
+      "duration": 5.081
+    },
+    {
+      "lang": "en",
+      "text": "defined over a single Oracle um we've",
+      "offset": 1445.279,
+      "duration": 3.801
+    },
+    {
+      "lang": "en",
+      "text": "achieved",
+      "offset": 1448,
+      "duration": 3.12
+    },
+    {
+      "lang": "en",
+      "text": "compression okay and and all of this",
+      "offset": 1449.08,
+      "duration": 3.959
+    },
+    {
+      "lang": "en",
+      "text": "just generalizes to like a many to one",
+      "offset": 1451.12,
+      "duration": 3.88
+    },
+    {
+      "lang": "en",
+      "text": "reduction not just to a two to",
+      "offset": 1453.039,
+      "duration": 3.601
+    },
+    {
+      "lang": "en",
+      "text": "one",
+      "offset": 1455,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "okay so let me zoom out a bit um so",
+      "offset": 1456.64,
+      "duration": 5
+    },
+    {
+      "lang": "en",
+      "text": "actually what we have already is enough",
+      "offset": 1460.12,
+      "duration": 3.4
+    },
+    {
+      "lang": "en",
+      "text": "for an accumulation scheme like a",
+      "offset": 1461.64,
+      "duration": 4.159
+    },
+    {
+      "lang": "en",
+      "text": "non-trivial accumulation scheme the idea",
+      "offset": 1463.52,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "is okay we have a read solement",
+      "offset": 1465.799,
+      "duration": 3.12
+    },
+    {
+      "lang": "en",
+      "text": "proximity accumulation like this many",
+      "offset": 1467.44,
+      "duration": 3.599
+    },
+    {
+      "lang": "en",
+      "text": "to1 reduction and then we can kind of",
+      "offset": 1468.919,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "reuse any existing initial reduction",
+      "offset": 1471.039,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "from R1 CS to read Solon proximity claim",
+      "offset": 1473.399,
+      "duration": 5.801
+    },
+    {
+      "lang": "en",
+      "text": "like from snarks um and this gives us an",
+      "offset": 1475.679,
+      "duration": 5.88
+    },
+    {
+      "lang": "en",
+      "text": "I guess interesting accumulation scheme",
+      "offset": 1479.2,
+      "duration": 4.599
+    },
+    {
+      "lang": "en",
+      "text": "which has ASM totically fewer queries",
+      "offset": 1481.559,
+      "duration": 4.281
+    },
+    {
+      "lang": "en",
+      "text": "than um it snark",
+      "offset": 1483.799,
+      "duration": 4.081
+    },
+    {
+      "lang": "en",
+      "text": "counterpart uh now the downside of this",
+      "offset": 1485.84,
+      "duration": 3.88
+    },
+    {
+      "lang": "en",
+      "text": "approach is that this initial reduction",
+      "offset": 1487.88,
+      "duration": 3.72
+    },
+    {
+      "lang": "en",
+      "text": "still involves quite a bit of snark",
+      "offset": 1489.72,
+      "duration": 4.679
+    },
+    {
+      "lang": "en",
+      "text": "Machinery um roughly speaking this",
+      "offset": 1491.6,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "initial reduction will correspond will",
+      "offset": 1494.399,
+      "duration": 3.081
+    },
+    {
+      "lang": "en",
+      "text": "usually correspond to some sort of",
+      "offset": 1496.08,
+      "duration": 3.8
+    },
+    {
+      "lang": "en",
+      "text": "polinomial I",
+      "offset": 1497.48,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "um and the prover",
+      "offset": 1499.88,
+      "duration": 4.76
+    },
+    {
+      "lang": "en",
+      "text": "is and I've kind of omitted detail here",
+      "offset": 1502.2,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "but typically this proximity claim the",
+      "offset": 1504.64,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "vector that we want to claim proximity",
+      "offset": 1507.08,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "to the code for is actually virtually",
+      "offset": 1508.72,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "defined itself over like K different",
+      "offset": 1511.08,
+      "duration": 4.599
+    },
+    {
+      "lang": "en",
+      "text": "Oracles uh where the K oracles are sent",
+      "offset": 1513.36,
+      "duration": 4.919
+    },
+    {
+      "lang": "en",
+      "text": "in the initial reduction and therefore",
+      "offset": 1515.679,
+      "duration": 5.521
+    },
+    {
+      "lang": "en",
+      "text": "the verifier actually is making K times",
+      "offset": 1518.279,
+      "duration": 4.52
+    },
+    {
+      "lang": "en",
+      "text": "o of Lambda queries like o Lambda",
+      "offset": 1521.2,
+      "duration": 5.32
+    },
+    {
+      "lang": "en",
+      "text": "queries to each Oracle in order to um uh",
+      "offset": 1522.799,
+      "duration": 7.081
+    },
+    {
+      "lang": "en",
+      "text": "query like the virtual combination of",
+      "offset": 1526.52,
+      "duration": 5.84
+    },
+    {
+      "lang": "en",
+      "text": "so the natural question is can we do",
+      "offset": 1529.88,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "better and indeed our main result shows",
+      "offset": 1532.36,
+      "duration": 4.439
+    },
+    {
+      "lang": "en",
+      "text": "that we can kind of get a direct",
+      "offset": 1535.24,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "accumulation scheme for R1 CS or",
+      "offset": 1536.799,
+      "duration": 6.721
+    },
+    {
+      "lang": "en",
+      "text": "whatever constraint system You' like um",
+      "offset": 1539.72,
+      "duration": 5.079
+    },
+    {
+      "lang": "en",
+      "text": "where you don't have this sort of like",
+      "offset": 1543.52,
+      "duration": 3.48
+    },
+    {
+      "lang": "en",
+      "text": "multiplicative overhead of K stemming",
+      "offset": 1544.799,
+      "duration": 6.6
+    },
+    {
+      "lang": "en",
+      "text": "from um like the snark machinery and",
+      "offset": 1547,
+      "duration": 5.919
+    },
+    {
+      "lang": "en",
+      "text": "it's Direct in the sense that it looks",
+      "offset": 1551.399,
+      "duration": 3
+    },
+    {
+      "lang": "en",
+      "text": "very similar to kind of existing",
+      "offset": 1552.919,
+      "duration": 3.561
+    },
+    {
+      "lang": "en",
+      "text": "accumulation schemes like Nova protostar",
+      "offset": 1554.399,
+      "duration": 4.361
+    },
+    {
+      "lang": "en",
+      "text": "Proto Galaxy where kind of all the does",
+      "offset": 1556.48,
+      "duration": 4.52
+    },
+    {
+      "lang": "en",
+      "text": "is commit to the witness here",
+      "offset": 1558.76,
+      "duration": 3.799
+    },
+    {
+      "lang": "en",
+      "text": "intuitively all theover is going to do",
+      "offset": 1561,
+      "duration": 5.32
+    },
+    {
+      "lang": "en",
+      "text": "is commit to an encoding of the",
+      "offset": 1562.559,
+      "duration": 5.48
+    },
+    {
+      "lang": "en",
+      "text": "witness",
+      "offset": 1566.32,
+      "duration": 4.44
+    },
+    {
+      "lang": "en",
+      "text": "okay so the high level approach is that",
+      "offset": 1568.039,
+      "duration": 4.401
+    },
+    {
+      "lang": "en",
+      "text": "we're going to Define these things which",
+      "offset": 1570.76,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "I call like an algebraic proximity claim",
+      "offset": 1572.44,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "so intuitively like not only do you want",
+      "offset": 1575.72,
+      "duration": 4.559
+    },
+    {
+      "lang": "en",
+      "text": "to claim that f is close to the code a",
+      "offset": 1577.96,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "vector f is close to the code but we",
+      "offset": 1580.279,
+      "duration": 4.361
+    },
+    {
+      "lang": "en",
+      "text": "also furthermore want to claim that f is",
+      "offset": 1582.6,
+      "duration": 4.079
+    },
+    {
+      "lang": "en",
+      "text": "close to a valid encoding of the winess",
+      "offset": 1584.64,
+      "duration": 3.279
+    },
+    {
+      "lang": "en",
+      "text": "so the specific code word that f is",
+      "offset": 1586.679,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "close to decodes to a valid R1 CS",
+      "offset": 1587.919,
+      "duration": 5.961
+    },
+    {
+      "lang": "en",
+      "text": "witness right so recall that W is a",
+      "offset": 1590.919,
+      "duration": 5.961
+    },
+    {
+      "lang": "en",
+      "text": "valid R1 CS witness if this uh Matrix",
+      "offset": 1593.88,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "equation holds um where Z is the",
+      "offset": 1596.88,
+      "duration": 4.679
+    },
+    {
+      "lang": "en",
+      "text": "concamin of the instance and witness",
+      "offset": 1599,
+      "duration": 4.52
+    },
+    {
+      "lang": "en",
+      "text": "vectors and what we can do is we can",
+      "offset": 1601.559,
+      "duration": 4.321
+    },
+    {
+      "lang": "en",
+      "text": "kind of Define a subset of the code uh",
+      "offset": 1603.52,
+      "duration": 5
+    },
+    {
+      "lang": "en",
+      "text": "which I call like the subcode C",
+      "offset": 1605.88,
+      "duration": 4.76
+    },
+    {
+      "lang": "en",
+      "text": "subx which consists of all of the",
+      "offset": 1608.52,
+      "duration": 5.399
+    },
+    {
+      "lang": "en",
+      "text": "encodings of valid Witnesses valid R1 CS",
+      "offset": 1610.64,
+      "duration": 5.399
+    },
+    {
+      "lang": "en",
+      "text": "Witnesses",
+      "offset": 1613.919,
+      "duration": 5.561
+    },
+    {
+      "lang": "en",
+      "text": "okay and if we could construct a many to",
+      "offset": 1616.039,
+      "duration": 5.961
+    },
+    {
+      "lang": "en",
+      "text": "one reduction for algebraic proximity",
+      "offset": 1619.48,
+      "duration": 5.16
+    },
+    {
+      "lang": "en",
+      "text": "claims so of the form that f is Delta",
+      "offset": 1622,
+      "duration": 6.64
+    },
+    {
+      "lang": "en",
+      "text": "close to C C subx then we're done um I",
+      "offset": 1624.64,
+      "duration": 5.759
+    },
+    {
+      "lang": "en",
+      "text": "claim that we're done like we have a",
+      "offset": 1628.64,
+      "duration": 3.399
+    },
+    {
+      "lang": "en",
+      "text": "very cheap initial reduction to an",
+      "offset": 1630.399,
+      "duration": 3.481
+    },
+    {
+      "lang": "en",
+      "text": "algebraic proximity claim and then we",
+      "offset": 1632.039,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "can just run this many to one",
+      "offset": 1633.88,
+      "duration": 3.279
+    },
+    {
+      "lang": "en",
+      "text": "reduction okay um so actually what we're",
+      "offset": 1638.08,
+      "duration": 4.599
+    },
+    {
+      "lang": "en",
+      "text": "going to work with is like a compressed",
+      "offset": 1640.96,
+      "duration": 3.439
+    },
+    {
+      "lang": "en",
+      "text": "version of these algebraic proximity",
+      "offset": 1642.679,
+      "duration": 4.521
+    },
+    {
+      "lang": "en",
+      "text": "claims which kind of batch together all",
+      "offset": 1644.399,
+      "duration": 5.961
+    },
+    {
+      "lang": "en",
+      "text": "of the readall all of the R1 CS",
+      "offset": 1647.2,
+      "duration": 6.28
+    },
+    {
+      "lang": "en",
+      "text": "constraints so for each row of the all",
+      "offset": 1650.36,
+      "duration": 6.28
+    },
+    {
+      "lang": "en",
+      "text": "right so like let AI be the I row of a",
+      "offset": 1653.48,
+      "duration": 5.72
+    },
+    {
+      "lang": "en",
+      "text": "The Matrix a and let B I be the I of the",
+      "offset": 1656.64,
+      "duration": 5
+    },
+    {
+      "lang": "en",
+      "text": "Matrix B and C",
+      "offset": 1659.2,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "analogously um what we can do is we can",
+      "offset": 1661.64,
+      "duration": 3.48
+    },
+    {
+      "lang": "en",
+      "text": "Define this",
+      "offset": 1664,
+      "duration": 2.76
+    },
+    {
+      "lang": "en",
+      "text": "polinomial",
+      "offset": 1665.12,
+      "duration": 3.72
+    },
+    {
+      "lang": "en",
+      "text": "um which you can just imagine as like",
+      "offset": 1666.76,
+      "duration": 5.759
+    },
+    {
+      "lang": "en",
+      "text": "batching all of the R1 CS constraints by",
+      "offset": 1668.84,
+      "duration": 6.28
+    },
+    {
+      "lang": "en",
+      "text": "taking a random combination with",
+      "offset": 1672.519,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "r and the point is that if r that is a",
+      "offset": 1675.12,
+      "duration": 6.84
+    },
+    {
+      "lang": "en",
+      "text": "valid R1 CS instance or R1 CS witness if",
+      "offset": 1678.519,
+      "duration": 6.321
+    },
+    {
+      "lang": "en",
+      "text": "and only if this polinomial if you fix",
+      "offset": 1681.96,
+      "duration": 5.599
+    },
+    {
+      "lang": "en",
+      "text": "the X and W um is identically equal to",
+      "offset": 1684.84,
+      "duration": 4.959
+    },
+    {
+      "lang": "en",
+      "text": "the zero polinomial because each",
+      "offset": 1687.559,
+      "duration": 3.72
+    },
+    {
+      "lang": "en",
+      "text": "coefficient of this polinomial would",
+      "offset": 1689.799,
+      "duration": 3.801
+    },
+    {
+      "lang": "en",
+      "text": "just be",
+      "offset": 1691.279,
+      "duration": 2.321
+    },
+    {
+      "lang": "en",
+      "text": "zero okay now we can Define like this",
+      "offset": 1693.72,
+      "duration": 6.64
+    },
+    {
+      "lang": "en",
+      "text": "subcode C sub",
+      "offset": 1697.72,
+      "duration": 5.439
+    },
+    {
+      "lang": "en",
+      "text": "rxe which consists of all valid",
+      "offset": 1700.36,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "encodings of",
+      "offset": 1703.159,
+      "duration": 5.4
+    },
+    {
+      "lang": "en",
+      "text": "W uh such that P of RX W is equal to E",
+      "offset": 1704.44,
+      "duration": 6.44
+    },
+    {
+      "lang": "en",
+      "text": "okay so um intuitively you can just",
+      "offset": 1708.559,
+      "duration": 4.36
+    },
+    {
+      "lang": "en",
+      "text": "think of this as a compressed version of",
+      "offset": 1710.88,
+      "duration": 5.24
+    },
+    {
+      "lang": "en",
+      "text": "the of the subcode that I um talked",
+      "offset": 1712.919,
+      "duration": 5.721
+    },
+    {
+      "lang": "en",
+      "text": "about in the previous slide and our goal",
+      "offset": 1716.12,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "to be will be to construct a many to one",
+      "offset": 1718.64,
+      "duration": 6.96
+    },
+    {
+      "lang": "en",
+      "text": "reduction for these algebraic proximity",
+      "offset": 1720.76,
+      "duration": 4.84
+    },
+    {
+      "lang": "en",
+      "text": "claims okay so the initial reduction is",
+      "offset": 1726.799,
+      "duration": 6.441
+    },
+    {
+      "lang": "en",
+      "text": "now quite straightforward um from R1 CS",
+      "offset": 1730.48,
+      "duration": 5.16
+    },
+    {
+      "lang": "en",
+      "text": "to an algebraic proximity claim uh so",
+      "offset": 1733.24,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "the prover gets the the R1 CS instance",
+      "offset": 1735.64,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "and Witness the verifier gets the",
+      "offset": 1737.48,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "instance and now all the Prov is going",
+      "offset": 1739.64,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "to do is it's going to send in EN the",
+      "offset": 1741.64,
+      "duration": 6.08
+    },
+    {
+      "lang": "en",
+      "text": "encoding of the winess as an oracle F",
+      "offset": 1743.88,
+      "duration": 5.56
+    },
+    {
+      "lang": "en",
+      "text": "and the verifier is now going to just",
+      "offset": 1747.72,
+      "duration": 3.559
+    },
+    {
+      "lang": "en",
+      "text": "sample random challenge",
+      "offset": 1749.44,
+      "duration": 4.719
+    },
+    {
+      "lang": "en",
+      "text": "R and it's going to Output the claim",
+      "offset": 1751.279,
+      "duration": 6.201
+    },
+    {
+      "lang": "en",
+      "text": "that f is a Delta close to uh this",
+      "offset": 1754.159,
+      "duration": 7.161
+    },
+    {
+      "lang": "en",
+      "text": "subcode c r c sub",
+      "offset": 1757.48,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "rx0 okay so let's analyze this um so for",
+      "offset": 1761.84,
+      "duration": 8.6
+    },
+    {
+      "lang": "en",
+      "text": "completeness if W is a valid witness",
+      "offset": 1767.159,
+      "duration": 6.601
+    },
+    {
+      "lang": "en",
+      "text": "then um as I said before this polinomial",
+      "offset": 1770.44,
+      "duration": 5.119
+    },
+    {
+      "lang": "en",
+      "text": "once you fix X and W is identically",
+      "offset": 1773.76,
+      "duration": 4.159
+    },
+    {
+      "lang": "en",
+      "text": "equal to the zero polinomial and",
+      "offset": 1775.559,
+      "duration": 4.641
+    },
+    {
+      "lang": "en",
+      "text": "therefore no matter what random",
+      "offset": 1777.919,
+      "duration": 5.201
+    },
+    {
+      "lang": "en",
+      "text": "challenge you choose F will be in the in",
+      "offset": 1780.2,
+      "duration": 4.959
+    },
+    {
+      "lang": "en",
+      "text": "the in the induced",
+      "offset": 1783.12,
+      "duration": 4.439
+    },
+    {
+      "lang": "en",
+      "text": "subcode",
+      "offset": 1785.159,
+      "duration": 5.041
+    },
+    {
+      "lang": "en",
+      "text": "okay now for sadness If X is not in the",
+      "offset": 1787.559,
+      "duration": 5.401
+    },
+    {
+      "lang": "en",
+      "text": "language then there's no satisfying",
+      "offset": 1790.2,
+      "duration": 4.68
+    },
+    {
+      "lang": "en",
+      "text": "witness",
+      "offset": 1792.96,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "um so again like letting you be the code",
+      "offset": 1794.88,
+      "duration": 5.679
+    },
+    {
+      "lang": "en",
+      "text": "word which is DOA close to F if it",
+      "offset": 1798.72,
+      "duration": 4.839
+    },
+    {
+      "lang": "en",
+      "text": "exists",
+      "offset": 1800.559,
+      "duration": 7.24
+    },
+    {
+      "lang": "en",
+      "text": "then p with high probability um or I",
+      "offset": 1803.559,
+      "duration": 5.641
+    },
+    {
+      "lang": "en",
+      "text": "should say this polinomial is now",
+      "offset": 1807.799,
+      "duration": 2.88
+    },
+    {
+      "lang": "en",
+      "text": "identically not equal to the zero",
+      "offset": 1809.2,
+      "duration": 4.52
+    },
+    {
+      "lang": "en",
+      "text": "polinomial right because uh the decoding",
+      "offset": 1810.679,
+      "duration": 5.281
+    },
+    {
+      "lang": "en",
+      "text": "of you cannot be a valid witness since X",
+      "offset": 1813.72,
+      "duration": 4.079
+    },
+    {
+      "lang": "en",
+      "text": "is not in the language and with high",
+      "offset": 1815.96,
+      "duration": 3.16
+    },
+    {
+      "lang": "en",
+      "text": "probability over the choice of the",
+      "offset": 1817.799,
+      "duration": 4.201
+    },
+    {
+      "lang": "en",
+      "text": "random challenge R um f will be Delta",
+      "offset": 1819.12,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "far from this",
+      "offset": 1822,
+      "duration": 6.44
+    },
+    {
+      "lang": "en",
+      "text": "subcode okay and again it doesn't uh",
+      "offset": 1824,
+      "duration": 6.72
+    },
+    {
+      "lang": "en",
+      "text": "yeah here I'm just assuming again that",
+      "offset": 1828.44,
+      "duration": 3.959
+    },
+    {
+      "lang": "en",
+      "text": "the Delta is at most the unique decoding",
+      "offset": 1830.72,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "radius of the",
+      "offset": 1832.399,
+      "duration": 2.561
+    },
+    {
+      "lang": "en",
+      "text": "code",
+      "offset": 1835.72,
+      "duration": 5.6
+    },
+    {
+      "lang": "en",
+      "text": "okay so with that let's get to our our",
+      "offset": 1837.279,
+      "duration": 6.081
+    },
+    {
+      "lang": "en",
+      "text": "main construction which is this",
+      "offset": 1841.32,
+      "duration": 3.719
+    },
+    {
+      "lang": "en",
+      "text": "accumulation scheme this many to one",
+      "offset": 1843.36,
+      "duration": 4.76
+    },
+    {
+      "lang": "en",
+      "text": "reduction for algebraic proximity",
+      "offset": 1845.039,
+      "duration": 6.76
+    },
+    {
+      "lang": "en",
+      "text": "claims so okay we have two input claims",
+      "offset": 1848.12,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "first that F0 is Delta close to some",
+      "offset": 1851.799,
+      "duration": 4.641
+    },
+    {
+      "lang": "en",
+      "text": "subcode and also that F1 is Delta close",
+      "offset": 1853.88,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "to some subcode",
+      "offset": 1856.44,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "and we're going to follow kind of this",
+      "offset": 1858.44,
+      "duration": 4.76
+    },
+    {
+      "lang": "en",
+      "text": "uh the accumulation strategy uh",
+      "offset": 1860.76,
+      "duration": 4.279
+    },
+    {
+      "lang": "en",
+      "text": "according to Proto Galaxy but really",
+      "offset": 1863.2,
+      "duration": 3.88
+    },
+    {
+      "lang": "en",
+      "text": "like I want to emphasize that this is",
+      "offset": 1865.039,
+      "duration": 4.041
+    },
+    {
+      "lang": "en",
+      "text": "not really specific to any any one",
+      "offset": 1867.08,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "folding scheme you can kind of",
+      "offset": 1869.08,
+      "duration": 4.04
+    },
+    {
+      "lang": "en",
+      "text": "instantiate this sort of idea with",
+      "offset": 1870.6,
+      "duration": 5.199
+    },
+    {
+      "lang": "en",
+      "text": "things like Nova or protostar or other",
+      "offset": 1873.12,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "things um but here we're just going to",
+      "offset": 1875.799,
+      "duration": 5.48
+    },
+    {
+      "lang": "en",
+      "text": "use Proto Proto Galaxy's rough",
+      "offset": 1879.12,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "accumulation protocol as the kind of",
+      "offset": 1881.279,
+      "duration": 4.481
+    },
+    {
+      "lang": "en",
+      "text": "skeleton of the construction so we're",
+      "offset": 1883.84,
+      "duration": 5.4
+    },
+    {
+      "lang": "en",
+      "text": "just going to interpolate our inputs",
+      "offset": 1885.76,
+      "duration": 5.32
+    },
+    {
+      "lang": "en",
+      "text": "um yeah we're going to just Define",
+      "offset": 1889.24,
+      "duration": 4.36
+    },
+    {
+      "lang": "en",
+      "text": "polinomial to interpolate RX uh the",
+      "offset": 1891.08,
+      "duration": 5.64
+    },
+    {
+      "lang": "en",
+      "text": "witness and the error error value e and",
+      "offset": 1893.6,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "then Proto galaxies basically says we",
+      "offset": 1896.72,
+      "duration": 4.12
+    },
+    {
+      "lang": "en",
+      "text": "can run a univariate sum check for this",
+      "offset": 1898.48,
+      "duration": 5.24
+    },
+    {
+      "lang": "en",
+      "text": "um this polinomial identity claim so",
+      "offset": 1900.84,
+      "duration": 6.04
+    },
+    {
+      "lang": "en",
+      "text": "it's kind of a univariate sum check um",
+      "offset": 1903.72,
+      "duration": 7.199
+    },
+    {
+      "lang": "en",
+      "text": "and this yields a new claim that um this",
+      "offset": 1906.88,
+      "duration": 8.56
+    },
+    {
+      "lang": "en",
+      "text": "composition PR rxw evaluated at Alpha is",
+      "offset": 1910.919,
+      "duration": 7
+    },
+    {
+      "lang": "en",
+      "text": "equal to some new value e uh where",
+      "offset": 1915.44,
+      "duration": 4.92
+    },
+    {
+      "lang": "en",
+      "text": "Alpha's randomly sampled okay so I've",
+      "offset": 1917.919,
+      "duration": 3.841
+    },
+    {
+      "lang": "en",
+      "text": "kind of glossed over a lot of details",
+      "offset": 1920.36,
+      "duration": 3.72
+    },
+    {
+      "lang": "en",
+      "text": "here but really this is this part is not",
+      "offset": 1921.76,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "important um to our construction like",
+      "offset": 1924.08,
+      "duration": 4.599
+    },
+    {
+      "lang": "en",
+      "text": "it's I would view this more so as like",
+      "offset": 1926.48,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "kind of Proto Galaxy",
+      "offset": 1928.679,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "protocol and the observation here is",
+      "offset": 1930.96,
+      "duration": 6.12
+    },
+    {
+      "lang": "en",
+      "text": "that this new claim looks like a new um",
+      "offset": 1933.639,
+      "duration": 6.121
+    },
+    {
+      "lang": "en",
+      "text": "new algebraic claim and what we can have",
+      "offset": 1937.08,
+      "duration": 4.319
+    },
+    {
+      "lang": "en",
+      "text": "the prover do is we can have the prover",
+      "offset": 1939.76,
+      "duration": 6.36
+    },
+    {
+      "lang": "en",
+      "text": "recommit to this this new new witness um",
+      "offset": 1941.399,
+      "duration": 6.24
+    },
+    {
+      "lang": "en",
+      "text": "and by linearity you can actually see",
+      "offset": 1946.12,
+      "duration": 3.679
+    },
+    {
+      "lang": "en",
+      "text": "that this is a random combination of the",
+      "offset": 1947.639,
+      "duration": 4.601
+    },
+    {
+      "lang": "en",
+      "text": "input code words F0 and",
+      "offset": 1949.799,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "F1 and the verifier is going to Output",
+      "offset": 1952.24,
+      "duration": 6.64
+    },
+    {
+      "lang": "en",
+      "text": "the claim that this new Oracle f is",
+      "offset": 1954.519,
+      "duration": 7.721
+    },
+    {
+      "lang": "en",
+      "text": "Delta close to the subcode um induced by",
+      "offset": 1958.88,
+      "duration": 6.84
+    },
+    {
+      "lang": "en",
+      "text": "uh the the new sum check",
+      "offset": 1962.24,
+      "duration": 3.48
+    },
+    {
+      "lang": "en",
+      "text": "claim",
+      "offset": 1966.559,
+      "duration": 3
+    },
+    {
+      "lang": "en",
+      "text": "okay so the other thing that we have to",
+      "offset": 1970.159,
+      "duration": 4.281
+    },
+    {
+      "lang": "en",
+      "text": "do is that we need to enforce",
+      "offset": 1972.48,
+      "duration": 4.52
+    },
+    {
+      "lang": "en",
+      "text": "consistency as before between the",
+      "offset": 1974.44,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "virtual combination",
+      "offset": 1977,
+      "duration": 6.84
+    },
+    {
+      "lang": "en",
+      "text": "um 1 - Alp * F0 plus Alpha * fub1 and",
+      "offset": 1979.32,
+      "duration": 6.8
+    },
+    {
+      "lang": "en",
+      "text": "the Prov recommitment F because right",
+      "offset": 1983.84,
+      "duration": 5.48
+    },
+    {
+      "lang": "en",
+      "text": "now in in the previous slide there's no",
+      "offset": 1986.12,
+      "duration": 4.679
+    },
+    {
+      "lang": "en",
+      "text": "reason for the prover to have to",
+      "offset": 1989.32,
+      "duration": 3.88
+    },
+    {
+      "lang": "en",
+      "text": "recommit to the the actual",
+      "offset": 1990.799,
+      "duration": 4.561
+    },
+    {
+      "lang": "en",
+      "text": "combination and so naturally we could",
+      "offset": 1993.2,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "try to just use the quotienting strategy",
+      "offset": 1995.36,
+      "duration": 5.96
+    },
+    {
+      "lang": "en",
+      "text": "that we had before um but the issue is",
+      "offset": 1997.84,
+      "duration": 5.799
+    },
+    {
+      "lang": "en",
+      "text": "here that the the quotient",
+      "offset": 2001.32,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "doesn't really play well with algebraic",
+      "offset": 2003.639,
+      "duration": 5.121
+    },
+    {
+      "lang": "en",
+      "text": "proximity claims and this sense that",
+      "offset": 2006.2,
+      "duration": 5.68
+    },
+    {
+      "lang": "en",
+      "text": "even if uh this Vector f is a valid code",
+      "offset": 2008.76,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "word in this subcode it doesn't",
+      "offset": 2011.88,
+      "duration": 4.799
+    },
+    {
+      "lang": "en",
+      "text": "necessarily mean that it's quotient is",
+      "offset": 2014.2,
+      "duration": 4.28
+    },
+    {
+      "lang": "en",
+      "text": "also in the subcode so in some sense",
+      "offset": 2016.679,
+      "duration": 3.761
+    },
+    {
+      "lang": "en",
+      "text": "like the quotient does not preserve the",
+      "offset": 2018.48,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "the algebraic structure that we're we're",
+      "offset": 2020.44,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "checking so the way that we solve this",
+      "offset": 2023.76,
+      "duration": 5.68
+    },
+    {
+      "lang": "en",
+      "text": "problem is to in some sense accumulate",
+      "offset": 2026.44,
+      "duration": 5
+    },
+    {
+      "lang": "en",
+      "text": "the proximity claims for quotients",
+      "offset": 2029.44,
+      "duration": 5.16
+    },
+    {
+      "lang": "en",
+      "text": "separately from the the main algebraic",
+      "offset": 2031.44,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "proximity claim in particular the",
+      "offset": 2034.6,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "verifier is going to output both an",
+      "offset": 2036.88,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "algebraic proximity claim that f is",
+      "offset": 2039.24,
+      "duration": 4.76
+    },
+    {
+      "lang": "en",
+      "text": "Delta close to the subcode as well as a",
+      "offset": 2041.12,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "standard proximity claim uh that the",
+      "offset": 2044,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "quotient of F at some random points is",
+      "offset": 2046.24,
+      "duration": 5.599
+    },
+    {
+      "lang": "en",
+      "text": "uh Delta close to the the overall read",
+      "offset": 2049.52,
+      "duration": 3.839
+    },
+    {
+      "lang": "en",
+      "text": "Solon",
+      "offset": 2051.839,
+      "duration": 3.8
+    },
+    {
+      "lang": "en",
+      "text": "code",
+      "offset": 2053.359,
+      "duration": 5.121
+    },
+    {
+      "lang": "en",
+      "text": "okay so if we look at the this",
+      "offset": 2055.639,
+      "duration": 5.641
+    },
+    {
+      "lang": "en",
+      "text": "Construction in action uh we're going to",
+      "offset": 2058.48,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "have a two to one reduction for uh both",
+      "offset": 2061.28,
+      "duration": 5.839
+    },
+    {
+      "lang": "en",
+      "text": "algebraic proximity claims and um",
+      "offset": 2064,
+      "duration": 4.28
+    },
+    {
+      "lang": "en",
+      "text": "standard prox proximity claims",
+      "offset": 2067.119,
+      "duration": 3.24
+    },
+    {
+      "lang": "en",
+      "text": "simultaneously so the verifier receives",
+      "offset": 2068.28,
+      "duration": 4.68
+    },
+    {
+      "lang": "en",
+      "text": "four claims in total two algebraic one",
+      "offset": 2070.359,
+      "duration": 3.56
+    },
+    {
+      "lang": "en",
+      "text": "two",
+      "offset": 2072.96,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "standard and then it's going to run the",
+      "offset": 2073.919,
+      "duration": 5.96
+    },
+    {
+      "lang": "en",
+      "text": "sort of P Galaxy style accumulation",
+      "offset": 2077.04,
+      "duration": 4.599
+    },
+    {
+      "lang": "en",
+      "text": "scheme",
+      "offset": 2079.879,
+      "duration": 5.561
+    },
+    {
+      "lang": "en",
+      "text": "um to reduce or compress these two",
+      "offset": 2081.639,
+      "duration": 6.161
+    },
+    {
+      "lang": "en",
+      "text": "algebraic claims and the Prov is going",
+      "offset": 2085.44,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "to recommit to what the random",
+      "offset": 2087.8,
+      "duration": 3.48
+    },
+    {
+      "lang": "en",
+      "text": "combination of the two input vectors",
+      "offset": 2089.44,
+      "duration": 3.919
+    },
+    {
+      "lang": "en",
+      "text": "should look like okay and then the",
+      "offset": 2091.28,
+      "duration": 4.44
+    },
+    {
+      "lang": "en",
+      "text": "verifier outputs this um proximity claim",
+      "offset": 2093.359,
+      "duration": 4.961
+    },
+    {
+      "lang": "en",
+      "text": "for f being Delta close to the sub new",
+      "offset": 2095.72,
+      "duration": 5.56
+    },
+    {
+      "lang": "en",
+      "text": "subcode and additionally uh the verifier",
+      "offset": 2098.32,
+      "duration": 5.039
+    },
+    {
+      "lang": "en",
+      "text": "is going to Output uh it's going to",
+      "offset": 2101.28,
+      "duration": 3.96
+    },
+    {
+      "lang": "en",
+      "text": "forward both of the initial standard",
+      "offset": 2103.359,
+      "duration": 3.961
+    },
+    {
+      "lang": "en",
+      "text": "proximity claims as well as this new",
+      "offset": 2105.24,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "proximity claim for the quotient of",
+      "offset": 2107.32,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "F and now what we can do is actually we",
+      "offset": 2109.56,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "can run our original men many to one",
+      "offset": 2111.8,
+      "duration": 5.16
+    },
+    {
+      "lang": "en",
+      "text": "reduction for uh read solement proximity",
+      "offset": 2113.88,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "claims to compress these three things",
+      "offset": 2116.96,
+      "duration": 4.2
+    },
+    {
+      "lang": "en",
+      "text": "into",
+      "offset": 2119.16,
+      "duration": 6.12
+    },
+    {
+      "lang": "en",
+      "text": "one okay and as a result we end up",
+      "offset": 2121.16,
+      "duration": 6.16
+    },
+    {
+      "lang": "en",
+      "text": "getting a single standard proximity",
+      "offset": 2125.28,
+      "duration": 5.4
+    },
+    {
+      "lang": "en",
+      "text": "claim a single algebraic proximity claim",
+      "offset": 2127.32,
+      "duration": 5.24
+    },
+    {
+      "lang": "en",
+      "text": "uh which we can continue to accumulate",
+      "offset": 2130.68,
+      "duration": 4.12
+    },
+    {
+      "lang": "en",
+      "text": "in the",
+      "offset": 2132.56,
+      "duration": 2.24
+    },
+    {
+      "lang": "en",
+      "text": "future",
+      "offset": 2135.64,
+      "duration": 3
+    },
+    {
+      "lang": "en",
+      "text": "okay so completeness is fairly similar",
+      "offset": 2138.72,
+      "duration": 6.48
+    },
+    {
+      "lang": "en",
+      "text": "to uh the protocol I described earlier",
+      "offset": 2142.48,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "so I won't really talk about it instead",
+      "offset": 2145.2,
+      "duration": 4.04
+    },
+    {
+      "lang": "en",
+      "text": "I want to really focus on this um a",
+      "offset": 2146.8,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "sketch of the soundness proof uh which I",
+      "offset": 2149.24,
+      "duration": 5.4
+    },
+    {
+      "lang": "en",
+      "text": "think is a bit more interesting um so",
+      "offset": 2151.44,
+      "duration": 4.84
+    },
+    {
+      "lang": "en",
+      "text": "the point",
+      "offset": 2154.64,
+      "duration": 3.8
+    },
+    {
+      "lang": "en",
+      "text": "is if either all right so first of all",
+      "offset": 2156.28,
+      "duration": 4.52
+    },
+    {
+      "lang": "en",
+      "text": "if either uh g0 or G1 is delta formed",
+      "offset": 2158.44,
+      "duration": 3.879
+    },
+    {
+      "lang": "en",
+      "text": "from the code these are like the input",
+      "offset": 2160.8,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "standard proximity claims then our",
+      "offset": 2162.319,
+      "duration": 3.961
+    },
+    {
+      "lang": "en",
+      "text": "proximity accumulation scheme guarantees",
+      "offset": 2164.16,
+      "duration": 4.679
+    },
+    {
+      "lang": "en",
+      "text": "that uh the new Vector G will be Delta",
+      "offset": 2166.28,
+      "duration": 4.12
+    },
+    {
+      "lang": "en",
+      "text": "far from the code so that case is",
+      "offset": 2168.839,
+      "duration": 3.641
+    },
+    {
+      "lang": "en",
+      "text": "handled we also need to consider the",
+      "offset": 2170.4,
+      "duration": 5.719
+    },
+    {
+      "lang": "en",
+      "text": "case where either um F0 or F1 are far",
+      "offset": 2172.48,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "from their respective subcodes so these",
+      "offset": 2176.119,
+      "duration": 4.281
+    },
+    {
+      "lang": "en",
+      "text": "are the algebraic proximity",
+      "offset": 2178.24,
+      "duration": 4.2
+    },
+    {
+      "lang": "en",
+      "text": "claims then what we can say is that the",
+      "offset": 2180.4,
+      "duration": 5.6
+    },
+    {
+      "lang": "en",
+      "text": "proximity Gap uh plus the sum check",
+      "offset": 2182.44,
+      "duration": 5.48
+    },
+    {
+      "lang": "en",
+      "text": "guarantees that this random combin of",
+      "offset": 2186,
+      "duration": 5.72
+    },
+    {
+      "lang": "en",
+      "text": "the input vectors F0 and F1 is Delta far",
+      "offset": 2187.92,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "from uh this new",
+      "offset": 2191.72,
+      "duration": 3.599
+    },
+    {
+      "lang": "en",
+      "text": "subcode",
+      "offset": 2193.68,
+      "duration": 3.88
+    },
+    {
+      "lang": "en",
+      "text": "okay so do you",
+      "offset": 2195.319,
+      "duration": 6.921
+    },
+    {
+      "lang": "en",
+      "text": "need oh sorry for the second uh bullet",
+      "offset": 2197.56,
+      "duration": 8
+    },
+    {
+      "lang": "en",
+      "text": "point uh do you need to use like a",
+      "offset": 2202.24,
+      "duration": 6.8
+    },
+    {
+      "lang": "en",
+      "text": "proximity Gap resolved for like General",
+      "offset": 2205.56,
+      "duration": 6.32
+    },
+    {
+      "lang": "en",
+      "text": "codes like not the readed Solomon",
+      "offset": 2209.04,
+      "duration": 6.44
+    },
+    {
+      "lang": "en",
+      "text": "one uh no yeah so we we rely on just the",
+      "offset": 2211.88,
+      "duration": 6.36
+    },
+    {
+      "lang": "en",
+      "text": "proximity gap for read Solomon codes",
+      "offset": 2215.48,
+      "duration": 5.56
+    },
+    {
+      "lang": "en",
+      "text": "um in some ways",
+      "offset": 2218.24,
+      "duration": 5.64
+    },
+    {
+      "lang": "en",
+      "text": "it yeah I guess the proximity gap for",
+      "offset": 2221.04,
+      "duration": 5.84
+    },
+    {
+      "lang": "en",
+      "text": "these subcodes would naturally follow",
+      "offset": 2223.88,
+      "duration": 7.64
+    },
+    {
+      "lang": "en",
+      "text": "from that um but yeah it's a bit the",
+      "offset": 2226.88,
+      "duration": 6.04
+    },
+    {
+      "lang": "en",
+      "text": "analysis is a bit more complicated",
+      "offset": 2231.52,
+      "duration": 3.64
+    },
+    {
+      "lang": "en",
+      "text": "because you kind of have this uh the",
+      "offset": 2232.92,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "random challenge Alpha is both",
+      "offset": 2235.16,
+      "duration": 4.76
+    },
+    {
+      "lang": "en",
+      "text": "functioning as a proximity Gap challenge",
+      "offset": 2236.52,
+      "duration": 5.88
+    },
+    {
+      "lang": "en",
+      "text": "as well as the sum check challenge so",
+      "offset": 2239.92,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "you need to",
+      "offset": 2242.4,
+      "duration": 6.28
+    },
+    {
+      "lang": "en",
+      "text": "um like oh you're saying yeah oh sorry",
+      "offset": 2245.28,
+      "duration": 6.079
+    },
+    {
+      "lang": "en",
+      "text": "sorry to yeah okay maybe I you're saying",
+      "offset": 2248.68,
+      "duration": 7
+    },
+    {
+      "lang": "en",
+      "text": "in general a proximity Gap result it it",
+      "offset": 2251.359,
+      "duration": 7.041
+    },
+    {
+      "lang": "en",
+      "text": "also implies the same result for any",
+      "offset": 2255.68,
+      "duration": 3.88
+    },
+    {
+      "lang": "en",
+      "text": "like",
+      "offset": 2258.4,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "Subspace oh okay yeah then that makes",
+      "offset": 2259.56,
+      "duration": 5.519
+    },
+    {
+      "lang": "en",
+      "text": "sense thanks yeah so actually like our",
+      "offset": 2261.92,
+      "duration": 6.6
+    },
+    {
+      "lang": "en",
+      "text": "um yeah yeah",
+      "offset": 2265.079,
+      "duration": 3.441
+    },
+    {
+      "lang": "en",
+      "text": "exactly um okay",
+      "offset": 2269.04,
+      "duration": 5.079
+    },
+    {
+      "lang": "en",
+      "text": "so so there are two cases",
+      "offset": 2271.56,
+      "duration": 5.519
+    },
+    {
+      "lang": "en",
+      "text": "now uh first of all if f is if the new",
+      "offset": 2274.119,
+      "duration": 5.401
+    },
+    {
+      "lang": "en",
+      "text": "Oracle that the Prov committed to is far",
+      "offset": 2277.079,
+      "duration": 4.481
+    },
+    {
+      "lang": "en",
+      "text": "from the subcode then we're done right",
+      "offset": 2279.52,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "because this new instance is invalid so",
+      "offset": 2281.56,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "now we just need to consider the case",
+      "offset": 2284,
+      "duration": 3.56
+    },
+    {
+      "lang": "en",
+      "text": "where the prover is trying to cheat",
+      "offset": 2285.8,
+      "duration": 2.96
+    },
+    {
+      "lang": "en",
+      "text": "right the Prov is trying to cheat by",
+      "offset": 2287.56,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "committing by by recommitting to some",
+      "offset": 2288.76,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "new Vector F which is actually Delta",
+      "offset": 2291.16,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "close to uh the",
+      "offset": 2293.48,
+      "duration": 5.08
+    },
+    {
+      "lang": "en",
+      "text": "subcode so in this case letting U be the",
+      "offset": 2295.16,
+      "duration": 5
+    },
+    {
+      "lang": "en",
+      "text": "the code word which is uniquely Delta",
+      "offset": 2298.56,
+      "duration": 3.72
+    },
+    {
+      "lang": "en",
+      "text": "close to",
+      "offset": 2300.16,
+      "duration": 5.56
+    },
+    {
+      "lang": "en",
+      "text": "F we can observe that you is actually a",
+      "offset": 2302.28,
+      "duration": 7.44
+    },
+    {
+      "lang": "en",
+      "text": "member of this subcode CR e and since",
+      "offset": 2305.72,
+      "duration": 5.8
+    },
+    {
+      "lang": "en",
+      "text": "the random combination is Delta far from",
+      "offset": 2309.72,
+      "duration": 4.2
+    },
+    {
+      "lang": "en",
+      "text": "the subcode we know that you must be",
+      "offset": 2311.52,
+      "duration": 4.599
+    },
+    {
+      "lang": "en",
+      "text": "Delta far from this random",
+      "offset": 2313.92,
+      "duration": 5.399
+    },
+    {
+      "lang": "en",
+      "text": "combination right and now we can just",
+      "offset": 2316.119,
+      "duration": 5.361
+    },
+    {
+      "lang": "en",
+      "text": "use the fact that the quotient in this",
+      "offset": 2319.319,
+      "duration": 5.601
+    },
+    {
+      "lang": "en",
+      "text": "case must be Delta far from the",
+      "offset": 2321.48,
+      "duration": 5.48
+    },
+    {
+      "lang": "en",
+      "text": "code and therefore the proximity",
+      "offset": 2324.92,
+      "duration": 3.64
+    },
+    {
+      "lang": "en",
+      "text": "accumulation guarantees that g will be",
+      "offset": 2326.96,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "Delta far from the",
+      "offset": 2328.56,
+      "duration": 6.4
+    },
+    {
+      "lang": "en",
+      "text": "code so to summarize kind of we've taken",
+      "offset": 2331.04,
+      "duration": 5.84
+    },
+    {
+      "lang": "en",
+      "text": "the I've highlighted in red all of the",
+      "offset": 2334.96,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "possible bad inputs and we showed that",
+      "offset": 2336.88,
+      "duration": 6.4
+    },
+    {
+      "lang": "en",
+      "text": "in all possible cases we uh our",
+      "offset": 2339.76,
+      "duration": 5.8
+    },
+    {
+      "lang": "en",
+      "text": "reduction leads to a blue like what's",
+      "offset": 2343.28,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "highlighted in blue which corresponds",
+      "offset": 2345.56,
+      "duration": 4.44
+    },
+    {
+      "lang": "en",
+      "text": "with the new input being um the new",
+      "offset": 2347.76,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "output being far from the code either",
+      "offset": 2350,
+      "duration": 4.839
+    },
+    {
+      "lang": "en",
+      "text": "the proximity the standard proximity",
+      "offset": 2352.8,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "claim does not hold or the algebraic",
+      "offset": 2354.839,
+      "duration": 5.201
+    },
+    {
+      "lang": "en",
+      "text": "proximity claim does not",
+      "offset": 2357.04,
+      "duration": 3
+    },
+    {
+      "lang": "en",
+      "text": "hold",
+      "offset": 2361.4,
+      "duration": 5.679
+    },
+    {
+      "lang": "en",
+      "text": "okay I have a question yeah so regarding",
+      "offset": 2363.44,
+      "duration": 6.12
+    },
+    {
+      "lang": "en",
+      "text": "this proximity gaps with respect is like",
+      "offset": 2367.079,
+      "duration": 6.921
+    },
+    {
+      "lang": "en",
+      "text": "subop code of r0 x0 e0 using srack so in",
+      "offset": 2369.56,
+      "duration": 6.68
+    },
+    {
+      "lang": "en",
+      "text": "that case do you still have the same",
+      "offset": 2374,
+      "duration": 4.599
+    },
+    {
+      "lang": "en",
+      "text": "Bond like a regular resol code like the",
+      "offset": 2376.24,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "Johnson Bond or is actually the same",
+      "offset": 2378.599,
+      "duration": 4.52
+    },
+    {
+      "lang": "en",
+      "text": "bond for example as base fold which is",
+      "offset": 2380.88,
+      "duration": 7.12
+    },
+    {
+      "lang": "en",
+      "text": "double Johnson Bond so like yeah okay so",
+      "offset": 2383.119,
+      "duration": 8.441
+    },
+    {
+      "lang": "en",
+      "text": "I guess right now uh the soundness",
+      "offset": 2388,
+      "duration": 6.119
+    },
+    {
+      "lang": "en",
+      "text": "sketch that I've put up here I'm",
+      "offset": 2391.56,
+      "duration": 3.72
+    },
+    {
+      "lang": "en",
+      "text": "assuming that Delta is that almost the",
+      "offset": 2394.119,
+      "duration": 2.761
+    },
+    {
+      "lang": "en",
+      "text": "unique decoding radius of the code first",
+      "offset": 2395.28,
+      "duration": 4.039
+    },
+    {
+      "lang": "en",
+      "text": "of all",
+      "offset": 2396.88,
+      "duration": 2.439
+    },
+    {
+      "lang": "en",
+      "text": "um so in terms of the soundness error",
+      "offset": 2399.359,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "because we're using the proximity Gap",
+      "offset": 2403,
+      "duration": 3.72
+    },
+    {
+      "lang": "en",
+      "text": "we're using the same challenge for the",
+      "offset": 2405.359,
+      "duration": 5.561
+    },
+    {
+      "lang": "en",
+      "text": "proximity Gap and the and the sub check",
+      "offset": 2406.72,
+      "duration": 6.639
+    },
+    {
+      "lang": "en",
+      "text": "um the overall soundness error of this",
+      "offset": 2410.92,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "step would be like the sum of those two",
+      "offset": 2413.359,
+      "duration": 4.161
+    },
+    {
+      "lang": "en",
+      "text": "errors so it' be the sum of the",
+      "offset": 2415.56,
+      "duration": 3.72
+    },
+    {
+      "lang": "en",
+      "text": "proximity gap for just read Solomon",
+      "offset": 2417.52,
+      "duration": 3.64
+    },
+    {
+      "lang": "en",
+      "text": "codes don't worry about the subcode",
+      "offset": 2419.28,
+      "duration": 5.6
+    },
+    {
+      "lang": "en",
+      "text": "business plus um the",
+      "offset": 2421.16,
+      "duration": 8.24
+    },
+    {
+      "lang": "en",
+      "text": "error uh incurred via some check I so",
+      "offset": 2424.88,
+      "duration": 6.32
+    },
+    {
+      "lang": "en",
+      "text": "you are directly using the unique",
+      "offset": 2429.4,
+      "duration": 4.84
+    },
+    {
+      "lang": "en",
+      "text": "decoding uh Bond not not Johnson Bond at",
+      "offset": 2431.2,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "all just just the the safest B you are",
+      "offset": 2434.24,
+      "duration": 6.04
+    },
+    {
+      "lang": "en",
+      "text": "saying in this slide yes um I'll get to",
+      "offset": 2437.2,
+      "duration": 5.48
+    },
+    {
+      "lang": "en",
+      "text": "optimizations on the next slide okay",
+      "offset": 2440.28,
+      "duration": 5.64
+    },
+    {
+      "lang": "en",
+      "text": "yeah thank you",
+      "offset": 2442.68,
+      "duration": 6.28
+    },
+    {
+      "lang": "en",
+      "text": "yeah okay so yeah so we also have some",
+      "offset": 2445.92,
+      "duration": 4.439
+    },
+    {
+      "lang": "en",
+      "text": "optimizations that we talk about in the",
+      "offset": 2448.96,
+      "duration": 4.28
+    },
+    {
+      "lang": "en",
+      "text": "paper so the first is yes like so far in",
+      "offset": 2450.359,
+      "duration": 5.441
+    },
+    {
+      "lang": "en",
+      "text": "this talk I've only focused on Delta",
+      "offset": 2453.24,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "being uh within the unique decoding",
+      "offset": 2455.8,
+      "duration": 4.519
+    },
+    {
+      "lang": "en",
+      "text": "radius of the code but we can also",
+      "offset": 2458.28,
+      "duration": 5
+    },
+    {
+      "lang": "en",
+      "text": "support um a proximity bound Delta up to",
+      "offset": 2460.319,
+      "duration": 5.401
+    },
+    {
+      "lang": "en",
+      "text": "a list decoding radius of the code",
+      "offset": 2463.28,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "assuming that a suitable proximity Gap",
+      "offset": 2465.72,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "exists and in this case it's a bit more",
+      "offset": 2467.76,
+      "duration": 5.96
+    },
+    {
+      "lang": "en",
+      "text": "complicated but roughly it's still the",
+      "offset": 2471.16,
+      "duration": 4.6
+    },
+    {
+      "lang": "en",
+      "text": "same as before the soundness error is",
+      "offset": 2473.72,
+      "duration": 4.68
+    },
+    {
+      "lang": "en",
+      "text": "just the proximity Gap error for read",
+      "offset": 2475.76,
+      "duration": 6.839
+    },
+    {
+      "lang": "en",
+      "text": "Solon codes up to uh like that that list",
+      "offset": 2478.4,
+      "duration": 7.439
+    },
+    {
+      "lang": "en",
+      "text": "decoding radius um plus the sum the sum",
+      "offset": 2482.599,
+      "duration": 6.961
+    },
+    {
+      "lang": "en",
+      "text": "check error so there's no special error",
+      "offset": 2485.839,
+      "duration": 5.441
+    },
+    {
+      "lang": "en",
+      "text": "corresponding to the fact that like",
+      "offset": 2489.56,
+      "duration": 2.799
+    },
+    {
+      "lang": "en",
+      "text": "we're talking about",
+      "offset": 2491.28,
+      "duration": 2.88
+    },
+    {
+      "lang": "en",
+      "text": "subcodes uh really the fact that we're",
+      "offset": 2492.359,
+      "duration": 3.561
+    },
+    {
+      "lang": "en",
+      "text": "talking about subcodes is just uh",
+      "offset": 2494.16,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "related to the sum check",
+      "offset": 2495.92,
+      "duration": 3.12
+    },
+    {
+      "lang": "en",
+      "text": "error okay I don't know if that answered",
+      "offset": 2499.599,
+      "duration": 4.601
+    },
+    {
+      "lang": "en",
+      "text": "your",
+      "offset": 2501.96,
+      "duration": 2.24
+    },
+    {
+      "lang": "en",
+      "text": "question",
+      "offset": 2504.359,
+      "duration": 6.361
+    },
+    {
+      "lang": "en",
+      "text": "um I guess the question is uh so so",
+      "offset": 2506.319,
+      "duration": 6.601
+    },
+    {
+      "lang": "en",
+      "text": "basically you are using the like the um",
+      "offset": 2510.72,
+      "duration": 5.32
+    },
+    {
+      "lang": "en",
+      "text": "the best listic coding Bond radius uh in",
+      "offset": 2512.92,
+      "duration": 5
+    },
+    {
+      "lang": "en",
+      "text": "the in the yeah I mean you can you can",
+      "offset": 2516.04,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "instantiate with um yeah whatever",
+      "offset": 2517.92,
+      "duration": 5.679
+    },
+    {
+      "lang": "en",
+      "text": "proximity Gap result yeah I'm not fully",
+      "offset": 2520.76,
+      "duration": 5.64
+    },
+    {
+      "lang": "en",
+      "text": "sure I follow because for example baseb",
+      "offset": 2523.599,
+      "duration": 5.641
+    },
+    {
+      "lang": "en",
+      "text": "doesn't have the best Bond compared to",
+      "offset": 2526.4,
+      "duration": 7.36
+    },
+    {
+      "lang": "en",
+      "text": "fry because like because the Su check so",
+      "offset": 2529.24,
+      "duration": 6.96
+    },
+    {
+      "lang": "en",
+      "text": "best result we can get is like a 1.5",
+      "offset": 2533.76,
+      "duration": 5.96
+    },
+    {
+      "lang": "en",
+      "text": "listic holding bound not oh I see yeah",
+      "offset": 2536.2,
+      "duration": 5.48
+    },
+    {
+      "lang": "en",
+      "text": "so okay there two yeah so there are two",
+      "offset": 2539.72,
+      "duration": 6.08
+    },
+    {
+      "lang": "en",
+      "text": "options so in the paper we like um yeah",
+      "offset": 2541.68,
+      "duration": 5.679
+    },
+    {
+      "lang": "en",
+      "text": "okay so the protocol is more complicated",
+      "offset": 2545.8,
+      "duration": 2.72
+    },
+    {
+      "lang": "en",
+      "text": "basically we need to do like some",
+      "offset": 2547.359,
+      "duration": 2.561
+    },
+    {
+      "lang": "en",
+      "text": "additional rounds of outof domain",
+      "offset": 2548.52,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "sampling in order to get the full um",
+      "offset": 2549.92,
+      "duration": 8.28
+    },
+    {
+      "lang": "en",
+      "text": "bound the other option is to um rely and",
+      "offset": 2553.4,
+      "duration": 7
+    },
+    {
+      "lang": "en",
+      "text": "this like I guess",
+      "offset": 2558.2,
+      "duration": 4.76
+    },
+    {
+      "lang": "en",
+      "text": "slightly makes it makes the protocol",
+      "offset": 2560.4,
+      "duration": 5.08
+    },
+    {
+      "lang": "en",
+      "text": "more ugly and I guess a bit less",
+      "offset": 2562.96,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "efficient",
+      "offset": 2565.48,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "um so I would I would say like we can",
+      "offset": 2567.2,
+      "duration": 4.879
+    },
+    {
+      "lang": "en",
+      "text": "talk about this later as well um but",
+      "offset": 2569.8,
+      "duration": 3.72
+    },
+    {
+      "lang": "en",
+      "text": "then the other option is you can use",
+      "offset": 2572.079,
+      "duration": 3.561
+    },
+    {
+      "lang": "en",
+      "text": "like some sort of U Mutual correlated",
+      "offset": 2573.52,
+      "duration": 4.92
+    },
+    {
+      "lang": "en",
+      "text": "agreement which is uh a more recent",
+      "offset": 2575.64,
+      "duration": 6.199
+    },
+    {
+      "lang": "en",
+      "text": "notion of proximity Gap um and that",
+      "offset": 2578.44,
+      "duration": 5.72
+    },
+    {
+      "lang": "en",
+      "text": "would also work but as you said right",
+      "offset": 2581.839,
+      "duration": 4.201
+    },
+    {
+      "lang": "en",
+      "text": "like I don't know if we've actually",
+      "offset": 2584.16,
+      "duration": 4.04
+    },
+    {
+      "lang": "en",
+      "text": "proved like Mutual Coral agreement up to",
+      "offset": 2586.04,
+      "duration": 5.88
+    },
+    {
+      "lang": "en",
+      "text": "list decoding Bound for read Solon codes",
+      "offset": 2588.2,
+      "duration": 6.48
+    },
+    {
+      "lang": "en",
+      "text": "yeah but in that case if you use if you",
+      "offset": 2591.92,
+      "duration": 4.919
+    },
+    {
+      "lang": "en",
+      "text": "assume Mutual correlated agreement then",
+      "offset": 2594.68,
+      "duration": 4.12
+    },
+    {
+      "lang": "en",
+      "text": "the protocol is a lot simpler um you",
+      "offset": 2596.839,
+      "duration": 3.801
+    },
+    {
+      "lang": "en",
+      "text": "just do like one round of out of domain",
+      "offset": 2598.8,
+      "duration": 5.039
+    },
+    {
+      "lang": "en",
+      "text": "sampling similar to something like St I",
+      "offset": 2600.64,
+      "duration": 7.04
+    },
+    {
+      "lang": "en",
+      "text": "see yeah that makes sense thank you",
+      "offset": 2603.839,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "okay",
+      "offset": 2607.68,
+      "duration": 4.399
+    },
+    {
+      "lang": "en",
+      "text": "um okay the other optimization is that",
+      "offset": 2609.839,
+      "duration": 4.201
+    },
+    {
+      "lang": "en",
+      "text": "we can kind of reorganize our protocol",
+      "offset": 2612.079,
+      "duration": 4.561
+    },
+    {
+      "lang": "en",
+      "text": "so that the prover sends the Oracle FNG",
+      "offset": 2614.04,
+      "duration": 4.68
+    },
+    {
+      "lang": "en",
+      "text": "simultaneously as like a",
+      "offset": 2616.64,
+      "duration": 5.679
+    },
+    {
+      "lang": "en",
+      "text": "single like as a single interleaved",
+      "offset": 2618.72,
+      "duration": 5.68
+    },
+    {
+      "lang": "en",
+      "text": "Oracle um and the point here is that we",
+      "offset": 2622.319,
+      "duration": 3.401
+    },
+    {
+      "lang": "en",
+      "text": "can kind of reduce the Merkle tree",
+      "offset": 2624.4,
+      "duration": 4.12
+    },
+    {
+      "lang": "en",
+      "text": "openings once you uh compile this",
+      "offset": 2625.72,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "interactive Oracle reduction to a",
+      "offset": 2628.52,
+      "duration": 3.64
+    },
+    {
+      "lang": "en",
+      "text": "standard",
+      "offset": 2630.2,
+      "duration": 4.159
+    },
+    {
+      "lang": "en",
+      "text": "reduction okay but yeah both of these",
+      "offset": 2632.16,
+      "duration": 7.159
+    },
+    {
+      "lang": "en",
+      "text": "things um you can just see them main",
+      "offset": 2634.359,
+      "duration": 7.081
+    },
+    {
+      "lang": "en",
+      "text": "paper Okay so finally I just want to",
+      "offset": 2639.319,
+      "duration": 4.921
+    },
+    {
+      "lang": "en",
+      "text": "give a very high level comparison",
+      "offset": 2641.44,
+      "duration": 4.879
+    },
+    {
+      "lang": "en",
+      "text": "between our hash based accumulation",
+      "offset": 2644.24,
+      "duration": 4.68
+    },
+    {
+      "lang": "en",
+      "text": "scheme and the prior best known approach",
+      "offset": 2646.319,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "to constructing like full-fledged",
+      "offset": 2648.92,
+      "duration": 4.36
+    },
+    {
+      "lang": "en",
+      "text": "unbounded hash based accumulation which",
+      "offset": 2651.119,
+      "duration": 4.44
+    },
+    {
+      "lang": "en",
+      "text": "would be just to use a snark like the",
+      "offset": 2653.28,
+      "duration": 3.88
+    },
+    {
+      "lang": "en",
+      "text": "the Baseline",
+      "offset": 2655.559,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "solution okay so if you were to use a",
+      "offset": 2657.16,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "snark then your initial reduction um",
+      "offset": 2659.319,
+      "duration": 6.721
+    },
+    {
+      "lang": "en",
+      "text": "from R1 CS or whatever constraint system",
+      "offset": 2662.68,
+      "duration": 7
+    },
+    {
+      "lang": "en",
+      "text": "to a read solement proximity claim",
+      "offset": 2666.04,
+      "duration": 6.36
+    },
+    {
+      "lang": "en",
+      "text": "uh would consist of like uh the Prov",
+      "offset": 2669.68,
+      "duration": 5.84
+    },
+    {
+      "lang": "en",
+      "text": "sending like let's say k oracles where",
+      "offset": 2672.4,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "in practice like K is like at least",
+      "offset": 2675.52,
+      "duration": 3.28
+    },
+    {
+      "lang": "en",
+      "text": "three let's",
+      "offset": 2677.44,
+      "duration": 4.159
+    },
+    {
+      "lang": "en",
+      "text": "say um followed by a proxim a read",
+      "offset": 2678.8,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "solement proximity test where the Prov",
+      "offset": 2681.599,
+      "duration": 4.281
+    },
+    {
+      "lang": "en",
+      "text": "sends some additional smaller oracles",
+      "offset": 2683.76,
+      "duration": 5.68
+    },
+    {
+      "lang": "en",
+      "text": "which um don't really matter and the",
+      "offset": 2685.88,
+      "duration": 7.92
+    },
+    {
+      "lang": "en",
+      "text": "verifier makes uh o of Lambda queries to",
+      "offset": 2689.44,
+      "duration": 7.04
+    },
+    {
+      "lang": "en",
+      "text": "each of the K oracles plus an additional",
+      "offset": 2693.8,
+      "duration": 6.319
+    },
+    {
+      "lang": "en",
+      "text": "o of Lambda time log log n",
+      "offset": 2696.48,
+      "duration": 3.639
+    },
+    {
+      "lang": "en",
+      "text": "ques okay",
+      "offset": 2700.64,
+      "duration": 6.88
+    },
+    {
+      "lang": "en",
+      "text": "um now in our accumulation scheme it's",
+      "offset": 2704.72,
+      "duration": 4.28
+    },
+    {
+      "lang": "en",
+      "text": "uh both of the reductions are different",
+      "offset": 2707.52,
+      "duration": 3.599
+    },
+    {
+      "lang": "en",
+      "text": "right so our initial reduction is R1 CS",
+      "offset": 2709,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "to an algebraic proximity claim not a",
+      "offset": 2711.119,
+      "duration": 3.72
+    },
+    {
+      "lang": "en",
+      "text": "read Solon proximity",
+      "offset": 2713.24,
+      "duration": 3.879
+    },
+    {
+      "lang": "en",
+      "text": "claim and in this case the reduction is",
+      "offset": 2714.839,
+      "duration": 4.041
+    },
+    {
+      "lang": "en",
+      "text": "quite simple the pr literally sends one",
+      "offset": 2717.119,
+      "duration": 4.681
+    },
+    {
+      "lang": "en",
+      "text": "Oracle just a commitment to the encoding",
+      "offset": 2718.88,
+      "duration": 4.36
+    },
+    {
+      "lang": "en",
+      "text": "of the",
+      "offset": 2721.8,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "witness and then we also have like this",
+      "offset": 2723.24,
+      "duration": 5.319
+    },
+    {
+      "lang": "en",
+      "text": "algebraic proximity accumulation like",
+      "offset": 2725.96,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "this many to one reduction where the",
+      "offset": 2728.559,
+      "duration": 4.321
+    },
+    {
+      "lang": "en",
+      "text": "prover sends one Oracle if you",
+      "offset": 2730.52,
+      "duration": 3.64
+    },
+    {
+      "lang": "en",
+      "text": "incorporate the",
+      "offset": 2732.88,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "optimization and the verifier only needs",
+      "offset": 2734.16,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "to make o of Lambda queries to its um",
+      "offset": 2736.48,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "two",
+      "offset": 2738.8,
+      "duration": 4.36
+    },
+    {
+      "lang": "en",
+      "text": "inputs okay so as you can see across the",
+      "offset": 2740,
+      "duration": 6.76
+    },
+    {
+      "lang": "en",
+      "text": "board um our approver is sending less",
+      "offset": 2743.16,
+      "duration": 5.6
+    },
+    {
+      "lang": "en",
+      "text": "oracles right sends two in total between",
+      "offset": 2746.76,
+      "duration": 3.599
+    },
+    {
+      "lang": "en",
+      "text": "the reduction and the many the initial",
+      "offset": 2748.76,
+      "duration": 4.44
+    },
+    {
+      "lang": "en",
+      "text": "reduction and the many to1 reduction and",
+      "offset": 2750.359,
+      "duration": 5.681
+    },
+    {
+      "lang": "en",
+      "text": "we have like a Asm totically and quite",
+      "offset": 2753.2,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "concretely smaller",
+      "offset": 2756.04,
+      "duration": 4.68
+    },
+    {
+      "lang": "en",
+      "text": "um accumulation verifier um due to the",
+      "offset": 2757.52,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "fact that in the snarks you typically",
+      "offset": 2760.72,
+      "duration": 4.599
+    },
+    {
+      "lang": "en",
+      "text": "have like many oracles that you need to",
+      "offset": 2762.64,
+      "duration": 5.439
+    },
+    {
+      "lang": "en",
+      "text": "uh combine in order to run a proximity",
+      "offset": 2765.319,
+      "duration": 6.121
+    },
+    {
+      "lang": "en",
+      "text": "test over the virtual",
+      "offset": 2768.079,
+      "duration": 3.361
+    },
+    {
+      "lang": "en",
+      "text": "combination okay so f one more question",
+      "offset": 2772.24,
+      "duration": 6.359
+    },
+    {
+      "lang": "en",
+      "text": "sorry sure yeah seems that there also",
+      "offset": 2775.4,
+      "duration": 4.76
+    },
+    {
+      "lang": "en",
+      "text": "intermediate solution you mentioned",
+      "offset": 2778.599,
+      "duration": 4.281
+    },
+    {
+      "lang": "en",
+      "text": "initially right well initially you do a",
+      "offset": 2780.16,
+      "duration": 6.8
+    },
+    {
+      "lang": "en",
+      "text": "reduction from um RSS to RS proximity",
+      "offset": 2782.88,
+      "duration": 7.28
+    },
+    {
+      "lang": "en",
+      "text": "glim and then you use your um uh like",
+      "offset": 2786.96,
+      "duration": 5.68
+    },
+    {
+      "lang": "en",
+      "text": "your Arc folding scheme or reduction of",
+      "offset": 2790.16,
+      "duration": 4.84
+    },
+    {
+      "lang": "en",
+      "text": "knowledge to to do the rest instead",
+      "offset": 2792.64,
+      "duration": 5.6
+    },
+    {
+      "lang": "en",
+      "text": "using ster word so how how about the",
+      "offset": 2795,
+      "duration": 5.079
+    },
+    {
+      "lang": "en",
+      "text": "that one like the what's the performance",
+      "offset": 2798.24,
+      "duration": 5.48
+    },
+    {
+      "lang": "en",
+      "text": "comparison for that that kind solution",
+      "offset": 2800.079,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "yeah so yeah so this is like this sort",
+      "offset": 2803.72,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "of approach would is also what is looked",
+      "offset": 2805.839,
+      "duration": 3.881
+    },
+    {
+      "lang": "en",
+      "text": "at in like the concurrent works like",
+      "offset": 2808.2,
+      "duration": 3.28
+    },
+    {
+      "lang": "en",
+      "text": "this this many many to one reduction for",
+      "offset": 2809.72,
+      "duration": 4.68
+    },
+    {
+      "lang": "en",
+      "text": "rment proximity claims um yeah so I",
+      "offset": 2811.48,
+      "duration": 5.68
+    },
+    {
+      "lang": "en",
+      "text": "guess the cost would look some what",
+      "offset": 2814.4,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "similar so first of all the initial",
+      "offset": 2817.16,
+      "duration": 2.76
+    },
+    {
+      "lang": "en",
+      "text": "reduction would be the same as for the",
+      "offset": 2818.4,
+      "duration": 4.52
+    },
+    {
+      "lang": "en",
+      "text": "hash based snark so prens K oracles and",
+      "offset": 2819.92,
+      "duration": 5.919
+    },
+    {
+      "lang": "en",
+      "text": "then in that case uh in the proximity",
+      "offset": 2822.92,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "reduction the many to1 reduction the",
+      "offset": 2825.839,
+      "duration": 3.28
+    },
+    {
+      "lang": "en",
+      "text": "prover does not need to send any",
+      "offset": 2827.48,
+      "duration": 3.32
+    },
+    {
+      "lang": "en",
+      "text": "additional smaller oracles it actually",
+      "offset": 2829.119,
+      "duration": 3.921
+    },
+    {
+      "lang": "en",
+      "text": "just sends one",
+      "offset": 2830.8,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "Oracle and then the verifier would make",
+      "offset": 2833.04,
+      "duration": 7.72
+    },
+    {
+      "lang": "en",
+      "text": "um o of Lambda queries to the k+ one",
+      "offset": 2836.24,
+      "duration": 6.879
+    },
+    {
+      "lang": "en",
+      "text": "oracles so the K Oracle from the initial",
+      "offset": 2840.76,
+      "duration": 4.04
+    },
+    {
+      "lang": "en",
+      "text": "reduction and then the additional Oracle",
+      "offset": 2843.119,
+      "duration": 3.841
+    },
+    {
+      "lang": "en",
+      "text": "sent by the Rover in the many to1",
+      "offset": 2844.8,
+      "duration": 5.16
+    },
+    {
+      "lang": "en",
+      "text": "reduction so it' be k + 1 * of Lambda",
+      "offset": 2846.96,
+      "duration": 3.96
+    },
+    {
+      "lang": "en",
+      "text": "and then there wouldn't be this",
+      "offset": 2849.96,
+      "duration": 4.159
+    },
+    {
+      "lang": "en",
+      "text": "additional Lambda time log log n",
+      "offset": 2850.92,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "queries as essentially if K is larger",
+      "offset": 2854.119,
+      "duration": 4.761
+    },
+    {
+      "lang": "en",
+      "text": "than three is still think the the the",
+      "offset": 2856.92,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "right right um right mod schemes is the",
+      "offset": 2858.88,
+      "duration": 4.92
+    },
+    {
+      "lang": "en",
+      "text": "most efficient one",
+      "offset": 2861.96,
+      "duration": 5.359
+    },
+    {
+      "lang": "en",
+      "text": "yes yeah I I would say that like if you",
+      "offset": 2863.8,
+      "duration": 6.08
+    },
+    {
+      "lang": "en",
+      "text": "were to just use the",
+      "offset": 2867.319,
+      "duration": 7.201
+    },
+    {
+      "lang": "en",
+      "text": "um the the the intermediate solution um",
+      "offset": 2869.88,
+      "duration": 6.199
+    },
+    {
+      "lang": "en",
+      "text": "like you would proa you would get some",
+      "offset": 2874.52,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "savings depends on like what K is and it",
+      "offset": 2876.079,
+      "duration": 4.801
+    },
+    {
+      "lang": "en",
+      "text": "depends on how the parameters on are",
+      "offset": 2878.92,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "concretely set in terms of this this log",
+      "offset": 2880.88,
+      "duration": 7.28
+    },
+    {
+      "lang": "en",
+      "text": "log n Factor um but I think it's",
+      "offset": 2883.24,
+      "duration": 7.319
+    },
+    {
+      "lang": "en",
+      "text": "clear like morally speaking I think this",
+      "offset": 2888.16,
+      "duration": 4.439
+    },
+    {
+      "lang": "en",
+      "text": "this accumulation scheme is like it's a",
+      "offset": 2890.559,
+      "duration": 3.56
+    },
+    {
+      "lang": "en",
+      "text": "proper accumulation scheme whereas the",
+      "offset": 2892.599,
+      "duration": 3.801
+    },
+    {
+      "lang": "en",
+      "text": "other one is more of",
+      "offset": 2894.119,
+      "duration": 4.321
+    },
+    {
+      "lang": "en",
+      "text": "a this one this thing on the right is",
+      "offset": 2896.4,
+      "duration": 3.919
+    },
+    {
+      "lang": "en",
+      "text": "more of like a folding scheme whereas",
+      "offset": 2898.44,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "the the intermediate thing is I would",
+      "offset": 2900.319,
+      "duration": 6.841
+    },
+    {
+      "lang": "en",
+      "text": "consider less less useful",
+      "offset": 2903.16,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "Okay cool so um just to wrap things up",
+      "offset": 2911.88,
+      "duration": 6.64
+    },
+    {
+      "lang": "en",
+      "text": "so in this paper we we gave the first",
+      "offset": 2915.119,
+      "duration": 5.321
+    },
+    {
+      "lang": "en",
+      "text": "full-fledged in terms of unbounded depth",
+      "offset": 2918.52,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "hash based accumulation scheme",
+      "offset": 2920.44,
+      "duration": 5.639
+    },
+    {
+      "lang": "en",
+      "text": "um uh which achieves a Asm totically",
+      "offset": 2923.72,
+      "duration": 3.72
+    },
+    {
+      "lang": "en",
+      "text": "smaller verifier than the Baseline",
+      "offset": 2926.079,
+      "duration": 2.721
+    },
+    {
+      "lang": "en",
+      "text": "approach which would be to use a hash",
+      "offset": 2927.44,
+      "duration": 5.24
+    },
+    {
+      "lang": "en",
+      "text": "based snark and the one of the core",
+      "offset": 2928.8,
+      "duration": 5.759
+    },
+    {
+      "lang": "en",
+      "text": "components in our in our protocol is",
+      "offset": 2932.68,
+      "duration": 3.639
+    },
+    {
+      "lang": "en",
+      "text": "this many to one reduction for re Solon",
+      "offset": 2934.559,
+      "duration": 4.161
+    },
+    {
+      "lang": "en",
+      "text": "proximity claims uh which relies on a",
+      "offset": 2936.319,
+      "duration": 4.881
+    },
+    {
+      "lang": "en",
+      "text": "cting strategy that's um inspired by",
+      "offset": 2938.72,
+      "duration": 4.92
+    },
+    {
+      "lang": "en",
+      "text": "stir but used for a slightly different",
+      "offset": 2941.2,
+      "duration": 5.08
+    },
+    {
+      "lang": "en",
+      "text": "purpose okay and then we use this many",
+      "offset": 2943.64,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "to1 reduction for read solman proximity",
+      "offset": 2946.28,
+      "duration": 4.68
+    },
+    {
+      "lang": "en",
+      "text": "claims uh to bootstrap to a many to1",
+      "offset": 2948.04,
+      "duration": 5.039
+    },
+    {
+      "lang": "en",
+      "text": "reduction for just general algebraic",
+      "offset": 2950.96,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "proximity claims and this is what what's",
+      "offset": 2953.079,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "lets us like get something more",
+      "offset": 2956.72,
+      "duration": 5.119
+    },
+    {
+      "lang": "en",
+      "text": "interesting than um hash they just hash",
+      "offset": 2958.599,
+      "duration": 4.281
+    },
+    {
+      "lang": "en",
+      "text": "Bas",
+      "offset": 2961.839,
+      "duration": 3.28
+    },
+    {
+      "lang": "en",
+      "text": "snarks okay and finally I just want to",
+      "offset": 2962.88,
+      "duration": 5.479
+    },
+    {
+      "lang": "en",
+      "text": "mention some uh up coming work of ours",
+      "offset": 2965.119,
+      "duration": 6.041
+    },
+    {
+      "lang": "en",
+      "text": "which should hopefully be on ePrint soon",
+      "offset": 2968.359,
+      "duration": 5.081
+    },
+    {
+      "lang": "en",
+      "text": "um so in that work we kind of tackle",
+      "offset": 2971.16,
+      "duration": 4.36
+    },
+    {
+      "lang": "en",
+      "text": "this question where so first of all like",
+      "offset": 2973.44,
+      "duration": 4.04
+    },
+    {
+      "lang": "en",
+      "text": "Arc is very specific to read Solomon",
+      "offset": 2975.52,
+      "duration": 3.64
+    },
+    {
+      "lang": "en",
+      "text": "codes because",
+      "offset": 2977.48,
+      "duration": 3.96
+    },
+    {
+      "lang": "en",
+      "text": "um uh this questioning strategy is",
+      "offset": 2979.16,
+      "duration": 5.199
+    },
+    {
+      "lang": "en",
+      "text": "unique to read Solomon codes so I guess",
+      "offset": 2981.44,
+      "duration": 5.72
+    },
+    {
+      "lang": "en",
+      "text": "a natural question would be um can we do",
+      "offset": 2984.359,
+      "duration": 4.361
+    },
+    {
+      "lang": "en",
+      "text": "some sort of accumulation where you can",
+      "offset": 2987.16,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "instantiate the the linear code with any",
+      "offset": 2988.72,
+      "duration": 4.52
+    },
+    {
+      "lang": "en",
+      "text": "code of your choice for example like a",
+      "offset": 2991.72,
+      "duration": 5.8
+    },
+    {
+      "lang": "en",
+      "text": "linear timing codeable code um and if so",
+      "offset": 2993.24,
+      "duration": 5.68
+    },
+    {
+      "lang": "en",
+      "text": "can you also make this resulting",
+      "offset": 2997.52,
+      "duration": 3.88
+    },
+    {
+      "lang": "en",
+      "text": "accumulation scheme linear",
+      "offset": 2998.92,
+      "duration": 6.48
+    },
+    {
+      "lang": "en",
+      "text": "time uh so yeah this is uh we so we we",
+      "offset": 3001.4,
+      "duration": 5.64
+    },
+    {
+      "lang": "en",
+      "text": "address both of these questions in this",
+      "offset": 3005.4,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "new work which uh hopefully should be",
+      "offset": 3007.04,
+      "duration": 7.96
+    },
+    {
+      "lang": "en",
+      "text": "online soon and yeah that's all I have",
+      "offset": 3009.88,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "thanks thank you very much William yeah",
+      "offset": 3017,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "maybe you'll come back for present this",
+      "offset": 3019.559,
+      "duration": 4.401
+    },
+    {
+      "lang": "en",
+      "text": "new work in a in a few month that would",
+      "offset": 3021.4,
+      "duration": 5.959
+    },
+    {
+      "lang": "en",
+      "text": "be fun uh before we wrap up uh does",
+      "offset": 3023.96,
+      "duration": 6.72
+    },
+    {
+      "lang": "en",
+      "text": "anyone maybe uh still has a question",
+      "offset": 3027.359,
+      "duration": 6.161
+    },
+    {
+      "lang": "en",
+      "text": "about uh Williams",
+      "offset": 3030.68,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "presentation maybe me I give you a few",
+      "offset": 3033.52,
+      "duration": 4.599
+    },
+    {
+      "lang": "en",
+      "text": "seconds I know we had a few during the",
+      "offset": 3036.04,
+      "duration": 4.44
+    },
+    {
+      "lang": "en",
+      "text": "presentation so I expect that was kind",
+      "offset": 3038.119,
+      "duration": 4.841
+    },
+    {
+      "lang": "en",
+      "text": "of it",
+      "offset": 3040.48,
+      "duration": 2.48
+    },
+    {
+      "lang": "en",
+      "text": "but uh so one one question do you",
+      "offset": 3043.52,
+      "duration": 5.72
+    },
+    {
+      "lang": "en",
+      "text": "have",
+      "offset": 3047.72,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "uh how do you think the in terms of",
+      "offset": 3049.24,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "practical",
+      "offset": 3051.96,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "performance uh this compares to this a",
+      "offset": 3053.4,
+      "duration": 8.52
+    },
+    {
+      "lang": "en",
+      "text": "new work you uh you just",
+      "offset": 3057.16,
+      "duration": 4.76
+    },
+    {
+      "lang": "en",
+      "text": "mentioned um yeah so I would say that",
+      "offset": 3062.64,
+      "duration": 7.76
+    },
+    {
+      "lang": "en",
+      "text": "the new work is um a strict Improvement",
+      "offset": 3066.52,
+      "duration": 5.64
+    },
+    {
+      "lang": "en",
+      "text": "because you could always",
+      "offset": 3070.4,
+      "duration": 4.439
+    },
+    {
+      "lang": "en",
+      "text": "instantiate the new protocol with Reed",
+      "offset": 3072.16,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "Solomon code and then for other reasons",
+      "offset": 3074.839,
+      "duration": 5.641
+    },
+    {
+      "lang": "en",
+      "text": "it's uh the verifier is the verifier",
+      "offset": 3077.52,
+      "duration": 4.36
+    },
+    {
+      "lang": "en",
+      "text": "makes the same number of queries but in",
+      "offset": 3080.48,
+      "duration": 3.96
+    },
+    {
+      "lang": "en",
+      "text": "terms of field operations it's",
+      "offset": 3081.88,
+      "duration": 5.679
+    },
+    {
+      "lang": "en",
+      "text": "smaller um",
+      "offset": 3084.44,
+      "duration": 8
+    },
+    {
+      "lang": "en",
+      "text": "and the prover also is linear time",
+      "offset": 3087.559,
+      "duration": 6.921
+    },
+    {
+      "lang": "en",
+      "text": "outside of like encoding so so res",
+      "offset": 3092.44,
+      "duration": 4.28
+    },
+    {
+      "lang": "en",
+      "text": "encoding takes like quasi linear time",
+      "offset": 3094.48,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "but the rest of the protocol uh in in",
+      "offset": 3096.72,
+      "duration": 5.24
+    },
+    {
+      "lang": "en",
+      "text": "this new thing um the prover would take",
+      "offset": 3099.2,
+      "duration": 7.359
+    },
+    {
+      "lang": "en",
+      "text": "linear time as well so um I would say",
+      "offset": 3101.96,
+      "duration": 5.72
+    },
+    {
+      "lang": "en",
+      "text": "that this new work probably just",
+      "offset": 3106.559,
+      "duration": 4.681
+    },
+    {
+      "lang": "en",
+      "text": "supersedes this one",
+      "offset": 3107.68,
+      "duration": 6.439
+    },
+    {
+      "lang": "en",
+      "text": "um but in terms of like comparison",
+      "offset": 3111.24,
+      "duration": 4.92
+    },
+    {
+      "lang": "en",
+      "text": "between using a read Solomon code and",
+      "offset": 3114.119,
+      "duration": 3.761
+    },
+    {
+      "lang": "en",
+      "text": "like a your time encodable code for",
+      "offset": 3116.16,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "accumulation schemes uh it's less clear",
+      "offset": 3117.88,
+      "duration": 5.479
+    },
+    {
+      "lang": "en",
+      "text": "to me",
+      "offset": 3121.04,
+      "duration": 5.039
+    },
+    {
+      "lang": "en",
+      "text": "um what the the performance difference",
+      "offset": 3123.359,
+      "duration": 4.601
+    },
+    {
+      "lang": "en",
+      "text": "would be I mean it's a bit hard to say",
+      "offset": 3126.079,
+      "duration": 3.121
+    },
+    {
+      "lang": "en",
+      "text": "right because",
+      "offset": 3127.96,
+      "duration": 3.359
+    },
+    {
+      "lang": "en",
+      "text": "like like typically like the linear time",
+      "offset": 3129.2,
+      "duration": 4.879
+    },
+    {
+      "lang": "en",
+      "text": "encodable codes um start to outperform",
+      "offset": 3131.319,
+      "duration": 5.561
+    },
+    {
+      "lang": "en",
+      "text": "read Solon codes in terms of R time like",
+      "offset": 3134.079,
+      "duration": 4.201
+    },
+    {
+      "lang": "en",
+      "text": "you you need you need the size of your",
+      "offset": 3136.88,
+      "duration": 3.679
+    },
+    {
+      "lang": "en",
+      "text": "statement to be large enough for this",
+      "offset": 3138.28,
+      "duration": 5.96
+    },
+    {
+      "lang": "en",
+      "text": "this the ASM totic cic in um well this",
+      "offset": 3140.559,
+      "duration": 7.361
+    },
+    {
+      "lang": "en",
+      "text": "recent like uh Blaze one",
+      "offset": 3144.24,
+      "duration": 6.44
+    },
+    {
+      "lang": "en",
+      "text": "I think it's supposed to be better than",
+      "offset": 3147.92,
+      "duration": 7.6
+    },
+    {
+      "lang": "en",
+      "text": "read Solomon for any n or reasonable",
+      "offset": 3150.68,
+      "duration": 7.32
+    },
+    {
+      "lang": "en",
+      "text": "really okay I I think they say in the",
+      "offset": 3155.52,
+      "duration": 6.799
+    },
+    {
+      "lang": "en",
+      "text": "paper the encoding time is 8 n so yeah",
+      "offset": 3158,
+      "duration": 6.359
+    },
+    {
+      "lang": "en",
+      "text": "okay yeah I guess I can't speak on that",
+      "offset": 3162.319,
+      "duration": 4.561
+    },
+    {
+      "lang": "en",
+      "text": "oh so maybe they're saying that the okay",
+      "offset": 3164.359,
+      "duration": 3.96
+    },
+    {
+      "lang": "en",
+      "text": "so if indeed it's true that like this",
+      "offset": 3166.88,
+      "duration": 3.919
+    },
+    {
+      "lang": "en",
+      "text": "encoding time is just better and you",
+      "offset": 3168.319,
+      "duration": 5.361
+    },
+    {
+      "lang": "en",
+      "text": "also factor into the okay so the other",
+      "offset": 3170.799,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "issue is that like like for example",
+      "offset": 3173.68,
+      "duration": 4.2
+    },
+    {
+      "lang": "en",
+      "text": "displays code the distance is like not",
+      "offset": 3175.119,
+      "duration": 4.601
+    },
+    {
+      "lang": "en",
+      "text": "is is worse right than like a readed",
+      "offset": 3177.88,
+      "duration": 5.6
+    },
+    {
+      "lang": "en",
+      "text": "Solon coulde for the same um same size",
+      "offset": 3179.72,
+      "duration": 5.24
+    },
+    {
+      "lang": "en",
+      "text": "so you also have to factor that in but",
+      "offset": 3183.48,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "okay assuming that the encoding time if",
+      "offset": 3184.96,
+      "duration": 5.24
+    },
+    {
+      "lang": "en",
+      "text": "you control for the distance is better",
+      "offset": 3187.16,
+      "duration": 5.84
+    },
+    {
+      "lang": "en",
+      "text": "then yeah the the new protocol should",
+      "offset": 3190.2,
+      "duration": 5.24
+    },
+    {
+      "lang": "en",
+      "text": "just work very nicely I guess I should",
+      "offset": 3193,
+      "duration": 4.799
+    },
+    {
+      "lang": "en",
+      "text": "also like I there like another nice",
+      "offset": 3195.44,
+      "duration": 7.52
+    },
+    {
+      "lang": "en",
+      "text": "tidbit um in our new in our new work um",
+      "offset": 3197.799,
+      "duration": 7.241
+    },
+    {
+      "lang": "en",
+      "text": "we actually try to do straight line",
+      "offset": 3202.96,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "extraction uh even if the underlying",
+      "offset": 3205.04,
+      "duration": 5.279
+    },
+    {
+      "lang": "en",
+      "text": "code does not have like an efficient",
+      "offset": 3208,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "decoder like it is for um a lot of these",
+      "offset": 3210.319,
+      "duration": 5.721
+    },
+    {
+      "lang": "en",
+      "text": "practical linear time and codable codes",
+      "offset": 3214,
+      "duration": 4.04
+    },
+    {
+      "lang": "en",
+      "text": "so there's kind of across the board no",
+      "offset": 3216.04,
+      "duration": 5.6
+    },
+    {
+      "lang": "en",
+      "text": "drawbacks to to doing that",
+      "offset": 3218.04,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "then uh how much this have you",
+      "offset": 3223.2,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "implemented is are the kind of",
+      "offset": 3225.96,
+      "duration": 5.639
+    },
+    {
+      "lang": "en",
+      "text": "performance conclusions are they",
+      "offset": 3229.2,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "theoretical or you done experiment about",
+      "offset": 3231.599,
+      "duration": 6.281
+    },
+    {
+      "lang": "en",
+      "text": "about this paper or yeah this paper well",
+      "offset": 3234.48,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "well",
+      "offset": 3237.88,
+      "duration": 5.239
+    },
+    {
+      "lang": "en",
+      "text": "both so this one we don't have an",
+      "offset": 3239.44,
+      "duration": 5.399
+    },
+    {
+      "lang": "en",
+      "text": "implementation I mean in terms of like",
+      "offset": 3243.119,
+      "duration": 4.521
+    },
+    {
+      "lang": "en",
+      "text": "the prover cost I think part of it is",
+      "offset": 3244.839,
+      "duration": 5.801
+    },
+    {
+      "lang": "en",
+      "text": "that it would look very similar to you",
+      "offset": 3247.64,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "can imagine that our our prover is kind",
+      "offset": 3250.64,
+      "duration": 3.88
+    },
+    {
+      "lang": "en",
+      "text": "of running a subset of something like",
+      "offset": 3253,
+      "duration": 3.24
+    },
+    {
+      "lang": "en",
+      "text": "stir like it's running the first round",
+      "offset": 3254.52,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "of stir and nothing else and you can",
+      "offset": 3256.24,
+      "duration": 5.64
+    },
+    {
+      "lang": "en",
+      "text": "think of the verifier as kind of being a",
+      "offset": 3258.76,
+      "duration": 6.599
+    },
+    {
+      "lang": "en",
+      "text": "subset of the stir verifier so if you",
+      "offset": 3261.88,
+      "duration": 6.199
+    },
+    {
+      "lang": "en",
+      "text": "just compare the two then",
+      "offset": 3265.359,
+      "duration": 6.44
+    },
+    {
+      "lang": "en",
+      "text": "like like clearly the subset will um",
+      "offset": 3268.079,
+      "duration": 5.881
+    },
+    {
+      "lang": "en",
+      "text": "will be better the question is how much",
+      "offset": 3271.799,
+      "duration": 5.8
+    },
+    {
+      "lang": "en",
+      "text": "better um yeah yeah yeah the question",
+      "offset": 3273.96,
+      "duration": 5.24
+    },
+    {
+      "lang": "en",
+      "text": "the question was directed how much",
+      "offset": 3277.599,
+      "duration": 5.881
+    },
+    {
+      "lang": "en",
+      "text": "better I believe you this better um yeah",
+      "offset": 3279.2,
+      "duration": 7.24
+    },
+    {
+      "lang": "en",
+      "text": "um yeah so we don't have an imp",
+      "offset": 3283.48,
+      "duration": 5.68
+    },
+    {
+      "lang": "en",
+      "text": "implementation yet for the for the new",
+      "offset": 3286.44,
+      "duration": 4.639
+    },
+    {
+      "lang": "en",
+      "text": "protocol um this is something that I",
+      "offset": 3289.16,
+      "duration": 5.439
+    },
+    {
+      "lang": "en",
+      "text": "want to work on if uh but at the moment",
+      "offset": 3291.079,
+      "duration": 7.24
+    },
+    {
+      "lang": "en",
+      "text": "we also don't have an implementation for",
+      "offset": 3294.599,
+      "duration": 3.72
+    },
+    {
+      "lang": "en",
+      "text": "that so in the new work does that mean",
+      "offset": 3298.72,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "you do need proximity gaps for General",
+      "offset": 3302.119,
+      "duration": 4.121
+    },
+    {
+      "lang": "en",
+      "text": "codes or or how does that",
+      "offset": 3304.16,
+      "duration": 4.679
+    },
+    {
+      "lang": "en",
+      "text": "work yeah so you you need a",
+      "offset": 3306.24,
+      "duration": 5.16
+    },
+    {
+      "lang": "en",
+      "text": "corresponding proximity gap for the code",
+      "offset": 3308.839,
+      "duration": 5.121
+    },
+    {
+      "lang": "en",
+      "text": "so this exists for all codes obviously",
+      "offset": 3311.4,
+      "duration": 5.399
+    },
+    {
+      "lang": "en",
+      "text": "with like a worse bound but your",
+      "offset": 3313.96,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "proximity parameter is limited to D",
+      "offset": 3316.799,
+      "duration": 6.481
+    },
+    {
+      "lang": "en",
+      "text": "over3 case right",
+      "offset": 3319,
+      "duration": 6.88
+    },
+    {
+      "lang": "en",
+      "text": "um yeah so so I mean there's also been",
+      "offset": 3323.28,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "some more recent results that actually",
+      "offset": 3325.88,
+      "duration": 4.159
+    },
+    {
+      "lang": "en",
+      "text": "show proximity gaps um past the uni",
+      "offset": 3327.28,
+      "duration": 5.559
+    },
+    {
+      "lang": "en",
+      "text": "unique decoding radius like up to some",
+      "offset": 3330.039,
+      "duration": 5.08
+    },
+    {
+      "lang": "en",
+      "text": "like one like one one 1.5 Johnson bound",
+      "offset": 3332.839,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "or whatever for General codes yeah for",
+      "offset": 3335.119,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "General",
+      "offset": 3338.359,
+      "duration": 4.881
+    },
+    {
+      "lang": "en",
+      "text": "codes can you share that yeah there's",
+      "offset": 3339.599,
+      "duration": 8.48
+    },
+    {
+      "lang": "en",
+      "text": "two um one is from it's called",
+      "offset": 3343.24,
+      "duration": 8.72
+    },
+    {
+      "lang": "en",
+      "text": "botum k h a t",
+      "offset": 3348.079,
+      "duration": 3.881
+    },
+    {
+      "lang": "en",
+      "text": "m and the other",
+      "offset": 3352.52,
+      "duration": 4.839
+    },
+    {
+      "lang": "en",
+      "text": "one unfortun I don't remember the",
+      "offset": 3354.76,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "authors but it's cited like it's cited",
+      "offset": 3357.359,
+      "duration": 7.281
+    },
+    {
+      "lang": "en",
+      "text": "in Cotton um so both of them I think get",
+      "offset": 3360.28,
+      "duration": 5.799
+    },
+    {
+      "lang": "en",
+      "text": "I think they get slightly different",
+      "offset": 3364.64,
+      "duration": 3.959
+    },
+    {
+      "lang": "en",
+      "text": "results but um the other important thing",
+      "offset": 3366.079,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "is that in our new work we also rely on",
+      "offset": 3368.599,
+      "duration": 4.641
+    },
+    {
+      "lang": "en",
+      "text": "Mutual correlated agreement uh but both",
+      "offset": 3370.559,
+      "duration": 5.161
+    },
+    {
+      "lang": "en",
+      "text": "of these works also prove that so it's",
+      "offset": 3373.24,
+      "duration": 7
+    },
+    {
+      "lang": "en",
+      "text": "like a stronger version of approxim cap",
+      "offset": 3375.72,
+      "duration": 4.52
+    },
+    {
+      "lang": "en",
+      "text": "uh proximity gaps and interl",
+      "offset": 3391.48,
+      "duration": 9.68
+    },
+    {
+      "lang": "en",
+      "text": "codes uh icr um 2024 3051 it's that the",
+      "offset": 3393.799,
+      "duration": 8.921
+    },
+    {
+      "lang": "en",
+      "text": "one",
+      "offset": 3401.16,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "um yeah I can can just check right now",
+      "offset": 3402.72,
+      "duration": 7.599
+    },
+    {
+      "lang": "en",
+      "text": "um no uh D that that's my I think that's",
+      "offset": 3406.28,
+      "duration": 6.48
+    },
+    {
+      "lang": "en",
+      "text": "my paper with with Angus",
+      "offset": 3410.319,
+      "duration": 6.28
+    },
+    {
+      "lang": "en",
+      "text": "um that is not that that does not have",
+      "offset": 3412.76,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "anything to do with",
+      "offset": 3416.599,
+      "duration": 3.841
+    },
+    {
+      "lang": "en",
+      "text": "Beyond oh okay the unique decoding",
+      "offset": 3418.2,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "radius actually the point there is is",
+      "offset": 3420.44,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "for tensor",
+      "offset": 3422.28,
+      "duration": 5.319
+    },
+    {
+      "lang": "en",
+      "text": "combinations I can explain but",
+      "offset": 3424.52,
+      "duration": 7.519
+    },
+    {
+      "lang": "en",
+      "text": "but WR paper yeah",
+      "offset": 3427.599,
+      "duration": 4.44
+    },
+    {
+      "lang": "en",
+      "text": "yeah yeah okay this is",
+      "offset": 3432.96,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "um okay I can I can post the the links",
+      "offset": 3441.96,
+      "duration": 6.599
+    },
+    {
+      "lang": "en",
+      "text": "in the T after this after this",
+      "offset": 3445.48,
+      "duration": 6.24
+    },
+    {
+      "lang": "en",
+      "text": "call thank",
+      "offset": 3448.559,
+      "duration": 3.161
+    },
+    {
+      "lang": "en",
+      "text": "you perfect sounds good so yeah thank",
+      "offset": 3456,
+      "duration": 5.319
+    },
+    {
+      "lang": "en",
+      "text": "you everyone for for joining and thank",
+      "offset": 3459.16,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "you very much William for the for the",
+      "offset": 3461.319,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "presentation and yeah I guess we'll see",
+      "offset": 3463,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "you guys at the next",
+      "offset": 3465.319,
+      "duration": 6.441
+    },
+    {
+      "lang": "en",
+      "text": "session thank you very much",
+      "offset": 3467.24,
+      "duration": 4.52
+    }
+  ],
+  "cleanText": null,
+  "dumpedAt": "2025-07-21T18:43:25.127Z"
+}

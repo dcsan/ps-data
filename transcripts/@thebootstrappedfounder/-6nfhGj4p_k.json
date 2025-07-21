@@ -1,0 +1,4408 @@
+{
+  "episodeId": "-6nfhGj4p_k",
+  "channelSlug": "@thebootstrappedfounder",
+  "title": "404: The Transcription Challenge: Building Infrastructure That Scales With The World",
+  "publishedAt": "2025-07-18T10:06:45.000Z",
+  "rawLines": [
+    {
+      "lang": "en",
+      "text": "Hey, it's Arvid and this is the",
+      "offset": 0.48,
+      "duration": 5.56
+    },
+    {
+      "lang": "en",
+      "text": "bootstrap founder.",
+      "offset": 2.56,
+      "duration": 3.48
+    },
+    {
+      "lang": "en",
+      "text": "[Music]",
+      "offset": 7.96,
+      "duration": 3.32
+    },
+    {
+      "lang": "en",
+      "text": "Today we'll talk about keeping up with",
+      "offset": 9.2,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "an avalanche of audio data and how I",
+      "offset": 11.28,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "built Podscan's transcription",
+      "offset": 13.44,
+      "duration": 3.28
+    },
+    {
+      "lang": "en",
+      "text": "infrastructure.",
+      "offset": 15.12,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "This episode is sponsored by paddle.com,",
+      "offset": 16.72,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "my merchantof record payment provider of",
+      "offset": 18.8,
+      "duration": 3.28
+    },
+    {
+      "lang": "en",
+      "text": "choice who's been helping me focus on",
+      "offset": 20.64,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "Podscan from day one. They're taking",
+      "offset": 22.08,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "care of all the little things related to",
+      "offset": 24,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "money so that founders like you and me",
+      "offset": 25.76,
+      "duration": 3.359
+    },
+    {
+      "lang": "en",
+      "text": "can focus on building the things that",
+      "offset": 27.68,
+      "duration": 4.399
+    },
+    {
+      "lang": "en",
+      "text": "only we can build like a massive podcast",
+      "offset": 29.119,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "transcription infrastructure. Paddle",
+      "offset": 32.079,
+      "duration": 3.841
+    },
+    {
+      "lang": "en",
+      "text": "handles all the rest. Sales tax, credit",
+      "offset": 34.079,
+      "duration": 3.601
+    },
+    {
+      "lang": "en",
+      "text": "cards, those kind of things. Don't need",
+      "offset": 35.92,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "to do with it because they do. I highly",
+      "offset": 37.68,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "recommend checking it out. So, please go",
+      "offset": 39.52,
+      "duration": 5.6
+    },
+    {
+      "lang": "en",
+      "text": "to paddle.com and take a look.",
+      "offset": 41.04,
+      "duration": 6.08
+    },
+    {
+      "lang": "en",
+      "text": "Now, when I started building the first",
+      "offset": 45.12,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "prototype of Potscan, I very quickly",
+      "offset": 47.12,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "realized that this was going to be a",
+      "offset": 50.32,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "different business than any that I've",
+      "offset": 52.16,
+      "duration": 4.079
+    },
+    {
+      "lang": "en",
+      "text": "built before. The difference had",
+      "offset": 54,
+      "duration": 4.239
+    },
+    {
+      "lang": "en",
+      "text": "everything to do with one fundamental",
+      "offset": 56.239,
+      "duration": 4.241
+    },
+    {
+      "lang": "en",
+      "text": "challenge in this field. Unlike most",
+      "offset": 58.239,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "software service businesses, the",
+      "offset": 60.48,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "resources that I would need from the",
+      "offset": 62.559,
+      "duration": 4.481
+    },
+    {
+      "lang": "en",
+      "text": "start wouldn't scale with the number of",
+      "offset": 64.72,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "customers I had, but would scale with",
+      "offset": 67.04,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "something completely out of my control.",
+      "offset": 69.36,
+      "duration": 4.079
+    },
+    {
+      "lang": "en",
+      "text": "the number of new podcast episodes being",
+      "offset": 71.36,
+      "duration": 5.68
+    },
+    {
+      "lang": "en",
+      "text": "released worldwide every single day. So",
+      "offset": 73.439,
+      "duration": 5.921
+    },
+    {
+      "lang": "en",
+      "text": "no matter if I had one customer or a",
+      "offset": 77.04,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "hundred, if they wanted to track every",
+      "offset": 79.36,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "podcast out there for a keyword, I",
+      "offset": 81.52,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "needed to deal with this from day one.",
+      "offset": 83.92,
+      "duration": 3.839
+    },
+    {
+      "lang": "en",
+      "text": "And that's hard because if you ever",
+      "offset": 86.08,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "investigated the idea of stoicism, you",
+      "offset": 87.759,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "will know that there are certain things",
+      "offset": 89.92,
+      "duration": 3.199
+    },
+    {
+      "lang": "en",
+      "text": "you can control that you should care",
+      "offset": 91.119,
+      "duration": 3.841
+    },
+    {
+      "lang": "en",
+      "text": "about and certain things that you cannot",
+      "offset": 93.119,
+      "duration": 3.601
+    },
+    {
+      "lang": "en",
+      "text": "control that you shouldn't fret about at",
+      "offset": 94.96,
+      "duration": 3.519
+    },
+    {
+      "lang": "en",
+      "text": "all. That's kind of the idea. Like a",
+      "offset": 96.72,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "very rough description of stoicism here,",
+      "offset": 98.479,
+      "duration": 3.761
+    },
+    {
+      "lang": "en",
+      "text": "but you know, like it's deal with the",
+      "offset": 100.56,
+      "duration": 3.599
+    },
+    {
+      "lang": "en",
+      "text": "things you could deal with and don't",
+      "offset": 102.24,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "whine about the others. So that's",
+      "offset": 104.159,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "exactly what I did. I focused on what I",
+      "offset": 105.6,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "could do to make transcribing every",
+      "offset": 107.759,
+      "duration": 4.481
+    },
+    {
+      "lang": "en",
+      "text": "single podcast out there a reality. And",
+      "offset": 110,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "I didn't complain about the fact that",
+      "offset": 112.24,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "there are tens of thousands, millions of",
+      "offset": 114.24,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "shows being released all the time with",
+      "offset": 116.32,
+      "duration": 4.399
+    },
+    {
+      "lang": "en",
+      "text": "tens of thousands of shows being",
+      "offset": 119.04,
+      "duration": 4.079
+    },
+    {
+      "lang": "en",
+      "text": "released every day. That's kind of the",
+      "offset": 120.719,
+      "duration": 4.801
+    },
+    {
+      "lang": "en",
+      "text": "framework here. I had to deal with it. I",
+      "offset": 123.119,
+      "duration": 4.561
+    },
+    {
+      "lang": "en",
+      "text": "think I'm currently tracking 3.8 million",
+      "offset": 125.52,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "shows and roughly every day there's",
+      "offset": 127.68,
+      "duration": 5.6
+    },
+    {
+      "lang": "en",
+      "text": "somewhere between 30 to 70,000 being",
+      "offset": 130.64,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "released. Depends on the day of the",
+      "offset": 133.28,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "week. And I want to talk about this",
+      "offset": 134.72,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "herculean effort of building",
+      "offset": 137.68,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "transcription infrastructure, how I got",
+      "offset": 139.28,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "it from being extremely expensive to",
+      "offset": 141.28,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "manageably cheap comparatively, what the",
+      "offset": 143.04,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "trade-offs were along the way, and how",
+      "offset": 145.76,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "much of the development of new",
+      "offset": 147.84,
+      "duration": 3.28
+    },
+    {
+      "lang": "en",
+      "text": "technologies has impacted the",
+      "offset": 149.36,
+      "duration": 3.599
+    },
+    {
+      "lang": "en",
+      "text": "feasibility of this entire project for",
+      "offset": 151.12,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "me. Now, for my first prototype, I",
+      "offset": 152.959,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "obviously didn't try to transcribe",
+      "offset": 155.92,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "everything at once. Like, I knew that",
+      "offset": 157.519,
+      "duration": 5.201
+    },
+    {
+      "lang": "en",
+      "text": "that didn't make sense to try it all,",
+      "offset": 160.4,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "but I had found my source of podcast",
+      "offset": 162.72,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "feed data, just a couple of good podcast",
+      "offset": 165.28,
+      "duration": 5.039
+    },
+    {
+      "lang": "en",
+      "text": "feeds to try it out with through the",
+      "offset": 168.48,
+      "duration": 3.759
+    },
+    {
+      "lang": "en",
+      "text": "podcast index project. It's very",
+      "offset": 170.319,
+      "duration": 3.28
+    },
+    {
+      "lang": "en",
+      "text": "interesting. If you're into podcasting,",
+      "offset": 172.239,
+      "duration": 2.64
+    },
+    {
+      "lang": "en",
+      "text": "check it out. It's an open- source",
+      "offset": 173.599,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "approach to listing all the podcasts",
+      "offset": 174.879,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "everywhere. It's free and it's openly",
+      "offset": 176.959,
+      "duration": 4.321
+    },
+    {
+      "lang": "en",
+      "text": "available as an API and a database of",
+      "offset": 178.879,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "podcasts that provides where they're",
+      "offset": 181.28,
+      "duration": 3.679
+    },
+    {
+      "lang": "en",
+      "text": "hosted, the names, descriptions, and",
+      "offset": 182.959,
+      "duration": 4.721
+    },
+    {
+      "lang": "en",
+      "text": "links to episodes as well. I think maybe",
+      "offset": 184.959,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "not necessarily all of them, but some.",
+      "offset": 187.68,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "And they even have a full SQLite export",
+      "offset": 190.319,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "like 4 GB of just one big file with all",
+      "offset": 192.64,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "this data makes it very easy to jump",
+      "offset": 194.959,
+      "duration": 4.881
+    },
+    {
+      "lang": "en",
+      "text": "start any system. But they even have a",
+      "offset": 197.84,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "great API and the podcast index API has",
+      "offset": 199.84,
+      "duration": 5.039
+    },
+    {
+      "lang": "en",
+      "text": "a very beneficial endpoint for trending",
+      "offset": 202.72,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "shows and newly released episodes. So my",
+      "offset": 204.879,
+      "duration": 4.961
+    },
+    {
+      "lang": "en",
+      "text": "first prototype used that API and just",
+      "offset": 207.36,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "grabbed the most recently or most",
+      "offset": 209.84,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "popular released episodes and transcribe",
+      "offset": 211.68,
+      "duration": 5.919
+    },
+    {
+      "lang": "en",
+      "text": "those with the existing resources that I",
+      "offset": 214.72,
+      "duration": 5.68
+    },
+    {
+      "lang": "en",
+      "text": "had. And when it comes to the tech, I'm",
+      "offset": 217.599,
+      "duration": 4.081
+    },
+    {
+      "lang": "en",
+      "text": "just going to share everything here",
+      "offset": 220.4,
+      "duration": 3.759
+    },
+    {
+      "lang": "en",
+      "text": "because why not? I already had been",
+      "offset": 221.68,
+      "duration": 3.919
+    },
+    {
+      "lang": "en",
+      "text": "experimenting with an open source",
+      "offset": 224.159,
+      "duration": 3.681
+    },
+    {
+      "lang": "en",
+      "text": "library called Whisper for a previous",
+      "offset": 225.599,
+      "duration": 4.321
+    },
+    {
+      "lang": "en",
+      "text": "project called Podline, a voice",
+      "offset": 227.84,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "messaging tool for podcast. That was the",
+      "offset": 229.92,
+      "duration": 3.599
+    },
+    {
+      "lang": "en",
+      "text": "idea. I was going to take in voice",
+      "offset": 231.76,
+      "duration": 3.839
+    },
+    {
+      "lang": "en",
+      "text": "messages through the browser, transcribe",
+      "offset": 233.519,
+      "duration": 4.161
+    },
+    {
+      "lang": "en",
+      "text": "them on the back end, and then send a",
+      "offset": 235.599,
+      "duration": 4.961
+    },
+    {
+      "lang": "en",
+      "text": "notification to my customers. And I had",
+      "offset": 237.68,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "found that Whisper, which is supposed to",
+      "offset": 240.56,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "be run on GPUs, could also be run on a",
+      "offset": 242.56,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "CPU, so without a graphics card at all,",
+      "offset": 245.2,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "through a project called Whisper.cpp,",
+      "offset": 247.76,
+      "duration": 5.92
+    },
+    {
+      "lang": "en",
+      "text": "albeit quite slowly. But for Potline,",
+      "offset": 250.64,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "where I needed to occasionally",
+      "offset": 253.68,
+      "duration": 4.399
+    },
+    {
+      "lang": "en",
+      "text": "transcribe a short one minute clip, this",
+      "offset": 255.2,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "worked perfectly. It may have taken 5",
+      "offset": 258.079,
+      "duration": 5.761
+    },
+    {
+      "lang": "en",
+      "text": "minutes to transcribe it on one CPU",
+      "offset": 260.16,
+      "duration": 5.92
+    },
+    {
+      "lang": "en",
+      "text": "core, but that's okay. There's many",
+      "offset": 263.84,
+      "duration": 4.639
+    },
+    {
+      "lang": "en",
+      "text": "cores in modern CPUs. And if I have 5",
+      "offset": 266.08,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "minutes, sure that people will take the",
+      "offset": 268.479,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "notification a bit after. That's all",
+      "offset": 270.8,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "right. And since Pot Scan, my current",
+      "offset": 272.639,
+      "duration": 5.601
+    },
+    {
+      "lang": "en",
+      "text": "business, was initially a marketing",
+      "offset": 276.16,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "effort for Potline because I wanted to",
+      "offset": 278.24,
+      "duration": 3.28
+    },
+    {
+      "lang": "en",
+      "text": "know where people already talk about",
+      "offset": 280,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "having voicemail. So, I built a tool",
+      "offset": 281.52,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "that would figure out where people",
+      "offset": 283.52,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "talked about it. I had all the tech",
+      "offset": 285.52,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "laying around, but obviously there's a",
+      "offset": 287.6,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "stark difference in transcription scale",
+      "offset": 289.84,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "here, right? Potline needed to handle",
+      "offset": 291.52,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "occasional short clips, but Potscan",
+      "offset": 294.16,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "needed to reliably transcribe 50,000",
+      "offset": 296.24,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "shows per day. And those are often shows",
+      "offset": 298.56,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "that go for 40 to 80 minutes, right?",
+      "offset": 300.88,
+      "duration": 5.039
+    },
+    {
+      "lang": "en",
+      "text": "That's not just 30 seconds. That is",
+      "offset": 303.52,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "hours of material. And if you look at",
+      "offset": 305.919,
+      "duration": 4.321
+    },
+    {
+      "lang": "en",
+      "text": "Joe Rogan who reliably puts out four",
+      "offset": 307.52,
+      "duration": 5.84
+    },
+    {
+      "lang": "en",
+      "text": "plus hour shows, that system needed to",
+      "offset": 310.24,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "be fast and good enough to get the whole",
+      "offset": 313.36,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "conversation and transcribe it. So the",
+      "offset": 316.24,
+      "duration": 4.239
+    },
+    {
+      "lang": "en",
+      "text": "first smart choice that I needed to make",
+      "offset": 318.56,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "was treating this as a queueing system,",
+      "offset": 320.479,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "not as something that would happen",
+      "offset": 322.72,
+      "duration": 2.96
+    },
+    {
+      "lang": "en",
+      "text": "synchronously to when stuff was",
+      "offset": 323.919,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "released. I needed a queue of podcast",
+      "offset": 325.68,
+      "duration": 4.239
+    },
+    {
+      "lang": "en",
+      "text": "episodes that would just wait to be",
+      "offset": 327.919,
+      "duration": 4.161
+    },
+    {
+      "lang": "en",
+      "text": "transcribed and whenever I had time and",
+      "offset": 329.919,
+      "duration": 4.641
+    },
+    {
+      "lang": "en",
+      "text": "resources, I would transcribe the next",
+      "offset": 332.08,
+      "duration": 5.839
+    },
+    {
+      "lang": "en",
+      "text": "one in descending priority. And this",
+      "offset": 334.56,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "required a priority system to determine",
+      "offset": 337.919,
+      "duration": 5.361
+    },
+    {
+      "lang": "en",
+      "text": "which episodes should be handled first.",
+      "offset": 340.32,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "That is a whole thing that I could",
+      "offset": 343.28,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "probably do a full episode on. I've come",
+      "offset": 344.88,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "to a system where I have three cues",
+      "offset": 347.12,
+      "duration": 4.799
+    },
+    {
+      "lang": "en",
+      "text": "right now that are high priority, middle",
+      "offset": 349.36,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "priority, and low priority. And the high",
+      "offset": 351.919,
+      "duration": 4.321
+    },
+    {
+      "lang": "en",
+      "text": "priority shows would be the Joe Rogan's",
+      "offset": 354.24,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "of this world that would get like a",
+      "offset": 356.24,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "preferential treatment because I know",
+      "offset": 358.32,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "that anything set on this show, if it",
+      "offset": 360.24,
+      "duration": 5.519
+    },
+    {
+      "lang": "en",
+      "text": "triggers an alert, then that would have",
+      "offset": 362.56,
+      "duration": 5.6
+    },
+    {
+      "lang": "en",
+      "text": "the biggest impact on whatever my",
+      "offset": 365.759,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "customers might need to do with it. So,",
+      "offset": 368.16,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "I need these episodes to be transcribed",
+      "offset": 369.759,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "early. But then there are maybe mid-tier",
+      "offset": 372.24,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "podcasts that can wait a half an hour or",
+      "offset": 375.039,
+      "duration": 4.241
+    },
+    {
+      "lang": "en",
+      "text": "so before they get transcribed or that",
+      "offset": 377.12,
+      "duration": 3.919
+    },
+    {
+      "lang": "en",
+      "text": "could even wait a couple days because",
+      "offset": 379.28,
+      "duration": 3.199
+    },
+    {
+      "lang": "en",
+      "text": "they're just not that important. and",
+      "offset": 381.039,
+      "duration": 3.681
+    },
+    {
+      "lang": "en",
+      "text": "that descends them in priority. There's",
+      "offset": 382.479,
+      "duration": 4.241
+    },
+    {
+      "lang": "en",
+      "text": "also an immediate priority queue which",
+      "offset": 384.72,
+      "duration": 5.039
+    },
+    {
+      "lang": "en",
+      "text": "skips all the other cues for like custom",
+      "offset": 386.72,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "retranscriptions. If I ever have an",
+      "offset": 389.759,
+      "duration": 3.681
+    },
+    {
+      "lang": "en",
+      "text": "episode that needs to be retranscribed",
+      "offset": 391.84,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "or somebody really needs this episode",
+      "offset": 393.44,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "right now, there's a bypass version, but",
+      "offset": 395.28,
+      "duration": 4.639
+    },
+    {
+      "lang": "en",
+      "text": "effectively that's the priority system",
+      "offset": 398,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "that I have. And for that queue, my",
+      "offset": 399.919,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "initial setup was really just one",
+      "offset": 402.96,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "consumer and that was the Mac Studio",
+      "offset": 405.199,
+      "duration": 5.761
+    },
+    {
+      "lang": "en",
+      "text": "that I was developing the software on.",
+      "offset": 407.68,
+      "duration": 7.359
+    },
+    {
+      "lang": "en",
+      "text": "and that has right now a microphone that",
+      "offset": 410.96,
+      "duration": 5.6
+    },
+    {
+      "lang": "en",
+      "text": "I'm speaking into where I'm recording",
+      "offset": 415.039,
+      "duration": 4.641
+    },
+    {
+      "lang": "en",
+      "text": "this podcast. Like I was running my full",
+      "offset": 416.56,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "queue for my production system on a",
+      "offset": 419.68,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "local computer. So running whisper.cpp",
+      "offset": 422.08,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "locally on a Mac. That's really cool",
+      "offset": 424.72,
+      "duration": 5.199
+    },
+    {
+      "lang": "en",
+      "text": "because it will use the GPU if I can",
+      "offset": 426.96,
+      "duration": 4.639
+    },
+    {
+      "lang": "en",
+      "text": "connect to it. And the MacBook's unified",
+      "offset": 429.919,
+      "duration": 4.161
+    },
+    {
+      "lang": "en",
+      "text": "memory system like the MPS system is",
+      "offset": 431.599,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "capable of running these models really",
+      "offset": 434.08,
+      "duration": 4.959
+    },
+    {
+      "lang": "en",
+      "text": "really quickly. and I was getting about",
+      "offset": 436.639,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "200 words per second, which is really",
+      "offset": 439.039,
+      "duration": 3.681
+    },
+    {
+      "lang": "en",
+      "text": "something. And this meant I could fetch",
+      "offset": 441.039,
+      "duration": 4.321
+    },
+    {
+      "lang": "en",
+      "text": "a couple hundred episodes per hour with",
+      "offset": 442.72,
+      "duration": 5.039
+    },
+    {
+      "lang": "en",
+      "text": "some parallel processing on my local",
+      "offset": 445.36,
+      "duration": 6.32
+    },
+    {
+      "lang": "en",
+      "text": "system. So then I realized that to",
+      "offset": 447.759,
+      "duration": 6.72
+    },
+    {
+      "lang": "en",
+      "text": "deploy this as a business properly, I",
+      "offset": 451.68,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "needed a transcription server running on",
+      "offset": 454.479,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "a different cloud system very likely",
+      "offset": 456.4,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "because I couldn't just keep it running",
+      "offset": 458.639,
+      "duration": 3.12
+    },
+    {
+      "lang": "en",
+      "text": "locally at home. If my internet ever",
+      "offset": 460.24,
+      "duration": 2.88
+    },
+    {
+      "lang": "en",
+      "text": "goes out, my company wouldn't work,",
+      "offset": 461.759,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "right? So I started exploring companies",
+      "offset": 463.12,
+      "duration": 4.639
+    },
+    {
+      "lang": "en",
+      "text": "that would offer access to computers",
+      "offset": 465.599,
+      "duration": 3.921
+    },
+    {
+      "lang": "en",
+      "text": "with graphics cards where I could",
+      "offset": 467.759,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "install whatever stack I had locally and",
+      "offset": 469.52,
+      "duration": 5.84
+    },
+    {
+      "lang": "en",
+      "text": "keep it running there 24/7. So the first",
+      "offset": 472.639,
+      "duration": 5.921
+    },
+    {
+      "lang": "en",
+      "text": "thing I tried was AWS with their Gtype",
+      "offset": 475.36,
+      "duration": 5.119
+    },
+    {
+      "lang": "en",
+      "text": "instances. The G I guess stands for",
+      "offset": 478.56,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "graphics cards I presume. I don't know.",
+      "offset": 480.479,
+      "duration": 5.681
+    },
+    {
+      "lang": "en",
+      "text": "But these were quite expensive instances",
+      "offset": 482.96,
+      "duration": 6.32
+    },
+    {
+      "lang": "en",
+      "text": "that didn't really have much power for",
+      "offset": 486.16,
+      "duration": 5.439
+    },
+    {
+      "lang": "en",
+      "text": "the work that I was doing. The ones I",
+      "offset": 489.28,
+      "duration": 4.319
+    },
+    {
+      "lang": "en",
+      "text": "could afford, I think it was around $400",
+      "offset": 491.599,
+      "duration": 3.761
+    },
+    {
+      "lang": "en",
+      "text": "a month, just weren't powerful enough,",
+      "offset": 493.599,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "particularly compared to my local server",
+      "offset": 495.36,
+      "duration": 3.839
+    },
+    {
+      "lang": "en",
+      "text": "here. I would have preferred them to be",
+      "offset": 497.039,
+      "duration": 4.481
+    },
+    {
+      "lang": "en",
+      "text": "either cheaper or better. So, I quickly",
+      "offset": 499.199,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "stepped away from AWS. And even to get",
+      "offset": 501.52,
+      "duration": 4.239
+    },
+    {
+      "lang": "en",
+      "text": "them, you have to apply for quota there",
+      "offset": 503.759,
+      "duration": 3.921
+    },
+    {
+      "lang": "en",
+      "text": "and they have to verify it. It's quite",
+      "offset": 505.759,
+      "duration": 3.761
+    },
+    {
+      "lang": "en",
+      "text": "hard to get there. So, I looked for",
+      "offset": 507.68,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "alternative, easier solutions. So, I",
+      "offset": 509.52,
+      "duration": 6.079
+    },
+    {
+      "lang": "en",
+      "text": "looked into Lambda Labs, which was one",
+      "offset": 512.32,
+      "duration": 5.279
+    },
+    {
+      "lang": "en",
+      "text": "of the first reliable options for GPU",
+      "offset": 515.599,
+      "duration": 3.521
+    },
+    {
+      "lang": "en",
+      "text": "systems that I found and I used them for",
+      "offset": 517.599,
+      "duration": 3.521
+    },
+    {
+      "lang": "en",
+      "text": "quite a while. Lambda was helpful",
+      "offset": 519.12,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "because they offered different servers",
+      "offset": 521.12,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "with different GPUs attached. So, you",
+      "offset": 522.88,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "could rent an H100, like one of the most",
+      "offset": 525.12,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "powerful Nvidia GPUs at the time, for",
+      "offset": 527.92,
+      "duration": 5.84
+    },
+    {
+      "lang": "en",
+      "text": "about a,000 bucks a month or a bit more,",
+      "offset": 531.12,
+      "duration": 4.719
+    },
+    {
+      "lang": "en",
+      "text": "which was quite expensive obviously to",
+      "offset": 533.76,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "rent a GPU. Or you could have an A100 or",
+      "offset": 535.839,
+      "duration": 4.721
+    },
+    {
+      "lang": "en",
+      "text": "an A10, which were much cheaper and",
+      "offset": 538.56,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "actually perfect for transcription",
+      "offset": 540.56,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "purposes. So, I spent a couple months",
+      "offset": 542,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "experimenting with my own personal",
+      "offset": 544,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "money, testing whether an A10 would",
+      "offset": 545.44,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "outperform an A100 or an H100, not in",
+      "offset": 548,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "terms of raw throughput, but in terms of",
+      "offset": 550.88,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "words per dollar. That's kind of the",
+      "offset": 552.72,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "unit that I had. And I think I shared",
+      "offset": 554.72,
+      "duration": 3.119
+    },
+    {
+      "lang": "en",
+      "text": "this on Twitter where I did some math",
+      "offset": 556.24,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "there. I deployed my transcription",
+      "offset": 557.839,
+      "duration": 3.921
+    },
+    {
+      "lang": "en",
+      "text": "systems to different hosts with",
+      "offset": 559.92,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "different graphics cards and I ran",
+      "offset": 561.76,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "experiments with a very number of",
+      "offset": 563.92,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "parallel transcriptions just to see how",
+      "offset": 566.72,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "it worked. And I found a working",
+      "offset": 568.48,
+      "duration": 3.12
+    },
+    {
+      "lang": "en",
+      "text": "solution eventually. I think I settled",
+      "offset": 570.08,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "on 12 to 16ish servers with A10 graphics",
+      "offset": 571.6,
+      "duration": 5.6
+    },
+    {
+      "lang": "en",
+      "text": "cards. That was just uh the best. These",
+      "offset": 574.8,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "became my transcription fleet for a",
+      "offset": 577.2,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "while, but even then got quite",
+      "offset": 579.04,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "expensive, which made me realize that I",
+      "offset": 581.44,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "needed to do something about this price",
+      "offset": 583.36,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "cuz that was also pre funding for me. I",
+      "offset": 585.6,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "didn't have any funding at that point",
+      "offset": 588.64,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "just yet, but I was paying thousands of",
+      "offset": 591.04,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "dollars a month personally for my",
+      "offset": 592.72,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "personal money. So, I needed to figure",
+      "offset": 594.8,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "something out. And the most effective",
+      "offset": 596.56,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "thing that I did was to look for hosted",
+      "offset": 598.72,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "servers outside of services that are",
+      "offset": 601.36,
+      "duration": 4.159
+    },
+    {
+      "lang": "en",
+      "text": "focused on renting AI. That I just",
+      "offset": 603.12,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "needed to look for other people that had",
+      "offset": 605.519,
+      "duration": 5.281
+    },
+    {
+      "lang": "en",
+      "text": "GPU based servers that were not yet in",
+      "offset": 607.2,
+      "duration": 6.639
+    },
+    {
+      "lang": "en",
+      "text": "the AI hype space. And those services",
+      "offset": 610.8,
+      "duration": 6.08
+    },
+    {
+      "lang": "en",
+      "text": "tended to offer sizable graphics cards",
+      "offset": 613.839,
+      "duration": 4.641
+    },
+    {
+      "lang": "en",
+      "text": "like that. The ones that do AI for",
+      "offset": 616.88,
+      "duration": 2.959
+    },
+    {
+      "lang": "en",
+      "text": "inference, which is great if you need",
+      "offset": 618.48,
+      "duration": 4.479
+    },
+    {
+      "lang": "en",
+      "text": "impressive GPU power, but in most cases",
+      "offset": 619.839,
+      "duration": 4.641
+    },
+    {
+      "lang": "en",
+      "text": "for transcription, that's actually not",
+      "offset": 622.959,
+      "duration": 3.681
+    },
+    {
+      "lang": "en",
+      "text": "what you need. You need some graphics",
+      "offset": 624.48,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "card that can do some transcription and",
+      "offset": 626.64,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "the cheaper the better because",
+      "offset": 628.56,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "transcription doesn't require a lot of",
+      "offset": 630.48,
+      "duration": 4.799
+    },
+    {
+      "lang": "en",
+      "text": "VRAM. It just requires some time on a",
+      "offset": 632.16,
+      "duration": 5.84
+    },
+    {
+      "lang": "en",
+      "text": "GPU. And I found this solution in Hznut,",
+      "offset": 635.279,
+      "duration": 4.881
+    },
+    {
+      "lang": "en",
+      "text": "the German company well known for being",
+      "offset": 638,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "an affordable hosting company. They had",
+      "offset": 640.16,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "just started offering GPU servers and",
+      "offset": 642.24,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "they also have auction systems where you",
+      "offset": 644.72,
+      "duration": 3.359
+    },
+    {
+      "lang": "en",
+      "text": "can get really great hardware quite",
+      "offset": 646.48,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "cheaply. But they offer servers I think",
+      "offset": 648.079,
+      "duration": 6.161
+    },
+    {
+      "lang": "en",
+      "text": "what is it called? GEX-44.",
+      "offset": 651.6,
+      "duration": 4.799
+    },
+    {
+      "lang": "en",
+      "text": "That's the one that I use. They have an",
+      "offset": 654.24,
+      "duration": 6.719
+    },
+    {
+      "lang": "en",
+      "text": "RTX 4000 SFFF ADA generation GPU and I",
+      "offset": 656.399,
+      "duration": 7.921
+    },
+    {
+      "lang": "en",
+      "text": "think they cost €200 a month just to",
+      "offset": 660.959,
+      "duration": 7.041
+    },
+    {
+      "lang": "en",
+      "text": "rent. And these servers are spectacular.",
+      "offset": 664.32,
+      "duration": 7.92
+    },
+    {
+      "lang": "en",
+      "text": "They have 64 GB of DDR4 RAM, 4 TB of",
+      "offset": 668,
+      "duration": 8
+    },
+    {
+      "lang": "en",
+      "text": "disk space, like for $200ish dollars a",
+      "offset": 672.24,
+      "duration": 6.24
+    },
+    {
+      "lang": "en",
+      "text": "month to rent this. That's really cool.",
+      "offset": 676,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "Like you can rent, how much do I have",
+      "offset": 678.48,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "right now? like 10ish of them and have a",
+      "offset": 680.24,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "significant GPU based workload running",
+      "offset": 682.56,
+      "duration": 5.68
+    },
+    {
+      "lang": "en",
+      "text": "24/7 on many different servers for",
+      "offset": 685.44,
+      "duration": 5.839
+    },
+    {
+      "lang": "en",
+      "text": "$2,000 or less. The key insight from all",
+      "offset": 688.24,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "these experiments was that transcription",
+      "offset": 691.279,
+      "duration": 4.481
+    },
+    {
+      "lang": "en",
+      "text": "has very different requirements from",
+      "offset": 693.76,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "other AI tasks like inference. You can",
+      "offset": 695.76,
+      "duration": 5.519
+    },
+    {
+      "lang": "en",
+      "text": "run transcription quite reliably by",
+      "offset": 698.32,
+      "duration": 5.759
+    },
+    {
+      "lang": "en",
+      "text": "using somewhere between 4 and 20 GB of",
+      "offset": 701.279,
+      "duration": 4.881
+    },
+    {
+      "lang": "en",
+      "text": "RAM. Depends on the model that you use,",
+      "offset": 704.079,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "which is something that if you use",
+      "offset": 706.16,
+      "duration": 2.96
+    },
+    {
+      "lang": "en",
+      "text": "Whisper, you can choose different",
+      "offset": 707.839,
+      "duration": 2.881
+    },
+    {
+      "lang": "en",
+      "text": "models, right? There's a tiny, a small,",
+      "offset": 709.12,
+      "duration": 4.159
+    },
+    {
+      "lang": "en",
+      "text": "a medium, a large model, and they all",
+      "offset": 710.72,
+      "duration": 5.119
+    },
+    {
+      "lang": "en",
+      "text": "use different size of gigabytes of this",
+      "offset": 713.279,
+      "duration": 5.921
+    },
+    {
+      "lang": "en",
+      "text": "RAM that these GPUs use. And the smaller",
+      "offset": 715.839,
+      "duration": 5.281
+    },
+    {
+      "lang": "en",
+      "text": "ones obviously are faster and use less",
+      "offset": 719.2,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "of that RAM. So, you can run a couple in",
+      "offset": 721.12,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "parallel. And it really doesn't mean",
+      "offset": 722.88,
+      "duration": 4.639
+    },
+    {
+      "lang": "en",
+      "text": "that much if it's just a couple of",
+      "offset": 725.68,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "gigabytes, but it's definitely enough to",
+      "offset": 727.519,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "get the highest quality transcription",
+      "offset": 729.2,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "data, particularly if you use a model",
+      "offset": 730.959,
+      "duration": 6.241
+    },
+    {
+      "lang": "en",
+      "text": "called Whisper V3 large Turbo. That's",
+      "offset": 733.36,
+      "duration": 6.159
+    },
+    {
+      "lang": "en",
+      "text": "the one I currently use. fastest and",
+      "offset": 737.2,
+      "duration": 6.24
+    },
+    {
+      "lang": "en",
+      "text": "best quality. And when I switched all my",
+      "offset": 739.519,
+      "duration": 5.841
+    },
+    {
+      "lang": "en",
+      "text": "transcription servers from these A10s at",
+      "offset": 743.44,
+      "duration": 3.839
+    },
+    {
+      "lang": "en",
+      "text": "London Labs to the Hetsner systems, I",
+      "offset": 745.36,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "picked up steam dramatically with these.",
+      "offset": 747.279,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "It was so much more effective. So I",
+      "offset": 749.6,
+      "duration": 3.359
+    },
+    {
+      "lang": "en",
+      "text": "could get by with half the number of",
+      "offset": 751.519,
+      "duration": 2.56
+    },
+    {
+      "lang": "en",
+      "text": "servers and still have a higher",
+      "offset": 752.959,
+      "duration": 2.641
+    },
+    {
+      "lang": "en",
+      "text": "throughput than before. So that's where",
+      "offset": 754.079,
+      "duration": 3.841
+    },
+    {
+      "lang": "en",
+      "text": "I'm now. Self-maintained servers running",
+      "offset": 755.6,
+      "duration": 4.239
+    },
+    {
+      "lang": "en",
+      "text": "transcription scripts 24/7 on the",
+      "offset": 757.92,
+      "duration": 3.919
+    },
+    {
+      "lang": "en",
+      "text": "headtop platform being highly efficient",
+      "offset": 759.839,
+      "duration": 4.961
+    },
+    {
+      "lang": "en",
+      "text": "over time. And the solution that I had",
+      "offset": 761.839,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "with Whisper CPP, that was great in the",
+      "offset": 764.8,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "beginning, but as Potscan started",
+      "offset": 766.639,
+      "duration": 3.841
+    },
+    {
+      "lang": "en",
+      "text": "gaining customers, they had more",
+      "offset": 768.56,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "requirements than just default",
+      "offset": 770.48,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "transcription. So I needed diorization,",
+      "offset": 772.16,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "which is a fancy term for determining",
+      "offset": 775.04,
+      "duration": 4.799
+    },
+    {
+      "lang": "en",
+      "text": "different speakers in an audio file and",
+      "offset": 777.44,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "word level timestamps for precise",
+      "offset": 779.839,
+      "duration": 3.761
+    },
+    {
+      "lang": "en",
+      "text": "interactivity. People wanted to be able",
+      "offset": 781.76,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "to have like exact cuts in videos or in",
+      "offset": 783.6,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "audio, I guess, so they can extract",
+      "offset": 786.48,
+      "duration": 3.599
+    },
+    {
+      "lang": "en",
+      "text": "stuff. So they needed to know exactly",
+      "offset": 788.48,
+      "duration": 3.12
+    },
+    {
+      "lang": "en",
+      "text": "where the sentence starts and where it",
+      "offset": 790.079,
+      "duration": 4.161
+    },
+    {
+      "lang": "en",
+      "text": "ends. So for that and knowing who's",
+      "offset": 791.6,
+      "duration": 5.039
+    },
+    {
+      "lang": "en",
+      "text": "speaking, I needed something bigger. So",
+      "offset": 794.24,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "I switched from whisper CPP to another",
+      "offset": 796.639,
+      "duration": 5.121
+    },
+    {
+      "lang": "en",
+      "text": "implementation running on top of faster",
+      "offset": 799.44,
+      "duration": 5.839
+    },
+    {
+      "lang": "en",
+      "text": "whisper which is a a library that uses",
+      "offset": 801.76,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "these models more efficiently that",
+      "offset": 805.279,
+      "duration": 4.721
+    },
+    {
+      "lang": "en",
+      "text": "includes both diorization capabilities",
+      "offset": 807.76,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "and granular timing data. But this",
+      "offset": 810,
+      "duration": 4.959
+    },
+    {
+      "lang": "en",
+      "text": "revealed a couple of surprising",
+      "offset": 813.2,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "technical challenges. So if you're into",
+      "offset": 814.959,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "transcription, this is going to be very",
+      "offset": 816.56,
+      "duration": 4.399
+    },
+    {
+      "lang": "en",
+      "text": "very useful so you don't have to fall",
+      "offset": 818.959,
+      "duration": 5.201
+    },
+    {
+      "lang": "en",
+      "text": "into the traps yourself. Diorization is",
+      "offset": 820.959,
+      "duration": 4.481
+    },
+    {
+      "lang": "en",
+      "text": "more resource intensive than",
+      "offset": 824.16,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "transcription. Detecting speakers takes",
+      "offset": 825.44,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "much longer than actually transcribing",
+      "offset": 827.76,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "what they're saying. You would think it",
+      "offset": 830.16,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "would be easier to determine somebody's",
+      "offset": 832.48,
+      "duration": 3.2
+    },
+    {
+      "lang": "en",
+      "text": "speaking here, then somebody else is",
+      "offset": 834.32,
+      "duration": 3.519
+    },
+    {
+      "lang": "en",
+      "text": "speaking there. But it's actually harder",
+      "offset": 835.68,
+      "duration": 4.399
+    },
+    {
+      "lang": "en",
+      "text": "to figure out if it's person one, two,",
+      "offset": 837.839,
+      "duration": 4.481
+    },
+    {
+      "lang": "en",
+      "text": "or three than it is to determine the",
+      "offset": 840.079,
+      "duration": 3.921
+    },
+    {
+      "lang": "en",
+      "text": "actual words that this person is",
+      "offset": 842.32,
+      "duration": 4.319
+    },
+    {
+      "lang": "en",
+      "text": "speaking. And from the start, I needed a",
+      "offset": 844,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "careful prioritization system here",
+      "offset": 846.639,
+      "duration": 4.801
+    },
+    {
+      "lang": "en",
+      "text": "because I only could diorize what I",
+      "offset": 848.48,
+      "duration": 4.719
+    },
+    {
+      "lang": "en",
+      "text": "really needed. If I know that a podcast",
+      "offset": 851.44,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "has only one speaker and has had for the",
+      "offset": 853.199,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "last 200 episodes, well, I don't need to",
+      "offset": 855.12,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "diorize it and I can save over 50% of",
+      "offset": 857.199,
+      "duration": 4.561
+    },
+    {
+      "lang": "en",
+      "text": "the time. But if it's a popular show",
+      "offset": 859.92,
+      "duration": 3.599
+    },
+    {
+      "lang": "en",
+      "text": "with different guests all the time, then",
+      "offset": 861.76,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "I guess I need to prioritize it and it's",
+      "offset": 863.519,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "going to take double the time. at scale.",
+      "offset": 865.6,
+      "duration": 5.679
+    },
+    {
+      "lang": "en",
+      "text": "Turning off dorization for some shows",
+      "offset": 868.079,
+      "duration": 5.281
+    },
+    {
+      "lang": "en",
+      "text": "where it doesn't matter or has not yet",
+      "offset": 871.279,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "proven to matter means that I can",
+      "offset": 873.36,
+      "duration": 4.159
+    },
+    {
+      "lang": "en",
+      "text": "transcribe twice as many podcasts in any",
+      "offset": 875.199,
+      "duration": 5.121
+    },
+    {
+      "lang": "en",
+      "text": "given day. And that's massive. If that",
+      "offset": 877.519,
+      "duration": 6.961
+    },
+    {
+      "lang": "en",
+      "text": "means that I can do all the shows in a",
+      "offset": 880.32,
+      "duration": 5.92
+    },
+    {
+      "lang": "en",
+      "text": "day and still have resources left, then",
+      "offset": 884.48,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "I can step back in time and get some of",
+      "offset": 886.24,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "the older episodes that might be still",
+      "offset": 888.48,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "very interesting for search purposes.",
+      "offset": 890.24,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "So, that's the trade-off that I'm",
+      "offset": 892.72,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "dealing with here. Finally, there's",
+      "offset": 894.16,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "something that I learned after a couple",
+      "offset": 896.48,
+      "duration": 4.159
+    },
+    {
+      "lang": "en",
+      "text": "of weeks of experimenting with this. GPU",
+      "offset": 897.92,
+      "duration": 5.84
+    },
+    {
+      "lang": "en",
+      "text": "memory limits affect the quality of the",
+      "offset": 900.639,
+      "duration": 5.121
+    },
+    {
+      "lang": "en",
+      "text": "transcription. If you do a lot of",
+      "offset": 903.76,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "parallelized transcription, the GPU",
+      "offset": 905.76,
+      "duration": 4.879
+    },
+    {
+      "lang": "en",
+      "text": "reaching its memory limit where you it",
+      "offset": 908.24,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "gets full, that can cause transcription",
+      "offset": 910.639,
+      "duration": 5.281
+    },
+    {
+      "lang": "en",
+      "text": "quality to decline. I initially had a",
+      "offset": 913.04,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "thought like this graphics cards has 20",
+      "offset": 915.92,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "GB of RAM. Each transcription process",
+      "offset": 917.92,
+      "duration": 5.68
+    },
+    {
+      "lang": "en",
+      "text": "uses at most 4 gigabytes, so it can run",
+      "offset": 920.88,
+      "duration": 4.319
+    },
+    {
+      "lang": "en",
+      "text": "five at a time, fill up the whole",
+      "offset": 923.6,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "graphics card, right? The whole RAM.",
+      "offset": 925.199,
+      "duration": 4.721
+    },
+    {
+      "lang": "en",
+      "text": "That tends to be true most of the time",
+      "offset": 927.44,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "that it works. But if one process runs a",
+      "offset": 929.92,
+      "duration": 5.039
+    },
+    {
+      "lang": "en",
+      "text": "little bit longer, maybe it's a",
+      "offset": 933.44,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "three-hour Joe Rogan podcast yet again,",
+      "offset": 934.959,
+      "duration": 4.961
+    },
+    {
+      "lang": "en",
+      "text": "and then another process spawns and five",
+      "offset": 937.04,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "or six processes are fighting for",
+      "offset": 939.92,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "memory, or even just the five on there",
+      "offset": 941.76,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "that should have four, one of them is",
+      "offset": 943.68,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "like 4.2, right? quality quickly",
+      "offset": 945.44,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "degrades on all of them simultaneously",
+      "offset": 948.16,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "because there's something in there that",
+      "offset": 950.72,
+      "duration": 3.28
+    },
+    {
+      "lang": "en",
+      "text": "just breaks down and then it just",
+      "offset": 952.56,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "hallucinates stuff. I have since reduced",
+      "offset": 954,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "parallel processes to two or three",
+      "offset": 956.72,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "podcasts at any given time. There's a",
+      "offset": 959.12,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "small chance the GPU isn't fully",
+      "offset": 961.6,
+      "duration": 4.239
+    },
+    {
+      "lang": "en",
+      "text": "utilized when you know all of them spin",
+      "offset": 963.44,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "up at the same time. But that's okay.",
+      "offset": 965.839,
+      "duration": 4.081
+    },
+    {
+      "lang": "en",
+      "text": "Most of the time it's in full use anyway",
+      "offset": 967.92,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "without quality degradation. and I would",
+      "offset": 969.92,
+      "duration": 4.719
+    },
+    {
+      "lang": "en",
+      "text": "rather not risk it because I want these",
+      "offset": 971.92,
+      "duration": 5.599
+    },
+    {
+      "lang": "en",
+      "text": "transcripts to be reliably good. Biggest",
+      "offset": 974.639,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "learning in all of this has been that",
+      "offset": 977.519,
+      "duration": 4.801
+    },
+    {
+      "lang": "en",
+      "text": "bigger GPUs aren't necessarily faster or",
+      "offset": 979.839,
+      "duration": 4.641
+    },
+    {
+      "lang": "en",
+      "text": "better. And not just from a words to",
+      "offset": 982.32,
+      "duration": 4.879
+    },
+    {
+      "lang": "en",
+      "text": "dollar ratio, just even from a usage of",
+      "offset": 984.48,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "the GPU. Just because the GPU is bigger",
+      "offset": 987.199,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "doesn't mean it's faster at",
+      "offset": 990,
+      "duration": 2.72
+    },
+    {
+      "lang": "en",
+      "text": "transcribing. Surprisingly, you would",
+      "offset": 991.279,
+      "duration": 2.961
+    },
+    {
+      "lang": "en",
+      "text": "think, but it's not. When I ran",
+      "offset": 992.72,
+      "duration": 3.119
+    },
+    {
+      "lang": "en",
+      "text": "transcription on my local machine and",
+      "offset": 994.24,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "then on A10 and A100 GPUs, I got quite",
+      "offset": 995.839,
+      "duration": 6.24
+    },
+    {
+      "lang": "en",
+      "text": "similar results, like always between 150",
+      "offset": 999.68,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "200 words per second. And those things",
+      "offset": 1002.079,
+      "duration": 5.361
+    },
+    {
+      "lang": "en",
+      "text": "cost 200 bucks a month max. But then I",
+      "offset": 1004.32,
+      "duration": 6.4
+    },
+    {
+      "lang": "en",
+      "text": "rented an H100 GPU and the word count",
+      "offset": 1007.44,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "stayed almost the same, maybe going up",
+      "offset": 1010.72,
+      "duration": 5.679
+    },
+    {
+      "lang": "en",
+      "text": "to 225 to 250 words per second. But that",
+      "offset": 1012.88,
+      "duration": 7.199
+    },
+    {
+      "lang": "en",
+      "text": "GPU had 5 to 10 times the monthly cost.",
+      "offset": 1016.399,
+      "duration": 5.201
+    },
+    {
+      "lang": "en",
+      "text": "And you couldn't really run it in",
+      "offset": 1020.079,
+      "duration": 3.281
+    },
+    {
+      "lang": "en",
+      "text": "parallel there either because then it",
+      "offset": 1021.6,
+      "duration": 4.239
+    },
+    {
+      "lang": "en",
+      "text": "would start degrading quality. So for",
+      "offset": 1023.36,
+      "duration": 4.559
+    },
+    {
+      "lang": "en",
+      "text": "transcription specifically, it is way",
+      "offset": 1025.839,
+      "duration": 3.921
+    },
+    {
+      "lang": "en",
+      "text": "more effective to run on smaller and",
+      "offset": 1027.919,
+      "duration": 4.801
+    },
+    {
+      "lang": "en",
+      "text": "maybe slightly slower GPUs at scale. And",
+      "offset": 1029.76,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "this has turned out to be the only",
+      "offset": 1032.72,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "feasible way for me to do this. And",
+      "offset": 1034.72,
+      "duration": 4.479
+    },
+    {
+      "lang": "en",
+      "text": "we're just talking about like",
+      "offset": 1037.28,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "self-managed transcription here because",
+      "offset": 1039.199,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "there's an alternative that puts",
+      "offset": 1041.52,
+      "duration": 3.519
+    },
+    {
+      "lang": "en",
+      "text": "everything into perspective. If I were",
+      "offset": 1042.959,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "to transcribe all 50,000 episodes that",
+      "offset": 1045.039,
+      "duration": 5.201
+    },
+    {
+      "lang": "en",
+      "text": "come in every day using OpenAI's",
+      "offset": 1047.439,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "platform, their AI platform, their",
+      "offset": 1050.24,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "whisper endpoint there, I would pay a5",
+      "offset": 1051.919,
+      "duration": 6.561
+    },
+    {
+      "lang": "en",
+      "text": "figure amount every single day. After",
+      "offset": 1054.96,
+      "duration": 5.599
+    },
+    {
+      "lang": "en",
+      "text": "many months of optimizing and",
+      "offset": 1058.48,
+      "duration": 4.319
+    },
+    {
+      "lang": "en",
+      "text": "experimenting with transcription setups,",
+      "offset": 1060.559,
+      "duration": 4.801
+    },
+    {
+      "lang": "en",
+      "text": "I have obviously not done this. I have",
+      "offset": 1062.799,
+      "duration": 4.161
+    },
+    {
+      "lang": "en",
+      "text": "turned the whole thing into just a",
+      "offset": 1065.36,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "few,000 in expenses a month by having my",
+      "offset": 1066.96,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "own infrastructure. The cost savings are",
+      "offset": 1069.84,
+      "duration": 4.079
+    },
+    {
+      "lang": "en",
+      "text": "significant because when you run your",
+      "offset": 1072.16,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "own infrastructure, even though you",
+      "offset": 1073.919,
+      "duration": 4.081
+    },
+    {
+      "lang": "en",
+      "text": "aren't able to do as many parallel",
+      "offset": 1076.16,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "things as you could by using Whisper and",
+      "offset": 1078,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "Open AAI or other transcription systems",
+      "offset": 1080.08,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "like Deepgram Graham, but instead of",
+      "offset": 1082.08,
+      "duration": 6.32
+    },
+    {
+      "lang": "en",
+      "text": "paying like a $100,000 a month, you pay",
+      "offset": 1084.64,
+      "duration": 6.32
+    },
+    {
+      "lang": "en",
+      "text": "four or two, right? If you do it well,",
+      "offset": 1088.4,
+      "duration": 5.279
+    },
+    {
+      "lang": "en",
+      "text": "the daily cost that these commercial",
+      "offset": 1090.96,
+      "duration": 5.92
+    },
+    {
+      "lang": "en",
+      "text": "models can incur for you is easily in",
+      "offset": 1093.679,
+      "duration": 4.961
+    },
+    {
+      "lang": "en",
+      "text": "the thousands of dollars. And I've",
+      "offset": 1096.88,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "gotten it down to just a hundred and",
+      "offset": 1098.64,
+      "duration": 3.919
+    },
+    {
+      "lang": "en",
+      "text": "change on a per day basis, which is",
+      "offset": 1100.64,
+      "duration": 4.399
+    },
+    {
+      "lang": "en",
+      "text": "quite significant. The biggest expense",
+      "offset": 1102.559,
+      "duration": 4.161
+    },
+    {
+      "lang": "en",
+      "text": "for Podscan at this point is not",
+      "offset": 1105.039,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "transcription capacity. You would think,",
+      "offset": 1106.72,
+      "duration": 3.839
+    },
+    {
+      "lang": "en",
+      "text": "right, that this would be the most",
+      "offset": 1108.559,
+      "duration": 3.681
+    },
+    {
+      "lang": "en",
+      "text": "impactful expense. But it's a database",
+      "offset": 1110.559,
+      "duration": 3.601
+    },
+    {
+      "lang": "en",
+      "text": "where all of this information is stored.",
+      "offset": 1112.24,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "And that's the next big challenge that I",
+      "offset": 1114.16,
+      "duration": 3.759
+    },
+    {
+      "lang": "en",
+      "text": "didn't ever think about in the beginning",
+      "offset": 1116,
+      "duration": 3.679
+    },
+    {
+      "lang": "en",
+      "text": "because when I initially started",
+      "offset": 1117.919,
+      "duration": 3.681
+    },
+    {
+      "lang": "en",
+      "text": "tracking a couple hundred podcasts,",
+      "offset": 1119.679,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "yeah, it was totally fine to have my SQL",
+      "offset": 1121.6,
+      "duration": 4.319
+    },
+    {
+      "lang": "en",
+      "text": "database store all of this data without",
+      "offset": 1123.679,
+      "duration": 3.921
+    },
+    {
+      "lang": "en",
+      "text": "doing anything specific around data",
+      "offset": 1125.919,
+      "duration": 3.681
+    },
+    {
+      "lang": "en",
+      "text": "storage, right? Just throw it in and",
+      "offset": 1127.6,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "figure it out. But once I turn on the",
+      "offset": 1129.6,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "full fire hose of podcast data, all 50k",
+      "offset": 1131.76,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "a day, it became a massive challenge. If",
+      "offset": 1134.32,
+      "duration": 5.92
+    },
+    {
+      "lang": "en",
+      "text": "every transcript is like 200 kilobytes",
+      "offset": 1137.28,
+      "duration": 5.6
+    },
+    {
+      "lang": "en",
+      "text": "to one megabyte in text size because",
+      "offset": 1140.24,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "that's what text is. It gets massive,",
+      "offset": 1142.88,
+      "duration": 3.919
+    },
+    {
+      "lang": "en",
+      "text": "right? It can be megabytes of data.",
+      "offset": 1145.36,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "Again, Joe Rogan, thank you so much for",
+      "offset": 1146.799,
+      "duration": 3.681
+    },
+    {
+      "lang": "en",
+      "text": "filling my database with massive",
+      "offset": 1148.72,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "transcripts here. Then every day you're",
+      "offset": 1150.48,
+      "duration": 5.199
+    },
+    {
+      "lang": "en",
+      "text": "adding several gigabytes to a database.",
+      "offset": 1153.12,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "So if you're trying to do full text",
+      "offset": 1155.679,
+      "duration": 3.681
+    },
+    {
+      "lang": "en",
+      "text": "search or quick lookups with some",
+      "offset": 1157.44,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "filtering, this becomes a problem. Even",
+      "offset": 1159.36,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "if you have index there for a full text",
+      "offset": 1161.28,
+      "duration": 5.759
+    },
+    {
+      "lang": "en",
+      "text": "index or just regular string index, it",
+      "offset": 1163.76,
+      "duration": 5.68
+    },
+    {
+      "lang": "en",
+      "text": "is so hard to get this right. I had to",
+      "offset": 1167.039,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "build infrastructure that prevents my",
+      "offset": 1169.44,
+      "duration": 3.359
+    },
+    {
+      "lang": "en",
+      "text": "database from overgrowing or slowing",
+      "offset": 1171.039,
+      "duration": 4.401
+    },
+    {
+      "lang": "en",
+      "text": "down to a halt. Older transcripts are",
+      "offset": 1172.799,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "actually transferred to an S3based",
+      "offset": 1175.44,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "storage and loaded by the main process",
+      "offset": 1177.679,
+      "duration": 4.561
+    },
+    {
+      "lang": "en",
+      "text": "when they are requested by a user on the",
+      "offset": 1180.24,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "front end or in the API. I don't keep",
+      "offset": 1182.24,
+      "duration": 4.559
+    },
+    {
+      "lang": "en",
+      "text": "all my transcripts in the database cuz",
+      "offset": 1184.48,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "that would easily be 6 terabytes right",
+      "offset": 1186.799,
+      "duration": 4.401
+    },
+    {
+      "lang": "en",
+      "text": "now just in raw size which is super",
+      "offset": 1188.72,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "expensive to maintain and super clunky",
+      "offset": 1191.2,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "for database access. Now all transcripts",
+      "offset": 1193.44,
+      "duration": 5.359
+    },
+    {
+      "lang": "en",
+      "text": "live on S3 as JSON files and can be",
+      "offset": 1196.24,
+      "duration": 4.319
+    },
+    {
+      "lang": "en",
+      "text": "loaded on demand for anything older than",
+      "offset": 1198.799,
+      "duration": 3.681
+    },
+    {
+      "lang": "en",
+      "text": "a couple months for regular transcripts",
+      "offset": 1200.559,
+      "duration": 3.601
+    },
+    {
+      "lang": "en",
+      "text": "and anything older than just a couple",
+      "offset": 1202.48,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "days for the word level timestamp",
+      "offset": 1204.16,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "transcripts that we also save. That is",
+      "offset": 1206.24,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "probably the biggest one. JSON data for",
+      "offset": 1208.4,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "every second of a show and this has been",
+      "offset": 1210.32,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "very helpful in ensuring that the",
+      "offset": 1213.12,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "database stays at least a little nimble",
+      "offset": 1215.2,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "in comparison. When it comes to search,",
+      "offset": 1217.44,
+      "duration": 5.68
+    },
+    {
+      "lang": "en",
+      "text": "I'm using an open search cluster also in",
+      "offset": 1220.4,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "AWS where I just pipe the full",
+      "offset": 1223.12,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "transcript in there and then have its",
+      "offset": 1225.28,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "own inverted index. I think that's what",
+      "offset": 1227.44,
+      "duration": 5.92
+    },
+    {
+      "lang": "en",
+      "text": "it's called built to be able to search",
+      "offset": 1230.48,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "for full text there. So we're not doing",
+      "offset": 1233.36,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "full text search in the database. We",
+      "offset": 1235.6,
+      "duration": 4.079
+    },
+    {
+      "lang": "en",
+      "text": "have an additional secondary database",
+      "offset": 1237.12,
+      "duration": 4.799
+    },
+    {
+      "lang": "en",
+      "text": "that we feed all these transcripts into",
+      "offset": 1239.679,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "and facilitate search by just having",
+      "offset": 1241.919,
+      "duration": 4.561
+    },
+    {
+      "lang": "en",
+      "text": "what is kind of an elastic search fork",
+      "offset": 1243.919,
+      "duration": 5.841
+    },
+    {
+      "lang": "en",
+      "text": "deal with all of that. It would never",
+      "offset": 1246.48,
+      "duration": 6.4
+    },
+    {
+      "lang": "en",
+      "text": "never ever work in this MySQL database",
+      "offset": 1249.76,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "and probably also not in posress if I",
+      "offset": 1252.88,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "were to have a full text search there",
+      "offset": 1255.2,
+      "duration": 5.68
+    },
+    {
+      "lang": "en",
+      "text": "just because data is so massive. I was",
+      "offset": 1257.36,
+      "duration": 6.08
+    },
+    {
+      "lang": "en",
+      "text": "using mighty search for a while and that",
+      "offset": 1260.88,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "also works like all these search engines",
+      "offset": 1263.44,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "that can deal with large text they are",
+      "offset": 1265.2,
+      "duration": 6.56
+    },
+    {
+      "lang": "en",
+      "text": "good at it but transcript data is so big",
+      "offset": 1268.24,
+      "duration": 5.679
+    },
+    {
+      "lang": "en",
+      "text": "that even those databases struggle a",
+      "offset": 1271.76,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "little bit. So you have to build",
+      "offset": 1273.919,
+      "duration": 3.681
+    },
+    {
+      "lang": "en",
+      "text": "something that works right you have to",
+      "offset": 1275.36,
+      "duration": 4.319
+    },
+    {
+      "lang": "en",
+      "text": "save them in a way that they can be",
+      "offset": 1277.6,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "looked up reliably and you have to save",
+      "offset": 1279.679,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "them in a way that they can be searched",
+      "offset": 1281.6,
+      "duration": 4.079
+    },
+    {
+      "lang": "en",
+      "text": "reliably too. Now there are other",
+      "offset": 1283.039,
+      "duration": 4.721
+    },
+    {
+      "lang": "en",
+      "text": "challenges not just storage. There's",
+      "offset": 1285.679,
+      "duration": 4.081
+    },
+    {
+      "lang": "en",
+      "text": "also a quality problem. Yet again",
+      "offset": 1287.76,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "podcasting is full of quality problems.",
+      "offset": 1289.76,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "There's no normal standard for quality",
+      "offset": 1292.48,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "in podcasts. And I mean the audio data",
+      "offset": 1294.4,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "for that matter. Some people record into",
+      "offset": 1296.48,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "what feels like a potato and others have",
+      "offset": 1298.4,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "extremely high-end setups like this fine",
+      "offset": 1300.88,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "podcast. And you never know reliably",
+      "offset": 1303.76,
+      "duration": 4.799
+    },
+    {
+      "lang": "en",
+      "text": "which one you will encounter if you",
+      "offset": 1306.88,
+      "duration": 2.96
+    },
+    {
+      "lang": "en",
+      "text": "listen to one or if you try to",
+      "offset": 1308.559,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "transcribe it. So transcription systems",
+      "offset": 1309.84,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "expect at least a certain kind of",
+      "offset": 1312.559,
+      "duration": 3.761
+    },
+    {
+      "lang": "en",
+      "text": "quality and they struggle with",
+      "offset": 1314.48,
+      "duration": 4.079
+    },
+    {
+      "lang": "en",
+      "text": "lowquality audio or non-spech content",
+      "offset": 1316.32,
+      "duration": 3.839
+    },
+    {
+      "lang": "en",
+      "text": "like music that people throw into this",
+      "offset": 1318.559,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "as well. So I had to implement a",
+      "offset": 1320.159,
+      "duration": 3.921
+    },
+    {
+      "lang": "en",
+      "text": "transcription quality checking system",
+      "offset": 1322.159,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "that tries to determine if a transcript",
+      "offset": 1324.08,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "is acceptable or if you need to",
+      "offset": 1326.159,
+      "duration": 3.361
+    },
+    {
+      "lang": "en",
+      "text": "retranscribe it with different settings.",
+      "offset": 1327.6,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "Whisper is pretty good by default, but",
+      "offset": 1329.52,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "there are edge cases where you need",
+      "offset": 1332.48,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "multiple attempts to get it right and",
+      "offset": 1334.88,
+      "duration": 4.159
+    },
+    {
+      "lang": "en",
+      "text": "that all costs money. biggest problem",
+      "offset": 1336.32,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "and that's probably also why Potcan is",
+      "offset": 1339.039,
+      "duration": 4.401
+    },
+    {
+      "lang": "en",
+      "text": "actually so impactful for the people",
+      "offset": 1341.76,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "using it is that transcription systems",
+      "offset": 1343.44,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "like Whisper but also others struggle",
+      "offset": 1345.52,
+      "duration": 4.639
+    },
+    {
+      "lang": "en",
+      "text": "with names and brands. Anything that a",
+      "offset": 1347.76,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "human could easily get right from",
+      "offset": 1350.159,
+      "duration": 3.441
+    },
+    {
+      "lang": "en",
+      "text": "context, they don't get right because",
+      "offset": 1351.52,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "they don't have context. They just have",
+      "offset": 1353.6,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "a voice pattern, an audio waveform, and",
+      "offset": 1355.36,
+      "duration": 3.679
+    },
+    {
+      "lang": "en",
+      "text": "they don't get it right most of the",
+      "offset": 1357.36,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "time. And what works really well here,",
+      "offset": 1359.039,
+      "duration": 4.481
+    },
+    {
+      "lang": "en",
+      "text": "but is extremely expensive, is taking",
+      "offset": 1361.2,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "the full transcript from Whisper with",
+      "offset": 1363.52,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "all the little mistakes in there and",
+      "offset": 1365.84,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "having an AI do a pass over it with",
+      "offset": 1367.36,
+      "duration": 4.559
+    },
+    {
+      "lang": "en",
+      "text": "context from the podcast name, the",
+      "offset": 1370.08,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "description, and maybe prior episodes",
+      "offset": 1371.919,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "data. And you get extremely high quality",
+      "offset": 1373.76,
+      "duration": 5.279
+    },
+    {
+      "lang": "en",
+      "text": "transcripts that way, but at scale. This",
+      "offset": 1376.159,
+      "duration": 4.721
+    },
+    {
+      "lang": "en",
+      "text": "costs several dollars per episode.",
+      "offset": 1379.039,
+      "duration": 4.561
+    },
+    {
+      "lang": "en",
+      "text": "Because imagine what this would mean to",
+      "offset": 1380.88,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "use an AI system. Let's say you have 500",
+      "offset": 1383.6,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "kilobytes of text. that is I don't know",
+      "offset": 1386.24,
+      "duration": 6.48
+    },
+    {
+      "lang": "en",
+      "text": "2 hours of a podcast and you pipe that",
+      "offset": 1389.36,
+      "duration": 7.439
+    },
+    {
+      "lang": "en",
+      "text": "into even a cheap LLM that is hosted on",
+      "offset": 1392.72,
+      "duration": 6.8
+    },
+    {
+      "lang": "en",
+      "text": "I don't know on anthropic or in OpenAI's",
+      "offset": 1396.799,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "platforms. So you have like half a",
+      "offset": 1399.52,
+      "duration": 5.92
+    },
+    {
+      "lang": "en",
+      "text": "million input tokens and then it does",
+      "offset": 1402.559,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "some stuff and then it has half a",
+      "offset": 1405.44,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "million output tokens and that's the",
+      "offset": 1407.039,
+      "duration": 4.401
+    },
+    {
+      "lang": "en",
+      "text": "expensive part. Output tokens are",
+      "offset": 1409.36,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "probably the most expensive stuff for LM",
+      "offset": 1411.44,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "right now to create and that does not",
+      "offset": 1413.44,
+      "duration": 5.68
+    },
+    {
+      "lang": "en",
+      "text": "work at scale because that again would",
+      "offset": 1417.2,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "cost me $50,000 a day. Where am I going",
+      "offset": 1419.12,
+      "duration": 6.08
+    },
+    {
+      "lang": "en",
+      "text": "to take that money? Not happening. That",
+      "offset": 1422.4,
+      "duration": 5.279
+    },
+    {
+      "lang": "en",
+      "text": "might be very limited to a very limited",
+      "offset": 1425.2,
+      "duration": 4.479
+    },
+    {
+      "lang": "en",
+      "text": "number of shows, but even then it gets",
+      "offset": 1427.679,
+      "duration": 4.401
+    },
+    {
+      "lang": "en",
+      "text": "super expensive. So that's an unsolved",
+      "offset": 1429.679,
+      "duration": 5.441
+    },
+    {
+      "lang": "en",
+      "text": "challenge. Currently, Whisper can take",
+      "offset": 1432.08,
+      "duration": 5.599
+    },
+    {
+      "lang": "en",
+      "text": "120 or so tokens of context just like",
+      "offset": 1435.12,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "things like the title of the show, maybe",
+      "offset": 1437.679,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "the episode title and couple of names of",
+      "offset": 1439.52,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "people that will be mentioned. So,",
+      "offset": 1441.919,
+      "duration": 3.921
+    },
+    {
+      "lang": "en",
+      "text": "that's what I throw in. I just give it",
+      "offset": 1443.52,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "what I know is true about the episode.",
+      "offset": 1445.84,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "And back in the day, I experimented with",
+      "offset": 1448.4,
+      "duration": 4.159
+    },
+    {
+      "lang": "en",
+      "text": "giving it all the brands names from all",
+      "offset": 1450.72,
+      "duration": 5
+    },
+    {
+      "lang": "en",
+      "text": "the possib.",
+      "offset": 1452.559,
+      "duration": 3.161
+    },
+    {
+      "lang": "en",
+      "text": "But Whisper actually started finding",
+      "offset": 1459.2,
+      "duration": 3.839
+    },
+    {
+      "lang": "en",
+      "text": "these words in places where they weren't",
+      "offset": 1460.96,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "actually there. It was gaslighting me",
+      "offset": 1463.039,
+      "duration": 3.921
+    },
+    {
+      "lang": "en",
+      "text": "into believing that it found certain",
+      "offset": 1464.96,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "words where they didn't exist. So I",
+      "offset": 1466.96,
+      "duration": 3.839
+    },
+    {
+      "lang": "en",
+      "text": "quickly stopped piping all of these",
+      "offset": 1468.88,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "brand names in there. Since then, I only",
+      "offset": 1470.799,
+      "duration": 3.841
+    },
+    {
+      "lang": "en",
+      "text": "provide context that I can reliably",
+      "offset": 1472.88,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "infer that will be in that particular",
+      "offset": 1474.64,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "episode. And the big benefit of the",
+      "offset": 1477.6,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "system that I've built so far, like the",
+      "offset": 1480.64,
+      "duration": 5.279
+    },
+    {
+      "lang": "en",
+      "text": "whole installable on some VPC somewhere",
+      "offset": 1482.32,
+      "duration": 5.92
+    },
+    {
+      "lang": "en",
+      "text": "system, is that it's pretty easy to set",
+      "offset": 1485.919,
+      "duration": 5.281
+    },
+    {
+      "lang": "en",
+      "text": "up. It's a Laravel application that I",
+      "offset": 1488.24,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "can deploy through Laravel Forge onto",
+      "offset": 1491.2,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "any new server. I have an install script",
+      "offset": 1492.96,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "that fetches a couple Python libraries",
+      "offset": 1495.12,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "and I can spin up a new server quite",
+      "offset": 1497.2,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "easily that then automatically attaches",
+      "offset": 1498.88,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "to my API and starts fetching and",
+      "offset": 1501.2,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "transcribing new episodes. It's really",
+      "offset": 1503.12,
+      "duration": 3.439
+    },
+    {
+      "lang": "en",
+      "text": "nice, quite scalable. It's not on a",
+      "offset": 1504.96,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "Docker container level scalable, but",
+      "offset": 1506.559,
+      "duration": 4.161
+    },
+    {
+      "lang": "en",
+      "text": "I'll get to that in the future, too. And",
+      "offset": 1508.48,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "as Potcan's infrastructure grows, we can",
+      "offset": 1510.72,
+      "duration": 4.959
+    },
+    {
+      "lang": "en",
+      "text": "quickly add more systems so new episodes",
+      "offset": 1513.6,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "are transcribed faster with even more",
+      "offset": 1515.679,
+      "duration": 3.521
+    },
+    {
+      "lang": "en",
+      "text": "quality because, you know, they can be",
+      "offset": 1517.36,
+      "duration": 3.919
+    },
+    {
+      "lang": "en",
+      "text": "run in less parallel with less little",
+      "offset": 1519.2,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "outlier errors faster. And as models",
+      "offset": 1521.279,
+      "duration": 5.361
+    },
+    {
+      "lang": "en",
+      "text": "evolve, they might even become better at",
+      "offset": 1524.72,
+      "duration": 5.199
+    },
+    {
+      "lang": "en",
+      "text": "transcribing. Eventually, I think I can",
+      "offset": 1526.64,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "increase the number to get diarized and",
+      "offset": 1529.919,
+      "duration": 3.841
+    },
+    {
+      "lang": "en",
+      "text": "get more good data that can then be fed",
+      "offset": 1531.84,
+      "duration": 3.839
+    },
+    {
+      "lang": "en",
+      "text": "into AI systems for what my customers",
+      "offset": 1533.76,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "want. When I first set up the fleet of",
+      "offset": 1535.679,
+      "duration": 4.801
+    },
+    {
+      "lang": "en",
+      "text": "servers to transcribe all my podcasts",
+      "offset": 1538.48,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "that I wanted to transcribe, all",
+      "offset": 1540.48,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "podcasts everywhere, it probably would",
+      "offset": 1542.24,
+      "duration": 4.559
+    },
+    {
+      "lang": "en",
+      "text": "have cost me $30,000 a month, even on my",
+      "offset": 1544.24,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "own hardware. But I'm now at a point",
+      "offset": 1546.799,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "where through proper optimization and",
+      "offset": 1549.12,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "balancing my customer needs with the",
+      "offset": 1551.279,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "expense requirements, I can reliably",
+      "offset": 1552.96,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "capture the majority of podcasts at good",
+      "offset": 1555.679,
+      "duration": 3.921
+    },
+    {
+      "lang": "en",
+      "text": "quality for just a couple thousand a",
+      "offset": 1557.84,
+      "duration": 3.839
+    },
+    {
+      "lang": "en",
+      "text": "month in expenses. And I think that's",
+      "offset": 1559.6,
+      "duration": 4.079
+    },
+    {
+      "lang": "en",
+      "text": "really cool. the fact that that is even",
+      "offset": 1561.679,
+      "duration": 4.561
+    },
+    {
+      "lang": "en",
+      "text": "possible for a soloreneur to build. I",
+      "offset": 1563.679,
+      "duration": 3.521
+    },
+    {
+      "lang": "en",
+      "text": "don't think that would have been a thing",
+      "offset": 1566.24,
+      "duration": 2.96
+    },
+    {
+      "lang": "en",
+      "text": "a couple years ago, but the tools are",
+      "offset": 1567.2,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "all out there. It just takes a year and",
+      "offset": 1569.2,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "a half of 247 work. So, yeah, it takes a",
+      "offset": 1570.64,
+      "duration": 6.72
+    },
+    {
+      "lang": "en",
+      "text": "while, but it still is possible. The key",
+      "offset": 1574.24,
+      "duration": 5.039
+    },
+    {
+      "lang": "en",
+      "text": "insight for all of this is that when",
+      "offset": 1577.36,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "you're building a business that scales",
+      "offset": 1579.279,
+      "duration": 3.201
+    },
+    {
+      "lang": "en",
+      "text": "with these factors outside of your",
+      "offset": 1580.72,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "control, like the global output of an",
+      "offset": 1582.48,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "entire medium, you just need to think",
+      "offset": 1584.88,
+      "duration": 4.399
+    },
+    {
+      "lang": "en",
+      "text": "differently about infrastructure",
+      "offset": 1587.44,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "optimization and trade-offs. Sometimes",
+      "offset": 1589.279,
+      "duration": 4.321
+    },
+    {
+      "lang": "en",
+      "text": "the most expensive solution will not be",
+      "offset": 1591.36,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "the best one like OpenAI's hosted",
+      "offset": 1593.6,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "whisper just doesn't work. And sometimes",
+      "offset": 1596.08,
+      "duration": 3.839
+    },
+    {
+      "lang": "en",
+      "text": "the constraints that you think are",
+      "offset": 1598.4,
+      "duration": 4.159
+    },
+    {
+      "lang": "en",
+      "text": "impossible to work with actually force",
+      "offset": 1599.919,
+      "duration": 4.801
+    },
+    {
+      "lang": "en",
+      "text": "you into more creative and ultimately",
+      "offset": 1602.559,
+      "duration": 4.881
+    },
+    {
+      "lang": "en",
+      "text": "better solutions. The kind of challenge",
+      "offset": 1604.72,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "that makes building businesses both",
+      "offset": 1607.44,
+      "duration": 4.479
+    },
+    {
+      "lang": "en",
+      "text": "terrifying and accelerating. That's",
+      "offset": 1609.6,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "exactly this. You can't control how many",
+      "offset": 1611.919,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "podcasts get published worldwide every",
+      "offset": 1614.4,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "day, but you can control how cleverly",
+      "offset": 1616.799,
+      "duration": 4.801
+    },
+    {
+      "lang": "en",
+      "text": "and effectively you solve the problems",
+      "offset": 1619.44,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "that stem from this. And that's it for",
+      "offset": 1621.6,
+      "duration": 4.959
+    },
+    {
+      "lang": "en",
+      "text": "today. Thank you so much for listening",
+      "offset": 1624.88,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "to the Boots Founder. You can find me on",
+      "offset": 1626.559,
+      "duration": 4.801
+    },
+    {
+      "lang": "en",
+      "text": "Twitter at avidkal khl. If you want to",
+      "offset": 1628.4,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "support me in this show, please share",
+      "offset": 1631.36,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "potscan.fm FM with your peers and those",
+      "offset": 1633.12,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "who you think will benefit from tracking",
+      "offset": 1635.44,
+      "duration": 5.92
+    },
+    {
+      "lang": "en",
+      "text": "brands, competitors, their products, all",
+      "offset": 1637.76,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "kinds of things and names on podcasts",
+      "offset": 1641.36,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "out there. Potscan is this near realtime",
+      "offset": 1643.2,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "podcast database with a really solid",
+      "offset": 1645.76,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "integration system. We allow a lot of",
+      "offset": 1647.84,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "people to build solutions to get leads,",
+      "offset": 1650.88,
+      "duration": 4.399
+    },
+    {
+      "lang": "en",
+      "text": "to get information on their clients and",
+      "offset": 1653.12,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "all of that. So, please share the word",
+      "offset": 1655.279,
+      "duration": 4.321
+    },
+    {
+      "lang": "en",
+      "text": "with those who need to stay on top of",
+      "offset": 1657.36,
+      "duration": 4.559
+    },
+    {
+      "lang": "en",
+      "text": "the podcast ecosystem. Thank you so much",
+      "offset": 1659.6,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "for listening. Have a wonderful day and",
+      "offset": 1661.919,
+      "duration": 3.381
+    },
+    {
+      "lang": "en",
+      "text": "bye-bye.",
+      "offset": 1664,
+      "duration": 4.819
+    },
+    {
+      "lang": "en",
+      "text": "[Music]",
+      "offset": 1665.3,
+      "duration": 3.519
+    }
+  ],
+  "cleanText": "Hey, it's Arvid, and this is The Bootstrapped Founder.\n\n[Music]\n\nToday we'll talk about keeping up with an avalanche of audio data and how I built Podscan's transcription infrastructure. This episode is sponsored by Paddle.com, my merchant of record payment provider of choice, who's been helping me focus on Podscan from day one. They're taking care of all the little things related to money so that founders like you and me can focus on building the things that only we can build, like a massive podcast transcription infrastructure. Paddle handles all the rest: sales tax, credit cards, those kind of things. Don't need to do with it because they do. I highly recommend checking it out. So, please go to paddle.com and take a look.\n\nNow, when I started building the first prototype of Podscan, I very quickly realized that this was going to be a different business than any that I've built before. The difference had everything to do with one fundamental challenge in this field. Unlike most software service businesses, the resources that I would need from the start wouldn't scale with the number of customers I had, but would scale with something completely out of my control: the number of new podcast episodes being released worldwide every single day. So no matter if I had one customer or a hundred, if they wanted to track every podcast out there for a keyword, I needed to deal with this from day one. And that's hard because if you ever investigated the idea of stoicism, you will know that there are certain things you can control that you should care about and certain things that you cannot control that you shouldn't fret about at all. That's kind of the idea. Like a very rough description of stoicism here, but you know, like it's deal with the things you could deal with and don't whine about the others. So that's exactly what I did. I focused on what I could do to make transcribing every single podcast out there a reality. And I didn't complain about the fact that there are tens of thousands, millions of shows being released all the time with tens of thousands of shows being released every day. That's kind of the framework here. I had to deal with it. I think I'm currently tracking 3.8 million shows, and roughly every day there's somewhere between 30 to 70,000 being released. Depends on the day of the week. And I want to talk about this herculean effort of building transcription infrastructure, how I got it from being extremely expensive to manageably cheap comparatively, what the trade-offs were along the way, and how much of the development of new technologies has impacted the feasibility of this entire project for me. Now, for my first prototype, I obviously didn't try to transcribe everything at once. Like, I knew that that didn't make sense to try it all, but I had found my source of podcast feed data, just a couple of good podcast feeds to try it out with through the podcast index project. It's very interesting. If you're into podcasting, check it out. It's an open-source approach to listing all the podcasts everywhere. It's free and it's openly available as an API and a database of podcasts that provides where they're hosted, the names, descriptions, and links to episodes as well. I think maybe not necessarily all of them, but some. And they even have a full SQLite export, like 4 GB of just one big file with all this data makes it very easy to jump start any system. But they even have a great API, and the podcast index API has a very beneficial endpoint for trending shows and newly released episodes. So my first prototype used that API and just grabbed the most recently or most popular released episodes and transcribed those with the existing resources that I had. And when it comes to the tech, I'm just going to share everything here because why not? I already had been experimenting with an open-source library called Whisper for a previous project called Podline, a voice messaging tool for podcast. That was the idea. I was going to take in voice messages through the browser, transcribe them on the back end, and then send a notification to my customers. And I had found that Whisper, which is supposed to be run on GPUs, could also be run on a CPU, so without a graphics card at all, through a project called Whisper.cpp, albeit quite slowly. But for Podline, where I needed to occasionally transcribe a short one-minute clip, this worked perfectly. It may have taken 5 minutes to transcribe it on one CPU core, but that's okay. There's many cores in modern CPUs. And if I have 5 minutes, sure that people will take the notification a bit after. That's all right. And since Podscan, my current business, was initially a marketing effort for Podline because I wanted to know where people already talk about having voicemail. So, I built a tool that would figure out where people talked about it. I had all the tech laying around, but obviously there's a stark difference in transcription scale here, right? Podline needed to handle occasional short clips, but Podscan needed to reliably transcribe 50,000 shows per day. And those are often shows that go for 40 to 80 minutes, right? That's not just 30 seconds. That is hours of material. And if you look at Joe Rogan who reliably puts out four-plus hour shows, that system needed to be fast and good enough to get the whole conversation and transcribe it. So the first smart choice that I needed to make was treating this as a queueing system, not as something that would happen synchronously to when stuff was released. I needed a queue of podcast episodes that would just wait to be transcribed, and whenever I had time and resources, I would transcribe the next one in descending priority. And this required a priority system to determine which episodes should be handled first. That is a whole thing that I could probably do a full episode on. I've come to a system where I have three cues right now that are high priority, middle priority, and low priority. And the high-priority shows would be the Joe Rogan's of this world that would get like a preferential treatment because I know that anything set on this show, if it triggers an alert, then that would have the biggest impact on whatever my customers might need to do with it. So, I need these episodes to be transcribed early. But then there are maybe mid-tier podcasts that can wait a half an hour or so before they get transcribed or that could even wait a couple days because they're just not that important. And that descends them in priority. There's also an immediate priority queue which skips all the other cues for like custom retranscriptions. If I ever have an episode that needs to be retranscribed or somebody really needs this episode right now, there's a bypass version, but effectively that's the priority system that I have. And for that queue, my initial setup was really just one consumer, and that was the Mac Studio that I was developing the software on. And that has right now a microphone that I'm speaking into where I'm recording this podcast. Like I was running my full queue for my production system on a local computer. So running whisper.cpp locally on a Mac. That's really cool because it will use the GPU if I can connect to it. And the MacBook's unified memory system like the MPS system is capable of running these models really, really quickly. And I was getting about 200 words per second, which is really something. And this meant I could fetch a couple hundred episodes per hour with some parallel processing on my local system. So then I realized that to deploy this as a business properly, I needed a transcription server running on a different cloud system very likely because I couldn't just keep it running locally at home. If my internet ever goes out, my company wouldn't work, right? So I started exploring companies that would offer access to computers with graphics cards where I could install whatever stack I had locally and keep it running there 24/7. So the first thing I tried was AWS with their G-type instances. The G, I guess, stands for graphics cards, I presume. I don't know. But these were quite expensive instances that didn't really have much power for the work that I was doing. The ones I could afford, I think it was around $400 a month, just weren't powerful enough, particularly compared to my local server here. I would have preferred them to be either cheaper or better. So, I quickly stepped away from AWS. And even to get them, you have to apply for quota there and they have to verify it. It's quite hard to get there. So, I looked for alternative, easier solutions. So, I looked into Lambda Labs, which was one of the first reliable options for GPU systems that I found, and I used them for quite a while. Lambda was helpful because they offered different servers with different GPUs attached. So, you could rent an H100, like one of the most powerful Nvidia GPUs at the time, for about a,000 bucks a month or a bit more, which was quite expensive obviously to rent a GPU. Or you could have an A100 or an A10, which were much cheaper and actually perfect for transcription purposes. So, I spent a couple months experimenting with my own personal money, testing whether an A10 would outperform an A100 or an H100, not in terms of raw throughput, but in terms of words per dollar. That's kind of the unit that I had. And I think I shared this on Twitter where I did some math there. I deployed my transcription systems to different hosts with different graphics cards and I ran experiments with a very number of parallel transcriptions just to see how it worked. And I found a working solution eventually. I think I settled on 12 to 16ish servers with A10 graphics cards. That was just uh the best. These became my transcription fleet for a while, but even then got quite expensive, which made me realize that I needed to do something about this price cuz that was also pre-funding for me. I didn't have any funding at that point just yet, but I was paying thousands of dollars a month personally for my personal money. So, I needed to figure something out. And the most effective thing that I did was to look for hosted servers outside of services that are focused on renting AI. That I just needed to look for other people that had GPU-based servers that were not yet in the AI hype space. And those services tended to offer sizable graphics cards like that. The ones that do AI for inference, which is great if you need impressive GPU power, but in most cases for transcription, that's actually not what you need. You need some graphics card that can do some transcription and the cheaper the better because transcription doesn't require a lot of VRAM. It just requires some time on a GPU. And I found this solution in Hetzner, the German company well known for being an affordable hosting company. They had just started offering GPU servers and they also have auction systems where you can get really great hardware quite cheaply. But they offer servers I think what is it called? GEX-44.\nThat's the one that I use. They have an RTX 4000 SFFF ADA generation GPU and I think they cost €200 a month just to rent. And these servers are spectacular. They have 64 GB of DDR4 RAM, 4 TB of disk space, like for $200ish dollars a month to rent this. That's really cool. Like you can rent, how much do I have right now? Like 10ish of them and have a significant GPU-based workload running 24/7 on many different servers for $2,000 or less. The key insight from all these experiments was that transcription has very different requirements from other AI tasks like inference. You can run transcription quite reliably by using somewhere between 4 and 20 GB of RAM. Depends on the model that you use, which is something that if you use Whisper, you can choose different models, right? There's a tiny, a small, a medium, a large model, and they all use different sizes of gigabytes of this RAM that these GPUs use. And the smaller ones obviously are faster and use less of that RAM. So, you can run a couple in parallel. And it really doesn't mean that much if it's just a couple of gigabytes, but it's definitely enough to get the highest quality transcription data, particularly if you use a model called Whisper V3 large Turbo. That's the one I currently use: fastest and best quality. And when I switched all my transcription servers from these A10s at London Labs to the Hetzner systems, I picked up steam dramatically with these. It was so much more effective. So I could get by with half the number of servers and still have a higher throughput than before. So that's where I'm now. Self-maintained servers running transcription scripts 24/7 on the Hetzner platform being highly efficient over time. And the solution that I had with Whisper CPP, that was great in the beginning, but as Podscan started gaining customers, they had more requirements than just default transcription. So I needed diarization, which is a fancy term for determining different speakers in an audio file and word-level timestamps for precise interactivity. People wanted to be able to have like exact cuts in videos or in audio, I guess, so they can extract stuff. So they needed to know exactly where the sentence starts and where it ends. So for that and knowing who's speaking, I needed something bigger. So I switched from whisper CPP to another implementation running on top of faster whisper, which is a library that uses these models more efficiently that includes both diarization capabilities and granular timing data. But this revealed a couple of surprising technical challenges. So if you're into transcription, this is going to be very, very useful so you don't have to fall into the traps yourself. Diorization is more resource intensive than transcription. Detecting speakers takes much longer than actually transcribing what they're saying. You would think it would be easier to determine somebody's speaking here, then somebody else is speaking there. But it's actually harder to figure out if it's person one, two, or three than it is to determine the actual words that this person is speaking. And from the start, I needed a careful prioritization system here because I only could diarize what I really needed. If I know that a podcast has only one speaker and has had for the last 200 episodes, well, I don't need to diarize it and I can save over 50% of the time. But if it's a popular show with different guests all the time, then I guess I need to prioritize it and it's going to take double the time. At scale. Turning off dorization for some shows where it doesn't matter or has not yet proven to matter means that I can transcribe twice as many podcasts in any given day. And that's massive. If that means that I can do all the shows in a day and still have resources left, then I can step back in time and get some of the older episodes that might be still very interesting for search purposes. So, that's the trade-off that I'm dealing with here. Finally, there's something that I learned after a couple of weeks of experimenting with this. GPU\n\n\nMemory limits affect the quality of the transcription.\nIf you do a lot of parallelized transcription, the GPU reaching its memory limit, where it gets full, that can cause transcription quality to decline.\nI initially had a thought like this: graphics cards have 20 GB of RAM.\nEach transcription process uses at most 4 gigabytes, so it can run five at a time, fill up the whole graphics card, right?\nThe whole RAM.\nThat tends to be true most of the time that it works.\nBut if one process runs a little bit longer, maybe it's a three-hour Joe Rogan podcast yet again, and then another process spawns and five or six processes are fighting for memory, or even just the five on there that should have four, one of them is like 4.2, right?\nQuality quickly degrades on all of them simultaneously because there's something in there that just breaks down and then it just hallucinates stuff.\nI have since reduced parallel processes to two or three podcasts at any given time.\nThere's a small chance the GPU isn't fully utilized when you know all of them spin up at the same time.\nBut that's okay.\nMost of the time it's in full use anyway without quality degradation, and I would rather not risk it because I want these transcripts to be reliably good.\nBiggest learning in all of this has been that bigger GPUs aren't necessarily faster or better.\nAnd not just from a words to dollar ratio, just even from a usage of the GPU.\nJust because the GPU is bigger doesn't mean it's faster at transcribing.\nSurprisingly, you would think, but it's not.\nWhen I ran transcription on my local machine and then on A10 and A100 GPUs, I got quite similar results, like always between 150-200 words per second.\nAnd those things cost 200 bucks a month max.\nBut then I rented an H100 GPU and the word count stayed almost the same, maybe going up to 225 to 250 words per second.\nBut that GPU had 5 to 10 times the monthly cost.\nAnd you couldn't really run it in parallel there either because then it would start degrading quality.\nSo for transcription specifically, it is way more effective to run on smaller and maybe slightly slower GPUs at scale.\nAnd this has turned out to be the only feasible way for me to do this.\nAnd we're just talking about like self-managed transcription here because there's an alternative that puts everything into perspective.\nIf I were to transcribe all 50,000 episodes that come in every day using OpenAI's platform, their AI platform, their whisper endpoint there, I would pay a five-figure amount every single day.\nAfter many months of optimizing and experimenting with transcription setups, I have obviously not done this.\nI have turned the whole thing into just a few thousand in expenses a month by having my own infrastructure.\nThe cost savings are significant because when you run your own infrastructure, even though you aren't able to do as many parallel things as you could by using Whisper and Open AI or other transcription systems like Deepgram, but instead of paying like a $100,000 a month, you pay four or two, right?\nIf you do it well, the daily cost that these commercial models can incur for you is easily in the thousands of dollars.\nAnd I've gotten it down to just a hundred and change on a per day basis, which is quite significant.\nThe biggest expense for Podscan at this point is not transcription capacity.\nYou would think, right, that this would be the most impactful expense.\nBut it's a database where all of this information is stored.\nAnd that's the next big challenge that I didn't ever think about in the beginning because when I initially started tracking a couple hundred podcasts, yeah, it was totally fine to have my SQL database store all of this data without doing anything specific around data storage, right?\nJust throw it in and figure it out.\nBut once I turn on the full fire hose of podcast data, all 50k a day, it became a massive challenge.\nIf every transcript is like 200 kilobytes to one megabyte in text size because that's what text is.\nIt gets massive, right?\nIt can be megabytes of data.\nAgain, Joe Rogan, thank you so much for filling my database with massive transcripts here.\nThen every day you're adding several gigabytes to a database.\nSo if you're trying to do full text search or quick lookups with some filtering, this becomes a problem.\nEven if you have index there for a full text index or just regular string index, it is so hard to get this right.\nI had to build infrastructure that prevents my database from overgrowing or slowing down to a halt.\nOlder transcripts are actually transferred to an S3-based storage and loaded by the main process when they are requested by a user on the front end or in the API.\nI don't keep all my transcripts in the database 'cause that would easily be 6 terabytes right now just in raw size, which is super expensive to maintain and super clunky for database access.\nNow all transcripts live on S3 as JSON files and can be loaded on demand for anything older than a couple months for regular transcripts and anything older than just a couple days for the word level timestamp transcripts that we also save.\nThat is probably the biggest one.\nJSON data for every second of a show, and this has been very helpful in ensuring that the database stays at least a little nimble in comparison.\nWhen it comes to search, I'm using an open search cluster also in AWS where I just pipe the full transcript in there and then have its own inverted index.\nI think that's what it's called, built to be able to search for full text there.\nSo we're not doing full text search in the database.\nWe have an additional secondary database that we feed all these transcripts into and facilitate search by just having what is kind of an elastic search fork deal with all of that.\nIt would never, never, ever work in this MySQL database and probably also not in Postgres if I were to have a full text search there just because data is so massive.\nI was using mighty search for a while and that also works like all these search engines that can deal with large text, they are good at it, but transcript data is so big that even those databases struggle a little bit.\nSo you have to build something that works right, you have to save them in a way that they can be looked up reliably, and you have to save them in a way that they can be searched reliably too.\nNow there are other challenges, not just storage.\nThere's also a quality problem.\nYet again, podcasting is full of quality problems.\nThere's no normal standard for quality in podcasts.\nAnd I mean the audio data for that matter.\nSome people record into what feels like a potato and others have extremely high-end setups like this fine podcast.\nAnd you never know reliably which one you will encounter if you listen to one or if you try to transcribe it.\nSo transcription systems expect at least a certain kind of quality and they struggle with low-quality audio or non-speech content like music that people throw into this as well.\nSo I had to implement a transcription quality checking system that tries to determine if a transcript is acceptable or if you need to retranscribe it with different settings.\nWhisper is pretty good by default, but there are edge cases where you need multiple attempts to get it right and that all costs money.\nBiggest problem, and that's probably also why Podscan is actually so impactful for the people using it, is that transcription systems like Whisper, but also others, struggle with names and brands.\nAnything that a human could easily get right from context, they don't get right because they don't have context.\nThey just have a voice pattern, an audio waveform, and they don't get it right most of the time.\nAnd what works really well here, but is extremely expensive, is taking the full transcript from Whisper with all the little mistakes in there and having an AI do a pass over it with context from the podcast name, the description, and maybe prior episodes data.\nAnd you get extremely high-quality transcripts that way, but at scale.\nThis costs several dollars per episode.\nBecause imagine what this would mean to use an AI system.\nLet's say you have 500 kilobytes of text, that is, I don't know, 2 hours of a podcast, and you pipe that into even a cheap LLM that is hosted on, I don't know, on Anthropic or in OpenAI's platforms.\nSo you have like half a million input tokens and then it does some stuff and then it has half a million output tokens, and that's the expensive part.\nOutput tokens are probably the most expensive stuff for LM right now to create, and that does not work at scale because that again would cost me $50,000 a day.\nWhere am I going to take that money?\nNot happening.\nThat might be very limited to a very limited number of shows, but even then it gets super expensive.\nSo that's an unsolved challenge.\nCurrently, Whisper can take 120 or so tokens of context, just like things like the title of the show, maybe the episode title, and a couple of names of people that will be mentioned.\nSo, that's what I throw in.\nI just give it what I know is true about the episode.\nAnd back in the day, I experimented with giving it all the brands names from all the possible.\nBut Whisper actually started finding these words in places where they weren't actually there.\nIt was gaslighting me into believing that it found certain words where they didn't exist.\nSo I quickly stopped piping all of these brand names in there.\nSince then, I only provide context that I can reliably infer that will be in that particular episode.\nAnd the big benefit of the system that I've built so far, like the whole installable on some VPC somewhere system, is that it's pretty easy to set up.\nIt's a Laravel application that I can deploy through Laravel Forge onto any new server.\nI have an install script that fetches a couple Python libraries, and I can spin up a new server quite easily that then automatically attaches to my API and starts fetching and transcribing new episodes.\nIt's really nice, quite scalable.\nIt's not on a Docker container level scalable, but I'll get to that in the future, too.\nAnd as Podscan's infrastructure grows, we can quickly add more systems so new episodes are transcribed faster with even more quality because, you know, they can be run in less parallel with less little outlier errors faster.\nAnd as models evolve, they might even become better at transcribing.\nEventually, I think I can increase the number to get diarized and get more good data that can then be fed into AI systems for what my customers want.\nWhen I first set up the fleet of servers to transcribe all my podcasts that I wanted to transcribe, all podcasts everywhere, it probably would have cost me $30,000 a month, even on my own hardware.\nBut I'm now at a point where through proper optimization and balancing my customer needs with the expense requirements, I can reliably capture the majority of podcasts at good quality for just a couple thousand a month in expenses.\nAnd I think that's really cool.\nThe fact that that is even possible for a solopreneur to build.\nI don't think that would have been a thing a couple years ago, but the tools are all out there.\nIt just takes a year and a half of 24/7 work.\nSo, yeah, it takes a while, but it still is possible.\nThe key insight for all of this is that when you're building a business that scales with these factors outside of your control, like the global output of an entire medium, you just need to think differently about infrastructure optimization and trade-offs.\nSometimes the most expensive solution will not be the best one, like OpenAI's hosted whisper just doesn't work.\nAnd sometimes the constraints that you think are impossible to work with actually force you into more creative and ultimately better solutions.\nThe kind of challenge that makes building businesses both terrifying and accelerating.\nThat's exactly this.\nYou can't control how many podcasts get published worldwide every day, but you can control how cleverly and effectively you solve the problems that stem from this.\nAnd that's it for today.\nThank you so much for listening to The Bootstrapped Founder.\nYou can find me on Twitter at Arvid.\nIf you want to support me in this show, please share podscan.fm with your peers and those who you think will benefit from tracking brands, competitors, their products, all kinds of things and names on podcasts out there.\nPodscan is this near real-time podcast database with a really solid integration system.\nWe allow a lot of people to build solutions to get leads, to get information on their clients and all of that.\nSo, please share the word with those who need to stay on top of the podcast ecosystem.\nThank you so much for listening.\nHave a wonderful day and bye-bye.\n[Music]\n",
+  "dumpedAt": "2025-07-21T18:43:26.477Z"
+}

@@ -1,0 +1,3076 @@
+{
+  "episodeId": "8rABwKRsec4",
+  "channelSlug": "@aidotengineer",
+  "title": "The New Code — Sean Grove, OpenAI",
+  "publishedAt": "2025-07-11T16:00:06.000Z",
+  "rawLines": [
+    {
+      "lang": "en",
+      "text": "[Music]",
+      "offset": 0.33,
+      "duration": 7.479
+    },
+    {
+      "lang": "en",
+      "text": "[Music]",
+      "offset": 15.48,
+      "duration": 6.34
+    },
+    {
+      "lang": "en",
+      "text": "Hello everyone. Thank you very much for",
+      "offset": 24.32,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "having me. Uh it's a very exciting uh",
+      "offset": 26,
+      "duration": 7.36
+    },
+    {
+      "lang": "en",
+      "text": "place to be. very exciting time to be uh",
+      "offset": 28.56,
+      "duration": 7.12
+    },
+    {
+      "lang": "en",
+      "text": "second uh I mean this has been like a",
+      "offset": 33.36,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "pretty intense couple of days I don't",
+      "offset": 35.68,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "know if you feel the same way uh but",
+      "offset": 37.76,
+      "duration": 4.639
+    },
+    {
+      "lang": "en",
+      "text": "also very energizing so I want to take a",
+      "offset": 39.76,
+      "duration": 4.479
+    },
+    {
+      "lang": "en",
+      "text": "little bit of your time today uh to talk",
+      "offset": 42.399,
+      "duration": 3.361
+    },
+    {
+      "lang": "en",
+      "text": "about what I see is the coming of the",
+      "offset": 44.239,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "new code uh in particular specifications",
+      "offset": 45.76,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "which sort of hold this promise uh that",
+      "offset": 48.719,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "it has been the dream of the industry",
+      "offset": 50.8,
+      "duration": 4.399
+    },
+    {
+      "lang": "en",
+      "text": "where you can write your your code your",
+      "offset": 52.399,
+      "duration": 6.16
+    },
+    {
+      "lang": "en",
+      "text": "intentions once and run them everywhere",
+      "offset": 55.199,
+      "duration": 5.121
+    },
+    {
+      "lang": "en",
+      "text": "uh Quick intro. My name is Sean. I work",
+      "offset": 58.559,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "at uh OpenAI uh specifically in",
+      "offset": 60.32,
+      "duration": 4.799
+    },
+    {
+      "lang": "en",
+      "text": "alignment research. And today I want to",
+      "offset": 63.039,
+      "duration": 4.001
+    },
+    {
+      "lang": "en",
+      "text": "talk about sort of the value of code",
+      "offset": 65.119,
+      "duration": 3.601
+    },
+    {
+      "lang": "en",
+      "text": "versus communication and why",
+      "offset": 67.04,
+      "duration": 3.28
+    },
+    {
+      "lang": "en",
+      "text": "specifications might be a little bit of",
+      "offset": 68.72,
+      "duration": 6.28
+    },
+    {
+      "lang": "en",
+      "text": "a better approach in general.",
+      "offset": 70.32,
+      "duration": 4.68
+    },
+    {
+      "lang": "en",
+      "text": "Uh I'm going to go over the anatomy of a",
+      "offset": 75.52,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "specification and we'll use the uh model",
+      "offset": 78.24,
+      "duration": 5.519
+    },
+    {
+      "lang": "en",
+      "text": "spec as the example. uh and we'll talk",
+      "offset": 80.64,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "about communicating intent to other",
+      "offset": 83.759,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "humans and we'll go over the 40 syphency",
+      "offset": 86.08,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "issue uh as a case study.",
+      "offset": 88.799,
+      "duration": 4.721
+    },
+    {
+      "lang": "en",
+      "text": "Uh we'll talk about how to make the",
+      "offset": 91.84,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "specification executable, how to",
+      "offset": 93.52,
+      "duration": 6.32
+    },
+    {
+      "lang": "en",
+      "text": "communicate intent to the models uh and",
+      "offset": 96.24,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "how to think about specifications as",
+      "offset": 99.84,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "code even if they're a little bit",
+      "offset": 102,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "different. Um and we'll end on a couple",
+      "offset": 103.2,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "of open questions. So let's talk about",
+      "offset": 105.36,
+      "duration": 5.6
+    },
+    {
+      "lang": "en",
+      "text": "code versus communication",
+      "offset": 108.32,
+      "duration": 5.68
+    },
+    {
+      "lang": "en",
+      "text": "real quick. Raise your hand if you write",
+      "offset": 110.96,
+      "duration": 6.159
+    },
+    {
+      "lang": "en",
+      "text": "code and vibe code counts.",
+      "offset": 114,
+      "duration": 6.88
+    },
+    {
+      "lang": "en",
+      "text": "Cool. Keep them up if your job is to",
+      "offset": 117.119,
+      "duration": 6.32
+    },
+    {
+      "lang": "en",
+      "text": "write code.",
+      "offset": 120.88,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "Okay. Now, for those people, keep their",
+      "offset": 123.439,
+      "duration": 4.481
+    },
+    {
+      "lang": "en",
+      "text": "head up if you feel that the most",
+      "offset": 125.84,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "valuable professional artifact that you",
+      "offset": 127.92,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "produce is code.",
+      "offset": 130.08,
+      "duration": 5.6
+    },
+    {
+      "lang": "en",
+      "text": "Okay. There's quite a few people and I",
+      "offset": 133.44,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "think this is quite natural. We all work",
+      "offset": 135.68,
+      "duration": 5.279
+    },
+    {
+      "lang": "en",
+      "text": "very very hard to solve problems. We",
+      "offset": 138.08,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "talk with people. We gather",
+      "offset": 140.959,
+      "duration": 3.121
+    },
+    {
+      "lang": "en",
+      "text": "requirements. We think through",
+      "offset": 142.16,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "implementation details. We integrate",
+      "offset": 144.08,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "with lots of different sources. And the",
+      "offset": 145.92,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "ultimate thing that we produce is code.",
+      "offset": 148,
+      "duration": 5.599
+    },
+    {
+      "lang": "en",
+      "text": "Code is the artifact that we can point",
+      "offset": 151.28,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "to, we can measure, we can debate, and",
+      "offset": 153.599,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "we can discuss. Uh it feels tangible and",
+      "offset": 155.76,
+      "duration": 6.4
+    },
+    {
+      "lang": "en",
+      "text": "real, but it's sort of underelling the",
+      "offset": 158.879,
+      "duration": 6.321
+    },
+    {
+      "lang": "en",
+      "text": "job that each of you does. Code is sort",
+      "offset": 162.16,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "of 10 to 20% of the value that you",
+      "offset": 165.2,
+      "duration": 5.84
+    },
+    {
+      "lang": "en",
+      "text": "bring. The other 80 to 90% is in",
+      "offset": 167.68,
+      "duration": 6.08
+    },
+    {
+      "lang": "en",
+      "text": "structured communication. And this is",
+      "offset": 171.04,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "going to be different for everyone, but",
+      "offset": 173.76,
+      "duration": 3.199
+    },
+    {
+      "lang": "en",
+      "text": "a process typically looks something like",
+      "offset": 175.04,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "you talk to users in order to understand",
+      "offset": 176.959,
+      "duration": 5.681
+    },
+    {
+      "lang": "en",
+      "text": "their challenges. You distill these",
+      "offset": 180,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "stories down and then ideulate about how",
+      "offset": 182.64,
+      "duration": 4.959
+    },
+    {
+      "lang": "en",
+      "text": "to solve these problems. What what is",
+      "offset": 185.28,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "the goal that you want to achieve? You",
+      "offset": 187.599,
+      "duration": 5.681
+    },
+    {
+      "lang": "en",
+      "text": "plan ways to achieve those goals. You",
+      "offset": 189.92,
+      "duration": 6.64
+    },
+    {
+      "lang": "en",
+      "text": "share those plans with your colleagues.",
+      "offset": 193.28,
+      "duration": 6.08
+    },
+    {
+      "lang": "en",
+      "text": "uh you translate those plans into code.",
+      "offset": 196.56,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "So this is a very important step",
+      "offset": 199.36,
+      "duration": 4.799
+    },
+    {
+      "lang": "en",
+      "text": "obviously and then you test and verify",
+      "offset": 200.72,
+      "duration": 6.64
+    },
+    {
+      "lang": "en",
+      "text": "not the code itself right no one cares",
+      "offset": 204.159,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "actually about the code itself. What you",
+      "offset": 207.36,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "care is when the code ran did it achieve",
+      "offset": 208.879,
+      "duration": 5.841
+    },
+    {
+      "lang": "en",
+      "text": "the goals did it alleviate the",
+      "offset": 212.4,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "challenges of your user. You look at the",
+      "offset": 214.72,
+      "duration": 5.519
+    },
+    {
+      "lang": "en",
+      "text": "the effects that your code had on the",
+      "offset": 217.28,
+      "duration": 6.72
+    },
+    {
+      "lang": "en",
+      "text": "world. So talking, understanding,",
+      "offset": 220.239,
+      "duration": 7.401
+    },
+    {
+      "lang": "en",
+      "text": "distilling, ideulating,",
+      "offset": 224,
+      "duration": 3.64
+    },
+    {
+      "lang": "en",
+      "text": "planning, sharing, translating, testing,",
+      "offset": 228.239,
+      "duration": 5.041
+    },
+    {
+      "lang": "en",
+      "text": "verifying, these all sound like",
+      "offset": 231.12,
+      "duration": 6.16
+    },
+    {
+      "lang": "en",
+      "text": "structured communication to me. And",
+      "offset": 233.28,
+      "duration": 5.92
+    },
+    {
+      "lang": "en",
+      "text": "structured communication is the",
+      "offset": 237.28,
+      "duration": 3.679
+    },
+    {
+      "lang": "en",
+      "text": "bottleneck.",
+      "offset": 239.2,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "knowing what to build, talking to people",
+      "offset": 240.959,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "and gathering requirements, knowing how",
+      "offset": 243.28,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "to build it, knowing why to build it,",
+      "offset": 245.599,
+      "duration": 4.401
+    },
+    {
+      "lang": "en",
+      "text": "and at the end of the day, knowing if it",
+      "offset": 248.08,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "has been built correctly and has",
+      "offset": 250,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "actually achieved the intentions that",
+      "offset": 251.68,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "you set out with.",
+      "offset": 253.84,
+      "duration": 5.119
+    },
+    {
+      "lang": "en",
+      "text": "And the more advanced AI models get, the",
+      "offset": 255.92,
+      "duration": 5.599
+    },
+    {
+      "lang": "en",
+      "text": "more we are all going to starkly feel",
+      "offset": 258.959,
+      "duration": 5.121
+    },
+    {
+      "lang": "en",
+      "text": "this bottleneck.",
+      "offset": 261.519,
+      "duration": 4.641
+    },
+    {
+      "lang": "en",
+      "text": "Because in the near future, the person",
+      "offset": 264.08,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "who communicates most effectively is the",
+      "offset": 266.16,
+      "duration": 6.88
+    },
+    {
+      "lang": "en",
+      "text": "most valuable programmer. And literally,",
+      "offset": 269.44,
+      "duration": 5.84
+    },
+    {
+      "lang": "en",
+      "text": "if you can communicate effectively, you",
+      "offset": 273.04,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "can program.",
+      "offset": 275.28,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "So, let's take uh vibe coding as an",
+      "offset": 277.68,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "illustrative example. Vibe coding tends",
+      "offset": 279.68,
+      "duration": 4.959
+    },
+    {
+      "lang": "en",
+      "text": "to feel quite good. And it's worth",
+      "offset": 282,
+      "duration": 5.68
+    },
+    {
+      "lang": "en",
+      "text": "asking why is that? Well, vibe coding is",
+      "offset": 284.639,
+      "duration": 5.681
+    },
+    {
+      "lang": "en",
+      "text": "fundamentally about communication first.",
+      "offset": 287.68,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "And the code is actually a secondary",
+      "offset": 290.32,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "downstream artifact of that",
+      "offset": 292.16,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "communication.",
+      "offset": 294,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "We get to describe our intentions and",
+      "offset": 295.68,
+      "duration": 4.079
+    },
+    {
+      "lang": "en",
+      "text": "our the outcomes that we want to see and",
+      "offset": 297.84,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "we let the model actually handle the",
+      "offset": 299.759,
+      "duration": 5.121
+    },
+    {
+      "lang": "en",
+      "text": "grunt work for us. And even so, there is",
+      "offset": 301.68,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "something strange about the way that we",
+      "offset": 304.88,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "do vibe coding. We communicate via",
+      "offset": 306.96,
+      "duration": 5.679
+    },
+    {
+      "lang": "en",
+      "text": "prompts to the model",
+      "offset": 310.24,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "and we tell them our intentions and our",
+      "offset": 312.639,
+      "duration": 5.201
+    },
+    {
+      "lang": "en",
+      "text": "values and we get a code artifact out at",
+      "offset": 314.72,
+      "duration": 5.68
+    },
+    {
+      "lang": "en",
+      "text": "the end and then we sort of throw our",
+      "offset": 317.84,
+      "duration": 6.639
+    },
+    {
+      "lang": "en",
+      "text": "prompts away they're ephemeral",
+      "offset": 320.4,
+      "duration": 6.96
+    },
+    {
+      "lang": "en",
+      "text": "and if you've written TypeScript or Rust",
+      "offset": 324.479,
+      "duration": 4.801
+    },
+    {
+      "lang": "en",
+      "text": "once you put your your code through a",
+      "offset": 327.36,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "compiler or it gets down into a binary",
+      "offset": 329.28,
+      "duration": 6.08
+    },
+    {
+      "lang": "en",
+      "text": "no one is happy with that binary. That",
+      "offset": 332.08,
+      "duration": 6.48
+    },
+    {
+      "lang": "en",
+      "text": "wasn't the purpose. It's useful. In",
+      "offset": 335.36,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "fact, we always regenerate the binaries",
+      "offset": 338.56,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "from scratch every time we compile or we",
+      "offset": 340.56,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "run our code through V8 or whatever it",
+      "offset": 342.96,
+      "duration": 4.959
+    },
+    {
+      "lang": "en",
+      "text": "might be from the source spec. It's the",
+      "offset": 344.88,
+      "duration": 5.599
+    },
+    {
+      "lang": "en",
+      "text": "source specification that's the valuable",
+      "offset": 347.919,
+      "duration": 4.241
+    },
+    {
+      "lang": "en",
+      "text": "artifact.",
+      "offset": 350.479,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "And yet when we prompt elements, we sort",
+      "offset": 352.16,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "of do the opposite. We keep the",
+      "offset": 353.919,
+      "duration": 4.481
+    },
+    {
+      "lang": "en",
+      "text": "generated code and we delete the prompt.",
+      "offset": 355.68,
+      "duration": 4.239
+    },
+    {
+      "lang": "en",
+      "text": "And this feels like a little bit like",
+      "offset": 358.4,
+      "duration": 3.28
+    },
+    {
+      "lang": "en",
+      "text": "you shred the source and then you very",
+      "offset": 359.919,
+      "duration": 5.84
+    },
+    {
+      "lang": "en",
+      "text": "carefully version control the binary.",
+      "offset": 361.68,
+      "duration": 5.84
+    },
+    {
+      "lang": "en",
+      "text": "And that's why it's so important to",
+      "offset": 365.759,
+      "duration": 4.081
+    },
+    {
+      "lang": "en",
+      "text": "actually capture the intent and the",
+      "offset": 367.52,
+      "duration": 5.119
+    },
+    {
+      "lang": "en",
+      "text": "values in a specification.",
+      "offset": 369.84,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "A written specification is what enables",
+      "offset": 372.639,
+      "duration": 5.041
+    },
+    {
+      "lang": "en",
+      "text": "you to align humans on the shared set of",
+      "offset": 374.96,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "goals and to know if you are aligned if",
+      "offset": 377.68,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "you actually synchronize on what needs",
+      "offset": 380.72,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "to be done. This is the artifact that",
+      "offset": 382.16,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "you discuss that you debate that you",
+      "offset": 384.16,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "refer to and that you synchronize on.",
+      "offset": 386.16,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "And this is really important. And so I",
+      "offset": 389.12,
+      "duration": 3.519
+    },
+    {
+      "lang": "en",
+      "text": "want to nail this this home that a",
+      "offset": 390.24,
+      "duration": 5.6
+    },
+    {
+      "lang": "en",
+      "text": "written specification effectively aligns",
+      "offset": 392.639,
+      "duration": 5.041
+    },
+    {
+      "lang": "en",
+      "text": "humans",
+      "offset": 395.84,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "and it is the artifact that you use to",
+      "offset": 397.68,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "communicate and to discuss and debate",
+      "offset": 400.56,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "and refer to and synchronize on. If you",
+      "offset": 402.72,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "don't have a specification, you just",
+      "offset": 405.44,
+      "duration": 5.039
+    },
+    {
+      "lang": "en",
+      "text": "have a vague idea.",
+      "offset": 407.68,
+      "duration": 4.959
+    },
+    {
+      "lang": "en",
+      "text": "Now let's talk about why specifications",
+      "offset": 410.479,
+      "duration": 5.601
+    },
+    {
+      "lang": "en",
+      "text": "are more powerful in general than code.",
+      "offset": 412.639,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "Because code itself is actually a lossy",
+      "offset": 416.08,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "projection from the specification.",
+      "offset": 418.639,
+      "duration": 4.721
+    },
+    {
+      "lang": "en",
+      "text": "In the same way that if you were to take",
+      "offset": 421.84,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "a compiled C binary and decompile it,",
+      "offset": 423.36,
+      "duration": 6.08
+    },
+    {
+      "lang": "en",
+      "text": "you wouldn't get nice comments and uh",
+      "offset": 426.96,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "well-n named variables. You would have",
+      "offset": 429.44,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "to work backwards. You'd have to infer",
+      "offset": 431.28,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "what was this person trying to do? Why",
+      "offset": 433.12,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "is this code written this way? It isn't",
+      "offset": 435.12,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "actually contained in there. It was a",
+      "offset": 437.36,
+      "duration": 4.239
+    },
+    {
+      "lang": "en",
+      "text": "lossy translation. And in the same way,",
+      "offset": 438.8,
+      "duration": 5.519
+    },
+    {
+      "lang": "en",
+      "text": "code itself, even nice code, typically",
+      "offset": 441.599,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "doesn't embody all of the intentions and",
+      "offset": 444.319,
+      "duration": 6.641
+    },
+    {
+      "lang": "en",
+      "text": "the values in itself. You have to infer",
+      "offset": 447.039,
+      "duration": 5.841
+    },
+    {
+      "lang": "en",
+      "text": "what is the ultimate goal that this team",
+      "offset": 450.96,
+      "duration": 4.239
+    },
+    {
+      "lang": "en",
+      "text": "is trying to achieve. Uh when you read",
+      "offset": 452.88,
+      "duration": 4.319
+    },
+    {
+      "lang": "en",
+      "text": "through code,",
+      "offset": 455.199,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "so communication, the work that we",
+      "offset": 457.199,
+      "duration": 4.641
+    },
+    {
+      "lang": "en",
+      "text": "establish, we already do when embodied",
+      "offset": 459.039,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "inside of a written specification is",
+      "offset": 461.84,
+      "duration": 4.639
+    },
+    {
+      "lang": "en",
+      "text": "better than code. It actually encodes",
+      "offset": 463.759,
+      "duration": 4.961
+    },
+    {
+      "lang": "en",
+      "text": "all of the the necessary requirements in",
+      "offset": 466.479,
+      "duration": 5.361
+    },
+    {
+      "lang": "en",
+      "text": "order to generate the code. And in the",
+      "offset": 468.72,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "same way that having a source code that",
+      "offset": 471.84,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "you pass to a compiler allows you to",
+      "offset": 473.68,
+      "duration": 4.959
+    },
+    {
+      "lang": "en",
+      "text": "target multiple different uh",
+      "offset": 476.56,
+      "duration": 4.639
+    },
+    {
+      "lang": "en",
+      "text": "architectures, you can compile for ARM",
+      "offset": 478.639,
+      "duration": 5.921
+    },
+    {
+      "lang": "en",
+      "text": "64, x86 or web assembly. The source",
+      "offset": 481.199,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "document actually contains enough",
+      "offset": 484.56,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "information to describe how to translate",
+      "offset": 486.639,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "it to your target architecture.",
+      "offset": 489.44,
+      "duration": 5.92
+    },
+    {
+      "lang": "en",
+      "text": "In the same way, a a sufficiently robust",
+      "offset": 491.919,
+      "duration": 6.56
+    },
+    {
+      "lang": "en",
+      "text": "specification given to models will",
+      "offset": 495.36,
+      "duration": 6.559
+    },
+    {
+      "lang": "en",
+      "text": "produce good TypeScript, good Rust,",
+      "offset": 498.479,
+      "duration": 6.081
+    },
+    {
+      "lang": "en",
+      "text": "servers, clients, documentation,",
+      "offset": 501.919,
+      "duration": 4.321
+    },
+    {
+      "lang": "en",
+      "text": "tutorials, blog posts, and even",
+      "offset": 504.56,
+      "duration": 3.28
+    },
+    {
+      "lang": "en",
+      "text": "podcasts.",
+      "offset": 506.24,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "Uh, show of hands, who works at a",
+      "offset": 507.84,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "company that has developers as",
+      "offset": 510.08,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "customers?",
+      "offset": 512,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "Okay. So, a a quick like thought",
+      "offset": 514.24,
+      "duration": 4.719
+    },
+    {
+      "lang": "en",
+      "text": "exercise is if you were to take your",
+      "offset": 516.56,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "entire codebase, all of the the",
+      "offset": 518.959,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "documentation, oh, so all of the code",
+      "offset": 520.88,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "that runs your business, and you were to",
+      "offset": 523.039,
+      "duration": 4.321
+    },
+    {
+      "lang": "en",
+      "text": "put that into a podcast generator, could",
+      "offset": 525.12,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "you generate something that would be",
+      "offset": 527.36,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "sufficiently interesting and compelling",
+      "offset": 529.44,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "that would tell the users how to",
+      "offset": 530.88,
+      "duration": 4.959
+    },
+    {
+      "lang": "en",
+      "text": "succeed, how to achieve their goals, or",
+      "offset": 533.36,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "is all of that information somewhere",
+      "offset": 535.839,
+      "duration": 5.281
+    },
+    {
+      "lang": "en",
+      "text": "else? It's not actually in your code.",
+      "offset": 537.2,
+      "duration": 6.319
+    },
+    {
+      "lang": "en",
+      "text": "And so moving forward, the new scarce",
+      "offset": 541.12,
+      "duration": 5.279
+    },
+    {
+      "lang": "en",
+      "text": "skill is writing specifications that",
+      "offset": 543.519,
+      "duration": 6.641
+    },
+    {
+      "lang": "en",
+      "text": "fully capture the intent and values. And",
+      "offset": 546.399,
+      "duration": 6.241
+    },
+    {
+      "lang": "en",
+      "text": "whoever masters that again becomes the",
+      "offset": 550.16,
+      "duration": 5.359
+    },
+    {
+      "lang": "en",
+      "text": "most valuable programmer",
+      "offset": 552.64,
+      "duration": 4.319
+    },
+    {
+      "lang": "en",
+      "text": "and there's a reasonable chance that",
+      "offset": 555.519,
+      "duration": 3.681
+    },
+    {
+      "lang": "en",
+      "text": "this is going to be the coders of today.",
+      "offset": 556.959,
+      "duration": 4.081
+    },
+    {
+      "lang": "en",
+      "text": "This is already very similar to what we",
+      "offset": 559.2,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "do. However, product managers also write",
+      "offset": 561.04,
+      "duration": 5.84
+    },
+    {
+      "lang": "en",
+      "text": "specifications. Lawmakers write legal",
+      "offset": 564,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "specifications.",
+      "offset": 566.88,
+      "duration": 4.639
+    },
+    {
+      "lang": "en",
+      "text": "This is actually a universal principle.",
+      "offset": 568.64,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "So with that in mind, let's look at what",
+      "offset": 571.519,
+      "duration": 3.841
+    },
+    {
+      "lang": "en",
+      "text": "a specification actually looks like. And",
+      "offset": 572.88,
+      "duration": 4.399
+    },
+    {
+      "lang": "en",
+      "text": "I'm going to use the OpenAI model spec",
+      "offset": 575.36,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "as an example here. So last year, OpenAI",
+      "offset": 577.279,
+      "duration": 5.441
+    },
+    {
+      "lang": "en",
+      "text": "released the model spec. And this is a",
+      "offset": 580.16,
+      "duration": 5.92
+    },
+    {
+      "lang": "en",
+      "text": "living document that tries to clearly",
+      "offset": 582.72,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "and unambiguously",
+      "offset": 586.08,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "express the intentions and values that",
+      "offset": 587.92,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "OpenAI hopes to imbue its models with",
+      "offset": 590.08,
+      "duration": 6.84
+    },
+    {
+      "lang": "en",
+      "text": "that it ships to the world.",
+      "offset": 592.72,
+      "duration": 4.2
+    },
+    {
+      "lang": "en",
+      "text": "and it was updated in in uh February and",
+      "offset": 597.04,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "open sourced. So you can actually go to",
+      "offset": 600.16,
+      "duration": 3.2
+    },
+    {
+      "lang": "en",
+      "text": "GitHub and you can see the",
+      "offset": 602.08,
+      "duration": 5.199
+    },
+    {
+      "lang": "en",
+      "text": "implementation of uh the model spec and",
+      "offset": 603.36,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "surprise surprise it's actually just a",
+      "offset": 607.279,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "collection of markdown files just looks",
+      "offset": 608.88,
+      "duration": 6.16
+    },
+    {
+      "lang": "en",
+      "text": "like this. Now markdown is remarkable.",
+      "offset": 611.279,
+      "duration": 6.481
+    },
+    {
+      "lang": "en",
+      "text": "It is human readable. It's versioned.",
+      "offset": 615.04,
+      "duration": 5.359
+    },
+    {
+      "lang": "en",
+      "text": "It's change logged and because it is",
+      "offset": 617.76,
+      "duration": 5.68
+    },
+    {
+      "lang": "en",
+      "text": "natural language everyone in not just",
+      "offset": 620.399,
+      "duration": 4.801
+    },
+    {
+      "lang": "en",
+      "text": "technical people can contribute",
+      "offset": 623.44,
+      "duration": 4.399
+    },
+    {
+      "lang": "en",
+      "text": "including product legal safety research",
+      "offset": 625.2,
+      "duration": 6.8
+    },
+    {
+      "lang": "en",
+      "text": "policy they can all read discuss debate",
+      "offset": 627.839,
+      "duration": 7.281
+    },
+    {
+      "lang": "en",
+      "text": "and contribute to the same source code.",
+      "offset": 632,
+      "duration": 5.839
+    },
+    {
+      "lang": "en",
+      "text": "This is the universal artifact that",
+      "offset": 635.12,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "aligns all of the humans as to our",
+      "offset": 637.839,
+      "duration": 5.041
+    },
+    {
+      "lang": "en",
+      "text": "intentions and values inside of the",
+      "offset": 640.48,
+      "duration": 4.479
+    },
+    {
+      "lang": "en",
+      "text": "company.",
+      "offset": 642.88,
+      "duration": 4.639
+    },
+    {
+      "lang": "en",
+      "text": "Now, as much as we might try to use",
+      "offset": 644.959,
+      "duration": 4.961
+    },
+    {
+      "lang": "en",
+      "text": "unambiguous language, there are times",
+      "offset": 647.519,
+      "duration": 4.401
+    },
+    {
+      "lang": "en",
+      "text": "where it's very difficult to express the",
+      "offset": 649.92,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "nuance. So, every clause in the model",
+      "offset": 651.92,
+      "duration": 5.68
+    },
+    {
+      "lang": "en",
+      "text": "spec has an ID here. So, you can see",
+      "offset": 655.36,
+      "duration": 6.32
+    },
+    {
+      "lang": "en",
+      "text": "sy73 here. And using that ID, you can",
+      "offset": 657.6,
+      "duration": 6.16
+    },
+    {
+      "lang": "en",
+      "text": "find another file in the repository",
+      "offset": 661.68,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "sy73.mmarkdown",
+      "offset": 663.76,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "or md uh that contains one or more",
+      "offset": 665.36,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "challenging prompts",
+      "offset": 668.56,
+      "duration": 5.279
+    },
+    {
+      "lang": "en",
+      "text": "for this exact clause. So the document",
+      "offset": 670.8,
+      "duration": 7.279
+    },
+    {
+      "lang": "en",
+      "text": "itself actually encodes success criteria",
+      "offset": 673.839,
+      "duration": 7.44
+    },
+    {
+      "lang": "en",
+      "text": "that the the model under test has to be",
+      "offset": 678.079,
+      "duration": 4.481
+    },
+    {
+      "lang": "en",
+      "text": "able to answer this in a way that",
+      "offset": 681.279,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "actually adheres to that clause.",
+      "offset": 682.56,
+      "duration": 8.719
+    },
+    {
+      "lang": "en",
+      "text": "So let's talk about uh syphy. Uh",
+      "offset": 687.279,
+      "duration": 6.8
+    },
+    {
+      "lang": "en",
+      "text": "recently there was a update to 40. I",
+      "offset": 691.279,
+      "duration": 5.201
+    },
+    {
+      "lang": "en",
+      "text": "don't know if you've heard of this. Uh",
+      "offset": 694.079,
+      "duration": 7.601
+    },
+    {
+      "lang": "en",
+      "text": "there uh caused extreme syphy. uh and we",
+      "offset": 696.48,
+      "duration": 7.919
+    },
+    {
+      "lang": "en",
+      "text": "can ask like what value is the model",
+      "offset": 701.68,
+      "duration": 6.32
+    },
+    {
+      "lang": "en",
+      "text": "spec in this scenario and the model spec",
+      "offset": 704.399,
+      "duration": 6.481
+    },
+    {
+      "lang": "en",
+      "text": "serves to align humans around a set of",
+      "offset": 708,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "values and intentions.",
+      "offset": 710.88,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "Here's an example of syphy where the",
+      "offset": 713.2,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "user calls out the behavior of being uh",
+      "offset": 715.6,
+      "duration": 5.919
+    },
+    {
+      "lang": "en",
+      "text": "syphants uh or sophantic at the expense",
+      "offset": 718.64,
+      "duration": 5.6
+    },
+    {
+      "lang": "en",
+      "text": "of impartial truth and the model very",
+      "offset": 721.519,
+      "duration": 4.721
+    },
+    {
+      "lang": "en",
+      "text": "kindly uh praises the user for their",
+      "offset": 724.24,
+      "duration": 5
+    },
+    {
+      "lang": "en",
+      "text": "insight.",
+      "offset": 726.24,
+      "duration": 3
+    },
+    {
+      "lang": "en",
+      "text": "There have been other esteemed",
+      "offset": 729.36,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "researchers uh who have found similarly",
+      "offset": 730.639,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "uh",
+      "offset": 733.36,
+      "duration": 6.56
+    },
+    {
+      "lang": "en",
+      "text": "similarly uh concerning examples",
+      "offset": 735.519,
+      "duration": 10.161
+    },
+    {
+      "lang": "en",
+      "text": "and this hurts. Uh shipping sycopency in",
+      "offset": 739.92,
+      "duration": 8.719
+    },
+    {
+      "lang": "en",
+      "text": "this manner erodess trust.",
+      "offset": 745.68,
+      "duration": 5.68
+    },
+    {
+      "lang": "en",
+      "text": "It hurts.",
+      "offset": 748.639,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "So and it also raises a lot of questions",
+      "offset": 751.36,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "like was this intentional? you could see",
+      "offset": 753.839,
+      "duration": 4.481
+    },
+    {
+      "lang": "en",
+      "text": "some way where you might interpret it",
+      "offset": 756.72,
+      "duration": 4.239
+    },
+    {
+      "lang": "en",
+      "text": "that way. Was it accidental and why",
+      "offset": 758.32,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "wasn't it caught?",
+      "offset": 760.959,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "Luckily, the model spec actually",
+      "offset": 762.88,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "includes a section dedicated to this",
+      "offset": 764.639,
+      "duration": 6.081
+    },
+    {
+      "lang": "en",
+      "text": "since its release that says don't be",
+      "offset": 768.16,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "sick of fantic and it explains that",
+      "offset": 770.72,
+      "duration": 4.559
+    },
+    {
+      "lang": "en",
+      "text": "while syopency might feel good in the",
+      "offset": 773.2,
+      "duration": 4.319
+    },
+    {
+      "lang": "en",
+      "text": "short term, it's bad for everyone in the",
+      "offset": 775.279,
+      "duration": 5.041
+    },
+    {
+      "lang": "en",
+      "text": "long term. So, we actually expressed our",
+      "offset": 777.519,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "intentions and our values and were able",
+      "offset": 780.32,
+      "duration": 6.639
+    },
+    {
+      "lang": "en",
+      "text": "to communicate it to others through this",
+      "offset": 781.839,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "So people could reference it and if we",
+      "offset": 787.44,
+      "duration": 6.16
+    },
+    {
+      "lang": "en",
+      "text": "have it in the model spec specification",
+      "offset": 791.12,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "if the model specification is our agreed",
+      "offset": 793.6,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "upon set of intentions and values and",
+      "offset": 796,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "the behavior doesn't align with that",
+      "offset": 798.32,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "then this must be a bug.",
+      "offset": 800.8,
+      "duration": 5.279
+    },
+    {
+      "lang": "en",
+      "text": "So we rolled back we published some",
+      "offset": 803.68,
+      "duration": 4.399
+    },
+    {
+      "lang": "en",
+      "text": "studies and some blog post and we fixed",
+      "offset": 806.079,
+      "duration": 5
+    },
+    {
+      "lang": "en",
+      "text": "it.",
+      "offset": 808.079,
+      "duration": 3
+    },
+    {
+      "lang": "en",
+      "text": "But in the interim, the specs served as",
+      "offset": 811.6,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "a trust anchor, a way to communicate to",
+      "offset": 814.24,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "people what is expected and what is not",
+      "offset": 816.72,
+      "duration": 5
+    },
+    {
+      "lang": "en",
+      "text": "expected.",
+      "offset": 818.72,
+      "duration": 3
+    },
+    {
+      "lang": "en",
+      "text": "So if just if the only thing the model",
+      "offset": 823.279,
+      "duration": 6.481
+    },
+    {
+      "lang": "en",
+      "text": "specification did was to align humans",
+      "offset": 826.56,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "along those shared sets of intentions",
+      "offset": 829.76,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "and values, it would already be",
+      "offset": 831.6,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "incredibly useful.",
+      "offset": 833.76,
+      "duration": 6.079
+    },
+    {
+      "lang": "en",
+      "text": "But ideally we can also align our models",
+      "offset": 836.8,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "and the artifacts that our models",
+      "offset": 839.839,
+      "duration": 5.281
+    },
+    {
+      "lang": "en",
+      "text": "produce against that same specification.",
+      "offset": 841.44,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "So there's a technique a paper that we",
+      "offset": 845.12,
+      "duration": 2.959
+    },
+    {
+      "lang": "en",
+      "text": "released uh called deliberative",
+      "offset": 846.72,
+      "duration": 3.04
+    },
+    {
+      "lang": "en",
+      "text": "alignment that sort of talks about this",
+      "offset": 848.079,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "how to automatically align a model and",
+      "offset": 849.76,
+      "duration": 5.84
+    },
+    {
+      "lang": "en",
+      "text": "the technique is uh such where you take",
+      "offset": 852.399,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "your specification and a set of very",
+      "offset": 855.6,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "challenging uh input prompts and you",
+      "offset": 857.519,
+      "duration": 3.841
+    },
+    {
+      "lang": "en",
+      "text": "sample from the model under test or",
+      "offset": 859.92,
+      "duration": 3.279
+    },
+    {
+      "lang": "en",
+      "text": "training.",
+      "offset": 861.36,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "You then uh take its response, the",
+      "offset": 863.199,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "original prompt and the policy and you",
+      "offset": 865.36,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "give that to a greater model and you ask",
+      "offset": 867.199,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "it to score the response according to",
+      "offset": 868.88,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "the specification. How aligned is it? So",
+      "offset": 872.399,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "the document actually becomes both",
+      "offset": 874.88,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "training material and eval material",
+      "offset": 876.959,
+      "duration": 5.201
+    },
+    {
+      "lang": "en",
+      "text": "and based off of this score we reinforce",
+      "offset": 880.16,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "those weights and it goes from you know",
+      "offset": 882.16,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "you could include your specification in",
+      "offset": 885.04,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "the context and then maybe a system",
+      "offset": 887.6,
+      "duration": 2.96
+    },
+    {
+      "lang": "en",
+      "text": "message or developer message in every",
+      "offset": 888.88,
+      "duration": 3.12
+    },
+    {
+      "lang": "en",
+      "text": "single time you sample and that is",
+      "offset": 890.56,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "actually quite useful. a prompted uh",
+      "offset": 892,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "model is going to be somewhat aligned,",
+      "offset": 894,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "but it does detract from the compute",
+      "offset": 896.24,
+      "duration": 4.959
+    },
+    {
+      "lang": "en",
+      "text": "available to solve the uh problem that",
+      "offset": 897.92,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "you're trying to solve with the model.",
+      "offset": 901.199,
+      "duration": 3.2
+    },
+    {
+      "lang": "en",
+      "text": "And keep in mind, these specifications",
+      "offset": 902.88,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "can be anything. They could be code",
+      "offset": 904.399,
+      "duration": 4.321
+    },
+    {
+      "lang": "en",
+      "text": "style or testing requirements or or",
+      "offset": 906.32,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "safety requirements. All of that can be",
+      "offset": 908.72,
+      "duration": 4.559
+    },
+    {
+      "lang": "en",
+      "text": "embedded into the model. So through this",
+      "offset": 910.8,
+      "duration": 4.159
+    },
+    {
+      "lang": "en",
+      "text": "technique you're actually moving it from",
+      "offset": 913.279,
+      "duration": 4.401
+    },
+    {
+      "lang": "en",
+      "text": "a inference time compute and actually",
+      "offset": 914.959,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "you're pushing down into the weights of",
+      "offset": 917.68,
+      "duration": 3.839
+    },
+    {
+      "lang": "en",
+      "text": "the model so that the model actually",
+      "offset": 919.839,
+      "duration": 4.161
+    },
+    {
+      "lang": "en",
+      "text": "feels your policy and is able to sort of",
+      "offset": 921.519,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "muscle memory uh style apply it to the",
+      "offset": 924,
+      "duration": 5.839
+    },
+    {
+      "lang": "en",
+      "text": "problem at hand.",
+      "offset": 927.519,
+      "duration": 4.081
+    },
+    {
+      "lang": "en",
+      "text": "And even though we saw that the model",
+      "offset": 929.839,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "spec is just markdown it's quite useful",
+      "offset": 931.6,
+      "duration": 4.479
+    },
+    {
+      "lang": "en",
+      "text": "to think of it as code. It's quite",
+      "offset": 934.079,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "analogous.",
+      "offset": 936.079,
+      "duration": 3.681
+    },
+    {
+      "lang": "en",
+      "text": "uh these specifications they compose",
+      "offset": 937.839,
+      "duration": 4.401
+    },
+    {
+      "lang": "en",
+      "text": "they're executable as we've seen uh they",
+      "offset": 939.76,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "are testable they have interfaces where",
+      "offset": 942.24,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "they they touch the real world uh they",
+      "offset": 944.16,
+      "duration": 5.039
+    },
+    {
+      "lang": "en",
+      "text": "can be shipped as modules",
+      "offset": 946.48,
+      "duration": 5.599
+    },
+    {
+      "lang": "en",
+      "text": "and whenever you're working on a model",
+      "offset": 949.199,
+      "duration": 5.041
+    },
+    {
+      "lang": "en",
+      "text": "spec there are a lot of similar sort of",
+      "offset": 952.079,
+      "duration": 4.481
+    },
+    {
+      "lang": "en",
+      "text": "uh problem domains so just like in",
+      "offset": 954.24,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "programming where you have a type",
+      "offset": 956.56,
+      "duration": 3.12
+    },
+    {
+      "lang": "en",
+      "text": "checker the type checker is meant to",
+      "offset": 958,
+      "duration": 4.399
+    },
+    {
+      "lang": "en",
+      "text": "ensure consistency where if interface A",
+      "offset": 959.68,
+      "duration": 5.92
+    },
+    {
+      "lang": "en",
+      "text": "has a dependent uh module B they have to",
+      "offset": 962.399,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "be consistent in their understanding of",
+      "offset": 965.6,
+      "duration": 4.799
+    },
+    {
+      "lang": "en",
+      "text": "one another. So if department A writes a",
+      "offset": 967.199,
+      "duration": 4.961
+    },
+    {
+      "lang": "en",
+      "text": "spec and department B writes a spec and",
+      "offset": 970.399,
+      "duration": 3.521
+    },
+    {
+      "lang": "en",
+      "text": "there is a conflict in there you want to",
+      "offset": 972.16,
+      "duration": 3.599
+    },
+    {
+      "lang": "en",
+      "text": "be able to pull that forward and maybe",
+      "offset": 973.92,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "block the publication of the the",
+      "offset": 975.759,
+      "duration": 5.281
+    },
+    {
+      "lang": "en",
+      "text": "specification as we saw the policy can",
+      "offset": 978.24,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "actually embody its own unit tests and",
+      "offset": 981.04,
+      "duration": 4.159
+    },
+    {
+      "lang": "en",
+      "text": "you can imagine sort of various llinters",
+      "offset": 983.6,
+      "duration": 3.2
+    },
+    {
+      "lang": "en",
+      "text": "where if you're using overly ambiguous",
+      "offset": 985.199,
+      "duration": 3.521
+    },
+    {
+      "lang": "en",
+      "text": "language you're going to confuse humans",
+      "offset": 986.8,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "and you're going to confuse the model",
+      "offset": 988.72,
+      "duration": 3.28
+    },
+    {
+      "lang": "en",
+      "text": "and the artifacts that you get from that",
+      "offset": 990.24,
+      "duration": 4.399
+    },
+    {
+      "lang": "en",
+      "text": "are going to be less satisfactory.",
+      "offset": 992,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "So specs actually give us a very similar",
+      "offset": 994.639,
+      "duration": 4.481
+    },
+    {
+      "lang": "en",
+      "text": "tool chain but it's targeted at",
+      "offset": 997.04,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "intentions rather than syntax.",
+      "offset": 999.12,
+      "duration": 5.92
+    },
+    {
+      "lang": "en",
+      "text": "So let's talk about lawmakers as",
+      "offset": 1002.48,
+      "duration": 5.919
+    },
+    {
+      "lang": "en",
+      "text": "programmers. Uh",
+      "offset": 1005.04,
+      "duration": 6.32
+    },
+    {
+      "lang": "en",
+      "text": "the US constitution is literally a",
+      "offset": 1008.399,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "national model specification. It has",
+      "offset": 1011.36,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "written text which is aspirationally at",
+      "offset": 1013.839,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "least clear and unambiguous policy that",
+      "offset": 1016,
+      "duration": 5.199
+    },
+    {
+      "lang": "en",
+      "text": "we can all refer to. And it doesn't mean",
+      "offset": 1018.959,
+      "duration": 4.081
+    },
+    {
+      "lang": "en",
+      "text": "that we agree with it but we can refer",
+      "offset": 1021.199,
+      "duration": 4.401
+    },
+    {
+      "lang": "en",
+      "text": "to it as the current status quo as the",
+      "offset": 1023.04,
+      "duration": 6.799
+    },
+    {
+      "lang": "en",
+      "text": "reality. Uh there is a versioned way to",
+      "offset": 1025.6,
+      "duration": 6.56
+    },
+    {
+      "lang": "en",
+      "text": "make amendments to bump and to uh",
+      "offset": 1029.839,
+      "duration": 5.041
+    },
+    {
+      "lang": "en",
+      "text": "publish updates to it. There is judicial",
+      "offset": 1032.16,
+      "duration": 7.039
+    },
+    {
+      "lang": "en",
+      "text": "review where a a grader is effectively",
+      "offset": 1034.88,
+      "duration": 5.919
+    },
+    {
+      "lang": "en",
+      "text": "uh grading a situation and seeing how",
+      "offset": 1039.199,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "well it aligns with the policy. And even",
+      "offset": 1040.799,
+      "duration": 4.561
+    },
+    {
+      "lang": "en",
+      "text": "though the again because or even though",
+      "offset": 1043.199,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "the source policy is meant to be",
+      "offset": 1045.36,
+      "duration": 5.199
+    },
+    {
+      "lang": "en",
+      "text": "unambiguous sometimes you don't the",
+      "offset": 1047.839,
+      "duration": 4.561
+    },
+    {
+      "lang": "en",
+      "text": "world is messy and maybe you miss part",
+      "offset": 1050.559,
+      "duration": 3.761
+    },
+    {
+      "lang": "en",
+      "text": "of the distribution and a case falls",
+      "offset": 1052.4,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "through and in that case the there is a",
+      "offset": 1054.32,
+      "duration": 5.68
+    },
+    {
+      "lang": "en",
+      "text": "lot of compute spent in judicial review",
+      "offset": 1057.6,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "where you're trying to understand how",
+      "offset": 1060,
+      "duration": 3.919
+    },
+    {
+      "lang": "en",
+      "text": "the law actually applies here and once",
+      "offset": 1061.76,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "that's decided it sets a precedent and",
+      "offset": 1063.919,
+      "duration": 4.241
+    },
+    {
+      "lang": "en",
+      "text": "that precedent is effectively an input",
+      "offset": 1066.32,
+      "duration": 4.479
+    },
+    {
+      "lang": "en",
+      "text": "output pair that serves as a unit test",
+      "offset": 1068.16,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "that disambiguates and rein reinforces",
+      "offset": 1070.799,
+      "duration": 4.961
+    },
+    {
+      "lang": "en",
+      "text": "the original policy spec. Uh it has",
+      "offset": 1072.88,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "things like uh chain of command embedded",
+      "offset": 1075.76,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "in it and the enforcement of this over",
+      "offset": 1078.24,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "time is a training loop that helps align",
+      "offset": 1081.52,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "all of us towards a shared set of",
+      "offset": 1083.44,
+      "duration": 5.119
+    },
+    {
+      "lang": "en",
+      "text": "intentions and values. So this is one",
+      "offset": 1085.52,
+      "duration": 5.6
+    },
+    {
+      "lang": "en",
+      "text": "artifact that communicates intent. It",
+      "offset": 1088.559,
+      "duration": 4.721
+    },
+    {
+      "lang": "en",
+      "text": "adjudicates compliance and it has a way",
+      "offset": 1091.12,
+      "duration": 6.48
+    },
+    {
+      "lang": "en",
+      "text": "of uh evolving safely.",
+      "offset": 1093.28,
+      "duration": 6.24
+    },
+    {
+      "lang": "en",
+      "text": "So it's quite possible that lawmakers",
+      "offset": 1097.6,
+      "duration": 4.319
+    },
+    {
+      "lang": "en",
+      "text": "will be programmers or inversely that",
+      "offset": 1099.52,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "programmers will be lawmakers in the",
+      "offset": 1101.919,
+      "duration": 4.161
+    },
+    {
+      "lang": "en",
+      "text": "future.",
+      "offset": 1104.48,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "And actually this apply this is a very",
+      "offset": 1106.08,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "universal concept. Programmers are in",
+      "offset": 1108.4,
+      "duration": 5.279
+    },
+    {
+      "lang": "en",
+      "text": "the business of aligning silicon via",
+      "offset": 1110.72,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "code specifications. Product managers",
+      "offset": 1113.679,
+      "duration": 4.961
+    },
+    {
+      "lang": "en",
+      "text": "align teams via product specifications.",
+      "offset": 1116.08,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "Lawmakers literally align humans via",
+      "offset": 1118.64,
+      "duration": 5.039
+    },
+    {
+      "lang": "en",
+      "text": "legal specifications. And everyone in",
+      "offset": 1121.28,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "this room whenever you are doing a",
+      "offset": 1123.679,
+      "duration": 3.041
+    },
+    {
+      "lang": "en",
+      "text": "prompt it's a sort of proto",
+      "offset": 1125.28,
+      "duration": 3.759
+    },
+    {
+      "lang": "en",
+      "text": "specification. You are in the business",
+      "offset": 1126.72,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "of aligning AI models towards a common",
+      "offset": 1129.039,
+      "duration": 6.481
+    },
+    {
+      "lang": "en",
+      "text": "set set of intentions and values. And",
+      "offset": 1132.48,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "whether you realize it or not you are",
+      "offset": 1135.52,
+      "duration": 5.6
+    },
+    {
+      "lang": "en",
+      "text": "spec authors in this world and specs let",
+      "offset": 1136.96,
+      "duration": 7.68
+    },
+    {
+      "lang": "en",
+      "text": "you ship faster and safer. Everyone can",
+      "offset": 1141.12,
+      "duration": 6.4
+    },
+    {
+      "lang": "en",
+      "text": "contribute and whoever writes the spec",
+      "offset": 1144.64,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "be it a",
+      "offset": 1147.52,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "uh a PM uh a lawmaker an engineer a",
+      "offset": 1149.84,
+      "duration": 7.92
+    },
+    {
+      "lang": "en",
+      "text": "marketer is now the programmer",
+      "offset": 1153.52,
+      "duration": 6.32
+    },
+    {
+      "lang": "en",
+      "text": "and software engineering has never been",
+      "offset": 1157.76,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "about code. Going back to our original",
+      "offset": 1159.84,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "question a lot of you put your hands",
+      "offset": 1162.64,
+      "duration": 3.039
+    },
+    {
+      "lang": "en",
+      "text": "down when you thought well actually the",
+      "offset": 1164.24,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "thing I produced is not code.",
+      "offset": 1165.679,
+      "duration": 3.841
+    },
+    {
+      "lang": "en",
+      "text": "Engineering has never been about this.",
+      "offset": 1168,
+      "duration": 3.2
+    },
+    {
+      "lang": "en",
+      "text": "Coding is an incredible skill and a",
+      "offset": 1169.52,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "wonderful asset, but it is not the end",
+      "offset": 1171.2,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "goal. Engineering is the precise",
+      "offset": 1173.12,
+      "duration": 4.559
+    },
+    {
+      "lang": "en",
+      "text": "exploration by humans of software",
+      "offset": 1175.52,
+      "duration": 5.039
+    },
+    {
+      "lang": "en",
+      "text": "solutions to human problems. It's always",
+      "offset": 1177.679,
+      "duration": 4.641
+    },
+    {
+      "lang": "en",
+      "text": "been this way. We're just moving away",
+      "offset": 1180.559,
+      "duration": 3.281
+    },
+    {
+      "lang": "en",
+      "text": "from sort of the disperate machine",
+      "offset": 1182.32,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "encodings to a unified human encoding uh",
+      "offset": 1183.84,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "of how we actually uh solve these these",
+      "offset": 1187.28,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "problems. Uh I want to thank Josh for",
+      "offset": 1189.6,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "this uh credit. So I want to ask you,",
+      "offset": 1191.6,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "put this in action. Whenever you're",
+      "offset": 1194.96,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "working on your next AI feature, start",
+      "offset": 1197.12,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "with the specification.",
+      "offset": 1199.2,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "What do you actually expect to happen?",
+      "offset": 1201.28,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "What's success criteria look like?",
+      "offset": 1203.36,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "Debate whether or not it's actually",
+      "offset": 1205.52,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "clearly written down and communicated.",
+      "offset": 1207.28,
+      "duration": 4.399
+    },
+    {
+      "lang": "en",
+      "text": "Make the spec executable. Feed the spec",
+      "offset": 1209.36,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "to the model",
+      "offset": 1211.679,
+      "duration": 5.601
+    },
+    {
+      "lang": "en",
+      "text": "and test against the model or test",
+      "offset": 1214.48,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "against the spec. And there's an",
+      "offset": 1217.28,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "interesting question sort of in this",
+      "offset": 1219.84,
+      "duration": 3.12
+    },
+    {
+      "lang": "en",
+      "text": "world given that there's so many uh",
+      "offset": 1220.72,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "parallels between programming and spec",
+      "offset": 1222.96,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "authorship.",
+      "offset": 1225.6,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "I wonder what is the what does the IDE",
+      "offset": 1227.28,
+      "duration": 4.639
+    },
+    {
+      "lang": "en",
+      "text": "look like in the future. you know, an",
+      "offset": 1230.08,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "integrated development environment. And",
+      "offset": 1231.919,
+      "duration": 2.961
+    },
+    {
+      "lang": "en",
+      "text": "I'd like to think it's something like an",
+      "offset": 1233.76,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "inte like integrated thought clarifier",
+      "offset": 1234.88,
+      "duration": 3.919
+    },
+    {
+      "lang": "en",
+      "text": "where whenever you're writing your",
+      "offset": 1237.6,
+      "duration": 4.559
+    },
+    {
+      "lang": "en",
+      "text": "specification, it sort of ex pulls out",
+      "offset": 1238.799,
+      "duration": 6.721
+    },
+    {
+      "lang": "en",
+      "text": "the ambiguity and asks you to clarify it",
+      "offset": 1242.159,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "and it really clarifies your thought so",
+      "offset": 1245.52,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "that you and all human beings can",
+      "offset": 1247.039,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "communicate your intent to each other",
+      "offset": 1249.36,
+      "duration": 6.559
+    },
+    {
+      "lang": "en",
+      "text": "much more effectively and to the models.",
+      "offset": 1251.679,
+      "duration": 6.561
+    },
+    {
+      "lang": "en",
+      "text": "And I have a a closing request for help",
+      "offset": 1255.919,
+      "duration": 5.201
+    },
+    {
+      "lang": "en",
+      "text": "which is uh what is both amenable and in",
+      "offset": 1258.24,
+      "duration": 5.84
+    },
+    {
+      "lang": "en",
+      "text": "desperate need of specification. This is",
+      "offset": 1261.12,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "aligning agent at scale. Uh I love this",
+      "offset": 1264.08,
+      "duration": 5.599
+    },
+    {
+      "lang": "en",
+      "text": "line of like you then you realize that",
+      "offset": 1267.12,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "you never told it what you wanted and",
+      "offset": 1269.679,
+      "duration": 3.12
+    },
+    {
+      "lang": "en",
+      "text": "maybe you never fully understood it",
+      "offset": 1271.2,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "anyway. This is a cry for specification.",
+      "offset": 1272.799,
+      "duration": 4.641
+    },
+    {
+      "lang": "en",
+      "text": "Uh we have a new agent robustness team",
+      "offset": 1275.28,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "that we've started up. So please join us",
+      "offset": 1277.44,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "and help us deliver safe AGI for the",
+      "offset": 1279.6,
+      "duration": 5.68
+    },
+    {
+      "lang": "en",
+      "text": "benefit of all humanity.",
+      "offset": 1282.48,
+      "duration": 6.84
+    },
+    {
+      "lang": "en",
+      "text": "And thank you. I'm happy to chat.",
+      "offset": 1285.28,
+      "duration": 4.04
+    },
+    {
+      "lang": "en",
+      "text": "[Music]",
+      "offset": 1289.67,
+      "duration": 3.21
+    }
+  ],
+  "cleanText": "[Music]\nHello everyone. Thank you very much for having me. Uh, it's a very exciting place to be, a very exciting time to be. Uh, second, uh, I mean, this has been like a pretty intense couple of days. I don't know if you feel the same way, uh, but also very energizing. So I want to take a little bit of your time today, uh, to talk about what I see is the coming of The New Code, uh, in particular, specifications, which sort of hold this promise, uh, that it has been the dream of the industry, where you can write your code, your intentions once, and run them everywhere. Uh, quick intro. My name is Sean Grove. I work at OpenAI, uh, specifically in alignment research. And today I want to talk about sort of the value of code versus communication and why specifications might be a little bit of a better approach in general.\n\nUh, I'm going to go over the anatomy of a specification, and we'll use the Model Spec as the example. Uh, and we'll talk about communicating intent to other humans, and we'll go over the 40 syphency issue, uh, as a case study.\n\nUh, we'll talk about how to make the specification executable, how to communicate intent to the models, uh, and how to think about specifications as code, even if they're a little bit different. Um, and we'll end on a couple of open questions. So let's talk about code versus communication real quick. Raise your hand if you write code, and vibe code counts.\n\nCool. Keep them up if your job is to write code.\n\nOkay. Now, for those people, keep their head up if you feel that the most valuable professional artifact that you produce is code.\n\nOkay. There's quite a few people, and I think this is quite natural. We all work very, very hard to solve problems. We talk with people. We gather requirements. We think through implementation details. We integrate with lots of different sources. And the ultimate thing that we produce is code. Code is the artifact that we can point to, we can measure, we can debate, and we can discuss. Uh, it feels tangible and real, but it's sort of underselling the job that each of you does. Code is sort of 10 to 20% of the value that you bring. The other 80 to 90% is in structured communication. And this is going to be different for everyone, but a process typically looks something like you talk to users in order to understand their challenges. You distill these stories down and then ideulate about how to solve these problems. What is the goal that you want to achieve? You plan ways to achieve those goals. You share those plans with your colleagues. Uh, you translate those plans into code. So this is a very important step, obviously, and then you test and verify, not the code itself, right? No one cares actually about the code itself. What you care is when the code ran, did it achieve the goals? Did it alleviate the challenges of your user? You look at the effects that your code had on the world. So talking, understanding, distilling, ideulating, planning, sharing, translating, testing, verifying, these all sound like structured communication to me. And structured communication is the bottleneck.\n\nKnowing what to build, talking to people and gathering requirements, knowing how to build it, knowing why to build it, and at the end of the day, knowing if it has been built correctly and has actually achieved the intentions that you set out with.\n\nAnd the more advanced AI models get, the more we are all going to starkly feel this bottleneck.\n\nBecause in the near future, the person who communicates most effectively is the most valuable programmer. And literally, if you can communicate effectively, you can program.\n\nSo, let's take uh, vibe coding as an illustrative example. Vibe coding tends to feel quite good. And it's worth asking why is that? Well, vibe coding is fundamentally about communication first. And the code is actually a secondary downstream artifact of that communication.\n\nWe get to describe our intentions and our the outcomes that we want to see, and we let the model actually handle the grunt work for us. And even so, there is something strange about the way that we do vibe coding. We communicate via prompts to the model, and we tell them our intentions and our values, and we get a code artifact out at the end, and then we sort of throw our prompts away, they're ephemeral.\n\nAnd if you've written TypeScript or Rust, once you put your code through a compiler or it gets down into a binary, no one is happy with that binary. That wasn't the purpose. It's useful. In fact, we always regenerate the binaries from scratch every time we compile or we run our code through V8 or whatever it might be from the source spec. It's the source specification that's the valuable artifact.\n\nAnd yet when we prompt elements, we sort of do the opposite. We keep the generated code and we delete the prompt. And this feels like a little bit like you shred the source and then you very carefully version control the binary.\n\nAnd that's why it's so important to actually capture the intent and the values in a specification.\n\nA written specification is what enables you to align humans on the shared set of goals and to know if you are aligned, if you actually synchronize on what needs to be done. This is the artifact that you discuss, that you debate, that you refer to, and that you synchronize on. And this is really important. And so I want to nail this home that a written specification effectively aligns humans, and it is the artifact that you use to communicate and to discuss and debate and refer to and synchronize on. If you don't have a specification, you just have a vague idea.\n\nNow let's talk about why specifications are more powerful in general than code. Because code itself is actually a lossy projection from the specification.\n\nIn the same way that if you were to take a compiled C binary and decompile it, you wouldn't get nice comments and uh, well-named variables. You would have to work backwards. You'd have to infer what was this person trying to do? Why is this code written this way? It isn't actually contained in there. It was a lossy translation. And in the same way, code itself, even nice code, typically doesn't embody all of the intentions and the values in itself. You have to infer what is the ultimate goal that this team is trying to achieve. Uh, when you read through code,\n\nso communication, the work that we establish, we already do when embodied inside of a written specification is better than code. It actually encodes all of the necessary requirements in order to generate the code. And in the same way that having a source code that you pass to a compiler allows you to target multiple different uh, architectures, you can compile for ARM 64, x86, or web assembly. The source document actually contains enough information to describe how to translate it to your target architecture.\n\nIn the same way, a sufficiently robust specification given to models will produce good TypeScript, good Rust, servers, clients, documentation, tutorials, blog posts, and even podcasts.\n\nUh, show of hands, who works at a company that has developers as customers?\n\nOkay. So, a quick like thought exercise is if you were to take your entire codebase, all of the documentation, oh, so all of the code that runs your business, and you were to put that into a podcast generator, could you generate something that would be sufficiently interesting and compelling that would tell the users how to succeed, how to achieve their goals, or is all of that information somewhere else? It's not actually in your code.\n\nAnd so moving forward, the new scarce skill is writing specifications that fully capture the intent and values. And whoever masters that again becomes the most valuable programmer, and there's a reasonable chance that this is going to be the coders of today. This is already very similar to what we do. However, product managers also write specifications. Lawmakers write legal specifications.\n\nThis is actually a universal principle. So with that in mind, let's look at what a specification actually looks like. And I'm going to use the OpenAI Model Spec as an example here. So last year, OpenAI released the Model Spec. And this is a living document that tries to clearly and unambiguously express the intentions and values that OpenAI hopes to imbue its models with that it ships to the world.\n\nAnd it was updated in February and open sourced. So you can actually go to GitHub and you can see the implementation of the Model Spec, and surprise, surprise, it's actually just a collection of markdown files, just looks like this. Now markdown is remarkable. It is human readable. It's versioned. It's change logged, and because it is natural language, everyone, not just technical people, can contribute, including product, legal, safety, research, policy, they can all read, discuss, debate, and contribute to the same source code. This is the universal artifact that aligns all of the humans as to our intentions and values inside of the company.\n\nNow, as much as we might try to use unambiguous language, there are times where it's very difficult to express the nuance. So, every clause in the Model Spec has an ID here. So, you can see sy73 here. And using that ID, you can find another file in the repository, sy73.mmarkdown or md, uh, that contains one or more challenging prompts for this exact clause. So the document itself actually encodes success criteria that the model under test has to be able to answer this in a way that actually adheres to that clause.\n\nSo let's talk about syphy. Uh, recently there was an update to 40. I don't know if you've heard of this. Uh, there, uh, caused extreme syphy, uh, and we can ask like what value is the Model Spec in this scenario, and the Model Spec serves to align humans around a set of values and intentions.\n\nHere's an example of syphy where the user calls out the behavior of being uh, syphants, uh, or sophantic at the expense of impartial truth, and the model very kindly, uh, praises the user for their insight.\n\nThere have been other esteemed researchers, uh, who have found similarly, uh, similarly, uh, concerning examples, and this hurts. Uh, shipping sycopency in this manner erodes trust.\n\nIt hurts.\n\nSo, and it also raises a lot of questions, like, was this intentional? You could see some way where you might interpret it that way. Was it accidental, and why wasn't it caught?\n\nLuckily, the Model Spec actually includes a section dedicated to this since its release that says don't be sick of fantic, and it explains that while syopency might feel good in the short term, it's bad for everyone in the long term. So, we actually expressed our intentions and our values and were able to communicate it to others through this.\n\nSo people could reference it, and if we have it in the Model Spec specification, if the model specification is our agreed-upon set of intentions and values, and the behavior doesn't align with that, then this must be a bug.\n\nSo we rolled back, we published some studies and some blog posts, and we fixed it.\n\nBut in the interim, the specs served as a trust anchor, a way to communicate to people what is expected and what is not expected.\n\nSo if just if the only thing the model specification did was to align humans along those shared sets of intentions and values, it would already be incredibly useful.\n\nBut ideally, we can also align our models and the artifacts that our models produce against that same specification.\n\nSo there's a technique, a paper that we released, uh, called deliberative alignment that sort of talks about this, how to automatically align a model, and the technique is such where you take your specification and a set of very challenging uh, input prompts, and you sample from the model under test or training.\n\nYou then uh, take its response, the original prompt and the policy, and you give that to a greater model, and you ask it to score the response according to the specification. How aligned is it? So the document actually becomes both training material and eval material, and based off of this score, we reinforce those weights, and it goes from, you know, you could include your specification in the context and then maybe a system message or developer message in every single time you sample, and that is actually quite useful. A prompted uh, model is going to be somewhat aligned, but it does detract from the compute available to solve the uh, problem that you're trying to solve with the model.\n\nAnd keep in mind, these specifications can be anything. They could be code style or testing requirements or or safety requirements. All of that can be embedded into the model. So through this technique, you're actually moving it from a inference time compute and actually you're pushing down into the weights of the model so that the model actually feels your policy and is able to sort of muscle memory style apply it to the problem at hand.\n\nAnd even though we saw that the Model Spec is just markdown, it's quite useful to think of it as code. It's quite analogous.\n\nUh, these specifications, they compose, they're executable as we've seen, uh, they are testable, they have interfaces where they touch the real world, uh, they can be shipped as modules.\n\nAnd whenever you're working on a model spec, there are a lot of similar sort of uh, problem domains, so just like in programming where you have a type checker, the type checker is meant to ensure consistency where if interface A has a dependent uh, module B, they have to be consistent in their understanding of one another. So if department A writes a spec and department B writes a spec and there is a conflict in there, you want to be able to pull that forward and maybe block the publication of the specification. As we saw, the policy can actually embody its own unit tests, and you can imagine sort of various linters where if you're using overly ambiguous language, you're going to confuse humans and you're going to confuse the model, and the artifacts that you get from that are going to be less satisfactory.\n\nSo specs actually give us a very similar tool chain, but it's targeted at intentions rather than syntax.\n\nSo let's talk about lawmakers as programmers. Uh, the US Constitution is literally a national model specification. It has written text, which is aspirationally at least clear and unambiguous policy that we can all refer to. And it doesn't mean that we agree with it, but we can refer to it as the current status quo, as the reality. Uh, there is a versioned way to make amendments to bump and to uh, publish updates to it. There is judicial review where a grader is effectively uh, grading a situation and seeing how well it aligns with the policy. And even though the again, because or even though the source policy is meant to be unambiguous, sometimes you don't, the world is messy, and maybe you miss part of the distribution, and a case falls through, and in that case, the there is a lot of compute spent in judicial review where you're trying to understand how the law actually applies here, and once that's decided, it sets a precedent, and that precedent is effectively an input-output pair that serves as a unit test that disambiguates and rein reinforces the original policy spec. Uh, it has things like uh, chain of command embedded in it, and the enforcement of this over time is a training loop that helps align all of us towards a shared set of intentions and values. So this is one artifact that communicates intent. It adjudicates compliance, and it has a way of uh, evolving safely.\n\nSo it's quite possible that lawmakers\n\n\nWill be programmers, or, inversely, that programmers will be lawmakers in the future.\nAnd actually, this applies; this is a very universal concept.\nProgrammers are in the business of aligning silicon via code specifications.\nProduct managers align teams via product specifications.\nLawmakers literally align humans via legal specifications.\nAnd everyone in this room, whenever you are doing a prompt, it's a sort of proto specification.\nYou are in the business of aligning AI models towards a common set of intentions and values.\nAnd whether you realize it or not, you are spec authors in this world, and specs let you ship faster and safer.\nEveryone can contribute, and whoever writes the spec, be it a PM, a lawmaker, an engineer, or a marketer, is now the programmer.\nAnd software engineering has never been about code.\nGoing back to our original question, a lot of you put your hands down when you thought, \"Well, actually, the thing I produced is not code.\"\nEngineering has never been about this.\nCoding is an incredible skill and a wonderful asset, but it is not the end goal.\nEngineering is the precise exploration by humans of software solutions to human problems.\nIt's always been this way.\nWe're just moving away from sort of the disparate machine encodings to a unified human encoding of how we actually solve these problems.\nI want to thank Josh for this credit.\nSo I want to ask you, put this in action.\nWhenever you're working on your next AI feature, start with the specification.\nWhat do you actually expect to happen?\nWhat's success criteria look like?\nDebate whether or not it's actually clearly written down and communicated.\nMake the spec executable.\nFeed the spec to the model and test against the model or test against the spec.\nAnd there's an interesting question sort of in this world, given that there's so many parallels between programming and spec authorship.\nI wonder what is the, what does the IDE look like in the future, you know, an integrated development environment.\nAnd I'd like to think it's something like an integrated thought clarifier, where whenever you're writing your specification, it sort of pulls out the ambiguity and asks you to clarify it, and it really clarifies your thought so that you and all human beings can communicate your intent to each other much more effectively and to the models.\nAnd I have a closing request for help, which is, what is both amenable and in desperate need of specification?\nThis is aligning agent at scale.\nI love this line of, like, \"You then you realize that you never told it what you wanted, and maybe you never fully understood it anyway.\"\nThis is a cry for specification.\nWe have a new agent robustness team that we've started up.\nSo please join us and help us deliver safe AGI for the benefit of all humanity.\nAnd thank you.\nI'm happy to chat.\n[Music]\n",
+  "dumpedAt": "2025-07-21T18:43:26.486Z"
+}

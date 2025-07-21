@@ -1,0 +1,2440 @@
+{
+  "episodeId": "0NHCyq8bBcM",
+  "channelSlug": "@aidotengineer",
+  "title": "Remote MCPs: What we learned from shipping — John Welsh, Anthropic",
+  "publishedAt": "2025-06-19T16:52:25.000Z",
+  "rawLines": [
+    {
+      "lang": "en",
+      "text": "Awesome.",
+      "offset": 0,
+      "duration": 8.639
+    },
+    {
+      "lang": "en",
+      "text": "[Music]",
+      "offset": 1.72,
+      "duration": 6.919
+    },
+    {
+      "lang": "en",
+      "text": "Thanks so much for coming. Um, I wanted",
+      "offset": 17.76,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "to give a bit of a talk on implementing",
+      "offset": 20,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "MCP clients and talk to more about MCP",
+      "offset": 22.64,
+      "duration": 4.879
+    },
+    {
+      "lang": "en",
+      "text": "at scale within a large organization",
+      "offset": 25.76,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "like Anthropic. Um, I wanted to give",
+      "offset": 27.519,
+      "duration": 5.601
+    },
+    {
+      "lang": "en",
+      "text": "first a little introduction from me. Uh,",
+      "offset": 30.72,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "my name is John. I've spent 20 years",
+      "offset": 33.12,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "building large scale systems and dealing",
+      "offset": 34.8,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "with the problems that that causes. And",
+      "offset": 36.8,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "so I've made a lot of mistakes and uh",
+      "offset": 38.64,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "I'm excited to give maybe some thoughts",
+      "offset": 41.76,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "on avoiding some of those mistakes. I'm",
+      "offset": 43.92,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "currently a member of technical staff",
+      "offset": 45.76,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "here at Anthropic and I've spent the",
+      "offset": 47.52,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "past few months um focusing on tool",
+      "offset": 49.44,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "calling and integration and implementing",
+      "offset": 52.32,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "MCP support for all of our internal like",
+      "offset": 54.8,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "external integrations within the or",
+      "offset": 56.64,
+      "duration": 5.759
+    },
+    {
+      "lang": "en",
+      "text": "so",
+      "offset": 60.16,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "looking at tool integration with models",
+      "offset": 62.399,
+      "duration": 3.921
+    },
+    {
+      "lang": "en",
+      "text": "we've kind of hit this timeline where uh",
+      "offset": 64,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "models only really got good at calling",
+      "offset": 66.32,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "tools",
+      "offset": 68.08,
+      "duration": 5.68
+    },
+    {
+      "lang": "en",
+      "text": "uh like kind of late midl last year and",
+      "offset": 69.76,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "suddenly",
+      "offset": 73.76,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "Everyone got very excited because like",
+      "offset": 75.04,
+      "duration": 4.079
+    },
+    {
+      "lang": "en",
+      "text": "your model could go and call your Google",
+      "offset": 77.36,
+      "duration": 3.439
+    },
+    {
+      "lang": "en",
+      "text": "Drive and then it could call your maps",
+      "offset": 79.119,
+      "duration": 3.201
+    },
+    {
+      "lang": "en",
+      "text": "and then it could send a text message to",
+      "offset": 80.799,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "people. And so there's a huge explosion",
+      "offset": 82.32,
+      "duration": 3.839
+    },
+    {
+      "lang": "en",
+      "text": "with like very little effort you can",
+      "offset": 84.799,
+      "duration": 4.481
+    },
+    {
+      "lang": "en",
+      "text": "make very cool things and so um teams",
+      "offset": 86.159,
+      "duration": 4.401
+    },
+    {
+      "lang": "en",
+      "text": "are all trying to move fast. Everyone's",
+      "offset": 89.28,
+      "duration": 3.12
+    },
+    {
+      "lang": "en",
+      "text": "moving very fast in AI. Custom endpoints",
+      "offset": 90.56,
+      "duration": 4.239
+    },
+    {
+      "lang": "en",
+      "text": "start proliferating for every use case.",
+      "offset": 92.4,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "there's a lot of like services popping",
+      "offset": 94.799,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "up with like slashcall tool and slash",
+      "offset": 96.32,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "like get context and then people um",
+      "offset": 98.799,
+      "duration": 4.801
+    },
+    {
+      "lang": "en",
+      "text": "start to realize there's additional",
+      "offset": 101.6,
+      "duration": 4.159
+    },
+    {
+      "lang": "en",
+      "text": "needs some authentication a b a bunch of",
+      "offset": 103.6,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "stuff there and this kind of led to some",
+      "offset": 105.759,
+      "duration": 3.841
+    },
+    {
+      "lang": "en",
+      "text": "integration chaos where you're",
+      "offset": 108.32,
+      "duration": 2.799
+    },
+    {
+      "lang": "en",
+      "text": "duplicating a bunch of functionality",
+      "offset": 109.6,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "around your org nothing really works the",
+      "offset": 111.119,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "same you have an integration that works",
+      "offset": 114.32,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "really well in service A but then you",
+      "offset": 116.479,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "want to use it in service B but you",
+      "offset": 118.32,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "can't because it's going to take you",
+      "offset": 120.799,
+      "duration": 2.881
+    },
+    {
+      "lang": "en",
+      "text": "three weeks to rewrite it to talk to the",
+      "offset": 121.92,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "new interface And so we're in this kind",
+      "offset": 123.68,
+      "duration": 6.559
+    },
+    {
+      "lang": "en",
+      "text": "of spot and the place that we came to at",
+      "offset": 125.68,
+      "duration": 6.8
+    },
+    {
+      "lang": "en",
+      "text": "Anthropic is realizing that over time",
+      "offset": 130.239,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "all of these endpoints started to look a",
+      "offset": 132.48,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "lot like MCP. Uh you you end up with",
+      "offset": 134.319,
+      "duration": 6.241
+    },
+    {
+      "lang": "en",
+      "text": "some get tools, some get resources, some",
+      "offset": 137.12,
+      "duration": 7.759
+    },
+    {
+      "lang": "en",
+      "text": "elicitation of of details. Um,",
+      "offset": 140.56,
+      "duration": 6.24
+    },
+    {
+      "lang": "en",
+      "text": "and even if you're not using the entire",
+      "offset": 144.879,
+      "duration": 4.561
+    },
+    {
+      "lang": "en",
+      "text": "feature space of MCP uh as a whole",
+      "offset": 146.8,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "immediately, like you're probably going",
+      "offset": 149.44,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "to go extend into something that kind of",
+      "offset": 151.52,
+      "duration": 5.6
+    },
+    {
+      "lang": "en",
+      "text": "looks like it over time. And when I'm",
+      "offset": 153.28,
+      "duration": 6.08
+    },
+    {
+      "lang": "en",
+      "text": "talking about MCP here, there's kind of",
+      "offset": 157.12,
+      "duration": 6.16
+    },
+    {
+      "lang": "en",
+      "text": "two sides to MCP that in my mind feel a",
+      "offset": 159.36,
+      "duration": 6.48
+    },
+    {
+      "lang": "en",
+      "text": "bit unrelated. There's this JSON RPC",
+      "offset": 163.28,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "specification which is really valuable",
+      "offset": 165.84,
+      "duration": 3.759
+    },
+    {
+      "lang": "en",
+      "text": "as engineers. It's like a standard way",
+      "offset": 167.92,
+      "duration": 3.2
+    },
+    {
+      "lang": "en",
+      "text": "of sending messages and communicating",
+      "offset": 169.599,
+      "duration": 3.841
+    },
+    {
+      "lang": "en",
+      "text": "back and forth between uh providers of",
+      "offset": 171.12,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "context for your models and the code",
+      "offset": 173.44,
+      "duration": 4.079
+    },
+    {
+      "lang": "en",
+      "text": "that's interacting with the models. And",
+      "offset": 175.12,
+      "duration": 5.199
+    },
+    {
+      "lang": "en",
+      "text": "uh getting those messages right is the",
+      "offset": 177.519,
+      "duration": 5.841
+    },
+    {
+      "lang": "en",
+      "text": "topic of huge debate on like the MCP",
+      "offset": 180.319,
+      "duration": 5.601
+    },
+    {
+      "lang": "en",
+      "text": "uh repos. If you're involved with any",
+      "offset": 183.36,
+      "duration": 4.159
+    },
+    {
+      "lang": "en",
+      "text": "standardization process ever, you know",
+      "offset": 185.92,
+      "duration": 3.2
+    },
+    {
+      "lang": "en",
+      "text": "how those conversations end up going.",
+      "offset": 187.519,
+      "duration": 2.881
+    },
+    {
+      "lang": "en",
+      "text": "And then on the other side there's this",
+      "offset": 189.12,
+      "duration": 3.839
+    },
+    {
+      "lang": "en",
+      "text": "global transport standard which is the",
+      "offset": 190.4,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "stuff around streamable HTTP oath 2.1",
+      "offset": 192.959,
+      "duration": 7.28
+    },
+    {
+      "lang": "en",
+      "text": "session management. And global transport",
+      "offset": 195.68,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "standard is hard because you're trying",
+      "offset": 200.239,
+      "duration": 2.401
+    },
+    {
+      "lang": "en",
+      "text": "to get everyone to speak the same",
+      "offset": 201.44,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "language. And so it's really nitty but",
+      "offset": 202.64,
+      "duration": 4.879
+    },
+    {
+      "lang": "en",
+      "text": "there's not a lot of like most of the",
+      "offset": 205.28,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "juice of MCP is in this the message",
+      "offset": 207.519,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "specification and the way that the uh",
+      "offset": 209.28,
+      "duration": 6.16
+    },
+    {
+      "lang": "en",
+      "text": "servers are interacting. Um and so we",
+      "offset": 211.519,
+      "duration": 5.121
+    },
+    {
+      "lang": "en",
+      "text": "started asking ourselves like can we",
+      "offset": 215.44,
+      "duration": 3.519
+    },
+    {
+      "lang": "en",
+      "text": "just MCP for everything and we said yes",
+      "offset": 216.64,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "with the caveat that yes is for",
+      "offset": 218.959,
+      "duration": 4.801
+    },
+    {
+      "lang": "en",
+      "text": "everything involved in presiding model",
+      "offset": 222.08,
+      "duration": 4.719
+    },
+    {
+      "lang": "en",
+      "text": "context to models. Um we have this",
+      "offset": 223.76,
+      "duration": 6.88
+    },
+    {
+      "lang": "en",
+      "text": "format where your client is sending",
+      "offset": 226.799,
+      "duration": 5.201
+    },
+    {
+      "lang": "en",
+      "text": "these messages. Something's responding",
+      "offset": 230.64,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "with these messages. Um where that",
+      "offset": 232,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "stream is going it really doesn't",
+      "offset": 234.08,
+      "duration": 4.239
+    },
+    {
+      "lang": "en",
+      "text": "matter. It can be on the same process.",
+      "offset": 235.68,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "It can be another data center. can be",
+      "offset": 238.319,
+      "duration": 5.441
+    },
+    {
+      "lang": "en",
+      "text": "through a giant pile of uh enterprise",
+      "offset": 240.4,
+      "duration": 6.96
+    },
+    {
+      "lang": "en",
+      "text": "networking stuff. Um, it doesn't really",
+      "offset": 243.76,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "care at the point that your code is",
+      "offset": 247.36,
+      "duration": 2.48
+    },
+    {
+      "lang": "en",
+      "text": "interacting with it. You're just calling",
+      "offset": 248.64,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "a connect to MCP and you have a a set of",
+      "offset": 249.84,
+      "duration": 5.759
+    },
+    {
+      "lang": "en",
+      "text": "uh a set of tools and methods that you",
+      "offset": 252.64,
+      "duration": 6.8
+    },
+    {
+      "lang": "en",
+      "text": "can call. So, uh,",
+      "offset": 255.599,
+      "duration": 5.841
+    },
+    {
+      "lang": "en",
+      "text": "standardizing on that seemed useful. Um,",
+      "offset": 259.44,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "standard why standardize on anything",
+      "offset": 261.44,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "internally? Um, being boring on stuff",
+      "offset": 262.96,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "like this is good. It's not a",
+      "offset": 265.04,
+      "duration": 5.92
+    },
+    {
+      "lang": "en",
+      "text": "competitive advantage to be really good",
+      "offset": 267.84,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "at making Google Drive talk to your app.",
+      "offset": 270.96,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "It's just a thing that you need to do.",
+      "offset": 273.28,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "It's not your differentiator. Uh having",
+      "offset": 276,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "a single approach to learn as engineers",
+      "offset": 278.08,
+      "duration": 5.92
+    },
+    {
+      "lang": "en",
+      "text": "makes things faster. You can spend your",
+      "offset": 281.44,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "cycles working on interesting problems",
+      "offset": 284,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "instead of trying to figure out how to",
+      "offset": 285.68,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "plum uh integration. And uh if you're",
+      "offset": 287.36,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "using the same thing everywhere, then",
+      "offset": 290.16,
+      "duration": 2.8
+    },
+    {
+      "lang": "en",
+      "text": "like each new integration might clean up",
+      "offset": 291.36,
+      "duration": 3.04
+    },
+    {
+      "lang": "en",
+      "text": "the field a bit for the next person who",
+      "offset": 292.96,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "comes along. Um it's it's over overall a",
+      "offset": 294.4,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "good thing in cases like this where",
+      "offset": 297.6,
+      "duration": 3.2
+    },
+    {
+      "lang": "en",
+      "text": "we're we're not really doing anything",
+      "offset": 299.36,
+      "duration": 3.119
+    },
+    {
+      "lang": "en",
+      "text": "interesting. We're plumbing context",
+      "offset": 300.8,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "between integrations and things that are",
+      "offset": 302.479,
+      "duration": 4.961
+    },
+    {
+      "lang": "en",
+      "text": "consuming the integrations. Uh",
+      "offset": 304.24,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "what is standardized on MCP internally?",
+      "offset": 307.44,
+      "duration": 4.479
+    },
+    {
+      "lang": "en",
+      "text": "Um I this is where I might make an",
+      "offset": 309.68,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "argument to everyone that there's",
+      "offset": 311.919,
+      "duration": 3.361
+    },
+    {
+      "lang": "en",
+      "text": "already ecosystem demand. You have to",
+      "offset": 313.6,
+      "duration": 3.2
+    },
+    {
+      "lang": "en",
+      "text": "implement MCP because everyone's",
+      "offset": 315.28,
+      "duration": 4.639
+    },
+    {
+      "lang": "en",
+      "text": "implementing MCP. So why do two things?",
+      "offset": 316.8,
+      "duration": 5.839
+    },
+    {
+      "lang": "en",
+      "text": "Um it's becoming an industry standard.",
+      "offset": 319.919,
+      "duration": 4.481
+    },
+    {
+      "lang": "en",
+      "text": "there's a large coalition of engineers",
+      "offset": 322.639,
+      "duration": 3.441
+    },
+    {
+      "lang": "en",
+      "text": "and organizations that are all involved",
+      "offset": 324.4,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "in building out the standard. Uh all of",
+      "offset": 326.08,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "the major AI labs are represented in",
+      "offset": 328.8,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "that. So you you know that as new model",
+      "offset": 330.56,
+      "duration": 5.919
+    },
+    {
+      "lang": "en",
+      "text": "capabilities start to be developed uh",
+      "offset": 334.16,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "those patterns will be added to the",
+      "offset": 336.479,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "protocol because all the labs want you",
+      "offset": 337.84,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "to use their features. So I think the",
+      "offset": 340.479,
+      "duration": 4.401
+    },
+    {
+      "lang": "en",
+      "text": "standardizing on MCP internally for this",
+      "offset": 342.96,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "type of context is a is a good bet. And",
+      "offset": 344.88,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "one of the things you get with MCP is",
+      "offset": 347.44,
+      "duration": 2.72
+    },
+    {
+      "lang": "en",
+      "text": "that it solves problems that you haven't",
+      "offset": 348.8,
+      "duration": 2.88
+    },
+    {
+      "lang": "en",
+      "text": "actually run into yet. like there's a",
+      "offset": 350.16,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "bunch of stuff in the protocol that",
+      "offset": 351.68,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "exists because there's a problem and a",
+      "offset": 354.4,
+      "duration": 3.519
+    },
+    {
+      "lang": "en",
+      "text": "need and",
+      "offset": 356.08,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "having those solutions at hand when you",
+      "offset": 357.919,
+      "duration": 2.72
+    },
+    {
+      "lang": "en",
+      "text": "run into them is really important. So",
+      "offset": 359.44,
+      "duration": 2.8
+    },
+    {
+      "lang": "en",
+      "text": "sampling an example of where this might",
+      "offset": 360.639,
+      "duration": 3.28
+    },
+    {
+      "lang": "en",
+      "text": "be valuable in your company. You might",
+      "offset": 362.24,
+      "duration": 3.2
+    },
+    {
+      "lang": "en",
+      "text": "have four products that have four",
+      "offset": 363.919,
+      "duration": 4.241
+    },
+    {
+      "lang": "en",
+      "text": "different billing models uh for reasons",
+      "offset": 365.44,
+      "duration": 4.879
+    },
+    {
+      "lang": "en",
+      "text": "because you're building fast. Um you",
+      "offset": 368.16,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "might have a bunch of different token",
+      "offset": 370.319,
+      "duration": 2.641
+    },
+    {
+      "lang": "en",
+      "text": "limits. You might have different ways of",
+      "offset": 371.68,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "tracking usage. This is really painful",
+      "offset": 372.96,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "because you want to write one",
+      "offset": 375.44,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "integration service to connect your",
+      "offset": 377.28,
+      "duration": 5.84
+    },
+    {
+      "lang": "en",
+      "text": "slides and how do you go and like hook",
+      "offset": 379.44,
+      "duration": 5.199
+    },
+    {
+      "lang": "en",
+      "text": "the billing and the tokens up correctly",
+      "offset": 383.12,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "and MCP has uh already has sampling",
+      "offset": 384.639,
+      "duration": 4.321
+    },
+    {
+      "lang": "en",
+      "text": "primitives so you can build your",
+      "offset": 387.84,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "integration you can just be like okay",
+      "offset": 388.96,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "your integration sends a sampling",
+      "offset": 391.36,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "request over the stream uh the other end",
+      "offset": 392.88,
+      "duration": 3.439
+    },
+    {
+      "lang": "en",
+      "text": "of the pipe fulfills that request you",
+      "offset": 394.72,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "can go and hook it in everything works",
+      "offset": 396.319,
+      "duration": 4.401
+    },
+    {
+      "lang": "en",
+      "text": "great and so this is a thing that uh a",
+      "offset": 398.16,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "shape problem that might take you a",
+      "offset": 400.72,
+      "duration": 3.759
+    },
+    {
+      "lang": "en",
+      "text": "bunch of effort",
+      "offset": 402.8,
+      "duration": 3.28
+    },
+    {
+      "lang": "en",
+      "text": "uh internally without this, but you",
+      "offset": 404.479,
+      "duration": 2.961
+    },
+    {
+      "lang": "en",
+      "text": "already have the answer kind of gift",
+      "offset": 406.08,
+      "duration": 3.839
+    },
+    {
+      "lang": "en",
+      "text": "wrapped for you in the protocol.",
+      "offset": 407.44,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "And so at Anthropic, we're running into",
+      "offset": 409.919,
+      "duration": 3.201
+    },
+    {
+      "lang": "en",
+      "text": "some requirements converging. We're",
+      "offset": 411.68,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "starting to see external remote MCP",
+      "offset": 413.12,
+      "duration": 6.079
+    },
+    {
+      "lang": "en",
+      "text": "services popping up like mcp.",
+      "offset": 415.52,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "We wanted to be able to talk to those.",
+      "offset": 419.199,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "Talking to those is complex because you",
+      "offset": 421.28,
+      "duration": 3.919
+    },
+    {
+      "lang": "en",
+      "text": "need external network connectivity, you",
+      "offset": 423.199,
+      "duration": 4.881
+    },
+    {
+      "lang": "en",
+      "text": "need authentication. Uh",
+      "offset": 425.199,
+      "duration": 4.641
+    },
+    {
+      "lang": "en",
+      "text": "there's a proliferation of internal",
+      "offset": 428.08,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "agents. people have started building uh",
+      "offset": 429.84,
+      "duration": 6.88
+    },
+    {
+      "lang": "en",
+      "text": "PR review bots and like Slack management",
+      "offset": 433.28,
+      "duration": 5.84
+    },
+    {
+      "lang": "en",
+      "text": "things and just lots of people have lots",
+      "offset": 436.72,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "of ideas. No one's really sure what's",
+      "offset": 439.12,
+      "duration": 3.12
+    },
+    {
+      "lang": "en",
+      "text": "going to hit. So, we're having a huge",
+      "offset": 440.56,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "explosion of LLMbacked services",
+      "offset": 442.24,
+      "duration": 3.679
+    },
+    {
+      "lang": "en",
+      "text": "internally. Uh with that explosion,",
+      "offset": 444.16,
+      "duration": 3.28
+    },
+    {
+      "lang": "en",
+      "text": "there's a bunch of security concerns",
+      "offset": 445.919,
+      "duration": 5.921
+    },
+    {
+      "lang": "en",
+      "text": "where uh you don't really want all of",
+      "offset": 447.44,
+      "duration": 7.28
+    },
+    {
+      "lang": "en",
+      "text": "those services to be going and accessing",
+      "offset": 451.84,
+      "duration": 5.919
+    },
+    {
+      "lang": "en",
+      "text": "user credentials uh because that ends up",
+      "offset": 454.72,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "being being kind of a nightmare. don't",
+      "offset": 457.759,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "want uh outbound external network",
+      "offset": 459.52,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "connectivity everywhere. Um auditing",
+      "offset": 461.919,
+      "duration": 6.161
+    },
+    {
+      "lang": "en",
+      "text": "becomes really complex. Uh and so we are",
+      "offset": 464.08,
+      "duration": 6.08
+    },
+    {
+      "lang": "en",
+      "text": "looking at this problem. We wanted to be",
+      "offset": 468.08,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "able to build our integrations once and",
+      "offset": 470.16,
+      "duration": 5.68
+    },
+    {
+      "lang": "en",
+      "text": "use them anywhere. And so, uh, a model I",
+      "offset": 471.68,
+      "duration": 6.239
+    },
+    {
+      "lang": "en",
+      "text": "was introduced to by a mentor of mine",
+      "offset": 475.84,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "and a while ago is the pit of success,",
+      "offset": 477.919,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "which is the idea that, um, if you make",
+      "offset": 479.68,
+      "duration": 5.919
+    },
+    {
+      "lang": "en",
+      "text": "the",
+      "offset": 483.199,
+      "duration": 5.201
+    },
+    {
+      "lang": "en",
+      "text": "right thing to do, the easiest thing to",
+      "offset": 485.599,
+      "duration": 4.401
+    },
+    {
+      "lang": "en",
+      "text": "do, then everyone in your org kind of",
+      "offset": 488.4,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "falls into it. And so uh we designed a",
+      "offset": 490,
+      "duration": 6.08
+    },
+    {
+      "lang": "en",
+      "text": "service which is just a piece of shared",
+      "offset": 494.4,
+      "duration": 3.199
+    },
+    {
+      "lang": "en",
+      "text": "infrastructure called the MCP gateway",
+      "offset": 496.08,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "that provides a single point of entry",
+      "offset": 497.599,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "and provided engineers just with a",
+      "offset": 499.44,
+      "duration": 5.199
+    },
+    {
+      "lang": "en",
+      "text": "connect to MCP call that returns a MCP",
+      "offset": 501.199,
+      "duration": 5.761
+    },
+    {
+      "lang": "en",
+      "text": "SDK client session on the end and we're",
+      "offset": 504.639,
+      "duration": 3.361
+    },
+    {
+      "lang": "en",
+      "text": "trying to make that as simple as",
+      "offset": 506.96,
+      "duration": 3.679
+    },
+    {
+      "lang": "en",
+      "text": "possible uh",
+      "offset": 508,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "because",
+      "offset": 510.639,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "that way people will use it if it's the",
+      "offset": 512.32,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "easiest thing to do. Um, we used URL",
+      "offset": 514.159,
+      "duration": 3.521
+    },
+    {
+      "lang": "en",
+      "text": "based routing to route to external",
+      "offset": 516.24,
+      "duration": 3.12
+    },
+    {
+      "lang": "en",
+      "text": "servers, internal servers, it doesn't",
+      "offset": 517.68,
+      "duration": 3.919
+    },
+    {
+      "lang": "en",
+      "text": "matter. It's all the same call. Uh, we",
+      "offset": 519.36,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "handle all the credential management",
+      "offset": 521.599,
+      "duration": 2.641
+    },
+    {
+      "lang": "en",
+      "text": "automatically because you don't want to",
+      "offset": 523.12,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "be implementing OOTH five times in your",
+      "offset": 524.24,
+      "duration": 4.719
+    },
+    {
+      "lang": "en",
+      "text": "company. Uh, gives you a centralized",
+      "offset": 526.8,
+      "duration": 3.28
+    },
+    {
+      "lang": "en",
+      "text": "place for rate limiting and",
+      "offset": 528.959,
+      "duration": 2.641
+    },
+    {
+      "lang": "en",
+      "text": "observability.",
+      "offset": 530.08,
+      "duration": 4.319
+    },
+    {
+      "lang": "en",
+      "text": "Uh, I have an obligatory diagram here of",
+      "offset": 531.6,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "a bunch of lines going in and out. But,",
+      "offset": 534.399,
+      "duration": 4.321
+    },
+    {
+      "lang": "en",
+      "text": "uh, here's a a gateway in the middle.",
+      "offset": 536.16,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "This is kind of the thing. Just one more",
+      "offset": 538.72,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "box will solve all our problems. Uh, can",
+      "offset": 540,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "I go next?",
+      "offset": 543.36,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "Uh where is my",
+      "offset": 544.88,
+      "duration": 7.92
+    },
+    {
+      "lang": "en",
+      "text": "yeah ah uh so the uh the code that we",
+      "offset": 548.64,
+      "duration": 5.199
+    },
+    {
+      "lang": "en",
+      "text": "have here we just made some client",
+      "offset": 552.8,
+      "duration": 2.56
+    },
+    {
+      "lang": "en",
+      "text": "libraries where we just MCB gateway",
+      "offset": 553.839,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "connect to MCP uh we pass in a URL an",
+      "offset": 555.36,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "org ID account ID this is like a bit",
+      "offset": 558.959,
+      "duration": 3.361
+    },
+    {
+      "lang": "en",
+      "text": "simplified we actually pass a signed",
+      "offset": 560.88,
+      "duration": 3.04
+    },
+    {
+      "lang": "en",
+      "text": "token to authenticate because it's",
+      "offset": 562.32,
+      "duration": 4.079
+    },
+    {
+      "lang": "en",
+      "text": "accessing credentials but this is the",
+      "offset": 563.92,
+      "duration": 5.359
+    },
+    {
+      "lang": "en",
+      "text": "basic idea and then importantly this",
+      "offset": 566.399,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "call returns an MCP SDK object which",
+      "offset": 569.279,
+      "duration": 4.481
+    },
+    {
+      "lang": "en",
+      "text": "means that when new features get added",
+      "offset": 571.839,
+      "duration": 3.921
+    },
+    {
+      "lang": "en",
+      "text": "to protocol. You just update your MCP",
+      "offset": 573.76,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "packages internally. You get those",
+      "offset": 575.76,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "features across the board. Everything",
+      "offset": 577.6,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "works great. The same code seamlessly",
+      "offset": 579.68,
+      "duration": 3.04
+    },
+    {
+      "lang": "en",
+      "text": "connects to internal external",
+      "offset": 581.36,
+      "duration": 3.039
+    },
+    {
+      "lang": "en",
+      "text": "integrations.",
+      "offset": 582.72,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "When it comes to transports, uh, and",
+      "offset": 584.399,
+      "duration": 4.481
+    },
+    {
+      "lang": "en",
+      "text": "this is a bit high level and handwavy",
+      "offset": 587.2,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "because everyone's setup is different.",
+      "offset": 588.88,
+      "duration": 4.639
+    },
+    {
+      "lang": "en",
+      "text": "Um, internally within your network, it",
+      "offset": 590.88,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "really doesn't matter. You can do",
+      "offset": 593.519,
+      "duration": 2.081
+    },
+    {
+      "lang": "en",
+      "text": "anything you want. We've got the",
+      "offset": 594.56,
+      "duration": 2.56
+    },
+    {
+      "lang": "en",
+      "text": "standardized transport for connecting to",
+      "offset": 595.6,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "external MCP servers. Um, but really",
+      "offset": 597.12,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "just picking the best thing for your",
+      "offset": 601.36,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "org. So we went and picked",
+      "offset": 602.64,
+      "duration": 6.24
+    },
+    {
+      "lang": "en",
+      "text": "uh websockets for our internal",
+      "offset": 606.08,
+      "duration": 6.16
+    },
+    {
+      "lang": "en",
+      "text": "transport. And here's just a quick code",
+      "offset": 608.88,
+      "duration": 4.959
+    },
+    {
+      "lang": "en",
+      "text": "example. It's nothing special. We just",
+      "offset": 612.24,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "have a websocket uh that's being opened.",
+      "offset": 613.839,
+      "duration": 4.481
+    },
+    {
+      "lang": "en",
+      "text": "We are sending these JSON RPC blobs back",
+      "offset": 616.24,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "and forth over the websocket. And then",
+      "offset": 618.32,
+      "duration": 7.28
+    },
+    {
+      "lang": "en",
+      "text": "if I can make this scroll down",
+      "offset": 620.72,
+      "duration": 8.08
+    },
+    {
+      "lang": "en",
+      "text": "at the end, we just pipe those uh read",
+      "offset": 625.6,
+      "duration": 5.359
+    },
+    {
+      "lang": "en",
+      "text": "streams and write streams into an MCPS",
+      "offset": 628.8,
+      "duration": 4.159
+    },
+    {
+      "lang": "en",
+      "text": "SDK client session and we're good to go.",
+      "offset": 630.959,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "We've got MCP going. Um you might want",
+      "offset": 632.959,
+      "duration": 4.401
+    },
+    {
+      "lang": "en",
+      "text": "to do this with gRPC because you want to",
+      "offset": 635.839,
+      "duration": 3.201
+    },
+    {
+      "lang": "en",
+      "text": "wrap these in some multipplexed",
+      "offset": 637.36,
+      "duration": 3.28
+    },
+    {
+      "lang": "en",
+      "text": "transport so you don't have to open one",
+      "offset": 639.04,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "soocket per connection. That's pretty",
+      "offset": 640.64,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "simple. Also, uh we have read stream",
+      "offset": 642.48,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "right stream at the end. Uh starting to",
+      "offset": 645.44,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "see a pattern here. You can do like Unix",
+      "offset": 647.2,
+      "duration": 3.759
+    },
+    {
+      "lang": "en",
+      "text": "socket transport if you want. You can",
+      "offset": 649.36,
+      "duration": 3.919
+    },
+    {
+      "lang": "en",
+      "text": "just have uh messages be passed that",
+      "offset": 650.959,
+      "duration": 3.761
+    },
+    {
+      "lang": "en",
+      "text": "way. Read, stream, write, stream at the",
+      "offset": 653.279,
+      "duration": 3.841
+    },
+    {
+      "lang": "en",
+      "text": "end. MCU works great. Um I threw in an",
+      "offset": 654.72,
+      "duration": 4.239
+    },
+    {
+      "lang": "en",
+      "text": "enterprisegrade email transport",
+      "offset": 657.12,
+      "duration": 4.719
+    },
+    {
+      "lang": "en",
+      "text": "implementation over IMAP. Um which is",
+      "offset": 658.959,
+      "duration": 4.401
+    },
+    {
+      "lang": "en",
+      "text": "pretty much the same thing. You just go",
+      "offset": 661.839,
+      "duration": 4.321
+    },
+    {
+      "lang": "en",
+      "text": "through here is our server. We're",
+      "offset": 663.36,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "sending emails back and forth. Uh dear",
+      "offset": 666.16,
+      "duration": 5.119
+    },
+    {
+      "lang": "en",
+      "text": "server, I hope this finds you well. Uh",
+      "offset": 668.8,
+      "duration": 4.719
+    },
+    {
+      "lang": "en",
+      "text": "MCP request start. And then we pipe",
+      "offset": 671.279,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "those into a client session at the end.",
+      "offset": 673.519,
+      "duration": 3.121
+    },
+    {
+      "lang": "en",
+      "text": "And so it truly doesn't matter like",
+      "offset": 674.959,
+      "duration": 3.601
+    },
+    {
+      "lang": "en",
+      "text": "whatever it takes inside your",
+      "offset": 676.64,
+      "duration": 4.879
+    },
+    {
+      "lang": "en",
+      "text": "organization is great. We set up this",
+      "offset": 678.56,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "unified authentication model where we're",
+      "offset": 681.519,
+      "duration": 3.841
+    },
+    {
+      "lang": "en",
+      "text": "handling",
+      "offset": 683.68,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "ooth at the gateway uh which means that",
+      "offset": 685.36,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "consumers don't have to worry about all",
+      "offset": 687.76,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "that uh all that complexity in their",
+      "offset": 689.2,
+      "duration": 6.4
+    },
+    {
+      "lang": "en",
+      "text": "apps. Uh we added a get ooth",
+      "offset": 692.32,
+      "duration": 4.959
+    },
+    {
+      "lang": "en",
+      "text": "authorization URL function and a",
+      "offset": 695.6,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "complete ooth flow because you might",
+      "offset": 697.279,
+      "duration": 3.441
+    },
+    {
+      "lang": "en",
+      "text": "have different endpoints at anthropic.",
+      "offset": 699.2,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "We have api.anthropic.com and we have",
+      "offset": 700.72,
+      "duration": 3.119
+    },
+    {
+      "lang": "en",
+      "text": "cloud.ai AI and we might want those",
+      "offset": 702.56,
+      "duration": 2.48
+    },
+    {
+      "lang": "en",
+      "text": "redirects to go back to different",
+      "offset": 703.839,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "places, but uh this is tied on the",
+      "offset": 705.04,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "gateway. It's really easy to start a new",
+      "offset": 707.519,
+      "duration": 4.241
+    },
+    {
+      "lang": "en",
+      "text": "authentication. Uh a real advantage of",
+      "offset": 709.44,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "having this put on your gateway is that",
+      "offset": 711.76,
+      "duration": 4.079
+    },
+    {
+      "lang": "en",
+      "text": "the credentials are portable. If you",
+      "offset": 714.16,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "have a batch job that you're kicking",
+      "offset": 715.839,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "off, um your users don't have to",
+      "offset": 717.6,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "reauthenticate to that. You're just",
+      "offset": 719.519,
+      "duration": 3.601
+    },
+    {
+      "lang": "en",
+      "text": "calling the same MCP with your internal",
+      "offset": 721.36,
+      "duration": 3.919
+    },
+    {
+      "lang": "en",
+      "text": "user ID and they get everything added",
+      "offset": 723.12,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "correctly. You're also internal services",
+      "offset": 725.279,
+      "duration": 4.641
+    },
+    {
+      "lang": "en",
+      "text": "don't have to worry about your tokens.",
+      "offset": 727.2,
+      "duration": 5.68
+    },
+    {
+      "lang": "en",
+      "text": "Um so your request comes in internally",
+      "offset": 729.92,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "for us. We're hitting a websocket",
+      "offset": 732.88,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "connection to MCP gateway uh with O",
+      "offset": 734.8,
+      "duration": 5.68
+    },
+    {
+      "lang": "en",
+      "text": "token provided as headers to that. Uh",
+      "offset": 738,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "the gateway receives your stored",
+      "offset": 740.48,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "credentials. You create an authenticated",
+      "offset": 742.32,
+      "duration": 5.68
+    },
+    {
+      "lang": "en",
+      "text": "SDK client. You just pass in the bearer",
+      "offset": 744.56,
+      "duration": 6.88
+    },
+    {
+      "lang": "en",
+      "text": "token to the O header. Uh and then",
+      "offset": 748,
+      "duration": 5.279
+    },
+    {
+      "lang": "en",
+      "text": "you're good to go. The MCP client",
+      "offset": 751.44,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "receives a readstream and a right",
+      "offset": 753.279,
+      "duration": 3.041
+    },
+    {
+      "lang": "en",
+      "text": "stream. And so you just plum those read",
+      "offset": 754.88,
+      "duration": 2.72
+    },
+    {
+      "lang": "en",
+      "text": "stream and write stream into your",
+      "offset": 756.32,
+      "duration": 3.28
+    },
+    {
+      "lang": "en",
+      "text": "internal transport and you're and you're",
+      "offset": 757.6,
+      "duration": 5.039
+    },
+    {
+      "lang": "en",
+      "text": "you're good to go. Uh one of the things",
+      "offset": 759.6,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "that this gives for your org that's not",
+      "offset": 762.639,
+      "duration": 3.841
+    },
+    {
+      "lang": "en",
+      "text": "immediately obvious but is really",
+      "offset": 764.88,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "valuable is a central place for all of",
+      "offset": 766.48,
+      "duration": 6.159
+    },
+    {
+      "lang": "en",
+      "text": "your context that your models are asking",
+      "offset": 770.24,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "for and all the context that's flowing",
+      "offset": 772.639,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "into your models for your org. Uh",
+      "offset": 775.12,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "there's some papers written on MCP",
+      "offset": 777.839,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "prompt injection attacks. There is a",
+      "offset": 780.16,
+      "duration": 6.4
+    },
+    {
+      "lang": "en",
+      "text": "general risk of uh models going and",
+      "offset": 783.279,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "having access to Google Drive and",
+      "offset": 786.56,
+      "duration": 2.64
+    },
+    {
+      "lang": "en",
+      "text": "deleting everything in Google Drive.",
+      "offset": 787.839,
+      "duration": 4.401
+    },
+    {
+      "lang": "en",
+      "text": "There's some need of uh enforcing",
+      "offset": 789.2,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "policy. You might want to be able to",
+      "offset": 792.24,
+      "duration": 3.839
+    },
+    {
+      "lang": "en",
+      "text": "like ban",
+      "offset": 793.92,
+      "duration": 5.84
+    },
+    {
+      "lang": "en",
+      "text": "malicious servers. Um do some content",
+      "offset": 796.079,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "classification on the request, see",
+      "offset": 799.76,
+      "duration": 3.28
+    },
+    {
+      "lang": "en",
+      "text": "what's coming in, kind of given audit.",
+      "offset": 801.279,
+      "duration": 3.12
+    },
+    {
+      "lang": "en",
+      "text": "And the really nice thing about this is",
+      "offset": 803.04,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "that because it's MCP, all of your",
+      "offset": 804.399,
+      "duration": 3.921
+    },
+    {
+      "lang": "en",
+      "text": "messages are in a standardized format.",
+      "offset": 806.8,
+      "duration": 2.8
+    },
+    {
+      "lang": "en",
+      "text": "So it's really easy to hook into that",
+      "offset": 808.32,
+      "duration": 3.28
+    },
+    {
+      "lang": "en",
+      "text": "stream and be like, &quot;Okay, here is my",
+      "offset": 809.6,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "tool execution message processor or here",
+      "offset": 811.6,
+      "duration": 4.479
+    },
+    {
+      "lang": "en",
+      "text": "is my tool definition thing or here's my",
+      "offset": 814.16,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "resource management.&quot; And so the payoff",
+      "offset": 816.079,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "that you get from this is um adding MCP",
+      "offset": 818.56,
+      "duration": 5.519
+    },
+    {
+      "lang": "en",
+      "text": "support to new services is as simple as",
+      "offset": 821.839,
+      "duration": 4.161
+    },
+    {
+      "lang": "en",
+      "text": "possible. You just go and import a",
+      "offset": 824.079,
+      "duration": 3.841
+    },
+    {
+      "lang": "en",
+      "text": "package. Uh it doesn't matter what",
+      "offset": 826,
+      "duration": 3.519
+    },
+    {
+      "lang": "en",
+      "text": "language you're in. We've got multiple",
+      "offset": 827.92,
+      "duration": 3.28
+    },
+    {
+      "lang": "en",
+      "text": "languages internally. They all have",
+      "offset": 829.519,
+      "duration": 3.601
+    },
+    {
+      "lang": "en",
+      "text": "their own kind of packages. Engineers",
+      "offset": 831.2,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "can focus on building features and not",
+      "offset": 833.12,
+      "duration": 4.159
+    },
+    {
+      "lang": "en",
+      "text": "plumbing. uh you have the operational",
+      "offset": 834.8,
+      "duration": 3.839
+    },
+    {
+      "lang": "en",
+      "text": "simplicity of having a single point of",
+      "offset": 837.279,
+      "duration": 3.281
+    },
+    {
+      "lang": "en",
+      "text": "ingress egress and standardized message",
+      "offset": 838.639,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "formats and you get future features for",
+      "offset": 840.56,
+      "duration": 4.639
+    },
+    {
+      "lang": "en",
+      "text": "free as the protocol involves you get",
+      "offset": 842.959,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "all of that work uh naturally",
+      "offset": 845.199,
+      "duration": 7.921
+    },
+    {
+      "lang": "en",
+      "text": "and so just wanted to go through some",
+      "offset": 848.959,
+      "duration": 6.641
+    },
+    {
+      "lang": "en",
+      "text": "takeaways from this that I I want to put",
+      "offset": 853.12,
+      "duration": 4.959
+    },
+    {
+      "lang": "en",
+      "text": "to you is that MCP is really just JSON",
+      "offset": 855.6,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "streams and how you pipe those streams",
+      "offset": 858.079,
+      "duration": 3.12
+    },
+    {
+      "lang": "en",
+      "text": "around your infrastructure is a small",
+      "offset": 859.6,
+      "duration": 3.2
+    },
+    {
+      "lang": "en",
+      "text": "implementation detail. That's a couple",
+      "offset": 861.199,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "lines of code hook the stream into the",
+      "offset": 862.8,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "client SDK that makes the messages. Uh",
+      "offset": 864.639,
+      "duration": 5.681
+    },
+    {
+      "lang": "en",
+      "text": "the",
+      "offset": 868.56,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "you should standardize on something,",
+      "offset": 870.32,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "anything. I think MCP is a good idea. If",
+      "offset": 872.24,
+      "duration": 3.279
+    },
+    {
+      "lang": "en",
+      "text": "you don't think it's a good idea, like",
+      "offset": 874.24,
+      "duration": 3.039
+    },
+    {
+      "lang": "en",
+      "text": "just pick something. Um your future self",
+      "offset": 875.519,
+      "duration": 4.161
+    },
+    {
+      "lang": "en",
+      "text": "will thank you. Uh build some pits of",
+      "offset": 877.279,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "success. You really want to make the",
+      "offset": 879.68,
+      "duration": 3.599
+    },
+    {
+      "lang": "en",
+      "text": "right way to do a thing the easiest way",
+      "offset": 881.839,
+      "duration": 2.641
+    },
+    {
+      "lang": "en",
+      "text": "to do a thing and then everyone just",
+      "offset": 883.279,
+      "duration": 2.321
+    },
+    {
+      "lang": "en",
+      "text": "falls into doing the right thing",
+      "offset": 884.48,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "naturally. And also centralizing at the",
+      "offset": 885.6,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "correct layer. So solving some shared",
+      "offset": 888.72,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "problems off and external connectivity",
+      "offset": 890.24,
+      "duration": 4.399
+    },
+    {
+      "lang": "en",
+      "text": "once allows you to spend your time",
+      "offset": 893.36,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "working on uh more interesting problems",
+      "offset": 894.639,
+      "duration": 4.241
+    },
+    {
+      "lang": "en",
+      "text": "that are more valuable to you and your",
+      "offset": 897.04,
+      "duration": 4.239
+    },
+    {
+      "lang": "en",
+      "text": "your business.",
+      "offset": 898.88,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "Thanks. That's all I got for you. Uh",
+      "offset": 901.279,
+      "duration": 5.311
+    },
+    {
+      "lang": "en",
+      "text": "thank you so much for coming out.",
+      "offset": 903.04,
+      "duration": 10.69
+    },
+    {
+      "lang": "en",
+      "text": "[Music]",
+      "offset": 906.59,
+      "duration": 7.14
+    }
+  ],
+  "cleanText": "Awesome.\n\n[Music]\n\nThanks so much for coming.\nUm, I wanted to give a bit of a talk on implementing Remote MCPs clients and talk more about MCP at scale within a large organization like Anthropic.\nUm, I wanted to give first a little introduction from me.\nUh, my name is John Welsh.\nI've spent 20 years building large-scale systems and dealing with the problems that that causes.\nAnd so I've made a lot of mistakes and uh I'm excited to give maybe some thoughts on avoiding some of those mistakes.\nI'm currently a member of technical staff here at Anthropic and I've spent the past few months um focusing on tool calling and integration and implementing MCP support for all of our internal like external integrations within the or.\n\nSo, looking at tool integration with models, we've kind of hit this timeline where uh models only really got good at calling tools uh like kind of late mid last year and suddenly everyone got very excited because like your model could go and call your Google Drive and then it could call your maps and then it could send a text message to people.\nAnd so there's a huge explosion with like very little effort you can make very cool things and so um teams are all trying to move fast.\nEveryone's moving very fast in AI.\nCustom endpoints start proliferating for every use case.\nThere's a lot of like services popping up with like slash call tool and slash like get context and then people um start to realize there's additional needs, some authentication, a bunch of stuff there, and this kind of led to some integration chaos where you're duplicating a bunch of functionality around your org, nothing really works the same.\nYou have an integration that works really well in service A, but then you want to use it in service B, but you can't because it's going to take you three weeks to rewrite it to talk to the new interface.\nAnd so we're in this kind of spot and the place that we came to at Anthropic is realizing that over time all of these endpoints started to look a lot like MCP.\nUh, you end up with some get tools, some get resources, some elicitation of details.\nUm, and even if you're not using the entire feature space of MCP uh as a whole immediately, like you're probably going to go extend into something that kind of looks like it over time.\nAnd when I'm talking about MCP here, there's kind of two sides to MCP that in my mind feel a bit unrelated.\nThere's this JSON RPC specification which is really valuable as engineers.\nIt's like a standard way of sending messages and communicating back and forth between uh providers of context for your models and the code that's interacting with the models.\nAnd uh getting those messages right is the topic of huge debate on like the MCP uh repos.\nIf you're involved with any standardization process ever, you know how those conversations end up going.\nAnd then on the other side there's this global transport standard which is the stuff around streamable HTTP oath 2.1 session management.\nAnd global transport standard is hard because you're trying to get everyone to speak the same language.\nAnd so it's really nitty, but there's not a lot of like most of the juice of MCP is in this the message specification and the way that the uh servers are interacting.\nUm and so we started asking ourselves like can we just MCP for everything and we said yes with the caveat that yes is for everything involved in presiding model context to models.\nUm we have this format where your client is sending these messages.\nSomething's responding with these messages.\nUm where that stream is going, it really doesn't matter.\nIt can be on the same process.\nIt can be another data center.\nIt can be through a giant pile of uh enterprise networking stuff.\nUm, it doesn't really care at the point that your code is interacting with it.\nYou're just calling a connect to MCP and you have a a set of uh a set of tools and methods that you can call.\nSo, uh, standardizing on that seemed useful.\nUm, standard why standardize on anything internally?\nUm, being boring on stuff like this is good.\nIt's not a competitive advantage to be really good at making Google Drive talk to your app.\nIt's just a thing that you need to do.\nIt's not your differentiator.\nUh having a single approach to learn as engineers makes things faster.\nYou can spend your cycles working on interesting problems instead of trying to figure out how to plum uh integration.\nAnd uh if you're using the same thing everywhere, then like each new integration might clean up the field a bit for the next person who comes along.\nUm it's it's over overall a good thing in cases like this where we're we're not really doing anything interesting.\nWe're plumbing context between integrations and things that are consuming the integrations.\nUh what is standardized on MCP internally?\nUm I this is where I might make an argument to everyone that there's already ecosystem demand.\nYou have to implement MCP because everyone's implementing MCP.\nSo why do two things?\nUm it's becoming an industry standard.\nThere's a large coalition of engineers and organizations that are all involved in building out the standard.\nUh all of the major AI labs are represented in that.\nSo you you know that as new model capabilities start to be developed uh those patterns will be added to the protocol because all the labs want you to use their features.\nSo I think the standardizing on MCP internally for this type of context is a is a good bet.\nAnd one of the things you get with MCP is that it solves problems that you haven't actually run into yet.\nLike there's a bunch of stuff in the protocol that exists because there's a problem and a need and having those solutions at hand when you run into them is really important.\nSo sampling an example of where this might be valuable in your company.\nYou might have four products that have four different billing models uh for reasons because you're building fast.\nUm you might have a bunch of different token limits.\nYou might have different ways of tracking usage.\nThis is really painful because you want to write one integration service to connect your slides and how do you go and like hook the billing and the tokens up correctly and MCP has uh already has sampling primitives so you can build your integration, you can just be like okay your integration sends a sampling request over the stream, uh the other end of the pipe fulfills that request, you can go and hook it in, everything works great and so this is a thing that uh a shape problem that might take you a bunch of effort uh internally without this, but you already have the answer kind of gift wrapped for you in the protocol.\nAnd so at Anthropic, we're running into some requirements converging.\nWe're starting to see external Remote MCP services popping up like mcp.\nWe wanted to be able to talk to those.\nTalking to those is complex because you need external network connectivity, you need authentication.\nUh there's a proliferation of internal agents.\nPeople have started building uh PR review bots and like Slack management things and just lots of people have lots of ideas.\nNo one's really sure what's going to hit.\nSo, we're having a huge explosion of LLM-backed services internally.\nUh with that explosion, there's a bunch of security concerns where uh you don't really want all of those services to be going and accessing user credentials uh because that ends up being being kind of a nightmare.\nDon't want uh outbound external network connectivity everywhere.\nUm auditing becomes really complex.\nUh and so we are looking at this problem.\nWe wanted to be able to build our integrations once and use them anywhere.\nAnd so, uh, a model I was introduced to by a mentor of mine and a while ago is the pit of success, which is the idea that, um, if you make the right thing to do, the easiest thing to do, then everyone in your org kind of falls into it.\nAnd so uh we designed a service which is just a piece of shared infrastructure called the MCP gateway that provides a single point of entry and provided engineers just with a connect to MCP call that returns a MCP SDK client session on the end and we're trying to make that as simple as possible uh because that way people will use it if it's the easiest thing to do.\nUm, we used URL-based routing to route to external servers, internal servers, it doesn't matter.\nIt's all the same call.\nUh, we handle all the credential management automatically because you don't want to be implementing OOTH five times in your company.\nUh, gives you a centralized place for rate limiting and observability.\nUh, I have an obligatory diagram here of a bunch of lines going in and out.\nBut, uh, here's a a gateway in the middle.\nThis is kind of the thing.\nJust one more box will solve all our problems.\nUh, can I go next?\nUh where is my yeah ah uh so the uh the code that we have here we just made some client libraries where we just MCB gateway connect to MCP uh we pass in a URL an org ID account ID this is like a bit simplified we actually pass a signed token to authenticate because it's accessing credentials but this is the basic idea and then importantly this call returns an MCP SDK object which means that when new features get added to protocol.\nYou just update your MCP packages internally.\nYou get those features across the board.\nEverything works great.\nThe same code seamlessly connects to internal external integrations.\nWhen it comes to transports, uh, and this is a bit high level and handwavy because everyone's setup is different.\nUm, internally within your network, it really doesn't matter.\nYou can do anything you want.\nWe've got the standardized transport for connecting to external MCP servers.\nUm, but really just picking the best thing for your org.\nSo we went and picked uh websockets for our internal transport.\nAnd here's just a quick code example.\nIt's nothing special.\nWe just have a websocket uh that's being opened.\nWe are sending these JSON RPC blobs back and forth over the websocket.\nAnd then if I can make this scroll down at the end, we just pipe those uh read streams and write streams into an MCPS SDK client session and we're good to go.\nWe've got MCP going.\nUm you might want to do this with gRPC because you want to wrap these in some multipplexed transport so you don't have to open one soocket per connection.\nThat's pretty simple.\nAlso, uh we have read stream right stream at the end.\nUh starting to see a pattern here.\nYou can do like Unix socket transport if you want.\nYou can just have uh messages be passed that way.\nRead, stream, write, stream at the end.\nMCU works great.\nUm I threw in an enterprise-grade email transport implementation over IMAP.\nUm which is pretty much the same thing.\nYou just go through here is our server.\nWe're sending emails back and forth.\nUh dear server, I hope this finds you well.\nUh MCP request start.\nAnd then we pipe those into a client session at the end.\nAnd so it truly doesn't matter like whatever it takes inside your organization is great.\nWe set up this unified authentication model where we're handling ooth at the gateway uh which means that consumers don't have to worry about all that uh all that complexity in their apps.\nUh we added a get ooth authorization URL function and a complete ooth flow because you might have different endpoints at Anthropic.\nWe have api.anthropic.com and we have cloud.ai and we might want those redirects to go back to different places, but uh this is tied on the gateway.\nIt's really easy to start a new authentication.\nUh a real advantage of having this put on your gateway is that the credentials are portable.\nIf you have a batch job that you're kicking off, um your users don't have to reauthenticate to that.\nYou're just calling the same MCP with your internal user ID and they get everything added correctly.\nYou're also internal services don't have to worry about your tokens.\nUm so your request comes in internally for us.\nWe're hitting a websocket connection to MCP gateway uh with O token provided as headers to that.\nUh the gateway receives your stored credentials.\nYou create an authenticated SDK client.\nYou just pass in the bearer token to the O header.\nUh and then you're good to go.\nThe MCP client receives a readstream and a right stream.\nAnd so you just plum those read stream and write stream into your internal transport and you're and you're you're good to go.\nUh one of the things that this gives for your org that's not immediately obvious but is really valuable is a central place for all of your context that your models are asking for and all the context that's flowing into your models for your org.\nUh there's some papers written on MCP prompt injection attacks.\nThere is a general risk of uh models going and having access to Google Drive and deleting everything in Google Drive.\nThere's some need of uh enforcing policy.\nYou might want to be able to like ban malicious servers.\nUm do some content classification on the request, see what's coming in, kind of given audit.\nAnd the really nice thing about this is that because it's MCP, all of your messages are in a standardized format.\nSo it's really easy to hook into that stream and be like, \"Okay, here is my tool execution message processor or here is my tool definition thing or here's my resource management.\"\nAnd so the payoff that you get from this is um adding MCP support to new services is as simple as possible.\nYou just go and import a package.\nUh it doesn't matter what language you're in.\nWe've got multiple languages internally.\nThey all have their own kind of packages.\nEngineers can focus on building features and not plumbing.\nUh you have the operational simplicity of having a single point of ingress egress and standardized message formats and you get future features for free as the protocol involves you get all of that work uh naturally.\nAnd so just wanted to go through some takeaways from this that I I want to put to you is that MCP is really just JSON streams and how you pipe those streams around your infrastructure is a small implementation detail.\nThat's a couple lines of code hook the stream into the client SDK that makes the messages.\nUh you should standardize on something, anything.\nI think MCP is a good idea.\nIf you don't think it's a good idea, like just pick something.\nUm your future self will thank you.\nUh build some pits of success.\nYou really want to make the right way to do a thing the easiest way to do a thing and then everyone just falls into doing the right thing naturally.\nAnd also centralizing at the correct layer.\nSo solving some shared problems off and external connectivity once allows you to spend your time working on uh more interesting problems that are more valuable to you and your your business.\n\nThanks.\nThat's all I got for you.\nUh thank you so much for coming out.\n\n[Music]\n",
+  "dumpedAt": "2025-07-21T18:43:26.421Z"
+}

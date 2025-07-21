@@ -1,0 +1,3310 @@
+{
+  "episodeId": "PbHm2qKnu10",
+  "channelSlug": "@aidotengineer",
+  "title": "Training Agentic Reasoners — Will Brown, Prime Intellect",
+  "publishedAt": "2025-07-07T17:20:54.000Z",
+  "rawLines": [
+    {
+      "lang": "en",
+      "text": "[Music]",
+      "offset": 0.27,
+      "duration": 7.03
+    },
+    {
+      "lang": "en",
+      "text": "Hi everyone, I'm Will Brown. I'm at",
+      "offset": 14.96,
+      "duration": 3.2
+    },
+    {
+      "lang": "en",
+      "text": "Primeelect. Uh today I want to talk",
+      "offset": 16.48,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "about training agentic reasoners. Um,",
+      "offset": 18.16,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "just kind of as a very high level",
+      "offset": 20.88,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "overview, I think a lot of people here",
+      "offset": 22.56,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "are really excited about reasoning and a",
+      "offset": 24.56,
+      "duration": 2.879
+    },
+    {
+      "lang": "en",
+      "text": "lot of people here are really excited",
+      "offset": 26.4,
+      "duration": 2.32
+    },
+    {
+      "lang": "en",
+      "text": "about agents. But I feel like a lot of",
+      "offset": 27.439,
+      "duration": 2.801
+    },
+    {
+      "lang": "en",
+      "text": "the conversations between these two",
+      "offset": 28.72,
+      "duration": 3.359
+    },
+    {
+      "lang": "en",
+      "text": "topics are kind of like different where",
+      "offset": 30.24,
+      "duration": 3.28
+    },
+    {
+      "lang": "en",
+      "text": "people are like, &quot;Oh, reasoning is this",
+      "offset": 32.079,
+      "duration": 3.201
+    },
+    {
+      "lang": "en",
+      "text": "one thing and agents are this other",
+      "offset": 33.52,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "thing.&quot; And the considerations of like",
+      "offset": 35.28,
+      "duration": 3.279
+    },
+    {
+      "lang": "en",
+      "text": "reasoning are very different from the",
+      "offset": 37.28,
+      "duration": 2.72
+    },
+    {
+      "lang": "en",
+      "text": "considerations of building agents. And I",
+      "offset": 38.559,
+      "duration": 2.961
+    },
+    {
+      "lang": "en",
+      "text": "think the high level thesis of this talk",
+      "offset": 40,
+      "duration": 2.719
+    },
+    {
+      "lang": "en",
+      "text": "is like no, they're kind of the same",
+      "offset": 41.52,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "thing. Um, and you'll see why as we get",
+      "offset": 42.719,
+      "duration": 5.761
+    },
+    {
+      "lang": "en",
+      "text": "into it. Um, first just to start like RL",
+      "offset": 45.44,
+      "duration": 4.639
+    },
+    {
+      "lang": "en",
+      "text": "kind of works now. Um, I think for a",
+      "offset": 48.48,
+      "duration": 2.64
+    },
+    {
+      "lang": "en",
+      "text": "long time people were like, &quot;Oh, is that",
+      "offset": 50.079,
+      "duration": 2.081
+    },
+    {
+      "lang": "en",
+      "text": "our going to work? Is it not going to",
+      "offset": 51.12,
+      "duration": 3.04
+    },
+    {
+      "lang": "en",
+      "text": "work? How hard is it going to be?&quot; Um,",
+      "offset": 52.16,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "and like DeepSeek, I think, took a lot",
+      "offset": 54.16,
+      "duration": 3.28
+    },
+    {
+      "lang": "en",
+      "text": "of people by surprise for many reasons",
+      "offset": 55.92,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "like the costs or whatever and like how",
+      "offset": 57.44,
+      "duration": 3.919
+    },
+    {
+      "lang": "en",
+      "text": "good it is compared to the open models",
+      "offset": 59.52,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "to the closed the big labs as well as",
+      "offset": 61.359,
+      "duration": 4.321
+    },
+    {
+      "lang": "en",
+      "text": "just it being fully open. Um, but I",
+      "offset": 63.52,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "think it was also just that it was RL",
+      "offset": 65.68,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "applied at scale working with",
+      "offset": 68.24,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "surprisingly few tweaks needed where you",
+      "offset": 70.56,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "just like have a good setup, you have a",
+      "offset": 73.2,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "good signal, you have a model that is",
+      "offset": 75.2,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "good enough to do some learning and you",
+      "offset": 77.04,
+      "duration": 5.119
+    },
+    {
+      "lang": "en",
+      "text": "see this curve where doing more RL",
+      "offset": 79.6,
+      "duration": 6.32
+    },
+    {
+      "lang": "en",
+      "text": "results in the model getting better. Um,",
+      "offset": 82.159,
+      "duration": 5.201
+    },
+    {
+      "lang": "en",
+      "text": "and it's also kind of how everyone else",
+      "offset": 85.92,
+      "duration": 2.8
+    },
+    {
+      "lang": "en",
+      "text": "is doing it. Like this is what the big",
+      "offset": 87.36,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "labs are really banking on to drive the",
+      "offset": 88.72,
+      "duration": 5.039
+    },
+    {
+      "lang": "en",
+      "text": "next iterations of progress. The 03",
+      "offset": 91.28,
+      "duration": 4.159
+    },
+    {
+      "lang": "en",
+      "text": "release is the one that OpenAI is really",
+      "offset": 93.759,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "excited about, not GBT 4.5. Like they",
+      "offset": 95.439,
+      "duration": 4.081
+    },
+    {
+      "lang": "en",
+      "text": "stopped serving the big pre-trained",
+      "offset": 97.439,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "model via API, but they have continued",
+      "offset": 99.52,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "to really double down on the scaling",
+      "offset": 101.759,
+      "duration": 3.841
+    },
+    {
+      "lang": "en",
+      "text": "direction of doing more and more",
+      "offset": 103.36,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "reinforcement learning and spending more",
+      "offset": 105.6,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "compute on reinforcement learning once",
+      "offset": 107.04,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "you have the right setup to enable",
+      "offset": 109.6,
+      "duration": 4.479
+    },
+    {
+      "lang": "en",
+      "text": "progress. And 03 to me is like a very",
+      "offset": 111.2,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "naturally agentic model. It the chat GBT",
+      "offset": 114.079,
+      "duration": 4.881
+    },
+    {
+      "lang": "en",
+      "text": "version has all these tools. The kind of",
+      "offset": 116.56,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "selling point of it is not just that",
+      "offset": 118.96,
+      "duration": 3.519
+    },
+    {
+      "lang": "en",
+      "text": "it's smarter. It's that it's really good",
+      "offset": 120.64,
+      "duration": 4.799
+    },
+    {
+      "lang": "en",
+      "text": "at using lots of tools in agentic task",
+      "offset": 122.479,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "settings to solve harder problems that",
+      "offset": 125.439,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "involve interacting with complex",
+      "offset": 127.759,
+      "duration": 4.321
+    },
+    {
+      "lang": "en",
+      "text": "systems. And that is kind of really the",
+      "offset": 129.679,
+      "duration": 3.761
+    },
+    {
+      "lang": "en",
+      "text": "selling point of all of this is that",
+      "offset": 132.08,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "like the more complex your system, the",
+      "offset": 133.44,
+      "duration": 4.799
+    },
+    {
+      "lang": "en",
+      "text": "more things can go wrong, the more that",
+      "offset": 136.08,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "like a generic LM API is going to be",
+      "offset": 138.239,
+      "duration": 4.161
+    },
+    {
+      "lang": "en",
+      "text": "brittle and go off the rails after a",
+      "offset": 140.64,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "certain number of steps. And RL is kind",
+      "offset": 142.4,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "of the way around it. It's the trick you",
+      "offset": 144.64,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "can do to take the system that kind of",
+      "offset": 146.4,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "works, maybe it works on small scales,",
+      "offset": 148.72,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "but as you go harder, it starts going",
+      "offset": 150.64,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "off the rails and train the model to be",
+      "offset": 152.48,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "better at that thing. Um, and so this is",
+      "offset": 155.36,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "a recipe that is still kind of like a",
+      "offset": 157.36,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "research topic that people are not fully",
+      "offset": 159.2,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "sure like the best way to do it,",
+      "offset": 161.68,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "especially outside of the big labs, but",
+      "offset": 163.12,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "it clearly is moving in a direction",
+      "offset": 165.76,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "where it's becoming more and more",
+      "offset": 167.92,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "reliable, more and more accessible, and",
+      "offset": 169.36,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "the sort of thing that I think would be",
+      "offset": 171.92,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "silly to disregard as a potential like",
+      "offset": 173.68,
+      "duration": 5.839
+    },
+    {
+      "lang": "en",
+      "text": "key piece of the future of agentic",
+      "offset": 177.2,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "software and agentic applications. Uh,",
+      "offset": 179.519,
+      "duration": 4.401
+    },
+    {
+      "lang": "en",
+      "text": "but it's also complicated. So on the",
+      "offset": 181.84,
+      "duration": 3.759
+    },
+    {
+      "lang": "en",
+      "text": "left here, this is the like architecture",
+      "offset": 183.92,
+      "duration": 3.599
+    },
+    {
+      "lang": "en",
+      "text": "diagram of Veril, which is kind of the",
+      "offset": 185.599,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "most popular software people use in the",
+      "offset": 187.519,
+      "duration": 5.521
+    },
+    {
+      "lang": "en",
+      "text": "research world for writing papers to uh",
+      "offset": 190.159,
+      "duration": 4.881
+    },
+    {
+      "lang": "en",
+      "text": "do RL. So if you want to like take a",
+      "offset": 193.04,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "model and go do RL, Verl kind of expects",
+      "offset": 195.04,
+      "duration": 4.559
+    },
+    {
+      "lang": "en",
+      "text": "that you understand all of this. Um on",
+      "offset": 197.44,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "the left we have uh uh the right we have",
+      "offset": 199.599,
+      "duration": 3.761
+    },
+    {
+      "lang": "en",
+      "text": "gpo as presented in the original",
+      "offset": 201.36,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "deepseek math paper back from early",
+      "offset": 203.36,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "2024. And like there's a lot of pieces",
+      "offset": 205.12,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "here. a lot of like complicated steps",
+      "offset": 207.2,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "going on that I think a lot of people",
+      "offset": 209.76,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "who are used to thinking about APIs,",
+      "offset": 211.76,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "used to thinking about building agents",
+      "offset": 213.84,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "kind of like are hoping they don't have",
+      "offset": 216.48,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "to worry about it. Um, and are hoping",
+      "offset": 218.48,
+      "duration": 5.839
+    },
+    {
+      "lang": "en",
+      "text": "that like you can just set it aside and",
+      "offset": 220.48,
+      "duration": 5.759
+    },
+    {
+      "lang": "en",
+      "text": "like something else will work and we'll",
+      "offset": 224.319,
+      "duration": 3.361
+    },
+    {
+      "lang": "en",
+      "text": "just use the APIs and it'll all be",
+      "offset": 226.239,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "great. And I think the reality is like",
+      "offset": 227.68,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "somewhere in the middle where like I",
+      "offset": 230.319,
+      "duration": 2.401
+    },
+    {
+      "lang": "en",
+      "text": "think it doesn't need to be this",
+      "offset": 231.76,
+      "duration": 2.72
+    },
+    {
+      "lang": "en",
+      "text": "complicated, but I think you also kind",
+      "offset": 232.72,
+      "duration": 3.28
+    },
+    {
+      "lang": "en",
+      "text": "of do have to be aware of it if your",
+      "offset": 234.48,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "goal is really like building the most",
+      "offset": 236,
+      "duration": 3.12
+    },
+    {
+      "lang": "en",
+      "text": "performant agents. Not necessarily just",
+      "offset": 237.84,
+      "duration": 3.039
+    },
+    {
+      "lang": "en",
+      "text": "like today you need to know about it,",
+      "offset": 239.12,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "but as a piece of the toolkit to",
+      "offset": 240.879,
+      "duration": 4.161
+    },
+    {
+      "lang": "en",
+      "text": "potentially make really powerful agentic",
+      "offset": 243.28,
+      "duration": 3.519
+    },
+    {
+      "lang": "en",
+      "text": "software. I think the people who are",
+      "offset": 245.04,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "willing to do this and take the best",
+      "offset": 246.799,
+      "duration": 5.681
+    },
+    {
+      "lang": "en",
+      "text": "open models and really RL them for their",
+      "offset": 250.4,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "tasks and can figure out how to do that",
+      "offset": 252.48,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "well are going to have a huge advantage.",
+      "offset": 254,
+      "duration": 3.359
+    },
+    {
+      "lang": "en",
+      "text": "And that's the kind of thing that also",
+      "offset": 255.84,
+      "duration": 3.2
+    },
+    {
+      "lang": "en",
+      "text": "allows you to like build a moat beyond",
+      "offset": 257.359,
+      "duration": 3.201
+    },
+    {
+      "lang": "en",
+      "text": "just like being a wrapper API and",
+      "offset": 259.04,
+      "duration": 3.2
+    },
+    {
+      "lang": "en",
+      "text": "towards something where it's like, oh, I",
+      "offset": 260.56,
+      "duration": 4.639
+    },
+    {
+      "lang": "en",
+      "text": "actually have my own model now. But not",
+      "offset": 262.24,
+      "duration": 4.399
+    },
+    {
+      "lang": "en",
+      "text": "everyone can be a big lab. And so we",
+      "offset": 265.199,
+      "duration": 2.241
+    },
+    {
+      "lang": "en",
+      "text": "kind of need to meet in the middle",
+      "offset": 266.639,
+      "duration": 2.321
+    },
+    {
+      "lang": "en",
+      "text": "somewhere of like, okay, how do we make",
+      "offset": 267.44,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "this a thing that starts to become",
+      "offset": 268.96,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "feasible for startups, for individual",
+      "offset": 271.68,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "researchers to actually do? Uh, and like",
+      "offset": 274.16,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "at what scale does this become like",
+      "offset": 276.96,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "feasible? Um, and so agents are like the",
+      "offset": 278.32,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "type of product that everyone's excited",
+      "offset": 281.44,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "about. We all like love cloud code and",
+      "offset": 282.72,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "Devon and Manis and uh 03 and deep",
+      "offset": 285.12,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "research and like these are the sorts of",
+      "offset": 288,
+      "duration": 3.12
+    },
+    {
+      "lang": "en",
+      "text": "products that are really capturing",
+      "offset": 289.68,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "people's attention. Um they're products",
+      "offset": 291.12,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "that in their current iteration happen",
+      "offset": 293.12,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "to work kind of because the models that",
+      "offset": 295.28,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "are being used have like been RL to",
+      "offset": 297.28,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "basically do these kinds of things. Um,",
+      "offset": 299.52,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "like Claude is a very good coding agent",
+      "offset": 301.84,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "probably because it has been RL on a lot",
+      "offset": 304,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "of code. And so it's like not very",
+      "offset": 306.32,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "surprising that if you plug Claude into",
+      "offset": 307.68,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "essentially a while loop with some",
+      "offset": 309.84,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "tools, it's like quite good at doing",
+      "offset": 311.28,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "these things because it's basically most",
+      "offset": 313.28,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "likely been trained in almost that exact",
+      "offset": 315.44,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "setting. Um same for things like 03 like",
+      "offset": 317.52,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "it can do geogesser and whatever because",
+      "offset": 320.4,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "whether it's literally geoger or",
+      "offset": 322.72,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "something close to it they have talked",
+      "offset": 324.24,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "about training it to do this image",
+      "offset": 326.16,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "cropping trick like that's a a technique",
+      "offset": 328,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "that it didn't just know how to do out",
+      "offset": 330.16,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "of the box they said hey let's give it",
+      "offset": 331.68,
+      "duration": 3.359
+    },
+    {
+      "lang": "en",
+      "text": "these tools to do that and use",
+      "offset": 333.6,
+      "duration": 3.2
+    },
+    {
+      "lang": "en",
+      "text": "reinforcement learning to train it to do",
+      "offset": 335.039,
+      "duration": 3.521
+    },
+    {
+      "lang": "en",
+      "text": "that and so that is kind of the recipe",
+      "offset": 336.8,
+      "duration": 3.2
+    },
+    {
+      "lang": "en",
+      "text": "that we have seen coming from the big",
+      "offset": 338.56,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "labs as if you want a powerful agent",
+      "offset": 340,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "that can do a certain type of task you",
+      "offset": 342.24,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "can use reinforcement learning to train",
+      "offset": 344.32,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "it to do that task better Um and so",
+      "offset": 345.84,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "these are kind of the same thing",
+      "offset": 348.96,
+      "duration": 3.12
+    },
+    {
+      "lang": "en",
+      "text": "actually like building an agent. Uh the",
+      "offset": 350,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "pieces of making an agent in terms of",
+      "offset": 352.08,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "the harness, the environment, the tools",
+      "offset": 355.12,
+      "duration": 5.359
+    },
+    {
+      "lang": "en",
+      "text": "and the iteration is essentially the",
+      "offset": 357.52,
+      "duration": 6.16
+    },
+    {
+      "lang": "en",
+      "text": "same conceptual framing as canonical",
+      "offset": 360.479,
+      "duration": 5.041
+    },
+    {
+      "lang": "en",
+      "text": "reinforcement learning in the sense of",
+      "offset": 363.68,
+      "duration": 3.519
+    },
+    {
+      "lang": "en",
+      "text": "policies, actions, states, rewards,",
+      "offset": 365.52,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "transition probabilities. Um, and I",
+      "offset": 367.199,
+      "duration": 4.401
+    },
+    {
+      "lang": "en",
+      "text": "think the more that we start to view",
+      "offset": 369.6,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "agents as this umbrella, which is not",
+      "offset": 371.6,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "just about static chaining of API calls,",
+      "offset": 374.4,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "but as this interaction loop with",
+      "offset": 377.12,
+      "duration": 3.199
+    },
+    {
+      "lang": "en",
+      "text": "evaluations,",
+      "offset": 378.72,
+      "duration": 4.319
+    },
+    {
+      "lang": "en",
+      "text": "that framing really is the way to think",
+      "offset": 380.319,
+      "duration": 4.561
+    },
+    {
+      "lang": "en",
+      "text": "about RL, which is you build a system",
+      "offset": 383.039,
+      "duration": 3.521
+    },
+    {
+      "lang": "en",
+      "text": "where a thing is interacting with an",
+      "offset": 384.88,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "environment and you have some way of",
+      "offset": 386.56,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "evaluating how good it's doing. And RL",
+      "offset": 388.8,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "is simply an algorithm to improve based",
+      "offset": 392.08,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "on the scores of these evaluations.",
+      "offset": 394.08,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "And if you're building agents and you're",
+      "offset": 396.72,
+      "duration": 2.88
+    },
+    {
+      "lang": "en",
+      "text": "tuning your prompt and you're fiddling",
+      "offset": 398.4,
+      "duration": 3.12
+    },
+    {
+      "lang": "en",
+      "text": "with your harnesses, this is kind of",
+      "offset": 399.6,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "like doing RL by hand. What you're doing",
+      "offset": 401.52,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "is you're saying like, okay, currently",
+      "offset": 403.52,
+      "duration": 4.959
+    },
+    {
+      "lang": "en",
+      "text": "my evals are saying this. Let's make",
+      "offset": 406.8,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "sure the eval are like capturing what I",
+      "offset": 408.479,
+      "duration": 3.121
+    },
+    {
+      "lang": "en",
+      "text": "want. Let's look at the data. Let's see",
+      "offset": 410.24,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "if the data matches what my evals are",
+      "offset": 411.6,
+      "duration": 4.879
+    },
+    {
+      "lang": "en",
+      "text": "saying. And then, oh, let's try a new",
+      "offset": 414.24,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "prompt. Let's try giving it a new tool.",
+      "offset": 416.479,
+      "duration": 4.241
+    },
+    {
+      "lang": "en",
+      "text": "Um, let's try uh switching out the",
+      "offset": 418.4,
+      "duration": 6.16
+    },
+    {
+      "lang": "en",
+      "text": "model. um like this is the process which",
+      "offset": 420.72,
+      "duration": 6.08
+    },
+    {
+      "lang": "en",
+      "text": "is also being targeted by reinforcement",
+      "offset": 424.56,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "learning in the general sense beyond",
+      "offset": 426.8,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "individual algorithms um about these",
+      "offset": 428.08,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "algorithms like there's a few of them",
+      "offset": 430.72,
+      "duration": 3.599
+    },
+    {
+      "lang": "en",
+      "text": "that are mo very important all of them",
+      "offset": 432.56,
+      "duration": 2.8
+    },
+    {
+      "lang": "en",
+      "text": "have like different implementation",
+      "offset": 434.319,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "details but in general the idea is you",
+      "offset": 435.36,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "have a bunch of tasks like versions of",
+      "offset": 438.319,
+      "duration": 2.72
+    },
+    {
+      "lang": "en",
+      "text": "your problem which are essentially",
+      "offset": 439.84,
+      "duration": 3.199
+    },
+    {
+      "lang": "en",
+      "text": "prompts you have rollouts which are just",
+      "offset": 441.039,
+      "duration": 3.921
+    },
+    {
+      "lang": "en",
+      "text": "completions potentially involving many",
+      "offset": 443.039,
+      "duration": 3.761
+    },
+    {
+      "lang": "en",
+      "text": "steps of interactions but like one",
+      "offset": 444.96,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "sequence of stuff happening and then you",
+      "offset": 446.8,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "have evaluations potentially interly",
+      "offset": 449.52,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "throughout or at the end of the sequence",
+      "offset": 451.44,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "and what you're estimating is the",
+      "offset": 453.52,
+      "duration": 3.519
+    },
+    {
+      "lang": "en",
+      "text": "advantage. The advantage here is the",
+      "offset": 455.12,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "idea that uh sometimes your model will",
+      "offset": 457.039,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "be be better than others. Like these uh",
+      "offset": 459.84,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "LMs are all uh non-deterministic. You",
+      "offset": 461.919,
+      "duration": 4.881
+    },
+    {
+      "lang": "en",
+      "text": "have temperature above zero. You have",
+      "offset": 464.96,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "different things happen in different uh",
+      "offset": 466.8,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "rolls of the dice. Um and this uh",
+      "offset": 468.72,
+      "duration": 4.879
+    },
+    {
+      "lang": "en",
+      "text": "forking process of saying like okay this",
+      "offset": 471.36,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "time it did better than that time. Why",
+      "offset": 473.599,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "was it different? RL is really about",
+      "offset": 475.52,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "saying like okay uh this is the actual",
+      "offset": 477.599,
+      "duration": 7.521
+    },
+    {
+      "lang": "en",
+      "text": "thing that changed that resulted in the",
+      "offset": 481.28,
+      "duration": 5.359
+    },
+    {
+      "lang": "en",
+      "text": "reward being better the eval being",
+      "offset": 485.12,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "better this is the token at which I went",
+      "offset": 486.639,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "down the good path versus the bad path",
+      "offset": 488.72,
+      "duration": 5.599
+    },
+    {
+      "lang": "en",
+      "text": "um and whether you're doing PO or GRPO",
+      "offset": 491.039,
+      "duration": 6.241
+    },
+    {
+      "lang": "en",
+      "text": "um like this is the mechanism by which",
+      "offset": 494.319,
+      "duration": 5.841
+    },
+    {
+      "lang": "en",
+      "text": "you get the signal of like you have some",
+      "offset": 497.28,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "things that sometimes went better",
+      "offset": 500.16,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "sometimes went worse now you can kind of",
+      "offset": 501.52,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "uh very surgically have the model learn",
+      "offset": 504.16,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "to do more of the good stuff without",
+      "offset": 506.8,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "changing too much overall. I think this",
+      "offset": 508.8,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "is also kind of maybe a reason why DPO I",
+      "offset": 510.56,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "think people were hoping DPO would like",
+      "offset": 512.64,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "really work well. In my view, DPO does",
+      "offset": 514.24,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "not necessarily have this like fine",
+      "offset": 516.88,
+      "duration": 3.12
+    },
+    {
+      "lang": "en",
+      "text": "grain advantage estimate. Like it's not",
+      "offset": 518.56,
+      "duration": 3.359
+    },
+    {
+      "lang": "en",
+      "text": "really clear just from like a full good",
+      "offset": 520,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "completion and a full bad completion",
+      "offset": 521.919,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "where you're really getting the signal",
+      "offset": 523.76,
+      "duration": 3.759
+    },
+    {
+      "lang": "en",
+      "text": "about these complex branching processes.",
+      "offset": 525.279,
+      "duration": 4.481
+    },
+    {
+      "lang": "en",
+      "text": "Uh PO has this but it's also very",
+      "offset": 527.519,
+      "duration": 4.161
+    },
+    {
+      "lang": "en",
+      "text": "expensive. GRPO I think has taken a lot",
+      "offset": 529.76,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "of people kind of uh by storm in terms",
+      "offset": 531.68,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "of like being a very nice like middle",
+      "offset": 534.16,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "ground where it's more computationally",
+      "offset": 536,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "efficient. It's like simple to",
+      "offset": 537.76,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "implement. Um but also it does have this",
+      "offset": 539.6,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "kind of forking process that comes just",
+      "offset": 542.8,
+      "duration": 4.719
+    },
+    {
+      "lang": "en",
+      "text": "from sampling. Um there's also just too",
+      "offset": 544.48,
+      "duration": 4.799
+    },
+    {
+      "lang": "en",
+      "text": "many papers. So like I think a lot of",
+      "offset": 547.519,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "people just see a new paper every day",
+      "offset": 549.279,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "and are like do I have to read this one?",
+      "offset": 551.519,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "Um and I feel that too.",
+      "offset": 553.279,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "I think it's difficult to know upfront",
+      "offset": 554.959,
+      "duration": 4.721
+    },
+    {
+      "lang": "en",
+      "text": "like which of these are going to be",
+      "offset": 557.839,
+      "duration": 3.041
+    },
+    {
+      "lang": "en",
+      "text": "important, which of them are just going",
+      "offset": 559.68,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "to be like noise, especially because",
+      "offset": 560.88,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "lots of them have very sensationalist",
+      "offset": 563.04,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "titles like oh Quen doesn't work. Um or",
+      "offset": 564.32,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "like or everyone everything only works",
+      "offset": 567.44,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "with Quen is like kind of true, but like",
+      "offset": 569.2,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "there's also more to the story than",
+      "offset": 571.92,
+      "duration": 2.8
+    },
+    {
+      "lang": "en",
+      "text": "that. And I think there's like different",
+      "offset": 573.2,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "implementation details of like oh if you",
+      "offset": 574.72,
+      "duration": 3.2
+    },
+    {
+      "lang": "en",
+      "text": "change the loss function like this in",
+      "offset": 576.64,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "this experiment then it works. And I",
+      "offset": 577.92,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "think for most people it is best to just",
+      "offset": 580.8,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "like kind of set this aside and to not",
+      "offset": 583.44,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "get too caught up in the individual",
+      "offset": 586.32,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "details of individual experiments and",
+      "offset": 588.56,
+      "duration": 4.399
+    },
+    {
+      "lang": "en",
+      "text": "individual papers and kind of think more",
+      "offset": 591.04,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "holistically about what is the process",
+      "offset": 592.959,
+      "duration": 4.081
+    },
+    {
+      "lang": "en",
+      "text": "of reinforcement learning doing? Um what",
+      "offset": 594.64,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "implementation details am I willing to",
+      "offset": 597.04,
+      "duration": 3.2
+    },
+    {
+      "lang": "en",
+      "text": "kind of leave to other people to figure",
+      "offset": 598.64,
+      "duration": 3.12
+    },
+    {
+      "lang": "en",
+      "text": "out and eventually come to me with like",
+      "offset": 600.24,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "software that like has the the knob set",
+      "offset": 601.76,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "correctly. Um and which pieces are",
+      "offset": 603.76,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "actually important for solving the",
+      "offset": 606.48,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "problems I care about. Um, and so for a",
+      "offset": 607.68,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "lot of people, I think the things that",
+      "offset": 610.16,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "are going to be really interesting, um,",
+      "offset": 611.44,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "are things that are relating to actual",
+      "offset": 614,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "software, to actual problems that they",
+      "offset": 615.76,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "want to solve in the world. And agents,",
+      "offset": 617.44,
+      "duration": 3.519
+    },
+    {
+      "lang": "en",
+      "text": "I think, are kind of the instantiation",
+      "offset": 619.6,
+      "duration": 3.679
+    },
+    {
+      "lang": "en",
+      "text": "of that where this makes sense. And the",
+      "offset": 620.959,
+      "duration": 4.401
+    },
+    {
+      "lang": "en",
+      "text": "thing that makes an agent an agent is",
+      "offset": 623.279,
+      "duration": 4.161
+    },
+    {
+      "lang": "en",
+      "text": "tools. Uh, the ability to interact with",
+      "offset": 625.36,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "an environment, with a system. A lot of",
+      "offset": 627.44,
+      "duration": 2.88
+    },
+    {
+      "lang": "en",
+      "text": "people here are like very excited about",
+      "offset": 629.2,
+      "duration": 3.28
+    },
+    {
+      "lang": "en",
+      "text": "MCP at the conference. Like MCP is just",
+      "offset": 630.32,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "tools. MCP is about giving your LM the",
+      "offset": 632.48,
+      "duration": 6.799
+    },
+    {
+      "lang": "en",
+      "text": "ability to like interact with stuff to",
+      "offset": 635.6,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "go solve problems that involve changing",
+      "offset": 639.279,
+      "duration": 4.401
+    },
+    {
+      "lang": "en",
+      "text": "files, making requests, uh, editing",
+      "offset": 641.6,
+      "duration": 4.799
+    },
+    {
+      "lang": "en",
+      "text": "code, running code. Um, and so I think",
+      "offset": 643.68,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "these are the papers that I get excited",
+      "offset": 646.399,
+      "duration": 2.88
+    },
+    {
+      "lang": "en",
+      "text": "about because there feel like like",
+      "offset": 647.68,
+      "duration": 2.96
+    },
+    {
+      "lang": "en",
+      "text": "there's parts of the puzzle that are not",
+      "offset": 649.279,
+      "duration": 2.641
+    },
+    {
+      "lang": "en",
+      "text": "fully solved yet of like what's the",
+      "offset": 650.64,
+      "duration": 2.72
+    },
+    {
+      "lang": "en",
+      "text": "right way to do all of this. Like",
+      "offset": 651.92,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "there's still some open questions. Um,",
+      "offset": 653.36,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "but I think those are getting kind of",
+      "offset": 655.68,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "refined. We're starting to see more and",
+      "offset": 658,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "more, but like a lot of the code, the",
+      "offset": 660.32,
+      "duration": 3.759
+    },
+    {
+      "lang": "en",
+      "text": "tools we have out in the wild to like go",
+      "offset": 662.16,
+      "duration": 3.28
+    },
+    {
+      "lang": "en",
+      "text": "do this. Like if you want to like go",
+      "offset": 664.079,
+      "duration": 4.161
+    },
+    {
+      "lang": "en",
+      "text": "play around with RL, most code bases are",
+      "offset": 665.44,
+      "duration": 4.959
+    },
+    {
+      "lang": "en",
+      "text": "like very set up for like either code",
+      "offset": 668.24,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "and math tasks or things that are quite",
+      "offset": 670.399,
+      "duration": 3.761
+    },
+    {
+      "lang": "en",
+      "text": "similar to that. This is kind of my",
+      "offset": 672.72,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "fault. Um I had a a snippet go viral",
+      "offset": 674.16,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "that was like here's how you do RL on",
+      "offset": 677.44,
+      "duration": 4.639
+    },
+    {
+      "lang": "en",
+      "text": "like GSMK, which is like a kind of easy",
+      "offset": 680.16,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "math data set. Um, and then I think I've",
+      "offset": 682.079,
+      "duration": 4.161
+    },
+    {
+      "lang": "en",
+      "text": "seen a lot of people like stick with",
+      "offset": 684.8,
+      "duration": 3.279
+    },
+    {
+      "lang": "en",
+      "text": "this as like, oh, we're gonna RL on",
+      "offset": 686.24,
+      "duration": 3.279
+    },
+    {
+      "lang": "en",
+      "text": "math. And I like this is also just like",
+      "offset": 688.079,
+      "duration": 4.161
+    },
+    {
+      "lang": "en",
+      "text": "math is easy to evaluate. Um, and I",
+      "offset": 689.519,
+      "duration": 6.641
+    },
+    {
+      "lang": "en",
+      "text": "think people are eval",
+      "offset": 692.24,
+      "duration": 5.039
+    },
+    {
+      "lang": "en",
+      "text": "parallel to this about like how to build",
+      "offset": 696.16,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "a good eval. Um, and so I think a lot of",
+      "offset": 697.279,
+      "duration": 4.481
+    },
+    {
+      "lang": "en",
+      "text": "researchers gravitate towards things",
+      "offset": 700.48,
+      "duration": 2.96
+    },
+    {
+      "lang": "en",
+      "text": "that like look like the benchmarks that",
+      "offset": 701.76,
+      "duration": 3.12
+    },
+    {
+      "lang": "en",
+      "text": "are also really easy to eval because",
+      "offset": 703.44,
+      "duration": 2.88
+    },
+    {
+      "lang": "en",
+      "text": "there's like a very clear signal of",
+      "offset": 704.88,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "like, okay, this thing is like right,",
+      "offset": 706.32,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "this thing is wrong. Good. Okay, we're",
+      "offset": 708.64,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "doing RL. Um but like real world tasks",
+      "offset": 710.88,
+      "duration": 5.199
+    },
+    {
+      "lang": "en",
+      "text": "are messier than that. Um we are not",
+      "offset": 713.2,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "going to like get great software systems",
+      "offset": 716.079,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "just by like hill climbing on whatever",
+      "offset": 718.72,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "question answer benchmark is popular",
+      "offset": 721.519,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "today. Um what we're going to do is",
+      "offset": 723.04,
+      "duration": 3.359
+    },
+    {
+      "lang": "en",
+      "text": "we're going to have to do is start",
+      "offset": 725.279,
+      "duration": 2.881
+    },
+    {
+      "lang": "en",
+      "text": "thinking about like the actual systems",
+      "offset": 726.399,
+      "duration": 4.321
+    },
+    {
+      "lang": "en",
+      "text": "at hand and the challenges that emerge",
+      "offset": 728.16,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "when we're trying to design these",
+      "offset": 730.72,
+      "duration": 3.119
+    },
+    {
+      "lang": "en",
+      "text": "rewards. And so like reward hacking is",
+      "offset": 732.24,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "like a real thing. Um I think this is",
+      "offset": 733.839,
+      "duration": 3.841
+    },
+    {
+      "lang": "en",
+      "text": "one of the lessons that like Rall works",
+      "offset": 735.6,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "but also it's not like always going to",
+      "offset": 737.68,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "work. There are things that can go",
+      "offset": 740.16,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "wrong. And to me, reward hacking is",
+      "offset": 741.44,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "really a message about the difficulty of",
+      "offset": 743.6,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "building good evals. Like uh what you",
+      "offset": 745.68,
+      "duration": 5.279
+    },
+    {
+      "lang": "en",
+      "text": "really want with an eval is for it to be",
+      "offset": 748.8,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "easier for your model to do the task",
+      "offset": 750.959,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "than to hack the eval. You want to build",
+      "offset": 753.68,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "a reward signal that actually captures",
+      "offset": 755.839,
+      "duration": 5.281
+    },
+    {
+      "lang": "en",
+      "text": "what you care about where uh gaming it",
+      "offset": 757.44,
+      "duration": 6.56
+    },
+    {
+      "lang": "en",
+      "text": "is like more difficult than not gaming",
+      "offset": 761.12,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "it. If you can if the model can learn to",
+      "offset": 764,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "do the task directly just by doing what",
+      "offset": 765.92,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "you want it to do uh in the spirit of",
+      "offset": 769.12,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "the task then like that is what will",
+      "offset": 771.04,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "happen. It will flow in the path of",
+      "offset": 774.24,
+      "duration": 2.8
+    },
+    {
+      "lang": "en",
+      "text": "least resistance. This is like models",
+      "offset": 775.6,
+      "duration": 2.88
+    },
+    {
+      "lang": "en",
+      "text": "just want to learn but they want to",
+      "offset": 777.04,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "learn to do better on reward signals and",
+      "offset": 778.48,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "so your reward signals have to point in",
+      "offset": 780.48,
+      "duration": 3.359
+    },
+    {
+      "lang": "en",
+      "text": "the direction of the thing you actually",
+      "offset": 782.32,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "care about. Um otherwise like models",
+      "offset": 783.839,
+      "duration": 5.841
+    },
+    {
+      "lang": "en",
+      "text": "will find cheats. Um, and I think",
+      "offset": 786.16,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "thinking about these things in",
+      "offset": 789.68,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "combination kind of points a little bit",
+      "offset": 791.2,
+      "duration": 3.04
+    },
+    {
+      "lang": "en",
+      "text": "towards a direction that I think is",
+      "offset": 793.12,
+      "duration": 2.56
+    },
+    {
+      "lang": "en",
+      "text": "going to be very promising. And there's",
+      "offset": 794.24,
+      "duration": 2.96
+    },
+    {
+      "lang": "en",
+      "text": "some very early signs that like this",
+      "offset": 795.68,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "actually can work. Um, which is like",
+      "offset": 797.2,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "when R1 came out, I was kind of like",
+      "offset": 800.8,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "speculating like what's next? What are",
+      "offset": 802.32,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "the things that are going to unlock this",
+      "offset": 804.24,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "sort of technique being used more",
+      "offset": 806.72,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "generally? Um, and you people talk a lot",
+      "offset": 808.72,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "about like generator verifier gaps, like",
+      "offset": 812.24,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "what are the differences between like",
+      "offset": 813.92,
+      "duration": 3.2
+    },
+    {
+      "lang": "en",
+      "text": "solving a problem versus checking if you",
+      "offset": 815.6,
+      "duration": 2.56
+    },
+    {
+      "lang": "en",
+      "text": "have a solution. And a lot of problems",
+      "offset": 817.12,
+      "duration": 3.2
+    },
+    {
+      "lang": "en",
+      "text": "like are much easier to check than",
+      "offset": 818.16,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "solve. But this isn't like a binary",
+      "offset": 820.32,
+      "duration": 2.959
+    },
+    {
+      "lang": "en",
+      "text": "thing. This is a spectrum of how",
+      "offset": 822.16,
+      "duration": 3.919
+    },
+    {
+      "lang": "en",
+      "text": "difficult is it to verify a thing. But",
+      "offset": 823.279,
+      "duration": 5.761
+    },
+    {
+      "lang": "en",
+      "text": "um there's some kind of signs that you",
+      "offset": 826.079,
+      "duration": 7.041
+    },
+    {
+      "lang": "en",
+      "text": "kind of can do evaluations on more",
+      "offset": 829.04,
+      "duration": 5.919
+    },
+    {
+      "lang": "en",
+      "text": "ambiguous tasks by just breaking them",
+      "offset": 833.12,
+      "duration": 4.399
+    },
+    {
+      "lang": "en",
+      "text": "down into smaller pieces and by using",
+      "offset": 834.959,
+      "duration": 6.24
+    },
+    {
+      "lang": "en",
+      "text": "LMS as sub routines in your evaluations",
+      "offset": 837.519,
+      "duration": 6.081
+    },
+    {
+      "lang": "en",
+      "text": "like LM judge on steroids where maybe",
+      "offset": 841.199,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "you want to actually like train a",
+      "offset": 843.6,
+      "duration": 3.12
+    },
+    {
+      "lang": "en",
+      "text": "specialized LM who is really good at",
+      "offset": 844.959,
+      "duration": 3.601
+    },
+    {
+      "lang": "en",
+      "text": "doing these fine grain evaluations. I",
+      "offset": 846.72,
+      "duration": 3.2
+    },
+    {
+      "lang": "en",
+      "text": "like using the term rubric as a",
+      "offset": 848.56,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "conceptual general umbrella around",
+      "offset": 849.92,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "reward models, reward functions, alm as",
+      "offset": 852.24,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "judge setups, like the criteria on which",
+      "offset": 854.56,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "you are evaluating a thing. There's a",
+      "offset": 857.04,
+      "duration": 3.28
+    },
+    {
+      "lang": "en",
+      "text": "cool paper from deepseek that I was",
+      "offset": 858.8,
+      "duration": 2.8
+    },
+    {
+      "lang": "en",
+      "text": "thought found very exciting when it came",
+      "offset": 860.32,
+      "duration": 2.959
+    },
+    {
+      "lang": "en",
+      "text": "out a couple months ago about like how",
+      "offset": 861.6,
+      "duration": 3.12
+    },
+    {
+      "lang": "en",
+      "text": "to train reward models that like",
+      "offset": 863.279,
+      "duration": 3.281
+    },
+    {
+      "lang": "en",
+      "text": "generate these rubrics on the fly. There",
+      "offset": 864.72,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "was a paper very recently that does this",
+      "offset": 866.56,
+      "duration": 3.04
+    },
+    {
+      "lang": "en",
+      "text": "for creative writing and kind of found",
+      "offset": 868.32,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "that like yes, you actually can train",
+      "offset": 869.6,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "reward models that will come up with",
+      "offset": 871.68,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "nuanced fine-rain evaluation criteria",
+      "offset": 874.8,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "for a task on the fly given the actual",
+      "offset": 877.04,
+      "duration": 4.479
+    },
+    {
+      "lang": "en",
+      "text": "problem. And this gives you something",
+      "offset": 879.44,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "that results in a very like fine grain",
+      "offset": 881.519,
+      "duration": 4.081
+    },
+    {
+      "lang": "en",
+      "text": "score that allows you to actually do RL",
+      "offset": 883.6,
+      "duration": 5.919
+    },
+    {
+      "lang": "en",
+      "text": "and like keep getting better. Um, and I",
+      "offset": 885.6,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "think like this is an area that I'm",
+      "offset": 889.519,
+      "duration": 3.361
+    },
+    {
+      "lang": "en",
+      "text": "really excited about to keep watching.",
+      "offset": 891.36,
+      "duration": 3.919
+    },
+    {
+      "lang": "en",
+      "text": "Um, but also like multi-turn. Multi-turn",
+      "offset": 892.88,
+      "duration": 4.079
+    },
+    {
+      "lang": "en",
+      "text": "is probably where we're headed. We want",
+      "offset": 895.279,
+      "duration": 2.961
+    },
+    {
+      "lang": "en",
+      "text": "to do a jetic search. We want to do tool",
+      "offset": 896.959,
+      "duration": 3.841
+    },
+    {
+      "lang": "en",
+      "text": "calls, software, games, long horizon",
+      "offset": 898.24,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "planning, computer use, memory, scaling",
+      "offset": 900.8,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "on tool calls let you solve harder",
+      "offset": 902.8,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "problems. Um, and so how do we actually",
+      "offset": 904.24,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "like do this? What's the uh way to go",
+      "offset": 906.24,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "about building multi- aent or multi-turn",
+      "offset": 908.8,
+      "duration": 4.719
+    },
+    {
+      "lang": "en",
+      "text": "agentic systems to do and that we can",
+      "offset": 911.36,
+      "duration": 4.479
+    },
+    {
+      "lang": "en",
+      "text": "use RL with? Um, and I think the",
+      "offset": 913.519,
+      "duration": 4.241
+    },
+    {
+      "lang": "en",
+      "text": "conceptual pieces here are environments",
+      "offset": 915.839,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "are basically harnesses, rewards are",
+      "offset": 917.76,
+      "duration": 4.319
+    },
+    {
+      "lang": "en",
+      "text": "basically eval tasks are just prompts,",
+      "offset": 919.519,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "and your policy in the RL sense",
+      "offset": 922.079,
+      "duration": 4.241
+    },
+    {
+      "lang": "en",
+      "text": "hopefully should just be as simple as",
+      "offset": 924.399,
+      "duration": 4.161
+    },
+    {
+      "lang": "en",
+      "text": "like an LM API. The I think the",
+      "offset": 926.32,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "programming interface that makes sense",
+      "offset": 928.56,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "for a lot of people is to have an API",
+      "offset": 929.76,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "that you're writing code as if it's just",
+      "offset": 931.92,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "a normal agent in a loop, but then this",
+      "offset": 933.6,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "is a thing that you can use to go do RL.",
+      "offset": 936.16,
+      "duration": 3.679
+    },
+    {
+      "lang": "en",
+      "text": "And so that's what I've been building",
+      "offset": 938.72,
+      "duration": 3.04
+    },
+    {
+      "lang": "en",
+      "text": "over the past couple months. Um, I",
+      "offset": 939.839,
+      "duration": 4.721
+    },
+    {
+      "lang": "en",
+      "text": "maintain a repo called verifiers. Um",
+      "offset": 941.76,
+      "duration": 6.24
+    },
+    {
+      "lang": "en",
+      "text": "it's finally uh on pip uh out in the",
+      "offset": 944.56,
+      "duration": 4.959
+    },
+    {
+      "lang": "en",
+      "text": "world. You can just install it, but it's",
+      "offset": 948,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "been a long time coming. Um and what it",
+      "offset": 949.519,
+      "duration": 5.281
+    },
+    {
+      "lang": "en",
+      "text": "really is is a toolkit of these pieces",
+      "offset": 952.16,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "to make it so that building an agent",
+      "offset": 954.8,
+      "duration": 4.479
+    },
+    {
+      "lang": "en",
+      "text": "that you can actually train with RL",
+      "offset": 957.36,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "feels just like building an agent. Um,",
+      "offset": 959.279,
+      "duration": 3.841
+    },
+    {
+      "lang": "en",
+      "text": "so the interaction protocol here is like",
+      "offset": 961.12,
+      "duration": 3.839
+    },
+    {
+      "lang": "en",
+      "text": "quite simple like this is the entire",
+      "offset": 963.12,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "roll out function on the left of like",
+      "offset": 964.959,
+      "duration": 4.081
+    },
+    {
+      "lang": "en",
+      "text": "what happens in the code when you're",
+      "offset": 967.04,
+      "duration": 4.159
+    },
+    {
+      "lang": "en",
+      "text": "running an agent to do RL which is that",
+      "offset": 969.04,
+      "duration": 3.599
+    },
+    {
+      "lang": "en",
+      "text": "you kind of set up some initial state",
+      "offset": 971.199,
+      "duration": 3.601
+    },
+    {
+      "lang": "en",
+      "text": "stuff have a while loop for is it done",
+      "offset": 972.639,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "yet? If it's not done do a turn and the",
+      "offset": 974.8,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "thing you're passing here is a client",
+      "offset": 977.519,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "object that's just an OpenAI compatible",
+      "offset": 979.44,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "API. And I think this is the kind of",
+      "offset": 981.519,
+      "duration": 5.041
+    },
+    {
+      "lang": "en",
+      "text": "interface that you really want if you",
+      "offset": 984.32,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "want people to be able to go from their",
+      "offset": 986.56,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "agent applications to something that's",
+      "offset": 988.48,
+      "duration": 3.279
+    },
+    {
+      "lang": "en",
+      "text": "trainable to something they can use with",
+      "offset": 990.32,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "RL. Um it's been a lot of fun thinking",
+      "offset": 991.759,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "about like what are the abstractions?",
+      "offset": 994.24,
+      "duration": 3.12
+    },
+    {
+      "lang": "en",
+      "text": "What are the pieces here? And so like",
+      "offset": 995.519,
+      "duration": 3.361
+    },
+    {
+      "lang": "en",
+      "text": "there's things like parsers and rubrics",
+      "offset": 997.36,
+      "duration": 3.039
+    },
+    {
+      "lang": "en",
+      "text": "that I think are like nice building",
+      "offset": 998.88,
+      "duration": 2.8
+    },
+    {
+      "lang": "en",
+      "text": "blocks that you sometimes want to use.",
+      "offset": 1000.399,
+      "duration": 2.481
+    },
+    {
+      "lang": "en",
+      "text": "You can also like not use them if you",
+      "offset": 1001.68,
+      "duration": 2.8
+    },
+    {
+      "lang": "en",
+      "text": "don't want to. But like I tried to make",
+      "offset": 1002.88,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "it fun and user friendly. Um the other",
+      "offset": 1004.48,
+      "duration": 4.159
+    },
+    {
+      "lang": "en",
+      "text": "day I like was like let's train a Wordle",
+      "offset": 1006.88,
+      "duration": 2.959
+    },
+    {
+      "lang": "en",
+      "text": "agent. I think this was like a fun",
+      "offset": 1008.639,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "little toy problem where it's like it's",
+      "offset": 1009.839,
+      "duration": 4.721
+    },
+    {
+      "lang": "en",
+      "text": "not that hard of like a game for us as",
+      "offset": 1012.639,
+      "duration": 4.161
+    },
+    {
+      "lang": "en",
+      "text": "humans, but like it's actually like kind",
+      "offset": 1014.56,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "of tricky to get your code to be this",
+      "offset": 1016.8,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "sort of thing where you have this like",
+      "offset": 1018.88,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "multi-turn interaction protocol that you",
+      "offset": 1020.56,
+      "duration": 4.239
+    },
+    {
+      "lang": "en",
+      "text": "actually can do learning with. Um, but",
+      "offset": 1022.72,
+      "duration": 4.319
+    },
+    {
+      "lang": "en",
+      "text": "now it's like much easier. like the code",
+      "offset": 1024.799,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "to do these things is like quite simple",
+      "offset": 1027.039,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "and the reward functions can kind of be",
+      "offset": 1028.799,
+      "duration": 3.601
+    },
+    {
+      "lang": "en",
+      "text": "relatively simple for this sort of setup",
+      "offset": 1030.959,
+      "duration": 2.801
+    },
+    {
+      "lang": "en",
+      "text": "where it's like okay you want to reward",
+      "offset": 1032.4,
+      "duration": 3.519
+    },
+    {
+      "lang": "en",
+      "text": "it for like uh solving the thing",
+      "offset": 1033.76,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "eventually but also like give it more",
+      "offset": 1035.919,
+      "duration": 3.361
+    },
+    {
+      "lang": "en",
+      "text": "rewards for doing it in less turns and",
+      "offset": 1037.6,
+      "duration": 4.319
+    },
+    {
+      "lang": "en",
+      "text": "like this is a 7B model like works",
+      "offset": 1039.28,
+      "duration": 4.159
+    },
+    {
+      "lang": "en",
+      "text": "reasonably well but one of the reasons",
+      "offset": 1041.919,
+      "duration": 3.841
+    },
+    {
+      "lang": "en",
+      "text": "it works um which I'll talk about in a",
+      "offset": 1043.439,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "sec is uh SF warm-up as a way of kind of",
+      "offset": 1045.76,
+      "duration": 5.039
+    },
+    {
+      "lang": "en",
+      "text": "lowering the barrier of entry like this",
+      "offset": 1048.559,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "the code as it is is very much set up so",
+      "offset": 1050.799,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "that like your environments for RL are",
+      "offset": 1052.559,
+      "duration": 3.441
+    },
+    {
+      "lang": "en",
+      "text": "also just like synthetic data loops or",
+      "offset": 1054.559,
+      "duration": 4.081
+    },
+    {
+      "lang": "en",
+      "text": "evals where you can plug in claude or",
+      "offset": 1056,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "deepseek or open AAI and like test. So",
+      "offset": 1058.64,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "you don't have to like do RL to debug.",
+      "offset": 1060.64,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "You can like debug with an API in terms",
+      "offset": 1062.4,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "of seeing is this a good eval? Is this a",
+      "offset": 1064.64,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "good reward once you're kind of",
+      "offset": 1066.64,
+      "duration": 3.2
+    },
+    {
+      "lang": "en",
+      "text": "comfortable with it you can like use",
+      "offset": 1068.08,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "whatever API you like that you are",
+      "offset": 1069.84,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "allowed to use and make synthetic data",
+      "offset": 1071.76,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "do some SFT on it and now you can start",
+      "offset": 1074.16,
+      "duration": 3.519
+    },
+    {
+      "lang": "en",
+      "text": "doing RL and this like helps a lot with",
+      "offset": 1076.08,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "small models. Um, I think there's a lot",
+      "offset": 1077.679,
+      "duration": 4.321
+    },
+    {
+      "lang": "en",
+      "text": "of efficiency challenges that are like",
+      "offset": 1080,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "I've been kind of hard at work trying to",
+      "offset": 1082,
+      "duration": 3.28
+    },
+    {
+      "lang": "en",
+      "text": "solve in terms of like having all of",
+      "offset": 1083.52,
+      "duration": 2.88
+    },
+    {
+      "lang": "en",
+      "text": "your computation be utilized",
+      "offset": 1085.28,
+      "duration": 2.8
+    },
+    {
+      "lang": "en",
+      "text": "effectively, having everything be like",
+      "offset": 1086.4,
+      "duration": 3.12
+    },
+    {
+      "lang": "en",
+      "text": "fully async so you don't have to worry",
+      "offset": 1088.08,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "about like batching. Um, and that your",
+      "offset": 1089.52,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "trainer and your inference can kind of",
+      "offset": 1092.08,
+      "duration": 2.88
+    },
+    {
+      "lang": "en",
+      "text": "go at the same time. You can be like a",
+      "offset": 1093.44,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "little bit off policy. Um, a lot of",
+      "offset": 1094.96,
+      "duration": 3.839
+    },
+    {
+      "lang": "en",
+      "text": "engineering that I'm hoping like if you",
+      "offset": 1096.88,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "want to worry about that, great. Dig",
+      "offset": 1098.799,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "into it, fork the repo, mess with",
+      "offset": 1100.48,
+      "duration": 4.079
+    },
+    {
+      "lang": "en",
+      "text": "things. If you don't want to, you",
+      "offset": 1102.799,
+      "duration": 5.681
+    },
+    {
+      "lang": "en",
+      "text": "shouldn't have to. Um, and like the idea",
+      "offset": 1104.559,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "here is that this should become",
+      "offset": 1108.48,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "something that more people are trying",
+      "offset": 1109.919,
+      "duration": 4.241
+    },
+    {
+      "lang": "en",
+      "text": "out, more people are having fun with",
+      "offset": 1112.64,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "with exploring and getting a feel for",
+      "offset": 1114.16,
+      "duration": 4.639
+    },
+    {
+      "lang": "en",
+      "text": "it. Um, because if it's going to be a",
+      "offset": 1116.64,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "thing we have to worry about, if this is",
+      "offset": 1118.799,
+      "duration": 3.521
+    },
+    {
+      "lang": "en",
+      "text": "the future of building better agent",
+      "offset": 1120.24,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "models uh for your applications, like",
+      "offset": 1122.32,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "now's a good time to start. Um, and so",
+      "offset": 1125.28,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "this stuff is set up so you can like on",
+      "offset": 1127.76,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "a couple GPUs like uh do a lot of",
+      "offset": 1129.44,
+      "duration": 4.239
+    },
+    {
+      "lang": "en",
+      "text": "interesting research. Like the barrier",
+      "offset": 1132.32,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "of entry is like much lower now than it",
+      "offset": 1133.679,
+      "duration": 4.321
+    },
+    {
+      "lang": "en",
+      "text": "used to be. Um, I have a lot of fun",
+      "offset": 1135.84,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "doing this on like a couple GPUs. Uh, we",
+      "offset": 1138,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "sell GPUs by the way. Um, thanks",
+      "offset": 1140.24,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "everybody. Uh, I don't think we have",
+      "offset": 1143.28,
+      "duration": 7.32
+    },
+    {
+      "lang": "en",
+      "text": "time for questions, but uh, yeah.",
+      "offset": 1145.28,
+      "duration": 5.32
+    },
+    {
+      "lang": "en",
+      "text": "[Music]",
+      "offset": 1151.63,
+      "duration": 6.54
+    }
+  ],
+  "cleanText": "[Music]\nHi everyone, I'm Will Brown.\nI'm at Prime Intellect.\nUh, today I want to talk about training agentic reasoners.\nUm, just kind of as a very high-level overview, I think a lot of people here are really excited about reasoning, and a lot of people here are really excited about agents.\nBut I feel like a lot of the conversations between these two topics are kind of different, where people are like, \"Oh, reasoning is this one thing, and agents are this other thing.\"\nAnd the considerations of like reasoning are very different from the considerations of building agents.\nAnd I think the high-level thesis of this talk is like, no, they're kind of the same thing.\nUm, and you'll see why as we get into it.\nUm, first, just to start, like RL kind of works now.\nUm, I think for a long time people were like, \"Oh, is that our going to work?\nIs it not going to work?\nHow hard is it going to be?\"\nUm, and like DeepSeek, I think, took a lot of people by surprise for many reasons, like the costs or whatever, and like how good it is compared to the open models to the closed, the big labs, as well as just it being fully open.\nUm, but I think it was also just that it was RL applied at scale working with surprisingly few tweaks needed, where you just like have a good setup, you have a good signal, you have a model that is good enough to do some learning, and you see this curve where doing more RL results in the model getting better.\nUm, and it's also kind of how everyone else is doing it.\nLike this is what the big labs are really banking on to drive the next iterations of progress.\nThe o3 release is the one that OpenAI is really excited about, not GBT 4.5.\nLike they stopped serving the big pre-trained model via API, but they have continued to really double down on the scaling direction of doing more and more reinforcement learning and spending more compute on reinforcement learning once you have the right setup to enable progress.\nAnd o3 to me is like a very naturally agentic model.\nIt, the chat GBT version has all these tools.\nThe kind of selling point of it is not just that it's smarter.\nIt's that it's really good at using lots of tools in agentic task settings to solve harder problems that involve interacting with complex systems.\nAnd that is kind of really the selling point of all of this is that like the more complex your system, the more things can go wrong, the more that like a generic LM API is going to be brittle and go off the rails after a certain number of steps.\nAnd RL is kind of the way around it.\nIt's the trick you can do to take the system that kind of works, maybe it works on small scales, but as you go harder, it starts going off the rails and train the model to be better at that thing.\nUm, and so this is a recipe that is still kind of like a research topic that people are not fully sure like the best way to do it, especially outside of the big labs, but it clearly is moving in a direction where it's becoming more and more reliable, more and more accessible, and the sort of thing that I think would be silly to disregard as a potential like key piece of the future of agentic software and agentic applications.\nUh, but it's also complicated.\nSo on the left here, this is the like architecture diagram of Veril, which is kind of the most popular software people use in the research world for writing papers to uh do RL.\nSo if you want to like take a model and go do RL, Verl kind of expects that you understand all of this.\nUm on the left we have uh uh the right we have GRPO as presented in the original DeepSeek math paper back from early 2024.\nAnd like there's a lot of pieces here, a lot of like complicated steps going on that I think a lot of people who are used to thinking about APIs, used to thinking about building agents kind of like are hoping they don't have to worry about it.\nUm, and are hoping that like you can just set it aside and like something else will work and we'll just use the APIs and it'll all be great.\nAnd I think the reality is like somewhere in the middle where like I think it doesn't need to be this complicated, but I think you also kind of do have to be aware of it if your goal is really like building the most performant agents.\nNot necessarily just like today you need to know about it, but as a piece of the toolkit to potentially make really powerful agentic software.\nI think the people who are willing to do this and take the best open models and really RL them for their tasks and can figure out how to do that well are going to have a huge advantage.\nAnd that's the kind of thing that also allows you to like build a moat beyond just like being a wrapper API and towards something where it's like, oh, I actually have my own model now.\nBut not everyone can be a big lab.\nAnd so we kind of need to meet in the middle somewhere of like, okay, how do we make this a thing that starts to become feasible for startups, for individual researchers to actually do?\nUh, and like at what scale does this become like feasible?\nUm, and so agents are like the type of product that everyone's excited about.\nWe all like love cloud code and Devon and Manis and uh o3 and Deep Research, and like these are the sorts of products that are really capturing people's attention.\nUm, they're products that in their current iteration happen to work kind of because the models that are being used have like been RL to basically do these kinds of things.\nUm, like Claude is a very good coding agent probably because it has been RL on a lot of code.\nAnd so it's like not very surprising that if you plug Claude into essentially a while loop with some tools, it's like quite good at doing these things because it's basically most likely been trained in almost that exact setting.\nUm, same for things like o3, like it can do geogesser and whatever because whether it's literally geoger or something close to it, they have talked about training it to do this image cropping trick, like that's a technique that it didn't just know how to do out of the box.\nThey said, hey, let's give it these tools to do that and use reinforcement learning to train it to do that, and so that is kind of the recipe that we have seen coming from the big labs as if you want a powerful agent that can do a certain type of task, you can use reinforcement learning to train it to do that task better.\nUm, and so these are kind of the same thing, actually, like building an agent.\nUh, the pieces of making an agent in terms of the harness, the environment, the tools, and the iteration is essentially the same conceptual framing as canonical reinforcement learning in the sense of policies, actions, states, rewards, transition probabilities.\nUm, and I think the more that we start to view agents as this umbrella, which is not just about static chaining of API calls, but as this interaction loop with evaluations, that framing really is the way to think about RL, which is you build a system where a thing is interacting with an environment, and you have some way of evaluating how good it's doing.\nAnd RL is simply an algorithm to improve based on the scores of these evaluations.\nAnd if you're building agents and you're tuning your prompt and you're fiddling with your harnesses, this is kind of like doing RL by hand.\nWhat you're doing is you're saying like, okay, currently my evals are saying this.\nLet's make sure the eval are like capturing what I want.\nLet's look at the data.\nLet's see if the data matches what my evals are saying.\nAnd then, oh, let's try a new prompt.\nLet's try giving it a new tool.\nUm, let's try uh switching out the model.\nUm, like this is the process, which is also being targeted by reinforcement learning in the general sense beyond individual algorithms.\nUm, about these algorithms, like there's a few of them that are very important.\nAll of them have like different implementation details, but in general, the idea is you have a bunch of tasks, like versions of your problem, which are essentially prompts.\nYou have rollouts, which are just completions, potentially involving many steps of interactions, but like one sequence of stuff happening, and then you have evaluations, potentially interly throughout or at the end of the sequence.\nAnd what you're estimating is the advantage.\nThe advantage here is the idea that uh sometimes your model will be better than others.\nLike these uh LMs are all uh non-deterministic.\nYou have temperature above zero.\nYou have different things happen in different uh rolls of the dice.\nUm, and this uh forking process of saying like, okay, this time it did better than that time.\nWhy was it different?\nRL is really about saying like, okay, uh this is the actual thing that changed that resulted in the reward being better, the eval being better, this is the token at which I went down the good path versus the bad path.\nUm, and whether you're doing PPO or GRPO, um, like this is the mechanism by which you get the signal of like you have some things that sometimes went better, sometimes went worse, now you can kind of uh very surgically have the model learn to do more of the good stuff without changing too much overall.\nI think this is also kind of maybe a reason why DPO, I think people were hoping DPO would like really work well.\nIn my view, DPO does not necessarily have this like fine-grain advantage estimate.\nLike it's not really clear just from like a full good completion and a full bad completion where you're really getting the signal about these complex branching processes.\nUh, PPO has this, but it's also very expensive.\nGRPO, I think, has taken a lot of people kind of uh by storm in terms of like being a very nice like middle ground where it's more computationally efficient.\nIt's like simple to implement.\nUm, but also it does have this kind of forking process that comes just from sampling.\nUm, there's also just too many papers.\nSo like I think a lot of people just see a new paper every day and are like, do I have to read this one?\nUm, and I feel that too.\nI think it's difficult to know upfront like which of these are going to be important, which of them are just going to be like noise, especially because lots of them have very sensationalist titles, like, oh, Quen doesn't work.\nUm, or like, or everyone, everything only works with Quen is like kind of true, but like there's also more to the story than that.\nAnd I think there's like different implementation details of like, oh, if you change the loss function like this in this experiment, then it works.\nAnd I think for most people it is best to just like kind of set this aside and to not get too caught up in the individual details of individual experiments and individual papers and kind of think more holistically about what is the process of reinforcement learning doing?\nUm, what implementation details am I willing to kind of leave to other people to figure out and eventually come to me with like software that like has the the knob set correctly.\nUm, and which pieces are actually important for solving the problems I care about.\nUm, and so for a lot of people, I think the things that are going to be really interesting, um, are things that are relating to actual software, to actual problems that they want to solve in the world.\nAnd agents, I think, are kind of the instantiation of that where this makes sense.\nAnd the thing that makes an agent an agent is tools.\nUh, the ability to interact with an environment, with a system.\nA lot of people here are like very excited about MCP at the conference.\nLike MCP is just tools.\nMCP is about giving your LM the ability to like interact with stuff to go solve problems that involve changing files, making requests, uh, editing code, running code.\nUm, and so I think these are the papers that I get excited about because there feel like like there's parts of the puzzle that are not fully solved yet of like what's the right way to do all of this.\nLike there's still some open questions.\nUm, but I think those are getting kind of refined.\nWe're starting to see more and more, but like a lot of the code, the tools we have out in the wild to like go do this.\nLike if you want to like go play around with RL, most code bases are like very set up for like either code and math tasks or things that are quite similar to that.\nThis is kind of my fault.\nUm, I had a snippet go viral that was like, here's how you do RL on like GSMK, which is like a kind of easy math data set.\nUm, and then I think I've seen a lot of people like stick with this as like, oh, we're gonna RL on math.\nAnd I like this is also just like math is easy to evaluate.\nUm, and I think people are eval\nparallel to this about like how to build a good eval.\nUm, and so I think a lot of researchers gravitate towards things that like look like the benchmarks that are also really easy to eval because there's like a very clear signal of like, okay, this thing is like right, this thing is wrong.\nGood.\nOkay, we're doing RL.\nUm, but like real-world tasks are messier than that.\nUm, we are not going to like get great software systems just by like hill climbing on whatever question answer benchmark is popular today.\nUm, what we're going to do is we're going to have to do is start thinking about like the actual systems at hand and the challenges that emerge when we're trying to design these rewards.\nAnd so like reward hacking is like a real thing.\nUm, I think this is one of the lessons that like Rall works, but also it's not like always going to work.\nThere are things that can go wrong.\nAnd to me, reward hacking is really a message about the difficulty of building good evals.\nLike uh what you really want with an eval is for it to be easier for your model to do the task than to hack the eval.\nYou want to build a reward signal that actually captures what you care about where uh gaming it is like more difficult than not gaming it.\nIf you can if the model can learn to do the task directly just by doing what you want it to do uh in the spirit of the task, then like that is what will happen.\nIt will flow in the path of least resistance.\nThis is like models just want to learn, but they want to learn to do better on reward signals, and so your reward signals have to point in the direction of the thing you actually care about.\nUm, otherwise like models will find cheats.\nUm, and I think thinking about these things in combination kind of points a little bit towards a direction that I think is going to be very promising.\nAnd there's some very early signs that like this actually can work.\nUm, which is like when R1 came out, I was kind of like speculating like what's next?\nWhat are the things that are going to unlock this sort of technique being used more generally?\nUm, and you people talk a lot about like generator verifier gaps, like what are the differences between like solving a problem versus checking if you have a solution.\nAnd a lot of problems like are much easier to check than\n\n\nSolve.\nBut this isn't like a binary thing.\nThis is a spectrum of how difficult it is to verify a thing.\nBut, um, there's some kind of signs that you can do evaluations on more ambiguous tasks by just breaking them down into smaller pieces and by using LMs as subroutines in your evaluations, like LM judge on steroids, where maybe you want to actually train a specialized LM who is really good at doing these fine-grain evaluations.\nI like using the term rubric as a conceptual general umbrella around reward models, reward functions, LM as judge setups, like the criteria on which you are evaluating a thing.\nThere's a cool paper from DeepSeek that I thought was very exciting when it came out a couple months ago about how to train reward models that generate these rubrics on the fly.\nThere was a paper very recently that does this for creative writing and kind of found that, like, yes, you actually can train reward models that will come up with nuanced fine-grain evaluation criteria for a task on the fly given the actual problem.\nAnd this gives you something that results in a very fine-grain score that allows you to actually do RL and keep getting better.\nUm, and I think this is an area that I'm really excited about to keep watching.\nUm, but also, like, multi-turn.\nMulti-turn is probably where we're headed.\nWe want to do a Jetic search.\nWe want to do tool calls, software, games, long horizon planning, computer use, memory.\nScaling on tool calls lets you solve harder problems.\nUm, and so how do we actually do this?\nWhat's the way to go about building multi-agent or multi-turn agentic systems to do and that we can use RL with?\nUm, and I think the conceptual pieces here are environments are basically harnesses, rewards are basically eval tasks are just prompts, and your policy in the RL sense hopefully should just be as simple as an LM API.\nThe programming interface that makes sense for a lot of people is to have an API that you're writing code as if it's just a normal agent in a loop, but then this is a thing that you can use to go do RL.\nAnd so that's what I've been building over the past couple months.\nUm, I maintain a repo called verifiers.\nUm, it's finally on pip out in the world.\nYou can just install it, but it's been a long time coming.\nUm, and what it really is is a toolkit of these pieces to make it so that building an agent that you can actually train with RL feels just like building an agent.\nUm, so the interaction protocol here is quite simple, like this is the entire roll out function on the left of what happens in the code when you're running an agent to do RL, which is that you kind of set up some initial state stuff, have a while loop for \"is it done yet?\"\nIf it's not done, do a turn, and the thing you're passing here is a client object that's just an OpenAI compatible API.\nAnd I think this is the kind of interface that you really want if you want people to be able to go from their agent applications to something that's trainable to something they can use with RL.\nUm, it's been a lot of fun thinking about what are the abstractions?\nWhat are the pieces here?\nAnd so, like, there's things like parsers and rubrics that I think are nice building blocks that you sometimes want to use.\nYou can also not use them if you don't want to.\nBut, like, I tried to make it fun and user-friendly.\nUm, the other day I was like, \"Let's train a Wordle agent.\"\nI think this was a fun little toy problem where it's like it's not that hard of a game for us as humans, but it's actually kind of tricky to get your code to be this sort of thing where you have this multi-turn interaction protocol that you actually can do learning with.\nUm, but now it's like much easier.\nLike, the code to do these things is like quite simple, and the reward functions can kind of be relatively simple for this sort of setup, where it's like, \"Okay, you want to reward it for solving the thing eventually, but also give it more rewards for doing it in less turns,\" and, like, this is a 7B model, like, works reasonably well.\nBut one of the reasons it works, which I'll talk about in a sec, is SF warm-up as a way of kind of lowering the barrier of entry.\nLike, this code as it is is very much set up so that, like, your environments for RL are also just like synthetic data loops or evals where you can plug in Claude or DeepSeek or OpenAI and test.\nSo you don't have to do RL to debug.\nYou can debug with an API in terms of seeing, \"Is this a good eval?\nIs this a good reward?\"\nOnce you're kind of comfortable with it, you can use whatever API you like that you are allowed to use and make synthetic data, do some SFT on it, and now you can start doing RL, and this, like, helps a lot with small models.\nUm, I think there's a lot of efficiency challenges that are, like, I've been kind of hard at work trying to solve in terms of, like, having all of your computation be utilized effectively, having everything be like fully async so you don't have to worry about batching, and that your trainer and your inference can kind of go at the same time.\nYou can be a little bit off policy.\nUm, a lot of engineering that I'm hoping, like, if you want to worry about that, great.\nDig into it, fork the repo, mess with things.\nIf you don't want to, you shouldn't have to.\nUm, and, like, the idea here is that this should become something that more people are trying out, more people are having fun with, with exploring and getting a feel for it.\nUm, because if it's going to be a thing we have to worry about, if this is the future of building better agent models for your applications, like, now's a good time to start.\nUm, and so this stuff is set up so you can, like, on a couple GPUs, like, do a lot of interesting research.\nLike, the barrier of entry is like much lower now than it used to be.\nUm, I have a lot of fun doing this on, like, a couple GPUs.\nUh, we sell GPUs, by the way.\nUm, thanks, everybody.\nUh, I don't think we have time for questions, but, uh, yeah.\n[Music]\n",
+  "dumpedAt": "2025-07-21T18:43:26.387Z"
+}

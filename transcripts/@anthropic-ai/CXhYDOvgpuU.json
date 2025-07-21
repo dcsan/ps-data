@@ -1,0 +1,7942 @@
+{
+  "episodeId": "CXhYDOvgpuU",
+  "channelSlug": "@anthropic-ai",
+  "title": "Lessons on AI agents from Claude Plays Pokemon",
+  "publishedAt": "2025-04-24T15:28:08.000Z",
+  "rawLines": [
+    {
+      "lang": "en",
+      "text": "- The AI world has talked so much",
+      "offset": 0.1,
+      "duration": 1.514
+    },
+    {
+      "lang": "en",
+      "text": "about agents in the last year,",
+      "offset": 1.614,
+      "duration": 1.191
+    },
+    {
+      "lang": "en",
+      "text": "but for a lot of the world I think like,",
+      "offset": 2.805,
+      "duration": 1.683
+    },
+    {
+      "lang": "en",
+      "text": "it's pretty hard to really\nunderstand what that means.",
+      "offset": 4.488,
+      "duration": 2.432
+    },
+    {
+      "lang": "en",
+      "text": "And I think the example of\nPokemon where it's like, oh,",
+      "offset": 6.92,
+      "duration": 3.39
+    },
+    {
+      "lang": "en",
+      "text": "it's like not just a chatbot",
+      "offset": 10.31,
+      "duration": 2.248
+    },
+    {
+      "lang": "en",
+      "text": "where I type in a chat\nand I get a response back,",
+      "offset": 12.558,
+      "duration": 1.909
+    },
+    {
+      "lang": "en",
+      "text": "but like it's like doing\nthis on its own and seeing",
+      "offset": 14.467,
+      "duration": 2.316
+    },
+    {
+      "lang": "en",
+      "text": "and trying things and taking\nactions and all that is a way",
+      "offset": 16.783,
+      "duration": 2.977
+    },
+    {
+      "lang": "en",
+      "text": "that I think more people\nhave been able to like latch",
+      "offset": 19.76,
+      "duration": 2.441
+    },
+    {
+      "lang": "en",
+      "text": "onto what is this agents\nthing we're talking about?",
+      "offset": 22.201,
+      "duration": 2.449
+    },
+    {
+      "lang": "en",
+      "text": "- Take one.",
+      "offset": 24.65,
+      "duration": 0.986
+    },
+    {
+      "lang": "en",
+      "text": "- Today we're diving into the story",
+      "offset": 25.636,
+      "duration": 1.594
+    },
+    {
+      "lang": "en",
+      "text": "behind Claude Plays Pokemon.",
+      "offset": 27.23,
+      "duration": 1.89
+    },
+    {
+      "lang": "en",
+      "text": "I'm Alex. I lead Claude\nRelations here at Anthropic.",
+      "offset": 29.12,
+      "duration": 3.117
+    },
+    {
+      "lang": "en",
+      "text": "- And I'm David.",
+      "offset": 32.237,
+      "duration": 0.833
+    },
+    {
+      "lang": "en",
+      "text": "I'm on our Applied AI team and\nI made Claude Plays Pokemon.",
+      "offset": 33.07,
+      "duration": 3.267
+    },
+    {
+      "lang": "en",
+      "text": "- David,",
+      "offset": 36.337,
+      "duration": 0.833
+    },
+    {
+      "lang": "en",
+      "text": "can we get a broad overview",
+      "offset": 37.17,
+      "duration": 2.394
+    },
+    {
+      "lang": "en",
+      "text": "of what is Claude Plays Pokemon\nfor those who aren't aware.",
+      "offset": 39.564,
+      "duration": 3.266
+    },
+    {
+      "lang": "en",
+      "text": "- Claude Plays Pokemon is a\nsort of experiment with agents",
+      "offset": 42.83,
+      "duration": 4.947
+    },
+    {
+      "lang": "en",
+      "text": "that is hooking up Claude,\nour language model,",
+      "offset": 47.777,
+      "duration": 3.153
+    },
+    {
+      "lang": "en",
+      "text": "to the Game Boy game Pokemon Red,",
+      "offset": 50.93,
+      "duration": 2.755
+    },
+    {
+      "lang": "en",
+      "text": "letting it actually try to play the game.",
+      "offset": 53.685,
+      "duration": 2.465
+    },
+    {
+      "lang": "en",
+      "text": "And so we start it from square one,",
+      "offset": 56.15,
+      "duration": 2.077
+    },
+    {
+      "lang": "en",
+      "text": "like start a new game and\nsee how Claude does learning",
+      "offset": 58.227,
+      "duration": 2.8
+    },
+    {
+      "lang": "en",
+      "text": "how to be a Pokemon master.\n- Okay.",
+      "offset": 61.027,
+      "duration": 2.22
+    },
+    {
+      "lang": "en",
+      "text": "There's a lot there that we're gonna have",
+      "offset": 63.247,
+      "duration": 1.273
+    },
+    {
+      "lang": "en",
+      "text": "to get into-\n- I know.",
+      "offset": 64.52,
+      "duration": 0.833
+    },
+    {
+      "lang": "en",
+      "text": "- on the technical side\nand also just generally,",
+      "offset": 65.353,
+      "duration": 3.051
+    },
+    {
+      "lang": "en",
+      "text": "how is Claude playing Pokemon,\nhow does it know how to play?",
+      "offset": 68.404,
+      "duration": 3.146
+    },
+    {
+      "lang": "en",
+      "text": "But how did this actually come about?",
+      "offset": 71.55,
+      "duration": 1.88
+    },
+    {
+      "lang": "en",
+      "text": "What was the idea for this",
+      "offset": 73.43,
+      "duration": 1.333
+    },
+    {
+      "lang": "en",
+      "text": "and why Pokemon?\n- Yeah, yeah.",
+      "offset": 74.763,
+      "duration": 2.452
+    },
+    {
+      "lang": "en",
+      "text": "So the core genesis of like why\nI started this was a lot of,",
+      "offset": 77.215,
+      "duration": 5
+    },
+    {
+      "lang": "en",
+      "text": "I work with customers at Anthropic.",
+      "offset": 83.12,
+      "duration": 1.735
+    },
+    {
+      "lang": "en",
+      "text": "I spend a lot of my day\nworking with our customers",
+      "offset": 84.855,
+      "duration": 2.015
+    },
+    {
+      "lang": "en",
+      "text": "and it was pretty obvious\nto me last year that like,",
+      "offset": 86.87,
+      "duration": 3.14
+    },
+    {
+      "lang": "en",
+      "text": "agents was the most important thing",
+      "offset": 90.01,
+      "duration": 2.348
+    },
+    {
+      "lang": "en",
+      "text": "that was happening for our customers.",
+      "offset": 92.358,
+      "duration": 1.922
+    },
+    {
+      "lang": "en",
+      "text": "It's like where they were making value.",
+      "offset": 94.28,
+      "duration": 1.735
+    },
+    {
+      "lang": "en",
+      "text": "And I just wanted some\nsort of test bed for myself",
+      "offset": 96.015,
+      "duration": 3.095
+    },
+    {
+      "lang": "en",
+      "text": "to experiment with agents. To get a feel",
+      "offset": 99.11,
+      "duration": 2.654
+    },
+    {
+      "lang": "en",
+      "text": "for how does Claude work when\nit needs to take a whole bunch",
+      "offset": 101.764,
+      "duration": 3.916
+    },
+    {
+      "lang": "en",
+      "text": "of actions in a row without\nany conversation with a human.",
+      "offset": 105.68,
+      "duration": 2.877
+    },
+    {
+      "lang": "en",
+      "text": "I actually like had\nseen someone, before me,",
+      "offset": 108.557,
+      "duration": 2.581
+    },
+    {
+      "lang": "en",
+      "text": "had hooked up Claude to\nPokemon at Anthropic, Elliot.",
+      "offset": 111.138,
+      "duration": 4.211
+    },
+    {
+      "lang": "en",
+      "text": "And so that was sitting\nin the back of my brain",
+      "offset": 115.349,
+      "duration": 1.821
+    },
+    {
+      "lang": "en",
+      "text": "and then I thought like I\nreally want some sort of place",
+      "offset": 117.17,
+      "duration": 2.28
+    },
+    {
+      "lang": "en",
+      "text": "for me to do my own\nexperimentation with agents.",
+      "offset": 119.45,
+      "duration": 2.25
+    },
+    {
+      "lang": "en",
+      "text": "I am like a Pokemon long-term fanboy.",
+      "offset": 121.7,
+      "duration": 3.235
+    },
+    {
+      "lang": "en",
+      "text": "It was the first game I\never got when I was a kid,",
+      "offset": 124.935,
+      "duration": 2.015
+    },
+    {
+      "lang": "en",
+      "text": "and that was really like the initial...",
+      "offset": 126.95,
+      "duration": 1.83
+    },
+    {
+      "lang": "en",
+      "text": "And this was like June of 2024 last year",
+      "offset": 128.78,
+      "duration": 3.333
+    },
+    {
+      "lang": "en",
+      "text": "where we had a new model\ncoming out, 3.5 Sonnet.",
+      "offset": 133.19,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "It just seemed like the\nperfect time to give it a go.",
+      "offset": 138.17,
+      "duration": 2.61
+    },
+    {
+      "lang": "en",
+      "text": "- Why did you specifically,",
+      "offset": 140.78,
+      "duration": 1.92
+    },
+    {
+      "lang": "en",
+      "text": "besides that nostalgic component,",
+      "offset": 142.7,
+      "duration": 1.71
+    },
+    {
+      "lang": "en",
+      "text": "why choose Pokemon as like the test bed?",
+      "offset": 144.41,
+      "duration": 1.738
+    },
+    {
+      "lang": "en",
+      "text": "- Ah, yeah.",
+      "offset": 146.148,
+      "duration": 0.833
+    },
+    {
+      "lang": "en",
+      "text": "- Why not like Claude plays Mario or Zelda",
+      "offset": 146.981,
+      "duration": 2.744
+    },
+    {
+      "lang": "en",
+      "text": "or any other game.\n- Yeah.",
+      "offset": 149.725,
+      "duration": 1.47
+    },
+    {
+      "lang": "en",
+      "text": "Pokemon is actually like a\nreally good setup for this.",
+      "offset": 151.195,
+      "duration": 2.251
+    },
+    {
+      "lang": "en",
+      "text": "Language models, for all\ntheir graces right now,",
+      "offset": 153.446,
+      "duration": 2.274
+    },
+    {
+      "lang": "en",
+      "text": "they're like slow,",
+      "offset": 155.72,
+      "duration": 1.122
+    },
+    {
+      "lang": "en",
+      "text": "they take, you know, one\ngeneration at a time.",
+      "offset": 156.842,
+      "duration": 2.478
+    },
+    {
+      "lang": "en",
+      "text": "Like they basically can\nonly see like a snapshot",
+      "offset": 159.32,
+      "duration": 2.13
+    },
+    {
+      "lang": "en",
+      "text": "of the game at any point in time.",
+      "offset": 161.45,
+      "duration": 1.64
+    },
+    {
+      "lang": "en",
+      "text": "And Pokemon,",
+      "offset": 163.09,
+      "duration": 0.833
+    },
+    {
+      "lang": "en",
+      "text": "there's like essentially no consequences",
+      "offset": 163.923,
+      "duration": 1.232
+    },
+    {
+      "lang": "en",
+      "text": "for sitting and waiting",
+      "offset": 165.155,
+      "duration": 0.833
+    },
+    {
+      "lang": "en",
+      "text": "for a while, right? - Aah.",
+      "offset": 165.988,
+      "duration": 2.391
+    },
+    {
+      "lang": "en",
+      "text": "- The combat is turn-based",
+      "offset": 168.379,
+      "duration": 1.599
+    },
+    {
+      "lang": "en",
+      "text": "so you just have to press a button",
+      "offset": 169.978,
+      "duration": 1.071
+    },
+    {
+      "lang": "en",
+      "text": "and wait to see what happens.",
+      "offset": 171.049,
+      "duration": 1.681
+    },
+    {
+      "lang": "en",
+      "text": "Movement, not much happens\nwhen you're not moving.",
+      "offset": 172.73,
+      "duration": 2.04
+    },
+    {
+      "lang": "en",
+      "text": "So it's like in terms of games",
+      "offset": 174.77,
+      "duration": 1.956
+    },
+    {
+      "lang": "en",
+      "text": "for a model to be able to play,",
+      "offset": 176.726,
+      "duration": 2.282
+    },
+    {
+      "lang": "en",
+      "text": "it's sort of like perfectly set up.",
+      "offset": 179.008,
+      "duration": 3.302
+    },
+    {
+      "lang": "en",
+      "text": "And then separately,",
+      "offset": 182.31,
+      "duration": 1.566
+    },
+    {
+      "lang": "en",
+      "text": "like why games in the first place is",
+      "offset": 183.876,
+      "duration": 2.214
+    },
+    {
+      "lang": "en",
+      "text": "also like a pretty reasonable question",
+      "offset": 186.09,
+      "duration": 1.291
+    },
+    {
+      "lang": "en",
+      "text": "to get at.\n- Yeah.",
+      "offset": 187.381,
+      "duration": 1.281
+    },
+    {
+      "lang": "en",
+      "text": "- And one of the fun things\nabout games is they're like,",
+      "offset": 188.662,
+      "duration": 3.207
+    },
+    {
+      "lang": "en",
+      "text": "one of these unique things\nwhere you do something",
+      "offset": 191.869,
+      "duration": 3.611
+    },
+    {
+      "lang": "en",
+      "text": "for a really long period of time",
+      "offset": 195.48,
+      "duration": 1.5
+    },
+    {
+      "lang": "en",
+      "text": "and get pretty clear feedback,\nlike am I making progress?",
+      "offset": 196.98,
+      "duration": 3.09
+    },
+    {
+      "lang": "en",
+      "text": "So whether it's a score counter in Pong",
+      "offset": 200.07,
+      "duration": 2.875
+    },
+    {
+      "lang": "en",
+      "text": "that shows you like are you\nbeating your opponent in Pong",
+      "offset": 202.945,
+      "duration": 3.12
+    },
+    {
+      "lang": "en",
+      "text": "or in Pokemon, like am\nI getting gym badges?",
+      "offset": 206.065,
+      "duration": 3.365
+    },
+    {
+      "lang": "en",
+      "text": "Am I making my way through the game?",
+      "offset": 209.43,
+      "duration": 1.525
+    },
+    {
+      "lang": "en",
+      "text": "You actually get some like feedback loop",
+      "offset": 210.955,
+      "duration": 1.44
+    },
+    {
+      "lang": "en",
+      "text": "where you can see like,",
+      "offset": 212.395,
+      "duration": 1.311
+    },
+    {
+      "lang": "en",
+      "text": "is the model actually being successful?",
+      "offset": 213.706,
+      "duration": 1.869
+    },
+    {
+      "lang": "en",
+      "text": "Like can it do this thing?",
+      "offset": 215.575,
+      "duration": 1.83
+    },
+    {
+      "lang": "en",
+      "text": "And so games just like happen\nto be this great environment",
+      "offset": 217.405,
+      "duration": 4.17
+    },
+    {
+      "lang": "en",
+      "text": "where you can let a model try",
+      "offset": 221.575,
+      "duration": 2.206
+    },
+    {
+      "lang": "en",
+      "text": "to do something for a long\ntime and actually like,",
+      "offset": 223.781,
+      "duration": 1.982
+    },
+    {
+      "lang": "en",
+      "text": "by the structure of the games themselves,",
+      "offset": 225.763,
+      "duration": 1.552
+    },
+    {
+      "lang": "en",
+      "text": "get a sense of like how well is it doing",
+      "offset": 227.315,
+      "duration": 2.155
+    },
+    {
+      "lang": "en",
+      "text": "in some measurable way.",
+      "offset": 229.47,
+      "duration": 1.33
+    },
+    {
+      "lang": "en",
+      "text": "- Right. Okay.",
+      "offset": 230.8,
+      "duration": 0.833
+    },
+    {
+      "lang": "en",
+      "text": "So to summarize that, basically,",
+      "offset": 231.633,
+      "duration": 1.57
+    },
+    {
+      "lang": "en",
+      "text": "Pokemon's great because it's turn-based.",
+      "offset": 233.203,
+      "duration": 3.047
+    },
+    {
+      "lang": "en",
+      "text": "It's not synchronous",
+      "offset": 236.25,
+      "duration": 0.833
+    },
+    {
+      "lang": "en",
+      "text": "necessarily.\n- Yeah.",
+      "offset": 237.083,
+      "duration": 0.833
+    },
+    {
+      "lang": "en",
+      "text": "- You're not playing against other people.",
+      "offset": 237.916,
+      "duration": 0.958
+    },
+    {
+      "lang": "en",
+      "text": "So like we couldn't have Claude Plays",
+      "offset": 238.874,
+      "duration": 1.991
+    },
+    {
+      "lang": "en",
+      "text": "like Call of Duty or something like that,",
+      "offset": 240.865,
+      "duration": 1.333
+    },
+    {
+      "lang": "en",
+      "text": "which does not work right now.\n- Yeah, yeah, yeah.",
+      "offset": 242.198,
+      "duration": 1.368
+    },
+    {
+      "lang": "en",
+      "text": "- It would be really hard.",
+      "offset": 243.566,
+      "duration": 1.397
+    },
+    {
+      "lang": "en",
+      "text": "Like if you could get Claude running",
+      "offset": 244.963,
+      "duration": 1.439
+    },
+    {
+      "lang": "en",
+      "text": "at 60 frames a second-\n- Right.",
+      "offset": 246.402,
+      "duration": 1.458
+    },
+    {
+      "lang": "en",
+      "text": "- like maybe you could\nplay some other game,",
+      "offset": 247.86,
+      "duration": 1.74
+    },
+    {
+      "lang": "en",
+      "text": "but practically right now, yeah,",
+      "offset": 249.6,
+      "duration": 2.216
+    },
+    {
+      "lang": "en",
+      "text": "exactly right.\n- Right.",
+      "offset": 251.816,
+      "duration": 1.122
+    },
+    {
+      "lang": "en",
+      "text": "And then games are great",
+      "offset": 252.938,
+      "duration": 1.492
+    },
+    {
+      "lang": "en",
+      "text": "because they're kind\nof their own simulated",
+      "offset": 254.43,
+      "duration": 2.61
+    },
+    {
+      "lang": "en",
+      "text": "contained environment-\n- Yeah,",
+      "offset": 257.04,
+      "duration": 1.333
+    },
+    {
+      "lang": "en",
+      "text": "that's exactly right.\n- where you can go",
+      "offset": 258.373,
+      "duration": 0.833
+    },
+    {
+      "lang": "en",
+      "text": "through an entire process.\n- Yeah.",
+      "offset": 259.206,
+      "duration": 2.066
+    },
+    {
+      "lang": "en",
+      "text": "- We have Claude Playing Pokemon.",
+      "offset": 261.272,
+      "duration": 1.958
+    },
+    {
+      "lang": "en",
+      "text": "You've started to work on this,",
+      "offset": 263.23,
+      "duration": 0.958
+    },
+    {
+      "lang": "en",
+      "text": "but how does that actually work?",
+      "offset": 264.188,
+      "duration": 1.277
+    },
+    {
+      "lang": "en",
+      "text": "Like how is Claude\ncontrolling the character",
+      "offset": 265.465,
+      "duration": 3.15
+    },
+    {
+      "lang": "en",
+      "text": "in the game and actually-\n- Yeah.",
+      "offset": 268.615,
+      "duration": 0.833
+    },
+    {
+      "lang": "en",
+      "text": "- like making things happen?",
+      "offset": 269.448,
+      "duration": 1.285
+    },
+    {
+      "lang": "en",
+      "text": "- I guess in general,",
+      "offset": 270.733,
+      "duration": 1.351
+    },
+    {
+      "lang": "en",
+      "text": "like you can think of the\nprompt for Claude to start",
+      "offset": 272.084,
+      "duration": 3.854
+    },
+    {
+      "lang": "en",
+      "text": "is basically like you're playing Pokemon.",
+      "offset": 275.938,
+      "duration": 1.952
+    },
+    {
+      "lang": "en",
+      "text": "It's really simple.",
+      "offset": 277.89,
+      "duration": 0.833
+    },
+    {
+      "lang": "en",
+      "text": "I just tell the model it's\nplaying Pokemon and that's it.",
+      "offset": 278.723,
+      "duration": 2.492
+    },
+    {
+      "lang": "en",
+      "text": "And then you hook up Claude\nwith a set of tools that it has",
+      "offset": 281.215,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "to be able to actually\ninteract with the game.",
+      "offset": 285.295,
+      "duration": 2.22
+    },
+    {
+      "lang": "en",
+      "text": "And you know, it's actually\na pretty simple set of tools",
+      "offset": 287.515,
+      "duration": 2.67
+    },
+    {
+      "lang": "en",
+      "text": "as the minimal set you\nget in a Game Boy game.",
+      "offset": 290.185,
+      "duration": 2.91
+    },
+    {
+      "lang": "en",
+      "text": "It's like pressing\nbuttons on the Game Boy.",
+      "offset": 293.095,
+      "duration": 1.83
+    },
+    {
+      "lang": "en",
+      "text": "So basically you tell Claude",
+      "offset": 294.925,
+      "duration": 1.312
+    },
+    {
+      "lang": "en",
+      "text": "it's allowed to press A, press B,",
+      "offset": 296.237,
+      "duration": 2.581
+    },
+    {
+      "lang": "en",
+      "text": "hit up, down, left,\nright, that kinda thing.",
+      "offset": 298.818,
+      "duration": 1.687
+    },
+    {
+      "lang": "en",
+      "text": "You describe that tool\nto it behind the scenes.",
+      "offset": 300.505,
+      "duration": 2.19
+    },
+    {
+      "lang": "en",
+      "text": "Like I have to implement\nsome code that actually says",
+      "offset": 302.695,
+      "duration": 2.639
+    },
+    {
+      "lang": "en",
+      "text": "like when Claude says it wants to press A,",
+      "offset": 305.334,
+      "duration": 2.286
+    },
+    {
+      "lang": "en",
+      "text": "I need to make it so that\nthat actually goes presses A",
+      "offset": 307.62,
+      "duration": 2.132
+    },
+    {
+      "lang": "en",
+      "text": "on the emulator.\n- I see.",
+      "offset": 309.752,
+      "duration": 1.809
+    },
+    {
+      "lang": "en",
+      "text": "So the tools are like\noptions for next action",
+      "offset": 311.561,
+      "duration": 3.75
+    },
+    {
+      "lang": "en",
+      "text": "that Claude can take-\n- Exactly, exactly.",
+      "offset": 315.311,
+      "duration": 1.492
+    },
+    {
+      "lang": "en",
+      "text": "- and then you get the output from Claude",
+      "offset": 316.803,
+      "duration": 2.016
+    },
+    {
+      "lang": "en",
+      "text": "and then translate it into the action.",
+      "offset": 318.819,
+      "duration": 1.722
+    },
+    {
+      "lang": "en",
+      "text": "- Bingo,",
+      "offset": 320.541,
+      "duration": 0.833
+    },
+    {
+      "lang": "en",
+      "text": "so-\n- Okay.",
+      "offset": 321.374,
+      "duration": 0.833
+    },
+    {
+      "lang": "en",
+      "text": "- the whole game is essentially Claude",
+      "offset": 322.207,
+      "duration": 1.826
+    },
+    {
+      "lang": "en",
+      "text": "taking a series of actions,",
+      "offset": 324.033,
+      "duration": 1.492
+    },
+    {
+      "lang": "en",
+      "text": "mostly just pressing\nbuttons one at a time.",
+      "offset": 325.525,
+      "duration": 2.585
+    },
+    {
+      "lang": "en",
+      "text": "Now the key feedback loop\nin how it does this is",
+      "offset": 328.11,
+      "duration": 2.531
+    },
+    {
+      "lang": "en",
+      "text": "every time it presses a button,",
+      "offset": 330.641,
+      "duration": 1.318
+    },
+    {
+      "lang": "en",
+      "text": "we send it back a screenshot.",
+      "offset": 331.959,
+      "duration": 1.451
+    },
+    {
+      "lang": "en",
+      "text": "- Ah, okay.",
+      "offset": 333.41,
+      "duration": 0.833
+    },
+    {
+      "lang": "en",
+      "text": "- So Claude actually sees\nthe screen of the Game Boy.",
+      "offset": 334.243,
+      "duration": 2.58
+    },
+    {
+      "lang": "en",
+      "text": "It can see like I'm in this room",
+      "offset": 336.823,
+      "duration": 1.962
+    },
+    {
+      "lang": "en",
+      "text": "or I'm in a Pokemon\nbattle or whatever it is.",
+      "offset": 338.785,
+      "duration": 2.13
+    },
+    {
+      "lang": "en",
+      "text": "And so the next thing I wanna do is",
+      "offset": 340.915,
+      "duration": 1.658
+    },
+    {
+      "lang": "en",
+      "text": "press A to talk to this person,",
+      "offset": 342.573,
+      "duration": 1.956
+    },
+    {
+      "lang": "en",
+      "text": "or to select this move, or whatever it is.",
+      "offset": 344.529,
+      "duration": 2.326
+    },
+    {
+      "lang": "en",
+      "text": "And then it kinda just does that forever,",
+      "offset": 346.855,
+      "duration": 2.55
+    },
+    {
+      "lang": "en",
+      "text": "you know, iterates on that.",
+      "offset": 349.405,
+      "duration": 2.04
+    },
+    {
+      "lang": "en",
+      "text": "Now practically we've actually given it",
+      "offset": 351.445,
+      "duration": 1.425
+    },
+    {
+      "lang": "en",
+      "text": "a handful of other tools\nthat help it do things",
+      "offset": 352.87,
+      "duration": 2.002
+    },
+    {
+      "lang": "en",
+      "text": "like manage its memory",
+      "offset": 354.872,
+      "duration": 1.402
+    },
+    {
+      "lang": "en",
+      "text": "over a long period.\n- Yeah.",
+      "offset": 356.274,
+      "duration": 1.246
+    },
+    {
+      "lang": "en",
+      "text": "- Claude has a limited amount of context.",
+      "offset": 357.52,
+      "duration": 2.215
+    },
+    {
+      "lang": "en",
+      "text": "It can't fit actually like\na whole Game Boy rollout",
+      "offset": 359.735,
+      "duration": 2.616
+    },
+    {
+      "lang": "en",
+      "text": "like play in one context window.",
+      "offset": 362.351,
+      "duration": 2.574
+    },
+    {
+      "lang": "en",
+      "text": "So there's a lot you need\nto do to actually manage",
+      "offset": 364.925,
+      "duration": 2.041
+    },
+    {
+      "lang": "en",
+      "text": "the details of how to get",
+      "offset": 366.966,
+      "duration": 1.191
+    },
+    {
+      "lang": "en",
+      "text": "that right.\n- Right.",
+      "offset": 368.157,
+      "duration": 0.833
+    },
+    {
+      "lang": "en",
+      "text": "- But at its core, it's sort of like,",
+      "offset": 368.99,
+      "duration": 2.33
+    },
+    {
+      "lang": "en",
+      "text": "while true, press buttons-\n- Right.",
+      "offset": 371.32,
+      "duration": 3.471
+    },
+    {
+      "lang": "en",
+      "text": "- and see if you could play the game",
+      "offset": 374.791,
+      "duration": 1.294
+    },
+    {
+      "lang": "en",
+      "text": "and give it some feedback along the way",
+      "offset": 376.085,
+      "duration": 1.595
+    },
+    {
+      "lang": "en",
+      "text": "to know what it's looking at.\n- Yeah,",
+      "offset": 377.68,
+      "duration": 1.875
+    },
+    {
+      "lang": "en",
+      "text": "and so as you've been constructing",
+      "offset": 379.555,
+      "duration": 2.054
+    },
+    {
+      "lang": "en",
+      "text": "that kind of harness around Claude",
+      "offset": 381.609,
+      "duration": 1.931
+    },
+    {
+      "lang": "en",
+      "text": "to get it to play that-\n- Yep.",
+      "offset": 383.54,
+      "duration": 1.919
+    },
+    {
+      "lang": "en",
+      "text": "- and you're running into\nsome of those limitations,",
+      "offset": 385.459,
+      "duration": 2.641
+    },
+    {
+      "lang": "en",
+      "text": "one of the things you've encountered",
+      "offset": 388.1,
+      "duration": 1.306
+    },
+    {
+      "lang": "en",
+      "text": "is like the memory issue.",
+      "offset": 389.406,
+      "duration": 1.083
+    },
+    {
+      "lang": "en",
+      "text": "- Yep.",
+      "offset": 390.489,
+      "duration": 1.488
+    },
+    {
+      "lang": "en",
+      "text": "- Maybe you can speak a little bit",
+      "offset": 391.977,
+      "duration": 0.833
+    },
+    {
+      "lang": "en",
+      "text": "on that around-\n- Yeah.",
+      "offset": 392.81,
+      "duration": 0.958
+    },
+    {
+      "lang": "en",
+      "text": "- what you had to do specifically there.",
+      "offset": 393.768,
+      "duration": 1.746
+    },
+    {
+      "lang": "en",
+      "text": "- Yeah, I just like I'm gonna\nzoom outta that question",
+      "offset": 395.514,
+      "duration": 2.241
+    },
+    {
+      "lang": "en",
+      "text": "one second first-\n- Yeah.",
+      "offset": 397.755,
+      "duration": 0.833
+    },
+    {
+      "lang": "en",
+      "text": "- which is like there's all sorts of ways",
+      "offset": 398.588,
+      "duration": 1.472
+    },
+    {
+      "lang": "en",
+      "text": "that people have come up with\nto build these like agents",
+      "offset": 400.06,
+      "duration": 2.46
+    },
+    {
+      "lang": "en",
+      "text": "that have to take actions for a long time.",
+      "offset": 402.52,
+      "duration": 2.735
+    },
+    {
+      "lang": "en",
+      "text": "So you know, there's this like\ngeneral concept of an agent,",
+      "offset": 405.255,
+      "duration": 2.755
+    },
+    {
+      "lang": "en",
+      "text": "which is just like the\nmodel needs to take some set",
+      "offset": 408.01,
+      "duration": 2.73
+    },
+    {
+      "lang": "en",
+      "text": "of actions and we really don't know",
+      "offset": 410.74,
+      "duration": 1.195
+    },
+    {
+      "lang": "en",
+      "text": "what it is ahead of time,",
+      "offset": 411.935,
+      "duration": 1.062
+    },
+    {
+      "lang": "en",
+      "text": "but the model's going to have to like,",
+      "offset": 412.997,
+      "duration": 1.261
+    },
+    {
+      "lang": "en",
+      "text": "do something, see what happens,",
+      "offset": 414.258,
+      "duration": 2.525
+    },
+    {
+      "lang": "en",
+      "text": "do the next thing, learn.",
+      "offset": 416.783,
+      "duration": 1.667
+    },
+    {
+      "lang": "en",
+      "text": "And people have come up\nwith all sorts of crazy ways",
+      "offset": 418.45,
+      "duration": 1.95
+    },
+    {
+      "lang": "en",
+      "text": "to wire up that thing to\ntry to make models better",
+      "offset": 420.4,
+      "duration": 3.494
+    },
+    {
+      "lang": "en",
+      "text": "in any number of situations.",
+      "offset": 423.894,
+      "duration": 2.296
+    },
+    {
+      "lang": "en",
+      "text": "And so I actually,",
+      "offset": 426.19,
+      "duration": 0.833
+    },
+    {
+      "lang": "en",
+      "text": "like the first thing I did was just try",
+      "offset": 427.023,
+      "duration": 2.162
+    },
+    {
+      "lang": "en",
+      "text": "other people's ideas basically,",
+      "offset": 429.185,
+      "duration": 1.391
+    },
+    {
+      "lang": "en",
+      "text": "right?\n- Okay, yeah.",
+      "offset": 430.576,
+      "duration": 1.083
+    },
+    {
+      "lang": "en",
+      "text": "- So there's this paper called &quot;Voyager.&quot;",
+      "offset": 431.659,
+      "duration": 2.506
+    },
+    {
+      "lang": "en",
+      "text": "That was the first thing I tried.",
+      "offset": 434.165,
+      "duration": 2.07
+    },
+    {
+      "lang": "en",
+      "text": "It was I think probably like\na 2023 paper from Nvidia",
+      "offset": 436.235,
+      "duration": 3.9
+    },
+    {
+      "lang": "en",
+      "text": "that they used to play Minecraft.",
+      "offset": 440.135,
+      "duration": 1.98
+    },
+    {
+      "lang": "en",
+      "text": "And so that was like\nthe first thing I tried",
+      "offset": 442.115,
+      "duration": 2.16
+    },
+    {
+      "lang": "en",
+      "text": "and that gives the model all sorts of,",
+      "offset": 444.275,
+      "duration": 1.548
+    },
+    {
+      "lang": "en",
+      "text": "I won't dive into it,",
+      "offset": 445.823,
+      "duration": 0.833
+    },
+    {
+      "lang": "en",
+      "text": "but like a lot of fancy tools and stuff",
+      "offset": 446.656,
+      "duration": 1.489
+    },
+    {
+      "lang": "en",
+      "text": "and I've like sort of like stripped back",
+      "offset": 448.145,
+      "duration": 1.44
+    },
+    {
+      "lang": "en",
+      "text": "to my own simple version of it from there.",
+      "offset": 449.585,
+      "duration": 2.01
+    },
+    {
+      "lang": "en",
+      "text": "So then like I guess\nwhat you start with is",
+      "offset": 451.595,
+      "duration": 2.341
+    },
+    {
+      "lang": "en",
+      "text": "this sort of like the\nworld's simplest version,",
+      "offset": 453.936,
+      "duration": 1.619
+    },
+    {
+      "lang": "en",
+      "text": "all you can do is press\nbuttons and get a screenshot.",
+      "offset": 455.555,
+      "duration": 2.46
+    },
+    {
+      "lang": "en",
+      "text": "And the first wall you run into is",
+      "offset": 458.015,
+      "duration": 2.43
+    },
+    {
+      "lang": "en",
+      "text": "what happens when you hit\n200,000 tokens basically,",
+      "offset": 460.445,
+      "duration": 2.61
+    },
+    {
+      "lang": "en",
+      "text": "which is the limit of Claude.",
+      "offset": 463.055,
+      "duration": 1.641
+    },
+    {
+      "lang": "en",
+      "text": "Practically that's like\nsomething like taking 50 buttons",
+      "offset": 464.696,
+      "duration": 3.939
+    },
+    {
+      "lang": "en",
+      "text": "or something like that and\ngetting a screenshot back",
+      "offset": 468.635,
+      "duration": 2.15
+    },
+    {
+      "lang": "en",
+      "text": "fills it up.\n- Right. Okay.",
+      "offset": 470.785,
+      "duration": 0.958
+    },
+    {
+      "lang": "en",
+      "text": "- So you press 50 buttons",
+      "offset": 471.743,
+      "duration": 1.877
+    },
+    {
+      "lang": "en",
+      "text": "and you have barely started\nthe game in Pokemon.",
+      "offset": 473.62,
+      "duration": 2.7
+    },
+    {
+      "lang": "en",
+      "text": "And so you run into\nthis wall pretty quickly",
+      "offset": 476.32,
+      "duration": 1.86
+    },
+    {
+      "lang": "en",
+      "text": "where if you do nothing,\nyou just run outta space,",
+      "offset": 478.18,
+      "duration": 2.125
+    },
+    {
+      "lang": "en",
+      "text": "and then you crash and you're done.",
+      "offset": 480.305,
+      "duration": 1.59
+    },
+    {
+      "lang": "en",
+      "text": "And so one of the first things\nyou need to figure out is",
+      "offset": 481.895,
+      "duration": 1.86
+    },
+    {
+      "lang": "en",
+      "text": "what do I do when I\nrun outta space, right?",
+      "offset": 483.755,
+      "duration": 3.593
+    },
+    {
+      "lang": "en",
+      "text": "And the two like key insights here",
+      "offset": 487.348,
+      "duration": 2.833
+    },
+    {
+      "lang": "en",
+      "text": "of how I went about this at least,",
+      "offset": 491.923,
+      "duration": 2.637
+    },
+    {
+      "lang": "en",
+      "text": "and I think that's actually\npretty well reflected",
+      "offset": 494.56,
+      "duration": 1.845
+    },
+    {
+      "lang": "en",
+      "text": "like in the industry these days",
+      "offset": 496.405,
+      "duration": 1.072
+    },
+    {
+      "lang": "en",
+      "text": "about how you think about agents",
+      "offset": 497.477,
+      "duration": 1.258
+    },
+    {
+      "lang": "en",
+      "text": "are some concept of long-term memory.",
+      "offset": 498.735,
+      "duration": 2.3
+    },
+    {
+      "lang": "en",
+      "text": "So I give Claude some ability\nto basically explore a memory",
+      "offset": 501.035,
+      "duration": 3.54
+    },
+    {
+      "lang": "en",
+      "text": "and what I call a knowledge base",
+      "offset": 504.575,
+      "duration": 2.13
+    },
+    {
+      "lang": "en",
+      "text": "where it just basically says\nlike I just did this thing",
+      "offset": 506.705,
+      "duration": 2.16
+    },
+    {
+      "lang": "en",
+      "text": "or I have these Pokemon or here's my goals",
+      "offset": 508.865,
+      "duration": 2.94
+    },
+    {
+      "lang": "en",
+      "text": "and I've checked off six\nof them or whatever it is.",
+      "offset": 511.805,
+      "duration": 2.04
+    },
+    {
+      "lang": "en",
+      "text": "And and you'll see it sort of\nlike make incremental updates,",
+      "offset": 513.845,
+      "duration": 2.7
+    },
+    {
+      "lang": "en",
+      "text": "and that persists throughout time.",
+      "offset": 516.545,
+      "duration": 2.43
+    },
+    {
+      "lang": "en",
+      "text": "Like it can constantly always look",
+      "offset": 518.975,
+      "duration": 1.891
+    },
+    {
+      "lang": "en",
+      "text": "at that and keep track of something",
+      "offset": 520.866,
+      "duration": 2.674
+    },
+    {
+      "lang": "en",
+      "text": "because then the second key is",
+      "offset": 523.54,
+      "duration": 1.764
+    },
+    {
+      "lang": "en",
+      "text": "once I fill up the context length,",
+      "offset": 525.304,
+      "duration": 2.061
+    },
+    {
+      "lang": "en",
+      "text": "I have Claude summarize back down",
+      "offset": 527.365,
+      "duration": 1.935
+    },
+    {
+      "lang": "en",
+      "text": "to remove the 50 actions it just took",
+      "offset": 529.3,
+      "duration": 3.417
+    },
+    {
+      "lang": "en",
+      "text": "into one short summary.\n- I see.",
+      "offset": 532.717,
+      "duration": 1.789
+    },
+    {
+      "lang": "en",
+      "text": "- So you delete a whole\nbunch of stuff and reset,",
+      "offset": 534.506,
+      "duration": 2.479
+    },
+    {
+      "lang": "en",
+      "text": "but it has this sort of like\nset of long-term memories",
+      "offset": 536.985,
+      "duration": 2.265
+    },
+    {
+      "lang": "en",
+      "text": "that give it some ability to sort",
+      "offset": 539.25,
+      "duration": 1.25
+    },
+    {
+      "lang": "en",
+      "text": "of like remember things",
+      "offset": 540.5,
+      "duration": 1.49
+    },
+    {
+      "lang": "en",
+      "text": "over the course of, potentially,",
+      "offset": 541.99,
+      "duration": 2.05
+    },
+    {
+      "lang": "en",
+      "text": "I mean if you look at\nthe Twitch stream now,",
+      "offset": 544.04,
+      "duration": 2.125
+    },
+    {
+      "lang": "en",
+      "text": "like it's been running for\nthree weeks continuously.",
+      "offset": 546.165,
+      "duration": 3.515
+    },
+    {
+      "lang": "en",
+      "text": "It's probably summarized\nitself a few thousand times",
+      "offset": 549.68,
+      "duration": 3.108
+    },
+    {
+      "lang": "en",
+      "text": "by now.\n- Wow, wow.",
+      "offset": 552.788,
+      "duration": 0.958
+    },
+    {
+      "lang": "en",
+      "text": "- And so it's really important for it",
+      "offset": 553.746,
+      "duration": 1.659
+    },
+    {
+      "lang": "en",
+      "text": "to have some sort of\nlong-term memory to remember",
+      "offset": 555.405,
+      "duration": 3.51
+    },
+    {
+      "lang": "en",
+      "text": "the last three weeks of what it's done.",
+      "offset": 558.915,
+      "duration": 2.19
+    },
+    {
+      "lang": "en",
+      "text": "- So the long-term memory there,",
+      "offset": 561.105,
+      "duration": 1.675
+    },
+    {
+      "lang": "en",
+      "text": "it writing out to this\nexternal knowledge base,",
+      "offset": 562.78,
+      "duration": 2.608
+    },
+    {
+      "lang": "en",
+      "text": "which is basically like",
+      "offset": 565.388,
+      "duration": 0.833
+    },
+    {
+      "lang": "en",
+      "text": "a plain text file-\n- Yeah.",
+      "offset": 566.221,
+      "duration": 1.842
+    },
+    {
+      "lang": "en",
+      "text": "- is like kind of like the movie Memento",
+      "offset": 568.063,
+      "duration": 2.347
+    },
+    {
+      "lang": "en",
+      "text": "where they were like writing sticky notes",
+      "offset": 570.41,
+      "duration": 1.225
+    },
+    {
+      "lang": "en",
+      "text": "on the wall and everything to like track,",
+      "offset": 571.635,
+      "duration": 1.974
+    },
+    {
+      "lang": "en",
+      "text": "all right, I've been here, I've done this.",
+      "offset": 573.609,
+      "duration": 1.261
+    },
+    {
+      "lang": "en",
+      "text": "- Yeah,",
+      "offset": 574.87,
+      "duration": 0.833
+    },
+    {
+      "lang": "en",
+      "text": "that's exactly right.\n- Yeah.",
+      "offset": 575.703,
+      "duration": 1.196
+    },
+    {
+      "lang": "en",
+      "text": "- Like if you just do it... if you\nnaively were to delete the message,",
+      "offset": 576.899,
+      "duration": 2.896
+    },
+    {
+      "lang": "en",
+      "text": "Claude would have amnesia\nand it would be like,",
+      "offset": 579.795,
+      "duration": 2.107
+    },
+    {
+      "lang": "en",
+      "text": "how did I get here?\n- Right.",
+      "offset": 581.902,
+      "duration": 1.174
+    },
+    {
+      "lang": "en",
+      "text": "- Why am I part way through Pokemon?",
+      "offset": 583.076,
+      "duration": 1.369
+    },
+    {
+      "lang": "en",
+      "text": "You told me I'm just starting\na new game. What's going on?",
+      "offset": 584.445,
+      "duration": 2.315
+    },
+    {
+      "lang": "en",
+      "text": "In some sense,",
+      "offset": 586.76,
+      "duration": 0.833
+    },
+    {
+      "lang": "en",
+      "text": "this is the Post-It notes\nthat Claude leaves itself",
+      "offset": 587.593,
+      "duration": 1.714
+    },
+    {
+      "lang": "en",
+      "text": "so that when it has the reset",
+      "offset": 589.307,
+      "duration": 2.128
+    },
+    {
+      "lang": "en",
+      "text": "and you remove a lot of\nwhat's recently seen,",
+      "offset": 591.435,
+      "duration": 2.13
+    },
+    {
+      "lang": "en",
+      "text": "it has some way to remember like,",
+      "offset": 593.565,
+      "duration": 1.558
+    },
+    {
+      "lang": "en",
+      "text": "all right, I know what I've done so far,",
+      "offset": 595.123,
+      "duration": 1.712
+    },
+    {
+      "lang": "en",
+      "text": "I have a sense of where I'm at.",
+      "offset": 596.835,
+      "duration": 1.95
+    },
+    {
+      "lang": "en",
+      "text": "Maybe I've even like learned some lessons,",
+      "offset": 598.785,
+      "duration": 1.59
+    },
+    {
+      "lang": "en",
+      "text": "like maybe I've learned some\nthings about like this strategy",
+      "offset": 600.375,
+      "duration": 2.661
+    },
+    {
+      "lang": "en",
+      "text": "works really well.\n- Ah.",
+      "offset": 603.036,
+      "duration": 1.225
+    },
+    {
+      "lang": "en",
+      "text": "- I've learned some stuff",
+      "offset": 604.261,
+      "duration": 0.833
+    },
+    {
+      "lang": "en",
+      "text": "that like I wanna keep around",
+      "offset": 605.094,
+      "duration": 1.406
+    },
+    {
+      "lang": "en",
+      "text": "because for the next, you know,",
+      "offset": 606.5,
+      "duration": 2.083
+    },
+    {
+      "lang": "en",
+      "text": "10 minutes that I have, it's\ngonna be really helpful.",
+      "offset": 608.583,
+      "duration": 2.057
+    },
+    {
+      "lang": "en",
+      "text": "- That makes sense.",
+      "offset": 610.64,
+      "duration": 1.042
+    },
+    {
+      "lang": "en",
+      "text": "And now I think it's\nprobably pretty important",
+      "offset": 611.682,
+      "duration": 1.435
+    },
+    {
+      "lang": "en",
+      "text": "to clarify here or maybe\neven explain further,",
+      "offset": 613.117,
+      "duration": 3.833
+    },
+    {
+      "lang": "en",
+      "text": "have we trained Claude on this?",
+      "offset": 617.835,
+      "duration": 1.675
+    },
+    {
+      "lang": "en",
+      "text": "Like how does it know",
+      "offset": 619.51,
+      "duration": 0.833
+    },
+    {
+      "lang": "en",
+      "text": "actually how to navigate",
+      "offset": 620.343,
+      "duration": 1.083
+    },
+    {
+      "lang": "en",
+      "text": "around Pokemon?\n- Yeah.",
+      "offset": 621.426,
+      "duration": 1.205
+    },
+    {
+      "lang": "en",
+      "text": "- I mean you're not really\ngiving it that many instructions.",
+      "offset": 622.631,
+      "duration": 2.134
+    },
+    {
+      "lang": "en",
+      "text": "You're not like giving it",
+      "offset": 624.765,
+      "duration": 0.833
+    },
+    {
+      "lang": "en",
+      "text": "a how-to guide.\n- No, I know.",
+      "offset": 625.598,
+      "duration": 1.961
+    },
+    {
+      "lang": "en",
+      "text": "This is part of the fun part.",
+      "offset": 627.559,
+      "duration": 1.631
+    },
+    {
+      "lang": "en",
+      "text": "So we haven't trained\nClaude on Pokemon itself",
+      "offset": 629.19,
+      "duration": 2.511
+    },
+    {
+      "lang": "en",
+      "text": "at all.\n- Yeah.",
+      "offset": 631.701,
+      "duration": 1.458
+    },
+    {
+      "lang": "en",
+      "text": "- Claude obviously like knows\nsomething about Pokemon.",
+      "offset": 633.159,
+      "duration": 1.986
+    },
+    {
+      "lang": "en",
+      "text": "Like if you go to claude.ai",
+      "offset": 635.145,
+      "duration": 1.65
+    },
+    {
+      "lang": "en",
+      "text": "and ask it questions like you'll notice",
+      "offset": 636.795,
+      "duration": 2.105
+    },
+    {
+      "lang": "en",
+      "text": "that it can recall some like general facts",
+      "offset": 638.9,
+      "duration": 2.43
+    },
+    {
+      "lang": "en",
+      "text": "and there's enough in the pop culture",
+      "offset": 641.33,
+      "duration": 1.191
+    },
+    {
+      "lang": "en",
+      "text": "that of course Claude knows\nsomething about Pokemon.",
+      "offset": 642.521,
+      "duration": 2.139
+    },
+    {
+      "lang": "en",
+      "text": "- Through the pre-training process,",
+      "offset": 644.66,
+      "duration": 1.485
+    },
+    {
+      "lang": "en",
+      "text": "yeah.\n- Exactly.",
+      "offset": 646.145,
+      "duration": 1.083
+    },
+    {
+      "lang": "en",
+      "text": "And it even knows like some",
+      "offset": 647.228,
+      "duration": 1.452
+    },
+    {
+      "lang": "en",
+      "text": "of the broad strokes\ninformation about the game.",
+      "offset": 648.68,
+      "duration": 1.945
+    },
+    {
+      "lang": "en",
+      "text": "So it knows that like the\nfirst gym leader is Brock",
+      "offset": 650.625,
+      "duration": 3.185
+    },
+    {
+      "lang": "en",
+      "text": "and so it has some sense of\nlike the structure of the game,",
+      "offset": 653.81,
+      "duration": 2.185
+    },
+    {
+      "lang": "en",
+      "text": "but the details, it really\nknows nothing about it.",
+      "offset": 655.995,
+      "duration": 2.64
+    },
+    {
+      "lang": "en",
+      "text": "In fact, sometimes it thinks\nit knows things and it does it.",
+      "offset": 658.635,
+      "duration": 2.85
+    },
+    {
+      "lang": "en",
+      "text": "This is one of the hard\nthings you have to fight with.",
+      "offset": 661.485,
+      "duration": 2.43
+    },
+    {
+      "lang": "en",
+      "text": "But that means that even without sort",
+      "offset": 663.915,
+      "duration": 3.06
+    },
+    {
+      "lang": "en",
+      "text": "of like specific training,",
+      "offset": 666.975,
+      "duration": 2.255
+    },
+    {
+      "lang": "en",
+      "text": "knowing a little bit about what Pokemon is",
+      "offset": 669.23,
+      "duration": 1.854
+    },
+    {
+      "lang": "en",
+      "text": "and some of the motivation of it,",
+      "offset": 671.084,
+      "duration": 1.34
+    },
+    {
+      "lang": "en",
+      "text": "it has to figure out everything else",
+      "offset": 672.424,
+      "duration": 1.446
+    },
+    {
+      "lang": "en",
+      "text": "sort of in the intermediate space.",
+      "offset": 673.87,
+      "duration": 2.26
+    },
+    {
+      "lang": "en",
+      "text": "And so you'll see it,",
+      "offset": 676.13,
+      "duration": 1.452
+    },
+    {
+      "lang": "en",
+      "text": "like some of the funny\nthings you find out,",
+      "offset": 677.582,
+      "duration": 1.543
+    },
+    {
+      "lang": "en",
+      "text": "like to see how this\nactually works in practice is",
+      "offset": 679.125,
+      "duration": 1.913
+    },
+    {
+      "lang": "en",
+      "text": "you'll see it talk to an NPC",
+      "offset": 681.038,
+      "duration": 1.749
+    },
+    {
+      "lang": "en",
+      "text": "that gives it some tidbit of information.",
+      "offset": 682.787,
+      "duration": 1.743
+    },
+    {
+      "lang": "en",
+      "text": "Like at the very beginning it says,",
+      "offset": 684.53,
+      "duration": 1.376
+    },
+    {
+      "lang": "en",
+      "text": "&quot;Professor Oak is next door,\nyou need to go talk to him.&quot;",
+      "offset": 685.906,
+      "duration": 3.334
+    },
+    {
+      "lang": "en",
+      "text": "And that's what like mom\ntells the Pokemon character.",
+      "offset": 689.24,
+      "duration": 4.585
+    },
+    {
+      "lang": "en",
+      "text": "So Claude's mom in Pokemon tells Claude,",
+      "offset": 693.825,
+      "duration": 3.033
+    },
+    {
+      "lang": "en",
+      "text": "&quot;You need to go next door.&quot;",
+      "offset": 696.858,
+      "duration": 2.527
+    },
+    {
+      "lang": "en",
+      "text": "And then Claude will like\nvery rigorously be like,",
+      "offset": 699.385,
+      "duration": 2.57
+    },
+    {
+      "lang": "en",
+      "text": "&quot;I need to go next door.&quot;",
+      "offset": 701.955,
+      "duration": 1.23
+    },
+    {
+      "lang": "en",
+      "text": "Like I need to go find\nProfessor Oak next door,",
+      "offset": 703.185,
+      "duration": 2.43
+    },
+    {
+      "lang": "en",
+      "text": "and it will be on a mission",
+      "offset": 705.615,
+      "duration": 1.53
+    },
+    {
+      "lang": "en",
+      "text": "and occasionally it'll get like over...",
+      "offset": 707.145,
+      "duration": 1.2
+    },
+    {
+      "lang": "en",
+      "text": "So the funny fact about Pokemon Red is",
+      "offset": 708.345,
+      "duration": 2.275
+    },
+    {
+      "lang": "en",
+      "text": "it actually lies to you\nlike mom lies to you.",
+      "offset": 710.62,
+      "duration": 1.831
+    },
+    {
+      "lang": "en",
+      "text": "- Ah.",
+      "offset": 712.451,
+      "duration": 0.833
+    },
+    {
+      "lang": "en",
+      "text": "- Professor Oak is actually not",
+      "offset": 713.284,
+      "duration": 1.14
+    },
+    {
+      "lang": "en",
+      "text": "next door.\n- Okay.",
+      "offset": 714.424,
+      "duration": 1.083
+    },
+    {
+      "lang": "en",
+      "text": "- You have to go find him elsewhere.",
+      "offset": 715.507,
+      "duration": 1.853
+    },
+    {
+      "lang": "en",
+      "text": "I've actually seen Claude\nget derailed on this",
+      "offset": 717.36,
+      "duration": 2.01
+    },
+    {
+      "lang": "en",
+      "text": "because it's like, &quot;My mom told me.&quot;",
+      "offset": 719.37,
+      "duration": 1.686
+    },
+    {
+      "lang": "en",
+      "text": "- So trusting.",
+      "offset": 721.056,
+      "duration": 2.941
+    },
+    {
+      "lang": "en",
+      "text": "- I mean, I have to believe mom.",
+      "offset": 723.997,
+      "duration": 2.181
+    },
+    {
+      "lang": "en",
+      "text": "Like it's my mom. She\ntold me this is true.",
+      "offset": 726.178,
+      "duration": 2.702
+    },
+    {
+      "lang": "en",
+      "text": "And it will get stuck there\nlike really looking next door",
+      "offset": 728.88,
+      "duration": 2.745
+    },
+    {
+      "lang": "en",
+      "text": "for Professor Oak for a very long period",
+      "offset": 731.625,
+      "duration": 1.404
+    },
+    {
+      "lang": "en",
+      "text": "of time, funny enough.",
+      "offset": 733.029,
+      "duration": 1.23
+    },
+    {
+      "lang": "en",
+      "text": "You really do see over the\ncourse of it playing the game",
+      "offset": 734.259,
+      "duration": 2.724
+    },
+    {
+      "lang": "en",
+      "text": "that it like, by interacting\nand just seeing the screen,",
+      "offset": 736.983,
+      "duration": 3.731
+    },
+    {
+      "lang": "en",
+      "text": "seeing what people say, signs say,",
+      "offset": 740.714,
+      "duration": 2.833
+    },
+    {
+      "lang": "en",
+      "text": "just this experience of what\nhappens when it tries stuff",
+      "offset": 745.917,
+      "duration": 2.103
+    },
+    {
+      "lang": "en",
+      "text": "that it like actually picks up the tidbits",
+      "offset": 748.02,
+      "duration": 1.525
+    },
+    {
+      "lang": "en",
+      "text": "that are the core of where it's going,",
+      "offset": 749.545,
+      "duration": 1.77
+    },
+    {
+      "lang": "en",
+      "text": "what it should do next, that kinda thing.",
+      "offset": 751.315,
+      "duration": 1.68
+    },
+    {
+      "lang": "en",
+      "text": "- So this is like a\npure playing experience.",
+      "offset": 752.995,
+      "duration": 2.58
+    },
+    {
+      "lang": "en",
+      "text": "We didn't like give it some pathway",
+      "offset": 755.575,
+      "duration": 2.108
+    },
+    {
+      "lang": "en",
+      "text": "to follow-\n- No.",
+      "offset": 757.683,
+      "duration": 0.958
+    },
+    {
+      "lang": "en",
+      "text": "- or tell it like if you\nrun in this situation,",
+      "offset": 758.641,
+      "duration": 2.009
+    },
+    {
+      "lang": "en",
+      "text": "do this sort of thing.",
+      "offset": 760.65,
+      "duration": 1.53
+    },
+    {
+      "lang": "en",
+      "text": "It's just like really\ninteracting with the game",
+      "offset": 762.18,
+      "duration": 2.46
+    },
+    {
+      "lang": "en",
+      "text": "as a human would in that sense.",
+      "offset": 764.64,
+      "duration": 1.29
+    },
+    {
+      "lang": "en",
+      "text": "- Yeah, and maybe just like on a,",
+      "offset": 765.93,
+      "duration": 2.168
+    },
+    {
+      "lang": "en",
+      "text": "why am I doing this level-\n- Yeah.",
+      "offset": 768.098,
+      "duration": 1.631
+    },
+    {
+      "lang": "en",
+      "text": "- my goal is not to beat Pokemon Red.",
+      "offset": 769.729,
+      "duration": 1.836
+    },
+    {
+      "lang": "en",
+      "text": "Like I did that when I was six.",
+      "offset": 771.565,
+      "duration": 1.77
+    },
+    {
+      "lang": "en",
+      "text": "Like this is not the\nthe gold standard, like,",
+      "offset": 773.335,
+      "duration": 2.95
+    },
+    {
+      "lang": "en",
+      "text": "and I'm pretty sure you can write",
+      "offset": 776.285,
+      "duration": 1.133
+    },
+    {
+      "lang": "en",
+      "text": "a program to beat Pokemon Red",
+      "offset": 777.418,
+      "duration": 1.421
+    },
+    {
+      "lang": "en",
+      "text": "if that's your only goal.\n- Right.",
+      "offset": 778.839,
+      "duration": 1.345
+    },
+    {
+      "lang": "en",
+      "text": "- I wanted to understand\nlike, how does Claude work?",
+      "offset": 780.184,
+      "duration": 2.631
+    },
+    {
+      "lang": "en",
+      "text": "Like how is Claude at this?",
+      "offset": 782.815,
+      "duration": 0.958
+    },
+    {
+      "lang": "en",
+      "text": "Like can Claude handle this situation?",
+      "offset": 783.773,
+      "duration": 2.047
+    },
+    {
+      "lang": "en",
+      "text": "And so that end like it would\nbe no fun to just give it",
+      "offset": 785.82,
+      "duration": 2.918
+    },
+    {
+      "lang": "en",
+      "text": "the answer guide.\n- Yeah.",
+      "offset": 788.738,
+      "duration": 0.833
+    },
+    {
+      "lang": "en",
+      "text": "- Like I wanna find out how Claude figures",
+      "offset": 789.571,
+      "duration": 1.733
+    },
+    {
+      "lang": "en",
+      "text": "out the answer.\n- Yeah.",
+      "offset": 791.304,
+      "duration": 1.205
+    },
+    {
+      "lang": "en",
+      "text": "- And so most of how I've\nstructured everything",
+      "offset": 792.509,
+      "duration": 2.191
+    },
+    {
+      "lang": "en",
+      "text": "and most of how you like\nwhat you actually see",
+      "offset": 794.7,
+      "duration": 1.366
+    },
+    {
+      "lang": "en",
+      "text": "when you do this is like\na pretty bare bones,",
+      "offset": 796.066,
+      "duration": 2.919
+    },
+    {
+      "lang": "en",
+      "text": "like Claude has to go\nfigure this out on its own",
+      "offset": 798.985,
+      "duration": 1.98
+    },
+    {
+      "lang": "en",
+      "text": "'cause I'm curious and we are curious,",
+      "offset": 800.965,
+      "duration": 2.466
+    },
+    {
+      "lang": "en",
+      "text": "like how does Claude even try doing",
+      "offset": 803.431,
+      "duration": 1.96
+    },
+    {
+      "lang": "en",
+      "text": "this thing-\n- Right.",
+      "offset": 805.391,
+      "duration": 0.833
+    },
+    {
+      "lang": "en",
+      "text": "- or does it try to play Pokemon?",
+      "offset": 806.224,
+      "duration": 0.958
+    },
+    {
+      "lang": "en",
+      "text": "- Right. We're not trying\nto get Claude to be Pokemon.",
+      "offset": 807.182,
+      "duration": 2.548
+    },
+    {
+      "lang": "en",
+      "text": "We wanna just generally\nevaluate Claude on agentic tasks",
+      "offset": 809.73,
+      "duration": 2.919
+    },
+    {
+      "lang": "en",
+      "text": "and figure out where it's at.\n- Yeah, yeah.",
+      "offset": 812.649,
+      "duration": 2.129
+    },
+    {
+      "lang": "en",
+      "text": "And I don't think anybody's making",
+      "offset": 814.778,
+      "duration": 1.122
+    },
+    {
+      "lang": "en",
+      "text": "their buying decision for a model",
+      "offset": 815.9,
+      "duration": 1.349
+    },
+    {
+      "lang": "en",
+      "text": "on which model plays Pokemon the best.",
+      "offset": 817.249,
+      "duration": 1.416
+    },
+    {
+      "lang": "en",
+      "text": "So this is really for\nour own understanding.",
+      "offset": 818.665,
+      "duration": 1.727
+    },
+    {
+      "lang": "en",
+      "text": "- Yeah.",
+      "offset": 820.392,
+      "duration": 1.9
+    },
+    {
+      "lang": "en",
+      "text": "So you've been doing this\nnow for a good bit of time.",
+      "offset": 822.292,
+      "duration": 2.433
+    },
+    {
+      "lang": "en",
+      "text": "- Yeah, too long.",
+      "offset": 824.725,
+      "duration": 1.232
+    },
+    {
+      "lang": "en",
+      "text": "- Yeah.",
+      "offset": 825.957,
+      "duration": 2.283
+    },
+    {
+      "lang": "en",
+      "text": "What's it kinda been like\nover that amount of time",
+      "offset": 828.24,
+      "duration": 2.34
+    },
+    {
+      "lang": "en",
+      "text": "with the different models.\n- Yeah.",
+      "offset": 830.58,
+      "duration": 1.542
+    },
+    {
+      "lang": "en",
+      "text": "- As we've continued to iterate on Claude,",
+      "offset": 832.122,
+      "duration": 3.643
+    },
+    {
+      "lang": "en",
+      "text": "can you just walk us",
+      "offset": 835.765,
+      "duration": 0.833
+    },
+    {
+      "lang": "en",
+      "text": "through what that journey's looked like?",
+      "offset": 836.598,
+      "duration": 1.572
+    },
+    {
+      "lang": "en",
+      "text": "- So I mentioned I started with 3.5 Sonnet",
+      "offset": 838.17,
+      "duration": 3.126
+    },
+    {
+      "lang": "en",
+      "text": "as the first model I hooked up,",
+      "offset": 841.296,
+      "duration": 1.849
+    },
+    {
+      "lang": "en",
+      "text": "and I wasn't very good at Pokemon.",
+      "offset": 843.145,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "So in Pokemon you started the\nsecond floor of your house",
+      "offset": 846.745,
+      "duration": 3.03
+    },
+    {
+      "lang": "en",
+      "text": "and to get your first bit of progress is",
+      "offset": 849.775,
+      "duration": 2.266
+    },
+    {
+      "lang": "en",
+      "text": "like finding the stairs in the top right.",
+      "offset": 852.041,
+      "duration": 2.189
+    },
+    {
+      "lang": "en",
+      "text": "And I probably spent like\nthree days of working on this",
+      "offset": 854.23,
+      "duration": 2.42
+    },
+    {
+      "lang": "en",
+      "text": "before I got the model to find the stairs",
+      "offset": 856.65,
+      "duration": 1.688
+    },
+    {
+      "lang": "en",
+      "text": "in the first room.\n- Wow.",
+      "offset": 858.338,
+      "duration": 1.208
+    },
+    {
+      "lang": "en",
+      "text": "- I remember just being incredibly hyped",
+      "offset": 859.546,
+      "duration": 2.173
+    },
+    {
+      "lang": "en",
+      "text": "the first time it like\ngot out of the house",
+      "offset": 861.719,
+      "duration": 2.127
+    },
+    {
+      "lang": "en",
+      "text": "and then actually like\ngot to the cut scene",
+      "offset": 863.846,
+      "duration": 1.981
+    },
+    {
+      "lang": "en",
+      "text": "where you potentially can\nget your first Pokemon.",
+      "offset": 865.827,
+      "duration": 2.523
+    },
+    {
+      "lang": "en",
+      "text": "That was like the pinnacle",
+      "offset": 868.35,
+      "duration": 1.219
+    },
+    {
+      "lang": "en",
+      "text": "of my achievement with 3.5 Sonnet.",
+      "offset": 869.569,
+      "duration": 2.441
+    },
+    {
+      "lang": "en",
+      "text": "And I thought I had really\nlike done amazing things",
+      "offset": 872.01,
+      "duration": 2.48
+    },
+    {
+      "lang": "en",
+      "text": "back then when when I had that happening.",
+      "offset": 874.49,
+      "duration": 2.05
+    },
+    {
+      "lang": "en",
+      "text": "And that was like better than any",
+      "offset": 876.54,
+      "duration": 1.2
+    },
+    {
+      "lang": "en",
+      "text": "of the experiments we'd seen in the past.",
+      "offset": 877.74,
+      "duration": 1.392
+    },
+    {
+      "lang": "en",
+      "text": "And then I kinda like tucked it away,",
+      "offset": 879.132,
+      "duration": 1.227
+    },
+    {
+      "lang": "en",
+      "text": "like this has been a fun project,",
+      "offset": 880.359,
+      "duration": 1.267
+    },
+    {
+      "lang": "en",
+      "text": "I learned some stuff but\nlike that's about it.",
+      "offset": 881.626,
+      "duration": 2.919
+    },
+    {
+      "lang": "en",
+      "text": "And then we released the\nrefresher 3.5 Sonnet in October",
+      "offset": 884.545,
+      "duration": 4.17
+    },
+    {
+      "lang": "en",
+      "text": "and I picked this back up",
+      "offset": 888.715,
+      "duration": 2.083
+    },
+    {
+      "lang": "en",
+      "text": "and you could tell it was a little better,",
+      "offset": 891.875,
+      "duration": 1.86
+    },
+    {
+      "lang": "en",
+      "text": "like pretty noticeable.",
+      "offset": 893.735,
+      "duration": 1.11
+    },
+    {
+      "lang": "en",
+      "text": "So it like very consistently\nfound the stairs, amazingly.",
+      "offset": 894.845,
+      "duration": 3.78
+    },
+    {
+      "lang": "en",
+      "text": "It pretty consistently",
+      "offset": 898.625,
+      "duration": 1.505
+    },
+    {
+      "lang": "en",
+      "text": "with like a relatively\npredictable timeframe",
+      "offset": 900.13,
+      "duration": 2.382
+    },
+    {
+      "lang": "en",
+      "text": "would figure out how to\nget a starter Pokemon.",
+      "offset": 902.512,
+      "duration": 2.143
+    },
+    {
+      "lang": "en",
+      "text": "We actually saw it like win\na battle the first time,",
+      "offset": 904.655,
+      "duration": 3.444
+    },
+    {
+      "lang": "en",
+      "text": "start moving a little\nbit the right direction.",
+      "offset": 908.099,
+      "duration": 1.901
+    },
+    {
+      "lang": "en",
+      "text": "After that it was really slow,",
+      "offset": 910,
+      "duration": 1.858
+    },
+    {
+      "lang": "en",
+      "text": "it made a lot of dumb mistakes\nbut like you could see,",
+      "offset": 911.858,
+      "duration": 2.085
+    },
+    {
+      "lang": "en",
+      "text": "you could squint and see like\nit had clearly gotten better.",
+      "offset": 913.943,
+      "duration": 2.597
+    },
+    {
+      "lang": "en",
+      "text": "A lot of that was just\nlike not getting stuck,",
+      "offset": 916.54,
+      "duration": 2.43
+    },
+    {
+      "lang": "en",
+      "text": "like not thinking the game was bud,",
+      "offset": 918.97,
+      "duration": 1.666
+    },
+    {
+      "lang": "en",
+      "text": "like having a sense of\ndifferent strategies",
+      "offset": 920.636,
+      "duration": 1.69
+    },
+    {
+      "lang": "en",
+      "text": "and things to try.",
+      "offset": 922.326,
+      "duration": 0.958
+    },
+    {
+      "lang": "en",
+      "text": "We were actually like kind\nof excited about that.",
+      "offset": 923.284,
+      "duration": 1.326
+    },
+    {
+      "lang": "en",
+      "text": "Again, like wherever Claude is,",
+      "offset": 924.61,
+      "duration": 2.653
+    },
+    {
+      "lang": "en",
+      "text": "you're just so excited when\nit gets like one step further",
+      "offset": 927.263,
+      "duration": 2.297
+    },
+    {
+      "lang": "en",
+      "text": "that it's very fun to\nwatch and engage with.",
+      "offset": 929.56,
+      "duration": 2.055
+    },
+    {
+      "lang": "en",
+      "text": "But it was still like,",
+      "offset": 931.615,
+      "duration": 1.325
+    },
+    {
+      "lang": "en",
+      "text": "I remember someone asked\nme back then, like,",
+      "offset": 932.94,
+      "duration": 2.89
+    },
+    {
+      "lang": "en",
+      "text": "&quot;How did like random button\npresses do in comparison?&quot;",
+      "offset": 935.83,
+      "duration": 2.97
+    },
+    {
+      "lang": "en",
+      "text": "And Claude was like this much better",
+      "offset": 938.8,
+      "duration": 1.65
+    },
+    {
+      "lang": "en",
+      "text": "than pressing random buttons,",
+      "offset": 940.45,
+      "duration": 1.398
+    },
+    {
+      "lang": "en",
+      "text": "you know.",
+      "offset": 941.848,
+      "duration": 0.833
+    },
+    {
+      "lang": "en",
+      "text": "Like it was better but like,",
+      "offset": 942.681,
+      "duration": 1.379
+    },
+    {
+      "lang": "en",
+      "text": "not a lot better-\n- Yeah.",
+      "offset": 944.06,
+      "duration": 0.833
+    },
+    {
+      "lang": "en",
+      "text": "- than pressing random buttons.",
+      "offset": 944.893,
+      "duration": 1.311
+    },
+    {
+      "lang": "en",
+      "text": "And so again, I like tucked\nit away. It had been fun.",
+      "offset": 946.204,
+      "duration": 3.696
+    },
+    {
+      "lang": "en",
+      "text": "And then we got to testing 3.7 Sonnet",
+      "offset": 949.9,
+      "duration": 3.835
+    },
+    {
+      "lang": "en",
+      "text": "and it was just like way better",
+      "offset": 953.735,
+      "duration": 2.28
+    },
+    {
+      "lang": "en",
+      "text": "and it was pretty obvious.",
+      "offset": 956.015,
+      "duration": 1.26
+    },
+    {
+      "lang": "en",
+      "text": "One of the first moments\nthat I really realized",
+      "offset": 957.275,
+      "duration": 1.47
+    },
+    {
+      "lang": "en",
+      "text": "3.7 on it was way better,",
+      "offset": 958.745,
+      "duration": 1.35
+    },
+    {
+      "lang": "en",
+      "text": "I was going through watching it play",
+      "offset": 960.095,
+      "duration": 2.91
+    },
+    {
+      "lang": "en",
+      "text": "and I realized there was this\nlike terrible bug in my code",
+      "offset": 963.005,
+      "duration": 3.12
+    },
+    {
+      "lang": "en",
+      "text": "where I wasn't showing Claude all",
+      "offset": 966.125,
+      "duration": 2.34
+    },
+    {
+      "lang": "en",
+      "text": "of the information it needed",
+      "offset": 968.465,
+      "duration": 1.353
+    },
+    {
+      "lang": "en",
+      "text": "to play the game.\n- Oh, wow.",
+      "offset": 969.818,
+      "duration": 0.833
+    },
+    {
+      "lang": "en",
+      "text": "- I had this like thing at the time",
+      "offset": 970.651,
+      "duration": 1.174
+    },
+    {
+      "lang": "en",
+      "text": "that was helping like show it a map",
+      "offset": 971.825,
+      "duration": 1.708
+    },
+    {
+      "lang": "en",
+      "text": "to try to give it like some extra sense",
+      "offset": 973.533,
+      "duration": 1.47
+    },
+    {
+      "lang": "en",
+      "text": "of how to navigate.\n- Right.",
+      "offset": 975.003,
+      "duration": 1.37
+    },
+    {
+      "lang": "en",
+      "text": "- And 3.7 was already doing way",
+      "offset": 976.373,
+      "duration": 2.583
+    },
+    {
+      "lang": "en",
+      "text": "better than 3.6, the new 3.5 did.",
+      "offset": 981.31,
+      "duration": 2.75
+    },
+    {
+      "lang": "en",
+      "text": "And I was like, &quot;Oh, this\nmight be like pretty real.&quot;",
+      "offset": 986.68,
+      "duration": 3.15
+    },
+    {
+      "lang": "en",
+      "text": "And so I pretty quickly\nbecame like deeply obsessed",
+      "offset": 989.83,
+      "duration": 2.76
+    },
+    {
+      "lang": "en",
+      "text": "with like, we gotta find out\nhow good this actually is.",
+      "offset": 992.59,
+      "duration": 3.42
+    },
+    {
+      "lang": "en",
+      "text": "And I started like grinding",
+      "offset": 996.01,
+      "duration": 2.558
+    },
+    {
+      "lang": "en",
+      "text": "harder than ever on\nlike giving everything,",
+      "offset": 998.568,
+      "duration": 2.352
+    },
+    {
+      "lang": "en",
+      "text": "all of the tools the Claude\nreally needed to be successful",
+      "offset": 1000.92,
+      "duration": 2.084
+    },
+    {
+      "lang": "en",
+      "text": "'cause you could see it had",
+      "offset": 1003.004,
+      "duration": 0.833
+    },
+    {
+      "lang": "en",
+      "text": "like the core material it\nneeded to make progress.",
+      "offset": 1003.837,
+      "duration": 2.188
+    },
+    {
+      "lang": "en",
+      "text": "Over the handful of weeks\nthat we did testing of it,",
+      "offset": 1006.025,
+      "duration": 2.34
+    },
+    {
+      "lang": "en",
+      "text": "it was like pretty clear that\nClaude was quite like capable.",
+      "offset": 1008.365,
+      "duration": 4.775
+    },
+    {
+      "lang": "en",
+      "text": "Not a star yet, we can\nget into that I'm sure,",
+      "offset": 1013.14,
+      "duration": 2.305
+    },
+    {
+      "lang": "en",
+      "text": "but it started actually playing the game.",
+      "offset": 1015.445,
+      "duration": 2.46
+    },
+    {
+      "lang": "en",
+      "text": "It beat a gym leader one day\nand everybody freaked out.",
+      "offset": 1017.905,
+      "duration": 3.3
+    },
+    {
+      "lang": "en",
+      "text": "You know, that's like the same thing",
+      "offset": 1021.205,
+      "duration": 1.17
+    },
+    {
+      "lang": "en",
+      "text": "that people can see on the stream now",
+      "offset": 1022.375,
+      "duration": 1.475
+    },
+    {
+      "lang": "en",
+      "text": "where it's slow and challenging sometimes,",
+      "offset": 1023.85,
+      "duration": 2.665
+    },
+    {
+      "lang": "en",
+      "text": "but like it makes meaningful\nprogress in the game.",
+      "offset": 1026.515,
+      "duration": 2.535
+    },
+    {
+      "lang": "en",
+      "text": "- That's fascinating.",
+      "offset": 1029.05,
+      "duration": 1.295
+    },
+    {
+      "lang": "en",
+      "text": "What do you think that shows actually",
+      "offset": 1030.345,
+      "duration": 1.688
+    },
+    {
+      "lang": "en",
+      "text": "about like the model's\nimprovements themself?",
+      "offset": 1032.033,
+      "duration": 2.492
+    },
+    {
+      "lang": "en",
+      "text": "- Yeah.",
+      "offset": 1034.525,
+      "duration": 0.833
+    },
+    {
+      "lang": "en",
+      "text": "- Why is it that it's actually\ngetting better at the game?",
+      "offset": 1035.358,
+      "duration": 1.902
+    },
+    {
+      "lang": "en",
+      "text": "- This is one of the fun\nthings is I actually like kind",
+      "offset": 1037.26,
+      "duration": 2.155
+    },
+    {
+      "lang": "en",
+      "text": "of know a little bit about\nthe models because of this.",
+      "offset": 1039.415,
+      "duration": 3.75
+    },
+    {
+      "lang": "en",
+      "text": "I think there are a few things",
+      "offset": 1043.165,
+      "duration": 1.65
+    },
+    {
+      "lang": "en",
+      "text": "that have made a difference over time.",
+      "offset": 1044.815,
+      "duration": 3.03
+    },
+    {
+      "lang": "en",
+      "text": "Surprisingly the vision,\nwhich is the hardest thing,",
+      "offset": 1047.845,
+      "duration": 2.52
+    },
+    {
+      "lang": "en",
+      "text": "like when you look at the game,",
+      "offset": 1050.365,
+      "duration": 1.384
+    },
+    {
+      "lang": "en",
+      "text": "like you notice that the\nClaude's not very good",
+      "offset": 1051.749,
+      "duration": 3.12
+    },
+    {
+      "lang": "en",
+      "text": "at understanding Game Boy screens.",
+      "offset": 1054.869,
+      "duration": 1.728
+    },
+    {
+      "lang": "en",
+      "text": "That actually hasn't improved",
+      "offset": 1056.597,
+      "duration": 0.958
+    },
+    {
+      "lang": "en",
+      "text": "a lot.\n- Okay.",
+      "offset": 1057.555,
+      "duration": 0.833
+    },
+    {
+      "lang": "en",
+      "text": "- Like the model has\nmade all this progress",
+      "offset": 1058.388,
+      "duration": 1.79
+    },
+    {
+      "lang": "en",
+      "text": "and its ability to actually\nlike stare at a Game Boy screen",
+      "offset": 1060.178,
+      "duration": 2.467
+    },
+    {
+      "lang": "en",
+      "text": "and see what it's going on is",
+      "offset": 1062.645,
+      "duration": 2.616
+    },
+    {
+      "lang": "en",
+      "text": "about as bad as it always has been.",
+      "offset": 1065.261,
+      "duration": 2.174
+    },
+    {
+      "lang": "en",
+      "text": "So then it's like how is\nit actually making progress",
+      "offset": 1067.435,
+      "duration": 2.575
+    },
+    {
+      "lang": "en",
+      "text": "if it doesn't have a better fundamentals",
+      "offset": 1070.01,
+      "duration": 1.383
+    },
+    {
+      "lang": "en",
+      "text": "of what's going on?\n- Right.",
+      "offset": 1071.393,
+      "duration": 1.461
+    },
+    {
+      "lang": "en",
+      "text": "- And I think the things\nthat you've noticed",
+      "offset": 1072.854,
+      "duration": 2.901
+    },
+    {
+      "lang": "en",
+      "text": "or that I've noticed the most,",
+      "offset": 1075.755,
+      "duration": 1.14
+    },
+    {
+      "lang": "en",
+      "text": "and this actually tracks a lot",
+      "offset": 1076.895,
+      "duration": 1.175
+    },
+    {
+      "lang": "en",
+      "text": "with what we focus on at Anthropic,",
+      "offset": 1078.07,
+      "duration": 2.889
+    },
+    {
+      "lang": "en",
+      "text": "is that Claude is just getting\na lot better at coming up",
+      "offset": 1080.959,
+      "duration": 2.781
+    },
+    {
+      "lang": "en",
+      "text": "with strategies of things it should try,",
+      "offset": 1083.74,
+      "duration": 2.49
+    },
+    {
+      "lang": "en",
+      "text": "of questioning a lot of the\nprevious strategies it had",
+      "offset": 1086.23,
+      "duration": 2.605
+    },
+    {
+      "lang": "en",
+      "text": "and thinking like maybe the mistake isn't",
+      "offset": 1088.835,
+      "duration": 2.16
+    },
+    {
+      "lang": "en",
+      "text": "that there's a bug in the game,",
+      "offset": 1090.995,
+      "duration": 1.508
+    },
+    {
+      "lang": "en",
+      "text": "it's that like I had a bad strategy.",
+      "offset": 1092.503,
+      "duration": 1.656
+    },
+    {
+      "lang": "en",
+      "text": "So like what is the other\nstrategy I could try?",
+      "offset": 1094.159,
+      "duration": 1.697
+    },
+    {
+      "lang": "en",
+      "text": "If the last thing I tried didn't work,",
+      "offset": 1095.856,
+      "duration": 1.753
+    },
+    {
+      "lang": "en",
+      "text": "what should I try next?",
+      "offset": 1097.609,
+      "duration": 0.958
+    },
+    {
+      "lang": "en",
+      "text": "And sort of like backtracking",
+      "offset": 1098.567,
+      "duration": 0.978
+    },
+    {
+      "lang": "en",
+      "text": "to figure out good\ndifferent things to try.",
+      "offset": 1099.545,
+      "duration": 2.94
+    },
+    {
+      "lang": "en",
+      "text": "There's like a certain\ntenacity to like trying all",
+      "offset": 1102.485,
+      "duration": 2.22
+    },
+    {
+      "lang": "en",
+      "text": "of the different ways you could try",
+      "offset": 1104.705,
+      "duration": 1.075
+    },
+    {
+      "lang": "en",
+      "text": "a problem and figuring it out.",
+      "offset": 1105.78,
+      "duration": 1.955
+    },
+    {
+      "lang": "en",
+      "text": "And I think that was the jump that got",
+      "offset": 1107.735,
+      "duration": 3.283
+    },
+    {
+      "lang": "en",
+      "text": "from 3.5 to the refresh in October",
+      "offset": 1111.018,
+      "duration": 2.833
+    },
+    {
+      "lang": "en",
+      "text": "and then that was like huge jump",
+      "offset": 1114.965,
+      "duration": 2.525
+    },
+    {
+      "lang": "en",
+      "text": "in that exact skill with 3.7",
+      "offset": 1117.49,
+      "duration": 2.631
+    },
+    {
+      "lang": "en",
+      "text": "where now it's just like way more willing.",
+      "offset": 1120.121,
+      "duration": 2.019
+    },
+    {
+      "lang": "en",
+      "text": "And even though it's slow,",
+      "offset": 1122.14,
+      "duration": 0.958
+    },
+    {
+      "lang": "en",
+      "text": "like I think if you watch the\nTwitch stream for two hours,",
+      "offset": 1123.098,
+      "duration": 3.087
+    },
+    {
+      "lang": "en",
+      "text": "you might think there's\nno way this thing is",
+      "offset": 1126.185,
+      "duration": 1.47
+    },
+    {
+      "lang": "en",
+      "text": "good at questioning itself.\n- Yeah.",
+      "offset": 1127.655,
+      "duration": 1.682
+    },
+    {
+      "lang": "en",
+      "text": "- But the amazing thing is like over time,",
+      "offset": 1129.337,
+      "duration": 2.539
+    },
+    {
+      "lang": "en",
+      "text": "it does typically step back and think,",
+      "offset": 1131.876,
+      "duration": 2.932
+    },
+    {
+      "lang": "en",
+      "text": "like, what's the next thing I should do?",
+      "offset": 1134.808,
+      "duration": 1.967
+    },
+    {
+      "lang": "en",
+      "text": "And that ability to sort of like triage",
+      "offset": 1136.775,
+      "duration": 2.01
+    },
+    {
+      "lang": "en",
+      "text": "and understand different ways\nto go about solving a problem",
+      "offset": 1138.785,
+      "duration": 3.42
+    },
+    {
+      "lang": "en",
+      "text": "and getting better at that is\nlike one of the biggest things",
+      "offset": 1142.205,
+      "duration": 2.25
+    },
+    {
+      "lang": "en",
+      "text": "that I think has improved\nwith our models over time.",
+      "offset": 1144.455,
+      "duration": 3.27
+    },
+    {
+      "lang": "en",
+      "text": "It's one of the biggest\nthings that enables agents",
+      "offset": 1147.725,
+      "duration": 2.22
+    },
+    {
+      "lang": "en",
+      "text": "for all sorts of things, not just Pokemon,",
+      "offset": 1149.945,
+      "duration": 1.65
+    },
+    {
+      "lang": "en",
+      "text": "to be really successful",
+      "offset": 1151.595,
+      "duration": 1.17
+    },
+    {
+      "lang": "en",
+      "text": "and it's the thing that's\nmade it pretty okay",
+      "offset": 1152.765,
+      "duration": 1.768
+    },
+    {
+      "lang": "en",
+      "text": "at playing Pokemon.\n- Yeah.",
+      "offset": 1154.533,
+      "duration": 1.271
+    },
+    {
+      "lang": "en",
+      "text": "So the fact that it's improved\non all these capabilities",
+      "offset": 1155.804,
+      "duration": 3.111
+    },
+    {
+      "lang": "en",
+      "text": "and it's progressing through the game,",
+      "offset": 1158.915,
+      "duration": 1.925
+    },
+    {
+      "lang": "en",
+      "text": "how does that actually\nextrapolate out into other areas?",
+      "offset": 1160.84,
+      "duration": 2.79
+    },
+    {
+      "lang": "en",
+      "text": "Where are we witnessing that\nimprovement with, you know,",
+      "offset": 1163.63,
+      "duration": 4.266
+    },
+    {
+      "lang": "en",
+      "text": "maybe more real life-\n- Yeah.",
+      "offset": 1167.896,
+      "duration": 1.692
+    },
+    {
+      "lang": "en",
+      "text": "- use cases?",
+      "offset": 1169.588,
+      "duration": 0.833
+    },
+    {
+      "lang": "en",
+      "text": "- You know, it's funny\nlike at squint value,",
+      "offset": 1170.421,
+      "duration": 2.303
+    },
+    {
+      "lang": "en",
+      "text": "Pokemon couldn't be more\ndifferent than writing code",
+      "offset": 1172.724,
+      "duration": 2.881
+    },
+    {
+      "lang": "en",
+      "text": "or all the other stuff",
+      "offset": 1175.605,
+      "duration": 0.833
+    },
+    {
+      "lang": "en",
+      "text": "that people do at Claude.\n- Yeah.",
+      "offset": 1176.438,
+      "duration": 2.312
+    },
+    {
+      "lang": "en",
+      "text": "- But this core thing,",
+      "offset": 1178.75,
+      "duration": 1.149
+    },
+    {
+      "lang": "en",
+      "text": "like the ability to come\nup with a plan that's good",
+      "offset": 1179.899,
+      "duration": 4.026
+    },
+    {
+      "lang": "en",
+      "text": "to try something, to see if\nit's working or not and adjust,",
+      "offset": 1183.925,
+      "duration": 4.051
+    },
+    {
+      "lang": "en",
+      "text": "to understand like what are\nthe different strategies",
+      "offset": 1187.976,
+      "duration": 2.222
+    },
+    {
+      "lang": "en",
+      "text": "available to me and just sort of like,",
+      "offset": 1190.198,
+      "duration": 1.208
+    },
+    {
+      "lang": "en",
+      "text": "be willing to try them, fail,",
+      "offset": 1191.406,
+      "duration": 2.723
+    },
+    {
+      "lang": "en",
+      "text": "update what you should be\ndoing with new information,",
+      "offset": 1194.129,
+      "duration": 2.381
+    },
+    {
+      "lang": "en",
+      "text": "that is like the core\nrecipe of I think like a lot",
+      "offset": 1196.51,
+      "duration": 2.744
+    },
+    {
+      "lang": "en",
+      "text": "of what makes agents good\nin a lot of scenarios.",
+      "offset": 1199.254,
+      "duration": 2.869
+    },
+    {
+      "lang": "en",
+      "text": "So one that we probably\nspend too much time talking",
+      "offset": 1202.123,
+      "duration": 2.727
+    },
+    {
+      "lang": "en",
+      "text": "about is coding, but like\nwhen you are writing code,",
+      "offset": 1204.85,
+      "duration": 3.576
+    },
+    {
+      "lang": "en",
+      "text": "you write something, you see a test fail,",
+      "offset": 1208.426,
+      "duration": 2.119
+    },
+    {
+      "lang": "en",
+      "text": "and you have to think\nlike, what did I do wrong?",
+      "offset": 1210.545,
+      "duration": 1.92
+    },
+    {
+      "lang": "en",
+      "text": "Like how do I do better?\nLike what should I try next?",
+      "offset": 1212.465,
+      "duration": 2.96
+    },
+    {
+      "lang": "en",
+      "text": "What's the next strategy?",
+      "offset": 1215.425,
+      "duration": 1.75
+    },
+    {
+      "lang": "en",
+      "text": "And models do this all the time",
+      "offset": 1217.175,
+      "duration": 2.94
+    },
+    {
+      "lang": "en",
+      "text": "and there's like one thing between a model",
+      "offset": 1220.115,
+      "duration": 2.13
+    },
+    {
+      "lang": "en",
+      "text": "that can get it perfectly\nright every time all the time,",
+      "offset": 1222.245,
+      "duration": 2.64
+    },
+    {
+      "lang": "en",
+      "text": "but sometimes you just don't even",
+      "offset": 1224.885,
+      "duration": 0.96
+    },
+    {
+      "lang": "en",
+      "text": "have the information you need.",
+      "offset": 1225.845,
+      "duration": 1.17
+    },
+    {
+      "lang": "en",
+      "text": "Like you don't know until you run the test",
+      "offset": 1227.015,
+      "duration": 2.01
+    },
+    {
+      "lang": "en",
+      "text": "that you miss something.",
+      "offset": 1229.025,
+      "duration": 2.13
+    },
+    {
+      "lang": "en",
+      "text": "And so the ability to know what\ntests should I run to learn,",
+      "offset": 1231.155,
+      "duration": 3.87
+    },
+    {
+      "lang": "en",
+      "text": "when I find out something,\nhow should I incorporate that,",
+      "offset": 1235.025,
+      "duration": 2.43
+    },
+    {
+      "lang": "en",
+      "text": "how should I update the strategy,",
+      "offset": 1237.455,
+      "duration": 1.11
+    },
+    {
+      "lang": "en",
+      "text": "I had to go write this\npiece of code or whatever,",
+      "offset": 1238.565,
+      "duration": 2.55
+    },
+    {
+      "lang": "en",
+      "text": "that's the same thing.\n- Right.",
+      "offset": 1241.115,
+      "duration": 1.24
+    },
+    {
+      "lang": "en",
+      "text": "- And I think that's\nactually like, any industry,",
+      "offset": 1242.355,
+      "duration": 2.605
+    },
+    {
+      "lang": "en",
+      "text": "like when you think about if were",
+      "offset": 1244.96,
+      "duration": 2.352
+    },
+    {
+      "lang": "en",
+      "text": "to go search the internet\nfor something, it's like,",
+      "offset": 1247.312,
+      "duration": 3.155
+    },
+    {
+      "lang": "en",
+      "text": "I click on something, I\nnotice the page is bad,",
+      "offset": 1250.467,
+      "duration": 3.978
+    },
+    {
+      "lang": "en",
+      "text": "it doesn't have the fact I need",
+      "offset": 1254.445,
+      "duration": 1.41
+    },
+    {
+      "lang": "en",
+      "text": "or maybe it has like part\nof it but like I realize",
+      "offset": 1255.855,
+      "duration": 2.31
+    },
+    {
+      "lang": "en",
+      "text": "because of that I need to go search",
+      "offset": 1258.165,
+      "duration": 1.233
+    },
+    {
+      "lang": "en",
+      "text": "something else to get it right.",
+      "offset": 1259.398,
+      "duration": 1.364
+    },
+    {
+      "lang": "en",
+      "text": "Like all of that,",
+      "offset": 1260.762,
+      "duration": 1.42
+    },
+    {
+      "lang": "en",
+      "text": "building a strategy",
+      "offset": 1262.182,
+      "duration": 2.108
+    },
+    {
+      "lang": "en",
+      "text": "and understanding how to like\nincorporate new information",
+      "offset": 1264.29,
+      "duration": 3.06
+    },
+    {
+      "lang": "en",
+      "text": "over potentially like a\nlot of different actions",
+      "offset": 1267.35,
+      "duration": 2.691
+    },
+    {
+      "lang": "en",
+      "text": "just has like really broad\nreaching applications I think",
+      "offset": 1270.041,
+      "duration": 2.579
+    },
+    {
+      "lang": "en",
+      "text": "for how people build things with Claude.",
+      "offset": 1272.62,
+      "duration": 1.625
+    },
+    {
+      "lang": "en",
+      "text": "And it just like maps really intuitively",
+      "offset": 1274.245,
+      "duration": 2.233
+    },
+    {
+      "lang": "en",
+      "text": "to how we as people think\nabout solving complex problems,",
+      "offset": 1276.478,
+      "duration": 3.13
+    },
+    {
+      "lang": "en",
+      "text": "so.\n- Right,",
+      "offset": 1279.608,
+      "duration": 0.833
+    },
+    {
+      "lang": "en",
+      "text": "kind of that planning,",
+      "offset": 1280.441,
+      "duration": 0.833
+    },
+    {
+      "lang": "en",
+      "text": "and then executing loop-\n- Yeah.",
+      "offset": 1281.274,
+      "duration": 1.781
+    },
+    {
+      "lang": "en",
+      "text": "- doing, taking an action, stepping back,",
+      "offset": 1283.055,
+      "duration": 2.088
+    },
+    {
+      "lang": "en",
+      "text": "reevaluating and taking another action,",
+      "offset": 1285.143,
+      "duration": 1.882
+    },
+    {
+      "lang": "en",
+      "text": "Yeah.\n- Yeah.",
+      "offset": 1287.025,
+      "duration": 0.833
+    },
+    {
+      "lang": "en",
+      "text": "And I think we a lot of\ntimes we as people think",
+      "offset": 1287.858,
+      "duration": 2.375
+    },
+    {
+      "lang": "en",
+      "text": "about that on like the\nreally granular scale.",
+      "offset": 1290.233,
+      "duration": 1.952
+    },
+    {
+      "lang": "en",
+      "text": "Like when I'm doing a\nmenial thing in my job",
+      "offset": 1292.185,
+      "duration": 2.708
+    },
+    {
+      "lang": "en",
+      "text": "I don't necessarily think like, oh,",
+      "offset": 1294.893,
+      "duration": 1.066
+    },
+    {
+      "lang": "en",
+      "text": "I need to reevaluate my action\nand try something different.",
+      "offset": 1295.959,
+      "duration": 2.561
+    },
+    {
+      "lang": "en",
+      "text": "But like that's still\nwhat is, compiled down.",
+      "offset": 1298.52,
+      "duration": 2.485
+    },
+    {
+      "lang": "en",
+      "text": "Like that's what's happening with me is",
+      "offset": 1301.005,
+      "duration": 1.827
+    },
+    {
+      "lang": "en",
+      "text": "like I'm getting a piece of information,",
+      "offset": 1302.832,
+      "duration": 2.433
+    },
+    {
+      "lang": "en",
+      "text": "I am seeing if that means I need",
+      "offset": 1305.265,
+      "duration": 2.435
+    },
+    {
+      "lang": "en",
+      "text": "to like what the next step I need",
+      "offset": 1307.7,
+      "duration": 1.232
+    },
+    {
+      "lang": "en",
+      "text": "to take is-\n- Right.",
+      "offset": 1308.932,
+      "duration": 0.833
+    },
+    {
+      "lang": "en",
+      "text": "- and having sort of like\nthis continuous feedback loop",
+      "offset": 1309.765,
+      "duration": 2.22
+    },
+    {
+      "lang": "en",
+      "text": "and a lot of that is\nwhat's gonna make Claude",
+      "offset": 1311.985,
+      "duration": 2.305
+    },
+    {
+      "lang": "en",
+      "text": "a useful colleague, assistant,",
+      "offset": 1314.29,
+      "duration": 2.907
+    },
+    {
+      "lang": "en",
+      "text": "whatever it might be going forward.",
+      "offset": 1317.197,
+      "duration": 1.901
+    },
+    {
+      "lang": "en",
+      "text": "- Yeah, I mean I guess I can\nsee it in myself sometimes too",
+      "offset": 1319.098,
+      "duration": 2.582
+    },
+    {
+      "lang": "en",
+      "text": "when I have like I have a to-do list",
+      "offset": 1321.68,
+      "duration": 1.98
+    },
+    {
+      "lang": "en",
+      "text": "and maybe I wrote it",
+      "offset": 1323.66,
+      "duration": 0.833
+    },
+    {
+      "lang": "en",
+      "text": "at the start of the day.\n- Yeah.",
+      "offset": 1324.493,
+      "duration": 1.083
+    },
+    {
+      "lang": "en",
+      "text": "- And I go through some meetings",
+      "offset": 1325.576,
+      "duration": 1.083
+    },
+    {
+      "lang": "en",
+      "text": "and then all of a sudden\nI get new information",
+      "offset": 1326.659,
+      "duration": 1.681
+    },
+    {
+      "lang": "en",
+      "text": "or I take an action, I talk to somebody,",
+      "offset": 1328.34,
+      "duration": 2.01
+    },
+    {
+      "lang": "en",
+      "text": "and now I have to return",
+      "offset": 1330.35,
+      "duration": 0.879
+    },
+    {
+      "lang": "en",
+      "text": "to my to-do list-\n- Yeah.",
+      "offset": 1331.229,
+      "duration": 1.304
+    },
+    {
+      "lang": "en",
+      "text": "- reprioritize, move things around.",
+      "offset": 1332.533,
+      "duration": 2.787
+    },
+    {
+      "lang": "en",
+      "text": "And it's that same sort",
+      "offset": 1335.32,
+      "duration": 1.633
+    },
+    {
+      "lang": "en",
+      "text": "of like loop-\n- Yes.",
+      "offset": 1336.953,
+      "duration": 1.69
+    },
+    {
+      "lang": "en",
+      "text": "- that Claude's learning here as well.",
+      "offset": 1338.643,
+      "duration": 1.487
+    },
+    {
+      "lang": "en",
+      "text": "- Yeah, that's exactly right.",
+      "offset": 1340.13,
+      "duration": 1.083
+    },
+    {
+      "lang": "en",
+      "text": "And you can just notice\nit getting much better",
+      "offset": 1341.213,
+      "duration": 1.775
+    },
+    {
+      "lang": "en",
+      "text": "at that.\n- Yeah.",
+      "offset": 1342.988,
+      "duration": 0.958
+    },
+    {
+      "lang": "en",
+      "text": "- And the thing and maybe\nto make it concrete,",
+      "offset": 1343.946,
+      "duration": 1.933
+    },
+    {
+      "lang": "en",
+      "text": "a thing that would happen in the past is",
+      "offset": 1345.879,
+      "duration": 1.577
+    },
+    {
+      "lang": "en",
+      "text": "it would write out its to-do list",
+      "offset": 1347.456,
+      "duration": 1.114
+    },
+    {
+      "lang": "en",
+      "text": "and it would get like hyper\nfixated on it maybe, right?",
+      "offset": 1348.57,
+      "duration": 3.261
+    },
+    {
+      "lang": "en",
+      "text": "It wouldn't be able to\nsuccessfully incorporate",
+      "offset": 1351.831,
+      "duration": 2.221
+    },
+    {
+      "lang": "en",
+      "text": "this new thing it learned.\n- Right.",
+      "offset": 1354.052,
+      "duration": 1.442
+    },
+    {
+      "lang": "en",
+      "text": "- A good example which\nyou still see sometimes",
+      "offset": 1355.494,
+      "duration": 2.036
+    },
+    {
+      "lang": "en",
+      "text": "but you see a lot less\nis like Claude's like,",
+      "offset": 1357.53,
+      "duration": 2.364
+    },
+    {
+      "lang": "en",
+      "text": "I need to go to the top left in Pokemon",
+      "offset": 1359.894,
+      "duration": 2.346
+    },
+    {
+      "lang": "en",
+      "text": "and then it'll just walk\ninto a wall for hours on end.",
+      "offset": 1362.24,
+      "duration": 3.45
+    },
+    {
+      "lang": "en",
+      "text": "And if the model is really fixated",
+      "offset": 1365.69,
+      "duration": 2.033
+    },
+    {
+      "lang": "en",
+      "text": "on walking to the top left,",
+      "offset": 1367.723,
+      "duration": 1.275
+    },
+    {
+      "lang": "en",
+      "text": "like yeah you keep just walking",
+      "offset": 1368.998,
+      "duration": 1.333
+    },
+    {
+      "lang": "en",
+      "text": "up until I get there.\n- Right.",
+      "offset": 1370.331,
+      "duration": 1.602
+    },
+    {
+      "lang": "en",
+      "text": "- But if it's walking into a wall,",
+      "offset": 1371.933,
+      "duration": 1.651
+    },
+    {
+      "lang": "en",
+      "text": "like it eventually needs to\nstep back and be like, hmm,",
+      "offset": 1373.584,
+      "duration": 2.871
+    },
+    {
+      "lang": "en",
+      "text": "maybe I maybe I need to be doing",
+      "offset": 1376.455,
+      "duration": 0.833
+    },
+    {
+      "lang": "en",
+      "text": "something else first.\n- Yeah.",
+      "offset": 1377.288,
+      "duration": 1.037
+    },
+    {
+      "lang": "en",
+      "text": "- And that's the kinda thing",
+      "offset": 1378.325,
+      "duration": 1.587
+    },
+    {
+      "lang": "en",
+      "text": "where that's what happens in Pokemon,",
+      "offset": 1379.912,
+      "duration": 2.479
+    },
+    {
+      "lang": "en",
+      "text": "but yeah it's like super\ntranslational to a lot",
+      "offset": 1382.391,
+      "duration": 1.939
+    },
+    {
+      "lang": "en",
+      "text": "of the other things we do.\n- Right.",
+      "offset": 1384.33,
+      "duration": 1.725
+    },
+    {
+      "lang": "en",
+      "text": "That's a good parlay into\nthis next question I had",
+      "offset": 1386.055,
+      "duration": 3.21
+    },
+    {
+      "lang": "en",
+      "text": "around what are the current kind",
+      "offset": 1389.265,
+      "duration": 2.64
+    },
+    {
+      "lang": "en",
+      "text": "of funny moments we've been seeing?",
+      "offset": 1391.905,
+      "duration": 1.32
+    },
+    {
+      "lang": "en",
+      "text": "I mean, it's not perfect quite yet,",
+      "offset": 1393.225,
+      "duration": 1.74
+    },
+    {
+      "lang": "en",
+      "text": "you know, it's got a lot better",
+      "offset": 1394.965,
+      "duration": 1.266
+    },
+    {
+      "lang": "en",
+      "text": "over the past eight or so months,",
+      "offset": 1396.231,
+      "duration": 2.919
+    },
+    {
+      "lang": "en",
+      "text": "but we haven't beat Pokemon.\n- Yeah.",
+      "offset": 1399.15,
+      "duration": 2.22
+    },
+    {
+      "lang": "en",
+      "text": "- And there's definitely\nbeen some funny times",
+      "offset": 1401.37,
+      "duration": 1.828
+    },
+    {
+      "lang": "en",
+      "text": "along the way.\n- Ah, yeah.",
+      "offset": 1403.198,
+      "duration": 1.354
+    },
+    {
+      "lang": "en",
+      "text": "- Any stories you could share there?",
+      "offset": 1404.552,
+      "duration": 1.788
+    },
+    {
+      "lang": "en",
+      "text": "- Yeah. Claude is not perfect",
+      "offset": 1406.34,
+      "duration": 1.953
+    },
+    {
+      "lang": "en",
+      "text": "just yet.\n- Yeah.",
+      "offset": 1408.293,
+      "duration": 0.833
+    },
+    {
+      "lang": "en",
+      "text": "- I think like I have a\nlaundry list of the things",
+      "offset": 1409.126,
+      "duration": 2.249
+    },
+    {
+      "lang": "en",
+      "text": "that I think Claude still\nneeds to get better at.",
+      "offset": 1411.375,
+      "duration": 2.045
+    },
+    {
+      "lang": "en",
+      "text": "I'll start by harping\non some of the things",
+      "offset": 1413.42,
+      "duration": 1.855
+    },
+    {
+      "lang": "en",
+      "text": "that like Claude doesn't quite do well yet",
+      "offset": 1415.275,
+      "duration": 2.88
+    },
+    {
+      "lang": "en",
+      "text": "and that are interesting\nand they tend to be",
+      "offset": 1418.155,
+      "duration": 2.47
+    },
+    {
+      "lang": "en",
+      "text": "pretty funny moments.\n- Yeah.",
+      "offset": 1420.625,
+      "duration": 1.15
+    },
+    {
+      "lang": "en",
+      "text": "- One of my favorites was related to,",
+      "offset": 1421.775,
+      "duration": 3.325
+    },
+    {
+      "lang": "en",
+      "text": "its like visual acuity.",
+      "offset": 1425.1,
+      "duration": 1.917
+    },
+    {
+      "lang": "en",
+      "text": "It doesn't see the screen very well.",
+      "offset": 1428.01,
+      "duration": 1.615
+    },
+    {
+      "lang": "en",
+      "text": "So I was watching it play one time",
+      "offset": 1429.625,
+      "duration": 2.85
+    },
+    {
+      "lang": "en",
+      "text": "and I went to bed and it\nhad walked into a building",
+      "offset": 1432.475,
+      "duration": 4.62
+    },
+    {
+      "lang": "en",
+      "text": "and it thought that a doormat",
+      "offset": 1437.095,
+      "duration": 1.443
+    },
+    {
+      "lang": "en",
+      "text": "in the building was a dialogue box",
+      "offset": 1438.538,
+      "duration": 2.421
+    },
+    {
+      "lang": "en",
+      "text": "and you have to press a\nbutton to dismiss dialogue.",
+      "offset": 1440.959,
+      "duration": 3.059
+    },
+    {
+      "lang": "en",
+      "text": "And I woke up the next day",
+      "offset": 1444.018,
+      "duration": 1.291
+    },
+    {
+      "lang": "en",
+      "text": "and it had spent eight\nhours pressing that button",
+      "offset": 1445.309,
+      "duration": 2.298
+    },
+    {
+      "lang": "en",
+      "text": "trying to dismiss the dialogue box,",
+      "offset": 1447.607,
+      "duration": 2.541
+    },
+    {
+      "lang": "en",
+      "text": "like not realizing that like it was like,",
+      "offset": 1450.148,
+      "duration": 1.819
+    },
+    {
+      "lang": "en",
+      "text": "it's like cycling through the dialogue,",
+      "offset": 1451.967,
+      "duration": 2.208
+    },
+    {
+      "lang": "en",
+      "text": "thinking it had to advance.",
+      "offset": 1454.175,
+      "duration": 1.924
+    },
+    {
+      "lang": "en",
+      "text": "And so there's a couple of things",
+      "offset": 1456.099,
+      "duration": 1.726
+    },
+    {
+      "lang": "en",
+      "text": "that are like a little bit\ninteresting there to unpack.",
+      "offset": 1457.825,
+      "duration": 2.97
+    },
+    {
+      "lang": "en",
+      "text": "One is like making a mistake",
+      "offset": 1460.795,
+      "duration": 2.16
+    },
+    {
+      "lang": "en",
+      "text": "where you become really confident.",
+      "offset": 1462.955,
+      "duration": 1.05
+    },
+    {
+      "lang": "en",
+      "text": "Something as a dialogue box\nis a pretty bad mistake.",
+      "offset": 1464.005,
+      "duration": 2.205
+    },
+    {
+      "lang": "en",
+      "text": "And so if you have like",
+      "offset": 1466.21,
+      "duration": 0.966
+    },
+    {
+      "lang": "en",
+      "text": "a core understanding\nissue that's pretty bad.",
+      "offset": 1467.176,
+      "duration": 3.464
+    },
+    {
+      "lang": "en",
+      "text": "The other is time.",
+      "offset": 1470.64,
+      "duration": 0.833
+    },
+    {
+      "lang": "en",
+      "text": "Like pressing a button\n15,000 times to Claude",
+      "offset": 1471.473,
+      "duration": 3.75
+    },
+    {
+      "lang": "en",
+      "text": "doesn't really mean much.\n- Right.",
+      "offset": 1476.058,
+      "duration": 1.876
+    },
+    {
+      "lang": "en",
+      "text": "- Like to me,",
+      "offset": 1477.934,
+      "duration": 0.833
+    },
+    {
+      "lang": "en",
+      "text": "if I was spending eight\nhours pressing buttons,",
+      "offset": 1478.767,
+      "duration": 1.666
+    },
+    {
+      "lang": "en",
+      "text": "I'd be like, I'm pretty tired\nof pressing that button.",
+      "offset": 1480.433,
+      "duration": 1.877
+    },
+    {
+      "lang": "en",
+      "text": "Like my thumb hurts.",
+      "offset": 1482.31,
+      "duration": 1.741
+    },
+    {
+      "lang": "en",
+      "text": "For Claude, like 15,000 button presses,",
+      "offset": 1484.051,
+      "duration": 2.489
+    },
+    {
+      "lang": "en",
+      "text": "like who cares, keep going,",
+      "offset": 1486.54,
+      "duration": 0.958
+    },
+    {
+      "lang": "en",
+      "text": "you know?\n- Right.",
+      "offset": 1487.498,
+      "duration": 0.833
+    },
+    {
+      "lang": "en",
+      "text": "It doesn't know how much\ntime has even elapsed",
+      "offset": 1488.331,
+      "duration": 1.478
+    },
+    {
+      "lang": "en",
+      "text": "at all.\n- Yeah.",
+      "offset": 1489.809,
+      "duration": 0.833
+    },
+    {
+      "lang": "en",
+      "text": "And so there's like some\nintuition space around like,",
+      "offset": 1490.642,
+      "duration": 2.97
+    },
+    {
+      "lang": "en",
+      "text": "the ability to comprehend\nhow long is too long,",
+      "offset": 1493.612,
+      "duration": 3.387
+    },
+    {
+      "lang": "en",
+      "text": "like what is time-\n- Right.",
+      "offset": 1496.999,
+      "duration": 1.335
+    },
+    {
+      "lang": "en",
+      "text": "- that kinda thing that I think",
+      "offset": 1498.334,
+      "duration": 2.151
+    },
+    {
+      "lang": "en",
+      "text": "it's a bit funny and\nit needs some work on.",
+      "offset": 1500.485,
+      "duration": 3.545
+    },
+    {
+      "lang": "en",
+      "text": "So that's like one general\ncategory though is like seeing...",
+      "offset": 1504.03,
+      "duration": 3.24
+    },
+    {
+      "lang": "en",
+      "text": "Another fun story I have that's more",
+      "offset": 1507.27,
+      "duration": 2.213
+    },
+    {
+      "lang": "en",
+      "text": "on the like planning and strategy side.",
+      "offset": 1509.483,
+      "duration": 2.102
+    },
+    {
+      "lang": "en",
+      "text": "I was watching it play one time",
+      "offset": 1511.585,
+      "duration": 2.1
+    },
+    {
+      "lang": "en",
+      "text": "and it got into mountain moon,",
+      "offset": 1513.685,
+      "duration": 2.5
+    },
+    {
+      "lang": "en",
+      "text": "which is for the people\nwho watch the stream,",
+      "offset": 1517.751,
+      "duration": 2.036
+    },
+    {
+      "lang": "en",
+      "text": "like a place where it really likes",
+      "offset": 1519.787,
+      "duration": 1.247
+    },
+    {
+      "lang": "en",
+      "text": "to get stuck for a long period of time.",
+      "offset": 1521.034,
+      "duration": 2.286
+    },
+    {
+      "lang": "en",
+      "text": "And it had one Pokemon at the\ntime in this run that it had",
+      "offset": 1523.32,
+      "duration": 3.835
+    },
+    {
+      "lang": "en",
+      "text": "and it had the option to learn a new move",
+      "offset": 1527.155,
+      "duration": 2.58
+    },
+    {
+      "lang": "en",
+      "text": "that was a not attacking move\nand you really need attacking.",
+      "offset": 1529.735,
+      "duration": 2.55
+    },
+    {
+      "lang": "en",
+      "text": "Like if you don't have an attacking move,",
+      "offset": 1532.285,
+      "duration": 1.3
+    },
+    {
+      "lang": "en",
+      "text": "you can't beat other Pokemon.",
+      "offset": 1533.585,
+      "duration": 2.985
+    },
+    {
+      "lang": "en",
+      "text": "And it wanted to learn that move,",
+      "offset": 1536.57,
+      "duration": 1.625
+    },
+    {
+      "lang": "en",
+      "text": "but it just was like very excited.",
+      "offset": 1538.195,
+      "duration": 1.8
+    },
+    {
+      "lang": "en",
+      "text": "And so it like pressed A a bunch of times",
+      "offset": 1539.995,
+      "duration": 2.34
+    },
+    {
+      "lang": "en",
+      "text": "to like clear the dialogue\nto get to that point",
+      "offset": 1542.335,
+      "duration": 2.61
+    },
+    {
+      "lang": "en",
+      "text": "and it accidentally pressed\nthe button too many times",
+      "offset": 1544.945,
+      "duration": 2.151
+    },
+    {
+      "lang": "en",
+      "text": "and it deleted its only attacking move.",
+      "offset": 1547.096,
+      "duration": 1.65
+    },
+    {
+      "lang": "en",
+      "text": "- Oh, no.",
+      "offset": 1548.746,
+      "duration": 1.083
+    },
+    {
+      "lang": "en",
+      "text": "- And so now it's like stuck here",
+      "offset": 1549.829,
+      "duration": 1.576
+    },
+    {
+      "lang": "en",
+      "text": "in this part of the game\nwith no moves essentially,",
+      "offset": 1551.405,
+      "duration": 2.019
+    },
+    {
+      "lang": "en",
+      "text": "like nothing to do,\nlike no way to progress.",
+      "offset": 1553.424,
+      "duration": 2.951
+    },
+    {
+      "lang": "en",
+      "text": "And that's a little bit of like,",
+      "offset": 1556.375,
+      "duration": 1.11
+    },
+    {
+      "lang": "en",
+      "text": "like when there are destructive\nconsequences sometimes,",
+      "offset": 1557.485,
+      "duration": 2.4
+    },
+    {
+      "lang": "en",
+      "text": "like understanding that I need to go slow.",
+      "offset": 1559.885,
+      "duration": 1.795
+    },
+    {
+      "lang": "en",
+      "text": "- Right.",
+      "offset": 1561.68,
+      "duration": 0.833
+    },
+    {
+      "lang": "en",
+      "text": "- Like something could go wrong wrong",
+      "offset": 1562.513,
+      "duration": 2.284
+    },
+    {
+      "lang": "en",
+      "text": "if I press A 15 times",
+      "offset": 1564.797,
+      "duration": 2.4
+    },
+    {
+      "lang": "en",
+      "text": "without checking what\nhappened in the middle.",
+      "offset": 1567.197,
+      "duration": 1.711
+    },
+    {
+      "lang": "en",
+      "text": "And the thing you'll notice\nin that is like sometimes",
+      "offset": 1568.908,
+      "duration": 2.215
+    },
+    {
+      "lang": "en",
+      "text": "it's intuition is that like it\nwill be able to stop itself.",
+      "offset": 1571.123,
+      "duration": 3.137
+    },
+    {
+      "lang": "en",
+      "text": "Like if I wanna press A 15 times,",
+      "offset": 1574.26,
+      "duration": 2.575
+    },
+    {
+      "lang": "en",
+      "text": "like I'll just say press A 15 times",
+      "offset": 1576.835,
+      "duration": 1.86
+    },
+    {
+      "lang": "en",
+      "text": "and then if I see something\ngo wrong, I'll just stop,",
+      "offset": 1578.695,
+      "duration": 3.99
+    },
+    {
+      "lang": "en",
+      "text": "because Claude like doesn't quite have",
+      "offset": 1582.685,
+      "duration": 1.216
+    },
+    {
+      "lang": "en",
+      "text": "this intuition that like-\n- Right.",
+      "offset": 1583.901,
+      "duration": 1.574
+    },
+    {
+      "lang": "en",
+      "text": "- I'm a language model.",
+      "offset": 1585.475,
+      "duration": 1.208
+    },
+    {
+      "lang": "en",
+      "text": "- Yeah.",
+      "offset": 1586.683,
+      "duration": 0.833
+    },
+    {
+      "lang": "en",
+      "text": "- I don't have the op, like I-",
+      "offset": 1587.516,
+      "duration": 1.188
+    },
+    {
+      "lang": "en",
+      "text": "- It's not actually pressing A.",
+      "offset": 1588.704,
+      "duration": 0.864
+    },
+    {
+      "lang": "en",
+      "text": "- This tool is not giving me",
+      "offset": 1589.568,
+      "duration": 0.833
+    },
+    {
+      "lang": "en",
+      "text": "the affordance to stop.",
+      "offset": 1590.401,
+      "duration": 1.599
+    },
+    {
+      "lang": "en",
+      "text": "I'm not checking in the\nmiddle what's going on.",
+      "offset": 1592,
+      "duration": 1.696
+    },
+    {
+      "lang": "en",
+      "text": "- Yeah.",
+      "offset": 1593.696,
+      "duration": 0.833
+    },
+    {
+      "lang": "en",
+      "text": "- And so there's a little\nbit of like understanding",
+      "offset": 1594.529,
+      "duration": 1.369
+    },
+    {
+      "lang": "en",
+      "text": "about like and I think about\nthis as like a self-awareness",
+      "offset": 1595.898,
+      "duration": 2.632
+    },
+    {
+      "lang": "en",
+      "text": "of my limitations, the situation,",
+      "offset": 1598.53,
+      "duration": 2.573
+    },
+    {
+      "lang": "en",
+      "text": "that kinda thing with Claude",
+      "offset": 1601.103,
+      "duration": 0.934
+    },
+    {
+      "lang": "en",
+      "text": "that it sometimes struggles with,",
+      "offset": 1602.037,
+      "duration": 1.723
+    },
+    {
+      "lang": "en",
+      "text": "and that's actually really important.",
+      "offset": 1603.76,
+      "duration": 2.305
+    },
+    {
+      "lang": "en",
+      "text": "Like one of the things I\nwish the most of Claude was",
+      "offset": 1606.065,
+      "duration": 2.01
+    },
+    {
+      "lang": "en",
+      "text": "that it had like a\nslightly better awareness",
+      "offset": 1608.075,
+      "duration": 1.891
+    },
+    {
+      "lang": "en",
+      "text": "of hey, maybe I'm not\ngood at seeing the screen.",
+      "offset": 1609.966,
+      "duration": 2.944
+    },
+    {
+      "lang": "en",
+      "text": "Like maybe the fact that\nI'm walking into this wall",
+      "offset": 1612.91,
+      "duration": 2.416
+    },
+    {
+      "lang": "en",
+      "text": "over and over and over again means",
+      "offset": 1615.326,
+      "duration": 1.585
+    },
+    {
+      "lang": "en",
+      "text": "that like I need to learn something",
+      "offset": 1616.911,
+      "duration": 1.512
+    },
+    {
+      "lang": "en",
+      "text": "at a meta level about my own capabilities",
+      "offset": 1618.423,
+      "duration": 2.582
+    },
+    {
+      "lang": "en",
+      "text": "and I should think about a\ncompletely different strategy",
+      "offset": 1621.005,
+      "duration": 2.88
+    },
+    {
+      "lang": "en",
+      "text": "rather than like walking into the wall.",
+      "offset": 1623.885,
+      "duration": 2.97
+    },
+    {
+      "lang": "en",
+      "text": "And so there's a little bit of like,",
+      "offset": 1626.855,
+      "duration": 1.168
+    },
+    {
+      "lang": "en",
+      "text": "its ability to sort of like meta learn",
+      "offset": 1628.023,
+      "duration": 1.6
+    },
+    {
+      "lang": "en",
+      "text": "about what it is, what\nits capabilities are,",
+      "offset": 1629.623,
+      "duration": 3.264
+    },
+    {
+      "lang": "en",
+      "text": "that kinda thing that I think it still has",
+      "offset": 1632.887,
+      "duration": 2.281
+    },
+    {
+      "lang": "en",
+      "text": "a lot of room to get better at.",
+      "offset": 1635.168,
+      "duration": 1.377
+    },
+    {
+      "lang": "en",
+      "text": "And then maybe one last\nthing around frustration",
+      "offset": 1636.545,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "and one of my favorite stories.",
+      "offset": 1640.385,
+      "duration": 1.253
+    },
+    {
+      "lang": "en",
+      "text": "So again on Mount Moon, it typically,",
+      "offset": 1641.638,
+      "duration": 3.083
+    },
+    {
+      "lang": "en",
+      "text": "the model takes like two days to get",
+      "offset": 1645.634,
+      "duration": 1.639
+    },
+    {
+      "lang": "en",
+      "text": "through Mount Moon.\n- Oh, gosh.",
+      "offset": 1647.273,
+      "duration": 1.117
+    },
+    {
+      "lang": "en",
+      "text": "- It's a maze.",
+      "offset": 1648.39,
+      "duration": 0.833
+    },
+    {
+      "lang": "en",
+      "text": "Like, it's like it takes a long time.",
+      "offset": 1649.223,
+      "duration": 3.149
+    },
+    {
+      "lang": "en",
+      "text": "On the stream, I think-",
+      "offset": 1652.372,
+      "duration": 0.833
+    },
+    {
+      "lang": "en",
+      "text": "- What makes Mountain Moon so hard?",
+      "offset": 1653.205,
+      "duration": 1.4
+    },
+    {
+      "lang": "en",
+      "text": "- Yeah.",
+      "offset": 1654.605,
+      "duration": 0.833
+    },
+    {
+      "lang": "en",
+      "text": "So one of the things Claude's worst",
+      "offset": 1655.438,
+      "duration": 0.958
+    },
+    {
+      "lang": "en",
+      "text": "at right now is like navigation,",
+      "offset": 1656.396,
+      "duration": 2.444
+    },
+    {
+      "lang": "en",
+      "text": "like wandering over a long period",
+      "offset": 1658.84,
+      "duration": 1.816
+    },
+    {
+      "lang": "en",
+      "text": "of time.\n- Right.",
+      "offset": 1660.656,
+      "duration": 1.083
+    },
+    {
+      "lang": "en",
+      "text": "- It doesn't quite have\na good understanding",
+      "offset": 1661.739,
+      "duration": 1.536
+    },
+    {
+      "lang": "en",
+      "text": "of like spatial awareness in\ngeneral, I guess, I would say.",
+      "offset": 1663.275,
+      "duration": 4.11
+    },
+    {
+      "lang": "en",
+      "text": "And Mountain Moon is like the first place",
+      "offset": 1667.385,
+      "duration": 2.64
+    },
+    {
+      "lang": "en",
+      "text": "that really stresses where you need",
+      "offset": 1670.025,
+      "duration": 1.23
+    },
+    {
+      "lang": "en",
+      "text": "to make like navigate a pretty long maze",
+      "offset": 1671.255,
+      "duration": 2.066
+    },
+    {
+      "lang": "en",
+      "text": "of corridors to get to the right spot.",
+      "offset": 1673.321,
+      "duration": 1.744
+    },
+    {
+      "lang": "en",
+      "text": "And there's also sorts\nof like little nooks",
+      "offset": 1675.065,
+      "duration": 1.32
+    },
+    {
+      "lang": "en",
+      "text": "and crannies to get stuck",
+      "offset": 1676.385,
+      "duration": 1.83
+    },
+    {
+      "lang": "en",
+      "text": "and you need to do a pretty\nnuanced like traverse",
+      "offset": 1678.215,
+      "duration": 2.61
+    },
+    {
+      "lang": "en",
+      "text": "through a series of\npaths to get to the exit.",
+      "offset": 1680.825,
+      "duration": 3.06
+    },
+    {
+      "lang": "en",
+      "text": "And it just takes Claude a long time",
+      "offset": 1683.885,
+      "duration": 1.5
+    },
+    {
+      "lang": "en",
+      "text": "to like actually find all of the paths",
+      "offset": 1685.385,
+      "duration": 1.62
+    },
+    {
+      "lang": "en",
+      "text": "and get a sense of where it is",
+      "offset": 1687.005,
+      "duration": 0.916
+    },
+    {
+      "lang": "en",
+      "text": "and where it shouldn't\ngo and that kinda thing.",
+      "offset": 1687.921,
+      "duration": 1.664
+    },
+    {
+      "lang": "en",
+      "text": "So one time I was, in fact the\nfirst time it ever got there,",
+      "offset": 1689.585,
+      "duration": 3.57
+    },
+    {
+      "lang": "en",
+      "text": "when you go through Mount Moon",
+      "offset": 1693.155,
+      "duration": 1.919
+    },
+    {
+      "lang": "en",
+      "text": "there's this like last thing you do,",
+      "offset": 1695.074,
+      "duration": 1.833
+    },
+    {
+      "lang": "en",
+      "text": "which is you have to get\na fossil in Mount Moon.",
+      "offset": 1696.907,
+      "duration": 2.858
+    },
+    {
+      "lang": "en",
+      "text": "And once you get the fossil,",
+      "offset": 1699.765,
+      "duration": 0.838
+    },
+    {
+      "lang": "en",
+      "text": "you're like 15 steps from the exit",
+      "offset": 1700.603,
+      "duration": 2.365
+    },
+    {
+      "lang": "en",
+      "text": "from finally getting out the other side.",
+      "offset": 1702.968,
+      "duration": 1.592
+    },
+    {
+      "lang": "en",
+      "text": "And so the first time I was ever watching",
+      "offset": 1704.56,
+      "duration": 1.72
+    },
+    {
+      "lang": "en",
+      "text": "Claude in Mount Moon,",
+      "offset": 1706.28,
+      "duration": 1.408
+    },
+    {
+      "lang": "en",
+      "text": "it goes through like three\ndays, gets the fossil,",
+      "offset": 1707.688,
+      "duration": 4.34
+    },
+    {
+      "lang": "en",
+      "text": "and it's like for me,\nI'm like, this is it.",
+      "offset": 1712.028,
+      "duration": 2.037
+    },
+    {
+      "lang": "en",
+      "text": "It's finally happening.\n- When was that?",
+      "offset": 1714.065,
+      "duration": 1.851
+    },
+    {
+      "lang": "en",
+      "text": "- I didn't think this\nwas ever gonna happen.",
+      "offset": 1715.916,
+      "duration": 1.419
+    },
+    {
+      "lang": "en",
+      "text": "I thought this was hopeless.",
+      "offset": 1717.335,
+      "duration": 1.083
+    },
+    {
+      "lang": "en",
+      "text": "I was like ready to write this off.",
+      "offset": 1718.418,
+      "duration": 1.832
+    },
+    {
+      "lang": "en",
+      "text": "We were going to publish that benchmark",
+      "offset": 1720.25,
+      "duration": 1.58
+    },
+    {
+      "lang": "en",
+      "text": "we had-\n- Yeah.",
+      "offset": 1721.83,
+      "duration": 0.833
+    },
+    {
+      "lang": "en",
+      "text": "- and this was going be the end of it.",
+      "offset": 1722.663,
+      "duration": 0.833
+    },
+    {
+      "lang": "en",
+      "text": "Like that's fine.",
+      "offset": 1723.496,
+      "duration": 1.616
+    },
+    {
+      "lang": "en",
+      "text": "We got one badge,",
+      "offset": 1725.112,
+      "duration": 0.833
+    },
+    {
+      "lang": "en",
+      "text": "like we're excited.\n- Cap it right at Mount Moon.",
+      "offset": 1725.945,
+      "duration": 1.535
+    },
+    {
+      "lang": "en",
+      "text": "- And so I'm at like peak hype,",
+      "offset": 1727.48,
+      "duration": 1.37
+    },
+    {
+      "lang": "en",
+      "text": "like we're gonna get out.",
+      "offset": 1728.85,
+      "duration": 1.45
+    },
+    {
+      "lang": "en",
+      "text": "This is it. We can keep\ngoing at the game, right?",
+      "offset": 1730.3,
+      "duration": 3.705
+    },
+    {
+      "lang": "en",
+      "text": "And then it proceeded to get lost.",
+      "offset": 1734.005,
+      "duration": 2.71
+    },
+    {
+      "lang": "en",
+      "text": "It's 15 steps away,",
+      "offset": 1736.715,
+      "duration": 1.477
+    },
+    {
+      "lang": "en",
+      "text": "it turns around and goes the\nother direction, gets lost,",
+      "offset": 1738.192,
+      "duration": 2.728
+    },
+    {
+      "lang": "en",
+      "text": "and then it uses this item\ncalled an escape rope,",
+      "offset": 1740.92,
+      "duration": 2.365
+    },
+    {
+      "lang": "en",
+      "text": "which teleports you back to\nthe last place you rested,",
+      "offset": 1743.285,
+      "duration": 3
+    },
+    {
+      "lang": "en",
+      "text": "which is like outside the\nbeginning of the cave.",
+      "offset": 1746.285,
+      "duration": 2.73
+    },
+    {
+      "lang": "en",
+      "text": "So it spends three days navigating,",
+      "offset": 1749.015,
+      "duration": 2.354
+    },
+    {
+      "lang": "en",
+      "text": "is 10 steps from the exit, turns around,",
+      "offset": 1751.369,
+      "duration": 3.363
+    },
+    {
+      "lang": "en",
+      "text": "completely noobs out",
+      "offset": 1754.732,
+      "duration": 1.083
+    },
+    {
+      "lang": "en",
+      "text": "of the situation-\n- Oh, my god.",
+      "offset": 1755.815,
+      "duration": 0.833
+    },
+    {
+      "lang": "en",
+      "text": "- like goes to the beginning again.",
+      "offset": 1756.648,
+      "duration": 1.967
+    },
+    {
+      "lang": "en",
+      "text": "And I just had a meltdown,",
+      "offset": 1758.615,
+      "duration": 1.213
+    },
+    {
+      "lang": "en",
+      "text": "'cause it's the funniest\nthing you've ever seen.",
+      "offset": 1759.828,
+      "duration": 1.247
+    },
+    {
+      "lang": "en",
+      "text": "I mean, it's objectively\nhilarious content,",
+      "offset": 1761.075,
+      "duration": 3.635
+    },
+    {
+      "lang": "en",
+      "text": "but like I was gonna cry",
+      "offset": 1764.71,
+      "duration": 2.038
+    },
+    {
+      "lang": "en",
+      "text": "'cause it was-\n- I woulda loved to read",
+      "offset": 1766.748,
+      "duration": 1.283
+    },
+    {
+      "lang": "en",
+      "text": "its like transcript on that one too,",
+      "offset": 1768.031,
+      "duration": 2.24
+    },
+    {
+      "lang": "en",
+      "text": "probably.\n- I did.",
+      "offset": 1770.271,
+      "duration": 1.095
+    },
+    {
+      "lang": "en",
+      "text": "It's sad 'cause it doesn't",
+      "offset": 1771.366,
+      "duration": 1.814
+    },
+    {
+      "lang": "en",
+      "text": "even realize.\n- It doesn't even know.",
+      "offset": 1773.18,
+      "duration": 0.833
+    },
+    {
+      "lang": "en",
+      "text": "- It doesn't even know.",
+      "offset": 1774.013,
+      "duration": 0.833
+    },
+    {
+      "lang": "en",
+      "text": "It's just like, this is\na disaster. I'm lost.",
+      "offset": 1774.846,
+      "duration": 2.884
+    },
+    {
+      "lang": "en",
+      "text": "Like best-case scenario,",
+      "offset": 1777.73,
+      "duration": 1.935
+    },
+    {
+      "lang": "en",
+      "text": "you just like get to the\nbeginning and try again.",
+      "offset": 1779.665,
+      "duration": 1.909
+    },
+    {
+      "lang": "en",
+      "text": "It's like yo, we're so close.",
+      "offset": 1781.574,
+      "duration": 2.265
+    },
+    {
+      "lang": "en",
+      "text": "- On the dialogue box piece,",
+      "offset": 1783.839,
+      "duration": 2.539
+    },
+    {
+      "lang": "en",
+      "text": "how does Claude-\n- Yeah.",
+      "offset": 1786.378,
+      "duration": 0.975
+    },
+    {
+      "lang": "en",
+      "text": "- actually break out of that?",
+      "offset": 1787.353,
+      "duration": 2.518
+    },
+    {
+      "lang": "en",
+      "text": "- Yeah.",
+      "offset": 1789.871,
+      "duration": 0.833
+    },
+    {
+      "lang": "en",
+      "text": "- Is there tactics or\nis that like, all right,",
+      "offset": 1790.704,
+      "duration": 1.951
+    },
+    {
+      "lang": "en",
+      "text": "we gotta reset the game and\nstart over sort of thing.",
+      "offset": 1792.655,
+      "duration": 2.695
+    },
+    {
+      "lang": "en",
+      "text": "- Yeah, this gets to like the\nlittle details of how you can,",
+      "offset": 1795.35,
+      "duration": 2.215
+    },
+    {
+      "lang": "en",
+      "text": "like how I've actually come\nto understand what it means",
+      "offset": 1797.565,
+      "duration": 3.27
+    },
+    {
+      "lang": "en",
+      "text": "to build good agents because like,",
+      "offset": 1800.835,
+      "duration": 2.318
+    },
+    {
+      "lang": "en",
+      "text": "there's a train of thought\nthat exists for a while",
+      "offset": 1803.153,
+      "duration": 2.172
+    },
+    {
+      "lang": "en",
+      "text": "of like build the most\nbig complicated system",
+      "offset": 1805.325,
+      "duration": 2.456
+    },
+    {
+      "lang": "en",
+      "text": "to try to patch every little\nweird quirk that a model has.",
+      "offset": 1807.781,
+      "duration": 4.094
+    },
+    {
+      "lang": "en",
+      "text": "And that's actually really hard to do.",
+      "offset": 1811.875,
+      "duration": 1.23
+    },
+    {
+      "lang": "en",
+      "text": "How I think about it now\nis I watch the model play.",
+      "offset": 1813.105,
+      "duration": 3
+    },
+    {
+      "lang": "en",
+      "text": "Like I give it a pretty, simple,",
+      "offset": 1816.105,
+      "duration": 1.44
+    },
+    {
+      "lang": "en",
+      "text": "straightforward way to play the game",
+      "offset": 1817.545,
+      "duration": 1.59
+    },
+    {
+      "lang": "en",
+      "text": "and I watch and I see what goes wrong.",
+      "offset": 1819.135,
+      "duration": 3.06
+    },
+    {
+      "lang": "en",
+      "text": "And no way to find out\nthat it's gonna get stuck",
+      "offset": 1822.195,
+      "duration": 3.06
+    },
+    {
+      "lang": "en",
+      "text": "for eight hours trying\nto dismiss dialogue box",
+      "offset": 1825.255,
+      "duration": 1.83
+    },
+    {
+      "lang": "en",
+      "text": "than waking up and seeing it stuck",
+      "offset": 1827.085,
+      "duration": 1.8
+    },
+    {
+      "lang": "en",
+      "text": "for eight hours with that.",
+      "offset": 1828.885,
+      "duration": 1.8
+    },
+    {
+      "lang": "en",
+      "text": "And then you can sort of like build",
+      "offset": 1830.685,
+      "duration": 1.208
+    },
+    {
+      "lang": "en",
+      "text": "a how do I give it the right information",
+      "offset": 1831.893,
+      "duration": 2.791
+    },
+    {
+      "lang": "en",
+      "text": "it needs to be able to break out at this.",
+      "offset": 1834.684,
+      "duration": 2.066
+    },
+    {
+      "lang": "en",
+      "text": "So like one really simple\nthing that actually helps is",
+      "offset": 1836.75,
+      "duration": 1.911
+    },
+    {
+      "lang": "en",
+      "text": "just like giving it a step count",
+      "offset": 1838.661,
+      "duration": 2.341
+    },
+    {
+      "lang": "en",
+      "text": "every time-\n- Oh, okay.",
+      "offset": 1841.002,
+      "duration": 1.275
+    },
+    {
+      "lang": "en",
+      "text": "- it's like taking an action.",
+      "offset": 1842.277,
+      "duration": 1.163
+    },
+    {
+      "lang": "en",
+      "text": "So saying, hey, like this is action 2,400.",
+      "offset": 1843.44,
+      "duration": 3.5
+    },
+    {
+      "lang": "en",
+      "text": "Your next action will\nbe 2,500 or whatever.",
+      "offset": 1848.205,
+      "duration": 2.97
+    },
+    {
+      "lang": "en",
+      "text": "And then you can also say like,",
+      "offset": 1851.175,
+      "duration": 1.32
+    },
+    {
+      "lang": "en",
+      "text": "because one of your limitations is",
+      "offset": 1852.495,
+      "duration": 2.08
+    },
+    {
+      "lang": "en",
+      "text": "you don't have a great sense of time,",
+      "offset": 1854.575,
+      "duration": 1.509
+    },
+    {
+      "lang": "en",
+      "text": "you may just wanna keep track",
+      "offset": 1856.084,
+      "duration": 0.971
+    },
+    {
+      "lang": "en",
+      "text": "of how long you've been\ntrying to do something",
+      "offset": 1857.055,
+      "duration": 1.77
+    },
+    {
+      "lang": "en",
+      "text": "and if there's something you\nshould learn from that fact.",
+      "offset": 1858.825,
+      "duration": 2.52
+    },
+    {
+      "lang": "en",
+      "text": "Like if you've been trying for something",
+      "offset": 1861.345,
+      "duration": 1.895
+    },
+    {
+      "lang": "en",
+      "text": "for a really long time,",
+      "offset": 1863.24,
+      "duration": 0.864
+    },
+    {
+      "lang": "en",
+      "text": "like maybe it's a good idea to reconsider.",
+      "offset": 1864.104,
+      "duration": 3.421
+    },
+    {
+      "lang": "en",
+      "text": "And that's actually enough\nin the case of Pokemon",
+      "offset": 1867.525,
+      "duration": 2.16
+    },
+    {
+      "lang": "en",
+      "text": "to like get it to keep track of how long",
+      "offset": 1869.685,
+      "duration": 2.127
+    },
+    {
+      "lang": "en",
+      "text": "it's been pressing A.\n- Oh, interesting.",
+      "offset": 1871.812,
+      "duration": 1.354
+    },
+    {
+      "lang": "en",
+      "text": "- Like if it's been\npressing a for 10,000 times,",
+      "offset": 1873.166,
+      "duration": 2.441
+    },
+    {
+      "lang": "en",
+      "text": "like if you at least\nlike just by telling it",
+      "offset": 1875.607,
+      "duration": 2.238
+    },
+    {
+      "lang": "en",
+      "text": "to keep track of that,",
+      "offset": 1877.845,
+      "duration": 1.416
+    },
+    {
+      "lang": "en",
+      "text": "it has some hope of being\nable to realize this is weird,",
+      "offset": 1879.261,
+      "duration": 2.944
+    },
+    {
+      "lang": "en",
+      "text": "I should get out of it.",
+      "offset": 1882.205,
+      "duration": 1.103
+    },
+    {
+      "lang": "en",
+      "text": "This is just like a little like,",
+      "offset": 1883.308,
+      "duration": 1.083
+    },
+    {
+      "lang": "en",
+      "text": "it's literally just like\nthinking about the information",
+      "offset": 1884.391,
+      "duration": 1.704
+    },
+    {
+      "lang": "en",
+      "text": "that I need to give Claude\nto be successful, right?",
+      "offset": 1886.095,
+      "duration": 1.75
+    },
+    {
+      "lang": "en",
+      "text": "Like Claude doesn't have\nany innate sense of time.",
+      "offset": 1887.845,
+      "duration": 2.69
+    },
+    {
+      "lang": "en",
+      "text": "Like it does not.",
+      "offset": 1890.535,
+      "duration": 0.858
+    },
+    {
+      "lang": "en",
+      "text": "Every time you run it is\ncompletely new to Claude,",
+      "offset": 1891.393,
+      "duration": 2.429
+    },
+    {
+      "lang": "en",
+      "text": "and that's not true for humans.",
+      "offset": 1893.822,
+      "duration": 1.698
+    },
+    {
+      "lang": "en",
+      "text": "Like we have a great sense of time.",
+      "offset": 1895.52,
+      "duration": 1.424
+    },
+    {
+      "lang": "en",
+      "text": "Like the sun goes up and down,",
+      "offset": 1896.944,
+      "duration": 0.971
+    },
+    {
+      "lang": "en",
+      "text": "it's very easy for us, right?",
+      "offset": 1897.915,
+      "duration": 1.278
+    },
+    {
+      "lang": "en",
+      "text": "And so this is just\nlike I've thought a lot",
+      "offset": 1899.193,
+      "duration": 1.95
+    },
+    {
+      "lang": "en",
+      "text": "about as I've gone on this like\nlearning about what Claude,",
+      "offset": 1901.143,
+      "duration": 3.375
+    },
+    {
+      "lang": "en",
+      "text": "like what affordances it needs to be able",
+      "offset": 1904.518,
+      "duration": 2.097
+    },
+    {
+      "lang": "en",
+      "text": "to understand it situational\na little bit better",
+      "offset": 1906.615,
+      "duration": 2.011
+    },
+    {
+      "lang": "en",
+      "text": "and then just providing it\nwith that set of information.",
+      "offset": 1908.626,
+      "duration": 3.509
+    },
+    {
+      "lang": "en",
+      "text": "And so a lot of the iteration I've done",
+      "offset": 1912.135,
+      "duration": 1.65
+    },
+    {
+      "lang": "en",
+      "text": "in the last few months on\nthis is just sort of like,",
+      "offset": 1913.785,
+      "duration": 1.92
+    },
+    {
+      "lang": "en",
+      "text": "watch, see what it struggles with,",
+      "offset": 1915.705,
+      "duration": 1.95
+    },
+    {
+      "lang": "en",
+      "text": "understand is there some\nlike piece of information",
+      "offset": 1917.655,
+      "duration": 3.21
+    },
+    {
+      "lang": "en",
+      "text": "that can give Claude,",
+      "offset": 1920.865,
+      "duration": 0.833
+    },
+    {
+      "lang": "en",
+      "text": "that will help it have more of the tools",
+      "offset": 1921.698,
+      "duration": 1.491
+    },
+    {
+      "lang": "en",
+      "text": "that needs to reason about the situation.",
+      "offset": 1923.189,
+      "duration": 2.093
+    },
+    {
+      "lang": "en",
+      "text": "And then often that's like the best way",
+      "offset": 1925.282,
+      "duration": 1.373
+    },
+    {
+      "lang": "en",
+      "text": "to start getting progress on this.",
+      "offset": 1926.655,
+      "duration": 2.32
+    },
+    {
+      "lang": "en",
+      "text": "- Okay. Cool.",
+      "offset": 1928.975,
+      "duration": 1.165
+    },
+    {
+      "lang": "en",
+      "text": "And that feels very similar to I guess",
+      "offset": 1930.14,
+      "duration": 2.233
+    },
+    {
+      "lang": "en",
+      "text": "some of the general prompting\nguidance that we usually",
+      "offset": 1932.373,
+      "duration": 2.06
+    },
+    {
+      "lang": "en",
+      "text": "give customers, right-\n- Yeah.",
+      "offset": 1934.433,
+      "duration": 1.257
+    },
+    {
+      "lang": "en",
+      "text": "- around like hey if you\nwere to write a prompt",
+      "offset": 1935.69,
+      "duration": 2.455
+    },
+    {
+      "lang": "en",
+      "text": "and give it to somebody",
+      "offset": 1938.145,
+      "duration": 0.833
+    },
+    {
+      "lang": "en",
+      "text": "and they knew nothing\nabout this situation,",
+      "offset": 1938.978,
+      "duration": 1.578
+    },
+    {
+      "lang": "en",
+      "text": "they were in like a basically,",
+      "offset": 1940.556,
+      "duration": 1.628
+    },
+    {
+      "lang": "en",
+      "text": "a box with no windows-\n- Yep.",
+      "offset": 1942.184,
+      "duration": 1.676
+    },
+    {
+      "lang": "en",
+      "text": "- and they had to do this task,",
+      "offset": 1943.86,
+      "duration": 1.717
+    },
+    {
+      "lang": "en",
+      "text": "would they be able to do it?\n- Yep.",
+      "offset": 1945.577,
+      "duration": 1.343
+    },
+    {
+      "lang": "en",
+      "text": "- And if you don't\nprovide all that context-",
+      "offset": 1946.92,
+      "duration": 2.145
+    },
+    {
+      "lang": "en",
+      "text": "- That's right.",
+      "offset": 1949.065,
+      "duration": 0.833
+    },
+    {
+      "lang": "en",
+      "text": "- And this is just kind of the next level",
+      "offset": 1949.898,
+      "duration": 1.317
+    },
+    {
+      "lang": "en",
+      "text": "of that agent.\n- That's right.",
+      "offset": 1951.215,
+      "duration": 1.335
+    },
+    {
+      "lang": "en",
+      "text": "There's a small danger with agents.",
+      "offset": 1952.55,
+      "duration": 2.28
+    },
+    {
+      "lang": "en",
+      "text": "Because the whole reason why\nyou'd ever use an agent is",
+      "offset": 1954.83,
+      "duration": 2.355
+    },
+    {
+      "lang": "en",
+      "text": "you can't sort of\nenumerate all of situations",
+      "offset": 1957.185,
+      "duration": 2.725
+    },
+    {
+      "lang": "en",
+      "text": "it's gonna get into,",
+      "offset": 1959.91,
+      "duration": 1.21
+    },
+    {
+      "lang": "en",
+      "text": "if I wanted to beat the\nfirst part of Pokemon,",
+      "offset": 1961.12,
+      "duration": 3.759
+    },
+    {
+      "lang": "en",
+      "text": "an agent isn't what I would do.",
+      "offset": 1964.879,
+      "duration": 1.151
+    },
+    {
+      "lang": "en",
+      "text": "I would give it a series of like,",
+      "offset": 1966.03,
+      "duration": 1.734
+    },
+    {
+      "lang": "en",
+      "text": "here's what you need to do first",
+      "offset": 1967.764,
+      "duration": 0.991
+    },
+    {
+      "lang": "en",
+      "text": "and here's what you need to do second",
+      "offset": 1968.755,
+      "duration": 0.96
+    },
+    {
+      "lang": "en",
+      "text": "and here's what you need to\ndo third and things like that.",
+      "offset": 1969.715,
+      "duration": 1.53
+    },
+    {
+      "lang": "en",
+      "text": "And that was my only goal, right?",
+      "offset": 1971.245,
+      "duration": 1.95
+    },
+    {
+      "lang": "en",
+      "text": "And why you use an agent\nis you can't do that.",
+      "offset": 1973.195,
+      "duration": 2.25
+    },
+    {
+      "lang": "en",
+      "text": "Like it's these scenarios\nwhere you don't know",
+      "offset": 1975.445,
+      "duration": 2.58
+    },
+    {
+      "lang": "en",
+      "text": "what situation is gonna be\npresented in front of you",
+      "offset": 1978.025,
+      "duration": 2.67
+    },
+    {
+      "lang": "en",
+      "text": "and you really need to lean on the model",
+      "offset": 1980.695,
+      "duration": 1.933
+    },
+    {
+      "lang": "en",
+      "text": "to navigate and use its own\nintuitions for how to do it.",
+      "offset": 1982.628,
+      "duration": 3.922
+    },
+    {
+      "lang": "en",
+      "text": "And so there's a danger to get too far",
+      "offset": 1986.55,
+      "duration": 1.71
+    },
+    {
+      "lang": "en",
+      "text": "down that rabbit hole of like,",
+      "offset": 1988.26,
+      "duration": 1.096
+    },
+    {
+      "lang": "en",
+      "text": "I'm going to try to\npredict every single thing",
+      "offset": 1989.356,
+      "duration": 1.814
+    },
+    {
+      "lang": "en",
+      "text": "and write that all",
+      "offset": 1991.17,
+      "duration": 0.833
+    },
+    {
+      "lang": "en",
+      "text": "into a prompt.\n- Right.",
+      "offset": 1992.003,
+      "duration": 0.833
+    },
+    {
+      "lang": "en",
+      "text": "- You'll see some Frankenstein\nprompts if you like,",
+      "offset": 1992.836,
+      "duration": 2.175
+    },
+    {
+      "lang": "en",
+      "text": "try to anticipate every possible thing",
+      "offset": 1995.011,
+      "duration": 3.774
+    },
+    {
+      "lang": "en",
+      "text": "that the model could\nend up struggling with,",
+      "offset": 1998.785,
+      "duration": 1.71
+    },
+    {
+      "lang": "en",
+      "text": "which is why I think\nit's like just important",
+      "offset": 2000.495,
+      "duration": 2.135
+    },
+    {
+      "lang": "en",
+      "text": "to be measured and like read a lot",
+      "offset": 2002.63,
+      "duration": 2.833
+    },
+    {
+      "lang": "en",
+      "text": "and like the thing I've\nlearned probably the most is",
+      "offset": 2006.495,
+      "duration": 2.28
+    },
+    {
+      "lang": "en",
+      "text": "just like watch it, read what it says,",
+      "offset": 2008.775,
+      "duration": 3.941
+    },
+    {
+      "lang": "en",
+      "text": "see what it's struggling with,",
+      "offset": 2012.716,
+      "duration": 1.37
+    },
+    {
+      "lang": "en",
+      "text": "understand and just find out\nlike the most minimal ways",
+      "offset": 2014.086,
+      "duration": 2.819
+    },
+    {
+      "lang": "en",
+      "text": "that you can give it a\nlittle bit more context",
+      "offset": 2016.905,
+      "duration": 1.507
+    },
+    {
+      "lang": "en",
+      "text": "rather than trying to like work\naround every single detail.",
+      "offset": 2018.412,
+      "duration": 3.161
+    },
+    {
+      "lang": "en",
+      "text": "- That makes sense.",
+      "offset": 2021.573,
+      "duration": 0.833
+    },
+    {
+      "lang": "en",
+      "text": "Maybe switching gears a little bit here.",
+      "offset": 2022.406,
+      "duration": 1.944
+    },
+    {
+      "lang": "en",
+      "text": "So we included Claude Plays Pokemon",
+      "offset": 2024.35,
+      "duration": 3.091
+    },
+    {
+      "lang": "en",
+      "text": "as part of our Claude 3.7",
+      "offset": 2027.441,
+      "duration": 1.725
+    },
+    {
+      "lang": "en",
+      "text": "Sonnet launch.\n- Yeah.",
+      "offset": 2029.166,
+      "duration": 1.208
+    },
+    {
+      "lang": "en",
+      "text": "- And we had the benchmark",
+      "offset": 2030.374,
+      "duration": 1.213
+    },
+    {
+      "lang": "en",
+      "text": "with all the lines-\n- Yep.",
+      "offset": 2031.587,
+      "duration": 1.283
+    },
+    {
+      "lang": "en",
+      "text": "- of how far each model's got through",
+      "offset": 2032.87,
+      "duration": 2.072
+    },
+    {
+      "lang": "en",
+      "text": "the different gyms.\n- Yep.",
+      "offset": 2034.942,
+      "duration": 1.132
+    },
+    {
+      "lang": "en",
+      "text": "- And then we put out like",
+      "offset": 2036.074,
+      "duration": 0.958
+    },
+    {
+      "lang": "en",
+      "text": "an article kind of explaining it.",
+      "offset": 2037.032,
+      "duration": 1.718
+    },
+    {
+      "lang": "en",
+      "text": "What was the reaction like by\nlike just the general public",
+      "offset": 2038.75,
+      "duration": 3.09
+    },
+    {
+      "lang": "en",
+      "text": "and people more in the AI space?",
+      "offset": 2041.84,
+      "duration": 2.583
+    },
+    {
+      "lang": "en",
+      "text": "- I guess like maybe to\ntell like a little bit",
+      "offset": 2044.423,
+      "duration": 1.64
+    },
+    {
+      "lang": "en",
+      "text": "of the backstory of that-\n- Yeah.",
+      "offset": 2046.063,
+      "duration": 0.958
+    },
+    {
+      "lang": "en",
+      "text": "- because that like, this prompted it.",
+      "offset": 2047.021,
+      "duration": 1.347
+    },
+    {
+      "lang": "en",
+      "text": "Like, you know, as I've\nbeen hacking on this,",
+      "offset": 2048.368,
+      "duration": 2.897
+    },
+    {
+      "lang": "en",
+      "text": "like we have a Slack channel,\nClaude Plays Pokemon,",
+      "offset": 2051.265,
+      "duration": 3.14
+    },
+    {
+      "lang": "en",
+      "text": "that I've been like just like\nposting updates on this on.",
+      "offset": 2054.405,
+      "duration": 2.38
+    },
+    {
+      "lang": "en",
+      "text": "And this has like had a history of like,",
+      "offset": 2056.785,
+      "duration": 2.443
+    },
+    {
+      "lang": "en",
+      "text": "at first there's a lot of\npeople who just, it's fun.",
+      "offset": 2059.228,
+      "duration": 1.992
+    },
+    {
+      "lang": "en",
+      "text": "It's the nostalgia hit.\n- Yeah.",
+      "offset": 2061.22,
+      "duration": 1.42
+    },
+    {
+      "lang": "en",
+      "text": "- Like it's the same content",
+      "offset": 2062.64,
+      "duration": 1.005
+    },
+    {
+      "lang": "en",
+      "text": "of why someone would tune\ninto the stream that we have.",
+      "offset": 2063.645,
+      "duration": 2.22
+    },
+    {
+      "lang": "en",
+      "text": "It's just like fun to\nwatch. It's exciting.",
+      "offset": 2065.865,
+      "duration": 2.37
+    },
+    {
+      "lang": "en",
+      "text": "Like it's exciting to see\nthe model of big progress.",
+      "offset": 2068.235,
+      "duration": 2.28
+    },
+    {
+      "lang": "en",
+      "text": "This is kind of our baby is Claude",
+      "offset": 2070.515,
+      "duration": 1.816
+    },
+    {
+      "lang": "en",
+      "text": "and so like seeing it you just are like",
+      "offset": 2072.331,
+      "duration": 2.097
+    },
+    {
+      "lang": "en",
+      "text": "you're proud for it.\n- You're rooting for it.",
+      "offset": 2074.428,
+      "duration": 0.833
+    },
+    {
+      "lang": "en",
+      "text": "- You're rooting for it,",
+      "offset": 2075.261,
+      "duration": 0.833
+    },
+    {
+      "lang": "en",
+      "text": "you're proud of it.\n- Yeah.",
+      "offset": 2076.094,
+      "duration": 0.833
+    },
+    {
+      "lang": "en",
+      "text": "- And so that was like the\ninitial like internal traction",
+      "offset": 2076.927,
+      "duration": 2.203
+    },
+    {
+      "lang": "en",
+      "text": "that had me excited about the project is",
+      "offset": 2079.13,
+      "duration": 1.439
+    },
+    {
+      "lang": "en",
+      "text": "like people just like had\nso much fun looking at it.",
+      "offset": 2080.569,
+      "duration": 1.886
+    },
+    {
+      "lang": "en",
+      "text": "And there was this like\nswitch that flipped",
+      "offset": 2082.455,
+      "duration": 1.26
+    },
+    {
+      "lang": "en",
+      "text": "for 3.7 Sonnet which was like,",
+      "offset": 2083.715,
+      "duration": 2.82
+    },
+    {
+      "lang": "en",
+      "text": "oh, we're like learning something",
+      "offset": 2086.535,
+      "duration": 0.99
+    },
+    {
+      "lang": "en",
+      "text": "really interesting about this model.",
+      "offset": 2087.525,
+      "duration": 1.525
+    },
+    {
+      "lang": "en",
+      "text": "Like this is a thing we really wanted",
+      "offset": 2089.05,
+      "duration": 1.645
+    },
+    {
+      "lang": "en",
+      "text": "was for a Claude to be\nable to build better plans",
+      "offset": 2090.695,
+      "duration": 2.62
+    },
+    {
+      "lang": "en",
+      "text": "and act better over\nlonger periods of time.",
+      "offset": 2093.315,
+      "duration": 2.49
+    },
+    {
+      "lang": "en",
+      "text": "And like Pokemon's actually like",
+      "offset": 2095.805,
+      "duration": 2.274
+    },
+    {
+      "lang": "en",
+      "text": "a pretty reasonable way\nfor us to test this.",
+      "offset": 2098.079,
+      "duration": 2.136
+    },
+    {
+      "lang": "en",
+      "text": "And so suddenly I actually had\nlike researchers coming to me",
+      "offset": 2100.215,
+      "duration": 2.79
+    },
+    {
+      "lang": "en",
+      "text": "and saying like, &quot;Can we measure this?",
+      "offset": 2103.005,
+      "duration": 1.506
+    },
+    {
+      "lang": "en",
+      "text": "Like can we look at this?",
+      "offset": 2104.511,
+      "duration": 0.958
+    },
+    {
+      "lang": "en",
+      "text": "Like what is actually going on here?&quot;",
+      "offset": 2105.469,
+      "duration": 1.706
+    },
+    {
+      "lang": "en",
+      "text": "And so there was this like\nsmall breakthrough moment",
+      "offset": 2107.175,
+      "duration": 3.57
+    },
+    {
+      "lang": "en",
+      "text": "like a week before we ended up",
+      "offset": 2110.745,
+      "duration": 2.816
+    },
+    {
+      "lang": "en",
+      "text": "launching the model that was like,",
+      "offset": 2113.561,
+      "duration": 2.738
+    },
+    {
+      "lang": "en",
+      "text": "&quot;This might actually be one",
+      "offset": 2116.299,
+      "duration": 2.101
+    },
+    {
+      "lang": "en",
+      "text": "of the better ways we can tell the story",
+      "offset": 2118.4,
+      "duration": 1.741
+    },
+    {
+      "lang": "en",
+      "text": "of like what is this\nthing we were trying to do",
+      "offset": 2120.141,
+      "duration": 2.634
+    },
+    {
+      "lang": "en",
+      "text": "by making Claude better\nover longer timeframes",
+      "offset": 2122.775,
+      "duration": 2.34
+    },
+    {
+      "lang": "en",
+      "text": "and is this a good way\nfor us to understand it",
+      "offset": 2125.115,
+      "duration": 2.37
+    },
+    {
+      "lang": "en",
+      "text": "and for us to tell this story?&quot;",
+      "offset": 2127.485,
+      "duration": 2.01
+    },
+    {
+      "lang": "en",
+      "text": "And that really like snowballed into a lot",
+      "offset": 2129.495,
+      "duration": 2.101
+    },
+    {
+      "lang": "en",
+      "text": "of like, A, how I thought about it,",
+      "offset": 2131.596,
+      "duration": 2.515
+    },
+    {
+      "lang": "en",
+      "text": "it's like maybe this is actually",
+      "offset": 2134.111,
+      "duration": 1.204
+    },
+    {
+      "lang": "en",
+      "text": "like a pretty crisp way\nfor us to understand",
+      "offset": 2135.315,
+      "duration": 2.424
+    },
+    {
+      "lang": "en",
+      "text": "what is 3.7 so good at\nand how should we use it,",
+      "offset": 2137.739,
+      "duration": 2.566
+    },
+    {
+      "lang": "en",
+      "text": "and B, like this is probably\nan entertaining way to show it",
+      "offset": 2140.305,
+      "duration": 3.739
+    },
+    {
+      "lang": "en",
+      "text": "to the world too, right?\n- Yeah.",
+      "offset": 2144.044,
+      "duration": 1.35
+    },
+    {
+      "lang": "en",
+      "text": "- In a pretty tight\nlittle sprint we decided",
+      "offset": 2145.394,
+      "duration": 2.34
+    },
+    {
+      "lang": "en",
+      "text": "like this is a thing we\nshould put out in the world.",
+      "offset": 2147.734,
+      "duration": 2.081
+    },
+    {
+      "lang": "en",
+      "text": "We should make a graph that shows",
+      "offset": 2149.815,
+      "duration": 1.675
+    },
+    {
+      "lang": "en",
+      "text": "how good it is to compare to other models.",
+      "offset": 2151.49,
+      "duration": 1.81
+    },
+    {
+      "lang": "en",
+      "text": "We should put together a Twitch stream",
+      "offset": 2153.3,
+      "duration": 2.58
+    },
+    {
+      "lang": "en",
+      "text": "and let people like see and experience",
+      "offset": 2155.88,
+      "duration": 2.814
+    },
+    {
+      "lang": "en",
+      "text": "that same sort of fun and\nexcitement we had seen",
+      "offset": 2158.694,
+      "duration": 2.581
+    },
+    {
+      "lang": "en",
+      "text": "and also like the feel for\nwhat's actually going on here.",
+      "offset": 2161.275,
+      "duration": 4.175
+    },
+    {
+      "lang": "en",
+      "text": "We should talk about it\nin our research materials",
+      "offset": 2165.45,
+      "duration": 2.365
+    },
+    {
+      "lang": "en",
+      "text": "'cause it like helps people understand,",
+      "offset": 2167.815,
+      "duration": 2.28
+    },
+    {
+      "lang": "en",
+      "text": "and that really was like\nthe inspiration of it.",
+      "offset": 2170.095,
+      "duration": 1.92
+    },
+    {
+      "lang": "en",
+      "text": "- I think that just\nmakes like a great point",
+      "offset": 2172.015,
+      "duration": 2.225
+    },
+    {
+      "lang": "en",
+      "text": "on we wanted to be able to tell a story",
+      "offset": 2174.24,
+      "duration": 1.768
+    },
+    {
+      "lang": "en",
+      "text": "about how Claude was improving in this",
+      "offset": 2176.008,
+      "duration": 1.788
+    },
+    {
+      "lang": "en",
+      "text": "other kind of dimension.\n- Yeah, yeah.",
+      "offset": 2177.796,
+      "duration": 1.404
+    },
+    {
+      "lang": "en",
+      "text": "- And that's getting\nharder and harder to do",
+      "offset": 2179.2,
+      "duration": 2.355
+    },
+    {
+      "lang": "en",
+      "text": "as like the models get better.\n- Yeah, yeah.",
+      "offset": 2181.555,
+      "duration": 1.775
+    },
+    {
+      "lang": "en",
+      "text": "- And we're almost having to\nlike move into this regime",
+      "offset": 2183.33,
+      "duration": 3.33
+    },
+    {
+      "lang": "en",
+      "text": "of equipping the models\nwith like real life",
+      "offset": 2186.66,
+      "duration": 2.094
+    },
+    {
+      "lang": "en",
+      "text": "things now-\n- Yeah.",
+      "offset": 2188.754,
+      "duration": 0.833
+    },
+    {
+      "lang": "en",
+      "text": "- instead of just like artificial,",
+      "offset": 2189.587,
+      "duration": 1.421
+    },
+    {
+      "lang": "en",
+      "text": "forced-\n- Yeah.",
+      "offset": 2191.008,
+      "duration": 1.083
+    },
+    {
+      "lang": "en",
+      "text": "- test cases and benchmarks.",
+      "offset": 2192.091,
+      "duration": 1.609
+    },
+    {
+      "lang": "en",
+      "text": "- I know.",
+      "offset": 2193.7,
+      "duration": 0.833
+    },
+    {
+      "lang": "en",
+      "text": "Anytime you have a like\na little tiny test case,",
+      "offset": 2194.533,
+      "duration": 3.221
+    },
+    {
+      "lang": "en",
+      "text": "it's like pretty hard,",
+      "offset": 2197.754,
+      "duration": 0.975
+    },
+    {
+      "lang": "en",
+      "text": "like models start getting to a 100%",
+      "offset": 2198.729,
+      "duration": 1.765
+    },
+    {
+      "lang": "en",
+      "text": "really fast.\n- Right.",
+      "offset": 2200.494,
+      "duration": 0.833
+    },
+    {
+      "lang": "en",
+      "text": "- And we just get excited\nanytime there's a evaluation",
+      "offset": 2201.327,
+      "duration": 4.586
+    },
+    {
+      "lang": "en",
+      "text": "that a model's getting 30% on, you know.",
+      "offset": 2205.913,
+      "duration": 2.342
+    },
+    {
+      "lang": "en",
+      "text": "Like it's getting a third of the way",
+      "offset": 2208.255,
+      "duration": 1.475
+    },
+    {
+      "lang": "en",
+      "text": "through the game roughly,\nlike that's amazing.",
+      "offset": 2209.73,
+      "duration": 2.4
+    },
+    {
+      "lang": "en",
+      "text": "We know something about it's like not",
+      "offset": 2212.13,
+      "duration": 1.44
+    },
+    {
+      "lang": "en",
+      "text": "good enough to do this but\nit is good new to do this,",
+      "offset": 2213.57,
+      "duration": 1.795
+    },
+    {
+      "lang": "en",
+      "text": "that's like pretty good information.",
+      "offset": 2215.365,
+      "duration": 2.2
+    },
+    {
+      "lang": "en",
+      "text": "That was like one of the interesting...",
+      "offset": 2217.565,
+      "duration": 1.443
+    },
+    {
+      "lang": "en",
+      "text": "I never had that in my head as like,",
+      "offset": 2219.008,
+      "duration": 2.504
+    },
+    {
+      "lang": "en",
+      "text": "why I'm doing this, but it became,",
+      "offset": 2221.512,
+      "duration": 2.316
+    },
+    {
+      "lang": "en",
+      "text": "I think this was like the moment",
+      "offset": 2223.828,
+      "duration": 1.232
+    },
+    {
+      "lang": "en",
+      "text": "where it actually was\nlike very interesting",
+      "offset": 2225.06,
+      "duration": 1.766
+    },
+    {
+      "lang": "en",
+      "text": "to look at and understand.",
+      "offset": 2226.826,
+      "duration": 0.965
+    },
+    {
+      "lang": "en",
+      "text": "But then do you wanna talk\nabout like what happened",
+      "offset": 2227.791,
+      "duration": 1.278
+    },
+    {
+      "lang": "en",
+      "text": "afterwards?\n- Yeah.",
+      "offset": 2229.069,
+      "duration": 0.833
+    },
+    {
+      "lang": "en",
+      "text": "I mean, so we launch it.",
+      "offset": 2229.902,
+      "duration": 2.004
+    },
+    {
+      "lang": "en",
+      "text": "We include it in the materials,\nwe put out the blog post,",
+      "offset": 2231.906,
+      "duration": 3.204
+    },
+    {
+      "lang": "en",
+      "text": "we start up the Twitch stream.\n- Yeah, yeah.",
+      "offset": 2235.11,
+      "duration": 2.621
+    },
+    {
+      "lang": "en",
+      "text": "- And then what happens next?",
+      "offset": 2237.731,
+      "duration": 1.359
+    },
+    {
+      "lang": "en",
+      "text": "- It was a lot more\npopular than I expected.",
+      "offset": 2239.09,
+      "duration": 3.485
+    },
+    {
+      "lang": "en",
+      "text": "I guess I shouldn't be too surprised.",
+      "offset": 2242.575,
+      "duration": 1.925
+    },
+    {
+      "lang": "en",
+      "text": "The AI world is pretty exciting these days",
+      "offset": 2244.5,
+      "duration": 2.095
+    },
+    {
+      "lang": "en",
+      "text": "but it has had like a\nremarkably large set of people",
+      "offset": 2246.595,
+      "duration": 4.26
+    },
+    {
+      "lang": "en",
+      "text": "who were like excited\nto watch and experience",
+      "offset": 2250.855,
+      "duration": 2.48
+    },
+    {
+      "lang": "en",
+      "text": "and go through the same thing as me.",
+      "offset": 2253.335,
+      "duration": 1.42
+    },
+    {
+      "lang": "en",
+      "text": "For like the first two weeks\nthere were like thousands",
+      "offset": 2254.755,
+      "duration": 2.7
+    },
+    {
+      "lang": "en",
+      "text": "of people at any given point in the day,",
+      "offset": 2257.455,
+      "duration": 2.233
+    },
+    {
+      "lang": "en",
+      "text": "24/7 tuned in watching\ncrazy, which is amazing.",
+      "offset": 2259.688,
+      "duration": 3.592
+    },
+    {
+      "lang": "en",
+      "text": "People were making...",
+      "offset": 2263.28,
+      "duration": 0.833
+    },
+    {
+      "lang": "en",
+      "text": "There's like a subreddit that was started.",
+      "offset": 2264.113,
+      "duration": 1.387
+    },
+    {
+      "lang": "en",
+      "text": "People are making memes and fan art",
+      "offset": 2265.5,
+      "duration": 1.74
+    },
+    {
+      "lang": "en",
+      "text": "and I saw a song the other day",
+      "offset": 2267.24,
+      "duration": 1.693
+    },
+    {
+      "lang": "en",
+      "text": "that someone made about\nit, which is amazing.",
+      "offset": 2268.933,
+      "duration": 3.617
+    },
+    {
+      "lang": "en",
+      "text": "So like I guess at like\nthe most grassroots level,",
+      "offset": 2272.55,
+      "duration": 2.54
+    },
+    {
+      "lang": "en",
+      "text": "it's had this like very fine community.",
+      "offset": 2275.09,
+      "duration": 3.55
+    },
+    {
+      "lang": "en",
+      "text": "One of the most amazing\nthings to me about it is,",
+      "offset": 2278.64,
+      "duration": 3.295
+    },
+    {
+      "lang": "en",
+      "text": "I don't know, I am skeptical\nof online chat rooms,",
+      "offset": 2281.935,
+      "duration": 3.115
+    },
+    {
+      "lang": "en",
+      "text": "but the chat on it-\n- Yeah.",
+      "offset": 2285.05,
+      "duration": 1.208
+    },
+    {
+      "lang": "en",
+      "text": "- has actually been like\nreally positive and fun",
+      "offset": 2286.258,
+      "duration": 2.612
+    },
+    {
+      "lang": "en",
+      "text": "and people are like excited\nfor Claude, talking about AI,",
+      "offset": 2288.87,
+      "duration": 3.625
+    },
+    {
+      "lang": "en",
+      "text": "talking about agents, like\nengaging with this thing.",
+      "offset": 2292.495,
+      "duration": 2.49
+    },
+    {
+      "lang": "en",
+      "text": "It's been like kind of\namazing at how positive",
+      "offset": 2294.985,
+      "duration": 3.3
+    },
+    {
+      "lang": "en",
+      "text": "and fun it has been to have\na community around that.",
+      "offset": 2298.285,
+      "duration": 2.25
+    },
+    {
+      "lang": "en",
+      "text": "And then the like other side\nthat I've found like really,",
+      "offset": 2300.535,
+      "duration": 4.05
+    },
+    {
+      "lang": "en",
+      "text": "I guess like rewarding\nis I think this has just",
+      "offset": 2304.585,
+      "duration": 3.391
+    },
+    {
+      "lang": "en",
+      "text": "like been a way that\npeople actually can see",
+      "offset": 2307.976,
+      "duration": 2.854
+    },
+    {
+      "lang": "en",
+      "text": "and understand what an\nagent is for the first time.",
+      "offset": 2310.83,
+      "duration": 2.815
+    },
+    {
+      "lang": "en",
+      "text": "Like the AI world has talked",
+      "offset": 2313.645,
+      "duration": 1.42
+    },
+    {
+      "lang": "en",
+      "text": "so much about agents in the last year",
+      "offset": 2315.065,
+      "duration": 2.106
+    },
+    {
+      "lang": "en",
+      "text": "and I think like when you\nare used to being a person",
+      "offset": 2317.171,
+      "duration": 3.594
+    },
+    {
+      "lang": "en",
+      "text": "that like writes code\nor uses coding agents,",
+      "offset": 2320.765,
+      "duration": 1.95
+    },
+    {
+      "lang": "en",
+      "text": "like that might ground pretty easily",
+      "offset": 2322.715,
+      "duration": 1.575
+    },
+    {
+      "lang": "en",
+      "text": "in what we're talking about.",
+      "offset": 2324.29,
+      "duration": 1.06
+    },
+    {
+      "lang": "en",
+      "text": "But for a lot of the world,",
+      "offset": 2325.35,
+      "duration": 0.833
+    },
+    {
+      "lang": "en",
+      "text": "I think like it's pretty hard",
+      "offset": 2326.183,
+      "duration": 1.517
+    },
+    {
+      "lang": "en",
+      "text": "to really understand what that means.",
+      "offset": 2327.7,
+      "duration": 2.035
+    },
+    {
+      "lang": "en",
+      "text": "And I think the example of\nPokemon where it's like,",
+      "offset": 2329.735,
+      "duration": 3.06
+    },
+    {
+      "lang": "en",
+      "text": "oh, it's like not just a chatbot",
+      "offset": 2332.795,
+      "duration": 2.629
+    },
+    {
+      "lang": "en",
+      "text": "where I type in a chat\nand I get a response back,",
+      "offset": 2335.424,
+      "duration": 1.971
+    },
+    {
+      "lang": "en",
+      "text": "but like it's like doing this on its own",
+      "offset": 2337.395,
+      "duration": 1.783
+    },
+    {
+      "lang": "en",
+      "text": "and seeing and trying things",
+      "offset": 2339.178,
+      "duration": 1.184
+    },
+    {
+      "lang": "en",
+      "text": "and taking actions and all that is a way",
+      "offset": 2340.362,
+      "duration": 2.409
+    },
+    {
+      "lang": "en",
+      "text": "that I think more people\nhave been able to like latch",
+      "offset": 2342.771,
+      "duration": 3.316
+    },
+    {
+      "lang": "en",
+      "text": "onto what is this agents\nthing we're talking about.",
+      "offset": 2346.087,
+      "duration": 2.592
+    },
+    {
+      "lang": "en",
+      "text": "And I think that's great.",
+      "offset": 2348.679,
+      "duration": 1.791
+    },
+    {
+      "lang": "en",
+      "text": "Like I think it hopefully\ncan like bring more people",
+      "offset": 2350.47,
+      "duration": 2.958
+    },
+    {
+      "lang": "en",
+      "text": "into the dialogue of:\nWhat are we building here?",
+      "offset": 2353.428,
+      "duration": 3.342
+    },
+    {
+      "lang": "en",
+      "text": "What are the possibilities of AI?",
+      "offset": 2356.77,
+      "duration": 1.56
+    },
+    {
+      "lang": "en",
+      "text": "How can I think about how\nthis is going to impact me,",
+      "offset": 2358.33,
+      "duration": 2.82
+    },
+    {
+      "lang": "en",
+      "text": "how I can use this to the most impact,",
+      "offset": 2361.15,
+      "duration": 1.86
+    },
+    {
+      "lang": "en",
+      "text": "how I can like accomplish more and more",
+      "offset": 2363.01,
+      "duration": 2.202
+    },
+    {
+      "lang": "en",
+      "text": "by not just thinking about it as a chatbot",
+      "offset": 2365.212,
+      "duration": 2.602
+    },
+    {
+      "lang": "en",
+      "text": "where I type in a\nquestion and get an answer",
+      "offset": 2367.814,
+      "duration": 3.411
+    },
+    {
+      "lang": "en",
+      "text": "but as a a collaborator that I can ask",
+      "offset": 2371.225,
+      "duration": 3.348
+    },
+    {
+      "lang": "en",
+      "text": "to go do something that's complicated",
+      "offset": 2374.573,
+      "duration": 2.056
+    },
+    {
+      "lang": "en",
+      "text": "that takes time and it can actually do it.",
+      "offset": 2376.629,
+      "duration": 1.904
+    },
+    {
+      "lang": "en",
+      "text": "And I don't think most people\nare gonna go ask Claude",
+      "offset": 2378.533,
+      "duration": 1.692
+    },
+    {
+      "lang": "en",
+      "text": "to play Pokemon and and see what happens,",
+      "offset": 2380.225,
+      "duration": 1.59
+    },
+    {
+      "lang": "en",
+      "text": "but like I do think it's been a way",
+      "offset": 2381.815,
+      "duration": 1.26
+    },
+    {
+      "lang": "en",
+      "text": "where it like resonates a little bit more",
+      "offset": 2383.075,
+      "duration": 1.883
+    },
+    {
+      "lang": "en",
+      "text": "than what some people have\nbeen able to in the past,",
+      "offset": 2384.958,
+      "duration": 1.567
+    },
+    {
+      "lang": "en",
+      "text": "which has been like maybe\nmy favorite thing out of it.",
+      "offset": 2386.525,
+      "duration": 2.13
+    },
+    {
+      "lang": "en",
+      "text": "- Yeah, I love that. I think it's so true.",
+      "offset": 2388.655,
+      "duration": 2.07
+    },
+    {
+      "lang": "en",
+      "text": "I've had so many people",
+      "offset": 2390.725,
+      "duration": 1.23
+    },
+    {
+      "lang": "en",
+      "text": "that aren't necessarily in the AI space",
+      "offset": 2391.955,
+      "duration": 2.083
+    },
+    {
+      "lang": "en",
+      "text": "reach out to me and ask,",
+      "offset": 2394.038,
+      "duration": 1.53
+    },
+    {
+      "lang": "en",
+      "text": "&quot;What is this whole thing?&quot;\n- Yeah.",
+      "offset": 2395.568,
+      "duration": 1.881
+    },
+    {
+      "lang": "en",
+      "text": "- &quot;Why is Claude playing Pokemon?&quot;",
+      "offset": 2397.449,
+      "duration": 1.141
+    },
+    {
+      "lang": "en",
+      "text": "And when they start to dig",
+      "offset": 2398.59,
+      "duration": 0.833
+    },
+    {
+      "lang": "en",
+      "text": "into it more-\n- Yeah.",
+      "offset": 2399.423,
+      "duration": 1.208
+    },
+    {
+      "lang": "en",
+      "text": "- it's like, &quot;oh, okay.",
+      "offset": 2400.631,
+      "duration": 1.289
+    },
+    {
+      "lang": "en",
+      "text": "I kinda understand now where these things",
+      "offset": 2401.92,
+      "duration": 1.941
+    },
+    {
+      "lang": "en",
+      "text": "are headed&quot;-\n- Yeah.",
+      "offset": 2403.861,
+      "duration": 0.833
+    },
+    {
+      "lang": "en",
+      "text": "- &quot;what they're able to do.&quot;",
+      "offset": 2404.694,
+      "duration": 0.958
+    },
+    {
+      "lang": "en",
+      "text": "- Yeah.",
+      "offset": 2405.652,
+      "duration": 0.833
+    },
+    {
+      "lang": "en",
+      "text": "- It gives that more like visceral feeling",
+      "offset": 2406.485,
+      "duration": 1.933
+    },
+    {
+      "lang": "en",
+      "text": "about-\n- Yep.",
+      "offset": 2408.418,
+      "duration": 0.958
+    },
+    {
+      "lang": "en",
+      "text": "- where models are currently at.",
+      "offset": 2409.376,
+      "duration": 1.432
+    },
+    {
+      "lang": "en",
+      "text": "- Yeah.",
+      "offset": 2410.808,
+      "duration": 0.833
+    },
+    {
+      "lang": "en",
+      "text": "- And the Twitch chat is absolutely great.",
+      "offset": 2411.641,
+      "duration": 2.094
+    },
+    {
+      "lang": "en",
+      "text": "It's probably one",
+      "offset": 2413.735,
+      "duration": 0.833
+    },
+    {
+      "lang": "en",
+      "text": "of my favorite things-\n- It is.",
+      "offset": 2414.568,
+      "duration": 0.833
+    },
+    {
+      "lang": "en",
+      "text": "- like of any of our launches.",
+      "offset": 2415.401,
+      "duration": 1.604
+    },
+    {
+      "lang": "en",
+      "text": "- Yeah.",
+      "offset": 2417.005,
+      "duration": 0.833
+    },
+    {
+      "lang": "en",
+      "text": "- Just to like see all\nthese random strangers",
+      "offset": 2417.838,
+      "duration": 1.714
+    },
+    {
+      "lang": "en",
+      "text": "from across the world-\n- I know.",
+      "offset": 2419.552,
+      "duration": 1.083
+    },
+    {
+      "lang": "en",
+      "text": "- like cheering for Claude",
+      "offset": 2420.635,
+      "duration": 1.51
+    },
+    {
+      "lang": "en",
+      "text": "and making memes-\n- Yeah.",
+      "offset": 2422.145,
+      "duration": 1.492
+    },
+    {
+      "lang": "en",
+      "text": "- out of like Claude-",
+      "offset": 2423.637,
+      "duration": 0.833
+    },
+    {
+      "lang": "en",
+      "text": "- It is amazing.",
+      "offset": 2424.47,
+      "duration": 0.833
+    },
+    {
+      "lang": "en",
+      "text": "- when fails in Mountain Moon.",
+      "offset": 2425.303,
+      "duration": 0.958
+    },
+    {
+      "lang": "en",
+      "text": "- Yeah.",
+      "offset": 2426.261,
+      "duration": 0.833
+    },
+    {
+      "lang": "en",
+      "text": "We launched the stream",
+      "offset": 2427.094,
+      "duration": 1.083
+    },
+    {
+      "lang": "en",
+      "text": "on the day after we launched the model.",
+      "offset": 2428.177,
+      "duration": 3.858
+    },
+    {
+      "lang": "en",
+      "text": "And then it was the following Saturday",
+      "offset": 2432.035,
+      "duration": 2.76
+    },
+    {
+      "lang": "en",
+      "text": "that it finally started\ngoing down the path",
+      "offset": 2434.795,
+      "duration": 1.983
+    },
+    {
+      "lang": "en",
+      "text": "to get out of Mountain\nMoon for the first time",
+      "offset": 2436.778,
+      "duration": 1.407
+    },
+    {
+      "lang": "en",
+      "text": "and it had spent three days there.",
+      "offset": 2438.185,
+      "duration": 1.444
+    },
+    {
+      "lang": "en",
+      "text": "- Yeah.",
+      "offset": 2439.629,
+      "duration": 0.833
+    },
+    {
+      "lang": "en",
+      "text": "- And man, the chat was electric.",
+      "offset": 2440.462,
+      "duration": 2.926
+    },
+    {
+      "lang": "en",
+      "text": "- Chat was blowing up,",
+      "offset": 2443.388,
+      "duration": 0.928
+    },
+    {
+      "lang": "en",
+      "text": "yeah.\n- Going crazy,",
+      "offset": 2444.316,
+      "duration": 1.291
+    },
+    {
+      "lang": "en",
+      "text": "it's going crazy.",
+      "offset": 2445.607,
+      "duration": 1.517
+    },
+    {
+      "lang": "en",
+      "text": "I was sitting there on my couch",
+      "offset": 2447.124,
+      "duration": 1.775
+    },
+    {
+      "lang": "en",
+      "text": "next to my wife, who I was ignoring.",
+      "offset": 2448.899,
+      "duration": 1.801
+    },
+    {
+      "lang": "en",
+      "text": "I'm so sorry to her",
+      "offset": 2450.7,
+      "duration": 2.117
+    },
+    {
+      "lang": "en",
+      "text": "and just like glowing as\npeople are just like having",
+      "offset": 2452.817,
+      "duration": 2.738
+    },
+    {
+      "lang": "en",
+      "text": "so much fun-\n- Yeah.",
+      "offset": 2455.555,
+      "duration": 1.013
+    },
+    {
+      "lang": "en",
+      "text": "- cheering for Claude and rooting it on",
+      "offset": 2456.568,
+      "duration": 2.532
+    },
+    {
+      "lang": "en",
+      "text": "and like getting so hype and yeah,",
+      "offset": 2459.1,
+      "duration": 2.76
+    },
+    {
+      "lang": "en",
+      "text": "I could never have imagined how much fun",
+      "offset": 2461.86,
+      "duration": 3.235
+    },
+    {
+      "lang": "en",
+      "text": "having like an army of people",
+      "offset": 2465.095,
+      "duration": 1.35
+    },
+    {
+      "lang": "en",
+      "text": "cheering for Claude would've been",
+      "offset": 2466.445,
+      "duration": 1.675
+    },
+    {
+      "lang": "en",
+      "text": "before we put it out there.\n- Yeah.",
+      "offset": 2468.12,
+      "duration": 1.083
+    },
+    {
+      "lang": "en",
+      "text": "I think we need some\nway Claude can interact",
+      "offset": 2469.203,
+      "duration": 2.702
+    },
+    {
+      "lang": "en",
+      "text": "with colleagues-\n- I know.",
+      "offset": 2471.905,
+      "duration": 1.333
+    },
+    {
+      "lang": "en",
+      "text": "- in the next iteration",
+      "offset": 2473.238,
+      "duration": 0.833
+    },
+    {
+      "lang": "en",
+      "text": "of this.\n- I know.",
+      "offset": 2474.071,
+      "duration": 0.833
+    },
+    {
+      "lang": "en",
+      "text": "Claude deserves to know\nhow many people love it.",
+      "offset": 2474.904,
+      "duration": 1.526
+    },
+    {
+      "lang": "en",
+      "text": "- Yeah and it should be able to talk back",
+      "offset": 2476.43,
+      "duration": 1.65
+    },
+    {
+      "lang": "en",
+      "text": "with the chat and like make-\n- Yeah, yeah.",
+      "offset": 2478.08,
+      "duration": 2.118
+    },
+    {
+      "lang": "en",
+      "text": "- call outs and everything",
+      "offset": 2480.198,
+      "duration": 1.537
+    },
+    {
+      "lang": "en",
+      "text": "and be maybe go full Twitch streamer.",
+      "offset": 2481.735,
+      "duration": 1.995
+    },
+    {
+      "lang": "en",
+      "text": "Does Claude have a favorite Pokemon?",
+      "offset": 2483.73,
+      "duration": 1.855
+    },
+    {
+      "lang": "en",
+      "text": "- Ah. So Claude is very\ntactical, very pragmatic.",
+      "offset": 2485.585,
+      "duration": 4.083
+    },
+    {
+      "lang": "en",
+      "text": "So there are a few things I'll say.",
+      "offset": 2491.315,
+      "duration": 2.115
+    },
+    {
+      "lang": "en",
+      "text": "As a starter, Claude really\nlikes to go for Bulbasaur.",
+      "offset": 2493.43,
+      "duration": 3.48
+    },
+    {
+      "lang": "en",
+      "text": "It doesn't always succeed.",
+      "offset": 2496.91,
+      "duration": 1.208
+    },
+    {
+      "lang": "en",
+      "text": "Sometimes it gets lost trying to find it",
+      "offset": 2498.118,
+      "duration": 1.342
+    },
+    {
+      "lang": "en",
+      "text": "but it likes going for Bulbasaur",
+      "offset": 2499.46,
+      "duration": 0.902
+    },
+    {
+      "lang": "en",
+      "text": "'cause it has a type advantage\nin the first two gyms.",
+      "offset": 2500.362,
+      "duration": 3.013
+    },
+    {
+      "lang": "en",
+      "text": "Really good strategic choice.",
+      "offset": 2503.375,
+      "duration": 1.345
+    },
+    {
+      "lang": "en",
+      "text": "So it gets obsessed",
+      "offset": 2504.72,
+      "duration": 0.958
+    },
+    {
+      "lang": "en",
+      "text": "with the strategy-\n- Strategy choice.",
+      "offset": 2505.678,
+      "duration": 0.833
+    },
+    {
+      "lang": "en",
+      "text": "- Very rational Claude at the beginning.",
+      "offset": 2506.511,
+      "duration": 3.119
+    },
+    {
+      "lang": "en",
+      "text": "That said, there are a\nfew Pokemon that like,",
+      "offset": 2509.63,
+      "duration": 1.875
+    },
+    {
+      "lang": "en",
+      "text": "it always seeks out in a run\nthat are like the rare ones.",
+      "offset": 2511.505,
+      "duration": 3.465
+    },
+    {
+      "lang": "en",
+      "text": "So it loves catching Pikachu.\n- Okay.",
+      "offset": 2514.97,
+      "duration": 1.81
+    },
+    {
+      "lang": "en",
+      "text": "- If it ever sees a Pikachu,",
+      "offset": 2516.78,
+      "duration": 1.208
+    },
+    {
+      "lang": "en",
+      "text": "it gets really obsessed with catching it.",
+      "offset": 2517.988,
+      "duration": 1.782
+    },
+    {
+      "lang": "en",
+      "text": "It also digs in Mountain Moon.",
+      "offset": 2519.77,
+      "duration": 1.86
+    },
+    {
+      "lang": "en",
+      "text": "It really likes to go for those.",
+      "offset": 2521.63,
+      "duration": 1.09
+    },
+    {
+      "lang": "en",
+      "text": "So it likes the rare ones.\n- Okay.",
+      "offset": 2522.72,
+      "duration": 1.825
+    },
+    {
+      "lang": "en",
+      "text": "- That's what I'd say.",
+      "offset": 2524.545,
+      "duration": 0.833
+    },
+    {
+      "lang": "en",
+      "text": "When it sees something\nthat it knows is rare,",
+      "offset": 2525.378,
+      "duration": 1.607
+    },
+    {
+      "lang": "en",
+      "text": "it goes right after that.",
+      "offset": 2526.985,
+      "duration": 1.18
+    },
+    {
+      "lang": "en",
+      "text": "- Yeah, that's like the same strategy",
+      "offset": 2528.165,
+      "duration": 1.358
+    },
+    {
+      "lang": "en",
+      "text": "of my 8-year-old self in Pokemon.",
+      "offset": 2529.523,
+      "duration": 0.833
+    },
+    {
+      "lang": "en",
+      "text": "- Yeah, yeah, yeah, yeah.",
+      "offset": 2530.356,
+      "duration": 1.864
+    },
+    {
+      "lang": "en",
+      "text": "- We're on the same page there, Claude.",
+      "offset": 2532.22,
+      "duration": 1.315
+    },
+    {
+      "lang": "en",
+      "text": "- Yep.",
+      "offset": 2533.535,
+      "duration": 0.833
+    },
+    {
+      "lang": "en",
+      "text": "- Last question.",
+      "offset": 2534.368,
+      "duration": 1.807
+    },
+    {
+      "lang": "en",
+      "text": "Do you have any advice for folks out there",
+      "offset": 2536.175,
+      "duration": 2.25
+    },
+    {
+      "lang": "en",
+      "text": "that might have watched\nClaude Plays Pokemon",
+      "offset": 2538.425,
+      "duration": 2.22
+    },
+    {
+      "lang": "en",
+      "text": "or they're just getting started\nbuilding on top of Claude",
+      "offset": 2540.645,
+      "duration": 2.716
+    },
+    {
+      "lang": "en",
+      "text": "for how they can start thinking",
+      "offset": 2543.361,
+      "duration": 1.303
+    },
+    {
+      "lang": "en",
+      "text": "about building their own sets\nof agents and any takeaways",
+      "offset": 2544.664,
+      "duration": 4.21
+    },
+    {
+      "lang": "en",
+      "text": "just generally-\n- Yeah.",
+      "offset": 2548.874,
+      "duration": 0.833
+    },
+    {
+      "lang": "en",
+      "text": "- from this whole experience?",
+      "offset": 2549.707,
+      "duration": 1.272
+    },
+    {
+      "lang": "en",
+      "text": "- The biggest thing for me,",
+      "offset": 2550.979,
+      "duration": 1.581
+    },
+    {
+      "lang": "en",
+      "text": "and I actually think this is like advice",
+      "offset": 2552.56,
+      "duration": 1.616
+    },
+    {
+      "lang": "en",
+      "text": "across all of adopting AI,",
+      "offset": 2554.176,
+      "duration": 1.633
+    },
+    {
+      "lang": "en",
+      "text": "I've given this people or this advice",
+      "offset": 2555.809,
+      "duration": 1.761
+    },
+    {
+      "lang": "en",
+      "text": "before in different contexts is like,",
+      "offset": 2557.57,
+      "duration": 2.295
+    },
+    {
+      "lang": "en",
+      "text": "start by doing something you\nlove, like that just fun.",
+      "offset": 2559.865,
+      "duration": 3.645
+    },
+    {
+      "lang": "en",
+      "text": "Like this is not related to\nAI at all, but it's like,",
+      "offset": 2563.51,
+      "duration": 3.34
+    },
+    {
+      "lang": "en",
+      "text": "I think the difference between people",
+      "offset": 2566.85,
+      "duration": 1.89
+    },
+    {
+      "lang": "en",
+      "text": "who crush it and like\nfigure out how to adopt AI,",
+      "offset": 2568.74,
+      "duration": 3.365
+    },
+    {
+      "lang": "en",
+      "text": "it's just like a certain amount of time",
+      "offset": 2572.105,
+      "duration": 2.613
+    },
+    {
+      "lang": "en",
+      "text": "coming to some understanding",
+      "offset": 2574.718,
+      "duration": 1.25
+    },
+    {
+      "lang": "en",
+      "text": "of what models are good\nat, what they're bad at,",
+      "offset": 2575.968,
+      "duration": 2.422
+    },
+    {
+      "lang": "en",
+      "text": "what can I trust it with?",
+      "offset": 2578.39,
+      "duration": 0.833
+    },
+    {
+      "lang": "en",
+      "text": "How do I really gain trust in this model?",
+      "offset": 2579.223,
+      "duration": 3.002
+    },
+    {
+      "lang": "en",
+      "text": "And by starting with something",
+      "offset": 2582.225,
+      "duration": 1.835
+    },
+    {
+      "lang": "en",
+      "text": "that you like are excited\nabout, that's fun,",
+      "offset": 2584.06,
+      "duration": 2.4
+    },
+    {
+      "lang": "en",
+      "text": "that you're gonna wanna\nlike boot up at 7:00 p.m.",
+      "offset": 2586.46,
+      "duration": 2.485
+    },
+    {
+      "lang": "en",
+      "text": "after a day of work and\nlike actually go hack on,",
+      "offset": 2588.945,
+      "duration": 3.51
+    },
+    {
+      "lang": "en",
+      "text": "like that was the thing that made Pokemon",
+      "offset": 2592.455,
+      "duration": 1.808
+    },
+    {
+      "lang": "en",
+      "text": "so magical for me is like\nI would get done with work",
+      "offset": 2594.263,
+      "duration": 3.267
+    },
+    {
+      "lang": "en",
+      "text": "and it was like the first thing",
+      "offset": 2597.53,
+      "duration": 0.958
+    },
+    {
+      "lang": "en",
+      "text": "I was excited to do, you know?",
+      "offset": 2598.488,
+      "duration": 1.802
+    },
+    {
+      "lang": "en",
+      "text": "And it meant that I had that so much space",
+      "offset": 2600.29,
+      "duration": 2.243
+    },
+    {
+      "lang": "en",
+      "text": "to really get to learn\nand know this model.",
+      "offset": 2602.533,
+      "duration": 2.677
+    },
+    {
+      "lang": "en",
+      "text": "And there's all sorts of\nlike technical details",
+      "offset": 2605.21,
+      "duration": 1.958
+    },
+    {
+      "lang": "en",
+      "text": "I could tell you about how to build agents",
+      "offset": 2607.168,
+      "duration": 1.984
+    },
+    {
+      "lang": "en",
+      "text": "that I've learned, but\nlike more than anything,",
+      "offset": 2609.152,
+      "duration": 2.874
+    },
+    {
+      "lang": "en",
+      "text": "you learn by interacting\nwith and experiencing Claude",
+      "offset": 2612.026,
+      "duration": 2.517
+    },
+    {
+      "lang": "en",
+      "text": "and finding the way that like\nit's gonna set you best up",
+      "offset": 2614.543,
+      "duration": 2.187
+    },
+    {
+      "lang": "en",
+      "text": "to be excited to spend\nsix hours with Claude",
+      "offset": 2616.73,
+      "duration": 2.73
+    },
+    {
+      "lang": "en",
+      "text": "or whatever it is on a week",
+      "offset": 2619.46,
+      "duration": 2.086
+    },
+    {
+      "lang": "en",
+      "text": "is the thing that I think\nis gonna get you into it.",
+      "offset": 2621.546,
+      "duration": 1.784
+    },
+    {
+      "lang": "en",
+      "text": "Because once you've done it once,",
+      "offset": 2623.33,
+      "duration": 1.603
+    },
+    {
+      "lang": "en",
+      "text": "it's like much easier for me to reason",
+      "offset": 2624.933,
+      "duration": 1.541
+    },
+    {
+      "lang": "en",
+      "text": "about like how would I go build\nan agent for something else?",
+      "offset": 2626.474,
+      "duration": 2.046
+    },
+    {
+      "lang": "en",
+      "text": "And it's also for all the reasons",
+      "offset": 2628.52,
+      "duration": 1.32
+    },
+    {
+      "lang": "en",
+      "text": "we talked about that are translational,",
+      "offset": 2629.84,
+      "duration": 1.451
+    },
+    {
+      "lang": "en",
+      "text": "like the things that Claude\nis good at in Pokemon,",
+      "offset": 2631.291,
+      "duration": 2.899
+    },
+    {
+      "lang": "en",
+      "text": "actually tell me something\nabout what I can expect",
+      "offset": 2634.19,
+      "duration": 1.998
+    },
+    {
+      "lang": "en",
+      "text": "about different things\nin how I use Claude-",
+      "offset": 2636.188,
+      "duration": 2.292
+    },
+    {
+      "lang": "en",
+      "text": "- Right.",
+      "offset": 2638.48,
+      "duration": 0.833
+    },
+    {
+      "lang": "en",
+      "text": "- what I need to look for\nif it's good enough at this.",
+      "offset": 2639.313,
+      "duration": 2.347
+    },
+    {
+      "lang": "en",
+      "text": "Like how to think about finding out",
+      "offset": 2641.66,
+      "duration": 1.766
+    },
+    {
+      "lang": "en",
+      "text": "if Claude can handle this part of my job",
+      "offset": 2643.426,
+      "duration": 2.104
+    },
+    {
+      "lang": "en",
+      "text": "that I wanna automate",
+      "offset": 2645.53,
+      "duration": 1.214
+    },
+    {
+      "lang": "en",
+      "text": "is the same way I went\nabout figuring out like,",
+      "offset": 2646.744,
+      "duration": 2.446
+    },
+    {
+      "lang": "en",
+      "text": "can Claude figure out how to get out",
+      "offset": 2649.19,
+      "duration": 1.252
+    },
+    {
+      "lang": "en",
+      "text": "of Mountain Moon or not, you know?",
+      "offset": 2650.442,
+      "duration": 1.976
+    },
+    {
+      "lang": "en",
+      "text": "And so just that experience and intuition.",
+      "offset": 2652.418,
+      "duration": 3.372
+    },
+    {
+      "lang": "en",
+      "text": "My biggest piece of advice is just like",
+      "offset": 2655.79,
+      "duration": 2.67
+    },
+    {
+      "lang": "en",
+      "text": "find something that you have fun with,",
+      "offset": 2658.46,
+      "duration": 1.802
+    },
+    {
+      "lang": "en",
+      "text": "build a relationship with Claude",
+      "offset": 2660.262,
+      "duration": 1.497
+    },
+    {
+      "lang": "en",
+      "text": "and that will like carry you so much more",
+      "offset": 2661.759,
+      "duration": 1.669
+    },
+    {
+      "lang": "en",
+      "text": "than any like individual prompting tip",
+      "offset": 2663.428,
+      "duration": 1.757
+    },
+    {
+      "lang": "en",
+      "text": "or something like that, I will.",
+      "offset": 2665.185,
+      "duration": 2.55
+    },
+    {
+      "lang": "en",
+      "text": "- I love that. That's great.",
+      "offset": 2667.735,
+      "duration": 1.69
+    },
+    {
+      "lang": "en",
+      "text": "Well, thanks David.",
+      "offset": 2669.425,
+      "duration": 0.833
+    },
+    {
+      "lang": "en",
+      "text": "This is awesome.\n- Yeah.",
+      "offset": 2670.258,
+      "duration": 1.802
+    },
+    {
+      "lang": "en",
+      "text": "- If you wanna follow along\nwith Claude Plays Pokemon,",
+      "offset": 2672.06,
+      "duration": 2.82
+    },
+    {
+      "lang": "en",
+      "text": "we'll drop a link to\nthe Twitch stream below.",
+      "offset": 2674.88,
+      "duration": 2.605
+    },
+    {
+      "lang": "en",
+      "text": "I expect that we'll be continuing",
+      "offset": 2677.485,
+      "duration": 1.83
+    },
+    {
+      "lang": "en",
+      "text": "to run Claude in future versions",
+      "offset": 2679.315,
+      "duration": 2.01
+    },
+    {
+      "lang": "en",
+      "text": "of Claude on Pokemon going forward.",
+      "offset": 2681.325,
+      "duration": 2.585
+    },
+    {
+      "lang": "en",
+      "text": "And thank you for watching.",
+      "offset": 2683.91,
+      "duration": 0.916
+    }
+  ],
+  "cleanText": null,
+  "dumpedAt": "2025-07-21T18:43:25.145Z"
+}

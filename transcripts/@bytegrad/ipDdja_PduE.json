@@ -1,0 +1,3898 @@
+{
+  "episodeId": "ipDdja_PduE",
+  "channelSlug": "@bytegrad",
+  "title": "Next.js + Postgres Dev / Prod (VPS Coolify, Prisma, Migrations)",
+  "publishedAt": "2025-07-10T10:43:35.000Z",
+  "rawLines": [
+    {
+      "lang": "en",
+      "text": "Hey everyone, I know a lot of you want",
+      "offset": 0.08,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "to use Nex.js with a Postgress database.",
+      "offset": 1.28,
+      "duration": 4.479
+    },
+    {
+      "lang": "en",
+      "text": "So in this video, I'll show you how to",
+      "offset": 4,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "set it up locally and then we're also",
+      "offset": 5.759,
+      "duration": 4.081
+    },
+    {
+      "lang": "en",
+      "text": "going to deploy it to a VPS using",
+      "offset": 7.68,
+      "duration": 3.999
+    },
+    {
+      "lang": "en",
+      "text": "Coolify. We'll talk a little bit about",
+      "offset": 9.84,
+      "duration": 3.919
+    },
+    {
+      "lang": "en",
+      "text": "migrations as well. So you'll get a good",
+      "offset": 11.679,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "sense of how to set everything up both",
+      "offset": 13.759,
+      "duration": 5.121
+    },
+    {
+      "lang": "en",
+      "text": "locally as well as in production. Okay,",
+      "offset": 15.759,
+      "duration": 5.041
+    },
+    {
+      "lang": "en",
+      "text": "but let's start off locally here. Let's",
+      "offset": 18.88,
+      "duration": 4.239
+    },
+    {
+      "lang": "en",
+      "text": "say I want to create a new NexJS",
+      "offset": 20.8,
+      "duration": 4.239
+    },
+    {
+      "lang": "en",
+      "text": "application. Let's start there. I have",
+      "offset": 23.119,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "an empty folder here in my code editor",
+      "offset": 25.039,
+      "duration": 3.841
+    },
+    {
+      "lang": "en",
+      "text": "and I'm going to create a new nextjs",
+      "offset": 27.039,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "application. We're going to say mpx",
+      "offset": 28.88,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "create next app at latest. I wanted to",
+      "offset": 31.199,
+      "duration": 4.081
+    },
+    {
+      "lang": "en",
+      "text": "put all the files directly in this",
+      "offset": 33.52,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "folder that I already opened up. So I'm",
+      "offset": 35.28,
+      "duration": 3.119
+    },
+    {
+      "lang": "en",
+      "text": "going to add a period there and then",
+      "offset": 37.04,
+      "duration": 3.359
+    },
+    {
+      "lang": "en",
+      "text": "let's just go through the steps here.",
+      "offset": 38.399,
+      "duration": 3.441
+    },
+    {
+      "lang": "en",
+      "text": "I'm just going to pick all the default",
+      "offset": 40.399,
+      "duration": 3.441
+    },
+    {
+      "lang": "en",
+      "text": "options and it's going to install the",
+      "offset": 41.84,
+      "duration": 4.239
+    },
+    {
+      "lang": "en",
+      "text": "dependencies. Okay. So now that is",
+      "offset": 43.84,
+      "duration": 4.239
+    },
+    {
+      "lang": "en",
+      "text": "finished. Now we have a brand new NexJS",
+      "offset": 46.079,
+      "duration": 4.401
+    },
+    {
+      "lang": "en",
+      "text": "application. We can run the development",
+      "offset": 48.079,
+      "duration": 5.201
+    },
+    {
+      "lang": "en",
+      "text": "server with this script. So let's do mpm",
+      "offset": 50.48,
+      "duration": 6.16
+    },
+    {
+      "lang": "en",
+      "text": "rundev and it will give us a URL here",
+      "offset": 53.28,
+      "duration": 4.959
+    },
+    {
+      "lang": "en",
+      "text": "that we can check out locally. All",
+      "offset": 56.64,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "right. So this is the homepage and it's",
+      "offset": 58.239,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "not a complete tutorial about how to",
+      "offset": 60.64,
+      "duration": 3.839
+    },
+    {
+      "lang": "en",
+      "text": "build a complete NexJS app. We just want",
+      "offset": 62.239,
+      "duration": 3.841
+    },
+    {
+      "lang": "en",
+      "text": "to see how to set things up. But let's",
+      "offset": 64.479,
+      "duration": 3.921
+    },
+    {
+      "lang": "en",
+      "text": "say we want to have a list of posts from",
+      "offset": 66.08,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "our database. So let me remove all of",
+      "offset": 68.4,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "this. And what we want here is just",
+      "offset": 70.4,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "posts. And here I want to have a list of",
+      "offset": 72.72,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "posts. So we're going to set up a",
+      "offset": 75.84,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "database to set up the database locally.",
+      "offset": 77.6,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "There are actually different ways of",
+      "offset": 79.68,
+      "duration": 3.119
+    },
+    {
+      "lang": "en",
+      "text": "doing it, but I find the easiest one is",
+      "offset": 80.96,
+      "duration": 4.159
+    },
+    {
+      "lang": "en",
+      "text": "to actually use Docker. So in this",
+      "offset": 82.799,
+      "duration": 4.401
+    },
+    {
+      "lang": "en",
+      "text": "example, you do need the Docker desktop",
+      "offset": 85.119,
+      "duration": 4.481
+    },
+    {
+      "lang": "en",
+      "text": "app. So if you go to docker.com, you can",
+      "offset": 87.2,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "download it for your computer. Once you",
+      "offset": 89.6,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "downloaded the Docker desktop app, you",
+      "offset": 91.36,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "will see something like this. The",
+      "offset": 93.36,
+      "duration": 3.28
+    },
+    {
+      "lang": "en",
+      "text": "Postgress will be an image and then",
+      "offset": 94.72,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "we're going to run an instance of that",
+      "offset": 96.64,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "which is called a container. So now we",
+      "offset": 98.4,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "can open up our terminal app and I'm",
+      "offset": 100.56,
+      "duration": 3.28
+    },
+    {
+      "lang": "en",
+      "text": "going to run the following script. So",
+      "offset": 102.24,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "it's going to be docker run and then we",
+      "offset": 103.84,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "can give it a name. We can set up a user",
+      "offset": 105.6,
+      "duration": 4.559
+    },
+    {
+      "lang": "en",
+      "text": "for our Postgrass database. I'm I'm",
+      "offset": 108.24,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "simply going to call it Postgress and",
+      "offset": 110.159,
+      "duration": 3.121
+    },
+    {
+      "lang": "en",
+      "text": "the password will also simply be",
+      "offset": 111.84,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "Postgress. The name of the database I'm",
+      "offset": 113.28,
+      "duration": 4.159
+    },
+    {
+      "lang": "en",
+      "text": "going to call it my DB. Uh some port",
+      "offset": 115.2,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "information and then the actual",
+      "offset": 117.439,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "Postgress version that we want to use.",
+      "offset": 120,
+      "duration": 4.159
+    },
+    {
+      "lang": "en",
+      "text": "Um maybe you want 16, but I'm going to",
+      "offset": 122.159,
+      "duration": 4.081
+    },
+    {
+      "lang": "en",
+      "text": "use 17. And I'm going to press enter",
+      "offset": 124.159,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "here. So the first time it's going to",
+      "offset": 126.24,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "try to find the Docker image on your",
+      "offset": 128.879,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "computer. So I actually just removed it",
+      "offset": 131.2,
+      "duration": 3.119
+    },
+    {
+      "lang": "en",
+      "text": "so I don't have it. It's going to",
+      "offset": 132.879,
+      "duration": 2.961
+    },
+    {
+      "lang": "en",
+      "text": "download it in that case and that may",
+      "offset": 134.319,
+      "duration": 3.041
+    },
+    {
+      "lang": "en",
+      "text": "take some time and it's pretty big but",
+      "offset": 135.84,
+      "duration": 2.96
+    },
+    {
+      "lang": "en",
+      "text": "then we can create instances of it.",
+      "offset": 137.36,
+      "duration": 3.2
+    },
+    {
+      "lang": "en",
+      "text": "Okay. So now it downloaded a a new",
+      "offset": 138.8,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "image. Now you can see I have this",
+      "offset": 140.56,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "postgrass image and since I ran a docker",
+      "offset": 142.16,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "run command that also immediately",
+      "offset": 144.8,
+      "duration": 3.519
+    },
+    {
+      "lang": "en",
+      "text": "created an instance of it a container.",
+      "offset": 146.4,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "So it's running now. So now I have this",
+      "offset": 148.319,
+      "duration": 4.081
+    },
+    {
+      "lang": "en",
+      "text": "uh database running. How do we connect",
+      "offset": 150.48,
+      "duration": 3.759
+    },
+    {
+      "lang": "en",
+      "text": "to that? So I'm going to use the Prisma",
+      "offset": 152.4,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "OM. You can use an other OM as well but",
+      "offset": 154.239,
+      "duration": 4.161
+    },
+    {
+      "lang": "en",
+      "text": "I like using Prisma. On a side note,",
+      "offset": 156.48,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "Prisma actually the company actually",
+      "offset": 158.4,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "released their own Postgress offering as",
+      "offset": 160.4,
+      "duration": 3.839
+    },
+    {
+      "lang": "en",
+      "text": "well. Maybe you're interested in that.",
+      "offset": 162.8,
+      "duration": 3.12
+    },
+    {
+      "lang": "en",
+      "text": "But let's continue here. So, how do I",
+      "offset": 164.239,
+      "duration": 3.681
+    },
+    {
+      "lang": "en",
+      "text": "set up Prisma for this? Well, let me",
+      "offset": 165.92,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "open up the terminal here. So, I'm going",
+      "offset": 167.92,
+      "duration": 4.399
+    },
+    {
+      "lang": "en",
+      "text": "to install Prisma as a dev dependency",
+      "offset": 169.76,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "and then let me clear this. We need to",
+      "offset": 172.319,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "initialize Prisma. Now, they have some",
+      "offset": 174.72,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "script here. You can find it on their",
+      "offset": 176.959,
+      "duration": 3.841
+    },
+    {
+      "lang": "en",
+      "text": "documentation as well. It's basically",
+      "offset": 178.72,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "MPX Prisma initialize in it. They show",
+      "offset": 180.8,
+      "duration": 5.84
+    },
+    {
+      "lang": "en",
+      "text": "it with SQL light as in their example.",
+      "offset": 183.44,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "However, we want to use Postgress. So we",
+      "offset": 186.64,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "say postgrass",
+      "offset": 188.64,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "QL and then these days we have another",
+      "offset": 190.48,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "option here. You specify where the",
+      "offset": 193.68,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "Prisma client should be generated. So",
+      "offset": 195.76,
+      "duration": 5.68
+    },
+    {
+      "lang": "en",
+      "text": "this is going to be in a generated",
+      "offset": 198.4,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "folder at the top level and then in",
+      "offset": 201.44,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "their Prisma. Okay. So if I run this.",
+      "offset": 203.84,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "All right. So now it has set up a",
+      "offset": 206.8,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "Prisma. Let me close out of here. What",
+      "offset": 208.56,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "we get now is basically this Prisma",
+      "offset": 210.64,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "folder including the schema. Prisma. So",
+      "offset": 212.56,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "here it specifies where it's going to",
+      "offset": 215.2,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "generate the Prisma client. And then",
+      "offset": 217.36,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "here we have specified the data source",
+      "offset": 219.44,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "which is Postgress. If you did run it",
+      "offset": 221.68,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "with SQLite, you just need to change",
+      "offset": 223.44,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "this into Postgress. Prisma needs to",
+      "offset": 225.2,
+      "duration": 3.28
+    },
+    {
+      "lang": "en",
+      "text": "know how to connect to our actual",
+      "offset": 227.04,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "database. It's going to assume it's been",
+      "offset": 228.48,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "placed in a environment variable called",
+      "offset": 231.2,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "database URL. If I scroll down here, it",
+      "offset": 233.2,
+      "duration": 5.679
+    },
+    {
+      "lang": "en",
+      "text": "has created av file. So in nextJS, we",
+      "offset": 235.92,
+      "duration": 5.039
+    },
+    {
+      "lang": "en",
+      "text": "often have.local",
+      "offset": 238.879,
+      "duration": 4.481
+    },
+    {
+      "lang": "en",
+      "text": "as like a convention. However, Prisma",
+      "offset": 240.959,
+      "duration": 4.961
+    },
+    {
+      "lang": "en",
+      "text": "out of the box works with env. So if I",
+      "offset": 243.36,
+      "duration": 4.959
+    },
+    {
+      "lang": "en",
+      "text": "use Prisma in a project, I do tend to",
+      "offset": 245.92,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "just use as well. Okay. So here it has",
+      "offset": 248.319,
+      "duration": 5.92
+    },
+    {
+      "lang": "en",
+      "text": "generated an example string here. But",
+      "offset": 251.28,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "this is not the one that that Prisma",
+      "offset": 254.239,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "needs to connect to our database here.",
+      "offset": 256.32,
+      "duration": 4.639
+    },
+    {
+      "lang": "en",
+      "text": "Right? So we used a username of simply",
+      "offset": 258.479,
+      "duration": 5.921
+    },
+    {
+      "lang": "en",
+      "text": "Postgress and then the password as well.",
+      "offset": 260.959,
+      "duration": 6.561
+    },
+    {
+      "lang": "en",
+      "text": "And then the port and the database name.",
+      "offset": 264.4,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "These are all correct. So if I save",
+      "offset": 267.52,
+      "duration": 3.2
+    },
+    {
+      "lang": "en",
+      "text": "here, this should be the right",
+      "offset": 269.28,
+      "duration": 3.199
+    },
+    {
+      "lang": "en",
+      "text": "connection string. So now let me",
+      "offset": 270.72,
+      "duration": 4.479
+    },
+    {
+      "lang": "en",
+      "text": "actually just set up an example model",
+      "offset": 272.479,
+      "duration": 4.401
+    },
+    {
+      "lang": "en",
+      "text": "here. Basically it will create tables",
+      "offset": 275.199,
+      "duration": 3.041
+    },
+    {
+      "lang": "en",
+      "text": "out of this. So in this case we would",
+      "offset": 276.88,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "have a post table and it would just have",
+      "offset": 278.24,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "an ID, a title and some content. Okay.",
+      "offset": 280.32,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "So this is now what I specified in",
+      "offset": 283.12,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "Prisma. This is not how our actual",
+      "offset": 285.04,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "database right now is configured. Our",
+      "offset": 287.12,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "database right now doesn't really have",
+      "offset": 289.36,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "anything. So now I want Prisma to",
+      "offset": 290.8,
+      "duration": 3.679
+    },
+    {
+      "lang": "en",
+      "text": "actually sort of apply this to my",
+      "offset": 292.72,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "database. So Prisma provides multiple",
+      "offset": 294.479,
+      "duration": 4.481
+    },
+    {
+      "lang": "en",
+      "text": "ways actually to do that. So the easiest",
+      "offset": 296.88,
+      "duration": 6.16
+    },
+    {
+      "lang": "en",
+      "text": "would be to just use MPX Prisma DB push.",
+      "offset": 298.96,
+      "duration": 6.32
+    },
+    {
+      "lang": "en",
+      "text": "So locally if you're just making changes",
+      "offset": 303.04,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "here in your schema and then want to",
+      "offset": 305.28,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "update the database like a quick and",
+      "offset": 306.72,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "dirty way is just with DB push. Let's do",
+      "offset": 308.8,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "this. And it will also show us if it can",
+      "offset": 311.12,
+      "duration": 3.519
+    },
+    {
+      "lang": "en",
+      "text": "actually connect. So you can see",
+      "offset": 313.44,
+      "duration": 3.039
+    },
+    {
+      "lang": "en",
+      "text": "everything went fine here. It says your",
+      "offset": 314.639,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "database is now in sync with the Prisma",
+      "offset": 316.479,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "schema. It has also generated a",
+      "offset": 318.639,
+      "duration": 3.921
+    },
+    {
+      "lang": "en",
+      "text": "so-called Prisma client. This is what we",
+      "offset": 320.479,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "will actually use now to run queries in",
+      "offset": 322.56,
+      "duration": 4.639
+    },
+    {
+      "lang": "en",
+      "text": "our code. Okay. but our actual database",
+      "offset": 325.039,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "right now. Let's actually inspect that",
+      "offset": 327.199,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "as well. We can use MPX Prisma Studio to",
+      "offset": 328.639,
+      "duration": 5.201
+    },
+    {
+      "lang": "en",
+      "text": "actually see what's going on in our",
+      "offset": 332.479,
+      "duration": 2.72
+    },
+    {
+      "lang": "en",
+      "text": "database. All right. So here you can see",
+      "offset": 333.84,
+      "duration": 2.72
+    },
+    {
+      "lang": "en",
+      "text": "what's in the database. So you can see",
+      "offset": 335.199,
+      "duration": 3.28
+    },
+    {
+      "lang": "en",
+      "text": "there is a post model here and it's",
+      "offset": 336.56,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "empty of course. Let's actually try",
+      "offset": 338.479,
+      "duration": 3.201
+    },
+    {
+      "lang": "en",
+      "text": "adding something here. So I'm just going",
+      "offset": 340.24,
+      "duration": 4.799
+    },
+    {
+      "lang": "en",
+      "text": "to say first post awesome post as the",
+      "offset": 341.68,
+      "duration": 4.799
+    },
+    {
+      "lang": "en",
+      "text": "content. I'm going to press enter here",
+      "offset": 345.039,
+      "duration": 3.361
+    },
+    {
+      "lang": "en",
+      "text": "and I will save this. So now we have one",
+      "offset": 346.479,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "post in a database. Now we want to pull",
+      "offset": 348.4,
+      "duration": 4.639
+    },
+    {
+      "lang": "en",
+      "text": "this into our application here in nextg.",
+      "offset": 350.479,
+      "duration": 4.321
+    },
+    {
+      "lang": "en",
+      "text": "So how do we do that? Well, now we need",
+      "offset": 353.039,
+      "duration": 3.761
+    },
+    {
+      "lang": "en",
+      "text": "to use the Prisma client. So I want to",
+      "offset": 354.8,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "be able to do const posts is await",
+      "offset": 356.8,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "Prisma.post.find",
+      "offset": 359.84,
+      "duration": 4.079
+    },
+    {
+      "lang": "en",
+      "text": "many. Right? So now we need this Prisma",
+      "offset": 362.16,
+      "duration": 4.159
+    },
+    {
+      "lang": "en",
+      "text": "client. Now Prisma has a guide here on",
+      "offset": 363.919,
+      "duration": 4.161
+    },
+    {
+      "lang": "en",
+      "text": "using it with Nex.js. If we scroll down",
+      "offset": 366.319,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "a little bit here, they have a script to",
+      "offset": 368.08,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "create a single Prisma client. So it",
+      "offset": 370.319,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "will ensure that only one instance of",
+      "offset": 372.8,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "Prisma client exists even uh when hot",
+      "offset": 374.639,
+      "duration": 4.961
+    },
+    {
+      "lang": "en",
+      "text": "reloading. Okay. So what I like to do is",
+      "offset": 377.6,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "I like to create a a library folder here",
+      "offset": 379.6,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "and in there I will call db.ts and I",
+      "offset": 382.24,
+      "duration": 5.519
+    },
+    {
+      "lang": "en",
+      "text": "will just paste that uh script here. Now",
+      "offset": 385.36,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "there is one difference here which is",
+      "offset": 387.759,
+      "duration": 3.121
+    },
+    {
+      "lang": "en",
+      "text": "that these days the Prisma client is",
+      "offset": 389.12,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "actually in this generated folder. So",
+      "offset": 390.88,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "this is a bit of a new thing. Previously",
+      "offset": 393.68,
+      "duration": 3.519
+    },
+    {
+      "lang": "en",
+      "text": "it was coming from the note modules",
+      "offset": 395.36,
+      "duration": 4.559
+    },
+    {
+      "lang": "en",
+      "text": "folder. So now it's in this folder. So",
+      "offset": 397.199,
+      "duration": 4.801
+    },
+    {
+      "lang": "en",
+      "text": "actually if I try to do auto import",
+      "offset": 399.919,
+      "duration": 4.481
+    },
+    {
+      "lang": "en",
+      "text": "here, if I just put my cursor here and",
+      "offset": 402,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "try to import it, you will see a",
+      "offset": 404.4,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "suggestion here from generated Prisma.",
+      "offset": 406.24,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "So that should work. If I go here, I can",
+      "offset": 408.56,
+      "duration": 6.079
+    },
+    {
+      "lang": "en",
+      "text": "uh import it then from that DB file. And",
+      "offset": 411.28,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "I can also mark this as async as it's a",
+      "offset": 414.639,
+      "duration": 4.321
+    },
+    {
+      "lang": "en",
+      "text": "server component. And now we can just",
+      "offset": 416.72,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "map over this here to actually create",
+      "offset": 418.96,
+      "duration": 5.679
+    },
+    {
+      "lang": "en",
+      "text": "the markup for our so if I save here.",
+      "offset": 421.44,
+      "duration": 5.759
+    },
+    {
+      "lang": "en",
+      "text": "And now if we go to our homepage and",
+      "offset": 424.639,
+      "duration": 4.721
+    },
+    {
+      "lang": "en",
+      "text": "here we go. We now are loading these",
+      "offset": 427.199,
+      "duration": 4.961
+    },
+    {
+      "lang": "en",
+      "text": "posts from our Postgress database which",
+      "offset": 429.36,
+      "duration": 5.279
+    },
+    {
+      "lang": "en",
+      "text": "is running all lo. Let me style it a",
+      "offset": 432.16,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "little bit better. So let me actually",
+      "offset": 434.639,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "just display the titles. So we'll just",
+      "offset": 436.4,
+      "duration": 3.519
+    },
+    {
+      "lang": "en",
+      "text": "have the title here. All right. So now",
+      "offset": 438.319,
+      "duration": 3.28
+    },
+    {
+      "lang": "en",
+      "text": "we are just displaying the title of",
+      "offset": 439.919,
+      "duration": 3.441
+    },
+    {
+      "lang": "en",
+      "text": "these posts from our database. We just",
+      "offset": 441.599,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "have one post in the database. I could",
+      "offset": 443.36,
+      "duration": 4.239
+    },
+    {
+      "lang": "en",
+      "text": "set up a seeding file here with Prisma.",
+      "offset": 445.199,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "Let's actually try doing it from the app",
+      "offset": 447.599,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "as well. So here I have a form and I can",
+      "offset": 449.199,
+      "duration": 5.681
+    },
+    {
+      "lang": "en",
+      "text": "type a title, second post, awesome post.",
+      "offset": 451.599,
+      "duration": 5.201
+    },
+    {
+      "lang": "en",
+      "text": "And now I want to be able to also add it",
+      "offset": 454.88,
+      "duration": 4.319
+    },
+    {
+      "lang": "en",
+      "text": "to my database. So I will use a server",
+      "offset": 456.8,
+      "duration": 4.239
+    },
+    {
+      "lang": "en",
+      "text": "action here. So what we can do in nextJS",
+      "offset": 459.199,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "these days is use action. We can call it",
+      "offset": 461.039,
+      "duration": 4.481
+    },
+    {
+      "lang": "en",
+      "text": "create post. This can be a function. And",
+      "offset": 463.199,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "I I like to create a separate file for",
+      "offset": 465.52,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "them. So let's quickly do that. Actions",
+      "offset": 467.599,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "actions.ts.",
+      "offset": 469.68,
+      "duration": 5.359
+    },
+    {
+      "lang": "en",
+      "text": "So we do need to mark it as use server.",
+      "offset": 471.199,
+      "duration": 6.161
+    },
+    {
+      "lang": "en",
+      "text": "And then here we can export a function",
+      "offset": 475.039,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "called create post. We're just going to",
+      "offset": 477.36,
+      "duration": 3.679
+    },
+    {
+      "lang": "en",
+      "text": "grab the title and content from the form",
+      "offset": 479.039,
+      "duration": 4.081
+    },
+    {
+      "lang": "en",
+      "text": "data and then we can insert it into our",
+      "offset": 481.039,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "database. Okay. What we can also do in",
+      "offset": 483.12,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "nextJS is then immediately update that",
+      "offset": 485.199,
+      "duration": 4.481
+    },
+    {
+      "lang": "en",
+      "text": "page as well. So it will rerender with",
+      "offset": 487.68,
+      "duration": 4.799
+    },
+    {
+      "lang": "en",
+      "text": "the latest posts. Okay, we do need to",
+      "offset": 489.68,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "import it right here. So now if I go",
+      "offset": 492.479,
+      "duration": 5.361
+    },
+    {
+      "lang": "en",
+      "text": "here and I say second post, awesome",
+      "offset": 495.44,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "post. Now if I try to add it to my",
+      "offset": 497.84,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "database, it's added to my database",
+      "offset": 500.24,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "because if I now inspect here, we can",
+      "offset": 502.16,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "see there's a second post and we also",
+      "offset": 504.08,
+      "duration": 3.519
+    },
+    {
+      "lang": "en",
+      "text": "see it reflected here in the app itself.",
+      "offset": 505.68,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "So now we have this uh schema here with",
+      "offset": 507.599,
+      "duration": 4.481
+    },
+    {
+      "lang": "en",
+      "text": "this model of the post. We have a title",
+      "offset": 510,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "and content. But what if we now are like",
+      "offset": 512.08,
+      "duration": 4.319
+    },
+    {
+      "lang": "en",
+      "text": "h actually it should also have a",
+      "offset": 514.24,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "published",
+      "offset": 516.399,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "uh field so we know if it's published or",
+      "offset": 518.24,
+      "duration": 5.599
+    },
+    {
+      "lang": "en",
+      "text": "not. So now I changed the Prisma schema",
+      "offset": 520.719,
+      "duration": 5.601
+    },
+    {
+      "lang": "en",
+      "text": "but my actual database right now is not",
+      "offset": 523.839,
+      "duration": 4.321
+    },
+    {
+      "lang": "en",
+      "text": "updated yet. You can see we only have",
+      "offset": 526.32,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "title and content here as the columns.",
+      "offset": 528.16,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "We don't see anything for published.",
+      "offset": 530,
+      "duration": 3.839
+    },
+    {
+      "lang": "en",
+      "text": "Right? So my actual database is not",
+      "offset": 532,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "updated just because I changed the code",
+      "offset": 533.839,
+      "duration": 4.321
+    },
+    {
+      "lang": "en",
+      "text": "here. So I need to uh update my database",
+      "offset": 535.76,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "now. So, we can do that with this uh",
+      "offset": 538.16,
+      "duration": 4.799
+    },
+    {
+      "lang": "en",
+      "text": "push command that we saw before, but",
+      "offset": 540.88,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "this is more like a crude way to just",
+      "offset": 542.959,
+      "duration": 4.481
+    },
+    {
+      "lang": "en",
+      "text": "quickly try some things out. But at some",
+      "offset": 545.44,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "point, you will want to keep track of",
+      "offset": 547.44,
+      "duration": 3.28
+    },
+    {
+      "lang": "en",
+      "text": "the changes you make so that if you have",
+      "offset": 548.88,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "other people on your team, they can also",
+      "offset": 550.72,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "update their database with the same",
+      "offset": 552.56,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "changes or if you have a production",
+      "offset": 554.48,
+      "duration": 3.12
+    },
+    {
+      "lang": "en",
+      "text": "database that you can also update your",
+      "offset": 555.92,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "production database with the right",
+      "offset": 557.6,
+      "duration": 3.679
+    },
+    {
+      "lang": "en",
+      "text": "changes. So, we want to keep track of",
+      "offset": 559.76,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "the changes. So, here we want to use uh",
+      "offset": 561.279,
+      "duration": 4.641
+    },
+    {
+      "lang": "en",
+      "text": "migrations or migration files. So in",
+      "offset": 563.76,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "this case you may want to use MPX Prisma",
+      "offset": 565.92,
+      "duration": 5.84
+    },
+    {
+      "lang": "en",
+      "text": "migrate. Now this can be for production",
+      "offset": 568.48,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "or it can be for a development database.",
+      "offset": 571.76,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "So in this case it would be for",
+      "offset": 574.24,
+      "duration": 3.12
+    },
+    {
+      "lang": "en",
+      "text": "development. If I press enter here we",
+      "offset": 575.76,
+      "duration": 2.96
+    },
+    {
+      "lang": "en",
+      "text": "can also give it a name. All right. Now",
+      "offset": 577.36,
+      "duration": 2.88
+    },
+    {
+      "lang": "en",
+      "text": "since we've already made some changes we",
+      "offset": 578.72,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "actually get this issue here. So we may",
+      "offset": 580.24,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "want to reset first and all data will be",
+      "offset": 582.24,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "lost. Right? So you have to be very",
+      "offset": 584.8,
+      "duration": 2.8
+    },
+    {
+      "lang": "en",
+      "text": "careful with this. You do not want to do",
+      "offset": 586.16,
+      "duration": 3.359
+    },
+    {
+      "lang": "en",
+      "text": "this on any important data you have or",
+      "offset": 587.6,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "like a production database. So be",
+      "offset": 589.519,
+      "duration": 3.201
+    },
+    {
+      "lang": "en",
+      "text": "careful with this. However, in this",
+      "offset": 591.2,
+      "duration": 3.28
+    },
+    {
+      "lang": "en",
+      "text": "case, I have a local database here and",
+      "offset": 592.72,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "I'm just trying some things out here.",
+      "offset": 594.48,
+      "duration": 4.799
+    },
+    {
+      "lang": "en",
+      "text": "So, so what I can do here is MPX Prisma",
+      "offset": 596.08,
+      "duration": 5.199
+    },
+    {
+      "lang": "en",
+      "text": "migrate reset. In this case, I will lose",
+      "offset": 599.279,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "all my data. So, I said yes. Now, you",
+      "offset": 601.279,
+      "duration": 4.321
+    },
+    {
+      "lang": "en",
+      "text": "can see database reset successful. All",
+      "offset": 603.279,
+      "duration": 4.881
+    },
+    {
+      "lang": "en",
+      "text": "right. And then I can say MPX Prisma",
+      "offset": 605.6,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "migrate for development. And I can give",
+      "offset": 608.16,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "it a name. So, the first one can just be",
+      "offset": 611.12,
+      "duration": 4.719
+    },
+    {
+      "lang": "en",
+      "text": "first or init. Let's call it first. All",
+      "offset": 613.68,
+      "duration": 3.599
+    },
+    {
+      "lang": "en",
+      "text": "right. So, then it has created a",
+      "offset": 615.839,
+      "duration": 3.761
+    },
+    {
+      "lang": "en",
+      "text": "migrations uh folder. All right. So here",
+      "offset": 617.279,
+      "duration": 4.161
+    },
+    {
+      "lang": "en",
+      "text": "if I open up the Prisma folder here you",
+      "offset": 619.6,
+      "duration": 3.28
+    },
+    {
+      "lang": "en",
+      "text": "can see there's now a new one for",
+      "offset": 621.44,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "migrations right so this will basically",
+      "offset": 622.88,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "describe how our database structure is",
+      "offset": 625.36,
+      "duration": 4.479
+    },
+    {
+      "lang": "en",
+      "text": "should be changed so we can keep all the",
+      "offset": 627.76,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "databases on our team or in production",
+      "offset": 629.839,
+      "duration": 4.321
+    },
+    {
+      "lang": "en",
+      "text": "all in sync so now whenever I would make",
+      "offset": 632.24,
+      "duration": 3.599
+    },
+    {
+      "lang": "en",
+      "text": "a change uh keep track of that right so",
+      "offset": 634.16,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "now if I want to make another change",
+      "offset": 635.839,
+      "duration": 4.081
+    },
+    {
+      "lang": "en",
+      "text": "maybe how many upotes this post has so",
+      "offset": 637.68,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "now I made a change and now I would say",
+      "offset": 639.92,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "migrate dev I can give it a name second",
+      "offset": 642.56,
+      "duration": 5.279
+    },
+    {
+      "lang": "en",
+      "text": "and now there is another file for that",
+      "offset": 645.44,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "as well okay so this This is how we",
+      "offset": 647.839,
+      "duration": 3.761
+    },
+    {
+      "lang": "en",
+      "text": "would develop the database locally. So",
+      "offset": 649.44,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "now when I check out my database, you",
+      "offset": 651.6,
+      "duration": 3.12
+    },
+    {
+      "lang": "en",
+      "text": "can see we have two additional columns",
+      "offset": 653.2,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "here for published as well as up votes.",
+      "offset": 654.72,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "But the data was lost. So be careful",
+      "offset": 656.72,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "with what you're doing here. We can just",
+      "offset": 658.72,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "quickly add some new data. You may want",
+      "offset": 660.72,
+      "duration": 4.559
+    },
+    {
+      "lang": "en",
+      "text": "to have a seed script first post and",
+      "offset": 662.64,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "press enter here and I will just save",
+      "offset": 665.279,
+      "duration": 3.841
+    },
+    {
+      "lang": "en",
+      "text": "this. Now if I go back to my app and",
+      "offset": 667.04,
+      "duration": 4.479
+    },
+    {
+      "lang": "en",
+      "text": "refresh, you can see we still have the",
+      "offset": 669.12,
+      "duration": 4.159
+    },
+    {
+      "lang": "en",
+      "text": "post here. And I can also still add",
+      "offset": 671.519,
+      "duration": 4.081
+    },
+    {
+      "lang": "en",
+      "text": "everything. Press enter here. You can",
+      "offset": 673.279,
+      "duration": 3.841
+    },
+    {
+      "lang": "en",
+      "text": "see everything is still working. So that",
+      "offset": 675.6,
+      "duration": 4.479
+    },
+    {
+      "lang": "en",
+      "text": "is the local environment. How can we now",
+      "offset": 677.12,
+      "duration": 5.68
+    },
+    {
+      "lang": "en",
+      "text": "deploy this and host this on a VPS",
+      "offset": 680.079,
+      "duration": 4.721
+    },
+    {
+      "lang": "en",
+      "text": "self-hosting and actually this is much",
+      "offset": 682.8,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "easier than before. There are some new",
+      "offset": 684.8,
+      "duration": 4.479
+    },
+    {
+      "lang": "en",
+      "text": "tools that make this much easier. Among",
+      "offset": 686.8,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "them, Coolify, but there's also Doc",
+      "offset": 689.279,
+      "duration": 4.081
+    },
+    {
+      "lang": "en",
+      "text": "Ploy. There are some other ones as well.",
+      "offset": 691.12,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "So actually really exciting time because",
+      "offset": 693.36,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "self-hosting is much more realistic than",
+      "offset": 695.2,
+      "duration": 4.079
+    },
+    {
+      "lang": "en",
+      "text": "before. So we need a VPS and I'm going",
+      "offset": 697.04,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "to use Hostinger. They are also today's",
+      "offset": 699.279,
+      "duration": 3.281
+    },
+    {
+      "lang": "en",
+      "text": "sponsor, but I had a great time using",
+      "offset": 700.88,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "them. And what I like about them is that",
+      "offset": 702.56,
+      "duration": 4.399
+    },
+    {
+      "lang": "en",
+      "text": "they already have a Coolify VPS template",
+      "offset": 704.48,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "out of the box. So they already know",
+      "offset": 706.959,
+      "duration": 3.201
+    },
+    {
+      "lang": "en",
+      "text": "what we're doing. They're already on the",
+      "offset": 708.72,
+      "duration": 3.359
+    },
+    {
+      "lang": "en",
+      "text": "cutting edge. So I think that's a major",
+      "offset": 710.16,
+      "duration": 3.679
+    },
+    {
+      "lang": "en",
+      "text": "plus for Hostinger. And they have some",
+      "offset": 712.079,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "good hosting plans as well. I have",
+      "offset": 713.839,
+      "duration": 4.401
+    },
+    {
+      "lang": "en",
+      "text": "enjoyed using the KVM2 plan. And these",
+      "offset": 715.519,
+      "duration": 4.801
+    },
+    {
+      "lang": "en",
+      "text": "are the resources that we get with that.",
+      "offset": 718.24,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "If you already anticipate that you're",
+      "offset": 720.32,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "going to need more, feel free to pick",
+      "offset": 722.48,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "one of these more powerful plans.",
+      "offset": 724.24,
+      "duration": 3.2
+    },
+    {
+      "lang": "en",
+      "text": "However, I will just go with this one.",
+      "offset": 726,
+      "duration": 2.48
+    },
+    {
+      "lang": "en",
+      "text": "And you can find a link in the",
+      "offset": 727.44,
+      "duration": 2.72
+    },
+    {
+      "lang": "en",
+      "text": "description, by the way. Um, so let's go",
+      "offset": 728.48,
+      "duration": 2.72
+    },
+    {
+      "lang": "en",
+      "text": "with this plan. All right. All right. So",
+      "offset": 730.16,
+      "duration": 2.4
+    },
+    {
+      "lang": "en",
+      "text": "then here on the checkout page, make",
+      "offset": 731.2,
+      "duration": 3.759
+    },
+    {
+      "lang": "en",
+      "text": "sure to use my coupon code alluppercase",
+      "offset": 732.56,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "bytegrat. So it's all uppercase byte",
+      "offset": 734.959,
+      "duration": 5.521
+    },
+    {
+      "lang": "en",
+      "text": "grat. And if you apply that, you can get",
+      "offset": 737.6,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "an additional discount here. And you get",
+      "offset": 740.48,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "a great price overall, right? So you can",
+      "offset": 743.04,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "find a link in description. So make sure",
+      "offset": 745.04,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "to check out Hostinger. Now here we can",
+      "offset": 746.8,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "pick a server location as well as an",
+      "offset": 749.68,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "operating system. So if you want to use",
+      "offset": 751.92,
+      "duration": 3.919
+    },
+    {
+      "lang": "en",
+      "text": "the Coolify uh template, we can pick",
+      "offset": 753.6,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "Coolify here and it will actually be an",
+      "offset": 755.839,
+      "duration": 4.081
+    },
+    {
+      "lang": "en",
+      "text": "Ubuntu OS. So that's what I'm going to",
+      "offset": 757.68,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "pick here. They have some other options",
+      "offset": 759.92,
+      "duration": 3.919
+    },
+    {
+      "lang": "en",
+      "text": "here as well like dopy which is similar",
+      "offset": 761.6,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "and some other options as well. So",
+      "offset": 763.839,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "Hostinger makes it really easy and I",
+      "offset": 765.44,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "will go with Coolify here. So let me pay",
+      "offset": 767.279,
+      "duration": 3.761
+    },
+    {
+      "lang": "en",
+      "text": "here and then we'll continue. All right.",
+      "offset": 769.36,
+      "duration": 3.919
+    },
+    {
+      "lang": "en",
+      "text": "So after payment we have a setup wizard",
+      "offset": 771.04,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "here. So I will just continue with the",
+      "offset": 773.279,
+      "duration": 3.041
+    },
+    {
+      "lang": "en",
+      "text": "scanner. Yes. All right. So then you",
+      "offset": 775.04,
+      "duration": 3.2
+    },
+    {
+      "lang": "en",
+      "text": "have to set up a password. You may not",
+      "offset": 776.32,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "need it if you're using Coolify but it's",
+      "offset": 778.24,
+      "duration": 3.839
+    },
+    {
+      "lang": "en",
+      "text": "still a good idea to remember it of",
+      "offset": 780.32,
+      "duration": 3.28
+    },
+    {
+      "lang": "en",
+      "text": "course. So put it somewhere safe. Don't",
+      "offset": 782.079,
+      "duration": 2.961
+    },
+    {
+      "lang": "en",
+      "text": "show it to other people. You may need",
+      "offset": 783.6,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "this to actually log into the VPS and",
+      "offset": 785.04,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "maybe do some configuration at some",
+      "offset": 787.12,
+      "duration": 2.88
+    },
+    {
+      "lang": "en",
+      "text": "point. All right. So I will continue",
+      "offset": 788.72,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "here and I will finish the setup right",
+      "offset": 790,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "here. All right. So then it's going to",
+      "offset": 792.48,
+      "duration": 3.12
+    },
+    {
+      "lang": "en",
+      "text": "set up my VPS. I'll get back to you when",
+      "offset": 793.6,
+      "duration": 3.679
+    },
+    {
+      "lang": "en",
+      "text": "we are ready to go. All right. So then",
+      "offset": 795.6,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "my VPS is ready. I can go here to manage",
+      "offset": 797.279,
+      "duration": 4.401
+    },
+    {
+      "lang": "en",
+      "text": "VPS. All right. So then here I get the",
+      "offset": 799.6,
+      "duration": 3.679
+    },
+    {
+      "lang": "en",
+      "text": "dashboard where I can manage all sorts",
+      "offset": 801.68,
+      "duration": 3.839
+    },
+    {
+      "lang": "en",
+      "text": "of settings about my VPS. But what we",
+      "offset": 803.279,
+      "duration": 3.521
+    },
+    {
+      "lang": "en",
+      "text": "want to do here is just go to the",
+      "offset": 805.519,
+      "duration": 3.281
+    },
+    {
+      "lang": "en",
+      "text": "Coolify template here. Okay. So I can",
+      "offset": 806.8,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "just uh continue here. All right. So",
+      "offset": 808.8,
+      "duration": 4.159
+    },
+    {
+      "lang": "en",
+      "text": "then here we get the Coolify account",
+      "offset": 810.56,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "creation page. Make sure you are the",
+      "offset": 812.959,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "first one to access this because this",
+      "offset": 814.8,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "user will be a root user with full admin",
+      "offset": 816.639,
+      "duration": 4.241
+    },
+    {
+      "lang": "en",
+      "text": "access. I will just register here. All",
+      "offset": 818.88,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "right. So then we have a onboarding flow",
+      "offset": 820.88,
+      "duration": 3.759
+    },
+    {
+      "lang": "en",
+      "text": "here. I will just click on next here.",
+      "offset": 822.8,
+      "duration": 3.2
+    },
+    {
+      "lang": "en",
+      "text": "All right. So this is all running on",
+      "offset": 824.639,
+      "duration": 3.601
+    },
+    {
+      "lang": "en",
+      "text": "that VPS that we got from Hostinger.",
+      "offset": 826,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "Right. So we have an IP address here.",
+      "offset": 828.24,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "And we can run Coolify on this VPS on",
+      "offset": 829.92,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "this server. And maybe if you have an",
+      "offset": 833.2,
+      "duration": 3.28
+    },
+    {
+      "lang": "en",
+      "text": "app, you want to run it on some",
+      "offset": 835.2,
+      "duration": 3.12
+    },
+    {
+      "lang": "en",
+      "text": "different server. So you separate them.",
+      "offset": 836.48,
+      "duration": 3.599
+    },
+    {
+      "lang": "en",
+      "text": "But I will just keep everything on this",
+      "offset": 838.32,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "one server. So it's going to be local",
+      "offset": 840.079,
+      "duration": 3.281
+    },
+    {
+      "lang": "en",
+      "text": "host here. Okay. Okay. So then we create",
+      "offset": 841.76,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "a new project and there are some",
+      "offset": 843.36,
+      "duration": 4.159
+    },
+    {
+      "lang": "en",
+      "text": "resources. So this is how cooly works.",
+      "offset": 845.12,
+      "duration": 4.399
+    },
+    {
+      "lang": "en",
+      "text": "You basically have your projects. In",
+      "offset": 847.519,
+      "duration": 3.041
+    },
+    {
+      "lang": "en",
+      "text": "this case we're going to have one",
+      "offset": 849.519,
+      "duration": 2.641
+    },
+    {
+      "lang": "en",
+      "text": "project to group everything together",
+      "offset": 850.56,
+      "duration": 3.12
+    },
+    {
+      "lang": "en",
+      "text": "essentially and in there we have",
+      "offset": 852.16,
+      "duration": 3.359
+    },
+    {
+      "lang": "en",
+      "text": "resources. So one of them is going to be",
+      "offset": 853.68,
+      "duration": 3.839
+    },
+    {
+      "lang": "en",
+      "text": "a next.js app and the second one is",
+      "offset": 855.519,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "going to be a postgress database. So",
+      "offset": 857.519,
+      "duration": 3.361
+    },
+    {
+      "lang": "en",
+      "text": "let's click on add new resource and",
+      "offset": 859.199,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "let's first try to create the database.",
+      "offset": 860.88,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "Actually uh we will create we will add",
+      "offset": 862.639,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "the nextjs app with this one. However,",
+      "offset": 864.32,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "if we scroll down a little bit, we can",
+      "offset": 866.639,
+      "duration": 3.121
+    },
+    {
+      "lang": "en",
+      "text": "already set up a database here as well.",
+      "offset": 868.24,
+      "duration": 3.12
+    },
+    {
+      "lang": "en",
+      "text": "And you can see Koolifi actually offers",
+      "offset": 869.76,
+      "duration": 3.199
+    },
+    {
+      "lang": "en",
+      "text": "a lot of options here. And not only",
+      "offset": 871.36,
+      "duration": 3.599
+    },
+    {
+      "lang": "en",
+      "text": "database, there's also other services.",
+      "offset": 872.959,
+      "duration": 3.761
+    },
+    {
+      "lang": "en",
+      "text": "So actually very sophisticated. But",
+      "offset": 874.959,
+      "duration": 3.601
+    },
+    {
+      "lang": "en",
+      "text": "let's go with Postgress here. And we",
+      "offset": 876.72,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "will use Postgress 17. But you can see",
+      "offset": 878.56,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "there are other options here as well. Uh",
+      "offset": 880.56,
+      "duration": 3.519
+    },
+    {
+      "lang": "en",
+      "text": "but I will go with this one. Okay, let's",
+      "offset": 882.24,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "actually start this. And we just have to",
+      "offset": 884.079,
+      "duration": 3.601
+    },
+    {
+      "lang": "en",
+      "text": "wait a few seconds. So you can see",
+      "offset": 886.32,
+      "duration": 3.759
+    },
+    {
+      "lang": "en",
+      "text": "what's doing it will also uh pull an",
+      "offset": 887.68,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "image onto the VPS. And now you can see",
+      "offset": 890.079,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "database started. Okay. So from our",
+      "offset": 892.24,
+      "duration": 4.159
+    },
+    {
+      "lang": "en",
+      "text": "nextjs application we will need to",
+      "offset": 894.399,
+      "duration": 3.921
+    },
+    {
+      "lang": "en",
+      "text": "connect to that. Previously locally what",
+      "offset": 896.399,
+      "duration": 5.041
+    },
+    {
+      "lang": "en",
+      "text": "we were doing is we have this empv file",
+      "offset": 898.32,
+      "duration": 5.6
+    },
+    {
+      "lang": "en",
+      "text": "with database URL right. So we're using",
+      "offset": 901.44,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "prisma in this case and prisma is just",
+      "offset": 903.92,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "using environment variable to connect to",
+      "offset": 906.16,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "it. So this is not going to go with the",
+      "offset": 908.16,
+      "duration": 3.919
+    },
+    {
+      "lang": "en",
+      "text": "app. So this is all local. So we just",
+      "offset": 910,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "need to make sure that we also have an",
+      "offset": 912.079,
+      "duration": 2.88
+    },
+    {
+      "lang": "en",
+      "text": "environment variable in the production",
+      "offset": 913.44,
+      "duration": 3.28
+    },
+    {
+      "lang": "en",
+      "text": "environment. So that's going to be here.",
+      "offset": 914.959,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "How do we get that connection string?",
+      "offset": 916.72,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "Well we can use this postgress URL. We",
+      "offset": 918.399,
+      "duration": 3.841
+    },
+    {
+      "lang": "en",
+      "text": "can view it here and it has already",
+      "offset": 920.72,
+      "duration": 3.679
+    },
+    {
+      "lang": "en",
+      "text": "generated this for us. Make sure you",
+      "offset": 922.24,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "keep it a secret. Don't show it to",
+      "offset": 924.399,
+      "duration": 2.88
+    },
+    {
+      "lang": "en",
+      "text": "anyone else. Uh this is what we will use",
+      "offset": 925.68,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "as the environment variable in a second.",
+      "offset": 927.279,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "Before we do that, let's actually try",
+      "offset": 929.12,
+      "duration": 3.839
+    },
+    {
+      "lang": "en",
+      "text": "getting our NextJS application onto the",
+      "offset": 930.639,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "VPS as well. So we have one project",
+      "offset": 932.959,
+      "duration": 3.841
+    },
+    {
+      "lang": "en",
+      "text": "right now with one database. But now we",
+      "offset": 934.639,
+      "duration": 3.921
+    },
+    {
+      "lang": "en",
+      "text": "also need an app. So we're going to",
+      "offset": 936.8,
+      "duration": 3.279
+    },
+    {
+      "lang": "en",
+      "text": "click on new here. And now we're going",
+      "offset": 938.56,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "to uh deploy our next.js app. We're",
+      "offset": 940.079,
+      "duration": 3.841
+    },
+    {
+      "lang": "en",
+      "text": "going to do it through GitHub. So let's",
+      "offset": 942.24,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "actually first push our app to GitHub. I",
+      "offset": 943.92,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "will create a new repo. And I will call",
+      "offset": 946,
+      "duration": 3.839
+    },
+    {
+      "lang": "en",
+      "text": "this uh Next.js Postgress. And I will",
+      "offset": 947.44,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "actually keep it a private repository.",
+      "offset": 949.839,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "All right, let's create this. All right,",
+      "offset": 952.72,
+      "duration": 3.039
+    },
+    {
+      "lang": "en",
+      "text": "let's then actually push it. I will just",
+      "offset": 954.079,
+      "duration": 3.921
+    },
+    {
+      "lang": "en",
+      "text": "copy these four commands and I will go",
+      "offset": 955.759,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "back to our app here. Let me kill all",
+      "offset": 958,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "these terminals here. So our nextjs app",
+      "offset": 959.759,
+      "duration": 6.961
+    },
+    {
+      "lang": "en",
+      "text": "will be built on the VPS and they will",
+      "offset": 962.16,
+      "duration": 6.64
+    },
+    {
+      "lang": "en",
+      "text": "run the mpm run build command. By",
+      "offset": 966.72,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "default, a build will fail if you have",
+      "offset": 968.8,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "like a TypeScript issue. You may just",
+      "offset": 970.8,
+      "duration": 2.959
+    },
+    {
+      "lang": "en",
+      "text": "quickly want to see if you have any",
+      "offset": 972.48,
+      "duration": 3.2
+    },
+    {
+      "lang": "en",
+      "text": "issues here with TypeScript. Um, but",
+      "offset": 973.759,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "looks good here. And then you also want",
+      "offset": 975.68,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "to make sure you actually uh stage",
+      "offset": 977.759,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "everything here first and then we can",
+      "offset": 979.6,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "just commit everything and push it to",
+      "offset": 981.839,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "that remote. So now if I refresh our",
+      "offset": 983.68,
+      "duration": 4.959
+    },
+    {
+      "lang": "en",
+      "text": "code is on GitHub. Now I can go to",
+      "offset": 985.759,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "Coolify here again. We can pick private",
+      "offset": 988.639,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "repo and it's going to be done with a",
+      "offset": 990.639,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "GitHub app. Okay, this will also allow",
+      "offset": 992.079,
+      "duration": 4.961
+    },
+    {
+      "lang": "en",
+      "text": "us to um if we make a change in our app,",
+      "offset": 994.399,
+      "duration": 4.321
+    },
+    {
+      "lang": "en",
+      "text": "we can push it to GitHub and it will",
+      "offset": 997.04,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "automatically redeploy on the VPS as",
+      "offset": 998.72,
+      "duration": 3.359
+    },
+    {
+      "lang": "en",
+      "text": "well which is really nice. So we just",
+      "offset": 1000.72,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "have to add this uh GitHub app. So we'll",
+      "offset": 1002.079,
+      "duration": 4.401
+    },
+    {
+      "lang": "en",
+      "text": "just uh click here and we also we'll",
+      "offset": 1004.24,
+      "duration": 4.159
+    },
+    {
+      "lang": "en",
+      "text": "register it. So I need to add it here",
+      "offset": 1006.48,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "and then we need to install that for a",
+      "offset": 1008.399,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "particular repository. You can do it for",
+      "offset": 1010.24,
+      "duration": 3.279
+    },
+    {
+      "lang": "en",
+      "text": "all. I like to be a little bit uh",
+      "offset": 1012.079,
+      "duration": 3.921
+    },
+    {
+      "lang": "en",
+      "text": "selective. I will search for uh nextjs",
+      "offset": 1013.519,
+      "duration": 4.641
+    },
+    {
+      "lang": "en",
+      "text": "postgress this one and I will just",
+      "offset": 1016,
+      "duration": 4.399
+    },
+    {
+      "lang": "en",
+      "text": "install that. Okay. So now we have this.",
+      "offset": 1018.16,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "I will save here. Yeah. So this is a",
+      "offset": 1020.399,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "GitHub app that is now installed. So now",
+      "offset": 1022.24,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "I can go back to project to our project",
+      "offset": 1024.079,
+      "duration": 4.161
+    },
+    {
+      "lang": "en",
+      "text": "here and I can try adding it. Try adding",
+      "offset": 1026,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "it again. So I just have to click on",
+      "offset": 1028.24,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "private repository again. Then we can",
+      "offset": 1030.16,
+      "duration": 3.519
+    },
+    {
+      "lang": "en",
+      "text": "pick the GitHub app that we just set up.",
+      "offset": 1032,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "All right. So then from here it can we",
+      "offset": 1033.679,
+      "duration": 3.12
+    },
+    {
+      "lang": "en",
+      "text": "can load the repositories that are",
+      "offset": 1035.36,
+      "duration": 2.8
+    },
+    {
+      "lang": "en",
+      "text": "connected to that. Well in this case",
+      "offset": 1036.799,
+      "duration": 3.681
+    },
+    {
+      "lang": "en",
+      "text": "only one. We can just continue here. And",
+      "offset": 1038.16,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "now it will try uh pulling the code onto",
+      "offset": 1040.48,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "the VPS and it will actually create a",
+      "offset": 1043.52,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "deployment. So if we go here we can well",
+      "offset": 1045.76,
+      "duration": 3.919
+    },
+    {
+      "lang": "en",
+      "text": "we actually do have to click on deploy",
+      "offset": 1048.24,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "here. But it will try to build the next",
+      "offset": 1049.679,
+      "duration": 5.041
+    },
+    {
+      "lang": "en",
+      "text": "JS app. And so if that works fine we",
+      "offset": 1052,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "should be able to see the next JS app.",
+      "offset": 1054.72,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "We can click on show debug logs. And",
+      "offset": 1056.32,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "actually uh we're going to get an error",
+      "offset": 1058.4,
+      "duration": 2.96
+    },
+    {
+      "lang": "en",
+      "text": "here because we haven't set up the",
+      "offset": 1060.08,
+      "duration": 2.8
+    },
+    {
+      "lang": "en",
+      "text": "environment variable yet. And actually",
+      "offset": 1061.36,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "also for Prisma we also need to do",
+      "offset": 1062.88,
+      "duration": 4.159
+    },
+    {
+      "lang": "en",
+      "text": "something. Um so I will just let it fill",
+      "offset": 1064.96,
+      "duration": 3.28
+    },
+    {
+      "lang": "en",
+      "text": "here just to see what we're going to",
+      "offset": 1067.039,
+      "duration": 2.561
+    },
+    {
+      "lang": "en",
+      "text": "get. Yeah. So here you can see it's",
+      "offset": 1068.24,
+      "duration": 3.2
+    },
+    {
+      "lang": "en",
+      "text": "doing a nextjs build right. So here we",
+      "offset": 1069.6,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "see some familiar next.js logging here",
+      "offset": 1071.44,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "and it will actually try to generate the",
+      "offset": 1073.44,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "pages meaning it will actually run the",
+      "offset": 1076,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "code here. For example, it will actually",
+      "offset": 1078.48,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "run this code. What issue does it have?",
+      "offset": 1080.64,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "Well here we get the issue of the",
+      "offset": 1082.96,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "environment variable not found. So the",
+      "offset": 1084.48,
+      "duration": 4.559
+    },
+    {
+      "lang": "en",
+      "text": "build here fails. It's no problem. It's",
+      "offset": 1087.12,
+      "duration": 3.679
+    },
+    {
+      "lang": "en",
+      "text": "easily fixed. So now we just need to set",
+      "offset": 1089.039,
+      "duration": 3.361
+    },
+    {
+      "lang": "en",
+      "text": "the environment variable of the",
+      "offset": 1090.799,
+      "duration": 3.281
+    },
+    {
+      "lang": "en",
+      "text": "database. So we already set up the",
+      "offset": 1092.4,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "database here. We just go there and we",
+      "offset": 1094.08,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "can get the Postgress URL here. Let's uh",
+      "offset": 1096.08,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "copy this. I will copy this right here.",
+      "offset": 1098.96,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "Then we can go back to our application",
+      "offset": 1100.96,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "here. And here we can set environment",
+      "offset": 1103.28,
+      "duration": 3.12
+    },
+    {
+      "lang": "en",
+      "text": "variables. Okay. So I'm just going to",
+      "offset": 1104.88,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "add one here. And the name that we",
+      "offset": 1106.4,
+      "duration": 5.92
+    },
+    {
+      "lang": "en",
+      "text": "specified in Prisma is database",
+      "offset": 1108.72,
+      "duration": 6.319
+    },
+    {
+      "lang": "en",
+      "text": "URL. And then for the value I can paste",
+      "offset": 1112.32,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "that. I'm going to save this. So now",
+      "offset": 1115.039,
+      "duration": 4.401
+    },
+    {
+      "lang": "en",
+      "text": "that environment variable is set. Now in",
+      "offset": 1117.28,
+      "duration": 3.759
+    },
+    {
+      "lang": "en",
+      "text": "the case of Prisma there's one more",
+      "offset": 1119.44,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "thing we also should add here. So in",
+      "offset": 1121.039,
+      "duration": 4.401
+    },
+    {
+      "lang": "en",
+      "text": "package.json so during the build it will",
+      "offset": 1122.96,
+      "duration": 4.079
+    },
+    {
+      "lang": "en",
+      "text": "it will actually render this here. The",
+      "offset": 1125.44,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "Prisma client will not exist in will not",
+      "offset": 1127.039,
+      "duration": 5.201
+    },
+    {
+      "lang": "en",
+      "text": "exist on that VPS. Uh one of the things",
+      "offset": 1130.24,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "we can do here is that before we",
+      "offset": 1132.24,
+      "duration": 4.319
+    },
+    {
+      "lang": "en",
+      "text": "actually invoke next build, we can we",
+      "offset": 1134.16,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "can run Prisma migrate deploy. So this",
+      "offset": 1136.559,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "is basically going to apply the",
+      "offset": 1139.44,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "migrations in a production environment.",
+      "offset": 1141.039,
+      "duration": 4.241
+    },
+    {
+      "lang": "en",
+      "text": "So be careful with what you do. Make",
+      "offset": 1143.52,
+      "duration": 3.279
+    },
+    {
+      "lang": "en",
+      "text": "sure you're not going to lose any data.",
+      "offset": 1145.28,
+      "duration": 3.04
+    },
+    {
+      "lang": "en",
+      "text": "This is just a quick example, but it",
+      "offset": 1146.799,
+      "duration": 3.281
+    },
+    {
+      "lang": "en",
+      "text": "will also generate that Prisma client.",
+      "offset": 1148.32,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "So then during the build, this should",
+      "offset": 1150.08,
+      "duration": 3.839
+    },
+    {
+      "lang": "en",
+      "text": "all work. So now I made a change here in",
+      "offset": 1151.84,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "my app. And now the nice thing is I just",
+      "offset": 1153.919,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "have to uh well I just have to stage",
+      "offset": 1156.64,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "everything. I can just commit it. And",
+      "offset": 1159.039,
+      "duration": 4.321
+    },
+    {
+      "lang": "en",
+      "text": "now if I push to GitHub, it will",
+      "offset": 1161.6,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "automatically trigger a redeploy on",
+      "offset": 1163.36,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "Coolify here. So now if I go to",
+      "offset": 1166,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "deployments for this app, you can see",
+      "offset": 1168.08,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "it's already in progress. It's already",
+      "offset": 1169.76,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "going through another deployment and",
+      "offset": 1172,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "build. All right. So here we can see uh",
+      "offset": 1174.24,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "it is already using those migrations.",
+      "offset": 1176.72,
+      "duration": 4.959
+    },
+    {
+      "lang": "en",
+      "text": "It's actually applying the migrations to",
+      "offset": 1179.44,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "this database on this VPS and then it's",
+      "offset": 1181.679,
+      "duration": 4.721
+    },
+    {
+      "lang": "en",
+      "text": "building the next.js app itself. And",
+      "offset": 1184.08,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "actually everything looks good here. So",
+      "offset": 1186.4,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "now if we go to uh configuration here if",
+      "offset": 1188.08,
+      "duration": 4.719
+    },
+    {
+      "lang": "en",
+      "text": "we actually want to see our app well we",
+      "offset": 1191.28,
+      "duration": 3.759
+    },
+    {
+      "lang": "en",
+      "text": "can see under domains here this is what",
+      "offset": 1192.799,
+      "duration": 5.361
+    },
+    {
+      "lang": "en",
+      "text": "they uh generate by default here. Okay",
+      "offset": 1195.039,
+      "duration": 4.801
+    },
+    {
+      "lang": "en",
+      "text": "so we will just continue here. Here is",
+      "offset": 1198.16,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "my app and of course we don't have any",
+      "offset": 1199.84,
+      "duration": 4.079
+    },
+    {
+      "lang": "en",
+      "text": "posts in our database but we can try",
+      "offset": 1202.16,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "adding one. First post first post. If I",
+      "offset": 1203.919,
+      "duration": 5.521
+    },
+    {
+      "lang": "en",
+      "text": "click on add post you can see we now",
+      "offset": 1207.6,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "have this post. If I refresh it's",
+      "offset": 1209.44,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "persisted. So now we know that it's",
+      "offset": 1211.12,
+      "duration": 4.559
+    },
+    {
+      "lang": "en",
+      "text": "actually in the database. Second one.",
+      "offset": 1212.88,
+      "duration": 6.32
+    },
+    {
+      "lang": "en",
+      "text": "Second post. Okay. add post. All right.",
+      "offset": 1215.679,
+      "duration": 7.041
+    },
+    {
+      "lang": "en",
+      "text": "So now I have a NexJS app with database",
+      "offset": 1219.2,
+      "duration": 5.599
+    },
+    {
+      "lang": "en",
+      "text": "in a production environment as well",
+      "offset": 1222.72,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "including applying those migrations. And",
+      "offset": 1224.799,
+      "duration": 5.201
+    },
+    {
+      "lang": "en",
+      "text": "actually this is so much easier than in",
+      "offset": 1227.28,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "the past. If you've ever tried doing",
+      "offset": 1230,
+      "duration": 2.96
+    },
+    {
+      "lang": "en",
+      "text": "this yourself on a VPS, you know how",
+      "offset": 1231.36,
+      "duration": 3.439
+    },
+    {
+      "lang": "en",
+      "text": "much hassle this used to be. But now",
+      "offset": 1232.96,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "with uh Hostinger the Coolifi template,",
+      "offset": 1234.799,
+      "duration": 4.481
+    },
+    {
+      "lang": "en",
+      "text": "it's literally a few minutes. And if",
+      "offset": 1237.28,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "you've if you've done this a few times,",
+      "offset": 1239.28,
+      "duration": 3.759
+    },
+    {
+      "lang": "en",
+      "text": "this is this is as easy as it's going to",
+      "offset": 1241.2,
+      "duration": 3.12
+    },
+    {
+      "lang": "en",
+      "text": "get. All right, let me quickly improve",
+      "offset": 1243.039,
+      "duration": 3.361
+    },
+    {
+      "lang": "en",
+      "text": "the domain here as well if you have a",
+      "offset": 1244.32,
+      "duration": 3.599
+    },
+    {
+      "lang": "en",
+      "text": "domain. So, Hostinger actually also",
+      "offset": 1246.4,
+      "duration": 3.519
+    },
+    {
+      "lang": "en",
+      "text": "offers domains. So, I have one here. If",
+      "offset": 1247.919,
+      "duration": 5.201
+    },
+    {
+      "lang": "en",
+      "text": "I go to DNS here, I can set an A record.",
+      "offset": 1249.919,
+      "duration": 4.721
+    },
+    {
+      "lang": "en",
+      "text": "I actually already used it for some",
+      "offset": 1253.12,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "other example, but let me actually",
+      "offset": 1254.64,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "change it. So, I need to know the IP",
+      "offset": 1256.88,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "address of the VPS. I can just copy this",
+      "offset": 1258.88,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "and I can just point this A record to",
+      "offset": 1261.28,
+      "duration": 4.879
+    },
+    {
+      "lang": "en",
+      "text": "that IP address so that when somebody",
+      "offset": 1264,
+      "duration": 5.039
+    },
+    {
+      "lang": "en",
+      "text": "goes to that domain, it will go to the",
+      "offset": 1266.159,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "VPS. We can just click on update here.",
+      "offset": 1269.039,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "So, now I have one A record for for the",
+      "offset": 1271.919,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "root. So now I also need to specify that",
+      "offset": 1274.159,
+      "duration": 4.481
+    },
+    {
+      "lang": "en",
+      "text": "here on Coolify. So when there is an",
+      "offset": 1276.559,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "incoming request, Coolify knows for",
+      "offset": 1278.64,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "which app here to use that. I can also",
+      "offset": 1280.799,
+      "duration": 5.281
+    },
+    {
+      "lang": "en",
+      "text": "specify it with HTTPS and then I can use",
+      "offset": 1283.36,
+      "duration": 5.84
+    },
+    {
+      "lang": "en",
+      "text": "that uh domain. I'll press enter here.",
+      "offset": 1286.08,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "You can see it's been uh updated but we",
+      "offset": 1289.2,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "do need to redeploy. Okay. And by the",
+      "offset": 1291.44,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "way, I also like to set it to simply",
+      "offset": 1293.6,
+      "duration": 3.12
+    },
+    {
+      "lang": "en",
+      "text": "nonwww.",
+      "offset": 1295.2,
+      "duration": 3.28
+    },
+    {
+      "lang": "en",
+      "text": "I will also click on set direction.",
+      "offset": 1296.72,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "Okay. So it is permanent actually. Uh",
+      "offset": 1298.48,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "that's fine with me. Uh I will just set",
+      "offset": 1300.64,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "it. So now we have made some changes and",
+      "offset": 1302.4,
+      "duration": 3.519
+    },
+    {
+      "lang": "en",
+      "text": "now I need to redeploy. It's just one",
+      "offset": 1304.4,
+      "duration": 3.279
+    },
+    {
+      "lang": "en",
+      "text": "click here. I'm going to click redeploy",
+      "offset": 1305.919,
+      "duration": 3.441
+    },
+    {
+      "lang": "en",
+      "text": "and we'll see if that works. We'll just",
+      "offset": 1307.679,
+      "duration": 2.88
+    },
+    {
+      "lang": "en",
+      "text": "have to wait a few seconds. All right.",
+      "offset": 1309.36,
+      "duration": 3.12
+    },
+    {
+      "lang": "en",
+      "text": "So if I go to my domain here, you can",
+      "offset": 1310.559,
+      "duration": 4.401
+    },
+    {
+      "lang": "en",
+      "text": "see I have my next application now",
+      "offset": 1312.48,
+      "duration": 6.079
+    },
+    {
+      "lang": "en",
+      "text": "including HTTPS on my custom domain and",
+      "offset": 1314.96,
+      "duration": 6.88
+    },
+    {
+      "lang": "en",
+      "text": "it is using a Postgress database here on",
+      "offset": 1318.559,
+      "duration": 5.201
+    },
+    {
+      "lang": "en",
+      "text": "the VPS. You can see the data is",
+      "offset": 1321.84,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "persisted here. So actually mind-blowing",
+      "offset": 1323.76,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "to me how easy this has become. So",
+      "offset": 1326.24,
+      "duration": 3.439
+    },
+    {
+      "lang": "en",
+      "text": "hopefully this helps you out with",
+      "offset": 1328.64,
+      "duration": 3.2
+    },
+    {
+      "lang": "en",
+      "text": "setting up and deploying Nex.js JS with",
+      "offset": 1329.679,
+      "duration": 3.601
+    },
+    {
+      "lang": "en",
+      "text": "Postgress. Make sure to check out",
+      "offset": 1331.84,
+      "duration": 3.28
+    },
+    {
+      "lang": "en",
+      "text": "Hostinger with their coolify VPS",
+      "offset": 1333.28,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "templates. Thanks to Hostinger for",
+      "offset": 1335.12,
+      "duration": 3.12
+    },
+    {
+      "lang": "en",
+      "text": "sponsoring the video. Thank you for",
+      "offset": 1336.64,
+      "duration": 3.2
+    },
+    {
+      "lang": "en",
+      "text": "watching and I hope to see you in the",
+      "offset": 1338.24,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "next one. Have a nice day.",
+      "offset": 1339.84,
+      "duration": 2.88
+    }
+  ],
+  "cleanText": "Hey everyone, I know a lot of you want to use Next.js with a Postgres database. So in this video, I'll show you how to set it up locally, and then we're also going to deploy it to a VPS using Coolify. We'll talk a little bit about migrations as well. So you'll get a good sense of how to set everything up both locally as well as in production. Okay, but let's start off locally here. Let's say I want to create a new Next.js application. Let's start there. I have an empty folder here in my code editor, and I'm going to create a new Next.js application. We're going to say `npx create next app@latest`. I wanted to put all the files directly in this folder that I already opened up. So I'm going to add a period there, and then let's just go through the steps here. I'm just going to pick all the default options, and it's going to install the dependencies. Okay. So now that is finished. Now we have a brand new Next.js application. We can run the development server with this script. So let's do `npm run dev`, and it will give us a URL here that we can check out locally. All right. So this is the homepage, and it's not a complete tutorial about how to build a complete Next.js app. We just want to see how to set things up. But let's say we want to have a list of posts from our database. So let me remove all of this. And what we want here is just posts. And here I want to have a list of posts. So we're going to set up a database. To set up the database locally, there are actually different ways of doing it, but I find the easiest one is to actually use Docker. So in this example, you do need the Docker desktop app. So if you go to docker.com, you can download it for your computer. Once you downloaded the Docker desktop app, you will see something like this. The Postgres will be an image, and then we're going to run an instance of that, which is called a container. So now we can open up our terminal app, and I'm going to run the following script. So it's going to be `docker run`, and then we can give it a name. We can set up a user for our Postgres database. I'm simply going to call it Postgres, and the password will also simply be Postgres. The name of the database I'm going to call it my DB. Uh, some port information and then the actual Postgres version that we want to use. Um, maybe you want 16, but I'm going to use 17. And I'm going to press enter here. So the first time it's going to try to find the Docker image on your computer. So I actually just removed it, so I don't have it. It's going to download it in that case, and that may take some time, and it's pretty big, but then we can create instances of it. Okay. So now it downloaded a new image. Now you can see I have this Postgres image, and since I ran a `docker run` command, that also immediately created an instance of it, a container. So it's running now. So now I have this uh database running. How do we connect to that? So I'm going to use the Prisma ORM. You can use an other ORM as well, but I like using Prisma. On a side note, Prisma, the company, actually released their own Postgres offering as well. Maybe you're interested in that. But let's continue here. So, how do I set up Prisma for this? Well, let me open up the terminal here. So, I'm going to install Prisma as a dev dependency, and then let me clear this. We need to initialize Prisma. Now, they have some script here. You can find it on their documentation as well. It's basically `npx prisma init`. They show it with SQLite as in their example. However, we want to use Postgres. So we say Postgres QL, and then these days we have another option here. You specify where the Prisma client should be generated. So this is going to be in a generated folder at the top level and then in their Prisma. Okay. So if I run this. All right. So now it has set up a Prisma. Let me close out of here. What we get now is basically this Prisma folder including the schema.prisma. So here it specifies where it's going to generate the Prisma client. And then here we have specified the data source, which is Postgres. If you did run it with SQLite, you just need to change this into Postgres. Prisma needs to know how to connect to our actual database. It's going to assume it's been placed in an environment variable called `DATABASE_URL`. If I scroll down here, it has created a `.env` file. So in Next.js, we often have `.local` as like a convention. However, Prisma out of the box works with `.env`. So if I use Prisma in a project, I do tend to just use `.env` as well. Okay. So here it has generated an example string here. But this is not the one that Prisma needs to connect to our database here, right? So we used a username of simply Postgres, and then the password as well, and then the port and the database name. These are all correct. So if I save here, this should be the right connection string. So now let me actually just set up an example model here. Basically, it will create tables out of this. So in this case, we would have a post table, and it would just have an ID, a title, and some content. Okay. So this is now what I specified in Prisma. This is not how our actual database right now is configured. Our database right now doesn't really have anything. So now I want Prisma to actually sort of apply this to my database. So Prisma provides multiple ways actually to do that. So the easiest would be to just use `npx prisma db push`. So locally, if you're just making changes here in your schema and then want to update the database, like a quick and dirty way is just with `db push`. Let's do this. And it will also show us if it can actually connect. So you can see everything went fine here. It says your database is now in sync with the Prisma schema. It has also generated a so-called Prisma client. This is what we will actually use now to run queries in our code. Okay. But our actual database right now. Let's actually inspect that as well. We can use `npx prisma studio` to actually see what's going on in our database. All right. So here you can see what's in the database. So you can see there is a post model here, and it's empty, of course. Let's actually try adding something here. So I'm just going to say first post, awesome post as the content. I'm going to press enter here, and I will save this. So now we have one post in a database. Now we want to pull this into our application here in Next.js. So how do we do that? Well, now we need to use the Prisma client. So I want to be able to do `const posts = await prisma.post.findMany`. Right? So now we need this Prisma client. Now Prisma has a guide here on using it with Next.js. If we scroll down a little bit here, they have a script to create a single Prisma client. So it will ensure that only one instance of Prisma client exists even when hot reloading. Okay. So what I like to do is I like to create a library folder here, and in there I will call `db.ts`, and I will just paste that script here. Now there is one difference here, which is that these days the Prisma client is actually in this generated folder. So this is a bit of a new thing. Previously, it was coming from the node modules folder. So now it's in this folder. So actually, if I try to do auto import here, if I just put my cursor here and try to import it, you will see a suggestion here from generated Prisma. So that should work. If I go here, I can import it then from that DB file. And I can also mark this as async as it's a server component. And now we can just map over this here to actually create the markup for our. So if I save here. And now if we go to our homepage, and here we go. We now are loading these posts from our Postgres database, which is running all locally. Let me style it a little bit better. So let me actually just display the titles. So we'll just have the title here. All right. So now we are just displaying the title of these posts from our database. We just have one post in the database. I could set up a seeding file here with Prisma. Let's actually try doing it from the app as well. So here I have a form, and I can type a title, second post, awesome post. And now I want to be able to also add it to my database. So I will use a server action here. So what we can do in Next.js these days is use action. We can call it `create post`. This can be a function. And I like to create a separate file for them. So let's quickly do that. `actions.ts`. So we do need to mark it as `use server`. And then here we can export a function called `create post`. We're just going to grab the title and content from the form data, and then we can insert it into our database. Okay. What we can also do in Next.js is then immediately update that page as well. So it will rerender with the latest posts. Okay, we do need to import it right here. So now if I go here and I say second post, awesome post. Now if I try to add it to my database, it's added to my database because if I now inspect here, we can see there's a second post, and we also see it reflected here in the app itself. So now we have this schema here with this model of the post. We have a title and content. But what if we now are like, \"h, actually, it should also have a published field,\" so we know if it's published or not. So now I changed the Prisma schema, but my actual database right now is not updated yet. You can see we only have title and content here as the columns. We don't see anything for published, right? So my actual database is not updated just because I changed the code here. So I need to update my database now. So, we can do that with this push command that we saw before, but this is more like a crude way to just quickly try some things out. But at some point, you will want to keep track of the changes you make so that if you have other people on your team, they can also update their database with the same changes, or if you have a production database that you can also update your production database with the right changes. So, we want to keep track of the changes. So, here we want to use migrations or migration files. So in this case, you may want to use `npx prisma migrate`. Now this can be for production, or it can be for a development database. So in this case, it would be for development. If I press enter here, we can also give it a name. All right. Now since we've already made some changes, we actually get this issue here. So we may want to reset first, and all data will be lost, right? So you have to be very careful with this. You do not want to do this on any important data you have or like a production database. So be careful with this. However, in this case, I have a local database here, and I'm just trying some things out here. So, so what I can do here is `npx prisma migrate reset`. In this case, I will lose all my data. So, I said yes. Now, you can see database reset successful. All right. And then I can say `npx prisma migrate` for development. And I can give it a name. So, the first one can just be first or init. Let's call it first. All right. So, then it has created a migrations folder. All right. So here if I open up the Prisma folder here, you can see there's now a new one for migrations, right? So this will basically describe how our database structure is should be changed, so we can keep all the databases on our team or in production all in sync. So now whenever I would make a change, uh, keep track of that, right? So now if I want to make another change, maybe how many upvotes this post has. So now I made a change, and now I would say `migrate dev`. I can give it a name, second, and now there is another file for that as well. Okay, so this is how we would develop the database locally. So now when I check out my database, you can see we have two additional columns here for published as well as upvotes. But the data was lost. So be careful with what you're doing here. We can just quickly add some new data. You may want to have a seed script, first post, and press enter here, and I will just save this. Now if I go back to my app and refresh, you can see we still have the post here. And I can also still add everything. Press enter here. You can see everything is still working. So that is the local environment. How can we now deploy this and host this on a VPS, self-hosting, and actually this is much easier than before. There are some new tools that make this much easier. Among them, Coolify, but there's also Doc Ploy. There are some other ones as well. So actually, really exciting time because self-hosting is much more realistic than before. So we need a VPS, and I'm going to use Hostinger. They are also today's sponsor, but I had a great time using them. And what I like about them is that they already have a Coolify VPS template out of the box. So they already know what we're doing. They're already on the cutting edge. So I think that's a major plus for Hostinger. And they have some good hosting plans as well. I have enjoyed using the KVM2 plan. And these are the resources that we get with that. If you already anticipate that you're going to need more, feel free to pick one of these more powerful plans. However, I will just go with this one. And you can find a link in the description, by the way. Um, so let's go with this plan. All right. All right. So then here on the checkout page, make sure to use my coupon code, all uppercase, bytegrat. So it's all uppercase ByteGrad. And if you apply that, you can get an additional discount here. And you get a great price overall, right? So you can find a link in description. So make sure to check out Hostinger. Now here we can pick a server location as well as an operating system. So if you want to use the Coolify template, we can pick Coolify here, and it will actually be an Ubuntu OS. So that's what I'm going to pick here. They have some other options here as well, like Dopy, which is similar, and some other options as well. So Hostinger makes it really easy, and I will go with Coolify here. So let me pay here, and then we'll continue. All right.\n\n\nSo after payment, we have a setup wizard here. So I will just continue with the scanner. Yes. All right. So then you have to set up a password. You may not need it if you're using Coolify, but it's still a good idea to remember it, of course. So put it somewhere safe. Don't show it to other people. You may need this to actually log into the VPS and maybe do some configuration at some point. All right. So I will continue here and I will finish the setup right here. All right. So then it's going to set up my VPS. I'll get back to you when we are ready to go. All right. So then my VPS is ready. I can go here to manage VPS. All right. So then here I get the dashboard where I can manage all sorts of settings about my VPS. But what we want to do here is just go to the Coolify template here. Okay. So I can just uh continue here. All right. So then here we get the Coolify account creation page. Make sure you are the first one to access this because this user will be a root user with full admin access. I will just register here. All right. So then we have a onboarding flow here. I will just click on next here. All right. So this is all running on that VPS that we got from Hostinger. Right. So we have an IP address here. And we can run Coolify on this VPS on this server. And maybe if you have an app, you want to run it on some different server. So you separate them. But I will just keep everything on this one server. So it's going to be local host here. Okay. Okay. So then we create a new project and there are some resources. So this is how Coolify works. You basically have your projects. In this case, we're going to have one project to group everything together essentially and in there we have resources. So one of them is going to be a Next.js app and the second one is going to be a Postgres database. So let's click on add new resource and let's first try to create the database. Actually uh we will create we will add the Next.js app with this one. However, if we scroll down a little bit, we can already set up a database here as well. And you can see Coolify actually offers a lot of options here. And not only database, there's also other services. So actually very sophisticated. But let's go with Postgres here. And we will use Postgres 17. But you can see there are other options here as well. Uh but I will go with this one. Okay, let's actually start this. And we just have to wait a few seconds. So you can see what's doing, it will also uh pull an image onto the VPS. And now you can see database started. Okay. So from our Next.js application, we will need to connect to that. Previously locally what we were doing is we have this .env file with database URL, right? So we're using Prisma in this case and Prisma is just using environment variables to connect to it. So this is not going to go with the app. So this is all local. So we just need to make sure that we also have an environment variable in the production environment. So that's going to be here. How do we get that connection string? Well, we can use this Postgres URL. We can view it here and it has already generated this for us. Make sure you keep it a secret. Don't show it to anyone else. Uh this is what we will use as the environment variable in a second. Before we do that, let's actually try getting our Next.js application onto the VPS as well. So we have one project right now with one database. But now we also need an app. So we're going to click on new here. And now we're going to uh deploy our Next.js app. We're going to do it through GitHub. So let's actually first push our app to GitHub. I will create a new repo. And I will call this uh Next.js Postgres. And I will actually keep it a private repository. All right, let's create this. All right, let's then actually push it. I will just copy these four commands and I will go back to our app here. Let me kill all these terminals here. So our Next.js app will be built on the VPS and they will run the npm run build command. By default, a build will fail if you have like a TypeScript issue. You may just quickly want to see if you have any issues here with TypeScript. Um, but looks good here. And then you also want to make sure you actually uh stage everything here first and then we can just commit everything and push it to that remote. So now if I refresh, our code is on GitHub. Now I can go to Coolify here again. We can pick private repo and it's going to be done with a GitHub app. Okay, this will also allow us to um if we make a change in our app, we can push it to GitHub and it will automatically redeploy on the VPS as well, which is really nice. So we just have to add this uh GitHub app. So we'll just uh click here and we also we'll register it. So I need to add it here and then we need to install that for a particular repository. You can do it for all. I like to be a little bit uh selective. I will search for uh Next.js Postgres, this one, and I will just install that. Okay. So now we have this. I will save here. Yeah. So this is a GitHub app that is now installed. So now I can go back to project to our project here and I can try adding it. Try adding it again. So I just have to click on private repository again. Then we can pick the GitHub app that we just set up. All right. So then from here it can we can load the repositories that are connected to that. Well in this case, only one. We can just continue here. And now it will try uh pulling the code onto the VPS and it will actually create a deployment. So if we go here we can well we actually do have to click on deploy here. But it will try to build the Next.js app. And so if that works fine, we should be able to see the Next.js app. We can click on show debug logs. And actually uh we're going to get an error here because we haven't set up the environment variable yet. And actually also for Prisma, we also need to do something. Um so I will just let it fill here just to see what we're going to get. Yeah. So here you can see it's doing a Next.js build, right? So here we see some familiar Next.js logging here and it will actually try to generate the pages, meaning it will actually run the code here. For example, it will actually run this code. What issue does it have? Well here we get the issue of the environment variable not found. So the build here fails. It's no problem. It's easily fixed. So now we just need to set the environment variable of the database. So we already set up the database here. We just go there and we can get the Postgres URL here. Let's uh copy this. I will copy this right here. Then we can go back to our application here. And here we can set environment variables. Okay. So I'm just going to add one here. And the name that we specified in Prisma is database URL. And then for the value, I can paste that. I'm going to save this. So now that environment variable is set. Now in the case of Prisma, there's one more thing we also should add here. So in package.json, so during the build, it will it will actually render this here. The Prisma client will not exist in will not exist on that VPS. Uh one of the things we can do here is that before we actually invoke next build, we can we can run Prisma migrate deploy. So this is basically going to apply the migrations in a production environment. So be careful with what you do. Make sure you're not going to lose any data. This is just a quick example, but it will also generate that Prisma client. So then during the build, this should all work. So now I made a change here in my app. And now the nice thing is I just have to uh well I just have to stage everything. I can just commit it. And now if I push to GitHub, it will automatically trigger a redeploy on Coolify here. So now if I go to deployments for this app, you can see it's already in progress. It's already going through another deployment and build. All right. So here we can see uh it is already using those migrations. It's actually applying the migrations to this database on this VPS and then it's building the Next.js app itself. And actually everything looks good here. So now if we go to uh configuration here, if we actually want to see our app, well we can see under domains here, this is what they uh generate by default here. Okay, so we will just continue here. Here is my app and of course we don't have any posts in our database, but we can try adding one. First post first post. If I click on add post, you can see we now have this post. If I refresh, it's persisted. So now we know that it's actually in the database. Second one. Second post. Okay. add post. All right. So now I have a Next.js app with database in a production environment as well, including applying those migrations. And actually this is so much easier than in the past. If you've ever tried doing this yourself on a VPS, you know how much hassle this used to be. But now with uh Hostinger, the Coolify template, it's literally a few minutes. And if you've if you've done this a few times, this is this is as easy as it's going to get. All right, let me quickly improve the domain here as well if you have a domain. So, Hostinger actually also offers domains. So, I have one here. If I go to DNS here, I can set an A record. I actually already used it for some other example, but let me actually change it. So, I need to know the IP address of the VPS. I can just copy this and I can just point this A record to that IP address so that when somebody goes to that domain, it will go to the VPS. We can just click on update here. So, now I have one A record for for the root. So now I also need to specify that here on Coolify. So when there is an incoming request, Coolify knows for which app here to use that. I can also specify it with HTTPS and then I can use that uh domain. I'll press enter here. You can see it's been uh updated, but we do need to redeploy. Okay. And by the way, I also like to set it to simply nonwww.\nI will also click on set direction. Okay. So it is permanent actually. Uh that's fine with me. Uh I will just set it. So now we have made some changes and now I need to redeploy. It's just one click here. I'm going to click redeploy and we'll see if that works. We'll just have to wait a few seconds. All right. So if I go to my domain here, you can see I have my next application now including HTTPS on my custom domain and it is using a Postgres database here on the VPS. You can see the data is persisted here. So actually mind-blowing to me how easy this has become. So hopefully this helps you out with setting up and deploying Next.js with Postgres. Make sure to check out Hostinger with their Coolify VPS templates. Thanks to Hostinger for sponsoring the video. Thank you for watching and I hope to see you in the next one. Have a nice day.\n",
+  "dumpedAt": "2025-07-21T18:43:26.040Z"
+}

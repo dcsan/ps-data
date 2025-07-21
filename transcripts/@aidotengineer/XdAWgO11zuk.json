@@ -1,0 +1,2386 @@
+{
+  "episodeId": "XdAWgO11zuk",
+  "channelSlug": "@aidotengineer",
+  "title": "What We Learned from Using LLMs in Pinterest — Mukuntha Narayanan, Han Wang, Pinterest",
+  "publishedAt": "2025-07-16T17:58:25.000Z",
+  "rawLines": [
+    {
+      "lang": "en",
+      "text": "[Music]",
+      "offset": 1.23,
+      "duration": 6.63
+    },
+    {
+      "lang": "en",
+      "text": "Yeah. Hi everyone. Um, thanks for",
+      "offset": 14.48,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "joining the talk today. Um, we're super",
+      "offset": 16.32,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "excited to be here and shares some of",
+      "offset": 18.88,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "the learnings we um, we have from",
+      "offset": 21.52,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "integrating the LM into Pinterest",
+      "offset": 24.4,
+      "duration": 4.719
+    },
+    {
+      "lang": "en",
+      "text": "search. My name is Khan and today I'll",
+      "offset": 26.4,
+      "duration": 4.639
+    },
+    {
+      "lang": "en",
+      "text": "be presenting with Mukunda and we are",
+      "offset": 29.119,
+      "duration": 3.921
+    },
+    {
+      "lang": "en",
+      "text": "both machine learning engineers from",
+      "offset": 31.039,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "search relevance team at Pinterest.",
+      "offset": 33.04,
+      "duration": 5.6
+    },
+    {
+      "lang": "en",
+      "text": "So start with a brief introduction to",
+      "offset": 36.079,
+      "duration": 5.441
+    },
+    {
+      "lang": "en",
+      "text": "Pinterest. Um Pinterest is a visual",
+      "offset": 38.64,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "discovery platform where piners can come",
+      "offset": 41.52,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "to find inspiration to create a life",
+      "offset": 43.92,
+      "duration": 4.319
+    },
+    {
+      "lang": "en",
+      "text": "they love. And there are three main",
+      "offset": 46.16,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "discovery surfaces on Pinterest. The",
+      "offset": 48.239,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "home feed, the related things and",
+      "offset": 50.64,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "search. In today's talk, we'll be",
+      "offset": 52.879,
+      "duration": 6.721
+    },
+    {
+      "lang": "en",
+      "text": "focusing on search and um where the user",
+      "offset": 55.52,
+      "duration": 7.039
+    },
+    {
+      "lang": "en",
+      "text": "can type in their queries and um find",
+      "offset": 59.6,
+      "duration": 6.16
+    },
+    {
+      "lang": "en",
+      "text": "useful inspiring content based on their",
+      "offset": 62.559,
+      "duration": 5.681
+    },
+    {
+      "lang": "en",
+      "text": "information need. And we'll share um how",
+      "offset": 65.76,
+      "duration": 4.719
+    },
+    {
+      "lang": "en",
+      "text": "we leverage LM to improve the search",
+      "offset": 68.24,
+      "duration": 5.239
+    },
+    {
+      "lang": "en",
+      "text": "relevance.",
+      "offset": 70.479,
+      "duration": 3
+    },
+    {
+      "lang": "en",
+      "text": "Um here are some key statistic for",
+      "offset": 73.68,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "Pinterest search. Every month we handled",
+      "offset": 76.24,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "over six billion searches with billions",
+      "offset": 78.96,
+      "duration": 5.6
+    },
+    {
+      "lang": "en",
+      "text": "of pins to search from. covering topics",
+      "offset": 81.68,
+      "duration": 6.479
+    },
+    {
+      "lang": "en",
+      "text": "from recipe, home decor, travel, fashion",
+      "offset": 84.56,
+      "duration": 7.12
+    },
+    {
+      "lang": "en",
+      "text": "and beyond. And at Pinterest, search is",
+      "offset": 88.159,
+      "duration": 6.401
+    },
+    {
+      "lang": "en",
+      "text": "remarkably global and multilingual. We",
+      "offset": 91.68,
+      "duration": 5.759
+    },
+    {
+      "lang": "en",
+      "text": "support over 45 languages and reaching",
+      "offset": 94.56,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "pingers in more than 100 countries.",
+      "offset": 97.439,
+      "duration": 5.201
+    },
+    {
+      "lang": "en",
+      "text": "These numbers highlight the importance",
+      "offset": 100.56,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "of search at Pinterest and why we are",
+      "offset": 102.64,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "investing um in search relevance to",
+      "offset": 105.52,
+      "duration": 6.279
+    },
+    {
+      "lang": "en",
+      "text": "improving the source experience.",
+      "offset": 107.84,
+      "duration": 3.959
+    },
+    {
+      "lang": "en",
+      "text": "So um this is an overview of how",
+      "offset": 112.24,
+      "duration": 5.839
+    },
+    {
+      "lang": "en",
+      "text": "Pinterest search work and the back end.",
+      "offset": 115.439,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "So it's similar to um many",
+      "offset": 118.079,
+      "duration": 4.801
+    },
+    {
+      "lang": "en",
+      "text": "recommendation system and industry. It",
+      "offset": 120.399,
+      "duration": 5.281
+    },
+    {
+      "lang": "en",
+      "text": "has query understanding retrieval",
+      "offset": 122.88,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "ranking and the blending stage and",
+      "offset": 125.68,
+      "duration": 4.559
+    },
+    {
+      "lang": "en",
+      "text": "finally produced um relevant and",
+      "offset": 127.84,
+      "duration": 5.759
+    },
+    {
+      "lang": "en",
+      "text": "engagement search feeds. And um in",
+      "offset": 130.239,
+      "duration": 5.841
+    },
+    {
+      "lang": "en",
+      "text": "today's SC talk we'll be focusing on the",
+      "offset": 133.599,
+      "duration": 4.801
+    },
+    {
+      "lang": "en",
+      "text": "sematic relevance modeling that happened",
+      "offset": 136.08,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "at the reanking stage and share about",
+      "offset": 138.4,
+      "duration": 6.96
+    },
+    {
+      "lang": "en",
+      "text": "how we use LN to improve um the search",
+      "offset": 141.36,
+      "duration": 8.04
+    },
+    {
+      "lang": "en",
+      "text": "relevance on the search.",
+      "offset": 145.36,
+      "duration": 4.04
+    },
+    {
+      "lang": "en",
+      "text": "Okay. So um here's our search relevance",
+      "offset": 149.599,
+      "duration": 5.761
+    },
+    {
+      "lang": "en",
+      "text": "model which um is essentially a",
+      "offset": 152.64,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "classification model. Given a search",
+      "offset": 155.36,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "query and a ping, the model will predict",
+      "offset": 157.84,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "how much the ping is relevant to this",
+      "offset": 160.56,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "search query. And to measure this, we",
+      "offset": 163.12,
+      "duration": 5.839
+    },
+    {
+      "lang": "en",
+      "text": "use a fivepoint scale um ranging from",
+      "offset": 165.76,
+      "duration": 8
+    },
+    {
+      "lang": "en",
+      "text": "the most relevant to most irrelevant.",
+      "offset": 168.959,
+      "duration": 7.28
+    },
+    {
+      "lang": "en",
+      "text": "All right. Um now we are going to share",
+      "offset": 173.76,
+      "duration": 5.199
+    },
+    {
+      "lang": "en",
+      "text": "some key learnings we have from using",
+      "offset": 176.239,
+      "duration": 5.601
+    },
+    {
+      "lang": "en",
+      "text": "the LM to improve search Pinterest",
+      "offset": 178.959,
+      "duration": 5.92
+    },
+    {
+      "lang": "en",
+      "text": "search relevance. And here are four main",
+      "offset": 181.84,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "takeaways that we would like to um go",
+      "offset": 184.879,
+      "duration": 5.961
+    },
+    {
+      "lang": "en",
+      "text": "into more details.",
+      "offset": 187.28,
+      "duration": 3.56
+    },
+    {
+      "lang": "en",
+      "text": "Lesson one, LMS are good at relevance",
+      "offset": 191.36,
+      "duration": 5.599
+    },
+    {
+      "lang": "en",
+      "text": "prediction.",
+      "offset": 194.959,
+      "duration": 5.92
+    },
+    {
+      "lang": "en",
+      "text": "Um so before I present um the result,",
+      "offset": 196.959,
+      "duration": 6.161
+    },
+    {
+      "lang": "en",
+      "text": "let me first give a quick overview of",
+      "offset": 200.879,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "the model architecture that we are",
+      "offset": 203.12,
+      "duration": 5.6
+    },
+    {
+      "lang": "en",
+      "text": "using. um we contain the query and the",
+      "offset": 204.959,
+      "duration": 7.601
+    },
+    {
+      "lang": "en",
+      "text": "ping text together and pass them into a",
+      "offset": 208.72,
+      "duration": 7.28
+    },
+    {
+      "lang": "en",
+      "text": "ln to get a um embedding. So this is",
+      "offset": 212.56,
+      "duration": 6.16
+    },
+    {
+      "lang": "en",
+      "text": "called um cross encoder structure we",
+      "offset": 216,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "where we can better capture the",
+      "offset": 218.72,
+      "duration": 4.079
+    },
+    {
+      "lang": "en",
+      "text": "interaction between the query and the",
+      "offset": 220.4,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "ping and then we feed the um embedding",
+      "offset": 222.799,
+      "duration": 6.481
+    },
+    {
+      "lang": "en",
+      "text": "from LM into MLP layer to produce a",
+      "offset": 225.92,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "fivedimensional",
+      "offset": 229.28,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "factor which correspond to the um five",
+      "offset": 231.2,
+      "duration": 6.16
+    },
+    {
+      "lang": "en",
+      "text": "relevance levels and during training we",
+      "offset": 233.92,
+      "duration": 6.319
+    },
+    {
+      "lang": "en",
+      "text": "fine-tune some open source LM using tin",
+      "offset": 237.36,
+      "duration": 5.68
+    },
+    {
+      "lang": "en",
+      "text": "internal data and to better adapt the",
+      "offset": 240.239,
+      "duration": 6.401
+    },
+    {
+      "lang": "en",
+      "text": "model to our Pinterest content",
+      "offset": 243.04,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "And here um I'd like to share some",
+      "offset": 246.959,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "results",
+      "offset": 250.799,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "um to demonstrate that the usefulness of",
+      "offset": 252.319,
+      "duration": 6.961
+    },
+    {
+      "lang": "en",
+      "text": "LM and as a baseline we use search Sage",
+      "offset": 255.439,
+      "duration": 6.881
+    },
+    {
+      "lang": "en",
+      "text": "which is a Pinterest inhouse content and",
+      "offset": 259.28,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "the query embedding",
+      "offset": 262.32,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "and um so if you look at the table you",
+      "offset": 264.4,
+      "duration": 6.64
+    },
+    {
+      "lang": "en",
+      "text": "can see that the LM has substantially",
+      "offset": 267.04,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "um improved the performance of the",
+      "offset": 271.04,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "relevance prediction.",
+      "offset": 273.04,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "And as we use more advanced LMS and",
+      "offset": 274.4,
+      "duration": 6.079
+    },
+    {
+      "lang": "en",
+      "text": "increase the model size, the performance",
+      "offset": 278.16,
+      "duration": 5.68
+    },
+    {
+      "lang": "en",
+      "text": "keeps improving. And for example, um the",
+      "offset": 280.479,
+      "duration": 6.561
+    },
+    {
+      "lang": "en",
+      "text": "8 billion lama mastery model gives um",
+      "offset": 283.84,
+      "duration": 5.68
+    },
+    {
+      "lang": "en",
+      "text": "12% of improvement over the multilingual",
+      "offset": 287.04,
+      "duration": 5.439
+    },
+    {
+      "lang": "en",
+      "text": "birdbased model and 20% of improvement",
+      "offset": 289.52,
+      "duration": 6.32
+    },
+    {
+      "lang": "en",
+      "text": "over the search stage embedding model.",
+      "offset": 292.479,
+      "duration": 6.401
+    },
+    {
+      "lang": "en",
+      "text": "So um the lesson here is that um LMS",
+      "offset": 295.84,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "they are quite good at valance",
+      "offset": 298.88,
+      "duration": 4.68
+    },
+    {
+      "lang": "en",
+      "text": "prediction.",
+      "offset": 300.56,
+      "duration": 3
+    },
+    {
+      "lang": "en",
+      "text": "Um two the mission language model",
+      "offset": 304.72,
+      "duration": 6.72
+    },
+    {
+      "lang": "en",
+      "text": "generated captions and the user actions",
+      "offset": 308.24,
+      "duration": 7.88
+    },
+    {
+      "lang": "en",
+      "text": "can be quite useful content annotations.",
+      "offset": 311.44,
+      "duration": 4.68
+    },
+    {
+      "lang": "en",
+      "text": "So to use LM for search uh for relevance",
+      "offset": 316.4,
+      "duration": 6.48
+    },
+    {
+      "lang": "en",
+      "text": "prediction we need to build a text",
+      "offset": 320.24,
+      "duration": 6.32
+    },
+    {
+      "lang": "en",
+      "text": "representation of each cane. And here I",
+      "offset": 322.88,
+      "duration": 6.08
+    },
+    {
+      "lang": "en",
+      "text": "listed several features that we used in",
+      "offset": 326.56,
+      "duration": 6.8
+    },
+    {
+      "lang": "en",
+      "text": "our model. Besides the um the title of",
+      "offset": 328.96,
+      "duration": 7.44
+    },
+    {
+      "lang": "en",
+      "text": "description of the pin, we also include",
+      "offset": 333.36,
+      "duration": 5.6
+    },
+    {
+      "lang": "en",
+      "text": "um the VM generated synthetic image",
+      "offset": 336.4,
+      "duration": 5.359
+    },
+    {
+      "lang": "en",
+      "text": "caption to directly extract information",
+      "offset": 338.96,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "from the image itself. And besides that",
+      "offset": 341.759,
+      "duration": 6.241
+    },
+    {
+      "lang": "en",
+      "text": "we add some um user engagement based",
+      "offset": 344.72,
+      "duration": 7.12
+    },
+    {
+      "lang": "en",
+      "text": "feature like the board titles um for the",
+      "offset": 348,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "user curated board that the ping has",
+      "offset": 351.84,
+      "duration": 6.16
+    },
+    {
+      "lang": "en",
+      "text": "been saved to or um the queries that led",
+      "offset": 354,
+      "duration": 6.16
+    },
+    {
+      "lang": "en",
+      "text": "to the highest engagement with this ping",
+      "offset": 358,
+      "duration": 5.759
+    },
+    {
+      "lang": "en",
+      "text": "on search surface. So these two user",
+      "offset": 360.16,
+      "duration": 6.56
+    },
+    {
+      "lang": "en",
+      "text": "action based features um serves as",
+      "offset": 363.759,
+      "duration": 5.761
+    },
+    {
+      "lang": "en",
+      "text": "additional annotation for the content",
+      "offset": 366.72,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "and um here the five source of feature",
+      "offset": 369.52,
+      "duration": 5.84
+    },
+    {
+      "lang": "en",
+      "text": "together helps to build a more um robust",
+      "offset": 372,
+      "duration": 5.6
+    },
+    {
+      "lang": "en",
+      "text": "and comprehensive text representation",
+      "offset": 375.36,
+      "duration": 5.8
+    },
+    {
+      "lang": "en",
+      "text": "for each pin.",
+      "offset": 377.6,
+      "duration": 3.56
+    },
+    {
+      "lang": "en",
+      "text": "U to understand the um importance of t",
+      "offset": 382,
+      "duration": 6.56
+    },
+    {
+      "lang": "en",
+      "text": "each vortex feature we also did some",
+      "offset": 385.919,
+      "duration": 6.641
+    },
+    {
+      "lang": "en",
+      "text": "oblation studies. We use the um BM",
+      "offset": 388.56,
+      "duration": 7.28
+    },
+    {
+      "lang": "en",
+      "text": "generated image caption as a baseline",
+      "offset": 392.56,
+      "duration": 6.96
+    },
+    {
+      "lang": "en",
+      "text": "and um as you can see itself already pro",
+      "offset": 395.84,
+      "duration": 6.72
+    },
+    {
+      "lang": "en",
+      "text": "um provide a very solid baseline and as",
+      "offset": 399.52,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "we sequentially add more vortex feature",
+      "offset": 402.56,
+      "duration": 5.84
+    },
+    {
+      "lang": "en",
+      "text": "we keep seeing performance improvement",
+      "offset": 405.28,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "and this indicate that enriching the",
+      "offset": 408.4,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "vortex feature is quite useful for",
+      "offset": 410.56,
+      "duration": 6.479
+    },
+    {
+      "lang": "en",
+      "text": "relevance prediction and notably um the",
+      "offset": 412.96,
+      "duration": 6.48
+    },
+    {
+      "lang": "en",
+      "text": "last two rows of the table shows the",
+      "offset": 417.039,
+      "duration": 5.121
+    },
+    {
+      "lang": "en",
+      "text": "performance gain we have by adding these",
+      "offset": 419.44,
+      "duration": 5.68
+    },
+    {
+      "lang": "en",
+      "text": "user action based features. So these",
+      "offset": 422.16,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "features turned out to be quite useful",
+      "offset": 425.12,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "content annotation that help model",
+      "offset": 427.36,
+      "duration": 6.8
+    },
+    {
+      "lang": "en",
+      "text": "better understand the content.",
+      "offset": 430.16,
+      "duration": 6.24
+    },
+    {
+      "lang": "en",
+      "text": "All right. Um next I will hand over to",
+      "offset": 434.16,
+      "duration": 4.159
+    },
+    {
+      "lang": "en",
+      "text": "Makunta to talk about how we use",
+      "offset": 436.4,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "knowledge distillation to productionize",
+      "offset": 438.319,
+      "duration": 4.401
+    },
+    {
+      "lang": "en",
+      "text": "this model.",
+      "offset": 440.8,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "Great. Yeah. Uh so now we have a good",
+      "offset": 442.72,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "relevance model which is good at",
+      "offset": 445.84,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "predicting search relevance. Uh but how",
+      "offset": 447.84,
+      "duration": 3.759
+    },
+    {
+      "lang": "en",
+      "text": "do we actually scale this up without",
+      "offset": 450.08,
+      "duration": 4.239
+    },
+    {
+      "lang": "en",
+      "text": "bankrupting Pinfest? Uh usually the",
+      "offset": 451.599,
+      "duration": 4.481
+    },
+    {
+      "lang": "en",
+      "text": "answer is call this resolution into",
+      "offset": 454.319,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "smaller models. Um and this is the",
+      "offset": 456.08,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "production served relevant student model",
+      "offset": 459.039,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "that we distilled from the teacher model",
+      "offset": 460.8,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "using semi-supervised learning. Uh the",
+      "offset": 463.199,
+      "duration": 4.961
+    },
+    {
+      "lang": "en",
+      "text": "student model is trained to predict five",
+      "offset": 466,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "scale relevant scores too. Uh it trains",
+      "offset": 468.16,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "using the five uh scale soft scores",
+      "offset": 470.88,
+      "duration": 5.999
+    },
+    {
+      "lang": "en",
+      "text": "produced by the teacher model. Um and we",
+      "offset": 473.68,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "produce data for this using a",
+      "offset": 476.879,
+      "duration": 3.121
+    },
+    {
+      "lang": "en",
+      "text": "semi-supervised learning setup that uh",
+      "offset": 478.16,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "I'll show in the next slide.",
+      "offset": 480,
+      "duration": 6.879
+    },
+    {
+      "lang": "en",
+      "text": "So the LLM teacher model is trained on a",
+      "offset": 483.44,
+      "duration": 5.92
+    },
+    {
+      "lang": "en",
+      "text": "small set of human label data that we",
+      "offset": 486.879,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "get from human annotators who are",
+      "offset": 489.36,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "trained in very specific segments. Uh we",
+      "offset": 491.039,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "fine-tune and this is a multilingual",
+      "offset": 493.44,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "language model which uses pretty generic",
+      "offset": 495.919,
+      "duration": 5.041
+    },
+    {
+      "lang": "en",
+      "text": "features which scale across a lot of",
+      "offset": 498.08,
+      "duration": 5.839
+    },
+    {
+      "lang": "en",
+      "text": "different domains etc. Um and the way we",
+      "offset": 500.96,
+      "duration": 5.359
+    },
+    {
+      "lang": "en",
+      "text": "get training data from the student uh is",
+      "offset": 503.919,
+      "duration": 5.361
+    },
+    {
+      "lang": "en",
+      "text": "through uh sampling from daily search",
+      "offset": 506.319,
+      "duration": 6.72
+    },
+    {
+      "lang": "en",
+      "text": "logs which is um all the searches uh",
+      "offset": 509.28,
+      "duration": 6.879
+    },
+    {
+      "lang": "en",
+      "text": "people make on Pinterest. Uh",
+      "offset": 513.039,
+      "duration": 4.961
+    },
+    {
+      "lang": "en",
+      "text": "and since we Apple daily uh this",
+      "offset": 516.159,
+      "duration": 4.081
+    },
+    {
+      "lang": "en",
+      "text": "includes any trending queries, all the",
+      "offset": 518,
+      "duration": 5.519
+    },
+    {
+      "lang": "en",
+      "text": "latest freshest pins on Pinterest",
+      "offset": 520.24,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "and this is also remarkably global like",
+      "offset": 523.519,
+      "duration": 5.121
+    },
+    {
+      "lang": "en",
+      "text": "we mentioned and only a small subset of",
+      "offset": 526,
+      "duration": 4.959
+    },
+    {
+      "lang": "en",
+      "text": "this comes from the US where most of our",
+      "offset": 528.64,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "human label data comes from. Um we",
+      "offset": 530.959,
+      "duration": 4.721
+    },
+    {
+      "lang": "en",
+      "text": "sample from this and we label using the",
+      "offset": 533.68,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "teacher and we scale it up pretty much",
+      "offset": 535.68,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "100x uh across different domains,",
+      "offset": 538.24,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "languages, countries where uh the LLM",
+      "offset": 540.64,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "teacher model produces pretty good",
+      "offset": 543.6,
+      "duration": 3.679
+    },
+    {
+      "lang": "en",
+      "text": "labels. We train the student model and",
+      "offset": 545.04,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "this is the model that actually gets",
+      "offset": 547.279,
+      "duration": 4.801
+    },
+    {
+      "lang": "en",
+      "text": "served online. Um",
+      "offset": 549.04,
+      "duration": 7.12
+    },
+    {
+      "lang": "en",
+      "text": "and uh zooming into the student model u",
+      "offset": 552.08,
+      "duration": 6.48
+    },
+    {
+      "lang": "en",
+      "text": "also this also has language models in",
+      "offset": 556.16,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "it. uh but unlike the teacher model it's",
+      "offset": 558.56,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "not a cross encoder it uh is a by",
+      "offset": 560.64,
+      "duration": 4.879
+    },
+    {
+      "lang": "en",
+      "text": "encoder uh which essentially means we",
+      "offset": 562.8,
+      "duration": 4.479
+    },
+    {
+      "lang": "en",
+      "text": "don't have cross interactions between",
+      "offset": 565.519,
+      "duration": 4.641
+    },
+    {
+      "lang": "en",
+      "text": "the pin and the query uh representations",
+      "offset": 567.279,
+      "duration": 5.281
+    },
+    {
+      "lang": "en",
+      "text": "u the pin gets embedded separately query",
+      "offset": 570.16,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "gets embedded separately and it also",
+      "offset": 572.56,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "uses a lot of other features like um",
+      "offset": 574,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "sage that we previously mentioned for",
+      "offset": 577.04,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "both embedding the query and the pen uh",
+      "offset": 579.2,
+      "duration": 4.079
+    },
+    {
+      "lang": "en",
+      "text": "we have graph stage embeddings which",
+      "offset": 581.6,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "pinest published papers on um and omnis",
+      "offset": 583.279,
+      "duration": 5.361
+    },
+    {
+      "lang": "en",
+      "text": "and a lot of other embedding features",
+      "offset": 587.12,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "for query and pin but we also use um a",
+      "offset": 588.64,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "lot of pin query text match statistics",
+      "offset": 591.44,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "like BM25 which we've seen historically",
+      "offset": 593.92,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "perform really well for predicting",
+      "offset": 596.8,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "search um and the reason this scales",
+      "offset": 598.32,
+      "duration": 7.04
+    },
+    {
+      "lang": "en",
+      "text": "well is the by encoder uh benccoder",
+      "offset": 601.92,
+      "duration": 5.599
+    },
+    {
+      "lang": "en",
+      "text": "large language models can scale really",
+      "offset": 605.36,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "well uh when we uh use offline inference",
+      "offset": 607.519,
+      "duration": 6.801
+    },
+    {
+      "lang": "en",
+      "text": "and caching uh the pin embedding here is",
+      "offset": 611.36,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "entirely offline inferred on billions of",
+      "offset": 614.32,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "pins uh it uses predominantly the same",
+      "offset": 616.56,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "text features that we mentioned on the",
+      "offset": 619.04,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "teacher uh which helps distill",
+      "offset": 620.64,
+      "duration": 6.639
+    },
+    {
+      "lang": "en",
+      "text": "efficiently. Um and uh we only uh",
+      "offset": 623.12,
+      "duration": 7.12
+    },
+    {
+      "lang": "en",
+      "text": "reinfer uh these embeddings every time",
+      "offset": 627.279,
+      "duration": 5.281
+    },
+    {
+      "lang": "en",
+      "text": "that these inputs meaningfully change.",
+      "offset": 630.24,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "Uh meaning that uh every time that we",
+      "offset": 632.56,
+      "duration": 6.32
+    },
+    {
+      "lang": "en",
+      "text": "need new embeddings um it's only going",
+      "offset": 636.24,
+      "duration": 6.48
+    },
+    {
+      "lang": "en",
+      "text": "to run on a few set of new pins. Um and",
+      "offset": 638.88,
+      "duration": 6.32
+    },
+    {
+      "lang": "en",
+      "text": "u this is offline input. So none of this",
+      "offset": 642.72,
+      "duration": 4.559
+    },
+    {
+      "lang": "en",
+      "text": "is happening online when a user issues a",
+      "offset": 645.2,
+      "duration": 4.319
+    },
+    {
+      "lang": "en",
+      "text": "search query. Uh and the query embedding",
+      "offset": 647.279,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "is pretty much uh realtime inferred",
+      "offset": 649.519,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "online. Uh and search queries are pretty",
+      "offset": 651.839,
+      "duration": 4.721
+    },
+    {
+      "lang": "en",
+      "text": "short. Um they don't occupy too many",
+      "offset": 654.079,
+      "duration": 4.961
+    },
+    {
+      "lang": "en",
+      "text": "tokens which means u we can keep the",
+      "offset": 656.56,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "latencies for the query embedding up to",
+      "offset": 659.04,
+      "duration": 5.6
+    },
+    {
+      "lang": "en",
+      "text": "like a few milliseconds. Um and we also",
+      "offset": 661.6,
+      "duration": 6.08
+    },
+    {
+      "lang": "en",
+      "text": "cache this u because search queries get",
+      "offset": 664.64,
+      "duration": 5.6
+    },
+    {
+      "lang": "en",
+      "text": "repeated a lot and we get around an 85%",
+      "offset": 667.68,
+      "duration": 5.68
+    },
+    {
+      "lang": "en",
+      "text": "cash hit rate. Um and yeah this scales",
+      "offset": 670.24,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "really well. uh to actually serve",
+      "offset": 673.36,
+      "duration": 5.84
+    },
+    {
+      "lang": "en",
+      "text": "Pinterest traffic. Um the online results",
+      "offset": 675.44,
+      "duration": 5.519
+    },
+    {
+      "lang": "en",
+      "text": "here uh the first four numbers are",
+      "offset": 679.2,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "relevance uh measurements and DCNG uh",
+      "offset": 680.959,
+      "duration": 6.88
+    },
+    {
+      "lang": "en",
+      "text": "precision at 8 uh measured on the US,",
+      "offset": 684.32,
+      "duration": 6.079
+    },
+    {
+      "lang": "en",
+      "text": "Germany, France uh specific segments",
+      "offset": 687.839,
+      "duration": 5.601
+    },
+    {
+      "lang": "en",
+      "text": "that we zoomed into. Uh we can actually",
+      "offset": 690.399,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "see that we get relevance gains",
+      "offset": 693.44,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "international uh internationally even",
+      "offset": 695.279,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "though we started with a very limited",
+      "offset": 697.6,
+      "duration": 4.799
+    },
+    {
+      "lang": "en",
+      "text": "set of US data for this particular",
+      "offset": 700.399,
+      "duration": 5.201
+    },
+    {
+      "lang": "en",
+      "text": "experiment. Um and uh we also see that",
+      "offset": 702.399,
+      "duration": 4.801
+    },
+    {
+      "lang": "en",
+      "text": "search fulfillment which measures",
+      "offset": 705.6,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "engagement on search um fulfilling",
+      "offset": 707.2,
+      "duration": 6.72
+    },
+    {
+      "lang": "en",
+      "text": "actions um also goes up u also on non US",
+      "offset": 710,
+      "duration": 6.64
+    },
+    {
+      "lang": "en",
+      "text": "even though our uh starting data was",
+      "offset": 713.92,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "predominantly US and uh yeah uh large",
+      "offset": 716.64,
+      "duration": 5.68
+    },
+    {
+      "lang": "en",
+      "text": "language models are very good at uh",
+      "offset": 719.36,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "expanding across many different domains",
+      "offset": 722.32,
+      "duration": 5.199
+    },
+    {
+      "lang": "en",
+      "text": "countries uh even though uh they have",
+      "offset": 724.48,
+      "duration": 6.479
+    },
+    {
+      "lang": "en",
+      "text": "weren't explicitly trained for this. Um",
+      "offset": 727.519,
+      "duration": 6.801
+    },
+    {
+      "lang": "en",
+      "text": "and uh this is a bonus. Uh we also found",
+      "offset": 730.959,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "that relevance tuned large language",
+      "offset": 734.32,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "models produce really good rich uh",
+      "offset": 735.839,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "sematic representations which are very",
+      "offset": 738.8,
+      "duration": 4.159
+    },
+    {
+      "lang": "en",
+      "text": "good general purpose. Uh this is the",
+      "offset": 740.639,
+      "duration": 4.081
+    },
+    {
+      "lang": "en",
+      "text": "same production relevant student model",
+      "offset": 742.959,
+      "duration": 5.281
+    },
+    {
+      "lang": "en",
+      "text": "that I shared on the previous slide. uh",
+      "offset": 744.72,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "and uh the pin embedding and the query",
+      "offset": 748.24,
+      "duration": 4.719
+    },
+    {
+      "lang": "en",
+      "text": "embedding uh are basically free",
+      "offset": 750.48,
+      "duration": 3.919
+    },
+    {
+      "lang": "en",
+      "text": "representations that we get from these",
+      "offset": 752.959,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "models uh which can be used across",
+      "offset": 754.399,
+      "duration": 5.601
+    },
+    {
+      "lang": "en",
+      "text": "Pinterest for representing pins and",
+      "offset": 757.519,
+      "duration": 5.521
+    },
+    {
+      "lang": "en",
+      "text": "search queries. Um we also use this to",
+      "offset": 760,
+      "duration": 6.079
+    },
+    {
+      "lang": "en",
+      "text": "represent boards using the titles etc.",
+      "offset": 763.04,
+      "duration": 5.599
+    },
+    {
+      "lang": "en",
+      "text": "Um, and we found that using these",
+      "offset": 766.079,
+      "duration": 4.481
+    },
+    {
+      "lang": "en",
+      "text": "embeddings, especially since they've",
+      "offset": 768.639,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "been distilled from a large language",
+      "offset": 770.56,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "model teacher and also have large",
+      "offset": 772.639,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "language models in them, um, they are",
+      "offset": 775.04,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "very good at semantic content",
+      "offset": 778.399,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "representations. Uh, and yeah, they",
+      "offset": 780,
+      "duration": 5.92
+    },
+    {
+      "lang": "en",
+      "text": "perform pretty well across uh, related",
+      "offset": 783.279,
+      "duration": 5.201
+    },
+    {
+      "lang": "en",
+      "text": "pins, home feed, and a lot of other",
+      "offset": 785.92,
+      "duration": 5.599
+    },
+    {
+      "lang": "en",
+      "text": "surfaces where we've seen uh,",
+      "offset": 788.48,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "representations improve by adding these",
+      "offset": 791.519,
+      "duration": 5.281
+    },
+    {
+      "lang": "en",
+      "text": "things. Um so let me go over the key",
+      "offset": 793.36,
+      "duration": 6.8
+    },
+    {
+      "lang": "en",
+      "text": "takeaways again. Um I think lesson one",
+      "offset": 796.8,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "we found that LLMs are really good at",
+      "offset": 800.16,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "relevance prediction. Uh lesson two we",
+      "offset": 802.24,
+      "duration": 4.159
+    },
+    {
+      "lang": "en",
+      "text": "found that visual language model",
+      "offset": 804.8,
+      "duration": 5.839
+    },
+    {
+      "lang": "en",
+      "text": "captions are good uh good ways to imbue",
+      "offset": 806.399,
+      "duration": 7.521
+    },
+    {
+      "lang": "en",
+      "text": "them with uh image representations and u",
+      "offset": 810.639,
+      "duration": 4.961
+    },
+    {
+      "lang": "en",
+      "text": "user actions are very good content",
+      "offset": 813.92,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "annotations. Um",
+      "offset": 815.6,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "three uh we found that knowledge",
+      "offset": 818.32,
+      "duration": 5.199
+    },
+    {
+      "lang": "en",
+      "text": "distillation is a very good way to scale",
+      "offset": 820.56,
+      "duration": 5.6
+    },
+    {
+      "lang": "en",
+      "text": "uh and efficiently serve models uh",
+      "offset": 823.519,
+      "duration": 5.601
+    },
+    {
+      "lang": "en",
+      "text": "online and uh lesson four uh relevance",
+      "offset": 826.16,
+      "duration": 4.479
+    },
+    {
+      "lang": "en",
+      "text": "tuning produces pretty rich",
+      "offset": 829.12,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "representations that embed semantic",
+      "offset": 830.639,
+      "duration": 5.681
+    },
+    {
+      "lang": "en",
+      "text": "representations for content really well.",
+      "offset": 833.68,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "Thank you. Um I wonder if there are any",
+      "offset": 836.32,
+      "duration": 2.72
+    },
+    {
+      "lang": "en",
+      "text": "questions from the audience. Please come",
+      "offset": 837.92,
+      "duration": 4.44
+    },
+    {
+      "lang": "en",
+      "text": "up to the mics.",
+      "offset": 839.04,
+      "duration": 3.32
+    },
+    {
+      "lang": "en",
+      "text": "How did you decide which open source",
+      "offset": 843.76,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "LLMs to fine-tune?",
+      "offset": 846.32,
+      "duration": 5.759
+    },
+    {
+      "lang": "en",
+      "text": "Yeah, that's a yeah, that's a very good",
+      "offset": 849.12,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "question. So, we did a lot of experiment",
+      "offset": 852.079,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "trying different language models and um",
+      "offset": 854.24,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "in the previous slide we also share some",
+      "offset": 857.199,
+      "duration": 4.161
+    },
+    {
+      "lang": "en",
+      "text": "um performance for different language",
+      "offset": 859.6,
+      "duration": 4.239
+    },
+    {
+      "lang": "en",
+      "text": "model. Yeah. So, we did a lot of",
+      "offset": 861.36,
+      "duration": 4.159
+    },
+    {
+      "lang": "en",
+      "text": "experiment and find the one that gives",
+      "offset": 863.839,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "out the best performance.",
+      "offset": 865.519,
+      "duration": 3.841
+    },
+    {
+      "lang": "en",
+      "text": "Yes.",
+      "offset": 867.279,
+      "duration": 4.641
+    },
+    {
+      "lang": "en",
+      "text": "Uh if you could just walk us through",
+      "offset": 869.36,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "somebody typing a search prompt. The",
+      "offset": 871.92,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "confusion that I have is you have like",
+      "offset": 874.16,
+      "duration": 6.08
+    },
+    {
+      "lang": "en",
+      "text": "LLM's uh building some sort of matching.",
+      "offset": 876.16,
+      "duration": 6.72
+    },
+    {
+      "lang": "en",
+      "text": "Is it just being used for the label to",
+      "offset": 880.24,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "be distilled or how did you shim that",
+      "offset": 882.88,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "into the bio encoder? It wasn't really",
+      "offset": 885.68,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "clear on the two tower offline and how",
+      "offset": 887.36,
+      "duration": 8.56
+    },
+    {
+      "lang": "en",
+      "text": "the LLM search kind of influenced that.",
+      "offset": 890.8,
+      "duration": 8.08
+    },
+    {
+      "lang": "en",
+      "text": "We use LLMs to distill into a student",
+      "offset": 895.92,
+      "duration": 4.479
+    },
+    {
+      "lang": "en",
+      "text": "model which predicts search relevance",
+      "offset": 898.88,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "specifically and produces five scale",
+      "offset": 900.399,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "relevance scores. Um and it's served at",
+      "offset": 902.32,
+      "duration": 4.959
+    },
+    {
+      "lang": "en",
+      "text": "the end of the search pipeline. It's uh",
+      "offset": 905.279,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "the reanking stage. Um like every",
+      "offset": 907.279,
+      "duration": 4.881
+    },
+    {
+      "lang": "en",
+      "text": "recommendation system we have a lot of",
+      "offset": 909.839,
+      "duration": 5.201
+    },
+    {
+      "lang": "en",
+      "text": "uh CGs which candidate generators we",
+      "offset": 912.16,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "have early stage ranking and this is one",
+      "offset": 915.04,
+      "duration": 3.599
+    },
+    {
+      "lang": "en",
+      "text": "of the things that sits further down the",
+      "offset": 917.12,
+      "duration": 3.519
+    },
+    {
+      "lang": "en",
+      "text": "pipeline which actually predicts search",
+      "offset": 918.639,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "relevant scores and uh is used",
+      "offset": 920.639,
+      "duration": 4.721
+    },
+    {
+      "lang": "en",
+      "text": "right before blending to actually",
+      "offset": 924.079,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "produce a feed. So I think it's very",
+      "offset": 925.36,
+      "duration": 7.08
+    },
+    {
+      "lang": "en",
+      "text": "similar to most recommener systems.",
+      "offset": 927.839,
+      "duration": 4.601
+    },
+    {
+      "lang": "en",
+      "text": "So I I have a excuse me uh I have a",
+      "offset": 934.32,
+      "duration": 6.56
+    },
+    {
+      "lang": "en",
+      "text": "question around how you evolved into",
+      "offset": 938.639,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "this architecture like I'm sure printer",
+      "offset": 940.88,
+      "duration": 6.16
+    },
+    {
+      "lang": "en",
+      "text": "has prelim era search as well like what",
+      "offset": 943.199,
+      "duration": 5.681
+    },
+    {
+      "lang": "en",
+      "text": "limitations did you see in those systems",
+      "offset": 947.04,
+      "duration": 7.08
+    },
+    {
+      "lang": "en",
+      "text": "that this new architecture solved for",
+      "offset": 948.88,
+      "duration": 5.24
+    },
+    {
+      "lang": "en",
+      "text": "so um if understanding correctly your",
+      "offset": 956.24,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "question is about what's the difference",
+      "offset": 959.6,
+      "duration": 3.679
+    },
+    {
+      "lang": "en",
+      "text": "between the new system with the from the",
+      "offset": 960.72,
+      "duration": 5.039
+    },
+    {
+      "lang": "en",
+      "text": "what was What was the driver to adopt",
+      "offset": 963.279,
+      "duration": 5.841
+    },
+    {
+      "lang": "en",
+      "text": "adopting LLMs uh for for in in your",
+      "offset": 965.759,
+      "duration": 5.281
+    },
+    {
+      "lang": "en",
+      "text": "search pipeline? Did the type did it",
+      "offset": 969.12,
+      "duration": 4.399
+    },
+    {
+      "lang": "en",
+      "text": "support new features or is it does it",
+      "offset": 971.04,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "improve on the existing features where",
+      "offset": 973.519,
+      "duration": 5.801
+    },
+    {
+      "lang": "en",
+      "text": "we had limitations?",
+      "offset": 975.92,
+      "duration": 3.4
+    },
+    {
+      "lang": "en",
+      "text": "I think they definitely improve uh",
+      "offset": 979.6,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "especially with visual language model",
+      "offset": 981.6,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "captions. I think we would very",
+      "offset": 983.68,
+      "duration": 5.68
+    },
+    {
+      "lang": "en",
+      "text": "effectively able to expand beyond",
+      "offset": 986.56,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "limited markets for actually measuring",
+      "offset": 989.36,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "relevance data and getting relevance",
+      "offset": 991.68,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "data. And yeah, these multilingual",
+      "offset": 993.92,
+      "duration": 5.68
+    },
+    {
+      "lang": "en",
+      "text": "models are very good at uh getting",
+      "offset": 996.48,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "synthetic data for different markets for",
+      "offset": 999.6,
+      "duration": 5.64
+    },
+    {
+      "lang": "en",
+      "text": "uh",
+      "offset": 1002.24,
+      "duration": 3
+    },
+    {
+      "lang": "en",
+      "text": "hey um great great talk. Um I was",
+      "offset": 1007.519,
+      "duration": 5.921
+    },
+    {
+      "lang": "en",
+      "text": "wondering why uh or if if the embedding",
+      "offset": 1010.399,
+      "duration": 5.281
+    },
+    {
+      "lang": "en",
+      "text": "model is inherently multimodal um",
+      "offset": 1013.44,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "because you have text which is uh the",
+      "offset": 1015.68,
+      "duration": 3.839
+    },
+    {
+      "lang": "en",
+      "text": "the query and then you're matching",
+      "offset": 1018,
+      "duration": 4.959
+    },
+    {
+      "lang": "en",
+      "text": "against um either text links or images",
+      "offset": 1019.519,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "and so how do you think about",
+      "offset": 1022.959,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "multimodality",
+      "offset": 1024.319,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "it's definitely something we're",
+      "offset": 1027.199,
+      "duration": 3.041
+    },
+    {
+      "lang": "en",
+      "text": "exploring but then uh on a lot of",
+      "offset": 1028.319,
+      "duration": 5.041
+    },
+    {
+      "lang": "en",
+      "text": "applications I think we found uh visual",
+      "offset": 1030.24,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "captions are very good at c uh capturing",
+      "offset": 1033.36,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "what the image has um and we have some",
+      "offset": 1036,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "very good capturing models in house",
+      "offset": 1038.4,
+      "duration": 5.84
+    },
+    {
+      "lang": "en",
+      "text": "which uh yeah help us.",
+      "offset": 1040.48,
+      "duration": 7.079
+    },
+    {
+      "lang": "en",
+      "text": "Great. Thanks.",
+      "offset": 1044.24,
+      "duration": 3.319
+    },
+    {
+      "lang": "en",
+      "text": "Great talk. Yeah, just a quick question.",
+      "offset": 1048.88,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "You mentioned that you saw improvements",
+      "offset": 1051.36,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "in other languages as well. Did you",
+      "offset": 1052.96,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "start with a common baseline model for",
+      "offset": 1055.44,
+      "duration": 4.479
+    },
+    {
+      "lang": "en",
+      "text": "all languages or did you have to sort of",
+      "offset": 1057.52,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "and just change the features for each",
+      "offset": 1059.919,
+      "duration": 4.961
+    },
+    {
+      "lang": "en",
+      "text": "language or did you actually also start",
+      "offset": 1062.24,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "with separate models for individual",
+      "offset": 1064.88,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "languages? Yeah, I was",
+      "offset": 1067.44,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "curious how you actually saw the",
+      "offset": 1069.52,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "improvements manifest everywhere.",
+      "offset": 1070.88,
+      "duration": 6.08
+    },
+    {
+      "lang": "en",
+      "text": "Yeah. Um, so we we use the um same model",
+      "offset": 1074,
+      "duration": 6.4
+    },
+    {
+      "lang": "en",
+      "text": "for all languages and we because we we",
+      "offset": 1076.96,
+      "duration": 6.4
+    },
+    {
+      "lang": "en",
+      "text": "are using the multilingual um LM so we",
+      "offset": 1080.4,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "believe it can help transfer to other",
+      "offset": 1083.36,
+      "duration": 3.42
+    },
+    {
+      "lang": "en",
+      "text": "languages.",
+      "offset": 1085.36,
+      "duration": 8.509
+    },
+    {
+      "lang": "en",
+      "text": "[Music]",
+      "offset": 1086.78,
+      "duration": 7.089
+    }
+  ],
+  "cleanText": "[Music]\nYeah.\nHi everyone.\nUm, thanks for joining the talk today.\nUm, we're super excited to be here and share some of the learnings we um, we have from integrating the LLM into Pinterest Search.\nMy name is Han Wang, and today I'll be presenting with Mukuntha Narayanan, and we are both machine learning engineers from the search relevance team at Pinterest.\nSo start with a brief introduction to Pinterest.\nUm, Pinterest is a visual discovery platform where Pinners can come to find inspiration to create a life they love.\nAnd there are three main discovery surfaces on Pinterest: the home feed, the related things, and search.\nIn today's talk, we'll be focusing on search and um where the user can type in their queries and um find useful inspiring content based on their information need.\nAnd we'll share um how we leverage LLMs to improve the search relevance.\nUm, here are some key statistics for Pinterest Search.\nEvery month we handle over six billion searches with billions of Pins to search from, covering topics from recipes, home decor, travel, fashion, and beyond.\nAnd at Pinterest, search is remarkably global and multilingual.\nWe support over 45 languages and reaching Pinners in more than 100 countries.\nThese numbers highlight the importance of search at Pinterest and why we are investing um in search relevance to improving the search experience.\nSo um this is an overview of how Pinterest Search works and the back end.\nSo it's similar to um many recommendation systems in the industry.\nIt has query understanding, retrieval, ranking, and the blending stage and finally produces um relevant and engagement search feeds.\nAnd um in today's talk, we'll be focusing on the semantic relevance modeling that happened at the ranking stage and share about how we use LLMs to improve um the search relevance on the search.\nOkay.\nSo um here's our search relevance model, which um is essentially a classification model.\nGiven a search query and a Pin, the model will predict how much the Pin is relevant to this search query.\nAnd to measure this, we use a five-point scale um ranging from the most relevant to most irrelevant.\nAll right.\nUm, now we are going to share some key learnings we have from using the LLM to improve Pinterest Search relevance.\nAnd here are four main takeaways that we would like to um go into more details.\nLesson one, LLMs are good at relevance prediction.\nUm, so before I present um the result, let me first give a quick overview of the model architecture that we are using.\nUm, we contain the query and the Pin text together and pass them into an LLM to get an um embedding.\nSo this is called um cross encoder structure where we can better capture the interaction between the query and the Pin, and then we feed the um embedding from LLM into an MLP layer to produce a five-dimensional factor which corresponds to the um five relevance levels.\nAnd during training, we fine-tune some open-source LLMs using internal data and to better adapt the model to our Pinterest content.\nAnd here um I'd like to share some results.\nUm, to demonstrate that the usefulness of LLMs, and as a baseline, we use Pinterest Search, which is a Pinterest in-house content and the query embedding.\nAnd um, so if you look at the table, you can see that the LLM has substantially um improved the performance of the relevance prediction.\nAnd as we use more advanced LLMs and increase the model size, the performance keeps improving.\nAnd for example, um the 8 billion Llama mastery model gives um 12% of improvement over the multilingual bird-based model and 20% of improvement over the Pinterest Search embedding model.\nSo um the lesson here is that um LLMs, they are quite good at relevance prediction.\nUm, two, the mission language model generated captions and the user actions can be quite useful content annotations.\nSo to use LLMs for search uh for relevance prediction, we need to build a text representation of each Pin.\nAnd here I listed several features that we used in our model.\nBesides the um the title of description of the Pin, we also include um the LLM generated synthetic image caption to directly extract information from the image itself.\nAnd besides that, we add some um user engagement-based features like the board titles um for the user curated board that the Pin has been saved to or um the queries that led to the highest engagement with this Pin on the search surface.\nSo these two user action-based features um serves as additional annotation for the content.\nAnd um here the five sources of features together helps to build a more um robust and comprehensive text representation for each Pin.\nTo understand the um importance of each vortex feature, we also did some ablation studies.\nWe use the um LLM generated image caption as a baseline and um as you can see itself already provides um a very solid baseline.\nAnd as we sequentially add more vortex features, we keep seeing performance improvement, and this indicates that enriching the vortex feature is quite useful for relevance prediction.\nAnd notably, um the last two rows of the table shows the performance gain we have by adding these user action-based features.\nSo these features turned out to be quite useful content annotations that help the model better understand the content.\nAll right.\nUm, next I will hand over to Mukuntha Narayanan to talk about how we use knowledge distillation to productionize this model.\nGreat.\nYeah.\nUh, so now we have a good relevance model which is good at predicting search relevance.\nUh, but how do we actually scale this up without bankrupting Pinterest?\nUh, usually the answer is called this resolution into smaller models.\nUm, and this is the production-served relevant student model that we distilled from the teacher model using semi-supervised learning.\nUh, the student model is trained to predict five-scale relevant scores too.\nUh, it trains using the five uh scale soft scores produced by the teacher model.\nUm, and we produce data for this using a semi-supervised learning setup that uh I'll show in the next slide.\nSo the LLM teacher model is trained on a small set of human-labeled data that we get from human annotators who are trained in very specific segments.\nUh, we fine-tune and this is a multilingual language model which uses pretty generic features which scale across a lot of different domains, etc.\nUm, and the way we get training data from the student uh is through uh sampling from daily search logs, which is um all the searches uh people make on Pinterest.\nUh, and since we apply daily, uh, this includes any trending queries, all the latest freshest Pins on Pinterest.\nAnd this is also remarkably global like we mentioned, and only a small subset of this comes from the US where most of our human-labeled data comes from.\nUm, we sample from this and we label using the teacher and we scale it up pretty much 100x uh across different domains, languages, countries where uh the LLM teacher model produces pretty good labels.\nWe train the student model, and this is the model that actually gets served online.\nUm, and uh zooming into the student model, uh, also this also has language models in it.\nUh, but unlike the teacher model, it's not a cross encoder, it uh is a bi-encoder, uh, which essentially means we don't have cross interactions between the Pin and the query uh representations.\nUh, the Pin gets embedded separately, the query gets embedded separately, and it also uses a lot of other features like um Sage that we previously mentioned for both embedding the query and the Pin.\nUh, we have graph Sage embeddings which Pinterest published papers on um and omnis and a lot of other embedding features for query and Pin, but we also use um a lot of Pin query text match statistics like BM25, which we've seen historically perform really well for predicting search.\nUm, and the reason this scales well is the bi-encoder.\nUh, bi-encoder large language models can scale really well uh when we uh use offline inference and caching.\nUh, the Pin embedding here is entirely offline inferred on billions of Pins.\nUh, it uses predominantly the same text features that we mentioned on the teacher, uh, which helps distill efficiently.\nUm, and uh, we only uh, re-infer uh, these embeddings every time that these inputs meaningfully change.\nUh, meaning that uh, every time that we need new embeddings, um, it's only going to run on a few sets of new Pins.\nUm, and uh, this is offline input.\nSo none of this is happening online when a user issues a search query.\nUh, and the query embedding is pretty much uh, real-time inferred online.\nUh, and search queries are pretty short.\nUm, they don't occupy too many tokens, which means uh, we can keep the latencies for the query embedding up to like a few milliseconds.\nUm, and we also cache this uh, because search queries get repeated a lot and we get around an 85% cache hit rate.\nUm, and yeah, this scales really well uh, to actually serve Pinterest traffic.\nUm, the online results here, uh, the first four numbers are relevance uh measurements and DCNG uh precision at 8 uh measured on the US, Germany, France uh specific segments that we zoomed into.\nUh, we can actually see that we get relevance gains internationally, uh, internationally even though we started with a very limited set of US data for this particular experiment.\nUm, and uh, we also see that search fulfillment, which measures engagement on search, um, fulfilling actions, um, also goes up uh, also on non-US even though our uh, starting data was predominantly US.\nAnd uh, yeah, uh, large language models are very good at uh, expanding across many different domains, countries, uh, even though uh, they have weren't explicitly trained for this.\nUm, and uh, this is a bonus.\nUh, we also found that relevance-tuned large language models produce really good rich uh, semantic representations which are very good general purpose.\nUh, this is the same production relevant student model that I shared on the previous slide.\nUh, and uh, the Pin embedding and the query embedding uh, are basically free representations that we get from these models uh, which can be used across Pinterest for representing Pins and search queries.\nUm, we also use this to represent boards using the titles, etc.\nUm, and we found that using these embeddings, especially since they've been distilled from a large language model teacher and also have large language models in them, um, they are very good at semantic content representations.\nUh, and yeah, they perform pretty well across uh, related Pins, home feed, and a lot of other surfaces where we've seen uh, representations improve by adding these things.\nUm, so let me go over the key takeaways again.\nUm, I think lesson one, we found that LLMs are really good at relevance prediction.\nUh, lesson two, we found that visual language model captions are good uh, good ways to imbue them with uh, image representations and uh, user actions are very good content annotations.\nUm, three, uh, we found that knowledge distillation is a very good way to scale uh, and efficiently serve models uh, online.\nAnd uh, lesson four, uh, relevance tuning produces pretty rich representations that embed semantic representations for content really well.\nThank you.\nUm, I wonder if there are any questions from the audience.\nPlease come up to the mics.\nHow did you decide which open-source LLMs to fine-tune?\nYeah, that's a yeah, that's a very good question.\nSo, we did a lot of experiments trying different language models and um in the previous slide, we also share some um performance for different language models.\nYeah.\nSo, we did a lot of experiments and find the one that gives out the best performance.\nYes.\nUh, if you could just walk us through somebody typing a search prompt.\nThe confusion that I have is you have like LLMs uh building some sort of matching.\nIs it just being used for the label to be distilled or how did you shim that into the bi-encoder?\nIt wasn't really clear on the two-tower offline and how the LLM search kind of influenced that.\nWe use LLMs to distill into a student model which predicts search relevance specifically and produces five-scale relevance scores.\nUm, and it's served at the end of the search pipeline.\nIt's uh, the ranking stage.\nUm, like every recommendation system, we have a lot of uh, CGs which candidate generators, we have early-stage ranking, and this is one of the things that sits further down the pipeline which actually predicts search relevant scores and uh, is used right before blending to actually produce a feed.\nSo I think it's very similar to most recommender systems.\nSo I, I have a, excuse me, uh, I have a question around how you evolved into this architecture, like I'm sure Pinterest has prelim era search as well, like what limitations did you see in those systems that this new architecture solved for?\nSo um, if understanding correctly, your question is about what's the difference between the new system with the from the what was What was the driver to adopt adopting LLMs uh, for for in in your search pipeline?\nDid the type did it support new features or is it does it improve on the existing features where we had limitations?\nI think they definitely improve uh, especially with visual language model captions.\nI think we would very effectively able to expand beyond limited markets for actually measuring relevance data and getting relevance data.\nAnd yeah, these multilingual models are very good at uh, getting synthetic data for different markets for uh,\nHey, um, great, great talk.\nUm, I was wondering why uh, or if if the embedding model is inherently multimodal, um, because you have text which is uh, the the query and then you're matching against um, either text links or images, and so how do you think about multimodality?\nIt's definitely something we're exploring, but then uh, on a lot of applications, I think we found uh, visual captions are very good at c uh, capturing what the image has um, and we have some very good capturing models in-house which uh, yeah, help us.\nGreat.\nThanks.\nGreat talk.\nYeah, just a quick question.\nYou mentioned that you saw improvements in other languages as well.\nDid you start with a common baseline model for all languages or did you have to sort of and just change the features for each language or did you actually also start with separate models for individual languages?\nYeah, I was curious how you actually saw the improvements manifest everywhere.\nYeah.\nUm, so we, we use the um, same model for all languages and we because we we are using the multilingual um, LLM, so we believe it can help transfer to other languages.\n[Music]\n",
+  "dumpedAt": "2025-07-21T18:43:25.286Z"
+}

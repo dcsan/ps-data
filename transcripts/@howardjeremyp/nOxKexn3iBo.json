@@ -1,0 +1,3676 @@
+{
+  "episodeId": "nOxKexn3iBo",
+  "channelSlug": "@howardjeremyp",
+  "title": "Getting Started With CUDA for Python Programmers",
+  "publishedAt": "2024-01-28T08:49:46.000Z",
+  "rawLines": [
+    {
+      "lang": "en",
+      "text": "Hi there, I'm Jeremy Howard from Answer.AI and \nthis is Getting Started with CUDA. CUDA is of  ",
+      "offset": 1.84,
+      "duration": 8.72
+    },
+    {
+      "lang": "en",
+      "text": "course what we use to program NVIDIA GPUs if we \nwant them to go super fast and we want maximum  ",
+      "offset": 10.56,
+      "duration": 6.44
+    },
+    {
+      "lang": "en",
+      "text": "flexibility. And it has a reputation of being \nvery hard to get started with. The truth is, it's  ",
+      "offset": 17,
+      "duration": 7.88
+    },
+    {
+      "lang": "en",
+      "text": "actually not so bad. You just have to know some \ntricks. And so in this video I'm going to show  ",
+      "offset": 24.88,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "you some of those tricks. So let's switch to the \nscreen and take a look. So I'm going to be doing  ",
+      "offset": 30.4,
+      "duration": 7.92
+    },
+    {
+      "lang": "en",
+      "text": "all of the work today in notebooks. This might \nsurprise you. You might be thinking that to do  ",
+      "offset": 38.32,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "work with CUDA we have to do stuff with compilers \nand terminals and things like that. And the truth  ",
+      "offset": 43.44,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "is actually it turns out we really don't, thanks \nto some magic that is provided by PyTorch. You can  ",
+      "offset": 48.88,
+      "duration": 6.92
+    },
+    {
+      "lang": "en",
+      "text": "follow along in all of these steps and I strongly \nsuggest you do so in your own computer. You can  ",
+      "offset": 55.8,
+      "duration": 7.6
+    },
+    {
+      "lang": "en",
+      "text": "go to the CUDA mode organization in GitHub, find \nthe Lecture 2 repo there and you'll see there is  ",
+      "offset": 63.4,
+      "duration": 8.44
+    },
+    {
+      "lang": "en",
+      "text": "a Lecture 3 folder. This is Lecture 3 of the CUDA \nmode series. You don't need to have seen any of  ",
+      "offset": 71.84,
+      "duration": 6.28
+    },
+    {
+      "lang": "en",
+      "text": "the previous ones, however, to follow along. In \nthe readme there you'll see there's a Lecture 3  ",
+      "offset": 78.12,
+      "duration": 7.12
+    },
+    {
+      "lang": "en",
+      "text": "section and at the bottom there is a click to \ngo to the Colab version. Yep, you can run all  ",
+      "offset": 85.24,
+      "duration": 6.32
+    },
+    {
+      "lang": "en",
+      "text": "of this in Colab for free. You don't even have \nto have a GPU available to run the whole thing.  ",
+      "offset": 91.56,
+      "duration": 7.76
+    },
+    {
+      "lang": "en",
+      "text": "We're going to be following along with some of \nthe examples from this book Programming Massively  ",
+      "offset": 99.32,
+      "duration": 6.68
+    },
+    {
+      "lang": "en",
+      "text": "Parallel Processes. Programming Massively Parallel \nProcesses is a really great book to read and once  ",
+      "offset": 106,
+      "duration": 11.64
+    },
+    {
+      "lang": "en",
+      "text": "you've completed today's lesson you should be able \nto make a great start on this book. It goes into  ",
+      "offset": 117.64,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "a lot more details about some of the things that \nwe're going to cover on fairly quickly. It's okay  ",
+      "offset": 122.92,
+      "duration": 5.96
+    },
+    {
+      "lang": "en",
+      "text": "if you don't have the book, but if you want to \ngo deeper I strongly suggest you get it. In fact  ",
+      "offset": 128.88,
+      "duration": 7.4
+    },
+    {
+      "lang": "en",
+      "text": "you'll see in the repo that Lecture 2 in this \nseries actually was a deep dive into chapters  ",
+      "offset": 136.28,
+      "duration": 5.68
+    },
+    {
+      "lang": "en",
+      "text": "1 to 3 of that book. So actually you might want to \ndo Lecture 2, confusingly enough, after this one,  ",
+      "offset": 141.96,
+      "duration": 5.32
+    },
+    {
+      "lang": "en",
+      "text": "Lecture 3, to get more details about some of what \nwe're talking about. Okay, so let's dive into the  ",
+      "offset": 147.28,
+      "duration": 7.92
+    },
+    {
+      "lang": "en",
+      "text": "notebook. So what we're going to be doing today \nis we're going to be doing a whole lot of stuff  ",
+      "offset": 155.2,
+      "duration": 6.64
+    },
+    {
+      "lang": "en",
+      "text": "with old PyTorch first to make sure that we get \nall the ideas and then we will try to convert  ",
+      "offset": 161.84,
+      "duration": 6.92
+    },
+    {
+      "lang": "en",
+      "text": "each of these things into CUDA. So in order to do \nthis we're going to start by importing a bunch of  ",
+      "offset": 168.76,
+      "duration": 7.6
+    },
+    {
+      "lang": "en",
+      "text": "stuff. In fact let's do all of this in Colab. \nSo here we are in Colab and you should make  ",
+      "offset": 176.36,
+      "duration": 6.92
+    },
+    {
+      "lang": "en",
+      "text": "sure that you set in Colab your runtime to the T4 \nGPU. This one you can use plenty of for free and  ",
+      "offset": 183.28,
+      "duration": 8.44
+    },
+    {
+      "lang": "en",
+      "text": "it's easily good enough to run everything we're \ndoing today. And once you've got that running we  ",
+      "offset": 191.72,
+      "duration": 6.28
+    },
+    {
+      "lang": "en",
+      "text": "can import the libraries we're going to need and \nwe can start on our first exercise. So the first  ",
+      "offset": 198,
+      "duration": 5.32
+    },
+    {
+      "lang": "en",
+      "text": "exercise actually comes from Chapter 2 of the \nbook and Chapter 2 of the book teaches how to  ",
+      "offset": 203.32,
+      "duration": 8.48
+    },
+    {
+      "lang": "en",
+      "text": "do this problem which is converting an RGB color \npicture into a grayscale picture. And it turns out  ",
+      "offset": 211.8,
+      "duration": 6.52
+    },
+    {
+      "lang": "en",
+      "text": "that the recommended formula for this is to take \n0.21 of the red pixel, 0.72 of the green pixel,  ",
+      "offset": 218.32,
+      "duration": 5.88
+    },
+    {
+      "lang": "en",
+      "text": "0.07 of the blue pixel and add them up together \nand that creates the luminance value which is  ",
+      "offset": 224.2,
+      "duration": 7.04
+    },
+    {
+      "lang": "en",
+      "text": "what we're seeing here. That's a common way, \nthe kind of the standard way to go from RGB  ",
+      "offset": 231.24,
+      "duration": 4.68
+    },
+    {
+      "lang": "en",
+      "text": "to grayscale. So we're going to do this, we're \ngoing to make a CUDA kernel to do this. So the  ",
+      "offset": 235.92,
+      "duration": 6.8
+    },
+    {
+      "lang": "en",
+      "text": "first thing we're going to need is a picture and \nanytime you need a picture I recommend going for  ",
+      "offset": 242.72,
+      "duration": 4.44
+    },
+    {
+      "lang": "en",
+      "text": "a picture of a puppy. So we've got here a URL to \na picture of a puppy. So we'll just go ahead and  ",
+      "offset": 247.16,
+      "duration": 7
+    },
+    {
+      "lang": "en",
+      "text": "download it and then we can use torchvision.io to \nload that. So this is already part of Colab. If  ",
+      "offset": 254.16,
+      "duration": 11.6
+    },
+    {
+      "lang": "en",
+      "text": "you're interested in running stuff on your own \nmachine or a server in the cloud I'll show you  ",
+      "offset": 265.76,
+      "duration": 4.12
+    },
+    {
+      "lang": "en",
+      "text": "how to set that up at the end of this lecture. So \nlet's read in the image and if we have a look at  ",
+      "offset": 269.88,
+      "duration": 5.8
+    },
+    {
+      "lang": "en",
+      "text": "the shape of it it says it's 3 by 1066 by 1600. \nSo I'm going to assume that you know the basics  ",
+      "offset": 275.68,
+      "duration": 8.64
+    },
+    {
+      "lang": "en",
+      "text": "of PyTorch here. If you don't know the basics of \nPyTorch I am a bit biased but I highly recommend  ",
+      "offset": 284.32,
+      "duration": 8.4
+    },
+    {
+      "lang": "en",
+      "text": "my course which covers exactly that. You can go \nto course.fast.ai and you get the benefit also  ",
+      "offset": 292.72,
+      "duration": 7.04
+    },
+    {
+      "lang": "en",
+      "text": "of having seen some very cute bunnies and along \nwith the very cute bunnies it basically takes  ",
+      "offset": 299.76,
+      "duration": 5.88
+    },
+    {
+      "lang": "en",
+      "text": "you through all of everything you need to be an \neffective practitioner of modern deep learning.  ",
+      "offset": 305.64,
+      "duration": 8.76
+    },
+    {
+      "lang": "en",
+      "text": "So finish part one if you want to go right into \nthose details but even if you just do the first  ",
+      "offset": 314.4,
+      "duration": 5.32
+    },
+    {
+      "lang": "en",
+      "text": "two or three lessons that will give you more than \nenough you need to know to understand this kind of  ",
+      "offset": 319.72,
+      "duration": 6.36
+    },
+    {
+      "lang": "en",
+      "text": "code and these kinds of outputs. So I have a sigma \nyou've done all that. So you'll see here we've got  ",
+      "offset": 326.08,
+      "duration": 5.84
+    },
+    {
+      "lang": "en",
+      "text": "a rank 3 tensor. There are three channels so \nthey're like the faces of a cube if you like.  ",
+      "offset": 331.92,
+      "duration": 7.6
+    },
+    {
+      "lang": "en",
+      "text": "There are 1066 rows on each face so that's the \nheight and then there are 16 columns in each  ",
+      "offset": 339.52,
+      "duration": 6.6
+    },
+    {
+      "lang": "en",
+      "text": "row so that's the width. So if we then look at \nthe first couple of channels and the first three  ",
+      "offset": 346.12,
+      "duration": 7.16
+    },
+    {
+      "lang": "en",
+      "text": "rows and the first four columns you can see here \nthat these are unsigned 8-bit integers. So they're  ",
+      "offset": 353.28,
+      "duration": 7.4
+    },
+    {
+      "lang": "en",
+      "text": "bytes and so here they are. So that's what an \nimage looks like. Hopefully you know all that  ",
+      "offset": 360.68,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "already. So let's take a look at our image. To \ndo that I'm just going to create a simple little  ",
+      "offset": 365.56,
+      "duration": 7
+    },
+    {
+      "lang": "en",
+      "text": "function show image that will create a mat lip \nplot. Remove the axes. If it's color which this  ",
+      "offset": 372.56,
+      "duration": 11.4
+    },
+    {
+      "lang": "en",
+      "text": "one is it will change the order of the axes from \nchannel by height by width which is what PyTorch  ",
+      "offset": 383.96,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "uses to height by width by channel which is what \nmat plot lip I'm having trouble today expects.  ",
+      "offset": 389.96,
+      "duration": 9.72
+    },
+    {
+      "lang": "en",
+      "text": "So we change the order of the axes to be 1 2 0 \nand then we can show the edge. Putting it on the  ",
+      "offset": 399.68,
+      "duration": 7.24
+    },
+    {
+      "lang": "en",
+      "text": "CPU if necessary. Now we're going to be working \nwith this image in Python which is going to be  ",
+      "offset": 406.92,
+      "duration": 5.88
+    },
+    {
+      "lang": "en",
+      "text": "just pure Python to start with before we switch to \nCUDA. It's going to be really slow so we'll resize  ",
+      "offset": 412.8,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "it to have the smallest length smallest dimension \nbe 150. So that's the height in this case. So  ",
+      "offset": 417.68,
+      "duration": 8.6
+    },
+    {
+      "lang": "en",
+      "text": "we end up with a 150 by 225 shape which is a \nrectangle which is 3 3 750 pixels each one with R,  ",
+      "offset": 426.28,
+      "duration": 10.28
+    },
+    {
+      "lang": "en",
+      "text": "G and B values and there is our puppy. So you see \nit wasn't a good idea to make this a puppy. Okay  ",
+      "offset": 436.56,
+      "duration": 7.96
+    },
+    {
+      "lang": "en",
+      "text": "so how do we convert that to grayscale? Well the \nbook has told us the formula to use. Go through  ",
+      "offset": 444.52,
+      "duration": 7.04
+    },
+    {
+      "lang": "en",
+      "text": "every pixel and do that to it. Alright so here is \nthe loop we're going to go through every pixel and  ",
+      "offset": 451.56,
+      "duration": 10.36
+    },
+    {
+      "lang": "en",
+      "text": "do that to it and stick that in the output. So \nthat's the basic idea. So what are the details  ",
+      "offset": 461.92,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "of this? Well here we've got channel by row by \ncolumn. So how do we loop through every pixel?  ",
+      "offset": 467.12,
+      "duration": 8.8
+    },
+    {
+      "lang": "en",
+      "text": "Well the first thing we need to know is how many \npixels are there. So we can say channel by height  ",
+      "offset": 475.92,
+      "duration": 5.48
+    },
+    {
+      "lang": "en",
+      "text": "by width is the shape. So now we've defined those \nthree variables. So the number of pixels is the  ",
+      "offset": 481.4,
+      "duration": 6.88
+    },
+    {
+      "lang": "en",
+      "text": "height times the width. And so to loop through all \nthose pixels an easy way to do them is to flatten  ",
+      "offset": 488.28,
+      "duration": 7
+    },
+    {
+      "lang": "en",
+      "text": "them all out into a vector. Now what happens when \nyou flatten them all out into a vector? Well as  ",
+      "offset": 495.28,
+      "duration": 8.88
+    },
+    {
+      "lang": "en",
+      "text": "we saw they're currently stored in this format \nwhere we've got one face and then another face  ",
+      "offset": 504.16,
+      "duration": 7.24
+    },
+    {
+      "lang": "en",
+      "text": "and then there's a we haven't got it printed here \nbut there's a third face. Within each face then  ",
+      "offset": 511.4,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "there is one row. We're just showing the first few \nand then the next row and then the next row and  ",
+      "offset": 516.04,
+      "duration": 6.6
+    },
+    {
+      "lang": "en",
+      "text": "then with each row you've got column, column, \ncolumn. So let's say we had a small image in  ",
+      "offset": 522.64,
+      "duration": 12.6
+    },
+    {
+      "lang": "en",
+      "text": "which in fact we can do it like this. We could say \nhere's our red so we've got the pixels of 0, 1, 2,  ",
+      "offset": 535.24,
+      "duration": 9.24
+    },
+    {
+      "lang": "en",
+      "text": "3, 4, 5. So let's say this was a height 2, width \n3, 3 channel image. So then there'll be 6, 7, 8,  ",
+      "offset": 545.56,
+      "duration": 14.84
+    },
+    {
+      "lang": "en",
+      "text": "9, 10, 11, RGB, 12, 13, 14, 15, 16. So let's say \nthese are the pixels. So when these are flattened  ",
+      "offset": 560.4,
+      "duration": 16.84
+    },
+    {
+      "lang": "en",
+      "text": "out it's going to turn into a single vector just \nlike so. 6, 7, 8, 12, 13, 14. So actually when  ",
+      "offset": 577.24,
+      "duration": 19.4
+    },
+    {
+      "lang": "en",
+      "text": "we talk about an image we initially see it as \na bunch of pixels. We can think of it as having  ",
+      "offset": 596.64,
+      "duration": 12.84
+    },
+    {
+      "lang": "en",
+      "text": "3 channels but in practice in our computer the \nmemory is all laid out linearly. Everything has  ",
+      "offset": 609.48,
+      "duration": 13.88
+    },
+    {
+      "lang": "en",
+      "text": "just an address in memory. It's just a whole \nbunch. You can think of it as your computer's  ",
+      "offset": 623.36,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "memory is one giant vector. And so when we say, \nwhen we say flatten then what that's actually  ",
+      "offset": 627.76,
+      "duration": 11.36
+    },
+    {
+      "lang": "en",
+      "text": "doing is it's turning our channel by height \nby width into a big vector like this. Okay,  ",
+      "offset": 639.12,
+      "duration": 12.6
+    },
+    {
+      "lang": "en",
+      "text": "so now that we've done that we can say, alright, \nthe place we're going to be putting this into,  ",
+      "offset": 651.72,
+      "duration": 7.76
+    },
+    {
+      "lang": "en",
+      "text": "the result, we're going to start out with just \nan empty vector of length n. We'll go through  ",
+      "offset": 659.48,
+      "duration": 7.2
+    },
+    {
+      "lang": "en",
+      "text": "all of the n values from 0 to n minus 1 and we're \ngoing to put in the output value 0.29-ish times  ",
+      "offset": 666.68,
+      "duration": 10.36
+    },
+    {
+      "lang": "en",
+      "text": "the input value at x i. So this will be here in \nthe red bit. And then 0.59 times x i plus n. So n  ",
+      "offset": 677.04,
+      "duration": 14.96
+    },
+    {
+      "lang": "en",
+      "text": "here, n here is this distance. It's the number of \npixels, 1, 2, 3, 4, 5, 6. So that's why to get to  ",
+      "offset": 692,
+      "duration": 14.64
+    },
+    {
+      "lang": "en",
+      "text": "green we have to jump up to i plus n. And then to \nget to blue we have to jump to i plus 2n. And so  ",
+      "offset": 706.64,
+      "duration": 17.44
+    },
+    {
+      "lang": "en",
+      "text": "that's how this works. We've flattened everything \nout and we're indexing into this flattened out  ",
+      "offset": 724.08,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "thing directly. And so at the end of that we're \ngoing to have our grayscale is all done. So we can  ",
+      "offset": 728.24,
+      "duration": 7.48
+    },
+    {
+      "lang": "en",
+      "text": "then just reshape that into height by width. And \nthere it is. There's our grayscale puppy. And you  ",
+      "offset": 735.72,
+      "duration": 10.32
+    },
+    {
+      "lang": "en",
+      "text": "can see here the flattened image is just a single \nvector with all those channel values flattened  ",
+      "offset": 746.04,
+      "duration": 9.08
+    },
+    {
+      "lang": "en",
+      "text": "out as we described. Okay now that is incredibly \nslow. It's nearly two seconds to do something with  ",
+      "offset": 755.12,
+      "duration": 9.48
+    },
+    {
+      "lang": "en",
+      "text": "only 34,000 pixels in. So to speed it up we are \ngoing to want to use CUDA. How come CUDA is able  ",
+      "offset": 764.6,
+      "duration": 10.72
+    },
+    {
+      "lang": "en",
+      "text": "to speed things up? Well the reason CUDA is able \nto speed things up is because it is set up in a  ",
+      "offset": 775.32,
+      "duration": 9.12
+    },
+    {
+      "lang": "en",
+      "text": "very different way to how a normal CPU is set up. \nAnd we can actually see that if we look at some of  ",
+      "offset": 784.44,
+      "duration": 12.48
+    },
+    {
+      "lang": "en",
+      "text": "this information about what is in an RTX 3090 card \nfor example. Now an RTX 3090 card is a fantastic  ",
+      "offset": 796.92,
+      "duration": 7.8
+    },
+    {
+      "lang": "en",
+      "text": "GPU. You can get them secondhand, pretty good \nvalue. So a really good choice particularly for  ",
+      "offset": 805.28,
+      "duration": 5.88
+    },
+    {
+      "lang": "en",
+      "text": "hobbyists. What is inside a 3090? It has 82 SMs. \nWhat's an SM? An SM is a streaming multiprocessor.  ",
+      "offset": 811.16,
+      "duration": 11.72
+    },
+    {
+      "lang": "en",
+      "text": "So you can think of this as almost like a separate \nCPU in your computer. And so there's 82 of these.  ",
+      "offset": 822.88,
+      "duration": 7.4
+    },
+    {
+      "lang": "en",
+      "text": "So that's already a lot more than you have CPUs in \nyour computer. But then each one of these has 128  ",
+      "offset": 830.28,
+      "duration": 9.92
+    },
+    {
+      "lang": "en",
+      "text": "CUDA cores. So these CUDA cores are all able to \noperate at the same time. These multiprocessors  ",
+      "offset": 840.2,
+      "duration": 6.36
+    },
+    {
+      "lang": "en",
+      "text": "are all able to operate at the same time. So that \ngives us 128 times 82. 10,500 CUDA cores in total  ",
+      "offset": 846.56,
+      "duration": 10.76
+    },
+    {
+      "lang": "en",
+      "text": "that can all work at the same time. So that's a \nlot more than any CPU we're familiar with can do.  ",
+      "offset": 857.32,
+      "duration": 9.24
+    },
+    {
+      "lang": "en",
+      "text": "And the 3090 isn't even at the very top end. It's \nreally a very good GPU but there are some with  ",
+      "offset": 866.56,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "even more CUDA cores. So how do we use them all? \nWell we need to be able to set up our code in such  ",
+      "offset": 872.56,
+      "duration": 10.12
+    },
+    {
+      "lang": "en",
+      "text": "a way that we can say here is a piece of code that \nyou can run on lots of different pieces of data,  ",
+      "offset": 882.68,
+      "duration": 5.48
+    },
+    {
+      "lang": "en",
+      "text": "lots of different pieces of memory at the same \ntime so that you can do 10,000 things at the same  ",
+      "offset": 888.16,
+      "duration": 5.6
+    },
+    {
+      "lang": "en",
+      "text": "time. And so CUDA does this in a really simple and \npretty elegant way which is it basically says okay  ",
+      "offset": 893.76,
+      "duration": 8.36
+    },
+    {
+      "lang": "en",
+      "text": "take out the kind of the inner loop. So here's our \ninner loop. The stuff where you can run 10,000 of  ",
+      "offset": 902.12,
+      "duration": 8.16
+    },
+    {
+      "lang": "en",
+      "text": "these at the same time. They're not going to \ninfluence each other at all. So you see these  ",
+      "offset": 910.28,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "do not influence each other at all. All they do is \nthey stick something into some output memory. So  ",
+      "offset": 913.72,
+      "duration": 6.84
+    },
+    {
+      "lang": "en",
+      "text": "it doesn't even return something. You can't return \nsomething from these CUDA kernels as they're going  ",
+      "offset": 920.56,
+      "duration": 4.76
+    },
+    {
+      "lang": "en",
+      "text": "to be called. All you can do is you can modify \nmemory in such a way that you don't know what  ",
+      "offset": 925.32,
+      "duration": 5.64
+    },
+    {
+      "lang": "en",
+      "text": "order they're going to run in. They could all \nrun at the same time. Some could run a little bit  ",
+      "offset": 930.96,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "before another one and so forth. So the way that \nCUDA does this is it says okay write a function.  ",
+      "offset": 934.48,
+      "duration": 8.28
+    },
+    {
+      "lang": "en",
+      "text": "And in your function write a line of code which \nI'm going to call as many dozens, hundreds,  ",
+      "offset": 943.52,
+      "duration": 6.68
+    },
+    {
+      "lang": "en",
+      "text": "thousands, millions of times as necessary to do \nall the work that's needed. And I'm going to do  ",
+      "offset": 950.2,
+      "duration": 5.32
+    },
+    {
+      "lang": "en",
+      "text": "this in parallel for you as much as I can. In the \ncase of running on a 3090, up to 10,000 times,  ",
+      "offset": 956.4,
+      "duration": 7.08
+    },
+    {
+      "lang": "en",
+      "text": "up to 10,000 things all at once. And I will get \nthis done as fast as possible. So all you have to  ",
+      "offset": 964.08,
+      "duration": 6.32
+    },
+    {
+      "lang": "en",
+      "text": "do is basically write the line of code you want \nto be called lots of times. And then the second  ",
+      "offset": 970.4,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "thing you have to do is say how many times to call \nthat code. And so what will happen is that piece  ",
+      "offset": 976.4,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "of code called the kernel will be called for you. \nIt'll be passed in whatever arguments you ask to  ",
+      "offset": 981.28,
+      "duration": 6.16
+    },
+    {
+      "lang": "en",
+      "text": "be passed in, which in this case will be the input \narray tensor, the output tensor, and the size of  ",
+      "offset": 987.44,
+      "duration": 8.52
+    },
+    {
+      "lang": "en",
+      "text": "how many pixels are in each channel. And it'll \ntell you, okay this is the ith time I've called  ",
+      "offset": 995.96,
+      "duration": 6.12
+    },
+    {
+      "lang": "en",
+      "text": "it. Now we can simulate that in Python, very, \nvery simply, a single for loop. Now this doesn't  ",
+      "offset": 1002.08,
+      "duration": 8.68
+    },
+    {
+      "lang": "en",
+      "text": "happen in parallel, so it's not going to speed \nit up, but the kind of results, the semantics,  ",
+      "offset": 1010.76,
+      "duration": 5.6
+    },
+    {
+      "lang": "en",
+      "text": "are going to be identical to CUDA. So here is a \nfunction we've called run kernel. We're going to  ",
+      "offset": 1016.36,
+      "duration": 5.68
+    },
+    {
+      "lang": "en",
+      "text": "pass it in a function. We're going to say how many \ntimes to run the function and what arguments to  ",
+      "offset": 1022.04,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "call the function with. And so each time it will \ncall the function passing in the index, what time,  ",
+      "offset": 1026.76,
+      "duration": 7.28
+    },
+    {
+      "lang": "en",
+      "text": "and the arguments that we've requested. Okay, \nso we can now create something to call that. So  ",
+      "offset": 1034.04,
+      "duration": 9.6
+    },
+    {
+      "lang": "en",
+      "text": "let's get the, just like before, get the number of \nchannels, height and width, the number of pixels,  ",
+      "offset": 1043.64,
+      "duration": 4.76
+    },
+    {
+      "lang": "en",
+      "text": "flatten it out, create the result tensor that \nwe're going to put things in. So this time,  ",
+      "offset": 1049.48,
+      "duration": 5.92
+    },
+    {
+      "lang": "en",
+      "text": "rather than calling the loop directly, we will \ncall run kernel. We will pass in the name of the  ",
+      "offset": 1055.4,
+      "duration": 6.6
+    },
+    {
+      "lang": "en",
+      "text": "function to be called as f. We will pass in the \nnumber of times, which is the number of pixels for  ",
+      "offset": 1062,
+      "duration": 8.84
+    },
+    {
+      "lang": "en",
+      "text": "the loop. And we'll pass in the arguments that \nare going to be required inside our kernel. So  ",
+      "offset": 1070.84,
+      "duration": 9.56
+    },
+    {
+      "lang": "en",
+      "text": "we're going to need out, we're going to need \nx, and we're going to need n. So you can see  ",
+      "offset": 1080.4,
+      "duration": 5.6
+    },
+    {
+      "lang": "en",
+      "text": "here we're using no external libraries at all. We \nhave just plain Python and a tiny bit of PyTorch,  ",
+      "offset": 1086,
+      "duration": 12.12
+    },
+    {
+      "lang": "en",
+      "text": "just enough to create a tensor index into tensors. \nAnd that's all that's being used. Conceptually,  ",
+      "offset": 1098.12,
+      "duration": 8.44
+    },
+    {
+      "lang": "en",
+      "text": "it's doing the same thing as a CUDA kernel would \ndo, nearly. And we'll get to the nearly in just a  ",
+      "offset": 1106.56,
+      "duration": 7.56
+    },
+    {
+      "lang": "en",
+      "text": "moment. But conceptually, you could see that you \ncould now potentially write something, which if  ",
+      "offset": 1114.12,
+      "duration": 6.96
+    },
+    {
+      "lang": "en",
+      "text": "you knew that this was running a bunch of things \ntotally independently of each other, conceptually,  ",
+      "offset": 1121.08,
+      "duration": 7.08
+    },
+    {
+      "lang": "en",
+      "text": "you could now truly easily parallelize \nthat. And that's what CUDA does. However,  ",
+      "offset": 1128.16,
+      "duration": 7.48
+    },
+    {
+      "lang": "en",
+      "text": "it's not quite that simple. It does not simply \ncreate a single list of numbers like range n  ",
+      "offset": 1135.64,
+      "duration": 14.2
+    },
+    {
+      "lang": "en",
+      "text": "does in Python and pass each one in turn into your \nkernel. But instead, it actually splits the range  ",
+      "offset": 1149.84,
+      "duration": 9.24
+    },
+    {
+      "lang": "en",
+      "text": "of numbers into what's called blocks. So in this \ncase, maybe there's like 1,000 pixels we wanted to  ",
+      "offset": 1159.08,
+      "duration": 8.96
+    },
+    {
+      "lang": "en",
+      "text": "get through. It's going to group them into blocks \nof 256 at a time. And so in Python, it looks like  ",
+      "offset": 1168.04,
+      "duration": 11.64
+    },
+    {
+      "lang": "en",
+      "text": "this. In practice, a CUDA kernel runner is not \na single for loop that loops n times. Instead,  ",
+      "offset": 1179.68,
+      "duration": 10.04
+    },
+    {
+      "lang": "en",
+      "text": "it is a pair of nested for loops. So you don't \njust pass in a single number and say this is  ",
+      "offset": 1189.72,
+      "duration": 8.2
+    },
+    {
+      "lang": "en",
+      "text": "the number of pixels, but you pass in two numbers, \nnumber of blocks and the number of threads. We'll  ",
+      "offset": 1197.92,
+      "duration": 6.56
+    },
+    {
+      "lang": "en",
+      "text": "get into that in a moment. But these are just \nnumbers. They're just you can put any numbers  ",
+      "offset": 1204.48,
+      "duration": 3.24
+    },
+    {
+      "lang": "en",
+      "text": "you like here. And if you choose two numbers \nthat multiply to get the thing that we want,  ",
+      "offset": 1207.72,
+      "duration": 8.24
+    },
+    {
+      "lang": "en",
+      "text": "which is the n times we want to call it, then this \ncan do exactly the same thing because we're now  ",
+      "offset": 1215.96,
+      "duration": 5.92
+    },
+    {
+      "lang": "en",
+      "text": "going to pass in which of the what's the index of \nthe outer loop we're up to, what's the index in  ",
+      "offset": 1221.88,
+      "duration": 6.36
+    },
+    {
+      "lang": "en",
+      "text": "the inner loop we're up to, how many things do we \ngo through in the inner loop, and therefore inside  ",
+      "offset": 1228.24,
+      "duration": 6.72
+    },
+    {
+      "lang": "en",
+      "text": "the kernel, we can find out what index we're up \nto by multiplying the block index times the block  ",
+      "offset": 1234.96,
+      "duration": 7.68
+    },
+    {
+      "lang": "en",
+      "text": "dimension. So that is to say the i by the threads \nand add the inner loop index, the j. So that's  ",
+      "offset": 1242.64,
+      "duration": 9.12
+    },
+    {
+      "lang": "en",
+      "text": "what we pass in with the i, j threads. But inside \nthe kernel, we call it block index, thread index  ",
+      "offset": 1251.76,
+      "duration": 6.08
+    },
+    {
+      "lang": "en",
+      "text": "and block dimension. So if you look at the CUDA \nbook, you'll see here this is exactly what they  ",
+      "offset": 1257.84,
+      "duration": 5.96
+    },
+    {
+      "lang": "en",
+      "text": "do. They say the index is equal to the block index \ntimes the block dimension plus the thread index.  ",
+      "offset": 1263.8,
+      "duration": 7.72
+    },
+    {
+      "lang": "en",
+      "text": "There's a dot x thing here that we can ignore \nfor now. We'll look at that in a moment. But in  ",
+      "offset": 1271.52,
+      "duration": 8.08
+    },
+    {
+      "lang": "en",
+      "text": "practice, this is actually how CUDA works. So it \nhas all these blocks and inside there are threads  ",
+      "offset": 1279.6,
+      "duration": 10.6
+    },
+    {
+      "lang": "en",
+      "text": "and you can just think of them as numbers. You \ncan see these blocks, they just have numbers, o,  ",
+      "offset": 1290.2,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "one, dot, dot, dot, dot, and so forth. Now that \ndoes mean something a little bit tricky though,  ",
+      "offset": 1293.8,
+      "duration": 6.76
+    },
+    {
+      "lang": "en",
+      "text": "which is, well, the first thing I'll say is how \ndo we pick these numbers, the number of blocks and  ",
+      "offset": 1300.56,
+      "duration": 5.88
+    },
+    {
+      "lang": "en",
+      "text": "the number of threads? For now in practice, we're \njust always going to say the number of threads  ",
+      "offset": 1306.44,
+      "duration": 4.12
+    },
+    {
+      "lang": "en",
+      "text": "is 256. And that's a perfectly fine number to use \nas a default. Anyway, you can't go too far wrong,  ",
+      "offset": 1310.56,
+      "duration": 8.28
+    },
+    {
+      "lang": "en",
+      "text": "just always picking 256, nearly always. So don't \nworry about that too much for now optimizing that  ",
+      "offset": 1318.84,
+      "duration": 6.36
+    },
+    {
+      "lang": "en",
+      "text": "number. So if we say, okay, we want to have 256 \nthreads, so remember that's the inner loop, or  ",
+      "offset": 1325.2,
+      "duration": 9.24
+    },
+    {
+      "lang": "en",
+      "text": "if we look inside our kernel runner here, that's \nour inner loop. So we're going to call each of,  ",
+      "offset": 1334.44,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "this is going to be called 256 times. So how many \ntimes do you have to call this? Well, you're going  ",
+      "offset": 1339.32,
+      "duration": 6.56
+    },
+    {
+      "lang": "en",
+      "text": "to have to call it n, number of pixels, divided \nby 256 times. Now that might not be an integer,  ",
+      "offset": 1345.88,
+      "duration": 8.44
+    },
+    {
+      "lang": "en",
+      "text": "so you'll have to round that up. So that's \nhow we can calculate the number of blocks  ",
+      "offset": 1354.32,
+      "duration": 7.08
+    },
+    {
+      "lang": "en",
+      "text": "we need to make sure that our kernel is called \nenough times. Now we do have a problem though,  ",
+      "offset": 1361.4,
+      "duration": 8.32
+    },
+    {
+      "lang": "en",
+      "text": "which is that the number of times we would have \nliked to have called it, which previously was  ",
+      "offset": 1369.72,
+      "duration": 6.44
+    },
+    {
+      "lang": "en",
+      "text": "equal to the number of pixels, might not be a \nmultiple of 256. So we might end up going too  ",
+      "offset": 1376.16,
+      "duration": 6.6
+    },
+    {
+      "lang": "en",
+      "text": "far. And so that's why we also need in our kernel \nnow this if statement. And so this is making sure  ",
+      "offset": 1382.76,
+      "duration": 6.8
+    },
+    {
+      "lang": "en",
+      "text": "that the index that we're up to does not go past \nthe number of pixels we have. And this appears  ",
+      "offset": 1389.56,
+      "duration": 7.64
+    },
+    {
+      "lang": "en",
+      "text": "in basically every CUDA kernel you'll see, and \nit's called the guard, or the guard block. So  ",
+      "offset": 1397.2,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "this is our guard to make sure we don't go out of \nbounds. So this is the same line of code we had  ",
+      "offset": 1402.48,
+      "duration": 4.76
+    },
+    {
+      "lang": "en",
+      "text": "before. Now we've also just added this thing to \ncalculate the index, and we've added the guard.  ",
+      "offset": 1407.24,
+      "duration": 7.08
+    },
+    {
+      "lang": "en",
+      "text": "And this is like the pretty standard first lines \nfrom any CUDA kernel. So we can now run those,  ",
+      "offset": 1414.32,
+      "duration": 10.64
+    },
+    {
+      "lang": "en",
+      "text": "and they'll do exactly the same thing as before. \nAnd so the obvious question is, well, why? Why do  ",
+      "offset": 1424.96,
+      "duration": 8.44
+    },
+    {
+      "lang": "en",
+      "text": "CUDA kernels work in this weird block and thread \nway? Why don't we just tell them the number of  ",
+      "offset": 1433.4,
+      "duration": 8.36
+    },
+    {
+      "lang": "en",
+      "text": "times to run it? Why do we have to do it by blocks \nand threads? And the reason why is because of some  ",
+      "offset": 1441.76,
+      "duration": 6.6
+    },
+    {
+      "lang": "en",
+      "text": "of this detail that we've got here, which is that \nCUDA sets things up for us so that everything in  ",
+      "offset": 1448.36,
+      "duration": 8.36
+    },
+    {
+      "lang": "en",
+      "text": "the same block, or to say it more completely \nthread block, which is the same block, they  ",
+      "offset": 1456.72,
+      "duration": 6.92
+    },
+    {
+      "lang": "en",
+      "text": "will all be given some shared memory. And they'll \nalso all be given the opportunity to synchronize,  ",
+      "offset": 1463.64,
+      "duration": 5.84
+    },
+    {
+      "lang": "en",
+      "text": "which is to basically say, OK, everything in \nthis block has to get to this point before you  ",
+      "offset": 1469.48,
+      "duration": 6.08
+    },
+    {
+      "lang": "en",
+      "text": "can move on. All of the threads in a block will be \nexecuted on the same streaming multiprocessor. And  ",
+      "offset": 1475.56,
+      "duration": 9.12
+    },
+    {
+      "lang": "en",
+      "text": "so we'll see later in later lectures, but won't \nbe taught by me, that by using blocks smartly,  ",
+      "offset": 1484.68,
+      "duration": 11
+    },
+    {
+      "lang": "en",
+      "text": "you can make your code run more quickly. And the \nshared memory is particularly important. So shared  ",
+      "offset": 1495.68,
+      "duration": 6.12
+    },
+    {
+      "lang": "en",
+      "text": "memory is a little bit of memory in the GPU that \nall the threads in a block share and it's fast.  ",
+      "offset": 1501.8,
+      "duration": 6.96
+    },
+    {
+      "lang": "en",
+      "text": "It's super, super, super fast. Now when we say not \nvery much, it's like on a 3090, it's 128K. So very  ",
+      "offset": 1508.76,
+      "duration": 10.72
+    },
+    {
+      "lang": "en",
+      "text": "small. This is basically the same as a cache in \na CPU. The difference, though, is that on a CPU,  ",
+      "offset": 1519.48,
+      "duration": 8.92
+    },
+    {
+      "lang": "en",
+      "text": "you're not going to be manually deciding what goes \ninto your cache. But on the GPU, you do. It's all  ",
+      "offset": 1528.4,
+      "duration": 6.76
+    },
+    {
+      "lang": "en",
+      "text": "up to you. So at the moment, this cache is not \ngoing to be used when we create our CUDA code  ",
+      "offset": 1535.16,
+      "duration": 6.48
+    },
+    {
+      "lang": "en",
+      "text": "because we're just getting started. And so we're \nnot going to worry about that optimization. But  ",
+      "offset": 1541.64,
+      "duration": 3.4
+    },
+    {
+      "lang": "en",
+      "text": "to go fast, you want to use that cache. And also, \nyou want to use the register file. Something a lot  ",
+      "offset": 1545.04,
+      "duration": 5.72
+    },
+    {
+      "lang": "en",
+      "text": "of people don't realize is that there's actually \nquite a lot of register memory, even more register  ",
+      "offset": 1550.76,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "memory than shared memory. So anyway, those \nare all things to worry about down the track,  ",
+      "offset": 1555.56,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "not needed for getting started. So how do we go \nabout using CUDA? There is a basically standard  ",
+      "offset": 1560.12,
+      "duration": 15.24
+    },
+    {
+      "lang": "en",
+      "text": "setup block that I would add, and we are going to \nadd. And what happens in this setup block is we're  ",
+      "offset": 1575.36,
+      "duration": 7.48
+    },
+    {
+      "lang": "en",
+      "text": "going to set an environment variable. You wouldn't \nuse this in production or for going fast. But  ",
+      "offset": 1582.84,
+      "duration": 6.4
+    },
+    {
+      "lang": "en",
+      "text": "this says, if you get an error, stop right away, \nbasically. So wait to see how things go. And then  ",
+      "offset": 1589.24,
+      "duration": 8.4
+    },
+    {
+      "lang": "en",
+      "text": "that way, you can tell us exactly when an error \noccurs and where it happens. So that slows things  ",
+      "offset": 1597.64,
+      "duration": 5.4
+    },
+    {
+      "lang": "en",
+      "text": "down, but it's good for development. We're also \ngoing to install two modules. One is a build tool,  ",
+      "offset": 1603.04,
+      "duration": 9.84
+    },
+    {
+      "lang": "en",
+      "text": "which is required by PyTorch to compile your C++ \nCUDA code. The second is a very handy little thing  ",
+      "offset": 1612.88,
+      "duration": 9.12
+    },
+    {
+      "lang": "en",
+      "text": "called WorldLitza. And the only place you're \ngoing to see that used is in this line here,  ",
+      "offset": 1622,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "where we load this extension called WorldLitza. \nWithout this, anything you print from your CUDA  ",
+      "offset": 1626.64,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "code, in fact, from your C++ code, won't appear \nin a notebook. So you always want to do this in a  ",
+      "offset": 1632.64,
+      "duration": 6.84
+    },
+    {
+      "lang": "en",
+      "text": "notebook where you're doing stuff in CUDA so that \nyou can use print statements to debug things. OK.  ",
+      "offset": 1639.48,
+      "duration": 7.6
+    },
+    {
+      "lang": "en",
+      "text": "So if you've got some CUDA code, how do you use \nit from Python? The answer is that PyTorch comes  ",
+      "offset": 1647.08,
+      "duration": 9.16
+    },
+    {
+      "lang": "en",
+      "text": "with a very handy thing called LoadInline, which \nis inside torch.utils.cpp extension. LoadInline is  ",
+      "offset": 1656.24,
+      "duration": 22.68
+    },
+    {
+      "lang": "en",
+      "text": "a marvelous function that you just pass in a list \nof any of the CUDA code strings that you want to  ",
+      "offset": 1678.92,
+      "duration": 6.68
+    },
+    {
+      "lang": "en",
+      "text": "compile, any of the plain C++ strings that you \nwant to compile, any functions in that C++ you  ",
+      "offset": 1685.6,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "want to make available to PyTorch. And it will go \nand compile it all, turn it into a Python module  ",
+      "offset": 1691.36,
+      "duration": 7.92
+    },
+    {
+      "lang": "en",
+      "text": "and make it available right away, which is pretty \namazing. I've just created a tiny little wrapper  ",
+      "offset": 1699.28,
+      "duration": 7.36
+    },
+    {
+      "lang": "en",
+      "text": "for that called LoadCuda, just to streamline it \na tiny bit. Behind the scenes, it's just going  ",
+      "offset": 1706.64,
+      "duration": 6.2
+    },
+    {
+      "lang": "en",
+      "text": "to call LoadInline. The other thing I've done is \nI've created a string that contains some C++ code.  ",
+      "offset": 1712.84,
+      "duration": 11.44
+    },
+    {
+      "lang": "en",
+      "text": "This is all C code, I think, but it's compiled \nas C++ code. We'll call it C++ code. C++ code  ",
+      "offset": 1724.28,
+      "duration": 7.52
+    },
+    {
+      "lang": "en",
+      "text": "we want included in all of our CUDA files. We \nneed to include this header file to make sure  ",
+      "offset": 1731.8,
+      "duration": 8.36
+    },
+    {
+      "lang": "en",
+      "text": "that we can access PyTorch tensor stuff. We want \nto be able to use I.O. and we want to be able to  ",
+      "offset": 1740.16,
+      "duration": 8
+    },
+    {
+      "lang": "en",
+      "text": "check for exceptions. And then I also define \nthree macros. The first macro just checks that  ",
+      "offset": 1748.16,
+      "duration": 9.6
+    },
+    {
+      "lang": "en",
+      "text": "a tensor is CUDA. The second one checks that it's \ncontiguous in memory, because sometimes PyTorch  ",
+      "offset": 1757.76,
+      "duration": 6.96
+    },
+    {
+      "lang": "en",
+      "text": "can actually split things up over different memory \npieces. And then if we try to access that in this  ",
+      "offset": 1764.72,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "flattened out form, it won't work. And then the \nway we're actually going to use it, check input,  ",
+      "offset": 1769.84,
+      "duration": 5.72
+    },
+    {
+      "lang": "en",
+      "text": "we'll just check both of those things. So if \nsomething's not on CUDA and it's not contiguous,  ",
+      "offset": 1775.56,
+      "duration": 4.52
+    },
+    {
+      "lang": "en",
+      "text": "we aren't going to be able to use it. So we \nalways have this. And then the third thing  ",
+      "offset": 1780.08,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "we do here is we define ceiling division. Ceiling \ndivision is just this. Although you can implement  ",
+      "offset": 1785.2,
+      "duration": 10.36
+    },
+    {
+      "lang": "en",
+      "text": "it a different way like this. And so this will do \nceiling division. And so this is how we're going  ",
+      "offset": 1795.56,
+      "duration": 7.24
+    },
+    {
+      "lang": "en",
+      "text": "to, this is what we're going to call in order \nto figure out how many blocks we need. So this  ",
+      "offset": 1802.8,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "is just, you don't have to worry about the details \nof this too much. It's just a standard setup we're  ",
+      "offset": 1807.44,
+      "duration": 3.2
+    },
+    {
+      "lang": "en",
+      "text": "going to use. OK, so now we need to write our CUDA \nkernel. Now, how do you write the CUDA kernel?  ",
+      "offset": 1810.64,
+      "duration": 8.6
+    },
+    {
+      "lang": "en",
+      "text": "Well, all I did, and I recommend you do, is take \nyour Python kernel and paste it into chat GPT  ",
+      "offset": 1819.24,
+      "duration": 11.04
+    },
+    {
+      "lang": "en",
+      "text": "and say convert this to equivalent C code using \nthe same names, formatting, etc. Where possible,  ",
+      "offset": 1830.28,
+      "duration": 5.92
+    },
+    {
+      "lang": "en",
+      "text": "paste it in and chat GPT will do it for \nyou. Unless you're very comfortable with C,  ",
+      "offset": 1836.2,
+      "duration": 6.04
+    },
+    {
+      "lang": "en",
+      "text": "which goes just write it yourself is fine. But \nthis way, since you've already got the Python,  ",
+      "offset": 1842.24,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "why not just do this? It basically was pretty \nmuch perfect. I found, although it did assume  ",
+      "offset": 1848.16,
+      "duration": 10.12
+    },
+    {
+      "lang": "en",
+      "text": "that these were floats, they're actually not \nfloats. We had to change a couple of data types,  ",
+      "offset": 1858.28,
+      "duration": 3.96
+    },
+    {
+      "lang": "en",
+      "text": "but basically I was able to use it almost as is. \nAnd so particularly, you know, for people who are  ",
+      "offset": 1862.24,
+      "duration": 7.44
+    },
+    {
+      "lang": "en",
+      "text": "much more Python programmers nowadays like me, \nthis is a nice way to write 95% of the code you  ",
+      "offset": 1869.68,
+      "duration": 8.88
+    },
+    {
+      "lang": "en",
+      "text": "need. What else do we have to change? Well, as we \nsaw in our picture earlier, it's not called block  ",
+      "offset": 1878.56,
+      "duration": 9.52
+    },
+    {
+      "lang": "en",
+      "text": "IDX, it's called block IDX.x, block dim.x, thread \nIDX.x. So we have to add the dot X there. Other  ",
+      "offset": 1888.08,
+      "duration": 8.92
+    },
+    {
+      "lang": "en",
+      "text": "than that, if we compare. So as you can see, these \ntwo pieces of code look nearly identical. We've  ",
+      "offset": 1897,
+      "duration": 10
+    },
+    {
+      "lang": "en",
+      "text": "had to add data types to them. We've had to add \nsemicolons. We had to get rid of the colon. We had  ",
+      "offset": 1907,
+      "duration": 7.92
+    },
+    {
+      "lang": "en",
+      "text": "to add curly brackets. That's about it. So it's \nnot very different at all. So if you haven't done  ",
+      "offset": 1914.92,
+      "duration": 7.36
+    },
+    {
+      "lang": "en",
+      "text": "much C programming, yeah, don't worry about it too \nmuch because, you know, the truth is actually it's  ",
+      "offset": 1922.28,
+      "duration": 10.08
+    },
+    {
+      "lang": "en",
+      "text": "not that different for this kind of calculation \nintensive work. One thing we should talk about  ",
+      "offset": 1932.36,
+      "duration": 5.8
+    },
+    {
+      "lang": "en",
+      "text": "is this. What's unsigned cast R? This is just how \nyou write Uint 8 in C. You can just if you're not  ",
+      "offset": 1938.16,
+      "duration": 14.12
+    },
+    {
+      "lang": "en",
+      "text": "sure how to change change a data type between the \nPytorch spelling and the C spelling, you could ask  ",
+      "offset": 1952.28,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "chat GPT or you can Google it. But this is how you \nwrite byte. The star in practice, it's basically  ",
+      "offset": 1957.4,
+      "duration": 8.12
+    },
+    {
+      "lang": "en",
+      "text": "how you say this is an array. So this says that \nX is an array of bytes. It actually means it's a  ",
+      "offset": 1965.52,
+      "duration": 12.44
+    },
+    {
+      "lang": "en",
+      "text": "pointer, but pointers are treated, as you can \nsee here, as arrays by C. So you don't really  ",
+      "offset": 1977.96,
+      "duration": 7.04
+    },
+    {
+      "lang": "en",
+      "text": "have to worry about the fact that the pointer, it \njust means for us that it's an array. But in C,  ",
+      "offset": 1985,
+      "duration": 6.2
+    },
+    {
+      "lang": "en",
+      "text": "the only kind of arrays that it knows how to deal \nwith these one dimensional arrays. And that's why  ",
+      "offset": 1991.2,
+      "duration": 5
+    },
+    {
+      "lang": "en",
+      "text": "we always have to flatten things out. We can't \nuse multidimensional tensors really directly in  ",
+      "offset": 1996.2,
+      "duration": 5.48
+    },
+    {
+      "lang": "en",
+      "text": "these CUDA kernels in this way. So we're going to \nend up with these one dimensional C arrays. Yeah,  ",
+      "offset": 2001.68,
+      "duration": 6.44
+    },
+    {
+      "lang": "en",
+      "text": "other than that, it's going to look exactly in \nfact, I mean, even because we did our Python like  ",
+      "offset": 2008.12,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "that, it's going to look identical. The void here \njust means it doesn't return anything. And then  ",
+      "offset": 2012.28,
+      "duration": 7.12
+    },
+    {
+      "lang": "en",
+      "text": "the Dunder global here is a special thing added \nby CUDA. There's three things that can appear.  ",
+      "offset": 2019.4,
+      "duration": 8.2
+    },
+    {
+      "lang": "en",
+      "text": "And this simply says, what should I compile this \nto do? And so you can put Dunder device, and that  ",
+      "offset": 2027.6,
+      "duration": 8.16
+    },
+    {
+      "lang": "en",
+      "text": "means compile it so that you can only call it on \nthe GPU. You can say Dunder global, and that says,  ",
+      "offset": 2035.76,
+      "duration": 6.88
+    },
+    {
+      "lang": "en",
+      "text": "OK, you can call it from the CPU or GPU and it'll \nrun on the GPU. Or you can write Dunder host,  ",
+      "offset": 2042.64,
+      "duration": 7.52
+    },
+    {
+      "lang": "en",
+      "text": "which you don't have to. And that just means \nit's a normal C or C++ program that runs on the  ",
+      "offset": 2050.16,
+      "duration": 5.24
+    },
+    {
+      "lang": "en",
+      "text": "CPU side. So any time we want to call something \nfrom the CPU side to run something on the GPU,  ",
+      "offset": 2055.4,
+      "duration": 7.36
+    },
+    {
+      "lang": "en",
+      "text": "which is basically almost always when we're \ndoing kernels, you write Dunder global. So  ",
+      "offset": 2062.76,
+      "duration": 8.12
+    },
+    {
+      "lang": "en",
+      "text": "here we've got Dunder global, we've got \nour kernel and that's it. So then we need  ",
+      "offset": 2070.88,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "the thing to call that kernel. So earlier to \ncall the kernel, we called this block kernel  ",
+      "offset": 2076.08,
+      "duration": 7.04
+    },
+    {
+      "lang": "en",
+      "text": "function passed in the kernel and passed in the \nblocks and threads. And the arguments with CUDA,  ",
+      "offset": 2083.12,
+      "duration": 6.08
+    },
+    {
+      "lang": "en",
+      "text": "we don't have to use a special function. There \nis a weird special syntax built into kernel to do  ",
+      "offset": 2089.2,
+      "duration": 6.36
+    },
+    {
+      "lang": "en",
+      "text": "it for us. To use the weird special syntax, you \nsay, OK, what's the kernel, the function that I  ",
+      "offset": 2095.56,
+      "duration": 6.04
+    },
+    {
+      "lang": "en",
+      "text": "want to call? And then you use these weird triple \nangle brackets. So the triple angle brackets is a  ",
+      "offset": 2101.6,
+      "duration": 7.24
+    },
+    {
+      "lang": "en",
+      "text": "special CUDA extension to the C++ language. And it \nmeans this is a kernel, please call it on the GPU.  ",
+      "offset": 2108.84,
+      "duration": 10.8
+    },
+    {
+      "lang": "en",
+      "text": "And between the triple angle brackets, there's \na number of things you can pass, but you have to  ",
+      "offset": 2119.64,
+      "duration": 5.68
+    },
+    {
+      "lang": "en",
+      "text": "pass at least the first two things, which is how \nmany blocks, how many threads. So how many blocks,  ",
+      "offset": 2125.32,
+      "duration": 8.84
+    },
+    {
+      "lang": "en",
+      "text": "ceiling division, number of pixels divided by \nthreads. And how many threads, as we said before,  ",
+      "offset": 2134.16,
+      "duration": 6.96
+    },
+    {
+      "lang": "en",
+      "text": "let's just pick 256 all the time and not \nworry about it. So that says call this  ",
+      "offset": 2141.12,
+      "duration": 4.6
+    },
+    {
+      "lang": "en",
+      "text": "function as a GPU kernel and then passing in these \narguments. We have to pass in our input tensor,  ",
+      "offset": 2145.72,
+      "duration": 8.44
+    },
+    {
+      "lang": "en",
+      "text": "our output tensor and how many pixels. And \nyou'll see that for each of these tensors,  ",
+      "offset": 2154.16,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "we have to use a special method dot data pointer. \nAnd that's going to convert it into a C pointer to  ",
+      "offset": 2159.12,
+      "duration": 7.12
+    },
+    {
+      "lang": "en",
+      "text": "the tensor. So that's why by the time it arrives \nin our kernel, it's a C pointer. You also have to  ",
+      "offset": 2166.24,
+      "duration": 7.48
+    },
+    {
+      "lang": "en",
+      "text": "tell it what data type you want it to be treated \nas. This says treat it as Untates. So that's this  ",
+      "offset": 2173.72,
+      "duration": 9.44
+    },
+    {
+      "lang": "en",
+      "text": "is a C++ template parameter here. And this is \na method. The other thing you need to know is  ",
+      "offset": 2183.16,
+      "duration": 7.92
+    },
+    {
+      "lang": "en",
+      "text": "in C++ dot means call a method of an object, \nor else colon colon is basically like in C,  ",
+      "offset": 2191.08,
+      "duration": 10.68
+    },
+    {
+      "lang": "en",
+      "text": "in Python calling a method of a class. So you \ndon't say torch dot empty, you say torch colon  ",
+      "offset": 2201.76,
+      "duration": 6.52
+    },
+    {
+      "lang": "en",
+      "text": "colon empty to create our output. Or else back \nwhen we did it in Python, we said torch dot empty.  ",
+      "offset": 2208.28,
+      "duration": 7.48
+    },
+    {
+      "lang": "en",
+      "text": "Also in Python. Oh, OK. So in Python, that's \nright. We just created a length and vector and  ",
+      "offset": 2215.76,
+      "duration": 8.92
+    },
+    {
+      "lang": "en",
+      "text": "then did a dot view. It doesn't really matter how \nwe do it. But in this case, we actually created  ",
+      "offset": 2224.68,
+      "duration": 4.28
+    },
+    {
+      "lang": "en",
+      "text": "a two dimensional tensor by passing. We pass in \nthis thing in curly brackets here. This is called  ",
+      "offset": 2228.96,
+      "duration": 5.16
+    },
+    {
+      "lang": "en",
+      "text": "a C++ list initializer. And it's just basically \na little list containing height comma width. So  ",
+      "offset": 2234.12,
+      "duration": 5.96
+    },
+    {
+      "lang": "en",
+      "text": "this tells it to create a two dimensional matrix, \nwhich is why we don't need dot view at the end.  ",
+      "offset": 2240.08,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "We could have done it the dot view way as well. \nProbably be better to keep it consistent. But  ",
+      "offset": 2245.36,
+      "duration": 4.2
+    },
+    {
+      "lang": "en",
+      "text": "this is what I wrote at the time. The other \ninteresting thing when we create the output  ",
+      "offset": 2249.56,
+      "duration": 6.72
+    },
+    {
+      "lang": "en",
+      "text": "is if you pass in input dot options. So this is \nour input tensor that just says, oh, use the same  ",
+      "offset": 2256.28,
+      "duration": 6.8
+    },
+    {
+      "lang": "en",
+      "text": "data type and the same device, CUDA device as our \ninput has. This is a nice, really convenient way,  ",
+      "offset": 2263.08,
+      "duration": 6.24
+    },
+    {
+      "lang": "en",
+      "text": "which I don't even think we have in Python to say, \nmake sure that this is the same data type in the  ",
+      "offset": 2269.32,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "same device. If you say auto here, this is quite \nconvenient. You don't have to specify what type  ",
+      "offset": 2275.08,
+      "duration": 6.68
+    },
+    {
+      "lang": "en",
+      "text": "this is. We could have written torch colon colon \ntensor. But by writing auto, it just says figure  ",
+      "offset": 2281.76,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "it out yourself. Which is another convenient \nlittle C++ thing. After we call the kernel,  ",
+      "offset": 2286.88,
+      "duration": 7.32
+    },
+    {
+      "lang": "en",
+      "text": "if there's an error in it, we won't necessarily \nget told. So to tell it to check for an error,  ",
+      "offset": 2294.2,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "you have to write this. This is a macro that's \nagain provided by PyTorch. The details don't  ",
+      "offset": 2299.72,
+      "duration": 6.08
+    },
+    {
+      "lang": "en",
+      "text": "matter. You should just always call it after you \ncall a kernel to make sure it works. And then you  ",
+      "offset": 2305.8,
+      "duration": 5.64
+    },
+    {
+      "lang": "en",
+      "text": "can return the tensor that you allocated and then \nyou passed as a pointer and then that you filled  ",
+      "offset": 2311.44,
+      "duration": 9.04
+    },
+    {
+      "lang": "en",
+      "text": "in. OK. Now, as well as the CUDA source, you \nalso need C++ source. And the C++ source is just  ",
+      "offset": 2320.48,
+      "duration": 12.2
+    },
+    {
+      "lang": "en",
+      "text": "something that says, here is a list of all of the \ndetails of the functions that I want you to make  ",
+      "offset": 2332.68,
+      "duration": 7.16
+    },
+    {
+      "lang": "en",
+      "text": "available to the outside world. In this case, \nPython. And so this is basically your header,  ",
+      "offset": 2339.84,
+      "duration": 6.6
+    },
+    {
+      "lang": "en",
+      "text": "effectively. So you can just copy and paste the \nfull line here from your function definition and  ",
+      "offset": 2346.44,
+      "duration": 8.84
+    },
+    {
+      "lang": "en",
+      "text": "stick a semicolon on the end. So that's something \nyou can always do. And so then we call our load  ",
+      "offset": 2355.28,
+      "duration": 5.24
+    },
+    {
+      "lang": "en",
+      "text": "CUDA function that we looked at earlier, passing \nin the CUDA source code, the C++ source code, and  ",
+      "offset": 2360.52,
+      "duration": 6.12
+    },
+    {
+      "lang": "en",
+      "text": "then a list of the names of the functions that are \ndefined there that you want to make available to  ",
+      "offset": 2366.64,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "Python. So we just have one, which is the RGB to \ngrayscale function. And believe it or not, that's  ",
+      "offset": 2371.52,
+      "duration": 6.96
+    },
+    {
+      "lang": "en",
+      "text": "all you have to do. This will automatically, \nyou can see it running in the background now,  ",
+      "offset": 2378.48,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "compiling with a hugely long thing our files \nfrom, so it's created a main.cpp for us, and it's  ",
+      "offset": 2383.2,
+      "duration": 13.64
+    },
+    {
+      "lang": "en",
+      "text": "going to put it into a main.o for us and compile \neverything up, link it all together and create a  ",
+      "offset": 2396.84,
+      "duration": 8.24
+    },
+    {
+      "lang": "en",
+      "text": "module. And you can see here, we then take that \nmodule that's been passed back and put it into a  ",
+      "offset": 2405.08,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "variable called module. And then when it's done, \nit will load that module. And if we look inside  ",
+      "offset": 2410.28,
+      "duration": 8.32
+    },
+    {
+      "lang": "en",
+      "text": "the module that we just created, you'll see now \nthat apart from the normal auto-generated stuff,  ",
+      "offset": 2418.6,
+      "duration": 4.6
+    },
+    {
+      "lang": "en",
+      "text": "Python adds, it's got a function in it, RGB to \ngrayscale. Okay, so that's amazing. We now have  ",
+      "offset": 2423.2,
+      "duration": 6.84
+    },
+    {
+      "lang": "en",
+      "text": "a CUDA function that's been made available from \nPython. And we can even see if we want to, this  ",
+      "offset": 2430.04,
+      "duration": 7.72
+    },
+    {
+      "lang": "en",
+      "text": "is where it put it all. So we can have a look. And \nthere it is. You can see it's created a main.cpp,  ",
+      "offset": 2437.76,
+      "duration": 10.04
+    },
+    {
+      "lang": "en",
+      "text": "it's compiled it into a main.o, it's created a \nlibrary that we can load up, it's created a CUDA  ",
+      "offset": 2447.8,
+      "duration": 6.64
+    },
+    {
+      "lang": "en",
+      "text": "file, it's created a build script. And we could \nhave a look at that build script if we wanted to.  ",
+      "offset": 2454.44,
+      "duration": 9.96
+    },
+    {
+      "lang": "en",
+      "text": "And there it is. So none of this matters too \nmuch, it's just nice to know that PyTorch is  ",
+      "offset": 2464.4,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "doing all this stuff for us. And we don't have \nto worry about it. So that's pretty cool. So in  ",
+      "offset": 2467.84,
+      "duration": 9.2
+    },
+    {
+      "lang": "en",
+      "text": "order to pass a tensor to this, we're going to \nbe checking that it's contiguous and on CUDA.  ",
+      "offset": 2477.04,
+      "duration": 7.76
+    },
+    {
+      "lang": "en",
+      "text": "So we better make sure it is. So we're going to \ncreate an imageC variable, which is the image made  ",
+      "offset": 2484.8,
+      "duration": 6.44
+    },
+    {
+      "lang": "en",
+      "text": "contiguous and put on through the CUDA device. Now \nwe can actually run this on the full sized image,  ",
+      "offset": 2491.24,
+      "duration": 10.04
+    },
+    {
+      "lang": "en",
+      "text": "not on the tiny little minimized image we \ncreated before. This has got much more pixels,  ",
+      "offset": 2501.28,
+      "duration": 5.56
+    },
+    {
+      "lang": "en",
+      "text": "it's got 1.7 million pixels, whereas before we had \nI think it was 35,000, 34,000. And it's gone down  ",
+      "offset": 2506.84,
+      "duration": 10.16
+    },
+    {
+      "lang": "en",
+      "text": "from one and a half seconds to one millisecond. \nSo that is amazing. So it's dramatically faster,  ",
+      "offset": 2517,
+      "duration": 10.56
+    },
+    {
+      "lang": "en",
+      "text": "both because it's now running in compiled code \nand because it's running on the GPU. The step of  ",
+      "offset": 2527.56,
+      "duration": 8.84
+    },
+    {
+      "lang": "en",
+      "text": "putting the data onto the GPU is not part of what \nwe timed. And that's probably fair enough because  ",
+      "offset": 2536.4,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "normally you do that once and then you run a whole \nlot of CUDA things on it. We have though included  ",
+      "offset": 2542.16,
+      "duration": 6.88
+    },
+    {
+      "lang": "en",
+      "text": "the step of moving it off the GPU and putting it \nonto the CPU as part of what we're timing. And  ",
+      "offset": 2549.04,
+      "duration": 7.04
+    },
+    {
+      "lang": "en",
+      "text": "one key reason for that is that if we didn't do \nthat, it can actually run our Python code at the  ",
+      "offset": 2556.08,
+      "duration": 6.72
+    },
+    {
+      "lang": "en",
+      "text": "same time that the CUDA code is still running. And \nso the amount of time shown could be dramatically  ",
+      "offset": 2562.8,
+      "duration": 6.08
+    },
+    {
+      "lang": "en",
+      "text": "less because it hasn't finished synchronizing. So \nby adding this, it forces it to complete the CUDA  ",
+      "offset": 2568.88,
+      "duration": 7.28
+    },
+    {
+      "lang": "en",
+      "text": "run and to put the data back onto the CPU. That \nkind of synchronization you can also trigger by  ",
+      "offset": 2576.76,
+      "duration": 9.04
+    },
+    {
+      "lang": "en",
+      "text": "printing a value from it or you can synchronize \nit manually. So after we've done that and we can  ",
+      "offset": 2585.8,
+      "duration": 7.24
+    },
+    {
+      "lang": "en",
+      "text": "have a look and we should get exactly the same \ngrayscale puppy. Okay. So we have successfully  ",
+      "offset": 2593.04,
+      "duration": 9.4
+    },
+    {
+      "lang": "en",
+      "text": "created our first real working code from Python \nCUDA kernel. This approach of writing it in Python  ",
+      "offset": 2602.44,
+      "duration": 18.08
+    },
+    {
+      "lang": "en",
+      "text": "and then converting it to CUDA is not particularly \ncommon. But I'm not just doing it as an  ",
+      "offset": 2620.52,
+      "duration": 9.16
+    },
+    {
+      "lang": "en",
+      "text": "educational exercise. That's how I like to write \nmy CUDA kernels, at least as much of it as I can,  ",
+      "offset": 2629.68,
+      "duration": 8
+    },
+    {
+      "lang": "en",
+      "text": "because it's much easier to debug in Python. It's \nmuch easier to see exactly what's going on. And  ",
+      "offset": 2638.2,
+      "duration": 10.44
+    },
+    {
+      "lang": "en",
+      "text": "so I don't have to worry about compiling. It takes \nabout 45 or 50 seconds to compile even our simple  ",
+      "offset": 2648.64,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "example here. I can just run it straight away. \nAnd once it's working to convert that into C,  ",
+      "offset": 2653.76,
+      "duration": 6.16
+    },
+    {
+      "lang": "en",
+      "text": "as I mentioned, you know, chat GPT can do most \nof it for us. So I think this is actually a  ",
+      "offset": 2659.92,
+      "duration": 5.48
+    },
+    {
+      "lang": "en",
+      "text": "fantastically good way of writing CUDA kernels \neven as you start to get somewhat familiar with  ",
+      "offset": 2665.4,
+      "duration": 7.64
+    },
+    {
+      "lang": "en",
+      "text": "them. Because it lets you debug and develop much \nmore quickly. A lot of people avoid writing CUDA  ",
+      "offset": 2673.04,
+      "duration": 10.28
+    },
+    {
+      "lang": "en",
+      "text": "just because that process is so painful. And so \nhere's a way that we can make that process less  ",
+      "offset": 2683.32,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "painful. So let's do it again. And this time \nwe're going to do it to implement something  ",
+      "offset": 2688.52,
+      "duration": 6.28
+    },
+    {
+      "lang": "en",
+      "text": "very important, which is matrix multiplication. \nSo matrix multiplication, as you probably know,  ",
+      "offset": 2694.8,
+      "duration": 8
+    },
+    {
+      "lang": "en",
+      "text": "is fundamentally critical for deep learning. It's \nlike the most basic linear algebra operation we  ",
+      "offset": 2702.8,
+      "duration": 8.6
+    },
+    {
+      "lang": "en",
+      "text": "have. And the way it works is that you have a \ninput matrix M and a second input matrix N. And  ",
+      "offset": 2711.4,
+      "duration": 12.16
+    },
+    {
+      "lang": "en",
+      "text": "we go through every row of M. So we go through \nevery row of M until we get to here we are up to  ",
+      "offset": 2723.56,
+      "duration": 6.96
+    },
+    {
+      "lang": "en",
+      "text": "this one and every column of N. And here we are \nup to this one. And then we take the dot product  ",
+      "offset": 2730.52,
+      "duration": 6.4
+    },
+    {
+      "lang": "en",
+      "text": "at each point of that row with that column. And \nthis here is the dot product of those two things.  ",
+      "offset": 2736.92,
+      "duration": 10.76
+    },
+    {
+      "lang": "en",
+      "text": "And that is what matrix multiplication is. So \nit's a very simple operation conceptually. And  ",
+      "offset": 2747.68,
+      "duration": 11.04
+    },
+    {
+      "lang": "en",
+      "text": "it's one that we do many, many, many times in deep \nlearning. And basically every deep learning, every  ",
+      "offset": 2758.72,
+      "duration": 7.4
+    },
+    {
+      "lang": "en",
+      "text": "neural network has this as its most fundamental \noperation. Of course, we don't actually need to  ",
+      "offset": 2766.12,
+      "duration": 5.96
+    },
+    {
+      "lang": "en",
+      "text": "implement matrix multiplication from scratch \nbecause it's done for us in libraries. But we  ",
+      "offset": 2772.08,
+      "duration": 4.52
+    },
+    {
+      "lang": "en",
+      "text": "will often do things where we have to kind of fuse \nin some kind of matrix multiplication like pieces.  ",
+      "offset": 2776.6,
+      "duration": 7.4
+    },
+    {
+      "lang": "en",
+      "text": "And so, you know, and of course, it's also just a \ngood exercise. So let's take a look at how to do  ",
+      "offset": 2784,
+      "duration": 6.88
+    },
+    {
+      "lang": "en",
+      "text": "matrix multiplication first of all in pure Python. \nSo in the, actually in the fast AI course that I  ",
+      "offset": 2790.88,
+      "duration": 9.04
+    },
+    {
+      "lang": "en",
+      "text": "mentioned, there's a very complete in-depth dive \ninto matrix multiplication in part two, lesson 11,  ",
+      "offset": 2799.92,
+      "duration": 10.04
+    },
+    {
+      "lang": "en",
+      "text": "where we spend like an hour or two talking about \nnothing but matrix multiplication. detail here.  ",
+      "offset": 2809.96,
+      "duration": 6.96
+    },
+    {
+      "lang": "en",
+      "text": "But what we do do in that is we use the MNIST \ndataset to do this. And so we're going to do  ",
+      "offset": 2816.92,
+      "duration": 7.84
+    },
+    {
+      "lang": "en",
+      "text": "the same thing here. We're going to grab the MNIST \ndataset of handwritten digits. And they are 28 by  ",
+      "offset": 2824.76,
+      "duration": 7.4
+    },
+    {
+      "lang": "en",
+      "text": "28 digits. They look like this. 28 by 28 is 784. \nSo to do a, you know, to basically do a single  ",
+      "offset": 2832.16,
+      "duration": 11.56
+    },
+    {
+      "lang": "en",
+      "text": "layer of a neural net or without the activation \nfunction, we would do a matrix multiplication of  ",
+      "offset": 2843.72,
+      "duration": 6.52
+    },
+    {
+      "lang": "en",
+      "text": "the image flattened out by a weight matrix with \n784 rows and however many columns we like. And  ",
+      "offset": 2850.24,
+      "duration": 8.84
+    },
+    {
+      "lang": "en",
+      "text": "I'm going to need if we're going to go straight \nto the output. So this would be a linear function,  ",
+      "offset": 2859.08,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "a linear model. We'd have 10 layers, one for each \ndigit. So here's this is our weights. We're not  ",
+      "offset": 2862.84,
+      "duration": 5.32
+    },
+    {
+      "lang": "en",
+      "text": "actually going to do any learning here. This is \njust not any deep learning or logistic regression  ",
+      "offset": 2868.16,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "learning. This is just for an example. OK, so \nwe've got our weights and we've got our input  ",
+      "offset": 2872.16,
+      "duration": 8.44
+    },
+    {
+      "lang": "en",
+      "text": "data. X train and X valid. And so we're going to \nstart off by implementing this in Python. Now,  ",
+      "offset": 2881.44,
+      "duration": 8.56
+    },
+    {
+      "lang": "en",
+      "text": "again, Python is really slow, so let's make this \nsmaller. So matrix one will just be five rows.  ",
+      "offset": 2890,
+      "duration": 6.36
+    },
+    {
+      "lang": "en",
+      "text": "Matrix two will be all the weights. So that's \ngoing to be a five by 784 matrix multiplied by  ",
+      "offset": 2896.36,
+      "duration": 8.32
+    },
+    {
+      "lang": "en",
+      "text": "a 784 by 10 matrix. Now these two have to match. \nOf course they have to match because otherwise  ",
+      "offset": 2904.68,
+      "duration": 8.16
+    },
+    {
+      "lang": "en",
+      "text": "this dot product won't work. Those two are going \nto have to match the row by the column. OK,  ",
+      "offset": 2912.84,
+      "duration": 7.8
+    },
+    {
+      "lang": "en",
+      "text": "so let's pull that out into A rows, A columns, \nB rows, B columns. And obviously A columns and  ",
+      "offset": 2920.64,
+      "duration": 7
+    },
+    {
+      "lang": "en",
+      "text": "B rows are the things that have to match. And \nthen the output will be A rows by B columns.  ",
+      "offset": 2927.64,
+      "duration": 5.88
+    },
+    {
+      "lang": "en",
+      "text": "So five by 10. So let's create an output full \nof zeros with rows by columns in it. And so  ",
+      "offset": 2933.52,
+      "duration": 10.2
+    },
+    {
+      "lang": "en",
+      "text": "now we can go ahead and go through every row of \nA, every column of B, and do the dot product,  ",
+      "offset": 2943.72,
+      "duration": 7.56
+    },
+    {
+      "lang": "en",
+      "text": "which involves going through every item in the \ninnermost dimension, or 784 of them, multiplying  ",
+      "offset": 2951.28,
+      "duration": 6.76
+    },
+    {
+      "lang": "en",
+      "text": "together the equivalent things from M1 and M2 and \nsumming them up into the output tensor that we  ",
+      "offset": 2958.04,
+      "duration": 10.16
+    },
+    {
+      "lang": "en",
+      "text": "created. So that's going to give us, as we said, a \nfive by 10. Five by 10 output. And here it is. OK,  ",
+      "offset": 2968.2,
+      "duration": 14.84
+    },
+    {
+      "lang": "en",
+      "text": "so this is how I always create things in Python. \nI basically almost never have to debug. I almost  ",
+      "offset": 2983.04,
+      "duration": 7.96
+    },
+    {
+      "lang": "en",
+      "text": "never have like errors, unexpected errors in my \ncode, because I've written every single line one  ",
+      "offset": 2991,
+      "duration": 6.56
+    },
+    {
+      "lang": "en",
+      "text": "step at a time in Python. I've checked them all as \nthey go. And then I copy all the cells and merge  ",
+      "offset": 2997.56,
+      "duration": 4.84
+    },
+    {
+      "lang": "en",
+      "text": "them together, stick a function header on like \nso. And so here is matmul. So this is exactly the  ",
+      "offset": 3002.4,
+      "duration": 5.68
+    },
+    {
+      "lang": "en",
+      "text": "code we've already seen. And we can call it. And \nwe'll see that for 39,200 innermost operations,  ",
+      "offset": 3008.08,
+      "duration": 13.56
+    },
+    {
+      "lang": "en",
+      "text": "we took us about a second. So that's pretty slow. \nOK, so now that we've done that, you might not  ",
+      "offset": 3022.72,
+      "duration": 8.44
+    },
+    {
+      "lang": "en",
+      "text": "be surprised to hear that we now need to do the \ninnermost loop as a kernel call in such a way that  ",
+      "offset": 3031.16,
+      "duration": 8.28
+    },
+    {
+      "lang": "en",
+      "text": "it is can be run in parallel. Now, in this case, \nthe innermost loop is not this line of code. It's  ",
+      "offset": 3039.44,
+      "duration": 9.56
+    },
+    {
+      "lang": "en",
+      "text": "actually this line of code. I mean, we can choose \nto be whatever we want it to be. But in this case,  ",
+      "offset": 3049,
+      "duration": 5.24
+    },
+    {
+      "lang": "en",
+      "text": "this is how we're going to do it. We're going to \nsay for every pixel, we're not going to be every  ",
+      "offset": 3054.24,
+      "duration": 3.88
+    },
+    {
+      "lang": "en",
+      "text": "pixel, for every cell in the output tensor like \nthis one here is going to be one CUDA thread. So  ",
+      "offset": 3058.12,
+      "duration": 8.96
+    },
+    {
+      "lang": "en",
+      "text": "one CUDA thread is going to do the dot product. \nSo this is the bit that does the dot product.  ",
+      "offset": 3067.08,
+      "duration": 7.12
+    },
+    {
+      "lang": "en",
+      "text": "So that'll be our kernel. So we can write that \nmatmul block kernel is going to contain that. OK,  ",
+      "offset": 3074.2,
+      "duration": 11.84
+    },
+    {
+      "lang": "en",
+      "text": "so that's exactly the same thing that we just \ncopied from above. And so now we're going to need  ",
+      "offset": 3086.04,
+      "duration": 6.48
+    },
+    {
+      "lang": "en",
+      "text": "something to run this kernel. And you might not \nbe surprised to hear that in CUDA, we are going to  ",
+      "offset": 3092.52,
+      "duration": 12.88
+    },
+    {
+      "lang": "en",
+      "text": "call this using blocks and threads. But something \nthat's rather handy in CUDA is that the blocks and  ",
+      "offset": 3105.4,
+      "duration": 7.76
+    },
+    {
+      "lang": "en",
+      "text": "threads don't have to be just a 1D vector. They \ncan be a 2D or even 3D tensor. So in this case,  ",
+      "offset": 3113.16,
+      "duration": 8.56
+    },
+    {
+      "lang": "en",
+      "text": "you can see we've got one, two, it's a little hard \nto see exactly where they stop, two, three, four  ",
+      "offset": 3121.72,
+      "duration": 14.16
+    },
+    {
+      "lang": "en",
+      "text": "blocks. And so then for each block, and that's \nkind of in one dimension, and then there's also  ",
+      "offset": 3135.88,
+      "duration": 9.04
+    },
+    {
+      "lang": "en",
+      "text": "one, two, three, four, five blocks in the other \ndimension. And so each of these blocks has an  ",
+      "offset": 3144.92,
+      "duration": 13.84
+    },
+    {
+      "lang": "en",
+      "text": "index. So this one here is going to be zero, zero, \na little bit hard to see. This one here is going  ",
+      "offset": 3158.76,
+      "duration": 9.24
+    },
+    {
+      "lang": "en",
+      "text": "to be one, three, and so forth. And this one over \nhere is going to be three, four. So rather than  ",
+      "offset": 3168,
+      "duration": 14.76
+    },
+    {
+      "lang": "en",
+      "text": "just having a integer block index, we're going to \nhave a tuple block index. And then within a block,  ",
+      "offset": 3182.76,
+      "duration": 12.04
+    },
+    {
+      "lang": "en",
+      "text": "there's going to be, to pick, let's say, this \nexact spot here, didn't do that very well, there's  ",
+      "offset": 3194.8,
+      "duration": 13.6
+    },
+    {
+      "lang": "en",
+      "text": "going to be a thread index. And again, the thread \nindex won't be a single index into a vector. It'll  ",
+      "offset": 3208.4,
+      "duration": 6.24
+    },
+    {
+      "lang": "en",
+      "text": "be two elements. So in this case, it'll be 0, \n1, 2, 3, 4, 5, 6 rows down. And 1, 2, 3, 4, 5,  ",
+      "offset": 3214.64,
+      "duration": 6.32
+    },
+    {
+      "lang": "en",
+      "text": "6, 7, 8, 9, 10, is that 11, 12? I can't count. 12 \nmaybe across. So this here is actually going to  ",
+      "offset": 3220.96,
+      "duration": 16.92
+    },
+    {
+      "lang": "en",
+      "text": "be defined by two things. One is by the block. And \nso the block is 3, 4. And the thread is 6, 12. So  ",
+      "offset": 3237.88,
+      "duration": 20.84
+    },
+    {
+      "lang": "en",
+      "text": "that's how CUDA lets us index into two-dimensional \ngrids using blocks and threads. We don't have to.  ",
+      "offset": 3258.72,
+      "duration": 13.32
+    },
+    {
+      "lang": "en",
+      "text": "It's just a convenience if we want to. And in \nfact, we can use up to three dimensions. So to  ",
+      "offset": 3272.04,
+      "duration": 9.92
+    },
+    {
+      "lang": "en",
+      "text": "create our kernel runner, now rather than just \nhaving two nested loops for blocks and threads,  ",
+      "offset": 3281.96,
+      "duration": 13.08
+    },
+    {
+      "lang": "en",
+      "text": "we're going to have to have two lots of two nested \nloops for both of our x and y blocks and threads,  ",
+      "offset": 3295.04,
+      "duration": 10.08
+    },
+    {
+      "lang": "en",
+      "text": "or our rows and columns blocks and threads. So it \nends up looking a bit messy because we now have  ",
+      "offset": 3305.12,
+      "duration": 9.6
+    },
+    {
+      "lang": "en",
+      "text": "four nested for loops. So we'll go through our \nblocks on the y-axis and then through our blocks  ",
+      "offset": 3314.72,
+      "duration": 6.56
+    },
+    {
+      "lang": "en",
+      "text": "on the x-axis and then through our threads on the \ny-axis and then through our threads on the x-axis.  ",
+      "offset": 3321.28,
+      "duration": 5.88
+    },
+    {
+      "lang": "en",
+      "text": "And so what that means is that for you can think \nof this Cartesian product as being for each block,  ",
+      "offset": 3327.16,
+      "duration": 7.32
+    },
+    {
+      "lang": "en",
+      "text": "for each thread. Now to get the dot y and the dot \nx, we'll use this handy little Python standard  ",
+      "offset": 3334.48,
+      "duration": 6.6
+    },
+    {
+      "lang": "en",
+      "text": "library thing called simple namespace. I use \nthat so much I just give it an NS name because  ",
+      "offset": 3341.08,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "I use namespaces all the time in my quick and \ndirty code. So we go through all those four. We  ",
+      "offset": 3345.64,
+      "duration": 6.84
+    },
+    {
+      "lang": "en",
+      "text": "then call our kernel and we pass in an object \ncontaining the y and x coordinates. And that's  ",
+      "offset": 3352.48,
+      "duration": 12.4
+    },
+    {
+      "lang": "en",
+      "text": "going to be our block. And we also pass in \nour thread, which is an object with the y  ",
+      "offset": 3364.88,
+      "duration": 8.16
+    },
+    {
+      "lang": "en",
+      "text": "and x coordinates of our thread. And it's going to \neventually do all possible blocks and all possible  ",
+      "offset": 3373.04,
+      "duration": 7.16
+    },
+    {
+      "lang": "en",
+      "text": "threads numbers for each of those blocks. And \nwe also need to tell it how big is each block,  ",
+      "offset": 3380.2,
+      "duration": 6.28
+    },
+    {
+      "lang": "en",
+      "text": "how high and how wide. And so that's what this \nis. This is going to be a simple namespace, an  ",
+      "offset": 3387.12,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "object with an x and y, as you can see. So we need \nto know how big they are. Just like earlier on,  ",
+      "offset": 3393.12,
+      "duration": 7.96
+    },
+    {
+      "lang": "en",
+      "text": "we had to know the block dimension. That's why we \npassed in threads. So remember this is all pure  ",
+      "offset": 3401.08,
+      "duration": 8.36
+    },
+    {
+      "lang": "en",
+      "text": "PyTorch. We're not actually calling any out to any \nCUDA. We're not calling out to any libraries other  ",
+      "offset": 3409.44,
+      "duration": 4.68
+    },
+    {
+      "lang": "en",
+      "text": "than just a tiny bit of PyTorch for the indexing \nand tensor creation. So you can run all of this  ",
+      "offset": 3414.12,
+      "duration": 5.92
+    },
+    {
+      "lang": "en",
+      "text": "by hand. Make sure you understand. You can put \nit in the debugger. You can step through it. And  ",
+      "offset": 3420.04,
+      "duration": 6.48
+    },
+    {
+      "lang": "en",
+      "text": "so it's going to call our function. So here's \nour matrix multiplication function. As we said,  ",
+      "offset": 3426.52,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "it's a kernel that contains the dot product \nthat we wrote earlier. So now the guard is  ",
+      "offset": 3430.68,
+      "duration": 6.12
+    },
+    {
+      "lang": "en",
+      "text": "going to have to check that the row number we're \nup to is not taller than we have and the column  ",
+      "offset": 3436.8,
+      "duration": 7.04
+    },
+    {
+      "lang": "en",
+      "text": "number we're up to is not wider than we have. \nAnd we also need to know what row number we're  ",
+      "offset": 3443.84,
+      "duration": 4.12
+    },
+    {
+      "lang": "en",
+      "text": "up to. And this is exactly the same. Actually, I \nshould say the column is exactly the same as we've  ",
+      "offset": 3447.96,
+      "duration": 5.96
+    },
+    {
+      "lang": "en",
+      "text": "seen before. And in fact, you might remember \nin the CUDA we had block IDX.x. This is why,  ",
+      "offset": 3453.92,
+      "duration": 5.92
+    },
+    {
+      "lang": "en",
+      "text": "right? Because in CUDA, it's always gives you \nthese three dimensional dim three structures. So  ",
+      "offset": 3459.84,
+      "duration": 10.44
+    },
+    {
+      "lang": "en",
+      "text": "you have to put this dot x. So we can find out \nthe column this way. And then we can find out  ",
+      "offset": 3470.28,
+      "duration": 5.48
+    },
+    {
+      "lang": "en",
+      "text": "the row by seeing how many blocks have we gone \nthrough, how big is each block in the y-axis,  ",
+      "offset": 3475.76,
+      "duration": 6.68
+    },
+    {
+      "lang": "en",
+      "text": "and how many threads have we gone through in the \ny-axis. So what row number are we up to? What  ",
+      "offset": 3482.44,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "column number are we up to? Is that inside the \nbounds of our tensor? If not, then just stop and  ",
+      "offset": 3487.8,
+      "duration": 10.48
+    },
+    {
+      "lang": "en",
+      "text": "then otherwise do our dot product and put it into \nour output tensor. So that's all pure Python. And  ",
+      "offset": 3498.28,
+      "duration": 9.6
+    },
+    {
+      "lang": "en",
+      "text": "so now we can call it by getting the height and \nwidth of our first input, the height and width of  ",
+      "offset": 3507.88,
+      "duration": 7.52
+    },
+    {
+      "lang": "en",
+      "text": "our second input. And so then k and k2, the inner \ndimensions ought to match. We can then create our  ",
+      "offset": 3515.4,
+      "duration": 6.36
+    },
+    {
+      "lang": "en",
+      "text": "output. And so now threads per block is not just \nthe number 256, but it's a pair of numbers. It's  ",
+      "offset": 3521.76,
+      "duration": 8.6
+    },
+    {
+      "lang": "en",
+      "text": "an x and a y. And we've selected two numbers that \nmultiply together to create 256. So again, this is  ",
+      "offset": 3530.36,
+      "duration": 5.88
+    },
+    {
+      "lang": "en",
+      "text": "a reasonable choice if you've got two dimensional \ninputs to spread it out nicely. One thing to be  ",
+      "offset": 3536.24,
+      "duration": 9.2
+    },
+    {
+      "lang": "en",
+      "text": "aware of here is that your threads per block can't \nbe bigger than 1024. So we're using 256, which is  ",
+      "offset": 3545.44,
+      "duration": 12.64
+    },
+    {
+      "lang": "en",
+      "text": "safe. And notice that you have to multiply these \ntogether. 16 times 16 is going to be the number  ",
+      "offset": 3558.08,
+      "duration": 5.4
+    },
+    {
+      "lang": "en",
+      "text": "of threads per block. So these are safe numbers to \nuse. You're not going to run out of blocks though.  ",
+      "offset": 3563.48,
+      "duration": 6.72
+    },
+    {
+      "lang": "en",
+      "text": "2 to the 31 is the number of maximum blocks for \ndimension 0 and then 2 to the 16 for dimensions  ",
+      "offset": 3570.2,
+      "duration": 6.6
+    },
+    {
+      "lang": "en",
+      "text": "1 and 2. I think it's actually minus 1, but don't \nworry about that. So don't have too many threads,  ",
+      "offset": 3576.8,
+      "duration": 6.2
+    },
+    {
+      "lang": "en",
+      "text": "but you can have lots of blocks. But of course, \neach symmetric model processor is going to run  ",
+      "offset": 3583,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "all of these on the same device and they're \nalso going to have access to shared memory.  ",
+      "offset": 3588.76,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "So that's why you use a few threads per block. So \nour blocks, the x, we're going to use the ceiling  ",
+      "offset": 3593.56,
+      "duration": 8.04
+    },
+    {
+      "lang": "en",
+      "text": "division. The y, we're going to use the same \nceiling division. So if any of this is unfamiliar,  ",
+      "offset": 3601.6,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "go back to our earlier example because the code's \nall copied from there. And now we can call our  ",
+      "offset": 3606.96,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "2D block kernel runner passing in the kernel. The \nnumber of blocks, the number of threads per block,  ",
+      "offset": 3611.52,
+      "duration": 7.28
+    },
+    {
+      "lang": "en",
+      "text": "our input matrices flattened out, our output \nmatrix flattened out, and the dimensions that  ",
+      "offset": 3618.8,
+      "duration": 5.24
+    },
+    {
+      "lang": "en",
+      "text": "it needs because they get all used here and return \nthe result. And so if we call that mapMole with a  ",
+      "offset": 3624.04,
+      "duration": 11.36
+    },
+    {
+      "lang": "en",
+      "text": "2D block and we can check that they are close \nto what we got in our original manual loops.  ",
+      "offset": 3635.4,
+      "duration": 6.88
+    },
+    {
+      "lang": "en",
+      "text": "And of course they are because it's running \nthe same code. So now that we've done that,  ",
+      "offset": 3642.28,
+      "duration": 8.76
+    },
+    {
+      "lang": "en",
+      "text": "we can do the CUDA version. Now the CUDA version \nis going to be so much faster, we do not need to  ",
+      "offset": 3651.04,
+      "duration": 8.2
+    },
+    {
+      "lang": "en",
+      "text": "use this slimmed down matrix anymore. We can use \nthe whole thing. So to check that it's correct, I  ",
+      "offset": 3662.72,
+      "duration": 5.84
+    },
+    {
+      "lang": "en",
+      "text": "want a fast CPU based approach that I can compare \nto. So previously it took about a second to do  ",
+      "offset": 3668.56,
+      "duration": 8.88
+    },
+    {
+      "lang": "en",
+      "text": "39,000 elements. So I'm not going to explain how \nthis works, but I'm going to use a broadcasting  ",
+      "offset": 3677.44,
+      "duration": 6.68
+    },
+    {
+      "lang": "en",
+      "text": "approach to get a fast CPU based approach. If \nyou check the fast AI course, we teach you how  ",
+      "offset": 3684.12,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "to do this broadcasting approach. But it's a pure \nPython approach, which manages to do it all in a  ",
+      "offset": 3689.48,
+      "duration": 5.4
+    },
+    {
+      "lang": "en",
+      "text": "single loop rather than three nested loops. It \ngives the same answer for the cut down tensors.  ",
+      "offset": 3694.88,
+      "duration": 7.8
+    },
+    {
+      "lang": "en",
+      "text": "But much faster, only four milliseconds. So \nit's fast enough that we can now run it on  ",
+      "offset": 3707.48,
+      "duration": 10.76
+    },
+    {
+      "lang": "en",
+      "text": "the whole input matrices. And it takes about 1.3 \nseconds. And so this broadcast optimized version,  ",
+      "offset": 3718.24,
+      "duration": 8.16
+    },
+    {
+      "lang": "en",
+      "text": "as you can see, it's much faster. And now we've \ngot 392 million additions going on in the middle  ",
+      "offset": 3726.4,
+      "duration": 7.84
+    },
+    {
+      "lang": "en",
+      "text": "of our three loops, effectively three loops, but \nwe're broadcasting them. So this is much faster.  ",
+      "offset": 3734.24,
+      "duration": 5.16
+    },
+    {
+      "lang": "en",
+      "text": "But the reason I'm really doing this is so that \nwe can store this result to compare to. So that  ",
+      "offset": 3739.4,
+      "duration": 7.76
+    },
+    {
+      "lang": "en",
+      "text": "makes sure that our CUDA version is correct. Okay, \nso how do we convert this to CUDA? You might not  ",
+      "offset": 3747.16,
+      "duration": 7.84
+    },
+    {
+      "lang": "en",
+      "text": "be surprised to hear that what I did was I grabbed \nthis function and I passed it over to ChatGPT and  ",
+      "offset": 3755,
+      "duration": 5.64
+    },
+    {
+      "lang": "en",
+      "text": "said, please rewrite this in C. And it gave me \nsomething basically that I could use first time.  ",
+      "offset": 3760.64,
+      "duration": 7.64
+    },
+    {
+      "lang": "en",
+      "text": "And here it is. This time I don't have unsigned \ncast star, I have float star. Other than that,  ",
+      "offset": 3768.28,
+      "duration": 9.84
+    },
+    {
+      "lang": "en",
+      "text": "this looks almost exactly like the Python \nwe had with exactly the same changes we saw  ",
+      "offset": 3778.12,
+      "duration": 4.76
+    },
+    {
+      "lang": "en",
+      "text": "before. We've now got the .y and .x versions. \nOnce again, we've got DunderGlobal, which says,  ",
+      "offset": 3782.88,
+      "duration": 7.88
+    },
+    {
+      "lang": "en",
+      "text": "please run this on the GPU when we call it from \nthe CPU. So the kernel, I don't think there's  ",
+      "offset": 3790.76,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "anything to talk about there. And then the thing \nthat calls the kernel, matmul, is going to be  ",
+      "offset": 3796.12,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "passed in two tensors. We're going to check that \nthey're both contiguous and check that they are on  ",
+      "offset": 3801.16,
+      "duration": 6.72
+    },
+    {
+      "lang": "en",
+      "text": "the CUDA device. We'll grab the height and width \nof the first and second tensors. We're going to  ",
+      "offset": 3807.88,
+      "duration": 6.4
+    },
+    {
+      "lang": "en",
+      "text": "grab the inner dimension. We'll make sure that the \ninner dimensions of the two matrices match just  ",
+      "offset": 3814.28,
+      "duration": 7
+    },
+    {
+      "lang": "en",
+      "text": "like before. And this is how you do an assertion \nin PyTorch CUDA code. You call torch check, pass  ",
+      "offset": 3821.28,
+      "duration": 8.36
+    },
+    {
+      "lang": "en",
+      "text": "in the thing to check, pass in the message to pop \nup if there's a problem. These are a really good  ",
+      "offset": 3829.64,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "thing to spread around all through your CUDA code \nto make sure that everything is as you thought it  ",
+      "offset": 3833.72,
+      "duration": 7.84
+    },
+    {
+      "lang": "en",
+      "text": "was going to be. Just like before, we create an \noutput. So now when we create a number of threads,  ",
+      "offset": 3841.56,
+      "duration": 6.76
+    },
+    {
+      "lang": "en",
+      "text": "we don't say threads is 256. We instead say, this \nis a special thing provided by CUDA for us, dim3.  ",
+      "offset": 3848.32,
+      "duration": 9.08
+    },
+    {
+      "lang": "en",
+      "text": "So this is basically a tuple with three elements. \nSo we're going to create a dim3 called tpb. It's  ",
+      "offset": 3857.4,
+      "duration": 7.52
+    },
+    {
+      "lang": "en",
+      "text": "going to be 16 by 16. Now I said it has three \nelements. Where's the third one? That's okay.  ",
+      "offset": 3864.92,
+      "duration": 5.64
+    },
+    {
+      "lang": "en",
+      "text": "It just treats the third one as being one. So we \ncan ignore it. So that's the number of threads  ",
+      "offset": 3870.56,
+      "duration": 7.24
+    },
+    {
+      "lang": "en",
+      "text": "per block. And then how many blocks will there be? \nWell, in the X dimension, it'll be W divided by X,  ",
+      "offset": 3877.8,
+      "duration": 9.76
+    },
+    {
+      "lang": "en",
+      "text": "ceiling division. In the Y dimension, it will be H \ndivided by Y, ceiling division. And so that's the  ",
+      "offset": 3887.56,
+      "duration": 8
+    },
+    {
+      "lang": "en",
+      "text": "number of blocks we have. So just like before, we \ncall our kernel just by calling it like a normal  ",
+      "offset": 3895.56,
+      "duration": 6.68
+    },
+    {
+      "lang": "en",
+      "text": "function. But then we add this weird triple angle \nbracket thing telling it how many blocks and how  ",
+      "offset": 3902.24,
+      "duration": 6.24
+    },
+    {
+      "lang": "en",
+      "text": "many threads. So these aren't ints anymore. These \nare now dim3 structures. And that's what we use,  ",
+      "offset": 3908.48,
+      "duration": 9.96
+    },
+    {
+      "lang": "en",
+      "text": "these dim3 structures. And in fact, even before, \nwhat actually happened behind the scenes when we  ",
+      "offset": 3918.44,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "did the grayscale thing is even though we passed \nin 256, for instance, we actually ended up with a  ",
+      "offset": 3924.2,
+      "duration": 10.36
+    },
+    {
+      "lang": "en",
+      "text": "dim3 structure and just in which case the index \none and two or the dot X and dot Y and dot Z  ",
+      "offset": 3934.56,
+      "duration": 9.36
+    },
+    {
+      "lang": "en",
+      "text": "values would have set to one automatically. So \nwe've actually already used a dim3 structure  ",
+      "offset": 3943.92,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "without quite realizing it. And then just like \nbefore, pass in all of the tensors we want,  ",
+      "offset": 3949.44,
+      "duration": 9.28
+    },
+    {
+      "lang": "en",
+      "text": "casting them to pointers, maybe they're not just \ncasting, converting them to pointers through some  ",
+      "offset": 3959.44,
+      "duration": 5.64
+    },
+    {
+      "lang": "en",
+      "text": "particular data type and passing in any other \ninformation that our function will need, that  ",
+      "offset": 3965.08,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "kernel will need. Okay, so then we call load CUDA \nagain, that'll compile this into a module, make  ",
+      "offset": 3970.52,
+      "duration": 11.28
+    },
+    {
+      "lang": "en",
+      "text": "sure that they're both contiguous and on the CUDA \ndevice. And then after we call module dot mapmul,  ",
+      "offset": 3981.8,
+      "duration": 7
+    },
+    {
+      "lang": "en",
+      "text": "passing those in, putting on the CPU and checking \nthat they're all close, and it says yes, they are.  ",
+      "offset": 3988.8,
+      "duration": 6.88
+    },
+    {
+      "lang": "en",
+      "text": "This is now running not on just the first five \nrows, but on the entire MNIST data set. And on  ",
+      "offset": 3996.36,
+      "duration": 5.24
+    },
+    {
+      "lang": "en",
+      "text": "the entire MNIST data set, using a optimized \nCPU approach, it took 1.3 seconds. Using CUDA,  ",
+      "offset": 4001.6,
+      "duration": 10.24
+    },
+    {
+      "lang": "en",
+      "text": "it takes 6 milliseconds. So that is quite a big \nimprovement. Cool. The other thing I will mention,  ",
+      "offset": 4011.84,
+      "duration": 13.4
+    },
+    {
+      "lang": "en",
+      "text": "of course, is PyTorch can do a matrix \nmultiplication for us just by using at. How  ",
+      "offset": 4025.24,
+      "duration": 5.84
+    },
+    {
+      "lang": "en",
+      "text": "long does, and obviously gives the same answer, \nhow long does that take to run? That takes 2  ",
+      "offset": 4031.08,
+      "duration": 6.68
+    },
+    {
+      "lang": "en",
+      "text": "milliseconds. So three times faster. And in many \nsituations, it'll be much more than three times  ",
+      "offset": 4037.76,
+      "duration": 8.56
+    },
+    {
+      "lang": "en",
+      "text": "faster. So why are we still pretty slow compared \nto PyTorch? I mean, this isn't bad to do 392  ",
+      "offset": 4046.32,
+      "duration": 7.6
+    },
+    {
+      "lang": "en",
+      "text": "million of these calculations in 6 milliseconds. \nBut if PyTorch can do it so much faster,  ",
+      "offset": 4053.92,
+      "duration": 6.28
+    },
+    {
+      "lang": "en",
+      "text": "what are they doing? Well, the trick is that they \nare taking advantage in particular of this shared  ",
+      "offset": 4060.2,
+      "duration": 8.48
+    },
+    {
+      "lang": "en",
+      "text": "memory. So shared memory is a small memory space \nthat is shared amongst the threads in a block,  ",
+      "offset": 4068.68,
+      "duration": 6.52
+    },
+    {
+      "lang": "en",
+      "text": "and it is much faster than global memory. In our \nmatrix multiplication, when we have one of these  ",
+      "offset": 4075.2,
+      "duration": 8.32
+    },
+    {
+      "lang": "en",
+      "text": "blocks, and so it's going to do one block at \na time all in the same SM, it's going to be  ",
+      "offset": 4083.52,
+      "duration": 7
+    },
+    {
+      "lang": "en",
+      "text": "reusing the same 16 by 16 block. It's going to \nbe using the same 16 rows and columns again and  ",
+      "offset": 4090.52,
+      "duration": 6.56
+    },
+    {
+      "lang": "en",
+      "text": "again and again, each time with access to the same \nshared memory. So you can see how you could really  ",
+      "offset": 4097.08,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "potentially cache the information, a lot of the \ninformation you need, and reuse it rather than  ",
+      "offset": 4102.52,
+      "duration": 6.4
+    },
+    {
+      "lang": "en",
+      "text": "going back to the slower memory again and again. \nSo this is an example of the kinds of things that  ",
+      "offset": 4108.92,
+      "duration": 5.68
+    },
+    {
+      "lang": "en",
+      "text": "you could optimize potentially once you get to \nthat point. The only other thing that I wanted to  ",
+      "offset": 4114.6,
+      "duration": 8.76
+    },
+    {
+      "lang": "en",
+      "text": "mention here is that this 2D block idea is totally \noptional. You can do everything with 1D blocks or  ",
+      "offset": 4123.36,
+      "duration": 11
+    },
+    {
+      "lang": "en",
+      "text": "with 2D blocks or with 3D blocks and threads. And \njust to show that, I've actually got an example at  ",
+      "offset": 4134.36,
+      "duration": 6.08
+    },
+    {
+      "lang": "en",
+      "text": "the end here which converts RGB to grayscale using \nthe 2D blocks. Because remember earlier when we  ",
+      "offset": 4140.44,
+      "duration": 11.8
+    },
+    {
+      "lang": "en",
+      "text": "did this, it was with 1D blocks. It gives exactly \nthe same result. And if we compare the code,  ",
+      "offset": 4152.24,
+      "duration": 11.48
+    },
+    {
+      "lang": "en",
+      "text": "so if we compare the code, the version actually \nthat was done with 1D threads and blocks is quite  ",
+      "offset": 4166.88,
+      "duration": 7.04
+    },
+    {
+      "lang": "en",
+      "text": "a bit shorter than the version that uses \n2D threads and blocks. And so in this case,  ",
+      "offset": 4173.92,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "even though we're manipulating pixels, where you \nmight think that using the 2D approach would be  ",
+      "offset": 4178.72,
+      "duration": 7
+    },
+    {
+      "lang": "en",
+      "text": "neater and more convenient, in this particular \ncase it wasn't really. It's still pretty simple  ",
+      "offset": 4185.72,
+      "duration": 5.84
+    },
+    {
+      "lang": "en",
+      "text": "code that we have to deal with the columns and \nrows.x.y separately. The guards are a little bit  ",
+      "offset": 4191.56,
+      "duration": 7.28
+    },
+    {
+      "lang": "en",
+      "text": "more complex. We have to find out what index we're \nactually up to here. Where else this kernel, it  ",
+      "offset": 4198.84,
+      "duration": 8.92
+    },
+    {
+      "lang": "en",
+      "text": "was just much more direct, just two lines of code. \nAnd then calling the kernel, again it's a little  ",
+      "offset": 4207.76,
+      "duration": 4.68
+    },
+    {
+      "lang": "en",
+      "text": "bit more complex with the threads per block stuff \nrather than this. The key thing I wanted to point  ",
+      "offset": 4212.44,
+      "duration": 5.24
+    },
+    {
+      "lang": "en",
+      "text": "out is that these two pieces of code do exactly \nthe same thing. So don't feel like if you don't  ",
+      "offset": 4217.68,
+      "duration": 7.84
+    },
+    {
+      "lang": "en",
+      "text": "want to use a 2D or 3D block thread structure, \nyou don't have to. You can just use a 1D one.  ",
+      "offset": 4225.52,
+      "duration": 7.12
+    },
+    {
+      "lang": "en",
+      "text": "The 2D stuff is only there if it's convenient \nfor you to use and you want to use it. Don't  ",
+      "offset": 4232.64,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "feel like you have to. So yeah, I think that's \nbasically all the key things that I wanted to  ",
+      "offset": 4238.64,
+      "duration": 10.08
+    },
+    {
+      "lang": "en",
+      "text": "show you all today. The main thing I hope you take \nfrom this is that even for Python programmers,  ",
+      "offset": 4248.72,
+      "duration": 7.24
+    },
+    {
+      "lang": "en",
+      "text": "for data scientists, it's not way outside our \ncomfort zone. We can write these things in Python,  ",
+      "offset": 4255.96,
+      "duration": 10.08
+    },
+    {
+      "lang": "en",
+      "text": "we can convert them pretty much automatically, we \nend up with code that doesn't look, you know, it  ",
+      "offset": 4266.04,
+      "duration": 5.24
+    },
+    {
+      "lang": "en",
+      "text": "looks reasonably familiar even though it's now in \na different language. We can do everything inside  ",
+      "offset": 4271.28,
+      "duration": 5.56
+    },
+    {
+      "lang": "en",
+      "text": "notebooks, we can test everything as we go, we can \nprint things from our kernels. And so, you know,  ",
+      "offset": 4276.84,
+      "duration": 7.68
+    },
+    {
+      "lang": "en",
+      "text": "it's hopefully feeling a little bit less beyond \nour capabilities than we might have previously  ",
+      "offset": 4284.52,
+      "duration": 11.12
+    },
+    {
+      "lang": "en",
+      "text": "imagined. So I'd say, yeah, you know, go for it. \nI think it's also like, I think it's increasingly  ",
+      "offset": 4295.64,
+      "duration": 6.96
+    },
+    {
+      "lang": "en",
+      "text": "important to be able to write CUDA code nowadays \nbecause for things like flash attention or for  ",
+      "offset": 4302.6,
+      "duration": 7.44
+    },
+    {
+      "lang": "en",
+      "text": "things like quantization, GPTQ, AWQ, bits and \nbytes, these are all things you can't write in  ",
+      "offset": 4310.04,
+      "duration": 8.64
+    },
+    {
+      "lang": "en",
+      "text": "PyTorch. You know, our models are getting more \nsophisticated. The kind of assumptions that  ",
+      "offset": 4318.68,
+      "duration": 5.92
+    },
+    {
+      "lang": "en",
+      "text": "libraries like PyTorch make about what we want to \ndo, you know, increasingly less and less accurate.  ",
+      "offset": 4324.6,
+      "duration": 7.8
+    },
+    {
+      "lang": "en",
+      "text": "So we're having to do more and more of this stuff \nourselves nowadays in CUDA. And so I think it's a  ",
+      "offset": 4332.4,
+      "duration": 7.12
+    },
+    {
+      "lang": "en",
+      "text": "really valuable capability to have. Now, the other \nthing I mentioned is we did it all in Colab today,  ",
+      "offset": 4339.52,
+      "duration": 9.4
+    },
+    {
+      "lang": "en",
+      "text": "but we can also do things on our own machines \nif you have a GPU or on a cloud machine. And  ",
+      "offset": 4348.92,
+      "duration": 6.8
+    },
+    {
+      "lang": "en",
+      "text": "getting set up for this, again, it's much less \ncomplicated than you might expect. And in fact,  ",
+      "offset": 4355.72,
+      "duration": 6.24
+    },
+    {
+      "lang": "en",
+      "text": "I can show you it's basically like four lines of \ncode or four lines or three or four lines of bash  ",
+      "offset": 4361.96,
+      "duration": 6.24
+    },
+    {
+      "lang": "en",
+      "text": "script to get it all set up. It'll run on Windows \nor under WSL. It'll also run on Linux. Of course,  ",
+      "offset": 4368.2,
+      "duration": 6.72
+    },
+    {
+      "lang": "en",
+      "text": "Mac stuff doesn't really work on... CUDA \nstuff doesn't really work on Macs. They're  ",
+      "offset": 4374.92,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "not on Mac. Actually, I'll put a link to \nthis into the video notes. But for now,  ",
+      "offset": 4379.88,
+      "duration": 9.64
+    },
+    {
+      "lang": "en",
+      "text": "I'm just going to jump to a Twitter thread \nwhere I wrote this all down to show you all  ",
+      "offset": 4389.52,
+      "duration": 6.2
+    },
+    {
+      "lang": "en",
+      "text": "the steps. So the way to do it is to use something \ncalled Conda. Conda is something that very, very,  ",
+      "offset": 4395.72,
+      "duration": 8.32
+    },
+    {
+      "lang": "en",
+      "text": "very few people understand. A lot of people think \nit's like a replacement for like PIP or poetry or  ",
+      "offset": 4404.04,
+      "duration": 5.4
+    },
+    {
+      "lang": "en",
+      "text": "something. It's not. It's better to think of it as \na replacement for Docker. You can literally have  ",
+      "offset": 4409.44,
+      "duration": 5.48
+    },
+    {
+      "lang": "en",
+      "text": "multiple different versions of Python, multiple \ndifferent versions of CUDA, multiple different C++  ",
+      "offset": 4414.92,
+      "duration": 6.04
+    },
+    {
+      "lang": "en",
+      "text": "compilation systems all in parallel at the same \ntime on your machine and switch between them. You  ",
+      "offset": 4420.96,
+      "duration": 7.6
+    },
+    {
+      "lang": "en",
+      "text": "can only do this with Conda. And everything just \nworks. So you don't have to worry about all the  ",
+      "offset": 4428.56,
+      "duration": 7.2
+    },
+    {
+      "lang": "en",
+      "text": "confusing stuff around .run files or Ubuntu \npackages or anything like that. You can do  ",
+      "offset": 4435.76,
+      "duration": 5.48
+    },
+    {
+      "lang": "en",
+      "text": "everything with just Conda. You need to install \nConda. I've actually got a script which you just  ",
+      "offset": 4441.24,
+      "duration": 8.36
+    },
+    {
+      "lang": "en",
+      "text": "run the script. It's a tiny script, as you see. \nIf you just run the script, it'll automatically  ",
+      "offset": 4449.6,
+      "duration": 4.28
+    },
+    {
+      "lang": "en",
+      "text": "figure out which mini Conda you need. It'll \nautomatically figure out what shell you're on,  ",
+      "offset": 4453.88,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "and it'll just go ahead and download it and \ninstall it for you. OK, so run that script,  ",
+      "offset": 4458.12,
+      "duration": 5.4
+    },
+    {
+      "lang": "en",
+      "text": "restart your terminal. Now you've got Conda. Step \ntwo is find out what version of CUDA PyTorch wants  ",
+      "offset": 4463.52,
+      "duration": 10.04
+    },
+    {
+      "lang": "en",
+      "text": "you to have. So if I click Linux, Conda, CUDA \n12.1 is the latest. So then step three is run this  ",
+      "offset": 4473.56,
+      "duration": 13.08
+    },
+    {
+      "lang": "en",
+      "text": "shell command, replacing 12.1 with whatever the \ncurrent version of PyTorch is. It's actually still  ",
+      "offset": 4486.64,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "12.1 for me at this point. And that will install \neverything. All the stuff you need to profile,  ",
+      "offset": 4492.16,
+      "duration": 8.16
+    },
+    {
+      "lang": "en",
+      "text": "debug, build, etc. All the NVIDIA tools you \nneed, the full suite, will all be installed,  ",
+      "offset": 4500.32,
+      "duration": 7
+    },
+    {
+      "lang": "en",
+      "text": "and it's coming directly from NVIDIA so you'll \nhave the proper versions. As I said, you can have  ",
+      "offset": 4507.32,
+      "duration": 5.24
+    },
+    {
+      "lang": "en",
+      "text": "multiple versions installed at once in different \nenvironments. No problem at all. And then finally,  ",
+      "offset": 4512.56,
+      "duration": 6.12
+    },
+    {
+      "lang": "en",
+      "text": "install PyTorch. And this command here will \ninstall PyTorch. For some reason I wrote nightly  ",
+      "offset": 4518.68,
+      "duration": 6.52
+    },
+    {
+      "lang": "en",
+      "text": "here. You don't need the nightly. Just remove dash \nnightly. So this will install the latest version  ",
+      "offset": 4525.2,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "of PyTorch using the NVIDIA CUDA stuff that you \njust installed. If you've used Conda before and  ",
+      "offset": 4529.44,
+      "duration": 7.08
+    },
+    {
+      "lang": "en",
+      "text": "it was really slow, that's because it used to \nuse a different solver which was thousands or  ",
+      "offset": 4536.52,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "tens of thousands of times slower than the modern \none. It's just been added and made default in the  ",
+      "offset": 4542.28,
+      "duration": 5.24
+    },
+    {
+      "lang": "en",
+      "text": "last couple of months. So nowadays this should \nall run very fast. And as I said, it'll run under  ",
+      "offset": 4547.52,
+      "duration": 6.92
+    },
+    {
+      "lang": "en",
+      "text": "WSL on Windows. It'll run on Ubuntu. It'll run \non Fedora. It'll run on Debian. It'll all just  ",
+      "offset": 4554.44,
+      "duration": 7.88
+    },
+    {
+      "lang": "en",
+      "text": "work. So that's how I strongly recommend getting \nyourself set up for local development. You don't  ",
+      "offset": 4562.32,
+      "duration": 10.88
+    },
+    {
+      "lang": "en",
+      "text": "need to worry about using Docker. As I said, \nyou can switch between different CUDA versions,  ",
+      "offset": 4573.2,
+      "duration": 5.32
+    },
+    {
+      "lang": "en",
+      "text": "different Python versions, different compilers and \nso forth without having to worry about any of the  ",
+      "offset": 4578.52,
+      "duration": 4.6
+    },
+    {
+      "lang": "en",
+      "text": "Docker stuff. And it's also efficient enough \nthat if you've got the same libraries and so  ",
+      "offset": 4583.12,
+      "duration": 5.84
+    },
+    {
+      "lang": "en",
+      "text": "forth installed in multiple environments, it'll \nhard link them. So it won't even use additional  ",
+      "offset": 4588.96,
+      "duration": 5.64
+    },
+    {
+      "lang": "en",
+      "text": "hard drive space. So it's also very efficient. \nGreat. So that's how you can get started on  ",
+      "offset": 4594.6,
+      "duration": 7.28
+    },
+    {
+      "lang": "en",
+      "text": "your own machine or on the cloud or whatever. So \nhopefully you'll find that helpful as well. All  ",
+      "offset": 4601.88,
+      "duration": 7.12
+    },
+    {
+      "lang": "en",
+      "text": "right. Thanks very much for watching. I hope you \nfound this useful and I look forward to hearing  ",
+      "offset": 4609,
+      "duration": 7.56
+    },
+    {
+      "lang": "en",
+      "text": "about what you create with CUDA. In terms of going \nto the next steps, check out the other CUDA mode  ",
+      "offset": 4616.56,
+      "duration": 8.44
+    },
+    {
+      "lang": "en",
+      "text": "lectures. I will link to them. And I would also \nrecommend trying out some projects of your own. So  ",
+      "offset": 4625,
+      "duration": 8.2
+    },
+    {
+      "lang": "en",
+      "text": "for example, you could try to implement something \nlike 4-bit quantization or Flash Attention or  ",
+      "offset": 4633.2,
+      "duration": 11
+    },
+    {
+      "lang": "en",
+      "text": "anything like that. Now those are pretty big \nprojects, but you can try to break them up into  ",
+      "offset": 4644.2,
+      "duration": 4.44
+    },
+    {
+      "lang": "en",
+      "text": "smaller things that you build up one step at a \ntime. And of course, look at other people's code.  ",
+      "offset": 4648.64,
+      "duration": 6.56
+    },
+    {
+      "lang": "en",
+      "text": "So look at the implementation of Flash Attention. \nLook at the implementation of bits and bytes. Look  ",
+      "offset": 4655.2,
+      "duration": 5.84
+    },
+    {
+      "lang": "en",
+      "text": "at the implementation of GPTQ and so forth. The \nmore time you spend reading other people's code,  ",
+      "offset": 4661.04,
+      "duration": 7.12
+    },
+    {
+      "lang": "en",
+      "text": "the better. All right. I hope you found this \nuseful and thank you very much for watching.",
+      "offset": 4668.16,
+      "duration": 7.44
+    }
+  ],
+  "cleanText": null,
+  "dumpedAt": "2025-07-21T18:43:24.823Z"
+}

@@ -1,0 +1,5536 @@
+{
+  "episodeId": "CCaUnet8SB4",
+  "channelSlug": "@syntaxfm",
+  "title": "How to Build MCP Servers",
+  "publishedAt": "2025-07-16T11:00:20.000Z",
+  "rawLines": [
+    {
+      "lang": "en",
+      "text": "Welcome to Syntax. Today we got an",
+      "offset": 0.32,
+      "duration": 5.039
+    },
+    {
+      "lang": "en",
+      "text": "episode on building MCP servers. We",
+      "offset": 1.839,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "talked about MCP I don't know maybe a",
+      "offset": 5.359,
+      "duration": 4.961
+    },
+    {
+      "lang": "en",
+      "text": "couple months ago and so much has",
+      "offset": 7.839,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "changed since that episode that I",
+      "offset": 10.32,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "thought we need to do a brand new",
+      "offset": 12.719,
+      "duration": 3.921
+    },
+    {
+      "lang": "en",
+      "text": "episode on it explaining what it is,",
+      "offset": 14.96,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "explaining all the updates to it and",
+      "offset": 16.64,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "kind of diving into all of the different",
+      "offset": 18.4,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "pieces and tools and and helpful things",
+      "offset": 20.48,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "around it. MCP is the model context",
+      "offset": 22.88,
+      "duration": 6.719
+    },
+    {
+      "lang": "en",
+      "text": "protocol. It's for exposing tools to AI.",
+      "offset": 25.76,
+      "duration": 5.359
+    },
+    {
+      "lang": "en",
+      "text": "We'll talk a little bit more about that,",
+      "offset": 29.599,
+      "duration": 2.881
+    },
+    {
+      "lang": "en",
+      "text": "but it's going to be a great episode.",
+      "offset": 31.119,
+      "duration": 2.721
+    },
+    {
+      "lang": "en",
+      "text": "You're certainly not going to want to",
+      "offset": 32.48,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "miss this one. What's up, Scott?",
+      "offset": 33.84,
+      "duration": 6.719
+    },
+    {
+      "lang": "en",
+      "text": "Oh, hey, man. Uh, I'm sick. Uh, all this",
+      "offset": 36.16,
+      "duration": 6.96
+    },
+    {
+      "lang": "en",
+      "text": "stuff. There's There's been somebody",
+      "offset": 40.559,
+      "duration": 5.361
+    },
+    {
+      "lang": "en",
+      "text": "jackhammering I'm going to say this.",
+      "offset": 43.12,
+      "duration": 5.599
+    },
+    {
+      "lang": "en",
+      "text": "Somebody's jackhammering a patio for",
+      "offset": 45.92,
+      "duration": 5.68
+    },
+    {
+      "lang": "en",
+      "text": "like two straight days now. And this is",
+      "offset": 48.719,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "finally the first little window where",
+      "offset": 51.6,
+      "duration": 3.439
+    },
+    {
+      "lang": "en",
+      "text": "there's been some silence. I mean, they",
+      "offset": 53.199,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "were jackhammering at like 6:00 p.m. We",
+      "offset": 55.039,
+      "duration": 3.761
+    },
+    {
+      "lang": "en",
+      "text": "were going to eat out outside and it was",
+      "offset": 57.199,
+      "duration": 4.481
+    },
+    {
+      "lang": "en",
+      "text": "still going on. I don't understand how",
+      "offset": 58.8,
+      "duration": 4.079
+    },
+    {
+      "lang": "en",
+      "text": "you could spend that much time",
+      "offset": 61.68,
+      "duration": 2.64
+    },
+    {
+      "lang": "en",
+      "text": "jackhammering a patio.",
+      "offset": 62.879,
+      "duration": 3.041
+    },
+    {
+      "lang": "en",
+      "text": "That's an unreasonable time to",
+      "offset": 64.32,
+      "duration": 2.96
+    },
+    {
+      "lang": "en",
+      "text": "jackhammer. Yeah.",
+      "offset": 65.92,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "Yeah. You can't do that. You can't when",
+      "offset": 67.28,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "people are trying to eat dinner and",
+      "offset": 69.36,
+      "duration": 3.759
+    },
+    {
+      "lang": "en",
+      "text": "you're jackhammering. So, yeah. Not not",
+      "offset": 70.72,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "a fan of that. And uh yeah, so my",
+      "offset": 73.119,
+      "duration": 3.441
+    },
+    {
+      "lang": "en",
+      "text": "besides that, I've just been like",
+      "offset": 75.28,
+      "duration": 2.879
+    },
+    {
+      "lang": "en",
+      "text": "banging my head against some code stuff",
+      "offset": 76.56,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "and I'm sure the jackhammering has not",
+      "offset": 78.159,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "been like helping my brain function",
+      "offset": 80.64,
+      "duration": 4.479
+    },
+    {
+      "lang": "en",
+      "text": "today. Uh, so that's where I'm at. Yeah.",
+      "offset": 82.479,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "One of those days, right?",
+      "offset": 85.119,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "Well, I'm gonna fill you with MCP",
+      "offset": 86.159,
+      "duration": 4.801
+    },
+    {
+      "lang": "en",
+      "text": "nuggets and I I feel like you'll be",
+      "offset": 88.479,
+      "duration": 5.041
+    },
+    {
+      "lang": "en",
+      "text": "you'll be back to to your bright self by",
+      "offset": 90.96,
+      "duration": 3.839
+    },
+    {
+      "lang": "en",
+      "text": "the end of this.",
+      "offset": 93.52,
+      "duration": 2.88
+    },
+    {
+      "lang": "en",
+      "text": "Love that. Yes.",
+      "offset": 94.799,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "So, all right, let's let's get in on",
+      "offset": 96.4,
+      "duration": 5.84
+    },
+    {
+      "lang": "en",
+      "text": "into it. So, MCP, it's a standard for",
+      "offset": 98.159,
+      "duration": 9.6
+    },
+    {
+      "lang": "en",
+      "text": "being able to surface tools to AI. Um so",
+      "offset": 102.24,
+      "duration": 8.239
+    },
+    {
+      "lang": "en",
+      "text": "whether you are using like an IDE editor",
+      "offset": 107.759,
+      "duration": 5.441
+    },
+    {
+      "lang": "en",
+      "text": "like VS code or cursor or whether you're",
+      "offset": 110.479,
+      "duration": 6.081
+    },
+    {
+      "lang": "en",
+      "text": "using a chat application uh like claw",
+      "offset": 113.2,
+      "duration": 6.8
+    },
+    {
+      "lang": "en",
+      "text": "desktop or whether you are building your",
+      "offset": 116.56,
+      "duration": 6.8
+    },
+    {
+      "lang": "en",
+      "text": "own thing wi with AI libraries like the",
+      "offset": 120,
+      "duration": 6.719
+    },
+    {
+      "lang": "en",
+      "text": "open AI TypeScript library all of those",
+      "offset": 123.36,
+      "duration": 6.16
+    },
+    {
+      "lang": "en",
+      "text": "things have the ability to surface",
+      "offset": 126.719,
+      "duration": 5.281
+    },
+    {
+      "lang": "en",
+      "text": "additional tools to it via something",
+      "offset": 129.52,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "called MCP. Um, and I'll I'll give you",
+      "offset": 132,
+      "duration": 5.599
+    },
+    {
+      "lang": "en",
+      "text": "an example of of where I ran into it",
+      "offset": 134.64,
+      "duration": 7.04
+    },
+    {
+      "lang": "en",
+      "text": "recently. I I built my second MCP server",
+      "offset": 137.599,
+      "duration": 5.841
+    },
+    {
+      "lang": "en",
+      "text": "a couple days ago, so I'm feeling",
+      "offset": 141.68,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "feeling fresh on that, and I used a lot",
+      "offset": 143.44,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "of the the new features that have come",
+      "offset": 146.08,
+      "duration": 4.159
+    },
+    {
+      "lang": "en",
+      "text": "out since we did the first episode on",
+      "offset": 147.92,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "it. So, the application that I was",
+      "offset": 150.239,
+      "duration": 3.521
+    },
+    {
+      "lang": "en",
+      "text": "building was sort of like this little",
+      "offset": 152.08,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "scratch pad that will will do",
+      "offset": 153.76,
+      "duration": 5.199
+    },
+    {
+      "lang": "en",
+      "text": "calculations for you. So, I find myself",
+      "offset": 156.8,
+      "duration": 4.719
+    },
+    {
+      "lang": "en",
+      "text": "often doing things like just like",
+      "offset": 158.959,
+      "duration": 6.161
+    },
+    {
+      "lang": "en",
+      "text": "writing notes in a text editor and then",
+      "offset": 161.519,
+      "duration": 5.601
+    },
+    {
+      "lang": "en",
+      "text": "having to do quick little math, you",
+      "offset": 165.12,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "know, like uh uh this thing costs $100",
+      "offset": 167.12,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "and then you add on tax and shipping and",
+      "offset": 170.48,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "then I'll divide it by there's two of",
+      "offset": 172.4,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "them. You divide by two or all right, we",
+      "offset": 173.84,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "have to record six episodes and and",
+      "offset": 177.2,
+      "duration": 5.679
+    },
+    {
+      "lang": "en",
+      "text": "that's this many hours on average.",
+      "offset": 179.84,
+      "duration": 5.679
+    },
+    {
+      "lang": "en",
+      "text": "they're between this and this and I find",
+      "offset": 182.879,
+      "duration": 4.401
+    },
+    {
+      "lang": "en",
+      "text": "myself just having to like copy paste",
+      "offset": 185.519,
+      "duration": 3.601
+    },
+    {
+      "lang": "en",
+      "text": "that into a calculator or something like",
+      "offset": 187.28,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "that and I'm like I want like a natural",
+      "offset": 189.12,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "language UI for doing currency",
+      "offset": 190.8,
+      "duration": 5.6
+    },
+    {
+      "lang": "en",
+      "text": "conversion and and addition and and",
+      "offset": 194.08,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "whatnot. So there's a couple apps out",
+      "offset": 196.4,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "there that do it but none of them have",
+      "offset": 199.84,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "are using AI and I thought AI is so good",
+      "offset": 201.28,
+      "duration": 4.959
+    },
+    {
+      "lang": "en",
+      "text": "at natural language processing. So I I",
+      "offset": 204,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "built it up and it worked really well",
+      "offset": 206.239,
+      "duration": 5.121
+    },
+    {
+      "lang": "en",
+      "text": "except there were two problems. First of",
+      "offset": 209.12,
+      "duration": 5.119
+    },
+    {
+      "lang": "en",
+      "text": "all, AI sucks at math. Um, it was just",
+      "offset": 211.36,
+      "duration": 4.239
+    },
+    {
+      "lang": "en",
+      "text": "imagining",
+      "offset": 214.239,
+      "duration": 1.841
+    },
+    {
+      "lang": "en",
+      "text": "Yeah.",
+      "offset": 215.599,
+      "duration": 2.161
+    },
+    {
+      "lang": "en",
+      "text": "totals up. Like some of them were",
+      "offset": 216.08,
+      "duration": 3.04
+    },
+    {
+      "lang": "en",
+      "text": "correct and then some of them were just",
+      "offset": 217.76,
+      "duration": 2.559
+    },
+    {
+      "lang": "en",
+      "text": "like, \"No, that's",
+      "offset": 219.12,
+      "duration": 2.8
+    },
+    {
+      "lang": "en",
+      "text": "that's not right. That's that's not",
+      "offset": 220.319,
+      "duration": 4.161
+    },
+    {
+      "lang": "en",
+      "text": "right at all.\" Or I would do things like",
+      "offset": 221.92,
+      "duration": 6.959
+    },
+    {
+      "lang": "en",
+      "text": "t-shirt vendor one has a $50 setup and",
+      "offset": 224.48,
+      "duration": 7.52
+    },
+    {
+      "lang": "en",
+      "text": "then at a 100 t-shirts it would cost $7",
+      "offset": 228.879,
+      "duration": 5.681
+    },
+    {
+      "lang": "en",
+      "text": "per t-shirt and at 500 t-shirts it it",
+      "offset": 232,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "would cost $555. And then vendor number",
+      "offset": 234.56,
+      "duration": 4.319
+    },
+    {
+      "lang": "en",
+      "text": "two, I would go ahead and give all the",
+      "offset": 237.36,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "stats. which one is the better deal? And",
+      "offset": 238.879,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "it would go ahead and do all the math",
+      "offset": 241.2,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "for me, find the averages, and then it",
+      "offset": 242.879,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "would tell me at 100 and 500 t-shirts,",
+      "offset": 245.36,
+      "duration": 5.439
+    },
+    {
+      "lang": "en",
+      "text": "which was the better vendor. And it",
+      "offset": 248.239,
+      "duration": 4.161
+    },
+    {
+      "lang": "en",
+      "text": "sounds like a math problem from like a",
+      "offset": 250.799,
+      "duration": 3.201
+    },
+    {
+      "lang": "en",
+      "text": "textbook,",
+      "offset": 252.4,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "but it was just imagining the actual",
+      "offset": 254,
+      "duration": 3.759
+    },
+    {
+      "lang": "en",
+      "text": "answers, you know, and I was like, this",
+      "offset": 256.16,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "is kind of frustrating. Be so what you",
+      "offset": 257.759,
+      "duration": 5.761
+    },
+    {
+      "lang": "en",
+      "text": "have to do in these situations where AI",
+      "offset": 260,
+      "duration": 6.08
+    },
+    {
+      "lang": "en",
+      "text": "doesn't necessarily excel at doing these",
+      "offset": 263.52,
+      "duration": 4.399
+    },
+    {
+      "lang": "en",
+      "text": "things is you have to give it tools,",
+      "offset": 266.08,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "right? And one thing that AI sucks at is",
+      "offset": 267.919,
+      "duration": 5.921
+    },
+    {
+      "lang": "en",
+      "text": "math. So I implemented something called",
+      "offset": 269.84,
+      "duration": 6.079
+    },
+    {
+      "lang": "en",
+      "text": "tool calling which is not MCP. I'll talk",
+      "offset": 273.84,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "about the differences later on in the",
+      "offset": 275.919,
+      "duration": 4.641
+    },
+    {
+      "lang": "en",
+      "text": "show. And basically you give it access",
+      "offset": 277.68,
+      "duration": 5.68
+    },
+    {
+      "lang": "en",
+      "text": "to a tool that can do math. So I exposed",
+      "offset": 280.56,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "it. It's called math.js library. And",
+      "offset": 283.36,
+      "duration": 5.839
+    },
+    {
+      "lang": "en",
+      "text": "then what it does is anytime it needs to",
+      "offset": 285.84,
+      "duration": 6.639
+    },
+    {
+      "lang": "en",
+      "text": "to do math, it simply just returns the",
+      "offset": 289.199,
+      "duration": 5.601
+    },
+    {
+      "lang": "en",
+      "text": "function call that needs to be run, it",
+      "offset": 292.479,
+      "duration": 3.761
+    },
+    {
+      "lang": "en",
+      "text": "runs that function. and then it passes",
+      "offset": 294.8,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "it back to the A with the actual answer.",
+      "offset": 296.24,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "So we're actually like evaluating the",
+      "offset": 298.16,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "math not with AI but with with a",
+      "offset": 300.4,
+      "duration": 4.799
+    },
+    {
+      "lang": "en",
+      "text": "computer.",
+      "offset": 303.36,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "Uh so that worked really well and then",
+      "offset": 305.199,
+      "duration": 4.481
+    },
+    {
+      "lang": "en",
+      "text": "the next step I needed was like I needed",
+      "offset": 307.52,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "like currency conversion you know and",
+      "offset": 309.68,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "but I needed like real up-to-date rates",
+      "offset": 311.6,
+      "duration": 6.72
+    },
+    {
+      "lang": "en",
+      "text": "and the AI doesn't necessarily know what",
+      "offset": 314.96,
+      "duration": 6.16
+    },
+    {
+      "lang": "en",
+      "text": "the the currency rates are. So what I",
+      "offset": 318.32,
+      "duration": 5.92
+    },
+    {
+      "lang": "en",
+      "text": "did is I created a MCP server that will",
+      "offset": 321.12,
+      "duration": 7.28
+    },
+    {
+      "lang": "en",
+      "text": "expose a several tools for for getting",
+      "offset": 324.24,
+      "duration": 6.48
+    },
+    {
+      "lang": "en",
+      "text": "rates um for converting currency for",
+      "offset": 328.4,
+      "duration": 5.6
+    },
+    {
+      "lang": "en",
+      "text": "getting historical rates. So when the AI",
+      "offset": 330.72,
+      "duration": 6.72
+    },
+    {
+      "lang": "en",
+      "text": "realizes it needs to fetch a rate or do",
+      "offset": 334,
+      "duration": 6.8
+    },
+    {
+      "lang": "en",
+      "text": "some do some conversions, it can simply",
+      "offset": 337.44,
+      "duration": 5.759
+    },
+    {
+      "lang": "en",
+      "text": "use the tools that I have supplied to it",
+      "offset": 340.8,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "via MCP. So, here I have this little MCP",
+      "offset": 343.199,
+      "duration": 5.761
+    },
+    {
+      "lang": "en",
+      "text": "jam, which is a Yeah, cool. Yes. answer",
+      "offset": 346.16,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "or question there, student.",
+      "offset": 348.96,
+      "duration": 2.959
+    },
+    {
+      "lang": "en",
+      "text": "What I don't want to do, I don't want to",
+      "offset": 350.72,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "interrupt you. I How does the AI know",
+      "offset": 351.919,
+      "duration": 6.321
+    },
+    {
+      "lang": "en",
+      "text": "when to use one of these specific tools?",
+      "offset": 354.32,
+      "duration": 6.64
+    },
+    {
+      "lang": "en",
+      "text": "Are you having to pass specific keywords",
+      "offset": 358.24,
+      "duration": 5.6
+    },
+    {
+      "lang": "en",
+      "text": "or is context enough?",
+      "offset": 360.96,
+      "duration": 5.359
+    },
+    {
+      "lang": "en",
+      "text": "Yeah. So, when you're loading a tool,",
+      "offset": 363.84,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "when you're defining a tool, you you",
+      "offset": 366.319,
+      "duration": 3.921
+    },
+    {
+      "lang": "en",
+      "text": "give it a description. Actually,",
+      "offset": 368,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "hilariously enough, I was just you just",
+      "offset": 370.24,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "asked me that question and I went to",
+      "offset": 372.16,
+      "duration": 3.28
+    },
+    {
+      "lang": "en",
+      "text": "show you my description. I don't even",
+      "offset": 373.68,
+      "duration": 4.959
+    },
+    {
+      "lang": "en",
+      "text": "have descriptions for the four tools,",
+      "offset": 375.44,
+      "duration": 6.08
+    },
+    {
+      "lang": "en",
+      "text": "but if you go into like the Sentry uh",
+      "offset": 378.639,
+      "duration": 5.361
+    },
+    {
+      "lang": "en",
+      "text": "MCP and load all of their tools, you can",
+      "offset": 381.52,
+      "duration": 5.84
+    },
+    {
+      "lang": "en",
+      "text": "see here that there's like a find teams",
+      "offset": 384,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "tool here and it says find teams in",
+      "offset": 387.36,
+      "duration": 3.679
+    },
+    {
+      "lang": "en",
+      "text": "organization sentry. Use this tool when",
+      "offset": 389.12,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "you need to view all teams in a sentry",
+      "offset": 391.039,
+      "duration": 4.561
+    },
+    {
+      "lang": "en",
+      "text": "organization. Find the teams slug to aid",
+      "offset": 392.88,
+      "duration": 4.319
+    },
+    {
+      "lang": "en",
+      "text": "in other tool requests.",
+      "offset": 395.6,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "that both the name of it obviously was",
+      "offset": 397.199,
+      "duration": 4.401
+    },
+    {
+      "lang": "en",
+      "text": "enough for me um as well as the",
+      "offset": 399.28,
+      "duration": 5.68
+    },
+    {
+      "lang": "en",
+      "text": "description will be made available to",
+      "offset": 401.6,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "the AI and then the AI will be able to",
+      "offset": 404.96,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "decide when it wants to use a specific",
+      "offset": 407.36,
+      "duration": 5.839
+    },
+    {
+      "lang": "en",
+      "text": "tool um and wants to run it.",
+      "offset": 410.4,
+      "duration": 4.799
+    },
+    {
+      "lang": "en",
+      "text": "Okay. I've always found that it'll be a",
+      "offset": 413.199,
+      "duration": 3.681
+    },
+    {
+      "lang": "en",
+      "text": "little bit interesting with MCP. Maybe",
+      "offset": 415.199,
+      "duration": 4.081
+    },
+    {
+      "lang": "en",
+      "text": "it's gotten easier to always get the the",
+      "offset": 416.88,
+      "duration": 4.879
+    },
+    {
+      "lang": "en",
+      "text": "right call. I know this is calling",
+      "offset": 419.28,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "tools.",
+      "offset": 421.759,
+      "duration": 3.28
+    },
+    {
+      "lang": "en",
+      "text": "Yeah. Yeah. because you I think what",
+      "offset": 422.96,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "what can happen is if when you have too",
+      "offset": 425.039,
+      "duration": 4.321
+    },
+    {
+      "lang": "en",
+      "text": "many uh tools you just like load it up",
+      "offset": 426.96,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "and give it a bazillion it won't",
+      "offset": 429.36,
+      "duration": 6.16
+    },
+    {
+      "lang": "en",
+      "text": "necessarily know which one to run",
+      "offset": 432.24,
+      "duration": 7.359
+    },
+    {
+      "lang": "en",
+      "text": "too many tools uh syntax the syntax uhfm",
+      "offset": 435.52,
+      "duration": 6.32
+    },
+    {
+      "lang": "en",
+      "text": "team",
+      "offset": 439.599,
+      "duration": 5.6
+    },
+    {
+      "lang": "en",
+      "text": "too many tools yes so that was the uh",
+      "offset": 441.84,
+      "duration": 5.359
+    },
+    {
+      "lang": "en",
+      "text": "MCP server that I made and I obviously",
+      "offset": 445.199,
+      "duration": 4.321
+    },
+    {
+      "lang": "en",
+      "text": "have a couple other MCP servers here we",
+      "offset": 447.199,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "got the Cloudflare worker MCP server",
+      "offset": 449.52,
+      "duration": 4.399
+    },
+    {
+      "lang": "en",
+      "text": "what this will do is it to authenticate,",
+      "offset": 451.599,
+      "duration": 4.801
+    },
+    {
+      "lang": "en",
+      "text": "which is a new part of the MCP spec that",
+      "offset": 453.919,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "we did not cover last time. So, the",
+      "offset": 456.4,
+      "duration": 6.16
+    },
+    {
+      "lang": "en",
+      "text": "ability to use OOTH flows inside of an",
+      "offset": 459.039,
+      "duration": 6.801
+    },
+    {
+      "lang": "en",
+      "text": "MCP server is now possible, meaning that",
+      "offset": 462.56,
+      "duration": 5.6
+    },
+    {
+      "lang": "en",
+      "text": "you can hook it up to your Cloudflare or",
+      "offset": 465.84,
+      "duration": 5.199
+    },
+    {
+      "lang": "en",
+      "text": "your Sentry or whatever. And then when",
+      "offset": 468.16,
+      "duration": 5.439
+    },
+    {
+      "lang": "en",
+      "text": "you try to use that tool, you have to",
+      "offset": 471.039,
+      "duration": 4.641
+    },
+    {
+      "lang": "en",
+      "text": "first do that whole do you want to allow",
+      "offset": 473.599,
+      "duration": 3.841
+    },
+    {
+      "lang": "en",
+      "text": "this application? And you you click yes",
+      "offset": 475.68,
+      "duration": 4.639
+    },
+    {
+      "lang": "en",
+      "text": "and then it it will then connect it to",
+      "offset": 477.44,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "the thing that you have. So",
+      "offset": 480.319,
+      "duration": 3.28
+    },
+    {
+      "lang": "en",
+      "text": "authentication is something that is",
+      "offset": 481.68,
+      "duration": 5.84
+    },
+    {
+      "lang": "en",
+      "text": "relatively new as well as the transport",
+      "offset": 483.599,
+      "duration": 8
+    },
+    {
+      "lang": "en",
+      "text": "protocols. So there's two ways that MCP",
+      "offset": 487.52,
+      "duration": 7.04
+    },
+    {
+      "lang": "en",
+      "text": "currently works. The first one is via",
+      "offset": 491.599,
+      "duration": 6.16
+    },
+    {
+      "lang": "en",
+      "text": "standard IO, meaning that the MCP server",
+      "offset": 494.56,
+      "duration": 6.479
+    },
+    {
+      "lang": "en",
+      "text": "is going to be running locally on your",
+      "offset": 497.759,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "machine or on the same machine that the",
+      "offset": 501.039,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "AI process is running. So if you have",
+      "offset": 503.759,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "like a node script or something that's",
+      "offset": 506.319,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "that's handling incoming requests, you",
+      "offset": 508.319,
+      "duration": 5.921
+    },
+    {
+      "lang": "en",
+      "text": "might also have a MCP server running",
+      "offset": 510.479,
+      "duration": 6.48
+    },
+    {
+      "lang": "en",
+      "text": "that will be able to input and output",
+      "offset": 514.24,
+      "duration": 5.359
+    },
+    {
+      "lang": "en",
+      "text": "data. So that's that's standard IO. And",
+      "offset": 516.959,
+      "duration": 6.32
+    },
+    {
+      "lang": "en",
+      "text": "then the other way that MCP works is via",
+      "offset": 519.599,
+      "duration": 7.92
+    },
+    {
+      "lang": "en",
+      "text": "HTTP and server sentent events, which is",
+      "offset": 523.279,
+      "duration": 6.321
+    },
+    {
+      "lang": "en",
+      "text": "more probably what people listening to",
+      "offset": 527.519,
+      "duration": 3.841
+    },
+    {
+      "lang": "en",
+      "text": "this podcast are going to want to use",
+      "offset": 529.6,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "because we're we're web developers,",
+      "offset": 531.36,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "right? You want to be able to fire up a",
+      "offset": 533.04,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "server. You want to have URL endpoints",
+      "offset": 536,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "and then people can connect to it. So,",
+      "offset": 538.24,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "that's generally how I'm connecting to",
+      "offset": 540.32,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "all of these. You'll see I have this one",
+      "offset": 542.88,
+      "duration": 4.92
+    },
+    {
+      "lang": "en",
+      "text": "currency-mc.wwestboss.com.",
+      "offset": 544.8,
+      "duration": 3
+    },
+    {
+      "lang": "en",
+      "text": "Um, when it connects to that, you can",
+      "offset": 548.08,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "list all of the different tools that are",
+      "offset": 550.32,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "available as well as No, there we go.",
+      "offset": 552.72,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "They're they're listed as well as some",
+      "offset": 556.08,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "of the other things like resources and",
+      "offset": 558.48,
+      "duration": 3.28
+    },
+    {
+      "lang": "en",
+      "text": "prompts I'll talk about in just just a",
+      "offset": 559.92,
+      "duration": 6.88
+    },
+    {
+      "lang": "en",
+      "text": "second. So, HTTP MCP servers will either",
+      "offset": 561.76,
+      "duration": 7.199
+    },
+    {
+      "lang": "en",
+      "text": "return one of two things. First of all,",
+      "offset": 566.8,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "you you send a post request to it and",
+      "offset": 568.959,
+      "duration": 6.241
+    },
+    {
+      "lang": "en",
+      "text": "then what is returned is either going to",
+      "offset": 571.76,
+      "duration": 5.84
+    },
+    {
+      "lang": "en",
+      "text": "be just a JSON payload like give me a",
+      "offset": 575.2,
+      "duration": 4.639
+    },
+    {
+      "lang": "en",
+      "text": "list of all of your tools or let me go",
+      "offset": 577.6,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "ahead and use one of these tools. So,",
+      "offset": 579.839,
+      "duration": 4.881
+    },
+    {
+      "lang": "en",
+      "text": "for example, get latest rates. Go ahead",
+      "offset": 582.56,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "and run that tool. It's going to give me",
+      "offset": 584.72,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "a list of all the the rates, but you can",
+      "offset": 586.88,
+      "duration": 6.16
+    },
+    {
+      "lang": "en",
+      "text": "also change like the base currency. Go",
+      "offset": 590,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "ahead and rerun that and it will give me",
+      "offset": 593.04,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "the Canadian rates. So that will either",
+      "offset": 594.8,
+      "duration": 7.68
+    },
+    {
+      "lang": "en",
+      "text": "return just JSON back or it will give",
+      "offset": 599.04,
+      "duration": 6.72
+    },
+    {
+      "lang": "en",
+      "text": "you a stream which uses server sent",
+      "offset": 602.48,
+      "duration": 6.32
+    },
+    {
+      "lang": "en",
+      "text": "events. So it will either return",
+      "offset": 605.76,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "immediately or a stream that that then",
+      "offset": 608.8,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "can send data as it's made available",
+      "offset": 611.76,
+      "duration": 5.199
+    },
+    {
+      "lang": "en",
+      "text": "over server sentent events. Server",
+      "offset": 614.32,
+      "duration": 4.959
+    },
+    {
+      "lang": "en",
+      "text": "sentent events are kind of a an",
+      "offset": 616.959,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "interesting one because it requires your",
+      "offset": 619.279,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "server to be longunning. You know what's",
+      "offset": 622.079,
+      "duration": 5.681
+    },
+    {
+      "lang": "en",
+      "text": "not very good at being longunning",
+      "offset": 625.279,
+      "duration": 5.601
+    },
+    {
+      "lang": "en",
+      "text": "computers? Uh serverless.",
+      "offset": 627.76,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "Yes. Correct. Functions.",
+      "offset": 630.88,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "Turns out we kind of need servers. Yeah.",
+      "offset": 632.32,
+      "duration": 7.759
+    },
+    {
+      "lang": "en",
+      "text": "So the solution to that is uh Cloudflare",
+      "offset": 634.8,
+      "duration": 7.599
+    },
+    {
+      "lang": "en",
+      "text": "uses durable objects. Verscell uses",
+      "offset": 640.079,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "fluid compute. Um basically anyone who",
+      "offset": 642.399,
+      "duration": 6.721
+    },
+    {
+      "lang": "en",
+      "text": "is offering hosting of MCP servers will",
+      "offset": 645.279,
+      "duration": 5.921
+    },
+    {
+      "lang": "en",
+      "text": "either be running it on like a long-term",
+      "offset": 649.12,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "storage or they'll have some sort of",
+      "offset": 651.2,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "other way uh to get around that via",
+      "offset": 653.12,
+      "duration": 6.08
+    },
+    {
+      "lang": "en",
+      "text": "durable objects or or fluid compute.",
+      "offset": 656.56,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "this tool um that I'm using or if you",
+      "offset": 659.2,
+      "duration": 5.84
+    },
+    {
+      "lang": "en",
+      "text": "want to be able to explore an MCP, you",
+      "offset": 661.6,
+      "duration": 5.919
+    },
+    {
+      "lang": "en",
+      "text": "can use what's called the MCP inspector.",
+      "offset": 665.04,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "Um and that will allow you to connect to",
+      "offset": 667.519,
+      "duration": 8.241
+    },
+    {
+      "lang": "en",
+      "text": "an MP MCP server and you can view all of",
+      "offset": 670.56,
+      "duration": 7.44
+    },
+    {
+      "lang": "en",
+      "text": "the things that it has available to you.",
+      "offset": 675.76,
+      "duration": 5.199
+    },
+    {
+      "lang": "en",
+      "text": "So, uh tools is probably the the most",
+      "offset": 678,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "popular one, right? Like here's an",
+      "offset": 680.959,
+      "duration": 5.361
+    },
+    {
+      "lang": "en",
+      "text": "example MCP server that",
+      "offset": 683.04,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "will surface a whole bunch of of",
+      "offset": 686.32,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "different tools you know add print",
+      "offset": 688.56,
+      "duration": 5.519
+    },
+    {
+      "lang": "en",
+      "text": "environmental variables annotate message",
+      "offset": 690.88,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "but there's also things uh like",
+      "offset": 694.079,
+      "duration": 6.721
+    },
+    {
+      "lang": "en",
+      "text": "resources which are allowing you to",
+      "offset": 696.32,
+      "duration": 7.36
+    },
+    {
+      "lang": "en",
+      "text": "supply files um to an AI which is really",
+      "offset": 700.8,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "cool. So, last time we talked about MCP,",
+      "offset": 703.68,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "I said the server that I built was",
+      "offset": 705.76,
+      "duration": 4.319
+    },
+    {
+      "lang": "en",
+      "text": "something that would go off and download",
+      "offset": 708.24,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "an SVG icon and then",
+      "offset": 710.079,
+      "duration": 4.161
+    },
+    {
+      "lang": "en",
+      "text": "bring it back to the AI cuz that's",
+      "offset": 712.48,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "something the AI sucks at. It sucks at",
+      "offset": 714.24,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "getting icons, you know, like put a",
+      "offset": 717.04,
+      "duration": 3.359
+    },
+    {
+      "lang": "en",
+      "text": "Chrome icon here.",
+      "offset": 718.72,
+      "duration": 4.799
+    },
+    {
+      "lang": "en",
+      "text": "So, I I hooked it up to an API that went",
+      "offset": 720.399,
+      "duration": 5.041
+    },
+    {
+      "lang": "en",
+      "text": "ahead and downloaded the SVG icon and",
+      "offset": 723.519,
+      "duration": 5.201
+    },
+    {
+      "lang": "en",
+      "text": "brought it back. But at the time, not",
+      "offset": 725.44,
+      "duration": 7.199
+    },
+    {
+      "lang": "en",
+      "text": "many of these apps supported resources.",
+      "offset": 728.72,
+      "duration": 6.64
+    },
+    {
+      "lang": "en",
+      "text": "So there was actually no way to give the",
+      "offset": 732.639,
+      "duration": 5.521
+    },
+    {
+      "lang": "en",
+      "text": "AI the actual SVG icon. So what I did is",
+      "offset": 735.36,
+      "duration": 5.68
+    },
+    {
+      "lang": "en",
+      "text": "I told it just to like run a a cat",
+      "offset": 738.16,
+      "duration": 5.919
+    },
+    {
+      "lang": "en",
+      "text": "command and and pipe it into to an SVG.",
+      "offset": 741.04,
+      "duration": 5.68
+    },
+    {
+      "lang": "en",
+      "text": "Now you can give it you can properly",
+      "offset": 744.079,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "give it a file or an image or or any",
+      "offset": 746.72,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "other uh type of resource that you would",
+      "offset": 748.959,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "be expecting. So if you say like go off",
+      "offset": 751.76,
+      "duration": 3.519
+    },
+    {
+      "lang": "en",
+      "text": "and download",
+      "offset": 753.519,
+      "duration": 4.241
+    },
+    {
+      "lang": "en",
+      "text": "six sound effects of cats meowing, you",
+      "offset": 755.279,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "could write an MCP server that would",
+      "offset": 757.76,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "that could do that. That is uh something",
+      "offset": 759.839,
+      "duration": 5.921
+    },
+    {
+      "lang": "en",
+      "text": "I would like to do. I think uh if if I'm",
+      "offset": 762.24,
+      "duration": 5.599
+    },
+    {
+      "lang": "en",
+      "text": "reaching for AI, that's the type of",
+      "offset": 765.76,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "thing typically",
+      "offset": 767.839,
+      "duration": 2.721
+    },
+    {
+      "lang": "en",
+      "text": "that I might want to do. I want to have",
+      "offset": 769.2,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "some cats meowing. One one time uh at I",
+      "offset": 770.56,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "used to work at a a record label,",
+      "offset": 773.76,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "Ghostly International, for people who",
+      "offset": 775.68,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "might have heard of it.",
+      "offset": 777.68,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "We each used to get like there would be",
+      "offset": 779.12,
+      "duration": 4.399
+    },
+    {
+      "lang": "en",
+      "text": "a rotation of who got to pick the album",
+      "offset": 781.2,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "that we'd be listening to. And there's",
+      "offset": 783.519,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "like six people in the office. And",
+      "offset": 785.36,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "these, mind you, are very into music",
+      "offset": 786.959,
+      "duration": 5.68
+    },
+    {
+      "lang": "en",
+      "text": "people. I'm very into music person",
+      "offset": 790.8,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "myself, but these guys were very",
+      "offset": 792.639,
+      "duration": 4.081
+    },
+    {
+      "lang": "en",
+      "text": "serious. And it was often like, I'm",
+      "offset": 795.04,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "going to put on this album that is like",
+      "offset": 796.72,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "touching my soul right now. And uh one",
+      "offset": 798.88,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "time I put on the Beetle Barkers, which",
+      "offset": 801.76,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "was just dogs barking the Beatles. And I",
+      "offset": 804.32,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "think they all wanted to fire me uh",
+      "offset": 807.04,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "because we listened to the whole thing",
+      "offset": 808.8,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "and they were so",
+      "offset": 810.56,
+      "duration": 4.079
+    },
+    {
+      "lang": "en",
+      "text": "they were so mad about it by the end of",
+      "offset": 812.48,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "the by the like they were going to throw",
+      "offset": 814.639,
+      "duration": 4.721
+    },
+    {
+      "lang": "en",
+      "text": "me out the window. I I swear. But I",
+      "offset": 817.36,
+      "duration": 2.56
+    },
+    {
+      "lang": "en",
+      "text": "really liked it.",
+      "offset": 819.36,
+      "duration": 2
+    },
+    {
+      "lang": "en",
+      "text": "Oh, that's hilarious.",
+      "offset": 819.92,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "Yeah.",
+      "offset": 821.36,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "Another part of the MCP spec is the",
+      "offset": 823.44,
+      "duration": 5.839
+    },
+    {
+      "lang": "en",
+      "text": "ability to save reusable prompts. Um,",
+      "offset": 825.6,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "and this is really cool because like you",
+      "offset": 829.279,
+      "duration": 4.161
+    },
+    {
+      "lang": "en",
+      "text": "know how we have like cursor rules, you",
+      "offset": 831.6,
+      "duration": 3.28
+    },
+    {
+      "lang": "en",
+      "text": "know, like kind of things that you want",
+      "offset": 833.44,
+      "duration": 3.839
+    },
+    {
+      "lang": "en",
+      "text": "to tell the AI over and over again.",
+      "offset": 834.88,
+      "duration": 3.199
+    },
+    {
+      "lang": "en",
+      "text": "Yeah.",
+      "offset": 837.279,
+      "duration": 2.881
+    },
+    {
+      "lang": "en",
+      "text": "It's not the exact same thing, but the",
+      "offset": 838.079,
+      "duration": 6.961
+    },
+    {
+      "lang": "en",
+      "text": "idea of a server being able to ship",
+      "offset": 840.16,
+      "duration": 8.32
+    },
+    {
+      "lang": "en",
+      "text": "prompts along with other tools is is",
+      "offset": 845.04,
+      "duration": 5.68
+    },
+    {
+      "lang": "en",
+      "text": "really neat and really useful. So, for",
+      "offset": 848.48,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "example, on Cloudflare workers, if you",
+      "offset": 850.72,
+      "duration": 5.919
+    },
+    {
+      "lang": "en",
+      "text": "load their prompts, you see they have",
+      "offset": 853.76,
+      "duration": 5.759
+    },
+    {
+      "lang": "en",
+      "text": "workers prompt full and you can go ahead",
+      "offset": 856.639,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "and load that sucker. Basically, what",
+      "offset": 859.519,
+      "duration": 4.641
+    },
+    {
+      "lang": "en",
+      "text": "what they're going to return is this is",
+      "offset": 862.079,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "a massive prompt for working with",
+      "offset": 864.16,
+      "duration": 4.799
+    },
+    {
+      "lang": "en",
+      "text": "Cloudflare workers, right? It just says",
+      "offset": 867.199,
+      "duration": 2.561
+    },
+    {
+      "lang": "en",
+      "text": "like",
+      "offset": 868.959,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "use TypeScript unless explicitly told to",
+      "offset": 869.76,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "use JavaScript. Always add appropriate",
+      "offset": 872.399,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "types and interfaces. Use ES modules. So",
+      "offset": 875.12,
+      "duration": 5.519
+    },
+    {
+      "lang": "en",
+      "text": "like that's kind of like cursor code",
+      "offset": 877.519,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "guidelines, but then they also have",
+      "offset": 880.639,
+      "duration": 4.481
+    },
+    {
+      "lang": "en",
+      "text": "output formats, bunch of integrations,",
+      "offset": 882.079,
+      "duration": 6.641
+    },
+    {
+      "lang": "en",
+      "text": "and then all kinds of different code",
+      "offset": 885.12,
+      "duration": 5.519
+    },
+    {
+      "lang": "en",
+      "text": "examples that you could possibly have,",
+      "offset": 888.72,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "right? That's a massive prompt that's",
+      "offset": 890.639,
+      "duration": 5.601
+    },
+    {
+      "lang": "en",
+      "text": "going to help your your AI agent that's",
+      "offset": 892.32,
+      "duration": 6.24
+    },
+    {
+      "lang": "en",
+      "text": "generating code to generate code that is",
+      "offset": 896.24,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "much more in line with it. Um, so they",
+      "offset": 898.56,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "provide those prompts because if you",
+      "offset": 901.68,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "were to tell the AI agent, hey, create a",
+      "offset": 903.68,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "Cloudflare worker that does X, Y, and Z,",
+      "offset": 906.24,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "chances are it's going to go ahead and",
+      "offset": 908.72,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "grab the prompt for that Cloudflare",
+      "offset": 911.04,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "worker because it now knows I'm building",
+      "offset": 914,
+      "duration": 2.8
+    },
+    {
+      "lang": "en",
+      "text": "that,",
+      "offset": 915.76,
+      "duration": 3.28
+    },
+    {
+      "lang": "en",
+      "text": "download it, and then put that as part",
+      "offset": 916.8,
+      "duration": 5.599
+    },
+    {
+      "lang": "en",
+      "text": "of the the prompt before it goes off. So",
+      "offset": 919.04,
+      "duration": 7.599
+    },
+    {
+      "lang": "en",
+      "text": "this like MCP Jam, MCP inspector, these",
+      "offset": 922.399,
+      "duration": 6.321
+    },
+    {
+      "lang": "en",
+      "text": "are tools that are just for exploring",
+      "offset": 926.639,
+      "duration": 3.841
+    },
+    {
+      "lang": "en",
+      "text": "it. This is not actually something that",
+      "offset": 928.72,
+      "duration": 3.359
+    },
+    {
+      "lang": "en",
+      "text": "you would you would be using it",
+      "offset": 930.48,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "directly. Like I said earlier, the way",
+      "offset": 932.079,
+      "duration": 5.361
+    },
+    {
+      "lang": "en",
+      "text": "that it generally would work is you",
+      "offset": 934.72,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "would add these MCPS to your chat",
+      "offset": 937.44,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "application. You would add it to your",
+      "offset": 940.48,
+      "duration": 5.919
+    },
+    {
+      "lang": "en",
+      "text": "your cursor, your VS code IDE, anything",
+      "offset": 942.88,
+      "duration": 5.84
+    },
+    {
+      "lang": "en",
+      "text": "that interacts with ID. In my case, I",
+      "offset": 946.399,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "was using the OpenAI TypeScript SDK. And",
+      "offset": 948.72,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "in order to surface this currency",
+      "offset": 952.399,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "conversion, you simply just add it as a",
+      "offset": 954.72,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "MCP. And then when the AI goes off and",
+      "offset": 957.279,
+      "duration": 6.161
+    },
+    {
+      "lang": "en",
+      "text": "and runs it, it says, \"Oh,",
+      "offset": 960.72,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "that's neat. I have access to these",
+      "offset": 963.44,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "tools, right?\" And if you're using chat",
+      "offset": 965.12,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "GPT, you you can tell that it like",
+      "offset": 967.04,
+      "duration": 4.239
+    },
+    {
+      "lang": "en",
+      "text": "sometimes it just searches the web,",
+      "offset": 969.36,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "right? That's a tool that they have",
+      "offset": 971.279,
+      "duration": 4.401
+    },
+    {
+      "lang": "en",
+      "text": "integrated into it. So, it knows it it",
+      "offset": 973.6,
+      "duration": 5.359
+    },
+    {
+      "lang": "en",
+      "text": "can go ahead and and do these things.",
+      "offset": 975.68,
+      "duration": 5.68
+    },
+    {
+      "lang": "en",
+      "text": "Actually coding these tools. Let's talk",
+      "offset": 978.959,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "about that. Now, why that what that",
+      "offset": 981.36,
+      "duration": 4.159
+    },
+    {
+      "lang": "en",
+      "text": "actually looks like. The way that it",
+      "offset": 983.839,
+      "duration": 5.281
+    },
+    {
+      "lang": "en",
+      "text": "works is you can fire up a um MCP",
+      "offset": 985.519,
+      "duration": 6.081
+    },
+    {
+      "lang": "en",
+      "text": "server. This this one in my case is",
+      "offset": 989.12,
+      "duration": 6.8
+    },
+    {
+      "lang": "en",
+      "text": "using the um MCP server from uh",
+      "offset": 991.6,
+      "duration": 7.12
+    },
+    {
+      "lang": "en",
+      "text": "Anthropic. They're the the makers of the",
+      "offset": 995.92,
+      "duration": 6.08
+    },
+    {
+      "lang": "en",
+      "text": "spec. Um and then in order to actually",
+      "offset": 998.72,
+      "duration": 6.64
+    },
+    {
+      "lang": "en",
+      "text": "make it hostable and long running um I'm",
+      "offset": 1002,
+      "duration": 6.8
+    },
+    {
+      "lang": "en",
+      "text": "using the Cloudflare agents MCP that",
+      "offset": 1005.36,
+      "duration": 6.08
+    },
+    {
+      "lang": "en",
+      "text": "just extends that. But most of this code",
+      "offset": 1008.8,
+      "duration": 6.159
+    },
+    {
+      "lang": "en",
+      "text": "is going to be standard MCP spec. And",
+      "offset": 1011.44,
+      "duration": 6.319
+    },
+    {
+      "lang": "en",
+      "text": "then you simply just when it fires up,",
+      "offset": 1014.959,
+      "duration": 5.281
+    },
+    {
+      "lang": "en",
+      "text": "you can add resources or prompts. In my",
+      "offset": 1017.759,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "case, I'm just adding tools. So, uh,",
+      "offset": 1020.24,
+      "duration": 6.24
+    },
+    {
+      "lang": "en",
+      "text": "convert currency or get latest rates.",
+      "offset": 1023.279,
+      "duration": 7.28
+    },
+    {
+      "lang": "en",
+      "text": "And then you give it a schema. Now, the",
+      "offset": 1026.48,
+      "duration": 6.16
+    },
+    {
+      "lang": "en",
+      "text": "schema is really important because it",
+      "offset": 1030.559,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "schema it does several things, right? it",
+      "offset": 1032.64,
+      "duration": 6.96
+    },
+    {
+      "lang": "en",
+      "text": "it tells the AI how to give it the",
+      "offset": 1035.439,
+      "duration": 7.041
+    },
+    {
+      "lang": "en",
+      "text": "information right because the AI has to",
+      "offset": 1039.6,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "know how to structure the input it does",
+      "offset": 1042.48,
+      "duration": 5.92
+    },
+    {
+      "lang": "en",
+      "text": "the validation of the data coming in um",
+      "offset": 1045.36,
+      "duration": 7.36
+    },
+    {
+      "lang": "en",
+      "text": "so in my case I am using zod so generate",
+      "offset": 1048.4,
+      "duration": 6.72
+    },
+    {
+      "lang": "en",
+      "text": "latest race schema",
+      "offset": 1052.72,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "right you you can take the base which is",
+      "offset": 1055.12,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "a currency code you can go ahead and",
+      "offset": 1057.52,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "describe it um and then you can give it",
+      "offset": 1059.84,
+      "duration": 4.959
+    },
+    {
+      "lang": "en",
+      "text": "different symbols",
+      "offset": 1063.28,
+      "duration": 4.399
+    },
+    {
+      "lang": "en",
+      "text": "Maybe if we take a look at",
+      "offset": 1064.799,
+      "duration": 6.801
+    },
+    {
+      "lang": "en",
+      "text": "the convert currency, there is a from",
+      "offset": 1067.679,
+      "duration": 8.561
+    },
+    {
+      "lang": "en",
+      "text": "Canadian to USD and amount. And in order",
+      "offset": 1071.6,
+      "duration": 7.28
+    },
+    {
+      "lang": "en",
+      "text": "to specify that schema, I've uh done it",
+      "offset": 1076.24,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "all out and saw it. You can use any any",
+      "offset": 1078.88,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "one that you want, but you must validate",
+      "offset": 1081.28,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "that the data coming in from the AI is",
+      "offset": 1083.52,
+      "duration": 5.6
+    },
+    {
+      "lang": "en",
+      "text": "of the format that you expect it before",
+      "offset": 1086.48,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "you go ahead and and pass it through.",
+      "offset": 1089.12,
+      "duration": 5.6
+    },
+    {
+      "lang": "en",
+      "text": "And then you can also specify",
+      "offset": 1091.28,
+      "duration": 6.16
+    },
+    {
+      "lang": "en",
+      "text": "the output types. This is something that",
+      "offset": 1094.72,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "I have created but I'm not using it yet",
+      "offset": 1097.44,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "because I have not yet found anything",
+      "offset": 1099.84,
+      "duration": 6.24
+    },
+    {
+      "lang": "en",
+      "text": "that can use these things. So the output",
+      "offset": 1102.88,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "schema is just a new part of the spec",
+      "offset": 1106.08,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "which I have not found to be implemented",
+      "offset": 1108.24,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "anywhere yet. And if you want to see all",
+      "offset": 1110.64,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "of the errors in your application,",
+      "offset": 1112.88,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "you'll want to check out Sentry at",
+      "offset": 1114.88,
+      "duration": 4.76
+    },
+    {
+      "lang": "en",
+      "text": "centry.io/sintax.",
+      "offset": 1116.64,
+      "duration": 3
+    },
+    {
+      "lang": "en",
+      "text": "You don't want a production application",
+      "offset": 1120.08,
+      "duration": 3.28
+    },
+    {
+      "lang": "en",
+      "text": "out there that well you have no",
+      "offset": 1121.679,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "visibility into in case something is",
+      "offset": 1123.36,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "blowing up and you might not even know",
+      "offset": 1125.679,
+      "duration": 4.561
+    },
+    {
+      "lang": "en",
+      "text": "it. So head on over to centry.iosynax.",
+      "offset": 1127.2,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "Again we've been using this tool for a",
+      "offset": 1130.24,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "long time and it totally rules. All",
+      "offset": 1132.32,
+      "duration": 4.239
+    },
+    {
+      "lang": "en",
+      "text": "right.",
+      "offset": 1134.4,
+      "duration": 5.519
+    },
+    {
+      "lang": "en",
+      "text": "So your calling tools which we said at",
+      "offset": 1136.559,
+      "duration": 6.401
+    },
+    {
+      "lang": "en",
+      "text": "one point isn't MCP. Are is is tool",
+      "offset": 1139.919,
+      "duration": 5.041
+    },
+    {
+      "lang": "en",
+      "text": "calling and MCP",
+      "offset": 1142.96,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "related similar the same? What what's",
+      "offset": 1144.96,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "the the lingo there? it it's kind of a",
+      "offset": 1147.28,
+      "duration": 6.56
+    },
+    {
+      "lang": "en",
+      "text": "confusing thing. So before we had MCP,",
+      "offset": 1150.16,
+      "duration": 7.759
+    },
+    {
+      "lang": "en",
+      "text": "we had this idea that like the OpenAI",
+      "offset": 1153.84,
+      "duration": 6.32
+    },
+    {
+      "lang": "en",
+      "text": "docs you can give it you can have",
+      "offset": 1157.919,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "function calling is is what they they",
+      "offset": 1160.16,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "they called it. Um and then we have MCP",
+      "offset": 1161.919,
+      "duration": 5.281
+    },
+    {
+      "lang": "en",
+      "text": "which kind of seems like the same thing",
+      "offset": 1165.28,
+      "duration": 5.279
+    },
+    {
+      "lang": "en",
+      "text": "but also isn't. So the difference",
+      "offset": 1167.2,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "between the two as far as I understand",
+      "offset": 1170.559,
+      "duration": 4.161
+    },
+    {
+      "lang": "en",
+      "text": "it there's there's a lot of overlap",
+      "offset": 1172.72,
+      "duration": 4.079
+    },
+    {
+      "lang": "en",
+      "text": "between them. The tool calling is",
+      "offset": 1174.72,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "something that's going to happen on the",
+      "offset": 1176.799,
+      "duration": 4.801
+    },
+    {
+      "lang": "en",
+      "text": "same server that your your AI code is",
+      "offset": 1178.4,
+      "duration": 6.32
+    },
+    {
+      "lang": "en",
+      "text": "running. So for a very simple example is",
+      "offset": 1181.6,
+      "duration": 6.56
+    },
+    {
+      "lang": "en",
+      "text": "is I was I gave it a math tool calling.",
+      "offset": 1184.72,
+      "duration": 6.079
+    },
+    {
+      "lang": "en",
+      "text": "So it's able to do things like add and",
+      "offset": 1188.16,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "subtract and average and max the the",
+      "offset": 1190.799,
+      "duration": 5.041
+    },
+    {
+      "lang": "en",
+      "text": "different numbers and it will will be",
+      "offset": 1193.52,
+      "duration": 7.36
+    },
+    {
+      "lang": "en",
+      "text": "able to run those. Whereas the MCP",
+      "offset": 1195.84,
+      "duration": 9.12
+    },
+    {
+      "lang": "en",
+      "text": "server it can live somewhere else. the",
+      "offset": 1200.88,
+      "duration": 6.159
+    },
+    {
+      "lang": "en",
+      "text": "MCP server can live on the same machine",
+      "offset": 1204.96,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "as well, but it also it can live",
+      "offset": 1207.039,
+      "duration": 4.801
+    },
+    {
+      "lang": "en",
+      "text": "absolutely somewhere else. And also it",
+      "offset": 1210,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "seems to be a little bit more more",
+      "offset": 1211.84,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "stateful. You know, there's",
+      "offset": 1214.08,
+      "duration": 3.12
+    },
+    {
+      "lang": "en",
+      "text": "authentication.",
+      "offset": 1215.6,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "There is long live sessions that are",
+      "offset": 1217.2,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "streaming data back and forth.",
+      "offset": 1219.44,
+      "duration": 6.239
+    },
+    {
+      "lang": "en",
+      "text": "There is lots of back and forth with the",
+      "offset": 1222.4,
+      "duration": 5.759
+    },
+    {
+      "lang": "en",
+      "text": "the actual server. So once you're logged",
+      "offset": 1225.679,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "in, then you can say what are my things?",
+      "offset": 1228.159,
+      "duration": 7.201
+    },
+    {
+      "lang": "en",
+      "text": "So I I feel like the tool calling is for",
+      "offset": 1230.159,
+      "duration": 7.281
+    },
+    {
+      "lang": "en",
+      "text": "very simple functions that need to get",
+      "offset": 1235.36,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "run whereas the MCP server is going to",
+      "offset": 1237.44,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "be for in in my example I'm connecting",
+      "offset": 1240.72,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "to the Cloudflare workers ones to get",
+      "offset": 1243.2,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "docs and be able to create databases.",
+      "offset": 1245.44,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "I'm connecting to my Sentry MC MCP to be",
+      "offset": 1247.6,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "able to get a list of my issues or to to",
+      "offset": 1251.2,
+      "duration": 4.719
+    },
+    {
+      "lang": "en",
+      "text": "kick off the their AI agent to actually",
+      "offset": 1253.6,
+      "duration": 4.319
+    },
+    {
+      "lang": "en",
+      "text": "fix the things for you. I've got my",
+      "offset": 1255.919,
+      "duration": 4.321
+    },
+    {
+      "lang": "en",
+      "text": "currency one which is going off and",
+      "offset": 1257.919,
+      "duration": 4.321
+    },
+    {
+      "lang": "en",
+      "text": "fetching the currency rates and and able",
+      "offset": 1260.24,
+      "duration": 5.919
+    },
+    {
+      "lang": "en",
+      "text": "to uh calculate them for me. So I feel",
+      "offset": 1262.24,
+      "duration": 6.48
+    },
+    {
+      "lang": "en",
+      "text": "like they have quite a bit of overlap",
+      "offset": 1266.159,
+      "duration": 5.681
+    },
+    {
+      "lang": "en",
+      "text": "but the MCP",
+      "offset": 1268.72,
+      "duration": 8.56
+    },
+    {
+      "lang": "en",
+      "text": "can be remote and the MCP is a standard",
+      "offset": 1271.84,
+      "duration": 9.12
+    },
+    {
+      "lang": "en",
+      "text": "specification. So, I would unless it's",
+      "offset": 1277.28,
+      "duration": 5.68
+    },
+    {
+      "lang": "en",
+      "text": "just a very simple function that I'm",
+      "offset": 1280.96,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "running, I would probably",
+      "offset": 1282.96,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "throw that off to a separate MCP server.",
+      "offset": 1285.44,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "One more thing, um I've been talking",
+      "offset": 1288.48,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "about remote MCP servers and and that's",
+      "offset": 1290,
+      "duration": 6.24
+    },
+    {
+      "lang": "en",
+      "text": "a relatively new thing to the spec,",
+      "offset": 1293.2,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "meaning that",
+      "offset": 1296.24,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "previously your MCP server had to be",
+      "offset": 1297.6,
+      "duration": 6.4
+    },
+    {
+      "lang": "en",
+      "text": "running locally on the same machine that",
+      "offset": 1300.48,
+      "duration": 5.84
+    },
+    {
+      "lang": "en",
+      "text": "your your actual AI code is running. And",
+      "offset": 1304,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "and that's really helpful for something",
+      "offset": 1306.32,
+      "duration": 3.599
+    },
+    {
+      "lang": "en",
+      "text": "like Puppeteer, right? There's a",
+      "offset": 1308,
+      "duration": 4.799
+    },
+    {
+      "lang": "en",
+      "text": "Puppeteer MCP server that can has the",
+      "offset": 1309.919,
+      "duration": 5.601
+    },
+    {
+      "lang": "en",
+      "text": "ability to fire up a browser, navigate",
+      "offset": 1312.799,
+      "duration": 5.521
+    },
+    {
+      "lang": "en",
+      "text": "through the page, take screenshots,",
+      "offset": 1315.52,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "count, see if something's on the page,",
+      "offset": 1318.32,
+      "duration": 2.88
+    },
+    {
+      "lang": "en",
+      "text": "you know, like anything that that you",
+      "offset": 1319.84,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "could normally do, you can sort of robot",
+      "offset": 1321.2,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "via an MCP server where you're basically",
+      "offset": 1323.52,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "when you fire it up, you're saying,",
+      "offset": 1326.48,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "\"Hey, here is I think the the Puppeteer",
+      "offset": 1328.32,
+      "duration": 6.719
+    },
+    {
+      "lang": "en",
+      "text": "MCP server has about 40 or 45 tools and",
+      "offset": 1331.76,
+      "duration": 5.919
+    },
+    {
+      "lang": "en",
+      "text": "you say the these are 45 things you can",
+      "offset": 1335.039,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "do in a browser.",
+      "offset": 1337.679,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "go nuts. You can you can do any of them.",
+      "offset": 1339.919,
+      "duration": 3.921
+    },
+    {
+      "lang": "en",
+      "text": "You can control the entire browser,",
+      "offset": 1342.159,
+      "duration": 3.121
+    },
+    {
+      "lang": "en",
+      "text": "right? Like that makes a lot of sense.",
+      "offset": 1343.84,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "You run that in a Docker container. It",
+      "offset": 1345.28,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "runs on the same machine that you have.",
+      "offset": 1347.44,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "But then other other things like like",
+      "offset": 1349.76,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "the Sentry one, the Cloudflare workers",
+      "offset": 1351.6,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "one that makes more sense to log in and",
+      "offset": 1353.6,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "be able to communicate back and forth",
+      "offset": 1356.88,
+      "duration": 2.56
+    },
+    {
+      "lang": "en",
+      "text": "because",
+      "offset": 1358.96,
+      "duration": 1.04
+    },
+    {
+      "lang": "en",
+      "text": "yeah,",
+      "offset": 1359.44,
+      "duration": 3.04
+    },
+    {
+      "lang": "en",
+      "text": "they have all the information, right?",
+      "offset": 1360,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "Yeah. In fact, that's primarily how I've",
+      "offset": 1362.48,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "often used them. Now, I have used like",
+      "offset": 1364.48,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "the Sentry one, but you know, the the",
+      "offset": 1366.08,
+      "duration": 4.079
+    },
+    {
+      "lang": "en",
+      "text": "MCP server I've been using the most",
+      "offset": 1368.48,
+      "duration": 4.559
+    },
+    {
+      "lang": "en",
+      "text": "lately is the GDO one. And there's like",
+      "offset": 1370.159,
+      "duration": 4.801
+    },
+    {
+      "lang": "en",
+      "text": "I I will tell you folks, if you're out",
+      "offset": 1373.039,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "there looking for good MCP servers, it's",
+      "offset": 1374.96,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "it's really the wild wild west with a",
+      "offset": 1376.799,
+      "duration": 3.681
+    },
+    {
+      "lang": "en",
+      "text": "lot of them right now. Uh there's like",
+      "offset": 1378.72,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "six or seven different GDAU MCP servers,",
+      "offset": 1380.48,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "and I would say uh one or two good ones.",
+      "offset": 1382.96,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "And even though two good one or two good",
+      "offset": 1386,
+      "duration": 3.919
+    },
+    {
+      "lang": "en",
+      "text": "ones vary pretty widely in terms of what",
+      "offset": 1387.84,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "they're able to do. So,",
+      "offset": 1389.919,
+      "duration": 4.321
+    },
+    {
+      "lang": "en",
+      "text": "and how are you interfacing with that",
+      "offset": 1391.36,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "that server?",
+      "offset": 1394.24,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "Uh, via cursor currently.",
+      "offset": 1395.6,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "Okay. because I I what I what I'm doing",
+      "offset": 1397.76,
+      "duration": 5.68
+    },
+    {
+      "lang": "en",
+      "text": "is I'm working on a game and GDO has its",
+      "offset": 1400.24,
+      "duration": 7.04
+    },
+    {
+      "lang": "en",
+      "text": "own interface that also has um an API",
+      "offset": 1403.44,
+      "duration": 7.68
+    },
+    {
+      "lang": "en",
+      "text": "and the GDO MCP server allows it so that",
+      "offset": 1407.28,
+      "duration": 6.72
+    },
+    {
+      "lang": "en",
+      "text": "I don't have to work inside of GDAU but",
+      "offset": 1411.12,
+      "duration": 6.64
+    },
+    {
+      "lang": "en",
+      "text": "I can control the GDO interface via",
+      "offset": 1414,
+      "duration": 6.4
+    },
+    {
+      "lang": "en",
+      "text": "cursor if I want to automate certain",
+      "offset": 1417.76,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "things, create resources, update things",
+      "offset": 1420.4,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "through the UI, those types of things.",
+      "offset": 1423.28,
+      "duration": 4.879
+    },
+    {
+      "lang": "en",
+      "text": "Yeah, that's that's great. I even think",
+      "offset": 1425.84,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "about uh like OBS, which we use quite a",
+      "offset": 1428.159,
+      "duration": 5.681
+    },
+    {
+      "lang": "en",
+      "text": "bit. Um OBS has a websocket API to do",
+      "offset": 1430.88,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "literally anything.",
+      "offset": 1433.84,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "And I I built an app that allows us to",
+      "offset": 1435.84,
+      "duration": 6.16
+    },
+    {
+      "lang": "en",
+      "text": "start and and turn off recordings and",
+      "offset": 1438.88,
+      "duration": 4.799
+    },
+    {
+      "lang": "en",
+      "text": "record screens and do a whole bunch of",
+      "offset": 1442,
+      "duration": 3.679
+    },
+    {
+      "lang": "en",
+      "text": "like neat stuff. But I I often think",
+      "offset": 1443.679,
+      "duration": 3.841
+    },
+    {
+      "lang": "en",
+      "text": "like wouldn't that be nice if it was",
+      "offset": 1445.679,
+      "duration": 4.721
+    },
+    {
+      "lang": "en",
+      "text": "just a MCP server because then you can",
+      "offset": 1447.52,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "just you could just type to what you",
+      "offset": 1450.4,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "want or like like a lot of times I look",
+      "offset": 1452.96,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "at at something like like the Cloudflare",
+      "offset": 1455.2,
+      "duration": 6.719
+    },
+    {
+      "lang": "en",
+      "text": "workers one where let's take a look at",
+      "offset": 1458.24,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "the tools here.",
+      "offset": 1461.919,
+      "duration": 4.081
+    },
+    {
+      "lang": "en",
+      "text": "OBS I would like you to have these uh",
+      "offset": 1463.52,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "settings the settings that are best from",
+      "offset": 1466,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "YouTube. Give me the YouTube settings.",
+      "offset": 1468.24,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "There we go. find issues in the syntax",
+      "offset": 1471.2,
+      "duration": 6.32
+    },
+    {
+      "lang": "en",
+      "text": "FM org on on the Sentry MCP and then it",
+      "offset": 1473.44,
+      "duration": 6.08
+    },
+    {
+      "lang": "en",
+      "text": "it just fires them all out. But like I",
+      "offset": 1477.52,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "often think like it could probably do",
+      "offset": 1479.52,
+      "duration": 5.519
+    },
+    {
+      "lang": "en",
+      "text": "like generative UI like if you just give",
+      "offset": 1482,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "it a list of all the possible things",
+      "offset": 1485.039,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "that you can do.",
+      "offset": 1486.88,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "It could probably do a pretty good job",
+      "offset": 1488.559,
+      "duration": 5.281
+    },
+    {
+      "lang": "en",
+      "text": "at just building out a UI for you. And I",
+      "offset": 1490.48,
+      "duration": 6.799
+    },
+    {
+      "lang": "en",
+      "text": "built a whole UI for the the uh OBS one",
+      "offset": 1493.84,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "and I like don't you think it could do a",
+      "offset": 1497.279,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "if you were to have an MCP server of",
+      "offset": 1499.36,
+      "duration": 3.679
+    },
+    {
+      "lang": "en",
+      "text": "these are all the possible things you",
+      "offset": 1501.279,
+      "duration": 2.4
+    },
+    {
+      "lang": "en",
+      "text": "can do.",
+      "offset": 1503.039,
+      "duration": 1.041
+    },
+    {
+      "lang": "en",
+      "text": "Yeah.",
+      "offset": 1503.679,
+      "duration": 3.921
+    },
+    {
+      "lang": "en",
+      "text": "It could probably generate a pretty neat",
+      "offset": 1504.08,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "ondemand UI.",
+      "offset": 1507.6,
+      "duration": 2.48
+    },
+    {
+      "lang": "en",
+      "text": "Yeah. For",
+      "offset": 1509.2,
+      "duration": 2.479
+    },
+    {
+      "lang": "en",
+      "text": "Yeah. Especially because OBS is one of",
+      "offset": 1510.08,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "those things that sucks to work in.",
+      "offset": 1511.679,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "I don't know if it would make a better",
+      "offset": 1513.84,
+      "duration": 3.839
+    },
+    {
+      "lang": "en",
+      "text": "UI than than what it is. Um I don't",
+      "offset": 1515.279,
+      "duration": 4.081
+    },
+    {
+      "lang": "en",
+      "text": "think the AI will know better. No, I'm",
+      "offset": 1517.679,
+      "duration": 3.201
+    },
+    {
+      "lang": "en",
+      "text": "just saying designers, but",
+      "offset": 1519.36,
+      "duration": 3.04
+    },
+    {
+      "lang": "en",
+      "text": "you would have to interface with it",
+      "offset": 1520.88,
+      "duration": 3.679
+    },
+    {
+      "lang": "en",
+      "text": "less. Anyways, what I was saying about",
+      "offset": 1522.4,
+      "duration": 5.84
+    },
+    {
+      "lang": "en",
+      "text": "the remote MCP servers is that not all",
+      "offset": 1524.559,
+      "duration": 6.72
+    },
+    {
+      "lang": "en",
+      "text": "clients support them just yet because it",
+      "offset": 1528.24,
+      "duration": 5.039
+    },
+    {
+      "lang": "en",
+      "text": "is a relatively new. This whole MCP",
+      "offset": 1531.279,
+      "duration": 4.161
+    },
+    {
+      "lang": "en",
+      "text": "thing is",
+      "offset": 1533.279,
+      "duration": 4.481
+    },
+    {
+      "lang": "en",
+      "text": "moving at like a breakneck speed right",
+      "offset": 1535.44,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "now and I imagine that this episode in",
+      "offset": 1537.76,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "in 3 months will be relatively out of",
+      "offset": 1540.32,
+      "duration": 4.479
+    },
+    {
+      "lang": "en",
+      "text": "date and we'll have to have to do",
+      "offset": 1542.88,
+      "duration": 6.159
+    },
+    {
+      "lang": "en",
+      "text": "another one. But if you are using a",
+      "offset": 1544.799,
+      "duration": 6.641
+    },
+    {
+      "lang": "en",
+      "text": "client that doesn't support remote MCP",
+      "offset": 1549.039,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "servers yet, um, which is most of them,",
+      "offset": 1551.44,
+      "duration": 5.119
+    },
+    {
+      "lang": "en",
+      "text": "then what you'll have to do is you'll",
+      "offset": 1555.039,
+      "duration": 4.961
+    },
+    {
+      "lang": "en",
+      "text": "have to use this little NPX MCP remote.",
+      "offset": 1556.559,
+      "duration": 5.6
+    },
+    {
+      "lang": "en",
+      "text": "And what that does is it just fires up a",
+      "offset": 1560,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "little proxy server on your machine and",
+      "offset": 1562.159,
+      "duration": 5.441
+    },
+    {
+      "lang": "en",
+      "text": "it will sort of translate them from one",
+      "offset": 1565.12,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "to another. It's it's a pretty common",
+      "offset": 1567.6,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "thing. Anytime like you see any",
+      "offset": 1570.48,
+      "duration": 3.04
+    },
+    {
+      "lang": "en",
+      "text": "documentation",
+      "offset": 1572,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "for for integrating them, you you'll",
+      "offset": 1573.52,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "have to be using this MCP remote.",
+      "offset": 1576.4,
+      "duration": 3.04
+    },
+    {
+      "lang": "en",
+      "text": "I was going to say most of the",
+      "offset": 1578.08,
+      "duration": 3.199
+    },
+    {
+      "lang": "en",
+      "text": "documentation for remote ones is going",
+      "offset": 1579.44,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "to include that anyways for common",
+      "offset": 1581.279,
+      "duration": 3.601
+    },
+    {
+      "lang": "en",
+      "text": "providers.",
+      "offset": 1583.84,
+      "duration": 2.48
+    },
+    {
+      "lang": "en",
+      "text": "Let's just rattle through a couple",
+      "offset": 1584.88,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "really handy ones as well. Um obviously",
+      "offset": 1586.32,
+      "duration": 3.839
+    },
+    {
+      "lang": "en",
+      "text": "I've been talking about the Cloudflare",
+      "offset": 1588.72,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "ones. Look at how many they have though.",
+      "offset": 1590.159,
+      "duration": 2.481
+    },
+    {
+      "lang": "en",
+      "text": "Yeah,",
+      "offset": 1592.24,
+      "duration": 2.4
+    },
+    {
+      "lang": "en",
+      "text": "they have one for their docs, one for",
+      "offset": 1592.64,
+      "duration": 3.519
+    },
+    {
+      "lang": "en",
+      "text": "workers,",
+      "offset": 1594.64,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "one for worker builds.",
+      "offset": 1596.159,
+      "duration": 3.361
+    },
+    {
+      "lang": "en",
+      "text": "That's kind of worker builds would be",
+      "offset": 1598.08,
+      "duration": 2.4
+    },
+    {
+      "lang": "en",
+      "text": "kind of cool because you could just",
+      "offset": 1599.52,
+      "duration": 2.8
+    },
+    {
+      "lang": "en",
+      "text": "chat, hey,",
+      "offset": 1600.48,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "why did my build fail?",
+      "offset": 1602.32,
+      "duration": 3.359
+    },
+    {
+      "lang": "en",
+      "text": "Can you explain to me why you would need",
+      "offset": 1604,
+      "duration": 4.159
+    },
+    {
+      "lang": "en",
+      "text": "one for the docs?",
+      "offset": 1605.679,
+      "duration": 5.041
+    },
+    {
+      "lang": "en",
+      "text": "Yeah, documentation is so key because",
+      "offset": 1608.159,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "Yeah, but like why need it? Why would",
+      "offset": 1610.72,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "you need an MCP server for the docs",
+      "offset": 1612.159,
+      "duration": 3.281
+    },
+    {
+      "lang": "en",
+      "text": "themselves?",
+      "offset": 1614.32,
+      "duration": 2.8
+    },
+    {
+      "lang": "en",
+      "text": "Basically,",
+      "offset": 1615.44,
+      "duration": 3.839
+    },
+    {
+      "lang": "en",
+      "text": "you're working on",
+      "offset": 1617.12,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "something, right? like you're working on",
+      "offset": 1619.279,
+      "duration": 3.441
+    },
+    {
+      "lang": "en",
+      "text": "Cloudflare workers, you're working on",
+      "offset": 1621.12,
+      "duration": 5.919
+    },
+    {
+      "lang": "en",
+      "text": "spelt, you're working on whatever, and",
+      "offset": 1622.72,
+      "duration": 8.16
+    },
+    {
+      "lang": "en",
+      "text": "you need to be able to give the AI the",
+      "offset": 1627.039,
+      "duration": 7.12
+    },
+    {
+      "lang": "en",
+      "text": "specific docs. If the AI knows, oh, I'm",
+      "offset": 1630.88,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "going to go grab the documentation for",
+      "offset": 1634.159,
+      "duration": 5.281
+    },
+    {
+      "lang": "en",
+      "text": "this specific library, it can go ahead,",
+      "offset": 1636.32,
+      "duration": 5.92
+    },
+    {
+      "lang": "en",
+      "text": "it'll just simply fetch it and then it",
+      "offset": 1639.44,
+      "duration": 5.119
+    },
+    {
+      "lang": "en",
+      "text": "can go through it and and pull pull the",
+      "offset": 1642.24,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "parts out that it needs and understand",
+      "offset": 1644.559,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "how it works. And that's that's huge. So",
+      "offset": 1646.4,
+      "duration": 4.399
+    },
+    {
+      "lang": "en",
+      "text": "you basically just have to throw a MCP",
+      "offset": 1649.039,
+      "duration": 3.681
+    },
+    {
+      "lang": "en",
+      "text": "server for the docs of what you're",
+      "offset": 1650.799,
+      "duration": 6.24
+    },
+    {
+      "lang": "en",
+      "text": "working on and then like the Cloudflare",
+      "offset": 1652.72,
+      "duration": 7.12
+    },
+    {
+      "lang": "en",
+      "text": "and Verscell both do an awesome job",
+      "offset": 1657.039,
+      "duration": 5.041
+    },
+    {
+      "lang": "en",
+      "text": "where they have all of their",
+      "offset": 1659.84,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "documentation as markdown",
+      "offset": 1662.08,
+      "duration": 4.959
+    },
+    {
+      "lang": "en",
+      "text": "and that's a great thing just to feed",
+      "offset": 1664.24,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "directly into an AI but it's it's one",
+      "offset": 1667.039,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "step further where you don't even have",
+      "offset": 1669.6,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "to go copy paste it. you can simply just",
+      "offset": 1671.039,
+      "duration": 4.401
+    },
+    {
+      "lang": "en",
+      "text": "give it the tools like hey check the",
+      "offset": 1672.96,
+      "duration": 4.719
+    },
+    {
+      "lang": "en",
+      "text": "docs for x y and z or if it doesn't",
+      "offset": 1675.44,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "understand how something works um",
+      "offset": 1677.679,
+      "duration": 4.401
+    },
+    {
+      "lang": "en",
+      "text": "because so many of these things that are",
+      "offset": 1680,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "not like it's AI has been is really good",
+      "offset": 1682.08,
+      "duration": 6.959
+    },
+    {
+      "lang": "en",
+      "text": "at writing nexjs and tailwind but",
+      "offset": 1685.36,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "there's a lot of other stuff that",
+      "offset": 1689.039,
+      "duration": 3.12
+    },
+    {
+      "lang": "en",
+      "text": "doesn't have a lot of examples out there",
+      "offset": 1690.48,
+      "duration": 3.919
+    },
+    {
+      "lang": "en",
+      "text": "that it's not very good at writing and",
+      "offset": 1692.159,
+      "duration": 4.321
+    },
+    {
+      "lang": "en",
+      "text": "it's it's hard when things change like",
+      "offset": 1694.399,
+      "duration": 5.441
+    },
+    {
+      "lang": "en",
+      "text": "spelt 5 it doesn't know about spelt 5",
+      "offset": 1696.48,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "got",
+      "offset": 1699.84,
+      "duration": 2.48
+    },
+    {
+      "lang": "en",
+      "text": "just yet right because the the the",
+      "offset": 1700.24,
+      "duration": 3.919
+    },
+    {
+      "lang": "en",
+      "text": "models haven't been trained on it. But",
+      "offset": 1702.32,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "if you can prompt it with a whole bunch",
+      "offset": 1704.159,
+      "duration": 6.081
+    },
+    {
+      "lang": "en",
+      "text": "of examples and and and TypeScript types",
+      "offset": 1706.32,
+      "duration": 5.359
+    },
+    {
+      "lang": "en",
+      "text": "and how these things work, then it's",
+      "offset": 1710.24,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "going to do a much better job at at how",
+      "offset": 1711.679,
+      "duration": 6.641
+    },
+    {
+      "lang": "en",
+      "text": "that works. There's this use MCP which",
+      "offset": 1714.32,
+      "duration": 7.359
+    },
+    {
+      "lang": "en",
+      "text": "is a React hook which is wild to me",
+      "offset": 1718.32,
+      "duration": 5.68
+    },
+    {
+      "lang": "en",
+      "text": "because you basically just take any MCP",
+      "offset": 1721.679,
+      "duration": 5.681
+    },
+    {
+      "lang": "en",
+      "text": "server feed it into this React hook and",
+      "offset": 1724,
+      "duration": 7.84
+    },
+    {
+      "lang": "en",
+      "text": "it will give you all of the methods and",
+      "offset": 1727.36,
+      "duration": 7.6
+    },
+    {
+      "lang": "en",
+      "text": "state for using it inside of a React",
+      "offset": 1731.84,
+      "duration": 6.319
+    },
+    {
+      "lang": "en",
+      "text": "application which is is really cool",
+      "offset": 1734.96,
+      "duration": 6.319
+    },
+    {
+      "lang": "en",
+      "text": "which a lot of this feels like we're",
+      "offset": 1738.159,
+      "duration": 5.201
+    },
+    {
+      "lang": "en",
+      "text": "just recreating REST APIs.",
+      "offset": 1741.279,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "Yeah. Right. Yeah, of course. Yeah, that",
+      "offset": 1743.36,
+      "duration": 3.439
+    },
+    {
+      "lang": "en",
+      "text": "is the the weird thing",
+      "offset": 1744.799,
+      "duration": 4.321
+    },
+    {
+      "lang": "en",
+      "text": "with the currency one. I felt like I was",
+      "offset": 1746.799,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "just hot potatoing a lot of the requests",
+      "offset": 1749.12,
+      "duration": 4.159
+    },
+    {
+      "lang": "en",
+      "text": "from from one to another.",
+      "offset": 1751.279,
+      "duration": 3.681
+    },
+    {
+      "lang": "en",
+      "text": "David Kramer had a really good tweet",
+      "offset": 1753.279,
+      "duration": 4.081
+    },
+    {
+      "lang": "en",
+      "text": "thread on it. Keny Daws also replied. He",
+      "offset": 1754.96,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "he had a blog post on it. He says like",
+      "offset": 1757.36,
+      "duration": 7.12
+    },
+    {
+      "lang": "en",
+      "text": "the MCP is not really your API. The MCP",
+      "offset": 1759.44,
+      "duration": 7.2
+    },
+    {
+      "lang": "en",
+      "text": "is more of a UI, which I thought was",
+      "offset": 1764.48,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "kind of an interesting way.",
+      "offset": 1766.64,
+      "duration": 3.039
+    },
+    {
+      "lang": "en",
+      "text": "It's a connecting thread.",
+      "offset": 1767.84,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "Yeah, exactly. Instead of interfacing",
+      "offset": 1769.679,
+      "duration": 5.441
+    },
+    {
+      "lang": "en",
+      "text": "with your service or your API via",
+      "offset": 1772,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "buttons,",
+      "offset": 1775.12,
+      "duration": 5.679
+    },
+    {
+      "lang": "en",
+      "text": "um, you're interfacing the service via",
+      "offset": 1776.72,
+      "duration": 6.48
+    },
+    {
+      "lang": "en",
+      "text": "MCP, right? Or or it's generally going",
+      "offset": 1780.799,
+      "duration": 4.561
+    },
+    {
+      "lang": "en",
+      "text": "to be something like chat. The the AI is",
+      "offset": 1783.2,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "going to be doing that.",
+      "offset": 1785.36,
+      "duration": 3.679
+    },
+    {
+      "lang": "en",
+      "text": "So, in some cases, those will be the",
+      "offset": 1786.88,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "same thing. Um, you want your entire API",
+      "offset": 1789.039,
+      "duration": 4.801
+    },
+    {
+      "lang": "en",
+      "text": "to be available to the AI. But in other",
+      "offset": 1791.6,
+      "duration": 4.959
+    },
+    {
+      "lang": "en",
+      "text": "cases, like if you think about your UI,",
+      "offset": 1793.84,
+      "duration": 5.199
+    },
+    {
+      "lang": "en",
+      "text": "sometimes your UI will have two or three",
+      "offset": 1796.559,
+      "duration": 5.6
+    },
+    {
+      "lang": "en",
+      "text": "different API requests or REST requests",
+      "offset": 1799.039,
+      "duration": 5.281
+    },
+    {
+      "lang": "en",
+      "text": "and then you'll need to do do things in",
+      "offset": 1802.159,
+      "duration": 3.681
+    },
+    {
+      "lang": "en",
+      "text": "a specific order",
+      "offset": 1804.32,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "and and surfacing it via MCP request is",
+      "offset": 1805.84,
+      "duration": 6.719
+    },
+    {
+      "lang": "en",
+      "text": "is more the the move there.",
+      "offset": 1809.36,
+      "duration": 6.64
+    },
+    {
+      "lang": "en",
+      "text": "So that's that's all we got on the the",
+      "offset": 1812.559,
+      "duration": 7.12
+    },
+    {
+      "lang": "en",
+      "text": "MCP right now. There's this really great",
+      "offset": 1816,
+      "duration": 6.08
+    },
+    {
+      "lang": "en",
+      "text": "um GitHub here called Awesome MCP",
+      "offset": 1819.679,
+      "duration": 4.321
+    },
+    {
+      "lang": "en",
+      "text": "servers. you can kind of rip through. It",
+      "offset": 1822.08,
+      "duration": 5.92
+    },
+    {
+      "lang": "en",
+      "text": "seems it really feels like the early",
+      "offset": 1824,
+      "duration": 7.44
+    },
+    {
+      "lang": "en",
+      "text": "days of APIs. In the early days,",
+      "offset": 1828,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "everybody had an API and everybody was",
+      "offset": 1831.44,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "building stuff and remixing and",
+      "offset": 1834,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "connecting things together and and it",
+      "offset": 1835.6,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "was really good. And over time,",
+      "offset": 1837.6,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "a lot of those APIs disappeared",
+      "offset": 1840.72,
+      "duration": 4.559
+    },
+    {
+      "lang": "en",
+      "text": "partially because people don't want you",
+      "offset": 1843.12,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "building your own version of of Twitter",
+      "offset": 1845.279,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "or or whatever social network. they want",
+      "offset": 1848.32,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "you or or Reddit or whatever and and",
+      "offset": 1850.159,
+      "duration": 5.041
+    },
+    {
+      "lang": "en",
+      "text": "partially because like people use them",
+      "offset": 1853.44,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "to spam um and you can't give people",
+      "offset": 1855.2,
+      "duration": 4.719
+    },
+    {
+      "lang": "en",
+      "text": "programmatic tools for for pushing",
+      "offset": 1857.84,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "things. However,",
+      "offset": 1859.919,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "it does feel",
+      "offset": 1861.52,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "like everybody's coming out swinging",
+      "offset": 1863.679,
+      "duration": 5.441
+    },
+    {
+      "lang": "en",
+      "text": "with their own MCP server right now. Um",
+      "offset": 1866.08,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "and it's kind of an exciting time to to",
+      "offset": 1869.12,
+      "duration": 5.439
+    },
+    {
+      "lang": "en",
+      "text": "see everybody like there's a Telegram",
+      "offset": 1872.08,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "one and a welcome bot. Like, do we need",
+      "offset": 1874.559,
+      "duration": 6.881
+    },
+    {
+      "lang": "en",
+      "text": "a syntax MCP server? What would that do?",
+      "offset": 1877.84,
+      "duration": 7.12
+    },
+    {
+      "lang": "en",
+      "text": "What would that do? What would that do?",
+      "offset": 1881.44,
+      "duration": 6.4
+    },
+    {
+      "lang": "en",
+      "text": "You could get the latest show. Uh, you",
+      "offset": 1884.96,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "could search for a spec like again,",
+      "offset": 1887.84,
+      "duration": 3.04
+    },
+    {
+      "lang": "en",
+      "text": "we're just describing",
+      "offset": 1889.76,
+      "duration": 2.799
+    },
+    {
+      "lang": "en",
+      "text": "just an API rest API here.",
+      "offset": 1890.88,
+      "duration": 3.679
+    },
+    {
+      "lang": "en",
+      "text": "You're just giving it a different means",
+      "offset": 1892.559,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "of interfacing with it.",
+      "offset": 1894.559,
+      "duration": 4.321
+    },
+    {
+      "lang": "en",
+      "text": "Yeah, I think the the real power of a",
+      "offset": 1896.159,
+      "duration": 4.801
+    },
+    {
+      "lang": "en",
+      "text": "lot of these APIs is is both when you",
+      "offset": 1898.88,
+      "duration": 5.519
+    },
+    {
+      "lang": "en",
+      "text": "can pull content, but also when you can",
+      "offset": 1900.96,
+      "duration": 5.599
+    },
+    {
+      "lang": "en",
+      "text": "can do things, right? like when you can",
+      "offset": 1904.399,
+      "duration": 5.601
+    },
+    {
+      "lang": "en",
+      "text": "start stuff or save things or modify.",
+      "offset": 1906.559,
+      "duration": 5.84
+    },
+    {
+      "lang": "en",
+      "text": "Yeah. Especially things that have like a",
+      "offset": 1910,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "UI because it gets you out of doing",
+      "offset": 1912.399,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "click ops for things.",
+      "offset": 1914.64,
+      "duration": 2
+    },
+    {
+      "lang": "en",
+      "text": "Yeah.",
+      "offset": 1916.159,
+      "duration": 2.4
+    },
+    {
+      "lang": "en",
+      "text": "But also, I mean, you're getting into AI",
+      "offset": 1916.64,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "ops, but like Yeah. If you're clicking",
+      "offset": 1918.559,
+      "duration": 4.561
+    },
+    {
+      "lang": "en",
+      "text": "around a UI to trigger things and now",
+      "offset": 1920.88,
+      "duration": 4.159
+    },
+    {
+      "lang": "en",
+      "text": "you have a tool to interact with that",
+      "offset": 1923.12,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "via natural language. That seems",
+      "offset": 1925.039,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "interesting to me. Or you're able to",
+      "offset": 1927.2,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "connect several tools together, you",
+      "offset": 1928.799,
+      "duration": 5.201
+    },
+    {
+      "lang": "en",
+      "text": "know, to work with each other. Yeah,",
+      "offset": 1931.6,
+      "duration": 4.959
+    },
+    {
+      "lang": "en",
+      "text": "those seem like the biggest uh bonuses",
+      "offset": 1934,
+      "duration": 3.2
+    },
+    {
+      "lang": "en",
+      "text": "for me.",
+      "offset": 1936.559,
+      "duration": 2.641
+    },
+    {
+      "lang": "en",
+      "text": "Yeah. And I and probably the the one",
+      "offset": 1937.2,
+      "duration": 4.319
+    },
+    {
+      "lang": "en",
+      "text": "other one I'd add to that is is being",
+      "offset": 1939.2,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "able to get better results out of your",
+      "offset": 1941.519,
+      "duration": 4.961
+    },
+    {
+      "lang": "en",
+      "text": "out of your AI application because at",
+      "offset": 1944.24,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "the end of the day, the whole reason I I",
+      "offset": 1946.48,
+      "duration": 3.199
+    },
+    {
+      "lang": "en",
+      "text": "stumbled into all of this was because I",
+      "offset": 1948.08,
+      "duration": 3.439
+    },
+    {
+      "lang": "en",
+      "text": "simply just needed better math and",
+      "offset": 1949.679,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "better currency conversion in the app",
+      "offset": 1951.519,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "that I was building. And the so this was",
+      "offset": 1953.279,
+      "duration": 5.361
+    },
+    {
+      "lang": "en",
+      "text": "not like a chat app that I was using",
+      "offset": 1956.799,
+      "duration": 4.321
+    },
+    {
+      "lang": "en",
+      "text": "directly. It's just I just the app that",
+      "offset": 1958.64,
+      "duration": 5.84
+    },
+    {
+      "lang": "en",
+      "text": "I was building was not very good and in",
+      "offset": 1961.12,
+      "duration": 5.279
+    },
+    {
+      "lang": "en",
+      "text": "order to make it better, you have to",
+      "offset": 1964.48,
+      "duration": 4.799
+    },
+    {
+      "lang": "en",
+      "text": "give the AI more tools. Well, that's",
+      "offset": 1966.399,
+      "duration": 4.801
+    },
+    {
+      "lang": "en",
+      "text": "great. Uh, you know, maybe we could have",
+      "offset": 1969.279,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "a MCP server for some sick pics where it",
+      "offset": 1971.2,
+      "duration": 6.079
+    },
+    {
+      "lang": "en",
+      "text": "could just send you right to wherever we",
+      "offset": 1975.279,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "we bought these things from. Sick pics",
+      "offset": 1977.279,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "are the things that we are enjoying.",
+      "offset": 1979.679,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "Could be anything. A podcast. Uh could",
+      "offset": 1981.519,
+      "duration": 5.681
+    },
+    {
+      "lang": "en",
+      "text": "be just just about any product type of",
+      "offset": 1984.399,
+      "duration": 6.081
+    },
+    {
+      "lang": "en",
+      "text": "thing or or whatever. Yeah, sick picks.",
+      "offset": 1987.2,
+      "duration": 6.16
+    },
+    {
+      "lang": "en",
+      "text": "You know what? I will sick pick. This is",
+      "offset": 1990.48,
+      "duration": 6.72
+    },
+    {
+      "lang": "en",
+      "text": "like not really a unique sick pick in",
+      "offset": 1993.36,
+      "duration": 6.96
+    },
+    {
+      "lang": "en",
+      "text": "any regard, but man, the new Mario Kart",
+      "offset": 1997.2,
+      "duration": 6.079
+    },
+    {
+      "lang": "en",
+      "text": "on Nintendo Switch 2 is just a lot of",
+      "offset": 2000.32,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "fun. I've only been playing with the",
+      "offset": 2003.279,
+      "duration": 4.961
+    },
+    {
+      "lang": "en",
+      "text": "kids and we'll we'll find some time to",
+      "offset": 2005.12,
+      "duration": 6.399
+    },
+    {
+      "lang": "en",
+      "text": "to rip around that thing. And when they",
+      "offset": 2008.24,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "announced like giving like modes where",
+      "offset": 2011.519,
+      "duration": 3.921
+    },
+    {
+      "lang": "en",
+      "text": "it was like give like steering",
+      "offset": 2013.76,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "assistance and stuff like that, I didn't",
+      "offset": 2015.44,
+      "duration": 3.04
+    },
+    {
+      "lang": "en",
+      "text": "really understand it. But like now that",
+      "offset": 2017.12,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "I'm playing with a six-year-old, man,",
+      "offset": 2018.48,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "the steering assistance stuff really",
+      "offset": 2020.96,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "helps them have a good time because even",
+      "offset": 2023.36,
+      "duration": 5.039
+    },
+    {
+      "lang": "en",
+      "text": "in the beginner settings, like yeah,",
+      "offset": 2025.76,
+      "duration": 4.159
+    },
+    {
+      "lang": "en",
+      "text": "they're learning how to play the game",
+      "offset": 2028.399,
+      "duration": 3.441
+    },
+    {
+      "lang": "en",
+      "text": "and they're doing pretty decent, but",
+      "offset": 2029.919,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "they're finishing in the bottom half of",
+      "offset": 2031.84,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "the standings every time and they have a",
+      "offset": 2033.519,
+      "duration": 4.561
+    },
+    {
+      "lang": "en",
+      "text": "lot less fun doing that. And then when",
+      "offset": 2036.64,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "you turn on the steering assist, they're",
+      "offset": 2038.08,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "finishing in second place and fourth",
+      "offset": 2040.24,
+      "duration": 5.439
+    },
+    {
+      "lang": "en",
+      "text": "place, and that just makes them like",
+      "offset": 2042.72,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "want to get better at the game and not",
+      "offset": 2045.679,
+      "duration": 3.841
+    },
+    {
+      "lang": "en",
+      "text": "get discouraged. So, I I've been really",
+      "offset": 2047.44,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "enjoying the game. I'm historically",
+      "offset": 2049.52,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "someone that plays Mario Kart games by",
+      "offset": 2052.32,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "picking the most obnoxious characters,",
+      "offset": 2054.72,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "like who who are the biggest, most",
+      "offset": 2057.04,
+      "duration": 4.079
+    },
+    {
+      "lang": "en",
+      "text": "annoying characters in the game. And let",
+      "offset": 2058.96,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "me tell you, this game has got some",
+      "offset": 2061.119,
+      "duration": 4.081
+    },
+    {
+      "lang": "en",
+      "text": "obnoxious characters. Uh, so I'll be the",
+      "offset": 2062.8,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "cow, I'll be Charging Chuck, I'll be",
+      "offset": 2065.2,
+      "duration": 4.719
+    },
+    {
+      "lang": "en",
+      "text": "just like the goofiest characters",
+      "offset": 2068,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "because that's uh that's how I like to",
+      "offset": 2069.919,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "play. Um, so yeah, the new Mario Kart is",
+      "offset": 2071.52,
+      "duration": 5.119
+    },
+    {
+      "lang": "en",
+      "text": "just lovely as you'd expect it to be.",
+      "offset": 2073.839,
+      "duration": 7.441
+    },
+    {
+      "lang": "en",
+      "text": "That's good. I I downloaded or purchased",
+      "offset": 2076.639,
+      "duration": 8.24
+    },
+    {
+      "lang": "en",
+      "text": "Mario Kart for the Wii and",
+      "offset": 2081.28,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "I didn't realize that there's like a",
+      "offset": 2084.879,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "there's like a hacked version of Mario",
+      "offset": 2086.72,
+      "duration": 4.959
+    },
+    {
+      "lang": "en",
+      "text": "Kart called Mario Kart Black.",
+      "offset": 2089.119,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "And like like literally somebody like",
+      "offset": 2091.679,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "went and replaced all the music, all of",
+      "offset": 2093.919,
+      "duration": 4.721
+    },
+    {
+      "lang": "en",
+      "text": "the like infographics, even like the",
+      "offset": 2096.399,
+      "duration": 3.2
+    },
+    {
+      "lang": "en",
+      "text": "loading screen.",
+      "offset": 2098.64,
+      "duration": 3.439
+    },
+    {
+      "lang": "en",
+      "text": "Oh, creepy pasta. Yeah. Wow.",
+      "offset": 2099.599,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "And I just like was like, \"Hey kids,",
+      "offset": 2102.079,
+      "duration": 3.361
+    },
+    {
+      "lang": "en",
+      "text": "let's play Mario Kart.\" And I was like,",
+      "offset": 2104.079,
+      "duration": 3.201
+    },
+    {
+      "lang": "en",
+      "text": "\"This is dark.",
+      "offset": 2105.44,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "This is what you downloaded.\" Oh, man.",
+      "offset": 2107.28,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "That's so funny.",
+      "offset": 2110.48,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "But apparently somebody just like like",
+      "offset": 2112.4,
+      "duration": 5.84
+    },
+    {
+      "lang": "en",
+      "text": "like literally modded the entire image",
+      "offset": 2114.72,
+      "duration": 5.119
+    },
+    {
+      "lang": "en",
+      "text": "for Mario Kart.",
+      "offset": 2118.24,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "Yeah, I'm looking at it right now.",
+      "offset": 2119.839,
+      "duration": 5.201
+    },
+    {
+      "lang": "en",
+      "text": "Mario Kart Black. Yeah, it's",
+      "offset": 2122.64,
+      "duration": 5.439
+    },
+    {
+      "lang": "en",
+      "text": "there's a scandalous pixelated uh",
+      "offset": 2125.04,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "Princess Peach on the back cover of this",
+      "offset": 2128.079,
+      "duration": 4.161
+    },
+    {
+      "lang": "en",
+      "text": "thing. This is what you This is what you",
+      "offset": 2130,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "you loaded up. My gosh.",
+      "offset": 2132.24,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "But that just goes to show how like not",
+      "offset": 2135.28,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "dialed I am on video games. I was like",
+      "offset": 2137.52,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "Mario Kart Black. That sounds like the",
+      "offset": 2139.44,
+      "duration": 2.639
+    },
+    {
+      "lang": "en",
+      "text": "best one.",
+      "offset": 2141.2,
+      "duration": 3.28
+    },
+    {
+      "lang": "en",
+      "text": "That sounds like the best one for sure.",
+      "offset": 2142.079,
+      "duration": 3.201
+    },
+    {
+      "lang": "en",
+      "text": "Yeah.",
+      "offset": 2144.48,
+      "duration": 3.599
+    },
+    {
+      "lang": "en",
+      "text": "Wow.",
+      "offset": 2145.28,
+      "duration": 6.96
+    },
+    {
+      "lang": "en",
+      "text": "Uh yeah, man. Modding a Wii is the move",
+      "offset": 2148.079,
+      "duration": 7.04
+    },
+    {
+      "lang": "en",
+      "text": "if you don't have a Nintendo Switch cuz",
+      "offset": 2152.24,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "that's we got a lot of games.",
+      "offset": 2155.119,
+      "duration": 3.921
+    },
+    {
+      "lang": "en",
+      "text": "I modded my Nintendo Wii when I was in",
+      "offset": 2156.8,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "college maybe. Oh man,",
+      "offset": 2159.04,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "it's still it's still a good thing to",
+      "offset": 2162.56,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "do. It's great. Our kids love it. They",
+      "offset": 2164.32,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "don't know any better. That's the most",
+      "offset": 2166,
+      "duration": 2.96
+    },
+    {
+      "lang": "en",
+      "text": "hilarious thing.",
+      "offset": 2167.68,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "They don't realize that any better.",
+      "offset": 2168.96,
+      "duration": 5.119
+    },
+    {
+      "lang": "en",
+      "text": "Probably for the best.",
+      "offset": 2171.68,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "Uh I'm going to sick pick a kids",
+      "offset": 2174.079,
+      "duration": 5.361
+    },
+    {
+      "lang": "en",
+      "text": "smartwatch. So my daughter, I don't",
+      "offset": 2176.64,
+      "duration": 5.84
+    },
+    {
+      "lang": "en",
+      "text": "know, probably about six months ago and",
+      "offset": 2179.44,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "my son just got one for his birthday.",
+      "offset": 2182.48,
+      "duration": 4.879
+    },
+    {
+      "lang": "en",
+      "text": "They got the Any Loop kids smartwatch.",
+      "offset": 2184.16,
+      "duration": 6.24
+    },
+    {
+      "lang": "en",
+      "text": "Cool. And it's like the right amount of",
+      "offset": 2187.359,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "smartwatch. It's the battery lasts like",
+      "offset": 2190.4,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "five or six days, which is awesome. Like",
+      "offset": 2193.119,
+      "duration": 4.161
+    },
+    {
+      "lang": "en",
+      "text": "it lasts like it's not every day they're",
+      "offset": 2195.44,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "charging it. It does like step counting,",
+      "offset": 2197.28,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "which they love every day. How many",
+      "offset": 2199.52,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "steps you got? You know, they're trying",
+      "offset": 2201.52,
+      "duration": 3.2
+    },
+    {
+      "lang": "en",
+      "text": "to compete with us. And it's also",
+      "offset": 2202.88,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "interesting as a parent to see how many",
+      "offset": 2204.72,
+      "duration": 5.119
+    },
+    {
+      "lang": "en",
+      "text": "steps they have. It does heart rate. It",
+      "offset": 2207.28,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "does weather if they're close enough to",
+      "offset": 2209.839,
+      "duration": 5.041
+    },
+    {
+      "lang": "en",
+      "text": "their iPad. Um, it's just Bluetooth.",
+      "offset": 2212.8,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "There's no data on it or anything like",
+      "offset": 2214.88,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "that. no Wi-Fi, but it's it's really",
+      "offset": 2216.48,
+      "duration": 4.879
+    },
+    {
+      "lang": "en",
+      "text": "cool. And they just I just loved having",
+      "offset": 2219.28,
+      "duration": 4.559
+    },
+    {
+      "lang": "en",
+      "text": "a watch as a kid, and now they have a",
+      "offset": 2221.359,
+      "duration": 5.521
+    },
+    {
+      "lang": "en",
+      "text": "watch, which has a couple neat features.",
+      "offset": 2223.839,
+      "duration": 4.721
+    },
+    {
+      "lang": "en",
+      "text": "They're setting timers on it and",
+      "offset": 2226.88,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "everything. And it's like something like",
+      "offset": 2228.56,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "30 35 bucks. When we first got it, I was",
+      "offset": 2230.72,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "like, \"This thing's probably going to",
+      "offset": 2233.68,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "suck,\" you know, like how good can a $35",
+      "offset": 2234.8,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "smart watch be?",
+      "offset": 2237.52,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "But it like it's awesome. I'm I'm very",
+      "offset": 2239.04,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "impressed at how good it is for for a",
+      "offset": 2241.76,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "kids watch. It's waterproof. It works",
+      "offset": 2244.48,
+      "duration": 4.639
+    },
+    {
+      "lang": "en",
+      "text": "great. So, it's it's from any loop.",
+      "offset": 2246.48,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "H cool. Sick.",
+      "offset": 2249.119,
+      "duration": 2.24
+    },
+    {
+      "lang": "en",
+      "text": "Yeah.",
+      "offset": 2250.96,
+      "duration": 1.84
+    },
+    {
+      "lang": "en",
+      "text": "Love that.",
+      "offset": 2251.359,
+      "duration": 3.201
+    },
+    {
+      "lang": "en",
+      "text": "All right, that's it for today. Thank",
+      "offset": 2252.8,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "you so much for tuning in. We will catch",
+      "offset": 2254.56,
+      "duration": 6.519
+    },
+    {
+      "lang": "en",
+      "text": "you later. Peace.",
+      "offset": 2256.64,
+      "duration": 4.439
+    }
+  ],
+  "cleanText": "Welcome to Syntax. Today we got an episode on building MCP servers. We talked about MCP, I don't know, maybe a couple months ago, and so much has changed since that episode that I thought we need to do a brand new episode on it, explaining what it is, explaining all the updates to it, and kind of diving into all of the different pieces and tools and helpful things around it. MCP is the Model Context Protocol. It's for exposing tools to AI. We'll talk a little bit more about that, but it's going to be a great episode. You're certainly not going to want to miss this one. What's up, Scott?\n\nOh, hey, man. Uh, I'm sick. Uh, all this stuff. There's been somebody jackhammering. I'm going to say this. Somebody's jackhammering a patio for like two straight days now, and this is finally the first little window where there's been some silence. I mean, they were jackhammering at like 6:00 p.m. We were going to eat out outside, and it was still going on. I don't understand how you could spend that much time jackhammering a patio.\n\nThat's an unreasonable time to jackhammer. Yeah.\n\nYeah. You can't do that. You can't when people are trying to eat dinner and you're jackhammering. So, yeah. Not not a fan of that. And uh yeah, so my besides that, I've just been like banging my head against some code stuff, and I'm sure the jackhammering has not been like helping my brain function today. Uh, so that's where I'm at. Yeah.\n\nOne of those days, right?\n\nWell, I'm gonna fill you with MCP nuggets, and I I feel like you'll be you'll be back to to your bright self by the end of this.\n\nLove that. Yes.\n\nSo, all right, let's let's get in on into it. So, MCP, it's a standard for being able to surface tools to AI. Um so whether you are using like an IDE editor like VS code or cursor, or whether you're using a chat application uh like claw desktop, or whether you are building your own thing with AI libraries like the open AI TypeScript library, all of those things have the ability to surface additional tools to it via something called MCP. Um, and I'll I'll give you an example of of where I ran into it recently. I I built my second MCP server a couple days ago, so I'm feeling feeling fresh on that, and I used a lot of the the new features that have come out since we did the first episode on it. So, the application that I was building was sort of like this little scratch pad that will will do calculations for you. So, I find myself often doing things like just like writing notes in a text editor and then having to do quick little math, you know, like uh uh this thing costs $100 and then you add on tax and shipping and then I'll divide it by there's two of them. You divide by two or all right, we have to record six episodes and and that's this many hours on average. they're between this and this, and I find myself just having to like copy paste that into a calculator or something like that, and I'm like I want like a natural language UI for doing currency conversion and and addition and and whatnot. So there's a couple apps out there that do it, but none of them have are using AI, and I thought AI is so good at natural language processing. So I I built it up, and it worked really well except there were two problems. First of all, AI sucks at math. Um, it was just imagining\n\nYeah.\n\ntotals up. Like some of them were correct, and then some of them were just like, \"No, that's that's not right. That's that's not right at all.\" Or I would do things like t-shirt vendor one has a $50 setup, and then at a 100 t-shirts it would cost $7 per t-shirt, and at 500 t-shirts it it would cost $5.55. And then vendor number two, I would go ahead and give all the stats. which one is the better deal? And it would go ahead and do all the math for me, find the averages, and then it would tell me at 100 and 500 t-shirts, which was the better vendor. And it sounds like a math problem from like a textbook, but it was just imagining the actual answers, you know, and I was like, this is kind of frustrating. Be so what you have to do in these situations where AI doesn't necessarily excel at doing these things is you have to give it tools, right? And one thing that AI sucks at is math. So I implemented something called tool calling, which is not MCP. I'll talk about the differences later on in the show. And basically you give it access to a tool that can do math. So I exposed it. It's called math.js library. And then what it does is anytime it needs to to do math, it simply just returns the function call that needs to be run, it runs that function, and then it passes it back to the AI with the actual answer. So we're actually like evaluating the math not with AI but with with a computer.\n\nUh so that worked really well, and then the next step I needed was like I needed like currency conversion, you know, and but I needed like real up-to-date rates, and the AI doesn't necessarily know what the the currency rates are. So what I did is I created a MCP server that will expose several tools for for getting rates, um for converting currency, for getting historical rates. So when the AI realizes it needs to fetch a rate or do some do some conversions, it can simply use the tools that I have supplied to it via MCP. So, here I have this little MCP jam, which is a Yeah, cool. Yes. answer or question there, student.\n\nWhat I don't want to do, I don't want to interrupt you. I How does the AI know when to use one of these specific tools? Are you having to pass specific keywords or is context enough?\n\nYeah. So, when you're loading a tool, when you're defining a tool, you you give it a description. Actually, hilariously enough, I was just you just asked me that question and I went to show you my description. I don't even have descriptions for the four tools, but if you go into like the Sentry MCP and load all of their tools, you can see here that there's like a find teams tool here, and it says find teams in organization sentry. Use this tool when you need to view all teams in a sentry organization. Find the teams slug to aid in other tool requests.\n\nthat both the name of it obviously was enough for me um as well as the description will be made available to the AI, and then the AI will be able to decide when it wants to use a specific tool um and wants to run it.\n\nOkay. I've always found that it'll be a little bit interesting with MCP. Maybe it's gotten easier to always get the the right call. I know this is calling tools.\n\nYeah. Yeah. because you I think what what can happen is if when you have too many uh tools you just like load it up and give it a bazillion it won't necessarily know which one to run.\n\ntoo many tools uh syntax the syntax uhfm team\n\ntoo many tools yes so that was the uh MCP server that I made, and I obviously have a couple other MCP servers here. We got the Cloudflare worker MCP server. what this will do is it to authenticate, which is a new part of the MCP spec that we did not cover last time. So, the ability to use OOTH flows inside of an MCP server is now possible, meaning that you can hook it up to your Cloudflare or your Sentry or whatever. And then when you try to use that tool, you have to first do that whole do you want to allow this application? And you you click yes, and then it it will then connect it to the thing that you have. So authentication is something that is relatively new as well as the transport protocols. So there's two ways that MCP currently works. The first one is via standard IO, meaning that the MCP server is going to be running locally on your machine or on the same machine that the AI process is running. So if you have like a node script or something that's that's handling incoming requests, you might also have a MCP server running that will be able to input and output data. So that's that's standard IO. And then the other way that MCP works is via HTTP and server sent events, which is more probably what people listening to this podcast are going to want to use because we're we're web developers, right? You want to be able to fire up a server. You want to have URL endpoints, and then people can connect to it. So, that's generally how I'm connecting to all of these. You'll see I have this one currency-mc.wwestboss.com.\n\nUm, when it connects to that, you can list all of the different tools that are available as well as No, there we go. They're they're listed as well as some of the other things like resources and prompts I'll talk about in just just a second. So, HTTP MCP servers will either return one of two things. First of all, you you send a post request to it, and then what is returned is either going to be just a JSON payload like give me a list of all of your tools or let me go ahead and use one of these tools. So, for example, get latest rates. Go ahead and run that tool. It's going to give me a list of all the the rates, but you can also change like the base currency. Go ahead and rerun that, and it will give me the Canadian rates. So that will either return just JSON back or it will give you a stream which uses server sent events. So it will either return immediately or a stream that that then can send data as it's made available over server sent events. Server sent events are kind of a an interesting one because it requires your server to be longunning. You know what's not very good at being longunning computers? Uh serverless.\n\nYes. Correct. Functions.\n\nTurns out we kind of need servers. Yeah.\n\nSo the solution to that is uh Cloudflare uses durable objects. Verscell uses fluid compute. Um basically anyone who is offering hosting of MCP servers will either be running it on like a long-term storage or they'll have some sort of other way uh to get around that via durable objects or or fluid compute.\n\nthis tool um that I'm using or if you want to be able to explore an MCP, you can use what's called the MCP inspector. Um and that will allow you to connect to an MP MCP server, and you can view all of the things that it has available to you. So, uh tools is probably the the most popular one, right? Like here's an example MCP server that will surface a whole bunch of of different tools, you know, add print environmental variables annotate message, but there's also things uh like resources which are allowing you to supply files um to an AI which is really cool. So, last time we talked about MCP, I said the server that I built was something that would go off and download an SVG icon and then bring it back to the AI cuz that's something the AI sucks at. It sucks at getting icons, you know, like put a Chrome icon here.\n\nSo, I I hooked it up to an API that went ahead and downloaded the SVG icon and brought it back. But at the time, not many of these apps supported resources. So there was actually no way to give the AI the actual SVG icon. So what I did is I told it just to like run a a cat command and and pipe it into to an SVG. Now you can give it you can properly give it a file or an image or or any other uh type of resource that you would be expecting. So if you say like go off and download six sound effects of cats meowing, you could write an MCP server that would that could do that. That is uh something I would like to do. I think uh if if I'm reaching for AI, that's the type of thing typically that I might want to do. I want to have some cats meowing. One one time uh at I used to work at a a record label, Ghostly International, for people who might have heard of it.\n\nWe each used to get like there would be a rotation of who got to pick the album that we'd be listening to. And there's like six people in the office. And these, mind you, are very into music people. I'm very into music person myself, but these guys were very serious. And it was often like, I'm going to put on this album that is like touching my soul right now. And uh one time I put on the Beetle Barkers, which was just dogs barking the Beatles. And I think they all wanted to fire me uh because we listened to the whole thing and they were so they were so mad about it by the end of the by the like they were going to throw me out the window. I I swear. But I really liked it.\n\nOh, that's hilarious.\n\nYeah.\n\nAnother part of the MCP spec is the ability to save reusable prompts. Um, and this is really cool because like you know how we have like cursor rules, you know, like kind of things that you want to tell the AI over and over again.\n\nYeah.\n\nIt's not the exact same thing, but the idea of a server being able to ship prompts along with other tools is is really neat and really useful. So, for example, on Cloudflare workers, if you load their prompts, you see they have workers prompt full, and you can go ahead and load that sucker. Basically, what what they're going to return is this is a massive prompt for working with Cloudflare workers, right? It just says like use TypeScript unless explicitly told to use JavaScript. Always add appropriate types and interfaces. Use ES modules. So like that's kind of like cursor code guidelines, but then they also have output formats, bunch of integrations, and then all kinds of different code examples that you could possibly have, right? That's a massive prompt that's going to help your your AI agent that's generating code to generate code that is much more in line with it. Um, so they provide those prompts because if you were to tell the AI agent, hey, create a Cloudflare worker that does X, Y, and Z, chances are it's going to go ahead and grab the prompt for that Cloudflare worker because it now knows I'm building that, download it, and then put that as part of the the prompt before it goes off. So this like MCP Jam, MCP inspector, these are tools that are just for exploring it. This is not actually something that you would you would be using it directly. Like I said earlier, the way that it generally would work is you would add these MCPS to your chat application. You would add it to your your cursor, your VS code IDE, anything that interacts with ID. In my case, I was using the OpenAI TypeScript SDK. And in order to surface this currency conversion, you simply just add it as a MCP. And then\n\n\nWhen the AI goes off and runs it, it says, \"Oh, that's neat. I have access to these tools, right?\" And if you're using chat GPT, you can tell that it like sometimes it just searches the web, right? That's a tool that they have integrated into it. So, it knows it can go ahead and do these things.\n\nActually coding these tools, let's talk about that. Now, why that, what that actually looks like. The way that it works is you can fire up an MCP server. This one in my case is using the MCP server from Anthropic. They're the makers of the spec. And then in order to actually make it hostable and long running, I'm using the Cloudflare agents MCP that just extends that. But most of this code is going to be standard MCP spec. And then you simply just when it fires up, you can add resources or prompts. In my case, I'm just adding tools. So, convert currency or get latest rates. And then you give it a schema. Now, the schema is really important because it schema, it does several things, right? It tells the AI how to give it the information, right? Because the AI has to know how to structure the input. It does the validation of the data coming in. So in my case, I am using zod to generate latest race schema.\n\nRight, you can take the base, which is a currency code, you can go ahead and describe it, and then you can give it different symbols.\n\nMaybe if we take a look at the convert currency, there is a from Canadian to USD and amount. And in order to specify that schema, I've done it all out and saw it. You can use any one that you want, but you must validate that the data coming in from the AI is of the format that you expect it before you go ahead and pass it through. And then you can also specify the output types. This is something that I have created, but I'm not using it yet because I have not yet found anything that can use these things. So the output schema is just a new part of the spec, which I have not found to be implemented anywhere yet. And if you want to see all of the errors in your application, you'll want to check out Sentry at sentry.io/syntax.\n\nYou don't want a production application out there that, well, you have no visibility into in case something is blowing up and you might not even know it. So head on over to centry.iosynax. Again, we've been using this tool for a long time and it totally rules. All right.\n\nSo your calling tools, which we said at one point isn't MCP. Are is tool calling and MCP related, similar, the same? What, what's the the lingo there? It's kind of a confusing thing. So before we had MCP, we had this idea that like the OpenAI docs, you can give it, you can have function calling is what they they called it. And then we have MCP, which kind of seems like the same thing, but also isn't. So the difference between the two, as far as I understand it, there's a lot of overlap between them. The tool calling is something that's going to happen on the same server that your AI code is running. So for a very simple example is I was, I gave it a math tool calling. So it's able to do things like add and subtract and average and max the different numbers, and it will be able to run those. Whereas the MCP server, it can live somewhere else. The MCP server can live on the same machine as well, but it also it can live absolutely somewhere else. And also it seems to be a little bit more stateful. You know, there's authentication. There is long live sessions that are streaming data back and forth. There is lots of back and forth with the actual server. So once you're logged in, then you can say what are my things? So I feel like the tool calling is for very simple functions that need to get run, whereas the MCP server is going to be for, in my example, I'm connecting to the Cloudflare workers ones to get docs and be able to create databases. I'm connecting to my Sentry MCP to be able to get a list of my issues or to kick off the their AI agent to actually fix the things for you. I've got my currency one, which is going off and fetching the currency rates and and able to calculate them for me. So I feel like they have quite a bit of overlap, but the MCP can be remote and the MCP is a standard specification. So, I would, unless it's just a very simple function that I'm running, I would probably throw that off to a separate MCP server.\n\nOne more thing, I've been talking about remote MCP servers, and that's a relatively new thing to the spec, meaning that previously your MCP server had to be running locally on the same machine that your actual AI code is running. And that's really helpful for something like Puppeteer, right? There's a Puppeteer MCP server that can has the ability to fire up a browser, navigate through the page, take screenshots, count, see if something's on the page, you know, like anything that that you could normally do, you can sort of robot via an MCP server where you're basically when you fire it up, you're saying, \"Hey, here is, I think the Puppeteer MCP server has about 40 or 45 tools, and you say these are 45 things you can do in a browser. Go nuts. You can do any of them. You can control the entire browser, right? Like that makes a lot of sense. You run that in a Docker container. It runs on the same machine that you have. But then other things like the Sentry one, the Cloudflare workers one, that makes more sense to log in and be able to communicate back and forth because yeah, they have all the information, right?\n\nYeah. In fact, that's primarily how I've often used them. Now, I have used like the Sentry one, but you know, the MCP server I've been using the most lately is the GDO one. And there's like, I, I will tell you folks, if you're out there looking for good MCP servers, it's really the wild wild west with a lot of them right now. Uh, there's like six or seven different GDAU MCP servers, and I would say one or two good ones. And even though two good one or two good ones vary pretty widely in terms of what they're able to do. So, and how are you interfacing with that that server?\n\nUh, via cursor currently.\n\nOkay, because I, I, what I'm doing is I'm working on a game and GDO has its own interface that also has an API, and the GDO MCP server allows it so that I don't have to work inside of GDAU, but I can control the GDO interface via cursor if I want to automate certain things, create resources, update things through the UI, those types of things.\n\nYeah, that's that's great. I even think about like OBS, which we use quite a bit. Um, OBS has a websocket API to do literally anything. And I built an app that allows us to start and and turn off recordings and record screens and do a whole bunch of like neat stuff. But I I often think like wouldn't that be nice if it was just a MCP server because then you can just you could just type to what you want or like like a lot of times I look at at something like the Cloudflare workers one where let's take a look at the tools here.\n\nOBS, I would like you to have these settings, the settings that are best from YouTube. Give me the YouTube settings. There we go. Find issues in the syntax FM org on the Sentry MCP, and then it just fires them all out. But like I often think like it could probably do like generative UI, like if you just give it a list of all the possible things that you can do. It could probably do a pretty good job at just building out a UI for you. And I built a whole UI for the OBS one, and I like, don't you think it could do a, if you were to have an MCP server of these are all the possible things you can do?\n\nYeah.\n\nIt could probably generate a pretty neat ondemand UI.\n\nYeah. For\n\nYeah. Especially because OBS is one of those things that sucks to work in.\n\nI don't know if it would make a better UI than than what it is. Um, I don't think the AI will know better. No, I'm just saying designers, but you would have to interface with it less. Anyways, what I was saying about the remote MCP servers is that not all clients support them just yet because it is a relatively new. This whole MCP thing is moving at like a breakneck speed right now, and I imagine that this episode in 3 months will be relatively out of date and we'll have to have to do another one. But if you are using a client that doesn't support remote MCP servers yet, which is most of them, then what you'll have to do is you'll have to use this little NPX MCP remote. And what that does is it just fires up a little proxy server on your machine and it will sort of translate them from one to another. It's it's a pretty common thing. Anytime like you see any documentation for for integrating them, you you'll have to be using this MCP remote.\n\nI was going to say most of the documentation for remote ones is going to include that anyways for common providers.\n\nLet's just rattle through a couple really handy ones as well. Um, obviously I've been talking about the Cloudflare ones. Look at how many they have though.\n\nYeah, they have one for their docs, one for workers, one for worker builds.\n\nThat's kind of worker builds would be kind of cool because you could just chat, hey, why did my build fail?\n\nCan you explain to me why you would need one for the docs?\n\nYeah, documentation is so key because\n\nYeah, but like why need it? Why would you need an MCP server for the docs themselves?\n\nBasically, you're working on something, right? Like you're working on Cloudflare workers, you're working on spelt, you're working on whatever, and you need to be able to give the AI the specific docs. If the AI knows, oh, I'm going to go grab the documentation for this specific library, it can go ahead, it'll just simply fetch it and then it can go through it and and pull pull the parts out that it needs and understand how it works. And that's that's huge. So you basically just have to throw a MCP server for the docs of what you're working on and then like the Cloudflare and Verscell both do an awesome job where they have all of their documentation as markdown, and that's a great thing just to feed directly into an AI, but it's it's one step further where you don't even have to go copy paste it. You can simply just give it the tools like, hey, check the docs for x, y, and z, or if it doesn't understand how something works, because so many of these things that are not like it's AI has been is really good at writing nexjs and tailwind, but there's a lot of other stuff that doesn't have a lot of examples out there that it's not very good at writing, and it's it's hard when things change like spelt 5, it doesn't know about spelt 5 just yet, right? Because the the models haven't been trained on it. But if you can prompt it with a whole bunch of examples and and and TypeScript types and how these things work, then it's going to do a much better job at at how that works. There's this use MCP, which is a React hook, which is wild to me because you basically just take any MCP server, feed it into this React hook, and it will give you all of the methods and state for using it inside of a React application, which is is really cool, which a lot of this feels like we're just recreating REST APIs.\n\nYeah. Right. Yeah, of course. Yeah, that is the the weird thing with the currency one. I felt like I was just hot potatoing a lot of the requests from from one to another.\n\nDavid Kramer had a really good tweet thread on it. Keny Daws also replied. He he had a blog post on it. He says like the MCP is not really your API. The MCP is more of a UI, which I thought was kind of an interesting way.\n\nIt's a connecting thread.\n\nYeah, exactly. Instead of interfacing with your service or your API via buttons, um, you're interfacing the service via MCP, right? Or or it's generally going to be something like chat. The the AI is going to be doing that. So, in some cases, those will be the same thing. Um, you want your entire API to be available to the AI. But in other cases, like if you think about your UI, sometimes your UI will have two or three different API requests or REST requests, and then you'll need to do things in a specific order, and and surfacing it via MCP request is is more the the move there.\n\nSo that's that's all we got on the the MCP right now. There's this really great GitHub here called Awesome MCP servers. You can kind of rip through. It seems it really feels like the early days of APIs. In the early days, everybody had an API and everybody was building stuff and remixing and connecting things together, and it was really good. And over time, a lot of those APIs disappeared partially because people don't want you building your own version of of Twitter or or whatever social network. They want you or or Reddit or whatever, and and partially because like people use them to spam, um, and you can't give people programmatic tools for for pushing things. However, it does feel like everybody's coming out swinging with their own MCP server right now. Um, and it's kind of an exciting time to to see everybody like there's a Telegram one and a welcome bot. Like, do we need a syntax MCP server? What would that do? What would that do? What would that do? You could get the latest show. Uh, you could search for a spec, like again, we're just describing just an API rest API here. You're just giving it a different means of interfacing with it.\n\nYeah, I think the the real power of a lot of these APIs is is both when you can pull content, but also when you can can do things, right? Like when you can start stuff or save things or modify.\n\nYeah. Especially things that have like a UI because it gets you out of doing click ops for things.\n\nYeah.\n\nBut also, I mean, you're getting into AI ops, but like Yeah. If you're clicking around a UI to trigger things and now you have a tool to interact with that via natural language. That seems interesting to me. Or you're able to connect several tools together, you know, to work with each other. Yeah, those seem like\n\n\nThe biggest uh bonuses for me.\nYeah.\nAnd I and probably the the one other one I'd add to that is being able to get better results out of your out of your AI application because at the end of the day, the whole reason I stumbled into all of this was because I simply just needed better math and better currency conversion in the app that I was building.\nAnd the so this was not like a chat app that I was using directly.\nIt's just I just the app that I was building was not very good and in order to make it better, you have to give the AI more tools.\nWell, that's great.\nUh, you know, maybe we could have a MCP server for some sick pics where it could just send you right to wherever we we bought these things from.\nSick pics are the things that we are enjoying.\nCould be anything.\nA podcast.\nUh could be just just about any product type of thing or or whatever.\nYeah, sick picks.\nYou know what?\nI will sick pick.\nThis is like not really a unique sick pick in any regard, but man, the new Mario Kart on Nintendo Switch 2 is just a lot of fun.\nI've only been playing with the kids and we'll we'll find some time to to rip around that thing.\nAnd when they announced like giving like modes where it was like give like steering assistance and stuff like that, I didn't really understand it.\nBut like now that I'm playing with a six-year-old, man, the steering assistance stuff really helps them have a good time because even in the beginner settings, like yeah, they're learning how to play the game and they're doing pretty decent, but they're finishing in the bottom half of the standings every time and they have a lot less fun doing that.\nAnd then when you turn on the steering assist, they're finishing in second place and fourth place, and that just makes them like want to get better at the game and not get discouraged.\nSo, I I've been really enjoying the game.\nI'm historically someone that plays Mario Kart games by picking the most obnoxious characters, like who who are the biggest, most annoying characters in the game.\nAnd let me tell you, this game has got some obnoxious characters.\nUh, so I'll be the cow, I'll be Charging Chuck, I'll be just like the goofiest characters because that's uh that's how I like to play.\nUm, so yeah, the new Mario Kart is just lovely as you'd expect it to be.\nThat's good.\nI I downloaded or purchased Mario Kart for the Wii and I didn't realize that there's like a there's like a hacked version of Mario Kart called Mario Kart Black.\nAnd like like literally somebody like went and replaced all the music, all of the like infographics, even like the loading screen.\nOh, creepy pasta.\nYeah.\nWow.\nAnd I just like was like, \"Hey kids, let's play Mario Kart.\"\nAnd I was like, \"This is dark.\nThis is what you downloaded.\"\nOh, man.\nThat's so funny.\nBut apparently somebody just like like like literally modded the entire image for Mario Kart.\nYeah, I'm looking at it right now.\nMario Kart Black.\nYeah, it's there's a scandalous pixelated uh Princess Peach on the back cover of this thing.\nThis is what you This is what you you loaded up.\nMy gosh.\nBut that just goes to show how like not dialed I am on video games.\nI was like Mario Kart Black.\nThat sounds like the best one.\nThat sounds like the best one for sure.\nYeah.\nWow.\nUh yeah, man.\nModding a Wii is the move if you don't have a Nintendo Switch cuz that's we got a lot of games.\nI modded my Nintendo Wii when I was in college maybe.\nOh man, it's still it's still a good thing to do.\nIt's great.\nOur kids love it.\nThey don't know any better.\nThat's the most hilarious thing.\nThey don't realize that any better.\nProbably for the best.\nUh I'm going to sick pick a kids smartwatch.\nSo my daughter, I don't know, probably about six months ago and my son just got one for his birthday.\nThey got the Any Loop kids smartwatch.\nCool.\nAnd it's like the right amount of smartwatch.\nIt's the battery lasts like five or six days, which is awesome.\nLike it lasts like it's not every day they're charging it.\nIt does like step counting, which they love every day.\nHow many steps you got?\nYou know, they're trying to compete with us.\nAnd it's also interesting as a parent to see how many steps they have.\nIt does heart rate.\nIt does weather if they're close enough to their iPad.\nUm, it's just Bluetooth.\nThere's no data on it or anything like that.\nno Wi-Fi, but it's it's really cool.\nAnd they just I just loved having a watch as a kid, and now they have a watch, which has a couple neat features.\nThey're setting timers on it and everything.\nAnd it's like something like 30 35 bucks.\nWhen we first got it, I was like, \"This thing's probably going to suck,\" you know, like how good can a $35 smart watch be?\nBut it like it's awesome.\nI'm I'm very impressed at how good it is for for a kids watch.\nIt's waterproof.\nIt works great.\nSo, it's it's from any loop.\nH cool.\nSick.\nYeah.\nLove that.\nAll right, that's it for today.\nThank you so much for tuning in.\nWe will catch you later.\nPeace.\n",
+  "dumpedAt": "2025-07-21T18:43:25.365Z"
+}

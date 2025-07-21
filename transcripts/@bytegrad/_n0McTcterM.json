@@ -1,0 +1,6424 @@
+{
+  "episodeId": "_n0McTcterM",
+  "channelSlug": "@bytegrad",
+  "title": "URL-Smart Search With Next.js & MongoDB (+ Autocomplete, RAG, Vectors, Fuzzy Search)",
+  "publishedAt": "2025-04-15T10:19:13.000Z",
+  "rawLines": [
+    {
+      "lang": "en",
+      "text": "What's the most important feature you're",
+      "offset": 0.16,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "going to build on your website or app?",
+      "offset": 1.839,
+      "duration": 4.401
+    },
+    {
+      "lang": "en",
+      "text": "It may just be search. Search is",
+      "offset": 3.6,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "actually a multi-million dollar feature",
+      "offset": 6.24,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "for pretty much any company you can",
+      "offset": 8.88,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "think of. Netflix, when you search for a",
+      "offset": 11.12,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "movie, Amazon, when you search for",
+      "offset": 13.2,
+      "duration": 3.839
+    },
+    {
+      "lang": "en",
+      "text": "product, any kind of e-commerce website,",
+      "offset": 15.04,
+      "duration": 4.159
+    },
+    {
+      "lang": "en",
+      "text": "actually. Think of any app or website",
+      "offset": 17.039,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "you use often. And you'll see that",
+      "offset": 19.199,
+      "duration": 3.761
+    },
+    {
+      "lang": "en",
+      "text": "search is probably an important feature",
+      "offset": 21.039,
+      "duration": 3.601
+    },
+    {
+      "lang": "en",
+      "text": "there. So, let's actually talk about how",
+      "offset": 22.96,
+      "duration": 4.079
+    },
+    {
+      "lang": "en",
+      "text": "we can do that on our own next.js",
+      "offset": 24.64,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "websites and apps. There are some things",
+      "offset": 27.039,
+      "duration": 2.961
+    },
+    {
+      "lang": "en",
+      "text": "that you have to pay attention to,",
+      "offset": 28.64,
+      "duration": 2.959
+    },
+    {
+      "lang": "en",
+      "text": "especially with the new NexJS app",
+      "offset": 30,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "router. But there are also some search",
+      "offset": 31.599,
+      "duration": 3.601
+    },
+    {
+      "lang": "en",
+      "text": "specific things you can do to make it",
+      "offset": 33.52,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "actually really good. So as an example",
+      "offset": 35.2,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "here, let's say we have a website about",
+      "offset": 36.96,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "recipes. We have a bunch of recipes in",
+      "offset": 39.04,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "our database and people can search here",
+      "offset": 41.04,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "for them. So if people start typing here",
+      "offset": 43.6,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "for pasta, they will already get some",
+      "offset": 45.6,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "suggestions here below the input field.",
+      "offset": 48.48,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "So we want to add autocomplete here, but",
+      "offset": 50.96,
+      "duration": 5.439
+    },
+    {
+      "lang": "en",
+      "text": "also in the search results themselves.",
+      "offset": 53.28,
+      "duration": 5.599
+    },
+    {
+      "lang": "en",
+      "text": "So if I actually uh search here and we",
+      "offset": 56.399,
+      "duration": 4.241
+    },
+    {
+      "lang": "en",
+      "text": "are going to take a look at and here I",
+      "offset": 58.879,
+      "duration": 4.401
+    },
+    {
+      "lang": "en",
+      "text": "get a bunch of actual results. This is",
+      "offset": 60.64,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "really important but you can do this in",
+      "offset": 63.28,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "various ways. So this is actually",
+      "offset": 65.36,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "semantic search and you can see that",
+      "offset": 67.6,
+      "duration": 5.519
+    },
+    {
+      "lang": "en",
+      "text": "because fish the word fish well it it's",
+      "offset": 69.6,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "part of this recipe but it's not part of",
+      "offset": 73.119,
+      "duration": 4.881
+    },
+    {
+      "lang": "en",
+      "text": "this recipe. So the word fish is not",
+      "offset": 75.6,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "literally present in the description",
+      "offset": 78,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "here. However, salmon is and so the",
+      "offset": 80,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "underlying algorithm here powering this",
+      "offset": 82,
+      "duration": 5.119
+    },
+    {
+      "lang": "en",
+      "text": "understands that salmon and fish are",
+      "offset": 84.24,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "semantically related and so we still get",
+      "offset": 87.119,
+      "duration": 3.841
+    },
+    {
+      "lang": "en",
+      "text": "that as part of the search results as",
+      "offset": 89.2,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "well in here as well. This used to be",
+      "offset": 90.96,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "pretty difficult to do even a few years",
+      "offset": 92.72,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "ago. However, thanks to AI and maybe",
+      "offset": 94.4,
+      "duration": 4.399
+    },
+    {
+      "lang": "en",
+      "text": "heard of rag and some other tools as",
+      "offset": 96.88,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "well, this is much easier now. So that",
+      "offset": 98.799,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "is semantic search. Now there's also",
+      "offset": 100.56,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "something called fuzzy fuzzy search",
+      "offset": 102.159,
+      "duration": 4.161
+    },
+    {
+      "lang": "en",
+      "text": "which basically allows the user to make",
+      "offset": 104.32,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "a typo and it will still give them",
+      "offset": 106.32,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "relevant results. So there's a bunch of",
+      "offset": 108.72,
+      "duration": 3.28
+    },
+    {
+      "lang": "en",
+      "text": "search related things that we're going",
+      "offset": 110.88,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "to take a look at. Now notice I also put",
+      "offset": 112,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "the search query here in the URL. So I'm",
+      "offset": 114.32,
+      "duration": 5.759
+    },
+    {
+      "lang": "en",
+      "text": "actually not using state in React for uh",
+      "offset": 116.88,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "this input field. I'm actually using the",
+      "offset": 120.079,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "URL for state management. There are many",
+      "offset": 122,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "benefits to this. So one of the benefits",
+      "offset": 124.159,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "is that somebody can bookmark this. When",
+      "offset": 125.92,
+      "duration": 3.839
+    },
+    {
+      "lang": "en",
+      "text": "they bookmark it and they come back",
+      "offset": 128.239,
+      "duration": 3.761
+    },
+    {
+      "lang": "en",
+      "text": "later, they get the exact same URL and",
+      "offset": 129.759,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "because of that they will get the exact",
+      "offset": 132,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "same results that they were looking at",
+      "offset": 133.599,
+      "duration": 4.961
+    },
+    {
+      "lang": "en",
+      "text": "before. Also somebody can copy this and",
+      "offset": 135.68,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "send it over to somebody else. That",
+      "offset": 138.56,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "person will also paste this exact URL",
+      "offset": 140.64,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "and also will get the exact same result.",
+      "offset": 143.52,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "So there are many benefits of tying the",
+      "offset": 145.76,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "results of tying the state basically to",
+      "offset": 147.92,
+      "duration": 5.92
+    },
+    {
+      "lang": "en",
+      "text": "the URL. Still quite underrated in my",
+      "offset": 151.04,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "view. So we need to know a little bit",
+      "offset": 153.84,
+      "duration": 3.28
+    },
+    {
+      "lang": "en",
+      "text": "about search parameters and how to",
+      "offset": 155.28,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "update them in next.js as well. Also,",
+      "offset": 157.12,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "how do you uh fetch these results in a",
+      "offset": 159.28,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "in a in a server component, maybe using",
+      "offset": 161.68,
+      "duration": 5.199
+    },
+    {
+      "lang": "en",
+      "text": "uh suspense? Because if I search for",
+      "offset": 164.56,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "something else now, pasta, you can see",
+      "offset": 166.879,
+      "duration": 3.121
+    },
+    {
+      "lang": "en",
+      "text": "we have a loading state for this as",
+      "offset": 168.48,
+      "duration": 3.28
+    },
+    {
+      "lang": "en",
+      "text": "well. So, there's a bunch of Next.js",
+      "offset": 170,
+      "duration": 3.12
+    },
+    {
+      "lang": "en",
+      "text": "specific things we want to take a look",
+      "offset": 171.76,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "at as well. Now, how are we going to",
+      "offset": 173.12,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "power this search functionality here?",
+      "offset": 175.12,
+      "duration": 4.479
+    },
+    {
+      "lang": "en",
+      "text": "What technologies are we going to use?",
+      "offset": 177.76,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "So, I already mentioned rag and rag, it",
+      "offset": 179.599,
+      "duration": 5.201
+    },
+    {
+      "lang": "en",
+      "text": "has to do with vectors. So, typically",
+      "offset": 182.48,
+      "duration": 4.399
+    },
+    {
+      "lang": "en",
+      "text": "you would need a vector store for that.",
+      "offset": 184.8,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "So you would have to find some other",
+      "offset": 186.879,
+      "duration": 3.681
+    },
+    {
+      "lang": "en",
+      "text": "database. Well, MongoDB, they are",
+      "offset": 188.48,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "today's sponsor, allows you to store",
+      "offset": 190.56,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "your vector embeddings right alongside",
+      "offset": 192.72,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "your normal data. So you can use a",
+      "offset": 195.44,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "MongoDB database both for your normal",
+      "offset": 197.68,
+      "duration": 5.6
+    },
+    {
+      "lang": "en",
+      "text": "operations as well as for a lot of AI",
+      "offset": 200.48,
+      "duration": 4.399
+    },
+    {
+      "lang": "en",
+      "text": "features. And we're mostly looking at",
+      "offset": 203.28,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "search in this video. Uh but they allow",
+      "offset": 204.879,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "you to store those embeddings in your",
+      "offset": 206.8,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "database right alongside with your other",
+      "offset": 208.879,
+      "duration": 5.521
+    },
+    {
+      "lang": "en",
+      "text": "data actually making rag super easy.",
+      "offset": 211.76,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "Now, I actually had a great time using",
+      "offset": 214.4,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "MongoDB. By the way, I run an e-learning",
+      "offset": 215.84,
+      "duration": 4.479
+    },
+    {
+      "lang": "en",
+      "text": "website. So, I have all these students",
+      "offset": 218.4,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "here. They can sign up for courses and",
+      "offset": 220.319,
+      "duration": 4.081
+    },
+    {
+      "lang": "en",
+      "text": "then in the dashboard, they will go",
+      "offset": 222.56,
+      "duration": 3.599
+    },
+    {
+      "lang": "en",
+      "text": "through courses. This is actually",
+      "offset": 224.4,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "powered by MongoDB. I've been using it",
+      "offset": 226.159,
+      "duration": 4.241
+    },
+    {
+      "lang": "en",
+      "text": "for the website for a couple years. I",
+      "offset": 228.64,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "had a great time using them. So, if you",
+      "offset": 230.4,
+      "duration": 4.399
+    },
+    {
+      "lang": "en",
+      "text": "have to implement anything with vectors,",
+      "offset": 232.08,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "make sure to check them out. But, let's",
+      "offset": 234.799,
+      "duration": 3.121
+    },
+    {
+      "lang": "en",
+      "text": "actually just try and take a look at",
+      "offset": 236.4,
+      "duration": 3.199
+    },
+    {
+      "lang": "en",
+      "text": "this project here. I will leave a link",
+      "offset": 237.92,
+      "duration": 3.28
+    },
+    {
+      "lang": "en",
+      "text": "in the description as well for the code.",
+      "offset": 239.599,
+      "duration": 2.72
+    },
+    {
+      "lang": "en",
+      "text": "So, if you want to take a look at it",
+      "offset": 241.2,
+      "duration": 2.72
+    },
+    {
+      "lang": "en",
+      "text": "yourself, you can do that as well. All",
+      "offset": 242.319,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "right. So, where do we start? Well, I",
+      "offset": 243.92,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "actually have a very simple next.js app",
+      "offset": 246.239,
+      "duration": 5.521
+    },
+    {
+      "lang": "en",
+      "text": "right here. I removed a bunch of things",
+      "offset": 249.36,
+      "duration": 4.159
+    },
+    {
+      "lang": "en",
+      "text": "and this is the homepage, right? So, we",
+      "offset": 251.76,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "have recipe suggest that is what we have",
+      "offset": 253.519,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "here. And then we have some uh text",
+      "offset": 256,
+      "duration": 4.799
+    },
+    {
+      "lang": "en",
+      "text": "below there. And then we have a form",
+      "offset": 258.079,
+      "duration": 5.201
+    },
+    {
+      "lang": "en",
+      "text": "basically for the input here. And then",
+      "offset": 260.799,
+      "duration": 4.881
+    },
+    {
+      "lang": "en",
+      "text": "below that, we want to have the results,",
+      "offset": 263.28,
+      "duration": 4.639
+    },
+    {
+      "lang": "en",
+      "text": "right? So, I have a div with that which",
+      "offset": 265.68,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "will display the results. That's all",
+      "offset": 267.919,
+      "duration": 4.241
+    },
+    {
+      "lang": "en",
+      "text": "that we have here. Now we already have",
+      "offset": 269.68,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "the first decision to make because in",
+      "offset": 272.16,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "nextjs everything by default is a server",
+      "offset": 275.04,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "component. I actually mark this as async",
+      "offset": 277.44,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "but we're not going to fetch directly in",
+      "offset": 279.6,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "here. The search uh bar here is going to",
+      "offset": 281.28,
+      "duration": 5.6
+    },
+    {
+      "lang": "en",
+      "text": "be quite interactive. So this needs to",
+      "offset": 284.4,
+      "duration": 4.239
+    },
+    {
+      "lang": "en",
+      "text": "run in the browser right because what we",
+      "offset": 286.88,
+      "duration": 2.879
+    },
+    {
+      "lang": "en",
+      "text": "want to do here especially with",
+      "offset": 288.639,
+      "duration": 3.601
+    },
+    {
+      "lang": "en",
+      "text": "autocomplete we need to hook into the",
+      "offset": 289.759,
+      "duration": 4.801
+    },
+    {
+      "lang": "en",
+      "text": "user's click event. Let's say that can",
+      "offset": 292.24,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "only happen in the browser. So we need",
+      "offset": 294.56,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "to make that a client component. I could",
+      "offset": 296,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "make everything here a client component,",
+      "offset": 298.24,
+      "duration": 3.679
+    },
+    {
+      "lang": "en",
+      "text": "right? But then everything else would be",
+      "offset": 300.32,
+      "duration": 3.439
+    },
+    {
+      "lang": "en",
+      "text": "affected by that as well, even though",
+      "offset": 301.919,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "only this piece needs it. So, it's a",
+      "offset": 303.759,
+      "duration": 4.641
+    },
+    {
+      "lang": "en",
+      "text": "better practice to refactor the piece",
+      "offset": 306.479,
+      "duration": 4.321
+    },
+    {
+      "lang": "en",
+      "text": "that needs that interactivity into its",
+      "offset": 308.4,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "own component. So, I will remove it from",
+      "offset": 310.8,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "here. And I'm putting it into this",
+      "offset": 312.56,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "search bar component. And again, it's",
+      "offset": 314.88,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "just an input field here. We have an SVG",
+      "offset": 317.28,
+      "duration": 5.68
+    },
+    {
+      "lang": "en",
+      "text": "for this uh icon here. And we have the",
+      "offset": 319.6,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "actual input field right here. And a",
+      "offset": 322.96,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "bunch of styling. But this is all not",
+      "offset": 324.72,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "that important, right? So it's just an",
+      "offset": 326.72,
+      "duration": 4.319
+    },
+    {
+      "lang": "en",
+      "text": "input field with some styling. And I'm",
+      "offset": 328.72,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "going to use that component here on the",
+      "offset": 331.039,
+      "duration": 4.801
+    },
+    {
+      "lang": "en",
+      "text": "page. And I can mark that one as use",
+      "offset": 332.96,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "client, right? Without affecting",
+      "offset": 335.84,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "everything else here. This can stay a",
+      "offset": 337.84,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "server component. Now we have the",
+      "offset": 339.52,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "results list below there. And we're",
+      "offset": 341.44,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "going to fetch data for that. We may",
+      "offset": 343.84,
+      "duration": 3.919
+    },
+    {
+      "lang": "en",
+      "text": "actually want to do it very close to",
+      "offset": 345.68,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "there as well. So we may also want to",
+      "offset": 347.759,
+      "duration": 3.921
+    },
+    {
+      "lang": "en",
+      "text": "put this in its own file. We could",
+      "offset": 349.68,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "technically also fetch on the page here",
+      "offset": 351.68,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "and that would be perfectly fine.",
+      "offset": 353.68,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "However, just out of clean code",
+      "offset": 355.44,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "principles, we want to refactor this. So",
+      "offset": 357.68,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "let's say we have some recipe list",
+      "offset": 360.08,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "component for that. I'm just hard coding",
+      "offset": 362.08,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "some recipes here just so we have",
+      "offset": 364.08,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "something to look at and work at. So",
+      "offset": 365.84,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "it's just an array with a bunch of",
+      "offset": 367.52,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "recipes. This is how our data will look",
+      "offset": 369.36,
+      "duration": 3.279
+    },
+    {
+      "lang": "en",
+      "text": "like. So we have some title and a",
+      "offset": 371.12,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "description. Okay. And we are just",
+      "offset": 372.639,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "mapping over that here and basically",
+      "offset": 374.96,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "just creating a link in there. title and",
+      "offset": 377.199,
+      "duration": 4.321
+    },
+    {
+      "lang": "en",
+      "text": "description and just a bunch of styling",
+      "offset": 379.52,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "and markup. But in terms of data, that",
+      "offset": 381.52,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "is how this is structured. So then we",
+      "offset": 383.6,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "can include this on the page. Okay, I",
+      "offset": 385.28,
+      "duration": 6.8
+    },
+    {
+      "lang": "en",
+      "text": "will uh import that here. Okay, so now",
+      "offset": 388.56,
+      "duration": 5.759
+    },
+    {
+      "lang": "en",
+      "text": "uh we have this and just hardcoded three",
+      "offset": 392.08,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "recipes. So now what we want to do maybe",
+      "offset": 394.319,
+      "duration": 4.561
+    },
+    {
+      "lang": "en",
+      "text": "just to get started here is if I search",
+      "offset": 396.56,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "for pasta, let's say I only want to see",
+      "offset": 398.88,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "the recipe with pasta, right? If I",
+      "offset": 401.84,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "search for chicken, we only want to see",
+      "offset": 404,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "the recipes that have chicken in there,",
+      "offset": 406.08,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "which is only this second one here,",
+      "offset": 408.08,
+      "duration": 4.399
+    },
+    {
+      "lang": "en",
+      "text": "right? So, how do we even start off with",
+      "offset": 410.24,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "some something simple like that? Well, I",
+      "offset": 412.479,
+      "duration": 3.201
+    },
+    {
+      "lang": "en",
+      "text": "would argue let's actually start by",
+      "offset": 414.16,
+      "duration": 4.159
+    },
+    {
+      "lang": "en",
+      "text": "putting this in the URL, reading from",
+      "offset": 415.68,
+      "duration": 6.16
+    },
+    {
+      "lang": "en",
+      "text": "the URL, and retrieving from our data",
+      "offset": 418.319,
+      "duration": 5.681
+    },
+    {
+      "lang": "en",
+      "text": "the specific recipe that's relevant for",
+      "offset": 421.84,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "that. Right? So, before we even add a",
+      "offset": 424,
+      "duration": 3.199
+    },
+    {
+      "lang": "en",
+      "text": "database, let's see how the flow here",
+      "offset": 425.44,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "works with data in Next.js. So, let's go",
+      "offset": 427.199,
+      "duration": 5.601
+    },
+    {
+      "lang": "en",
+      "text": "to our search bar here. So when the user",
+      "offset": 430.16,
+      "duration": 4.159
+    },
+    {
+      "lang": "en",
+      "text": "uh clicks on search here we are",
+      "offset": 432.8,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "submitting the form that's the submit",
+      "offset": 434.319,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "event on the form we can hook into that",
+      "offset": 436.24,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "we can do on sububmit and we can say",
+      "offset": 438.639,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "handle search and we can define that",
+      "offset": 440.96,
+      "duration": 4.799
+    },
+    {
+      "lang": "en",
+      "text": "function up here. So when the user",
+      "offset": 443.599,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "submits the form we will run this",
+      "offset": 445.759,
+      "duration": 3.601
+    },
+    {
+      "lang": "en",
+      "text": "function. So initially we want to just",
+      "offset": 447.599,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "prevent the default because by default",
+      "offset": 449.36,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "when you submit a form in a in a browser",
+      "offset": 451.199,
+      "duration": 3.681
+    },
+    {
+      "lang": "en",
+      "text": "there's all sorts of things happening",
+      "offset": 453.28,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "that we don't want. We want to control",
+      "offset": 454.88,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "that submission. So we we need to get",
+      "offset": 456.72,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "the data basically what the user rows",
+      "offset": 459.44,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "here we need to get it out of that out",
+      "offset": 461.84,
+      "duration": 3.759
+    },
+    {
+      "lang": "en",
+      "text": "of that form. So we can take the event",
+      "offset": 463.52,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "current target which is the form. We can",
+      "offset": 465.599,
+      "duration": 4.081
+    },
+    {
+      "lang": "en",
+      "text": "turn it into a so-called form data which",
+      "offset": 467.36,
+      "duration": 4.399
+    },
+    {
+      "lang": "en",
+      "text": "contains all the form data but we just",
+      "offset": 469.68,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "want to get whatever the user wrote in",
+      "offset": 471.759,
+      "duration": 3.761
+    },
+    {
+      "lang": "en",
+      "text": "that input field. Right? So that's this",
+      "offset": 473.68,
+      "duration": 4.079
+    },
+    {
+      "lang": "en",
+      "text": "input element and it has a particular",
+      "offset": 475.52,
+      "duration": 4.239
+    },
+    {
+      "lang": "en",
+      "text": "name. I just called it something really",
+      "offset": 477.759,
+      "duration": 4.961
+    },
+    {
+      "lang": "en",
+      "text": "explicit input search value. That's what",
+      "offset": 479.759,
+      "duration": 5.201
+    },
+    {
+      "lang": "en",
+      "text": "we can use to then get the actual value.",
+      "offset": 482.72,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "whatever the user wrote. Basically, what",
+      "offset": 484.96,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "do we want to do with that? Well, we",
+      "offset": 487.12,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "don't want to do it with user state in",
+      "offset": 489.12,
+      "duration": 4.479
+    },
+    {
+      "lang": "en",
+      "text": "React. We actually want to just add it",
+      "offset": 491.44,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "to the URL, right? So, we're first going",
+      "offset": 493.599,
+      "duration": 3.921
+    },
+    {
+      "lang": "en",
+      "text": "to write to the URL and then we're going",
+      "offset": 495.52,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "to read from the URL. But first, we need",
+      "offset": 497.52,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "to add something to the URL and we're",
+      "offset": 500.08,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "going to make a so-called search",
+      "offset": 502.4,
+      "duration": 2.799
+    },
+    {
+      "lang": "en",
+      "text": "parameters, right? So, we want to have",
+      "offset": 503.68,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "something like Q, the query that the",
+      "offset": 505.199,
+      "duration": 4.961
+    },
+    {
+      "lang": "en",
+      "text": "user has, and then uh chicken, right?",
+      "offset": 507.68,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "This is this this is called um if we if",
+      "offset": 510.16,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "we would have multiple by the way it",
+      "offset": 512.56,
+      "duration": 3.279
+    },
+    {
+      "lang": "en",
+      "text": "would look like this right and these are",
+      "offset": 514.24,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "so-called search parameters where you",
+      "offset": 515.839,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "have a key and a value. Now in our case",
+      "offset": 518,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "we're just going to have one and to work",
+      "offset": 520.959,
+      "duration": 4.641
+    },
+    {
+      "lang": "en",
+      "text": "with that the browser gives us this new",
+      "offset": 523.36,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "URL search params that we can use here",
+      "offset": 525.6,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "just to make it working with it a little",
+      "offset": 528.64,
+      "duration": 5.199
+    },
+    {
+      "lang": "en",
+      "text": "bit easier. So we'll call it params. Now",
+      "offset": 530.64,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "if the user wrote something so if there",
+      "offset": 533.839,
+      "duration": 4.641
+    },
+    {
+      "lang": "en",
+      "text": "is actually let's say chicken in there",
+      "offset": 535.92,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "this will be true right this will be",
+      "offset": 538.48,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "true the chicken is truth the we can",
+      "offset": 540.64,
+      "duration": 4.879
+    },
+    {
+      "lang": "en",
+      "text": "then set it the Q to chicken right so",
+      "offset": 542.8,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "then we can say Q is chicken now if it's",
+      "offset": 545.519,
+      "duration": 6.081
+    },
+    {
+      "lang": "en",
+      "text": "not truthy for example maybe because the",
+      "offset": 548.8,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "user um actually removed it again right",
+      "offset": 551.6,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "so remove them and then search again in",
+      "offset": 554.08,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "that case we actually also want to clean",
+      "offset": 556.32,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "up our URL and remove the Q and then",
+      "offset": 558.16,
+      "duration": 5.92
+    },
+    {
+      "lang": "en",
+      "text": "we're actually going to use the Nex.js",
+      "offset": 561.44,
+      "duration": 5.519
+    },
+    {
+      "lang": "en",
+      "text": "router to actually update the URL. So we",
+      "offset": 564.08,
+      "duration": 5.199
+    },
+    {
+      "lang": "en",
+      "text": "can use the the user router hook",
+      "offset": 566.959,
+      "duration": 4.281
+    },
+    {
+      "lang": "en",
+      "text": "actually which allows us to do",
+      "offset": 569.279,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "router.replace basically replace the",
+      "offset": 571.24,
+      "duration": 5.08
+    },
+    {
+      "lang": "en",
+      "text": "current URL with a new one. Now we want",
+      "offset": 573.279,
+      "duration": 5.361
+    },
+    {
+      "lang": "en",
+      "text": "to have the complete URL. So we also",
+      "offset": 576.32,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "need to add everything before the search",
+      "offset": 578.64,
+      "duration": 4.639
+    },
+    {
+      "lang": "en",
+      "text": "params. So in this case local host blah",
+      "offset": 581.04,
+      "duration": 4.239
+    },
+    {
+      "lang": "en",
+      "text": "blah blah we can get that with the path",
+      "offset": 583.279,
+      "duration": 4.161
+    },
+    {
+      "lang": "en",
+      "text": "name. This is another hook that we can",
+      "offset": 585.279,
+      "duration": 5.201
+    },
+    {
+      "lang": "en",
+      "text": "use in Nex.js in client components.",
+      "offset": 587.44,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "Right? So now uh we can construct the",
+      "offset": 590.48,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "entire new URL and we can actually take",
+      "offset": 592.88,
+      "duration": 5.6
+    },
+    {
+      "lang": "en",
+      "text": "the params we can do it to string. So it",
+      "offset": 595.44,
+      "duration": 5.519
+    },
+    {
+      "lang": "en",
+      "text": "will actually be a suitable string in",
+      "offset": 598.48,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "for a URL. You want to pay attention to",
+      "offset": 600.959,
+      "duration": 3.841
+    },
+    {
+      "lang": "en",
+      "text": "the URL by the way when you have like",
+      "offset": 602.8,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "characters that need special encoding or",
+      "offset": 604.8,
+      "duration": 4.719
+    },
+    {
+      "lang": "en",
+      "text": "you have spaces and so on. So this",
+      "offset": 607.36,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "should take care of that. And actually",
+      "offset": 609.519,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "use router we need to import that from",
+      "offset": 611.04,
+      "duration": 3.919
+    },
+    {
+      "lang": "en",
+      "text": "next navigation. So not from next",
+      "offset": 612.959,
+      "duration": 4.241
+    },
+    {
+      "lang": "en",
+      "text": "router. Cool. So now if we have all of",
+      "offset": 614.959,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "this let's try it out. If I now type uh",
+      "offset": 617.2,
+      "duration": 5.199
+    },
+    {
+      "lang": "en",
+      "text": "chicken and I actually submit the form,",
+      "offset": 619.839,
+      "duration": 5.68
+    },
+    {
+      "lang": "en",
+      "text": "you can see we have now Q is chicken in",
+      "offset": 622.399,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "the URL. Okay, so this is rising to the",
+      "offset": 625.519,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "URL. I can now share it with other",
+      "offset": 628.399,
+      "duration": 3.521
+    },
+    {
+      "lang": "en",
+      "text": "people. I can bookmark it and when",
+      "offset": 630.079,
+      "duration": 3.841
+    },
+    {
+      "lang": "en",
+      "text": "somebody else comes here, we want to",
+      "offset": 631.92,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "show the same search results. So we do",
+      "offset": 633.92,
+      "duration": 3.919
+    },
+    {
+      "lang": "en",
+      "text": "need to make sure the search results are",
+      "offset": 635.92,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "actually relevant for this for whatever",
+      "offset": 637.839,
+      "duration": 4.161
+    },
+    {
+      "lang": "en",
+      "text": "is the search parameter value here. So",
+      "offset": 639.92,
+      "duration": 3.599
+    },
+    {
+      "lang": "en",
+      "text": "of course in this case, we only want to",
+      "offset": 642,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "show this chicken one. So we are now in",
+      "offset": 643.519,
+      "duration": 5.841
+    },
+    {
+      "lang": "en",
+      "text": "the search bar, but this is the list of",
+      "offset": 646.48,
+      "duration": 6.08
+    },
+    {
+      "lang": "en",
+      "text": "results, right? So we need to go to the",
+      "offset": 649.36,
+      "duration": 5.919
+    },
+    {
+      "lang": "en",
+      "text": "recipe list here. And this one needs to",
+      "offset": 652.56,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "know what the query is. How does it get",
+      "offset": 655.279,
+      "duration": 5.521
+    },
+    {
+      "lang": "en",
+      "text": "access to that? We could use uh use",
+      "offset": 658.32,
+      "duration": 5.519
+    },
+    {
+      "lang": "en",
+      "text": "search params, but this only works in a",
+      "offset": 660.8,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "client component. So we would have to",
+      "offset": 663.839,
+      "duration": 3.521
+    },
+    {
+      "lang": "en",
+      "text": "turn this into a client component. And",
+      "offset": 665.36,
+      "duration": 4.159
+    },
+    {
+      "lang": "en",
+      "text": "typically we do want to allow things to",
+      "offset": 667.36,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "stay on the server side if that's",
+      "offset": 669.519,
+      "duration": 3.361
+    },
+    {
+      "lang": "en",
+      "text": "possible. Let's try keeping this a",
+      "offset": 671.04,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "server component. How can it get how can",
+      "offset": 672.88,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "it then be aware of whatever is in the",
+      "offset": 674.88,
+      "duration": 4.399
+    },
+    {
+      "lang": "en",
+      "text": "URL? Well, we can actually get the",
+      "offset": 676.8,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "search parameters from a page component",
+      "offset": 679.279,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "itself as well. And we can then pass it",
+      "offset": 682.32,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "as a prop. So we can take search params",
+      "offset": 684.399,
+      "duration": 4.401
+    },
+    {
+      "lang": "en",
+      "text": "here. So we can actually get it like",
+      "offset": 687.12,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "this. So in the nextjs page components",
+      "offset": 688.8,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "you will actually have a search params",
+      "offset": 691.6,
+      "duration": 4.799
+    },
+    {
+      "lang": "en",
+      "text": "prop. In the more recent nextjs, it's",
+      "offset": 693.76,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "actually a promise. So we have to do a",
+      "offset": 696.399,
+      "duration": 4.401
+    },
+    {
+      "lang": "en",
+      "text": "bit of an awkward await and then we can",
+      "offset": 698.56,
+      "duration": 5.6
+    },
+    {
+      "lang": "en",
+      "text": "get the actual uh value like this q. So",
+      "offset": 700.8,
+      "duration": 5.279
+    },
+    {
+      "lang": "en",
+      "text": "then we have the actual query that the",
+      "offset": 704.16,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "user uh wrote. We can also just call it",
+      "offset": 706.079,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "query actually and that's what I can",
+      "offset": 708.72,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "then pass to the recipe list as a prop.",
+      "offset": 710.399,
+      "duration": 4.801
+    },
+    {
+      "lang": "en",
+      "text": "Of course I could also use it here and",
+      "offset": 713.04,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "fetch the data directly from here if I",
+      "offset": 715.2,
+      "duration": 4.079
+    },
+    {
+      "lang": "en",
+      "text": "want. But maybe I do want to have",
+      "offset": 717.76,
+      "duration": 3.88
+    },
+    {
+      "lang": "en",
+      "text": "everything nicely confined to that",
+      "offset": 719.279,
+      "duration": 4.961
+    },
+    {
+      "lang": "en",
+      "text": "component. So I can just pass it as a",
+      "offset": 721.64,
+      "duration": 4.6
+    },
+    {
+      "lang": "en",
+      "text": "prop and it will receive it right here.",
+      "offset": 724.24,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "Okay. So then we can take the query and",
+      "offset": 726.24,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "now we have our recipes. I moved it out",
+      "offset": 728.72,
+      "duration": 3.919
+    },
+    {
+      "lang": "en",
+      "text": "of here and actually moved it as a",
+      "offset": 730.8,
+      "duration": 3.839
+    },
+    {
+      "lang": "en",
+      "text": "variable. Here we have three recipes.",
+      "offset": 732.639,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "They each have a title and description.",
+      "offset": 734.639,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "So we we need to take whatever the user",
+      "offset": 736.399,
+      "duration": 4.721
+    },
+    {
+      "lang": "en",
+      "text": "was searching for. If it's just an empty",
+      "offset": 738.639,
+      "duration": 4.401
+    },
+    {
+      "lang": "en",
+      "text": "if the user actually removed it, we just",
+      "offset": 741.12,
+      "duration": 3.519
+    },
+    {
+      "lang": "en",
+      "text": "want to show all the recipes. But if the",
+      "offset": 743.04,
+      "duration": 3.2
+    },
+    {
+      "lang": "en",
+      "text": "user did write something like chicken,",
+      "offset": 744.639,
+      "duration": 3.681
+    },
+    {
+      "lang": "en",
+      "text": "for example, we want to go over each",
+      "offset": 746.24,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "recipe and we'll just check is there a",
+      "offset": 748.32,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "chicken, literally chicken, the complete",
+      "offset": 750.48,
+      "duration": 4.799
+    },
+    {
+      "lang": "en",
+      "text": "word chicken in the title. Is it maybe",
+      "offset": 752.8,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "in the description? Right. So very uh",
+      "offset": 755.279,
+      "duration": 5.601
+    },
+    {
+      "lang": "en",
+      "text": "very bare bones uh do-it-yourself",
+      "offset": 757.68,
+      "duration": 5.92
+    },
+    {
+      "lang": "en",
+      "text": "search. But you can see now chicken is",
+      "offset": 760.88,
+      "duration": 4.959
+    },
+    {
+      "lang": "en",
+      "text": "in the URL and we do get chicken here.",
+      "offset": 763.6,
+      "duration": 3.919
+    },
+    {
+      "lang": "en",
+      "text": "Right. If I actually search for uh",
+      "offset": 765.839,
+      "duration": 3.601
+    },
+    {
+      "lang": "en",
+      "text": "pasta, if I search for this, you can see",
+      "offset": 767.519,
+      "duration": 3.361
+    },
+    {
+      "lang": "en",
+      "text": "I get the other one. If I actually",
+      "offset": 769.44,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "remove it and submit, I get all of them.",
+      "offset": 770.88,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "If I search for Greek and press enter, I",
+      "offset": 773.36,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "get this. So now if I share this with",
+      "offset": 775.76,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "somebody else or I bookmark this and I",
+      "offset": 777.92,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "come back to this later, I would still",
+      "offset": 780.16,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "get uh the Greek recipe that that was on",
+      "offset": 782,
+      "duration": 4.399
+    },
+    {
+      "lang": "en",
+      "text": "my mind that I want to come back to.",
+      "offset": 784.72,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "Now, by the way, notice that my search",
+      "offset": 786.399,
+      "duration": 4.321
+    },
+    {
+      "lang": "en",
+      "text": "bar is not prefilled with whatever is in",
+      "offset": 788.32,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "the URL. So let's go to our search bar",
+      "offset": 790.72,
+      "duration": 4.239
+    },
+    {
+      "lang": "en",
+      "text": "here. I can use use search params",
+      "offset": 792.88,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "because it was already a client",
+      "offset": 794.959,
+      "duration": 3.361
+    },
+    {
+      "lang": "en",
+      "text": "component. So I might as well just use",
+      "offset": 796.56,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "that. And I can get whatever was in the",
+      "offset": 798.32,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "URL. Um like this, right? And then I can",
+      "offset": 800.72,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "use that as the default value for the",
+      "offset": 803.6,
+      "duration": 5.039
+    },
+    {
+      "lang": "en",
+      "text": "input. Right? So I can say default value",
+      "offset": 806.24,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "make that whatever was already in the",
+      "offset": 808.639,
+      "duration": 4.961
+    },
+    {
+      "lang": "en",
+      "text": "URL. So now if I go back here and I",
+      "offset": 810.56,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "maybe bookmark this. Now I come back you",
+      "offset": 813.6,
+      "duration": 5.039
+    },
+    {
+      "lang": "en",
+      "text": "can see Greek has already been added",
+      "offset": 816,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "here to the input field as well. Right?",
+      "offset": 818.639,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "So I think this is a very basic example",
+      "offset": 821.44,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "of how you can work with search",
+      "offset": 823.519,
+      "duration": 3.681
+    },
+    {
+      "lang": "en",
+      "text": "parameters in Nex.js. Really important",
+      "offset": 824.8,
+      "duration": 5.279
+    },
+    {
+      "lang": "en",
+      "text": "for pretty much any application that you",
+      "offset": 827.2,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "understand this flow. Now we'll add some",
+      "offset": 830.079,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "actual search in a second. Now",
+      "offset": 832.24,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "realistically it will take some time",
+      "offset": 834.399,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "right so here it's all super fast right",
+      "offset": 836.32,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "so pasta it's instance because I just",
+      "offset": 838.079,
+      "duration": 4.641
+    },
+    {
+      "lang": "en",
+      "text": "hardcoded some uh recipes right here so",
+      "offset": 840,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "it's all super fast realistically when",
+      "offset": 842.72,
+      "duration": 4.559
+    },
+    {
+      "lang": "en",
+      "text": "we are actually going to search and and",
+      "offset": 844.72,
+      "duration": 4.479
+    },
+    {
+      "lang": "en",
+      "text": "reach out to a database it may take some",
+      "offset": 847.279,
+      "duration": 4.961
+    },
+    {
+      "lang": "en",
+      "text": "time so let me actually just add a 1",
+      "offset": 849.199,
+      "duration": 5.361
+    },
+    {
+      "lang": "en",
+      "text": "second delay here just to simulate that",
+      "offset": 852.24,
+      "duration": 4.159
+    },
+    {
+      "lang": "en",
+      "text": "a little bit because right now if I",
+      "offset": 854.56,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "search for chicken again if I press",
+      "offset": 856.399,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "enter here I don't see any feedback it",
+      "offset": 859.04,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "takes a second and then I see a result",
+      "offset": 861.279,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "But in the meantime, if I now click on",
+      "offset": 863.44,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "search, I'm waiting and waiting and only",
+      "offset": 865.839,
+      "duration": 3.761
+    },
+    {
+      "lang": "en",
+      "text": "after a second, I see something. So, we",
+      "offset": 867.6,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "need loading states to signal to the",
+      "offset": 869.6,
+      "duration": 4.239
+    },
+    {
+      "lang": "en",
+      "text": "user that there is something ongoing and",
+      "offset": 872,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "that everything is all right. Nice thing",
+      "offset": 873.839,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "about uh doing your data fetch, well, in",
+      "offset": 875.76,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "this case, we're not data fetching yet,",
+      "offset": 878.079,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "but we'll do that in a second. Reaching",
+      "offset": 879.92,
+      "duration": 3.279
+    },
+    {
+      "lang": "en",
+      "text": "out to a database. If you do it in a",
+      "offset": 881.519,
+      "duration": 3.601
+    },
+    {
+      "lang": "en",
+      "text": "component like this, wrap that in a",
+      "offset": 883.199,
+      "duration": 4.76
+    },
+    {
+      "lang": "en",
+      "text": "suspense in Nex.js. So, I can do",
+      "offset": 885.12,
+      "duration": 5.6
+    },
+    {
+      "lang": "en",
+      "text": "suspense. I can move that in here. And",
+      "offset": 887.959,
+      "duration": 4.921
+    },
+    {
+      "lang": "en",
+      "text": "here I can specify a fall back. And here",
+      "offset": 890.72,
+      "duration": 4.239
+    },
+    {
+      "lang": "en",
+      "text": "I can use a fall back which I can",
+      "offset": 892.88,
+      "duration": 4.319
+    },
+    {
+      "lang": "en",
+      "text": "basically use as a loading state here.",
+      "offset": 894.959,
+      "duration": 5.521
+    },
+    {
+      "lang": "en",
+      "text": "While this component is uh suspended",
+      "offset": 897.199,
+      "duration": 5.121
+    },
+    {
+      "lang": "en",
+      "text": "basically as we're sort of waiting for",
+      "offset": 900.48,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "it to finish up, it will show this",
+      "offset": 902.32,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "paragraph here. I could separate it out",
+      "offset": 904.56,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "in a separate component. But this is a",
+      "offset": 906.16,
+      "duration": 3.359
+    },
+    {
+      "lang": "en",
+      "text": "nice and quick way to add a loading",
+      "offset": 907.92,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "state while we're getting the results",
+      "offset": 909.519,
+      "duration": 5.521
+    },
+    {
+      "lang": "en",
+      "text": "from the search. So now if I uh search",
+      "offset": 912,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "here for uh chicken, right? So if I",
+      "offset": 915.04,
+      "duration": 4.479
+    },
+    {
+      "lang": "en",
+      "text": "press enter here, we actually don't see",
+      "offset": 917.76,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "it. Why do we not see it? Uh it's a bit",
+      "offset": 919.519,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "strange with how the suspense works. But",
+      "offset": 921.6,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "if I refresh, you can see this actually",
+      "offset": 923.519,
+      "duration": 3.601
+    },
+    {
+      "lang": "en",
+      "text": "works. Right? So in the initially when",
+      "offset": 925.36,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "you refresh the page, it works. But then",
+      "offset": 927.12,
+      "duration": 4.399
+    },
+    {
+      "lang": "en",
+      "text": "if you search again, if I tap past time",
+      "offset": 929.36,
+      "duration": 3.839
+    },
+    {
+      "lang": "en",
+      "text": "now and nothing happened. Well, this is",
+      "offset": 931.519,
+      "duration": 3.921
+    },
+    {
+      "lang": "en",
+      "text": "because the suspense only runs once",
+      "offset": 933.199,
+      "duration": 4.161
+    },
+    {
+      "lang": "en",
+      "text": "initially and it needs to be",
+      "offset": 935.44,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "re-triggered again to run again. We can",
+      "offset": 937.36,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "do that with the key prop actually. So",
+      "offset": 939.68,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "with key in React, you're basically",
+      "offset": 941.68,
+      "duration": 4.959
+    },
+    {
+      "lang": "en",
+      "text": "telling React that this is uh unique. So",
+      "offset": 943.68,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "if the query changes, it knows it's new",
+      "offset": 946.639,
+      "duration": 3.681
+    },
+    {
+      "lang": "en",
+      "text": "and it will re-trigger it. Actually,",
+      "offset": 948.72,
+      "duration": 3.679
+    },
+    {
+      "lang": "en",
+      "text": "this is actually very uh tricky. So,",
+      "offset": 950.32,
+      "duration": 3.759
+    },
+    {
+      "lang": "en",
+      "text": "don't worry if you're confused. But now,",
+      "offset": 952.399,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "if I do that and I type chicken, I",
+      "offset": 954.079,
+      "duration": 3.921
+    },
+    {
+      "lang": "en",
+      "text": "actually get a nice loading state here",
+      "offset": 956.399,
+      "duration": 4.081
+    },
+    {
+      "lang": "en",
+      "text": "as well as when I type pasta again. But",
+      "offset": 958,
+      "duration": 5.279
+    },
+    {
+      "lang": "en",
+      "text": "now, everything here works. Okay. Now,",
+      "offset": 960.48,
+      "duration": 5.279
+    },
+    {
+      "lang": "en",
+      "text": "by the way, in the next documentation,",
+      "offset": 963.279,
+      "duration": 4.881
+    },
+    {
+      "lang": "en",
+      "text": "they also recommend that if you use use",
+      "offset": 965.759,
+      "duration": 4.561
+    },
+    {
+      "lang": "en",
+      "text": "search params in your component that you",
+      "offset": 968.16,
+      "duration": 4.239
+    },
+    {
+      "lang": "en",
+      "text": "also wrap that in a suspense. Don't",
+      "offset": 970.32,
+      "duration": 3.199
+    },
+    {
+      "lang": "en",
+      "text": "worry if you're a little bit confused",
+      "offset": 972.399,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "about all this new Next.js stuff. Uh",
+      "offset": 973.519,
+      "duration": 3.841
+    },
+    {
+      "lang": "en",
+      "text": "that's totally normal. All right. So",
+      "offset": 975.839,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "right now, of course, we just hardcoded",
+      "offset": 977.36,
+      "duration": 4.159
+    },
+    {
+      "lang": "en",
+      "text": "a little bit of data here. Now, we",
+      "offset": 979.279,
+      "duration": 3.841
+    },
+    {
+      "lang": "en",
+      "text": "actually want to add a database, and we",
+      "offset": 981.519,
+      "duration": 2.961
+    },
+    {
+      "lang": "en",
+      "text": "want to make it work with an actual",
+      "offset": 983.12,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "database, and we don't want to have our",
+      "offset": 984.48,
+      "duration": 4.719
+    },
+    {
+      "lang": "en",
+      "text": "own concoction here of search algorithm.",
+      "offset": 986.48,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "So, I'm going to remove that. We'll just",
+      "offset": 989.199,
+      "duration": 5.601
+    },
+    {
+      "lang": "en",
+      "text": "hardcode a an empty array there. Let me",
+      "offset": 991.68,
+      "duration": 5.519
+    },
+    {
+      "lang": "en",
+      "text": "actually also remove the simulated",
+      "offset": 994.8,
+      "duration": 4.479
+    },
+    {
+      "lang": "en",
+      "text": "sleeping function there. And I will also",
+      "offset": 997.199,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "remove the hard-coded recipes from here.",
+      "offset": 999.279,
+      "duration": 4.321
+    },
+    {
+      "lang": "en",
+      "text": "Okay. So, now we have no data hardcoded",
+      "offset": 1001.519,
+      "duration": 4.401
+    },
+    {
+      "lang": "en",
+      "text": "in our app. Now, I need to uh have a",
+      "offset": 1003.6,
+      "duration": 4.799
+    },
+    {
+      "lang": "en",
+      "text": "database So I already signed up for",
+      "offset": 1005.92,
+      "duration": 4.479
+    },
+    {
+      "lang": "en",
+      "text": "MongoDB. You can get started for free",
+      "offset": 1008.399,
+      "duration": 3.201
+    },
+    {
+      "lang": "en",
+      "text": "and you can find a link in the",
+      "offset": 1010.399,
+      "duration": 3.281
+    },
+    {
+      "lang": "en",
+      "text": "description. So MongoDB makes it super",
+      "offset": 1011.6,
+      "duration": 4.159
+    },
+    {
+      "lang": "en",
+      "text": "easy to do a bunch of sophisticated",
+      "offset": 1013.68,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "search actually. Especially factor",
+      "offset": 1015.759,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "search is really valuable because you",
+      "offset": 1017.68,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "get great results with very little",
+      "offset": 1019.759,
+      "duration": 4.481
+    },
+    {
+      "lang": "en",
+      "text": "effort actually. So if you have a new",
+      "offset": 1021.6,
+      "duration": 4.959
+    },
+    {
+      "lang": "en",
+      "text": "account, we can create a free cluster",
+      "offset": 1024.24,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "here. So I can create a cluster and",
+      "offset": 1026.559,
+      "duration": 4.081
+    },
+    {
+      "lang": "en",
+      "text": "there is a free option here and I will",
+      "offset": 1028.64,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "just go with all the default settings.",
+      "offset": 1030.64,
+      "duration": 3.12
+    },
+    {
+      "lang": "en",
+      "text": "It will basically provision the",
+      "offset": 1032.4,
+      "duration": 4.159
+    },
+    {
+      "lang": "en",
+      "text": "resources for my database. All right. So",
+      "offset": 1033.76,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "here we also need to connect to our",
+      "offset": 1036.559,
+      "duration": 4.161
+    },
+    {
+      "lang": "en",
+      "text": "database and we can set some things up",
+      "offset": 1038.24,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "like the admin user. Yeah. So we can",
+      "offset": 1040.72,
+      "duration": 6.959
+    },
+    {
+      "lang": "en",
+      "text": "connect to MongoDB by using the NodeJS",
+      "offset": 1043.28,
+      "duration": 7.2
+    },
+    {
+      "lang": "en",
+      "text": "driver. However, we typically use an OM",
+      "offset": 1047.679,
+      "duration": 4.961
+    },
+    {
+      "lang": "en",
+      "text": "in our applications. So I will actually",
+      "offset": 1050.48,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "use Prisma, but you can also try this.",
+      "offset": 1052.64,
+      "duration": 3.919
+    },
+    {
+      "lang": "en",
+      "text": "MongoDB, by the way, also has Compass,",
+      "offset": 1054.64,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "which is a guey. I use this myself for",
+      "offset": 1056.559,
+      "duration": 4.401
+    },
+    {
+      "lang": "en",
+      "text": "my e-learning website. It's just an app",
+      "offset": 1058.96,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "on your computer and you can visually",
+      "offset": 1060.96,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "interact with your data. It's really",
+      "offset": 1062.72,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "nice. They actually also have a VS code",
+      "offset": 1064.4,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "extension which allows you to inspect",
+      "offset": 1066.32,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "your data here as well by the way. But",
+      "offset": 1068,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "we will actually just go with Prisma. So",
+      "offset": 1070.08,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "I will actually just close out of here",
+      "offset": 1072.72,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "for now. If you are creating a cluster",
+      "offset": 1074.16,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "for the first time, it may actually ask",
+      "offset": 1076.08,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "you for creating a user and a password.",
+      "offset": 1078.08,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "You need those credentials to actually",
+      "offset": 1081.2,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "connect to your database. So make sure",
+      "offset": 1083.12,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "you store your password somewhere. Don't",
+      "offset": 1084.88,
+      "duration": 3.919
+    },
+    {
+      "lang": "en",
+      "text": "show it to other people. And by default,",
+      "offset": 1087.12,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "they may actually add some sample data",
+      "offset": 1088.799,
+      "duration": 3.921
+    },
+    {
+      "lang": "en",
+      "text": "to our database. So let's actually",
+      "offset": 1091.2,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "browse collections here. So if you're",
+      "offset": 1092.72,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "coming from the world of SQL,",
+      "offset": 1094.88,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "collections are very similar to tables",
+      "offset": 1096.32,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "in a SQL database, right? So MongoDB is",
+      "offset": 1099.2,
+      "duration": 5.359
+    },
+    {
+      "lang": "en",
+      "text": "NoSQL and we don't have tables, we have",
+      "offset": 1101.84,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "collections and an item here. So here we",
+      "offset": 1104.559,
+      "duration": 4.721
+    },
+    {
+      "lang": "en",
+      "text": "have some sample data in our database.",
+      "offset": 1107.36,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "Let's say a movie for example. And so a",
+      "offset": 1109.28,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "movie, this is called a document, right?",
+      "offset": 1111.52,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "So in SQL you have a row of data. Here",
+      "offset": 1113.76,
+      "duration": 5.039
+    },
+    {
+      "lang": "en",
+      "text": "we have a document. Now this is nice. Uh",
+      "offset": 1115.84,
+      "duration": 5.199
+    },
+    {
+      "lang": "en",
+      "text": "but we don't want to have this data. So",
+      "offset": 1118.799,
+      "duration": 4.721
+    },
+    {
+      "lang": "en",
+      "text": "I will actually remove this. Okay, we'll",
+      "offset": 1121.039,
+      "duration": 4.081
+    },
+    {
+      "lang": "en",
+      "text": "drop it. It may take a second or so.",
+      "offset": 1123.52,
+      "duration": 3.039
+    },
+    {
+      "lang": "en",
+      "text": "I'll just fast forward. All right, so",
+      "offset": 1125.12,
+      "duration": 3.439
+    },
+    {
+      "lang": "en",
+      "text": "now I have a clean slate here and I'm",
+      "offset": 1126.559,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "going to create a database here. So we",
+      "offset": 1128.559,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "will add our own data. I will call this",
+      "offset": 1130.799,
+      "duration": 6.721
+    },
+    {
+      "lang": "en",
+      "text": "my -ash db collection name recipes and",
+      "offset": 1133.039,
+      "duration": 6.401
+    },
+    {
+      "lang": "en",
+      "text": "create. Okay, so now we have one",
+      "offset": 1137.52,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "database and in there we have one",
+      "offset": 1139.44,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "collection. I want to seat this now with",
+      "offset": 1142.16,
+      "duration": 4.399
+    },
+    {
+      "lang": "en",
+      "text": "a bunch of recipes. How can I do that?",
+      "offset": 1144.32,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "Well, let's actually start using Prisma.",
+      "offset": 1146.559,
+      "duration": 3.041
+    },
+    {
+      "lang": "en",
+      "text": "Prisma makes it really easy for us to",
+      "offset": 1148.08,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "interact with our database. So I will",
+      "offset": 1149.6,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "stop the app. I will install Pris Prisma",
+      "offset": 1151.76,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "as a dev dependency and I will also",
+      "offset": 1154.88,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "install the Prisma client. Prisma has",
+      "offset": 1157.2,
+      "duration": 5.599
+    },
+    {
+      "lang": "en",
+      "text": "detailed instructions on how to set them",
+      "offset": 1160.24,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "up on how to set it up with MongoDB on",
+      "offset": 1162.799,
+      "duration": 4.401
+    },
+    {
+      "lang": "en",
+      "text": "their website, but it's pretty easy. So",
+      "offset": 1164.72,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "I will run MPX Prisma in it and I will",
+      "offset": 1167.2,
+      "duration": 4.719
+    },
+    {
+      "lang": "en",
+      "text": "initialize it with MongoDB as the data",
+      "offset": 1169.84,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "source provider. Okay, so we get a",
+      "offset": 1171.919,
+      "duration": 5.041
+    },
+    {
+      "lang": "en",
+      "text": "Prisma folder now with a schema file.",
+      "offset": 1174.16,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "Now since the latest version in Prisma",
+      "offset": 1176.96,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "I'm getting this output here. Prisma is",
+      "offset": 1179.28,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "changing how the client is generated or",
+      "offset": 1181.52,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "where it's located. However, for now I",
+      "offset": 1183.76,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "will remove this because we don't need",
+      "offset": 1186,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "that for now. So Prisma will connect to",
+      "offset": 1187.84,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "our database but it needs to know the",
+      "offset": 1189.52,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "URL the connection string. So it has",
+      "offset": 1191.6,
+      "duration": 4.319
+    },
+    {
+      "lang": "en",
+      "text": "created av file for us and now we need",
+      "offset": 1193.44,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "to get a connection string for MongoDB.",
+      "offset": 1195.919,
+      "duration": 4.961
+    },
+    {
+      "lang": "en",
+      "text": "Okay. So let's take a look here. So how",
+      "offset": 1198.48,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "do we get that here? Well, if we go to",
+      "offset": 1200.88,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "uh data services here, if you scroll",
+      "offset": 1203.36,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "down a little bit, you will see here",
+      "offset": 1205.2,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "connection string. Okay, if we click on",
+      "offset": 1206.88,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "that, we get the same view as before.",
+      "offset": 1208.64,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "Here we see some options here. So, let's",
+      "offset": 1210.64,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "actually copy the one here from the",
+      "offset": 1213.52,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "driver here. If I copy this and paste",
+      "offset": 1215.6,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "that in here, what do we see here? Yeah,",
+      "offset": 1218.48,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "so here you need to use your username",
+      "offset": 1220.48,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "and the password that you set up for",
+      "offset": 1223.44,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "your user. That's what you saw. If you",
+      "offset": 1225.36,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "create a new account and you set up your",
+      "offset": 1227.44,
+      "duration": 2.96
+    },
+    {
+      "lang": "en",
+      "text": "cluster for the first time, you may have",
+      "offset": 1228.88,
+      "duration": 3.12
+    },
+    {
+      "lang": "en",
+      "text": "done that. If you haven't done it yet,",
+      "offset": 1230.4,
+      "duration": 3.04
+    },
+    {
+      "lang": "en",
+      "text": "you can set up an admin user in the",
+      "offset": 1232,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "dashboard. Now, I created some dummy",
+      "offset": 1233.44,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "account actually just calling it admin",
+      "offset": 1235.52,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "and admin. Just admin as username and",
+      "offset": 1237.44,
+      "duration": 4.239
+    },
+    {
+      "lang": "en",
+      "text": "then admin as password. Make sure you",
+      "offset": 1239.84,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "you pick a better one and make sure you",
+      "offset": 1241.679,
+      "duration": 3.201
+    },
+    {
+      "lang": "en",
+      "text": "don't show it to anyone else. All right.",
+      "offset": 1243.6,
+      "duration": 3.04
+    },
+    {
+      "lang": "en",
+      "text": "Now, importantly, after the forward",
+      "offset": 1244.88,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "slash here, I do need to specify the",
+      "offset": 1246.64,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "name of my database. So, I called it my",
+      "offset": 1248.32,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "DB. So, now we can go to the schema of",
+      "offset": 1251.2,
+      "duration": 5.599
+    },
+    {
+      "lang": "en",
+      "text": "Prisma and we can model our data here.",
+      "offset": 1254.08,
+      "duration": 4.479
+    },
+    {
+      "lang": "en",
+      "text": "So, what we can do here is we want to",
+      "offset": 1256.799,
+      "duration": 3.921
+    },
+    {
+      "lang": "en",
+      "text": "have recipes in our database. How are",
+      "offset": 1258.559,
+      "duration": 4.161
+    },
+    {
+      "lang": "en",
+      "text": "they shaped? Well, they they should have",
+      "offset": 1260.72,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "an ID. And actually with MongoDB under",
+      "offset": 1262.72,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "the hood, they have an underscore ID.",
+      "offset": 1265.84,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "It's going to be a so-called object ID.",
+      "offset": 1268.48,
+      "duration": 4.079
+    },
+    {
+      "lang": "en",
+      "text": "This is something specific to MongoDB.",
+      "offset": 1270.48,
+      "duration": 3.679
+    },
+    {
+      "lang": "en",
+      "text": "So, we need to map that here with",
+      "offset": 1272.559,
+      "duration": 3.441
+    },
+    {
+      "lang": "en",
+      "text": "Prisma. Each recipe will have a title",
+      "offset": 1274.159,
+      "duration": 4.081
+    },
+    {
+      "lang": "en",
+      "text": "and description. I'm also adding",
+      "offset": 1276,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "embeddings here. We'll talk about it in",
+      "offset": 1278.24,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "a second. This allows us to get really",
+      "offset": 1279.76,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "high quality semantic search results.",
+      "offset": 1281.84,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "And we do it with so-called vector",
+      "offset": 1284.24,
+      "duration": 3.04
+    },
+    {
+      "lang": "en",
+      "text": "embeddings. And with and with",
+      "offset": 1285.6,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "MongoDB we can store that directly with",
+      "offset": 1287.28,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "the rest of the recipe data. It's really",
+      "offset": 1289.44,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "nice actually. We don't need a separate",
+      "offset": 1291.6,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "factor store and we have some standard",
+      "offset": 1293.36,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "created at and updated at field. Now we",
+      "offset": 1295.6,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "can just make this so that the",
+      "offset": 1297.76,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "collection name that will be created",
+      "offset": 1299.52,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "from this will actually be lowercase and",
+      "offset": 1301.12,
+      "duration": 4.559
+    },
+    {
+      "lang": "en",
+      "text": "plural recipe. So this is just what I",
+      "offset": 1303.52,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "wrote for Prisma. But my actual database",
+      "offset": 1305.679,
+      "duration": 3.921
+    },
+    {
+      "lang": "en",
+      "text": "is not updated with this yet. So what I",
+      "offset": 1307.6,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "can do now is I can say MPX Prisma DB",
+      "offset": 1309.6,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "push and Prisma will try to connect. And",
+      "offset": 1312.32,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "you can see it tried to connect and it",
+      "offset": 1314.48,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "says my database was already in sync.",
+      "offset": 1316.4,
+      "duration": 3.279
+    },
+    {
+      "lang": "en",
+      "text": "Maybe it's because I was preparing the",
+      "offset": 1318.24,
+      "duration": 3.679
+    },
+    {
+      "lang": "en",
+      "text": "video. But let's actually go to our",
+      "offset": 1319.679,
+      "duration": 4.081
+    },
+    {
+      "lang": "en",
+      "text": "collections here. Oh, it's actually just",
+      "offset": 1321.919,
+      "duration": 3.521
+    },
+    {
+      "lang": "en",
+      "text": "because I already created a database and",
+      "offset": 1323.76,
+      "duration": 3.919
+    },
+    {
+      "lang": "en",
+      "text": "that collection here in the UI. So now",
+      "offset": 1325.44,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "we actually want to add some data. Let's",
+      "offset": 1327.679,
+      "duration": 4.641
+    },
+    {
+      "lang": "en",
+      "text": "actually create a seed.ts file here. So",
+      "offset": 1329.44,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "here actually I will use the Prisma",
+      "offset": 1332.32,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "client and I have a bunch of recipes",
+      "offset": 1334,
+      "duration": 4.799
+    },
+    {
+      "lang": "en",
+      "text": "here, right? So I have a lot of recipes",
+      "offset": 1336.08,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "here which I want to insert into my",
+      "offset": 1338.799,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "database. So we will just run this file",
+      "offset": 1341.12,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "once. We're just going to delete the",
+      "offset": 1343.039,
+      "duration": 3.041
+    },
+    {
+      "lang": "en",
+      "text": "previous files, right? This is all dummy",
+      "offset": 1344.64,
+      "duration": 3.2
+    },
+    {
+      "lang": "en",
+      "text": "data. Don't connect to your production",
+      "offset": 1346.08,
+      "duration": 3.839
+    },
+    {
+      "lang": "en",
+      "text": "database. This is just going to be for",
+      "offset": 1347.84,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "development purposes. And then we're",
+      "offset": 1349.919,
+      "duration": 4.561
+    },
+    {
+      "lang": "en",
+      "text": "going to insert them into a database by",
+      "offset": 1352.08,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "batch. So, we're not doing everything",
+      "offset": 1354.48,
+      "duration": 3.72
+    },
+    {
+      "lang": "en",
+      "text": "all at once. Um, we're doing Prisma",
+      "offset": 1356,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "recipe.create. Very straightforward.",
+      "offset": 1358.2,
+      "duration": 4.04
+    },
+    {
+      "lang": "en",
+      "text": "Basically, it will allow us to insert",
+      "offset": 1360.64,
+      "duration": 3.919
+    },
+    {
+      "lang": "en",
+      "text": "all of this uh into our database. Now, I",
+      "offset": 1362.24,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "just need to run the file. I can",
+      "offset": 1364.559,
+      "duration": 3.12
+    },
+    {
+      "lang": "en",
+      "text": "actually run it from the terminal myself",
+      "offset": 1365.76,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "with ts nodes. I have I've installed it",
+      "offset": 1367.679,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "globally and it's sitting in my Prisma",
+      "offset": 1370.08,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "folder and it's called seat.ts. Let's",
+      "offset": 1371.919,
+      "duration": 4.401
+    },
+    {
+      "lang": "en",
+      "text": "try this out. All right, so it's",
+      "offset": 1374.88,
+      "duration": 3.2
+    },
+    {
+      "lang": "en",
+      "text": "starting to seat and now it's seeding",
+      "offset": 1376.32,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "into my database. Okay, this looks good",
+      "offset": 1378.08,
+      "duration": 4.479
+    },
+    {
+      "lang": "en",
+      "text": "and it's finished. Okay, so let's",
+      "offset": 1380,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "actually go here and refresh and see if",
+      "offset": 1382.559,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "that went all right. All right, so now",
+      "offset": 1384.88,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "you can see I have a bunch of data here",
+      "offset": 1386.559,
+      "duration": 4.881
+    },
+    {
+      "lang": "en",
+      "text": "in my database. So let's actually go",
+      "offset": 1388.64,
+      "duration": 5.68
+    },
+    {
+      "lang": "en",
+      "text": "back to our app here. If I search pasta",
+      "offset": 1391.44,
+      "duration": 4.479
+    },
+    {
+      "lang": "en",
+      "text": "right now, how can we make sure we",
+      "offset": 1394.32,
+      "duration": 3.12
+    },
+    {
+      "lang": "en",
+      "text": "actually get the data here from our",
+      "offset": 1395.919,
+      "duration": 4.321
+    },
+    {
+      "lang": "en",
+      "text": "MongoDB database here in our NextJS app?",
+      "offset": 1397.44,
+      "duration": 5.359
+    },
+    {
+      "lang": "en",
+      "text": "Well, if we go back to our component",
+      "offset": 1400.24,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "that was previously that that is",
+      "offset": 1402.799,
+      "duration": 4.481
+    },
+    {
+      "lang": "en",
+      "text": "displaying the result here, we get that",
+      "offset": 1405.52,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "query. So here we from here onwards, we",
+      "offset": 1407.28,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "know what the user is looking for. We",
+      "offset": 1409.52,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "just need to make sure that we get it",
+      "offset": 1411.6,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "from our database and then we'll render",
+      "offset": 1413.36,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "it out here. So how can we do that? All",
+      "offset": 1415.44,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "right. So I'm initializing the Prisma",
+      "offset": 1416.96,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "client like this. It is from their",
+      "offset": 1418.88,
+      "duration": 3.12
+    },
+    {
+      "lang": "en",
+      "text": "documentation. I have other videos with",
+      "offset": 1420.32,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "Prisma. I put it in a folder called lib",
+      "offset": 1422,
+      "duration": 5.6
+    },
+    {
+      "lang": "en",
+      "text": "and the files called db.ts. It basically",
+      "offset": 1424.96,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "just makes sure that the Prisma client",
+      "offset": 1427.6,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "isn't instantiated over and over again",
+      "offset": 1429.44,
+      "duration": 4.719
+    },
+    {
+      "lang": "en",
+      "text": "in a nextjs app. Well, we can use the",
+      "offset": 1431.44,
+      "duration": 5.119
+    },
+    {
+      "lang": "en",
+      "text": "Prisma RM. We can say, hey, we want to",
+      "offset": 1434.159,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "use the recipe collection. We want to",
+      "offset": 1436.559,
+      "duration": 4.841
+    },
+    {
+      "lang": "en",
+      "text": "get all the recipes where the",
+      "offset": 1439.039,
+      "duration": 4.961
+    },
+    {
+      "lang": "en",
+      "text": "description contains the query. So,",
+      "offset": 1441.4,
+      "duration": 4.68
+    },
+    {
+      "lang": "en",
+      "text": "pasta, for example, and we're not going",
+      "offset": 1444,
+      "duration": 5.039
+    },
+    {
+      "lang": "en",
+      "text": "to pay attention to the casing. So,",
+      "offset": 1446.08,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "capital case, lower case, doesn't",
+      "offset": 1449.039,
+      "duration": 3.841
+    },
+    {
+      "lang": "en",
+      "text": "matter. So then we get a bunch of",
+      "offset": 1450.88,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "results and we can just map over that",
+      "offset": 1452.88,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "here. So very simple option actually.",
+      "offset": 1454.96,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "Let's h try it out. So if I now search",
+      "offset": 1457.12,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "for pasta, I do need to start my app",
+      "offset": 1460.24,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "again. And then let's actually refresh",
+      "offset": 1462.48,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "here and let's see what we get. Loading",
+      "offset": 1464.96,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "recipes. And I get a bunch of data here.",
+      "offset": 1466.24,
+      "duration": 5.439
+    },
+    {
+      "lang": "en",
+      "text": "This time actually coming from my",
+      "offset": 1469.6,
+      "duration": 4.319
+    },
+    {
+      "lang": "en",
+      "text": "database, right? And if I search for",
+      "offset": 1471.679,
+      "duration": 4.801
+    },
+    {
+      "lang": "en",
+      "text": "salmon, let's try salmon. We get some",
+      "offset": 1473.919,
+      "duration": 4.401
+    },
+    {
+      "lang": "en",
+      "text": "other results here. If I search for",
+      "offset": 1476.48,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "chicken, I get some other results. Okay,",
+      "offset": 1478.32,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "nice. So, what we have now kind of",
+      "offset": 1480.64,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "works, but the search is still a little",
+      "offset": 1482.88,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "bit too rigid. So, if I search for",
+      "offset": 1485.12,
+      "duration": 6.64
+    },
+    {
+      "lang": "en",
+      "text": "example for chicken uh fries, right? So,",
+      "offset": 1487.6,
+      "duration": 6.64
+    },
+    {
+      "lang": "en",
+      "text": "maybe I want chicken and fries, right?",
+      "offset": 1491.76,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "But or maybe I'm just uh thinking of",
+      "offset": 1494.24,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "fries, but I meant fry, right? If I",
+      "offset": 1497.2,
+      "duration": 4.079
+    },
+    {
+      "lang": "en",
+      "text": "right, there's chicken in here. So, you",
+      "offset": 1499.6,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "would expect to see chicken if I search",
+      "offset": 1501.279,
+      "duration": 4.081
+    },
+    {
+      "lang": "en",
+      "text": "for this. But if I search for now, you",
+      "offset": 1503.2,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "can see it actually doesn't show me",
+      "offset": 1505.36,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "anything. And it's because uh the the",
+      "offset": 1507.2,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "chicken fries, there's no description",
+      "offset": 1510,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "that has chicken fries in there. If I",
+      "offset": 1512.4,
+      "duration": 5.6
+    },
+    {
+      "lang": "en",
+      "text": "search for beef, I will get beef tacos",
+      "offset": 1514.72,
+      "duration": 6.64
+    },
+    {
+      "lang": "en",
+      "text": "and classic beef strugg. But if I search",
+      "offset": 1518,
+      "duration": 5.919
+    },
+    {
+      "lang": "en",
+      "text": "for beef grilled perhaps, I don't see",
+      "offset": 1521.36,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "anything. Even though I think it would",
+      "offset": 1523.919,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "still be nice to show these beef recipes",
+      "offset": 1526.24,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "for that as well. So, can we make an",
+      "offset": 1529.679,
+      "duration": 4.321
+    },
+    {
+      "lang": "en",
+      "text": "improvement? And the answer is yes. So,",
+      "offset": 1531.44,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "we can use MongoDB. We can self-deploy",
+      "offset": 1534,
+      "duration": 5.6
+    },
+    {
+      "lang": "en",
+      "text": "MongoDB or we can let MongoDB the",
+      "offset": 1536.72,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "company take care of that, manage all of",
+      "offset": 1539.6,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "that. And one of the benefits of that is",
+      "offset": 1541.44,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "that we get more powerful search",
+      "offset": 1543.12,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "capability. So we can create a so-called",
+      "offset": 1544.96,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "search index on our data. So we've",
+      "offset": 1547.12,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "already added our data. Now we can add",
+      "offset": 1549.44,
+      "duration": 5.359
+    },
+    {
+      "lang": "en",
+      "text": "an index. We can add a vector search",
+      "offset": 1551.84,
+      "duration": 4.719
+    },
+    {
+      "lang": "en",
+      "text": "index. So if we're building a rag",
+      "offset": 1554.799,
+      "duration": 3.601
+    },
+    {
+      "lang": "en",
+      "text": "application, we can create vector",
+      "offset": 1556.559,
+      "duration": 3.921
+    },
+    {
+      "lang": "en",
+      "text": "embeddings. I'll show that in a second.",
+      "offset": 1558.4,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "There's also a simpler search index.",
+      "offset": 1560.48,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "Let's actually start there very quickly.",
+      "offset": 1562.48,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "So this will be uh I will just call it",
+      "offset": 1564.24,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "default. And then I want to create a",
+      "offset": 1566.48,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "search here for my recipes collection",
+      "offset": 1568.48,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "and I don't need to change anything",
+      "offset": 1570.88,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "else. So I will just leave everything as",
+      "offset": 1572.48,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "the default here. So it's actually super",
+      "offset": 1574.72,
+      "duration": 4.079
+    },
+    {
+      "lang": "en",
+      "text": "powerful. So if you know all about this",
+      "offset": 1576.48,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "lucine and other options, if you want to",
+      "offset": 1578.799,
+      "duration": 4.401
+    },
+    {
+      "lang": "en",
+      "text": "dig into that, you can do it right here.",
+      "offset": 1580.96,
+      "duration": 3.599
+    },
+    {
+      "lang": "en",
+      "text": "However, we will just go with the",
+      "offset": 1583.2,
+      "duration": 3.28
+    },
+    {
+      "lang": "en",
+      "text": "default options for now. Okay. And then",
+      "offset": 1584.559,
+      "duration": 4.321
+    },
+    {
+      "lang": "en",
+      "text": "it's going to build out a an index, a",
+      "offset": 1586.48,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "search index, which will basically",
+      "offset": 1588.88,
+      "duration": 4.159
+    },
+    {
+      "lang": "en",
+      "text": "improve our results in a second. Okay.",
+      "offset": 1590.72,
+      "duration": 4.959
+    },
+    {
+      "lang": "en",
+      "text": "So our index is ready now. How can we",
+      "offset": 1593.039,
+      "duration": 5.041
+    },
+    {
+      "lang": "en",
+      "text": "now use it in our code? We are using the",
+      "offset": 1595.679,
+      "duration": 4.801
+    },
+    {
+      "lang": "en",
+      "text": "Prisma RM and this was still a",
+      "offset": 1598.08,
+      "duration": 5.199
+    },
+    {
+      "lang": "en",
+      "text": "relatively simple query. So we can use",
+      "offset": 1600.48,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "find many basically get all of the",
+      "offset": 1603.279,
+      "duration": 4.481
+    },
+    {
+      "lang": "en",
+      "text": "Prisma features in here. However, for a",
+      "offset": 1605.36,
+      "duration": 4.559
+    },
+    {
+      "lang": "en",
+      "text": "more complex query, this may not always",
+      "offset": 1607.76,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "be possible. So for example, here we are",
+      "offset": 1609.919,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "going to run a raw command. So very",
+      "offset": 1613.12,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "similar to using the NodeJS driver",
+      "offset": 1615.919,
+      "duration": 4.561
+    },
+    {
+      "lang": "en",
+      "text": "actually. But now with MongoDB, we're",
+      "offset": 1618.64,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "going to do a so-called aggregate. So",
+      "offset": 1620.48,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "we're going to combine a bunch of data",
+      "offset": 1622.08,
+      "duration": 4.479
+    },
+    {
+      "lang": "en",
+      "text": "from our collection. We're going to sort",
+      "offset": 1624.24,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "of run it through a pipeline. So first",
+      "offset": 1626.559,
+      "duration": 5.681
+    },
+    {
+      "lang": "en",
+      "text": "we're going to search all the recipes.",
+      "offset": 1629.2,
+      "duration": 4.719
+    },
+    {
+      "lang": "en",
+      "text": "We're going to use that index that we",
+      "offset": 1632.24,
+      "duration": 3.439
+    },
+    {
+      "lang": "en",
+      "text": "just created. That's the name that we",
+      "offset": 1633.919,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "gave it default. We give it the query",
+      "offset": 1635.679,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "from the user and we say look in the",
+      "offset": 1637.679,
+      "duration": 4.401
+    },
+    {
+      "lang": "en",
+      "text": "title and description fields for that",
+      "offset": 1639.919,
+      "duration": 4.561
+    },
+    {
+      "lang": "en",
+      "text": "query. We will limit the results to 10.",
+      "offset": 1642.08,
+      "duration": 4.959
+    },
+    {
+      "lang": "en",
+      "text": "And in the results we want to have their",
+      "offset": 1644.48,
+      "duration": 5.84
+    },
+    {
+      "lang": "en",
+      "text": "title, description, and their score. So",
+      "offset": 1647.039,
+      "duration": 5.681
+    },
+    {
+      "lang": "en",
+      "text": "basically how relevant it was for the",
+      "offset": 1650.32,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "query here. Okay. And uh we can get the",
+      "offset": 1652.72,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "results like this. Let's actually try",
+      "offset": 1654.96,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "this out. So previously we were looking",
+      "offset": 1657.36,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "at chicken. We have this chicken stir",
+      "offset": 1659.2,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "fry as part of our recipe. Now remember",
+      "offset": 1661.84,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "when I said chicken fries, it was it",
+      "offset": 1664.08,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "actually disappeared. However, now if I",
+      "offset": 1666.88,
+      "duration": 3.279
+    },
+    {
+      "lang": "en",
+      "text": "search here, all of these chicken",
+      "offset": 1668.72,
+      "duration": 3.439
+    },
+    {
+      "lang": "en",
+      "text": "recipes still remain here, right?",
+      "offset": 1670.159,
+      "duration": 3.441
+    },
+    {
+      "lang": "en",
+      "text": "Including this one. And now it's",
+      "offset": 1672.159,
+      "duration": 3.841
+    },
+    {
+      "lang": "en",
+      "text": "actually sorted which is for the one",
+      "offset": 1673.6,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "that's most relevant, right? Which is",
+      "offset": 1676,
+      "duration": 2.96
+    },
+    {
+      "lang": "en",
+      "text": "what I want, right? So previously we",
+      "offset": 1677.36,
+      "duration": 3.199
+    },
+    {
+      "lang": "en",
+      "text": "were getting nothing, no results for",
+      "offset": 1678.96,
+      "duration": 3.439
+    },
+    {
+      "lang": "en",
+      "text": "chicken fries because technically fries",
+      "offset": 1680.559,
+      "duration": 4.321
+    },
+    {
+      "lang": "en",
+      "text": "was not part of something. However, it's",
+      "offset": 1682.399,
+      "duration": 5.201
+    },
+    {
+      "lang": "en",
+      "text": "it still has chicken in there and so we",
+      "offset": 1684.88,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "now with this index we have full text",
+      "offset": 1687.6,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "search which is what we get with MongoDB",
+      "offset": 1690.24,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "atlas, right? So that's much better. But",
+      "offset": 1692.88,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "can we make it even better? So if I say",
+      "offset": 1694.88,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "uh chicken, of course I will get all of",
+      "offset": 1697.36,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "them. But what if I make a typo and I",
+      "offset": 1699.36,
+      "duration": 5.919
+    },
+    {
+      "lang": "en",
+      "text": "forget the eye? So I have chicken. So",
+      "offset": 1702.08,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "now all of a sudden I don't get",
+      "offset": 1705.279,
+      "duration": 3.041
+    },
+    {
+      "lang": "en",
+      "text": "anything. So can we make that a little",
+      "offset": 1706.88,
+      "duration": 2.96
+    },
+    {
+      "lang": "en",
+      "text": "bit better perhaps? And yes, we can",
+      "offset": 1708.32,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "allow fuzzy search. So the user can have",
+      "offset": 1709.84,
+      "duration": 4.319
+    },
+    {
+      "lang": "en",
+      "text": "some typos or other mistakes. There",
+      "offset": 1712.32,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "could be some small mishaps in the exact",
+      "offset": 1714.159,
+      "duration": 4.481
+    },
+    {
+      "lang": "en",
+      "text": "spelling and we would still get the",
+      "offset": 1716.64,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "expected results. So I can actually add",
+      "offset": 1718.64,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "that here. I can say fuzzy. I can allow",
+      "offset": 1720.48,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "up to two typos. But typically it is",
+      "offset": 1722.88,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "recommended that the first character",
+      "offset": 1724.96,
+      "duration": 4.079
+    },
+    {
+      "lang": "en",
+      "text": "needs to match or maybe even the first",
+      "offset": 1727.12,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "two because otherwise you get a very uh",
+      "offset": 1729.039,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "wide ranging result. Okay. But now if I",
+      "offset": 1731.12,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "try this chicken again, you can see I",
+      "offset": 1733.039,
+      "duration": 3.601
+    },
+    {
+      "lang": "en",
+      "text": "still get all of these chicken recipes.",
+      "offset": 1735.12,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "Um, in fact, if I make another mistake,",
+      "offset": 1736.64,
+      "duration": 6.56
+    },
+    {
+      "lang": "en",
+      "text": "so I also forget the E. So now ch H cn",
+      "offset": 1739.44,
+      "duration": 5.839
+    },
+    {
+      "lang": "en",
+      "text": "and now I still get chicken. But if I",
+      "offset": 1743.2,
+      "duration": 4.479
+    },
+    {
+      "lang": "en",
+      "text": "remove the last character, well, it",
+      "offset": 1745.279,
+      "duration": 4.241
+    },
+    {
+      "lang": "en",
+      "text": "actually still found one particular",
+      "offset": 1747.679,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "match. But if I even remove that one,",
+      "offset": 1749.52,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "no, chocolate chip cookies is still",
+      "offset": 1751.679,
+      "duration": 4.561
+    },
+    {
+      "lang": "en",
+      "text": "there. Uh, but if I But you can see um",
+      "offset": 1753.36,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "this is already much more powerful than",
+      "offset": 1756.24,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "what we had before. Now, can we make it",
+      "offset": 1758,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "uh better? Well, yes. If we have fish",
+      "offset": 1760.08,
+      "duration": 5.599
+    },
+    {
+      "lang": "en",
+      "text": "for example, right now we get fish tacos",
+      "offset": 1762.96,
+      "duration": 4.719
+    },
+    {
+      "lang": "en",
+      "text": "here at the top. Okay, that's",
+      "offset": 1765.679,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "reasonable. Uh but then we get a bunch",
+      "offset": 1767.679,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "of other things here that don't really",
+      "offset": 1769.679,
+      "duration": 3.441
+    },
+    {
+      "lang": "en",
+      "text": "have anything to do with fish, right?",
+      "offset": 1771.039,
+      "duration": 5.281
+    },
+    {
+      "lang": "en",
+      "text": "So, uh we finally have this salmon one",
+      "offset": 1773.12,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "here, but it's all the way at the bottom",
+      "offset": 1776.32,
+      "duration": 3.599
+    },
+    {
+      "lang": "en",
+      "text": "here. Semantically speaking, it's not",
+      "offset": 1777.76,
+      "duration": 4.399
+    },
+    {
+      "lang": "en",
+      "text": "really good right now. So, the search",
+      "offset": 1779.919,
+      "duration": 3.921
+    },
+    {
+      "lang": "en",
+      "text": "that we have right now is still very",
+      "offset": 1782.159,
+      "duration": 5.281
+    },
+    {
+      "lang": "en",
+      "text": "focused around the literal the literal",
+      "offset": 1783.84,
+      "duration": 5.6
+    },
+    {
+      "lang": "en",
+      "text": "characters, the literal words. But of",
+      "offset": 1787.44,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "course, we just want to allow the users",
+      "offset": 1789.44,
+      "duration": 3.28
+    },
+    {
+      "lang": "en",
+      "text": "to write whatever is on their mind and",
+      "offset": 1790.96,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "we want to semantically give them the",
+      "offset": 1792.72,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "right results. Right? I even want to",
+      "offset": 1794.88,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "allow them to say something like, I want",
+      "offset": 1796.64,
+      "duration": 5.519
+    },
+    {
+      "lang": "en",
+      "text": "to eat fish today, right? So, of course,",
+      "offset": 1798.88,
+      "duration": 5.279
+    },
+    {
+      "lang": "en",
+      "text": "this is not literally going to be in",
+      "offset": 1802.159,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "some description, right? So, we need to",
+      "offset": 1804.159,
+      "duration": 4.081
+    },
+    {
+      "lang": "en",
+      "text": "look at the semantic meaning of the",
+      "offset": 1806.399,
+      "duration": 3.841
+    },
+    {
+      "lang": "en",
+      "text": "search query and compare that with the",
+      "offset": 1808.24,
+      "duration": 4.559
+    },
+    {
+      "lang": "en",
+      "text": "recipes. So, can we do that? Well, yes,",
+      "offset": 1810.24,
+      "duration": 5.039
+    },
+    {
+      "lang": "en",
+      "text": "actually, it's very easy. So, MongoDB",
+      "offset": 1812.799,
+      "duration": 5.441
+    },
+    {
+      "lang": "en",
+      "text": "has built-in vector search which allows",
+      "offset": 1815.279,
+      "duration": 5.921
+    },
+    {
+      "lang": "en",
+      "text": "us add that semantic search capability",
+      "offset": 1818.24,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "pretty easily. And the way we can do it",
+      "offset": 1821.2,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "is by creating so-called vector",
+      "offset": 1822.96,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "embedding. So, basically, if we go to",
+      "offset": 1824.64,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "our recipes here for each of these uh",
+      "offset": 1826.64,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "documents here, I'm going to add another",
+      "offset": 1829.2,
+      "duration": 4.479
+    },
+    {
+      "lang": "en",
+      "text": "field called embeddings, which is",
+      "offset": 1831.52,
+      "duration": 4.2
+    },
+    {
+      "lang": "en",
+      "text": "basically just mathematical",
+      "offset": 1833.679,
+      "duration": 4.561
+    },
+    {
+      "lang": "en",
+      "text": "representation of well, we're just going",
+      "offset": 1835.72,
+      "duration": 4.12
+    },
+    {
+      "lang": "en",
+      "text": "to do it for the description in this",
+      "offset": 1838.24,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "case. And then when the user uh has a",
+      "offset": 1839.84,
+      "duration": 4.559
+    },
+    {
+      "lang": "en",
+      "text": "query like this, we're also going to",
+      "offset": 1842.48,
+      "duration": 3.439
+    },
+    {
+      "lang": "en",
+      "text": "create an embedding for that like a",
+      "offset": 1844.399,
+      "duration": 3.361
+    },
+    {
+      "lang": "en",
+      "text": "mathematical representation and we're",
+      "offset": 1845.919,
+      "duration": 3.441
+    },
+    {
+      "lang": "en",
+      "text": "going to compare that with the",
+      "offset": 1847.76,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "embeddings in our database. And the",
+      "offset": 1849.36,
+      "duration": 5.039
+    },
+    {
+      "lang": "en",
+      "text": "closest ones are going to be at the top.",
+      "offset": 1851.2,
+      "duration": 5.599
+    },
+    {
+      "lang": "en",
+      "text": "So we need to create embeddings for the",
+      "offset": 1854.399,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "data in the database. So I'm going to",
+      "offset": 1856.799,
+      "duration": 3.441
+    },
+    {
+      "lang": "en",
+      "text": "use OpenAI for that. You need a",
+      "offset": 1858.399,
+      "duration": 4.321
+    },
+    {
+      "lang": "en",
+      "text": "so-called embeddings model and they have",
+      "offset": 1860.24,
+      "duration": 5.439
+    },
+    {
+      "lang": "en",
+      "text": "a pretty popular one. So, uh, I'm just",
+      "offset": 1862.72,
+      "duration": 5.6
+    },
+    {
+      "lang": "en",
+      "text": "going to have a file here and I'm going",
+      "offset": 1865.679,
+      "duration": 5.841
+    },
+    {
+      "lang": "en",
+      "text": "to set up OpenAI as well as Prisma. Um,",
+      "offset": 1868.32,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "I have a function here. I can pass in a",
+      "offset": 1871.52,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "text and it will reach out to OpenAI to",
+      "offset": 1873.84,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "create embeddings for that particular",
+      "offset": 1875.84,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "piece of text using the text embedding",
+      "offset": 1877.52,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "three small model, right? And this",
+      "offset": 1880,
+      "duration": 3.679
+    },
+    {
+      "lang": "en",
+      "text": "function just gets the embeddings and",
+      "offset": 1881.52,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "returns it. Right? This is a utility",
+      "offset": 1883.679,
+      "duration": 3.201
+    },
+    {
+      "lang": "en",
+      "text": "function. Now, I want to do that for",
+      "offset": 1885.44,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "every document in my database, for every",
+      "offset": 1886.88,
+      "duration": 4.799
+    },
+    {
+      "lang": "en",
+      "text": "recipe. So we're going to find all the",
+      "offset": 1889.36,
+      "duration": 3.919
+    },
+    {
+      "lang": "en",
+      "text": "recipes from our database and we're",
+      "offset": 1891.679,
+      "duration": 3.281
+    },
+    {
+      "lang": "en",
+      "text": "going to do it in a batch again, but",
+      "offset": 1893.279,
+      "duration": 2.961
+    },
+    {
+      "lang": "en",
+      "text": "eventually we're going to do it for",
+      "offset": 1894.96,
+      "duration": 2.959
+    },
+    {
+      "lang": "en",
+      "text": "every recipe, right? So we're just going",
+      "offset": 1896.24,
+      "duration": 3.12
+    },
+    {
+      "lang": "en",
+      "text": "to do it for the description, by the",
+      "offset": 1897.919,
+      "duration": 3.041
+    },
+    {
+      "lang": "en",
+      "text": "way. So we call that function I just",
+      "offset": 1899.36,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "showed you. We get the embeddings and",
+      "offset": 1900.96,
+      "duration": 3.839
+    },
+    {
+      "lang": "en",
+      "text": "that's what we then add to that",
+      "offset": 1902.88,
+      "duration": 3.679
+    },
+    {
+      "lang": "en",
+      "text": "particular document, right? Alongside",
+      "offset": 1904.799,
+      "duration": 3.681
+    },
+    {
+      "lang": "en",
+      "text": "the other data, that's the benefit of",
+      "offset": 1906.559,
+      "duration": 3.921
+    },
+    {
+      "lang": "en",
+      "text": "using MongoDB. You get this out of the",
+      "offset": 1908.48,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "box. So that's basically it. Okay, so",
+      "offset": 1910.48,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "let me actually run that file. Uh",
+      "offset": 1912.88,
+      "duration": 4.679
+    },
+    {
+      "lang": "en",
+      "text": "generate",
+      "offset": 1916.48,
+      "duration": 3.039
+    },
+    {
+      "lang": "en",
+      "text": "embeddings.ts. All right, let's see what",
+      "offset": 1917.559,
+      "duration": 3.72
+    },
+    {
+      "lang": "en",
+      "text": "happens. All right, so now it's going to",
+      "offset": 1919.519,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "go through all of the recipes and create",
+      "offset": 1921.279,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "embeddings for them. Uh, it's really",
+      "offset": 1923.679,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "fast, so it's just a couple seconds and",
+      "offset": 1925.519,
+      "duration": 3.681
+    },
+    {
+      "lang": "en",
+      "text": "it will then also immediately update uh",
+      "offset": 1927.279,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "our database, right? So, let's actually,",
+      "offset": 1929.2,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "we can probably already see it. If I",
+      "offset": 1931.679,
+      "duration": 4.081
+    },
+    {
+      "lang": "en",
+      "text": "just refresh here, we may already see a",
+      "offset": 1933.36,
+      "duration": 4.159
+    },
+    {
+      "lang": "en",
+      "text": "few with the embeddings. Yeah. So, here",
+      "offset": 1935.76,
+      "duration": 4.159
+    },
+    {
+      "lang": "en",
+      "text": "you can see the first one here has a new",
+      "offset": 1937.519,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "field here, embeddings, and it's an",
+      "offset": 1939.919,
+      "duration": 5.281
+    },
+    {
+      "lang": "en",
+      "text": "array with a bunch of numbers basically.",
+      "offset": 1941.919,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "And the dimensions here are typically",
+      "offset": 1945.2,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "the length. All right. So then it is",
+      "offset": 1947.919,
+      "duration": 4.161
+    },
+    {
+      "lang": "en",
+      "text": "finished. So now I have my embeddings",
+      "offset": 1950,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "here in my data. Now I can create",
+      "offset": 1952.08,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "another uh atlas search index. So",
+      "offset": 1953.84,
+      "duration": 5.199
+    },
+    {
+      "lang": "en",
+      "text": "previously we had like the the standard",
+      "offset": 1956.64,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "one. Now we can create another one but",
+      "offset": 1959.039,
+      "duration": 4.401
+    },
+    {
+      "lang": "en",
+      "text": "this time it's going to be a vector",
+      "offset": 1961.12,
+      "duration": 4.799
+    },
+    {
+      "lang": "en",
+      "text": "search for semantic search and AI apps.",
+      "offset": 1963.44,
+      "duration": 4.719
+    },
+    {
+      "lang": "en",
+      "text": "Cool. So now I want to use recipes",
+      "offset": 1965.919,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "again. And I can set up configuration",
+      "offset": 1968.159,
+      "duration": 5.601
+    },
+    {
+      "lang": "en",
+      "text": "but that's not necessary. However, we do",
+      "offset": 1971.039,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "need to specify which field has the",
+      "offset": 1973.76,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "embeddings. Well, it has already",
+      "offset": 1976.399,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "detected that, which is the embeddings",
+      "offset": 1977.76,
+      "duration": 3.759
+    },
+    {
+      "lang": "en",
+      "text": "field. The number of dimensions, which",
+      "offset": 1979.919,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "basically the length of the array, it's",
+      "offset": 1981.519,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "going to compare the mathematical",
+      "offset": 1983.279,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "representation of the user's query with",
+      "offset": 1985.519,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "the uh embeddings in our database. And",
+      "offset": 1987.679,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "there are several there are several",
+      "offset": 1990.399,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "mathematical approaches to that. You can",
+      "offset": 1992.399,
+      "duration": 3.681
+    },
+    {
+      "lang": "en",
+      "text": "pick the one you want. Uh I actually got",
+      "offset": 1994.159,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "great results with Ukian as well. So I",
+      "offset": 1996.08,
+      "duration": 4.319
+    },
+    {
+      "lang": "en",
+      "text": "will actually just leave everything here",
+      "offset": 1999.039,
+      "duration": 3.281
+    },
+    {
+      "lang": "en",
+      "text": "on the in the default settings and I",
+      "offset": 2000.399,
+      "duration": 3.28
+    },
+    {
+      "lang": "en",
+      "text": "will create the index. Okay, so it's",
+      "offset": 2002.32,
+      "duration": 2.88
+    },
+    {
+      "lang": "en",
+      "text": "going to build the index again. All",
+      "offset": 2003.679,
+      "duration": 3.281
+    },
+    {
+      "lang": "en",
+      "text": "right, so after a couple seconds, this",
+      "offset": 2005.2,
+      "duration": 4.319
+    },
+    {
+      "lang": "en",
+      "text": "one is finished. So how do we actually",
+      "offset": 2006.96,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "use it now? Well, if we go back here. So",
+      "offset": 2009.519,
+      "duration": 4.561
+    },
+    {
+      "lang": "en",
+      "text": "previously we were doing this raw",
+      "offset": 2012.08,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "command with fuzzy search. Basically the",
+      "offset": 2014.08,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "using the search index that we created.",
+      "offset": 2016.88,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "All right. So now here in recipe list",
+      "offset": 2019.36,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "when the user has a query, we have an",
+      "offset": 2021.2,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "incoming query. We also need to create",
+      "offset": 2022.96,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "embedding embeddings for that. So we can",
+      "offset": 2025.36,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "compare it with the embeddings in the",
+      "offset": 2027.2,
+      "duration": 3.12
+    },
+    {
+      "lang": "en",
+      "text": "database. Right? So we do need to make",
+      "offset": 2028.72,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "another call to open AI for that. And",
+      "offset": 2030.32,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "then we can go through the pipeline",
+      "offset": 2032.24,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "again. So this time it's going to be a",
+      "offset": 2034.48,
+      "duration": 3.439
+    },
+    {
+      "lang": "en",
+      "text": "vector search. We need to give it the",
+      "offset": 2036.08,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "name is the one right here. Where is",
+      "offset": 2037.919,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "where are the embeddings in the in the",
+      "offset": 2040.72,
+      "duration": 3.679
+    },
+    {
+      "lang": "en",
+      "text": "data. Well, it's in the embeddings",
+      "offset": 2042.799,
+      "duration": 3.681
+    },
+    {
+      "lang": "en",
+      "text": "field. We have the query embedding and",
+      "offset": 2044.399,
+      "duration": 3.921
+    },
+    {
+      "lang": "en",
+      "text": "then we have some other parameters. But",
+      "offset": 2046.48,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "eventually we will get some results",
+      "offset": 2048.32,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "here. Again, let's make sure we try that",
+      "offset": 2050.56,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "out. If I search for I want to eat fish.",
+      "offset": 2052.8,
+      "duration": 5.039
+    },
+    {
+      "lang": "en",
+      "text": "So, let's actually run the app again. If",
+      "offset": 2054.96,
+      "duration": 5.679
+    },
+    {
+      "lang": "en",
+      "text": "I say I want to eat fish today, the well",
+      "offset": 2057.839,
+      "duration": 6.161
+    },
+    {
+      "lang": "en",
+      "text": "actual fish recipe here, lit literally",
+      "offset": 2060.639,
+      "duration": 6.96
+    },
+    {
+      "lang": "en",
+      "text": "fish in the description, but I also get",
+      "offset": 2064,
+      "duration": 6.159
+    },
+    {
+      "lang": "en",
+      "text": "these other recipes that are indeed",
+      "offset": 2067.599,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "related to fish that do not have",
+      "offset": 2070.159,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "literally fish in the description. In",
+      "offset": 2072.879,
+      "duration": 3.681
+    },
+    {
+      "lang": "en",
+      "text": "fact, they do they don't have this",
+      "offset": 2075.119,
+      "duration": 3.841
+    },
+    {
+      "lang": "en",
+      "text": "entire thing in the description at all.",
+      "offset": 2076.56,
+      "duration": 4.799
+    },
+    {
+      "lang": "en",
+      "text": "But we get highly relevant suggestions",
+      "offset": 2078.96,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "here. And also importantly, we do not",
+      "offset": 2081.359,
+      "duration": 4.401
+    },
+    {
+      "lang": "en",
+      "text": "get irrelevant suggestions. So,",
+      "offset": 2083.76,
+      "duration": 3.839
+    },
+    {
+      "lang": "en",
+      "text": "previously when we searched for fish, we",
+      "offset": 2085.76,
+      "duration": 3.919
+    },
+    {
+      "lang": "en",
+      "text": "also got a bunch of beef recipes and",
+      "offset": 2087.599,
+      "duration": 4.401
+    },
+    {
+      "lang": "en",
+      "text": "other ones. But now we get some uh",
+      "offset": 2089.679,
+      "duration": 4.081
+    },
+    {
+      "lang": "en",
+      "text": "really high quality result and it's",
+      "offset": 2092,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "literally just a few minutes. So, uh",
+      "offset": 2093.76,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "yeah, really really slick, right? So,",
+      "offset": 2096,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "the user can uh expressive in what they",
+      "offset": 2097.76,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "want. Thanksgiving main meal and yeah,",
+      "offset": 2100.56,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "we get some really good ones actually",
+      "offset": 2102.8,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "like pumpkin soup. That makes total",
+      "offset": 2104.64,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "sense for stuffed acorn. Okay, I think",
+      "offset": 2106.4,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "that makes total sense actually, right?",
+      "offset": 2109.92,
+      "duration": 3.439
+    },
+    {
+      "lang": "en",
+      "text": "Let's actually try Halloween. I want",
+      "offset": 2111.52,
+      "duration": 3.839
+    },
+    {
+      "lang": "en",
+      "text": "something for Halloween. I get pumpkin.",
+      "offset": 2113.359,
+      "duration": 3.601
+    },
+    {
+      "lang": "en",
+      "text": "Yeah, that makes total sense.",
+      "offset": 2115.359,
+      "duration": 3.361
+    },
+    {
+      "lang": "en",
+      "text": "Gingerbread, I think makes sense. So,",
+      "offset": 2116.96,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "yeah, I think this is a really powerful",
+      "offset": 2118.72,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "search. We can also combine this with",
+      "offset": 2120.8,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "some kind of keyword search like a",
+      "offset": 2122.8,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "hybrid search also possible with",
+      "offset": 2124.56,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "MongoDB. Uh, so yeah, really powerful",
+      "offset": 2126.16,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "search, right? So, really slick. Now,",
+      "offset": 2128.88,
+      "duration": 3.199
+    },
+    {
+      "lang": "en",
+      "text": "now, one other thing we also wanted to",
+      "offset": 2130.48,
+      "duration": 3.599
+    },
+    {
+      "lang": "en",
+      "text": "add here is some kind of autocomplete.",
+      "offset": 2132.079,
+      "duration": 6.721
+    },
+    {
+      "lang": "en",
+      "text": "So as I type H A L L O we get some uh",
+      "offset": 2134.079,
+      "duration": 7.441
+    },
+    {
+      "lang": "en",
+      "text": "suggestion perhaps or maybe we do want",
+      "offset": 2138.8,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "to make that very specific for the",
+      "offset": 2141.52,
+      "duration": 4.559
+    },
+    {
+      "lang": "en",
+      "text": "titles of the recipes. So if I type So",
+      "offset": 2143.44,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "if I type something like pumpkin that it",
+      "offset": 2146.079,
+      "duration": 4.481
+    },
+    {
+      "lang": "en",
+      "text": "would already suggest pumpkin soup for",
+      "offset": 2148.48,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "example. How can we do that? Well this",
+      "offset": 2150.56,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "is a little bit more complicated because",
+      "offset": 2152.48,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "now we're going to add something here to",
+      "offset": 2154.56,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "the DOM and when I click away it needs",
+      "offset": 2156.48,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "to be closed. When I type here it needs",
+      "offset": 2158.48,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "to update automatically. needs to fetch",
+      "offset": 2161.52,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "data as I'm typing. All right, so I got",
+      "offset": 2163.92,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "it almost to work. Um, so basically we",
+      "offset": 2166,
+      "duration": 5.599
+    },
+    {
+      "lang": "en",
+      "text": "now have this basically box below the",
+      "offset": 2168.48,
+      "duration": 5.119
+    },
+    {
+      "lang": "en",
+      "text": "search bar. So if we take a look at the",
+      "offset": 2171.599,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "search bar here and here below I have",
+      "offset": 2173.599,
+      "duration": 4.641
+    },
+    {
+      "lang": "en",
+      "text": "that autocomplete box. So it's just a",
+      "offset": 2175.839,
+      "duration": 4.641
+    },
+    {
+      "lang": "en",
+      "text": "component. Yeah, it's just displaying a",
+      "offset": 2178.24,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "list of suggestions which are just the",
+      "offset": 2180.48,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "titles of the recipes and this is mostly",
+      "offset": 2182.32,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "UI doesn't really have logic. So all of",
+      "offset": 2184.56,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "the logic is somewhere higher up, right?",
+      "offset": 2186.64,
+      "duration": 4.479
+    },
+    {
+      "lang": "en",
+      "text": "So here the suggestions is is getting",
+      "offset": 2188.64,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "that from here. So how do we get those",
+      "offset": 2191.119,
+      "duration": 3.841
+    },
+    {
+      "lang": "en",
+      "text": "suggestions in the first place? Well,",
+      "offset": 2192.88,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "that's what we get here. So we do fetch",
+      "offset": 2194.96,
+      "duration": 4.159
+    },
+    {
+      "lang": "en",
+      "text": "the suggestions here. We do it based on",
+      "offset": 2196.88,
+      "duration": 4.239
+    },
+    {
+      "lang": "en",
+      "text": "whatever the user wrote the search term,",
+      "offset": 2199.119,
+      "duration": 3.761
+    },
+    {
+      "lang": "en",
+      "text": "but we're going to debounce that so that",
+      "offset": 2201.119,
+      "duration": 3.361
+    },
+    {
+      "lang": "en",
+      "text": "we're not if the user is very quickly",
+      "offset": 2202.88,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "typing something, we're firing off an,",
+      "offset": 2204.48,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "you know, almost unlimited amount of",
+      "offset": 2206.72,
+      "duration": 3.359
+    },
+    {
+      "lang": "en",
+      "text": "network requests, right? So we're going",
+      "offset": 2208.24,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "to debounce that. So we actually keep",
+      "offset": 2210.079,
+      "duration": 5.361
+    },
+    {
+      "lang": "en",
+      "text": "track of the user's input value directly",
+      "offset": 2212.88,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "in the input field, but we run it",
+      "offset": 2215.44,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "through a use the bounce hook that we",
+      "offset": 2217.44,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "created. And so we get a debounced",
+      "offset": 2220,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "version from that. That's basically what",
+      "offset": 2221.76,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "we're doing here. So then whenever that",
+      "offset": 2223.52,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "one is changing, we're going to run all",
+      "offset": 2225.2,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "of this, we're going to set loading is",
+      "offset": 2227.04,
+      "duration": 4.12
+    },
+    {
+      "lang": "en",
+      "text": "true. And here we fetch the actual",
+      "offset": 2228.96,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "suggestions, right? So we will actually",
+      "offset": 2231.16,
+      "duration": 5.16
+    },
+    {
+      "lang": "en",
+      "text": "create our own API endpoint which I",
+      "offset": 2233.04,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "created here. And this one will get the",
+      "offset": 2236.32,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "query and we'll make the actual call to",
+      "offset": 2238.48,
+      "duration": 4.879
+    },
+    {
+      "lang": "en",
+      "text": "our database. Now here we actually have",
+      "offset": 2241.04,
+      "duration": 4.319
+    },
+    {
+      "lang": "en",
+      "text": "an autocomplete option here with",
+      "offset": 2243.359,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "MongoDB. And so eventually we will get",
+      "offset": 2245.359,
+      "duration": 4.161
+    },
+    {
+      "lang": "en",
+      "text": "back a response and we can set that as",
+      "offset": 2247.359,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "the suggestions. That is basically in a",
+      "offset": 2249.52,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "nutshell how it works. I need to",
+      "offset": 2251.839,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "manually enable the autocomplete",
+      "offset": 2253.52,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "feature. So if I go back to my normal",
+      "offset": 2255.839,
+      "duration": 5.921
+    },
+    {
+      "lang": "en",
+      "text": "index here edit with uh visual editor.",
+      "offset": 2258.24,
+      "duration": 5.839
+    },
+    {
+      "lang": "en",
+      "text": "Sure. And here under field mappings I",
+      "offset": 2261.76,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "can set customized configuration. So",
+      "offset": 2264.079,
+      "duration": 4.721
+    },
+    {
+      "lang": "en",
+      "text": "here I can make title a data type of",
+      "offset": 2266.4,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "autocomplete. And there are many other",
+      "offset": 2268.8,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "settings but this is the only thing I",
+      "offset": 2270.64,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "have to do here. And then I save here",
+      "offset": 2272.4,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "and it's going to rebuild the index one",
+      "offset": 2274.72,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "more time. All right. So then it is",
+      "offset": 2276.96,
+      "duration": 4.399
+    },
+    {
+      "lang": "en",
+      "text": "finished. So now if I try this again,",
+      "offset": 2278.56,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "let me just refresh here. Now if I try",
+      "offset": 2281.359,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "uh searching for pasta, you can see I",
+      "offset": 2283.76,
+      "duration": 4.319
+    },
+    {
+      "lang": "en",
+      "text": "get a bunch of suggestions here, right?",
+      "offset": 2285.839,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "And if I click on them, they also load",
+      "offset": 2288.079,
+      "duration": 3.601
+    },
+    {
+      "lang": "en",
+      "text": "here and it will actually search for",
+      "offset": 2290.079,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "that using the semantic search again,",
+      "offset": 2291.68,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "right? So yeah, I think this is uh",
+      "offset": 2293.839,
+      "duration": 4.321
+    },
+    {
+      "lang": "en",
+      "text": "pretty slick. Yeah. So overall, I think",
+      "offset": 2296.64,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "you can see how powerful this relatively",
+      "offset": 2298.16,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "easy these days. If you wanted to do",
+      "offset": 2300.24,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "something like this a couple years ago,",
+      "offset": 2302.48,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "it would be so much work. But now with",
+      "offset": 2304.4,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "this factor search for example, yeah,",
+      "offset": 2306.32,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "searches search can be just really good",
+      "offset": 2308.56,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "actually in combination with all the",
+      "offset": 2310.96,
+      "duration": 3.2
+    },
+    {
+      "lang": "en",
+      "text": "latest next.js features, server",
+      "offset": 2312.56,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "components, uh, and also storing it in",
+      "offset": 2314.16,
+      "duration": 5.199
+    },
+    {
+      "lang": "en",
+      "text": "state. I think this is a really powerful",
+      "offset": 2316.8,
+      "duration": 5.279
+    },
+    {
+      "lang": "en",
+      "text": "stack for building search",
+      "offset": 2319.359,
+      "duration": 4.321
+    },
+    {
+      "lang": "en",
+      "text": "functionalities. I want to thank you for",
+      "offset": 2322.079,
+      "duration": 3.361
+    },
+    {
+      "lang": "en",
+      "text": "watching and I want to thank MongoDB for",
+      "offset": 2323.68,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "sponsoring the video. Check them out.",
+      "offset": 2325.44,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "You can find a link in the description",
+      "offset": 2327.04,
+      "duration": 5.68
+    },
+    {
+      "lang": "en",
+      "text": "and I will see you in the next one. Bye.",
+      "offset": 2328.8,
+      "duration": 3.92
+    }
+  ],
+  "cleanText": null,
+  "dumpedAt": "2025-07-21T18:43:25.865Z"
+}

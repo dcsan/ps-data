@@ -1,0 +1,3532 @@
+{
+  "episodeId": "ZB7l4uxW3Yo",
+  "channelSlug": "@aidotengineer",
+  "title": "Breaking the Chain: Agent Continuations for Resumable AI Workflows - Greg Benson",
+  "publishedAt": "2025-06-03T22:31:07.000Z",
+  "rawLines": [
+    {
+      "lang": "en",
+      "text": "So, you've built some agents and they're",
+      "offset": 0.4,
+      "duration": 3.919
+    },
+    {
+      "lang": "en",
+      "text": "working. Actually, they may be working",
+      "offset": 2.72,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "really well, doing amazing things. And",
+      "offset": 4.319,
+      "duration": 4.561
+    },
+    {
+      "lang": "en",
+      "text": "now you want to put these agents into a",
+      "offset": 6.48,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "production setting. What are the other",
+      "offset": 8.88,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "things you have to worry about? For",
+      "offset": 10.8,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "example, do your agents need some form",
+      "offset": 12.32,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "of human approval during their",
+      "offset": 14.48,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "processing steps? Will your agents be",
+      "offset": 15.92,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "running for long periods of time in the",
+      "offset": 18,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "presence of failure? How do you address",
+      "offset": 19.92,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "these issues? Today, we're going to be",
+      "offset": 21.84,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "learning about a new mechanism that",
+      "offset": 24.08,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "addresses both these issues, and I'm",
+      "offset": 25.92,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "really excited to talk about it. So,",
+      "offset": 27.84,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "let's get",
+      "offset": 29.92,
+      "duration": 2.4
+    },
+    {
+      "lang": "en",
+      "text": "started. Hi, I'm Greg Benson. I'm a",
+      "offset": 35.48,
+      "duration": 4.44
+    },
+    {
+      "lang": "en",
+      "text": "professor of computer science at the",
+      "offset": 38.8,
+      "duration": 3.12
+    },
+    {
+      "lang": "en",
+      "text": "University of San Francisco and I'm",
+      "offset": 39.92,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "chief scientist at Snaplogic. And today",
+      "offset": 41.92,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "I'm excited to talk about a new",
+      "offset": 44.48,
+      "duration": 2.8
+    },
+    {
+      "lang": "en",
+      "text": "mechanism that we've developed at",
+      "offset": 45.84,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "Snaplogic called agent continuations.",
+      "offset": 47.28,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "Agent continuations allow you to capture",
+      "offset": 50.16,
+      "duration": 5.84
+    },
+    {
+      "lang": "en",
+      "text": "the full state of complex agents that",
+      "offset": 53.28,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "can be used both to do arbitrary human",
+      "offset": 56,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "and loop processing and also be the",
+      "offset": 58.8,
+      "duration": 6.399
+    },
+    {
+      "lang": "en",
+      "text": "basis for reliable agent continuation",
+      "offset": 62,
+      "duration": 6.479
+    },
+    {
+      "lang": "en",
+      "text": "through taking snapshots. This work came",
+      "offset": 65.199,
+      "duration": 5.6
+    },
+    {
+      "lang": "en",
+      "text": "out of the agent creator research group",
+      "offset": 68.479,
+      "duration": 6.401
+    },
+    {
+      "lang": "en",
+      "text": "at Snaplogic. First, let's talk about",
+      "offset": 70.799,
+      "duration": 5.761
+    },
+    {
+      "lang": "en",
+      "text": "the general challenges that we face with",
+      "offset": 74.88,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "agents today. First of all, there's a",
+      "offset": 76.56,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "lot of concern about where the human",
+      "offset": 78.56,
+      "duration": 5
+    },
+    {
+      "lang": "en",
+      "text": "sits relative to agent processing. That",
+      "offset": 80.88,
+      "duration": 5.84
+    },
+    {
+      "lang": "en",
+      "text": "is for people to get comfortable with",
+      "offset": 83.56,
+      "duration": 6.239
+    },
+    {
+      "lang": "en",
+      "text": "agent automation. Key aspects of agent",
+      "offset": 86.72,
+      "duration": 6.24
+    },
+    {
+      "lang": "en",
+      "text": "execution require some amount of human",
+      "offset": 89.799,
+      "duration": 6.121
+    },
+    {
+      "lang": "en",
+      "text": "oversight. And so there's been lots of",
+      "offset": 92.96,
+      "duration": 5.799
+    },
+    {
+      "lang": "en",
+      "text": "work and lots of techniques for",
+      "offset": 95.92,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "including human in the loop. I'm not",
+      "offset": 98.759,
+      "duration": 5.281
+    },
+    {
+      "lang": "en",
+      "text": "going to go over all of those, but",
+      "offset": 100.96,
+      "duration": 5.199
+    },
+    {
+      "lang": "en",
+      "text": "essentially the agent will get to a",
+      "offset": 104.04,
+      "duration": 4.439
+    },
+    {
+      "lang": "en",
+      "text": "point where there's a designated tool or",
+      "offset": 106.159,
+      "duration": 8.24
+    },
+    {
+      "lang": "en",
+      "text": "task that might be a high value or high",
+      "offset": 108.479,
+      "duration": 7.92
+    },
+    {
+      "lang": "en",
+      "text": "risk task like transferring a lot of",
+      "offset": 114.399,
+      "duration": 4.241
+    },
+    {
+      "lang": "en",
+      "text": "money or deleting an account. And we",
+      "offset": 116.399,
+      "duration": 4.801
+    },
+    {
+      "lang": "en",
+      "text": "need a way to ensure that when the agent",
+      "offset": 118.64,
+      "duration": 5.759
+    },
+    {
+      "lang": "en",
+      "text": "gets to that point that in some manner",
+      "offset": 121.2,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "it gets to the human, the human can",
+      "offset": 124.399,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "provide the final determination or",
+      "offset": 126.64,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "decision. Another problem with agents is",
+      "offset": 129.119,
+      "duration": 6.321
+    },
+    {
+      "lang": "en",
+      "text": "that many of them will be long running.",
+      "offset": 132.4,
+      "duration": 5.199
+    },
+    {
+      "lang": "en",
+      "text": "Um there's lots of steps in agentic",
+      "offset": 135.44,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "processing and the longer that any",
+      "offset": 137.599,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "process runs, the greater chance that",
+      "offset": 139.92,
+      "duration": 5.039
+    },
+    {
+      "lang": "en",
+      "text": "there may be a failure. And we'd like",
+      "offset": 142.319,
+      "duration": 5.441
+    },
+    {
+      "lang": "en",
+      "text": "some way to not lose all the work that",
+      "offset": 144.959,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "an agent has done and be able to",
+      "offset": 147.76,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "potentially uh checkpoint our agent",
+      "offset": 149.599,
+      "duration": 7.601
+    },
+    {
+      "lang": "en",
+      "text": "state to be able to resume from a point",
+      "offset": 153.28,
+      "duration": 7.12
+    },
+    {
+      "lang": "en",
+      "text": "that is not the beginning. And finally,",
+      "offset": 157.2,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "uh, increasingly agents are going to be",
+      "offset": 160.4,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "operating in a distributed environment",
+      "offset": 162.4,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "and not just on your desktop, for",
+      "offset": 164.08,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "example. And so what are the",
+      "offset": 166.48,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "considerations for running agents in a",
+      "offset": 168.8,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "scalable distributed environment? Let's",
+      "offset": 171.76,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "talk about basic agent execution just so",
+      "offset": 173.68,
+      "duration": 5.839
+    },
+    {
+      "lang": "en",
+      "text": "we can level set for the rest of the",
+      "offset": 176.48,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "talk today.",
+      "offset": 179.519,
+      "duration": 4.961
+    },
+    {
+      "lang": "en",
+      "text": "An agent is essentially a loop that",
+      "offset": 181.68,
+      "duration": 6.16
+    },
+    {
+      "lang": "en",
+      "text": "involves calls to an LLM that specify",
+      "offset": 184.48,
+      "duration": 5.92
+    },
+    {
+      "lang": "en",
+      "text": "potential tools for that LLM to use. And",
+      "offset": 187.84,
+      "duration": 4.319
+    },
+    {
+      "lang": "en",
+      "text": "if the LLM determines that it needs to",
+      "offset": 190.4,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "use those tools, it will come back to",
+      "offset": 192.159,
+      "duration": 3.921
+    },
+    {
+      "lang": "en",
+      "text": "the agent loop, which will then call the",
+      "offset": 193.84,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "tools on behalf of the LLM request and",
+      "offset": 196.08,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "collect the tool results and send them",
+      "offset": 199.04,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "back to the LLM. And it does this in a",
+      "offset": 200.8,
+      "duration": 6.88
+    },
+    {
+      "lang": "en",
+      "text": "progressive loop. LM tool call LLM tool",
+      "offset": 204,
+      "duration": 7.4
+    },
+    {
+      "lang": "en",
+      "text": "call and so on. Now, it's also possible",
+      "offset": 207.68,
+      "duration": 7.199
+    },
+    {
+      "lang": "en",
+      "text": "that a tool can be an agent itself and",
+      "offset": 211.4,
+      "duration": 6.36
+    },
+    {
+      "lang": "en",
+      "text": "that's illustrated in the picture here.",
+      "offset": 214.879,
+      "duration": 4.481
+    },
+    {
+      "lang": "en",
+      "text": "We have a sub agent. So, this is the",
+      "offset": 217.76,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "basic agent processing setup. Pretty",
+      "offset": 219.36,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "standard across agent frameworks today.",
+      "offset": 221.36,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "Clearly, there's a lot more going on.",
+      "offset": 223.84,
+      "duration": 3.679
+    },
+    {
+      "lang": "en",
+      "text": "There's a lot of interaction and this",
+      "offset": 225.92,
+      "duration": 3.599
+    },
+    {
+      "lang": "en",
+      "text": "gives us a detailed view of the",
+      "offset": 227.519,
+      "duration": 3.681
+    },
+    {
+      "lang": "en",
+      "text": "interactions I just mentioned. The mo",
+      "offset": 229.519,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "main point of this is to to indicate",
+      "offset": 231.2,
+      "duration": 5.119
+    },
+    {
+      "lang": "en",
+      "text": "that even simple agents have quite a bit",
+      "offset": 233.519,
+      "duration": 6.561
+    },
+    {
+      "lang": "en",
+      "text": "of interaction with the LLM and with the",
+      "offset": 236.319,
+      "duration": 6.56
+    },
+    {
+      "lang": "en",
+      "text": "tools. So what are some of the agent",
+      "offset": 240.08,
+      "duration": 5.6
+    },
+    {
+      "lang": "en",
+      "text": "execution scenarios that we're concerned",
+      "offset": 242.879,
+      "duration": 5.92
+    },
+    {
+      "lang": "en",
+      "text": "with addressing? I've mentioned tool",
+      "offset": 245.68,
+      "duration": 5.6
+    },
+    {
+      "lang": "en",
+      "text": "calls that require human approval. This",
+      "offset": 248.799,
+      "duration": 5.841
+    },
+    {
+      "lang": "en",
+      "text": "is a common idiom that is uh a tool call",
+      "offset": 251.28,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "is an access to something in the",
+      "offset": 254.64,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "environment. something that may require",
+      "offset": 256,
+      "duration": 6.16
+    },
+    {
+      "lang": "en",
+      "text": "uh human approval for the access itself",
+      "offset": 260,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "or it may be an action in the",
+      "offset": 262.16,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "environment like like a deleting",
+      "offset": 263.68,
+      "duration": 4.799
+    },
+    {
+      "lang": "en",
+      "text": "account, transferring money, um doing",
+      "offset": 266.08,
+      "duration": 6.119
+    },
+    {
+      "lang": "en",
+      "text": "something of consequence. And in those",
+      "offset": 268.479,
+      "duration": 8.16
+    },
+    {
+      "lang": "en",
+      "text": "situations, it's desirable to allow the",
+      "offset": 272.199,
+      "duration": 7.161
+    },
+    {
+      "lang": "en",
+      "text": "human an opportunity to approve that",
+      "offset": 276.639,
+      "duration": 6.241
+    },
+    {
+      "lang": "en",
+      "text": "request. Another situation that can",
+      "offset": 279.36,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "happen, it happens to me all the time",
+      "offset": 282.88,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "with coding assistants is the landscape",
+      "offset": 284.72,
+      "duration": 6.24
+    },
+    {
+      "lang": "en",
+      "text": "of LLM and the LM APIs is changing",
+      "offset": 287.44,
+      "duration": 7.96
+    },
+    {
+      "lang": "en",
+      "text": "rapidly and their use is is dynamic",
+      "offset": 290.96,
+      "duration": 8.08
+    },
+    {
+      "lang": "en",
+      "text": "and often new models come out, they get",
+      "offset": 295.4,
+      "duration": 5.64
+    },
+    {
+      "lang": "en",
+      "text": "used heavily and you might encounter",
+      "offset": 299.04,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "rate limiting and there's other reasons",
+      "offset": 301.04,
+      "duration": 4.28
+    },
+    {
+      "lang": "en",
+      "text": "you might encounter rate limiting. uh",
+      "offset": 302.8,
+      "duration": 6.239
+    },
+    {
+      "lang": "en",
+      "text": "but there are different ways to handle",
+      "offset": 305.32,
+      "duration": 6.92
+    },
+    {
+      "lang": "en",
+      "text": "this situation and we should seek",
+      "offset": 309.039,
+      "duration": 5.6
+    },
+    {
+      "lang": "en",
+      "text": "mechanisms in the presence of this and",
+      "offset": 312.24,
+      "duration": 5.519
+    },
+    {
+      "lang": "en",
+      "text": "finally I mentioned longrunning agents",
+      "offset": 314.639,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "uh especially agents that have to do",
+      "offset": 317.759,
+      "duration": 4.401
+    },
+    {
+      "lang": "en",
+      "text": "very complicated tasks or extensive",
+      "offset": 319.759,
+      "duration": 5.361
+    },
+    {
+      "lang": "en",
+      "text": "research to to multiple systems either",
+      "offset": 322.16,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "external to your organization or",
+      "offset": 325.12,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "internal to your organization. um the",
+      "offset": 326.56,
+      "duration": 4.479
+    },
+    {
+      "lang": "en",
+      "text": "longer that the agent runs, the more",
+      "offset": 328.96,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "susceptible it is to some potential",
+      "offset": 331.039,
+      "duration": 4.961
+    },
+    {
+      "lang": "en",
+      "text": "failure, either some sort of network",
+      "offset": 333.84,
+      "duration": 5.84
+    },
+    {
+      "lang": "en",
+      "text": "failure or hardware failure. Um and as",
+      "offset": 336,
+      "duration": 6.24
+    },
+    {
+      "lang": "en",
+      "text": "these sophisticated agents run longer,",
+      "offset": 339.68,
+      "duration": 6.56
+    },
+    {
+      "lang": "en",
+      "text": "we would like a way to not lose all of",
+      "offset": 342.24,
+      "duration": 7.519
+    },
+    {
+      "lang": "en",
+      "text": "the work that the agent has done. So, so",
+      "offset": 346.24,
+      "duration": 6.16
+    },
+    {
+      "lang": "en",
+      "text": "we want to also tolerate failures in the",
+      "offset": 349.759,
+      "duration": 6.521
+    },
+    {
+      "lang": "en",
+      "text": "presence of longunning agents.",
+      "offset": 352.4,
+      "duration": 3.88
+    },
+    {
+      "lang": "en",
+      "text": "Another thing I want to elaborate on",
+      "offset": 357.039,
+      "duration": 7.521
+    },
+    {
+      "lang": "en",
+      "text": "is the fact that in increasingly agents",
+      "offset": 360.6,
+      "duration": 7.08
+    },
+    {
+      "lang": "en",
+      "text": "are becoming more sophisticated in the",
+      "offset": 364.56,
+      "duration": 5.6
+    },
+    {
+      "lang": "en",
+      "text": "sense that not only will you have say a",
+      "offset": 367.68,
+      "duration": 5.519
+    },
+    {
+      "lang": "en",
+      "text": "single level agent that has its access",
+      "offset": 370.16,
+      "duration": 6.96
+    },
+    {
+      "lang": "en",
+      "text": "to an LLM and its tool calls but you may",
+      "offset": 373.199,
+      "duration": 6.401
+    },
+    {
+      "lang": "en",
+      "text": "have an agent configuration in which you",
+      "offset": 377.12,
+      "duration": 4.639
+    },
+    {
+      "lang": "en",
+      "text": "have a main agent or an orchestrator",
+      "offset": 379.6,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "agent and then several sub aents. In",
+      "offset": 381.759,
+      "duration": 3.761
+    },
+    {
+      "lang": "en",
+      "text": "fact, those sub aents could have their",
+      "offset": 383.84,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "own sub aents. This is this pattern is",
+      "offset": 385.52,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "is becoming quite common. So then the",
+      "offset": 388.72,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "question is in the presence of these",
+      "offset": 390.8,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "more sophisticated multi-level agents,",
+      "offset": 392.8,
+      "duration": 6.16
+    },
+    {
+      "lang": "en",
+      "text": "how are we going to deal with those two",
+      "offset": 394.8,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "primary",
+      "offset": 398.96,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "uh primary tasks that I mentioned",
+      "offset": 400.56,
+      "duration": 5.919
+    },
+    {
+      "lang": "en",
+      "text": "earlier, human approval and state saving",
+      "offset": 402.72,
+      "duration": 6.319
+    },
+    {
+      "lang": "en",
+      "text": "in the presence of failure. The last",
+      "offset": 406.479,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "concept I want to talk about is what I'm",
+      "offset": 409.039,
+      "duration": 4.801
+    },
+    {
+      "lang": "en",
+      "text": "calling agent loop persistence. And this",
+      "offset": 411.039,
+      "duration": 5.041
+    },
+    {
+      "lang": "en",
+      "text": "is the idea of if you have an agent",
+      "offset": 413.84,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "running, there is this loop. That code",
+      "offset": 416.08,
+      "duration": 5.519
+    },
+    {
+      "lang": "en",
+      "text": "that actually is doing the loop has to",
+      "offset": 419.12,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "run somewhere. It has to be on a",
+      "offset": 421.599,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "physical machine running. It might be in",
+      "offset": 423.28,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "the cloud. It might be in your desktop.",
+      "offset": 425.199,
+      "duration": 3.521
+    },
+    {
+      "lang": "en",
+      "text": "It it could be in in many locations.",
+      "offset": 426.8,
+      "duration": 3.56
+    },
+    {
+      "lang": "en",
+      "text": "That agent loop is going to be",
+      "offset": 428.72,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "interacting with the user in some",
+      "offset": 430.36,
+      "duration": 4.44
+    },
+    {
+      "lang": "en",
+      "text": "manner. Maybe you're doing it from the",
+      "offset": 432.96,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "command line. Maybe you have a web app.",
+      "offset": 434.8,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "Um maybe it's interacting through some",
+      "offset": 437.68,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "sort of third-party communication",
+      "offset": 439.52,
+      "duration": 3.48
+    },
+    {
+      "lang": "en",
+      "text": "channel like Slack.",
+      "offset": 441.28,
+      "duration": 6.08
+    },
+    {
+      "lang": "en",
+      "text": "Most of the frameworks today to support",
+      "offset": 443,
+      "duration": 7.4
+    },
+    {
+      "lang": "en",
+      "text": "things like human loop require that that",
+      "offset": 447.36,
+      "duration": 6.399
+    },
+    {
+      "lang": "en",
+      "text": "agent loop be running continuously. Even",
+      "offset": 450.4,
+      "duration": 6.16
+    },
+    {
+      "lang": "en",
+      "text": "if it's waiting for something like",
+      "offset": 453.759,
+      "duration": 6.081
+    },
+    {
+      "lang": "en",
+      "text": "waiting for a human response from Slack,",
+      "offset": 456.56,
+      "duration": 6.16
+    },
+    {
+      "lang": "en",
+      "text": "it requires they require this this agent",
+      "offset": 459.84,
+      "duration": 6.079
+    },
+    {
+      "lang": "en",
+      "text": "loop to to persist. And this is",
+      "offset": 462.72,
+      "duration": 6.4
+    },
+    {
+      "lang": "en",
+      "text": "something that we wanted to address in",
+      "offset": 465.919,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "our agent continuations work. That is we",
+      "offset": 469.12,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "wanted to develop a mechanism that would",
+      "offset": 471.919,
+      "duration": 4.201
+    },
+    {
+      "lang": "en",
+      "text": "would allow us",
+      "offset": 474.56,
+      "duration": 5.359
+    },
+    {
+      "lang": "en",
+      "text": "to fully shut down the agent loop or",
+      "offset": 476.12,
+      "duration": 7.24
+    },
+    {
+      "lang": "en",
+      "text": "multiple agent loops in some cases and",
+      "offset": 479.919,
+      "duration": 6.72
+    },
+    {
+      "lang": "en",
+      "text": "then restart them at a later point say",
+      "offset": 483.36,
+      "duration": 4.959
+    },
+    {
+      "lang": "en",
+      "text": "when the human has provided their",
+      "offset": 486.639,
+      "duration": 5.161
+    },
+    {
+      "lang": "en",
+      "text": "approval. So what are agent",
+      "offset": 488.319,
+      "duration": 5.841
+    },
+    {
+      "lang": "en",
+      "text": "continuations? So first off agent",
+      "offset": 491.8,
+      "duration": 5.239
+    },
+    {
+      "lang": "en",
+      "text": "continuations are inspired from the",
+      "offset": 494.16,
+      "duration": 4.719
+    },
+    {
+      "lang": "en",
+      "text": "programming language theory concept of",
+      "offset": 497.039,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "continuations. This is a long-standing",
+      "offset": 498.879,
+      "duration": 4.401
+    },
+    {
+      "lang": "en",
+      "text": "concept in programming languages in",
+      "offset": 501.599,
+      "duration": 5.681
+    },
+    {
+      "lang": "en",
+      "text": "which you can at any point in time",
+      "offset": 503.28,
+      "duration": 7.44
+    },
+    {
+      "lang": "en",
+      "text": "during program execution you can say hey",
+      "offset": 507.28,
+      "duration": 6.239
+    },
+    {
+      "lang": "en",
+      "text": "I want to stop the program execution at",
+      "offset": 510.72,
+      "duration": 6.319
+    },
+    {
+      "lang": "en",
+      "text": "this particular point and sort of bundle",
+      "offset": 513.519,
+      "duration": 6.76
+    },
+    {
+      "lang": "en",
+      "text": "that up so that I could resume or",
+      "offset": 517.039,
+      "duration": 6.24
+    },
+    {
+      "lang": "en",
+      "text": "continue the execution from that point",
+      "offset": 520.279,
+      "duration": 5.881
+    },
+    {
+      "lang": "en",
+      "text": "going forward at some later time. In",
+      "offset": 523.279,
+      "duration": 5.201
+    },
+    {
+      "lang": "en",
+      "text": "effect what that lets you do is it lets",
+      "offset": 526.16,
+      "duration": 3.359
+    },
+    {
+      "lang": "en",
+      "text": "you",
+      "offset": 528.48,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "take a snapshot of the program's",
+      "offset": 529.519,
+      "duration": 6.161
+    },
+    {
+      "lang": "en",
+      "text": "execution so far so that later it could",
+      "offset": 532.32,
+      "duration": 4.28
+    },
+    {
+      "lang": "en",
+      "text": "be",
+      "offset": 535.68,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "continued. Um it's a powerful mechanism",
+      "offset": 536.6,
+      "duration": 4.76
+    },
+    {
+      "lang": "en",
+      "text": "that doesn't exist in in all programming",
+      "offset": 539.44,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "languages um because it requires fairly",
+      "offset": 541.36,
+      "duration": 6.96
+    },
+    {
+      "lang": "en",
+      "text": "sophisticated runtime support.",
+      "offset": 544.64,
+      "duration": 7.08
+    },
+    {
+      "lang": "en",
+      "text": "But this mechanism, this",
+      "offset": 548.32,
+      "duration": 5.84
+    },
+    {
+      "lang": "en",
+      "text": "language continuations mechanism was the",
+      "offset": 551.72,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "inspiration for what we're calling agent",
+      "offset": 554.16,
+      "duration": 4.799
+    },
+    {
+      "lang": "en",
+      "text": "continuations in which we want to do the",
+      "offset": 555.88,
+      "duration": 6.12
+    },
+    {
+      "lang": "en",
+      "text": "same thing. We want to be able to say at",
+      "offset": 558.959,
+      "duration": 5.361
+    },
+    {
+      "lang": "en",
+      "text": "some point during agent execution, which",
+      "offset": 562,
+      "duration": 4.68
+    },
+    {
+      "lang": "en",
+      "text": "again might be through multiple tool",
+      "offset": 564.32,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "calls, multiple LLM calls, and maybe",
+      "offset": 566.68,
+      "duration": 4.44
+    },
+    {
+      "lang": "en",
+      "text": "even calls to sub agents and their tool",
+      "offset": 569.2,
+      "duration": 4.079
+    },
+    {
+      "lang": "en",
+      "text": "calls and LLM calls. At any point in",
+      "offset": 571.12,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "time, we want to be able to say, &quot;Let me",
+      "offset": 573.279,
+      "duration": 4.721
+    },
+    {
+      "lang": "en",
+      "text": "pause what the agent is doing. Let me be",
+      "offset": 574.88,
+      "duration": 6.24
+    },
+    {
+      "lang": "en",
+      "text": "able to save that state and then return",
+      "offset": 578,
+      "duration": 6.32
+    },
+    {
+      "lang": "en",
+      "text": "it back say to the application layer so",
+      "offset": 581.12,
+      "duration": 6.159
+    },
+    {
+      "lang": "en",
+      "text": "it can for example process a human",
+      "offset": 584.32,
+      "duration": 6.959
+    },
+    {
+      "lang": "en",
+      "text": "approval or perhaps persist the state of",
+      "offset": 587.279,
+      "duration": 6.641
+    },
+    {
+      "lang": "en",
+      "text": "the agent at that moment in time to be",
+      "offset": 591.279,
+      "duration": 4.881
+    },
+    {
+      "lang": "en",
+      "text": "resumed later. So now let's go into the",
+      "offset": 593.92,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "details of agent continuations. First",
+      "offset": 596.16,
+      "duration": 5.6
+    },
+    {
+      "lang": "en",
+      "text": "let's make some observations about why",
+      "offset": 598.8,
+      "duration": 6.159
+    },
+    {
+      "lang": "en",
+      "text": "this may even be possible. The way we",
+      "offset": 601.76,
+      "duration": 5.6
+    },
+    {
+      "lang": "en",
+      "text": "work with LLMs in agents today is we",
+      "offset": 604.959,
+      "duration": 4.641
+    },
+    {
+      "lang": "en",
+      "text": "maintain the messages array. The",
+      "offset": 607.36,
+      "duration": 6.719
+    },
+    {
+      "lang": "en",
+      "text": "messages array is really almost a log of",
+      "offset": 609.6,
+      "duration": 6.479
+    },
+    {
+      "lang": "en",
+      "text": "all the interactions that you've had",
+      "offset": 614.079,
+      "duration": 5.041
+    },
+    {
+      "lang": "en",
+      "text": "with the agent or with the LLMs. The and",
+      "offset": 616.079,
+      "duration": 5.521
+    },
+    {
+      "lang": "en",
+      "text": "if you if you look at it right, it",
+      "offset": 619.12,
+      "duration": 5.68
+    },
+    {
+      "lang": "en",
+      "text": "records a history which is actually",
+      "offset": 621.6,
+      "duration": 6.239
+    },
+    {
+      "lang": "en",
+      "text": "replayed back to the LLM to make its",
+      "offset": 624.8,
+      "duration": 7.56
+    },
+    {
+      "lang": "en",
+      "text": "next inference. And so in a sense,",
+      "offset": 627.839,
+      "duration": 7.841
+    },
+    {
+      "lang": "en",
+      "text": "uh, agent interactions with LLMs are",
+      "offset": 632.36,
+      "duration": 6.84
+    },
+    {
+      "lang": "en",
+      "text": "already doing a lot of the bookkeeping",
+      "offset": 635.68,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "to keep track of everything that's been",
+      "offset": 639.2,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "done so far so that that past history",
+      "offset": 641.68,
+      "duration": 6.44
+    },
+    {
+      "lang": "en",
+      "text": "can be sent back to the LLM for the next",
+      "offset": 644.72,
+      "duration": 5.92
+    },
+    {
+      "lang": "en",
+      "text": "action, say for the next tool call",
+      "offset": 648.12,
+      "duration": 6.12
+    },
+    {
+      "lang": "en",
+      "text": "response or the next decision that the",
+      "offset": 650.64,
+      "duration": 6.96
+    },
+    {
+      "lang": "en",
+      "text": "LLM has made. So, one of our one of the",
+      "offset": 654.24,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "key insights is that we're building on",
+      "offset": 657.6,
+      "duration": 5.359
+    },
+    {
+      "lang": "en",
+      "text": "top of this aura this messages array",
+      "offset": 660,
+      "duration": 5.6
+    },
+    {
+      "lang": "en",
+      "text": "which already is saving quite a bit of",
+      "offset": 662.959,
+      "duration": 5.761
+    },
+    {
+      "lang": "en",
+      "text": "the state of the agent. Now, it's not",
+      "offset": 665.6,
+      "duration": 6.32
+    },
+    {
+      "lang": "en",
+      "text": "quite enough, but it's pretty close.",
+      "offset": 668.72,
+      "duration": 7.04
+    },
+    {
+      "lang": "en",
+      "text": "Before we get into the details of how",
+      "offset": 671.92,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "agent continuations are implemented,",
+      "offset": 675.76,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "let's look at how you use the prototype",
+      "offset": 677.68,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "framework.",
+      "offset": 681.12,
+      "duration": 3.04
+    },
+    {
+      "lang": "en",
+      "text": "First, I'm going to show you how to use",
+      "offset": 682.88,
+      "duration": 2.199
+    },
+    {
+      "lang": "en",
+      "text": "the",
+      "offset": 684.16,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "framework like other agent frameworks",
+      "offset": 685.079,
+      "duration": 5.241
+    },
+    {
+      "lang": "en",
+      "text": "that is without continuation support.",
+      "offset": 688,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "And this should look pretty",
+      "offset": 690.32,
+      "duration": 3.04
+    },
+    {
+      "lang": "en",
+      "text": "familiar. We have tools and we use a",
+      "offset": 693.48,
+      "duration": 5.96
+    },
+    {
+      "lang": "en",
+      "text": "decorator to indicate that these Python",
+      "offset": 696.92,
+      "duration": 3.599
+    },
+    {
+      "lang": "en",
+      "text": "functions are",
+      "offset": 699.44,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "tools. Uh and then when we go to create",
+      "offset": 700.519,
+      "duration": 6.681
+    },
+    {
+      "lang": "en",
+      "text": "the agent, right, we just send the tool",
+      "offset": 703.76,
+      "duration": 7.44
+    },
+    {
+      "lang": "en",
+      "text": "list to the agent. So the agent knows to",
+      "offset": 707.2,
+      "duration": 6.24
+    },
+    {
+      "lang": "en",
+      "text": "use those tools in processing a user",
+      "offset": 711.2,
+      "duration": 4.079
+    },
+    {
+      "lang": "en",
+      "text": "request. Now, one thing I'm not showing",
+      "offset": 713.44,
+      "duration": 4.959
+    },
+    {
+      "lang": "en",
+      "text": "you here for brevity is you can also",
+      "offset": 715.279,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "include instructions or a system prompt",
+      "offset": 718.399,
+      "duration": 3.761
+    },
+    {
+      "lang": "en",
+      "text": "to the agent. Now once you've",
+      "offset": 720.399,
+      "duration": 3.281
+    },
+    {
+      "lang": "en",
+      "text": "instantiated your agent then you can",
+      "offset": 722.16,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "make a request and give a user prompt",
+      "offset": 723.68,
+      "duration": 7.36
+    },
+    {
+      "lang": "en",
+      "text": "and the agent will go off and do its LLM",
+      "offset": 727.04,
+      "duration": 5.919
+    },
+    {
+      "lang": "en",
+      "text": "request and its tool calling and",
+      "offset": 731.04,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "eventually come back with a response.",
+      "offset": 732.959,
+      "duration": 6.401
+    },
+    {
+      "lang": "en",
+      "text": "Let's look at our continuation extension",
+      "offset": 735.36,
+      "duration": 7.12
+    },
+    {
+      "lang": "en",
+      "text": "to this standard approach. There's only",
+      "offset": 739.36,
+      "duration": 6.64
+    },
+    {
+      "lang": "en",
+      "text": "a couple of differences. So now let's",
+      "offset": 742.48,
+      "duration": 6.24
+    },
+    {
+      "lang": "en",
+      "text": "look at using the framework with",
+      "offset": 746,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "continuation support. And you'll notice",
+      "offset": 748.72,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "there's only a couple of differences.",
+      "offset": 751.12,
+      "duration": 3.719
+    },
+    {
+      "lang": "en",
+      "text": "Let me point those",
+      "offset": 753.04,
+      "duration": 4.599
+    },
+    {
+      "lang": "en",
+      "text": "out. First off,",
+      "offset": 754.839,
+      "duration": 7.081
+    },
+    {
+      "lang": "en",
+      "text": "now with continuations, we can designate",
+      "offset": 757.639,
+      "duration": 7.561
+    },
+    {
+      "lang": "en",
+      "text": "a tool as needing approval. So here",
+      "offset": 761.92,
+      "duration": 5.96
+    },
+    {
+      "lang": "en",
+      "text": "we've said that this tool will need",
+      "offset": 765.2,
+      "duration": 5.4
+    },
+    {
+      "lang": "en",
+      "text": "approval. In addition, instead",
+      "offset": 767.88,
+      "duration": 5.399
+    },
+    {
+      "lang": "en",
+      "text": "of creating an agent from the agent",
+      "offset": 770.6,
+      "duration": 3.88
+    },
+    {
+      "lang": "en",
+      "text": "class, we're going to use the",
+      "offset": 773.279,
+      "duration": 4.641
+    },
+    {
+      "lang": "en",
+      "text": "continuation agent class. And other than",
+      "offset": 774.48,
+      "duration": 5.919
+    },
+    {
+      "lang": "en",
+      "text": "that, it's pretty identical to the",
+      "offset": 777.92,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "standard agent usage. Now, in terms of",
+      "offset": 780.399,
+      "duration": 5.081
+    },
+    {
+      "lang": "en",
+      "text": "execution, it's a little bit",
+      "offset": 783.2,
+      "duration": 4.52
+    },
+    {
+      "lang": "en",
+      "text": "different. The",
+      "offset": 785.48,
+      "duration": 5.24
+    },
+    {
+      "lang": "en",
+      "text": "response may be the complete response of",
+      "offset": 787.72,
+      "duration": 4.6
+    },
+    {
+      "lang": "en",
+      "text": "the agent if the agent was able to",
+      "offset": 790.72,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "complete its task. But if the agent for",
+      "offset": 792.32,
+      "duration": 5.959
+    },
+    {
+      "lang": "en",
+      "text": "some reason needs to",
+      "offset": 796,
+      "duration": 4.959
+    },
+    {
+      "lang": "en",
+      "text": "suspend, then the response will be a",
+      "offset": 798.279,
+      "duration": 5.8
+    },
+    {
+      "lang": "en",
+      "text": "continuation object.",
+      "offset": 800.959,
+      "duration": 5.841
+    },
+    {
+      "lang": "en",
+      "text": "This continuation continuation object",
+      "offset": 804.079,
+      "duration": 4.481
+    },
+    {
+      "lang": "en",
+      "text": "has metadata that can be inspected so",
+      "offset": 806.8,
+      "duration": 5.159
+    },
+    {
+      "lang": "en",
+      "text": "that you can understand the reason for",
+      "offset": 808.56,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "suspension. In this example here, we're",
+      "offset": 811.959,
+      "duration": 5.161
+    },
+    {
+      "lang": "en",
+      "text": "assuming that because we know we built",
+      "offset": 814.32,
+      "duration": 5.92
+    },
+    {
+      "lang": "en",
+      "text": "the agent with the tool call that needed",
+      "offset": 817.12,
+      "duration": 7.12
+    },
+    {
+      "lang": "en",
+      "text": "approval that that continuation object",
+      "offset": 820.24,
+      "duration": 6.88
+    },
+    {
+      "lang": "en",
+      "text": "is going to need a human approval",
+      "offset": 824.24,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "response which could be true or false",
+      "offset": 827.12,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "depending on what the human ultimately",
+      "offset": 829.68,
+      "duration": 4.839
+    },
+    {
+      "lang": "en",
+      "text": "decides. But let's say in this case that",
+      "offset": 831.2,
+      "duration": 6.12
+    },
+    {
+      "lang": "en",
+      "text": "we decide to approve this tool call",
+      "offset": 834.519,
+      "duration": 5.521
+    },
+    {
+      "lang": "en",
+      "text": "request. So we update the continuation",
+      "offset": 837.32,
+      "duration": 6.92
+    },
+    {
+      "lang": "en",
+      "text": "object appropriately with the positive",
+      "offset": 840.04,
+      "duration": 6.52
+    },
+    {
+      "lang": "en",
+      "text": "human approval. And then you can send",
+      "offset": 844.24,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "the continuation back to the agent using",
+      "offset": 846.56,
+      "duration": 5.92
+    },
+    {
+      "lang": "en",
+      "text": "the same request method. And the agent",
+      "offset": 849.12,
+      "duration": 6.32
+    },
+    {
+      "lang": "en",
+      "text": "will know because this is a continuation",
+      "offset": 852.48,
+      "duration": 6.96
+    },
+    {
+      "lang": "en",
+      "text": "object that it needs to resume from the",
+      "offset": 855.44,
+      "duration": 5.759
+    },
+    {
+      "lang": "en",
+      "text": "place that it suspended in the first",
+      "offset": 859.44,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "place. that is in this case just before",
+      "offset": 861.199,
+      "duration": 6.801
+    },
+    {
+      "lang": "en",
+      "text": "the tool call so that we can get the",
+      "offset": 863.76,
+      "duration": 5.48
+    },
+    {
+      "lang": "en",
+      "text": "human",
+      "offset": 868,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "approval then",
+      "offset": 869.24,
+      "duration": 6.92
+    },
+    {
+      "lang": "en",
+      "text": "the agent can continue and get the final",
+      "offset": 872.88,
+      "duration": 5.84
+    },
+    {
+      "lang": "en",
+      "text": "final response. So let's go into a",
+      "offset": 876.16,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "little more detail about the",
+      "offset": 878.72,
+      "duration": 4.52
+    },
+    {
+      "lang": "en",
+      "text": "implementation.",
+      "offset": 880.24,
+      "duration": 3
+    },
+    {
+      "lang": "en",
+      "text": "So with continuations the forward",
+      "offset": 883.519,
+      "duration": 6.32
+    },
+    {
+      "lang": "en",
+      "text": "processing of the agent remains the",
+      "offset": 886.959,
+      "duration": 5.201
+    },
+    {
+      "lang": "en",
+      "text": "same. you're going to do LLM calls. The",
+      "offset": 889.839,
+      "duration": 5.521
+    },
+    {
+      "lang": "en",
+      "text": "LLMs are going to come back with a tool",
+      "offset": 892.16,
+      "duration": 5.6
+    },
+    {
+      "lang": "en",
+      "text": "call request. We'll pull perform the",
+      "offset": 895.36,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "tool work call request as long as they",
+      "offset": 897.76,
+      "duration": 5.319
+    },
+    {
+      "lang": "en",
+      "text": "don't necessarily need is human",
+      "offset": 900.72,
+      "duration": 5.359
+    },
+    {
+      "lang": "en",
+      "text": "approval. Uh but if the human approval",
+      "offset": 903.079,
+      "duration": 6.56
+    },
+    {
+      "lang": "en",
+      "text": "isn't needed, it's standard agent",
+      "offset": 906.079,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "processing. If we get to a point where",
+      "offset": 909.639,
+      "duration": 4.76
+    },
+    {
+      "lang": "en",
+      "text": "we determine that we need to suspend",
+      "offset": 912.079,
+      "duration": 5.041
+    },
+    {
+      "lang": "en",
+      "text": "like for human approval or if we've",
+      "offset": 914.399,
+      "duration": 5.281
+    },
+    {
+      "lang": "en",
+      "text": "reached some other suspension condition,",
+      "offset": 917.12,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "that's when we create the continuation",
+      "offset": 919.68,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "object. The continuation object embeds",
+      "offset": 921.44,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "the standard messages array with some",
+      "offset": 924.16,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "additional metadata. That metadata",
+      "offset": 926.24,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "provides the continuation enough",
+      "offset": 928.32,
+      "duration": 6.079
+    },
+    {
+      "lang": "en",
+      "text": "information of how to resume when we",
+      "offset": 930.8,
+      "duration": 5.68
+    },
+    {
+      "lang": "en",
+      "text": "want to send the continuation back to",
+      "offset": 934.399,
+      "duration": 4.961
+    },
+    {
+      "lang": "en",
+      "text": "the agent. Ultimately this continuation",
+      "offset": 936.48,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "object will be sent back to the top",
+      "offset": 939.36,
+      "duration": 5.8
+    },
+    {
+      "lang": "en",
+      "text": "level agent which we do some",
+      "offset": 941.68,
+      "duration": 6.92
+    },
+    {
+      "lang": "en",
+      "text": "final processing of to",
+      "offset": 945.16,
+      "duration": 7.08
+    },
+    {
+      "lang": "en",
+      "text": "make the application layer to make it",
+      "offset": 948.6,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "easier for the application layer to",
+      "offset": 952.24,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "understand why the continuation was",
+      "offset": 954.6,
+      "duration": 6.2
+    },
+    {
+      "lang": "en",
+      "text": "suspended and also to allow it to",
+      "offset": 957.6,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "provide human approval updates if",
+      "offset": 960.8,
+      "duration": 3.839
+    },
+    {
+      "lang": "en",
+      "text": "required.",
+      "offset": 963.12,
+      "duration": 4.639
+    },
+    {
+      "lang": "en",
+      "text": "So essentially what we do is we take",
+      "offset": 964.639,
+      "duration": 6.521
+    },
+    {
+      "lang": "en",
+      "text": "this fairly potentially complicated",
+      "offset": 967.759,
+      "duration": 7.76
+    },
+    {
+      "lang": "en",
+      "text": "nested continuation object and extract",
+      "offset": 971.16,
+      "duration": 6.119
+    },
+    {
+      "lang": "en",
+      "text": "the core information that the",
+      "offset": 975.519,
+      "duration": 4.641
+    },
+    {
+      "lang": "en",
+      "text": "application layer needs to act on to",
+      "offset": 977.279,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "make it easy for that application layer",
+      "offset": 980.16,
+      "duration": 6.08
+    },
+    {
+      "lang": "en",
+      "text": "to make those approvals. Then once the",
+      "offset": 982.079,
+      "duration": 7.2
+    },
+    {
+      "lang": "en",
+      "text": "application layer has updated the",
+      "offset": 986.24,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "continuation object, we send it back to",
+      "offset": 989.279,
+      "duration": 5.401
+    },
+    {
+      "lang": "en",
+      "text": "the agent. the agent knows that it's a",
+      "offset": 991.6,
+      "duration": 6.239
+    },
+    {
+      "lang": "en",
+      "text": "continuation and has the logic in order",
+      "offset": 994.68,
+      "duration": 6.519
+    },
+    {
+      "lang": "en",
+      "text": "to reconstruct the agent back to its",
+      "offset": 997.839,
+      "duration": 5.56
+    },
+    {
+      "lang": "en",
+      "text": "state so that we can continue the",
+      "offset": 1001.199,
+      "duration": 4.721
+    },
+    {
+      "lang": "en",
+      "text": "execution. Now, one really important",
+      "offset": 1003.399,
+      "duration": 5.041
+    },
+    {
+      "lang": "en",
+      "text": "point of all this is",
+      "offset": 1005.92,
+      "duration": 6.479
+    },
+    {
+      "lang": "en",
+      "text": "that once you've suspended the agent and",
+      "offset": 1008.44,
+      "duration": 6.44
+    },
+    {
+      "lang": "en",
+      "text": "you've created the continuation object,",
+      "offset": 1012.399,
+      "duration": 5.68
+    },
+    {
+      "lang": "en",
+      "text": "you actually don't need to keep any of",
+      "offset": 1014.88,
+      "duration": 7.44
+    },
+    {
+      "lang": "en",
+      "text": "the agent loops running in your system.",
+      "offset": 1018.079,
+      "duration": 6.641
+    },
+    {
+      "lang": "en",
+      "text": "that is they can be shut down because",
+      "offset": 1022.32,
+      "duration": 5.759
+    },
+    {
+      "lang": "en",
+      "text": "we've captured enough information to",
+      "offset": 1024.72,
+      "duration": 6.319
+    },
+    {
+      "lang": "en",
+      "text": "restart everything back to where it was.",
+      "offset": 1028.079,
+      "duration": 5.041
+    },
+    {
+      "lang": "en",
+      "text": "And this is a really powerful aspect of",
+      "offset": 1031.039,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "agent continuation. So going into a",
+      "offset": 1033.12,
+      "duration": 4.959
+    },
+    {
+      "lang": "en",
+      "text": "little bit of the detail just to get a",
+      "offset": 1035.039,
+      "duration": 5.361
+    },
+    {
+      "lang": "en",
+      "text": "sense of what this continuation object",
+      "offset": 1038.079,
+      "duration": 4.12
+    },
+    {
+      "lang": "en",
+      "text": "actually looks",
+      "offset": 1040.4,
+      "duration": 5.919
+    },
+    {
+      "lang": "en",
+      "text": "like. I've sh I'm showing two versions.",
+      "offset": 1042.199,
+      "duration": 7.48
+    },
+    {
+      "lang": "en",
+      "text": "First is a single level continuation.",
+      "offset": 1046.319,
+      "duration": 6.641
+    },
+    {
+      "lang": "en",
+      "text": "Uh you can see that we've wrapped it. We",
+      "offset": 1049.679,
+      "duration": 5.921
+    },
+    {
+      "lang": "en",
+      "text": "have the top level continuation, the",
+      "offset": 1052.96,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "messages array which is the normal",
+      "offset": 1055.6,
+      "duration": 4.319
+    },
+    {
+      "lang": "en",
+      "text": "messages array and the two other pieces",
+      "offset": 1057.52,
+      "duration": 5.159
+    },
+    {
+      "lang": "en",
+      "text": "of metadata are this resume request",
+      "offset": 1059.919,
+      "duration": 7.521
+    },
+    {
+      "lang": "en",
+      "text": "which indicates exactly which tool call",
+      "offset": 1062.679,
+      "duration": 8.161
+    },
+    {
+      "lang": "en",
+      "text": "for example we need to resume at and",
+      "offset": 1067.44,
+      "duration": 7.119
+    },
+    {
+      "lang": "en",
+      "text": "also processed is going to be populated",
+      "offset": 1070.84,
+      "duration": 5.48
+    },
+    {
+      "lang": "en",
+      "text": "with whether we approved or say",
+      "offset": 1074.559,
+      "duration": 3.681
+    },
+    {
+      "lang": "en",
+      "text": "disapproved in the case of human",
+      "offset": 1076.32,
+      "duration": 4.479
+    },
+    {
+      "lang": "en",
+      "text": "approval and I mentioned that before the",
+      "offset": 1078.24,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "continuation is returned learned is that",
+      "offset": 1080.799,
+      "duration": 4.521
+    },
+    {
+      "lang": "en",
+      "text": "we extract to the top level of this",
+      "offset": 1082.88,
+      "duration": 5.919
+    },
+    {
+      "lang": "en",
+      "text": "object the metadata that allows the",
+      "offset": 1085.32,
+      "duration": 5.64
+    },
+    {
+      "lang": "en",
+      "text": "application layer to easily update the",
+      "offset": 1088.799,
+      "duration": 3.681
+    },
+    {
+      "lang": "en",
+      "text": "continuation",
+      "offset": 1090.96,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "um so that it can proceed after we send",
+      "offset": 1092.48,
+      "duration": 6.4
+    },
+    {
+      "lang": "en",
+      "text": "it back to the agent. On the right, a",
+      "offset": 1096.08,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "slightly more complicated continuation",
+      "offset": 1098.88,
+      "duration": 3.679
+    },
+    {
+      "lang": "en",
+      "text": "object in which we have an agent that",
+      "offset": 1100.64,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "calls a sub agent. And the main point",
+      "offset": 1102.559,
+      "duration": 6.801
+    },
+    {
+      "lang": "en",
+      "text": "here is that our format is recursive and",
+      "offset": 1104.32,
+      "duration": 7.44
+    },
+    {
+      "lang": "en",
+      "text": "it can handle arbitrary layers of",
+      "offset": 1109.36,
+      "duration": 5.199
+    },
+    {
+      "lang": "en",
+      "text": "nesting. And you can see that here in",
+      "offset": 1111.76,
+      "duration": 6.4
+    },
+    {
+      "lang": "en",
+      "text": "the fact that we have a resume request",
+      "offset": 1114.559,
+      "duration": 6.081
+    },
+    {
+      "lang": "en",
+      "text": "that now has its own continuations",
+      "offset": 1118.16,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "object with its own messages. And that's",
+      "offset": 1120.64,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "the messages of the sub agent and its",
+      "offset": 1122.48,
+      "duration": 4.079
+    },
+    {
+      "lang": "en",
+      "text": "own resume request and processed. So",
+      "offset": 1124.48,
+      "duration": 6.48
+    },
+    {
+      "lang": "en",
+      "text": "let's look at a full example. Here we",
+      "offset": 1126.559,
+      "duration": 8.801
+    },
+    {
+      "lang": "en",
+      "text": "have a multi-level HR agent and so the",
+      "offset": 1130.96,
+      "duration": 8.719
+    },
+    {
+      "lang": "en",
+      "text": "top level agent has an email tool and it",
+      "offset": 1135.36,
+      "duration": 7.04
+    },
+    {
+      "lang": "en",
+      "text": "has access to a sub agent the account",
+      "offset": 1139.679,
+      "duration": 4.641
+    },
+    {
+      "lang": "en",
+      "text": "agent tool which is responsible for",
+      "offset": 1142.4,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "creating account and setting account",
+      "offset": 1144.32,
+      "duration": 4.239
+    },
+    {
+      "lang": "en",
+      "text": "privileges. I have a abbreviated system",
+      "offset": 1146.48,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "prompt up here and we construct our",
+      "offset": 1148.559,
+      "duration": 6.48
+    },
+    {
+      "lang": "en",
+      "text": "continuation agent for the HR agent",
+      "offset": 1152.48,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "here. Now let's take a look at the",
+      "offset": 1155.039,
+      "duration": 5.121
+    },
+    {
+      "lang": "en",
+      "text": "account agent for a moment. It's its own",
+      "offset": 1157.6,
+      "duration": 6.079
+    },
+    {
+      "lang": "en",
+      "text": "agent with its own tools. Create account",
+      "offset": 1160.16,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "and authorize account. In this case",
+      "offset": 1163.679,
+      "duration": 4.641
+    },
+    {
+      "lang": "en",
+      "text": "here, authorize account needs approval.",
+      "offset": 1165.44,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "But you can see it uses the same basic",
+      "offset": 1168.32,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "setup. Uh we give it its system prompt",
+      "offset": 1170.64,
+      "duration": 7.2
+    },
+    {
+      "lang": "en",
+      "text": "up here and its tools. And this sub aent",
+      "offset": 1173.76,
+      "duration": 8.52
+    },
+    {
+      "lang": "en",
+      "text": "is going to be used by the top level HR",
+      "offset": 1177.84,
+      "duration": 7.92
+    },
+    {
+      "lang": "en",
+      "text": "agent. Here I have an example prompt to",
+      "offset": 1182.28,
+      "duration": 6.12
+    },
+    {
+      "lang": "en",
+      "text": "create a new account and that prompt",
+      "offset": 1185.76,
+      "duration": 4.919
+    },
+    {
+      "lang": "en",
+      "text": "will be sent to the agent to be",
+      "offset": 1188.4,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "processed. Now in this example here,",
+      "offset": 1190.679,
+      "duration": 4.761
+    },
+    {
+      "lang": "en",
+      "text": "it's set up right such that eventually",
+      "offset": 1192.96,
+      "duration": 5.68
+    },
+    {
+      "lang": "en",
+      "text": "the account agent sub agent will need",
+      "offset": 1195.44,
+      "duration": 6.239
+    },
+    {
+      "lang": "en",
+      "text": "human approval for the authorize account",
+      "offset": 1198.64,
+      "duration": 8.64
+    },
+    {
+      "lang": "en",
+      "text": "tool which will cause the agent to",
+      "offset": 1201.679,
+      "duration": 8.481
+    },
+    {
+      "lang": "en",
+      "text": "suspend create a continuation return",
+      "offset": 1207.28,
+      "duration": 5.56
+    },
+    {
+      "lang": "en",
+      "text": "that back to the application layer for",
+      "offset": 1210.16,
+      "duration": 5.16
+    },
+    {
+      "lang": "en",
+      "text": "processing. Here is an",
+      "offset": 1212.84,
+      "duration": 6.28
+    },
+    {
+      "lang": "en",
+      "text": "illustrated diagram of the steps that I",
+      "offset": 1215.32,
+      "duration": 6.84
+    },
+    {
+      "lang": "en",
+      "text": "mentioned. In this diagram, we have the",
+      "offset": 1219.12,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "application layer that's interacting",
+      "offset": 1222.16,
+      "duration": 5.68
+    },
+    {
+      "lang": "en",
+      "text": "with the user. We have our HR agent and",
+      "offset": 1223.52,
+      "duration": 8.639
+    },
+    {
+      "lang": "en",
+      "text": "it's tool call send mail and then it's",
+      "offset": 1227.84,
+      "duration": 7.52
+    },
+    {
+      "lang": "en",
+      "text": "using the account agent as a tool. And",
+      "offset": 1232.159,
+      "duration": 6.4
+    },
+    {
+      "lang": "en",
+      "text": "that account agent has its create",
+      "offset": 1235.36,
+      "duration": 5.199
+    },
+    {
+      "lang": "en",
+      "text": "account tool and its authorized account",
+      "offset": 1238.559,
+      "duration": 5.281
+    },
+    {
+      "lang": "en",
+      "text": "tool. Now in the scenario I just",
+      "offset": 1240.559,
+      "duration": 6.201
+    },
+    {
+      "lang": "en",
+      "text": "described, we'll get down to the point",
+      "offset": 1243.84,
+      "duration": 5.92
+    },
+    {
+      "lang": "en",
+      "text": "where we know we need approval for",
+      "offset": 1246.76,
+      "duration": 5.799
+    },
+    {
+      "lang": "en",
+      "text": "authorized account. So that's the point",
+      "offset": 1249.76,
+      "duration": 8.08
+    },
+    {
+      "lang": "en",
+      "text": "at which we need to suspend and start",
+      "offset": 1252.559,
+      "duration": 7.881
+    },
+    {
+      "lang": "en",
+      "text": "creating or building up our continuation",
+      "offset": 1257.84,
+      "duration": 5.839
+    },
+    {
+      "lang": "en",
+      "text": "object. And that's what happens here. So",
+      "offset": 1260.44,
+      "duration": 6.359
+    },
+    {
+      "lang": "en",
+      "text": "the approval propagates a continuation",
+      "offset": 1263.679,
+      "duration": 6.24
+    },
+    {
+      "lang": "en",
+      "text": "object object that gets expanded at each",
+      "offset": 1266.799,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "level as it's propagating back to the",
+      "offset": 1269.919,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "application layer until finally we have",
+      "offset": 1272.159,
+      "duration": 4.321
+    },
+    {
+      "lang": "en",
+      "text": "the full continuation object for the",
+      "offset": 1274.159,
+      "duration": 6.161
+    },
+    {
+      "lang": "en",
+      "text": "application to inspect and then act on.",
+      "offset": 1276.48,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "Now once the application layer has done",
+      "offset": 1280.32,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "that then that continuation object can",
+      "offset": 1282.24,
+      "duration": 8
+    },
+    {
+      "lang": "en",
+      "text": "be sent back into the HR agent and the",
+      "offset": 1285.36,
+      "duration": 7.16
+    },
+    {
+      "lang": "en",
+      "text": "framework will know that we need to",
+      "offset": 1290.24,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "restore the agent state and the sub aent",
+      "offset": 1292.52,
+      "duration": 5
+    },
+    {
+      "lang": "en",
+      "text": "state back to where it was when we",
+      "offset": 1295.44,
+      "duration": 3.88
+    },
+    {
+      "lang": "en",
+      "text": "needed the approval in the first",
+      "offset": 1297.52,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "place and that will be handled all by",
+      "offset": 1299.32,
+      "duration": 6.479
+    },
+    {
+      "lang": "en",
+      "text": "the framework. So let's do a quick",
+      "offset": 1302.08,
+      "duration": 6.76
+    },
+    {
+      "lang": "en",
+      "text": "demo. So let's look at our",
+      "offset": 1305.799,
+      "duration": 6.24
+    },
+    {
+      "lang": "en",
+      "text": "prompt. So, we have the prompt here as a",
+      "offset": 1308.84,
+      "duration": 6.199
+    },
+    {
+      "lang": "en",
+      "text": "JSON.",
+      "offset": 1312.039,
+      "duration": 3
+    },
+    {
+      "lang": "en",
+      "text": "And I'm going",
+      "offset": 1315.4,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "to",
+      "offset": 1318.36,
+      "duration": 5.679
+    },
+    {
+      "lang": "en",
+      "text": "run this",
+      "offset": 1320.84,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "prompt",
+      "offset": 1324.039,
+      "duration": 5.161
+    },
+    {
+      "lang": "en",
+      "text": "here. So, I'm just giving that prompt as",
+      "offset": 1325.96,
+      "duration": 5.24
+    },
+    {
+      "lang": "en",
+      "text": "the first prompt to the agent starting",
+      "offset": 1329.2,
+      "duration": 6.32
+    },
+    {
+      "lang": "en",
+      "text": "off. And I'm going to send this out",
+      "offset": 1331.2,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "to a response file. And the whole point",
+      "offset": 1335.799,
+      "duration": 4.921
+    },
+    {
+      "lang": "en",
+      "text": "of this is to show that these things are",
+      "offset": 1339.2,
+      "duration": 3.839
+    },
+    {
+      "lang": "en",
+      "text": "fully decoupled and that these objects",
+      "offset": 1340.72,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "contain all of the state that we need.",
+      "offset": 1343.039,
+      "duration": 4.201
+    },
+    {
+      "lang": "en",
+      "text": "So let's look at",
+      "offset": 1345.2,
+      "duration": 4.04
+    },
+    {
+      "lang": "en",
+      "text": "the response",
+      "offset": 1347.24,
+      "duration": 4.679
+    },
+    {
+      "lang": "en",
+      "text": "object and this has the things that you",
+      "offset": 1349.24,
+      "duration": 4.36
+    },
+    {
+      "lang": "en",
+      "text": "can imagine. There's the continuation,",
+      "offset": 1351.919,
+      "duration": 5.441
+    },
+    {
+      "lang": "en",
+      "text": "there's the top level messages and if",
+      "offset": 1353.6,
+      "duration": 8
+    },
+    {
+      "lang": "en",
+      "text": "you go down right here is the sub aent",
+      "offset": 1357.36,
+      "duration": 6.439
+    },
+    {
+      "lang": "en",
+      "text": "messages with its system",
+      "offset": 1361.6,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "prompt. And finally, if we go down to",
+      "offset": 1363.799,
+      "duration": 4.76
+    },
+    {
+      "lang": "en",
+      "text": "the bottom of this object, this is that",
+      "offset": 1366.96,
+      "duration": 2.44
+    },
+    {
+      "lang": "en",
+      "text": "top",
+      "offset": 1368.559,
+      "duration": 4.161
+    },
+    {
+      "lang": "en",
+      "text": "level approval object that the",
+      "offset": 1369.4,
+      "duration": 5.72
+    },
+    {
+      "lang": "en",
+      "text": "application layer can then present to",
+      "offset": 1372.72,
+      "duration": 5.6
+    },
+    {
+      "lang": "en",
+      "text": "the user and then update. So here I'm",
+      "offset": 1375.12,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "just doing it manually. Obviously you",
+      "offset": 1378.32,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "would do this in application code. So",
+      "offset": 1379.84,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "I'm going to save that. And now what I'm",
+      "offset": 1382.24,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "going to do is I'm going to send that",
+      "offset": 1384.4,
+      "duration": 3.96
+    },
+    {
+      "lang": "en",
+      "text": "edited",
+      "offset": 1387.28,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "response back to the agent. And the",
+      "offset": 1388.36,
+      "duration": 6.6
+    },
+    {
+      "lang": "en",
+      "text": "point of this is that now the agent will",
+      "offset": 1391.6,
+      "duration": 6.4
+    },
+    {
+      "lang": "en",
+      "text": "reconstruct its state but with the",
+      "offset": 1394.96,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "information that the tool has been",
+      "offset": 1398,
+      "duration": 7.039
+    },
+    {
+      "lang": "en",
+      "text": "approved so that the agent can continue",
+      "offset": 1400.96,
+      "duration": 4.079
+    },
+    {
+      "lang": "en",
+      "text": "processing. And there we go. If you look",
+      "offset": 1405.88,
+      "duration": 7.48
+    },
+    {
+      "lang": "en",
+      "text": "here right we agent has indicated that",
+      "offset": 1410.36,
+      "duration": 4.76
+    },
+    {
+      "lang": "en",
+      "text": "the account has been successfully",
+      "offset": 1413.36,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "created uh and that a security level has",
+      "offset": 1415.12,
+      "duration": 7.6
+    },
+    {
+      "lang": "en",
+      "text": "been granted and that we now have the",
+      "offset": 1418.48,
+      "duration": 7.04
+    },
+    {
+      "lang": "en",
+      "text": "end reason of completed. The other thing",
+      "offset": 1422.72,
+      "duration": 6.76
+    },
+    {
+      "lang": "en",
+      "text": "I'll note in this output here is",
+      "offset": 1425.52,
+      "duration": 9.12
+    },
+    {
+      "lang": "en",
+      "text": "that everything above now is normal a",
+      "offset": 1429.48,
+      "duration": 8.12
+    },
+    {
+      "lang": "en",
+      "text": "normal messages array. That is uh",
+      "offset": 1434.64,
+      "duration": 5.68
+    },
+    {
+      "lang": "en",
+      "text": "there's no sign of continuation in the",
+      "offset": 1437.6,
+      "duration": 4.76
+    },
+    {
+      "lang": "en",
+      "text": "final result",
+      "offset": 1440.32,
+      "duration": 4.239
+    },
+    {
+      "lang": "en",
+      "text": "object. The continuation is just",
+      "offset": 1442.36,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "introduced when we need to",
+      "offset": 1444.559,
+      "duration": 6.641
+    },
+    {
+      "lang": "en",
+      "text": "suspend. Okay. So let me go over just a",
+      "offset": 1446.44,
+      "duration": 6.479
+    },
+    {
+      "lang": "en",
+      "text": "few details.",
+      "offset": 1451.2,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "Um, our prototype is built up on top of",
+      "offset": 1452.919,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "the OpenAI Python API. There's no other",
+      "offset": 1456.08,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "dependencies. We have the prototype",
+      "offset": 1458.919,
+      "duration": 4.041
+    },
+    {
+      "lang": "en",
+      "text": "implementation. Here's the link that you",
+      "offset": 1460.96,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "go to on GitHub and it should be in the",
+      "offset": 1462.96,
+      "duration": 4.319
+    },
+    {
+      "lang": "en",
+      "text": "channel notes as well. Where do we want",
+      "offset": 1465.36,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "to take this? We've already implemented",
+      "offset": 1467.279,
+      "duration": 3.601
+    },
+    {
+      "lang": "en",
+      "text": "a version with more general agent",
+      "offset": 1469.44,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "suspension that is beyond just human",
+      "offset": 1470.88,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "approval. is that setting up arbitrary",
+      "offset": 1472.96,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "suspension points like after a certain",
+      "offset": 1476.24,
+      "duration": 3.439
+    },
+    {
+      "lang": "en",
+      "text": "amount of time, a certain number of",
+      "offset": 1478.4,
+      "duration": 5.639
+    },
+    {
+      "lang": "en",
+      "text": "turns, even asynchronous requests for",
+      "offset": 1479.679,
+      "duration": 7.761
+    },
+    {
+      "lang": "en",
+      "text": "suspension. And what we're looking at is",
+      "offset": 1484.039,
+      "duration": 6.12
+    },
+    {
+      "lang": "en",
+      "text": "not just not necessarily developing uh",
+      "offset": 1487.44,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "this prototype into a full separate",
+      "offset": 1490.159,
+      "duration": 4.161
+    },
+    {
+      "lang": "en",
+      "text": "agent framework um because there's lots",
+      "offset": 1492.08,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "of good frameworks out there, but rather",
+      "offset": 1494.32,
+      "duration": 4.239
+    },
+    {
+      "lang": "en",
+      "text": "looking at ways to extend existing",
+      "offset": 1496.4,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "frameworks, something like strands or",
+      "offset": 1498.559,
+      "duration": 4.961
+    },
+    {
+      "lang": "en",
+      "text": "pyantic AI. Now I should also mention",
+      "offset": 1500.4,
+      "duration": 6.879
+    },
+    {
+      "lang": "en",
+      "text": "that um we're not the first framework to",
+      "offset": 1503.52,
+      "duration": 6.56
+    },
+    {
+      "lang": "en",
+      "text": "consider state management. Some of the",
+      "offset": 1507.279,
+      "duration": 5.121
+    },
+    {
+      "lang": "en",
+      "text": "other frameworks do have forms of state",
+      "offset": 1510.08,
+      "duration": 7.8
+    },
+    {
+      "lang": "en",
+      "text": "management. However, uh the in",
+      "offset": 1512.4,
+      "duration": 8.12
+    },
+    {
+      "lang": "en",
+      "text": "our investigation of the state",
+      "offset": 1517.88,
+      "duration": 6.6
+    },
+    {
+      "lang": "en",
+      "text": "management, they either sort of lack the",
+      "offset": 1520.52,
+      "duration": 7.88
+    },
+    {
+      "lang": "en",
+      "text": "human approval element or the um the",
+      "offset": 1524.48,
+      "duration": 6.4
+    },
+    {
+      "lang": "en",
+      "text": "sophistication of having arbitrary",
+      "offset": 1528.4,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "depths of nesting into sub aents. And so",
+      "offset": 1530.88,
+      "duration": 5.56
+    },
+    {
+      "lang": "en",
+      "text": "we think our",
+      "offset": 1533.52,
+      "duration": 5.6
+    },
+    {
+      "lang": "en",
+      "text": "approach is novel in the sense that it",
+      "offset": 1536.44,
+      "duration": 5.88
+    },
+    {
+      "lang": "en",
+      "text": "combines both those both a human",
+      "offset": 1539.12,
+      "duration": 5.679
+    },
+    {
+      "lang": "en",
+      "text": "approval mechanism and also this",
+      "offset": 1542.32,
+      "duration": 5.68
+    },
+    {
+      "lang": "en",
+      "text": "arbitrary nesting uh of complex agent.",
+      "offset": 1544.799,
+      "duration": 5.041
+    },
+    {
+      "lang": "en",
+      "text": "This work came out of the agent creator",
+      "offset": 1548,
+      "duration": 5.32
+    },
+    {
+      "lang": "en",
+      "text": "team at Snaplogic. Agent creator is",
+      "offset": 1549.84,
+      "duration": 6.56
+    },
+    {
+      "lang": "en",
+      "text": "Snaplogic's visual agent building",
+      "offset": 1553.32,
+      "duration": 5.16
+    },
+    {
+      "lang": "en",
+      "text": "interface and platform. Not only did we",
+      "offset": 1556.4,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "build that out in Python, but we built",
+      "offset": 1558.48,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "it out in agent creator itself. And you",
+      "offset": 1560.4,
+      "duration": 6.24
+    },
+    {
+      "lang": "en",
+      "text": "can see here that we allow our users to",
+      "offset": 1564,
+      "duration": 5.679
+    },
+    {
+      "lang": "en",
+      "text": "create sophisticated agents using a more",
+      "offset": 1566.64,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "visual approach. And you can also",
+      "offset": 1569.679,
+      "duration": 5.681
+    },
+    {
+      "lang": "en",
+      "text": "visualize in the platform agent",
+      "offset": 1572.64,
+      "duration": 6.159
+    },
+    {
+      "lang": "en",
+      "text": "execution. We prototyped continuations",
+      "offset": 1575.36,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "in the Snaplogic agent creator",
+      "offset": 1578.799,
+      "duration": 6.24
+    },
+    {
+      "lang": "en",
+      "text": "environment as well. Uh so we we did it",
+      "offset": 1580.72,
+      "duration": 6.48
+    },
+    {
+      "lang": "en",
+      "text": "both at the Python layer and we also did",
+      "offset": 1585.039,
+      "duration": 6.561
+    },
+    {
+      "lang": "en",
+      "text": "it at our higher level uh layer in in",
+      "offset": 1587.2,
+      "duration": 7.52
+    },
+    {
+      "lang": "en",
+      "text": "the Snaplogic platform. In conclusion,",
+      "offset": 1591.6,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "agent continuations are a new mechanism",
+      "offset": 1594.72,
+      "duration": 6.959
+    },
+    {
+      "lang": "en",
+      "text": "for managing agent state and human in",
+      "offset": 1597.36,
+      "duration": 6.96
+    },
+    {
+      "lang": "en",
+      "text": "the loop processing. We have a prototype",
+      "offset": 1601.679,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "implementation that you can access on",
+      "offset": 1604.32,
+      "duration": 5.92
+    },
+    {
+      "lang": "en",
+      "text": "GitHub from the link on this page. And",
+      "offset": 1606.159,
+      "duration": 6.481
+    },
+    {
+      "lang": "en",
+      "text": "if you want to learn more about building",
+      "offset": 1610.24,
+      "duration": 4.679
+    },
+    {
+      "lang": "en",
+      "text": "agents visually with SnapLogic Agent",
+      "offset": 1612.64,
+      "duration": 5.45
+    },
+    {
+      "lang": "en",
+      "text": "Creator, go to agentcreator.com.",
+      "offset": 1614.919,
+      "duration": 6.301
+    },
+    {
+      "lang": "en",
+      "text": "[Music]",
+      "offset": 1618.09,
+      "duration": 3.13
+    }
+  ],
+  "cleanText": "So, you've built some agents and they're working. Actually, they may be working really well, doing amazing things. And now you want to put these agents into a production setting. What are the other things you have to worry about? For example, do your agents need some form of human approval during their processing steps? Will your agents be running for long periods of time in the presence of failure? How do you address these issues? Today, we're going to be learning about a new mechanism that addresses both these issues, and I'm really excited to talk about it. So, let's get started.\n\nHi, I'm Greg Benson. I'm a professor of computer science at the University of San Francisco and I'm chief scientist at SnapLogic. And today I'm excited to talk about a new mechanism that we've developed at SnapLogic called agent continuations. Agent continuations allow you to capture the full state of complex agents that can be used both to do arbitrary human and loop processing and also be the basis for reliable agent continuation through taking snapshots. This work came out of the agent creator research group at SnapLogic.\n\nFirst, let's talk about the general challenges that we face with agents today. First of all, there's a lot of concern about where the human sits relative to agent processing. That is for people to get comfortable with agent automation. Key aspects of agent execution require some amount of human oversight. And so there's been lots of work and lots of techniques for including human in the loop. I'm not going to go over all of those, but essentially the agent will get to a point where there's a designated tool or task that might be a high value or high risk task like transferring a lot of money or deleting an account. And we need a way to ensure that when the agent gets to that point that in some manner it gets to the human, the human can provide the final determination or decision.\n\nAnother problem with agents is that many of them will be long running. Um there's lots of steps in agentic processing and the longer that any process runs, the greater chance that there may be a failure. And we'd like some way to not lose all the work that an agent has done and be able to potentially uh checkpoint our agent state to be able to resume from a point that is not the beginning. And finally, uh, increasingly agents are going to be operating in a distributed environment and not just on your desktop, for example. And so what are the considerations for running agents in a scalable distributed environment?\n\nLet's talk about basic agent execution just so we can level set for the rest of the talk today. An agent is essentially a loop that involves calls to an LLM that specify potential tools for that LLM to use. And if the LLM determines that it needs to use those tools, it will come back to the agent loop, which will then call the tools on behalf of the LLM request and collect the tool results and send them back to the LLM. And it does this in a progressive loop. LM tool call LLM tool call and so on. Now, it's also possible that a tool can be an agent itself and that's illustrated in the picture here. We have a sub agent. So, this is the basic agent processing setup. Pretty standard across agent frameworks today. Clearly, there's a lot more going on. There's a lot of interaction and this gives us a detailed view of the interactions I just mentioned. The main point of this is to to indicate that even simple agents have quite a bit of interaction with the LLM and with the tools.\n\nSo what are some of the agent execution scenarios that we're concerned with addressing? I've mentioned tool calls that require human approval. This is a common idiom that is uh a tool call is an access to something in the environment. something that may require uh human approval for the access itself or it may be an action in the environment like like a deleting account, transferring money, um doing something of consequence. And in those situations, it's desirable to allow the human an opportunity to approve that request. Another situation that can happen, it happens to me all the time with coding assistants is the landscape of LLM and the LM APIs is changing rapidly and their use is is dynamic and often new models come out, they get used heavily and you might encounter rate limiting and there's other reasons you might encounter rate limiting. uh but there are different ways to handle this situation and we should seek mechanisms in the presence of this and finally I mentioned longrunning agents uh especially agents that have to do very complicated tasks or extensive research to to multiple systems either external to your organization or internal to your organization. um the longer that the agent runs, the more susceptible it is to some potential failure, either some sort of network failure or hardware failure. Um and as these sophisticated agents run longer, we would like a way to not lose all of the work that the agent has done. So, so we want to also tolerate failures in the presence of longunning agents.\n\nAnother thing I want to elaborate on is the fact that in increasingly agents are becoming more sophisticated in the sense that not only will you have say a single level agent that has its access to an LLM and its tool calls but you may have an agent configuration in which you have a main agent or an orchestrator agent and then several sub aents. In fact, those sub aents could have their own sub aents. This pattern is is becoming quite common. So then the question is in the presence of these more sophisticated multi-level agents, how are we going to deal with those two primary uh primary tasks that I mentioned earlier, human approval and state saving in the presence of failure.\n\nThe last concept I want to talk about is what I'm calling agent loop persistence. And this is the idea of if you have an agent running, there is this loop. That code that actually is doing the loop has to run somewhere. It has to be on a physical machine running. It might be in the cloud. It might be in your desktop. It it could be in in many locations. That agent loop is going to be interacting with the user in some manner. Maybe you're doing it from the command line. Maybe you have a web app. Um maybe it's interacting through some sort of third-party communication channel like Slack. Most of the frameworks today to support things like human loop require that that agent loop be running continuously. Even if it's waiting for something like waiting for a human response from Slack, it requires they require this this agent loop to to persist. And this is something that we wanted to address in our agent continuations work. That is we wanted to develop a mechanism that would would allow us to fully shut down the agent loop or multiple agent loops in some cases and then restart them at a later point say when the human has provided their approval.\n\nSo what are agent continuations? So first off agent continuations are inspired from the programming language theory concept of continuations. This is a long-standing concept in programming languages in which you can at any point in time during program execution you can say hey I want to stop the program execution at this particular point and sort of bundle that up so that I could resume or continue the execution from that point going forward at some later time. In effect what that lets you do is it lets you take a snapshot of the program's execution so far so that later it could be continued. Um it's a powerful mechanism that doesn't exist in in all programming languages um because it requires fairly sophisticated runtime support. But this mechanism, this language continuations mechanism was the inspiration for what we're calling agent continuations in which we want to do the same thing. We want to be able to say at some point during agent execution, which again might be through multiple tool calls, multiple LLM calls, and maybe even calls to sub agents and their tool calls and LLM calls. At any point in time, we want to be able to say, \"Let me pause what the agent is doing. Let me be able to save that state and then return it back say to the application layer so it can for example process a human approval or perhaps persist the state of the agent at that moment in time to be resumed later.\n\nSo now let's go into the details of agent continuations. First let's make some observations about why this may even be possible. The way we work with LLMs in agents today is we maintain the messages array. The messages array is really almost a log of all the interactions that you've had with the agent or with the LLMs. The and if you if you look at it right, it records a history which is actually replayed back to the LLM to make its next inference. And so in a sense, uh, agent interactions with LLMs are already doing a lot of the bookkeeping to keep track of everything that's been done so far so that that past history can be sent back to the LLM for the next action, say for the next tool call response or the next decision that the LLM has made. So, one of our one of the key insights is that we're building on top of this aura this messages array which already is saving quite a bit of the state of the agent. Now, it's not quite enough, but it's pretty close.\n\nBefore we get into the details of how agent continuations are implemented, let's look at how you use the prototype framework. First, I'm going to show you how to use the framework like other agent frameworks that is without continuation support. And this should look pretty familiar. We have tools and we use a decorator to indicate that these Python functions are tools. Uh and then when we go to create the agent, right, we just send the tool list to the agent. So the agent knows to use those tools in processing a user request. Now one thing I'm not showing you here for brevity is you can also include instructions or a system prompt to the agent. Now once you've instantiated your agent then you can make a request and give a user prompt and the agent will go off and do its LLM request and its tool calling and eventually come back with a response.\n\nLet's look at our continuation extension to this standard approach. There's only a couple of differences. So now let's look at using the framework with continuation support. And you'll notice there's only a couple of differences. Let me point those out. First off, now with continuations, we can designate a tool as needing approval. So here we've said that this tool will need approval. In addition, instead of creating an agent from the agent class, we're going to use the continuation agent class. And other than that, it's pretty identical to the standard agent usage. Now, in terms of execution, it's a little bit different. The response may be the complete response of the agent if the agent was able to complete its task. But if the agent for some reason needs to suspend, then the response will be a continuation object. This continuation continuation object has metadata that can be inspected so that you can understand the reason for suspension. In this example here, we're assuming that because we know we built the agent with the tool call that needed approval that that continuation object is going to need a human approval response which could be true or false depending on what the human ultimately decides. But let's say in this case that we decide to approve this tool call request. So we update the continuation object appropriately with the positive human approval. And then you can send the continuation back to the agent using the same request method. And the agent will know because this is a continuation object that it needs to resume from the place that it suspended in the first place. that is in this case just before the tool call so that we can get the human approval then the agent can continue and get the final final response.\n\nSo let's go into a little more detail about the implementation. So with continuations the forward processing of the agent remains the same. you're going to do LLM calls. The LLMs are going to come back with a tool call request. We'll pull perform the tool work call request as long as they don't necessarily need is human approval. Uh but if the human approval isn't needed, it's standard agent processing. If we get to a point where we determine that we need to suspend like for human approval or if we've reached some other suspension condition, that's when we create the continuation object. The continuation object embeds the standard messages array with some additional metadata. That metadata provides the continuation enough information of how to resume when we want to send the continuation back to the agent. Ultimately this continuation object will be sent back to the top level agent which we do some final processing of to make the application layer to make it easier for the application layer to understand why the continuation was suspended and also to allow it to provide human approval updates if required. So essentially what we do is we take this fairly potentially complicated nested continuation object and extract the core information that the application layer needs to act on to make it easy for that application layer to make those approvals. Then once the application layer has updated the continuation object, we send it back to the agent. the agent knows that it's a continuation and has the logic in order to reconstruct the agent back to its state so that we can continue the execution. Now, one really important point of all this is that once you've suspended the agent and you've created the continuation object, you actually don't need to keep any of the agent loops running in your system. that is they can be shut down because we've captured enough information to restart everything back to where it was. And this is a really powerful aspect of agent continuation.\n\nSo going into a little bit of the detail just to get a sense of what this continuation object actually looks like. I've sh I'm showing two versions. First is a single level continuation. Uh you can see that we've wrapped it. We have the top level continuation, the messages array which is the normal messages array and the two other pieces of metadata are this resume request which indicates exactly which tool call for example we need to resume at and also processed is going to be populated with whether we approved or say disapproved in the case of human approval and I mentioned that before the continuation is returned learned is that we extract to the top level of this object the metadata that allows the application layer to easily update the continuation um so that it can proceed after we send it back to the agent. On the right, a slightly more complicated continuation object in which we have an agent that calls a sub agent. And the main point here is that our format is recursive and it can handle arbitrary layers of nesting. And you can see that here in the fact that we have a resume request that now has its own continuations object with its own messages. And that's the messages of the sub agent and its own resume request and processed.\n\nSo let's look at a full example. Here we have a multi-level HR agent and so the top level agent has an email tool and it has access to a sub agent the account agent tool which is responsible for creating account and setting account privileges. I have a abbreviated system prompt up here and we construct our continuation agent for the HR agent here. Now let's take a look at the account agent for a moment. It\n\n\nIt's its own agent with its own tools.\nCreate account and authorize account.\nIn this case here, authorize account needs approval.\nBut you can see it uses the same basic setup.\nUh, we give it its system prompt up here and its tools.\nAnd this sub agent is going to be used by the top level HR agent.\nHere I have an example prompt to create a new account, and that prompt will be sent to the agent to be processed.\nNow in this example here, it's set up right such that eventually the account agent sub agent will need human approval for the authorize account tool, which will cause the agent to suspend, create a continuation, return that back to the application layer for processing.\nHere is an illustrated diagram of the steps that I mentioned.\nIn this diagram, we have the application layer that's interacting with the user.\nWe have our HR agent and it's tool call send mail, and then it's using the account agent as a tool.\nAnd that account agent has its create account tool and its authorized account tool.\nNow in the scenario I just described, we'll get down to the point where we know we need approval for authorized account.\nSo that's the point at which we need to suspend and start creating or building up our continuation object.\nAnd that's what happens here.\nSo the approval propagates a continuation object object that gets expanded at each level as it's propagating back to the application layer until finally we have the full continuation object for the application to inspect and then act on.\nNow once the application layer has done that, then that continuation object can be sent back into the HR agent, and the framework will know that we need to restore the agent state and the sub agent state back to where it was when we needed the approval in the first place, and that will be handled all by the framework.\nSo let's do a quick demo.\nSo let's look at our prompt.\nSo, we have the prompt here as a JSON.\nAnd I'm going to run this prompt here.\nSo, I'm just giving that prompt as the first prompt to the agent starting off.\nAnd I'm going to send this out to a response file.\nAnd the whole point of this is to show that these things are fully decoupled and that these objects contain all of the state that we need.\nSo let's look at the response object, and this has the things that you can imagine.\nThere's the continuation, there's the top level messages, and if you go down right here is the sub agent messages with its system prompt.\nAnd finally, if we go down to the bottom of this object, this is that top level approval object that the application layer can then present to the user and then update.\nSo here I'm just doing it manually.\nObviously you would do this in application code.\nSo I'm going to save that.\nAnd now what I'm going to do is I'm going to send that edited response back to the agent.\nAnd the point of this is that now the agent will reconstruct its state, but with the information that the tool has been approved so that the agent can continue processing.\nAnd there we go.\nIf you look here right, we agent has indicated that the account has been successfully created, uh, and that a security level has been granted, and that we now have the end reason of completed.\nThe other thing I'll note in this output here is that everything above now is normal a normal messages array.\nThat is uh, there's no sign of continuation in the final result object.\nThe continuation is just introduced when we need to suspend.\nOkay.\nSo let me go over just a few details.\nUm, our prototype is built up on top of the OpenAI Python API.\nThere's no other dependencies.\nWe have the prototype implementation.\nHere's the link that you go to on GitHub, and it should be in the channel notes as well.\nWhere do we want to take this?\nWe've already implemented a version with more general agent suspension that is beyond just human approval.\nIs that setting up arbitrary suspension points like after a certain amount of time, a certain number of turns, even asynchronous requests for suspension.\nAnd what we're looking at is not just not necessarily developing uh this prototype into a full separate agent framework um because there's lots of good frameworks out there, but rather looking at ways to extend existing frameworks, something like strands or pyantic AI.\nNow I should also mention that um we're not the first framework to consider state management.\nSome of the other frameworks do have forms of state management.\nHowever, uh the in our investigation of the state management, they either sort of lack the human approval element or the um the sophistication of having arbitrary depths of nesting into sub agents.\nAnd so we think our approach is novel in the sense that it combines both those both a human approval mechanism and also this arbitrary nesting uh of complex agent.\nThis work came out of the agent creator team at SnapLogic.\nAgent creator is SnapLogic's visual agent building interface and platform.\nNot only did we build that out in Python, but we built it out in agent creator itself.\nAnd you can see here that we allow our users to create sophisticated agents using a more visual approach.\nAnd you can also visualize in the platform agent execution.\nWe prototyped continuations in the SnapLogic agent creator environment as well.\nUh so we we did it both at the Python layer and we also did it at our higher level uh layer in in the SnapLogic platform.\nIn conclusion, agent continuations are a new mechanism for managing agent state and human in the loop processing.\nWe have a prototype implementation that you can access on GitHub from the link on this page.\nAnd if you want to learn more about building agents visually with SnapLogic Agent Creator, go to agentcreator.com.\n[Music]\n",
+  "dumpedAt": "2025-07-21T18:43:25.797Z"
+}

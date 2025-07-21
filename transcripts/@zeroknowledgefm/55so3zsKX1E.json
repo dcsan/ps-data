@@ -1,0 +1,2710 @@
+{
+  "episodeId": "55so3zsKX1E",
+  "channelSlug": "@zeroknowledgefm",
+  "title": "ZK12: Accelerating Client-Side Cryptography with WebGPU - Tal Derei",
+  "publishedAt": "2024-10-23T20:00:04.000Z",
+  "rawLines": [
+    {
+      "lang": "en",
+      "text": "[Music]",
+      "offset": 0.91,
+      "duration": 5.79
+    },
+    {
+      "lang": "en",
+      "text": "hi uh my name is tall with penumbra and",
+      "offset": 8.36,
+      "duration": 4.159
+    },
+    {
+      "lang": "en",
+      "text": "today we'll be talking about",
+      "offset": 11.12,
+      "duration": 3.96
+    },
+    {
+      "lang": "en",
+      "text": "accelerating clientside cryptography",
+      "offset": 12.519,
+      "duration": 3.561
+    },
+    {
+      "lang": "en",
+      "text": "with web",
+      "offset": 15.08,
+      "duration": 5
+    },
+    {
+      "lang": "en",
+      "text": "GPU um so web assembly has performance",
+      "offset": 16.08,
+      "duration": 7.439
+    },
+    {
+      "lang": "en",
+      "text": "limitations as a platform uh it has a 4",
+      "offset": 20.08,
+      "duration": 5.959
+    },
+    {
+      "lang": "en",
+      "text": "gig upper memory limit because of the",
+      "offset": 23.519,
+      "duration": 6.281
+    },
+    {
+      "lang": "en",
+      "text": "32-bit addressing uh in modern browsers",
+      "offset": 26.039,
+      "duration": 6.641
+    },
+    {
+      "lang": "en",
+      "text": "um this 4 gig memory limit can easily be",
+      "offset": 29.8,
+      "duration": 5.96
+    },
+    {
+      "lang": "en",
+      "text": "consumed with larger circuits and",
+      "offset": 32.68,
+      "duration": 6.36
+    },
+    {
+      "lang": "en",
+      "text": "proving Keys it also has a lack of",
+      "offset": 35.76,
+      "duration": 5.639
+    },
+    {
+      "lang": "en",
+      "text": "easily accessible threading it doesn't",
+      "offset": 39.04,
+      "duration": 4.199
+    },
+    {
+      "lang": "en",
+      "text": "natively support",
+      "offset": 41.399,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "multithreading um the way you get around",
+      "offset": 43.239,
+      "duration": 4.361
+    },
+    {
+      "lang": "en",
+      "text": "this is you spawn multiple web workers",
+      "offset": 45.399,
+      "duration": 5.68
+    },
+    {
+      "lang": "en",
+      "text": "each uh instantiating the wasum module",
+      "offset": 47.6,
+      "duration": 5.959
+    },
+    {
+      "lang": "en",
+      "text": "and sharing memory via a shared array",
+      "offset": 51.079,
+      "duration": 5.561
+    },
+    {
+      "lang": "en",
+      "text": "buffer uh it also lacks support for a",
+      "offset": 53.559,
+      "duration": 4.68
+    },
+    {
+      "lang": "en",
+      "text": "128bit",
+      "offset": 56.64,
+      "duration": 4.84
+    },
+    {
+      "lang": "en",
+      "text": "multiplier um it natively only supports",
+      "offset": 58.239,
+      "duration": 6.481
+    },
+    {
+      "lang": "en",
+      "text": "a 64 bit multiplier um in the case of",
+      "offset": 61.48,
+      "duration": 5.84
+    },
+    {
+      "lang": "en",
+      "text": "penumbra this specifically causes a",
+      "offset": 64.72,
+      "duration": 5.8
+    },
+    {
+      "lang": "en",
+      "text": "Slowdown uh since in P at at penumbra we",
+      "offset": 67.32,
+      "duration": 6.28
+    },
+    {
+      "lang": "en",
+      "text": "use arcworks which is rust based and we",
+      "offset": 70.52,
+      "duration": 6.68
+    },
+    {
+      "lang": "en",
+      "text": "use 64 bit limbs in the back end which",
+      "offset": 73.6,
+      "duration": 6.6
+    },
+    {
+      "lang": "en",
+      "text": "again expects a 128bit multiplier and",
+      "offset": 77.2,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "that's being emulated when lowered to",
+      "offset": 80.2,
+      "duration": 6.32
+    },
+    {
+      "lang": "en",
+      "text": "wasum so we use arcworks to generate",
+      "offset": 82.4,
+      "duration": 7.64
+    },
+    {
+      "lang": "en",
+      "text": "proofs uh very efficiently in the CLI",
+      "offset": 86.52,
+      "duration": 5.16
+    },
+    {
+      "lang": "en",
+      "text": "but when you take the rust based code",
+      "offset": 90.04,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "and compile it to WM you have this huge",
+      "offset": 91.68,
+      "duration": 5.6
+    },
+    {
+      "lang": "en",
+      "text": "emulation blowup cost by a factor of",
+      "offset": 94.52,
+      "duration": 6.72
+    },
+    {
+      "lang": "en",
+      "text": "about 25 to 30X um in wasm compared to",
+      "offset": 97.28,
+      "duration": 6.92
+    },
+    {
+      "lang": "en",
+      "text": "the native rust",
+      "offset": 101.24,
+      "duration": 2.96
+    },
+    {
+      "lang": "en",
+      "text": "code uh CPS are also suboptimal",
+      "offset": 104.399,
+      "duration": 5.921
+    },
+    {
+      "lang": "en",
+      "text": "Computing platforms um cryptographic",
+      "offset": 107.52,
+      "duration": 5.32
+    },
+    {
+      "lang": "en",
+      "text": "operations uh involve integer",
+      "offset": 110.32,
+      "duration": 5
+    },
+    {
+      "lang": "en",
+      "text": "computation uh and that's performed uh",
+      "offset": 112.84,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "mainly in the arithmetic logic unit the",
+      "offset": 115.32,
+      "duration": 6.759
+    },
+    {
+      "lang": "en",
+      "text": "ALU uh which only accounts for about 5%",
+      "offset": 118.6,
+      "duration": 7.119
+    },
+    {
+      "lang": "en",
+      "text": "of the cor's area uh in the Silicon Dy",
+      "offset": 122.079,
+      "duration": 6.561
+    },
+    {
+      "lang": "en",
+      "text": "used in the computation uh the ALU is",
+      "offset": 125.719,
+      "duration": 5.561
+    },
+    {
+      "lang": "en",
+      "text": "not optimized for cryptographic",
+      "offset": 128.64,
+      "duration": 6.56
+    },
+    {
+      "lang": "en",
+      "text": "operations uh the finite field mod Prime",
+      "offset": 131.28,
+      "duration": 6.599
+    },
+    {
+      "lang": "en",
+      "text": "modulus uh has a bitwidth that's much",
+      "offset": 135.2,
+      "duration": 6.16
+    },
+    {
+      "lang": "en",
+      "text": "larger than the native 32 or 64bit",
+      "offset": 137.879,
+      "duration": 7.161
+    },
+    {
+      "lang": "en",
+      "text": "Target of the device",
+      "offset": 141.36,
+      "duration": 6.84
+    },
+    {
+      "lang": "en",
+      "text": "um modular arithmetic um is also",
+      "offset": 145.04,
+      "duration": 5.919
+    },
+    {
+      "lang": "en",
+      "text": "performed over large Prime fields and",
+      "offset": 148.2,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "that's about 10 times slower on existing",
+      "offset": 150.959,
+      "duration": 5.321
+    },
+    {
+      "lang": "en",
+      "text": "processors uh CPUs also have a physical",
+      "offset": 153.72,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "limitation of having a limited limited",
+      "offset": 156.28,
+      "duration": 5.48
+    },
+    {
+      "lang": "en",
+      "text": "number of computing cores available on",
+      "offset": 158.84,
+      "duration": 5.119
+    },
+    {
+      "lang": "en",
+      "text": "the",
+      "offset": 161.76,
+      "duration": 2.199
+    },
+    {
+      "lang": "en",
+      "text": "chip um so all of these factors",
+      "offset": 164.28,
+      "duration": 5.039
+    },
+    {
+      "lang": "en",
+      "text": "collectively result in large overheads",
+      "offset": 166.72,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "in the browser um and CPUs have limited",
+      "offset": 169.319,
+      "duration": 5.56
+    },
+    {
+      "lang": "en",
+      "text": "limited throughput and",
+      "offset": 172.72,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "parallelization uh but with parallel",
+      "offset": 174.879,
+      "duration": 4.561
+    },
+    {
+      "lang": "en",
+      "text": "architectures uh with thousands of",
+      "offset": 177.44,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "computing cores like gpus you can",
+      "offset": 179.44,
+      "duration": 4.879
+    },
+    {
+      "lang": "en",
+      "text": "dramatically accelerate these clientside",
+      "offset": 181.44,
+      "duration": 5
+    },
+    {
+      "lang": "en",
+      "text": "ZK",
+      "offset": 184.319,
+      "duration": 4.521
+    },
+    {
+      "lang": "en",
+      "text": "workloads uh there's been a lot of work",
+      "offset": 186.44,
+      "duration": 5.159
+    },
+    {
+      "lang": "en",
+      "text": "in the GPU acceleration space in the in",
+      "offset": 188.84,
+      "duration": 6.72
+    },
+    {
+      "lang": "en",
+      "text": "the last few years uh ingonyama built",
+      "offset": 191.599,
+      "duration": 7.481
+    },
+    {
+      "lang": "en",
+      "text": "iCal spark buil uh supernational build",
+      "offset": 195.56,
+      "duration": 5.92
+    },
+    {
+      "lang": "en",
+      "text": "spark these are open- Source GPU",
+      "offset": 199.08,
+      "duration": 5.68
+    },
+    {
+      "lang": "en",
+      "text": "libraries for uh Exel accelerating",
+      "offset": 201.48,
+      "duration": 6.36
+    },
+    {
+      "lang": "en",
+      "text": "common ZK snark workloads like msms and",
+      "offset": 204.76,
+      "duration": 6.839
+    },
+    {
+      "lang": "en",
+      "text": "NTTS uh Z prise hosted by Alo has also",
+      "offset": 207.84,
+      "duration": 8.08
+    },
+    {
+      "lang": "en",
+      "text": "been uh um a game changer in the GPU",
+      "offset": 211.599,
+      "duration": 8.161
+    },
+    {
+      "lang": "en",
+      "text": "acceleration space uh NY Emirate from",
+      "offset": 215.92,
+      "duration": 7.2
+    },
+    {
+      "lang": "en",
+      "text": "formly ured now sarfi and matter matter",
+      "offset": 219.76,
+      "duration": 6.64
+    },
+    {
+      "lang": "en",
+      "text": "Labs uh focused on accelerating msms for",
+      "offset": 223.12,
+      "duration": 6.28
+    },
+    {
+      "lang": "en",
+      "text": "large constraint counts uh two to the 26",
+      "offset": 226.4,
+      "duration": 7.199
+    },
+    {
+      "lang": "en",
+      "text": "constraints using gpus um also the core",
+      "offset": 229.4,
+      "duration": 5.8
+    },
+    {
+      "lang": "en",
+      "text": "there's been a lot of improvements in",
+      "offset": 233.599,
+      "duration": 5.681
+    },
+    {
+      "lang": "en",
+      "text": "core to CH chip density in modern gpus",
+      "offset": 235.2,
+      "duration": 6.64
+    },
+    {
+      "lang": "en",
+      "text": "um and we expect to see those same quti",
+      "offset": 239.28,
+      "duration": 6.4
+    },
+    {
+      "lang": "en",
+      "text": "chip density improvements on mobile",
+      "offset": 241.84,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "gpus um in the last few years uh the M",
+      "offset": 245.879,
+      "duration": 10
+    },
+    {
+      "lang": "en",
+      "text": "share has been collectively um focusing",
+      "offset": 251.799,
+      "duration": 6.921
+    },
+    {
+      "lang": "en",
+      "text": "on like Z kvms like",
+      "offset": 255.879,
+      "duration": 9.241
+    },
+    {
+      "lang": "en",
+      "text": "sp1 uh succinct uh succinct sp1 Nexus um",
+      "offset": 258.72,
+      "duration": 12.759
+    },
+    {
+      "lang": "en",
+      "text": "polygon zkm and so forth and um",
+      "offset": 265.12,
+      "duration": 8.519
+    },
+    {
+      "lang": "en",
+      "text": "the natural question is with all of this",
+      "offset": 271.479,
+      "duration": 5.481
+    },
+    {
+      "lang": "en",
+      "text": "like server side acceleration going on",
+      "offset": 273.639,
+      "duration": 7.641
+    },
+    {
+      "lang": "en",
+      "text": "and zkm construction happening are there",
+      "offset": 276.96,
+      "duration": 7.36
+    },
+    {
+      "lang": "en",
+      "text": "fast CLI side Z kvms and the answer is",
+      "offset": 281.28,
+      "duration": 5.24
+    },
+    {
+      "lang": "en",
+      "text": "not really",
+      "offset": 284.32,
+      "duration": 4.879
+    },
+    {
+      "lang": "en",
+      "text": "um if you look at the server side",
+      "offset": 286.52,
+      "duration": 5.519
+    },
+    {
+      "lang": "en",
+      "text": "Hardware acceleration space u most zkv",
+      "offset": 289.199,
+      "duration": 5.961
+    },
+    {
+      "lang": "en",
+      "text": "Ms are server side optimized so these",
+      "offset": 292.039,
+      "duration": 6.761
+    },
+    {
+      "lang": "en",
+      "text": "are gigantic 2 to the 26 constraint VM",
+      "offset": 295.16,
+      "duration": 8.08
+    },
+    {
+      "lang": "en",
+      "text": "circuits uh these are um they they have",
+      "offset": 298.8,
+      "duration": 9.28
+    },
+    {
+      "lang": "en",
+      "text": "large memory requirements uh sp1 uh sp1",
+      "offset": 303.24,
+      "duration": 9.12
+    },
+    {
+      "lang": "en",
+      "text": "with plony 3 has a 128 gig memory",
+      "offset": 308.08,
+      "duration": 8.559
+    },
+    {
+      "lang": "en",
+      "text": "requirement um so the these uh these",
+      "offset": 312.36,
+      "duration": 6.48
+    },
+    {
+      "lang": "en",
+      "text": "aren't feasible to run on a client",
+      "offset": 316.639,
+      "duration": 5.481
+    },
+    {
+      "lang": "en",
+      "text": "device um Nexus notably has been working",
+      "offset": 318.84,
+      "duration": 6.68
+    },
+    {
+      "lang": "en",
+      "text": "on a Nova folding um",
+      "offset": 322.12,
+      "duration": 7.799
+    },
+    {
+      "lang": "en",
+      "text": "zkv uh with uh IVC um which keep the",
+      "offset": 325.52,
+      "duration": 6.799
+    },
+    {
+      "lang": "en",
+      "text": "memory requirements under 4 gigs but the",
+      "offset": 329.919,
+      "duration": 6.041
+    },
+    {
+      "lang": "en",
+      "text": "trade-off is larger client side",
+      "offset": 332.319,
+      "duration": 6.761
+    },
+    {
+      "lang": "en",
+      "text": "proofs uh so the natural question is can",
+      "offset": 335.96,
+      "duration": 6.04
+    },
+    {
+      "lang": "en",
+      "text": "web GPU be used to push Beyond uh these",
+      "offset": 339.08,
+      "duration": 5.6
+    },
+    {
+      "lang": "en",
+      "text": "boundaries and accelerate browser based",
+      "offset": 342,
+      "duration": 4.44
+    },
+    {
+      "lang": "en",
+      "text": "cryptography",
+      "offset": 344.68,
+      "duration": 5.88
+    },
+    {
+      "lang": "en",
+      "text": "um and we think the answer is yes uh so",
+      "offset": 346.44,
+      "duration": 7.4
+    },
+    {
+      "lang": "en",
+      "text": "introducing web GPU a client side GPU",
+      "offset": 350.56,
+      "duration": 7.72
+    },
+    {
+      "lang": "en",
+      "text": "API uh client side ZK acceleration is uh",
+      "offset": 353.84,
+      "duration": 5.96
+    },
+    {
+      "lang": "en",
+      "text": "in the browser is relatively",
+      "offset": 358.28,
+      "duration": 5.32
+    },
+    {
+      "lang": "en",
+      "text": "underexplored uh and web GPU essentially",
+      "offset": 359.8,
+      "duration": 5
+    },
+    {
+      "lang": "en",
+      "text": "uh Taps",
+      "offset": 363.6,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "into uh the client's GPU to tackle this",
+      "offset": 364.8,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "problem and accelerate these",
+      "offset": 368.24,
+      "duration": 6.359
+    },
+    {
+      "lang": "en",
+      "text": "workloads um Chrome uh shipped a native",
+      "offset": 370.24,
+      "duration": 6.92
+    },
+    {
+      "lang": "en",
+      "text": "Chrome shipped native web G GPU support",
+      "offset": 374.599,
+      "duration": 5.281
+    },
+    {
+      "lang": "en",
+      "text": "in v113 in",
+      "offset": 377.16,
+      "duration": 7.039
+    },
+    {
+      "lang": "en",
+      "text": "2023 uh before v113 uh the developer had",
+      "offset": 379.88,
+      "duration": 7.599
+    },
+    {
+      "lang": "en",
+      "text": "to enable experimental web GPU Flags uh",
+      "offset": 384.199,
+      "duration": 5.921
+    },
+    {
+      "lang": "en",
+      "text": "which made the web GPU uh",
+      "offset": 387.479,
+      "duration": 4.881
+    },
+    {
+      "lang": "en",
+      "text": "platform very unstable and hard to work",
+      "offset": 390.12,
+      "duration": 6.44
+    },
+    {
+      "lang": "en",
+      "text": "with um web GPU is also a successor to",
+      "offset": 392.36,
+      "duration": 7.8
+    },
+    {
+      "lang": "en",
+      "text": "the web webgl standard uh it supports GP",
+      "offset": 396.56,
+      "duration": 7.16
+    },
+    {
+      "lang": "en",
+      "text": "GPU for general purpose compute rather",
+      "offset": 400.16,
+      "duration": 8.479
+    },
+    {
+      "lang": "en",
+      "text": "than just Graphics uh like",
+      "offset": 403.72,
+      "duration": 4.919
+    },
+    {
+      "lang": "en",
+      "text": "webg uh you can think of webgpu as a",
+      "offset": 409.8,
+      "duration": 7.239
+    },
+    {
+      "lang": "en",
+      "text": "general abstraction layer um it it's an",
+      "offset": 412.96,
+      "duration": 6.639
+    },
+    {
+      "lang": "en",
+      "text": "API that lets you natively access the",
+      "offset": 417.039,
+      "duration": 3.72
+    },
+    {
+      "lang": "en",
+      "text": "devices",
+      "offset": 419.599,
+      "duration": 5
+    },
+    {
+      "lang": "en",
+      "text": "GPU um from the browser uh it's a small",
+      "offset": 420.759,
+      "duration": 6.641
+    },
+    {
+      "lang": "en",
+      "text": "abstraction layer between the physical",
+      "offset": 424.599,
+      "duration": 5.32
+    },
+    {
+      "lang": "en",
+      "text": "uh discret and integrated GPU and the",
+      "offset": 427.4,
+      "duration": 6.6
+    },
+    {
+      "lang": "en",
+      "text": "web browser running the web GPU",
+      "offset": 429.919,
+      "duration": 4.081
+    },
+    {
+      "lang": "en",
+      "text": "API in terms of compiling web GPU code",
+      "offset": 434.36,
+      "duration": 5.559
+    },
+    {
+      "lang": "en",
+      "text": "uh it's not possible to have fine",
+      "offset": 438.039,
+      "duration": 5
+    },
+    {
+      "lang": "en",
+      "text": "grained Hardware control instead you",
+      "offset": 439.919,
+      "duration": 7.361
+    },
+    {
+      "lang": "en",
+      "text": "write some highle uh Shader code in",
+      "offset": 443.039,
+      "duration": 7.88
+    },
+    {
+      "lang": "en",
+      "text": "wgsl compile it into an intermediate",
+      "offset": 447.28,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "representation that the underlying",
+      "offset": 450.919,
+      "duration": 5.201
+    },
+    {
+      "lang": "en",
+      "text": "system expects and that IR gets compiled",
+      "offset": 452.8,
+      "duration": 7.64
+    },
+    {
+      "lang": "en",
+      "text": "to to the machine code um so you trust",
+      "offset": 456.12,
+      "duration": 6.639
+    },
+    {
+      "lang": "en",
+      "text": "the blackbox compiler to find like the",
+      "offset": 460.44,
+      "duration": 5.759
+    },
+    {
+      "lang": "en",
+      "text": "best optimization path uh but all you're",
+      "offset": 462.759,
+      "duration": 5.361
+    },
+    {
+      "lang": "en",
+      "text": "writing as a developer is this highle",
+      "offset": 466.199,
+      "duration": 5.081
+    },
+    {
+      "lang": "en",
+      "text": "wgsl code and the whole compilation is",
+      "offset": 468.12,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "black",
+      "offset": 471.28,
+      "duration": 5.4
+    },
+    {
+      "lang": "en",
+      "text": "booxed uh web GPU has a dedicated Shader",
+      "offset": 472.84,
+      "duration": 5.199
+    },
+    {
+      "lang": "en",
+      "text": "language called",
+      "offset": 476.68,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "wgsl it uses is compute shaders under",
+      "offset": 478.039,
+      "duration": 6.28
+    },
+    {
+      "lang": "en",
+      "text": "the hood uh compute shaders are the",
+      "offset": 481.56,
+      "duration": 7.28
+    },
+    {
+      "lang": "en",
+      "text": "actual GPU code that run on the",
+      "offset": 484.319,
+      "duration": 4.521
+    },
+    {
+      "lang": "en",
+      "text": "GPU",
+      "offset": 490.199,
+      "duration": 5.361
+    },
+    {
+      "lang": "en",
+      "text": "uh again web GPU compiles to the native",
+      "offset": 492.159,
+      "duration": 6.081
+    },
+    {
+      "lang": "en",
+      "text": "compilation Target of the GPU so the",
+      "offset": 495.56,
+      "duration": 6.759
+    },
+    {
+      "lang": "en",
+      "text": "browser takes the Shader wgsl code and",
+      "offset": 498.24,
+      "duration": 8.48
+    },
+    {
+      "lang": "en",
+      "text": "compiles it to uh hlsl for direct X12 uh",
+      "offset": 502.319,
+      "duration": 8.801
+    },
+    {
+      "lang": "en",
+      "text": "MSL for metal uh spear for Vulcan so",
+      "offset": 506.72,
+      "duration": 6.96
+    },
+    {
+      "lang": "en",
+      "text": "these are our IR targets and then",
+      "offset": 511.12,
+      "duration": 5.279
+    },
+    {
+      "lang": "en",
+      "text": "compiles the IR to the GPU machine",
+      "offset": 513.68,
+      "duration": 5.64
+    },
+    {
+      "lang": "en",
+      "text": "code uh in terms of the threading model",
+      "offset": 516.399,
+      "duration": 4.961
+    },
+    {
+      "lang": "en",
+      "text": "it's very similar to Cuda it's a",
+      "offset": 519.32,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "three-dimensional hierarchy of threads",
+      "offset": 521.36,
+      "duration": 5.68
+    },
+    {
+      "lang": "en",
+      "text": "uh that you can index to uh span the",
+      "offset": 524.2,
+      "duration": 7.36
+    },
+    {
+      "lang": "en",
+      "text": "vector and matrices that encode the",
+      "offset": 527.04,
+      "duration": 4.52
+    },
+    {
+      "lang": "en",
+      "text": "computation uh we uh my teammate uh coj",
+      "offset": 531.6,
+      "duration": 8.2
+    },
+    {
+      "lang": "en",
+      "text": "and myself competed in this year Z prize",
+      "offset": 536.36,
+      "duration": 5.8
+    },
+    {
+      "lang": "en",
+      "text": "competition uh and we built a web GPU",
+      "offset": 539.8,
+      "duration": 5.8
+    },
+    {
+      "lang": "en",
+      "text": "multiscalar multiplication MSM solution",
+      "offset": 542.16,
+      "duration": 7.6
+    },
+    {
+      "lang": "en",
+      "text": "for the browser uh this was uh this",
+      "offset": 545.6,
+      "duration": 7.84
+    },
+    {
+      "lang": "en",
+      "text": "implementation supports 2 to the 16 to 2",
+      "offset": 549.76,
+      "duration": 6.28
+    },
+    {
+      "lang": "en",
+      "text": "to the 20 constraints uh for both the",
+      "offset": 553.44,
+      "duration": 6.92
+    },
+    {
+      "lang": "en",
+      "text": "Twisted Edwards and the BLS 377 elliptic",
+      "offset": 556.04,
+      "duration": 8.96
+    },
+    {
+      "lang": "en",
+      "text": "curve um the implementation was inspired",
+      "offset": 560.36,
+      "duration": 7.8
+    },
+    {
+      "lang": "en",
+      "text": "by a paper called kozie K uh which",
+      "offset": 565,
+      "duration": 5.519
+    },
+    {
+      "lang": "en",
+      "text": "implements a sparse Ma matx",
+      "offset": 568.16,
+      "duration": 5.4
+    },
+    {
+      "lang": "en",
+      "text": "construction uh so we took the sparse",
+      "offset": 570.519,
+      "duration": 6.041
+    },
+    {
+      "lang": "en",
+      "text": "Matrix construction from Koozie K and",
+      "offset": 573.56,
+      "duration": 6.68
+    },
+    {
+      "lang": "en",
+      "text": "modified it with highly optimized memory",
+      "offset": 576.56,
+      "duration": 6.2
+    },
+    {
+      "lang": "en",
+      "text": "management and threading uh",
+      "offset": 580.24,
+      "duration": 7.279
+    },
+    {
+      "lang": "en",
+      "text": "optimizations catered to the web GPU",
+      "offset": 582.76,
+      "duration": 4.759
+    },
+    {
+      "lang": "en",
+      "text": "environment uh so instead of using like",
+      "offset": 588.24,
+      "duration": 5.92
+    },
+    {
+      "lang": "en",
+      "text": "traditional pipp Anders algorithm",
+      "offset": 591.16,
+      "duration": 6.44
+    },
+    {
+      "lang": "en",
+      "text": "our MSM implementation uses sparse",
+      "offset": 594.16,
+      "duration": 7.84
+    },
+    {
+      "lang": "en",
+      "text": "matrices as the foundation of the of the",
+      "offset": 597.6,
+      "duration": 7.64
+    },
+    {
+      "lang": "en",
+      "text": "implementation uh the MSM",
+      "offset": 602,
+      "duration": 5.959
+    },
+    {
+      "lang": "en",
+      "text": "essentially takes the main operations",
+      "offset": 605.24,
+      "duration": 5.159
+    },
+    {
+      "lang": "en",
+      "text": "from pippinger and transforms them into",
+      "offset": 607.959,
+      "duration": 5.841
+    },
+    {
+      "lang": "en",
+      "text": "a collection of sparse Matrix operations",
+      "offset": 610.399,
+      "duration": 6.201
+    },
+    {
+      "lang": "en",
+      "text": "like sparse Matrix transpositions and",
+      "offset": 613.8,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "sparse Matrix Vector",
+      "offset": 616.6,
+      "duration": 4.919
+    },
+    {
+      "lang": "en",
+      "text": "multiplications uh all of the elliptic",
+      "offset": 619.32,
+      "duration": 5.48
+    },
+    {
+      "lang": "en",
+      "text": "curve points and scalers uh are stored",
+      "offset": 621.519,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "in sparse matrices uh in a memory",
+      "offset": 624.8,
+      "duration": 5.08
+    },
+    {
+      "lang": "en",
+      "text": "efficient storage format called uh",
+      "offset": 627.519,
+      "duration": 5.641
+    },
+    {
+      "lang": "en",
+      "text": "compressed sparse row CSR so essentially",
+      "offset": 629.88,
+      "duration": 4.76
+    },
+    {
+      "lang": "en",
+      "text": "what we do is we take the highle",
+      "offset": 633.16,
+      "duration": 4.52
+    },
+    {
+      "lang": "en",
+      "text": "pippinger operations compile",
+      "offset": 634.64,
+      "duration": 7.12
+    },
+    {
+      "lang": "en",
+      "text": "uh rewrite them in sparse Matrix form",
+      "offset": 637.68,
+      "duration": 6.56
+    },
+    {
+      "lang": "en",
+      "text": "and compute the full MSM with sparse",
+      "offset": 641.76,
+      "duration": 6.68
+    },
+    {
+      "lang": "en",
+      "text": "Matrix uh",
+      "offset": 644.24,
+      "duration": 4.2
+    },
+    {
+      "lang": "en",
+      "text": "algorithms uh the vast majority of the",
+      "offset": 648.8,
+      "duration": 4.839
+    },
+    {
+      "lang": "en",
+      "text": "operations execute on the GPU uh we",
+      "offset": 651.32,
+      "duration": 4.44
+    },
+    {
+      "lang": "en",
+      "text": "wanted to avoid the costly data",
+      "offset": 653.639,
+      "duration": 5
+    },
+    {
+      "lang": "en",
+      "text": "transfers between the CPU and the GPU so",
+      "offset": 655.76,
+      "duration": 5.519
+    },
+    {
+      "lang": "en",
+      "text": "we only transfer data to the GPU when",
+      "offset": 658.639,
+      "duration": 5.801
+    },
+    {
+      "lang": "en",
+      "text": "it's uh when it's necessary so we at the",
+      "offset": 661.279,
+      "duration": 5.081
+    },
+    {
+      "lang": "en",
+      "text": "beginning of the computation we we take",
+      "offset": 664.44,
+      "duration": 4.04
+    },
+    {
+      "lang": "en",
+      "text": "the aine points and scalers convert them",
+      "offset": 666.36,
+      "duration": 5.96
+    },
+    {
+      "lang": "en",
+      "text": "to bytes and then uh store those bytes",
+      "offset": 668.48,
+      "duration": 5.919
+    },
+    {
+      "lang": "en",
+      "text": "in storage buffers and then offload that",
+      "offset": 672.32,
+      "duration": 5.16
+    },
+    {
+      "lang": "en",
+      "text": "to the GPU um every one of these white",
+      "offset": 674.399,
+      "duration": 7.361
+    },
+    {
+      "lang": "en",
+      "text": "boxes in the GPU section is a dedicated",
+      "offset": 677.48,
+      "duration": 7.96
+    },
+    {
+      "lang": "en",
+      "text": "dedicated uh Shader um so it's machine",
+      "offset": 681.76,
+      "duration": 7.199
+    },
+    {
+      "lang": "en",
+      "text": "code that runs on the GPU and then we do",
+      "offset": 685.44,
+      "duration": 7.24
+    },
+    {
+      "lang": "en",
+      "text": "a dat transfer back to the CPU um at the",
+      "offset": 688.959,
+      "duration": 6.281
+    },
+    {
+      "lang": "en",
+      "text": "end of the comput of the computation we",
+      "offset": 692.68,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "we transfer uh a small number of bucket",
+      "offset": 695.24,
+      "duration": 5.88
+    },
+    {
+      "lang": "en",
+      "text": "sums and finalize the computation on the",
+      "offset": 698.04,
+      "duration": 6.16
+    },
+    {
+      "lang": "en",
+      "text": "CPU so most of the computation happens",
+      "offset": 701.12,
+      "duration": 5.719
+    },
+    {
+      "lang": "en",
+      "text": "on the GPU and we do a small data",
+      "offset": 704.2,
+      "duration": 7.319
+    },
+    {
+      "lang": "en",
+      "text": "transfer at the beginning and at the end",
+      "offset": 706.839,
+      "duration": 4.68
+    },
+    {
+      "lang": "en",
+      "text": "um uh in terms of performance we had a",
+      "offset": 711.959,
+      "duration": 7.801
+    },
+    {
+      "lang": "en",
+      "text": "45x average improvement over the",
+      "offset": 716.6,
+      "duration": 8
+    },
+    {
+      "lang": "en",
+      "text": "Baseline um so 1.4 seconds versus 62",
+      "offset": 719.76,
+      "duration": 7.68
+    },
+    {
+      "lang": "en",
+      "text": "seconds uh this was for 2 to 20",
+      "offset": 724.6,
+      "duration": 5.72
+    },
+    {
+      "lang": "en",
+      "text": "constraints over the Twisted Edwards",
+      "offset": 727.44,
+      "duration": 3.88
+    },
+    {
+      "lang": "en",
+      "text": "elliptic",
+      "offset": 730.32,
+      "duration": 5.6
+    },
+    {
+      "lang": "en",
+      "text": "curve um we benchmarked on Arm based",
+      "offset": 731.32,
+      "duration": 8.8
+    },
+    {
+      "lang": "en",
+      "text": "machines uh M1 M2 M3 and Linux machines",
+      "offset": 735.92,
+      "duration": 7.479
+    },
+    {
+      "lang": "en",
+      "text": "uh for 2 to the 16 to 2 to the 20",
+      "offset": 740.12,
+      "duration": 6.36
+    },
+    {
+      "lang": "en",
+      "text": "constraints um and then 45x was the",
+      "offset": 743.399,
+      "duration": 4.961
+    },
+    {
+      "lang": "en",
+      "text": "average improvement over all of those",
+      "offset": 746.48,
+      "duration": 4.44
+    },
+    {
+      "lang": "en",
+      "text": "machines",
+      "offset": 748.36,
+      "duration": 5.88
+    },
+    {
+      "lang": "en",
+      "text": "uh we I I won't go into detail about the",
+      "offset": 750.92,
+      "duration": 5.719
+    },
+    {
+      "lang": "en",
+      "text": "implementation details of the MSM itself",
+      "offset": 754.24,
+      "duration": 5.64
+    },
+    {
+      "lang": "en",
+      "text": "but we wrote a blog post uh on the",
+      "offset": 756.639,
+      "duration": 8.041
+    },
+    {
+      "lang": "en",
+      "text": "penumbra website that links to um the",
+      "offset": 759.88,
+      "duration": 8.399
+    },
+    {
+      "lang": "en",
+      "text": "implementation the GitHub repository and",
+      "offset": 764.68,
+      "duration": 6.599
+    },
+    {
+      "lang": "en",
+      "text": "the documentation that describes the MSM",
+      "offset": 768.279,
+      "duration": 5.761
+    },
+    {
+      "lang": "en",
+      "text": "implementation in",
+      "offset": 771.279,
+      "duration": 5.521
+    },
+    {
+      "lang": "en",
+      "text": "detail um some reflection and learnings",
+      "offset": 774.04,
+      "duration": 6.52
+    },
+    {
+      "lang": "en",
+      "text": "about working in webgpu um we we came to",
+      "offset": 776.8,
+      "duration": 6.839
+    },
+    {
+      "lang": "en",
+      "text": "the conclusion that uh simmed Vector",
+      "offset": 780.56,
+      "duration": 6.88
+    },
+    {
+      "lang": "en",
+      "text": "instructions um in wasum are a more",
+      "offset": 783.639,
+      "duration": 6.401
+    },
+    {
+      "lang": "en",
+      "text": "production ready platform compared to",
+      "offset": 787.44,
+      "duration": 7
+    },
+    {
+      "lang": "en",
+      "text": "web GPU at the moment uh web wasm has",
+      "offset": 790.04,
+      "duration": 7.239
+    },
+    {
+      "lang": "en",
+      "text": "has access to lowlevel wide Sim of",
+      "offset": 794.44,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "assembly",
+      "offset": 797.279,
+      "duration": 3.201
+    },
+    {
+      "lang": "en",
+      "text": "instructions and you don't have the same",
+      "offset": 798.36,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "fine grain control with the web GPU",
+      "offset": 800.48,
+      "duration": 6.4
+    },
+    {
+      "lang": "en",
+      "text": "abstraction layer so you can do deeper",
+      "offset": 802.6,
+      "duration": 6.84
+    },
+    {
+      "lang": "en",
+      "text": "optimizations in the wasm context that",
+      "offset": 806.88,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "you can't do in",
+      "offset": 809.44,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "webgpu um but the benefit of web GPU is",
+      "offset": 810.8,
+      "duration": 8.44
+    },
+    {
+      "lang": "en",
+      "text": "you can actually um web GPU outperforms",
+      "offset": 814.56,
+      "duration": 9
+    },
+    {
+      "lang": "en",
+      "text": "simmed for larger circuits uh that's our",
+      "offset": 819.24,
+      "duration": 6.279
+    },
+    {
+      "lang": "en",
+      "text": "operating thesis that for larger",
+      "offset": 823.56,
+      "duration": 4.719
+    },
+    {
+      "lang": "en",
+      "text": "constraint counts webgpu actually beats",
+      "offset": 825.519,
+      "duration": 6.601
+    },
+    {
+      "lang": "en",
+      "text": "uh wasm and lowl simed",
+      "offset": 828.279,
+      "duration": 7.081
+    },
+    {
+      "lang": "en",
+      "text": "um simmed May intro May introduce a",
+      "offset": 832.12,
+      "duration": 6.48
+    },
+    {
+      "lang": "en",
+      "text": "performance regression in the browser um",
+      "offset": 835.36,
+      "duration": 7.12
+    },
+    {
+      "lang": "en",
+      "text": "way did some benchmarking and found a 2X",
+      "offset": 838.6,
+      "duration": 6.52
+    },
+    {
+      "lang": "en",
+      "text": "performance regression when implementing",
+      "offset": 842.48,
+      "duration": 4.799
+    },
+    {
+      "lang": "en",
+      "text": "Montgomery multiplication in Sim",
+      "offset": 845.12,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "compared to non- simmed in",
+      "offset": 847.279,
+      "duration": 5.841
+    },
+    {
+      "lang": "en",
+      "text": "Rust um",
+      "offset": 850,
+      "duration": 6.399
+    },
+    {
+      "lang": "en",
+      "text": "so the the idea",
+      "offset": 853.12,
+      "duration": 6.92
+    },
+    {
+      "lang": "en",
+      "text": "is if you if you do two 32-bit",
+      "offset": 856.399,
+      "duration": 6.081
+    },
+    {
+      "lang": "en",
+      "text": "multiplications um you",
+      "offset": 860.04,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "can you can do two 32bit by 32-bit",
+      "offset": 862.48,
+      "duration": 7.96
+    },
+    {
+      "lang": "en",
+      "text": "multiplications per simmed operation and",
+      "offset": 866.04,
+      "duration": 7.96
+    },
+    {
+      "lang": "en",
+      "text": "um in theory that should be faster than",
+      "offset": 870.44,
+      "duration": 6.16
+    },
+    {
+      "lang": "en",
+      "text": "doing non- simed but what what we found",
+      "offset": 874,
+      "duration": 6.32
+    },
+    {
+      "lang": "en",
+      "text": "was uh wasm has simmed instructions but",
+      "offset": 876.6,
+      "duration": 8
+    },
+    {
+      "lang": "en",
+      "text": "neither x86 or arm have matching native",
+      "offset": 880.32,
+      "duration": 7.519
+    },
+    {
+      "lang": "en",
+      "text": "instructions so that that means Chrome",
+      "offset": 884.6,
+      "duration": 6.159
+    },
+    {
+      "lang": "en",
+      "text": "emulates uh simed with multiple",
+      "offset": 887.839,
+      "duration": 4.36
+    },
+    {
+      "lang": "en",
+      "text": "instructions which actually ends up",
+      "offset": 890.759,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "being slower than non-sim",
+      "offset": 892.199,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "instructions uh if you look at the wasum",
+      "offset": 896.48,
+      "duration": 4.76
+    },
+    {
+      "lang": "en",
+      "text": "do documentation it says the same thing",
+      "offset": 898.8,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "um that there are semantic differences",
+      "offset": 901.24,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "between the host hardware and the web",
+      "offset": 902.88,
+      "duration": 5.639
+    },
+    {
+      "lang": "en",
+      "text": "assembly semantics so you implement SYM",
+      "offset": 905.48,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "code expecting it to be faster but in",
+      "offset": 908.519,
+      "duration": 4.44
+    },
+    {
+      "lang": "en",
+      "text": "fact Chrome emulates all of these",
+      "offset": 911.24,
+      "duration": 3.279
+    },
+    {
+      "lang": "en",
+      "text": "instructions and you have a 2X",
+      "offset": 912.959,
+      "duration": 2.68
+    },
+    {
+      "lang": "en",
+      "text": "performance",
+      "offset": 914.519,
+      "duration": 4.081
+    },
+    {
+      "lang": "en",
+      "text": "regression uh when when implementing a a",
+      "offset": 915.639,
+      "duration": 5.401
+    },
+    {
+      "lang": "en",
+      "text": "simple Montgomery",
+      "offset": 918.6,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "multiplication um the way you get around",
+      "offset": 921.04,
+      "duration": 6.279
+    },
+    {
+      "lang": "en",
+      "text": "this is by using floating Point math so",
+      "offset": 924.04,
+      "duration": 6.88
+    },
+    {
+      "lang": "en",
+      "text": "fp64 and fp3 2 instructions do actually",
+      "offset": 927.319,
+      "duration": 5.32
+    },
+    {
+      "lang": "en",
+      "text": "run in simmed",
+      "offset": 930.92,
+      "duration": 3.359
+    },
+    {
+      "lang": "en",
+      "text": "mode",
+      "offset": 932.639,
+      "duration": 5.361
+    },
+    {
+      "lang": "en",
+      "text": "um for instance a sample FMA instruction",
+      "offset": 934.279,
+      "duration": 6.12
+    },
+    {
+      "lang": "en",
+      "text": "a fused multiply and AD that lets you do",
+      "offset": 938,
+      "duration": 5.72
+    },
+    {
+      "lang": "en",
+      "text": "a a multiplication and and an addition",
+      "offset": 940.399,
+      "duration": 6.36
+    },
+    {
+      "lang": "en",
+      "text": "with a single rounding error will run in",
+      "offset": 943.72,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "simed",
+      "offset": 946.759,
+      "duration": 2.401
+    },
+    {
+      "lang": "en",
+      "text": "mode in terms of the rounding um",
+      "offset": 950.44,
+      "duration": 6.12
+    },
+    {
+      "lang": "en",
+      "text": "rounding behavior is non-deterministic",
+      "offset": 953.759,
+      "duration": 5.281
+    },
+    {
+      "lang": "en",
+      "text": "and is platform dependent you can't",
+      "offset": 956.56,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "actually control the rounding um it uses",
+      "offset": 959.04,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "something called rounding to nearest so",
+      "offset": 961.44,
+      "duration": 4.519
+    },
+    {
+      "lang": "en",
+      "text": "some sometimes it rounds up sometimes it",
+      "offset": 963.6,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "rounds down uh but the rounding mode",
+      "offset": 965.959,
+      "duration": 5.961
+    },
+    {
+      "lang": "en",
+      "text": "can't be uh",
+      "offset": 968.72,
+      "duration": 7.08
+    },
+    {
+      "lang": "en",
+      "text": "controlled uh n Nile Emirate uh had a",
+      "offset": 971.92,
+      "duration": 7.399
+    },
+    {
+      "lang": "en",
+      "text": "2018 paper where he implemented uh 52",
+      "offset": 975.8,
+      "duration": 7.44
+    },
+    {
+      "lang": "en",
+      "text": "bit X 52- bit um Montgomery",
+      "offset": 979.319,
+      "duration": 8
+    },
+    {
+      "lang": "en",
+      "text": "multiplication so it's a 104 104 bit uh",
+      "offset": 983.24,
+      "duration": 7.32
+    },
+    {
+      "lang": "en",
+      "text": "multiplier um but the paper assumed a",
+      "offset": 987.319,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "rounding toward zero because of of",
+      "offset": 990.56,
+      "duration": 6.92
+    },
+    {
+      "lang": "en",
+      "text": "cuda's FM RZ instruction so the",
+      "offset": 993.319,
+      "duration": 6.401
+    },
+    {
+      "lang": "en",
+      "text": "paper does this floating Point",
+      "offset": 997.48,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "multiplication and then rounds the",
+      "offset": 999.72,
+      "duration": 5
+    },
+    {
+      "lang": "en",
+      "text": "result down to",
+      "offset": 1001.72,
+      "duration": 3
+    },
+    {
+      "lang": "en",
+      "text": "zero",
+      "offset": 1008.56,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "in in his Z prise implementation he",
+      "offset": 1010.279,
+      "duration": 6.161
+    },
+    {
+      "lang": "en",
+      "text": "referenced the same paper but used 51",
+      "offset": 1013.68,
+      "duration": 7.079
+    },
+    {
+      "lang": "en",
+      "text": "bit limbs uh and with FMA simmed op",
+      "offset": 1016.44,
+      "duration": 10.639
+    },
+    {
+      "lang": "en",
+      "text": "codes uh in wasum uh this f64 relaxed",
+      "offset": 1020.759,
+      "duration": 9.121
+    },
+    {
+      "lang": "en",
+      "text": "mad is a relaxed simmed op code it's a",
+      "offset": 1027.079,
+      "duration": 5.801
+    },
+    {
+      "lang": "en",
+      "text": "wasm enhancement and essentially by",
+      "offset": 1029.88,
+      "duration": 7.039
+    },
+    {
+      "lang": "en",
+      "text": "moving from 52 bit limbs to 51 bit Limbs",
+      "offset": 1032.88,
+      "duration": 7.559
+    },
+    {
+      "lang": "en",
+      "text": "and and some clever rounding",
+      "offset": 1036.919,
+      "duration": 6.64
+    },
+    {
+      "lang": "en",
+      "text": "tricks he solved the non-deterministic",
+      "offset": 1040.439,
+      "duration": 5.321
+    },
+    {
+      "lang": "en",
+      "text": "rounding and turned non-deterministic",
+      "offset": 1043.559,
+      "duration": 6.281
+    },
+    {
+      "lang": "en",
+      "text": "rounding errors to be deterministic",
+      "offset": 1045.76,
+      "duration": 7.36
+    },
+    {
+      "lang": "en",
+      "text": "so the whole idea is instead of doing 52",
+      "offset": 1049.84,
+      "duration": 5.4
+    },
+    {
+      "lang": "en",
+      "text": "bit by 52- bit multiplication you you",
+      "offset": 1053.12,
+      "duration": 7.2
+    },
+    {
+      "lang": "en",
+      "text": "can do 51 bit by 51 bit multiplication",
+      "offset": 1055.24,
+      "duration": 8
+    },
+    {
+      "lang": "en",
+      "text": "and essentially solve this",
+      "offset": 1060.32,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "non-deterministic grounding with some",
+      "offset": 1063.24,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "some clever rounding",
+      "offset": 1065.2,
+      "duration": 5.56
+    },
+    {
+      "lang": "en",
+      "text": "tricks um the thing we're looking at now",
+      "offset": 1066.84,
+      "duration": 7.28
+    },
+    {
+      "lang": "en",
+      "text": "is floating points in web GPU uh web GPU",
+      "offset": 1070.76,
+      "duration": 4.399
+    },
+    {
+      "lang": "en",
+      "text": "has a",
+      "offset": 1074.12,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "dedicated dedicated built-in FMA",
+      "offset": 1075.159,
+      "duration": 4.921
+    },
+    {
+      "lang": "en",
+      "text": "instruction uh which we can use to",
+      "offset": 1077.64,
+      "duration": 4.399
+    },
+    {
+      "lang": "en",
+      "text": "implement Montgomery multiplication",
+      "offset": 1080.08,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "using floating points um the way you",
+      "offset": 1082.039,
+      "duration": 6.441
+    },
+    {
+      "lang": "en",
+      "text": "implement floating points in web GP",
+      "offset": 1085.12,
+      "duration": 6.439
+    },
+    {
+      "lang": "en",
+      "text": "um is one of two ways you can either",
+      "offset": 1088.48,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "avoid the rounding errors or you can",
+      "offset": 1091.559,
+      "duration": 4.761
+    },
+    {
+      "lang": "en",
+      "text": "handle the rounding errors the way you",
+      "offset": 1093.44,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "avoid the rounding errors is you",
+      "offset": 1096.32,
+      "duration": 5.92
+    },
+    {
+      "lang": "en",
+      "text": "essentially don't overflow the mantisa",
+      "offset": 1098.96,
+      "duration": 7.12
+    },
+    {
+      "lang": "en",
+      "text": "so in our current zise implementation we",
+      "offset": 1102.24,
+      "duration": 7.64
+    },
+    {
+      "lang": "en",
+      "text": "implemented the MSM with 13 bit",
+      "offset": 1106.08,
+      "duration": 8.719
+    },
+    {
+      "lang": "en",
+      "text": "limbs um 13bit limbs was the optimal",
+      "offset": 1109.88,
+      "duration": 7.84
+    },
+    {
+      "lang": "en",
+      "text": "limb size to avoid uh to minimize the",
+      "offset": 1114.799,
+      "duration": 5.841
+    },
+    {
+      "lang": "en",
+      "text": "carry operations and Montgomery",
+      "offset": 1117.72,
+      "duration": 6.56
+    },
+    {
+      "lang": "en",
+      "text": "multiplications and we store that 13 bit",
+      "offset": 1120.64,
+      "duration": 6.519
+    },
+    {
+      "lang": "en",
+      "text": "x 13 bit multiplication in a in a",
+      "offset": 1124.28,
+      "duration": 6.519
+    },
+    {
+      "lang": "en",
+      "text": "u32 so the accumulator is a u3 is a",
+      "offset": 1127.159,
+      "duration": 8.481
+    },
+    {
+      "lang": "en",
+      "text": "32bit value um but fp32 will work",
+      "offset": 1130.799,
+      "duration": 7.24
+    },
+    {
+      "lang": "en",
+      "text": "without any round any rounding necessary",
+      "offset": 1135.64,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "if you don't overflow the 2 to the",
+      "offset": 1138.039,
+      "duration": 6.76
+    },
+    {
+      "lang": "en",
+      "text": "23 uh if you don't overflow 2 to the 23",
+      "offset": 1140.6,
+      "duration": 6.8
+    },
+    {
+      "lang": "en",
+      "text": "because there are 23 explicit bits in",
+      "offset": 1144.799,
+      "duration": 3.401
+    },
+    {
+      "lang": "en",
+      "text": "the",
+      "offset": 1147.4,
+      "duration": 5.159
+    },
+    {
+      "lang": "en",
+      "text": "Mena um so if we take our 13 bit Limbs",
+      "offset": 1148.2,
+      "duration": 6.92
+    },
+    {
+      "lang": "en",
+      "text": "and reduce it to 10 bit limbs we",
+      "offset": 1152.559,
+      "duration": 5.801
+    },
+    {
+      "lang": "en",
+      "text": "automatically gain uh access to",
+      "offset": 1155.12,
+      "duration": 5.799
+    },
+    {
+      "lang": "en",
+      "text": "efficient floating Point 32 operations",
+      "offset": 1158.36,
+      "duration": 5
+    },
+    {
+      "lang": "en",
+      "text": "without any rounding So in theory you",
+      "offset": 1160.919,
+      "duration": 6.481
+    },
+    {
+      "lang": "en",
+      "text": "can take all of the u32 uh u32 data",
+      "offset": 1163.36,
+      "duration": 7.4
+    },
+    {
+      "lang": "en",
+      "text": "types and replace them with F32 without",
+      "offset": 1167.4,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "handling any of the",
+      "offset": 1170.76,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "rounding uh because again the",
+      "offset": 1172.6,
+      "duration": 5.68
+    },
+    {
+      "lang": "en",
+      "text": "multiplications don't overflow the",
+      "offset": 1174.76,
+      "duration": 5.56
+    },
+    {
+      "lang": "en",
+      "text": "mantisa",
+      "offset": 1178.28,
+      "duration": 5.879
+    },
+    {
+      "lang": "en",
+      "text": "um if we keep 13 bit limbs uh we need to",
+      "offset": 1180.32,
+      "duration": 5.92
+    },
+    {
+      "lang": "en",
+      "text": "handle the rounding explicitly and we",
+      "offset": 1184.159,
+      "duration": 4.681
+    },
+    {
+      "lang": "en",
+      "text": "need we need to reference Nile's",
+      "offset": 1186.24,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "implementation to implement the correct",
+      "offset": 1188.84,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "rounding",
+      "offset": 1190.64,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "modes uh in terms of pushing the limits",
+      "offset": 1192.28,
+      "duration": 6.16
+    },
+    {
+      "lang": "en",
+      "text": "of web web GPU um there are differences",
+      "offset": 1194.96,
+      "duration": 7.599
+    },
+    {
+      "lang": "en",
+      "text": "in in uh the GPU Hardware capability of",
+      "offset": 1198.44,
+      "duration": 6.56
+    },
+    {
+      "lang": "en",
+      "text": "the device so performance will vary",
+      "offset": 1202.559,
+      "duration": 5.641
+    },
+    {
+      "lang": "en",
+      "text": "depending on the capabilities of of the",
+      "offset": 1205,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "underlying GPU device uh there are also",
+      "offset": 1208.2,
+      "duration": 4.2
+    },
+    {
+      "lang": "en",
+      "text": "Shader",
+      "offset": 1211,
+      "duration": 3.919
+    },
+    {
+      "lang": "en",
+      "text": "limitations uh if you increase the",
+      "offset": 1212.4,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "depths uh the depth and complexity of",
+      "offset": 1214.919,
+      "duration": 6.64
+    },
+    {
+      "lang": "en",
+      "text": "the wgsl Shader uh that can decrease GPU",
+      "offset": 1216.96,
+      "duration": 8.199
+    },
+    {
+      "lang": "en",
+      "text": "performance uh and lead to crashes uh we",
+      "offset": 1221.559,
+      "duration": 7.761
+    },
+    {
+      "lang": "en",
+      "text": "we we implemented a very uh dense",
+      "offset": 1225.159,
+      "duration": 7.64
+    },
+    {
+      "lang": "en",
+      "text": "in our MSM scheme that crashed an M3",
+      "offset": 1229.32,
+      "duration": 5.16
+    },
+    {
+      "lang": "en",
+      "text": "Pro",
+      "offset": 1232.799,
+      "duration": 4.36
+    },
+    {
+      "lang": "en",
+      "text": "um so the the way you get around that is",
+      "offset": 1234.48,
+      "duration": 5.16
+    },
+    {
+      "lang": "en",
+      "text": "you take the complex uh Shader and you",
+      "offset": 1237.159,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "break it up into multiple Shader Shader",
+      "offset": 1239.64,
+      "duration": 6.279
+    },
+    {
+      "lang": "en",
+      "text": "components",
+      "offset": 1242.919,
+      "duration": 3
+    },
+    {
+      "lang": "en",
+      "text": "uh uh web GPU also has uh compilation",
+      "offset": 1246.4,
+      "duration": 8.24
+    },
+    {
+      "lang": "en",
+      "text": "time so executing GPU code uh requires",
+      "offset": 1250.52,
+      "duration": 7.48
+    },
+    {
+      "lang": "en",
+      "text": "compiling the wgsl shaders once and then",
+      "offset": 1254.64,
+      "duration": 6.8
+    },
+    {
+      "lang": "en",
+      "text": "the code is cached so you pay a a large",
+      "offset": 1258,
+      "duration": 6.12
+    },
+    {
+      "lang": "en",
+      "text": "compilation cost",
+      "offset": 1261.44,
+      "duration": 5.92
+    },
+    {
+      "lang": "en",
+      "text": "upfront uh performance also varies",
+      "offset": 1264.12,
+      "duration": 6.48
+    },
+    {
+      "lang": "en",
+      "text": "between brow browser versions",
+      "offset": 1267.36,
+      "duration": 7.28
+    },
+    {
+      "lang": "en",
+      "text": "um as the web GPU standard matures the",
+      "offset": 1270.6,
+      "duration": 6.48
+    },
+    {
+      "lang": "en",
+      "text": "uh web GPU standard will get faster but",
+      "offset": 1274.64,
+      "duration": 5.84
+    },
+    {
+      "lang": "en",
+      "text": "older versions older versions of of",
+      "offset": 1277.08,
+      "duration": 6.8
+    },
+    {
+      "lang": "en",
+      "text": "webgpu will be",
+      "offset": 1280.48,
+      "duration": 3.4
+    },
+    {
+      "lang": "en",
+      "text": "slower um in terms of squeezing",
+      "offset": 1284.36,
+      "duration": 7.319
+    },
+    {
+      "lang": "en",
+      "text": "performance uh there are a few tips uh",
+      "offset": 1287.76,
+      "duration": 7.919
+    },
+    {
+      "lang": "en",
+      "text": "use fewer wgsl shaders uh this isn't the",
+      "offset": 1291.679,
+      "duration": 6.281
+    },
+    {
+      "lang": "en",
+      "text": "case with Cuda because a kernel and Cuda",
+      "offset": 1295.679,
+      "duration": 5.321
+    },
+    {
+      "lang": "en",
+      "text": "zero cost uh but that's not the case in",
+      "offset": 1297.96,
+      "duration": 7.92
+    },
+    {
+      "lang": "en",
+      "text": "web G GPU uh don't overload the shaders",
+      "offset": 1301,
+      "duration": 7.2
+    },
+    {
+      "lang": "en",
+      "text": "uh if the complexity or depth of the",
+      "offset": 1305.88,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "Shader gets too large again it can crash",
+      "offset": 1308.2,
+      "duration": 4.719
+    },
+    {
+      "lang": "en",
+      "text": "the machine uh efficiently manage",
+      "offset": 1310.12,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "storage buffer",
+      "offset": 1312.919,
+      "duration": 4.801
+    },
+    {
+      "lang": "en",
+      "text": "allocations uh and be aware of the GPU",
+      "offset": 1315.08,
+      "duration": 5.719
+    },
+    {
+      "lang": "en",
+      "text": "device limits if you go beyond those",
+      "offset": 1317.72,
+      "duration": 5.16
+    },
+    {
+      "lang": "en",
+      "text": "limits you can also crash the",
+      "offset": 1320.799,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "machine",
+      "offset": 1322.88,
+      "duration": 6.12
+    },
+    {
+      "lang": "en",
+      "text": "uh we expect the web GPU API to evolve",
+      "offset": 1324.799,
+      "duration": 7.321
+    },
+    {
+      "lang": "en",
+      "text": "over the the coming years uh but there",
+      "offset": 1329,
+      "duration": 4.6
+    },
+    {
+      "lang": "en",
+      "text": "are some areas that have not been",
+      "offset": 1332.12,
+      "duration": 3.72
+    },
+    {
+      "lang": "en",
+      "text": "explored uh one of them is Multi-Device",
+      "offset": 1333.6,
+      "duration": 4.28
+    },
+    {
+      "lang": "en",
+      "text": "proof generation where you take multiple",
+      "offset": 1335.84,
+      "duration": 5.079
+    },
+    {
+      "lang": "en",
+      "text": "web GPU instances uh peer-to-peer",
+      "offset": 1337.88,
+      "duration": 6.24
+    },
+    {
+      "lang": "en",
+      "text": "networked across multiple devices to",
+      "offset": 1340.919,
+      "duration": 5.161
+    },
+    {
+      "lang": "en",
+      "text": "share and compute a",
+      "offset": 1344.12,
+      "duration": 4.919
+    },
+    {
+      "lang": "en",
+      "text": "workload um",
+      "offset": 1346.08,
+      "duration": 6.079
+    },
+    {
+      "lang": "en",
+      "text": "also new low-level features like storing",
+      "offset": 1349.039,
+      "duration": 7.081
+    },
+    {
+      "lang": "en",
+      "text": "uh big in integer Limbs and floating",
+      "offset": 1352.159,
+      "duration": 6.281
+    },
+    {
+      "lang": "en",
+      "text": "points",
+      "offset": 1356.12,
+      "duration": 6.08
+    },
+    {
+      "lang": "en",
+      "text": "um we also see uh we also hope to see U",
+      "offset": 1358.44,
+      "duration": 7.28
+    },
+    {
+      "lang": "en",
+      "text": "more low-level features uh implemented",
+      "offset": 1362.2,
+      "duration": 7.76
+    },
+    {
+      "lang": "en",
+      "text": "in web GPU uh for example a dedicated uh",
+      "offset": 1365.72,
+      "duration": 7.559
+    },
+    {
+      "lang": "en",
+      "text": "Assembly Language for wgsl to do",
+      "offset": 1369.96,
+      "duration": 5.64
+    },
+    {
+      "lang": "en",
+      "text": "low-level",
+      "offset": 1373.279,
+      "duration": 5.721
+    },
+    {
+      "lang": "en",
+      "text": "optimizations and uh we we we'd ideally",
+      "offset": 1375.6,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "like to see a lot of the Cuda",
+      "offset": 1379,
+      "duration": 4.919
+    },
+    {
+      "lang": "en",
+      "text": "optimizations find their way to web GPU",
+      "offset": 1380.48,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "for example dynamically setting work",
+      "offset": 1383.919,
+      "duration": 4.441
+    },
+    {
+      "lang": "en",
+      "text": "group",
+      "offset": 1385.76,
+      "duration": 2.6
+    },
+    {
+      "lang": "en",
+      "text": "sizes uh that's all I have",
+      "offset": 1390.48,
+      "duration": 9.46
+    },
+    {
+      "lang": "en",
+      "text": "[Applause]",
+      "offset": 1394.97,
+      "duration": 4.97
+    }
+  ],
+  "cleanText": null,
+  "dumpedAt": "2025-07-21T18:43:26.416Z"
+}

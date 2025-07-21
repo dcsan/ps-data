@@ -1,0 +1,4264 @@
+{
+  "episodeId": "1QXqWQ0yNfg",
+  "channelSlug": "@syntaxfm",
+  "title": "React Server Components: Where are we at?",
+  "publishedAt": "2025-04-21T11:00:03.000Z",
+  "rawLines": [
+    {
+      "lang": "en",
+      "text": "welcome to syntax Today we're going to",
+      "offset": 0.719,
+      "duration": 4.801
+    },
+    {
+      "lang": "en",
+      "text": "be talking about React server components",
+      "offset": 2.8,
+      "duration": 6.48
+    },
+    {
+      "lang": "en",
+      "text": "It is April of 2025 I just had to look",
+      "offset": 5.52,
+      "duration": 7.56
+    },
+    {
+      "lang": "en",
+      "text": "at my clock to know that it is April of",
+      "offset": 9.28,
+      "duration": 7.12
+    },
+    {
+      "lang": "en",
+      "text": "2025 and you might not know where we're",
+      "offset": 13.08,
+      "duration": 4.84
+    },
+    {
+      "lang": "en",
+      "text": "at with these things You know some",
+      "offset": 16.4,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "people might still view React server",
+      "offset": 17.92,
+      "duration": 5.68
+    },
+    {
+      "lang": "en",
+      "text": "components as this next.js feature Uh so",
+      "offset": 20.24,
+      "duration": 6.32
+    },
+    {
+      "lang": "en",
+      "text": "what is the status of them how could you",
+      "offset": 23.6,
+      "duration": 5.679
+    },
+    {
+      "lang": "en",
+      "text": "use them even what are they to a degree",
+      "offset": 26.56,
+      "duration": 5.119
+    },
+    {
+      "lang": "en",
+      "text": "and just generally what's up with React",
+      "offset": 29.279,
+      "duration": 4.001
+    },
+    {
+      "lang": "en",
+      "text": "Server components what's the deal what's",
+      "offset": 31.679,
+      "duration": 3.681
+    },
+    {
+      "lang": "en",
+      "text": "the deal with React Server components",
+      "offset": 33.28,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "what's the deal like they've been around",
+      "offset": 35.36,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "they've been around since like like for",
+      "offset": 37.68,
+      "duration": 5.039
+    },
+    {
+      "lang": "en",
+      "text": "5 years but also they still haven't I I",
+      "offset": 39.6,
+      "duration": 5.119
+    },
+    {
+      "lang": "en",
+      "text": "don't feel like they have fully caught",
+      "offset": 42.719,
+      "duration": 5.281
+    },
+    {
+      "lang": "en",
+      "text": "on yet So we're going to try to attempt",
+      "offset": 44.719,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "to explain why and and what they are and",
+      "offset": 48,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "and and sort of where you can use them",
+      "offset": 50.239,
+      "duration": 6.221
+    },
+    {
+      "lang": "en",
+      "text": "right now And it's not just Nex.js",
+      "offset": 52.64,
+      "duration": 8.96
+    },
+    {
+      "lang": "en",
+      "text": "[Music]",
+      "offset": 56.46,
+      "duration": 7.54
+    },
+    {
+      "lang": "en",
+      "text": "And what's the deal with bad websites uh",
+      "offset": 61.6,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "your website shouldn't be bad You you",
+      "offset": 64,
+      "duration": 3.2
+    },
+    {
+      "lang": "en",
+      "text": "should be able to have a tool like",
+      "offset": 65.92,
+      "duration": 2.8
+    },
+    {
+      "lang": "en",
+      "text": "Sentry If your website's bad it's",
+      "offset": 67.2,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "probably because you're not using Sentry",
+      "offset": 68.72,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "Sentry at centry.io the perfect place to",
+      "offset": 70.56,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "make sure your application is running as",
+      "offset": 72.4,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "good as it possibly can It's uh fast",
+      "offset": 74.4,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "it's friendly it's not crashing for",
+      "offset": 76.96,
+      "duration": 4.479
+    },
+    {
+      "lang": "en",
+      "text": "users there's no errors and it's it's",
+      "offset": 78.64,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "even functioning at all Period So if you",
+      "offset": 81.439,
+      "duration": 4.161
+    },
+    {
+      "lang": "en",
+      "text": "want to make sure your application is",
+      "offset": 83.92,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "working and not only just make sure but",
+      "offset": 85.6,
+      "duration": 3.28
+    },
+    {
+      "lang": "en",
+      "text": "let's get this straight it's about",
+      "offset": 87.6,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "fixing it fast uh you have things like",
+      "offset": 88.88,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "session replay to see exactly a video of",
+      "offset": 91.28,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "what happened what went wrong when the",
+      "offset": 93.92,
+      "duration": 3.839
+    },
+    {
+      "lang": "en",
+      "text": "thing crashed Uh you have all kinds of",
+      "offset": 95.6,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "tools to make solving the bugs really",
+      "offset": 97.759,
+      "duration": 4.561
+    },
+    {
+      "lang": "en",
+      "text": "really fast There's even some AI",
+      "offset": 100.4,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "assistant tools in there as well It's",
+      "offset": 102.32,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "the best It's seriously the best So uh",
+      "offset": 104.64,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "this podcast is presented by Centry Head",
+      "offset": 106.96,
+      "duration": 2.68
+    },
+    {
+      "lang": "en",
+      "text": "on over to",
+      "offset": 108.64,
+      "duration": 2.88
+    },
+    {
+      "lang": "en",
+      "text": "centry.io/sintax Sign up and use the",
+      "offset": 109.64,
+      "duration": 3.479
+    },
+    {
+      "lang": "en",
+      "text": "coupon code tasty treat all lowercase",
+      "offset": 111.52,
+      "duration": 4.239
+    },
+    {
+      "lang": "en",
+      "text": "all one word and get two months for free",
+      "offset": 113.119,
+      "duration": 5.441
+    },
+    {
+      "lang": "en",
+      "text": "Let's give a quick rundown of what React",
+      "offset": 115.759,
+      "duration": 6.081
+    },
+    {
+      "lang": "en",
+      "text": "server components actually are because I",
+      "offset": 118.56,
+      "duration": 5.599
+    },
+    {
+      "lang": "en",
+      "text": "do feel like even today when people talk",
+      "offset": 121.84,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "about them there is some",
+      "offset": 124.159,
+      "duration": 3.521
+    },
+    {
+      "lang": "en",
+      "text": "misunderstanding maybe a little bit",
+      "offset": 126,
+      "duration": 4.879
+    },
+    {
+      "lang": "en",
+      "text": "about what exactly they do Mhm Yeah A",
+      "offset": 127.68,
+      "duration": 6.559
+    },
+    {
+      "lang": "en",
+      "text": "lot of people think well my client",
+      "offset": 130.879,
+      "duration": 5.121
+    },
+    {
+      "lang": "en",
+      "text": "components are already server rendered",
+      "offset": 134.239,
+      "duration": 5.121
+    },
+    {
+      "lang": "en",
+      "text": "so like isn't that good enough so server",
+      "offset": 136,
+      "duration": 6.64
+    },
+    {
+      "lang": "en",
+      "text": "components in React are components that",
+      "offset": 139.36,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "are rendered either as as part of a",
+      "offset": 142.64,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "build step which is like ahead of time",
+      "offset": 145.12,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "Like server components don't require a",
+      "offset": 147.36,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "server which is kind of funny but in",
+      "offset": 149.52,
+      "duration": 4.28
+    },
+    {
+      "lang": "en",
+      "text": "most cases you're probably going to be",
+      "offset": 151.84,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "rendered on demand entirely on the",
+      "offset": 153.8,
+      "duration": 6.2
+    },
+    {
+      "lang": "en",
+      "text": "server that differs from client",
+      "offset": 157.04,
+      "duration": 5.279
+    },
+    {
+      "lang": "en",
+      "text": "components which client components are",
+      "offset": 160,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "ren often rendered obviously in the",
+      "offset": 162.319,
+      "duration": 5.441
+    },
+    {
+      "lang": "en",
+      "text": "client but they can also still be be",
+      "offset": 165.04,
+      "duration": 5.199
+    },
+    {
+      "lang": "en",
+      "text": "server rendered Um the difference",
+      "offset": 167.76,
+      "duration": 5.199
+    },
+    {
+      "lang": "en",
+      "text": "between the two is that server",
+      "offset": 170.239,
+      "duration": 6.801
+    },
+    {
+      "lang": "en",
+      "text": "components simply just send their output",
+      "offset": 172.959,
+      "duration": 7.36
+    },
+    {
+      "lang": "en",
+      "text": "to to the browser similar to how server",
+      "offset": 177.04,
+      "duration": 7.279
+    },
+    {
+      "lang": "en",
+      "text": "rendering HTML works um versus client",
+      "offset": 180.319,
+      "duration": 6.161
+    },
+    {
+      "lang": "en",
+      "text": "components they bring everything they",
+      "offset": 184.319,
+      "duration": 4.801
+    },
+    {
+      "lang": "en",
+      "text": "need in order to render themselves on",
+      "offset": 186.48,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "the client which it's not really one or",
+      "offset": 189.12,
+      "duration": 5.72
+    },
+    {
+      "lang": "en",
+      "text": "the other In most cases you you'll be",
+      "offset": 191.76,
+      "duration": 6.559
+    },
+    {
+      "lang": "en",
+      "text": "using both of them together Server",
+      "offset": 194.84,
+      "duration": 6.039
+    },
+    {
+      "lang": "en",
+      "text": "components are a sync meaning that you",
+      "offset": 198.319,
+      "duration": 5.681
+    },
+    {
+      "lang": "en",
+      "text": "can simply just await before you return",
+      "offset": 200.879,
+      "duration": 7.121
+    },
+    {
+      "lang": "en",
+      "text": "data which is amazing a API uh for many",
+      "offset": 204,
+      "duration": 6.4
+    },
+    {
+      "lang": "en",
+      "text": "use cases So you don't have to do like a",
+      "offset": 208,
+      "duration": 4.799
+    },
+    {
+      "lang": "en",
+      "text": "weird loading state and if it's loading",
+      "offset": 210.4,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "then return nothing You can simply just",
+      "offset": 212.799,
+      "duration": 5.681
+    },
+    {
+      "lang": "en",
+      "text": "await like a database call and then",
+      "offset": 215.76,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "write once that await is resolved you",
+      "offset": 218.48,
+      "duration": 5.119
+    },
+    {
+      "lang": "en",
+      "text": "can go ahead and render out your your",
+      "offset": 221.2,
+      "duration": 5.599
+    },
+    {
+      "lang": "en",
+      "text": "markup your JSX Yes server components",
+      "offset": 223.599,
+      "duration": 6.64
+    },
+    {
+      "lang": "en",
+      "text": "they can also be suspended So basically",
+      "offset": 226.799,
+      "duration": 4.601
+    },
+    {
+      "lang": "en",
+      "text": "you",
+      "offset": 230.239,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "can continue rendering the rest of your",
+      "offset": 231.4,
+      "duration": 5.24
+    },
+    {
+      "lang": "en",
+      "text": "app while these things are working on",
+      "offset": 234.239,
+      "duration": 4.961
+    },
+    {
+      "lang": "en",
+      "text": "their their render So it's not like it's",
+      "offset": 236.64,
+      "duration": 6.08
+    },
+    {
+      "lang": "en",
+      "text": "going to hold up if you are awaiting",
+      "offset": 239.2,
+      "duration": 7.119
+    },
+    {
+      "lang": "en",
+      "text": "them Yeah Modern React is is often",
+      "offset": 242.72,
+      "duration": 6.239
+    },
+    {
+      "lang": "en",
+      "text": "streamed meaning that the browser will",
+      "offset": 246.319,
+      "duration": 5.521
+    },
+    {
+      "lang": "en",
+      "text": "start to to render pieces um of the",
+      "offset": 248.959,
+      "duration": 4.961
+    },
+    {
+      "lang": "en",
+      "text": "website and then if you have something",
+      "offset": 251.84,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "that might take a a little while for",
+      "offset": 253.92,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "example on um my new website it's",
+      "offset": 255.92,
+      "duration": 3.999
+    },
+    {
+      "lang": "en",
+      "text": "probably by the time you're listening to",
+      "offset": 258.72,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "this westboss.com there's a like a",
+      "offset": 259.919,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "Twitter in the footer right and I don't",
+      "offset": 263.36,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "want to hold up the entire page while",
+      "offset": 265.199,
+      "duration": 4.401
+    },
+    {
+      "lang": "en",
+      "text": "I'm I'm fetching Twitter What if that",
+      "offset": 267.68,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "takes takes a while so you can suspend",
+      "offset": 269.6,
+      "duration": 5.039
+    },
+    {
+      "lang": "en",
+      "text": "that and then the rest of the website",
+      "offset": 272.32,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "will get sent and then when that one",
+      "offset": 274.639,
+      "duration": 5.361
+    },
+    {
+      "lang": "en",
+      "text": "component um is done it's no longer",
+      "offset": 276.88,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "suspended and then it will it will send",
+      "offset": 280,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "the markup from the server to the client",
+      "offset": 282.24,
+      "duration": 4.399
+    },
+    {
+      "lang": "en",
+      "text": "and and render it on out You got a",
+      "offset": 284.56,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "Twitter in the footer my guy Yeah I had",
+      "offset": 286.639,
+      "duration": 5.441
+    },
+    {
+      "lang": "en",
+      "text": "to I had to do some somewhat seedy",
+      "offset": 288.72,
+      "duration": 6.479
+    },
+    {
+      "lang": "en",
+      "text": "sketchy stuff in order to get the uh",
+      "offset": 292.08,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "Twitter API working but I've I've I've",
+      "offset": 295.199,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "got it entirely reverse engineered I'm",
+      "offset": 298.08,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "pretty and it's it's been working solid",
+      "offset": 300.479,
+      "duration": 4.28
+    },
+    {
+      "lang": "en",
+      "text": "for a couple months now",
+      "offset": 302.16,
+      "duration": 6.08
+    },
+    {
+      "lang": "en",
+      "text": "Nice Yeah server components basically",
+      "offset": 304.759,
+      "duration": 6.761
+    },
+    {
+      "lang": "en",
+      "text": "the way that it it it sends a an R an",
+      "offset": 308.24,
+      "duration": 5.519
+    },
+    {
+      "lang": "en",
+      "text": "RSC a React server component payload to",
+      "offset": 311.52,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "browser it's basically sending text",
+      "offset": 313.759,
+      "duration": 6.081
+    },
+    {
+      "lang": "en",
+      "text": "right which is then is it it's",
+      "offset": 316.72,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "rehydrated right is that the word you",
+      "offset": 319.84,
+      "duration": 4.359
+    },
+    {
+      "lang": "en",
+      "text": "would use in this in this no cuz cuz",
+      "offset": 321.68,
+      "duration": 4.76
+    },
+    {
+      "lang": "en",
+      "text": "rehydrated assumes",
+      "offset": 324.199,
+      "duration": 6.121
+    },
+    {
+      "lang": "en",
+      "text": "that things are bound to it Um",
+      "offset": 326.44,
+      "duration": 6.039
+    },
+    {
+      "lang": "en",
+      "text": "rehydrated means that the browser is is",
+      "offset": 330.32,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "then set setting it up So um server",
+      "offset": 332.479,
+      "duration": 6.401
+    },
+    {
+      "lang": "en",
+      "text": "components are simply just sending",
+      "offset": 335.28,
+      "duration": 6.72
+    },
+    {
+      "lang": "en",
+      "text": "either their HTML uh to to the browser",
+      "offset": 338.88,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "um or if you are doing something",
+      "offset": 342,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "refreshing one of the components it is",
+      "offset": 343.84,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "simply just sending the outputed",
+      "offset": 346.24,
+      "duration": 5.6
+    },
+    {
+      "lang": "en",
+      "text": "uh React payload You can think of it as",
+      "offset": 349.28,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "a server sending HTML It's not",
+      "offset": 351.84,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "technically HTML It's technically React",
+      "offset": 353.44,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "code that is used to to embed it But",
+      "offset": 355.6,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "it's not no it's not fair to say that",
+      "offset": 358.8,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "it's rehydrated cuz there's no there's",
+      "offset": 360.56,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "no client side stuff happening on a",
+      "offset": 363.28,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "server function unless you're explicitly",
+      "offset": 365.36,
+      "duration": 4.399
+    },
+    {
+      "lang": "en",
+      "text": "using a client component Gotcha That",
+      "offset": 367.44,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "that tracks Okay Uh and forgive me if if",
+      "offset": 369.759,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "I'm a little off on some of these things",
+      "offset": 372.72,
+      "duration": 2.96
+    },
+    {
+      "lang": "en",
+      "text": "that the spelt way of doing things",
+      "offset": 374.319,
+      "duration": 3.281
+    },
+    {
+      "lang": "en",
+      "text": "doesn't have any of this stuff So I I am",
+      "offset": 375.68,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "like my understanding of this stuff is",
+      "offset": 377.6,
+      "duration": 5.84
+    },
+    {
+      "lang": "en",
+      "text": "definitely from a React developer who",
+      "offset": 380.4,
+      "duration": 5.359
+    },
+    {
+      "lang": "en",
+      "text": "hasn't used React server components",
+      "offset": 383.44,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "beyond the very basics and and so",
+      "offset": 385.759,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "because of that like you could think of",
+      "offset": 388.24,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "this conceptually like you said it's not",
+      "offset": 391.199,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "HTML that's being sent from the server",
+      "offset": 393.44,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "but you could think of it conceptually",
+      "offset": 395.759,
+      "duration": 4.081
+    },
+    {
+      "lang": "en",
+      "text": "as if you were uh you know like when",
+      "offset": 397.6,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "we're doing HTMX stuff right people say",
+      "offset": 399.84,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "you you have something and it just",
+      "offset": 402.72,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "returns HTML instead of data and swaps",
+      "offset": 404.72,
+      "duration": 5.84
+    },
+    {
+      "lang": "en",
+      "text": "out that HTML Conceptually it's similar",
+      "offset": 407.44,
+      "duration": 6.08
+    },
+    {
+      "lang": "en",
+      "text": "to that except for it is React code and",
+      "offset": 410.56,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "not HTML straight up Yeah exactly But",
+      "offset": 413.52,
+      "duration": 6.16
+    },
+    {
+      "lang": "en",
+      "text": "it's not bringing anything else with it",
+      "offset": 416,
+      "duration": 5.84
+    },
+    {
+      "lang": "en",
+      "text": "you know So if you had um like an",
+      "offset": 419.68,
+      "duration": 4.799
+    },
+    {
+      "lang": "en",
+      "text": "expensive library to do like markdown",
+      "offset": 421.84,
+      "duration": 5.759
+    },
+    {
+      "lang": "en",
+      "text": "parsing or code highlighting is is a",
+      "offset": 424.479,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "good example where",
+      "offset": 427.599,
+      "duration": 4.081
+    },
+    {
+      "lang": "en",
+      "text": "in order to do code highlighting in the",
+      "offset": 429.759,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "browser um you either have to use a",
+      "offset": 431.68,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "smaller library that's not as good or",
+      "offset": 434.479,
+      "duration": 4.881
+    },
+    {
+      "lang": "en",
+      "text": "you can use a very large library you",
+      "offset": 436.96,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "have to download the entire thing on on",
+      "offset": 439.36,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "in the browser which is is not awful in",
+      "offset": 441.12,
+      "duration": 6.32
+    },
+    {
+      "lang": "en",
+      "text": "in some cases but in the case of a",
+      "offset": 444.08,
+      "duration": 6.239
+    },
+    {
+      "lang": "en",
+      "text": "server component for for my code blocks",
+      "offset": 447.44,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "I render it 100% on the server and it",
+      "offset": 450.319,
+      "duration": 7.681
+    },
+    {
+      "lang": "en",
+      "text": "simply just sends the HTML to to the",
+      "offset": 452.88,
+      "duration": 7.68
+    },
+    {
+      "lang": "en",
+      "text": "browser and I don't have to worry about",
+      "offset": 458,
+      "duration": 5.68
+    },
+    {
+      "lang": "en",
+      "text": "how large any of my plugins are for",
+      "offset": 460.56,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "markdown parsing or for code",
+      "offset": 463.68,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "highlighting or or anything like that",
+      "offset": 465.28,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "because it all happens on the server And",
+      "offset": 467.28,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "just a thin little uh markup is is sent",
+      "offset": 469.12,
+      "duration": 5.199
+    },
+    {
+      "lang": "en",
+      "text": "to the client Yeah It it sends the",
+      "offset": 472.08,
+      "duration": 4.399
+    },
+    {
+      "lang": "en",
+      "text": "result Exactly Not the result The",
+      "offset": 474.319,
+      "duration": 4.961
+    },
+    {
+      "lang": "en",
+      "text": "library Yes Yeah Exactly Server",
+      "offset": 476.479,
+      "duration": 4.961
+    },
+    {
+      "lang": "en",
+      "text": "functions which are were previously",
+      "offset": 479.28,
+      "duration": 6.24
+    },
+    {
+      "lang": "en",
+      "text": "called uh server actions are functions",
+      "offset": 481.44,
+      "duration": 6.879
+    },
+    {
+      "lang": "en",
+      "text": "that run on the server and and sort of",
+      "offset": 485.52,
+      "duration": 4.799
+    },
+    {
+      "lang": "en",
+      "text": "work with React server components So",
+      "offset": 488.319,
+      "duration": 5.041
+    },
+    {
+      "lang": "en",
+      "text": "this could be like a database call um",
+      "offset": 490.319,
+      "duration": 5.481
+    },
+    {
+      "lang": "en",
+      "text": "could be like I said markdown code",
+      "offset": 493.36,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "highlighting Server functions are",
+      "offset": 495.8,
+      "duration": 5.64
+    },
+    {
+      "lang": "en",
+      "text": "functions that can be called either from",
+      "offset": 498.8,
+      "duration": 6.799
+    },
+    {
+      "lang": "en",
+      "text": "the client or on a form submission",
+      "offset": 501.44,
+      "duration": 7.199
+    },
+    {
+      "lang": "en",
+      "text": "meaning that you get the you essentially",
+      "offset": 505.599,
+      "duration": 6.16
+    },
+    {
+      "lang": "en",
+      "text": "get um RPC meaning that you can write a",
+      "offset": 508.639,
+      "duration": 5.361
+    },
+    {
+      "lang": "en",
+      "text": "function that runs on the server and",
+      "offset": 511.759,
+      "duration": 5.121
+    },
+    {
+      "lang": "en",
+      "text": "then you can simply just call that from",
+      "offset": 514,
+      "duration": 6.399
+    },
+    {
+      "lang": "en",
+      "text": "your UI and instead of it importing that",
+      "offset": 516.88,
+      "duration": 6.519
+    },
+    {
+      "lang": "en",
+      "text": "server function into your uh client side",
+      "offset": 520.399,
+      "duration": 7.201
+    },
+    {
+      "lang": "en",
+      "text": "application it will just run the RPC",
+      "offset": 523.399,
+      "duration": 6.681
+    },
+    {
+      "lang": "en",
+      "text": "back and forth commands between the two",
+      "offset": 527.6,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "and send the data from from one to",
+      "offset": 530.08,
+      "duration": 3.759
+    },
+    {
+      "lang": "en",
+      "text": "another Um and then there are several",
+      "offset": 532,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "hooks you can use for maintaining use",
+      "offset": 533.839,
+      "duration": 4.081
+    },
+    {
+      "lang": "en",
+      "text": "action state is the big one for",
+      "offset": 536.56,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "maintaining the return what comes back",
+      "offset": 537.92,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "from the response any pending like if",
+      "offset": 540.24,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "something is waiting um clearing caches",
+      "offset": 542.48,
+      "duration": 5.919
+    },
+    {
+      "lang": "en",
+      "text": "all that stuff Word That's like a very",
+      "offset": 545.36,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "quick rundown of what React server",
+      "offset": 548.399,
+      "duration": 6.161
+    },
+    {
+      "lang": "en",
+      "text": "components are So where are we at now",
+      "offset": 551.36,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "with all of the the different frameworks",
+      "offset": 554.56,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "yeah So I I guess the joke of it being",
+      "offset": 557.12,
+      "duration": 6.08
+    },
+    {
+      "lang": "en",
+      "text": "just a Nex.js feature uh doesn't really",
+      "offset": 560,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "track these days but you will see that",
+      "offset": 563.2,
+      "duration": 4.319
+    },
+    {
+      "lang": "en",
+      "text": "there is not a ton of support still out",
+      "offset": 565.04,
+      "duration": 6.479
+    },
+    {
+      "lang": "en",
+      "text": "there uh with like two major platforms",
+      "offset": 567.519,
+      "duration": 7.121
+    },
+    {
+      "lang": "en",
+      "text": "supporting it uh well and then other",
+      "offset": 571.519,
+      "duration": 5.921
+    },
+    {
+      "lang": "en",
+      "text": "things you know potentially So Nex.js",
+      "offset": 574.64,
+      "duration": 4.879
+    },
+    {
+      "lang": "en",
+      "text": "full support It's it's you know the",
+      "offset": 577.44,
+      "duration": 4.519
+    },
+    {
+      "lang": "en",
+      "text": "first one to really embrace React server",
+      "offset": 579.519,
+      "duration": 6.241
+    },
+    {
+      "lang": "en",
+      "text": "components The Wahoo which is honestly",
+      "offset": 581.959,
+      "duration": 7.081
+    },
+    {
+      "lang": "en",
+      "text": "really exciting framework Wahoo.gg it's",
+      "offset": 585.76,
+      "duration": 5.68
+    },
+    {
+      "lang": "en",
+      "text": "the minimal React framework does have",
+      "offset": 589.04,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "full support for React server components",
+      "offset": 591.44,
+      "duration": 5.519
+    },
+    {
+      "lang": "en",
+      "text": "and the documentation I found on these",
+      "offset": 594.56,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "to be very good in terms of uh how to",
+      "offset": 596.959,
+      "duration": 5.281
+    },
+    {
+      "lang": "en",
+      "text": "use them with Waku So uh Waku was",
+      "offset": 599.92,
+      "duration": 5.84
+    },
+    {
+      "lang": "en",
+      "text": "enticing to me honestly So I built I",
+      "offset": 602.24,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "moved my entire website which was on",
+      "offset": 605.76,
+      "duration": 5.199
+    },
+    {
+      "lang": "en",
+      "text": "Gatsby I moved it to Nex.js",
+      "offset": 607.68,
+      "duration": 7.12
+    },
+    {
+      "lang": "en",
+      "text": "and I I found myself frustrated not with",
+      "offset": 610.959,
+      "duration": 5.601
+    },
+    {
+      "lang": "en",
+      "text": "React server components but just with",
+      "offset": 614.8,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "like having to do things in a very",
+      "offset": 616.56,
+      "duration": 5.279
+    },
+    {
+      "lang": "en",
+      "text": "specific Nex.js way which normally I",
+      "offset": 619.12,
+      "duration": 4.159
+    },
+    {
+      "lang": "en",
+      "text": "don't mind because I'm building stuff",
+      "offset": 621.839,
+      "duration": 3.801
+    },
+    {
+      "lang": "en",
+      "text": "from scratch but having",
+      "offset": 623.279,
+      "duration": 7.641
+    },
+    {
+      "lang": "en",
+      "text": "to try to shoehorn my like Gatsby code",
+      "offset": 625.64,
+      "duration": 8.92
+    },
+    {
+      "lang": "en",
+      "text": "into Nex.js JS specific way It was just",
+      "offset": 630.92,
+      "duration": 5.96
+    },
+    {
+      "lang": "en",
+      "text": "it was a bit too frustrating for me and",
+      "offset": 634.56,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "the builds kept breaking stuff like that",
+      "offset": 636.88,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "So I was like you know what i'm going to",
+      "offset": 638.72,
+      "duration": 6.239
+    },
+    {
+      "lang": "en",
+      "text": "try Waku So Waku is from the developer",
+      "offset": 640.56,
+      "duration": 8.08
+    },
+    {
+      "lang": "en",
+      "text": "behind uh Zooand and what's the other",
+      "offset": 644.959,
+      "duration": 9.201
+    },
+    {
+      "lang": "en",
+      "text": "one jotai Jotai Yeah Yeah And I'm I'm",
+      "offset": 648.64,
+      "duration": 7.199
+    },
+    {
+      "lang": "en",
+      "text": "really happy with it So almost all of",
+      "offset": 654.16,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "the code from the Nex.js JS ported over",
+      "offset": 655.839,
+      "duration": 5.281
+    },
+    {
+      "lang": "en",
+      "text": "to to Wahoo because it was just React",
+      "offset": 658.72,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "server components right it it just",
+      "offset": 661.12,
+      "duration": 5.6
+    },
+    {
+      "lang": "en",
+      "text": "worked a little bit nicer It uses Vit",
+      "offset": 663.6,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "which I'm I'm pretty happy about It's",
+      "offset": 666.72,
+      "duration": 5.6
+    },
+    {
+      "lang": "en",
+      "text": "like three or four Vit processes sort of",
+      "offset": 668.8,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "put together because there's a client",
+      "offset": 672.32,
+      "duration": 5.519
+    },
+    {
+      "lang": "en",
+      "text": "side V process there is a server",
+      "offset": 674.24,
+      "duration": 6.64
+    },
+    {
+      "lang": "en",
+      "text": "rendered client V process there's a",
+      "offset": 677.839,
+      "duration": 5.921
+    },
+    {
+      "lang": "en",
+      "text": "React server component V process and I",
+      "offset": 680.88,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "think there's there's one more Um which",
+      "offset": 683.76,
+      "duration": 6.48
+    },
+    {
+      "lang": "en",
+      "text": "is a little odd but it works And I I've",
+      "offset": 686.16,
+      "duration": 5.84
+    },
+    {
+      "lang": "en",
+      "text": "been been really happy with it It still",
+      "offset": 690.24,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "is early like it's not out of 1.0 yet",
+      "offset": 692,
+      "duration": 5.68
+    },
+    {
+      "lang": "en",
+      "text": "The documentation is you said the",
+      "offset": 694.72,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "documentation is great It looks nice but",
+      "offset": 697.68,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "the documentation is sparse You have to",
+      "offset": 699.76,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "do most of your learning from examples",
+      "offset": 702.24,
+      "duration": 5.92
+    },
+    {
+      "lang": "en",
+      "text": "Yes Clear Maybe not complete When I Yeah",
+      "offset": 704.56,
+      "duration": 5.6
+    },
+    {
+      "lang": "en",
+      "text": "There's there's no like I don't I would",
+      "offset": 708.16,
+      "duration": 3.919
+    },
+    {
+      "lang": "en",
+      "text": "go as far to say there's there's like no",
+      "offset": 710.16,
+      "duration": 5.359
+    },
+    {
+      "lang": "en",
+      "text": "docs It's just like a a bunch like one",
+      "offset": 712.079,
+      "duration": 6.961
+    },
+    {
+      "lang": "en",
+      "text": "page showing all the how all the APIs",
+      "offset": 715.519,
+      "duration": 6.88
+    },
+    {
+      "lang": "en",
+      "text": "and then there's like 30 or 40 examples",
+      "offset": 719.04,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "which I really like because you can dip",
+      "offset": 722.399,
+      "duration": 4.081
+    },
+    {
+      "lang": "en",
+      "text": "into the examples directory and go in",
+      "offset": 723.92,
+      "duration": 4.719
+    },
+    {
+      "lang": "en",
+      "text": "But like I'm a bit of an idiot and I",
+      "offset": 726.48,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "figured it out and uh I've been been",
+      "offset": 728.639,
+      "duration": 4.081
+    },
+    {
+      "lang": "en",
+      "text": "really happy with it I got it hosted on",
+      "offset": 731.12,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "Cloudflare workers The whole thing is",
+      "offset": 732.72,
+      "duration": 4.799
+    },
+    {
+      "lang": "en",
+      "text": "building in like like 2 minutes Like",
+      "offset": 734.48,
+      "duration": 6.08
+    },
+    {
+      "lang": "en",
+      "text": "that's the build process from Next to",
+      "offset": 737.519,
+      "duration": 6.401
+    },
+    {
+      "lang": "en",
+      "text": "Waku went like in half which is was",
+      "offset": 740.56,
+      "duration": 5.519
+    },
+    {
+      "lang": "en",
+      "text": "unbelievable So I was really happy with",
+      "offset": 743.92,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "that Yeah I want to take a brief sidebar",
+      "offset": 746.079,
+      "duration": 4.081
+    },
+    {
+      "lang": "en",
+      "text": "here They had a little thing in the",
+      "offset": 748.8,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "bottom corner of the Waku website saying",
+      "offset": 750.16,
+      "duration": 4.52
+    },
+    {
+      "lang": "en",
+      "text": "designed by candyode",
+      "offset": 752.16,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "candycode.com Man what a cool little",
+      "offset": 754.68,
+      "duration": 5.8
+    },
+    {
+      "lang": "en",
+      "text": "site this was Uh um they they've",
+      "offset": 756.8,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "designed a lot of things that we like",
+      "offset": 760.48,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "like uh the payload CMS man Joe Tai's",
+      "offset": 762.16,
+      "duration": 6.32
+    },
+    {
+      "lang": "en",
+      "text": "website but just a lot of cool little",
+      "offset": 766.24,
+      "duration": 5.839
+    },
+    {
+      "lang": "en",
+      "text": "websites if you go through their kind of",
+      "offset": 768.48,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "general thing but also the website",
+      "offset": 772.079,
+      "duration": 3
+    },
+    {
+      "lang": "en",
+      "text": "itself",
+      "offset": 773.68,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "is just really pleasant Pleasant and",
+      "offset": 775.079,
+      "duration": 5.081
+    },
+    {
+      "lang": "en",
+      "text": "modern in a in a great way while not",
+      "offset": 778,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "looking like anything you've really seen",
+      "offset": 780.16,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "before So big fan of this website",
+      "offset": 782.16,
+      "duration": 8.32
+    },
+    {
+      "lang": "en",
+      "text": "Gradient scroll bar Is that Yes possible",
+      "offset": 784.88,
+      "duration": 7.519
+    },
+    {
+      "lang": "en",
+      "text": "is that even possible how do they Is",
+      "offset": 790.48,
+      "duration": 3.359
+    },
+    {
+      "lang": "en",
+      "text": "that How are they doing that i didn't",
+      "offset": 792.399,
+      "duration": 3.12
+    },
+    {
+      "lang": "en",
+      "text": "know you could put a gradient scroll bar",
+      "offset": 793.839,
+      "duration": 4.161
+    },
+    {
+      "lang": "en",
+      "text": "or have they reimplemented it they",
+      "offset": 795.519,
+      "duration": 4.241
+    },
+    {
+      "lang": "en",
+      "text": "they've possibly re-implemented the",
+      "offset": 798,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "scroll bar Um I don't know I haven't I",
+      "offset": 799.76,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "haven't examined that There's a lot of",
+      "offset": 802.32,
+      "duration": 3.199
+    },
+    {
+      "lang": "en",
+      "text": "interesting gradient stuff here on this",
+      "offset": 803.68,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "website Whether that's gradient text or",
+      "offset": 805.519,
+      "duration": 4.401
+    },
+    {
+      "lang": "en",
+      "text": "Oh yeah Scroll bar thumb background",
+      "offset": 807.6,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "image linear gradient Yeah you can put a",
+      "offset": 809.92,
+      "duration": 6.4
+    },
+    {
+      "lang": "en",
+      "text": "background image on a scroll bar thumb I",
+      "offset": 812.56,
+      "duration": 6.32
+    },
+    {
+      "lang": "en",
+      "text": "didn't know you could do that It looks",
+      "offset": 816.32,
+      "duration": 6.24
+    },
+    {
+      "lang": "en",
+      "text": "good Yep I've never seen that before",
+      "offset": 818.88,
+      "duration": 6.079
+    },
+    {
+      "lang": "en",
+      "text": "Well today today I learned what what",
+      "offset": 822.56,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "about what does it look like in Safari",
+      "offset": 824.959,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "hold on Oh the scroll scroll bar API",
+      "offset": 826.8,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "were different in every Oh it works in",
+      "offset": 830.399,
+      "duration": 5.841
+    },
+    {
+      "lang": "en",
+      "text": "Safari Let's try it on Firefox Firefox",
+      "offset": 832.56,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "is the",
+      "offset": 836.24,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "but everybody standardized to not work",
+      "offset": 838.32,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "No there was a standardization of the",
+      "offset": 840.72,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "scroll bar CSS API but from what I",
+      "offset": 842.8,
+      "duration": 5.92
+    },
+    {
+      "lang": "en",
+      "text": "remember it's it was relatively limited",
+      "offset": 845.76,
+      "duration": 5.84
+    },
+    {
+      "lang": "en",
+      "text": "Okay No gradient on my Firefox No no",
+      "offset": 848.72,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "gradient on Firefox It's It's still",
+      "offset": 851.6,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "using the older like colon WebKit scroll",
+      "offset": 853.6,
+      "duration": 6.88
+    },
+    {
+      "lang": "en",
+      "text": "bar WebKit Yeah big fan That looks cool",
+      "offset": 856.88,
+      "duration": 6.56
+    },
+    {
+      "lang": "en",
+      "text": "Yeah cool site Candy code Nice work",
+      "offset": 860.48,
+      "duration": 6.719
+    },
+    {
+      "lang": "en",
+      "text": "React router not shipped yet React",
+      "offset": 863.44,
+      "duration": 5.6
+    },
+    {
+      "lang": "en",
+      "text": "Router's been talking about React server",
+      "offset": 867.199,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "components for probably like well a",
+      "offset": 869.04,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "couple years now Um it was supposed to",
+      "offset": 872.079,
+      "duration": 6.081
+    },
+    {
+      "lang": "en",
+      "text": "be shipped with the like the remix to",
+      "offset": 874.32,
+      "duration": 6.879
+    },
+    {
+      "lang": "en",
+      "text": "React Writer 7 and then it never got its",
+      "offset": 878.16,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "way in There's been a pull request open",
+      "offset": 881.199,
+      "duration": 4.961
+    },
+    {
+      "lang": "en",
+      "text": "for a long time It's a very hard thing",
+      "offset": 883.04,
+      "duration": 7.359
+    },
+    {
+      "lang": "en",
+      "text": "to get right and I think that it's it's",
+      "offset": 886.16,
+      "duration": 5.919
+    },
+    {
+      "lang": "en",
+      "text": "very hard for these these library",
+      "offset": 890.399,
+      "duration": 5.041
+    },
+    {
+      "lang": "en",
+      "text": "authors to to try to figure out how to",
+      "offset": 892.079,
+      "duration": 5.601
+    },
+    {
+      "lang": "en",
+      "text": "bring it in Alongside that Michael",
+      "offset": 895.44,
+      "duration": 4.959
+    },
+    {
+      "lang": "en",
+      "text": "Jackson um who's one of the creators of",
+      "offset": 897.68,
+      "duration": 5.519
+    },
+    {
+      "lang": "en",
+      "text": "of React Router he put out a tweet that",
+      "offset": 900.399,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "says &quot;Ract server components are nice in",
+      "offset": 903.199,
+      "duration": 4.161
+    },
+    {
+      "lang": "en",
+      "text": "theory but five years in it's not",
+      "offset": 905.279,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "working out It's been fun React You",
+      "offset": 907.36,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "taught me a lot but I'm done.&quot; And he",
+      "offset": 909.279,
+      "duration": 5.521
+    },
+    {
+      "lang": "en",
+      "text": "says &quot;Have fun with your React Server",
+      "offset": 912.72,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "DOM ESM V client server bundles.&quot;",
+      "offset": 914.8,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "And I think that that's what it is is",
+      "offset": 917.92,
+      "duration": 5.279
+    },
+    {
+      "lang": "en",
+      "text": "that building a framework that supports",
+      "offset": 919.76,
+      "duration": 4.759
+    },
+    {
+      "lang": "en",
+      "text": "React server",
+      "offset": 923.199,
+      "duration": 4.961
+    },
+    {
+      "lang": "en",
+      "text": "components goes so deep into the bundler",
+      "offset": 924.519,
+      "duration": 6.12
+    },
+    {
+      "lang": "en",
+      "text": "realm Like I said wack's three or four",
+      "offset": 928.16,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "processes",
+      "offset": 930.639,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "It's just problems all the way down I",
+      "offset": 932.48,
+      "duration": 5.68
+    },
+    {
+      "lang": "en",
+      "text": "can't imagine all the headaches The",
+      "offset": 935.839,
+      "duration": 5.921
+    },
+    {
+      "lang": "en",
+      "text": "headaches myself using it have been been",
+      "offset": 938.16,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "high I can't imagine trying to build the",
+      "offset": 941.76,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "the framework that it does Even",
+      "offset": 943.68,
+      "duration": 5.279
+    },
+    {
+      "lang": "en",
+      "text": "something as simple as a singleton in",
+      "offset": 945.6,
+      "duration": 6.08
+    },
+    {
+      "lang": "en",
+      "text": "Nex.js is just like not possible because",
+      "offset": 948.959,
+      "duration": 6.32
+    },
+    {
+      "lang": "en",
+      "text": "there's several bundles and you cannot",
+      "offset": 951.68,
+      "duration": 5.839
+    },
+    {
+      "lang": "en",
+      "text": "share a singleton between the two Like",
+      "offset": 955.279,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "it's just it's not possible at all It's",
+      "offset": 957.519,
+      "duration": 5.041
+    },
+    {
+      "lang": "en",
+      "text": "it's really frustrating Even to be clear",
+      "offset": 960.079,
+      "duration": 3.841
+    },
+    {
+      "lang": "en",
+      "text": "people are asking are you done with",
+      "offset": 962.56,
+      "duration": 3.199
+    },
+    {
+      "lang": "en",
+      "text": "React or just React server components",
+      "offset": 963.92,
+      "duration": 4.279
+    },
+    {
+      "lang": "en",
+      "text": "and he says the whole thing onto greener",
+      "offset": 965.759,
+      "duration": 4.961
+    },
+    {
+      "lang": "en",
+      "text": "pastures So it seems like he's done with",
+      "offset": 968.199,
+      "duration": 4.521
+    },
+    {
+      "lang": "en",
+      "text": "React This has been like the straw that",
+      "offset": 970.72,
+      "duration": 5.359
+    },
+    {
+      "lang": "en",
+      "text": "broke the camel's back Yeah I I'm",
+      "offset": 972.72,
+      "duration": 5.359
+    },
+    {
+      "lang": "en",
+      "text": "curious I maybe we should have Manda to",
+      "offset": 976.079,
+      "duration": 3.281
+    },
+    {
+      "lang": "en",
+      "text": "talk about this because I've been",
+      "offset": 978.079,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "following his GitHub for about a year",
+      "offset": 979.36,
+      "duration": 4.44
+    },
+    {
+      "lang": "en",
+      "text": "now and he's been cranking",
+      "offset": 981.519,
+      "duration": 6.481
+    },
+    {
+      "lang": "en",
+      "text": "out all kinds of standardsbased modules",
+      "offset": 983.8,
+      "duration": 6.36
+    },
+    {
+      "lang": "en",
+      "text": "Um things that are based on ESM things",
+      "offset": 988,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "that are based on web standards things",
+      "offset": 990.16,
+      "duration": 4.76
+    },
+    {
+      "lang": "en",
+      "text": "that are based on uh",
+      "offset": 992.16,
+      "duration": 6.4
+    },
+    {
+      "lang": "en",
+      "text": "browser builtins and just like something",
+      "offset": 994.92,
+      "duration": 5.56
+    },
+    {
+      "lang": "en",
+      "text": "that I've been kind of I've been beating",
+      "offset": 998.56,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "this drum as well I did I did a couple",
+      "offset": 1000.48,
+      "duration": 4.84
+    },
+    {
+      "lang": "en",
+      "text": "conference talks about this is just like",
+      "offset": 1002.32,
+      "duration": 6.72
+    },
+    {
+      "lang": "en",
+      "text": "standardsbased JavaScript is is the",
+      "offset": 1005.32,
+      "duration": 6.68
+    },
+    {
+      "lang": "en",
+      "text": "future Um and a lot of this React server",
+      "offset": 1009.04,
+      "duration": 6.479
+    },
+    {
+      "lang": "en",
+      "text": "component stuff is not that it's very",
+      "offset": 1012,
+      "duration": 6.32
+    },
+    {
+      "lang": "en",
+      "text": "heavy on bundlers and I like I like",
+      "offset": 1015.519,
+      "duration": 4.721
+    },
+    {
+      "lang": "en",
+      "text": "React server components but it's not the",
+      "offset": 1018.32,
+      "duration": 4.879
+    },
+    {
+      "lang": "en",
+      "text": "like the standards that that we we know",
+      "offset": 1020.24,
+      "duration": 6.079
+    },
+    {
+      "lang": "en",
+      "text": "and love So I'd be curious to see he's",
+      "offset": 1023.199,
+      "duration": 5.201
+    },
+    {
+      "lang": "en",
+      "text": "cooking he's cooking on something though",
+      "offset": 1026.319,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "You can tell cuz like they they said",
+      "offset": 1028.4,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "that something will come of Remix and",
+      "offset": 1030.559,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "like they haven't announced what that is",
+      "offset": 1032.72,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "He's been cranking out all these tiny",
+      "offset": 1035.039,
+      "duration": 5.681
+    },
+    {
+      "lang": "en",
+      "text": "little modules which he's doing that for",
+      "offset": 1037.28,
+      "duration": 6.639
+    },
+    {
+      "lang": "en",
+      "text": "a reason He's he's definitely",
+      "offset": 1040.72,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "cooking on he's cooking I'm curious",
+      "offset": 1043.919,
+      "duration": 5.361
+    },
+    {
+      "lang": "en",
+      "text": "Wasn't there some new HTML or a new",
+      "offset": 1046,
+      "duration": 6.4
+    },
+    {
+      "lang": "en",
+      "text": "JavaScript API for like swapping DOM",
+      "offset": 1049.28,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "elements or something just somewhat",
+      "offset": 1052.4,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "recently what was that called i'm like",
+      "offset": 1054,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "trying to Google it and I cannot find",
+      "offset": 1056.72,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "the name of it Yeah it's it's move",
+      "offset": 1058.32,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "before Uh and this is a new JavaScript",
+      "offset": 1060.32,
+      "duration": 5.88
+    },
+    {
+      "lang": "en",
+      "text": "API which will allow you",
+      "offset": 1063.6,
+      "duration": 7.24
+    },
+    {
+      "lang": "en",
+      "text": "to move parts of your DOM somewhere else",
+      "offset": 1066.2,
+      "duration": 6.92
+    },
+    {
+      "lang": "en",
+      "text": "without normally what happens is if you",
+      "offset": 1070.84,
+      "duration": 3.719
+    },
+    {
+      "lang": "en",
+      "text": "move a DOM element you take it out of",
+      "offset": 1073.12,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "the DOM you lose all of your state you",
+      "offset": 1074.559,
+      "duration": 4.641
+    },
+    {
+      "lang": "en",
+      "text": "lose all of your bindings all of your",
+      "offset": 1077.52,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "event listeners everything and you put",
+      "offset": 1079.2,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "it back in and it has to ren rerender it",
+      "offset": 1081.12,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "and it's got to read your bindings and",
+      "offset": 1083.28,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "all of that and and this new move before",
+      "offset": 1085.12,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "API will allow you to simply just move",
+      "offset": 1087.6,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "things in the DOM without having to",
+      "offset": 1090.48,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "detach any of that So why why are you",
+      "offset": 1092.72,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "asking about that what are you what are",
+      "offset": 1096.48,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "you thinking oh just that like you know",
+      "offset": 1097.76,
+      "duration": 5.88
+    },
+    {
+      "lang": "en",
+      "text": "the ways that we work in in front-end",
+      "offset": 1101.28,
+      "duration": 5.279
+    },
+    {
+      "lang": "en",
+      "text": "frameworks they see they seem to be",
+      "offset": 1103.64,
+      "duration": 5.32
+    },
+    {
+      "lang": "en",
+      "text": "being aided a little bit more by newer",
+      "offset": 1106.559,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "JavaScript APIs and even newer CSS APIs",
+      "offset": 1108.96,
+      "duration": 6.599
+    },
+    {
+      "lang": "en",
+      "text": "like whether that is you know view",
+      "offset": 1112.559,
+      "duration": 5.761
+    },
+    {
+      "lang": "en",
+      "text": "transitions you know easier ways to to",
+      "offset": 1115.559,
+      "duration": 5.801
+    },
+    {
+      "lang": "en",
+      "text": "swap our elements that are more less",
+      "offset": 1118.32,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "needing of a shadowdom type of situation",
+      "offset": 1121.36,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "I don't really know It just feels like",
+      "offset": 1123.76,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "it feels like the the web platform",
+      "offset": 1126.64,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "itself is getting more friendly uh",
+      "offset": 1128.32,
+      "duration": 4.479
+    },
+    {
+      "lang": "en",
+      "text": "towards the types of things that we've",
+      "offset": 1130.96,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "been really leaning on things like the",
+      "offset": 1132.799,
+      "duration": 5.921
+    },
+    {
+      "lang": "en",
+      "text": "virtual DOM for And React itself is is",
+      "offset": 1134.4,
+      "duration": 5.6
+    },
+    {
+      "lang": "en",
+      "text": "working on something called React",
+      "offset": 1138.72,
+      "duration": 2.8
+    },
+    {
+      "lang": "en",
+      "text": "Activity It used to be called I think",
+      "offset": 1140,
+      "duration": 3.919
+    },
+    {
+      "lang": "en",
+      "text": "React Offscreen I haven't looked into it",
+      "offset": 1141.52,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "too much but I think the I think it's",
+      "offset": 1143.919,
+      "duration": 4.401
+    },
+    {
+      "lang": "en",
+      "text": "going to use that API And I think the",
+      "offset": 1146.32,
+      "duration": 5.719
+    },
+    {
+      "lang": "en",
+      "text": "idea with that is you",
+      "offset": 1148.32,
+      "duration": 9.04
+    },
+    {
+      "lang": "en",
+      "text": "can pre-render things Yeah Off screen",
+      "offset": 1152.039,
+      "duration": 7.88
+    },
+    {
+      "lang": "en",
+      "text": "and then when it comes time to having to",
+      "offset": 1157.36,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "show them you can swap them in lightning",
+      "offset": 1159.919,
+      "duration": 5.88
+    },
+    {
+      "lang": "en",
+      "text": "fast without having to do any of the",
+      "offset": 1163.12,
+      "duration": 5.439
+    },
+    {
+      "lang": "en",
+      "text": "reattaching that we we talked about",
+      "offset": 1165.799,
+      "duration": 6.201
+    },
+    {
+      "lang": "en",
+      "text": "Interesting stuff Yes Vit Can you use",
+      "offset": 1168.559,
+      "duration": 5.921
+    },
+    {
+      "lang": "en",
+      "text": "React server components with Vit uh kind",
+      "offset": 1172,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "of Uh that's Wacku has has figured it",
+      "offset": 1174.48,
+      "duration": 6.16
+    },
+    {
+      "lang": "en",
+      "text": "out or or Wu but Vit 6 has this new API",
+      "offset": 1176.96,
+      "duration": 6.32
+    },
+    {
+      "lang": "en",
+      "text": "called the environment API and the whole",
+      "offset": 1180.64,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "idea with the environment API is that",
+      "offset": 1183.28,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "you can run Vit in multiple environments",
+      "offset": 1185.12,
+      "duration": 6.799
+    },
+    {
+      "lang": "en",
+      "text": "Vit was simply a browserbased bundling",
+      "offset": 1188.4,
+      "duration": 6.639
+    },
+    {
+      "lang": "en",
+      "text": "tool and now with the environment API it",
+      "offset": 1191.919,
+      "duration": 5.601
+    },
+    {
+      "lang": "en",
+      "text": "can it can work in node it can work in",
+      "offset": 1195.039,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "on Cloudflare workers it can run in on",
+      "offset": 1197.52,
+      "duration": 7.039
+    },
+    {
+      "lang": "en",
+      "text": "the browser And that then opens up a lot",
+      "offset": 1199.919,
+      "duration": 7.281
+    },
+    {
+      "lang": "en",
+      "text": "more for framework authors because now",
+      "offset": 1204.559,
+      "duration": 5.601
+    },
+    {
+      "lang": "en",
+      "text": "you can control the whole stack of like",
+      "offset": 1207.2,
+      "duration": 6.08
+    },
+    {
+      "lang": "en",
+      "text": "both my server and my client all are",
+      "offset": 1210.16,
+      "duration": 5.92
+    },
+    {
+      "lang": "en",
+      "text": "running through Vit um instead of having",
+      "offset": 1213.28,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "to do some weird like bundling You know",
+      "offset": 1216.08,
+      "duration": 5.839
+    },
+    {
+      "lang": "en",
+      "text": "the running running that on the on node",
+      "offset": 1219.28,
+      "duration": 5.68
+    },
+    {
+      "lang": "en",
+      "text": "has always been tricky So Wu doesn't use",
+      "offset": 1221.919,
+      "duration": 5.521
+    },
+    {
+      "lang": "en",
+      "text": "that this just yet I'm assuming they",
+      "offset": 1224.96,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "will move over to that and then that",
+      "offset": 1227.44,
+      "duration": 3.2
+    },
+    {
+      "lang": "en",
+      "text": "will get rid of the three or four VIT",
+      "offset": 1228.88,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "processes There's a couple plugins a",
+      "offset": 1230.64,
+      "duration": 4.159
+    },
+    {
+      "lang": "en",
+      "text": "couple people have taken stabs at",
+      "offset": 1233.28,
+      "duration": 4.399
+    },
+    {
+      "lang": "en",
+      "text": "plugins for Vit um using React Server",
+      "offset": 1234.799,
+      "duration": 5.801
+    },
+    {
+      "lang": "en",
+      "text": "components but nothing that is like",
+      "offset": 1237.679,
+      "duration": 5.761
+    },
+    {
+      "lang": "en",
+      "text": "simply you know how how easy V is to get",
+      "offset": 1240.6,
+      "duration": 5.559
+    },
+    {
+      "lang": "en",
+      "text": "up and running I bet we will start to",
+      "offset": 1243.44,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "see that soon where there will be like a",
+      "offset": 1246.159,
+      "duration": 4.321
+    },
+    {
+      "lang": "en",
+      "text": "quick little starter that gives you a",
+      "offset": 1248.48,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "server and a client all running through",
+      "offset": 1250.48,
+      "duration": 5.679
+    },
+    {
+      "lang": "en",
+      "text": "Vit Yeah let's hope so Um Tanstack a lot",
+      "offset": 1252.64,
+      "duration": 5.6
+    },
+    {
+      "lang": "en",
+      "text": "of people use Tanstack query You can use",
+      "offset": 1256.159,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "React server components via NextJS with",
+      "offset": 1258.24,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "Tanstack query Currently uh there is",
+      "offset": 1261.039,
+      "duration": 4.481
+    },
+    {
+      "lang": "en",
+      "text": "something called Tanstack start which is",
+      "offset": 1263.6,
+      "duration": 4.52
+    },
+    {
+      "lang": "en",
+      "text": "their whole platform Um Tanstack start",
+      "offset": 1265.52,
+      "duration": 6.56
+    },
+    {
+      "lang": "en",
+      "text": "itself does not uh support React server",
+      "offset": 1268.12,
+      "duration": 7.32
+    },
+    {
+      "lang": "en",
+      "text": "components just yet Uh it does do SSR I",
+      "offset": 1272.08,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "know we talked to Tanner and there's an",
+      "offset": 1275.44,
+      "duration": 2.88
+    },
+    {
+      "lang": "en",
+      "text": "emphasis on like client side stuff",
+      "offset": 1276.88,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "within tan stack start but you can do",
+      "offset": 1278.32,
+      "duration": 4.719
+    },
+    {
+      "lang": "en",
+      "text": "SSR with it Start does have React server",
+      "offset": 1280.24,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "components planned Um but like you said",
+      "offset": 1283.039,
+      "duration": 4.801
+    },
+    {
+      "lang": "en",
+      "text": "it's been it's also like React Router",
+      "offset": 1286,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "been delayed many times I personally",
+      "offset": 1287.84,
+      "duration": 3.12
+    },
+    {
+      "lang": "en",
+      "text": "don't know the status of where it's at",
+      "offset": 1289.36,
+      "duration": 3.199
+    },
+    {
+      "lang": "en",
+      "text": "right now Jumped into the Discord a",
+      "offset": 1290.96,
+      "duration": 4.12
+    },
+    {
+      "lang": "en",
+      "text": "couple weeks ago when I was like",
+      "offset": 1292.559,
+      "duration": 5.841
+    },
+    {
+      "lang": "en",
+      "text": "rethinking Nex.js and I was like hm what",
+      "offset": 1295.08,
+      "duration": 4.92
+    },
+    {
+      "lang": "en",
+      "text": "should I I was like maybe start and I",
+      "offset": 1298.4,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "was like hey like where you where you at",
+      "offset": 1300,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "with this type of thing and it seems",
+      "offset": 1302,
+      "duration": 3.919
+    },
+    {
+      "lang": "en",
+      "text": "like they're more focusing on getting",
+      "offset": 1303.44,
+      "duration": 6.32
+    },
+    {
+      "lang": "en",
+      "text": "like a solid start um not solid start",
+      "offset": 1305.919,
+      "duration": 7.281
+    },
+    {
+      "lang": "en",
+      "text": "but uh like getting everything with tan",
+      "offset": 1309.76,
+      "duration": 5.039
+    },
+    {
+      "lang": "en",
+      "text": "stack start just to kind of like figured",
+      "offset": 1313.2,
+      "duration": 3.839
+    },
+    {
+      "lang": "en",
+      "text": "out and finished and out the door",
+      "offset": 1314.799,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "because then adding server components to",
+      "offset": 1317.039,
+      "duration": 5.201
+    },
+    {
+      "lang": "en",
+      "text": "that is is just another thing So I think",
+      "offset": 1319.679,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "they want to get everything else",
+      "offset": 1322.24,
+      "duration": 3.439
+    },
+    {
+      "lang": "en",
+      "text": "stabilized first and then they will move",
+      "offset": 1323.679,
+      "duration": 4.321
+    },
+    {
+      "lang": "en",
+      "text": "on to it But they are planning on it and",
+      "offset": 1325.679,
+      "duration": 4.081
+    },
+    {
+      "lang": "en",
+      "text": "and Tanner's a big fan of server",
+      "offset": 1328,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "components he said so eventually Uh but",
+      "offset": 1329.76,
+      "duration": 4.799
+    },
+    {
+      "lang": "en",
+      "text": "it is it is kind of interesting that",
+      "offset": 1332.88,
+      "duration": 4.159
+    },
+    {
+      "lang": "en",
+      "text": "like yeah we're a couple years in and",
+      "offset": 1334.559,
+      "duration": 5.201
+    },
+    {
+      "lang": "en",
+      "text": "really only Wu and Nex.js are like the",
+      "offset": 1337.039,
+      "duration": 6.241
+    },
+    {
+      "lang": "en",
+      "text": "two usable like solid ways and like and",
+      "offset": 1339.76,
+      "duration": 6.399
+    },
+    {
+      "lang": "en",
+      "text": "even Wu is I I maybe would say don't",
+      "offset": 1343.28,
+      "duration": 5.279
+    },
+    {
+      "lang": "en",
+      "text": "don't build a huge application personal",
+      "offset": 1346.159,
+      "duration": 5.121
+    },
+    {
+      "lang": "en",
+      "text": "website uh which is relatively large but",
+      "offset": 1348.559,
+      "duration": 4.961
+    },
+    {
+      "lang": "en",
+      "text": "I don't mind fussing with with it but",
+      "offset": 1351.28,
+      "duration": 4.399
+    },
+    {
+      "lang": "en",
+      "text": "it's still it's moving quick and things",
+      "offset": 1353.52,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "are breaking right it's pre 1.0 know",
+      "offset": 1355.679,
+      "duration": 6.161
+    },
+    {
+      "lang": "en",
+      "text": "Yeah Word Uh bun Nothing really there on",
+      "offset": 1358.32,
+      "duration": 6.28
+    },
+    {
+      "lang": "en",
+      "text": "bun just yet but Bun is big",
+      "offset": 1361.84,
+      "duration": 7.04
+    },
+    {
+      "lang": "en",
+      "text": "on on like running JSX on the server Um",
+      "offset": 1364.6,
+      "duration": 6.36
+    },
+    {
+      "lang": "en",
+      "text": "and they have quite a few demos of kind",
+      "offset": 1368.88,
+      "duration": 6.64
+    },
+    {
+      "lang": "en",
+      "text": "of similar ideas So we I wonder if we'll",
+      "offset": 1370.96,
+      "duration": 6.959
+    },
+    {
+      "lang": "en",
+      "text": "we'll see something like that or we'll",
+      "offset": 1375.52,
+      "duration": 4.399
+    },
+    {
+      "lang": "en",
+      "text": "see something similar to React server",
+      "offset": 1377.919,
+      "duration": 4.321
+    },
+    {
+      "lang": "en",
+      "text": "components come out of bun Um and then",
+      "offset": 1379.919,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "and DIY you you can try to do it",
+      "offset": 1382.24,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "yourself I I got it running with like",
+      "offset": 1384.799,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "Express at one point Highly not",
+      "offset": 1387.2,
+      "duration": 6.4
+    },
+    {
+      "lang": "en",
+      "text": "recommended It's It's bundler problems",
+      "offset": 1390.159,
+      "duration": 6.4
+    },
+    {
+      "lang": "en",
+      "text": "all the way down So I uh Good luck with",
+      "offset": 1393.6,
+      "duration": 5.16
+    },
+    {
+      "lang": "en",
+      "text": "that Yeah Yeah Yeah",
+      "offset": 1396.559,
+      "duration": 4.961
+    },
+    {
+      "lang": "en",
+      "text": "It's a little bit of exhaustion on on",
+      "offset": 1398.76,
+      "duration": 4.76
+    },
+    {
+      "lang": "en",
+      "text": "some people's I think with with all of",
+      "offset": 1401.52,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "the different bundling and everything",
+      "offset": 1403.52,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "and a lot of people want to get back to",
+      "offset": 1405.12,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "just standards I'm somewhere in between",
+      "offset": 1408.48,
+      "duration": 4.559
+    },
+    {
+      "lang": "en",
+      "text": "where I I just want everything to work",
+      "offset": 1410.88,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "together But then when it is too tight",
+      "offset": 1413.039,
+      "duration": 6.241
+    },
+    {
+      "lang": "en",
+      "text": "sometimes you hit these these issues you",
+      "offset": 1416.24,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "know and and and that's maybe my my next",
+      "offset": 1419.28,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "thing is like why the hate why do some",
+      "offset": 1421.6,
+      "duration": 4.319
+    },
+    {
+      "lang": "en",
+      "text": "people not like uh React server",
+      "offset": 1423.52,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "components bundling complexity probably",
+      "offset": 1425.919,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "uh a a big one Limitations",
+      "offset": 1428.64,
+      "duration": 6.96
+    },
+    {
+      "lang": "en",
+      "text": "Um there's no like explicit methods you",
+      "offset": 1431.919,
+      "duration": 5.841
+    },
+    {
+      "lang": "en",
+      "text": "know get postput",
+      "offset": 1435.6,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "uh middleware all these things like",
+      "offset": 1437.76,
+      "duration": 4.159
+    },
+    {
+      "lang": "en",
+      "text": "these things are very simple with like a",
+      "offset": 1440,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "tan stack start where they're just not",
+      "offset": 1441.919,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "possible um and if you build things in",
+      "offset": 1445.36,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "the react server component way you're",
+      "offset": 1447.679,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "probably fine but a lot of people have",
+      "offset": 1450.4,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "existing code a lot of people want to do",
+      "offset": 1452.799,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "things in the way that they understand",
+      "offset": 1455.44,
+      "duration": 3.839
+    },
+    {
+      "lang": "en",
+      "text": "them and if you just don't have those",
+      "offset": 1457.279,
+      "duration": 5.361
+    },
+    {
+      "lang": "en",
+      "text": "knobs to turn or uh in the React server",
+      "offset": 1459.279,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "component world Yeah I mean and in that",
+      "offset": 1462.64,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "case I mean it's still pretty much just",
+      "offset": 1464.799,
+      "duration": 5.441
+    },
+    {
+      "lang": "en",
+      "text": "Nex.js is the doing it the the way you",
+      "offset": 1467.12,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "know and like Nex.js has like a whole",
+      "offset": 1470.24,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "bunch of like weird limitations around",
+      "offset": 1472.32,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "redirects and cookies and what you're",
+      "offset": 1475.76,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "allowed to do here and there And a lot",
+      "offset": 1477.36,
+      "duration": 7.36
+    },
+    {
+      "lang": "en",
+      "text": "of those as I moved from Next to Wu I",
+      "offset": 1479.6,
+      "duration": 7.84
+    },
+    {
+      "lang": "en",
+      "text": "realized that a lot of those limitations",
+      "offset": 1484.72,
+      "duration": 6.16
+    },
+    {
+      "lang": "en",
+      "text": "are not Next's fault They are simply",
+      "offset": 1487.44,
+      "duration": 6.4
+    },
+    {
+      "lang": "en",
+      "text": "just because of limitations in streaming",
+      "offset": 1490.88,
+      "duration": 6.24
+    },
+    {
+      "lang": "en",
+      "text": "Oh streaming And you you simply cannot",
+      "offset": 1493.84,
+      "duration": 5.839
+    },
+    {
+      "lang": "en",
+      "text": "do things like set a cookie when you",
+      "offset": 1497.12,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "have already started streaming Mhm A lot",
+      "offset": 1499.679,
+      "duration": 5.521
+    },
+    {
+      "lang": "en",
+      "text": "of that hate gets put on Nex.js also",
+      "offset": 1502.4,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "just because a lot of people weirdly",
+      "offset": 1505.2,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "hate React and and Next in general but",
+      "offset": 1506.64,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "there's that and then there's also just",
+      "offset": 1510.08,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "like Nex.js is very opinionated about",
+      "offset": 1511.6,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "about the way that they they do things",
+      "offset": 1513.84,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "right and that's fine You can use",
+      "offset": 1515.52,
+      "duration": 4.159
+    },
+    {
+      "lang": "en",
+      "text": "whatever it is that you want A lot of",
+      "offset": 1518.24,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "people much prefer that because there's",
+      "offset": 1519.679,
+      "duration": 5.281
+    },
+    {
+      "lang": "en",
+      "text": "not as many foot guns of doing doing",
+      "offset": 1522.32,
+      "duration": 6.64
+    },
+    {
+      "lang": "en",
+      "text": "potentially uh expensive things Yeah I",
+      "offset": 1524.96,
+      "duration": 5.599
+    },
+    {
+      "lang": "en",
+      "text": "think another reason that people hate",
+      "offset": 1528.96,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "this is because there's just like a lack",
+      "offset": 1530.559,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "of parody amongst React frameworks as",
+      "offset": 1532.32,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "we've talked about here You aren't",
+      "offset": 1534.799,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "getting this the same React in all of",
+      "offset": 1536.48,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "the frameworks And so React server",
+      "offset": 1539.279,
+      "duration": 5.361
+    },
+    {
+      "lang": "en",
+      "text": "components a React core feature is only",
+      "offset": 1541.52,
+      "duration": 7.12
+    },
+    {
+      "lang": "en",
+      "text": "available in Nex.js JS and Wahoo and you",
+      "offset": 1544.64,
+      "duration": 6.96
+    },
+    {
+      "lang": "en",
+      "text": "know these these kind of fragmented ways",
+      "offset": 1548.64,
+      "duration": 5.279
+    },
+    {
+      "lang": "en",
+      "text": "So because of that it is like fracturing",
+      "offset": 1551.6,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "the React landscape completely There's",
+      "offset": 1553.919,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "no parity You're not using React as a",
+      "offset": 1556.24,
+      "duration": 5.039
+    },
+    {
+      "lang": "en",
+      "text": "platform You're using uh parts of React",
+      "offset": 1558.799,
+      "duration": 4.721
+    },
+    {
+      "lang": "en",
+      "text": "at any given any given point And I think",
+      "offset": 1561.279,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "for me the the features that exist",
+      "offset": 1563.52,
+      "duration": 5.6
+    },
+    {
+      "lang": "en",
+      "text": "within RSC are all things that I would",
+      "offset": 1566.159,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "have said yes give me that Give me that",
+      "offset": 1569.12,
+      "duration": 4.159
+    },
+    {
+      "lang": "en",
+      "text": "Give me that And now I'm like oh but not",
+      "offset": 1571.679,
+      "duration": 4.401
+    },
+    {
+      "lang": "en",
+      "text": "like this Uh you know not like this I I",
+      "offset": 1573.279,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "wanted these features but uh my way Yeah",
+      "offset": 1576.08,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "Yeah The hilarious thing about that is",
+      "offset": 1579.279,
+      "duration": 5.241
+    },
+    {
+      "lang": "en",
+      "text": "that React server components",
+      "offset": 1581.2,
+      "duration": 6.32
+    },
+    {
+      "lang": "en",
+      "text": "if the whole point of it is that there's",
+      "offset": 1584.52,
+      "duration": 5.72
+    },
+    {
+      "lang": "en",
+      "text": "not going to be a a way to do it in",
+      "offset": 1587.52,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "every single framework and like I was",
+      "offset": 1590.24,
+      "duration": 6.559
+    },
+    {
+      "lang": "en",
+      "text": "able to move over 98% of my Nex.js code",
+      "offset": 1592.4,
+      "duration": 8.879
+    },
+    {
+      "lang": "en",
+      "text": "to Wacku because it is a standard But",
+      "offset": 1596.799,
+      "duration": 7.601
+    },
+    {
+      "lang": "en",
+      "text": "the frustration like you said is that",
+      "offset": 1601.279,
+      "duration": 4.961
+    },
+    {
+      "lang": "en",
+      "text": "all the a lot of these routers and",
+      "offset": 1604.4,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "frameworks have not yet implemented them",
+      "offset": 1606.24,
+      "duration": 5.679
+    },
+    {
+      "lang": "en",
+      "text": "So in an ideal world we would all get",
+      "offset": 1608.72,
+      "duration": 6.16
+    },
+    {
+      "lang": "en",
+      "text": "along and and we would all have a single",
+      "offset": 1611.919,
+      "duration": 6.24
+    },
+    {
+      "lang": "en",
+      "text": "way to to do things like data fetching",
+      "offset": 1614.88,
+      "duration": 6.399
+    },
+    {
+      "lang": "en",
+      "text": "is now and and like loading those are",
+      "offset": 1618.159,
+      "duration": 6.241
+    },
+    {
+      "lang": "en",
+      "text": "now in React Core How do you how do you",
+      "offset": 1621.279,
+      "duration": 5.201
+    },
+    {
+      "lang": "en",
+      "text": "fetch data how do you inject data into a",
+      "offset": 1624.4,
+      "duration": 3.759
+    },
+    {
+      "lang": "en",
+      "text": "component how do you how do you do",
+      "offset": 1626.48,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "caching a lot of this stuff is built",
+      "offset": 1628.159,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "into React Core but it's not yet been",
+      "offset": 1629.84,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "implemented in all of the frameworks So",
+      "offset": 1633.039,
+      "duration": 4.161
+    },
+    {
+      "lang": "en",
+      "text": "there's a lot of that that frustration",
+      "offset": 1634.96,
+      "duration": 4.92
+    },
+    {
+      "lang": "en",
+      "text": "out there You should be able to just npm",
+      "offset": 1637.2,
+      "duration": 5.839
+    },
+    {
+      "lang": "en",
+      "text": "install some random component and that",
+      "offset": 1639.88,
+      "duration": 5.159
+    },
+    {
+      "lang": "en",
+      "text": "component will bring your client side",
+      "offset": 1643.039,
+      "duration": 4.721
+    },
+    {
+      "lang": "en",
+      "text": "your server side your data fetching it",
+      "offset": 1645.039,
+      "duration": 4.081
+    },
+    {
+      "lang": "en",
+      "text": "brings it should it should bring them",
+      "offset": 1647.76,
+      "duration": 2.96
+    },
+    {
+      "lang": "en",
+      "text": "all and and you don't have to worry",
+      "offset": 1649.12,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "about integrating into it But",
+      "offset": 1650.72,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "we're not there just quite yet It's been",
+      "offset": 1653.44,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "several years just I don't I don't know",
+      "offset": 1656.24,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "that we will ever get there I hope we do",
+      "offset": 1657.76,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "It's been too long is really what the",
+      "offset": 1659.76,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "answer is It's been too long Yeah Um",
+      "offset": 1661.52,
+      "duration": 5.84
+    },
+    {
+      "lang": "en",
+      "text": "bummer Yes Last thing I want to say is",
+      "offset": 1664.72,
+      "duration": 5.92
+    },
+    {
+      "lang": "en",
+      "text": "is is React server components lock in um",
+      "offset": 1667.36,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "because you see I see this a lot on the",
+      "offset": 1670.64,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "Nex.js and React Reddit Yeah I don't",
+      "offset": 1672.72,
+      "duration": 7.92
+    },
+    {
+      "lang": "en",
+      "text": "think so because most of my logic code",
+      "offset": 1675.52,
+      "duration": 8.56
+    },
+    {
+      "lang": "en",
+      "text": "moved from Gatsby and moved to Nex.js s",
+      "offset": 1680.64,
+      "duration": 6.44
+    },
+    {
+      "lang": "en",
+      "text": "and moved to Wacku because I try to keep",
+      "offset": 1684.08,
+      "duration": 5.92
+    },
+    {
+      "lang": "en",
+      "text": "everything as standard on server and",
+      "offset": 1687.08,
+      "duration": 5.56
+    },
+    {
+      "lang": "en",
+      "text": "even things like the the form actions",
+      "offset": 1690,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "API in React is built on thankfully a",
+      "offset": 1692.64,
+      "duration": 5.32
+    },
+    {
+      "lang": "en",
+      "text": "standard and that's the the form data",
+      "offset": 1695.52,
+      "duration": 7.8
+    },
+    {
+      "lang": "en",
+      "text": "API So there is a little bit of like",
+      "offset": 1697.96,
+      "duration": 7.959
+    },
+    {
+      "lang": "en",
+      "text": "weird code that needs to be written in",
+      "offset": 1703.32,
+      "duration": 4.599
+    },
+    {
+      "lang": "en",
+      "text": "some cases if you're moving some",
+      "offset": 1705.919,
+      "duration": 4.081
+    },
+    {
+      "lang": "en",
+      "text": "JavaScript from one to another but it's",
+      "offset": 1707.919,
+      "duration": 3.521
+    },
+    {
+      "lang": "en",
+      "text": "no different than if you're moving",
+      "offset": 1710,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "express code to to something standard as",
+      "offset": 1711.44,
+      "duration": 4.479
+    },
+    {
+      "lang": "en",
+      "text": "well So I don't feel like it's a huge",
+      "offset": 1714,
+      "duration": 3.919
+    },
+    {
+      "lang": "en",
+      "text": "lock in I feel like I could get out of",
+      "offset": 1715.919,
+      "duration": 5.561
+    },
+    {
+      "lang": "en",
+      "text": "this React server components in",
+      "offset": 1717.919,
+      "duration": 6.081
+    },
+    {
+      "lang": "en",
+      "text": "relatively quickly I don't think I could",
+      "offset": 1721.48,
+      "duration": 4.52
+    },
+    {
+      "lang": "en",
+      "text": "get out of JSX very quickly And people",
+      "offset": 1724,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "are going to be asking like &quot;What about",
+      "offset": 1726,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "why didn't you choose X Y and Z why",
+      "offset": 1727.76,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "don't you use felt?&quot; I had no interest",
+      "offset": 1729.84,
+      "duration": 6.16
+    },
+    {
+      "lang": "en",
+      "text": "in rewriting all of my JSX into some",
+      "offset": 1732.24,
+      "duration": 6.319
+    },
+    {
+      "lang": "en",
+      "text": "other random templating language I just",
+      "offset": 1736,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "wanted to move it over one:1 pass the",
+      "offset": 1738.559,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "data in that it needed and those",
+      "offset": 1741.12,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "components stayed untouched Gord Yeah",
+      "offset": 1742.799,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "Well I think that's a good update for",
+      "offset": 1746,
+      "duration": 3.2
+    },
+    {
+      "lang": "en",
+      "text": "people who are wondering what the status",
+      "offset": 1747.679,
+      "duration": 3.441
+    },
+    {
+      "lang": "en",
+      "text": "of this stuff is It's really easy like",
+      "offset": 1749.2,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "to get into a time machine here and now",
+      "offset": 1751.12,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "it's x amount of days from you know when",
+      "offset": 1753.36,
+      "duration": 3.919
+    },
+    {
+      "lang": "en",
+      "text": "they were first announced and just",
+      "offset": 1756.08,
+      "duration": 3.12
+    },
+    {
+      "lang": "en",
+      "text": "wonder hey what is going on with that uh",
+      "offset": 1757.279,
+      "duration": 3.681
+    },
+    {
+      "lang": "en",
+      "text": "I'm not using it or I'm not using next",
+      "offset": 1759.2,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "What what's the deal with that so here's",
+      "offset": 1760.96,
+      "duration": 4.319
+    },
+    {
+      "lang": "en",
+      "text": "the status That's where we're at today",
+      "offset": 1762.96,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "And I got to say hopefully this list",
+      "offset": 1765.279,
+      "duration": 4.801
+    },
+    {
+      "lang": "en",
+      "text": "changes a little bit in 6 months or else",
+      "offset": 1767.76,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "I think you know I don't know like you",
+      "offset": 1770.08,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "could call React server components a",
+      "offset": 1773.12,
+      "duration": 4.799
+    },
+    {
+      "lang": "en",
+      "text": "failure at some point Um yeah I think if",
+      "offset": 1775.2,
+      "duration": 4.76
+    },
+    {
+      "lang": "en",
+      "text": "it's not picked up",
+      "offset": 1777.919,
+      "duration": 4.801
+    },
+    {
+      "lang": "en",
+      "text": "by Rick Ryder and Tanstack or if it's",
+      "offset": 1779.96,
+      "duration": 4.199
+    },
+    {
+      "lang": "en",
+      "text": "like if it doesn't have any more",
+      "offset": 1782.72,
+      "duration": 4.319
+    },
+    {
+      "lang": "en",
+      "text": "momentum in six months a year from now I",
+      "offset": 1784.159,
+      "duration": 4.681
+    },
+    {
+      "lang": "en",
+      "text": "think people will",
+      "offset": 1787.039,
+      "duration": 4.401
+    },
+    {
+      "lang": "en",
+      "text": "either I don't know maybe maybe move to",
+      "offset": 1788.84,
+      "duration": 3.88
+    },
+    {
+      "lang": "en",
+      "text": "something else or already we're already",
+      "offset": 1791.44,
+      "duration": 2.959
+    },
+    {
+      "lang": "en",
+      "text": "starting to see that as well because",
+      "offset": 1792.72,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "like it's not like React can like oh",
+      "offset": 1794.399,
+      "duration": 4.321
+    },
+    {
+      "lang": "en",
+      "text": "never mind you know like they they kind",
+      "offset": 1796.88,
+      "duration": 4.159
+    },
+    {
+      "lang": "en",
+      "text": "of kind of bet the farm on this type of",
+      "offset": 1798.72,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "thing So I I still feel feel good about",
+      "offset": 1801.039,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "it but that's just me out of one",
+      "offset": 1803.84,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "community and I certainly would have not",
+      "offset": 1806.559,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "have expected the it would take this",
+      "offset": 1808.32,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "long to implement and we're still here 5",
+      "offset": 1811.279,
+      "duration": 4.561
+    },
+    {
+      "lang": "en",
+      "text": "years in Yeah I'm going to disagree and",
+      "offset": 1813.76,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "say I don't feel good about it Not",
+      "offset": 1815.84,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "because I don't believe in the API but I",
+      "offset": 1817.36,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "just think five years and to have this",
+      "offset": 1820,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "be the result is not good Uh that's why",
+      "offset": 1822.64,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "I would say that Yeah",
+      "offset": 1825.52,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "All right Thanks everybody so much for",
+      "offset": 1828.08,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "tuning in We will catch you on Wednesday",
+      "offset": 1829.84,
+      "duration": 6.52
+    },
+    {
+      "lang": "en",
+      "text": "Peace",
+      "offset": 1833.36,
+      "duration": 3
+    }
+  ],
+  "cleanText": null,
+  "dumpedAt": "2025-07-21T18:43:25.826Z"
+}

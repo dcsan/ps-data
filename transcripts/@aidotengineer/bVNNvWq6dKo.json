@@ -1,0 +1,3640 @@
+{
+  "episodeId": "bVNNvWq6dKo",
+  "channelSlug": "@aidotengineer",
+  "title": "How Windsurf writes 90% of your code with an Agentic IDE - Kevin Hou, head of product eng",
+  "publishedAt": "2025-03-11T19:17:46.000Z",
+  "rawLines": [
+    {
+      "lang": "en",
+      "text": "[Music]",
+      "offset": 0.49,
+      "duration": 19.67
+    },
+    {
+      "lang": "en",
+      "text": "all right how we doing New",
+      "offset": 17.279,
+      "duration": 2.881
+    },
+    {
+      "lang": "en",
+      "text": "York so my name is Kevin this is our",
+      "offset": 20.96,
+      "duration": 5.6
+    },
+    {
+      "lang": "en",
+      "text": "first ever wind surf presentation so you",
+      "offset": 24.519,
+      "duration": 3.16
+    },
+    {
+      "lang": "en",
+      "text": "could say it's the first time we're kind",
+      "offset": 26.56,
+      "duration": 2.959
+    },
+    {
+      "lang": "en",
+      "text": "of spilling the beans on uh what the",
+      "offset": 27.679,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "idea is all about so thank you all for",
+      "offset": 29.519,
+      "duration": 4.161
+    },
+    {
+      "lang": "en",
+      "text": "coming I'm going to be talking about",
+      "offset": 31.199,
+      "duration": 6.321
+    },
+    {
+      "lang": "en",
+      "text": "wind surf the first AI agent powered",
+      "offset": 33.68,
+      "duration": 6.48
+    },
+    {
+      "lang": "en",
+      "text": "editor so my name is Kevin how I lead",
+      "offset": 37.52,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "our product engineering team we're a",
+      "offset": 40.16,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "team based out of uh San",
+      "offset": 41.76,
+      "duration": 4.92
+    },
+    {
+      "lang": "en",
+      "text": "Francisco and thank you so much to swix",
+      "offset": 43.68,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "and Ben and the whole AI engineering",
+      "offset": 46.68,
+      "duration": 4.039
+    },
+    {
+      "lang": "en",
+      "text": "Summit team for inviting us here and",
+      "offset": 48.16,
+      "duration": 4.079
+    },
+    {
+      "lang": "en",
+      "text": "letting us speak to you all um it's been",
+      "offset": 50.719,
+      "duration": 3.241
+    },
+    {
+      "lang": "en",
+      "text": "a pleasure talking to people in the",
+      "offset": 52.239,
+      "duration": 3.601
+    },
+    {
+      "lang": "en",
+      "text": "audience uh at the booth and just",
+      "offset": 53.96,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "generally talking about AI uh so let's",
+      "offset": 55.84,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "dive into it wind surf is an agentic",
+      "offset": 57.96,
+      "duration": 4.279
+    },
+    {
+      "lang": "en",
+      "text": "editor and we're going to talk a little",
+      "offset": 60.64,
+      "duration": 3.12
+    },
+    {
+      "lang": "en",
+      "text": "bit about some of the principles that we",
+      "offset": 62.239,
+      "duration": 5.001
+    },
+    {
+      "lang": "en",
+      "text": "use when we're building a product like",
+      "offset": 63.76,
+      "duration": 6.32
+    },
+    {
+      "lang": "en",
+      "text": "this so we believe that agents are the",
+      "offset": 67.24,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "future of software development and you",
+      "offset": 70.08,
+      "duration": 3.359
+    },
+    {
+      "lang": "en",
+      "text": "all are here so you kind of understand",
+      "offset": 72.04,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "the power of what agents can do both for",
+      "offset": 73.439,
+      "duration": 4.441
+    },
+    {
+      "lang": "en",
+      "text": "software engineering and otherwise um",
+      "offset": 75.72,
+      "duration": 3.439
+    },
+    {
+      "lang": "en",
+      "text": "but to start I'm going to take you down",
+      "offset": 77.88,
+      "duration": 3.04
+    },
+    {
+      "lang": "en",
+      "text": "a trip down memory lane right let's go",
+      "offset": 79.159,
+      "duration": 4.801
+    },
+    {
+      "lang": "en",
+      "text": "back to 2022 co-pilot was the",
+      "offset": 80.92,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "state-of-the-art it just came out of",
+      "offset": 83.96,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "beta people were experiencing the ghost",
+      "offset": 85.32,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "text they were seeing their completions",
+      "offset": 87.32,
+      "duration": 3
+    },
+    {
+      "lang": "en",
+      "text": "and it was one of the first first times",
+      "offset": 89.24,
+      "duration": 2.68
+    },
+    {
+      "lang": "en",
+      "text": "that people really got to see the magic",
+      "offset": 90.32,
+      "duration": 3.839
+    },
+    {
+      "lang": "en",
+      "text": "of what AI could do for developers was",
+      "offset": 91.92,
+      "duration": 4.36
+    },
+    {
+      "lang": "en",
+      "text": "making them more productive and we",
+      "offset": 94.159,
+      "duration": 4.401
+    },
+    {
+      "lang": "en",
+      "text": "codium um decided we were going to be",
+      "offset": 96.28,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "one of the first companies to also",
+      "offset": 98.56,
+      "duration": 3
+    },
+    {
+      "lang": "en",
+      "text": "launch an autocomplete product so we",
+      "offset": 99.72,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "garnered a couple million users on our",
+      "offset": 101.56,
+      "duration": 4.839
+    },
+    {
+      "lang": "en",
+      "text": "vs code jet brains Vim emac extensions",
+      "offset": 103.24,
+      "duration": 4.68
+    },
+    {
+      "lang": "en",
+      "text": "um raise your hand if you were one of",
+      "offset": 106.399,
+      "duration": 6.32
+    },
+    {
+      "lang": "en",
+      "text": "those codium users nice nice um but we",
+      "offset": 107.92,
+      "duration": 6.479
+    },
+    {
+      "lang": "en",
+      "text": "always knew that intelligence was going",
+      "offset": 112.719,
+      "duration": 4.601
+    },
+    {
+      "lang": "en",
+      "text": "to get better right back then we were",
+      "offset": 114.399,
+      "duration": 4.441
+    },
+    {
+      "lang": "en",
+      "text": "doing short completions maybe finishing",
+      "offset": 117.32,
+      "duration": 3.119
+    },
+    {
+      "lang": "en",
+      "text": "your functions but we knew that there",
+      "offset": 118.84,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "were going to be better models larger",
+      "offset": 120.439,
+      "duration": 4.241
+    },
+    {
+      "lang": "en",
+      "text": "models better training paradigms",
+      "offset": 122.36,
+      "duration": 5.039
+    },
+    {
+      "lang": "en",
+      "text": "completely new you know RL new tool use",
+      "offset": 124.68,
+      "duration": 4.84
+    },
+    {
+      "lang": "en",
+      "text": "all this stuff and so we knew that we",
+      "offset": 127.399,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "wanted to build the best experience for",
+      "offset": 129.52,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "devs possible so even back then we",
+      "offset": 131.319,
+      "duration": 3.521
+    },
+    {
+      "lang": "en",
+      "text": "started looking at agents we started",
+      "offset": 133.44,
+      "duration": 2.64
+    },
+    {
+      "lang": "en",
+      "text": "thinking about what could the future of",
+      "offset": 134.84,
+      "duration": 3.16
+    },
+    {
+      "lang": "en",
+      "text": "software development be if models just",
+      "offset": 136.08,
+      "duration": 2.84
+    },
+    {
+      "lang": "en",
+      "text": "got",
+      "offset": 138,
+      "duration": 3
+    },
+    {
+      "lang": "en",
+      "text": "bigger and so we built the best",
+      "offset": 138.92,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "experience that we could at the time and",
+      "offset": 141,
+      "duration": 4.68
+    },
+    {
+      "lang": "en",
+      "text": "that was a chat autocomplete product but",
+      "offset": 142.92,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "we always knew that copy pasting from",
+      "offset": 145.68,
+      "duration": 3.32
+    },
+    {
+      "lang": "en",
+      "text": "chat GPT was going to be a thing of the",
+      "offset": 147.48,
+      "duration": 2.92
+    },
+    {
+      "lang": "en",
+      "text": "past we also knew that people are going",
+      "offset": 149,
+      "duration": 3.48
+    },
+    {
+      "lang": "en",
+      "text": "to probably tab less we're going to have",
+      "offset": 150.4,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "llms that we'd be able to generate more",
+      "offset": 152.48,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "and more and who knows you know we",
+      "offset": 154.08,
+      "duration": 3.96
+    },
+    {
+      "lang": "en",
+      "text": "always think all right agents are the",
+      "offset": 156.56,
+      "duration": 3.48
+    },
+    {
+      "lang": "en",
+      "text": "best now but as a company we're always",
+      "offset": 158.04,
+      "duration": 3.04
+    },
+    {
+      "lang": "en",
+      "text": "thinking about the future we're",
+      "offset": 160.04,
+      "duration": 3.119
+    },
+    {
+      "lang": "en",
+      "text": "technology optimists so if an ID in the",
+      "offset": 161.08,
+      "duration": 3.239
+    },
+    {
+      "lang": "en",
+      "text": "future who knows we might not even be",
+      "offset": 163.159,
+      "duration": 4.281
+    },
+    {
+      "lang": "en",
+      "text": "writing code inside ID of inside of IDE",
+      "offset": 164.319,
+      "duration": 4.601
+    },
+    {
+      "lang": "en",
+      "text": "we'll just be there building the best",
+      "offset": 167.44,
+      "duration": 3.24
+    },
+    {
+      "lang": "en",
+      "text": "product for",
+      "offset": 168.92,
+      "duration": 5
+    },
+    {
+      "lang": "en",
+      "text": "S and so this year 2025 is finally the",
+      "offset": 170.68,
+      "duration": 4.639
+    },
+    {
+      "lang": "en",
+      "text": "year where I feel like we are all",
+      "offset": 173.92,
+      "duration": 3.2
+    },
+    {
+      "lang": "en",
+      "text": "recognizing the power of Agents inside",
+      "offset": 175.319,
+      "duration": 3.721
+    },
+    {
+      "lang": "en",
+      "text": "of software development agents are here",
+      "offset": 177.12,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "to stay and when wind surf I'm proud to",
+      "offset": 179.04,
+      "duration": 3.919
+    },
+    {
+      "lang": "en",
+      "text": "say is pushing the envelope of that",
+      "offset": 180.8,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "technology and we're going to talk about",
+      "offset": 182.959,
+      "duration": 3.481
+    },
+    {
+      "lang": "en",
+      "text": "some of those features um and we're",
+      "offset": 184.72,
+      "duration": 3.439
+    },
+    {
+      "lang": "en",
+      "text": "going to keep pushing that agentic",
+      "offset": 186.44,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "future um because we believe that you",
+      "offset": 188.159,
+      "duration": 5.281
+    },
+    {
+      "lang": "en",
+      "text": "know agents are going to move software",
+      "offset": 191,
+      "duration": 4.36
+    },
+    {
+      "lang": "en",
+      "text": "engineering in a direction that no other",
+      "offset": 193.44,
+      "duration": 3.439
+    },
+    {
+      "lang": "en",
+      "text": "llm has done in the",
+      "offset": 195.36,
+      "duration": 4.84
+    },
+    {
+      "lang": "en",
+      "text": "past so this slide I guess is titled",
+      "offset": 196.879,
+      "duration": 5.801
+    },
+    {
+      "lang": "en",
+      "text": "Vibe coding with wind surf or also just",
+      "offset": 200.2,
+      "duration": 4.759
+    },
+    {
+      "lang": "en",
+      "text": "coding in Wind surf um so I'm going to",
+      "offset": 202.68,
+      "duration": 4.04
+    },
+    {
+      "lang": "en",
+      "text": "give you a quick demo about this is the",
+      "offset": 204.959,
+      "duration": 5.241
+    },
+    {
+      "lang": "en",
+      "text": "wind surf product here you have a a bar",
+      "offset": 206.72,
+      "duration": 4.599
+    },
+    {
+      "lang": "en",
+      "text": "this is our",
+      "offset": 210.2,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "agent and you can see that we're going",
+      "offset": 211.319,
+      "duration": 4.521
+    },
+    {
+      "lang": "en",
+      "text": "to be building a python web scraper so",
+      "offset": 213.72,
+      "duration": 3.04
+    },
+    {
+      "lang": "en",
+      "text": "what this is going to do it's going to",
+      "offset": 215.84,
+      "duration": 2.44
+    },
+    {
+      "lang": "en",
+      "text": "build a python WebCrawler give us some",
+      "offset": 216.76,
+      "duration": 3.96
+    },
+    {
+      "lang": "en",
+      "text": "stats about the website um and you can",
+      "offset": 218.28,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "see it's actually installing",
+      "offset": 220.72,
+      "duration": 4.04
+    },
+    {
+      "lang": "en",
+      "text": "dependencies from pip um it's doing so",
+      "offset": 222.04,
+      "duration": 5.08
+    },
+    {
+      "lang": "en",
+      "text": "inside of the terminal that you use so",
+      "offset": 224.76,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "you can interact with it um it's",
+      "offset": 227.12,
+      "duration": 3.759
+    },
+    {
+      "lang": "en",
+      "text": "suggesting edits setting up your virtual",
+      "offset": 229.08,
+      "duration": 4.079
+    },
+    {
+      "lang": "en",
+      "text": "environment and we give a user a very",
+      "offset": 230.879,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "helpful accept and reject so that you",
+      "offset": 233.159,
+      "duration": 3.72
+    },
+    {
+      "lang": "en",
+      "text": "can go through and have confidence that",
+      "offset": 234.959,
+      "duration": 3.48
+    },
+    {
+      "lang": "en",
+      "text": "the code that it's generating works for",
+      "offset": 236.879,
+      "duration": 4.2
+    },
+    {
+      "lang": "en",
+      "text": "you and your codebase um this is of",
+      "offset": 238.439,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "course there's a lot more features under",
+      "offset": 241.079,
+      "duration": 2.88
+    },
+    {
+      "lang": "en",
+      "text": "the hood um some of the things that our",
+      "offset": 242.439,
+      "duration": 2.921
+    },
+    {
+      "lang": "en",
+      "text": "users like to do they like to look up",
+      "offset": 243.959,
+      "duration": 3.881
+    },
+    {
+      "lang": "en",
+      "text": "documentation we have web search enabled",
+      "offset": 245.36,
+      "duration": 4.36
+    },
+    {
+      "lang": "en",
+      "text": "by default um it always looks at your",
+      "offset": 247.84,
+      "duration": 3.08
+    },
+    {
+      "lang": "en",
+      "text": "codebase so you can grap through your",
+      "offset": 249.72,
+      "duration": 2.84
+    },
+    {
+      "lang": "en",
+      "text": "codebase uh we can generate commit",
+      "offset": 250.92,
+      "duration": 3.319
+    },
+    {
+      "lang": "en",
+      "text": "messages you can drag and drop images",
+      "offset": 252.56,
+      "duration": 3.48
+    },
+    {
+      "lang": "en",
+      "text": "right the possibilities are truly",
+      "offset": 254.239,
+      "duration": 4.481
+    },
+    {
+      "lang": "en",
+      "text": "endless and I'm going to be talking",
+      "offset": 256.04,
+      "duration": 5.64
+    },
+    {
+      "lang": "en",
+      "text": "about these features are powered by a",
+      "offset": 258.72,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "handful of principles a handful of",
+      "offset": 261.68,
+      "duration": 2.799
+    },
+    {
+      "lang": "en",
+      "text": "through lines that we as an engineering",
+      "offset": 263.04,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "team hold true as we're building and as",
+      "offset": 264.479,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "a team we always go back to the same",
+      "offset": 267.12,
+      "duration": 3.799
+    },
+    {
+      "lang": "en",
+      "text": "Mission which is to keep you in the",
+      "offset": 268.479,
+      "duration": 5.481
+    },
+    {
+      "lang": "en",
+      "text": "flow and unlock your Limitless potential",
+      "offset": 270.919,
+      "duration": 4.681
+    },
+    {
+      "lang": "en",
+      "text": "right we want to work on we want to",
+      "offset": 273.96,
+      "duration": 3.12
+    },
+    {
+      "lang": "en",
+      "text": "handle the grunt work for you we want to",
+      "offset": 275.6,
+      "duration": 3.4
+    },
+    {
+      "lang": "en",
+      "text": "handle looking at your debug stack",
+      "offset": 277.08,
+      "duration": 3.8
+    },
+    {
+      "lang": "en",
+      "text": "traces we want to handle modifying your",
+      "offset": 279,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "original source code we want to pull the",
+      "offset": 280.88,
+      "duration": 3.28
+    },
+    {
+      "lang": "en",
+      "text": "correct version of documentation so that",
+      "offset": 282.68,
+      "duration": 2.76
+    },
+    {
+      "lang": "en",
+      "text": "you never have to worry about pulling in",
+      "offset": 284.16,
+      "duration": 3.039
+    },
+    {
+      "lang": "en",
+      "text": "the correct context these are problems",
+      "offset": 285.44,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "that we are trying to solve um and we",
+      "offset": 287.199,
+      "duration": 3.801
+    },
+    {
+      "lang": "en",
+      "text": "want you to spend time on things that",
+      "offset": 289.36,
+      "duration": 3.08
+    },
+    {
+      "lang": "en",
+      "text": "you are good at right the things that",
+      "offset": 291,
+      "duration": 2.96
+    },
+    {
+      "lang": "en",
+      "text": "make us all excited which is shipping",
+      "offset": 292.44,
+      "duration": 3.64
+    },
+    {
+      "lang": "en",
+      "text": "products building great features um and",
+      "offset": 293.96,
+      "duration": 4.679
+    },
+    {
+      "lang": "en",
+      "text": "generally just shipping",
+      "offset": 296.08,
+      "duration": 6.08
+    },
+    {
+      "lang": "en",
+      "text": "code and so with that goal in mind how",
+      "offset": 298.639,
+      "duration": 6.081
+    },
+    {
+      "lang": "en",
+      "text": "do we tell what to work on um it's a",
+      "offset": 302.16,
+      "duration": 5
+    },
+    {
+      "lang": "en",
+      "text": "game of input and output so we want to",
+      "offset": 304.72,
+      "duration": 4.28
+    },
+    {
+      "lang": "en",
+      "text": "allow users to give the least amount of",
+      "offset": 307.16,
+      "duration": 4.599
+    },
+    {
+      "lang": "en",
+      "text": "explicit input possible to produce the",
+      "offset": 309,
+      "duration": 5.68
+    },
+    {
+      "lang": "en",
+      "text": "most correct and production ready code",
+      "offset": 311.759,
+      "duration": 6.681
+    },
+    {
+      "lang": "en",
+      "text": "right we want you to contribute less and",
+      "offset": 314.68,
+      "duration": 5.88
+    },
+    {
+      "lang": "en",
+      "text": "we want our agent to contribute more and",
+      "offset": 318.44,
+      "duration": 3.8
+    },
+    {
+      "lang": "en",
+      "text": "we do this by reducing the amount of",
+      "offset": 320.56,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "human in the loop required by doing",
+      "offset": 322.24,
+      "duration": 3.88
+    },
+    {
+      "lang": "en",
+      "text": "things like background research we are",
+      "offset": 324.24,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "always trying to predict your next step",
+      "offset": 326.12,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "and we'll make decisions on your behalf",
+      "offset": 328.16,
+      "duration": 3.56
+    },
+    {
+      "lang": "en",
+      "text": "so that you can move",
+      "offset": 329.88,
+      "duration": 3.8
+    },
+    {
+      "lang": "en",
+      "text": "faster and this might all seem like a",
+      "offset": 331.72,
+      "duration": 3.96
+    },
+    {
+      "lang": "en",
+      "text": "fantasy but winds surf launched three",
+      "offset": 333.68,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "months ago on November 13th um that date",
+      "offset": 335.68,
+      "duration": 5.32
+    },
+    {
+      "lang": "en",
+      "text": "is forever branded In My Memory um and",
+      "offset": 338.24,
+      "duration": 3.799
+    },
+    {
+      "lang": "en",
+      "text": "these are the results that we're already",
+      "offset": 341,
+      "duration": 2.72
+    },
+    {
+      "lang": "en",
+      "text": "seeing so in three months we've been",
+      "offset": 342.039,
+      "duration": 4.761
+    },
+    {
+      "lang": "en",
+      "text": "generating 4.5 billion lines of code it",
+      "offset": 343.72,
+      "duration": 5.479
+    },
+    {
+      "lang": "en",
+      "text": "is an absurd number and since the time I",
+      "offset": 346.8,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "started this presentation we've actually",
+      "offset": 349.199,
+      "duration": 4.481
+    },
+    {
+      "lang": "en",
+      "text": "probably sent users have probably sent",
+      "offset": 351.68,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "thousands of messages to Cascade asking",
+      "offset": 353.68,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "it to refactor code to write new",
+      "offset": 355.68,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "features to build new pages on their",
+      "offset": 357.84,
+      "duration": 2.479
+    },
+    {
+      "lang": "en",
+      "text": "website",
+      "offset": 359.28,
+      "duration": 3.32
+    },
+    {
+      "lang": "en",
+      "text": "um and also a fun statistic since we're",
+      "offset": 360.319,
+      "duration": 4.241
+    },
+    {
+      "lang": "en",
+      "text": "all Engineers here uh we've had 16",
+      "offset": 362.6,
+      "duration": 4.319
+    },
+    {
+      "lang": "en",
+      "text": "nights in the last you know 90 days",
+      "offset": 364.56,
+      "duration": 3.4
+    },
+    {
+      "lang": "en",
+      "text": "where we've been woken up in the middle",
+      "offset": 366.919,
+      "duration": 2.68
+    },
+    {
+      "lang": "en",
+      "text": "of the night from pager Duty on call",
+      "offset": 367.96,
+      "duration": 3.32
+    },
+    {
+      "lang": "en",
+      "text": "because we've had some reliability",
+      "offset": 369.599,
+      "duration": 4.201
+    },
+    {
+      "lang": "en",
+      "text": "issues um due to us exceeding our",
+      "offset": 371.28,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "capacity right these problems these",
+      "offset": 373.8,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "we've had immense success getting people",
+      "offset": 375.84,
+      "duration": 4.12
+    },
+    {
+      "lang": "en",
+      "text": "onto the platform um and we've been very",
+      "offset": 377.4,
+      "duration": 4.519
+    },
+    {
+      "lang": "en",
+      "text": "fortunate to have the issue of being",
+      "offset": 379.96,
+      "duration": 4.359
+    },
+    {
+      "lang": "en",
+      "text": "some of anthropic and open ai's largest",
+      "offset": 381.919,
+      "duration": 3.481
+    },
+    {
+      "lang": "en",
+      "text": "uh",
+      "offset": 384.319,
+      "duration": 3.241
+    },
+    {
+      "lang": "en",
+      "text": "consumers and so with these Mission with",
+      "offset": 385.4,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "this Mission and Metric in mind let's",
+      "offset": 387.56,
+      "duration": 2.919
+    },
+    {
+      "lang": "en",
+      "text": "walk through some of the principles that",
+      "offset": 389.24,
+      "duration": 3
+    },
+    {
+      "lang": "en",
+      "text": "we use when we're building this agentic",
+      "offset": 390.479,
+      "duration": 3.801
+    },
+    {
+      "lang": "en",
+      "text": "editor and for those of you that have",
+      "offset": 392.24,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "used wind surf um you might learn about",
+      "offset": 394.28,
+      "duration": 3.28
+    },
+    {
+      "lang": "en",
+      "text": "some of the new ways that you could use",
+      "offset": 396.16,
+      "duration": 3.039
+    },
+    {
+      "lang": "en",
+      "text": "the product and also for my own",
+      "offset": 397.56,
+      "duration": 3.4
+    },
+    {
+      "lang": "en",
+      "text": "curiosity how many of you have heard of",
+      "offset": 399.199,
+      "duration": 2.761
+    },
+    {
+      "lang": "en",
+      "text": "wind surf just so I know who we're",
+      "offset": 400.96,
+      "duration": 3
+    },
+    {
+      "lang": "en",
+      "text": "talking about oh let's",
+      "offset": 401.96,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "go that's sick um how many of you use",
+      "offset": 403.96,
+      "duration": 5.88
+    },
+    {
+      "lang": "en",
+      "text": "wind surf okay everyone who put their",
+      "offset": 407.24,
+      "duration": 6.679
+    },
+    {
+      "lang": "en",
+      "text": "hand down do over there um all right",
+      "offset": 409.84,
+      "duration": 6.24
+    },
+    {
+      "lang": "en",
+      "text": "let's get into it so the first principle",
+      "offset": 413.919,
+      "duration": 4.601
+    },
+    {
+      "lang": "en",
+      "text": "trajectories what is a trajectory we use",
+      "offset": 416.08,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "trajectories to read your mind so unlike",
+      "offset": 418.52,
+      "duration": 5.079
+    },
+    {
+      "lang": "en",
+      "text": "edit other editors like cursor the",
+      "offset": 421.84,
+      "duration": 3.96
+    },
+    {
+      "lang": "en",
+      "text": "elephant in the room our agent is deeply",
+      "offset": 423.599,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "integrated into the editor and we'll",
+      "offset": 425.8,
+      "duration": 4.6
+    },
+    {
+      "lang": "en",
+      "text": "talk about what exactly that means but",
+      "offset": 428.479,
+      "duration": 3.601
+    },
+    {
+      "lang": "en",
+      "text": "on one half you can imagine an agent has",
+      "offset": 430.4,
+      "duration": 4.6
+    },
+    {
+      "lang": "en",
+      "text": "to understand what you're doing and then",
+      "offset": 432.08,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "on the other half it has to understand",
+      "offset": 435,
+      "duration": 4.28
+    },
+    {
+      "lang": "en",
+      "text": "and be able to execute things on your",
+      "offset": 437.28,
+      "duration": 4.919
+    },
+    {
+      "lang": "en",
+      "text": "behalf and this has led to features like",
+      "offset": 439.28,
+      "duration": 4.639
+    },
+    {
+      "lang": "en",
+      "text": "one of my favorites quote continue my",
+      "offset": 442.199,
+      "duration": 3.881
+    },
+    {
+      "lang": "en",
+      "text": "work so we are building up an",
+      "offset": 443.919,
+      "duration": 4.201
+    },
+    {
+      "lang": "en",
+      "text": "understanding of the user as you're",
+      "offset": 446.08,
+      "duration": 3.48
+    },
+    {
+      "lang": "en",
+      "text": "writing code as you're executing",
+      "offset": 448.12,
+      "duration": 3
+    },
+    {
+      "lang": "en",
+      "text": "terminal commands and then you can",
+      "offset": 449.56,
+      "duration": 2.96
+    },
+    {
+      "lang": "en",
+      "text": "actually just go into the the agent",
+      "offset": 451.12,
+      "duration": 2.88
+    },
+    {
+      "lang": "en",
+      "text": "sidebar and just say continue my work",
+      "offset": 452.52,
+      "duration": 2.799
+    },
+    {
+      "lang": "en",
+      "text": "and it'll actually continue executing",
+      "offset": 454,
+      "duration": 2.44
+    },
+    {
+      "lang": "en",
+      "text": "that and it might even give you a full",
+      "offset": 455.319,
+      "duration": 3.801
+    },
+    {
+      "lang": "en",
+      "text": "PR or a full commit right we also have",
+      "offset": 456.44,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "things like terminal execution mode",
+      "offset": 459.12,
+      "duration": 3.96
+    },
+    {
+      "lang": "en",
+      "text": "right it can automatically use the llm",
+      "offset": 461.16,
+      "duration": 4.12
+    },
+    {
+      "lang": "en",
+      "text": "to decide what is safe and not safe so",
+      "offset": 463.08,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "that if you're running something like",
+      "offset": 465.28,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "git it'll just work or if you it'll",
+      "offset": 466.44,
+      "duration": 4.719
+    },
+    {
+      "lang": "en",
+      "text": "probably prompt you if there's an rmrf",
+      "offset": 469.36,
+      "duration": 3.119
+    },
+    {
+      "lang": "en",
+      "text": "somewhere you probably don't want to run",
+      "offset": 471.159,
+      "duration": 2.561
+    },
+    {
+      "lang": "en",
+      "text": "that automatically and the llm would be",
+      "offset": 472.479,
+      "duration": 2.321
+    },
+    {
+      "lang": "en",
+      "text": "like oh we should probably flag to the",
+      "offset": 473.72,
+      "duration": 2.8
+    },
+    {
+      "lang": "en",
+      "text": "user to confirm this these are just some",
+      "offset": 474.8,
+      "duration": 3.48
+    },
+    {
+      "lang": "en",
+      "text": "of the ways that we try and let the",
+      "offset": 476.52,
+      "duration": 4.04
+    },
+    {
+      "lang": "en",
+      "text": "human be in the loop but as minimal as",
+      "offset": 478.28,
+      "duration": 5.16
+    },
+    {
+      "lang": "en",
+      "text": "possible and then finally we also have",
+      "offset": 480.56,
+      "duration": 5.4
+    },
+    {
+      "lang": "en",
+      "text": "you know a a stellar ux a stellar design",
+      "offset": 483.44,
+      "duration": 3.64
+    },
+    {
+      "lang": "en",
+      "text": "team that's been working on how to",
+      "offset": 485.96,
+      "duration": 2.6
+    },
+    {
+      "lang": "en",
+      "text": "integrate these sort of Cutting Edge",
+      "offset": 487.08,
+      "duration": 2.88
+    },
+    {
+      "lang": "en",
+      "text": "features into a product in a way that",
+      "offset": 488.56,
+      "duration": 2.68
+    },
+    {
+      "lang": "en",
+      "text": "allows the user to feel like they're in",
+      "offset": 489.96,
+      "duration": 3.4
+    },
+    {
+      "lang": "en",
+      "text": "control to be able to accept and reject",
+      "offset": 491.24,
+      "duration": 3.959
+    },
+    {
+      "lang": "en",
+      "text": "changes into their code so they can have",
+      "offset": 493.36,
+      "duration": 2.88
+    },
+    {
+      "lang": "en",
+      "text": "confidence in the code that they're",
+      "offset": 495.199,
+      "duration": 2.28
+    },
+    {
+      "lang": "en",
+      "text": "pushing to",
+      "offset": 496.24,
+      "duration": 3.639
+    },
+    {
+      "lang": "en",
+      "text": "production so here is how a trajectory",
+      "offset": 497.479,
+      "duration": 4.521
+    },
+    {
+      "lang": "en",
+      "text": "Works um we have this notion of a",
+      "offset": 499.879,
+      "duration": 4.681
+    },
+    {
+      "lang": "en",
+      "text": "unified timeline so an agent is working",
+      "offset": 502,
+      "duration": 5.84
+    },
+    {
+      "lang": "en",
+      "text": "in the background behind the scenes to",
+      "offset": 504.56,
+      "duration": 5.4
+    },
+    {
+      "lang": "en",
+      "text": "understand what the user is implicitly",
+      "offset": 507.84,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "doing so this includes things like",
+      "offset": 509.96,
+      "duration": 4.28
+    },
+    {
+      "lang": "en",
+      "text": "viewing files navigating around your",
+      "offset": 512.08,
+      "duration": 5.92
+    },
+    {
+      "lang": "en",
+      "text": "codebase um let's say you edit a file uh",
+      "offset": 514.24,
+      "duration": 5.32
+    },
+    {
+      "lang": "en",
+      "text": "and then the agent will edit a file this",
+      "offset": 518,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "all kind of goes into a shared timeline",
+      "offset": 519.56,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "of actions you can imagine this includes",
+      "offset": 521.44,
+      "duration": 4.92
+    },
+    {
+      "lang": "en",
+      "text": "things like searching grepping um making",
+      "offset": 523.64,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "edits making commits right the user has",
+      "offset": 526.36,
+      "duration": 3.599
+    },
+    {
+      "lang": "en",
+      "text": "this sort of holistic understanding of",
+      "offset": 528.36,
+      "duration": 2.44
+    },
+    {
+      "lang": "en",
+      "text": "what you're",
+      "offset": 529.959,
+      "duration": 3.201
+    },
+    {
+      "lang": "en",
+      "text": "doing and this entire experience is",
+      "offset": 530.8,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "Unified by this shared timeline so you",
+      "offset": 533.16,
+      "duration": 4.44
+    },
+    {
+      "lang": "en",
+      "text": "can contribute to it it can contribute",
+      "offset": 535.44,
+      "duration": 4.399
+    },
+    {
+      "lang": "en",
+      "text": "to it and in this way you never run into",
+      "offset": 537.6,
+      "duration": 3.479
+    },
+    {
+      "lang": "en",
+      "text": "the problem where you're talking to the",
+      "offset": 539.839,
+      "duration": 3.401
+    },
+    {
+      "lang": "en",
+      "text": "agent and it undo the change that you",
+      "offset": 541.079,
+      "duration": 4.641
+    },
+    {
+      "lang": "en",
+      "text": "just did or has some you know outdated",
+      "offset": 543.24,
+      "duration": 5.24
+    },
+    {
+      "lang": "en",
+      "text": "notion of what the file state is so this",
+      "offset": 545.72,
+      "duration": 4.44
+    },
+    {
+      "lang": "en",
+      "text": "is a first class principle of ours and",
+      "offset": 548.48,
+      "duration": 2.68
+    },
+    {
+      "lang": "en",
+      "text": "when we decided we were going to build",
+      "offset": 550.16,
+      "duration": 2.44
+    },
+    {
+      "lang": "en",
+      "text": "an editor we were going to build it",
+      "offset": 551.16,
+      "duration": 3.359
+    },
+    {
+      "lang": "en",
+      "text": "around this notion of an agent in a",
+      "offset": 552.6,
+      "duration": 3.72
+    },
+    {
+      "lang": "en",
+      "text": "shared",
+      "offset": 554.519,
+      "duration": 4.521
+    },
+    {
+      "lang": "en",
+      "text": "timeline and so here's an example of",
+      "offset": 556.32,
+      "duration": 4.44
+    },
+    {
+      "lang": "en",
+      "text": "this feature in action here we're adding",
+      "offset": 559.04,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "a new function and you're seeing the",
+      "offset": 560.76,
+      "duration": 3.079
+    },
+    {
+      "lang": "en",
+      "text": "autocomplete and all the kind of like",
+      "offset": 562.48,
+      "duration": 3.56
+    },
+    {
+      "lang": "en",
+      "text": "bells and whistles of that feature and",
+      "offset": 563.839,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "in the right side we just asked continue",
+      "offset": 566.04,
+      "duration": 2.96
+    },
+    {
+      "lang": "en",
+      "text": "my work this is a new function we",
+      "offset": 567.519,
+      "duration": 2.88
+    },
+    {
+      "lang": "en",
+      "text": "probably want our form Handler to use",
+      "offset": 569,
+      "duration": 3.56
+    },
+    {
+      "lang": "en",
+      "text": "this new function and you can see based",
+      "offset": 570.399,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "on the context that we gave it by making",
+      "offset": 572.56,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "edits it's guessing Okay we probably",
+      "offset": 574.959,
+      "duration": 4.641
+    },
+    {
+      "lang": "en",
+      "text": "want to make this file change to this",
+      "offset": 577.2,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "file maybe some others and then at the",
+      "offset": 579.6,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "end it's actually just saying okay let's",
+      "offset": 581.44,
+      "duration": 3.399
+    },
+    {
+      "lang": "en",
+      "text": "just run npm run Dev and it can run",
+      "offset": 583.04,
+      "duration": 3.08
+    },
+    {
+      "lang": "en",
+      "text": "terminal commands on your behalf in the",
+      "offset": 584.839,
+      "duration": 3.481
+    },
+    {
+      "lang": "en",
+      "text": "background in your kind of like command",
+      "offset": 586.12,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "J terminal popup um and in this way",
+      "offset": 588.32,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "we're keeping you in the flow right",
+      "offset": 590.68,
+      "duration": 3.279
+    },
+    {
+      "lang": "en",
+      "text": "something that would have taken minutes",
+      "offset": 591.92,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "is now taking",
+      "offset": 593.959,
+      "duration": 4.201
+    },
+    {
+      "lang": "en",
+      "text": "seconds and here's another example uh",
+      "offset": 595.68,
+      "duration": 4.279
+    },
+    {
+      "lang": "en",
+      "text": "the terminal is now deeply integrated",
+      "offset": 598.16,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "into the agentic timeline so here if",
+      "offset": 599.959,
+      "duration": 3.641
+    },
+    {
+      "lang": "en",
+      "text": "you're typing commands you know the",
+      "offset": 602.16,
+      "duration": 3.28
+    },
+    {
+      "lang": "en",
+      "text": "classic example is like I npm install a",
+      "offset": 603.6,
+      "duration": 3.479
+    },
+    {
+      "lang": "en",
+      "text": "new package or I pip install a new",
+      "offset": 605.44,
+      "duration": 3.88
+    },
+    {
+      "lang": "en",
+      "text": "package the agent should know oh you",
+      "offset": 607.079,
+      "duration": 3.401
+    },
+    {
+      "lang": "en",
+      "text": "just installed this package why don't we",
+      "offset": 609.32,
+      "duration": 2.519
+    },
+    {
+      "lang": "en",
+      "text": "go ahead and implement it into your",
+      "offset": 610.48,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "project and based on context that it's",
+      "offset": 611.839,
+      "duration": 3.761
+    },
+    {
+      "lang": "en",
+      "text": "able to pick up around the codebase it",
+      "offset": 613.92,
+      "duration": 4.2
+    },
+    {
+      "lang": "en",
+      "text": "can continue that line of work so we",
+      "offset": 615.6,
+      "duration": 5.359
+    },
+    {
+      "lang": "en",
+      "text": "very strongly believe in a future of no",
+      "offset": 618.12,
+      "duration": 4.839
+    },
+    {
+      "lang": "en",
+      "text": "copy paste right you should never have a",
+      "offset": 620.959,
+      "duration": 3.641
+    },
+    {
+      "lang": "en",
+      "text": "situation where you're in a terminal or",
+      "offset": 622.959,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "you're in a document or even on a",
+      "offset": 624.6,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "website and you're copy pasting text",
+      "offset": 626.399,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "into an agent that's that's just not how",
+      "offset": 628.36,
+      "duration": 3.12
+    },
+    {
+      "lang": "en",
+      "text": "the way the world works and in the same",
+      "offset": 629.839,
+      "duration": 3.361
+    },
+    {
+      "lang": "en",
+      "text": "way we strongly believe the future is",
+      "offset": 631.48,
+      "duration": 5.039
+    },
+    {
+      "lang": "en",
+      "text": "not going to be at",
+      "offset": 633.2,
+      "duration": 3.319
+    },
+    {
+      "lang": "en",
+      "text": "Terminal here's another example of",
+      "offset": 636.92,
+      "duration": 3.88
+    },
+    {
+      "lang": "en",
+      "text": "commands running inside of your terminal",
+      "offset": 639.079,
+      "duration": 2.721
+    },
+    {
+      "lang": "en",
+      "text": "I've been talking about this for a",
+      "offset": 640.8,
+      "duration": 2.8
+    },
+    {
+      "lang": "en",
+      "text": "little bit and this concept of a",
+      "offset": 641.8,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "trajectory allows us to automatically",
+      "offset": 643.6,
+      "duration": 3.919
+    },
+    {
+      "lang": "en",
+      "text": "execute things inside of a Sandbox that",
+      "offset": 645.56,
+      "duration": 3.64
+    },
+    {
+      "lang": "en",
+      "text": "is as similar to the way you run",
+      "offset": 647.519,
+      "duration": 3.721
+    },
+    {
+      "lang": "en",
+      "text": "commands as possible so instead of",
+      "offset": 649.2,
+      "duration": 3.24
+    },
+    {
+      "lang": "en",
+      "text": "running some shell script in the",
+      "offset": 651.24,
+      "duration": 3.08
+    },
+    {
+      "lang": "en",
+      "text": "background what we do is we put this",
+      "offset": 652.44,
+      "duration": 3.32
+    },
+    {
+      "lang": "en",
+      "text": "right inside of the place that you would",
+      "offset": 654.32,
+      "duration": 3.24
+    },
+    {
+      "lang": "en",
+      "text": "actually write terminal commands so if",
+      "offset": 655.76,
+      "duration": 3.759
+    },
+    {
+      "lang": "en",
+      "text": "you pip install something or it pip",
+      "offset": 657.56,
+      "duration": 3.12
+    },
+    {
+      "lang": "en",
+      "text": "install something it's going to the same",
+      "offset": 659.519,
+      "duration": 2.44
+    },
+    {
+      "lang": "en",
+      "text": "environment you'll never have this",
+      "offset": 660.68,
+      "duration": 2.8
+    },
+    {
+      "lang": "en",
+      "text": "instance of kind of weirdness and and",
+      "offset": 661.959,
+      "duration": 3.841
+    },
+    {
+      "lang": "en",
+      "text": "this is all part of our effort to bring",
+      "offset": 663.48,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "these two sides the agentic side and The",
+      "offset": 665.8,
+      "duration": 4.2
+    },
+    {
+      "lang": "en",
+      "text": "Human Side close together as close",
+      "offset": 668.04,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "together as possible and you do this",
+      "offset": 670,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "through building a unified",
+      "offset": 671.56,
+      "duration": 5.279
+    },
+    {
+      "lang": "en",
+      "text": "product we believe that developers are",
+      "offset": 674.48,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "here to stay and if you want to work",
+      "offset": 676.839,
+      "duration": 4.041
+    },
+    {
+      "lang": "en",
+      "text": "seamlessly with a developer that means",
+      "offset": 678.72,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "the agent has to understand what they",
+      "offset": 680.88,
+      "duration": 3.959
+    },
+    {
+      "lang": "en",
+      "text": "are thinking wind surf has to be",
+      "offset": 682.56,
+      "duration": 4.519
+    },
+    {
+      "lang": "en",
+      "text": "ubiquitous and the agent will be reading",
+      "offset": 684.839,
+      "duration": 4.761
+    },
+    {
+      "lang": "en",
+      "text": "more and more of your mind doing things",
+      "offset": 687.079,
+      "duration": 4.2
+    },
+    {
+      "lang": "en",
+      "text": "that you might not even know it's doing",
+      "offset": 689.6,
+      "duration": 3.08
+    },
+    {
+      "lang": "en",
+      "text": "in the future we'll be looking not just",
+      "offset": 691.279,
+      "duration": 3.281
+    },
+    {
+      "lang": "en",
+      "text": "one to five steps in the future but 10",
+      "offset": 692.68,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "20 30 steps into the future it'll be",
+      "offset": 694.56,
+      "duration": 3.88
+    },
+    {
+      "lang": "en",
+      "text": "writing unit tests before you've even",
+      "offset": 696.92,
+      "duration": 3.32
+    },
+    {
+      "lang": "en",
+      "text": "finished defining the function it'll be",
+      "offset": 698.44,
+      "duration": 3.639
+    },
+    {
+      "lang": "en",
+      "text": "performing codebase wide refactors on",
+      "offset": 700.24,
+      "duration": 3.839
+    },
+    {
+      "lang": "en",
+      "text": "multiple files based on you just simply",
+      "offset": 702.079,
+      "duration": 4.121
+    },
+    {
+      "lang": "en",
+      "text": "editing a variable name all this is part",
+      "offset": 704.079,
+      "duration": 4.521
+    },
+    {
+      "lang": "en",
+      "text": "of this unified trajectory",
+      "offset": 706.2,
+      "duration": 5.8
+    },
+    {
+      "lang": "en",
+      "text": "concept now the second principle is meta",
+      "offset": 708.6,
+      "duration": 6.239
+    },
+    {
+      "lang": "en",
+      "text": "learning so even if wind surf",
+      "offset": 712,
+      "duration": 4.12
+    },
+    {
+      "lang": "en",
+      "text": "understands what you're doing in the",
+      "offset": 714.839,
+      "duration": 3.881
+    },
+    {
+      "lang": "en",
+      "text": "moment there is still an inferred",
+      "offset": 716.12,
+      "duration": 4.04
+    },
+    {
+      "lang": "en",
+      "text": "understanding of your codebase and your",
+      "offset": 718.72,
+      "duration": 3.359
+    },
+    {
+      "lang": "en",
+      "text": "preferences and your organizational",
+      "offset": 720.16,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "guidelines that let's just say senior",
+      "offset": 722.079,
+      "duration": 3.721
+    },
+    {
+      "lang": "en",
+      "text": "engineers at your company have built up",
+      "offset": 723.92,
+      "duration": 4.599
+    },
+    {
+      "lang": "en",
+      "text": "a notion of over time we call this",
+      "offset": 725.8,
+      "duration": 5.96
+    },
+    {
+      "lang": "en",
+      "text": "concept meta learning so wind surf we've",
+      "offset": 728.519,
+      "duration": 5.641
+    },
+    {
+      "lang": "en",
+      "text": "built from the ground up to to adapt and",
+      "offset": 731.76,
+      "duration": 4.04
+    },
+    {
+      "lang": "en",
+      "text": "remember these things about you and your",
+      "offset": 734.16,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "company so if you think about a frontier",
+      "offset": 735.8,
+      "duration": 4.839
+    },
+    {
+      "lang": "en",
+      "text": "llm right the best llms that they exist",
+      "offset": 738.48,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "in the world they're very very smart",
+      "offset": 740.639,
+      "duration": 4.241
+    },
+    {
+      "lang": "en",
+      "text": "Engineers definitely more capable than",
+      "offset": 742.8,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "than I probably more capable than most",
+      "offset": 744.88,
+      "duration": 4.079
+    },
+    {
+      "lang": "en",
+      "text": "of you they can just write an enormous",
+      "offset": 746.72,
+      "duration": 4.359
+    },
+    {
+      "lang": "en",
+      "text": "amount of code and do so correctly and",
+      "offset": 748.959,
+      "duration": 3.721
+    },
+    {
+      "lang": "en",
+      "text": "it probably runs and compiles pretty",
+      "offset": 751.079,
+      "duration": 3.801
+    },
+    {
+      "lang": "en",
+      "text": "well but what they do not have is the",
+      "offset": 752.68,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "exposure that you've had the education",
+      "offset": 754.88,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "that you've had and the ability to kind",
+      "offset": 756.68,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "of remember and and know how you",
+      "offset": 758.48,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "personally or your company writes code",
+      "offset": 760.44,
+      "duration": 4.519
+    },
+    {
+      "lang": "en",
+      "text": "and so what does this mean for our",
+      "offset": 763.44,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "product we've implemented a concept",
+      "offset": 764.959,
+      "duration": 4.161
+    },
+    {
+      "lang": "en",
+      "text": "called autogenerated Memories so over",
+      "offset": 766.8,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "time we build up a memory bank what you",
+      "offset": 769.12,
+      "duration": 3.64
+    },
+    {
+      "lang": "en",
+      "text": "are doing so you can say remember that I",
+      "offset": 770.88,
+      "duration": 3.959
+    },
+    {
+      "lang": "en",
+      "text": "use tailn version 4 or remember that I",
+      "offset": 772.76,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "use react 19 instead of 18 and these",
+      "offset": 774.839,
+      "duration": 3.8
+    },
+    {
+      "lang": "en",
+      "text": "things will be remembered you say them",
+      "offset": 777.24,
+      "duration": 3.719
+    },
+    {
+      "lang": "en",
+      "text": "once in the be remembered forever we",
+      "offset": 778.639,
+      "duration": 3.841
+    },
+    {
+      "lang": "en",
+      "text": "also allow people to implement things",
+      "offset": 780.959,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "like custom mCP servers so you can plug",
+      "offset": 782.48,
+      "duration": 3.56
+    },
+    {
+      "lang": "en",
+      "text": "in your favorite tools we can adapt to",
+      "offset": 784.639,
+      "duration": 3.841
+    },
+    {
+      "lang": "en",
+      "text": "your workflow we will also allow you to",
+      "offset": 786.04,
+      "duration": 4.039
+    },
+    {
+      "lang": "en",
+      "text": "wh list and Blacklist commands going",
+      "offset": 788.48,
+      "duration": 3
+    },
+    {
+      "lang": "en",
+      "text": "back to that same concept we want to",
+      "offset": 790.079,
+      "duration": 3.2
+    },
+    {
+      "lang": "en",
+      "text": "keep you in the flow as least or sorry",
+      "offset": 791.48,
+      "duration": 2.799
+    },
+    {
+      "lang": "en",
+      "text": "we want to keep you in the flow as much",
+      "offset": 793.279,
+      "duration": 4.081
+    },
+    {
+      "lang": "en",
+      "text": "as possible but we can tell the agent",
+      "offset": 794.279,
+      "duration": 5.24
+    },
+    {
+      "lang": "en",
+      "text": "hey never run an RM command without my",
+      "offset": 797.36,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "approval and so in this way it learns",
+      "offset": 799.519,
+      "duration": 3.88
+    },
+    {
+      "lang": "en",
+      "text": "about your preferences over",
+      "offset": 801.76,
+      "duration": 3.879
+    },
+    {
+      "lang": "en",
+      "text": "time and if you think about what makes a",
+      "offset": 803.399,
+      "duration": 4.401
+    },
+    {
+      "lang": "en",
+      "text": "developer effective it's because they",
+      "offset": 805.639,
+      "duration": 4.121
+    },
+    {
+      "lang": "en",
+      "text": "remember things that you tell them and",
+      "offset": 807.8,
+      "duration": 4.279
+    },
+    {
+      "lang": "en",
+      "text": "Wier must also model this Behavior if we",
+      "offset": 809.76,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "hope that AI should write and maintain",
+      "offset": 812.079,
+      "duration": 5.361
+    },
+    {
+      "lang": "en",
+      "text": "projects for us so in the short term",
+      "offset": 815.12,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "this means you don't need to prompt the",
+      "offset": 817.44,
+      "duration": 3.199
+    },
+    {
+      "lang": "en",
+      "text": "agent again and again to do the same",
+      "offset": 818.72,
+      "duration": 4.28
+    },
+    {
+      "lang": "en",
+      "text": "thing over and over um but in the long",
+      "offset": 820.639,
+      "duration": 4.081
+    },
+    {
+      "lang": "en",
+      "text": "term the AI should just feel like a",
+      "offset": 823,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "seamless extension of yourself it's this",
+      "offset": 824.72,
+      "duration": 5.4
+    },
+    {
+      "lang": "en",
+      "text": "idea of explicit versus inferred",
+      "offset": 826.36,
+      "duration": 5.88
+    },
+    {
+      "lang": "en",
+      "text": "context and we always have the saying at",
+      "offset": 830.12,
+      "duration": 4.04
+    },
+    {
+      "lang": "en",
+      "text": "the company ideas are cheap so here's an",
+      "offset": 832.24,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "example of autogenerated memories in",
+      "offset": 834.16,
+      "duration": 3.479
+    },
+    {
+      "lang": "en",
+      "text": "action here we're not even explicitly",
+      "offset": 835.68,
+      "duration": 3.56
+    },
+    {
+      "lang": "en",
+      "text": "telling it remember this thing we're",
+      "offset": 837.639,
+      "duration": 3.2
+    },
+    {
+      "lang": "en",
+      "text": "just giving it an architecture overview",
+      "offset": 839.24,
+      "duration": 3.48
+    },
+    {
+      "lang": "en",
+      "text": "we're asking what does this project do",
+      "offset": 840.839,
+      "duration": 3.961
+    },
+    {
+      "lang": "en",
+      "text": "and it's remembering based on a couple",
+      "offset": 842.72,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "tool uses it's looking at a couple",
+      "offset": 844.8,
+      "duration": 3.08
+    },
+    {
+      "lang": "en",
+      "text": "different files looking at the routes",
+      "offset": 846.32,
+      "duration": 3
+    },
+    {
+      "lang": "en",
+      "text": "and now it's committed to memory hey",
+      "offset": 847.88,
+      "duration": 2.72
+    },
+    {
+      "lang": "en",
+      "text": "this is the project that this person is",
+      "offset": 849.32,
+      "duration": 2.759
+    },
+    {
+      "lang": "en",
+      "text": "working on here are the endpoints that",
+      "offset": 850.6,
+      "duration": 3.64
+    },
+    {
+      "lang": "en",
+      "text": "are available and we can reference that",
+      "offset": 852.079,
+      "duration": 4.12
+    },
+    {
+      "lang": "en",
+      "text": "in the next message that we send right",
+      "offset": 854.24,
+      "duration": 3.32
+    },
+    {
+      "lang": "en",
+      "text": "so in the next future conversation we",
+      "offset": 856.199,
+      "duration": 3.841
+    },
+    {
+      "lang": "en",
+      "text": "can now One-Shot things because we have",
+      "offset": 857.56,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "a notion of a memory bank in the same",
+      "offset": 860.04,
+      "duration": 5.56
+    },
+    {
+      "lang": "en",
+      "text": "way documentation is auto learned we",
+      "offset": 862.44,
+      "duration": 4.959
+    },
+    {
+      "lang": "en",
+      "text": "know what packages you're using because",
+      "offset": 865.6,
+      "duration": 3.159
+    },
+    {
+      "lang": "en",
+      "text": "of your package Json because you've",
+      "offset": 867.399,
+      "duration": 3.24
+    },
+    {
+      "lang": "en",
+      "text": "exped L told us and we're able to look",
+      "offset": 868.759,
+      "duration": 3.681
+    },
+    {
+      "lang": "en",
+      "text": "up the web look on the web for",
+      "offset": 870.639,
+      "duration": 3.521
+    },
+    {
+      "lang": "en",
+      "text": "documentation that matches those",
+      "offset": 872.44,
+      "duration": 4.04
+    },
+    {
+      "lang": "en",
+      "text": "versions and we do so all",
+      "offset": 874.16,
+      "duration": 4.44
+    },
+    {
+      "lang": "en",
+      "text": "implicitly and so the dream of meta",
+      "offset": 876.48,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "learning is that you can have an",
+      "offset": 878.6,
+      "duration": 5.359
+    },
+    {
+      "lang": "en",
+      "text": "entirely inferred sense of context based",
+      "offset": 880.56,
+      "duration": 6.199
+    },
+    {
+      "lang": "en",
+      "text": "on a code base or based on the usage of",
+      "offset": 883.959,
+      "duration": 4.841
+    },
+    {
+      "lang": "en",
+      "text": "the product and autogenerated memories",
+      "offset": 886.759,
+      "duration": 5.32
+    },
+    {
+      "lang": "en",
+      "text": "are a step in that direction um we",
+      "offset": 888.8,
+      "duration": 5
+    },
+    {
+      "lang": "en",
+      "text": "strongly believe that having a rules",
+      "offset": 892.079,
+      "duration": 3.601
+    },
+    {
+      "lang": "en",
+      "text": "file you know we do allow users to to",
+      "offset": 893.8,
+      "duration": 3.64
+    },
+    {
+      "lang": "en",
+      "text": "add a rules file we strongly believe",
+      "offset": 895.68,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "that a rules file is a crutch you know",
+      "offset": 897.44,
+      "duration": 4.6
+    },
+    {
+      "lang": "en",
+      "text": "by the end of 2025 99% of the things",
+      "offset": 899.44,
+      "duration": 3.8
+    },
+    {
+      "lang": "en",
+      "text": "that you're going to put in a rules file",
+      "offset": 902.04,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "will be interpreted or inferred based on",
+      "offset": 903.24,
+      "duration": 4.279
+    },
+    {
+      "lang": "en",
+      "text": "your code base or your usage so our",
+      "offset": 905.48,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "dream is that every single wind surf",
+      "offset": 907.519,
+      "duration": 3.801
+    },
+    {
+      "lang": "en",
+      "text": "instance every single user using wind",
+      "offset": 909.16,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "surf regardless of the company or the",
+      "offset": 911.32,
+      "duration": 3.439
+    },
+    {
+      "lang": "en",
+      "text": "type of person the skill of the",
+      "offset": 913.48,
+      "duration": 3.159
+    },
+    {
+      "lang": "en",
+      "text": "developer will be personalized to that",
+      "offset": 914.759,
+      "duration": 4.76
+    },
+    {
+      "lang": "en",
+      "text": "user and you'll only have to tell it one",
+      "offset": 916.639,
+      "duration": 5.481
+    },
+    {
+      "lang": "en",
+      "text": "thing and finally my favorite principle",
+      "offset": 919.519,
+      "duration": 4.601
+    },
+    {
+      "lang": "en",
+      "text": "which is scale with intelligence so what",
+      "offset": 922.12,
+      "duration": 4.6
+    },
+    {
+      "lang": "en",
+      "text": "does this mean now that wind surf",
+      "offset": 924.12,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "understands what you're doing in the",
+      "offset": 926.72,
+      "duration": 2.72
+    },
+    {
+      "lang": "en",
+      "text": "moment right the first principle and can",
+      "offset": 927.56,
+      "duration": 3.959
+    },
+    {
+      "lang": "en",
+      "text": "improve over time the second principle",
+      "offset": 929.44,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "how do we actually build an agent that",
+      "offset": 931.519,
+      "duration": 3.56
+    },
+    {
+      "lang": "en",
+      "text": "will scale with the rates at which llms",
+      "offset": 932.88,
+      "duration": 4.399
+    },
+    {
+      "lang": "en",
+      "text": "are scaling and while we're trying to",
+      "offset": 935.079,
+      "duration": 3.841
+    },
+    {
+      "lang": "en",
+      "text": "get always give you the best tool today",
+      "offset": 937.279,
+      "duration": 3.601
+    },
+    {
+      "lang": "en",
+      "text": "we recognize that new models are coming",
+      "offset": 938.92,
+      "duration": 3.839
+    },
+    {
+      "lang": "en",
+      "text": "out every other week right every day",
+      "offset": 940.88,
+      "duration": 3.639
+    },
+    {
+      "lang": "en",
+      "text": "there's some new article about some new",
+      "offset": 942.759,
+      "duration": 3.161
+    },
+    {
+      "lang": "en",
+      "text": "pattern and it's really really hard to",
+      "offset": 944.519,
+      "duration": 4.281
+    },
+    {
+      "lang": "en",
+      "text": "keep up but we always think at codium",
+      "offset": 945.92,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "how do we stay on top of this how do we",
+      "offset": 948.8,
+      "duration": 2.68
+    },
+    {
+      "lang": "en",
+      "text": "build the best product for not just",
+      "offset": 950.24,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "today but three months six months 12",
+      "offset": 951.48,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "months out three years from now so in",
+      "offset": 953.92,
+      "duration": 5.8
+    },
+    {
+      "lang": "en",
+      "text": "2021 when chat GPT came out you probably",
+      "offset": 956.6,
+      "duration": 4.799
+    },
+    {
+      "lang": "en",
+      "text": "like me we all had our imaginations",
+      "offset": 959.72,
+      "duration": 3.28
+    },
+    {
+      "lang": "en",
+      "text": "running wild we're like okay we're going",
+      "offset": 961.399,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "to solve you know AGI post economy",
+      "offset": 963,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "whatever but obviously there's a lot of",
+      "offset": 965.639,
+      "duration": 4.2
+    },
+    {
+      "lang": "en",
+      "text": "things that need to happen between then",
+      "offset": 967.88,
+      "duration": 5.079
+    },
+    {
+      "lang": "en",
+      "text": "and that future and so models at that",
+      "offset": 969.839,
+      "duration": 4.761
+    },
+    {
+      "lang": "en",
+      "text": "time were quite frankly a little bit too",
+      "offset": 972.959,
+      "duration": 3.56
+    },
+    {
+      "lang": "en",
+      "text": "too dumb to be able to comp accomplish",
+      "offset": 974.6,
+      "duration": 3.56
+    },
+    {
+      "lang": "en",
+      "text": "everything that we wanted them to do so",
+      "offset": 976.519,
+      "duration": 3.12
+    },
+    {
+      "lang": "en",
+      "text": "we built up a lot of infrastructure and",
+      "offset": 978.16,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "you and I have all probably done this we",
+      "offset": 979.639,
+      "duration": 3.921
+    },
+    {
+      "lang": "en",
+      "text": "build out embedding indices we build",
+      "offset": 981.6,
+      "duration": 3.88
+    },
+    {
+      "lang": "en",
+      "text": "retrieval heris we have output",
+      "offset": 983.56,
+      "duration": 3.48
+    },
+    {
+      "lang": "en",
+      "text": "validating systems to make sure that the",
+      "offset": 985.48,
+      "duration": 3.479
+    },
+    {
+      "lang": "en",
+      "text": "code that it's generating is good right",
+      "offset": 987.04,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "these are all things that were able to",
+      "offset": 988.959,
+      "duration": 4.921
+    },
+    {
+      "lang": "en",
+      "text": "help at the margin but this is all",
+      "offset": 990.56,
+      "duration": 4.68
+    },
+    {
+      "lang": "en",
+      "text": "predicated on the assumption that we",
+      "offset": 993.88,
+      "duration": 3.12
+    },
+    {
+      "lang": "en",
+      "text": "were operating with a fixed notion of",
+      "offset": 995.24,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "intelligence 2021 2022 these models we",
+      "offset": 997,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "were operating we were building all this",
+      "offset": 1000.36,
+      "duration": 3.24
+    },
+    {
+      "lang": "en",
+      "text": "infrastructure to compensate for areas",
+      "offset": 1001.88,
+      "duration": 3.439
+    },
+    {
+      "lang": "en",
+      "text": "and edge cases that models could not",
+      "offset": 1003.6,
+      "duration": 3.799
+    },
+    {
+      "lang": "en",
+      "text": "handle and what's very different about",
+      "offset": 1005.319,
+      "duration": 4.041
+    },
+    {
+      "lang": "en",
+      "text": "the way we're approaching wind surf is",
+      "offset": 1007.399,
+      "duration": 4.281
+    },
+    {
+      "lang": "en",
+      "text": "that we want our product to scale with",
+      "offset": 1009.36,
+      "duration": 4.399
+    },
+    {
+      "lang": "en",
+      "text": "the models so if the models get better",
+      "offset": 1011.68,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "our product gets better and I'll give",
+      "offset": 1013.759,
+      "duration": 4.041
+    },
+    {
+      "lang": "en",
+      "text": "you one such example um it kind of",
+      "offset": 1015.36,
+      "duration": 4.12
+    },
+    {
+      "lang": "en",
+      "text": "surprised me I was you know when I",
+      "offset": 1017.8,
+      "duration": 2.92
+    },
+    {
+      "lang": "en",
+      "text": "landed in New York I tweeted that we",
+      "offset": 1019.48,
+      "duration": 3.839
+    },
+    {
+      "lang": "en",
+      "text": "deleted chat in Cascade I was like a",
+      "offset": 1020.72,
+      "duration": 4.839
+    },
+    {
+      "lang": "en",
+      "text": "very I don't know I was just I had",
+      "offset": 1023.319,
+      "duration": 4.6
+    },
+    {
+      "lang": "en",
+      "text": "thoughts and weirdly a lot of you picked",
+      "offset": 1025.559,
+      "duration": 4.841
+    },
+    {
+      "lang": "en",
+      "text": "this up and this is an example of",
+      "offset": 1027.919,
+      "duration": 4.601
+    },
+    {
+      "lang": "en",
+      "text": "something that we feel very strongly",
+      "offset": 1030.4,
+      "duration": 4.519
+    },
+    {
+      "lang": "en",
+      "text": "about one example of this principle in",
+      "offset": 1032.52,
+      "duration": 4.559
+    },
+    {
+      "lang": "en",
+      "text": "practice is that we deleted chat so what",
+      "offset": 1034.919,
+      "duration": 3.961
+    },
+    {
+      "lang": "en",
+      "text": "does this mean we only have an agent and",
+      "offset": 1037.079,
+      "duration": 4.36
+    },
+    {
+      "lang": "en",
+      "text": "it's called Cascade inside of winds surf",
+      "offset": 1038.88,
+      "duration": 5.079
+    },
+    {
+      "lang": "en",
+      "text": "chat is a legacy Paradigm and we",
+      "offset": 1041.439,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "completely replaced it and as you can",
+      "offset": 1043.959,
+      "duration": 3.561
+    },
+    {
+      "lang": "en",
+      "text": "see here users are enjoying it or in",
+      "offset": 1045.439,
+      "duration": 4.041
+    },
+    {
+      "lang": "en",
+      "text": "fact they might not even know the but",
+      "offset": 1047.52,
+      "duration": 4.039
+    },
+    {
+      "lang": "en",
+      "text": "they're just enjoying the higher",
+      "offset": 1049.48,
+      "duration": 4.199
+    },
+    {
+      "lang": "en",
+      "text": "quality an example of this is at",
+      "offset": 1051.559,
+      "duration": 4.12
+    },
+    {
+      "lang": "en",
+      "text": "mentions we built at mentions and",
+      "offset": 1053.679,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "probably you all have used mentions",
+      "offset": 1055.679,
+      "duration": 3.481
+    },
+    {
+      "lang": "en",
+      "text": "because context was not very good a year",
+      "offset": 1057.039,
+      "duration": 4.561
+    },
+    {
+      "lang": "en",
+      "text": "two years ago today wind surf can",
+      "offset": 1059.16,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "dynamically infer the relationships",
+      "offset": 1061.6,
+      "duration": 4.84
+    },
+    {
+      "lang": "en",
+      "text": "between bits of code and documents 90%",
+      "offset": 1063.4,
+      "duration": 4.36
+    },
+    {
+      "lang": "en",
+      "text": "of the time you do not need to at",
+      "offset": 1066.44,
+      "duration": 3.359
+    },
+    {
+      "lang": "en",
+      "text": "mention something all you need to do is",
+      "offset": 1067.76,
+      "duration": 3.72
+    },
+    {
+      "lang": "en",
+      "text": "let the retrieval system in the agent",
+      "offset": 1069.799,
+      "duration": 3.841
+    },
+    {
+      "lang": "en",
+      "text": "kind of plan out what it needs to do and",
+      "offset": 1071.48,
+      "duration": 3.559
+    },
+    {
+      "lang": "en",
+      "text": "then reconstruct the context",
+      "offset": 1073.64,
+      "duration": 4.44
+    },
+    {
+      "lang": "en",
+      "text": "automatically for you so at file and at",
+      "offset": 1075.039,
+      "duration": 4.76
+    },
+    {
+      "lang": "en",
+      "text": "web these are very helpful patterns when",
+      "offset": 1078.08,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "you're working at kind of the margin but",
+      "offset": 1079.799,
+      "duration": 4.681
+    },
+    {
+      "lang": "en",
+      "text": "these are eventually eing out basis",
+      "offset": 1082.72,
+      "duration": 3.88
+    },
+    {
+      "lang": "en",
+      "text": "points in the long term we believe that",
+      "offset": 1084.48,
+      "duration": 3.64
+    },
+    {
+      "lang": "en",
+      "text": "llms are going to improve and they",
+      "offset": 1086.6,
+      "duration": 3.48
+    },
+    {
+      "lang": "en",
+      "text": "already have improved to the point where",
+      "offset": 1088.12,
+      "duration": 3.72
+    },
+    {
+      "lang": "en",
+      "text": "you don't need to explicitly specify an",
+      "offset": 1090.08,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "at mention the llm should be intelligent",
+      "offset": 1091.84,
+      "duration": 4.04
+    },
+    {
+      "lang": "en",
+      "text": "enough to pick it up and so in this",
+      "offset": 1094,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "example previously I was implementing",
+      "offset": 1095.88,
+      "duration": 4.679
+    },
+    {
+      "lang": "en",
+      "text": "superbase inside of a xjs app previously",
+      "offset": 1097.84,
+      "duration": 4.719
+    },
+    {
+      "lang": "en",
+      "text": "you'd be at webbing you'd be at docs at",
+      "offset": 1100.559,
+      "duration": 5.681
+    },
+    {
+      "lang": "en",
+      "text": "codebase at this at that no just add",
+      "offset": 1102.559,
+      "duration": 5.961
+    },
+    {
+      "lang": "en",
+      "text": "superbase right and it's able to infer",
+      "offset": 1106.24,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "and plan out let's search the web let's",
+      "offset": 1108.52,
+      "duration": 4.399
+    },
+    {
+      "lang": "en",
+      "text": "behave like a human would and to get",
+      "offset": 1110.48,
+      "duration": 4.04
+    },
+    {
+      "lang": "en",
+      "text": "into this there's there's also web",
+      "offset": 1112.919,
+      "duration": 3.521
+    },
+    {
+      "lang": "en",
+      "text": "search built into um winds Surf and",
+      "offset": 1114.52,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "what's very special about this is that",
+      "offset": 1116.44,
+      "duration": 3.08
+    },
+    {
+      "lang": "en",
+      "text": "it reads the web the way a human would",
+      "offset": 1117.88,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "read the web so instead of these",
+      "offset": 1119.52,
+      "duration": 4.76
+    },
+    {
+      "lang": "en",
+      "text": "hardcoded rules and you know we probably",
+      "offset": 1122.2,
+      "duration": 3.599
+    },
+    {
+      "lang": "en",
+      "text": "could have created an edding index but",
+      "offset": 1124.28,
+      "duration": 3.08
+    },
+    {
+      "lang": "en",
+      "text": "we would probably get very low quality",
+      "offset": 1125.799,
+      "duration": 3.841
+    },
+    {
+      "lang": "en",
+      "text": "results and so instead we said the llms",
+      "offset": 1127.36,
+      "duration": 4.04
+    },
+    {
+      "lang": "en",
+      "text": "are very very good let's let the model",
+      "offset": 1129.64,
+      "duration": 3.519
+    },
+    {
+      "lang": "en",
+      "text": "decide what it wants to do let's have it",
+      "offset": 1131.4,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "decide which search results to read what",
+      "offset": 1133.159,
+      "duration": 3.481
+    },
+    {
+      "lang": "en",
+      "text": "parts of the page to read and then",
+      "offset": 1135,
+      "duration": 4.28
+    },
+    {
+      "lang": "en",
+      "text": "finally give us an answer",
+      "offset": 1136.64,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "and so we believe that as models will",
+      "offset": 1139.28,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "continue to get better we're going to be",
+      "offset": 1141.2,
+      "duration": 3.479
+    },
+    {
+      "lang": "en",
+      "text": "continuing to do unsupervised work we're",
+      "offset": 1142.72,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "going to generate full PRS we're going",
+      "offset": 1144.679,
+      "duration": 3.041
+    },
+    {
+      "lang": "en",
+      "text": "to read complex documentation the",
+      "offset": 1146.08,
+      "duration": 3.479
+    },
+    {
+      "lang": "en",
+      "text": "possibilities are truly",
+      "offset": 1147.72,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "endless and so here are some of the",
+      "offset": 1149.559,
+      "duration": 3.841
+    },
+    {
+      "lang": "en",
+      "text": "principles that we just talked",
+      "offset": 1151.32,
+      "duration": 4.44
+    },
+    {
+      "lang": "en",
+      "text": "about um where are we going with this",
+      "offset": 1153.4,
+      "duration": 3.759
+    },
+    {
+      "lang": "en",
+      "text": "there's a lot of ways we can take this",
+      "offset": 1155.76,
+      "duration": 3.24
+    },
+    {
+      "lang": "en",
+      "text": "right the engine underneath wind surf is",
+      "offset": 1157.159,
+      "duration": 4.76
+    },
+    {
+      "lang": "en",
+      "text": "really really the secret sauce and we",
+      "offset": 1159,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "believe that we're going to be 2025 is",
+      "offset": 1161.919,
+      "duration": 3.601
+    },
+    {
+      "lang": "en",
+      "text": "going to be a whole new world no rules",
+      "offset": 1163.72,
+      "duration": 4.6
+    },
+    {
+      "lang": "en",
+      "text": "files generating PRS generating commits",
+      "offset": 1165.52,
+      "duration": 5.279
+    },
+    {
+      "lang": "en",
+      "text": "it's going to be be crazy and we're",
+      "offset": 1168.32,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "already seeing this 90% of our users or",
+      "offset": 1170.799,
+      "duration": 5.801
+    },
+    {
+      "lang": "en",
+      "text": "sorry all of our users 90% of the code",
+      "offset": 1173.52,
+      "duration": 4.399
+    },
+    {
+      "lang": "en",
+      "text": "that they're writing is generated with",
+      "offset": 1176.6,
+      "duration": 3.199
+    },
+    {
+      "lang": "en",
+      "text": "Cascade that's an astonishing number",
+      "offset": 1177.919,
+      "duration": 4.441
+    },
+    {
+      "lang": "en",
+      "text": "autocomplete was more in like the 20 30%",
+      "offset": 1179.799,
+      "duration": 4.641
+    },
+    {
+      "lang": "en",
+      "text": "this is insane right people are using",
+      "offset": 1182.36,
+      "duration": 4.199
+    },
+    {
+      "lang": "en",
+      "text": "agents today to accomplish so much more",
+      "offset": 1184.44,
+      "duration": 3.88
+    },
+    {
+      "lang": "en",
+      "text": "than they could have in the past and",
+      "offset": 1186.559,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "we're all software Engineers I want to",
+      "offset": 1188.32,
+      "duration": 2.96
+    },
+    {
+      "lang": "en",
+      "text": "make sure that every single person in",
+      "offset": 1190.159,
+      "duration": 3.241
+    },
+    {
+      "lang": "en",
+      "text": "this room is armed with the best tools",
+      "offset": 1191.28,
+      "duration": 4.519
+    },
+    {
+      "lang": "en",
+      "text": "and those best tools are",
+      "offset": 1193.4,
+      "duration": 4.44
+    },
+    {
+      "lang": "en",
+      "text": "agents and like every good thing in the",
+      "offset": 1195.799,
+      "duration": 4.841
+    },
+    {
+      "lang": "en",
+      "text": "city",
+      "offset": 1197.84,
+      "duration": 2.8
+    },
+    {
+      "lang": "en",
+      "text": "I expect tips 25% of your ticket price",
+      "offset": 1201.159,
+      "duration": 6.241
+    },
+    {
+      "lang": "en",
+      "text": "which I heard was quite a lot um here's",
+      "offset": 1204.52,
+      "duration": 3.88
+    },
+    {
+      "lang": "en",
+      "text": "the actual QR that you're probably",
+      "offset": 1207.4,
+      "duration": 3.88
+    },
+    {
+      "lang": "en",
+      "text": "curious about um this is when surf's",
+      "offset": 1208.4,
+      "duration": 5.72
+    },
+    {
+      "lang": "en",
+      "text": "download link we offer a free tier um so",
+      "offset": 1211.28,
+      "duration": 4.6
+    },
+    {
+      "lang": "en",
+      "text": "go ahead and and scan that start using",
+      "offset": 1214.12,
+      "duration": 3.679
+    },
+    {
+      "lang": "en",
+      "text": "the magic",
+      "offset": 1215.88,
+      "duration": 4.52
+    },
+    {
+      "lang": "en",
+      "text": "today and then finally we have some",
+      "offset": 1217.799,
+      "duration": 4.721
+    },
+    {
+      "lang": "en",
+      "text": "killer swag at our booth um you can also",
+      "offset": 1220.4,
+      "duration": 3.279
+    },
+    {
+      "lang": "en",
+      "text": "connect with me on Twitter I try and",
+      "offset": 1222.52,
+      "duration": 2.639
+    },
+    {
+      "lang": "en",
+      "text": "stay active with the community but thank",
+      "offset": 1223.679,
+      "duration": 3.161
+    },
+    {
+      "lang": "en",
+      "text": "you so much for watching I hope that you",
+      "offset": 1225.159,
+      "duration": 2.921
+    },
+    {
+      "lang": "en",
+      "text": "all learned something about how we're",
+      "offset": 1226.84,
+      "duration": 3.4
+    },
+    {
+      "lang": "en",
+      "text": "building at Surf and enjoy the rest of",
+      "offset": 1228.08,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "the conference",
+      "offset": 1230.24,
+      "duration": 3.12
+    },
+    {
+      "lang": "en",
+      "text": "[Music]",
+      "offset": 1235.9,
+      "duration": 13.319
+    }
+  ],
+  "cleanText": null,
+  "dumpedAt": "2025-07-21T18:43:25.896Z"
+}

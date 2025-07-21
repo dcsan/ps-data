@@ -1,0 +1,2644 @@
+{
+  "episodeId": "kPL-6-9MVyA",
+  "channelSlug": "@aidotengineer",
+  "title": "RAG Agents in Prod: 10 Lessons We Learned — Douwe Kiela, creator of RAG",
+  "publishedAt": "2025-04-10T19:47:37.000Z",
+  "rawLines": [
+    {
+      "lang": "en",
+      "text": "[Music]",
+      "offset": 0.49,
+      "duration": 18.03
+    },
+    {
+      "lang": "en",
+      "text": "my name is D Kila I'm the CEO at",
+      "offset": 16.88,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "contextual Ai and I'm here to talk to",
+      "offset": 18.52,
+      "duration": 5.24
+    },
+    {
+      "lang": "en",
+      "text": "you about rag in production rag agents",
+      "offset": 20.88,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "specifically um and I'll I'll share some",
+      "offset": 23.76,
+      "duration": 3.96
+    },
+    {
+      "lang": "en",
+      "text": "of the lessons that I've learned so my",
+      "offset": 26.08,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "background is in AI research uh but",
+      "offset": 27.72,
+      "duration": 5.679
+    },
+    {
+      "lang": "en",
+      "text": "after that I became the CEO of a AI",
+      "offset": 30.24,
+      "duration": 6.04
+    },
+    {
+      "lang": "en",
+      "text": "company focus on Enterprise so I thought",
+      "offset": 33.399,
+      "duration": 5.081
+    },
+    {
+      "lang": "en",
+      "text": "I would share some of my learnings with",
+      "offset": 36.28,
+      "duration": 4.599
+    },
+    {
+      "lang": "en",
+      "text": "you uh in the hope that that's",
+      "offset": 38.48,
+      "duration": 5.64
+    },
+    {
+      "lang": "en",
+      "text": "useful so if you uh look at Enterprise",
+      "offset": 40.879,
+      "duration": 5.241
+    },
+    {
+      "lang": "en",
+      "text": "AI uh if you work in this space you",
+      "offset": 44.12,
+      "duration": 3.759
+    },
+    {
+      "lang": "en",
+      "text": "probably notice that there's a huge",
+      "offset": 46.12,
+      "duration": 3.88
+    },
+    {
+      "lang": "en",
+      "text": "opportunity uh ahead of us right",
+      "offset": 47.879,
+      "duration": 4.241
+    },
+    {
+      "lang": "en",
+      "text": "everybody wants to grab that opportunity",
+      "offset": 50,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "there's there's these huge numbers",
+      "offset": 52.12,
+      "duration": 5.32
+    },
+    {
+      "lang": "en",
+      "text": "flying around $4.4 trillion is is the",
+      "offset": 54.32,
+      "duration": 4.879
+    },
+    {
+      "lang": "en",
+      "text": "estimated added value to the global",
+      "offset": 57.44,
+      "duration": 3.759
+    },
+    {
+      "lang": "en",
+      "text": "economy according to to McKenzie so we",
+      "offset": 59.199,
+      "duration": 5.081
+    },
+    {
+      "lang": "en",
+      "text": "have this giant opportunity but at the",
+      "offset": 61.199,
+      "duration": 5.201
+    },
+    {
+      "lang": "en",
+      "text": "same time if you actually look at what's",
+      "offset": 64.28,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "happening in Enterprises you see a lot",
+      "offset": 66.4,
+      "duration": 3.96
+    },
+    {
+      "lang": "en",
+      "text": "of frustration it's probably even true",
+      "offset": 68.2,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "for some of the people in the audience",
+      "offset": 70.36,
+      "duration": 4.04
+    },
+    {
+      "lang": "en",
+      "text": "right here if you're a VP of AI then",
+      "offset": 71.88,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "you're probably under some pressure",
+      "offset": 74.4,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "right now it's like where's the ROI",
+      "offset": 75.88,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "we're investing all this money in AI but",
+      "offset": 78.56,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "where is it actually leading us to are",
+      "offset": 80.68,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "we getting something out of this so uh",
+      "offset": 83.2,
+      "duration": 5.16
+    },
+    {
+      "lang": "en",
+      "text": "Forbes has this interesting study where",
+      "offset": 86.2,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "they showed that only one in four or",
+      "offset": 88.36,
+      "duration": 5.92
+    },
+    {
+      "lang": "en",
+      "text": "businesses actually get value from AI so",
+      "offset": 90.52,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "why is that happening right it feels a",
+      "offset": 94.28,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "bit like a",
+      "offset": 96.28,
+      "duration": 4.36
+    },
+    {
+      "lang": "en",
+      "text": "paradox uh so to to explain it we can",
+      "offset": 97.88,
+      "duration": 4.76
+    },
+    {
+      "lang": "en",
+      "text": "look uh at a paradox that might be",
+      "offset": 100.64,
+      "duration": 3.4
+    },
+    {
+      "lang": "en",
+      "text": "familiar to you it's it's something",
+      "offset": 102.64,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "called morx Paradox it's from Robotics",
+      "offset": 104.04,
+      "duration": 5.48
+    },
+    {
+      "lang": "en",
+      "text": "and in robotics they were very surprised",
+      "offset": 107.28,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "when they found out that it's actually",
+      "offset": 109.52,
+      "duration": 3.879
+    },
+    {
+      "lang": "en",
+      "text": "much easier to beat humans at chess than",
+      "offset": 110.88,
+      "duration": 4.68
+    },
+    {
+      "lang": "en",
+      "text": "to have a robot that can vacuum clean",
+      "offset": 113.399,
+      "duration": 5.201
+    },
+    {
+      "lang": "en",
+      "text": "your house or have a self-driving",
+      "offset": 115.56,
+      "duration": 6.919
+    },
+    {
+      "lang": "en",
+      "text": "car um so the the the Paradox here is",
+      "offset": 118.6,
+      "duration": 6.24
+    },
+    {
+      "lang": "en",
+      "text": "really that things that seem hard are",
+      "offset": 122.479,
+      "duration": 4.041
+    },
+    {
+      "lang": "en",
+      "text": "actually much easier for computers than",
+      "offset": 124.84,
+      "duration": 3.399
+    },
+    {
+      "lang": "en",
+      "text": "you would expect and things that seem",
+      "offset": 126.52,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "easy actually turn out to be much harder",
+      "offset": 128.239,
+      "duration": 4.761
+    },
+    {
+      "lang": "en",
+      "text": "right so there's something very similar",
+      "offset": 131.48,
+      "duration": 3.88
+    },
+    {
+      "lang": "en",
+      "text": "happening right now in in Enterprise AI",
+      "offset": 133,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "specifically and this is around context",
+      "offset": 135.36,
+      "duration": 4.76
+    },
+    {
+      "lang": "en",
+      "text": "so on the one hand we have these amazing",
+      "offset": 138.12,
+      "duration": 4.119
+    },
+    {
+      "lang": "en",
+      "text": "language models right you You' that's",
+      "offset": 140.12,
+      "duration": 3.839
+    },
+    {
+      "lang": "en",
+      "text": "why we're all here basically because we",
+      "offset": 142.239,
+      "duration": 3.64
+    },
+    {
+      "lang": "en",
+      "text": "see this revolution happening right in",
+      "offset": 143.959,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "front of our eyes so language models can",
+      "offset": 145.879,
+      "duration": 4.841
+    },
+    {
+      "lang": "en",
+      "text": "generate code much better than most",
+      "offset": 148.599,
+      "duration": 4.201
+    },
+    {
+      "lang": "en",
+      "text": "humans they can solve mathematical",
+      "offset": 150.72,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "problems much better than than most of",
+      "offset": 152.8,
+      "duration": 4.719
+    },
+    {
+      "lang": "en",
+      "text": "us here can do uh and we're pretty smart",
+      "offset": 154.64,
+      "duration": 4.92
+    },
+    {
+      "lang": "en",
+      "text": "um so it's really amazing what they can",
+      "offset": 157.519,
+      "duration": 3.72
+    },
+    {
+      "lang": "en",
+      "text": "do but one of the things that they",
+      "offset": 159.56,
+      "duration": 3.319
+    },
+    {
+      "lang": "en",
+      "text": "really still struggle with and that's",
+      "offset": 161.239,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "one of the things that as humans we are",
+      "offset": 162.879,
+      "duration": 5.72
+    },
+    {
+      "lang": "en",
+      "text": "very good at sort of without effort is",
+      "offset": 165.159,
+      "duration": 5.961
+    },
+    {
+      "lang": "en",
+      "text": "putting things in the right context",
+      "offset": 168.599,
+      "duration": 4.521
+    },
+    {
+      "lang": "en",
+      "text": "right so as humans we build on our",
+      "offset": 171.12,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "expertise we build on our intuition that",
+      "offset": 173.12,
+      "duration": 3.96
+    },
+    {
+      "lang": "en",
+      "text": "we've developed over the years",
+      "offset": 175.76,
+      "duration": 2.92
+    },
+    {
+      "lang": "en",
+      "text": "especially if we're a specialist this is",
+      "offset": 177.08,
+      "duration": 3.2
+    },
+    {
+      "lang": "en",
+      "text": "something that is very easy easy for us",
+      "offset": 178.68,
+      "duration": 3.88
+    },
+    {
+      "lang": "en",
+      "text": "to do is to put something in the right",
+      "offset": 180.28,
+      "duration": 4.84
+    },
+    {
+      "lang": "en",
+      "text": "context and um and in the right",
+      "offset": 182.56,
+      "duration": 4.599
+    },
+    {
+      "lang": "en",
+      "text": "situation so that you can make sense of",
+      "offset": 185.12,
+      "duration": 3.8
+    },
+    {
+      "lang": "en",
+      "text": "the information or the problem that",
+      "offset": 187.159,
+      "duration": 3.121
+    },
+    {
+      "lang": "en",
+      "text": "you're",
+      "offset": 188.92,
+      "duration": 4.239
+    },
+    {
+      "lang": "en",
+      "text": "solving so I would argue that this is",
+      "offset": 190.28,
+      "duration": 5.16
+    },
+    {
+      "lang": "en",
+      "text": "really the key observation this this",
+      "offset": 193.159,
+      "duration": 5.881
+    },
+    {
+      "lang": "en",
+      "text": "context Paradox um for unlocking Roi",
+      "offset": 195.44,
+      "duration": 6.2
+    },
+    {
+      "lang": "en",
+      "text": "with AI and the reason for that is that",
+      "offset": 199.04,
+      "duration": 4.279
+    },
+    {
+      "lang": "en",
+      "text": "where we are right now here is is in the",
+      "offset": 201.64,
+      "duration": 4.159
+    },
+    {
+      "lang": "en",
+      "text": "bottom left right so we're we're mostly",
+      "offset": 203.319,
+      "duration": 4.401
+    },
+    {
+      "lang": "en",
+      "text": "focused on convenience we have general",
+      "offset": 205.799,
+      "duration": 4.961
+    },
+    {
+      "lang": "en",
+      "text": "purpose assistance they're very use",
+      "offset": 207.72,
+      "duration": 4.92
+    },
+    {
+      "lang": "en",
+      "text": "mostly if you're lazy they help you sort",
+      "offset": 210.76,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "of solve your problems faster but where",
+      "offset": 212.64,
+      "duration": 3.72
+    },
+    {
+      "lang": "en",
+      "text": "you really want to get to is",
+      "offset": 214.92,
+      "duration": 3.879
+    },
+    {
+      "lang": "en",
+      "text": "differentiated value if you're an",
+      "offset": 216.36,
+      "duration": 4.92
+    },
+    {
+      "lang": "en",
+      "text": "Enterprise it's nice that you can make",
+      "offset": 218.799,
+      "duration": 4.561
+    },
+    {
+      "lang": "en",
+      "text": "things more convenient you probably can",
+      "offset": 221.28,
+      "duration": 3.679
+    },
+    {
+      "lang": "en",
+      "text": "make people more efficient and more",
+      "offset": 223.36,
+      "duration": 2.92
+    },
+    {
+      "lang": "en",
+      "text": "productive that's great but where you",
+      "offset": 224.959,
+      "duration": 3.161
+    },
+    {
+      "lang": "en",
+      "text": "want to get to is this business",
+      "offset": 226.28,
+      "duration": 3.959
+    },
+    {
+      "lang": "en",
+      "text": "transformation ideal right that's what",
+      "offset": 228.12,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "all the CEOs are probably telling you as",
+      "offset": 230.239,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "a VP of AI like I want to change my",
+      "offset": 232.12,
+      "duration": 3.72
+    },
+    {
+      "lang": "en",
+      "text": "entire business how am I going to do",
+      "offset": 234.159,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "that so getting to that differentiated",
+      "offset": 235.84,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "value that's where you want to get to",
+      "offset": 238.079,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "but the problem is that the higher you",
+      "offset": 240.64,
+      "duration": 4.239
+    },
+    {
+      "lang": "en",
+      "text": "go on that axis the further you go on",
+      "offset": 242.239,
+      "duration": 5.08
+    },
+    {
+      "lang": "en",
+      "text": "the context axis so the the better you",
+      "offset": 244.879,
+      "duration": 6.08
+    },
+    {
+      "lang": "en",
+      "text": "need to be at handling the context uh uh",
+      "offset": 247.319,
+      "duration": 5.92
+    },
+    {
+      "lang": "en",
+      "text": "that exists within your",
+      "offset": 250.959,
+      "duration": 5.24
+    },
+    {
+      "lang": "en",
+      "text": "Enterprise um so what should we do about",
+      "offset": 253.239,
+      "duration": 5.68
+    },
+    {
+      "lang": "en",
+      "text": "that um so that observation is really",
+      "offset": 256.199,
+      "duration": 4.44
+    },
+    {
+      "lang": "en",
+      "text": "why I started the company that I'm",
+      "offset": 258.919,
+      "duration": 4.681
+    },
+    {
+      "lang": "en",
+      "text": "currently the the CEO of contextual AI",
+      "offset": 260.639,
+      "duration": 5.361
+    },
+    {
+      "lang": "en",
+      "text": "um and we started this two years ago to",
+      "offset": 263.6,
+      "duration": 5.08
+    },
+    {
+      "lang": "en",
+      "text": "try to help bridge this Gap um and we've",
+      "offset": 266,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "learned some lessons along the way that",
+      "offset": 268.68,
+      "duration": 3.72
+    },
+    {
+      "lang": "en",
+      "text": "I thought I would share with you uh in",
+      "offset": 270.56,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "the hope that they're also useful for",
+      "offset": 272.4,
+      "duration": 5.84
+    },
+    {
+      "lang": "en",
+      "text": "you so the first observation is really",
+      "offset": 274.8,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "that language models are awesome but",
+      "offset": 278.24,
+      "duration": 5.239
+    },
+    {
+      "lang": "en",
+      "text": "often they're only 20% of a much bigger",
+      "offset": 280.8,
+      "duration": 5.6
+    },
+    {
+      "lang": "en",
+      "text": "system um so if you have an Enterprise",
+      "offset": 283.479,
+      "duration": 5.321
+    },
+    {
+      "lang": "en",
+      "text": "AI deployment usually that means it's a",
+      "offset": 286.4,
+      "duration": 5.639
+    },
+    {
+      "lang": "en",
+      "text": "rag system uh so I I think everybody",
+      "offset": 288.8,
+      "duration": 6.04
+    },
+    {
+      "lang": "en",
+      "text": "here probably has heard of rag uh rag is",
+      "offset": 292.039,
+      "duration": 5.241
+    },
+    {
+      "lang": "en",
+      "text": "something that I uh originally pioneered",
+      "offset": 294.84,
+      "duration": 4.44
+    },
+    {
+      "lang": "en",
+      "text": "with my team at Facebook a research when",
+      "offset": 297.28,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "I was there uh so rag is is really kind",
+      "offset": 299.28,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "of the standard way that you get gen to",
+      "offset": 302,
+      "duration": 5.88
+    },
+    {
+      "lang": "en",
+      "text": "work on your data so what happens very",
+      "offset": 304.16,
+      "duration": 5.68
+    },
+    {
+      "lang": "en",
+      "text": "often these days is a new language model",
+      "offset": 307.88,
+      "duration": 3.96
+    },
+    {
+      "lang": "en",
+      "text": "comes out everybody goes whoa new",
+      "offset": 309.84,
+      "duration": 3.919
+    },
+    {
+      "lang": "en",
+      "text": "language model it's great everybody",
+      "offset": 311.84,
+      "duration": 3.639
+    },
+    {
+      "lang": "en",
+      "text": "starts to think just about the language",
+      "offset": 313.759,
+      "duration": 3.521
+    },
+    {
+      "lang": "en",
+      "text": "model but very few people actually think",
+      "offset": 315.479,
+      "duration": 3.401
+    },
+    {
+      "lang": "en",
+      "text": "about the system around the language",
+      "offset": 317.28,
+      "duration": 3.479
+    },
+    {
+      "lang": "en",
+      "text": "model and that system needs to solve the",
+      "offset": 318.88,
+      "duration": 4.12
+    },
+    {
+      "lang": "en",
+      "text": "problem right so you can have a",
+      "offset": 320.759,
+      "duration": 4.121
+    },
+    {
+      "lang": "en",
+      "text": "relatively mediocre language model but",
+      "offset": 323,
+      "duration": 4.199
+    },
+    {
+      "lang": "en",
+      "text": "an amazing rag pipeline around it and",
+      "offset": 324.88,
+      "duration": 3.8
+    },
+    {
+      "lang": "en",
+      "text": "that's going to be much better than an",
+      "offset": 327.199,
+      "duration": 3.161
+    },
+    {
+      "lang": "en",
+      "text": "amazing language model with a terrible",
+      "offset": 328.68,
+      "duration": 3.959
+    },
+    {
+      "lang": "en",
+      "text": "rag pipeline around it so the basic",
+      "offset": 330.36,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "observation here or the lesson is that",
+      "offset": 332.639,
+      "duration": 4.68
+    },
+    {
+      "lang": "en",
+      "text": "you should be thinking about systems not",
+      "offset": 335.08,
+      "duration": 4.2
+    },
+    {
+      "lang": "en",
+      "text": "about models the model is only a small",
+      "offset": 337.319,
+      "duration": 3.801
+    },
+    {
+      "lang": "en",
+      "text": "part of the system and the system is the",
+      "offset": 339.28,
+      "duration": 3.56
+    },
+    {
+      "lang": "en",
+      "text": "thing that solves the",
+      "offset": 341.12,
+      "duration": 4.12
+    },
+    {
+      "lang": "en",
+      "text": "problem the next observation is that if",
+      "offset": 342.84,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "you're in an Enterprise expertise is",
+      "offset": 345.24,
+      "duration": 5
+    },
+    {
+      "lang": "en",
+      "text": "really your fuel right so uh one of the",
+      "offset": 347.4,
+      "duration": 4.12
+    },
+    {
+      "lang": "en",
+      "text": "the things that you want to be able to",
+      "offset": 350.24,
+      "duration": 3.239
+    },
+    {
+      "lang": "en",
+      "text": "do as an Enterprise is unlock all of",
+      "offset": 351.52,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "that expertise so you have all of this",
+      "offset": 353.479,
+      "duration": 4.641
+    },
+    {
+      "lang": "en",
+      "text": "institutional knowledge in your company",
+      "offset": 355.52,
+      "duration": 5.48
+    },
+    {
+      "lang": "en",
+      "text": "how do you get it out um so one way to",
+      "offset": 358.12,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "try to do that is is using these",
+      "offset": 361,
+      "duration": 4.039
+    },
+    {
+      "lang": "en",
+      "text": "generalist kind of general purpose",
+      "offset": 363.16,
+      "duration": 3.879
+    },
+    {
+      "lang": "en",
+      "text": "assistant but it's very hard to get them",
+      "offset": 365.039,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "to to uh to match the expertise of",
+      "offset": 367.039,
+      "duration": 4.841
+    },
+    {
+      "lang": "en",
+      "text": "people in your company so ideally what",
+      "offset": 369.759,
+      "duration": 4.241
+    },
+    {
+      "lang": "en",
+      "text": "you want to do is to specialize so that",
+      "offset": 371.88,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "you can capture that expertise much",
+      "offset": 374,
+      "duration": 5.08
+    },
+    {
+      "lang": "en",
+      "text": "better so uh at my company we call this",
+      "offset": 376.12,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "specialization over AGI AGI is great",
+      "offset": 379.08,
+      "duration": 4.519
+    },
+    {
+      "lang": "en",
+      "text": "there are lots of use cases for it if",
+      "offset": 381.88,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "you really want to solve a very",
+      "offset": 383.599,
+      "duration": 3.361
+    },
+    {
+      "lang": "en",
+      "text": "difficult problem that is very domain",
+      "offset": 385.4,
+      "duration": 3.4
+    },
+    {
+      "lang": "en",
+      "text": "specific where you understand the use",
+      "offset": 386.96,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "case you to specialize for it and you'll",
+      "offset": 388.8,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "get much further so that's I guess uh",
+      "offset": 390.96,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "pretty counterintuitive if you look at",
+      "offset": 393.44,
+      "duration": 4.599
+    },
+    {
+      "lang": "en",
+      "text": "the sort of broader uh interest right",
+      "offset": 395.68,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "most people are much more excited about",
+      "offset": 398.039,
+      "duration": 3.521
+    },
+    {
+      "lang": "en",
+      "text": "AGI but solving real problems is much",
+      "offset": 399.52,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "easier with",
+      "offset": 401.56,
+      "duration": 2.52
+    },
+    {
+      "lang": "en",
+      "text": "specialization uh next lesson is uh at",
+      "offset": 404.36,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "an Enterprise scale is your remote so if",
+      "offset": 407.24,
+      "duration": 4.2
+    },
+    {
+      "lang": "en",
+      "text": "you think about what a company really is",
+      "offset": 409.16,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "is a company maybe its people probably a",
+      "offset": 411.44,
+      "duration": 5.199
+    },
+    {
+      "lang": "en",
+      "text": "little bit right but over time what the",
+      "offset": 414.12,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "company really is or what makes a",
+      "offset": 416.639,
+      "duration": 4.161
+    },
+    {
+      "lang": "en",
+      "text": "company a company is it's data because",
+      "offset": 418.68,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "even people are transient right so the",
+      "offset": 420.8,
+      "duration": 4.44
+    },
+    {
+      "lang": "en",
+      "text": "data that a company owns that is the",
+      "offset": 423.16,
+      "duration": 5.319
+    },
+    {
+      "lang": "en",
+      "text": "company in the long term so now as an",
+      "offset": 425.24,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "Enterprise you need to think how you can",
+      "offset": 428.479,
+      "duration": 4.241
+    },
+    {
+      "lang": "en",
+      "text": "unlock all of that potential right and",
+      "offset": 430.52,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "so U one of the the big issues that we",
+      "offset": 432.72,
+      "duration": 5.599
+    },
+    {
+      "lang": "en",
+      "text": "see a lot is that enterprises think that",
+      "offset": 435.08,
+      "duration": 5.08
+    },
+    {
+      "lang": "en",
+      "text": "uh you need to scrub the data and clean",
+      "offset": 438.319,
+      "duration": 4.6
+    },
+    {
+      "lang": "en",
+      "text": "it and invest a lot of time in in uh",
+      "offset": 440.16,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "making your data accessible with AI but",
+      "offset": 442.919,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "what you really want to do is make sure",
+      "offset": 445.44,
+      "duration": 4.12
+    },
+    {
+      "lang": "en",
+      "text": "that AI can work on your noisy data at",
+      "offset": 446.919,
+      "duration": 5.441
+    },
+    {
+      "lang": "en",
+      "text": "scale and doing that is incredibly",
+      "offset": 449.56,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "difficult but if you succeed in doing",
+      "offset": 452.36,
+      "duration": 3
+    },
+    {
+      "lang": "en",
+      "text": "that that's how you get to",
+      "offset": 453.96,
+      "duration": 3.12
+    },
+    {
+      "lang": "en",
+      "text": "differentiated value right that's how",
+      "offset": 455.36,
+      "duration": 4.119
+    },
+    {
+      "lang": "en",
+      "text": "you get that mode because the data makes",
+      "offset": 457.08,
+      "duration": 4.519
+    },
+    {
+      "lang": "en",
+      "text": "makes your company your company and so",
+      "offset": 459.479,
+      "duration": 4.521
+    },
+    {
+      "lang": "en",
+      "text": "that data is really your",
+      "offset": 461.599,
+      "duration": 5.921
+    },
+    {
+      "lang": "en",
+      "text": "mode uh one observation uh and this is",
+      "offset": 464,
+      "duration": 5.159
+    },
+    {
+      "lang": "en",
+      "text": "really a hard truth that that we've",
+      "offset": 467.52,
+      "duration": 3.32
+    },
+    {
+      "lang": "en",
+      "text": "learned and I think that many of you",
+      "offset": 469.159,
+      "duration": 2.921
+    },
+    {
+      "lang": "en",
+      "text": "might have learned already or that",
+      "offset": 470.84,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "you're about to find out uh if you're",
+      "offset": 472.08,
+      "duration": 4.839
+    },
+    {
+      "lang": "en",
+      "text": "earlier in in your journey is that",
+      "offset": 474.68,
+      "duration": 5.68
+    },
+    {
+      "lang": "en",
+      "text": "Pilots are very easy uh building a Mo",
+      "offset": 476.919,
+      "duration": 5
+    },
+    {
+      "lang": "en",
+      "text": "not very difficult these days right if",
+      "offset": 480.36,
+      "duration": 3.559
+    },
+    {
+      "lang": "en",
+      "text": "you want to build a rag system you take",
+      "offset": 481.919,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "one of the Frameworks you put in some",
+      "offset": 483.919,
+      "duration": 3.321
+    },
+    {
+      "lang": "en",
+      "text": "documents you have a working solution",
+      "offset": 485.599,
+      "duration": 4.081
+    },
+    {
+      "lang": "en",
+      "text": "it's great you give it to your 10 users",
+      "offset": 487.24,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "they all tell you it's fantastic and",
+      "offset": 489.68,
+      "duration": 3.959
+    },
+    {
+      "lang": "en",
+      "text": "then you show it to the CEO and he says",
+      "offset": 491.72,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "okay we're going to fire half the",
+      "offset": 493.639,
+      "duration": 3.161
+    },
+    {
+      "lang": "en",
+      "text": "customer support team and we're going to",
+      "offset": 495.08,
+      "duration": 3.559
+    },
+    {
+      "lang": "en",
+      "text": "replace them with AI and we're going to",
+      "offset": 496.8,
+      "duration": 3.64
+    },
+    {
+      "lang": "en",
+      "text": "do that in three months and now you're",
+      "offset": 498.639,
+      "duration": 3.4
+    },
+    {
+      "lang": "en",
+      "text": "on the hook for productionizing",
+      "offset": 500.44,
+      "duration": 3.159
+    },
+    {
+      "lang": "en",
+      "text": "something that is actually much much",
+      "offset": 502.039,
+      "duration": 4.641
+    },
+    {
+      "lang": "en",
+      "text": "harder right so getting this to work at",
+      "offset": 503.599,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "tens of thousands or hundreds of",
+      "offset": 506.68,
+      "duration": 4.359
+    },
+    {
+      "lang": "en",
+      "text": "thousands or millions of documents you",
+      "offset": 508.319,
+      "duration": 5.08
+    },
+    {
+      "lang": "en",
+      "text": "can't do that with any existing tools uh",
+      "offset": 511.039,
+      "duration": 3.721
+    },
+    {
+      "lang": "en",
+      "text": "that are out there on the open source",
+      "offset": 513.399,
+      "duration": 3.161
+    },
+    {
+      "lang": "en",
+      "text": "market it's very very difficult to do",
+      "offset": 514.76,
+      "duration": 3.56
+    },
+    {
+      "lang": "en",
+      "text": "that making the skill to thousands of",
+      "offset": 516.56,
+      "duration": 4.599
+    },
+    {
+      "lang": "en",
+      "text": "users is very hard uh making it work for",
+      "offset": 518.32,
+      "duration": 4.519
+    },
+    {
+      "lang": "en",
+      "text": "lots of different use cases if you're an",
+      "offset": 521.159,
+      "duration": 3.521
+    },
+    {
+      "lang": "en",
+      "text": "Enterprise maybe you have 20,000",
+      "offset": 522.839,
+      "duration": 3.201
+    },
+    {
+      "lang": "en",
+      "text": "different use cases that you want to",
+      "offset": 524.68,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "cover so how do you scale if that's the",
+      "offset": 526.04,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "problem that you're solving and then",
+      "offset": 528.2,
+      "duration": 3
+    },
+    {
+      "lang": "en",
+      "text": "there's of course Enterprise",
+      "offset": 530.12,
+      "duration": 2.88
+    },
+    {
+      "lang": "en",
+      "text": "requirements around security and and",
+      "offset": 531.2,
+      "duration": 4.28
+    },
+    {
+      "lang": "en",
+      "text": "compliance so bridging that Gap is much",
+      "offset": 533,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "harder than you think and and the the",
+      "offset": 535.48,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "right way to deal with that is to really",
+      "offset": 537.48,
+      "duration": 3.599
+    },
+    {
+      "lang": "en",
+      "text": "focus on production from day one so",
+      "offset": 539,
+      "duration": 4.279
+    },
+    {
+      "lang": "en",
+      "text": "don't design for the pilot design for",
+      "offset": 541.079,
+      "duration": 4.481
+    },
+    {
+      "lang": "en",
+      "text": "production uh and that can save you a",
+      "offset": 543.279,
+      "duration": 4.521
+    },
+    {
+      "lang": "en",
+      "text": "lot of time and that brings me to the",
+      "offset": 545.56,
+      "duration": 4.719
+    },
+    {
+      "lang": "en",
+      "text": "next observation is that speed is really",
+      "offset": 547.8,
+      "duration": 5.039
+    },
+    {
+      "lang": "en",
+      "text": "much more important than Perfection what",
+      "offset": 550.279,
+      "duration": 5.201
+    },
+    {
+      "lang": "en",
+      "text": "we see um in terms of production",
+      "offset": 552.839,
+      "duration": 6.641
+    },
+    {
+      "lang": "en",
+      "text": "rollouts of uh rag agents it's all about",
+      "offset": 555.48,
+      "duration": 7.28
+    },
+    {
+      "lang": "en",
+      "text": "speed um and and what that means is uh",
+      "offset": 559.48,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "you need to give it to your users",
+      "offset": 562.76,
+      "duration": 4.759
+    },
+    {
+      "lang": "en",
+      "text": "relatively early real users not not sort",
+      "offset": 564.68,
+      "duration": 5
+    },
+    {
+      "lang": "en",
+      "text": "of uh testers who are are kind of",
+      "offset": 567.519,
+      "duration": 4.121
+    },
+    {
+      "lang": "en",
+      "text": "friendly you want to give it to real",
+      "offset": 569.68,
+      "duration": 4.399
+    },
+    {
+      "lang": "en",
+      "text": "users to get their feedback you want to",
+      "offset": 571.64,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "do that early it doesn't have to be",
+      "offset": 574.079,
+      "duration": 2.921
+    },
+    {
+      "lang": "en",
+      "text": "perfect it just needs to be barely",
+      "offset": 575.48,
+      "duration": 3.24
+    },
+    {
+      "lang": "en",
+      "text": "functional and if you do that then you",
+      "offset": 577,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "can Hill Climb to actually get to this",
+      "offset": 578.72,
+      "duration": 3.88
+    },
+    {
+      "lang": "en",
+      "text": "level where it's good enough if you",
+      "offset": 580.68,
+      "duration": 3.64
+    },
+    {
+      "lang": "en",
+      "text": "don't do that and you wait too long and",
+      "offset": 582.6,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "then you try to design something that is",
+      "offset": 584.32,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "perfect it's going to be very hard to to",
+      "offset": 586.6,
+      "duration": 4.679
+    },
+    {
+      "lang": "en",
+      "text": "bridge that Gap from Pilot to production",
+      "offset": 588.8,
+      "duration": 4.84
+    },
+    {
+      "lang": "en",
+      "text": "so iteration is really the key to a lot",
+      "offset": 591.279,
+      "duration": 4.881
+    },
+    {
+      "lang": "en",
+      "text": "of uh successful uh production AI",
+      "offset": 593.64,
+      "duration": 6.28
+    },
+    {
+      "lang": "en",
+      "text": "deployments in in Enterprises",
+      "offset": 596.16,
+      "duration": 5.88
+    },
+    {
+      "lang": "en",
+      "text": "next observation is is related to this",
+      "offset": 599.92,
+      "duration": 4.479
+    },
+    {
+      "lang": "en",
+      "text": "too which is that uh if you want your",
+      "offset": 602.04,
+      "duration": 4.6
+    },
+    {
+      "lang": "en",
+      "text": "engineers to be fast and if you want to",
+      "offset": 604.399,
+      "duration": 4.201
+    },
+    {
+      "lang": "en",
+      "text": "follow that that speed Maxim I just",
+      "offset": 606.64,
+      "duration": 3.8
+    },
+    {
+      "lang": "en",
+      "text": "talked about then you don't want them",
+      "offset": 608.6,
+      "duration": 4.84
+    },
+    {
+      "lang": "en",
+      "text": "work working on boring stuff uh sounds",
+      "offset": 610.44,
+      "duration": 4.76
+    },
+    {
+      "lang": "en",
+      "text": "kind of obvious but it turns out that",
+      "offset": 613.44,
+      "duration": 3.639
+    },
+    {
+      "lang": "en",
+      "text": "Engineers are working on a lot of very",
+      "offset": 615.2,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "boring stuff um and so one of one of the",
+      "offset": 617.079,
+      "duration": 4.961
+    },
+    {
+      "lang": "en",
+      "text": "the things that they have to worry about",
+      "offset": 620.56,
+      "duration": 3.2
+    },
+    {
+      "lang": "en",
+      "text": "for example is what is the optimal",
+      "offset": 622.04,
+      "duration": 3.799
+    },
+    {
+      "lang": "en",
+      "text": "chunking strategy for my rag system and",
+      "offset": 623.76,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "it's different for every use case and",
+      "offset": 625.839,
+      "duration": 3.761
+    },
+    {
+      "lang": "en",
+      "text": "it's different for every framework and",
+      "offset": 627.44,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "then they have to think about what the",
+      "offset": 629.6,
+      "duration": 3.32
+    },
+    {
+      "lang": "en",
+      "text": "right prompt is or really basic things",
+      "offset": 630.88,
+      "duration": 3.639
+    },
+    {
+      "lang": "en",
+      "text": "that ideally they don't have to think",
+      "offset": 632.92,
+      "duration": 3.32
+    },
+    {
+      "lang": "en",
+      "text": "about too much because you really want",
+      "offset": 634.519,
+      "duration": 4.161
+    },
+    {
+      "lang": "en",
+      "text": "your engineers to think about how are am",
+      "offset": 636.24,
+      "duration": 4.92
+    },
+    {
+      "lang": "en",
+      "text": "I going to deliver business value right",
+      "offset": 638.68,
+      "duration": 4.159
+    },
+    {
+      "lang": "en",
+      "text": "how how do I make sure I have this",
+      "offset": 641.16,
+      "duration": 3.16
+    },
+    {
+      "lang": "en",
+      "text": "differentiated value and that I'm",
+      "offset": 642.839,
+      "duration": 3.201
+    },
+    {
+      "lang": "en",
+      "text": "actually better than my",
+      "offset": 644.32,
+      "duration": 4.319
+    },
+    {
+      "lang": "en",
+      "text": "competitors um so make sure that your",
+      "offset": 646.04,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "engineers spend time on the things that",
+      "offset": 648.639,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "matter and not on the chunking strategy",
+      "offset": 650.36,
+      "duration": 4.68
+    },
+    {
+      "lang": "en",
+      "text": "or or things that that can be abstracted",
+      "offset": 652.399,
+      "duration": 5.201
+    },
+    {
+      "lang": "en",
+      "text": "away uh very well these days by by state",
+      "offset": 655.04,
+      "duration": 5.88
+    },
+    {
+      "lang": "en",
+      "text": "ofth artk platforms for for drag",
+      "offset": 657.6,
+      "duration": 7.359
+    },
+    {
+      "lang": "en",
+      "text": "agents next one is is about making AI",
+      "offset": 660.92,
+      "duration": 6.2
+    },
+    {
+      "lang": "en",
+      "text": "easy to consume so what what I mean by",
+      "offset": 664.959,
+      "duration": 4.521
+    },
+    {
+      "lang": "en",
+      "text": "that is we actually see uh this happen",
+      "offset": 667.12,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "quite often where companies have Genai",
+      "offset": 669.48,
+      "duration": 4.52
+    },
+    {
+      "lang": "en",
+      "text": "running in production and then the next",
+      "offset": 671.76,
+      "duration": 3.879
+    },
+    {
+      "lang": "en",
+      "text": "question I often ask them is okay how",
+      "offset": 674,
+      "duration": 4.36
+    },
+    {
+      "lang": "en",
+      "text": "many people are actually using it and",
+      "offset": 675.639,
+      "duration": 5.241
+    },
+    {
+      "lang": "en",
+      "text": "and surprisingly often the answer is",
+      "offset": 678.36,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "zero almost nobody's actually using it",
+      "offset": 680.88,
+      "duration": 5
+    },
+    {
+      "lang": "en",
+      "text": "they did all this work but they had to",
+      "offset": 683.72,
+      "duration": 4.04
+    },
+    {
+      "lang": "en",
+      "text": "make sure it came through uh sort of",
+      "offset": 685.88,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "model risk and and uh teams like that so",
+      "offset": 687.76,
+      "duration": 5.4
+    },
+    {
+      "lang": "en",
+      "text": "it was really like kneecapped almost and",
+      "offset": 690.68,
+      "duration": 5.08
+    },
+    {
+      "lang": "en",
+      "text": "now it's barely useful uh so that's one",
+      "offset": 693.16,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "scenario or or very often people just",
+      "offset": 695.76,
+      "duration": 3.519
+    },
+    {
+      "lang": "en",
+      "text": "don't actually know how to use the",
+      "offset": 697.72,
+      "duration": 4.6
+    },
+    {
+      "lang": "en",
+      "text": "technology so it it really is a journey",
+      "offset": 699.279,
+      "duration": 5.281
+    },
+    {
+      "lang": "en",
+      "text": "that you are on uh and the easier you",
+      "offset": 702.32,
+      "duration": 5.319
+    },
+    {
+      "lang": "en",
+      "text": "can make your solutions to consume the",
+      "offset": 704.56,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "better it is and what that what that",
+      "offset": 707.639,
+      "duration": 3.801
+    },
+    {
+      "lang": "en",
+      "text": "means for most Enterprises is not just",
+      "offset": 709.12,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "thinking about your Enterprise data and",
+      "offset": 711.44,
+      "duration": 3.72
+    },
+    {
+      "lang": "en",
+      "text": "how you make AI work on it but also how",
+      "offset": 713.12,
+      "duration": 4.92
+    },
+    {
+      "lang": "en",
+      "text": "you integrate it into their workflows so",
+      "offset": 715.16,
+      "duration": 4.679
+    },
+    {
+      "lang": "en",
+      "text": "the closer you can integrate ated into a",
+      "offset": 718.04,
+      "duration": 3.479
+    },
+    {
+      "lang": "en",
+      "text": "workflow that already exists in your",
+      "offset": 719.839,
+      "duration": 3.401
+    },
+    {
+      "lang": "en",
+      "text": "Enterprise the more successful you're",
+      "offset": 721.519,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "going to be with real production",
+      "offset": 723.24,
+      "duration": 7.76
+    },
+    {
+      "lang": "en",
+      "text": "usage uh next one is is related uh to",
+      "offset": 726.639,
+      "duration": 6.601
+    },
+    {
+      "lang": "en",
+      "text": "the previous one as well uh where it's",
+      "offset": 731,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "really about getting usage it's about",
+      "offset": 733.24,
+      "duration": 4.839
+    },
+    {
+      "lang": "en",
+      "text": "sort of being sticky and and so this",
+      "offset": 735.48,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "sounds maybe a little obvious but the",
+      "offset": 738.079,
+      "duration": 5.361
+    },
+    {
+      "lang": "en",
+      "text": "the quicker you can wow users or get",
+      "offset": 741.24,
+      "duration": 3.839
+    },
+    {
+      "lang": "en",
+      "text": "this sort of spark where they they",
+      "offset": 743.44,
+      "duration": 4.399
+    },
+    {
+      "lang": "en",
+      "text": "suddenly get it like this for for me as",
+      "offset": 745.079,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "a CEO of AI company that's really the",
+      "offset": 747.839,
+      "duration": 3.8
+    },
+    {
+      "lang": "en",
+      "text": "special moment when people suddenly go",
+      "offset": 749.959,
+      "duration": 3.481
+    },
+    {
+      "lang": "en",
+      "text": "like wow I didn't know that it could do",
+      "offset": 751.639,
+      "duration": 4.721
+    },
+    {
+      "lang": "en",
+      "text": "this um so you can try to design your",
+      "offset": 753.44,
+      "duration": 6.28
+    },
+    {
+      "lang": "en",
+      "text": "experiences for onboarding users around",
+      "offset": 756.36,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "this observation too right so where",
+      "offset": 759.72,
+      "duration": 3.96
+    },
+    {
+      "lang": "en",
+      "text": "where they get to the wow as quickly as",
+      "offset": 761.72,
+      "duration": 4.04
+    },
+    {
+      "lang": "en",
+      "text": "possible so for us we had this really",
+      "offset": 763.68,
+      "duration": 4.279
+    },
+    {
+      "lang": "en",
+      "text": "nice example with someone at Qualcomm so",
+      "offset": 765.76,
+      "duration": 3.48
+    },
+    {
+      "lang": "en",
+      "text": "we're we're running in production",
+      "offset": 767.959,
+      "duration": 3.401
+    },
+    {
+      "lang": "en",
+      "text": "globally with Qualcomm with thousands of",
+      "offset": 769.24,
+      "duration": 4.2
+    },
+    {
+      "lang": "en",
+      "text": "customer engineers and one of them",
+      "offset": 771.36,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "became so happy when they found this",
+      "offset": 773.44,
+      "duration": 3.399
+    },
+    {
+      "lang": "en",
+      "text": "document it was 7 years old it was",
+      "offset": 775.12,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "hidden away somewhere they didn't know",
+      "offset": 776.839,
+      "duration": 3.721
+    },
+    {
+      "lang": "en",
+      "text": "it existed they had all these questions",
+      "offset": 778.48,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "and they just never knew what the",
+      "offset": 780.56,
+      "duration": 3.32
+    },
+    {
+      "lang": "en",
+      "text": "answers were and suddenly because they",
+      "offset": 781.92,
+      "duration": 3.88
+    },
+    {
+      "lang": "en",
+      "text": "asked our system they got these answers",
+      "offset": 783.88,
+      "duration": 4.36
+    },
+    {
+      "lang": "en",
+      "text": "and like their their world was never the",
+      "offset": 785.8,
+      "duration": 5.599
+    },
+    {
+      "lang": "en",
+      "text": "same again after that um so these are",
+      "offset": 788.24,
+      "duration": 5.399
+    },
+    {
+      "lang": "en",
+      "text": "the the small the small winds sort of uh",
+      "offset": 791.399,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "that that really matter for for uh",
+      "offset": 793.639,
+      "duration": 5.681
+    },
+    {
+      "lang": "en",
+      "text": "evangelizing uh production in",
+      "offset": 795.959,
+      "duration": 6.24
+    },
+    {
+      "lang": "en",
+      "text": "AI uh so that brings me to the the",
+      "offset": 799.32,
+      "duration": 5.16
+    },
+    {
+      "lang": "en",
+      "text": "penultimate learning which is that it's",
+      "offset": 802.199,
+      "duration": 4.681
+    },
+    {
+      "lang": "en",
+      "text": "not even really about accuracy anymore",
+      "offset": 804.48,
+      "duration": 5.159
+    },
+    {
+      "lang": "en",
+      "text": "so accuracy is almost table Stakes right",
+      "offset": 806.88,
+      "duration": 5.079
+    },
+    {
+      "lang": "en",
+      "text": "uh so I I think as AI practitioners we",
+      "offset": 809.639,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "probably know that getting 100% accuracy",
+      "offset": 811.959,
+      "duration": 4.961
+    },
+    {
+      "lang": "en",
+      "text": "is very hard if not impossible getting",
+      "offset": 814.199,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "95% accuracy maybe you can get there or",
+      "offset": 816.92,
+      "duration": 5.039
+    },
+    {
+      "lang": "en",
+      "text": "90% but what Enterprises are are",
+      "offset": 819.399,
+      "duration": 4.401
+    },
+    {
+      "lang": "en",
+      "text": "thinking about much more these days is",
+      "offset": 821.959,
+      "duration": 4.161
+    },
+    {
+      "lang": "en",
+      "text": "what about the missing 5% or what about",
+      "offset": 823.8,
+      "duration": 4.44
+    },
+    {
+      "lang": "en",
+      "text": "the missing 10% how do I deal with the",
+      "offset": 826.12,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "things that might go wrong right um so",
+      "offset": 828.24,
+      "duration": 4.36
+    },
+    {
+      "lang": "en",
+      "text": "there's a minimum requirement for",
+      "offset": 831.16,
+      "duration": 3.56
+    },
+    {
+      "lang": "en",
+      "text": "accuracy but beyond that is really about",
+      "offset": 832.6,
+      "duration": 4.2
+    },
+    {
+      "lang": "en",
+      "text": "inaccuracy and the way to deal with that",
+      "offset": 834.72,
+      "duration": 3.799
+    },
+    {
+      "lang": "en",
+      "text": "is through observability so you want to",
+      "offset": 836.8,
+      "duration": 3.08
+    },
+    {
+      "lang": "en",
+      "text": "be very care care f with how you",
+      "offset": 838.519,
+      "duration": 3.361
+    },
+    {
+      "lang": "en",
+      "text": "evaluate these systems you want to be",
+      "offset": 839.88,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "very careful with making sure you have",
+      "offset": 841.88,
+      "duration": 3.24
+    },
+    {
+      "lang": "en",
+      "text": "proper audit Trails especially if you",
+      "offset": 843.56,
+      "duration": 3.32
+    },
+    {
+      "lang": "en",
+      "text": "work in a regulated industry this is",
+      "offset": 845.12,
+      "duration": 3.519
+    },
+    {
+      "lang": "en",
+      "text": "incredibly important right making sure",
+      "offset": 846.88,
+      "duration": 3.8
+    },
+    {
+      "lang": "en",
+      "text": "that you have an audit Trill that says",
+      "offset": 848.639,
+      "duration": 4.081
+    },
+    {
+      "lang": "en",
+      "text": "this is why I generated this answer it's",
+      "offset": 850.68,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "because I found it here in this document",
+      "offset": 852.72,
+      "duration": 4.52
+    },
+    {
+      "lang": "en",
+      "text": "basic things like that so attribution",
+      "offset": 855.48,
+      "duration": 3.96
+    },
+    {
+      "lang": "en",
+      "text": "essentially in a rag system actually",
+      "offset": 857.24,
+      "duration": 3.959
+    },
+    {
+      "lang": "en",
+      "text": "becomes very very important for dealing",
+      "offset": 859.44,
+      "duration": 4.04
+    },
+    {
+      "lang": "en",
+      "text": "with the inaccuracies and similarly what",
+      "offset": 861.199,
+      "duration": 4.44
+    },
+    {
+      "lang": "en",
+      "text": "you can do is you can check the claims",
+      "offset": 863.48,
+      "duration": 3.96
+    },
+    {
+      "lang": "en",
+      "text": "that your system generates so do a lot",
+      "offset": 865.639,
+      "duration": 3.721
+    },
+    {
+      "lang": "en",
+      "text": "of postprocessing to ensure that you",
+      "offset": 867.44,
+      "duration": 4.399
+    },
+    {
+      "lang": "en",
+      "text": "have proper attributions uh that that",
+      "offset": 869.36,
+      "duration": 6.36
+    },
+    {
+      "lang": "en",
+      "text": "you can really back up uh as",
+      "offset": 871.839,
+      "duration": 3.881
+    },
+    {
+      "lang": "en",
+      "text": "evidence struggling with the clicker a",
+      "offset": 878.56,
+      "duration": 5.48
+    },
+    {
+      "lang": "en",
+      "text": "bit so uh F final one uh that I want to",
+      "offset": 880.88,
+      "duration": 4.639
+    },
+    {
+      "lang": "en",
+      "text": "end on and this sounds maybe a little",
+      "offset": 884.04,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "bit cheesy but it it it really is is",
+      "offset": 885.519,
+      "duration": 6.24
+    },
+    {
+      "lang": "en",
+      "text": "true is be ambitious we we actually see",
+      "offset": 888.04,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "a lot of projects fail not because",
+      "offset": 891.759,
+      "duration": 4.041
+    },
+    {
+      "lang": "en",
+      "text": "people are aiming too high but because",
+      "offset": 894.04,
+      "duration": 4.12
+    },
+    {
+      "lang": "en",
+      "text": "people are aiming too low where where",
+      "offset": 895.8,
+      "duration": 4.36
+    },
+    {
+      "lang": "en",
+      "text": "folks are going like I have gen running",
+      "offset": 898.16,
+      "duration": 3.96
+    },
+    {
+      "lang": "en",
+      "text": "in production and then what does it do",
+      "offset": 900.16,
+      "duration": 3.64
+    },
+    {
+      "lang": "en",
+      "text": "it answers basic questions about who",
+      "offset": 902.12,
+      "duration": 4.719
+    },
+    {
+      "lang": "en",
+      "text": "your 401k provider is or how many days",
+      "offset": 903.8,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "of vacation I get like that's not really",
+      "offset": 906.839,
+      "duration": 5.521
+    },
+    {
+      "lang": "en",
+      "text": "where the ROI of AI is right so you want",
+      "offset": 909.32,
+      "duration": 4.959
+    },
+    {
+      "lang": "en",
+      "text": "to aim for really ambitious things where",
+      "offset": 912.36,
+      "duration": 3.88
+    },
+    {
+      "lang": "en",
+      "text": "if you solve them you actually have have",
+      "offset": 914.279,
+      "duration": 3.8
+    },
+    {
+      "lang": "en",
+      "text": "Roi and you don't just have a gimmick",
+      "offset": 916.24,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "that people don't really uh use anyway",
+      "offset": 918.079,
+      "duration": 5.361
+    },
+    {
+      "lang": "en",
+      "text": "so try to be be ambitious because we",
+      "offset": 920.88,
+      "duration": 4.959
+    },
+    {
+      "lang": "en",
+      "text": "really live in special times we have the",
+      "offset": 923.44,
+      "duration": 6.12
+    },
+    {
+      "lang": "en",
+      "text": "the astronaut here on the slide um so so",
+      "offset": 925.839,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "I I think it was a pretty special time",
+      "offset": 929.56,
+      "duration": 3.519
+    },
+    {
+      "lang": "en",
+      "text": "to be alive during the the moon landing",
+      "offset": 931.199,
+      "duration": 3.241
+    },
+    {
+      "lang": "en",
+      "text": "and when all of that happened right",
+      "offset": 933.079,
+      "duration": 3.721
+    },
+    {
+      "lang": "en",
+      "text": "we're in a in a similar moment right now",
+      "offset": 934.44,
+      "duration": 4.36
+    },
+    {
+      "lang": "en",
+      "text": "where AI is is really going to change",
+      "offset": 936.8,
+      "duration": 4.279
+    },
+    {
+      "lang": "en",
+      "text": "everything is going to change our entire",
+      "offset": 938.8,
+      "duration": 4.839
+    },
+    {
+      "lang": "en",
+      "text": "Society in the next couple of years um",
+      "offset": 941.079,
+      "duration": 4.641
+    },
+    {
+      "lang": "en",
+      "text": "and so you have an opportunity being in",
+      "offset": 943.639,
+      "duration": 4.76
+    },
+    {
+      "lang": "en",
+      "text": "the role that you're in to to Really uh",
+      "offset": 945.72,
+      "duration": 4.679
+    },
+    {
+      "lang": "en",
+      "text": "uh affect that change in society",
+      "offset": 948.399,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "yourself uh so so be ambitious when you",
+      "offset": 950.399,
+      "duration": 5
+    },
+    {
+      "lang": "en",
+      "text": "do that uh and don't aim for the the",
+      "offset": 953.199,
+      "duration": 4.961
+    },
+    {
+      "lang": "en",
+      "text": "loow hanging easy fruit uh aim for for",
+      "offset": 955.399,
+      "duration": 4.761
+    },
+    {
+      "lang": "en",
+      "text": "the sky",
+      "offset": 958.16,
+      "duration": 4.919
+    },
+    {
+      "lang": "en",
+      "text": "so uh that's really U what what my",
+      "offset": 960.16,
+      "duration": 4.76
+    },
+    {
+      "lang": "en",
+      "text": "lessons were for you here uh this",
+      "offset": 963.079,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "context Paradox is not going away um but",
+      "offset": 964.92,
+      "duration": 5.08
+    },
+    {
+      "lang": "en",
+      "text": "by understanding these lessons that I I",
+      "offset": 968.199,
+      "duration": 4.12
+    },
+    {
+      "lang": "en",
+      "text": "shared with you hopefully you can turn",
+      "offset": 970,
+      "duration": 4.399
+    },
+    {
+      "lang": "en",
+      "text": "some of these challenges uh that we see",
+      "offset": 972.319,
+      "duration": 3.681
+    },
+    {
+      "lang": "en",
+      "text": "everywhere in Enterprise AI into",
+      "offset": 974.399,
+      "duration": 4.641
+    },
+    {
+      "lang": "en",
+      "text": "opportunities for yourself um so so it's",
+      "offset": 976,
+      "duration": 5.56
+    },
+    {
+      "lang": "en",
+      "text": "really build better systems think about",
+      "offset": 979.04,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "systems not models focus on your",
+      "offset": 981.56,
+      "duration": 4.079
+    },
+    {
+      "lang": "en",
+      "text": "expertise and specialize for it don't",
+      "offset": 983.68,
+      "duration": 4.519
+    },
+    {
+      "lang": "en",
+      "text": "settle for General Solutions specialize",
+      "offset": 985.639,
+      "duration": 4.521
+    },
+    {
+      "lang": "en",
+      "text": "for for expertise that you have in your",
+      "offset": 988.199,
+      "duration": 4.241
+    },
+    {
+      "lang": "en",
+      "text": "company and be ambitious and then you'll",
+      "offset": 990.16,
+      "duration": 5.63
+    },
+    {
+      "lang": "en",
+      "text": "be very successful thank you",
+      "offset": 992.44,
+      "duration": 4.77
+    },
+    {
+      "lang": "en",
+      "text": "[Applause]",
+      "offset": 995.79,
+      "duration": 20.19
+    },
+    {
+      "lang": "en",
+      "text": "[Music]",
+      "offset": 997.21,
+      "duration": 18.77
+    }
+  ],
+  "cleanText": null,
+  "dumpedAt": "2025-07-21T18:43:26.264Z"
+}

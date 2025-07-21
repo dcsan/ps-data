@@ -1,0 +1,3856 @@
+{
+  "episodeId": "6nIX41-9rhA",
+  "channelSlug": "@bytegrad",
+  "title": "Next.js Background Jobs / Cron Jobs / Queue / AI-Calls Are EASY Now! (Inngest)",
+  "publishedAt": "2025-07-07T08:00:17.000Z",
+  "rawLines": [
+    {
+      "lang": "en",
+      "text": "Hey everyone, I know a lot of you are",
+      "offset": 0.08,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "using Next.js to build some kind of AI",
+      "offset": 1.6,
+      "duration": 5.279
+    },
+    {
+      "lang": "en",
+      "text": "app or other apps that have some type of",
+      "offset": 4.56,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "task that takes a bit longer. For",
+      "offset": 6.879,
+      "duration": 5.041
+    },
+    {
+      "lang": "en",
+      "text": "example, if you make an API call to an",
+      "offset": 9.28,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "AI provider, that may take a couple",
+      "offset": 11.92,
+      "duration": 3.2
+    },
+    {
+      "lang": "en",
+      "text": "minutes if you're using the latest",
+      "offset": 13.84,
+      "duration": 3.439
+    },
+    {
+      "lang": "en",
+      "text": "models. They may think for uh multiple",
+      "offset": 15.12,
+      "duration": 3.919
+    },
+    {
+      "lang": "en",
+      "text": "minutes. Um or maybe you want to run",
+      "offset": 17.279,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "something on a schedule. Maybe every",
+      "offset": 19.039,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "couple hours you want to do something or",
+      "offset": 21.439,
+      "duration": 4.161
+    },
+    {
+      "lang": "en",
+      "text": "once a day. And what I'm getting at is",
+      "offset": 23.359,
+      "duration": 3.521
+    },
+    {
+      "lang": "en",
+      "text": "that there are certain things that we",
+      "offset": 25.6,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "want to do in our apps, in our software",
+      "offset": 26.88,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "that do not fit in nicely in a request",
+      "offset": 28.96,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "response cycle that we're used to. So",
+      "offset": 31.92,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "for example, in a nextjs application",
+      "offset": 33.76,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "like this, it's all about a very fast",
+      "offset": 35.44,
+      "duration": 5.119
+    },
+    {
+      "lang": "en",
+      "text": "request and response cycle. So the",
+      "offset": 37.76,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "user's browser, the client will make",
+      "offset": 40.559,
+      "duration": 3.921
+    },
+    {
+      "lang": "en",
+      "text": "requests to our server sites. Maybe",
+      "offset": 42.64,
+      "duration": 3.919
+    },
+    {
+      "lang": "en",
+      "text": "they're navigating to a new page that's",
+      "offset": 44.48,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "typically a server component. So the",
+      "offset": 46.559,
+      "duration": 3.201
+    },
+    {
+      "lang": "en",
+      "text": "server component needs to be rendered",
+      "offset": 48.32,
+      "duration": 3.28
+    },
+    {
+      "lang": "en",
+      "text": "and then it gets sent back to the",
+      "offset": 49.76,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "client. Or maybe the user is updating",
+      "offset": 51.6,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "some data. These days we typically use",
+      "offset": 53.68,
+      "duration": 3.519
+    },
+    {
+      "lang": "en",
+      "text": "server actions for that. Server action",
+      "offset": 55.68,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "may return a response. Or maybe you are",
+      "offset": 57.199,
+      "duration": 4.641
+    },
+    {
+      "lang": "en",
+      "text": "using a route handler and API endpoint",
+      "offset": 59.6,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "on your server and it's doing something",
+      "offset": 61.84,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "and it returns a response. Right? So",
+      "offset": 64,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "Nex.js is one app here and it's centered",
+      "offset": 65.68,
+      "duration": 5.119
+    },
+    {
+      "lang": "en",
+      "text": "around this very fast request response",
+      "offset": 68.24,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "cycle. Maybe a second or 2 seconds and",
+      "offset": 70.799,
+      "duration": 4.721
+    },
+    {
+      "lang": "en",
+      "text": "if it's really a bit longer may maybe",
+      "offset": 73.28,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "multiple seconds. But it's pretty rare",
+      "offset": 75.52,
+      "duration": 3.919
+    },
+    {
+      "lang": "en",
+      "text": "to have something take I don't know a",
+      "offset": 77.52,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "minute or 2 minutes. But of course, if",
+      "offset": 79.439,
+      "duration": 3.281
+    },
+    {
+      "lang": "en",
+      "text": "you build anything that's a little bit",
+      "offset": 81.36,
+      "duration": 3.439
+    },
+    {
+      "lang": "en",
+      "text": "more sophisticated, you will have those",
+      "offset": 82.72,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "tasks at some point. And maybe you've",
+      "offset": 84.799,
+      "duration": 3.601
+    },
+    {
+      "lang": "en",
+      "text": "already run into that. I was building a",
+      "offset": 86.64,
+      "duration": 4.799
+    },
+    {
+      "lang": "en",
+      "text": "startup that allowed users to create",
+      "offset": 88.4,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "videos. So, a user basically has to",
+      "offset": 91.439,
+      "duration": 3.761
+    },
+    {
+      "lang": "en",
+      "text": "collect a bunch of material for the",
+      "offset": 93.52,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "video, maybe some images, some text,",
+      "offset": 95.2,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "some audio, and then a video has to be",
+      "offset": 97.04,
+      "duration": 5.759
+    },
+    {
+      "lang": "en",
+      "text": "rendered into an MP4 file, let's say,",
+      "offset": 99.92,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "right? So, that video rendering the",
+      "offset": 102.799,
+      "duration": 4.481
+    },
+    {
+      "lang": "en",
+      "text": "users user may click on a button in the",
+      "offset": 104.64,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "on the web app. They may click on render",
+      "offset": 107.28,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "video, right? And that will send a",
+      "offset": 109.6,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "request to my server side. And now my",
+      "offset": 111.6,
+      "duration": 3.519
+    },
+    {
+      "lang": "en",
+      "text": "server side knows, okay, we need to",
+      "offset": 113.6,
+      "duration": 3.28
+    },
+    {
+      "lang": "en",
+      "text": "render a video. But rendering a video",
+      "offset": 115.119,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "may take a long time, may take 10 or 20",
+      "offset": 116.88,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "minutes, right? So we could not just",
+      "offset": 119.439,
+      "duration": 3.761
+    },
+    {
+      "lang": "en",
+      "text": "wait until it was finished and then send",
+      "offset": 121.28,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "a respond. That was a type of task that",
+      "offset": 123.2,
+      "duration": 5.119
+    },
+    {
+      "lang": "en",
+      "text": "we have to do basically outside this",
+      "offset": 125.52,
+      "duration": 4.879
+    },
+    {
+      "lang": "en",
+      "text": "traditional request response cycle. We",
+      "offset": 128.319,
+      "duration": 3.841
+    },
+    {
+      "lang": "en",
+      "text": "had to sort of run it in the background,",
+      "offset": 130.399,
+      "duration": 3.441
+    },
+    {
+      "lang": "en",
+      "text": "right? So, next.js is often hosted on",
+      "offset": 132.16,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "these serverless functions, lambda",
+      "offset": 133.84,
+      "duration": 4.479
+    },
+    {
+      "lang": "en",
+      "text": "functions, and we do not want to just",
+      "offset": 135.84,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "wait 30 minutes, let's say, cuz you're",
+      "offset": 138.319,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "going to pay for uh 30 minutes of",
+      "offset": 140.16,
+      "duration": 4.159
+    },
+    {
+      "lang": "en",
+      "text": "function invocation perhaps. Uh but",
+      "offset": 142.319,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "basically, the way that NextJS is",
+      "offset": 144.319,
+      "duration": 4.081
+    },
+    {
+      "lang": "en",
+      "text": "typically hosted and built, you you you",
+      "offset": 146.319,
+      "duration": 3.361
+    },
+    {
+      "lang": "en",
+      "text": "will run into an issue when you have",
+      "offset": 148.4,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "longunning tasks like this. But it's the",
+      "offset": 149.68,
+      "duration": 4.559
+    },
+    {
+      "lang": "en",
+      "text": "same when you have some kind of uh",
+      "offset": 152.16,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "scheduler necessity, maybe chron jobs,",
+      "offset": 154.239,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "right? Maybe I want to send the user an",
+      "offset": 156.8,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "email once a month or once a week,",
+      "offset": 159.519,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "right? This is also not something that",
+      "offset": 162.16,
+      "duration": 3.439
+    },
+    {
+      "lang": "en",
+      "text": "fits in into this request response",
+      "offset": 163.599,
+      "duration": 3.681
+    },
+    {
+      "lang": "en",
+      "text": "cycle. Now, especially these days with",
+      "offset": 165.599,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "AI, you're going to have a lot more of",
+      "offset": 167.28,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "these longunning tasks because you want",
+      "offset": 169.519,
+      "duration": 3.281
+    },
+    {
+      "lang": "en",
+      "text": "to use the latest models and they just",
+      "offset": 171.28,
+      "duration": 3.039
+    },
+    {
+      "lang": "en",
+      "text": "may take a little bit longer. So, just",
+      "offset": 172.8,
+      "duration": 3.28
+    },
+    {
+      "lang": "en",
+      "text": "as an example, let's say I have some",
+      "offset": 174.319,
+      "duration": 4.721
+    },
+    {
+      "lang": "en",
+      "text": "kind of AI text summarizer app. So a",
+      "offset": 176.08,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "user can just paste a bunch of text here",
+      "offset": 179.04,
+      "duration": 5.68
+    },
+    {
+      "lang": "en",
+      "text": "and maybe give their email and then when",
+      "offset": 181.84,
+      "duration": 5.039
+    },
+    {
+      "lang": "en",
+      "text": "they click summarize we want to take",
+      "offset": 184.72,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "their huge body of text potentially and",
+      "offset": 186.879,
+      "duration": 4.801
+    },
+    {
+      "lang": "en",
+      "text": "we want to use AI to nicely summarize",
+      "offset": 189.36,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "that. Right? So that may take let's say",
+      "offset": 191.68,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "2 minutes or maybe even longer if it's",
+      "offset": 193.44,
+      "duration": 4.159
+    },
+    {
+      "lang": "en",
+      "text": "if if the requirements are even more",
+      "offset": 195.76,
+      "duration": 3.759
+    },
+    {
+      "lang": "en",
+      "text": "sophisticated. So it may take a long",
+      "offset": 197.599,
+      "duration": 4.321
+    },
+    {
+      "lang": "en",
+      "text": "time but we also may get a lot of people",
+      "offset": 199.519,
+      "duration": 4.401
+    },
+    {
+      "lang": "en",
+      "text": "submitting uh these requests. So we may",
+      "offset": 201.92,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "want to prioritize let's say paying",
+      "offset": 203.92,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "users. So those tasks should be",
+      "offset": 206,
+      "duration": 4.159
+    },
+    {
+      "lang": "en",
+      "text": "prioritized so you get more like a Q",
+      "offset": 208.08,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "system. And so whenever you get a little",
+      "offset": 210.159,
+      "duration": 3.281
+    },
+    {
+      "lang": "en",
+      "text": "bit more sophisticated with your apps,",
+      "offset": 211.84,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "you will run into these issues. So",
+      "offset": 213.44,
+      "duration": 2.799
+    },
+    {
+      "lang": "en",
+      "text": "actually I want to introduce you to",
+      "offset": 215.2,
+      "duration": 2.8
+    },
+    {
+      "lang": "en",
+      "text": "Injest. They are also today's sponsor",
+      "offset": 216.239,
+      "duration": 3.681
+    },
+    {
+      "lang": "en",
+      "text": "and I think they fit in really nicely in",
+      "offset": 218,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "this nextg tech especially if you're",
+      "offset": 219.92,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "using these AI workloads but even",
+      "offset": 222.08,
+      "duration": 4.719
+    },
+    {
+      "lang": "en",
+      "text": "without. They solve this problem that",
+      "offset": 224.08,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "you have where you where you need to run",
+      "offset": 226.799,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "things outside the normal mechanics of a",
+      "offset": 228.64,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "next.js app. And basically they allow us",
+      "offset": 231.519,
+      "duration": 3.921
+    },
+    {
+      "lang": "en",
+      "text": "to easily add some kind of queueing",
+      "offset": 233.68,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "system to our NextJ.js setup or chron",
+      "offset": 235.44,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "jobs. Basically turn it into a more",
+      "offset": 238,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "event driven workflow. So let me",
+      "offset": 240,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "actually show you how this would work in",
+      "offset": 241.84,
+      "duration": 4.319
+    },
+    {
+      "lang": "en",
+      "text": "this uh text summarizer app. What I'm",
+      "offset": 243.92,
+      "duration": 5.599
+    },
+    {
+      "lang": "en",
+      "text": "doing here is we have this homepage here",
+      "offset": 246.159,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "with the form, right? So this is where",
+      "offset": 249.519,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "users can add the text. They have like a",
+      "offset": 251.519,
+      "duration": 4.801
+    },
+    {
+      "lang": "en",
+      "text": "bunch of text and also let's say an",
+      "offset": 254.239,
+      "duration": 4.081
+    },
+    {
+      "lang": "en",
+      "text": "email so that when it's finished we will",
+      "offset": 256.32,
+      "duration": 3.439
+    },
+    {
+      "lang": "en",
+      "text": "actually send the summary to their",
+      "offset": 258.32,
+      "duration": 3.759
+    },
+    {
+      "lang": "en",
+      "text": "email. So it's just a very basic form.",
+      "offset": 259.759,
+      "duration": 4.241
+    },
+    {
+      "lang": "en",
+      "text": "uh nothing fancy here although I am",
+      "offset": 262.079,
+      "duration": 4.081
+    },
+    {
+      "lang": "en",
+      "text": "using a so-called server action so when",
+      "offset": 264,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "the user submits the form we will",
+      "offset": 266.16,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "receive it here on our server side in",
+      "offset": 267.84,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "nextjs okay and now we have this issue",
+      "offset": 270,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "right so we will get it onto our server",
+      "offset": 272.56,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "side and now we may have an issue",
+      "offset": 274.16,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "because this may potentially take a long",
+      "offset": 276.32,
+      "duration": 3.599
+    },
+    {
+      "lang": "en",
+      "text": "time right so you can imagine these AI",
+      "offset": 278.16,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "workloads or other workloads video",
+      "offset": 279.919,
+      "duration": 4.241
+    },
+    {
+      "lang": "en",
+      "text": "rendering they just may take a long time",
+      "offset": 282.24,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "right so we cannot just leave the client",
+      "offset": 284.16,
+      "duration": 3.759
+    },
+    {
+      "lang": "en",
+      "text": "hanging we so we have to create perhaps",
+      "offset": 286,
+      "duration": 3.759
+    },
+    {
+      "lang": "en",
+      "text": "some kind of Q system and if you ever",
+      "offset": 287.919,
+      "duration": 3.121
+    },
+    {
+      "lang": "en",
+      "text": "try to do that it's actually quite",
+      "offset": 289.759,
+      "duration": 3.121
+    },
+    {
+      "lang": "en",
+      "text": "painful I try to do it with the video",
+      "offset": 291.04,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "rendering startup and I remember how",
+      "offset": 292.88,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "much of a mess uh it was to try to do",
+      "offset": 294.96,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "that. So I'm going to use ingest now. So",
+      "offset": 297.04,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "the way to think of it is a separate",
+      "offset": 299.28,
+      "duration": 4.479
+    },
+    {
+      "lang": "en",
+      "text": "server that we can hand that off to",
+      "offset": 301.6,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "right. So I'm going to have some kind of",
+      "offset": 303.759,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "ingest instance here. Leting manage it.",
+      "offset": 305.36,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "So I will install inest right here and",
+      "offset": 307.759,
+      "duration": 5.921
+    },
+    {
+      "lang": "en",
+      "text": "then I can run a localest instance. So",
+      "offset": 310.56,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "we can work with ingest during",
+      "offset": 313.68,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "development. Here I will run it right",
+      "offset": 315.28,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "here. I will install that. Yes. All",
+      "offset": 317.44,
+      "duration": 3.599
+    },
+    {
+      "lang": "en",
+      "text": "right. So now we have the ingest dev",
+      "offset": 319.12,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "server running. Now you get a nice",
+      "offset": 321.039,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "dashboard out of the box actually. So if",
+      "offset": 322.72,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "I open that up, you can see I now have",
+      "offset": 324.639,
+      "duration": 4.241
+    },
+    {
+      "lang": "en",
+      "text": "the dev server here running on my own",
+      "offset": 326.4,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "computer and it will give you uh",
+      "offset": 328.88,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "insights into these workloads that we're",
+      "offset": 330.56,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "going to run. Right now I don't have",
+      "offset": 332.8,
+      "duration": 2.64
+    },
+    {
+      "lang": "en",
+      "text": "anything. So it's just going to be empty",
+      "offset": 334,
+      "duration": 3.199
+    },
+    {
+      "lang": "en",
+      "text": "here, but this will come in really handy",
+      "offset": 335.44,
+      "duration": 3.039
+    },
+    {
+      "lang": "en",
+      "text": "in a second. Okay, so I have this",
+      "offset": 337.199,
+      "duration": 3.041
+    },
+    {
+      "lang": "en",
+      "text": "running now. So what I have now is",
+      "offset": 338.479,
+      "duration": 3.921
+    },
+    {
+      "lang": "en",
+      "text": "basically that inest server. This is now",
+      "offset": 340.24,
+      "duration": 4.399
+    },
+    {
+      "lang": "en",
+      "text": "running. So I now want to be able to",
+      "offset": 342.4,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "communicate between my nextg server side",
+      "offset": 344.639,
+      "duration": 5.601
+    },
+    {
+      "lang": "en",
+      "text": "and inest. So I will create an ingest",
+      "offset": 347.36,
+      "duration": 5.839
+    },
+    {
+      "lang": "en",
+      "text": "folder here to instantiate the client so",
+      "offset": 350.24,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "that my nextjs app communicate with that",
+      "offset": 353.199,
+      "duration": 4.161
+    },
+    {
+      "lang": "en",
+      "text": "ingest server. I will just call that",
+      "offset": 355.6,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "inest.ts. So here I can instantiate",
+      "offset": 357.36,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "inest. It's very basic. Uh we're just",
+      "offset": 360.08,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "going to say yeah here we have a",
+      "offset": 362.4,
+      "duration": 2.48
+    },
+    {
+      "lang": "en",
+      "text": "summarizer app. I'm going to create",
+      "offset": 363.52,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "functions here for ingest and ingest",
+      "offset": 364.88,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "will then trigger those function. So I",
+      "offset": 367.36,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "will just call it functions here. So",
+      "offset": 369.6,
+      "duration": 3.12
+    },
+    {
+      "lang": "en",
+      "text": "this is the function that I want to run",
+      "offset": 371.12,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "right. So the user will submit some text",
+      "offset": 372.72,
+      "duration": 4.319
+    },
+    {
+      "lang": "en",
+      "text": "and we want to create a summary out of",
+      "offset": 374.8,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "that and also send an email with the",
+      "offset": 377.039,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "result to the user. I'm going to put",
+      "offset": 379.44,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "that in a function. So I I use that",
+      "offset": 381.199,
+      "duration": 4.481
+    },
+    {
+      "lang": "en",
+      "text": "inest client to create a function. Here",
+      "offset": 383.28,
+      "duration": 4.479
+    },
+    {
+      "lang": "en",
+      "text": "in the first argument I'm going to give",
+      "offset": 385.68,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "it an ID and a name. With ingest we can",
+      "offset": 387.759,
+      "duration": 5.521
+    },
+    {
+      "lang": "en",
+      "text": "trigger this function when there is an",
+      "offset": 390.96,
+      "duration": 4.239
+    },
+    {
+      "lang": "en",
+      "text": "event. So it becomes an event-driven",
+      "offset": 393.28,
+      "duration": 4.479
+    },
+    {
+      "lang": "en",
+      "text": "workflow. So if the user submits text,",
+      "offset": 395.199,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "we're going to fire off an event, right?",
+      "offset": 397.759,
+      "duration": 3.921
+    },
+    {
+      "lang": "en",
+      "text": "to the event and we're going to call it",
+      "offset": 399.759,
+      "duration": 5.681
+    },
+    {
+      "lang": "en",
+      "text": "a text slash summary. Requested event.",
+      "offset": 401.68,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "When that event occurs, when inest",
+      "offset": 405.44,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "receives an event like that, we're going",
+      "offset": 407.68,
+      "duration": 3.2
+    },
+    {
+      "lang": "en",
+      "text": "to run this function. So this is the",
+      "offset": 409.28,
+      "duration": 3.359
+    },
+    {
+      "lang": "en",
+      "text": "actual meat of it, you could say. This",
+      "offset": 410.88,
+      "duration": 3.039
+    },
+    {
+      "lang": "en",
+      "text": "is where we're actually going to do the",
+      "offset": 412.639,
+      "duration": 3.761
+    },
+    {
+      "lang": "en",
+      "text": "summary. Okay. So to actually summarize",
+      "offset": 413.919,
+      "duration": 4.321
+    },
+    {
+      "lang": "en",
+      "text": "it, we need to know the actual text that",
+      "offset": 416.4,
+      "duration": 4.239
+    },
+    {
+      "lang": "en",
+      "text": "the user submitted. So we will get that",
+      "offset": 418.24,
+      "duration": 4.239
+    },
+    {
+      "lang": "en",
+      "text": "here as the event. Okay. So here we get",
+      "offset": 420.639,
+      "duration": 3.201
+    },
+    {
+      "lang": "en",
+      "text": "the text that the user actually",
+      "offset": 422.479,
+      "duration": 3.201
+    },
+    {
+      "lang": "en",
+      "text": "submitted. And we're just going to do",
+      "offset": 423.84,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "something silly here just to see how all",
+      "offset": 425.68,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "of this works. The mechanics of it. It's",
+      "offset": 427.36,
+      "duration": 4.399
+    },
+    {
+      "lang": "en",
+      "text": "just going to uh get some words and",
+      "offset": 429.36,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "conjure up some kind of summary. We're",
+      "offset": 431.759,
+      "duration": 4.481
+    },
+    {
+      "lang": "en",
+      "text": "just going to add a set timeout here",
+      "offset": 434.16,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "just to pretend it's going to take a",
+      "offset": 436.24,
+      "duration": 2.72
+    },
+    {
+      "lang": "en",
+      "text": "little bit longer because typically",
+      "offset": 437.84,
+      "duration": 2.56
+    },
+    {
+      "lang": "en",
+      "text": "we're going to invoke AI, right? I'll",
+      "offset": 438.96,
+      "duration": 2.88
+    },
+    {
+      "lang": "en",
+      "text": "show you that in a second. But just to",
+      "offset": 440.4,
+      "duration": 3.12
+    },
+    {
+      "lang": "en",
+      "text": "get a sense of the mechanics here, this",
+      "offset": 441.84,
+      "duration": 3.199
+    },
+    {
+      "lang": "en",
+      "text": "is what we have right now. Ultimately,",
+      "offset": 443.52,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "we're going to return that uh summary as",
+      "offset": 445.039,
+      "duration": 4.961
+    },
+    {
+      "lang": "en",
+      "text": "the result here. So, this is an ingest",
+      "offset": 447.84,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "function. So, we want to run this and we",
+      "offset": 450,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "do that by sending an event to ingest.",
+      "offset": 452.24,
+      "duration": 5.359
+    },
+    {
+      "lang": "en",
+      "text": "So then inest knows oh yeah so now we",
+      "offset": 455.36,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "have to run the function that",
+      "offset": 457.599,
+      "duration": 3.681
+    },
+    {
+      "lang": "en",
+      "text": "corresponds to that event and that is",
+      "offset": 459.68,
+      "duration": 3.359
+    },
+    {
+      "lang": "en",
+      "text": "basically what we want to do inside here",
+      "offset": 461.28,
+      "duration": 4.479
+    },
+    {
+      "lang": "en",
+      "text": "in our nextjs app server action because",
+      "offset": 463.039,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "we it doesn't fit in nicely in that",
+      "offset": 465.759,
+      "duration": 3.761
+    },
+    {
+      "lang": "en",
+      "text": "request response cycle. We want to run",
+      "offset": 467.599,
+      "duration": 4.081
+    },
+    {
+      "lang": "en",
+      "text": "this in the background you could say as",
+      "offset": 469.52,
+      "duration": 4.399
+    },
+    {
+      "lang": "en",
+      "text": "more like a Q type of system. So we need",
+      "offset": 471.68,
+      "duration": 4.639
+    },
+    {
+      "lang": "en",
+      "text": "to send this event to ingest so it knows",
+      "offset": 473.919,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "to trigger the function. So when the",
+      "offset": 476.319,
+      "duration": 4.241
+    },
+    {
+      "lang": "en",
+      "text": "user uh fills out the text here and",
+      "offset": 478.319,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "their email and they're going to click",
+      "offset": 480.56,
+      "duration": 3.359
+    },
+    {
+      "lang": "en",
+      "text": "on summarize we're going to receive that",
+      "offset": 481.919,
+      "duration": 4.081
+    },
+    {
+      "lang": "en",
+      "text": "here in an X.js as server action on our",
+      "offset": 483.919,
+      "duration": 3.601
+    },
+    {
+      "lang": "en",
+      "text": "server side. We're going to grab the",
+      "offset": 486,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "text and the email and then we want to",
+      "offset": 487.52,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "trigger this function here with ingest",
+      "offset": 489.36,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "that we just set up. So we need to use",
+      "offset": 491.84,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "the event name. So we used this event",
+      "offset": 493.68,
+      "duration": 3.919
+    },
+    {
+      "lang": "en",
+      "text": "name when setting up when setting up the",
+      "offset": 495.84,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "function. So here I'm going to send this",
+      "offset": 497.599,
+      "duration": 5.121
+    },
+    {
+      "lang": "en",
+      "text": "event to ingest. And of course to run",
+      "offset": 500,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "that function, it needs to know what the",
+      "offset": 502.72,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "text actually is. That's what we sent",
+      "offset": 504.56,
+      "duration": 3.919
+    },
+    {
+      "lang": "en",
+      "text": "along as data here, the text and also",
+      "offset": 506.4,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "the user email. We'll we'll use that in",
+      "offset": 508.479,
+      "duration": 3.28
+    },
+    {
+      "lang": "en",
+      "text": "a second. So that is then what the",
+      "offset": 510.16,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "function will receive here in the event,",
+      "offset": 511.759,
+      "duration": 3.601
+    },
+    {
+      "lang": "en",
+      "text": "right? So that's how we get the text",
+      "offset": 514,
+      "duration": 2.88
+    },
+    {
+      "lang": "en",
+      "text": "here. So basically what we're doing here",
+      "offset": 515.36,
+      "duration": 4.559
+    },
+    {
+      "lang": "en",
+      "text": "is the nextjs server side here is",
+      "offset": 516.88,
+      "duration": 5.279
+    },
+    {
+      "lang": "en",
+      "text": "sending an event to ingest and then",
+      "offset": 519.919,
+      "duration": 5.201
+    },
+    {
+      "lang": "en",
+      "text": "ingest will trigger this function. This",
+      "offset": 522.159,
+      "duration": 4.961
+    },
+    {
+      "lang": "en",
+      "text": "function will still run on our own in",
+      "offset": 525.12,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "our own app by the way. So ingest is not",
+      "offset": 527.12,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "going to run this function for us on",
+      "offset": 529.44,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "their hardware. It will still be part of",
+      "offset": 531.12,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "our own app. So this will still run",
+      "offset": 533.2,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "inside our own app. It's just that we",
+      "offset": 534.88,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "manage the workflow with ingest. So",
+      "offset": 536.64,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "inest needs to know these functions that",
+      "offset": 538.8,
+      "duration": 4.159
+    },
+    {
+      "lang": "en",
+      "text": "we will have on our server side so it",
+      "offset": 541.04,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "can then trigger them. So we do need to",
+      "offset": 542.959,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "add one more thing here which is an API",
+      "offset": 544.8,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "route here. So I'm going to call it /",
+      "offset": 546.959,
+      "duration": 5.521
+    },
+    {
+      "lang": "en",
+      "text": "API/ SL /ingest and I need to expose",
+      "offset": 548.56,
+      "duration": 6.399
+    },
+    {
+      "lang": "en",
+      "text": "some API endpoints here. So the ingest",
+      "offset": 552.48,
+      "duration": 4.799
+    },
+    {
+      "lang": "en",
+      "text": "server can communicate with my app and",
+      "offset": 554.959,
+      "duration": 4.241
+    },
+    {
+      "lang": "en",
+      "text": "discover the functions that it may need",
+      "offset": 557.279,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "to trigger. That's what we do with serve",
+      "offset": 559.2,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "here. So it needs to get the actual",
+      "offset": 561.279,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "functions here. So we do need to export",
+      "offset": 563.36,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "those here. We may have multiple",
+      "offset": 565.519,
+      "duration": 3.041
+    },
+    {
+      "lang": "en",
+      "text": "functions. So I'm actually going to",
+      "offset": 567.2,
+      "duration": 3.199
+    },
+    {
+      "lang": "en",
+      "text": "export it as an array. I'm going to call",
+      "offset": 568.56,
+      "duration": 3.839
+    },
+    {
+      "lang": "en",
+      "text": "that functions here. So actually we can",
+      "offset": 570.399,
+      "duration": 5.281
+    },
+    {
+      "lang": "en",
+      "text": "remove this and just export it like",
+      "offset": 572.399,
+      "duration": 4.961
+    },
+    {
+      "lang": "en",
+      "text": "this. So now you can see everything is",
+      "offset": 575.68,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "wired up. Our ingest dev server will be",
+      "offset": 577.36,
+      "duration": 5.039
+    },
+    {
+      "lang": "en",
+      "text": "able to hook into these API endpoints on",
+      "offset": 580.08,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "our server side to discover the",
+      "offset": 582.399,
+      "duration": 3.841
+    },
+    {
+      "lang": "en",
+      "text": "functions and then we can submit an",
+      "offset": 583.92,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "event. Basically we will submit an event",
+      "offset": 586.24,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "to ingest and then will decide which",
+      "offset": 588.08,
+      "duration": 5.68
+    },
+    {
+      "lang": "en",
+      "text": "functions to trigger. So by the way now",
+      "offset": 591.2,
+      "duration": 4.639
+    },
+    {
+      "lang": "en",
+      "text": "you can also see my nextjs server is",
+      "offset": 593.76,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "receiving these requests from the ingest",
+      "offset": 595.839,
+      "duration": 4.161
+    },
+    {
+      "lang": "en",
+      "text": "dev server. So, ingest has now",
+      "offset": 598.24,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "discovered the functions that it can",
+      "offset": 600,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "trigger. So, let's actually try it out.",
+      "offset": 601.92,
+      "duration": 3.28
+    },
+    {
+      "lang": "en",
+      "text": "Now, I just copied some uh text here",
+      "offset": 603.36,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "from the ingest documentation. The",
+      "offset": 605.2,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "actual uh result here is not important",
+      "offset": 606.8,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "for now just to see how all of this",
+      "offset": 608.56,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "works. I just added an email here. So,",
+      "offset": 610.48,
+      "duration": 3.359
+    },
+    {
+      "lang": "en",
+      "text": "let's actually see what happens if I",
+      "offset": 612.24,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "click now. Okay, so I clicked the form",
+      "offset": 613.839,
+      "duration": 4.161
+    },
+    {
+      "lang": "en",
+      "text": "is reset. So, where can I now see what",
+      "offset": 615.92,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "happened? Well, now we can go to our dev",
+      "offset": 618,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "server here that the dashboard here that",
+      "offset": 620.72,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "we get and we see that we now have one",
+      "offset": 622.88,
+      "duration": 4.399
+    },
+    {
+      "lang": "en",
+      "text": "run as it's called. So this function",
+      "offset": 625.6,
+      "duration": 3.919
+    },
+    {
+      "lang": "en",
+      "text": "that we created was triggered properly",
+      "offset": 627.279,
+      "duration": 4.161
+    },
+    {
+      "lang": "en",
+      "text": "because this is the event that we sent",
+      "offset": 629.519,
+      "duration": 4.401
+    },
+    {
+      "lang": "en",
+      "text": "and so injust triggered this function to",
+      "offset": 631.44,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "run. And if I click on that we can see",
+      "offset": 633.92,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "we have uh a lot of we can see the",
+      "offset": 636.24,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "tracing here. Uh you can see that it was",
+      "offset": 638.48,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "cued at some point and it has some",
+      "offset": 641.12,
+      "duration": 4.399
+    },
+    {
+      "lang": "en",
+      "text": "duration. We can see the input to the",
+      "offset": 642.88,
+      "duration": 4.399
+    },
+    {
+      "lang": "en",
+      "text": "function. So the actual data that we",
+      "offset": 645.519,
+      "duration": 3.361
+    },
+    {
+      "lang": "en",
+      "text": "sent along to the function. You can see",
+      "offset": 647.279,
+      "duration": 3.601
+    },
+    {
+      "lang": "en",
+      "text": "the text and the email and also the",
+      "offset": 648.88,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "output here. Right? So here you can see",
+      "offset": 650.88,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "ultimately it produced a summary with uh",
+      "offset": 652.72,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "well what ultimately it produced some a",
+      "offset": 655.68,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "summary here right so this was one run",
+      "offset": 657.92,
+      "duration": 3.919
+    },
+    {
+      "lang": "en",
+      "text": "now actually what I can do from the",
+      "offset": 660.24,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "dashboard I can run it again if I want",
+      "offset": 661.839,
+      "duration": 3.761
+    },
+    {
+      "lang": "en",
+      "text": "right so now you can see when I click",
+      "offset": 663.92,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "here it sort of takes some a little bit",
+      "offset": 665.6,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "and then it's finished we can see a lot",
+      "offset": 667.44,
+      "duration": 3.04
+    },
+    {
+      "lang": "en",
+      "text": "here in the dashboard it's actually",
+      "offset": 669.2,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "really nice right so here we can see all",
+      "offset": 670.48,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "the runs so we submit an event will",
+      "offset": 672.56,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "trigger a function we can see the uh the",
+      "offset": 674.88,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "observability into those runs right",
+      "offset": 677.68,
+      "duration": 3.599
+    },
+    {
+      "lang": "en",
+      "text": "really nice and here are the functions",
+      "offset": 679.76,
+      "duration": 3.759
+    },
+    {
+      "lang": "en",
+      "text": "that ingest has discovered. So you can",
+      "offset": 681.279,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "also see all of that. Uh you can also",
+      "offset": 683.519,
+      "duration": 3.921
+    },
+    {
+      "lang": "en",
+      "text": "manually invoke them here from the",
+      "offset": 685.279,
+      "duration": 3.921
+    },
+    {
+      "lang": "en",
+      "text": "dashboard. Right? So you create",
+      "offset": 687.44,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "functions and then you run them. So the",
+      "offset": 689.2,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "actual running so the actual runs of",
+      "offset": 692.32,
+      "duration": 3.759
+    },
+    {
+      "lang": "en",
+      "text": "them is what we see here. All right. Now",
+      "offset": 694.64,
+      "duration": 2.879
+    },
+    {
+      "lang": "en",
+      "text": "what are the benefits of doing all of",
+      "offset": 696.079,
+      "duration": 3.281
+    },
+    {
+      "lang": "en",
+      "text": "this? Well, first of all, we get a lot",
+      "offset": 697.519,
+      "duration": 4.961
+    },
+    {
+      "lang": "en",
+      "text": "of these Q system type of benefits. So",
+      "offset": 699.36,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "for example, if a lot of users are",
+      "offset": 702.48,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "submitting these requests to summarize",
+      "offset": 704.64,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "their text, we may want to prioritize",
+      "offset": 706.72,
+      "duration": 4.559
+    },
+    {
+      "lang": "en",
+      "text": "some of these runs ahead of others. So",
+      "offset": 708.72,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "for example, if the user is on an",
+      "offset": 711.279,
+      "duration": 3.281
+    },
+    {
+      "lang": "en",
+      "text": "enterprise plan, we may want to",
+      "offset": 712.8,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "prioritize that. Or if or simply if the",
+      "offset": 714.56,
+      "duration": 3.519
+    },
+    {
+      "lang": "en",
+      "text": "user is a paying member, right, on the",
+      "offset": 716.64,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "pro plan, we want to prioritize their",
+      "offset": 718.079,
+      "duration": 4.401
+    },
+    {
+      "lang": "en",
+      "text": "submission in front of the others. We",
+      "offset": 720.56,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "may also want to rate limit it. So for",
+      "offset": 722.48,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "example, a particular user can only",
+      "offset": 724.56,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "submit five in one hour, right? So here",
+      "offset": 726.72,
+      "duration": 5.359
+    },
+    {
+      "lang": "en",
+      "text": "we can say every 1 hour the limit is",
+      "offset": 729.76,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "five. It is per user ID. Right? So when",
+      "offset": 732.079,
+      "duration": 4.961
+    },
+    {
+      "lang": "en",
+      "text": "we send that event to ingest, we can",
+      "offset": 734.8,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "also specify a user ID here. So then it",
+      "offset": 737.04,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "knows that oh for that particular user",
+      "offset": 740,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "ID we have to limit it. We also get",
+      "offset": 741.76,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "controls for concurrency and throttling",
+      "offset": 744.56,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "and other ones as well. The other big",
+      "offset": 746.88,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "benefits here that we get let's actually",
+      "offset": 748.8,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "go here to the actual implementation of",
+      "offset": 750.48,
+      "duration": 4.159
+    },
+    {
+      "lang": "en",
+      "text": "the function. The actual where we",
+      "offset": 752.48,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "actually compute the result for the",
+      "offset": 754.639,
+      "duration": 3.921
+    },
+    {
+      "lang": "en",
+      "text": "user. we can actually make this much",
+      "offset": 756.8,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "more robust. So let's actually do",
+      "offset": 758.56,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "something else here. Ingest also gives",
+      "offset": 760.32,
+      "duration": 5.92
+    },
+    {
+      "lang": "en",
+      "text": "us so-called steps. So you can think of",
+      "offset": 762.48,
+      "duration": 6.24
+    },
+    {
+      "lang": "en",
+      "text": "this workflow as a series of steps",
+      "offset": 766.24,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "because what we just did was only",
+      "offset": 768.72,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "summarizing it. But we also then want to",
+      "offset": 770.24,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "send an email to the user with the",
+      "offset": 772.72,
+      "duration": 3.359
+    },
+    {
+      "lang": "en",
+      "text": "result. That's another step you could",
+      "offset": 774.48,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "say. And maybe one week later, let's say",
+      "offset": 776.079,
+      "duration": 4.401
+    },
+    {
+      "lang": "en",
+      "text": "we want to send another email to the",
+      "offset": 778.72,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "user with maybe a request, maybe asking",
+      "offset": 780.48,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "them to review the result that they got,",
+      "offset": 782.8,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "right? So there is a series of steps",
+      "offset": 784.72,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "that we want to run in response to that",
+      "offset": 786.32,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "event. So actually what we just did is",
+      "offset": 788.16,
+      "duration": 3.28
+    },
+    {
+      "lang": "en",
+      "text": "just the first step. So what we can do",
+      "offset": 789.68,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "is instead of having a plain function",
+      "offset": 791.44,
+      "duration": 4.639
+    },
+    {
+      "lang": "en",
+      "text": "like that we will use this step variable",
+      "offset": 793.2,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "here. So we're going to split up the",
+      "offset": 796.079,
+      "duration": 4.161
+    },
+    {
+      "lang": "en",
+      "text": "workflow here into steps. So what you do",
+      "offset": 798.24,
+      "duration": 4.399
+    },
+    {
+      "lang": "en",
+      "text": "is well for step one we have step.r run.",
+      "offset": 800.24,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "We can call it summarize the text right.",
+      "offset": 802.639,
+      "duration": 3.841
+    },
+    {
+      "lang": "en",
+      "text": "So we just use some simple algorithm",
+      "offset": 804.88,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "here just to just to try it out. We'll",
+      "offset": 806.48,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "use AI in a second. We will get a result",
+      "offset": 808.48,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "here and that is the summary. Right?",
+      "offset": 810.48,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "That's uh step one. And then a second",
+      "offset": 812.16,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "step maybe actually to store it in a",
+      "offset": 813.92,
+      "duration": 3.919
+    },
+    {
+      "lang": "en",
+      "text": "database. We may want to create uh some",
+      "offset": 815.68,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "record in our database with the original",
+      "offset": 817.839,
+      "duration": 4.081
+    },
+    {
+      "lang": "en",
+      "text": "text and then the actual summary of that",
+      "offset": 820,
+      "duration": 3.519
+    },
+    {
+      "lang": "en",
+      "text": "may take some time just to simulate it",
+      "offset": 821.92,
+      "duration": 3.919
+    },
+    {
+      "lang": "en",
+      "text": "here. And I may want to use Prisma or",
+      "offset": 823.519,
+      "duration": 4.401
+    },
+    {
+      "lang": "en",
+      "text": "Drizzle or some other OAM to insert it",
+      "offset": 825.839,
+      "duration": 4.081
+    },
+    {
+      "lang": "en",
+      "text": "into my database. And that's another",
+      "offset": 827.92,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "step. And then we may want to send the",
+      "offset": 829.92,
+      "duration": 4.159
+    },
+    {
+      "lang": "en",
+      "text": "result to the user via the email that",
+      "offset": 832,
+      "duration": 4.079
+    },
+    {
+      "lang": "en",
+      "text": "they submitted as well. The user email",
+      "offset": 834.079,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "that we got here, right? Maybe you're",
+      "offset": 836.079,
+      "duration": 3.12
+    },
+    {
+      "lang": "en",
+      "text": "using some third party provider for the",
+      "offset": 837.519,
+      "duration": 4.081
+    },
+    {
+      "lang": "en",
+      "text": "email. You can do that in here. And then",
+      "offset": 839.199,
+      "duration": 3.921
+    },
+    {
+      "lang": "en",
+      "text": "we actually want to wait a little bit.",
+      "offset": 841.6,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "Let's say we want to wait 4 days. We can",
+      "offset": 843.12,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "use steps sleep here with ingest",
+      "offset": 845.12,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "schedule essentially a task to run after",
+      "offset": 847.6,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "some time. And this can be also much",
+      "offset": 850.48,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "shorter. Can be an hour or 30 minutes.",
+      "offset": 852.8,
+      "duration": 4.479
+    },
+    {
+      "lang": "en",
+      "text": "Can actually be a year as well. Before",
+      "offset": 854.8,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "we continue here, we want to wait some",
+      "offset": 857.279,
+      "duration": 4.401
+    },
+    {
+      "lang": "en",
+      "text": "time. And then after those 4 days, we",
+      "offset": 859.36,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "want to send the review. Right. So now",
+      "offset": 861.68,
+      "duration": 4.719
+    },
+    {
+      "lang": "en",
+      "text": "five steps here. And there are many",
+      "offset": 864.72,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "benefits that we get from doing it this",
+      "offset": 866.399,
+      "duration": 4.401
+    },
+    {
+      "lang": "en",
+      "text": "way with inj. So now, so now let's say",
+      "offset": 868.16,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "that sending this email, this one here,",
+      "offset": 870.8,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "let's say something goes wrong here.",
+      "offset": 874.16,
+      "duration": 4.799
+    },
+    {
+      "lang": "en",
+      "text": "Maybe our email provider is returning",
+      "offset": 876.32,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "some error, right? Or maybe some error",
+      "offset": 878.959,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "is being thrown here. Ingest can",
+      "offset": 880.56,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "automatically retry that. And when it",
+      "offset": 882.399,
+      "duration": 4.401
+    },
+    {
+      "lang": "en",
+      "text": "retries this, it's not going to run all",
+      "offset": 884.48,
+      "duration": 5.359
+    },
+    {
+      "lang": "en",
+      "text": "of this again because it can memorize",
+      "offset": 886.8,
+      "duration": 5.599
+    },
+    {
+      "lang": "en",
+      "text": "that it has already run these steps. And",
+      "offset": 889.839,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "so it can just go back here where we",
+      "offset": 892.399,
+      "duration": 4.481
+    },
+    {
+      "lang": "en",
+      "text": "left off and go from here again. Right?",
+      "offset": 894.639,
+      "duration": 4.481
+    },
+    {
+      "lang": "en",
+      "text": "So this is one function still this one",
+      "offset": 896.88,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "uh this one function but with steps we",
+      "offset": 899.12,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "can sort of break it up into",
+      "offset": 901.76,
+      "duration": 3.759
+    },
+    {
+      "lang": "en",
+      "text": "checkpoints. So once we have done this",
+      "offset": 903.12,
+      "duration": 4.719
+    },
+    {
+      "lang": "en",
+      "text": "we don't have to rerun that again when",
+      "offset": 905.519,
+      "duration": 4.241
+    },
+    {
+      "lang": "en",
+      "text": "something goes wrong here later. This is",
+      "offset": 907.839,
+      "duration": 3.601
+    },
+    {
+      "lang": "en",
+      "text": "really important because of course once",
+      "offset": 909.76,
+      "duration": 3.439
+    },
+    {
+      "lang": "en",
+      "text": "we have already summarized the text",
+      "offset": 911.44,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "perhaps with AI as I'll show you in a",
+      "offset": 913.199,
+      "duration": 3.601
+    },
+    {
+      "lang": "en",
+      "text": "second. We don't want to unnecessarily",
+      "offset": 915.04,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "do that again because it costs money and",
+      "offset": 916.8,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "also takes longer. But this is way more",
+      "offset": 918.56,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "efficient. And also here where we wait 4",
+      "offset": 920.32,
+      "duration": 5.519
+    },
+    {
+      "lang": "en",
+      "text": "days before we continue. But then the",
+      "offset": 922.8,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "underlying serverless function perhaps",
+      "offset": 925.839,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "that where we host this on. Well now",
+      "offset": 928,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "we're going to pay for 4 days of",
+      "offset": 930.399,
+      "duration": 3.281
+    },
+    {
+      "lang": "en",
+      "text": "invocation time. You may think and",
+      "offset": 932,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "actually no. So with ingest when we",
+      "offset": 933.68,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "sleep like this we don't have to keep",
+      "offset": 936.32,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "the underlying function running. Ingest",
+      "offset": 938,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "will simply run this function again",
+      "offset": 940.16,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "after 4 days and it can remember that we",
+      "offset": 941.76,
+      "duration": 4.319
+    },
+    {
+      "lang": "en",
+      "text": "left off here. Right? In fact it will",
+      "offset": 944.16,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "also remember the data that it got here.",
+      "offset": 946.079,
+      "duration": 5.041
+    },
+    {
+      "lang": "en",
+      "text": "So it will actually sort of inject it",
+      "offset": 948.48,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "back into the function and start off",
+      "offset": 951.12,
+      "duration": 4.079
+    },
+    {
+      "lang": "en",
+      "text": "from the checkpoint where we left it. So",
+      "offset": 953.44,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "in this case it would continue here with",
+      "offset": 955.199,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "the data actually that we already have",
+      "offset": 957.36,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "from the previous step. So with step",
+      "offset": 959.279,
+      "duration": 4.321
+    },
+    {
+      "lang": "en",
+      "text": "here we get a much more sophisticated",
+      "offset": 961.36,
+      "duration": 4.719
+    },
+    {
+      "lang": "en",
+      "text": "way to orchestrate this workflow and so",
+      "offset": 963.6,
+      "duration": 4.239
+    },
+    {
+      "lang": "en",
+      "text": "we don't have to worry as much about the",
+      "offset": 966.079,
+      "duration": 4.401
+    },
+    {
+      "lang": "en",
+      "text": "underlying infrastructure ourselves. So",
+      "offset": 967.839,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "let's actually try it again. I'm going",
+      "offset": 970.48,
+      "duration": 3.599
+    },
+    {
+      "lang": "en",
+      "text": "to click on summarize here. You can see",
+      "offset": 972.079,
+      "duration": 4.961
+    },
+    {
+      "lang": "en",
+      "text": "the form has been reset. If I now go to",
+      "offset": 974.079,
+      "duration": 6.241
+    },
+    {
+      "lang": "en",
+      "text": "my dashboard here, you can see that that",
+      "offset": 977.04,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "one function that we have, we still have",
+      "offset": 980.32,
+      "duration": 4.319
+    },
+    {
+      "lang": "en",
+      "text": "one function. Ingest will periodically",
+      "offset": 982.16,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "pro our server to see if there are new",
+      "offset": 984.639,
+      "duration": 3.921
+    },
+    {
+      "lang": "en",
+      "text": "functions, but we it's still the same",
+      "offset": 986.72,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "function that we with the same name,",
+      "offset": 988.56,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "right? So that's this uh function here",
+      "offset": 990.48,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "that we set up, right? We just have a",
+      "offset": 992.24,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "different implementation now. So now the",
+      "offset": 994.24,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "there's another run of that function. If",
+      "offset": 996.56,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "I click on that, you can see it's still",
+      "offset": 998.48,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "running. Why is that? Well, that is",
+      "offset": 1000,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "because we have that sleeping uh step",
+      "offset": 1002,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "actually, right? So it actually you can",
+      "offset": 1004.48,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "see it per step here. So first there is",
+      "offset": 1006.16,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "the summarized text step. You can also",
+      "offset": 1008,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "see the output that we got from there.",
+      "offset": 1010.32,
+      "duration": 4.079
+    },
+    {
+      "lang": "en",
+      "text": "It will actually reinject it back later",
+      "offset": 1011.92,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "when the sleeping is finished. Then we",
+      "offset": 1014.399,
+      "duration": 3.921
+    },
+    {
+      "lang": "en",
+      "text": "have this uh storing in the database",
+      "offset": 1016.32,
+      "duration": 4.319
+    },
+    {
+      "lang": "en",
+      "text": "step. We're not returning anything here.",
+      "offset": 1018.32,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "But then here you can see it's waiting",
+      "offset": 1020.639,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "uh 4 days. And actually if I want I can",
+      "offset": 1022.88,
+      "duration": 4.799
+    },
+    {
+      "lang": "en",
+      "text": "also manually cancel it here if I want.",
+      "offset": 1025.439,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "So this is actually amazing",
+      "offset": 1027.679,
+      "duration": 3.201
+    },
+    {
+      "lang": "en",
+      "text": "observability here. and we can",
+      "offset": 1029.039,
+      "duration": 3.441
+    },
+    {
+      "lang": "en",
+      "text": "orchestrate really sophisticated",
+      "offset": 1030.88,
+      "duration": 3.919
+    },
+    {
+      "lang": "en",
+      "text": "workflows very easily here with ingest.",
+      "offset": 1032.48,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "So this function what we just did is",
+      "offset": 1034.799,
+      "duration": 4.561
+    },
+    {
+      "lang": "en",
+      "text": "more like a queuing type of system. Now",
+      "offset": 1036.64,
+      "duration": 4.399
+    },
+    {
+      "lang": "en",
+      "text": "if you're just looking for chron jobs,",
+      "offset": 1039.36,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "so you want to do something periodically",
+      "offset": 1041.039,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "like let's say every day at some time,",
+      "offset": 1043.28,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "right? So chron job it's it looks very",
+      "offset": 1046.079,
+      "duration": 4.801
+    },
+    {
+      "lang": "en",
+      "text": "similar. So you would use inest.create",
+      "offset": 1048.64,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "function. You give it an ID and some",
+      "offset": 1050.88,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "name. This will help it look it up in",
+      "offset": 1052.88,
+      "duration": 3.919
+    },
+    {
+      "lang": "en",
+      "text": "the dashboard later. And then here for",
+      "offset": 1054.88,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "chron job you specify chron and then the",
+      "offset": 1056.799,
+      "duration": 4.801
+    },
+    {
+      "lang": "en",
+      "text": "actual schedule basically. And then here",
+      "offset": 1059.52,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "you have the actual implementation. So",
+      "offset": 1061.6,
+      "duration": 4.319
+    },
+    {
+      "lang": "en",
+      "text": "maybe we want to clean old summaries,",
+      "offset": 1063.52,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "right? Maybe if they're older than 30",
+      "offset": 1065.919,
+      "duration": 3.361
+    },
+    {
+      "lang": "en",
+      "text": "days, we want to remove them from our",
+      "offset": 1067.76,
+      "duration": 3.2
+    },
+    {
+      "lang": "en",
+      "text": "database, let's say, right? So this is a",
+      "offset": 1069.28,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "good example of running something",
+      "offset": 1070.96,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "periodically. So you would have the",
+      "offset": 1072.64,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "actual implementation here. And you",
+      "offset": 1074.4,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "would export this function uh here as",
+      "offset": 1076,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "well. And remember, ingest is",
+      "offset": 1078.88,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "periodically checking my server side to",
+      "offset": 1080.88,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "discover new functions. So you can see",
+      "offset": 1083.36,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "now if I go back to my dashboard here to",
+      "offset": 1085.44,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "my functions you can see it has picked",
+      "offset": 1088.32,
+      "duration": 4.239
+    },
+    {
+      "lang": "en",
+      "text": "up on that new function as well I can",
+      "offset": 1090.4,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "see it here and so this is also a very",
+      "offset": 1092.559,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "ergonomic way to create chron jobs in a",
+      "offset": 1094.64,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "nextjs application actually now if we go",
+      "offset": 1097.039,
+      "duration": 4.081
+    },
+    {
+      "lang": "en",
+      "text": "back to the function that we had where",
+      "offset": 1099.2,
+      "duration": 4.719
+    },
+    {
+      "lang": "en",
+      "text": "we summarized the user's text I was",
+      "offset": 1101.12,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "using steprun",
+      "offset": 1103.919,
+      "duration": 4.321
+    },
+    {
+      "lang": "en",
+      "text": "right so it's like a checkpoint in our",
+      "offset": 1106.24,
+      "duration": 4.319
+    },
+    {
+      "lang": "en",
+      "text": "workflow here it can be retried",
+      "offset": 1108.24,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "independently of the other steps and it",
+      "offset": 1110.559,
+      "duration": 4.641
+    },
+    {
+      "lang": "en",
+      "text": "will remember the result and so it can",
+      "offset": 1113.2,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "inject that back later if it's",
+      "offset": 1115.2,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "necessary. They have some AI specific",
+      "offset": 1116.72,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "features here as well. So I can also use",
+      "offset": 1119.36,
+      "duration": 4.559
+    },
+    {
+      "lang": "en",
+      "text": "stepai.rep.",
+      "offset": 1121.44,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "So for example, I want to use AI OpenAI",
+      "offset": 1123.919,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "let's say to actually summarize the",
+      "offset": 1126.88,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "text. I can specify the model I want to",
+      "offset": 1128.559,
+      "duration": 4.401
+    },
+    {
+      "lang": "en",
+      "text": "use and then it's very similar to how",
+      "offset": 1131.2,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "you would use the OpenAI client",
+      "offset": 1132.96,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "directly. So if I use that as the",
+      "offset": 1134.88,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "implementation to actually summarize",
+      "offset": 1136.96,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "this. Now if I go to our runs here, you",
+      "offset": 1138.64,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "can see it's still in process here. If I",
+      "offset": 1141.76,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "click on that, you can see we have our",
+      "offset": 1143.76,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "run here. If I go to the open AI step,",
+      "offset": 1145.84,
+      "duration": 6.079
+    },
+    {
+      "lang": "en",
+      "text": "what we see here is actually the input.",
+      "offset": 1149.12,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "So the actual prompt that we sent along",
+      "offset": 1151.919,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "to the model as well as the output that",
+      "offset": 1154.16,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "we got from that model. So here you can",
+      "offset": 1156.559,
+      "duration": 5.441
+    },
+    {
+      "lang": "en",
+      "text": "see the um data that we get and it will",
+      "offset": 1158.88,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "automatically show us the actual to the",
+      "offset": 1162,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "tokens used here as well. So so the",
+      "offset": 1164.64,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "tokens that we used for the prompt as",
+      "offset": 1167.2,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "well as the completion tokens you",
+      "offset": 1168.96,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "typically pay for both. So the total",
+      "offset": 1170.72,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "tokens and the model that was used. So",
+      "offset": 1172.48,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "actually you have great observability",
+      "offset": 1174.48,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "here with the AI workloads that you run",
+      "offset": 1176.16,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "as well. You can see the models that",
+      "offset": 1178.64,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "were used, the prompt that was sent, the",
+      "offset": 1180,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "amount of tokens that were used. So if",
+      "offset": 1182.24,
+      "duration": 3.04
+    },
+    {
+      "lang": "en",
+      "text": "you're building an AI application,",
+      "offset": 1184,
+      "duration": 3.28
+    },
+    {
+      "lang": "en",
+      "text": "highly recommend you check out inest as",
+      "offset": 1185.28,
+      "duration": 5.279
+    },
+    {
+      "lang": "en",
+      "text": "well. I'm using the rep method here, but",
+      "offset": 1187.28,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "they actually take it a step further",
+      "offset": 1190.559,
+      "duration": 4.161
+    },
+    {
+      "lang": "en",
+      "text": "here as well with the infer method here",
+      "offset": 1192.24,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "as well. So maybe we do want to infer",
+      "offset": 1194.72,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "the sentiment, let's say, of the text",
+      "offset": 1196.96,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "that the user sent. We we want to do",
+      "offset": 1199.84,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "that with uh with some model here as",
+      "offset": 1201.6,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "well. Previously with uh just rep we",
+      "offset": 1204.32,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "were still making that call to open AAI",
+      "offset": 1206.88,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "and waiting for that on our own in our",
+      "offset": 1209.76,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "own app. But with infer we can hand that",
+      "offset": 1212.08,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "off to ingest. Actually with this ingest",
+      "offset": 1214.4,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "will make the actual call to open AAI",
+      "offset": 1217.36,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "and wait for that on their side. And so",
+      "offset": 1220.4,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "we don't have to run a serverless",
+      "offset": 1222.64,
+      "duration": 3.279
+    },
+    {
+      "lang": "en",
+      "text": "function while we're waiting for that.",
+      "offset": 1224.48,
+      "duration": 3.199
+    },
+    {
+      "lang": "en",
+      "text": "So while we're waiting for the response",
+      "offset": 1225.919,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "from the AI model, we don't have to run",
+      "offset": 1227.679,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "so we don't have to run compute",
+      "offset": 1230.159,
+      "duration": 3.921
+    },
+    {
+      "lang": "en",
+      "text": "essentially. So inest can sort of pause",
+      "offset": 1231.919,
+      "duration": 4.161
+    },
+    {
+      "lang": "en",
+      "text": "our workflow at this point and when",
+      "offset": 1234.08,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "there is a result from the AI model, it",
+      "offset": 1236.08,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "can continue. So this is an even more",
+      "offset": 1238.64,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "sophisticated option that we have as",
+      "offset": 1240.64,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "well. Ingest also offers a so-called",
+      "offset": 1242.24,
+      "duration": 4.319
+    },
+    {
+      "lang": "en",
+      "text": "agent kit. So if you're building a",
+      "offset": 1244.4,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "highly sophisticated AI agent type of",
+      "offset": 1246.559,
+      "duration": 4.561
+    },
+    {
+      "lang": "en",
+      "text": "software, you definitely want to check",
+      "offset": 1249.52,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "this out. So the way it works is",
+      "offset": 1251.12,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "essentially that you is that you create",
+      "offset": 1253.36,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "an agent and an agent can invoke tools",
+      "offset": 1254.88,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "and we typically want to streamline the",
+      "offset": 1257.6,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "type of model that we use and some other",
+      "offset": 1259.36,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "settings as well. So we could for",
+      "offset": 1261.52,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "example create some kind of agent that",
+      "offset": 1263.36,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "can invoke a summarizer tool or a",
+      "offset": 1265.36,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "keyword tool or some sentiment or tool",
+      "offset": 1267.6,
+      "duration": 5.439
+    },
+    {
+      "lang": "en",
+      "text": "tone tool and we may want to have one",
+      "offset": 1270.4,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "model for that. So you can create those",
+      "offset": 1273.039,
+      "duration": 4.801
+    },
+    {
+      "lang": "en",
+      "text": "tools here as well and then you can",
+      "offset": 1275.12,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "attach them to that agent. So this makes",
+      "offset": 1277.84,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "it much more ergonomic to create an an",
+      "offset": 1280.64,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "actual AI agent. You can even take it to",
+      "offset": 1282.88,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "the next level and also combine multiple",
+      "offset": 1284.96,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "agents into a network. So if you want to",
+      "offset": 1287.2,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "get very advanced and sophisticated,",
+      "offset": 1289.84,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "check out the agent kit by Injust as",
+      "offset": 1291.76,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "well. So I'm actually really happy to",
+      "offset": 1293.76,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "see Injust stepping into the space",
+      "offset": 1295.52,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "because it's really painful to set up",
+      "offset": 1297.28,
+      "duration": 3.759
+    },
+    {
+      "lang": "en",
+      "text": "some kind of queueing or chron jobs in",
+      "offset": 1299.2,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "Next.js. But inest actually fits in",
+      "offset": 1301.039,
+      "duration": 4.321
+    },
+    {
+      "lang": "en",
+      "text": "really nicely into the Nex.js stack.",
+      "offset": 1303.28,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "Well done to the Inest team and I would",
+      "offset": 1305.36,
+      "duration": 3.199
+    },
+    {
+      "lang": "en",
+      "text": "say check them out. You can find a link",
+      "offset": 1307.2,
+      "duration": 2.959
+    },
+    {
+      "lang": "en",
+      "text": "in the description. They have a quick",
+      "offset": 1308.559,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "start here for next.js and here in inest",
+      "offset": 1310.159,
+      "duration": 4.321
+    },
+    {
+      "lang": "en",
+      "text": "cloud you you can just log into their",
+      "offset": 1312.559,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "dashboard. You will see something very",
+      "offset": 1314.48,
+      "duration": 4.079
+    },
+    {
+      "lang": "en",
+      "text": "similar as what we saw locally. Right?",
+      "offset": 1316.799,
+      "duration": 3.12
+    },
+    {
+      "lang": "en",
+      "text": "So this dashboard is what we have",
+      "offset": 1318.559,
+      "duration": 3.681
+    },
+    {
+      "lang": "en",
+      "text": "locally running to to work with it",
+      "offset": 1319.919,
+      "duration": 4.801
+    },
+    {
+      "lang": "en",
+      "text": "locally. However, you can also log into",
+      "offset": 1322.24,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "their injest.com uh dashboard and then",
+      "offset": 1324.72,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "when you go to production you can",
+      "offset": 1327.76,
+      "duration": 4.399
+    },
+    {
+      "lang": "en",
+      "text": "synchronize it with injust and you get",
+      "offset": 1329.52,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "these features as well. But if you",
+      "offset": 1332.159,
+      "duration": 3.281
+    },
+    {
+      "lang": "en",
+      "text": "quickly want to try it out in nextjs I",
+      "offset": 1333.6,
+      "duration": 3.199
+    },
+    {
+      "lang": "en",
+      "text": "recommend that you start with the quick",
+      "offset": 1335.44,
+      "duration": 3.28
+    },
+    {
+      "lang": "en",
+      "text": "start here. In any case, I want to thank",
+      "offset": 1336.799,
+      "duration": 3.521
+    },
+    {
+      "lang": "en",
+      "text": "in for sponsoring the video and I want",
+      "offset": 1338.72,
+      "duration": 3.28
+    },
+    {
+      "lang": "en",
+      "text": "to thank you for watching. Hopefully, it",
+      "offset": 1340.32,
+      "duration": 3.04
+    },
+    {
+      "lang": "en",
+      "text": "helps you out with building out your",
+      "offset": 1342,
+      "duration": 3.2
+    },
+    {
+      "lang": "en",
+      "text": "NextJS app. Have a nice day and I hope",
+      "offset": 1343.36,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "to see you in the next one.",
+      "offset": 1345.2,
+      "duration": 2.88
+    }
+  ],
+  "cleanText": "Hey everyone, I know a lot of you are using Next.js to build some kind of AI app or other apps that have some type of task that takes a bit longer. For example, if you make an API call to an AI provider, that may take a couple minutes if you're using the latest models. They may think for multiple minutes. Or maybe you want to run something on a schedule. Maybe every couple hours you want to do something or once a day. And what I'm getting at is that there are certain things that we want to do in our apps, in our software that do not fit in nicely in a request response cycle that we're used to. So for example, in a Next.js application like this, it's all about a very fast request and response cycle. So the user's browser, the client will make requests to our server side. Maybe they're navigating to a new page that's typically a server component. So the server component needs to be rendered and then it gets sent back to the client. Or maybe the user is updating some data. These days we typically use server actions for that. Server action may return a response. Or maybe you are using a route handler and API endpoint on your server and it's doing something and it returns a response. Right? So Next.js is one app here and it's centered around this very fast request response cycle. Maybe a second or two seconds and if it's really a bit longer maybe multiple seconds. But it's pretty rare to have something take, I don't know, a minute or two minutes. But of course, if you build anything that's a little bit more sophisticated, you will have those tasks at some point. And maybe you've already run into that. I was building a startup that allowed users to create videos. So, a user basically has to collect a bunch of material for the video, maybe some images, some text, some audio, and then a video has to be rendered into an MP4 file, let's say, right? So, that video rendering the user may click on a button in the on the web app. They may click on render video, right? And that will send a request to my server side. And now my server side knows, okay, we need to render a video. But rendering a video may take a long time, may take 10 or 20 minutes, right? So we could not just wait until it was finished and then send a response. That was a type of task that we have to do basically outside this traditional request response cycle. We had to sort of run it in the background, right? So, Next.js is often hosted on these serverless functions, lambda functions, and we do not want to just wait 30 minutes, let's say, cuz you're going to pay for 30 minutes of function invocation perhaps. But basically, the way that Next.js is typically hosted and built, you will run into an issue when you have long-running tasks like this. But it's the same when you have some kind of scheduler necessity, maybe Cron Jobs, right? Maybe I want to send the user an email once a month or once a week, right? This is also not something that fits in into this request response cycle. Now, especially these days with AI, you're going to have a lot more of these long-running tasks because you want to use the latest models and they just may take a little bit longer. So, just as an example, let's say I have some kind of AI text summarizer app. So a user can just paste a bunch of text here and maybe give their email and then when they click summarize we want to take their huge body of text potentially and we want to use AI to nicely summarize that. Right? So that may take, let's say, 2 minutes or maybe even longer if it's if the requirements are even more sophisticated. So it may take a long time but we also may get a lot of people submitting these requests. So we may want to prioritize, let's say, paying users. So those tasks should be prioritized so you get more like a Queue system. And so whenever you get a little bit more sophisticated with your apps, you will run into these issues. So actually I want to introduce you to Inngest. They are also today's sponsor and I think they fit in really nicely in this Next.js tech especially if you're using these AI workloads but even without. They solve this problem that you have where you need to run things outside the normal mechanics of a Next.js app. And basically they allow us to easily add some kind of queuing system to our Next.js setup or Cron Jobs. Basically turn it into a more event-driven workflow. So let me actually show you how this would work in this text summarizer app. What I'm doing here is we have this homepage here with the form, right? So this is where users can add the text. They have like a bunch of text and also let's say an email so that when it's finished we will actually send the summary to their email. So it's just a very basic form. Nothing fancy here although I am using a so-called server action so when the user submits the form we will receive it here on our server side in Next.js, okay? And now we have this issue, right? So we will get it onto our server side and now we may have an issue because this may potentially take a long time, right? So you can imagine these AI workloads or other workloads, video rendering, they just may take a long time, right? So we cannot just leave the client hanging. We so we have to create perhaps some kind of queue system and if you ever try to do that it's actually quite painful. I tried to do it with the video rendering startup and I remember how much of a mess it was to try to do that. So I'm going to use Inngest now. So the way to think of it is a separate server that we can hand that off to, right? So I'm going to have some kind of Inngest instance here. Let's manage it. So I will install Inngest right here and then I can run a local Inngest instance. So we can work with Inngest during development. Here I will run it right here. I will install that. Yes. All right. So now we have the Inngest dev server running. Now you get a nice dashboard out of the box actually. So if I open that up, you can see I now have the dev server here running on my own computer and it will give you insights into these workloads that we're going to run. Right now I don't have anything. So it's just going to be empty here, but this will come in really handy in a second. Okay, so I have this running now. So what I have now is basically that Inngest server. This is now running. So I now want to be able to communicate between my Next.js server side and Inngest. So I will create an Inngest folder here to instantiate the client so that my Next.js app communicate with that Inngest server. I will just call that ingest.ts. So here I can instantiate Inngest. It's very basic. We're just going to say yeah here we have a summarizer app. I'm going to create functions here for Inngest and Inngest will then trigger those functions. So I will just call it functions here. So this is the function that I want to run, right? So the user will submit some text and we want to create a summary out of that and also send an email with the result to the user. I'm going to put that in a function. So I use that Inngest client to create a function. Here in the first argument I'm going to give it an ID and a name. With Inngest we can trigger this function when there is an event. So it becomes an event-driven workflow. So if the user submits text, we're going to fire off an event, right? to the event and we're going to call it text/summary.requested event. When that event occurs, when Inngest receives an event like that, we're going to run this function. So this is the actual meat of it, you could say. This is where we're actually going to do the summary. Okay. So to actually summarize it, we need to know the actual text that the user submitted. So we will get that here as the event. Okay. So here we get the text that the user actually submitted. And we're just going to do something silly here just to see how all of this works. The mechanics of it. It's just going to get some words and conjure up some kind of summary. We're just going to add a set timeout here just to pretend it's going to take a little bit longer because typically we're going to invoke AI, right? I'll show you that in a second. But just to get a sense of the mechanics here, this is what we have right now. Ultimately, we're going to return that summary as the result here. So, this is an Inngest function. So, we want to run this and we do that by sending an event to Inngest. So then Inngest knows oh yeah so now we have to run the function that corresponds to that event and that is basically what we want to do inside here in our Next.js app server action because we it doesn't fit in nicely in that request response cycle. We want to run this in the background you could say as more like a queue type of system. So we need to send this event to Inngest so it knows to trigger the function. So when the user fills out the text here and their email and they're going to click on summarize we're going to receive that here in a Next.js as server action on our server side. We're going to grab the text and the email and then we want to trigger this function here with Inngest that we just set up. So we need to use the event name. So we used this event name when setting up when setting up the function. So here I'm going to send this event to Inngest. And of course to run that function, it needs to know what the text actually is. That's what we sent along as data here, the text and also the user email. We'll use that in a second. So that is then what the function will receive here in the event, right? So that's how we get the text here. So basically what we're doing here is the Next.js server side here is sending an event to Inngest and then Inngest will trigger this function. This function will still run on our own in our own app by the way. So Inngest is not going to run this function for us on their hardware. It will still be part of our own app. So this will still run inside our own app. It's just that we manage the workflow with Inngest. So Inngest needs to know these functions that we will have on our server side so it can then trigger them. So we do need to add one more thing here which is an API route here. So I'm going to call it /API/ingest and I need to expose some API endpoints here. So the Inngest server can communicate with my app and discover the functions that it may need to trigger. That's what we do with serve here. So it needs to get the actual functions here. So we do need to export those here. We may have multiple functions. So I'm actually going to export it as an array. I'm going to call that functions here. So actually we can remove this and just export it like this. So now you can see everything is wired up. Our Inngest dev server will be able to hook into these API endpoints on our server side to discover the functions and then we can submit an event. Basically we will submit an event to Inngest and then will decide which functions to trigger. So by the way now you can also see my Next.js server is receiving these requests from the Inngest dev server. So, Inngest has now discovered the functions that it can trigger. So, let's actually try it out. Now, I just copied some text here from the Inngest documentation. The actual result here is not important for now just to see how all of this works. I just added an email here. So, let's actually see what happens if I click now. Okay, so I clicked the form is reset. So, where can I now see what happened? Well, now we can go to our dev server here that the dashboard here that we get and we see that we now have one run as it's called. So this function that we created was triggered properly because this is the event that we sent and so Inngest triggered this function to run. And if I click on that we can see we have a lot of we can see the tracing here. You can see that it was queued at some point and it has some duration. We can see the input to the function. So the actual data that we sent along to the function. You can see the text and the email and also the output here. Right? So here you can see ultimately it produced a summary with well what ultimately it produced some a summary here right? So this was one run. Now actually what I can do from the dashboard I can run it again if I want, right? So now you can see when I click here it sort of takes some a little bit and then it's finished. We can see a lot here in the dashboard. It's actually really nice, right? So here we can see all the runs. So we submit an event will trigger a function. We can see the observability into those runs, really nice. And here are the functions that Inngest has discovered. So you can also see all of that. You can also manually invoke them here from the dashboard, right? So you create functions and then you run them. So the actual running so the actual runs of them is what we see here. All right. Now what are the benefits of doing all of this? Well, first of all, we get a lot of these queue system type of benefits. So for example, if a lot of users are submitting these requests to summarize their text, we may want to prioritize some of these runs ahead of others. So for example, if the user is on an enterprise plan, we may want to prioritize that. Or if or simply if the user is a paying member, right, on the pro plan, we want to prioritize their submission in front of the others. We may also want to rate limit it. So for example, a particular user can only submit five in one hour, right? So here we can say every 1 hour the limit is five. It is per user ID, right? So when we send that event to Inngest, we can also specify a user ID here. So then it knows that oh for that particular user ID we have to limit it. We also get controls for concurrency and throttling and other ones as well. The other big benefits here that we get, let's actually go here to the actual implementation of the function. The actual where we actually compute the result for the user. We can actually make this much more robust. So let's actually do something else here. Inngest also gives us so-called steps. So you can think of this workflow as a series of steps because what we just did was only summarizing it. But we also then want to send an email to the user with the result. That's another step you could say. And maybe one week later, let's say, we want to send another email to the user with maybe a request, maybe asking\n\nthem to review the result that they got, right? So there is a series of steps that we want to run in response to that event. So actually, what we just did is just the first step. So what we can do is instead of having a plain function like that, we will use this step variable here. So we're going to split up the workflow here into steps. So what you do is, well, for step one, we have step.run. We can call it summarize the text, right? So we just use some simple algorithm here just to just to try it out. We'll use AI in a second. We will get a result here, and that is the summary, right? That's uh step one. And then a second step, maybe actually to store it in a database. We may want to create uh some record in our database with the original text and then the actual summary of that. May take some time, just to simulate it here. And I may want to use Prisma or Drizzle or some other ORM to insert it into my database. And that's another step. And then we may want to send the result to the user via the email that they submitted as well, the user email that we got here, right? Maybe you're using some third-party provider for the email, you can do that in here. And then we actually want to wait a little bit. Let's say we want to wait four days. We can use step.sleep here with Inngest, schedule essentially a task to run after some time. And this can be also much shorter. Can be an hour or 30 minutes. Can actually be a year as well. Before we continue here, we want to wait some time. And then after those four days, we want to send the review, right? So now five steps here. And there are many benefits that we get from doing it this way with Inngest. So now, so now let's say that sending this email, this one here, let's say something goes wrong here. Maybe our email provider is returning some error, right? Or maybe some error is being thrown here. Inngest can automatically retry that. And when it retries this, it's not going to run all of this again because it can memorize that it has already run these steps. And so it can just go back here where we left off and go from here again, right? So this is one function still, this one uh this one function, but with steps, we can sort of break it up into checkpoints. So once we have done this, we don't have to rerun that again when something goes wrong here later. This is really important because of course, once we have already summarized the text, perhaps with AI as I'll show you in a second, we don't want to unnecessarily do that again because it costs money and also takes longer. But this is way more efficient. And also here where we wait four days before we continue. But then the underlying serverless function perhaps that where we host this on, well, now we're going to pay for four days of invocation time. You may think, and actually no. So with Inngest, when we sleep like this, we don't have to keep the underlying function running. Inngest will simply run this function again after four days, and it can remember that we left off here, right? In fact, it will also remember the data that it got here. So it will actually sort of inject it back into the function and start off from the checkpoint where we left it. So in this case, it would continue here with the data actually that we already have from the previous step. So with step here, we get a much more sophisticated way to orchestrate this workflow, and so we don't have to worry as much about the underlying infrastructure ourselves. So let's actually try it again. I'm going to click on summarize here. You can see the form has been reset. If I now go to my dashboard here, you can see that that one function that we have, we still have one function. Inngest will periodically probe our server to see if there are new functions, but we it's still the same function that we with the same name, right? So that's this uh function here that we set up, right? We just have a different implementation now. So now the there's another run of that function. If I click on that, you can see it's still running. Why is that? Well, that is because we have that sleeping uh step actually, right? So it actually you can see it per step here. So first there is the summarized text step. You can also see the output that we got from there. It will actually reinject it back later when the sleeping is finished. Then we have this uh storing in the database step. We're not returning anything here. But then here you can see it's waiting uh four days. And actually, if I want, I can also manually cancel it here if I want. So this is actually amazing observability here. And we can orchestrate really sophisticated workflows very easily here with Inngest. So this function, what we just did is more like a queuing type of system. Now, if you're just looking for Cron Jobs, so you want to do something periodically, like let's say every day at some time, right? So Cron Job, it's it looks very similar. So you would use Inngest.createFunction. You give it an ID and some name. This will help it look it up in the dashboard later. And then here for Cron Job, you specify cron and then the actual schedule basically. And then here you have the actual implementation. So maybe we want to clean old summaries, right? Maybe if they're older than 30 days, we want to remove them from our database, let's say, right? So this is a good example of running something periodically. So you would have the actual implementation here. And you would export this function uh here as well. And remember, Inngest is periodically checking my server side to discover new functions. So you can see now if I go back to my dashboard here to my functions, you can see it has picked up on that new function as well. I can see it here. And so this is also a very ergonomic way to create Cron Jobs in a Next.js application actually. Now, if we go back to the function that we had where we summarized the user's text, I was using step.run, right? So it's like a checkpoint in our workflow here. It can be retried independently of the other steps, and it will remember the result, and so it can inject that back later if it's necessary. They have some AI specific features here as well. So I can also use step.ai.wrap. So for example, I want to use AI OpenAI, let's say to actually summarize the text. I can specify the model I want to use, and then it's very similar to how you would use the OpenAI client directly. So if I use that as the implementation to actually summarize this. Now, if I go to our runs here, you can see it's still in process here. If I click on that, you can see we have our run here. If I go to the OpenAI step, what we see here is actually the input. So the actual prompt that we sent along to the model, as well as the output that we got from that model. So here you can see the um data that we get, and it will automatically show us the actual tokens used here as well. So so the tokens that we used for the prompt, as well as the completion tokens, you typically pay for both. So the total tokens and the model that was used. So actually, you have great observability here with the AI workloads that you run as well. You can see the models that were used, the prompt that was sent, the amount of tokens that were used. So if you're building an AI application, highly recommend you check out Inngest as well. I'm using the wrap method here, but they actually take it a step further here as well with the infer method here as well. So maybe we do want to infer the sentiment, let's say, of the text that the user sent. We we want to do that with uh with some model here as well. Previously, with uh just wrap, we were still making that call to OpenAI and waiting for that on our own in our own app. But with infer, we can hand that off to Inngest. Actually, with this, Inngest will make the actual call to OpenAI and wait for that on their side. And so we don't have to run a serverless function while we're waiting for that. So while we're waiting for the response from the AI model, we don't have to run so we don't have to run compute essentially. So Inngest can sort of pause our workflow at this point, and when there is a result from the AI model, it can continue. So this is an even more sophisticated option that we have as well. Inngest also offers a so-called AgentKit. So if you're building a highly sophisticated AI agent type of software, you definitely want to check this out. So the way it works is essentially that you is that you create an agent, and an agent can invoke tools, and we typically want to streamline the type of model that we use and some other settings as well. So we could, for example, create some kind of agent that can invoke a summarizer tool or a keyword tool or some sentiment or tone tool, and we may want to have one model for that. So you can create those tools here as well, and then you can attach them to that agent. So this makes it much more ergonomic to create an an actual AI agent. You can even take it to the next level and also combine multiple agents into a network. So if you want to get very advanced and sophisticated, check out the AgentKit by Inngest as well. So I'm actually really happy to see Inngest stepping into the space because it's really painful to set up some kind of queuing or Cron Jobs in Next.js. But Inngest actually fits in really nicely into the Next.js stack. Well done to the Inngest team, and I would say check them out. You can find a link in the description. They have a quick start here for Next.js, and here in Inngest Cloud, you you can just log into their dashboard. You will see something very similar as what we saw locally, right? So this dashboard is what we have locally running to to work with it locally. However, you can also log into their Inngest.com uh dashboard, and then when you go to production, you can synchronize it with Inngest, and you get these features as well. But if you quickly want to try it out in Next.js, I recommend that you start with the quick start here. In any case, I want to thank Inngest for sponsoring the video, and I want to thank you for watching. Hopefully, it helps you out with building out your Next.js app. Have a nice day, and I hope to see you in the next one.",
+  "dumpedAt": "2025-07-21T18:43:25.398Z"
+}

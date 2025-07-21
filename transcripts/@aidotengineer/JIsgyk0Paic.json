@@ -1,0 +1,3082 @@
+{
+  "episodeId": "JIsgyk0Paic",
+  "channelSlug": "@aidotengineer",
+  "title": "Reinforcement Learning for Agents - Will Brown, ML Researcher at Morgan Stanley",
+  "publishedAt": "2025-03-07T16:45:28.000Z",
+  "rawLines": [
+    {
+      "lang": "en",
+      "text": "[Music]",
+      "offset": 0.49,
+      "duration": 18.23
+    },
+    {
+      "lang": "en",
+      "text": "hello everyone Uh thanks Rick and the",
+      "offset": 16.88,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "whole AI engineer conference team for",
+      "offset": 18.72,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "putting this together and having me I am",
+      "offset": 20.48,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "Will Brown I am a machine learning",
+      "offset": 22.56,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "researcher at Morgan Stanley And today I",
+      "offset": 24.16,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "want to talk to you all a bit about what",
+      "offset": 26.48,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "I think reinforcement learning or RL",
+      "offset": 27.92,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "means for agents So I was in grad school",
+      "offset": 30.88,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "at Columbia for a while and I mostly",
+      "offset": 33.68,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "worked on theory for multi-agent",
+      "offset": 35.52,
+      "duration": 3.359
+    },
+    {
+      "lang": "en",
+      "text": "reinforcement learning and over the past",
+      "offset": 37.12,
+      "duration": 3.2
+    },
+    {
+      "lang": "en",
+      "text": "couple years I have been working at",
+      "offset": 38.879,
+      "duration": 4.481
+    },
+    {
+      "lang": "en",
+      "text": "Morgan Stanley on a wide range of LM",
+      "offset": 40.32,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "related projects some of which look kind",
+      "offset": 43.36,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "of like agents but I will not really be",
+      "offset": 45.2,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "talking too much about that today Uh I'm",
+      "offset": 46.8,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "also relatively active on X the",
+      "offset": 49.12,
+      "duration": 3.599
+    },
+    {
+      "lang": "en",
+      "text": "everything app and that will become",
+      "offset": 51.44,
+      "duration": 3.599
+    },
+    {
+      "lang": "en",
+      "text": "relevant later in the talk This talk I",
+      "offset": 52.719,
+      "duration": 3.281
+    },
+    {
+      "lang": "en",
+      "text": "think will be probably a little",
+      "offset": 55.039,
+      "duration": 2.241
+    },
+    {
+      "lang": "en",
+      "text": "different from most of the talks at the",
+      "offset": 56,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "conference Um it's not about things we",
+      "offset": 57.28,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "ship to prod It's not about things that",
+      "offset": 59.6,
+      "duration": 4.559
+    },
+    {
+      "lang": "en",
+      "text": "definitely work and you should go do",
+      "offset": 62.48,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "tomorrow that are like proven science or",
+      "offset": 64.159,
+      "duration": 4.401
+    },
+    {
+      "lang": "en",
+      "text": "best practices It's about where we might",
+      "offset": 66.88,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "be headed And I want to really just tell",
+      "offset": 68.56,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "a story that will synthesize some things",
+      "offset": 70.64,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "that have been happening in the broader",
+      "offset": 72.72,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "research community um and uh where these",
+      "offset": 74.64,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "trends might be pointing do some",
+      "offset": 77.52,
+      "duration": 3.919
+    },
+    {
+      "lang": "en",
+      "text": "speculation and also talk about some uh",
+      "offset": 79.36,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "recent open source work of my own Um and",
+      "offset": 81.439,
+      "duration": 5.281
+    },
+    {
+      "lang": "en",
+      "text": "the goal of this is to help you plan and",
+      "offset": 83.52,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "understand what reinforcement learning",
+      "offset": 86.72,
+      "duration": 4.719
+    },
+    {
+      "lang": "en",
+      "text": "means what it means for agents and how",
+      "offset": 88.88,
+      "duration": 5.68
+    },
+    {
+      "lang": "en",
+      "text": "to best be ready for a potential future",
+      "offset": 91.439,
+      "duration": 5.281
+    },
+    {
+      "lang": "en",
+      "text": "which may involve reinforcement learning",
+      "offset": 94.56,
+      "duration": 4.44
+    },
+    {
+      "lang": "en",
+      "text": "as part of the agent engineering",
+      "offset": 96.72,
+      "duration": 6.079
+    },
+    {
+      "lang": "en",
+      "text": "loop So um where are we today Most LLMs",
+      "offset": 99,
+      "duration": 5.24
+    },
+    {
+      "lang": "en",
+      "text": "that we work with are essentially",
+      "offset": 102.799,
+      "duration": 3.041
+    },
+    {
+      "lang": "en",
+      "text": "chatbots I think it's helpful to think",
+      "offset": 104.24,
+      "duration": 4.159
+    },
+    {
+      "lang": "en",
+      "text": "about OpenAI's uh five levels framework",
+      "offset": 105.84,
+      "duration": 5.279
+    },
+    {
+      "lang": "en",
+      "text": "here So we did pretty well with chatbots",
+      "offset": 108.399,
+      "duration": 3.921
+    },
+    {
+      "lang": "en",
+      "text": "Seems like we're doing pretty well with",
+      "offset": 111.119,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "reasoners Um these are great models for",
+      "offset": 112.32,
+      "duration": 3.839
+    },
+    {
+      "lang": "en",
+      "text": "question answer They're very helpful for",
+      "offset": 114.799,
+      "duration": 3.441
+    },
+    {
+      "lang": "en",
+      "text": "interactive problem solving We have the",
+      "offset": 116.159,
+      "duration": 6.32
+    },
+    {
+      "lang": "en",
+      "text": "01 03 R1 Gro 3 Gemini etc models that",
+      "offset": 118.24,
+      "duration": 5.519
+    },
+    {
+      "lang": "en",
+      "text": "are really good at kind of thinking",
+      "offset": 122.479,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "longer Um and we're trying to figure out",
+      "offset": 123.759,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "how we take all of this and make agents",
+      "offset": 126.079,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "level three Um and these are systems",
+      "offset": 128.479,
+      "duration": 3.521
+    },
+    {
+      "lang": "en",
+      "text": "that are taking actions These are",
+      "offset": 130.879,
+      "duration": 2.961
+    },
+    {
+      "lang": "en",
+      "text": "systems that are doing things that are",
+      "offset": 132,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "longer and harder and more complex And",
+      "offset": 133.84,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "currently the way we tend to do this is",
+      "offset": 135.76,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "chaining together multiple calls to",
+      "offset": 137.76,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "these underlying chatbot or reasoner LLM",
+      "offset": 139.84,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "And we do lots of things like prompt",
+      "offset": 142.64,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "engineering tool calling eval giving the",
+      "offset": 144.4,
+      "duration": 5.6
+    },
+    {
+      "lang": "en",
+      "text": "models tools of their own to use having",
+      "offset": 148,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "humans in the loop And the results are",
+      "offset": 150,
+      "duration": 3.519
+    },
+    {
+      "lang": "en",
+      "text": "like pretty good Um there's a lot of",
+      "offset": 151.52,
+      "duration": 3.28
+    },
+    {
+      "lang": "en",
+      "text": "things that we can do and then there's a",
+      "offset": 153.519,
+      "duration": 2.961
+    },
+    {
+      "lang": "en",
+      "text": "lot of stuff that it feels like is",
+      "offset": 154.8,
+      "duration": 3.2
+    },
+    {
+      "lang": "en",
+      "text": "around the corner that we're all",
+      "offset": 156.48,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "imagining about AGI but we're not really",
+      "offset": 158,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "to the point yet where these things are",
+      "offset": 161.2,
+      "duration": 4.399
+    },
+    {
+      "lang": "en",
+      "text": "going off and doing the things that we",
+      "offset": 163.28,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "would imagine an AGI is really doing to",
+      "offset": 165.599,
+      "duration": 5.201
+    },
+    {
+      "lang": "en",
+      "text": "the degree of autonomy that that would I",
+      "offset": 168.64,
+      "duration": 5.92
+    },
+    {
+      "lang": "en",
+      "text": "presume entail So I think it's useful a",
+      "offset": 170.8,
+      "duration": 5.6
+    },
+    {
+      "lang": "en",
+      "text": "bit to distinguish between agents and",
+      "offset": 174.56,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "pipelines I think Barry's talk earlier",
+      "offset": 176.4,
+      "duration": 3.199
+    },
+    {
+      "lang": "en",
+      "text": "was a good way to kind of frame this I'm",
+      "offset": 178,
+      "duration": 3.12
+    },
+    {
+      "lang": "en",
+      "text": "going to use pipelines to encapsulate",
+      "offset": 179.599,
+      "duration": 4.401
+    },
+    {
+      "lang": "en",
+      "text": "what Barry called workflows Um and I",
+      "offset": 181.12,
+      "duration": 4.399
+    },
+    {
+      "lang": "en",
+      "text": "think these are really systems with",
+      "offset": 184,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "fairly low degrees of autonomy And",
+      "offset": 185.519,
+      "duration": 4.161
+    },
+    {
+      "lang": "en",
+      "text": "there's a very non-trivial non-trivial",
+      "offset": 187.44,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "amount of engineering required to",
+      "offset": 189.68,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "determine these decision trees to say",
+      "offset": 191.36,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "how does one action or call flow into",
+      "offset": 193.2,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "another How uh to another How do we",
+      "offset": 195.28,
+      "duration": 5.039
+    },
+    {
+      "lang": "en",
+      "text": "refine the prompts Um and it seems like",
+      "offset": 197.28,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "a lot of the winning apps in the agent",
+      "offset": 200.319,
+      "duration": 3.761
+    },
+    {
+      "lang": "en",
+      "text": "space have very tight feedback loops And",
+      "offset": 202.4,
+      "duration": 3.119
+    },
+    {
+      "lang": "en",
+      "text": "so whether or not you want to call these",
+      "offset": 204.08,
+      "duration": 3.519
+    },
+    {
+      "lang": "en",
+      "text": "agents or pipelines these are things",
+      "offset": 205.519,
+      "duration": 3.761
+    },
+    {
+      "lang": "en",
+      "text": "where a user is interacting with some",
+      "offset": 207.599,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "sort of interface They're telling it",
+      "offset": 209.28,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "what to do The thing will do some stuff",
+      "offset": 210.959,
+      "duration": 3.441
+    },
+    {
+      "lang": "en",
+      "text": "and come back relatively quickly Things",
+      "offset": 212.64,
+      "duration": 3.599
+    },
+    {
+      "lang": "en",
+      "text": "like the idees like cursor wind surf and",
+      "offset": 214.4,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "replet um and search tools that are",
+      "offset": 216.239,
+      "duration": 3.681
+    },
+    {
+      "lang": "en",
+      "text": "really good at harder question answer",
+      "offset": 218.48,
+      "duration": 2.8
+    },
+    {
+      "lang": "en",
+      "text": "maybe with some web search or research",
+      "offset": 219.92,
+      "duration": 2.959
+    },
+    {
+      "lang": "en",
+      "text": "integrated But there's not that many",
+      "offset": 221.28,
+      "duration": 3.599
+    },
+    {
+      "lang": "en",
+      "text": "agents nowadays that will go off and",
+      "offset": 222.879,
+      "duration": 3.841
+    },
+    {
+      "lang": "en",
+      "text": "like do stuff for more than 10 minutes",
+      "offset": 224.879,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "at a time I think Devon Operator and",
+      "offset": 226.72,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "OpenAI's deep research are the three",
+      "offset": 228.959,
+      "duration": 3.521
+    },
+    {
+      "lang": "en",
+      "text": "that really come to mind as like feeling",
+      "offset": 230.48,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "a little more in the like autonomous",
+      "offset": 232.48,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "agent direction And I think a lot of us",
+      "offset": 235.2,
+      "duration": 3.679
+    },
+    {
+      "lang": "en",
+      "text": "might be wondering how do we make more",
+      "offset": 237.68,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "of these And the kind of traditional",
+      "offset": 238.879,
+      "duration": 4.481
+    },
+    {
+      "lang": "en",
+      "text": "wisdom is like okay we'll just wait for",
+      "offset": 242.08,
+      "duration": 2.799
+    },
+    {
+      "lang": "en",
+      "text": "better models Once better models are",
+      "offset": 243.36,
+      "duration": 4.159
+    },
+    {
+      "lang": "en",
+      "text": "around we can just like use those we'll",
+      "offset": 244.879,
+      "duration": 4.961
+    },
+    {
+      "lang": "en",
+      "text": "be good But I think it's also to kind of",
+      "offset": 247.519,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "take note of like the traditional",
+      "offset": 249.84,
+      "duration": 3.039
+    },
+    {
+      "lang": "en",
+      "text": "definition of reinforcement learning and",
+      "offset": 251.439,
+      "duration": 3.201
+    },
+    {
+      "lang": "en",
+      "text": "what an agent means there which is this",
+      "offset": 252.879,
+      "duration": 3.681
+    },
+    {
+      "lang": "en",
+      "text": "idea of a thing that is interacting with",
+      "offset": 254.64,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "an environment with a goal And the goal",
+      "offset": 256.56,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "of that and the system is designed to",
+      "offset": 258.72,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "learn how to get better at that goal",
+      "offset": 261.12,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "over time via repeated interaction uh",
+      "offset": 263.04,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "with the system And I think this is",
+      "offset": 265.68,
+      "duration": 2.64
+    },
+    {
+      "lang": "en",
+      "text": "something that a lot of us are either",
+      "offset": 266.88,
+      "duration": 3.759
+    },
+    {
+      "lang": "en",
+      "text": "doing manually or don't really have the",
+      "offset": 268.32,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "tools to do which is once we have our",
+      "offset": 270.639,
+      "duration": 4.481
+    },
+    {
+      "lang": "en",
+      "text": "thing that it's set up to make the calls",
+      "offset": 272.72,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "we want and the performance is like 70%",
+      "offset": 275.12,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "And we've done a lot of prompt tuning",
+      "offset": 278.24,
+      "duration": 2.8
+    },
+    {
+      "lang": "en",
+      "text": "and we want to get it up to 90% but we",
+      "offset": 279.52,
+      "duration": 2.959
+    },
+    {
+      "lang": "en",
+      "text": "just like don't have the models to do it",
+      "offset": 281.04,
+      "duration": 3.439
+    },
+    {
+      "lang": "en",
+      "text": "or the models struggle to get the",
+      "offset": 282.479,
+      "duration": 4.561
+    },
+    {
+      "lang": "en",
+      "text": "success What's our path forward Um and",
+      "offset": 284.479,
+      "duration": 4.641
+    },
+    {
+      "lang": "en",
+      "text": "so in terms of model trends I think I",
+      "offset": 287.04,
+      "duration": 3.439
+    },
+    {
+      "lang": "en",
+      "text": "won't spend too much time talking about",
+      "offset": 289.12,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "this but uh pre-training seems to be",
+      "offset": 290.479,
+      "duration": 4.081
+    },
+    {
+      "lang": "en",
+      "text": "having diminishing returns to capital at",
+      "offset": 292.8,
+      "duration": 3.2
+    },
+    {
+      "lang": "en",
+      "text": "least We're still seeing kind of like",
+      "offset": 294.56,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "loss go down but uh it does kind of feel",
+      "offset": 296,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "like we need new tricks Um reinforcement",
+      "offset": 299.04,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "learning from human feedback is great",
+      "offset": 301.44,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "for making kind of friendly chat bots Um",
+      "offset": 302.8,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "but it doesn't really seem to uh be",
+      "offset": 305.12,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "continually pushing us at the frontier",
+      "offset": 307.6,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "of smarter and smarter and smarter",
+      "offset": 309.68,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "models uh we talk a lot about synthetic",
+      "offset": 311.36,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "data and I think synthetic data is great",
+      "offset": 313.36,
+      "duration": 3.679
+    },
+    {
+      "lang": "en",
+      "text": "for distilling uh larger models down",
+      "offset": 314.72,
+      "duration": 3.919
+    },
+    {
+      "lang": "en",
+      "text": "into smaller models to have kind of",
+      "offset": 317.039,
+      "duration": 2.88
+    },
+    {
+      "lang": "en",
+      "text": "really tiny models that are really",
+      "offset": 318.639,
+      "duration": 3.761
+    },
+    {
+      "lang": "en",
+      "text": "performant but on its own it doesn't",
+      "offset": 319.919,
+      "duration": 4.881
+    },
+    {
+      "lang": "en",
+      "text": "seem to be an unlock for like massive",
+      "offset": 322.4,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "capabilities uh getting better and",
+      "offset": 324.8,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "better unless we throw in verification",
+      "offset": 326.96,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "in the loop or rejection sampling or any",
+      "offset": 329.44,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "of these things and that really takes us",
+      "offset": 331.12,
+      "duration": 3.359
+    },
+    {
+      "lang": "en",
+      "text": "to the world of reinforcement learning",
+      "offset": 333.12,
+      "duration": 3.28
+    },
+    {
+      "lang": "en",
+      "text": "where this seems to be the trick that",
+      "offset": 334.479,
+      "duration": 3.921
+    },
+    {
+      "lang": "en",
+      "text": "unlocked test time scaling for 01 models",
+      "offset": 336.4,
+      "duration": 4.239
+    },
+    {
+      "lang": "en",
+      "text": "in R1 um it's not bottlenecked by",
+      "offset": 338.4,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "needing manually curated human data and",
+      "offset": 340.639,
+      "duration": 4.641
+    },
+    {
+      "lang": "en",
+      "text": "it does seem to actually work Um I think",
+      "offset": 342.24,
+      "duration": 5.679
+    },
+    {
+      "lang": "en",
+      "text": "we all kind of took note about a month",
+      "offset": 345.28,
+      "duration": 6.479
+    },
+    {
+      "lang": "en",
+      "text": "ago when DeepSeek released the R1 model",
+      "offset": 347.919,
+      "duration": 5.521
+    },
+    {
+      "lang": "en",
+      "text": "and paper to the world and I think this",
+      "offset": 351.759,
+      "duration": 2.88
+    },
+    {
+      "lang": "en",
+      "text": "was really exciting because it was the",
+      "offset": 353.44,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "first paper that really explained how",
+      "offset": 354.639,
+      "duration": 4.641
+    },
+    {
+      "lang": "en",
+      "text": "you build a thing like 01 We'd had kind",
+      "offset": 356.8,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "of speculation and some rumors but they",
+      "offset": 359.28,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "really laid out the algorithm and the",
+      "offset": 362.08,
+      "duration": 4.399
+    },
+    {
+      "lang": "en",
+      "text": "mechanisms for what it takes to get a",
+      "offset": 364.16,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "model to learn to do this kind of",
+      "offset": 366.479,
+      "duration": 3.681
+    },
+    {
+      "lang": "en",
+      "text": "reasoning And it turns out it was",
+      "offset": 368.16,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "essentially just reinforcement learning",
+      "offset": 370.16,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "where you give the model some questions",
+      "offset": 372,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "you measure if it's getting the answer",
+      "offset": 374.08,
+      "duration": 3.2
+    },
+    {
+      "lang": "en",
+      "text": "right and you just kind of turn this",
+      "offset": 375.52,
+      "duration": 4.239
+    },
+    {
+      "lang": "en",
+      "text": "crank of giving it feedback to do more",
+      "offset": 377.28,
+      "duration": 3.919
+    },
+    {
+      "lang": "en",
+      "text": "like the things that worked well and",
+      "offset": 379.759,
+      "duration": 3.361
+    },
+    {
+      "lang": "en",
+      "text": "less like the things that didn't work Um",
+      "offset": 381.199,
+      "duration": 3.601
+    },
+    {
+      "lang": "en",
+      "text": "and what you end up seeing is that the",
+      "offset": 383.12,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "the long chain of thought from models",
+      "offset": 384.8,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "like 01 and R1 actually emerges as a",
+      "offset": 386.56,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "byproduct of this It wasn't kind of",
+      "offset": 389.28,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "manually programmed in where the models",
+      "offset": 390.96,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "were like given data of like 10,000",
+      "offset": 392.72,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "token reasoning steps this was a thing",
+      "offset": 394.96,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "the model learned to do because it was a",
+      "offset": 396.8,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "good strategy and reinforcement learning",
+      "offset": 398.4,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "at the core is really about identifying",
+      "offset": 400.4,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "good strategies for solving problems Um",
+      "offset": 402.16,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "it also seems like open source models",
+      "offset": 404.4,
+      "duration": 3.2
+    },
+    {
+      "lang": "en",
+      "text": "are are back in a big way There's a lot",
+      "offset": 406.08,
+      "duration": 3.119
+    },
+    {
+      "lang": "en",
+      "text": "of excitement around the open source",
+      "offset": 407.6,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "community Um people have been working on",
+      "offset": 409.199,
+      "duration": 4.321
+    },
+    {
+      "lang": "en",
+      "text": "replication efforts for the 01 project",
+      "offset": 411.28,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "um and have also been trying to distill",
+      "offset": 413.52,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "data from 01 down into smaller models",
+      "offset": 415.28,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "And so what next How does this relate to",
+      "offset": 417.52,
+      "duration": 4.079
+    },
+    {
+      "lang": "en",
+      "text": "agents Um I think it'll be helpful to",
+      "offset": 419.52,
+      "duration": 2.799
+    },
+    {
+      "lang": "en",
+      "text": "know a little bit about how",
+      "offset": 421.599,
+      "duration": 2.481
+    },
+    {
+      "lang": "en",
+      "text": "reinforcement learning works The key",
+      "offset": 422.319,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "idea is to explore and exploit So you",
+      "offset": 424.08,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "want to try stuff see what works do more",
+      "offset": 425.919,
+      "duration": 3.521
+    },
+    {
+      "lang": "en",
+      "text": "of the things that worked less of the",
+      "offset": 428.08,
+      "duration": 2.48
+    },
+    {
+      "lang": "en",
+      "text": "things that didn't And so in this",
+      "offset": 429.44,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "feedback loop um demonstrated here in",
+      "offset": 430.56,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "the image we can see a ch a challenge",
+      "offset": 432.88,
+      "duration": 3.599
+    },
+    {
+      "lang": "en",
+      "text": "where a model is uh supposed to be",
+      "offset": 434.88,
+      "duration": 3.759
+    },
+    {
+      "lang": "en",
+      "text": "writing code to pass test cases and we",
+      "offset": 436.479,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "give it rewards that correspond to",
+      "offset": 438.639,
+      "duration": 3.361
+    },
+    {
+      "lang": "en",
+      "text": "things like formatting using the right",
+      "offset": 440.319,
+      "duration": 3.28
+    },
+    {
+      "lang": "en",
+      "text": "language and then ultimately whether or",
+      "offset": 442,
+      "duration": 2.96
+    },
+    {
+      "lang": "en",
+      "text": "not the test cases are passing And so",
+      "offset": 443.599,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "this is kind of a numerical signal that",
+      "offset": 444.96,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "rather than like training on data uh",
+      "offset": 447.039,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "where we are kind of curating this in",
+      "offset": 449.28,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "advance we are letting the model do",
+      "offset": 451.039,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "synthetic data rollouts and seeing",
+      "offset": 452.8,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "scores from these rollouts which then",
+      "offset": 455.039,
+      "duration": 3.681
+    },
+    {
+      "lang": "en",
+      "text": "are fed back into the model And so the",
+      "offset": 456.8,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "GRPO algorithm which maybe some of you",
+      "offset": 458.72,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "have heard about is the algorithm DeepC",
+      "offset": 460.4,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "used I think it's less of like a",
+      "offset": 462.24,
+      "duration": 2.88
+    },
+    {
+      "lang": "en",
+      "text": "technical breakthrough in terms of it",
+      "offset": 463.84,
+      "duration": 2.799
+    },
+    {
+      "lang": "en",
+      "text": "being a really important new algorithm",
+      "offset": 465.12,
+      "duration": 3.04
+    },
+    {
+      "lang": "en",
+      "text": "to study but I think it's very",
+      "offset": 466.639,
+      "duration": 3.041
+    },
+    {
+      "lang": "en",
+      "text": "conceptually simple and I think it's a",
+      "offset": 468.16,
+      "duration": 2.4
+    },
+    {
+      "lang": "en",
+      "text": "nice way to think about what",
+      "offset": 469.68,
+      "duration": 2.56
+    },
+    {
+      "lang": "en",
+      "text": "reinforcement learning means And the",
+      "offset": 470.56,
+      "duration": 3.359
+    },
+    {
+      "lang": "en",
+      "text": "idea really is just that you for a given",
+      "offset": 472.24,
+      "duration": 4.239
+    },
+    {
+      "lang": "en",
+      "text": "prompt sample n completions You score",
+      "offset": 473.919,
+      "duration": 5.041
+    },
+    {
+      "lang": "en",
+      "text": "them all and you tell the model be more",
+      "offset": 476.479,
+      "duration": 5.521
+    },
+    {
+      "lang": "en",
+      "text": "like the ones with higher scores Um this",
+      "offset": 478.96,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "is still in kind of the single turn",
+      "offset": 482,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "reasoner model non-aggentic world Uh and",
+      "offset": 483.84,
+      "duration": 5.039
+    },
+    {
+      "lang": "en",
+      "text": "so the challenges that lie ahead um are",
+      "offset": 486.56,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "going to be about how do we take these",
+      "offset": 488.879,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "ideas uh and extend them into uh more",
+      "offset": 490.4,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "powerful more agent more autonomous",
+      "offset": 493.599,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "systems But we do know that it can be",
+      "offset": 495.36,
+      "duration": 4.559
+    },
+    {
+      "lang": "en",
+      "text": "done So OpenAI's deep research still has",
+      "offset": 497.599,
+      "duration": 3.521
+    },
+    {
+      "lang": "en",
+      "text": "a lot of questions that we do not know",
+      "offset": 499.919,
+      "duration": 3.28
+    },
+    {
+      "lang": "en",
+      "text": "the answers to about how it works but",
+      "offset": 501.12,
+      "duration": 3.759
+    },
+    {
+      "lang": "en",
+      "text": "they have told us that it was endto-end",
+      "offset": 503.199,
+      "duration": 3.361
+    },
+    {
+      "lang": "en",
+      "text": "reinforcement learning And so this is a",
+      "offset": 504.879,
+      "duration": 3.121
+    },
+    {
+      "lang": "en",
+      "text": "case where the model is taking up to",
+      "offset": 506.56,
+      "duration": 2.8
+    },
+    {
+      "lang": "en",
+      "text": "potentially a hundred different tool",
+      "offset": 508,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "calls of browsing or querying different",
+      "offset": 509.36,
+      "duration": 4.159
+    },
+    {
+      "lang": "en",
+      "text": "parts of the internet to synthesize a",
+      "offset": 511.68,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "large angler And it does seem I think to",
+      "offset": 513.519,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "many people's vibe check opinions very",
+      "offset": 516.08,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "impressive Um but it also is like not",
+      "offset": 518.159,
+      "duration": 4.961
+    },
+    {
+      "lang": "en",
+      "text": "AGI in the sense of you can't get it to",
+      "offset": 520.8,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "go like uh work in a repo or like solve",
+      "offset": 523.12,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "hard software engineering tasks And",
+      "offset": 525.6,
+      "duration": 3.2
+    },
+    {
+      "lang": "en",
+      "text": "people have kind of anecdotally found",
+      "offset": 527.44,
+      "duration": 3.12
+    },
+    {
+      "lang": "en",
+      "text": "that it does struggle a bit for like out",
+      "offset": 528.8,
+      "duration": 3.599
+    },
+    {
+      "lang": "en",
+      "text": "of distribution tasks or like if you",
+      "offset": 530.56,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "wanted to fill out a table with like a",
+      "offset": 532.399,
+      "duration": 4.241
+    },
+    {
+      "lang": "en",
+      "text": "100 very manual calculations it can",
+      "offset": 534.32,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "struggle there And so it seems like",
+      "offset": 536.64,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "reinforcement learning on one hand is a",
+      "offset": 538.48,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "big unlock for new skills and more",
+      "offset": 540.32,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "autonomy but it's not a thing that so",
+      "offset": 542.8,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "far has granted us agents that can just",
+      "offset": 545.6,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "do everything and know how to solve all",
+      "offset": 548.16,
+      "duration": 4.239
+    },
+    {
+      "lang": "en",
+      "text": "kinds of problems But it is a path",
+      "offset": 550.08,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "forward for teaching a model skills and",
+      "offset": 552.399,
+      "duration": 4.481
+    },
+    {
+      "lang": "en",
+      "text": "having the model learn how to get better",
+      "offset": 554.88,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "at certain skills particularly in",
+      "offset": 556.88,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "conjunction with environments and tools",
+      "offset": 558.72,
+      "duration": 4.44
+    },
+    {
+      "lang": "en",
+      "text": "and verification",
+      "offset": 561.2,
+      "duration": 4.639
+    },
+    {
+      "lang": "en",
+      "text": "Um and so there is infrastructure out",
+      "offset": 563.16,
+      "duration": 5.16
+    },
+    {
+      "lang": "en",
+      "text": "there for doing this on our own kind of",
+      "offset": 565.839,
+      "duration": 5.281
+    },
+    {
+      "lang": "en",
+      "text": "Um a lot of it is still RLHF style by",
+      "offset": 568.32,
+      "duration": 4.959
+    },
+    {
+      "lang": "en",
+      "text": "which I mean it's about kind of single",
+      "offset": 571.12,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "turn interactions where the goal is we",
+      "offset": 573.279,
+      "duration": 3.841
+    },
+    {
+      "lang": "en",
+      "text": "have reward signals that come from kind",
+      "offset": 575.2,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "of human data that has been combined",
+      "offset": 577.12,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "into a reward model Um and if we want to",
+      "offset": 579.12,
+      "duration": 5.08
+    },
+    {
+      "lang": "en",
+      "text": "have RL agents becoming part of our",
+      "offset": 582.24,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "systems maybe we will get really good",
+      "offset": 584.2,
+      "duration": 3.8
+    },
+    {
+      "lang": "en",
+      "text": "API services from the large labs that",
+      "offset": 586.24,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "let us build these things and hook into",
+      "offset": 588,
+      "duration": 5.6
+    },
+    {
+      "lang": "en",
+      "text": "GPT whatever um or cloud whatever and",
+      "offset": 590.32,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "train these sorts of models on our own",
+      "offset": 593.6,
+      "duration": 3.359
+    },
+    {
+      "lang": "en",
+      "text": "with fine-tuning but we also don't",
+      "offset": 595.04,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "really have these options yet Um OpenAI",
+      "offset": 596.959,
+      "duration": 3.281
+    },
+    {
+      "lang": "en",
+      "text": "has kind of teased their reinforcement",
+      "offset": 598.8,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "fine-tuning feedback but it's not uh",
+      "offset": 600.24,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "multi-step tool tool calling yet And so",
+      "offset": 602.24,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "I think if we want to plan ahead it's",
+      "offset": 604.48,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "worth kind of noting and asking what",
+      "offset": 606.16,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "would this ecosystem look like And",
+      "offset": 609.2,
+      "duration": 3.28
+    },
+    {
+      "lang": "en",
+      "text": "there's a lot of unknown questions like",
+      "offset": 611.2,
+      "duration": 3.12
+    },
+    {
+      "lang": "en",
+      "text": "how much this will cost how small can",
+      "offset": 612.48,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "the models be will it generalize across",
+      "offset": 614.32,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "tasks uh and how do we design good",
+      "offset": 616.48,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "rewards and good environments And",
+      "offset": 618.64,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "there's a lot of opportunity here Um",
+      "offset": 620.32,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "open source uh infrastructure there's a",
+      "offset": 622.48,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "lot of room to build and grow and",
+      "offset": 624.48,
+      "duration": 2.64
+    },
+    {
+      "lang": "en",
+      "text": "determine what the best practices are",
+      "offset": 625.92,
+      "duration": 2.8
+    },
+    {
+      "lang": "en",
+      "text": "going to be what the right tools will be",
+      "offset": 627.12,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "as well as companies that can build",
+      "offset": 628.72,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "tools for to support this ecosystem uh",
+      "offset": 630.72,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "whether or not they're already in the",
+      "offset": 633.12,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "fine-tuning world or not Um and services",
+      "offset": 634.24,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "for supporting this kind of agentic RL",
+      "offset": 636.8,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "and I think also it is worth thinking",
+      "offset": 638.72,
+      "duration": 3.679
+    },
+    {
+      "lang": "en",
+      "text": "about things that are like not literal",
+      "offset": 640.8,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "RL in the sense of training the model",
+      "offset": 642.399,
+      "duration": 3.12
+    },
+    {
+      "lang": "en",
+      "text": "but at the prompt level there's all",
+      "offset": 644.16,
+      "duration": 2.64
+    },
+    {
+      "lang": "en",
+      "text": "sorts of automation we can do So if",
+      "offset": 645.519,
+      "duration": 3.601
+    },
+    {
+      "lang": "en",
+      "text": "you've used DSPI I think that is kind of",
+      "offset": 646.8,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "adjacent to RL in the flavor of having a",
+      "offset": 649.12,
+      "duration": 5.279
+    },
+    {
+      "lang": "en",
+      "text": "signal that we can then uh bootstrap",
+      "offset": 651.92,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "from to improve our uh underlying system",
+      "offset": 654.399,
+      "duration": 4.961
+    },
+    {
+      "lang": "en",
+      "text": "based on improving some downstream",
+      "offset": 656.88,
+      "duration": 5.199
+    },
+    {
+      "lang": "en",
+      "text": "scores Um now I want to share a story",
+      "offset": 659.36,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "with you about a single Python file I",
+      "offset": 662.079,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "wrote a couple weeks ago Um so this was",
+      "offset": 663.92,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "the weekend after R1 came out and I'd",
+      "offset": 666.399,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "been reading the paper and thought it",
+      "offset": 668.88,
+      "duration": 3.04
+    },
+    {
+      "lang": "en",
+      "text": "was really cool We had not had the",
+      "offset": 670.079,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "Nvidia stock crash quite yet Um and uh I",
+      "offset": 671.92,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "was just playing around with some",
+      "offset": 676.079,
+      "duration": 2.241
+    },
+    {
+      "lang": "en",
+      "text": "experiments I was taking the a hug a",
+      "offset": 676.8,
+      "duration": 3.2
+    },
+    {
+      "lang": "en",
+      "text": "trainer from HuggingFace that had the",
+      "offset": 678.32,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "GRPO algorithm and I was getting a",
+      "offset": 680,
+      "duration": 6.56
+    },
+    {
+      "lang": "en",
+      "text": "really small language model llama 1B to",
+      "offset": 683.76,
+      "duration": 4.319
+    },
+    {
+      "lang": "en",
+      "text": "do some reasoning and then give an",
+      "offset": 686.56,
+      "duration": 3.2
+    },
+    {
+      "lang": "en",
+      "text": "answer for math questions And I started",
+      "offset": 688.079,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "with like a pretty simple system prompt",
+      "offset": 689.76,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "and I was just training the model to let",
+      "offset": 692.079,
+      "duration": 3.521
+    },
+    {
+      "lang": "en",
+      "text": "it see what it did And I had kind of",
+      "offset": 694.24,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "manually cured some rewards in terms of",
+      "offset": 695.6,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "what the scoring function should look",
+      "offset": 698,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "like And I just kind of like tweeted it",
+      "offset": 699.36,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "out um where I had an example of the",
+      "offset": 701.44,
+      "duration": 4.399
+    },
+    {
+      "lang": "en",
+      "text": "model kind of looking like it's doing",
+      "offset": 703.92,
+      "duration": 4.159
+    },
+    {
+      "lang": "en",
+      "text": "some selfcorrection and so showing that",
+      "offset": 705.839,
+      "duration": 5.281
+    },
+    {
+      "lang": "en",
+      "text": "the accuracy gets better as well as the",
+      "offset": 708.079,
+      "duration": 4.721
+    },
+    {
+      "lang": "en",
+      "text": "uh length of response will initially",
+      "offset": 711.12,
+      "duration": 3.279
+    },
+    {
+      "lang": "en",
+      "text": "drop once it learns to kind of follow",
+      "offset": 712.8,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "the format Then it goes back up as it",
+      "offset": 714.399,
+      "duration": 4.321
+    },
+    {
+      "lang": "en",
+      "text": "learns to kind of take advantage of",
+      "offset": 717.12,
+      "duration": 3.12
+    },
+    {
+      "lang": "en",
+      "text": "longer chains of thought to do its",
+      "offset": 718.72,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "reasoning And this was not the first",
+      "offset": 720.24,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "thing to replicate in any sense I",
+      "offset": 722.24,
+      "duration": 3.24
+    },
+    {
+      "lang": "en",
+      "text": "wouldn't really call it a true",
+      "offset": 724.56,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "replication Um it was far from the most",
+      "offset": 725.48,
+      "duration": 5
+    },
+    {
+      "lang": "en",
+      "text": "complicated and I think that actually",
+      "offset": 727.92,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "caught a lot of people's imaginations",
+      "offset": 730.48,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "and it became kind of a thing Um so over",
+      "offset": 732.16,
+      "duration": 6.56
+    },
+    {
+      "lang": "en",
+      "text": "the next two weeks after that it just",
+      "offset": 735.6,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "took on a life of its own where a lot of",
+      "offset": 738.72,
+      "duration": 3.28
+    },
+    {
+      "lang": "en",
+      "text": "people were kind of tweeting about it",
+      "offset": 740.32,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "and forking it and making modifications",
+      "offset": 742,
+      "duration": 3.839
+    },
+    {
+      "lang": "en",
+      "text": "to it and making it something you could",
+      "offset": 743.68,
+      "duration": 3.839
+    },
+    {
+      "lang": "en",
+      "text": "run in a Jupyter notebook making it more",
+      "offset": 745.839,
+      "duration": 3.601
+    },
+    {
+      "lang": "en",
+      "text": "accessible writing blog posts about it",
+      "offset": 747.519,
+      "duration": 6.161
+    },
+    {
+      "lang": "en",
+      "text": "And it was interesting um because it to",
+      "offset": 749.44,
+      "duration": 7.16
+    },
+    {
+      "lang": "en",
+      "text": "me didn't feel like a thing that kind of",
+      "offset": 753.68,
+      "duration": 6.56
+    },
+    {
+      "lang": "en",
+      "text": "merited this level of excitement But",
+      "offset": 756.6,
+      "duration": 5.4
+    },
+    {
+      "lang": "en",
+      "text": "what I think was catching people's",
+      "offset": 760.24,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "imagination was that it was one file of",
+      "offset": 762,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "code It was really simple and it invited",
+      "offset": 764.24,
+      "duration": 5.599
+    },
+    {
+      "lang": "en",
+      "text": "uh modification in a very userfriendly",
+      "offset": 767.2,
+      "duration": 5.199
+    },
+    {
+      "lang": "en",
+      "text": "engaging way which I like to call rubric",
+      "offset": 769.839,
+      "duration": 4.641
+    },
+    {
+      "lang": "en",
+      "text": "engineering And so the idea of rubric",
+      "offset": 772.399,
+      "duration": 4.641
+    },
+    {
+      "lang": "en",
+      "text": "engineering here is that similar to",
+      "offset": 774.48,
+      "duration": 6.56
+    },
+    {
+      "lang": "en",
+      "text": "prompt engineering um to have a model do",
+      "offset": 777.04,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "reinforcement learning it's going to get",
+      "offset": 781.04,
+      "duration": 2.96
+    },
+    {
+      "lang": "en",
+      "text": "some reward but what should this reward",
+      "offset": 782.24,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "be In the most simple version it's just",
+      "offset": 784,
+      "duration": 2.8
+    },
+    {
+      "lang": "en",
+      "text": "like did it get the question right or",
+      "offset": 785.6,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "wrong like does a equal b But there's a",
+      "offset": 786.8,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "lot more you can do beyond this And so I",
+      "offset": 789.2,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "think the the single file of code",
+      "offset": 790.8,
+      "duration": 4.479
+    },
+    {
+      "lang": "en",
+      "text": "exposed uh examples of this where you",
+      "offset": 792.72,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "can give the model points for things",
+      "offset": 795.279,
+      "duration": 3.841
+    },
+    {
+      "lang": "en",
+      "text": "like following this XML structure Like",
+      "offset": 796.88,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "if it gets a certain tag right you give",
+      "offset": 799.12,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "it plus one point Um if it has an",
+      "offset": 800.72,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "integer answer that's still the wrong",
+      "offset": 803.04,
+      "duration": 2.88
+    },
+    {
+      "lang": "en",
+      "text": "answer but it's learned that the format",
+      "offset": 804.48,
+      "duration": 3.12
+    },
+    {
+      "lang": "en",
+      "text": "should be an integer answer Get some",
+      "offset": 805.92,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "points for that Um and there's a lot of",
+      "offset": 807.6,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "room here for getting creative and for",
+      "offset": 810.72,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "designing rules that are not just",
+      "offset": 812.48,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "downstream eval to for our own sake know",
+      "offset": 814.72,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "whether a thing is working but to allow",
+      "offset": 817.2,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "the model itself to know whether it's",
+      "offset": 818.8,
+      "duration": 4.479
+    },
+    {
+      "lang": "en",
+      "text": "working and use that as feedback for",
+      "offset": 820.88,
+      "duration": 4.959
+    },
+    {
+      "lang": "en",
+      "text": "going further and training more Um and",
+      "offset": 823.279,
+      "duration": 4.081
+    },
+    {
+      "lang": "en",
+      "text": "this is very early stages There's a lot",
+      "offset": 825.839,
+      "duration": 2.481
+    },
+    {
+      "lang": "en",
+      "text": "of things we don't know and I think",
+      "offset": 827.36,
+      "duration": 2.719
+    },
+    {
+      "lang": "en",
+      "text": "there's a lot of opportunity to get",
+      "offset": 828.32,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "creative and explore and try things out",
+      "offset": 830.079,
+      "duration": 3.841
+    },
+    {
+      "lang": "en",
+      "text": "such as using LMS to design these",
+      "offset": 832.16,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "rubrics Uh autotuning these rubrics or",
+      "offset": 833.92,
+      "duration": 3.919
+    },
+    {
+      "lang": "en",
+      "text": "autotuning your prompts with frameworks",
+      "offset": 836.32,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "like DSPI Um incorporating LM judges as",
+      "offset": 837.839,
+      "duration": 5.201
+    },
+    {
+      "lang": "en",
+      "text": "part of the scoring system And then also",
+      "offset": 841.04,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "I think reward hacking is an issue to be",
+      "offset": 843.04,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "very cautious of where the idea is you",
+      "offset": 844.8,
+      "duration": 5.039
+    },
+    {
+      "lang": "en",
+      "text": "want to ensure that the the reward model",
+      "offset": 847.6,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "you're using is actually capturing the",
+      "offset": 849.839,
+      "duration": 3.201
+    },
+    {
+      "lang": "en",
+      "text": "goal and it doesn't have kind of these",
+      "offset": 851.44,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "back doors where a model can kind of",
+      "offset": 853.04,
+      "duration": 4.239
+    },
+    {
+      "lang": "en",
+      "text": "cheat and do something else that",
+      "offset": 854.88,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "ultimately results in it kind of getting",
+      "offset": 857.279,
+      "duration": 4.721
+    },
+    {
+      "lang": "en",
+      "text": "a super high reward without learning to",
+      "offset": 859.76,
+      "duration": 5.92
+    },
+    {
+      "lang": "en",
+      "text": "do the actual task Um and following this",
+      "offset": 862,
+      "duration": 5.68
+    },
+    {
+      "lang": "en",
+      "text": "I have been trying to learn from those",
+      "offset": 865.68,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "lessons of what I saw people using out",
+      "offset": 867.68,
+      "duration": 3.839
+    },
+    {
+      "lang": "en",
+      "text": "in the wild and make something that is a",
+      "offset": 869.36,
+      "duration": 5.279
+    },
+    {
+      "lang": "en",
+      "text": "little more uh robust and uh usable for",
+      "offset": 871.519,
+      "duration": 5.041
+    },
+    {
+      "lang": "en",
+      "text": "actual projects beyond just one file of",
+      "offset": 874.639,
+      "duration": 4.241
+    },
+    {
+      "lang": "en",
+      "text": "code Um and this has been a kind of very",
+      "offset": 876.56,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "recent effort It's not a thing that I'm",
+      "offset": 878.88,
+      "duration": 3.12
+    },
+    {
+      "lang": "en",
+      "text": "telling you to go use for all your",
+      "offset": 880.32,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "problems tomorrow but I think it's my",
+      "offset": 882,
+      "duration": 4.079
+    },
+    {
+      "lang": "en",
+      "text": "attempt doing some open- source uh",
+      "offset": 884.16,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "research code um that will help people",
+      "offset": 886.079,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "potentially try these things out easier",
+      "offset": 888.8,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "and answer some questions uh about this",
+      "offset": 890.639,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "And so what this really is it's a a",
+      "offset": 892.88,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "framework for doing RL inside of",
+      "offset": 895.519,
+      "duration": 4.081
+    },
+    {
+      "lang": "en",
+      "text": "multi-step environments So the idea here",
+      "offset": 897.76,
+      "duration": 3.759
+    },
+    {
+      "lang": "en",
+      "text": "is that lots of us have built these",
+      "offset": 899.6,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "great agent frameworks for using API",
+      "offset": 901.519,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "models And the hope would be that we can",
+      "offset": 903.92,
+      "duration": 4.479
+    },
+    {
+      "lang": "en",
+      "text": "leverage those existing environments and",
+      "offset": 906.399,
+      "duration": 5.361
+    },
+    {
+      "lang": "en",
+      "text": "uh frameworks to uh h actually do RL So",
+      "offset": 908.399,
+      "duration": 5.281
+    },
+    {
+      "lang": "en",
+      "text": "here the idea is you can just create",
+      "offset": 911.76,
+      "duration": 3.199
+    },
+    {
+      "lang": "en",
+      "text": "this environment thing that the model",
+      "offset": 913.68,
+      "duration": 2.56
+    },
+    {
+      "lang": "en",
+      "text": "plugs into and you don't have to worry",
+      "offset": 914.959,
+      "duration": 3.921
+    },
+    {
+      "lang": "en",
+      "text": "about the weights or the tokens you can",
+      "offset": 916.24,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "just write an interaction protocol and",
+      "offset": 918.88,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "then this gets fed into a trainer and so",
+      "offset": 920.88,
+      "duration": 3.28
+    },
+    {
+      "lang": "en",
+      "text": "once you build this environment you can",
+      "offset": 922.88,
+      "duration": 3.759
+    },
+    {
+      "lang": "en",
+      "text": "just kind of let it run and uh have a",
+      "offset": 924.16,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "model that once you give it some rewards",
+      "offset": 926.639,
+      "duration": 3.64
+    },
+    {
+      "lang": "en",
+      "text": "learns to get better and better over",
+      "offset": 928.8,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "time Um and to conclude I want to talk",
+      "offset": 930.279,
+      "duration": 5.481
+    },
+    {
+      "lang": "en",
+      "text": "about what I think AI engineering might",
+      "offset": 934.16,
+      "duration": 5.919
+    },
+    {
+      "lang": "en",
+      "text": "look like in the RL era So this is all",
+      "offset": 935.76,
+      "duration": 6.8
+    },
+    {
+      "lang": "en",
+      "text": "still something that is very new Uh we",
+      "offset": 940.079,
+      "duration": 5.041
+    },
+    {
+      "lang": "en",
+      "text": "don't know whether the off-the-shelf API",
+      "offset": 942.56,
+      "duration": 4.399
+    },
+    {
+      "lang": "en",
+      "text": "models are going to just work for the",
+      "offset": 945.12,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "tasks we throw at them It might be the",
+      "offset": 946.959,
+      "duration": 3.521
+    },
+    {
+      "lang": "en",
+      "text": "case that they do It might be the case",
+      "offset": 948.8,
+      "duration": 4.719
+    },
+    {
+      "lang": "en",
+      "text": "that they don't Um one reason I think",
+      "offset": 950.48,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "that they might not be the entire",
+      "offset": 953.519,
+      "duration": 5.201
+    },
+    {
+      "lang": "en",
+      "text": "solution is that it is really hard to",
+      "offset": 955.12,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "include a skill in a prompt You can",
+      "offset": 958.72,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "include knowledge in a prompt Um but a",
+      "offset": 960.48,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "lot of us when we try something we don't",
+      "offset": 963.44,
+      "duration": 3.759
+    },
+    {
+      "lang": "en",
+      "text": "nail it the first time and it takes a",
+      "offset": 965.6,
+      "duration": 5.599
+    },
+    {
+      "lang": "en",
+      "text": "little bit of trial and error Um and it",
+      "offset": 967.199,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "seems to be the case that models are",
+      "offset": 971.199,
+      "duration": 3.681
+    },
+    {
+      "lang": "en",
+      "text": "like this as well where a model does get",
+      "offset": 972.639,
+      "duration": 4.481
+    },
+    {
+      "lang": "en",
+      "text": "better at a thing and really gets a",
+      "offset": 974.88,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "skill nailed down by trial and error And",
+      "offset": 977.12,
+      "duration": 5.519
+    },
+    {
+      "lang": "en",
+      "text": "this has been the most promising unlock",
+      "offset": 980.32,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "we've seen so far for these higher",
+      "offset": 982.639,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "autonomy agents like deep research Um",
+      "offset": 984.8,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "fine-tuning might still be important And",
+      "offset": 988.639,
+      "duration": 2.481
+    },
+    {
+      "lang": "en",
+      "text": "I think a lot of people wrote off",
+      "offset": 990,
+      "duration": 3.279
+    },
+    {
+      "lang": "en",
+      "text": "fine-tuning for a while because open",
+      "offset": 991.12,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "models were far enough behind the",
+      "offset": 993.279,
+      "duration": 3.761
+    },
+    {
+      "lang": "en",
+      "text": "frontier that like a prompted o uh",
+      "offset": 994.72,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "frontier model API was just going to",
+      "offset": 997.04,
+      "duration": 4.159
+    },
+    {
+      "lang": "en",
+      "text": "beat a smaller fine-tuned model I think",
+      "offset": 998.72,
+      "duration": 4.239
+    },
+    {
+      "lang": "en",
+      "text": "one we're now seeing the open and closed",
+      "offset": 1001.199,
+      "duration": 3.921
+    },
+    {
+      "lang": "en",
+      "text": "source gap be close enough that this is",
+      "offset": 1002.959,
+      "duration": 4.161
+    },
+    {
+      "lang": "en",
+      "text": "less of a concern A lot of people are",
+      "offset": 1005.12,
+      "duration": 3.839
+    },
+    {
+      "lang": "en",
+      "text": "using open source hosted models in their",
+      "offset": 1007.12,
+      "duration": 7.04
+    },
+    {
+      "lang": "en",
+      "text": "platforms Um and also uh RL the most",
+      "offset": 1008.959,
+      "duration": 7.601
+    },
+    {
+      "lang": "en",
+      "text": "kind of true version of RL that DeepS",
+      "offset": 1014.16,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "did for their R1 model that OpenAI has",
+      "offset": 1016.56,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "talked about doing for uh deep research",
+      "offset": 1018.72,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "requires doing some reinforcement",
+      "offset": 1021.12,
+      "duration": 3.12
+    },
+    {
+      "lang": "en",
+      "text": "learning Um there's a lot of challenges",
+      "offset": 1022.32,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "here There's a lot of research questions",
+      "offset": 1024.24,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "we don't know the answers to Um but",
+      "offset": 1025.76,
+      "duration": 2.88
+    },
+    {
+      "lang": "en",
+      "text": "there's a lot of things that I think",
+      "offset": 1027.6,
+      "duration": 3.199
+    },
+    {
+      "lang": "en",
+      "text": "these skills we've learned from doing AI",
+      "offset": 1028.64,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "engineering over the past couple years",
+      "offset": 1030.799,
+      "duration": 3.921
+    },
+    {
+      "lang": "en",
+      "text": "translate very directly to which is that",
+      "offset": 1032.64,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "the challenge of building environments",
+      "offset": 1034.72,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "and rubrics is not that different from",
+      "offset": 1036.16,
+      "duration": 3.759
+    },
+    {
+      "lang": "en",
+      "text": "the challenge of building evals and",
+      "offset": 1038.16,
+      "duration": 3.679
+    },
+    {
+      "lang": "en",
+      "text": "prompts We still need good monitoring",
+      "offset": 1039.919,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "tools We still need a large ecosystem of",
+      "offset": 1041.839,
+      "duration": 4.321
+    },
+    {
+      "lang": "en",
+      "text": "companies and platforms and products",
+      "offset": 1044.319,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "that support the kinds of agents we want",
+      "offset": 1046.16,
+      "duration": 5.6
+    },
+    {
+      "lang": "en",
+      "text": "to build Um so I think all the stuff",
+      "offset": 1047.839,
+      "duration": 5.401
+    },
+    {
+      "lang": "en",
+      "text": "we've been doing is going to be",
+      "offset": 1051.76,
+      "duration": 3.919
+    },
+    {
+      "lang": "en",
+      "text": "essential and it's worth looking ahead a",
+      "offset": 1053.24,
+      "duration": 4.92
+    },
+    {
+      "lang": "en",
+      "text": "little bit to see if we end up in a",
+      "offset": 1055.679,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "world where we have to do a little bit",
+      "offset": 1058.16,
+      "duration": 3.519
+    },
+    {
+      "lang": "en",
+      "text": "more reinforcement learning to unlock",
+      "offset": 1059.679,
+      "duration": 5.281
+    },
+    {
+      "lang": "en",
+      "text": "things like true autonomous agents or",
+      "offset": 1061.679,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "innovators or organizations that are",
+      "offset": 1064.96,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "powered by language models Um what does",
+      "offset": 1066.559,
+      "duration": 6.521
+    },
+    {
+      "lang": "en",
+      "text": "that look like Uh we will find out",
+      "offset": 1069.28,
+      "duration": 5.92
+    },
+    {
+      "lang": "en",
+      "text": "[Music]",
+      "offset": 1073.08,
+      "duration": 5.15
+    },
+    {
+      "lang": "en",
+      "text": "[Applause]",
+      "offset": 1075.2,
+      "duration": 23.509
+    },
+    {
+      "lang": "en",
+      "text": "[Music]",
+      "offset": 1078.23,
+      "duration": 20.479
+    }
+  ],
+  "cleanText": null,
+  "dumpedAt": "2025-07-21T18:43:25.989Z"
+}

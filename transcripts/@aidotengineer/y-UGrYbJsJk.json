@@ -1,0 +1,3088 @@
+{
+  "episodeId": "y-UGrYbJsJk",
+  "channelSlug": "@aidotengineer",
+  "title": "What every AI engineer needs to know about GPUs — Charles Frye, Modal",
+  "publishedAt": "2025-07-20T07:00:58.000Z",
+  "rawLines": [
+    {
+      "lang": "en",
+      "text": "[Music]",
+      "offset": 1.72,
+      "duration": 6.919
+    },
+    {
+      "lang": "en",
+      "text": "So um what I wanted to talk about today",
+      "offset": 14.96,
+      "duration": 6.319
+    },
+    {
+      "lang": "en",
+      "text": "was uh what every AI engineer needs to",
+      "offset": 18.48,
+      "duration": 6.559
+    },
+    {
+      "lang": "en",
+      "text": "know about GPUs.",
+      "offset": 21.279,
+      "duration": 6.401
+    },
+    {
+      "lang": "en",
+      "text": "the like so far in the last couple of",
+      "offset": 25.039,
+      "duration": 4.801
+    },
+    {
+      "lang": "en",
+      "text": "years um most of the things that people",
+      "offset": 27.68,
+      "duration": 4.559
+    },
+    {
+      "lang": "en",
+      "text": "have built as AI applications people who",
+      "offset": 29.84,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "are AI engineers they've been building",
+      "offset": 32.239,
+      "duration": 3.921
+    },
+    {
+      "lang": "en",
+      "text": "on top of model APIs so they use the",
+      "offset": 33.68,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "open AI API the anthropic API the",
+      "offset": 36.16,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "deepseek API and they build an",
+      "offset": 38.16,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "application on top of that and that goes",
+      "offset": 40.48,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "back to kind of like the initial diagram",
+      "offset": 43.12,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "that Swix put out the like AI like rise",
+      "offset": 45.12,
+      "duration": 6.4
+    },
+    {
+      "lang": "en",
+      "text": "of the AI engineer thing um and yeah",
+      "offset": 48.16,
+      "duration": 6.559
+    },
+    {
+      "lang": "en",
+      "text": "probably just mirror would be great um",
+      "offset": 51.52,
+      "duration": 6.719
+    },
+    {
+      "lang": "en",
+      "text": "and the um so that like having that API",
+      "offset": 54.719,
+      "duration": 4.961
+    },
+    {
+      "lang": "en",
+      "text": "boundary is like is like pretty",
+      "offset": 58.239,
+      "duration": 3.281
+    },
+    {
+      "lang": "en",
+      "text": "important right it's like you can't",
+      "offset": 59.68,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "really build a complex system if",
+      "offset": 61.52,
+      "duration": 3.599
+    },
+    {
+      "lang": "en",
+      "text": "everybody has to know how every piece",
+      "offset": 63.52,
+      "duration": 3.279
+    },
+    {
+      "lang": "en",
+      "text": "works and everybody has to know all of",
+      "offset": 65.119,
+      "duration": 3.441
+    },
+    {
+      "lang": "en",
+      "text": "it in detail and there's no like",
+      "offset": 66.799,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "boundaries or breakdowns like you're",
+      "offset": 68.56,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "just yeah you'll compl collapse in",
+      "offset": 70.479,
+      "duration": 7.921
+    },
+    {
+      "lang": "en",
+      "text": "complexity if you do that um so",
+      "offset": 73.68,
+      "duration": 7.84
+    },
+    {
+      "lang": "en",
+      "text": "um oh that was a meme but I'm down with",
+      "offset": 78.4,
+      "duration": 6.8
+    },
+    {
+      "lang": "en",
+      "text": "it um so like so Yeah. So it started off",
+      "offset": 81.52,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "by trying to answer the question of like",
+      "offset": 85.2,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "why every AI engineer needs to know",
+      "offset": 86.56,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "about GPUs. Um and so yeah, so here's",
+      "offset": 88.64,
+      "duration": 4.479
+    },
+    {
+      "lang": "en",
+      "text": "our famous diagram AI engineer on the",
+      "offset": 91.36,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "right of the API boundary where they're",
+      "offset": 93.119,
+      "duration": 6.241
+    },
+    {
+      "lang": "en",
+      "text": "like constrained by the um the needs of",
+      "offset": 95.36,
+      "duration": 6.399
+    },
+    {
+      "lang": "en",
+      "text": "users rather than like the like what's",
+      "offset": 99.36,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "possible with research or what",
+      "offset": 101.759,
+      "duration": 4.561
+    },
+    {
+      "lang": "en",
+      "text": "infrastructure is capable of providing.",
+      "offset": 103.52,
+      "duration": 5.279
+    },
+    {
+      "lang": "en",
+      "text": "Um, and the way that I think about this",
+      "offset": 106.32,
+      "duration": 5.839
+    },
+    {
+      "lang": "en",
+      "text": "distinction is that um, it's kind of",
+      "offset": 108.799,
+      "duration": 5.041
+    },
+    {
+      "lang": "en",
+      "text": "similar to the way that very few",
+      "offset": 112.159,
+      "duration": 4.721
+    },
+    {
+      "lang": "en",
+      "text": "developers need to actually like write a",
+      "offset": 113.84,
+      "duration": 6.319
+    },
+    {
+      "lang": "en",
+      "text": "database. Um, like almost no one writes",
+      "offset": 116.88,
+      "duration": 5.519
+    },
+    {
+      "lang": "en",
+      "text": "a database except in their like you know",
+      "offset": 120.159,
+      "duration": 4.401
+    },
+    {
+      "lang": "en",
+      "text": "like undergrad classes. And then even",
+      "offset": 122.399,
+      "duration": 4.561
+    },
+    {
+      "lang": "en",
+      "text": "very few developers like run a database.",
+      "offset": 124.56,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "A lot of them will use either a fully",
+      "offset": 126.96,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "managed service or um, just like a",
+      "offset": 129.36,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "hosted service like uh, RDS on on",
+      "offset": 131.76,
+      "duration": 5.68
+    },
+    {
+      "lang": "en",
+      "text": "Amazon. Um but like almost all",
+      "offset": 134.72,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "developers despite the fact that they",
+      "offset": 137.44,
+      "duration": 5.439
+    },
+    {
+      "lang": "en",
+      "text": "aren't like database engineers, they are",
+      "offset": 140,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "users of databases and they like need to",
+      "offset": 142.879,
+      "duration": 4.161
+    },
+    {
+      "lang": "en",
+      "text": "like write know how to like write good",
+      "offset": 145.28,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "queries. They need to know how to like",
+      "offset": 147.04,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "hold the tool in order to press the like",
+      "offset": 148.72,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "buttons on the side. Uh so there's a",
+      "offset": 150.8,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "famous educational resource that I",
+      "offset": 153.04,
+      "duration": 4.479
+    },
+    {
+      "lang": "en",
+      "text": "really love um about databases called",
+      "offset": 154.8,
+      "duration": 5.6
+    },
+    {
+      "lang": "en",
+      "text": "use the index loop. Um that's like",
+      "offset": 157.519,
+      "duration": 5.201
+    },
+    {
+      "lang": "en",
+      "text": "basically about how to write SQL queries",
+      "offset": 160.4,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "and not like suck. Um and the whole",
+      "offset": 162.72,
+      "duration": 5.599
+    },
+    {
+      "lang": "en",
+      "text": "point is like there is a thing called an",
+      "offset": 165.76,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "index. There's a couple of data",
+      "offset": 168.319,
+      "duration": 3.041
+    },
+    {
+      "lang": "en",
+      "text": "structures that support it. It talks",
+      "offset": 169.84,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "about things like B trees and log",
+      "offset": 171.36,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "structured merge trees and stuff. And",
+      "offset": 174.16,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "the intent of it isn't that you can then",
+      "offset": 176.08,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "leave and go and like invert a binary",
+      "offset": 177.68,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "tree on a whiteboard so you can get a",
+      "offset": 179.76,
+      "duration": 3.04
+    },
+    {
+      "lang": "en",
+      "text": "fang job. Like the point of it is to",
+      "offset": 181.04,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "teach you what you need to know so that",
+      "offset": 182.8,
+      "duration": 3.439
+    },
+    {
+      "lang": "en",
+      "text": "you can write like write queries",
+      "offset": 184.72,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "properly that use the index and don't",
+      "offset": 186.239,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "not use the index. Primary and secondary",
+      "offset": 188.08,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "indices all these things. You don't like",
+      "offset": 190.239,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "you know that's like a little bit um",
+      "offset": 191.92,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "like an easier like prospect knowing it",
+      "offset": 194.959,
+      "duration": 4.481
+    },
+    {
+      "lang": "en",
+      "text": "well enough to be able to use it rather",
+      "offset": 197.68,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "than like build it or innovate on it.",
+      "offset": 199.44,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "Um, and I think we're reaching this",
+      "offset": 201.68,
+      "duration": 3.839
+    },
+    {
+      "lang": "en",
+      "text": "point now with uh with language models",
+      "offset": 203.04,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "where um where",
+      "offset": 205.519,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "you'll have more ability to like",
+      "offset": 208.48,
+      "duration": 3.28
+    },
+    {
+      "lang": "en",
+      "text": "integrate tightly run your own language",
+      "offset": 210.319,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "models and so more need to like use the",
+      "offset": 211.76,
+      "duration": 5.039
+    },
+    {
+      "lang": "en",
+      "text": "index or I guess if you want like the",
+      "offset": 214.319,
+      "duration": 4.881
+    },
+    {
+      "lang": "en",
+      "text": "like one sentence summary of this talk",
+      "offset": 216.799,
+      "duration": 4.961
+    },
+    {
+      "lang": "en",
+      "text": "um it's uh use the tensor cores Luke.",
+      "offset": 219.2,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "Um, so in building your there's one",
+      "offset": 221.76,
+      "duration": 4.479
+    },
+    {
+      "lang": "en",
+      "text": "there's basically one part of an Nvidia",
+      "offset": 224.08,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "GPU um and an equivalent in other GPUs",
+      "offset": 226.239,
+      "duration": 5.92
+    },
+    {
+      "lang": "en",
+      "text": "that is uh fast and good and gets better",
+      "offset": 229.12,
+      "duration": 5.039
+    },
+    {
+      "lang": "en",
+      "text": "and it's the tensor core and it does",
+      "offset": 232.159,
+      "duration": 5.041
+    },
+    {
+      "lang": "en",
+      "text": "matrix matrix multiplication and uh you",
+      "offset": 234.159,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "should make sure you're using it and uh",
+      "offset": 237.2,
+      "duration": 5.599
+    },
+    {
+      "lang": "en",
+      "text": "and not not using it just like an index",
+      "offset": 239.439,
+      "duration": 6.681
+    },
+    {
+      "lang": "en",
+      "text": "on a database.",
+      "offset": 242.799,
+      "duration": 3.321
+    },
+    {
+      "lang": "en",
+      "text": "Um, so yeah, so open like I kind of made",
+      "offset": 246.959,
+      "duration": 3.761
+    },
+    {
+      "lang": "en",
+      "text": "this point earlier about open weights",
+      "offset": 249.439,
+      "duration": 2.961
+    },
+    {
+      "lang": "en",
+      "text": "models and the open source software to",
+      "offset": 250.72,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "run them like Dynamo getting better very",
+      "offset": 252.4,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "quickly. So it finally makes sense to",
+      "offset": 254.64,
+      "duration": 3.2
+    },
+    {
+      "lang": "en",
+      "text": "self-host. I'm not going to belabor this",
+      "offset": 256.16,
+      "duration": 3.039
+    },
+    {
+      "lang": "en",
+      "text": "point because I'm giving another talk",
+      "offset": 257.84,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "1245 presenting some like benchmarking",
+      "offset": 259.199,
+      "duration": 5.601
+    },
+    {
+      "lang": "en",
+      "text": "results that we did on like running uh",
+      "offset": 262,
+      "duration": 6.72
+    },
+    {
+      "lang": "en",
+      "text": "VLM sg tens on like uh you 10 12",
+      "offset": 264.8,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "different models on 10 12 different",
+      "offset": 268.72,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "workloads um to show like what's what's",
+      "offset": 270.24,
+      "duration": 7.04
+    },
+    {
+      "lang": "en",
+      "text": "economical what's not. Okay. So uh so",
+      "offset": 272.72,
+      "duration": 6.8
+    },
+    {
+      "lang": "en",
+      "text": "that's the why um sort of a slight",
+      "offset": 277.28,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "change or adjustment in what AI",
+      "offset": 279.52,
+      "duration": 3.04
+    },
+    {
+      "lang": "en",
+      "text": "engineers I think a engineers should",
+      "offset": 281.04,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "focus on know about. Um so now what is",
+      "offset": 282.56,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "it that you need to know about engineer",
+      "offset": 285.12,
+      "duration": 5.84
+    },
+    {
+      "lang": "en",
+      "text": "about uh these these this hardware in",
+      "offset": 287.12,
+      "duration": 6.96
+    },
+    {
+      "lang": "en",
+      "text": "detail. So the primary thing is that",
+      "offset": 290.96,
+      "duration": 6.16
+    },
+    {
+      "lang": "en",
+      "text": "GPUs embrace high bandwidth not low",
+      "offset": 294.08,
+      "duration": 5.6
+    },
+    {
+      "lang": "en",
+      "text": "latency. That's the like key feature of",
+      "offset": 297.12,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "this hardware. Similar with TPUs, but",
+      "offset": 299.68,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "distinguishes it from pretty much every",
+      "offset": 302.16,
+      "duration": 3.2
+    },
+    {
+      "lang": "en",
+      "text": "other piece of hardware that you're used",
+      "offset": 303.6,
+      "duration": 5.599
+    },
+    {
+      "lang": "en",
+      "text": "to programming. Um, and then in detail,",
+      "offset": 305.36,
+      "duration": 6.96
+    },
+    {
+      "lang": "en",
+      "text": "they optimize for math bandwidth over",
+      "offset": 309.199,
+      "duration": 4.881
+    },
+    {
+      "lang": "en",
+      "text": "memory bandwidth. So they do like",
+      "offset": 312.32,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "computing on things. That's what they",
+      "offset": 314.08,
+      "duration": 3.839
+    },
+    {
+      "lang": "en",
+      "text": "where they have the highest throughput.",
+      "offset": 315.84,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "So you want to align yourself not to",
+      "offset": 317.919,
+      "duration": 3.361
+    },
+    {
+      "lang": "en",
+      "text": "latency but to throughput. And within",
+      "offset": 319.52,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "throughput, you want to focus on",
+      "offset": 321.28,
+      "duration": 3.919
+    },
+    {
+      "lang": "en",
+      "text": "computational operations. And then",
+      "offset": 323.44,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "within computational operations, what",
+      "offset": 325.199,
+      "duration": 4.321
+    },
+    {
+      "lang": "en",
+      "text": "you want to focus on if you want to like",
+      "offset": 327.12,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "actually use the whole GPU you paid for,",
+      "offset": 329.52,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "it's low precision matrix matrix",
+      "offset": 332,
+      "duration": 5.199
+    },
+    {
+      "lang": "en",
+      "text": "multiplications. Sorry, that wasn't a",
+      "offset": 335.28,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "stutter. That was matrix matrix",
+      "offset": 337.199,
+      "duration": 5.041
+    },
+    {
+      "lang": "en",
+      "text": "multiplications, not just matrix vector.",
+      "offset": 338.88,
+      "duration": 5.68
+    },
+    {
+      "lang": "en",
+      "text": "Um, okay. So f the first point about",
+      "offset": 342.24,
+      "duration": 5.679
+    },
+    {
+      "lang": "en",
+      "text": "latency versus bandwidth. Um so I like",
+      "offset": 344.56,
+      "duration": 5.359
+    },
+    {
+      "lang": "en",
+      "text": "regret to inform you that the scaling of",
+      "offset": 347.919,
+      "duration": 4.161
+    },
+    {
+      "lang": "en",
+      "text": "latency and the reduction of latency in",
+      "offset": 349.919,
+      "duration": 3.681
+    },
+    {
+      "lang": "en",
+      "text": "computing systems died during the Bush",
+      "offset": 352.08,
+      "duration": 4.399
+    },
+    {
+      "lang": "en",
+      "text": "administration. It's not coming back. Um",
+      "offset": 353.6,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "see a talk later today for an",
+      "offset": 356.479,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "alternative perspective. But um yeah",
+      "offset": 358.08,
+      "duration": 6.88
+    },
+    {
+      "lang": "en",
+      "text": "GPUs embrace bandwidth scaling. Um so a",
+      "offset": 360.639,
+      "duration": 6.721
+    },
+    {
+      "lang": "en",
+      "text": "little more detail on that. Um so this",
+      "offset": 364.96,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "is a computer or a piece of a computer",
+      "offset": 367.36,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "in case you haven't looked inside one in",
+      "offset": 369.36,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "a while. Um so this is a logic gate from",
+      "offset": 370.8,
+      "duration": 5.679
+    },
+    {
+      "lang": "en",
+      "text": "the ZUSA 1 um computer built in Germany",
+      "offset": 372.88,
+      "duration": 5.439
+    },
+    {
+      "lang": "en",
+      "text": "in the 30s kind of first digital",
+      "offset": 376.479,
+      "duration": 4.081
+    },
+    {
+      "lang": "en",
+      "text": "computer digital but not electronic it's",
+      "offset": 378.319,
+      "duration": 4.481
+    },
+    {
+      "lang": "en",
+      "text": "mechanical. So all these actuator plates",
+      "offset": 380.56,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "in it that that um implemented logical",
+      "offset": 382.8,
+      "duration": 4.399
+    },
+    {
+      "lang": "en",
+      "text": "operations. So what you see there on the",
+      "offset": 385.44,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "left is the logical operation a and so",
+      "offset": 387.199,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "if two plates are pushed down then if",
+      "offset": 389.84,
+      "duration": 4.479
+    },
+    {
+      "lang": "en",
+      "text": "both of them are present then when a",
+      "offset": 392.639,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "then when the other plate pushes forward",
+      "offset": 394.319,
+      "duration": 3.841
+    },
+    {
+      "lang": "en",
+      "text": "it will push the final plate forward.",
+      "offset": 396.319,
+      "duration": 4.561
+    },
+    {
+      "lang": "en",
+      "text": "That's the logical operation and and the",
+      "offset": 398.16,
+      "duration": 4.879
+    },
+    {
+      "lang": "en",
+      "text": "thing that pushes that like the the",
+      "offset": 400.88,
+      "duration": 4.159
+    },
+    {
+      "lang": "en",
+      "text": "thing that pushes forward is driven by a",
+      "offset": 403.039,
+      "duration": 4.641
+    },
+    {
+      "lang": "en",
+      "text": "clock like a literal clock. Um I guess",
+      "offset": 405.039,
+      "duration": 4.561
+    },
+    {
+      "lang": "en",
+      "text": "now everybody has Apple watches but you",
+      "offset": 407.68,
+      "duration": 3.28
+    },
+    {
+      "lang": "en",
+      "text": "know there was a time when you would",
+      "offset": 409.6,
+      "duration": 2.8
+    },
+    {
+      "lang": "en",
+      "text": "have a physical clock for that sort of",
+      "offset": 410.96,
+      "duration": 7.519
+    },
+    {
+      "lang": "en",
+      "text": "thing. So this um uh the clock uh like",
+      "offset": 412.4,
+      "duration": 7.84
+    },
+    {
+      "lang": "en",
+      "text": "drove like drives these systems and",
+      "offset": 418.479,
+      "duration": 3.28
+    },
+    {
+      "lang": "en",
+      "text": "causes them to like compute their",
+      "offset": 420.24,
+      "duration": 3.519
+    },
+    {
+      "lang": "en",
+      "text": "logical operations, right? So every time",
+      "offset": 421.759,
+      "duration": 3.28
+    },
+    {
+      "lang": "en",
+      "text": "the clock ticks, you get a new",
+      "offset": 423.759,
+      "duration": 3.921
+    },
+    {
+      "lang": "en",
+      "text": "operation. And so you can just, you",
+      "offset": 425.039,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "know, so we we we've changed computers a",
+      "offset": 427.68,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "little bit in that we use different",
+      "offset": 429.919,
+      "duration": 3.28
+    },
+    {
+      "lang": "en",
+      "text": "physics to drive them, but it's still",
+      "offset": 431.36,
+      "duration": 3.839
+    },
+    {
+      "lang": "en",
+      "text": "the same basic like abstract system.",
+      "offset": 433.199,
+      "duration": 4.641
+    },
+    {
+      "lang": "en",
+      "text": "There's a sort of a motive force that",
+      "offset": 435.199,
+      "duration": 5.921
+    },
+    {
+      "lang": "en",
+      "text": "happens on a clock cycle that leads to",
+      "offset": 437.84,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "calculations. Um, and the cool thing",
+      "offset": 441.12,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "about that is that if you just make that",
+      "offset": 443.36,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "faster, literally nobody has to like",
+      "offset": 444.96,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "like think about anything and the",
+      "offset": 447.68,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "computer gets better. So this was the",
+      "offset": 449.28,
+      "duration": 3.919
+    },
+    {
+      "lang": "en",
+      "text": "like primary driver of computers getting",
+      "offset": 451.44,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "better in the '9s. No recompiling, no",
+      "offset": 453.199,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "rewriting your software. Everything just",
+      "offset": 456.8,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "got better because now the clock started",
+      "offset": 458.639,
+      "duration": 4.161
+    },
+    {
+      "lang": "en",
+      "text": "going like",
+      "offset": 460.72,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "twice as fast, right? And time is very",
+      "offset": 462.8,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "virtual in in computers and so like the",
+      "offset": 465.12,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "program couldn't possibly know the",
+      "offset": 467.44,
+      "duration": 3.28
+    },
+    {
+      "lang": "en",
+      "text": "difference. Um, so that was really great",
+      "offset": 468.8,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "during that like that like mid to late",
+      "offset": 470.72,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "90s period and then that like fell off a",
+      "offset": 472.96,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "cliff in the early 2000s and this is",
+      "offset": 474.72,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "like impacted a lot of computing over",
+      "offset": 478,
+      "duration": 3.599
+    },
+    {
+      "lang": "en",
+      "text": "the last two decades but actually its",
+      "offset": 480,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "effects are like still being felt like",
+      "offset": 481.599,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "all this switch from being able to kind",
+      "offset": 484,
+      "duration": 5.759
+    },
+    {
+      "lang": "en",
+      "text": "of avoid the like uh needing to think",
+      "offset": 486.879,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "about performance. So this is like kind",
+      "offset": 489.759,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "of slowly and inevitably changing pretty",
+      "offset": 491.919,
+      "duration": 4.241
+    },
+    {
+      "lang": "en",
+      "text": "much like everything in software. um all",
+      "offset": 493.759,
+      "duration": 3.601
+    },
+    {
+      "lang": "en",
+      "text": "kinds of things you've seen around",
+      "offset": 496.16,
+      "duration": 3.439
+    },
+    {
+      "lang": "en",
+      "text": "concurrency uh guilfree python",
+      "offset": 497.36,
+      "duration": 5.279
+    },
+    {
+      "lang": "en",
+      "text": "multipprocessing async co- routines",
+      "offset": 499.599,
+      "duration": 5.841
+    },
+    {
+      "lang": "en",
+      "text": "um so there's like couple like kind of",
+      "offset": 502.639,
+      "duration": 4.481
+    },
+    {
+      "lang": "en",
+      "text": "detailed things to dive in here I want",
+      "offset": 505.44,
+      "duration": 3.599
+    },
+    {
+      "lang": "en",
+      "text": "to make sure that I give enough time to",
+      "offset": 507.12,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "talk about the GPU stuff but there's",
+      "offset": 509.039,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "kind of two notions of how to make",
+      "offset": 510.96,
+      "duration": 3.439
+    },
+    {
+      "lang": "en",
+      "text": "things faster without doing that one is",
+      "offset": 512.399,
+      "duration": 4.481
+    },
+    {
+      "lang": "en",
+      "text": "parallel so like when you have a clock",
+      "offset": 514.399,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "cycle just do two things instead of one",
+      "offset": 516.88,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "sounds like a good idea um the other one",
+      "offset": 518.479,
+      "duration": 4.721
+    },
+    {
+      "lang": "en",
+      "text": "is concurrent which is a little bit",
+      "offset": 521.36,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "trickier but it's like so you start",
+      "offset": 523.2,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "doing something clock cycle hits, you",
+      "offset": 524.72,
+      "duration": 3.28
+    },
+    {
+      "lang": "en",
+      "text": "start running a calculation. Maybe that",
+      "offset": 526.56,
+      "duration": 3.12
+    },
+    {
+      "lang": "en",
+      "text": "calculation takes five clock cycles to",
+      "offset": 528,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "finish. Like instead of waiting for",
+      "offset": 529.68,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "those clock cycles to finish, try and do",
+      "offset": 531.92,
+      "duration": 3.599
+    },
+    {
+      "lang": "en",
+      "text": "five other things with the next couple",
+      "offset": 533.92,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "clock cycles. Makes your programs really",
+      "offset": 535.519,
+      "duration": 3.121
+    },
+    {
+      "lang": "en",
+      "text": "ugly because you write have to write",
+      "offset": 537.44,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "async await everywhere. Um and yeah, uh",
+      "offset": 538.64,
+      "duration": 4.879
+    },
+    {
+      "lang": "en",
+      "text": "if you're writing Rust, it's uh it's a",
+      "offset": 541.6,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "world of pin. Um but yeah, but it helps",
+      "offset": 543.519,
+      "duration": 5.281
+    },
+    {
+      "lang": "en",
+      "text": "you keep these like these super high",
+      "offset": 546.48,
+      "duration": 6.24
+    },
+    {
+      "lang": "en",
+      "text": "bandwidth pipelines busy. Um and so",
+      "offset": 548.8,
+      "duration": 6.159
+    },
+    {
+      "lang": "en",
+      "text": "these like concurrent and parallel these",
+      "offset": 552.72,
+      "duration": 4.799
+    },
+    {
+      "lang": "en",
+      "text": "are two strategies to maximize bandwidth",
+      "offset": 554.959,
+      "duration": 5.121
+    },
+    {
+      "lang": "en",
+      "text": "that are adopted like at the hardware",
+      "offset": 557.519,
+      "duration": 3.921
+    },
+    {
+      "lang": "en",
+      "text": "level all the way up to the programming",
+      "offset": 560.08,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "level with GPUs to take this like",
+      "offset": 561.44,
+      "duration": 6.079
+    },
+    {
+      "lang": "en",
+      "text": "bandwidth further than CPUs can. So uh",
+      "offset": 563.92,
+      "duration": 6.16
+    },
+    {
+      "lang": "en",
+      "text": "GPUs take parallelism further than CPUs.",
+      "offset": 567.519,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "So I'm comparing an AMD Epic CPU and an",
+      "offset": 570.08,
+      "duration": 7.52
+    },
+    {
+      "lang": "en",
+      "text": "Nvidia H100 SXM GPU here. Uh the figure",
+      "offset": 573.279,
+      "duration": 6.161
+    },
+    {
+      "lang": "en",
+      "text": "of merit here is the number of parallel",
+      "offset": 577.6,
+      "duration": 3.679
+    },
+    {
+      "lang": "en",
+      "text": "threads that can operate and the wattage",
+      "offset": 579.44,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "at which they operate. So an H1 like a",
+      "offset": 581.279,
+      "duration": 6.481
+    },
+    {
+      "lang": "en",
+      "text": "like an AMD epic uh CPU can do two",
+      "offset": 583.76,
+      "duration": 6.8
+    },
+    {
+      "lang": "en",
+      "text": "threads per core at about one watt per",
+      "offset": 587.76,
+      "duration": 5.68
+    },
+    {
+      "lang": "en",
+      "text": "thread. Um that's not bad, but an H100",
+      "offset": 590.56,
+      "duration": 6.399
+    },
+    {
+      "lang": "en",
+      "text": "can do over 16,000 parallel threads at 5",
+      "offset": 593.44,
+      "duration": 5.92
+    },
+    {
+      "lang": "en",
+      "text": "cents per thread, which is pretty uh",
+      "offset": 596.959,
+      "duration": 5.281
+    },
+    {
+      "lang": "en",
+      "text": "pretty amazing. Uh very big difference.",
+      "offset": 599.36,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "And uh parallel means like literally",
+      "offset": 602.24,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "every clock cycle all 16,000 threads of",
+      "offset": 604.48,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "execution make progress at the exact",
+      "offset": 607.2,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "same time. So what about concurrency? So",
+      "offset": 609.36,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "it may look like CPUs have an advantage",
+      "offset": 612.08,
+      "duration": 3.199
+    },
+    {
+      "lang": "en",
+      "text": "here because effectively concurrent",
+      "offset": 613.68,
+      "duration": 3.2
+    },
+    {
+      "lang": "en",
+      "text": "threads are unbounded. Like you can just",
+      "offset": 615.279,
+      "duration": 3.521
+    },
+    {
+      "lang": "en",
+      "text": "make a thread in Linux like it's free.",
+      "offset": 616.88,
+      "duration": 2.88
+    },
+    {
+      "lang": "en",
+      "text": "Government doesn't want you to know",
+      "offset": 618.8,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "this. Um uh and but there's a limit on",
+      "offset": 619.76,
+      "duration": 5.199
+    },
+    {
+      "lang": "en",
+      "text": "H100. So it looks like oh wow oh only",
+      "offset": 622.72,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "250,000 threads. What am I supposed to",
+      "offset": 624.959,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "do with that? Um but the difference here",
+      "offset": 626.8,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "is context switching speed. How quickly",
+      "offset": 628.959,
+      "duration": 3.681
+    },
+    {
+      "lang": "en",
+      "text": "can you go from executing one thing to",
+      "offset": 630.88,
+      "duration": 4.399
+    },
+    {
+      "lang": "en",
+      "text": "another? So if it like if our purpose",
+      "offset": 632.64,
+      "duration": 4.319
+    },
+    {
+      "lang": "en",
+      "text": "was to take advantage of every clock",
+      "offset": 635.279,
+      "duration": 4.081
+    },
+    {
+      "lang": "en",
+      "text": "cycle and it takes us a thousand clock",
+      "offset": 636.959,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "cycles like a microscond to context",
+      "offset": 639.36,
+      "duration": 4.479
+    },
+    {
+      "lang": "en",
+      "text": "switch then our concurrency is like",
+      "offset": 641.519,
+      "duration": 4.721
+    },
+    {
+      "lang": "en",
+      "text": "actually like pretty tightly bounded um",
+      "offset": 643.839,
+      "duration": 4.961
+    },
+    {
+      "lang": "en",
+      "text": "because we can't do uh a thing for a",
+      "offset": 646.24,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "whole thousand clock cycles. But in GPUs",
+      "offset": 648.8,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "context switching happens literally",
+      "offset": 651.2,
+      "duration": 3.199
+    },
+    {
+      "lang": "en",
+      "text": "every clock cycle. It's down there at",
+      "offset": 652.72,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "the warp scheduler inside the hardware.",
+      "offset": 654.399,
+      "duration": 4.481
+    },
+    {
+      "lang": "en",
+      "text": "um if you have to think about it that",
+      "offset": 657.36,
+      "duration": 3.12
+    },
+    {
+      "lang": "en",
+      "text": "hard, you're probably having a bad time.",
+      "offset": 658.88,
+      "duration": 3.28
+    },
+    {
+      "lang": "en",
+      "text": "But if you uh but normally it's just",
+      "offset": 660.48,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "making everything run faster. Um so",
+      "offset": 662.16,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "there's not really a name for this uh",
+      "offset": 664.88,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "the phenomenon that's that's driving all",
+      "offset": 666.64,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "of this work. Um but David Patterson who",
+      "offset": 668.56,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "came up with risk machines um and worked",
+      "offset": 670.72,
+      "duration": 4.799
+    },
+    {
+      "lang": "en",
+      "text": "on TPUs uh wrote it down. So I call it",
+      "offset": 672.88,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "Patterson's law. Latency lags bandwidth.",
+      "offset": 675.519,
+      "duration": 4.961
+    },
+    {
+      "lang": "en",
+      "text": "Um so like why are why are we doing all",
+      "offset": 678.16,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "these things the to like rewriting our",
+      "offset": 680.48,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "programs rethinking them in order to to",
+      "offset": 682.8,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "like take advantage of increasing",
+      "offset": 685.36,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "bandwidth and you know bandwidth is",
+      "offset": 686.8,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "replacing latency scaling because if you",
+      "offset": 689.12,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "look across a variety of different",
+      "offset": 691.12,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "subsystems of computers networks uh",
+      "offset": 692.88,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "memory discs the latency improvement is",
+      "offset": 695.68,
+      "duration": 6.08
+    },
+    {
+      "lang": "en",
+      "text": "actually the square of or sorry the um",
+      "offset": 698.64,
+      "duration": 5.199
+    },
+    {
+      "lang": "en",
+      "text": "the bandwidth improvement is the square",
+      "offset": 701.76,
+      "duration": 4.079
+    },
+    {
+      "lang": "en",
+      "text": "of the latency improvement over time.",
+      "offset": 703.839,
+      "duration": 3.521
+    },
+    {
+      "lang": "en",
+      "text": "This is one of those like Moors law",
+      "offset": 705.839,
+      "duration": 2.961
+    },
+    {
+      "lang": "en",
+      "text": "style charts where you're looking at",
+      "offset": 707.36,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "like trends in performance over time.",
+      "offset": 708.8,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "And it's like for every 10x that we",
+      "offset": 711.44,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "improve latency, we get 100x improvement",
+      "offset": 713.6,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "in bandwidth. And there's some arguments",
+      "offset": 715.68,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "in the article about where what it you",
+      "offset": 718.64,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "know where this comes from. Basically,",
+      "offset": 720.56,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "with latency, you run into the laws of",
+      "offset": 722,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "physics. With bandwidth, you just run",
+      "offset": 723.92,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "into like how many things can you do at",
+      "offset": 725.68,
+      "duration": 3.279
+    },
+    {
+      "lang": "en",
+      "text": "the same time? And you can always you",
+      "offset": 727.36,
+      "duration": 3.279
+    },
+    {
+      "lang": "en",
+      "text": "can take the same physics and spread it",
+      "offset": 728.959,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "out more easily than you can like come",
+      "offset": 730.639,
+      "duration": 3.2
+    },
+    {
+      "lang": "en",
+      "text": "up with new physics to take advantage",
+      "offset": 732.399,
+      "duration": 4.641
+    },
+    {
+      "lang": "en",
+      "text": "of. like you you cannot bribe the laws",
+      "offset": 733.839,
+      "duration": 5.281
+    },
+    {
+      "lang": "en",
+      "text": "of physics, Scotty, in Star Trek. Um,",
+      "offset": 737.04,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "and that's like one of the limits on",
+      "offset": 739.12,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "like network latency is like we uh we",
+      "offset": 740.56,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "send packets at like 70% of the speed of",
+      "offset": 743.12,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "light. So like we can't get them 10x",
+      "offset": 745.12,
+      "duration": 4.959
+    },
+    {
+      "lang": "en",
+      "text": "faster. Um, yeah.",
+      "offset": 747.04,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "Um, all right. So that's that's",
+      "offset": 750.079,
+      "duration": 4.081
+    },
+    {
+      "lang": "en",
+      "text": "bandwidth. Uh, GPUs embrace bandwidth.",
+      "offset": 751.92,
+      "duration": 3.919
+    },
+    {
+      "lang": "en",
+      "text": "Maybe big takeaway from Patterson's law",
+      "offset": 754.16,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "is like uh bandwidth has won out over",
+      "offset": 755.839,
+      "duration": 4.481
+    },
+    {
+      "lang": "en",
+      "text": "and over again. So maybe bet on the",
+      "offset": 758.72,
+      "duration": 3.28
+    },
+    {
+      "lang": "en",
+      "text": "bandwidth hardware. I don't know if the",
+      "offset": 760.32,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "person who's going to be talking about",
+      "offset": 762,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "uh LPUs or or etched is here, but we",
+      "offset": 763.68,
+      "duration": 5.92
+    },
+    {
+      "lang": "en",
+      "text": "should fight about this later. Um yeah,",
+      "offset": 766.8,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "so all right. So what kind of bandwidth",
+      "offset": 769.6,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "though? Um arithmetic bandwidth over",
+      "offset": 771.6,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "memory bandwidth. So not moving bytes",
+      "offset": 774.32,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "around that that they are high they have",
+      "offset": 776.56,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "high bandwidth memory, the fanciest",
+      "offset": 779.44,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "finest Heinix high bandwidth memory. Um",
+      "offset": 780.88,
+      "duration": 5.6
+    },
+    {
+      "lang": "en",
+      "text": "but they uh the thing where they really",
+      "offset": 784.16,
+      "duration": 5.679
+    },
+    {
+      "lang": "en",
+      "text": "excel is doing calculations on that",
+      "offset": 786.48,
+      "duration": 8.159
+    },
+    {
+      "lang": "en",
+      "text": "memory. And so the takeaway here is that",
+      "offset": 789.839,
+      "duration": 6.961
+    },
+    {
+      "lang": "en",
+      "text": "n squared algorithms are usually bad,",
+      "offset": 794.639,
+      "duration": 4.241
+    },
+    {
+      "lang": "en",
+      "text": "but if it's n squed operations for n",
+      "offset": 796.8,
+      "duration": 4.159
+    },
+    {
+      "lang": "en",
+      "text": "memory loads, the it actually works out",
+      "offset": 798.88,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "pretty nicely. It's almost like maybe",
+      "offset": 800.959,
+      "duration": 3.761
+    },
+    {
+      "lang": "en",
+      "text": "Billy and others were thinking of this",
+      "offset": 803.04,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "when they built the chip. I don't know.",
+      "offset": 804.72,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "Um so like arithmetic intensity is the",
+      "offset": 806.88,
+      "duration": 7.68
+    },
+    {
+      "lang": "en",
+      "text": "term for this or yeah math intensity. Um",
+      "offset": 810.16,
+      "duration": 6.32
+    },
+    {
+      "lang": "en",
+      "text": "and if you look here at the things",
+      "offset": 814.56,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "highlighted in purple",
+      "offset": 816.48,
+      "duration": 4.479
+    },
+    {
+      "lang": "en",
+      "text": "secondated",
+      "offset": 818.8,
+      "duration": 4.719
+    },
+    {
+      "lang": "en",
+      "text": "in terra",
+      "offset": 820.959,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "that go up into the thousands memory",
+      "offset": 823.519,
+      "duration": 7.44
+    },
+    {
+      "lang": "en",
+      "text": "bandwidth at the bottom is has the four",
+      "offset": 826.399,
+      "duration": 6.24
+    },
+    {
+      "lang": "en",
+      "text": "and that has not changed with blackwell.",
+      "offset": 830.959,
+      "duration": 4.481
+    },
+    {
+      "lang": "en",
+      "text": "It's only gotten worse um or better I",
+      "offset": 832.639,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "don't know um the the ratio has gone up.",
+      "offset": 835.44,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "Uh so LM inference works pretty nicely",
+      "offset": 838.639,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "during prompt processing where you're",
+      "offset": 840.88,
+      "duration": 3.519
+    },
+    {
+      "lang": "en",
+      "text": "moving you move 8 gigabytes then you",
+      "offset": 842.639,
+      "duration": 3.601
+    },
+    {
+      "lang": "en",
+      "text": "like 8 billion parameter model FPA",
+      "offset": 844.399,
+      "duration": 3.041
+    },
+    {
+      "lang": "en",
+      "text": "quantization you're going to move 8",
+      "offset": 846.24,
+      "duration": 3.2
+    },
+    {
+      "lang": "en",
+      "text": "gigabytes from the memory into the",
+      "offset": 847.44,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "registers for calculation you're going",
+      "offset": 849.44,
+      "duration": 4.639
+    },
+    {
+      "lang": "en",
+      "text": "to do about 60 billion floatingoint",
+      "offset": 851.36,
+      "duration": 5.919
+    },
+    {
+      "lang": "en",
+      "text": "operations um so that's that's a you",
+      "offset": 854.079,
+      "duration": 5.921
+    },
+    {
+      "lang": "en",
+      "text": "know doesn't really scale too much with",
+      "offset": 857.279,
+      "duration": 6.8
+    },
+    {
+      "lang": "en",
+      "text": "the sequence directly anyway you're the",
+      "offset": 860,
+      "duration": 7.519
+    },
+    {
+      "lang": "en",
+      "text": "that when you then need to do",
+      "offset": 864.079,
+      "duration": 5.041
+    },
+    {
+      "lang": "en",
+      "text": "you now need to move those 8 billion",
+      "offset": 867.519,
+      "duration": 3.921
+    },
+    {
+      "lang": "en",
+      "text": "parameters again. Um so this is from the",
+      "offset": 869.12,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "like GPU's memory into the place where",
+      "offset": 871.44,
+      "duration": 3.759
+    },
+    {
+      "lang": "en",
+      "text": "the compute happens like you can't you",
+      "offset": 873.04,
+      "duration": 3.599
+    },
+    {
+      "lang": "en",
+      "text": "have to you know it's vonoyman",
+      "offset": 875.199,
+      "duration": 3.041
+    },
+    {
+      "lang": "en",
+      "text": "architecture you can't like keep the",
+      "offset": 876.639,
+      "duration": 5.521
+    },
+    {
+      "lang": "en",
+      "text": "things um it's compute on stuff that is",
+      "offset": 878.24,
+      "duration": 6.959
+    },
+    {
+      "lang": "en",
+      "text": "is in place um so lm imprints works",
+      "offset": 882.16,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "great during prompt processing not so",
+      "offset": 885.199,
+      "duration": 4.161
+    },
+    {
+      "lang": "en",
+      "text": "much during decoding um so one way to",
+      "offset": 886.8,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "get around this is to just do more stuff",
+      "offset": 889.36,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "when you're decoding so one example is",
+      "offset": 891.68,
+      "duration": 4.399
+    },
+    {
+      "lang": "en",
+      "text": "to take a small model so 8 billion",
+      "offset": 894,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "parameters and run it like a thousand",
+      "offset": 896.079,
+      "duration": 3.521
+    },
+    {
+      "lang": "en",
+      "text": "times on the same prompt now you're",
+      "offset": 898.16,
+      "duration": 3.359
+    },
+    {
+      "lang": "en",
+      "text": "loading the weights and you only load",
+      "offset": 899.6,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "the weights one time, but then you",
+      "offset": 901.519,
+      "duration": 5.201
+    },
+    {
+      "lang": "en",
+      "text": "generate like 10,000 things. Um, and uh,",
+      "offset": 903.04,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "so there's like kind of an inherent",
+      "offset": 906.72,
+      "duration": 2.72
+    },
+    {
+      "lang": "en",
+      "text": "advantage there to small models for",
+      "offset": 907.92,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "being more sympathetic to the hardware.",
+      "offset": 909.44,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "You can actually match quality if you do",
+      "offset": 911.76,
+      "duration": 2.639
+    },
+    {
+      "lang": "en",
+      "text": "things right. If you have a good",
+      "offset": 913.36,
+      "duration": 3.599
+    },
+    {
+      "lang": "en",
+      "text": "verifier either, in this case, this is",
+      "offset": 914.399,
+      "duration": 4.721
+    },
+    {
+      "lang": "en",
+      "text": "does it pass a Python test um, that",
+      "offset": 916.959,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "allows you to pick uh, the one of your",
+      "offset": 919.12,
+      "duration": 4.959
+    },
+    {
+      "lang": "en",
+      "text": "10,000 outcomes. And so you can use",
+      "offset": 921.839,
+      "duration": 5.281
+    },
+    {
+      "lang": "en",
+      "text": "llama 318B to match GPT40 with like a",
+      "offset": 924.079,
+      "duration": 5.601
+    },
+    {
+      "lang": "en",
+      "text": "hundred Yeah. 100 generations. So that's",
+      "offset": 927.12,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "a figure on the left is a reproduction.",
+      "offset": 929.68,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "Um I read a research paper. I sat down",
+      "offset": 932.16,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "spend a day coding and I got the exact",
+      "offset": 934.56,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "same result on different data in a",
+      "offset": 936.72,
+      "duration": 3.359
+    },
+    {
+      "lang": "en",
+      "text": "different model.",
+      "offset": 938.16,
+      "duration": 5.119
+    },
+    {
+      "lang": "en",
+      "text": "Any research but that",
+      "offset": 940.079,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "this is like this is this is legit. This",
+      "offset": 943.279,
+      "duration": 3.841
+    },
+    {
+      "lang": "en",
+      "text": "is real this is real science you know.",
+      "offset": 944.959,
+      "duration": 5.361
+    },
+    {
+      "lang": "en",
+      "text": "Um and it's a so it's it's a real",
+      "offset": 947.12,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "phenomenon and it fits with the",
+      "offset": 950.32,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "hardware. Um so lastly like so we want",
+      "offset": 951.92,
+      "duration": 7.039
+    },
+    {
+      "lang": "en",
+      "text": "to do more like we want to do like",
+      "offset": 955.68,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "throughput oriented like large scale",
+      "offset": 958.959,
+      "duration": 4.721
+    },
+    {
+      "lang": "en",
+      "text": "activities we want to do it with uh like",
+      "offset": 961.12,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "computation and mathematics not with",
+      "offset": 963.68,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "memory movement and the specific thing",
+      "offset": 965.68,
+      "duration": 4.159
+    },
+    {
+      "lang": "en",
+      "text": "we want to do is low precision matrix",
+      "offset": 967.6,
+      "duration": 3.919
+    },
+    {
+      "lang": "en",
+      "text": "multiplication",
+      "offset": 969.839,
+      "duration": 3.601
+    },
+    {
+      "lang": "en",
+      "text": "um and the takeaway here is that some",
+      "offset": 971.519,
+      "duration": 3.201
+    },
+    {
+      "lang": "en",
+      "text": "surprising things are going to turn out",
+      "offset": 973.44,
+      "duration": 3.199
+    },
+    {
+      "lang": "en",
+      "text": "to be approximately free I don't have",
+      "offset": 974.72,
+      "duration": 3.679
+    },
+    {
+      "lang": "en",
+      "text": "time to go into the details on this but",
+      "offset": 976.639,
+      "duration": 4.161
+    },
+    {
+      "lang": "en",
+      "text": "it turns out Kyle Crannon also on the",
+      "offset": 978.399,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "Dynamo team had I came to the exact same",
+      "offset": 980.8,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "conclusion. We were talking, you know,",
+      "offset": 983.279,
+      "duration": 4.161
+    },
+    {
+      "lang": "en",
+      "text": "comparing notes last night. So check his",
+      "offset": 984.8,
+      "duration": 3.839
+    },
+    {
+      "lang": "en",
+      "text": "talk in the afternoon of the",
+      "offset": 987.44,
+      "duration": 3.28
+    },
+    {
+      "lang": "en",
+      "text": "infrastructure track if you want less",
+      "offset": 988.639,
+      "duration": 4.481
+    },
+    {
+      "lang": "en",
+      "text": "handwaving and more charts. Um so things",
+      "offset": 990.72,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "like multi-token prediction, mult",
+      "offset": 993.12,
+      "duration": 3.519
+    },
+    {
+      "lang": "en",
+      "text": "samples query, all this stuff suddenly",
+      "offset": 994.56,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "becomes like basically free. Uh and the",
+      "offset": 996.639,
+      "duration": 4.961
+    },
+    {
+      "lang": "en",
+      "text": "reason why is that the latest GPUs,",
+      "offset": 999.44,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "Nvidas and others have this giant chunk",
+      "offset": 1001.6,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "in them, the tensor core that's",
+      "offset": 1004,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "specialized for low precision matrix",
+      "offset": 1005.44,
+      "duration": 5.68
+    },
+    {
+      "lang": "en",
+      "text": "matrix multiplication. Uh and so that's",
+      "offset": 1008,
+      "duration": 4.639
+    },
+    {
+      "lang": "en",
+      "text": "you know all these things in purple here",
+      "offset": 1011.12,
+      "duration": 2.959
+    },
+    {
+      "lang": "en",
+      "text": "that have the really big numbers are",
+      "offset": 1012.639,
+      "duration": 4.961
+    },
+    {
+      "lang": "en",
+      "text": "tensor core output uh not the CUDA core",
+      "offset": 1014.079,
+      "duration": 7.041
+    },
+    {
+      "lang": "en",
+      "text": "output. Um and tensor cores do exactly",
+      "offset": 1017.6,
+      "duration": 5.599
+    },
+    {
+      "lang": "en",
+      "text": "one thing and it's floating point matrix",
+      "offset": 1021.12,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "multiplication. Um bit of a tough world",
+      "offset": 1023.199,
+      "duration": 4.801
+    },
+    {
+      "lang": "en",
+      "text": "to live in as like if you're a",
+      "offset": 1026.48,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "theoretical programmer to to discover",
+      "offset": 1028,
+      "duration": 3.439
+    },
+    {
+      "lang": "en",
+      "text": "that there's only one data type you're",
+      "offset": 1030,
+      "duration": 3.199
+    },
+    {
+      "lang": "en",
+      "text": "allowed to work with but you just get",
+      "offset": 1031.439,
+      "duration": 3.201
+    },
+    {
+      "lang": "en",
+      "text": "more creative right you can do 4A",
+      "offset": 1033.199,
+      "duration": 3.041
+    },
+    {
+      "lang": "en",
+      "text": "transform with this thing if you want.",
+      "offset": 1034.64,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "Um yeah so the generation phase of l",
+      "offset": 1036.24,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "language models is very heavy on matrix",
+      "offset": 1039.28,
+      "duration": 3.519
+    },
+    {
+      "lang": "en",
+      "text": "vector operations if you just like write",
+      "offset": 1041.12,
+      "duration": 3.919
+    },
+    {
+      "lang": "en",
+      "text": "it out at first. Um so the things that",
+      "offset": 1042.799,
+      "duration": 3.841
+    },
+    {
+      "lang": "en",
+      "text": "are basically free are things that can",
+      "offset": 1045.039,
+      "duration": 3.121
+    },
+    {
+      "lang": "en",
+      "text": "upgrade you to a matrix matrix",
+      "offset": 1046.64,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "operation. There's some microbenchmarks",
+      "offset": 1048.16,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "from the um Thunderkittens people I",
+      "offset": 1050.16,
+      "duration": 4.879
+    },
+    {
+      "lang": "en",
+      "text": "think Hazy Research that was basically a",
+      "offset": 1053.2,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "tensor core looks like it runs at like",
+      "offset": 1055.039,
+      "duration": 5.281
+    },
+    {
+      "lang": "en",
+      "text": "if you give it a matrix and then like a",
+      "offset": 1058.16,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "mostly empty matrix with one column full",
+      "offset": 1060.32,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "you get like one overn of the",
+      "offset": 1062.32,
+      "duration": 6.4
+    },
+    {
+      "lang": "en",
+      "text": "performance right um and so you know if",
+      "offset": 1064.48,
+      "duration": 5.92
+    },
+    {
+      "lang": "en",
+      "text": "you just add more stuff there like all",
+      "offset": 1068.72,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "of a sudden you like your the like",
+      "offset": 1070.4,
+      "duration": 4.399
+    },
+    {
+      "lang": "en",
+      "text": "performance is scaling to match um so",
+      "offset": 1072.48,
+      "duration": 4.559
+    },
+    {
+      "lang": "en",
+      "text": "this is sort of yeah this it's another",
+      "offset": 1074.799,
+      "duration": 3.921
+    },
+    {
+      "lang": "en",
+      "text": "phenomenon that pushes you in the action",
+      "offset": 1077.039,
+      "duration": 3.921
+    },
+    {
+      "lang": "en",
+      "text": "of generating multiple samples um",
+      "offset": 1078.72,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "generating multiple tokens as deepseek",
+      "offset": 1080.96,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "does the next token prediction and I",
+      "offset": 1083.28,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "think the llama 4 models do as well. Um",
+      "offset": 1085.28,
+      "duration": 6.32
+    },
+    {
+      "lang": "en",
+      "text": "so yeah so these are the so as an AI",
+      "offset": 1088.08,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "engineer the things you should be",
+      "offset": 1091.6,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "looking at are like okay like maybe I",
+      "offset": 1092.72,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "can get away with running a smaller",
+      "offset": 1094.96,
+      "duration": 3.28
+    },
+    {
+      "lang": "en",
+      "text": "model that fits on a GPU that's under my",
+      "offset": 1096.4,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "desk um uh and then I just like scale it",
+      "offset": 1098.24,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "out in order to get the like sufficient",
+      "offset": 1101.28,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "quality to to satisfy users. There's a",
+      "offset": 1103.44,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "bunch of research on this stuff back in",
+      "offset": 1106.72,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "like around the release of chatbt when",
+      "offset": 1108.24,
+      "duration": 4.559
+    },
+    {
+      "lang": "en",
+      "text": "there was still like a thriving academic",
+      "offset": 1110.4,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "field on top of language models. Um, and",
+      "offset": 1112.799,
+      "duration": 4.081
+    },
+    {
+      "lang": "en",
+      "text": "it hasn't uh like people have kind of",
+      "offset": 1115.2,
+      "duration": 3.12
+    },
+    {
+      "lang": "en",
+      "text": "forgotten about it a bit, but I think",
+      "offset": 1116.88,
+      "duration": 2.88
+    },
+    {
+      "lang": "en",
+      "text": "the model the open models are good",
+      "offset": 1118.32,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "enough that this is uh back to being a",
+      "offset": 1119.76,
+      "duration": 5.919
+    },
+    {
+      "lang": "en",
+      "text": "good idea. Um, cool. I think I only have",
+      "offset": 1122.32,
+      "duration": 5.92
+    },
+    {
+      "lang": "en",
+      "text": "about 10 seconds left. So, I'll just say",
+      "offset": 1125.679,
+      "duration": 4.321
+    },
+    {
+      "lang": "en",
+      "text": "if you want to learn more, uh, I wrote",
+      "offset": 1128.24,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "this uh GPU glossery. Modal.com/GPU-",
+      "offset": 1130,
+      "duration": 5.84
+    },
+    {
+      "lang": "en",
+      "text": "glossery. It's a CUDA docs for humans",
+      "offset": 1133.52,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "attempt to like explain this whole",
+      "offset": 1135.84,
+      "duration": 4.079
+    },
+    {
+      "lang": "en",
+      "text": "software and hardware stack in one place",
+      "offset": 1137.36,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "with lots of links. Uh so that when",
+      "offset": 1139.919,
+      "duration": 3.841
+    },
+    {
+      "lang": "en",
+      "text": "you're reading about a warpuler and",
+      "offset": 1142.08,
+      "duration": 3.12
+    },
+    {
+      "lang": "en",
+      "text": "you've forgotten what a streaming",
+      "offset": 1143.76,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "multiprocessor architecture is and how",
+      "offset": 1145.2,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "that's related to the NVIDIA CUDA",
+      "offset": 1147.28,
+      "duration": 3.279
+    },
+    {
+      "lang": "en",
+      "text": "compiler driver, it's like one click",
+      "offset": 1148.88,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "away to get all those things. Um so if",
+      "offset": 1150.559,
+      "duration": 7.36
+    },
+    {
+      "lang": "en",
+      "text": "you want to run these uh uh uh on this",
+      "offset": 1154.08,
+      "duration": 6.4
+    },
+    {
+      "lang": "en",
+      "text": "hardware um no better place than the",
+      "offset": 1157.919,
+      "duration": 5.361
+    },
+    {
+      "lang": "en",
+      "text": "platform that I work on uh modal uh",
+      "offset": 1160.48,
+      "duration": 5.84
+    },
+    {
+      "lang": "en",
+      "text": "serverless GPUs and more. Um we sort of",
+      "offset": 1163.28,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "like re ripped out and rewrote the whole",
+      "offset": 1166.32,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "container stack to make um like",
+      "offset": 1168.16,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "serverless Python for data inensive and",
+      "offset": 1170.48,
+      "duration": 5.199
+    },
+    {
+      "lang": "en",
+      "text": "comput intensive workloads like language",
+      "offset": 1173.6,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "model inference work well. Um and so you",
+      "offset": 1175.679,
+      "duration": 4.081
+    },
+    {
+      "lang": "en",
+      "text": "should definitely check it out. Come",
+      "offset": 1178.48,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "find us at the expo hall and we'll uh",
+      "offset": 1179.76,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "you know talk your ear off about it. All",
+      "offset": 1182.32,
+      "duration": 6.28
+    },
+    {
+      "lang": "en",
+      "text": "right. Thank you very much.",
+      "offset": 1184.4,
+      "duration": 4.2
+    },
+    {
+      "lang": "en",
+      "text": "[Music]",
+      "offset": 1190.04,
+      "duration": 3.37
+    }
+  ],
+  "cleanText": "[Music]\n\nSo, um, what I wanted to talk about today was, uh, what every AI engineer needs to know about GPUs. The, like, so far in the last couple of years, um, most of the things that people have built as AI applications, people who are AI engineers, they've been building on top of model APIs. So they use the OpenAI API, the Anthropic API, the DeepSeek API, and they build an application on top of that. And that goes back to kind of like the initial diagram that Swix put out, the like AI, like, rise of the AI engineer thing. Um, and yeah, probably just mirror would be great. Um, and the, um, so that, like, having that API boundary is, like, is, like, pretty important, right? It's like, you can't really build a complex system if everybody has to know how every piece works, and everybody has to know all of it in detail, and there's no, like, boundaries or breakdowns. Like, you're just, yeah, you'll collapse in complexity if you do that. Um, so, um, oh, that was a meme, but I'm down with it. Um, so, like, so, yeah. So it started off by trying to answer the question of, like, why every AI engineer needs to know about GPUs. Um, and so, yeah, so here's our famous diagram: AI engineer on the right of the API boundary, where they're, like, constrained by the, um, the needs of users, rather than, like, the, like, what's possible with research or what infrastructure is capable of providing. Um, and the way that I think about this distinction is that, um, it's kind of similar to the way that very few developers need to actually, like, write a database. Um, like, almost no one writes a database except in their, like, you know, like, undergrad classes. And then even very few developers, like, run a database. A lot of them will use either a fully managed service or, um, just like a hosted service, like, uh, RDS on on Amazon. Um, but, like, almost all developers, despite the fact that they aren't, like, database engineers, they are users of databases, and they, like, need to, like, write, know how to, like, write good queries. They need to know how to, like, hold the tool in order to press the, like, buttons on the side. Uh, so there's a famous educational resource that I really love, um, about databases called \"Use the Index, Luke.\" Um, that's, like, basically about how to write SQL queries and not, like, suck. Um, and the whole point is, like, there is a thing called an index. There's a couple of data structures that support it. It talks about things like B-trees and log-structured merge trees and stuff. And the intent of it isn't that you can then leave and go and, like, invert a binary tree on a whiteboard so you can get a fang job. Like, the point of it is to teach you what you need to know so that you can write, like, write queries properly that use the index and don't not use the index. Primary and secondary indices, all these things. You don't, like, you know, that's, like, a little bit, um, like, an easier, like, prospect, knowing it well enough to be able to use it, rather than, like, build it or innovate on it. Um, and I think we're reaching this point now with, uh, with language models, where, um, where you'll have more ability to, like, integrate tightly, run your own language models, and so more need to, like, use the index, or I guess, if you want, like, the, like, one-sentence summary of this talk, um, it's, uh, \"Use the tensor cores, Luke.\" Um, so in building your, there's one, there's basically one part of an Nvidia GPU, um, and an equivalent in other GPUs, that is, uh, fast and good and gets better, and it's the tensor core, and it does matrix matrix multiplication, and, uh, you should make sure you're using it and, uh, and not not using it, just like an index on a database.\n\nUm, so, yeah, so, open, like, I kind of made this point earlier about open weights models and the open source software to run them, like, Dynamo getting better very quickly. So it finally makes sense to self-host. I'm not going to belabor this point because I'm giving another talk, 12:45, presenting some, like, benchmarking results that we did on, like, running, uh, VLM sg tens on, like, uh, you 10, 12 different models on 10, 12 different workloads, um, to show, like, what's economical, what's not. Okay. So, uh, so that's the why, um, sort of a slight change or adjustment in what AI engineers, I think, a engineers should focus on, know about. Um, so now, what is it that you need to know about engineer about, uh, these, these, this hardware in detail? So the primary thing is that GPUs embrace high bandwidth, not low latency. That's the, like, key feature of this hardware. Similar with TPUs, but distinguishes it from pretty much every other piece of hardware that you're used to programming. Um, and then in detail, they optimize for math bandwidth over memory bandwidth. So they do, like, computing on things. That's what they, where they have the highest throughput. So you want to align yourself not to latency, but to throughput. And within throughput, you want to focus on computational operations. And then within computational operations, what you want to focus on if you want to, like, actually use the whole GPU you paid for, it's low precision matrix matrix multiplications. Sorry, that wasn't a stutter. That was matrix matrix multiplications, not just matrix vector. Um, okay. So, f the first point about latency versus bandwidth. Um, so I like regret to inform you that the scaling of latency and the reduction of latency in computing systems died during the Bush administration. It's not coming back. Um, see a talk later today for an alternative perspective. But, um, yeah, GPUs embrace bandwidth scaling. Um, so a little more detail on that. Um, so this is a computer or a piece of a computer, in case you haven't looked inside one in a while. Um, so this is a logic gate from the ZUSA 1, um, computer built in Germany in the 30s, kind of first digital computer, digital, but not electronic, it's mechanical. So all these actuator plates in it that that, um, implemented logical operations. So what you see there on the left is the logical operation \"and.\" So if two plates are pushed down, then if both of them are present, then when a, then when the other plate pushes forward, it will push the final plate forward. That's the logical operation \"and.\" And the thing that pushes that, like, the, the thing that pushes forward is driven by a clock, like a literal clock. Um, I guess now everybody has Apple watches, but you know, there was a time when you would have a physical clock for that sort of thing. So this, um, uh, the clock, uh, like, drove, like, drives these systems and causes them to, like, compute their logical operations, right? So every time the clock ticks, you get a new operation. And so you can just, you know, so we, we, we've changed computers a little bit in that we use different physics to drive them, but it's still the same basic, like, abstract system. There's a sort of a motive force that happens on a clock cycle that leads to calculations. Um, and the cool thing about that is that if you just make that faster, literally nobody has to, like, like, think about anything, and the computer gets better. So this was the, like, primary driver of computers getting better in the '90s. No recompiling, no rewriting your software. Everything just got better because now the clock started going, like, twice as fast, right? And time is very virtual in in computers, and so, like, the program couldn't possibly know the difference. Um, so that was really great during that, like, that, like, mid- to late-'90s period, and then that, like, fell off a cliff in the early 2000s, and this is, like, impacted a lot of computing over the last two decades, but actually, its effects are, like, still being felt, like, all this switch from being able to kind of avoid the, like, uh, needing to think about performance. So this is, like, kind of slowly and inevitably changing pretty much, like, everything in software. Um, all kinds of things you've seen around concurrency, uh, guilfree Python, multiprocessing, async co-routines. Um, so there's, like, a couple, like, kind of detailed things to dive in here. I want to make sure that I give enough time to talk about the GPU stuff, but there's kind of two notions of how to make things faster without doing that. One is parallel, so, like, when you have a clock cycle, just do two things instead of one, sounds like a good idea. Um, the other one is concurrent, which is a little bit trickier, but it's like, so you start doing something, clock cycle hits, you start running a calculation. Maybe that calculation takes five clock cycles to finish. Like, instead of waiting for those clock cycles to finish, try and do five other things with the next couple clock cycles. Makes your programs really ugly because you write have to write async await everywhere. Um, and yeah, uh, if you're writing Rust, it's, uh, it's a world of pin. Um, but yeah, but it helps you keep these, like, these super high bandwidth pipelines busy. Um, and so these, like, concurrent and parallel, these are two strategies to maximize bandwidth that are adopted, like, at the hardware level all the way up to the programming level with GPUs to take this, like, bandwidth further than CPUs can. So, uh, GPUs take parallelism further than CPUs. So I'm comparing an AMD Epic CPU and an Nvidia H100 SXM GPU here. Uh, the figure of merit here is the number of parallel threads that can operate and the wattage at which they operate. So an H1, like a, like, an AMD epic, uh, CPU can do two threads per core at about one watt per thread. Um, that's not bad, but an H100 can do over 16,000 parallel threads at 5 cents per thread, which is pretty, uh, pretty amazing. Uh, very big difference. And, uh, parallel means, like, literally every clock cycle, all 16,000 threads of execution make progress at the exact same time. So what about concurrency? So it may look like CPUs have an advantage here because effectively concurrent threads are unbounded. Like, you can just make a thread in Linux, like, it's free. Government doesn't want you to know this. Um, uh, and but there's a limit on H100. So it looks like, oh, wow, oh, only 250,000 threads. What am I supposed to do with that? Um, but the difference here is context switching speed. How quickly can you go from executing one thing to another? So if it, like, if our purpose was to take advantage of every clock cycle, and it takes us a thousand clock cycles, like, a microsecond to context switch, then our concurrency is, like, actually, like, pretty tightly bounded, um, because we can't do, uh, a thing for a whole thousand clock cycles. But in GPUs, context switching happens literally every clock cycle. It's down there at the warp scheduler inside the hardware. Um, if you have to think about it that hard, you're probably having a bad time. But if you, uh, but normally, it's just making everything run faster. Um, so there's not really a name for this, uh, the phenomenon that's that's driving all of this work. Um, but David Patterson, who came up with risk machines, um, and worked on TPUs, uh, wrote it down. So I call it Patterson's law: Latency lags bandwidth. Um, so, like, why are, why are we doing all these things, the to, like, rewriting our programs, rethinking them in order to, to, like, take advantage of increasing bandwidth? And, you know, bandwidth is replacing latency scaling because if you look across a variety of different subsystems of computers, networks, uh, memory, disks, the latency improvement is actually the square of, or sorry, the, um, the bandwidth improvement is the square of the latency improvement over time. This is one of those, like, Moore's law-style charts where you're looking at, like, trends in performance over time. And it's like, for every 10x that we improve latency, we get 100x improvement in bandwidth. And there's some arguments in the article about where what it, you know, where this comes from. Basically, with latency, you run into the laws of physics. With bandwidth, you just run into, like, how many things can you do at the same time? And you can always, you can take the same physics and spread it out more easily than you can, like, come up with new physics to take advantage of. Like, you, you cannot bribe the laws of physics, Scotty, in Star Trek. Um, and that's, like, one of the limits on, like, network latency is, like, we, uh, we send packets at, like, 70% of the speed of light. So, like, we can't get them 10x faster. Um, yeah.\n\nUm, all right. So that's that's bandwidth. Uh, GPUs embrace bandwidth. Maybe big takeaway from Patterson's law is, like, uh, bandwidth has won out over and over again. So maybe bet on the bandwidth hardware. I don't know if the person who's going to be talking about, uh, LPUs or or etched is here, but we should fight about this later. Um, yeah, so all right. So what kind of bandwidth, though? Um, arithmetic bandwidth over memory bandwidth. So not moving bytes around that that they are high, they have high bandwidth memory, the fanciest, finest Heinix high bandwidth memory. Um, but they, uh, the thing where they really excel is doing calculations on that memory. And so the takeaway here is that n squared algorithms are usually bad, but if it's n squared operations for n memory loads, the it actually works out pretty nicely. It's almost like maybe Billy and others were thinking of this when they built the chip. I don't know. Um, so, like, arithmetic intensity is the term for this, or yeah, math intensity. Um, and if you look here at the things highlighted in purple, secondated in terra, that go up into the thousands, memory bandwidth at the bottom is has the four, and that has not changed with Blackwell. It's only gotten worse, um, or better, I don't know. Um, the, the ratio has gone up. Uh, so LM inference works pretty nicely during prompt processing, where you're moving, you move 8 gigabytes, then you, like, 8 billion parameter model, FPA quantization, you're going to move 8 gigabytes from the memory into the registers for calculation, you're going to do about 60 billion floating-point operations. Um, so that's that's a, you know, doesn't really scale too much with the sequence directly anyway, you're the, that when you then need to do, you now need to move those 8 billion parameters again. Um, so this is from the, like, GPU's memory into the place where the compute happens, like, you can't, you have to, you know, it's von Neumann architecture, you can't, like, keep the things, um, it's compute on stuff that is is in place. Um, so LM imprints works great during prompt processing, not so much during decoding. Um, so one way to get around this is to just do more stuff when you're decoding. So one example is to take a small model, so 8 billion parameters, and run it, like, a thousand times on the same prompt. Now you're loading the weights, and you only load the weights one time, but then you generate, like, 10,000 things. Um, and, uh, so there's, like, kind of an inherent advantage there to small models for being more sympathetic to the hardware. You can actually match quality if you do things right. If you have a good verifier either, in this case, this is, does it pass a Python test? Um, that allows you to pick, uh, the one of your 10,000 outcomes. And so you can use Llama 3 18B to match GPT40 with, like, a hundred. Yeah. 100 generations. So that's a figure on the left is a reproduction. Um, I read a research.\n\n\nPaper.\nI sat down, spend a day coding, and I got the exact same result on different data in a different model.\nAny research, but that this is like, this is legit.\nThis is real, this is real science, you know.\nUm, and it's a, so it's, it's a real phenomenon, and it fits with the hardware.\nUm, so lastly, like, so we want to do more, like, we want to do like throughput-oriented, like large-scale activities.\nWe want to do it with, uh, like computation and mathematics, not with memory movement.\nAnd the specific thing we want to do is low-precision matrix multiplication.\nUm, and the takeaway here is that some surprising things are going to turn out to be approximately free.\nI don't have time to go into the details on this, but it turns out Charles Frye also on the Dynamo team had, I came to the exact same conclusion.\nWe were talking, you know, comparing notes last night.\nSo check his talk in the afternoon of the infrastructure track if you want less handwaving and more charts.\nUm, so things like multi-token prediction, multi-samples query, all this stuff suddenly becomes like basically free.\nUh, and the reason why is that the latest GPUs, NVIDIAs and others, have this giant chunk in them, the tensor core that's specialized for low-precision matrix matrix multiplication.\nUh, and so that's, you know, all these things in purple here that have the really big numbers are tensor core output, uh, not the CUDA core output.\nUm, and tensor cores do exactly one thing, and it's floating-point matrix multiplication.\nUm, bit of a tough world to live in as like, if you're a theoretical programmer to discover that there's only one data type you're allowed to work with, but you just get more creative, right?\nYou can do 4A transform with this thing if you want.\nUm, yeah, so the generation phase of language models is very heavy on matrix vector operations if you just like write it out at first.\nUm, so the things that are basically free are things that can upgrade you to a matrix matrix operation.\nThere's some microbenchmarks from the, um, Thunderkittens people, I think Hazy Research, that was basically a tensor core looks like it runs at like, if you give it a matrix and then like a mostly empty matrix with one column full, you get like one over n of the performance, right?\nUm, and so, you know, if you just add more stuff there, like all of a sudden you like your the like performance is scaling to match.\nUm, so this is sort of, yeah, this, it's another phenomenon that pushes you in the action of generating multiple samples, um, generating multiple tokens as Deepseek does, the next token prediction, and I think the Llama 4 models do as well.\nUm, so yeah, so these are the, so as an AI engineer, the things you should be looking at are like, okay, like maybe I can get away with running a smaller model that fits on a GPU that's under my desk, um, uh, and then I just like scale it out in order to get the like sufficient quality to satisfy users.\nThere's a bunch of research on this stuff back in like around the release of ChatBT when there was still like a thriving academic field on top of language models.\nUm, and it hasn't, uh, like people have kind of forgotten about it a bit, but I think the model, the open models are good enough that this is, uh, back to being a good idea.\nUm, cool.\nI think I only have about 10 seconds left.\nSo, I'll just say if you want to learn more, uh, I wrote this, uh, GPU glossary, Modal.com/GPU-glossery.\nIt's a CUDA docs for humans attempt to like explain this whole software and hardware stack in one place with lots of links.\nUh, so that when you're reading about a warpuler and you've forgotten what a streaming multiprocessor architecture is and how that's related to the NVIDIA CUDA compiler driver, it's like one click away to get all those things.\nUm, so if you want to run these, uh, uh, uh, on this hardware, um, no better place than the platform that I work on, uh, Modal, uh, serverless GPUs and more.\nUm, we sort of like re-ripped out and rewrote the whole container stack to make, um, like serverless Python for data-intensive and compute-intensive workloads like language model inference work well.\nUm, and so you should definitely check it out.\nCome find us at the expo hall and we'll, uh, you know, talk your ear off about it.\nAll right.\nThank you very much.\n[Music]\n",
+  "dumpedAt": "2025-07-21T18:43:24.850Z"
+}

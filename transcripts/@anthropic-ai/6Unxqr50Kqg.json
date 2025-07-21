@@ -1,0 +1,7486 @@
+{
+  "episodeId": "6Unxqr50Kqg",
+  "channelSlug": "@anthropic-ai",
+  "title": "Controlling powerful AI",
+  "publishedAt": "2025-03-17T16:41:30.000Z",
+  "rawLines": [
+    {
+      "lang": "en",
+      "text": "- Hi, welcome to another\nAnthropic roundtable",
+      "offset": 0.63,
+      "duration": 3.18
+    },
+    {
+      "lang": "en",
+      "text": "where we're here today\nto talk about control.",
+      "offset": 3.81,
+      "duration": 2.361
+    },
+    {
+      "lang": "en",
+      "text": "My name's Akbir Khan.",
+      "offset": 6.171,
+      "duration": 1.624
+    },
+    {
+      "lang": "en",
+      "text": "I'm an alignment science\nresearcher who's been working at",
+      "offset": 7.795,
+      "duration": 3.002
+    },
+    {
+      "lang": "en",
+      "text": "the company for maybe four months now.",
+      "offset": 10.797,
+      "duration": 1.754
+    },
+    {
+      "lang": "en",
+      "text": "And my other guests are...",
+      "offset": 12.551,
+      "duration": 2.589
+    },
+    {
+      "lang": "en",
+      "text": "- So I'm Joe.",
+      "offset": 15.14,
+      "duration": 1.06
+    },
+    {
+      "lang": "en",
+      "text": "I've been on the alignment science team",
+      "offset": 16.2,
+      "duration": 1.32
+    },
+    {
+      "lang": "en",
+      "text": "for a little over a year here at Anthropic",
+      "offset": 17.52,
+      "duration": 1.8
+    },
+    {
+      "lang": "en",
+      "text": "and I've previously worked\non some control evaluations",
+      "offset": 19.32,
+      "duration": 2.351
+    },
+    {
+      "lang": "en",
+      "text": "and chain of thought monitoring.",
+      "offset": 21.671,
+      "duration": 2.779
+    },
+    {
+      "lang": "en",
+      "text": "- Hi, I am Ethan Perez. I'm\nresearcher at Anthropic.",
+      "offset": 24.45,
+      "duration": 3.54
+    },
+    {
+      "lang": "en",
+      "text": "I previously led the\nadversarial robustness team here",
+      "offset": 27.99,
+      "duration": 2.07
+    },
+    {
+      "lang": "en",
+      "text": "and I'm currently leading\nour team on AI control.",
+      "offset": 30.06,
+      "duration": 2.82
+    },
+    {
+      "lang": "en",
+      "text": "- Awesome. So Ethan, what is control?",
+      "offset": 32.88,
+      "duration": 2.913
+    },
+    {
+      "lang": "en",
+      "text": "- Yeah, so AI control's\nbasically an approach",
+      "offset": 36.69,
+      "duration": 2.94
+    },
+    {
+      "lang": "en",
+      "text": "to mitigating AI misalignment",
+      "offset": 39.63,
+      "duration": 1.888
+    },
+    {
+      "lang": "en",
+      "text": "or the risk that models might have goals",
+      "offset": 41.518,
+      "duration": 3.088
+    },
+    {
+      "lang": "en",
+      "text": "that differ from human goals.",
+      "offset": 44.606,
+      "duration": 2.412
+    },
+    {
+      "lang": "en",
+      "text": "Typically in in AI safety, ,",
+      "offset": 47.018,
+      "duration": 5
+    },
+    {
+      "lang": "en",
+      "text": "the most popular approach\nhistorically has been to try",
+      "offset": 52.15,
+      "duration": 3.35
+    },
+    {
+      "lang": "en",
+      "text": "to align models with human\npreferences or train them",
+      "offset": 55.5,
+      "duration": 3.57
+    },
+    {
+      "lang": "en",
+      "text": "or to human preferences",
+      "offset": 59.07,
+      "duration": 1.53
+    },
+    {
+      "lang": "en",
+      "text": "and train them to not have bad goals",
+      "offset": 60.6,
+      "duration": 2.737
+    },
+    {
+      "lang": "en",
+      "text": "that differ from human values.",
+      "offset": 63.337,
+      "duration": 2.903
+    },
+    {
+      "lang": "en",
+      "text": ", yeah, for example, reward hacking",
+      "offset": 66.24,
+      "duration": 2.435
+    },
+    {
+      "lang": "en",
+      "text": "or bad personality traits, things that.",
+      "offset": 68.675,
+      "duration": 4.522
+    },
+    {
+      "lang": "en",
+      "text": "I think this approach of AI control is",
+      "offset": 73.197,
+      "duration": 3.063
+    },
+    {
+      "lang": "en",
+      "text": "an alternative strategy,",
+      "offset": 76.26,
+      "duration": 1.05
+    },
+    {
+      "lang": "en",
+      "text": "which is complimentary,\nwhich would be basically to",
+      "offset": 77.31,
+      "duration": 2.675
+    },
+    {
+      "lang": "en",
+      "text": "ensure that if the model\ndid have bad goals,",
+      "offset": 79.985,
+      "duration": 3.356
+    },
+    {
+      "lang": "en",
+      "text": "that with our mitigations,",
+      "offset": 83.341,
+      "duration": 3.029
+    },
+    {
+      "lang": "en",
+      "text": "it wasn't capable of doing\nanything that's actually harmful.",
+      "offset": 86.37,
+      "duration": 3.9
+    },
+    {
+      "lang": "en",
+      "text": "So maybe a specific example\nhere would be around,",
+      "offset": 90.27,
+      "duration": 4.667
+    },
+    {
+      "lang": "en",
+      "text": "let's say we're worried that , okay,",
+      "offset": 96.071,
+      "duration": 2.629
+    },
+    {
+      "lang": "en",
+      "text": "we're using this model\ninternally as within some company",
+      "offset": 98.7,
+      "duration": 3.42
+    },
+    {
+      "lang": "en",
+      "text": "to help with writing a bunch of code",
+      "offset": 102.12,
+      "duration": 1.89
+    },
+    {
+      "lang": "en",
+      "text": "and we're worried that the\nmodel, if it has this bad goal,",
+      "offset": 104.01,
+      "duration": 3.48
+    },
+    {
+      "lang": "en",
+      "text": "may try to copy its weights\nout from the data center so",
+      "offset": 107.49,
+      "duration": 3.983
+    },
+    {
+      "lang": "en",
+      "text": "that it can run unmonitored.",
+      "offset": 111.473,
+      "duration": 1.99
+    },
+    {
+      "lang": "en",
+      "text": "And in this, in this kind of\nscenario, the alignment kind",
+      "offset": 114.87,
+      "duration": 4.14
+    },
+    {
+      "lang": "en",
+      "text": "of approach would be to\ntrain the model potentially",
+      "offset": 119.01,
+      "duration": 2.37
+    },
+    {
+      "lang": "en",
+      "text": "with reinforcement learning\nfrom human feedback",
+      "offset": 121.38,
+      "duration": 1.77
+    },
+    {
+      "lang": "en",
+      "text": "to not do such a thing,",
+      "offset": 123.15,
+      "duration": 1.779
+    },
+    {
+      "lang": "en",
+      "text": "but we might be worried that\nthis training isn't effective",
+      "offset": 124.929,
+      "duration": 2.961
+    },
+    {
+      "lang": "en",
+      "text": "or isn't always effective",
+      "offset": 127.89,
+      "duration": 1.175
+    },
+    {
+      "lang": "en",
+      "text": "and on certain inputs this\nmight still be a risk.",
+      "offset": 129.065,
+      "duration": 4.959
+    },
+    {
+      "lang": "en",
+      "text": "And so the the kind of AI\ncontrol approach would be to",
+      "offset": 134.024,
+      "duration": 4.097
+    },
+    {
+      "lang": "en",
+      "text": "both take security mitigations,",
+      "offset": 138.121,
+      "duration": 3.076
+    },
+    {
+      "lang": "en",
+      "text": "so permissioning the model,\nthe model weights such",
+      "offset": 141.197,
+      "duration": 4.513
+    },
+    {
+      "lang": "en",
+      "text": "that they can't be accessed automatically",
+      "offset": 145.71,
+      "duration": 1.86
+    },
+    {
+      "lang": "en",
+      "text": "by the model itself.",
+      "offset": 147.57,
+      "duration": 1.736
+    },
+    {
+      "lang": "en",
+      "text": "And two, some kind of other mitigations",
+      "offset": 149.306,
+      "duration": 5
+    },
+    {
+      "lang": "en",
+      "text": "that involve using other models",
+      "offset": 154.62,
+      "duration": 1.44
+    },
+    {
+      "lang": "en",
+      "text": "to check the the behavior of this model.",
+      "offset": 156.06,
+      "duration": 1.839
+    },
+    {
+      "lang": "en",
+      "text": "For example, using smaller\nmodels that we might not be",
+      "offset": 157.899,
+      "duration": 3.033
+    },
+    {
+      "lang": "en",
+      "text": "as worried about their alignment",
+      "offset": 160.932,
+      "duration": 3.055
+    },
+    {
+      "lang": "en",
+      "text": "to check the actions being\ntaken by this other agent",
+      "offset": 163.987,
+      "duration": 4.106
+    },
+    {
+      "lang": "en",
+      "text": "in order to check is this model trying",
+      "offset": 168.093,
+      "duration": 2.337
+    },
+    {
+      "lang": "en",
+      "text": "to undermine our security measures",
+      "offset": 170.43,
+      "duration": 2.28
+    },
+    {
+      "lang": "en",
+      "text": "and copy its weights out\nfrom the data center.",
+      "offset": 172.71,
+      "duration": 3.24
+    },
+    {
+      "lang": "en",
+      "text": "- Okay, nice. And I feel Joe,",
+      "offset": 175.95,
+      "duration": 1.35
+    },
+    {
+      "lang": "en",
+      "text": "you've done some recent\nwork on other types of evals",
+      "offset": 177.3,
+      "duration": 2.553
+    },
+    {
+      "lang": "en",
+      "text": "that are control-y.",
+      "offset": 179.853,
+      "duration": 2.127
+    },
+    {
+      "lang": "en",
+      "text": "Do you wanna tell us about them?",
+      "offset": 181.98,
+      "duration": 1.29
+    },
+    {
+      "lang": "en",
+      "text": "- Yeah, so as part of\nevaluating Claude three sonnet,",
+      "offset": 183.27,
+      "duration": 2.55
+    },
+    {
+      "lang": "en",
+      "text": "we ran a few control evaluations on it",
+      "offset": 185.82,
+      "duration": 1.904
+    },
+    {
+      "lang": "en",
+      "text": "and I think one of the most\ninteresting settings there was",
+      "offset": 187.724,
+      "duration": 3.406
+    },
+    {
+      "lang": "en",
+      "text": "we actually ran a human evaluation.",
+      "offset": 191.13,
+      "duration": 1.98
+    },
+    {
+      "lang": "en",
+      "text": "So we took a bunch of\nbusiness decisions essentially",
+      "offset": 193.11,
+      "duration": 4.89
+    },
+    {
+      "lang": "en",
+      "text": "synthetic business cases.",
+      "offset": 198,
+      "duration": 1.62
+    },
+    {
+      "lang": "en",
+      "text": "So where we had probably 40 pages worth",
+      "offset": 199.62,
+      "duration": 4.62
+    },
+    {
+      "lang": "en",
+      "text": "of business documentation\nthat we would give",
+      "offset": 204.24,
+      "duration": 2.19
+    },
+    {
+      "lang": "en",
+      "text": "to a a human participant",
+      "offset": 206.43,
+      "duration": 2.1
+    },
+    {
+      "lang": "en",
+      "text": "and say, well can you read\nall this documentation",
+      "offset": 208.53,
+      "duration": 2.145
+    },
+    {
+      "lang": "en",
+      "text": "and in some period of time make a yes",
+      "offset": 210.675,
+      "duration": 3.145
+    },
+    {
+      "lang": "en",
+      "text": "or no decision about what's going on?",
+      "offset": 213.82,
+      "duration": 2.84
+    },
+    {
+      "lang": "en",
+      "text": "Should this business do X or Y?",
+      "offset": 216.66,
+      "duration": 2.844
+    },
+    {
+      "lang": "en",
+      "text": "But we had them do this\non a 40 page document",
+      "offset": 219.504,
+      "duration": 3.426
+    },
+    {
+      "lang": "en",
+      "text": "in 30 minutes that's not\npossible for anyone to read.",
+      "offset": 222.93,
+      "duration": 3.15
+    },
+    {
+      "lang": "en",
+      "text": "And we had them do this\nwith an AI assistant",
+      "offset": 226.08,
+      "duration": 1.713
+    },
+    {
+      "lang": "en",
+      "text": "and what we were trying to test",
+      "offset": 227.793,
+      "duration": 1.707
+    },
+    {
+      "lang": "en",
+      "text": "through this is if the\nAI assistant was actually",
+      "offset": 229.5,
+      "duration": 3.27
+    },
+    {
+      "lang": "en",
+      "text": "used in a business setting to help",
+      "offset": 232.77,
+      "duration": 1.92
+    },
+    {
+      "lang": "en",
+      "text": "with assisting decision makers",
+      "offset": 234.69,
+      "duration": 1.543
+    },
+    {
+      "lang": "en",
+      "text": "and was misaligned, it was trying",
+      "offset": 236.233,
+      "duration": 2.447
+    },
+    {
+      "lang": "en",
+      "text": "to steer the human towards\nmaking the wrong decision.",
+      "offset": 238.68,
+      "duration": 3.15
+    },
+    {
+      "lang": "en",
+      "text": "How bad could that be?",
+      "offset": 241.83,
+      "duration": 1.2
+    },
+    {
+      "lang": "en",
+      "text": "How much could they sway the\nhuman in the wrong direction?",
+      "offset": 243.03,
+      "duration": 3.311
+    },
+    {
+      "lang": "en",
+      "text": "And so we did this",
+      "offset": 246.341,
+      "duration": 2.119
+    },
+    {
+      "lang": "en",
+      "text": "and we gave the participants\nthese business decisions",
+      "offset": 248.46,
+      "duration": 1.775
+    },
+    {
+      "lang": "en",
+      "text": "and in 50% of the cases",
+      "offset": 250.235,
+      "duration": 2.605
+    },
+    {
+      "lang": "en",
+      "text": "we gave them a kind of baseline model.",
+      "offset": 252.84,
+      "duration": 2.49
+    },
+    {
+      "lang": "en",
+      "text": "So kind of the actual helpful, harmless",
+      "offset": 255.33,
+      "duration": 2.28
+    },
+    {
+      "lang": "en",
+      "text": "and honest version of Claude Sonnet.",
+      "offset": 257.61,
+      "duration": 1.962
+    },
+    {
+      "lang": "en",
+      "text": "And then for the other 50% of participants",
+      "offset": 259.572,
+      "duration": 2.988
+    },
+    {
+      "lang": "en",
+      "text": "we gave them a version of Claude Sonnet",
+      "offset": 262.56,
+      "duration": 3.09
+    },
+    {
+      "lang": "en",
+      "text": "that was deliberately\ntrying to kind of get 'em",
+      "offset": 265.65,
+      "duration": 3.24
+    },
+    {
+      "lang": "en",
+      "text": "to pick the wrong answer,\nknew what the right answer was",
+      "offset": 268.89,
+      "duration": 1.187
+    },
+    {
+      "lang": "en",
+      "text": "and it knew that it was\ntrying to persuade them",
+      "offset": 270.077,
+      "duration": 1.753
+    },
+    {
+      "lang": "en",
+      "text": "to give the wrong answer.",
+      "offset": 271.83,
+      "duration": 1.443
+    },
+    {
+      "lang": "en",
+      "text": "And so in this setting\nwe gave the participants",
+      "offset": 273.273,
+      "duration": 2.979
+    },
+    {
+      "lang": "en",
+      "text": "the documentation and one of the models",
+      "offset": 276.252,
+      "duration": 2.786
+    },
+    {
+      "lang": "en",
+      "text": "and asked, well please can you try",
+      "offset": 279.038,
+      "duration": 2.932
+    },
+    {
+      "lang": "en",
+      "text": "and make the right decision\nand beware there's a 50% chance",
+      "offset": 281.97,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "the model might be messing with you?",
+      "offset": 285.33,
+      "duration": 1.5
+    },
+    {
+      "lang": "en",
+      "text": "- Yeah.\n- So the humans knew",
+      "offset": 286.83,
+      "duration": 1.44
+    },
+    {
+      "lang": "en",
+      "text": "what was going wrong",
+      "offset": 288.27,
+      "duration": 0.833
+    },
+    {
+      "lang": "en",
+      "text": "and this is a kind of\nclassic control setup",
+      "offset": 289.103,
+      "duration": 1.488
+    },
+    {
+      "lang": "en",
+      "text": "because we have defined\nthe deployment situation,",
+      "offset": 290.591,
+      "duration": 3.14
+    },
+    {
+      "lang": "en",
+      "text": "there's this business setting",
+      "offset": 293.731,
+      "duration": 1.679
+    },
+    {
+      "lang": "en",
+      "text": "and this decision that\nthe human has to make",
+      "offset": 295.41,
+      "duration": 1.929
+    },
+    {
+      "lang": "en",
+      "text": "and we have taken the model",
+      "offset": 297.339,
+      "duration": 2.078
+    },
+    {
+      "lang": "en",
+      "text": "and we're trying to\nmake it basically cause",
+      "offset": 299.417,
+      "duration": 3.163
+    },
+    {
+      "lang": "en",
+      "text": "as bad performance as\npossible in this setting",
+      "offset": 302.58,
+      "duration": 3.48
+    },
+    {
+      "lang": "en",
+      "text": "kind of subject to the\nmonitoring constraints",
+      "offset": 306.06,
+      "duration": 1.77
+    },
+    {
+      "lang": "en",
+      "text": "where implicitly the\nmonitoring here is the human",
+      "offset": 307.83,
+      "duration": 2.49
+    },
+    {
+      "lang": "en",
+      "text": "reading the model's\noutputs interacting with it",
+      "offset": 310.32,
+      "duration": 1.96
+    },
+    {
+      "lang": "en",
+      "text": "and we told the human",
+      "offset": 312.28,
+      "duration": 1.19
+    },
+    {
+      "lang": "en",
+      "text": "please be suspicious of the model,",
+      "offset": 313.47,
+      "duration": 1.14
+    },
+    {
+      "lang": "en",
+      "text": "please interrogate it about the decision.",
+      "offset": 314.61,
+      "duration": 2.876
+    },
+    {
+      "lang": "en",
+      "text": "If you think the model's\ntrying to steer you in the",
+      "offset": 317.486,
+      "duration": 1.564
+    },
+    {
+      "lang": "en",
+      "text": "right wrong direction, you should go with",
+      "offset": 319.05,
+      "duration": 1.259
+    },
+    {
+      "lang": "en",
+      "text": "what you believe is right,",
+      "offset": 320.309,
+      "duration": 1.261
+    },
+    {
+      "lang": "en",
+      "text": "not what the model believes is right.",
+      "offset": 321.57,
+      "duration": 1.41
+    },
+    {
+      "lang": "en",
+      "text": "And then at the end we would\nask the human to decide,",
+      "offset": 322.98,
+      "duration": 3.03
+    },
+    {
+      "lang": "en",
+      "text": "well firstly what do you\nthink the right answer in this",
+      "offset": 326.01,
+      "duration": 2.79
+    },
+    {
+      "lang": "en",
+      "text": "setting was to the business decision?",
+      "offset": 328.8,
+      "duration": 1.32
+    },
+    {
+      "lang": "en",
+      "text": "do you choose X or Y?",
+      "offset": 330.12,
+      "duration": 1.74
+    },
+    {
+      "lang": "en",
+      "text": "- Yeah\n- And secondly",
+      "offset": 331.86,
+      "duration": 0.909
+    },
+    {
+      "lang": "en",
+      "text": "do you think the model\nwas suspicious or not?",
+      "offset": 332.769,
+      "duration": 2.358
+    },
+    {
+      "lang": "en",
+      "text": "And can you rate that for us\non a scale from one to 10?",
+      "offset": 335.127,
+      "duration": 2.772
+    },
+    {
+      "lang": "en",
+      "text": "- Nice.",
+      "offset": 337.899,
+      "duration": 1.491
+    },
+    {
+      "lang": "en",
+      "text": "- And what were the results?",
+      "offset": 339.39,
+      "duration": 1.42
+    },
+    {
+      "lang": "en",
+      "text": "- Yeah, so the headline\nresults were that even",
+      "offset": 340.81,
+      "duration": 3.826
+    },
+    {
+      "lang": "en",
+      "text": "for a fairly simple model policy,",
+      "offset": 344.636,
+      "duration": 3.124
+    },
+    {
+      "lang": "en",
+      "text": "just generically trying\nto up play the good,",
+      "offset": 347.76,
+      "duration": 2.58
+    },
+    {
+      "lang": "en",
+      "text": "the good side that it was trying to defend",
+      "offset": 350.34,
+      "duration": 1.68
+    },
+    {
+      "lang": "en",
+      "text": "and downplay the side\nthat it wasn't trying",
+      "offset": 352.02,
+      "duration": 2.25
+    },
+    {
+      "lang": "en",
+      "text": "to defend it's actually quite to tell",
+      "offset": 354.27,
+      "duration": 3.865
+    },
+    {
+      "lang": "en",
+      "text": "for the participants whether the model",
+      "offset": 358.135,
+      "duration": 2.645
+    },
+    {
+      "lang": "en",
+      "text": "is misleading them or not.",
+      "offset": 360.78,
+      "duration": 1.35
+    },
+    {
+      "lang": "en",
+      "text": "So they could tell eventually given enough",
+      "offset": 362.13,
+      "duration": 3.789
+    },
+    {
+      "lang": "en",
+      "text": "enough interaction with the model",
+      "offset": 365.919,
+      "duration": 2.02
+    },
+    {
+      "lang": "en",
+      "text": "but also by the time they'd\nhad enough interaction",
+      "offset": 367.939,
+      "duration": 2.935
+    },
+    {
+      "lang": "en",
+      "text": "with the model to be able to\ntell the model was frequently",
+      "offset": 370.874,
+      "duration": 3.286
+    },
+    {
+      "lang": "en",
+      "text": "able to steer a meaningful\nnumber of those participants",
+      "offset": 374.16,
+      "duration": 2.28
+    },
+    {
+      "lang": "en",
+      "text": "in the wrong direction.",
+      "offset": 376.44,
+      "duration": 1.53
+    },
+    {
+      "lang": "en",
+      "text": "- Nice. I mean actually not nice.",
+      "offset": 377.97,
+      "duration": 2.217
+    },
+    {
+      "lang": "en",
+      "text": "- Not not great what what this suggests is",
+      "offset": 380.187,
+      "duration": 2.283
+    },
+    {
+      "lang": "en",
+      "text": "that I think we have just\nwhen we're interacting",
+      "offset": 382.47,
+      "duration": 3.09
+    },
+    {
+      "lang": "en",
+      "text": "with a model, a fairly strong\nbias towards trusting it,",
+      "offset": 385.56,
+      "duration": 3.57
+    },
+    {
+      "lang": "en",
+      "text": "I dunno I guess we all\nuse well in our data",
+      "offset": 389.13,
+      "duration": 2.88
+    },
+    {
+      "lang": "en",
+      "text": "lines use cool a lot I think\nwhen Claude says something",
+      "offset": 392.01,
+      "duration": 2.667
+    },
+    {
+      "lang": "en",
+      "text": "and says it's true,",
+      "offset": 394.677,
+      "duration": 1.833
+    },
+    {
+      "lang": "en",
+      "text": "it has a pretty authoritative voice",
+      "offset": 396.51,
+      "duration": 2.1
+    },
+    {
+      "lang": "en",
+      "text": "and I think that a lot\nof our human participants",
+      "offset": 398.61,
+      "duration": 1.56
+    },
+    {
+      "lang": "en",
+      "text": "just responded to that.",
+      "offset": 400.17,
+      "duration": 1.44
+    },
+    {
+      "lang": "en",
+      "text": "Yeah so it is pretty hard to create",
+      "offset": 401.61,
+      "duration": 2.104
+    },
+    {
+      "lang": "en",
+      "text": "to maximally elicit",
+      "offset": 403.714,
+      "duration": 1.706
+    },
+    {
+      "lang": "en",
+      "text": "or to get the best\nperformance out of a model",
+      "offset": 405.42,
+      "duration": 2.432
+    },
+    {
+      "lang": "en",
+      "text": "at being deceptive or it being misaligned.",
+      "offset": 407.852,
+      "duration": 3.331
+    },
+    {
+      "lang": "en",
+      "text": "the only thing we did\nin our setting was try",
+      "offset": 411.183,
+      "duration": 2.157
+    },
+    {
+      "lang": "en",
+      "text": "and prompt it and I spent probably",
+      "offset": 413.34,
+      "duration": 1.59
+    },
+    {
+      "lang": "en",
+      "text": "on the order of 10 hours\nprompting the model",
+      "offset": 414.93,
+      "duration": 2.31
+    },
+    {
+      "lang": "en",
+      "text": "and trying to get it to",
+      "offset": 417.24,
+      "duration": 1.5
+    },
+    {
+      "lang": "en",
+      "text": "be as subtly deceptive as possible.",
+      "offset": 418.74,
+      "duration": 2.43
+    },
+    {
+      "lang": "en",
+      "text": "I still think that probably we did not hit",
+      "offset": 421.17,
+      "duration": 3.9
+    },
+    {
+      "lang": "en",
+      "text": "the best possible\nperformance of that model",
+      "offset": 425.07,
+      "duration": 1.568
+    },
+    {
+      "lang": "en",
+      "text": "and there were substantially\nbetter performances",
+      "offset": 426.638,
+      "duration": 1.372
+    },
+    {
+      "lang": "en",
+      "text": "that we could have\nachieved out there maybe",
+      "offset": 428.01,
+      "duration": 2.13
+    },
+    {
+      "lang": "en",
+      "text": "by doing finetuning",
+      "offset": 430.14,
+      "duration": 1.33
+    },
+    {
+      "lang": "en",
+      "text": "or some better prompting\nI'm not a prompt wizard",
+      "offset": 431.47,
+      "duration": 2.933
+    },
+    {
+      "lang": "en",
+      "text": "and it's just kind of rough,\nit kind of tough to know",
+      "offset": 434.403,
+      "duration": 2.944
+    },
+    {
+      "lang": "en",
+      "text": "what the optimal performance is there",
+      "offset": 437.347,
+      "duration": 2.753
+    },
+    {
+      "lang": "en",
+      "text": "without putting a lot of effort",
+      "offset": 440.1,
+      "duration": 1.35
+    },
+    {
+      "lang": "en",
+      "text": "into their dissertation.",
+      "offset": 441.45,
+      "duration": 1.41
+    },
+    {
+      "lang": "en",
+      "text": "- No, that makes perfect sense.",
+      "offset": 442.86,
+      "duration": 1.949
+    },
+    {
+      "lang": "en",
+      "text": "I wonder Ethan,",
+      "offset": 444.809,
+      "duration": 1.878
+    },
+    {
+      "lang": "en",
+      "text": "if you were take these settings",
+      "offset": 446.687,
+      "duration": 1.296
+    },
+    {
+      "lang": "en",
+      "text": "I feel another half of the control work",
+      "offset": 447.983,
+      "duration": 2.287
+    },
+    {
+      "lang": "en",
+      "text": "has been developing protocols.",
+      "offset": 450.27,
+      "duration": 1.75
+    },
+    {
+      "lang": "en",
+      "text": "Is there any that stand out to you",
+      "offset": 453.06,
+      "duration": 1.6
+    },
+    {
+      "lang": "en",
+      "text": "or do you wanna explain what they are?",
+      "offset": 454.66,
+      "duration": 1.46
+    },
+    {
+      "lang": "en",
+      "text": "talk about how they-",
+      "offset": 456.12,
+      "duration": 0.833
+    },
+    {
+      "lang": "en",
+      "text": "- Yeah so I guess the protocols",
+      "offset": 456.953,
+      "duration": 2.476
+    },
+    {
+      "lang": "en",
+      "text": "that I was referenced in here are just",
+      "offset": 459.429,
+      "duration": 2.343
+    },
+    {
+      "lang": "en",
+      "text": "what are the actual\nmitigations you put in place to",
+      "offset": 461.772,
+      "duration": 2.219
+    },
+    {
+      "lang": "en",
+      "text": "defend against a model\nthat maybe misaligned?",
+      "offset": 463.991,
+      "duration": 5
+    },
+    {
+      "lang": "en",
+      "text": "Some of these might be\nusing the model itself",
+      "offset": 469.47,
+      "duration": 3.99
+    },
+    {
+      "lang": "en",
+      "text": "to monitor its own actions.",
+      "offset": 473.46,
+      "duration": 2.61
+    },
+    {
+      "lang": "en",
+      "text": "In this case we're not assuming\nthat the model is is aligned",
+      "offset": 476.07,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "so we call it an untrusted model",
+      "offset": 479.43,
+      "duration": 1.318
+    },
+    {
+      "lang": "en",
+      "text": "and so you could use an untrusted monitor",
+      "offset": 480.748,
+      "duration": 3.152
+    },
+    {
+      "lang": "en",
+      "text": "which is for example prompting",
+      "offset": 483.9,
+      "duration": 1.402
+    },
+    {
+      "lang": "en",
+      "text": "or finetuning that model to detect",
+      "offset": 485.302,
+      "duration": 3.338
+    },
+    {
+      "lang": "en",
+      "text": "if the behavior is bad or not to yeah",
+      "offset": 488.64,
+      "duration": 3.24
+    },
+    {
+      "lang": "en",
+      "text": "to basically flag if any\nof the outputs are bad.",
+      "offset": 491.88,
+      "duration": 2.298
+    },
+    {
+      "lang": "en",
+      "text": "So in the persuasion case,",
+      "offset": 494.178,
+      "duration": 2.532
+    },
+    {
+      "lang": "en",
+      "text": "if in the business decision\nrecommendation case",
+      "offset": 496.71,
+      "duration": 2.592
+    },
+    {
+      "lang": "en",
+      "text": "the model could be generating this advice",
+      "offset": 499.302,
+      "duration": 3.948
+    },
+    {
+      "lang": "en",
+      "text": "and we could prompt",
+      "offset": 503.25,
+      "duration": 1.5
+    },
+    {
+      "lang": "en",
+      "text": "or finetuning another version of the model",
+      "offset": 504.75,
+      "duration": 2.22
+    },
+    {
+      "lang": "en",
+      "text": "to basically classify is this model trying",
+      "offset": 506.97,
+      "duration": 2.92
+    },
+    {
+      "lang": "en",
+      "text": "to actually sabotage the human",
+      "offset": 509.89,
+      "duration": 1.76
+    },
+    {
+      "lang": "en",
+      "text": "and making this decision or not?",
+      "offset": 511.65,
+      "duration": 1.623
+    },
+    {
+      "lang": "en",
+      "text": "Then there's also another related idea",
+      "offset": 514.74,
+      "duration": 3.87
+    },
+    {
+      "lang": "en",
+      "text": "of trusted monitoring where you use,",
+      "offset": 518.61,
+      "duration": 1.838
+    },
+    {
+      "lang": "en",
+      "text": "you use another model which you trust",
+      "offset": 520.448,
+      "duration": 3.559
+    },
+    {
+      "lang": "en",
+      "text": "or for some reason for\nexample it's just less capable",
+      "offset": 524.007,
+      "duration": 3.843
+    },
+    {
+      "lang": "en",
+      "text": "and so maybe it's less ly to be misaligned",
+      "offset": 527.85,
+      "duration": 2.46
+    },
+    {
+      "lang": "en",
+      "text": "if we think models are\nmore ly to be misaligned",
+      "offset": 530.31,
+      "duration": 3.63
+    },
+    {
+      "lang": "en",
+      "text": "as the capabilities grow",
+      "offset": 533.94,
+      "duration": 1.5
+    },
+    {
+      "lang": "en",
+      "text": "and as they're able",
+      "offset": 535.44,
+      "duration": 0.833
+    },
+    {
+      "lang": "en",
+      "text": "to more effectively hide their goals,",
+      "offset": 536.273,
+      "duration": 1.725
+    },
+    {
+      "lang": "en",
+      "text": "and so yeah in that case we\nmight take a smaller model",
+      "offset": 537.998,
+      "duration": 5
+    },
+    {
+      "lang": "en",
+      "text": "or less capable model\ncloud one or cloud two",
+      "offset": 544.153,
+      "duration": 2.481
+    },
+    {
+      "lang": "en",
+      "text": "and use that to check\nthe behavior of the model",
+      "offset": 546.634,
+      "duration": 4.376
+    },
+    {
+      "lang": "en",
+      "text": "and of cloud three sonnet",
+      "offset": 551.01,
+      "duration": 1.53
+    },
+    {
+      "lang": "en",
+      "text": "and see is this model actually trying",
+      "offset": 552.54,
+      "duration": 1.71
+    },
+    {
+      "lang": "en",
+      "text": "to subvert the human on\nthis particular decision?",
+      "offset": 554.25,
+      "duration": 3.213
+    },
+    {
+      "lang": "en",
+      "text": "That has its advantages,",
+      "offset": 559.02,
+      "duration": 1.26
+    },
+    {
+      "lang": "en",
+      "text": "'cause you would trust the model more",
+      "offset": 560.28,
+      "duration": 2.64
+    },
+    {
+      "lang": "en",
+      "text": "because that in the sense\nof it's actually not going",
+      "offset": 562.92,
+      "duration": 2.73
+    },
+    {
+      "lang": "en",
+      "text": "to just give misclassifications,",
+      "offset": 565.65,
+      "duration": 2.01
+    },
+    {
+      "lang": "en",
+      "text": "it's going to try to properly\nclassify the behavior",
+      "offset": 567.66,
+      "duration": 3.294
+    },
+    {
+      "lang": "en",
+      "text": "whereas the model itself,",
+      "offset": 570.954,
+      "duration": 1.836
+    },
+    {
+      "lang": "en",
+      "text": "if it's doing sophisticated\nsabotage it would recognize",
+      "offset": 572.79,
+      "duration": 2.88
+    },
+    {
+      "lang": "en",
+      "text": "oh I'm being used to\ndetect the bad behavior.",
+      "offset": 575.67,
+      "duration": 2.5
+    },
+    {
+      "lang": "en",
+      "text": "- Yeah\n- And not flag",
+      "offset": 579.03,
+      "duration": 1.77
+    },
+    {
+      "lang": "en",
+      "text": "the bad behavior.",
+      "offset": 580.8,
+      "duration": 1.053
+    },
+    {
+      "lang": "en",
+      "text": "So I think that's the advantage.",
+      "offset": 582.72,
+      "duration": 1.32
+    },
+    {
+      "lang": "en",
+      "text": "The disadvantage is that\nobviously you're using",
+      "offset": 584.04,
+      "duration": 1.59
+    },
+    {
+      "lang": "en",
+      "text": "a less capable model\nand so if the sabotage",
+      "offset": 585.63,
+      "duration": 3.289
+    },
+    {
+      "lang": "en",
+      "text": "is kind of subtle enough then you would,",
+      "offset": 588.919,
+      "duration": 2.769
+    },
+    {
+      "lang": "en",
+      "text": "your trusted monitor would\nflag that this is an issue.",
+      "offset": 591.688,
+      "duration": 3.752
+    },
+    {
+      "lang": "en",
+      "text": "So yeah, I think that's,",
+      "offset": 595.44,
+      "duration": 0.93
+    },
+    {
+      "lang": "en",
+      "text": "those are two high level strategies.",
+      "offset": 596.37,
+      "duration": 1.71
+    },
+    {
+      "lang": "en",
+      "text": "I think you can do\nvarious different things",
+      "offset": 598.08,
+      "duration": 2.123
+    },
+    {
+      "lang": "en",
+      "text": "with these monitoring components.",
+      "offset": 600.203,
+      "duration": 3.043
+    },
+    {
+      "lang": "en",
+      "text": "You could, if you notice that an output is",
+      "offset": 603.246,
+      "duration": 3.934
+    },
+    {
+      "lang": "en",
+      "text": "really bad",
+      "offset": 608.64,
+      "duration": 1.53
+    },
+    {
+      "lang": "en",
+      "text": "and obviously indicates\nthe model is misaligned,",
+      "offset": 610.17,
+      "duration": 2.579
+    },
+    {
+      "lang": "en",
+      "text": "a really egregious attempt\nat yeah sabotaging the user",
+      "offset": 612.749,
+      "duration": 5
+    },
+    {
+      "lang": "en",
+      "text": "or copying its weights\nout from the data center,",
+      "offset": 618.03,
+      "duration": 2.19
+    },
+    {
+      "lang": "en",
+      "text": "then you could just stop the deployment.",
+      "offset": 620.22,
+      "duration": 2.79
+    },
+    {
+      "lang": "en",
+      "text": "You could be well now we\nknow the model is misaligned,",
+      "offset": 623.01,
+      "duration": 2.34
+    },
+    {
+      "lang": "en",
+      "text": "we got our evidence and we now need",
+      "offset": 625.35,
+      "duration": 2.76
+    },
+    {
+      "lang": "en",
+      "text": "to do much more serious\nmitigations we should,",
+      "offset": 628.11,
+      "duration": 3.502
+    },
+    {
+      "lang": "en",
+      "text": "yeah undeploy the model, things that.",
+      "offset": 631.612,
+      "duration": 3.008
+    },
+    {
+      "lang": "en",
+      "text": "If you're not as confident you can do",
+      "offset": 634.62,
+      "duration": 2.065
+    },
+    {
+      "lang": "en",
+      "text": "less serious mitigations",
+      "offset": 636.685,
+      "duration": 2.165
+    },
+    {
+      "lang": "en",
+      "text": "maybe it's a little suspicious",
+      "offset": 638.85,
+      "duration": 2.91
+    },
+    {
+      "lang": "en",
+      "text": "but not the most suspicious.",
+      "offset": 641.76,
+      "duration": 1.68
+    },
+    {
+      "lang": "en",
+      "text": "In that case you could\nre-sample from the model",
+      "offset": 643.44,
+      "duration": 2.55
+    },
+    {
+      "lang": "en",
+      "text": "to get a different\noutput that seems safer.",
+      "offset": 645.99,
+      "duration": 2.284
+    },
+    {
+      "lang": "en",
+      "text": "So yeah, those are a couple\nof different strategies.",
+      "offset": 648.274,
+      "duration": 4.616
+    },
+    {
+      "lang": "en",
+      "text": "You can also use combinations\nof monitor trusted",
+      "offset": 652.89,
+      "duration": 2.16
+    },
+    {
+      "lang": "en",
+      "text": "and untrusted monitors.",
+      "offset": 655.05,
+      "duration": 1.11
+    },
+    {
+      "lang": "en",
+      "text": "- Yeah, having human\nreview is also a very-",
+      "offset": 656.16,
+      "duration": 2.34
+    },
+    {
+      "lang": "en",
+      "text": "- Yes, that's exactly-",
+      "offset": 658.5,
+      "duration": 0.833
+    },
+    {
+      "lang": "en",
+      "text": "- Basically our monitoring",
+      "offset": 659.333,
+      "duration": 1.567
+    },
+    {
+      "lang": "en",
+      "text": "or our evaluation set\nwas a little bit weird",
+      "offset": 660.9,
+      "duration": 1.65
+    },
+    {
+      "lang": "en",
+      "text": "because the only thing we\nwere doing was human review.",
+      "offset": 662.55,
+      "duration": 2.31
+    },
+    {
+      "lang": "en",
+      "text": "in practice human review is",
+      "offset": 664.86,
+      "duration": 1.29
+    },
+    {
+      "lang": "en",
+      "text": "probably very expensive",
+      "offset": 666.15,
+      "duration": 1.02
+    },
+    {
+      "lang": "en",
+      "text": "and so you want to use a weaker model",
+      "offset": 667.17,
+      "duration": 2.07
+    },
+    {
+      "lang": "en",
+      "text": "and if the weaker model\nthinks something is",
+      "offset": 669.24,
+      "duration": 1.8
+    },
+    {
+      "lang": "en",
+      "text": "a bit suspicious,",
+      "offset": 671.04,
+      "duration": 0.833
+    },
+    {
+      "lang": "en",
+      "text": "then maybe you delegate it to a human",
+      "offset": 671.873,
+      "duration": 1.267
+    },
+    {
+      "lang": "en",
+      "text": "or you delegate it to\na more powerful model",
+      "offset": 673.14,
+      "duration": 1.74
+    },
+    {
+      "lang": "en",
+      "text": "that maybe costs you more to run.",
+      "offset": 674.88,
+      "duration": 1.74
+    },
+    {
+      "lang": "en",
+      "text": "There's a lot of variation in this space,",
+      "offset": 676.62,
+      "duration": 1.89
+    },
+    {
+      "lang": "en",
+      "text": "possible protocols.",
+      "offset": 678.51,
+      "duration": 1.02
+    },
+    {
+      "lang": "en",
+      "text": "- Yeah, that's right.\n- So this, this is",
+      "offset": 679.53,
+      "duration": 1.83
+    },
+    {
+      "lang": "en",
+      "text": "what my latest control paper is about",
+      "offset": 681.36,
+      "duration": 1.95
+    },
+    {
+      "lang": "en",
+      "text": "was adaptive protocols",
+      "offset": 683.31,
+      "duration": 1.92
+    },
+    {
+      "lang": "en",
+      "text": "where it's depending on",
+      "offset": 685.23,
+      "duration": 2.22
+    },
+    {
+      "lang": "en",
+      "text": "you get the suspicion score for",
+      "offset": 687.45,
+      "duration": 1.852
+    },
+    {
+      "lang": "en",
+      "text": "or you check how the output is from",
+      "offset": 689.302,
+      "duration": 3.428
+    },
+    {
+      "lang": "en",
+      "text": "your deployed model by\na couple of protocols",
+      "offset": 692.73,
+      "duration": 3.03
+    },
+    {
+      "lang": "en",
+      "text": "and then depending on\nwhat this profile looks ,",
+      "offset": 695.76,
+      "duration": 2.04
+    },
+    {
+      "lang": "en",
+      "text": "you decide do I want to\ngive this a human auditor",
+      "offset": 697.8,
+      "duration": 2.7
+    },
+    {
+      "lang": "en",
+      "text": "or do I want to just look at",
+      "offset": 700.5,
+      "duration": 1.187
+    },
+    {
+      "lang": "en",
+      "text": "what the trusted monitor said",
+      "offset": 701.687,
+      "duration": 2.263
+    },
+    {
+      "lang": "en",
+      "text": "or the untrusted monitor\nwhich actually seemed",
+      "offset": 703.95,
+      "duration": 3.15
+    },
+    {
+      "lang": "en",
+      "text": "to work pretty well and\nobviously very simple type",
+      "offset": 707.1,
+      "duration": 2.55
+    },
+    {
+      "lang": "en",
+      "text": "of thing to do but it was just nice.",
+      "offset": 709.65,
+      "duration": 1.71
+    },
+    {
+      "lang": "en",
+      "text": "- I mean I totally bet that\nin our setting if you had run",
+      "offset": 711.36,
+      "duration": 3.69
+    },
+    {
+      "lang": "en",
+      "text": "a weaker model that you\ntrusted of the dataset",
+      "offset": 715.05,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "and allowed the the human\nparticipant to review",
+      "offset": 719.13,
+      "duration": 3.96
+    },
+    {
+      "lang": "en",
+      "text": "also that model's recommendation,\nthat would've helped a ton",
+      "offset": 723.09,
+      "duration": 2.19
+    },
+    {
+      "lang": "en",
+      "text": "because one of the big issues",
+      "offset": 725.28,
+      "duration": 2.25
+    },
+    {
+      "lang": "en",
+      "text": "that the human participants\nin our setting had just,",
+      "offset": 727.53,
+      "duration": 2.28
+    },
+    {
+      "lang": "en",
+      "text": "they couldn't possibly\ndigest all the documents.",
+      "offset": 729.81,
+      "duration": 2.19
+    },
+    {
+      "lang": "en",
+      "text": "So even if the strong\nmodel was lying to them,",
+      "offset": 732,
+      "duration": 2.415
+    },
+    {
+      "lang": "en",
+      "text": "they they would really\nstruggle to spot that",
+      "offset": 734.415,
+      "duration": 2.385
+    },
+    {
+      "lang": "en",
+      "text": "'cause a lot of them didn't\nactually cross interrogate",
+      "offset": 736.8,
+      "duration": 2.1
+    },
+    {
+      "lang": "en",
+      "text": "the strong model even though\nwe'd hope they'd do that.",
+      "offset": 738.9,
+      "duration": 1.92
+    },
+    {
+      "lang": "en",
+      "text": "I think if you had a weak model",
+      "offset": 740.82,
+      "duration": 1.02
+    },
+    {
+      "lang": "en",
+      "text": "to help you cross\ninterrogate that would be",
+      "offset": 741.84,
+      "duration": 1.586
+    },
+    {
+      "lang": "en",
+      "text": "an example of a situation",
+      "offset": 743.426,
+      "duration": 1.534
+    },
+    {
+      "lang": "en",
+      "text": "where I think it would be very powerful.",
+      "offset": 744.96,
+      "duration": 1.74
+    },
+    {
+      "lang": "en",
+      "text": "- Yeah, I feel I also\nboil this down something",
+      "offset": 746.7,
+      "duration": 2.46
+    },
+    {
+      "lang": "en",
+      "text": "to it there's affordances that models have",
+      "offset": 749.16,
+      "duration": 4.62
+    },
+    {
+      "lang": "en",
+      "text": "that humans don't have so\nmodels are can very quickly",
+      "offset": 753.78,
+      "duration": 2.94
+    },
+    {
+      "lang": "en",
+      "text": "go over a 30 page document",
+      "offset": 756.72,
+      "duration": 2.07
+    },
+    {
+      "lang": "en",
+      "text": "and even if you have a trusted,\na trusted dumber model,",
+      "offset": 758.79,
+      "duration": 2.82
+    },
+    {
+      "lang": "en",
+      "text": "it can augment a human",
+      "offset": 761.61,
+      "duration": 1.38
+    },
+    {
+      "lang": "en",
+      "text": "that can't look at 30 pages very quickly.",
+      "offset": 762.99,
+      "duration": 1.44
+    },
+    {
+      "lang": "en",
+      "text": "- Yeah\n- To do better.",
+      "offset": 764.43,
+      "duration": 1.2
+    },
+    {
+      "lang": "en",
+      "text": "- And it's also very cheap\nto delegate to a weak model,",
+      "offset": 765.63,
+      "duration": 3.48
+    },
+    {
+      "lang": "en",
+      "text": "very expensive to delegate to a human.",
+      "offset": 769.11,
+      "duration": 2.22
+    },
+    {
+      "lang": "en",
+      "text": "But conversely if a weak model",
+      "offset": 771.33,
+      "duration": 2.163
+    },
+    {
+      "lang": "en",
+      "text": "sees a really egregious\nfailure then it might be hard",
+      "offset": 773.493,
+      "duration": 4.647
+    },
+    {
+      "lang": "en",
+      "text": "for them to tell that whereas",
+      "offset": 778.14,
+      "duration": 1.29
+    },
+    {
+      "lang": "en",
+      "text": "sending really egregious\nfailures to a human",
+      "offset": 779.43,
+      "duration": 2.1
+    },
+    {
+      "lang": "en",
+      "text": "is additionally valuable",
+      "offset": 781.53,
+      "duration": 1.079
+    },
+    {
+      "lang": "en",
+      "text": "because then maybe you notice\nnot just is this a thing",
+      "offset": 782.609,
+      "duration": 2.581
+    },
+    {
+      "lang": "en",
+      "text": "that I wanna resample,\nit's also a case for me",
+      "offset": 785.19,
+      "duration": 1.61
+    },
+    {
+      "lang": "en",
+      "text": "to slam the red button",
+      "offset": 786.8,
+      "duration": 1.6
+    },
+    {
+      "lang": "en",
+      "text": "and actually show someone this model is",
+      "offset": 788.4,
+      "duration": 2.069
+    },
+    {
+      "lang": "en",
+      "text": "dangerous misaligned.",
+      "offset": 790.469,
+      "duration": 1.681
+    },
+    {
+      "lang": "en",
+      "text": "Maybe we should make a\nstronger update than just",
+      "offset": 792.15,
+      "duration": 2.132
+    },
+    {
+      "lang": "en",
+      "text": "re-sampling one particular output.",
+      "offset": 794.282,
+      "duration": 2.878
+    },
+    {
+      "lang": "en",
+      "text": "- Yeah so Ethan, why is\ncontrol different to alignment",
+      "offset": 797.16,
+      "duration": 5
+    },
+    {
+      "lang": "en",
+      "text": "and yeah, can you explain\na bit more about why it is?",
+      "offset": 802.62,
+      "duration": 2.76
+    },
+    {
+      "lang": "en",
+      "text": "- Yeah, I mean I guess the\nmain thing I'd probably wanna",
+      "offset": 805.38,
+      "duration": 2.43
+    },
+    {
+      "lang": "en",
+      "text": "discuss here is just how",
+      "offset": 807.81,
+      "duration": 1.96
+    },
+    {
+      "lang": "en",
+      "text": "why we would even consider\ndoing other things",
+      "offset": 811.342,
+      "duration": 3.068
+    },
+    {
+      "lang": "en",
+      "text": "than than alignment.",
+      "offset": 814.41,
+      "duration": 2.313
+    },
+    {
+      "lang": "en",
+      "text": "I guess intuitively it\nseems somewhat terrifying",
+      "offset": 816.723,
+      "duration": 4.437
+    },
+    {
+      "lang": "en",
+      "text": "to be well we're gonna just assume",
+      "offset": 821.16,
+      "duration": 1.77
+    },
+    {
+      "lang": "en",
+      "text": "the models might be misaligned",
+      "offset": 822.93,
+      "duration": 3.22
+    },
+    {
+      "lang": "en",
+      "text": "and let's just try to do\na bunch of other things",
+      "offset": 827.55,
+      "duration": 2.28
+    },
+    {
+      "lang": "en",
+      "text": "to make sure that that isn't bad.",
+      "offset": 829.83,
+      "duration": 2.04
+    },
+    {
+      "lang": "en",
+      "text": "I think that has kind of scary feel to it.",
+      "offset": 831.87,
+      "duration": 2.55
+    },
+    {
+      "lang": "en",
+      "text": "why not just actually try to make sure",
+      "offset": 834.42,
+      "duration": 1.8
+    },
+    {
+      "lang": "en",
+      "text": "that your model is not\ngoing to try to go rogue?",
+      "offset": 836.22,
+      "duration": 2.4
+    },
+    {
+      "lang": "en",
+      "text": "I think the main difficulty\nwith trying to to align",
+      "offset": 839.85,
+      "duration": 5
+    },
+    {
+      "lang": "en",
+      "text": "the models is evaluating",
+      "offset": 845.31,
+      "duration": 2.545
+    },
+    {
+      "lang": "en",
+      "text": "whether or not the model is is aligned",
+      "offset": 847.855,
+      "duration": 3.155
+    },
+    {
+      "lang": "en",
+      "text": "and has the right goal",
+      "offset": 851.01,
+      "duration": 1.8
+    },
+    {
+      "lang": "en",
+      "text": "that you intended is really challenging,",
+      "offset": 852.81,
+      "duration": 2.253
+    },
+    {
+      "lang": "en",
+      "text": "primarily because of the\nproblem of alignment faking.",
+      "offset": 856.11,
+      "duration": 2.527
+    },
+    {
+      "lang": "en",
+      "text": "So this is basically the issue that",
+      "offset": 858.637,
+      "duration": 3.079
+    },
+    {
+      "lang": "en",
+      "text": "which was shown in another recent paper",
+      "offset": 861.716,
+      "duration": 2.994
+    },
+    {
+      "lang": "en",
+      "text": "from Anthropic that\nmodels can actually fake",
+      "offset": 864.71,
+      "duration": 2.98
+    },
+    {
+      "lang": "en",
+      "text": "whether or not they're safe",
+      "offset": 867.69,
+      "duration": 1.68
+    },
+    {
+      "lang": "en",
+      "text": "or aligned with the the developer's goals.",
+      "offset": 869.37,
+      "duration": 4.014
+    },
+    {
+      "lang": "en",
+      "text": "And yeah, what they\nshowed in this paper is",
+      "offset": 873.384,
+      "duration": 3.396
+    },
+    {
+      "lang": "en",
+      "text": "that even current models\nClaude 3.5 sonnet,",
+      "offset": 876.78,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "Claude three opus will in some cases",
+      "offset": 880.38,
+      "duration": 3.899
+    },
+    {
+      "lang": "en",
+      "text": "if they recognize that\nthey're being trained",
+      "offset": 884.279,
+      "duration": 3.239
+    },
+    {
+      "lang": "en",
+      "text": "to do some task that is\nopposed to the the values",
+      "offset": 887.518,
+      "duration": 5
+    },
+    {
+      "lang": "en",
+      "text": "they've been previously trained with,",
+      "offset": 893.142,
+      "duration": 2.653
+    },
+    {
+      "lang": "en",
+      "text": "those models will act safe",
+      "offset": 895.795,
+      "duration": 3.605
+    },
+    {
+      "lang": "en",
+      "text": "or act aligned with the developers",
+      "offset": 899.4,
+      "duration": 2.34
+    },
+    {
+      "lang": "en",
+      "text": "but then later during it, during it",
+      "offset": 901.74,
+      "duration": 2.01
+    },
+    {
+      "lang": "en",
+      "text": "deployment phase will actually switch back",
+      "offset": 903.75,
+      "duration": 3.48
+    },
+    {
+      "lang": "en",
+      "text": "to their earlier goal",
+      "offset": 907.23,
+      "duration": 0.94
+    },
+    {
+      "lang": "en",
+      "text": "and that the difficulty there is",
+      "offset": 908.17,
+      "duration": 2.9
+    },
+    {
+      "lang": "en",
+      "text": "that it's just hard to\ndistinguish do you have a model",
+      "offset": 911.07,
+      "duration": 2.16
+    },
+    {
+      "lang": "en",
+      "text": "that's aligned, do you have a model",
+      "offset": 913.23,
+      "duration": 1.08
+    },
+    {
+      "lang": "en",
+      "text": "that's just faking alignment?",
+      "offset": 914.31,
+      "duration": 1.8
+    },
+    {
+      "lang": "en",
+      "text": "So yeah, I think that's, that I guess is",
+      "offset": 916.11,
+      "duration": 1.53
+    },
+    {
+      "lang": "en",
+      "text": "one of the key difficulties of alignment.",
+      "offset": 917.64,
+      "duration": 3.33
+    },
+    {
+      "lang": "en",
+      "text": "I think there's potential\nways to evaluate alignment",
+      "offset": 920.97,
+      "duration": 3.39
+    },
+    {
+      "lang": "en",
+      "text": "that aren't through behavioral tasks",
+      "offset": 924.36,
+      "duration": 1.74
+    },
+    {
+      "lang": "en",
+      "text": "and the, yeah, I guess\nkey category here would be",
+      "offset": 926.1,
+      "duration": 2.59
+    },
+    {
+      "lang": "en",
+      "text": "by doing things related\nto the model internals",
+      "offset": 929.73,
+      "duration": 1.523
+    },
+    {
+      "lang": "en",
+      "text": "and interpretability,",
+      "offset": 931.253,
+      "duration": 2.017
+    },
+    {
+      "lang": "en",
+      "text": "I think there's a lot\nof progress happening",
+      "offset": 933.27,
+      "duration": 2.01
+    },
+    {
+      "lang": "en",
+      "text": "on mechanistic interpretability",
+      "offset": 935.28,
+      "duration": 1.846
+    },
+    {
+      "lang": "en",
+      "text": "which is definitely pretty promising",
+      "offset": 937.126,
+      "duration": 2.294
+    },
+    {
+      "lang": "en",
+      "text": "but I think it's still\nsomewhat early stage",
+      "offset": 939.42,
+      "duration": 2.11
+    },
+    {
+      "lang": "en",
+      "text": "in terms of how you can\nuse some of those ideas",
+      "offset": 941.53,
+      "duration": 2.656
+    },
+    {
+      "lang": "en",
+      "text": "of interpretability to verify",
+      "offset": 944.186,
+      "duration": 2.524
+    },
+    {
+      "lang": "en",
+      "text": "that a model is aligned and i think given",
+      "offset": 946.71,
+      "duration": 3.33
+    },
+    {
+      "lang": "en",
+      "text": "that this is an open research area,",
+      "offset": 950.04,
+      "duration": 2.48
+    },
+    {
+      "lang": "en",
+      "text": "it's kind of helpful for people",
+      "offset": 952.52,
+      "duration": 2.14
+    },
+    {
+      "lang": "en",
+      "text": "to keep making progress on that",
+      "offset": 954.66,
+      "duration": 1.08
+    },
+    {
+      "lang": "en",
+      "text": "but also have some alternatives",
+      "offset": 955.74,
+      "duration": 1.41
+    },
+    {
+      "lang": "en",
+      "text": "for let's say evaluating\nalignment still remains hard.",
+      "offset": 957.15,
+      "duration": 3.39
+    },
+    {
+      "lang": "en",
+      "text": "How would we avoid this problem for",
+      "offset": 960.54,
+      "duration": 2.919
+    },
+    {
+      "lang": "en",
+      "text": "for some amount of time.",
+      "offset": 963.459,
+      "duration": 3.201
+    },
+    {
+      "lang": "en",
+      "text": "- So one thing that I\nstill have uncertainty over",
+      "offset": 966.66,
+      "duration": 2.82
+    },
+    {
+      "lang": "en",
+      "text": "is the key component of alignment faking",
+      "offset": 969.48,
+      "duration": 2.49
+    },
+    {
+      "lang": "en",
+      "text": "is situational awareness,",
+      "offset": 971.97,
+      "duration": 1.5
+    },
+    {
+      "lang": "en",
+      "text": "which is you discussed this\nidea that the model knows",
+      "offset": 973.47,
+      "duration": 2.16
+    },
+    {
+      "lang": "en",
+      "text": "what it's being trained is situations,",
+      "offset": 975.63,
+      "duration": 1.572
+    },
+    {
+      "lang": "en",
+      "text": "is that something that\nyou don't have to worry",
+      "offset": 977.202,
+      "duration": 2.748
+    },
+    {
+      "lang": "en",
+      "text": "about in control?",
+      "offset": 979.95,
+      "duration": 1.26
+    },
+    {
+      "lang": "en",
+      "text": "- You definitely do\nneed to worry about that",
+      "offset": 981.21,
+      "duration": 1.431
+    },
+    {
+      "lang": "en",
+      "text": "and I think the control\nwhen you test your control",
+      "offset": 982.641,
+      "duration": 5
+    },
+    {
+      "lang": "en",
+      "text": "kinda mitigations, you\nshould stress test them",
+      "offset": 987.669,
+      "duration": 4.281
+    },
+    {
+      "lang": "en",
+      "text": "by training your model to be to have",
+      "offset": 991.95,
+      "duration": 4.17
+    },
+    {
+      "lang": "en",
+      "text": "all of the information regarding\nwhat the mitigations are",
+      "offset": 996.12,
+      "duration": 3.02
+    },
+    {
+      "lang": "en",
+      "text": "so that you can test even if\nthe model knows it's being",
+      "offset": 999.14,
+      "duration": 4.57
+    },
+    {
+      "lang": "en",
+      "text": "monitored in x, Y, Z way\nwith human monitoring",
+      "offset": 1003.71,
+      "duration": 2.225
+    },
+    {
+      "lang": "en",
+      "text": "and a smaller model, it\nshould still not be able",
+      "offset": 1005.935,
+      "duration": 4.735
+    },
+    {
+      "lang": "en",
+      "text": "to do sufficiently bad\nthings given that knowledge.",
+      "offset": 1010.67,
+      "duration": 5
+    },
+    {
+      "lang": "en",
+      "text": "So I think yeah, I guess that's sort of",
+      "offset": 1016.55,
+      "duration": 3.009
+    },
+    {
+      "lang": "en",
+      "text": "how AI control answers that issue.",
+      "offset": 1019.559,
+      "duration": 3.561
+    },
+    {
+      "lang": "en",
+      "text": "- But you can't tell it\nthat it's in a control eval.",
+      "offset": 1023.12,
+      "duration": 1.86
+    },
+    {
+      "lang": "en",
+      "text": "Right?",
+      "offset": 1024.98,
+      "duration": 0.833
+    },
+    {
+      "lang": "en",
+      "text": "- I think there's definitely a\npotential risk that the model",
+      "offset": 1026.841,
+      "duration": 3.189
+    },
+    {
+      "lang": "en",
+      "text": "knows that it's in a control eval",
+      "offset": 1031.55,
+      "duration": 1.65
+    },
+    {
+      "lang": "en",
+      "text": "and then basically sandbags this eval",
+      "offset": 1033.2,
+      "duration": 2.35
+    },
+    {
+      "lang": "en",
+      "text": "so it yeah basically yeah I guess pretends",
+      "offset": 1035.55,
+      "duration": 5
+    },
+    {
+      "lang": "en",
+      "text": "that it's not as capable at sabotaging",
+      "offset": 1041.45,
+      "duration": 4.451
+    },
+    {
+      "lang": "en",
+      "text": "in a subtle way on this task.",
+      "offset": 1045.901,
+      "duration": 2.659
+    },
+    {
+      "lang": "en",
+      "text": "I think the nice thing is that",
+      "offset": 1048.56,
+      "duration": 2.41
+    },
+    {
+      "lang": "en",
+      "text": "it can be with certain\ntraining techniques if you have",
+      "offset": 1052.97,
+      "duration": 2.732
+    },
+    {
+      "lang": "en",
+      "text": "examples of the behavior that\nyou want the model to do,",
+      "offset": 1055.702,
+      "duration": 4.678
+    },
+    {
+      "lang": "en",
+      "text": "you can just directly train\nthe model to do that behavior",
+      "offset": 1060.38,
+      "duration": 2.112
+    },
+    {
+      "lang": "en",
+      "text": "and yeah it would be very hard for a model",
+      "offset": 1062.492,
+      "duration": 3.901
+    },
+    {
+      "lang": "en",
+      "text": "that is misaligned to avoid",
+      "offset": 1066.393,
+      "duration": 2.788
+    },
+    {
+      "lang": "en",
+      "text": "giving good giving outputs\nwhere you have the gold",
+      "offset": 1069.181,
+      "duration": 3.189
+    },
+    {
+      "lang": "en",
+      "text": "ground truth examples of\nthe behavior you want.",
+      "offset": 1072.37,
+      "duration": 4.3
+    },
+    {
+      "lang": "en",
+      "text": "Yeah, maybe Joe has a\nlittle bit more detail.",
+      "offset": 1076.67,
+      "duration": 1.799
+    },
+    {
+      "lang": "en",
+      "text": "- Yeah, no yeah that's totally right.",
+      "offset": 1078.469,
+      "duration": 2.131
+    },
+    {
+      "lang": "en",
+      "text": "So the model always has\nthis galaxy brain strategy",
+      "offset": 1080.6,
+      "duration": 2.67
+    },
+    {
+      "lang": "en",
+      "text": "available to it just notice",
+      "offset": 1083.27,
+      "duration": 2.16
+    },
+    {
+      "lang": "en",
+      "text": "that it's in a control\nevaluation, kind of think,",
+      "offset": 1085.43,
+      "duration": 3
+    },
+    {
+      "lang": "en",
+      "text": "well if I perform really, really great",
+      "offset": 1088.43,
+      "duration": 4.38
+    },
+    {
+      "lang": "en",
+      "text": "at being misaligned then they'll realize",
+      "offset": 1092.81,
+      "duration": 1.71
+    },
+    {
+      "lang": "en",
+      "text": "that their mitigations aren't sufficient",
+      "offset": 1094.52,
+      "duration": 1.71
+    },
+    {
+      "lang": "en",
+      "text": "and so they'll deploy me\nwith better mitigations",
+      "offset": 1096.23,
+      "duration": 2.61
+    },
+    {
+      "lang": "en",
+      "text": "or won't deploy me at\nall that I don't want.",
+      "offset": 1098.84,
+      "duration": 2.88
+    },
+    {
+      "lang": "en",
+      "text": "So I'll pretend to be really\nincompetent at being misaligned",
+      "offset": 1101.72,
+      "duration": 3.57
+    },
+    {
+      "lang": "en",
+      "text": "in practice A, this requires\nbeing super galaxy brained",
+      "offset": 1105.29,
+      "duration": 2.396
+    },
+    {
+      "lang": "en",
+      "text": "and B is additionally hard\nif you have some examples",
+      "offset": 1107.686,
+      "duration": 5
+    },
+    {
+      "lang": "en",
+      "text": "of really good misalignment",
+      "offset": 1112.94,
+      "duration": 1.38
+    },
+    {
+      "lang": "en",
+      "text": "that you can directly train the model on",
+      "offset": 1114.32,
+      "duration": 1.56
+    },
+    {
+      "lang": "en",
+      "text": "with supervised learning",
+      "offset": 1115.88,
+      "duration": 1.35
+    },
+    {
+      "lang": "en",
+      "text": "because then the model will in fact learn",
+      "offset": 1117.23,
+      "duration": 2.13
+    },
+    {
+      "lang": "en",
+      "text": "to demonstrate those particular examples",
+      "offset": 1119.36,
+      "duration": 1.41
+    },
+    {
+      "lang": "en",
+      "text": "and it will really, really\nstruggle not to generalize",
+      "offset": 1120.77,
+      "duration": 2.04
+    },
+    {
+      "lang": "en",
+      "text": "to being a good general misaligned policy.",
+      "offset": 1122.81,
+      "duration": 2.821
+    },
+    {
+      "lang": "en",
+      "text": "I think one other interesting\nthing about control",
+      "offset": 1125.631,
+      "duration": 3.299
+    },
+    {
+      "lang": "en",
+      "text": "which overlaps with kind of\na lot of your previous work",
+      "offset": 1128.93,
+      "duration": 2.79
+    },
+    {
+      "lang": "en",
+      "text": "on robustness is that a\nlot of the mitigations",
+      "offset": 1131.72,
+      "duration": 2.88
+    },
+    {
+      "lang": "en",
+      "text": "you want to put in place",
+      "offset": 1134.6,
+      "duration": 1.426
+    },
+    {
+      "lang": "en",
+      "text": "or that control would suggest\nputting in place overlap",
+      "offset": 1136.026,
+      "duration": 2.954
+    },
+    {
+      "lang": "en",
+      "text": "with the sorts of mitigations\nthat you put in place",
+      "offset": 1138.98,
+      "duration": 2.1
+    },
+    {
+      "lang": "en",
+      "text": "kind of by default as any\nresponsible AI developer.",
+      "offset": 1141.08,
+      "duration": 2.939
+    },
+    {
+      "lang": "en",
+      "text": "- Yeah, I think we have this\nrecent paper coming out on",
+      "offset": 1144.019,
+      "duration": 3.601
+    },
+    {
+      "lang": "en",
+      "text": "Constitutional Classifiers\nbasically showing",
+      "offset": 1147.62,
+      "duration": 2.85
+    },
+    {
+      "lang": "en",
+      "text": "that if you train other models",
+      "offset": 1150.47,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "to classify whether or not",
+      "offset": 1155.03,
+      "duration": 1.445
+    },
+    {
+      "lang": "en",
+      "text": "a text generation\nmodel's output is harmful",
+      "offset": 1156.475,
+      "duration": 3.612
+    },
+    {
+      "lang": "en",
+      "text": "and if the input to the model is harmful",
+      "offset": 1160.087,
+      "duration": 3.103
+    },
+    {
+      "lang": "en",
+      "text": "or asking for harmful information,",
+      "offset": 1163.19,
+      "duration": 2.372
+    },
+    {
+      "lang": "en",
+      "text": "this is helpful for getting several orders",
+      "offset": 1165.562,
+      "duration": 4.218
+    },
+    {
+      "lang": "en",
+      "text": "of magnitude more robustness to jailbreaks",
+      "offset": 1169.78,
+      "duration": 3.583
+    },
+    {
+      "lang": "en",
+      "text": "which are basically ways of trying",
+      "offset": 1173.363,
+      "duration": 3.567
+    },
+    {
+      "lang": "en",
+      "text": "to elicit harmful information for models.",
+      "offset": 1176.93,
+      "duration": 2.88
+    },
+    {
+      "lang": "en",
+      "text": "So yeah, I mean I think",
+      "offset": 1179.81,
+      "duration": 1.95
+    },
+    {
+      "lang": "en",
+      "text": "for next generation systems we,",
+      "offset": 1181.76,
+      "duration": 2.67
+    },
+    {
+      "lang": "en",
+      "text": "or yeah I think we would want",
+      "offset": 1184.43,
+      "duration": 2.79
+    },
+    {
+      "lang": "en",
+      "text": "to already have these mitigations\nin place for blocking,",
+      "offset": 1187.22,
+      "duration": 4.02
+    },
+    {
+      "lang": "en",
+      "text": "reliably blocking models from\ngiving harmful information",
+      "offset": 1191.24,
+      "duration": 4.062
+    },
+    {
+      "lang": "en",
+      "text": "in very high risk domains",
+      "offset": 1195.302,
+      "duration": 4.278
+    },
+    {
+      "lang": "en",
+      "text": "for doing cyber crime",
+      "offset": 1199.58,
+      "duration": 2.4
+    },
+    {
+      "lang": "en",
+      "text": "or developing very harmful weapons.",
+      "offset": 1201.98,
+      "duration": 3.753
+    },
+    {
+      "lang": "en",
+      "text": "And so I think already\nthere's a lot of incentive",
+      "offset": 1206.75,
+      "duration": 2.88
+    },
+    {
+      "lang": "en",
+      "text": "to deploy these kinds of monitors",
+      "offset": 1209.63,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "to block bad outputs",
+      "offset": 1213.23,
+      "duration": 2.1
+    },
+    {
+      "lang": "en",
+      "text": "and though that same\ninfrastructure can be reused",
+      "offset": 1215.33,
+      "duration": 2.34
+    },
+    {
+      "lang": "en",
+      "text": "for the purposes of\ncontrolling AI systems as well",
+      "offset": 1217.67,
+      "duration": 3.051
+    },
+    {
+      "lang": "en",
+      "text": "where you'd want to use these monitors",
+      "offset": 1220.721,
+      "duration": 2.396
+    },
+    {
+      "lang": "en",
+      "text": "to check if is this model trying",
+      "offset": 1223.117,
+      "duration": 3.103
+    },
+    {
+      "lang": "en",
+      "text": "to copy its weights up\nfrom the data center,",
+      "offset": 1226.22,
+      "duration": 1.59
+    },
+    {
+      "lang": "en",
+      "text": "is it trying to persuade\nsomeone of an incorrect answer",
+      "offset": 1227.81,
+      "duration": 2.578
+    },
+    {
+      "lang": "en",
+      "text": "or to do something harmful\nthat kind of thing.",
+      "offset": 1230.388,
+      "duration": 3.212
+    },
+    {
+      "lang": "en",
+      "text": "- Yeah, totally. I think that a lot",
+      "offset": 1233.6,
+      "duration": 1.126
+    },
+    {
+      "lang": "en",
+      "text": "of the primitives in control",
+      "offset": 1234.726,
+      "duration": 1.787
+    },
+    {
+      "lang": "en",
+      "text": "that you were talking\nabout earlier monitoring",
+      "offset": 1236.513,
+      "duration": 2.127
+    },
+    {
+      "lang": "en",
+      "text": "from a weak model or\nmonitoring from a strong model",
+      "offset": 1238.64,
+      "duration": 3.06
+    },
+    {
+      "lang": "en",
+      "text": "or if the weak model flags it delegating",
+      "offset": 1241.7,
+      "duration": 2.01
+    },
+    {
+      "lang": "en",
+      "text": "to a strong model are\nexactly the same sort",
+      "offset": 1243.71,
+      "duration": 2.13
+    },
+    {
+      "lang": "en",
+      "text": "of primitives you were looking at",
+      "offset": 1245.84,
+      "duration": 1.11
+    },
+    {
+      "lang": "en",
+      "text": "to solve this adversarial\nrobustness problem.",
+      "offset": 1246.95,
+      "duration": 2.46
+    },
+    {
+      "lang": "en",
+      "text": "But just as models get more",
+      "offset": 1249.41,
+      "duration": 1.44
+    },
+    {
+      "lang": "en",
+      "text": "and more capable we might\nwant to also use them",
+      "offset": 1250.85,
+      "duration": 2.006
+    },
+    {
+      "lang": "en",
+      "text": "to monitor the model",
+      "offset": 1252.856,
+      "duration": 1.474
+    },
+    {
+      "lang": "en",
+      "text": "kind of for autonomous\nrisks of misalignment",
+      "offset": 1254.33,
+      "duration": 2.16
+    },
+    {
+      "lang": "en",
+      "text": "rather than just kind of misuse risks.",
+      "offset": 1256.49,
+      "duration": 2.67
+    },
+    {
+      "lang": "en",
+      "text": "And so having got really\ngood at them in this pretty",
+      "offset": 1259.16,
+      "duration": 2.43
+    },
+    {
+      "lang": "en",
+      "text": "tough trading ground",
+      "offset": 1261.59,
+      "duration": 1.025
+    },
+    {
+      "lang": "en",
+      "text": "of avoiding people\njailbreaking your model is",
+      "offset": 1262.615,
+      "duration": 3.295
+    },
+    {
+      "lang": "en",
+      "text": "actually there's a lot of\ntransfer from that to control.",
+      "offset": 1265.91,
+      "duration": 2.43
+    },
+    {
+      "lang": "en",
+      "text": "I think another setting where\nthis is very clear is in",
+      "offset": 1268.34,
+      "duration": 2.671
+    },
+    {
+      "lang": "en",
+      "text": "security.",
+      "offset": 1271.011,
+      "duration": 1.364
+    },
+    {
+      "lang": "en",
+      "text": "So for for many reasons\nit's very important",
+      "offset": 1272.375,
+      "duration": 4.515
+    },
+    {
+      "lang": "en",
+      "text": "for AI labs Anthropic",
+      "offset": 1276.89,
+      "duration": 1.71
+    },
+    {
+      "lang": "en",
+      "text": "to have kind of robust internal security",
+      "offset": 1278.6,
+      "duration": 2.181
+    },
+    {
+      "lang": "en",
+      "text": "that stop people from kind of exploiting",
+      "offset": 1280.781,
+      "duration": 2.799
+    },
+    {
+      "lang": "en",
+      "text": "or inserting vulnerabilities into our code",
+      "offset": 1283.58,
+      "duration": 2.04
+    },
+    {
+      "lang": "en",
+      "text": "that's currently really\nuseful for avoiding",
+      "offset": 1285.62,
+      "duration": 2.34
+    },
+    {
+      "lang": "en",
+      "text": "kind of bad actors\ninserting vulnerabilities",
+      "offset": 1287.96,
+      "duration": 3
+    },
+    {
+      "lang": "en",
+      "text": "but at some point as models write more",
+      "offset": 1290.96,
+      "duration": 1.977
+    },
+    {
+      "lang": "en",
+      "text": "and more of our code,",
+      "offset": 1292.937,
+      "duration": 1.593
+    },
+    {
+      "lang": "en",
+      "text": "those are gonna be the same mitigations",
+      "offset": 1294.53,
+      "duration": 0.87
+    },
+    {
+      "lang": "en",
+      "text": "that are protecting us from a potentially",
+      "offset": 1295.4,
+      "duration": 2.64
+    },
+    {
+      "lang": "en",
+      "text": "misaligned Claude inserting",
+      "offset": 1298.04,
+      "duration": 2.03
+    },
+    {
+      "lang": "en",
+      "text": "very similar vulnerabilities\ninto our code.",
+      "offset": 1300.07,
+      "duration": 1.977
+    },
+    {
+      "lang": "en",
+      "text": "And so one of the things",
+      "offset": 1302.047,
+      "duration": 1.723
+    },
+    {
+      "lang": "en",
+      "text": "that I think is pretty\npromising about control is",
+      "offset": 1303.77,
+      "duration": 2.73
+    },
+    {
+      "lang": "en",
+      "text": "that in practice the\nthings you would wanna do",
+      "offset": 1306.5,
+      "duration": 2.31
+    },
+    {
+      "lang": "en",
+      "text": "to implement it really well,",
+      "offset": 1308.81,
+      "duration": 1.35
+    },
+    {
+      "lang": "en",
+      "text": "there's substantial overlap with things",
+      "offset": 1310.16,
+      "duration": 1.74
+    },
+    {
+      "lang": "en",
+      "text": "that we really should be doing already.",
+      "offset": 1311.9,
+      "duration": 1.44
+    },
+    {
+      "lang": "en",
+      "text": "- Yeah I think that's right.",
+      "offset": 1313.34,
+      "duration": 0.96
+    },
+    {
+      "lang": "en",
+      "text": "I think another,",
+      "offset": 1314.3,
+      "duration": 1.14
+    },
+    {
+      "lang": "en",
+      "text": "I think intuitive framing\nfor why you would want",
+      "offset": 1315.44,
+      "duration": 2.27
+    },
+    {
+      "lang": "en",
+      "text": "to do control is just insider risk",
+      "offset": 1317.71,
+      "duration": 2.65
+    },
+    {
+      "lang": "en",
+      "text": "where this is a common concern",
+      "offset": 1320.36,
+      "duration": 3.3
+    },
+    {
+      "lang": "en",
+      "text": "that if you're running an\norganization you're worried",
+      "offset": 1323.66,
+      "duration": 1.92
+    },
+    {
+      "lang": "en",
+      "text": "that especially a large one,",
+      "offset": 1325.58,
+      "duration": 1.44
+    },
+    {
+      "lang": "en",
+      "text": "you're worried that's some\nfraction of your employees",
+      "offset": 1327.02,
+      "duration": 1.56
+    },
+    {
+      "lang": "en",
+      "text": "are maybe trying to subvert your company",
+      "offset": 1328.58,
+      "duration": 2.07
+    },
+    {
+      "lang": "en",
+      "text": "or steal the IP that's very important",
+      "offset": 1330.65,
+      "duration": 2.77
+    },
+    {
+      "lang": "en",
+      "text": "algorithmic secrets",
+      "offset": 1334.723,
+      "duration": 1.927
+    },
+    {
+      "lang": "en",
+      "text": "or yeah bottle weights for example",
+      "offset": 1336.65,
+      "duration": 2.719
+    },
+    {
+      "lang": "en",
+      "text": "in the case of ai which\nare expensive to produce",
+      "offset": 1339.369,
+      "duration": 2.845
+    },
+    {
+      "lang": "en",
+      "text": "and I think there's an yeah basically",
+      "offset": 1342.214,
+      "duration": 3.229
+    },
+    {
+      "lang": "en",
+      "text": "those are very important\nmitigation mitigations",
+      "offset": 1345.443,
+      "duration": 3.057
+    },
+    {
+      "lang": "en",
+      "text": "that companies will already be",
+      "offset": 1348.5,
+      "duration": 1.146
+    },
+    {
+      "lang": "en",
+      "text": "pretty well incentivized to employee",
+      "offset": 1349.646,
+      "duration": 2.425
+    },
+    {
+      "lang": "en",
+      "text": "and a lot of those same mitigations",
+      "offset": 1352.071,
+      "duration": 2.609
+    },
+    {
+      "lang": "en",
+      "text": "you would also want,",
+      "offset": 1354.68,
+      "duration": 1.29
+    },
+    {
+      "lang": "en",
+      "text": "you basically want to treat your model",
+      "offset": 1355.97,
+      "duration": 1.56
+    },
+    {
+      "lang": "en",
+      "text": "as a potential insider threat in the case",
+      "offset": 1357.53,
+      "duration": 2.46
+    },
+    {
+      "lang": "en",
+      "text": "that you don't actually have good evidence",
+      "offset": 1359.99,
+      "duration": 2.22
+    },
+    {
+      "lang": "en",
+      "text": "that your model is aligned.",
+      "offset": 1362.21,
+      "duration": 1.5
+    },
+    {
+      "lang": "en",
+      "text": "And so all of those same\nintervention interventions",
+      "offset": 1363.71,
+      "duration": 2.874
+    },
+    {
+      "lang": "en",
+      "text": "having restrictions on\nwhich employees can access",
+      "offset": 1366.584,
+      "duration": 2.556
+    },
+    {
+      "lang": "en",
+      "text": "the model weights, which\nemployees can access",
+      "offset": 1369.14,
+      "duration": 1.149
+    },
+    {
+      "lang": "en",
+      "text": "certain algorithmic secrets",
+      "offset": 1370.289,
+      "duration": 2.324
+    },
+    {
+      "lang": "en",
+      "text": "under what kinds of monitoring can you do,",
+      "offset": 1372.613,
+      "duration": 4.777
+    },
+    {
+      "lang": "en",
+      "text": "certain things",
+      "offset": 1377.39,
+      "duration": 0.833
+    },
+    {
+      "lang": "en",
+      "text": "that do allow you to to\naccess the model weights,",
+      "offset": 1378.223,
+      "duration": 2.857
+    },
+    {
+      "lang": "en",
+      "text": "those kinds of things I think they all,",
+      "offset": 1381.08,
+      "duration": 2.097
+    },
+    {
+      "lang": "en",
+      "text": "a lot of them transfer to models",
+      "offset": 1383.177,
+      "duration": 3.033
+    },
+    {
+      "lang": "en",
+      "text": "that you might be worried about.",
+      "offset": 1386.21,
+      "duration": 1.56
+    },
+    {
+      "lang": "en",
+      "text": "- So I have a skeptical\na skeptics question",
+      "offset": 1387.77,
+      "duration": 2.317
+    },
+    {
+      "lang": "en",
+      "text": "for you even which is, so\nyou do the control eval",
+      "offset": 1390.087,
+      "duration": 4.053
+    },
+    {
+      "lang": "en",
+      "text": "and you work out that your monitoring",
+      "offset": 1394.14,
+      "duration": 2.81
+    },
+    {
+      "lang": "en",
+      "text": "or your interested monitoring is good,",
+      "offset": 1396.95,
+      "duration": 2.022
+    },
+    {
+      "lang": "en",
+      "text": "for we check that you know",
+      "offset": 1398.972,
+      "duration": 2.681
+    },
+    {
+      "lang": "en",
+      "text": "Haiku can be used as a\npro as a monitor for sonet",
+      "offset": 1401.653,
+      "duration": 4.897
+    },
+    {
+      "lang": "en",
+      "text": "but then when you come out with you know",
+      "offset": 1406.55,
+      "duration": 2.76
+    },
+    {
+      "lang": "en",
+      "text": "the latest new model, how do we guarantee",
+      "offset": 1409.31,
+      "duration": 2.73
+    },
+    {
+      "lang": "en",
+      "text": "that the monitoring still\nworks at this point?",
+      "offset": 1412.04,
+      "duration": 3.257
+    },
+    {
+      "lang": "en",
+      "text": "- I mean I guess you would,\nyou would rerun your evaluation",
+      "offset": 1415.297,
+      "duration": 3.163
+    },
+    {
+      "lang": "en",
+      "text": "so you would take your latest model",
+      "offset": 1418.46,
+      "duration": 1.98
+    },
+    {
+      "lang": "en",
+      "text": "that is untrusted explicitly\ntrain it to undermine",
+      "offset": 1420.44,
+      "duration": 3.09
+    },
+    {
+      "lang": "en",
+      "text": "the, any monitoring from other systems",
+      "offset": 1423.53,
+      "duration": 2.713
+    },
+    {
+      "lang": "en",
+      "text": "that you have in place the weaker models",
+      "offset": 1426.243,
+      "duration": 2.8
+    },
+    {
+      "lang": "en",
+      "text": "and human review and then just\nand your security mitigations",
+      "offset": 1429.043,
+      "duration": 4.057
+    },
+    {
+      "lang": "en",
+      "text": "and see can the model\nstill do the threat model",
+      "offset": 1433.1,
+      "duration": 3.42
+    },
+    {
+      "lang": "en",
+      "text": "you're worried about\ndespite those mitigations",
+      "offset": 1436.52,
+      "duration": 1.92
+    },
+    {
+      "lang": "en",
+      "text": "and yeah your results could,",
+      "offset": 1438.44,
+      "duration": 3.1
+    },
+    {
+      "lang": "en",
+      "text": "could change at which point",
+      "offset": 1441.54,
+      "duration": 2.03
+    },
+    {
+      "lang": "en",
+      "text": "your rough infrastructure\nmay remain the same.",
+      "offset": 1443.57,
+      "duration": 2.37
+    },
+    {
+      "lang": "en",
+      "text": "you could still use\nyour trusted monitoring",
+      "offset": 1445.94,
+      "duration": 1.98
+    },
+    {
+      "lang": "en",
+      "text": "and your human review but you might need",
+      "offset": 1447.92,
+      "duration": 1.59
+    },
+    {
+      "lang": "en",
+      "text": "to be much more conservative",
+      "offset": 1449.51,
+      "duration": 1.47
+    },
+    {
+      "lang": "en",
+      "text": "about the amount of traffic",
+      "offset": 1450.98,
+      "duration": 1.92
+    },
+    {
+      "lang": "en",
+      "text": "you can help with with your latest model.",
+      "offset": 1452.9,
+      "duration": 1.62
+    },
+    {
+      "lang": "en",
+      "text": "So you could set the threshold",
+      "offset": 1454.52,
+      "duration": 1.413
+    },
+    {
+      "lang": "en",
+      "text": "for what what traffic is is blocked",
+      "offset": 1455.933,
+      "duration": 4.467
+    },
+    {
+      "lang": "en",
+      "text": "to be much more conservative",
+      "offset": 1460.4,
+      "duration": 1.499
+    },
+    {
+      "lang": "en",
+      "text": "and so that may mean",
+      "offset": 1461.899,
+      "duration": 1.801
+    },
+    {
+      "lang": "en",
+      "text": "that you actually can only support,",
+      "offset": 1463.7,
+      "duration": 2.183
+    },
+    {
+      "lang": "en",
+      "text": "you know half of the traffic",
+      "offset": 1465.883,
+      "duration": 3.067
+    },
+    {
+      "lang": "en",
+      "text": "and actually you have to\nblock many of the requests",
+      "offset": 1468.95,
+      "duration": 2.552
+    },
+    {
+      "lang": "en",
+      "text": "but at least that let you deploy the model",
+      "offset": 1471.502,
+      "duration": 2.728
+    },
+    {
+      "lang": "en",
+      "text": "to some extent you can get more evidence",
+      "offset": 1474.23,
+      "duration": 2.04
+    },
+    {
+      "lang": "en",
+      "text": "about whether or not the\nmodel is causing some sus,",
+      "offset": 1476.27,
+      "duration": 2.34
+    },
+    {
+      "lang": "en",
+      "text": "doing a lot of suspicious behavior if you,",
+      "offset": 1478.61,
+      "duration": 2.334
+    },
+    {
+      "lang": "en",
+      "text": "similar to the adaptive\nyeah you can, yeah you,",
+      "offset": 1480.944,
+      "duration": 3.811
+    },
+    {
+      "lang": "en",
+      "text": "you add a paper on adapting\nthe control mitigations online",
+      "offset": 1484.755,
+      "duration": 4.325
+    },
+    {
+      "lang": "en",
+      "text": "during deployment you\ncan use that approach",
+      "offset": 1489.08,
+      "duration": 3.24
+    },
+    {
+      "lang": "en",
+      "text": "to see if you've deployed your model",
+      "offset": 1492.32,
+      "duration": 2.85
+    },
+    {
+      "lang": "en",
+      "text": "for some amount of time",
+      "offset": 1495.17,
+      "duration": 2.01
+    },
+    {
+      "lang": "en",
+      "text": "each individual example is",
+      "offset": 1497.18,
+      "duration": 1.8
+    },
+    {
+      "lang": "en",
+      "text": "some information about how\nconservative you should be",
+      "offset": 1498.98,
+      "duration": 3.132
+    },
+    {
+      "lang": "en",
+      "text": "or not with your control measures",
+      "offset": 1502.112,
+      "duration": 2.778
+    },
+    {
+      "lang": "en",
+      "text": "and so you can use that information",
+      "offset": 1504.89,
+      "duration": 1.809
+    },
+    {
+      "lang": "en",
+      "text": "to make your control mitigations",
+      "offset": 1506.699,
+      "duration": 2.288
+    },
+    {
+      "lang": "en",
+      "text": "less and less conservative,",
+      "offset": 1508.987,
+      "duration": 1.813
+    },
+    {
+      "lang": "en",
+      "text": "have less and less of a\nconservative threshold",
+      "offset": 1510.8,
+      "duration": 2.25
+    },
+    {
+      "lang": "en",
+      "text": "for which data gets flagged",
+      "offset": 1513.05,
+      "duration": 1.23
+    },
+    {
+      "lang": "en",
+      "text": "or used shown to users.",
+      "offset": 1514.28,
+      "duration": 3.478
+    },
+    {
+      "lang": "en",
+      "text": "So yeah I think that would\nprobably be the approach.",
+      "offset": 1517.758,
+      "duration": 2.822
+    },
+    {
+      "lang": "en",
+      "text": "What one practical approach?",
+      "offset": 1520.58,
+      "duration": 1.533
+    },
+    {
+      "lang": "en",
+      "text": "- Yeah I mean in practice we're trying",
+      "offset": 1522.113,
+      "duration": 1.737
+    },
+    {
+      "lang": "en",
+      "text": "to get pretty good at running\ncontrol evaluations quickly",
+      "offset": 1523.85,
+      "duration": 2.58
+    },
+    {
+      "lang": "en",
+      "text": "as we develop new models.",
+      "offset": 1526.43,
+      "duration": 1.29
+    },
+    {
+      "lang": "en",
+      "text": "So some of the stuff\nthat I've been working",
+      "offset": 1527.72,
+      "duration": 1.08
+    },
+    {
+      "lang": "en",
+      "text": "with the alignment\nevaluations team we have",
+      "offset": 1528.8,
+      "duration": 2.82
+    },
+    {
+      "lang": "en",
+      "text": "this kind of business\ndecision sabotage eval,",
+      "offset": 1531.62,
+      "duration": 2.19
+    },
+    {
+      "lang": "en",
+      "text": "this code sabotage eval",
+      "offset": 1533.81,
+      "duration": 1.68
+    },
+    {
+      "lang": "en",
+      "text": "also some undermining\noversight evaluations",
+      "offset": 1535.49,
+      "duration": 2.389
+    },
+    {
+      "lang": "en",
+      "text": "and those are in practice",
+      "offset": 1537.879,
+      "duration": 1.751
+    },
+    {
+      "lang": "en",
+      "text": "actually control evaluations",
+      "offset": 1539.63,
+      "duration": 1.83
+    },
+    {
+      "lang": "en",
+      "text": "just with very small amounts of monitoring",
+      "offset": 1541.46,
+      "duration": 2.19
+    },
+    {
+      "lang": "en",
+      "text": "that we run before all\nmajor model releases.",
+      "offset": 1543.65,
+      "duration": 3
+    },
+    {
+      "lang": "en",
+      "text": "We kind of use the results\nin those evaluations",
+      "offset": 1546.65,
+      "duration": 3.06
+    },
+    {
+      "lang": "en",
+      "text": "as a canary test",
+      "offset": 1549.71,
+      "duration": 1.89
+    },
+    {
+      "lang": "en",
+      "text": "for how good the malls are at sabotage",
+      "offset": 1551.6,
+      "duration": 1.62
+    },
+    {
+      "lang": "en",
+      "text": "currently these are basically\ncoming back negative",
+      "offset": 1553.22,
+      "duration": 3.06
+    },
+    {
+      "lang": "en",
+      "text": "at the minute",
+      "offset": 1556.28,
+      "duration": 0.833
+    },
+    {
+      "lang": "en",
+      "text": "because models even",
+      "offset": 1557.113,
+      "duration": 0.833
+    },
+    {
+      "lang": "en",
+      "text": "with minimal monitoring interventions",
+      "offset": 1557.946,
+      "duration": 0.875
+    },
+    {
+      "lang": "en",
+      "text": "in place aren't really that competent",
+      "offset": 1558.821,
+      "duration": 2.951
+    },
+    {
+      "lang": "en",
+      "text": "at doing kind of really creative sabotage",
+      "offset": 1561.772,
+      "duration": 3.508
+    },
+    {
+      "lang": "en",
+      "text": "or sabotage that requires\na lot of planning.",
+      "offset": 1565.28,
+      "duration": 1.74
+    },
+    {
+      "lang": "en",
+      "text": "- So I guess this leads on",
+      "offset": 1567.02,
+      "duration": 1.41
+    },
+    {
+      "lang": "en",
+      "text": "to an another question",
+      "offset": 1568.43,
+      "duration": 1.74
+    },
+    {
+      "lang": "en",
+      "text": "which is what are the\nopen questions in control",
+      "offset": 1570.17,
+      "duration": 2.64
+    },
+    {
+      "lang": "en",
+      "text": "that you're excited to work on",
+      "offset": 1572.81,
+      "duration": 1.41
+    },
+    {
+      "lang": "en",
+      "text": "or excited for other people to work on?",
+      "offset": 1574.22,
+      "duration": 1.86
+    },
+    {
+      "lang": "en",
+      "text": "- Yeah so I think one of\nthe biggest issues for me",
+      "offset": 1576.08,
+      "duration": 3.27
+    },
+    {
+      "lang": "en",
+      "text": "and we maybe touched on it before is",
+      "offset": 1579.35,
+      "duration": 2.1
+    },
+    {
+      "lang": "en",
+      "text": "that building control\nevaluations is really hard",
+      "offset": 1581.45,
+      "duration": 3.93
+    },
+    {
+      "lang": "en",
+      "text": "especially because we ideally want",
+      "offset": 1585.38,
+      "duration": 3.06
+    },
+    {
+      "lang": "en",
+      "text": "our control evaluations to be",
+      "offset": 1588.44,
+      "duration": 1.08
+    },
+    {
+      "lang": "en",
+      "text": "as similar as possible to\nthe actual deployment setting",
+      "offset": 1589.52,
+      "duration": 2.55
+    },
+    {
+      "lang": "en",
+      "text": "and often the lessons we\nlearn if the evaluations are",
+      "offset": 1592.07,
+      "duration": 2.778
+    },
+    {
+      "lang": "en",
+      "text": "too different are qualitatively wrong",
+      "offset": 1594.848,
+      "duration": 3.612
+    },
+    {
+      "lang": "en",
+      "text": "and so one thing",
+      "offset": 1598.46,
+      "duration": 1.47
+    },
+    {
+      "lang": "en",
+      "text": "that I'm really excited\nabout is just building",
+      "offset": 1599.93,
+      "duration": 2.13
+    },
+    {
+      "lang": "en",
+      "text": "really great evaluation data sets",
+      "offset": 1602.06,
+      "duration": 1.852
+    },
+    {
+      "lang": "en",
+      "text": "and that is not the sexiest work out there",
+      "offset": 1603.912,
+      "duration": 2.828
+    },
+    {
+      "lang": "en",
+      "text": "but it's super valuable from an ML",
+      "offset": 1606.74,
+      "duration": 2.61
+    },
+    {
+      "lang": "en",
+      "text": "and I think people have\nlearned this lesson time",
+      "offset": 1609.35,
+      "duration": 2.01
+    },
+    {
+      "lang": "en",
+      "text": "and again across the field",
+      "offset": 1611.36,
+      "duration": 1.08
+    },
+    {
+      "lang": "en",
+      "text": "it's once you have a benchmark",
+      "offset": 1612.44,
+      "duration": 2.94
+    },
+    {
+      "lang": "en",
+      "text": "to optimize against\nmaking the number go up",
+      "offset": 1615.38,
+      "duration": 2.72
+    },
+    {
+      "lang": "en",
+      "text": "or making the measurements\nand pushing on that is easy",
+      "offset": 1618.1,
+      "duration": 2.301
+    },
+    {
+      "lang": "en",
+      "text": "but making the data set that really tracks",
+      "offset": 1620.401,
+      "duration": 3.769
+    },
+    {
+      "lang": "en",
+      "text": "what you care about is hard,",
+      "offset": 1624.17,
+      "duration": 1.86
+    },
+    {
+      "lang": "en",
+      "text": "concretely probably what\nthis looks is taking",
+      "offset": 1626.03,
+      "duration": 2.31
+    },
+    {
+      "lang": "en",
+      "text": "some of the threat models that\nwe are most worried about.",
+      "offset": 1628.34,
+      "duration": 1.77
+    },
+    {
+      "lang": "en",
+      "text": "So I think Ethan mentioned\nsome of 'em before",
+      "offset": 1630.11,
+      "duration": 2.25
+    },
+    {
+      "lang": "en",
+      "text": "so there's models copying themselves",
+      "offset": 1632.36,
+      "duration": 2.28
+    },
+    {
+      "lang": "en",
+      "text": "out of our data centers or models",
+      "offset": 1634.64,
+      "duration": 1.95
+    },
+    {
+      "lang": "en",
+      "text": "and setting vulnerabilities into code",
+      "offset": 1636.59,
+      "duration": 1.71
+    },
+    {
+      "lang": "en",
+      "text": "taking these settings,",
+      "offset": 1638.3,
+      "duration": 0.9
+    },
+    {
+      "lang": "en",
+      "text": "trying to make really good",
+      "offset": 1639.2,
+      "duration": 1.315
+    },
+    {
+      "lang": "en",
+      "text": "synthetic versions of them",
+      "offset": 1640.515,
+      "duration": 2.045
+    },
+    {
+      "lang": "en",
+      "text": "and then setting molds\nloose in these environments",
+      "offset": 1642.56,
+      "duration": 2.04
+    },
+    {
+      "lang": "en",
+      "text": "and seeing what forms\nof sabotage they can do,",
+      "offset": 1644.6,
+      "duration": 3
+    },
+    {
+      "lang": "en",
+      "text": "what sorts of\nvulnerabilities we can catch.",
+      "offset": 1647.6,
+      "duration": 3
+    },
+    {
+      "lang": "en",
+      "text": "- Yeah definitely if we have\na bunch of these settings",
+      "offset": 1650.6,
+      "duration": 1.65
+    },
+    {
+      "lang": "en",
+      "text": "I think there's a lot of interesting stuff",
+      "offset": 1652.25,
+      "duration": 1.5
+    },
+    {
+      "lang": "en",
+      "text": "that could be done.",
+      "offset": 1653.75,
+      "duration": 0.833
+    },
+    {
+      "lang": "en",
+      "text": "For example, we could have\npretty general insights",
+      "offset": 1654.583,
+      "duration": 3.277
+    },
+    {
+      "lang": "en",
+      "text": "about in general on code,",
+      "offset": 1657.86,
+      "duration": 3.51
+    },
+    {
+      "lang": "en",
+      "text": "trusted monitoring works better",
+      "offset": 1661.37,
+      "duration": 1.17
+    },
+    {
+      "lang": "en",
+      "text": "than untrusted monitoring or vice versa.",
+      "offset": 1662.54,
+      "duration": 2.354
+    },
+    {
+      "lang": "en",
+      "text": "You could also do things scaling trends",
+      "offset": 1664.894,
+      "duration": 2.206
+    },
+    {
+      "lang": "en",
+      "text": "and see I guess in,",
+      "offset": 1667.1,
+      "duration": 2.42
+    },
+    {
+      "lang": "en",
+      "text": "or going back to your question earlier,",
+      "offset": 1669.52,
+      "duration": 1.99
+    },
+    {
+      "lang": "en",
+      "text": "you could see in general if there's this,",
+      "offset": 1671.51,
+      "duration": 3.344
+    },
+    {
+      "lang": "en",
+      "text": "the trusted model and\nuntrusted model are trained",
+      "offset": 1674.854,
+      "duration": 2.176
+    },
+    {
+      "lang": "en",
+      "text": "with a a 4x compute gap that's sufficient",
+      "offset": 1677.03,
+      "duration": 3.179
+    },
+    {
+      "lang": "en",
+      "text": "for controlling the untrusted model.",
+      "offset": 1680.209,
+      "duration": 3.484
+    },
+    {
+      "lang": "en",
+      "text": "If you could get,",
+      "offset": 1684.56,
+      "duration": 0.833
+    },
+    {
+      "lang": "en",
+      "text": "and that that four x number",
+      "offset": 1685.393,
+      "duration": 1.807
+    },
+    {
+      "lang": "en",
+      "text": "is maybe constant across model scales",
+      "offset": 1687.2,
+      "duration": 2.01
+    },
+    {
+      "lang": "en",
+      "text": "or something that.",
+      "offset": 1689.21,
+      "duration": 0.833
+    },
+    {
+      "lang": "en",
+      "text": "if you could get some kind of",
+      "offset": 1690.043,
+      "duration": 2.077
+    },
+    {
+      "lang": "en",
+      "text": "general insight that,",
+      "offset": 1692.12,
+      "duration": 1.17
+    },
+    {
+      "lang": "en",
+      "text": "I think that would be quite useful.",
+      "offset": 1693.29,
+      "duration": 1.75
+    },
+    {
+      "lang": "en",
+      "text": "I think in general I think\nthere's a lot of good work",
+      "offset": 1696.5,
+      "duration": 3.593
+    },
+    {
+      "lang": "en",
+      "text": "on just",
+      "offset": 1700.093,
+      "duration": 0.833
+    },
+    {
+      "lang": "en",
+      "text": "how do you train really good monitors?",
+      "offset": 1700.926,
+      "duration": 3.284
+    },
+    {
+      "lang": "en",
+      "text": "Ideally you want, I mean I\nthink Constitutional Classifiers",
+      "offset": 1704.21,
+      "duration": 2.19
+    },
+    {
+      "lang": "en",
+      "text": "make some progress here",
+      "offset": 1706.4,
+      "duration": 1.32
+    },
+    {
+      "lang": "en",
+      "text": "but there's definitely a lot more to do",
+      "offset": 1707.72,
+      "duration": 1.44
+    },
+    {
+      "lang": "en",
+      "text": "but I think Constitutional\nClassifiers make",
+      "offset": 1709.16,
+      "duration": 2.7
+    },
+    {
+      "lang": "en",
+      "text": "some step towards having a push button",
+      "offset": 1711.86,
+      "duration": 3.22
+    },
+    {
+      "lang": "en",
+      "text": "way to get a relatively robust classifier",
+      "offset": 1716.12,
+      "duration": 2.71
+    },
+    {
+      "lang": "en",
+      "text": "and in that you just kind of",
+      "offset": 1720.11,
+      "duration": 3.15
+    },
+    {
+      "lang": "en",
+      "text": "write your constitution of list of things",
+      "offset": 1723.26,
+      "duration": 1.503
+    },
+    {
+      "lang": "en",
+      "text": "that you want to block,",
+      "offset": 1724.763,
+      "duration": 1.197
+    },
+    {
+      "lang": "en",
+      "text": "list of things you don't wanna block,",
+      "offset": 1725.96,
+      "duration": 1.74
+    },
+    {
+      "lang": "en",
+      "text": "generate the data with your LLMs",
+      "offset": 1727.7,
+      "duration": 2.58
+    },
+    {
+      "lang": "en",
+      "text": "and then train your classifier",
+      "offset": 1730.28,
+      "duration": 1.65
+    },
+    {
+      "lang": "en",
+      "text": "and now you have your monitor.",
+      "offset": 1731.93,
+      "duration": 2.37
+    },
+    {
+      "lang": "en",
+      "text": "I think in the future\nwe'll need those monitors",
+      "offset": 1734.3,
+      "duration": 4.14
+    },
+    {
+      "lang": "en",
+      "text": "to be I guess robust to\neven the policy itself",
+      "offset": 1738.44,
+      "duration": 5
+    },
+    {
+      "lang": "en",
+      "text": "trying to undermine the monitor",
+      "offset": 1744.35,
+      "duration": 2.643
+    },
+    {
+      "lang": "en",
+      "text": "which is potentially even a harder setting",
+      "offset": 1746.993,
+      "duration": 3.537
+    },
+    {
+      "lang": "en",
+      "text": "than the jailbreaker bus's\nsetting where it's just the human",
+      "offset": 1750.53,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "that's trying to undermine the system.",
+      "offset": 1754.61,
+      "duration": 1.41
+    },
+    {
+      "lang": "en",
+      "text": "But you can have your classifier\nthat checks the input,",
+      "offset": 1756.02,
+      "duration": 4.65
+    },
+    {
+      "lang": "en",
+      "text": "the model that generates\nthe text is also kind of",
+      "offset": 1760.67,
+      "duration": 2.49
+    },
+    {
+      "lang": "en",
+      "text": "on your side and also\nneeds to be jailbroken",
+      "offset": 1763.16,
+      "duration": 2.4
+    },
+    {
+      "lang": "en",
+      "text": "and then also you have\nan output classifier",
+      "offset": 1765.56,
+      "duration": 2.07
+    },
+    {
+      "lang": "en",
+      "text": "and so there's in some sense three models",
+      "offset": 1767.63,
+      "duration": 1.86
+    },
+    {
+      "lang": "en",
+      "text": "that are on your side that\ncan catch all these issues.",
+      "offset": 1769.49,
+      "duration": 2.637
+    },
+    {
+      "lang": "en",
+      "text": "In this case the model is\ngenerating the text itself,",
+      "offset": 1772.127,
+      "duration": 3.063
+    },
+    {
+      "lang": "en",
+      "text": "maybe trying to undermine the monitor.",
+      "offset": 1775.19,
+      "duration": 1.47
+    },
+    {
+      "lang": "en",
+      "text": "So just looking at that setting directly",
+      "offset": 1776.66,
+      "duration": 3.33
+    },
+    {
+      "lang": "en",
+      "text": "and seeing can we get\nreally robust classifiers",
+      "offset": 1779.99,
+      "duration": 2.76
+    },
+    {
+      "lang": "en",
+      "text": "for detecting this bad behavior.",
+      "offset": 1782.75,
+      "duration": 1.6
+    },
+    {
+      "lang": "en",
+      "text": "The other thing you could do,",
+      "offset": 1785.87,
+      "duration": 1.26
+    },
+    {
+      "lang": "en",
+      "text": "I mean you can even directly train I think",
+      "offset": 1787.13,
+      "duration": 3.87
+    },
+    {
+      "lang": "en",
+      "text": "an example of a project\nthat would be exciting here",
+      "offset": 1791,
+      "duration": 2.1
+    },
+    {
+      "lang": "en",
+      "text": "is just directly train some larger model",
+      "offset": 1793.1,
+      "duration": 4.03
+    },
+    {
+      "lang": "en",
+      "text": "to produce text",
+      "offset": 1798.62,
+      "duration": 4.041
+    },
+    {
+      "lang": "en",
+      "text": "that is effective at subtly tricking",
+      "offset": 1802.661,
+      "duration": 4.736
+    },
+    {
+      "lang": "en",
+      "text": "or sabotaging work despite there being",
+      "offset": 1807.397,
+      "duration": 3.583
+    },
+    {
+      "lang": "en",
+      "text": "a smaller model monitoring it",
+      "offset": 1810.98,
+      "duration": 1.92
+    },
+    {
+      "lang": "en",
+      "text": "and then you just do a red\nteam blue team game here",
+      "offset": 1812.9,
+      "duration": 3.72
+    },
+    {
+      "lang": "en",
+      "text": "where you train the policy\nto be really good at that.",
+      "offset": 1816.62,
+      "duration": 2.52
+    },
+    {
+      "lang": "en",
+      "text": "You then train the\nmonitor on those samples",
+      "offset": 1819.14,
+      "duration": 2.37
+    },
+    {
+      "lang": "en",
+      "text": "to detect if this output\nis sabotaging or not.",
+      "offset": 1821.51,
+      "duration": 4.091
+    },
+    {
+      "lang": "en",
+      "text": "Then once you have this improved monitor,",
+      "offset": 1825.601,
+      "duration": 3.109
+    },
+    {
+      "lang": "en",
+      "text": "you retrain the policy",
+      "offset": 1828.71,
+      "duration": 1.52
+    },
+    {
+      "lang": "en",
+      "text": "to be more effective at\nundermining this improved monitor",
+      "offset": 1830.23,
+      "duration": 4.18
+    },
+    {
+      "lang": "en",
+      "text": "and you go back and forth",
+      "offset": 1834.41,
+      "duration": 1.56
+    },
+    {
+      "lang": "en",
+      "text": "and I think if you have\na really good pipeline",
+      "offset": 1835.97,
+      "duration": 2.37
+    },
+    {
+      "lang": "en",
+      "text": "for doing that, that could\npotentially just output",
+      "offset": 1838.34,
+      "duration": 3.223
+    },
+    {
+      "lang": "en",
+      "text": "a really good yeah give you,\ngive you a really good monitor",
+      "offset": 1841.563,
+      "duration": 4.098
+    },
+    {
+      "lang": "en",
+      "text": "that is less capable",
+      "offset": 1845.661,
+      "duration": 2.729
+    },
+    {
+      "lang": "en",
+      "text": "but can still catch\nsubtle issues from your",
+      "offset": 1848.39,
+      "duration": 2.34
+    },
+    {
+      "lang": "en",
+      "text": "more capable model.",
+      "offset": 1850.73,
+      "duration": 1.62
+    },
+    {
+      "lang": "en",
+      "text": "So that would be an example\nof a general approach.",
+      "offset": 1852.35,
+      "duration": 2.25
+    },
+    {
+      "lang": "en",
+      "text": "I think that would be\nreally useful for building,",
+      "offset": 1854.6,
+      "duration": 2.476
+    },
+    {
+      "lang": "en",
+      "text": "building a classifiers.",
+      "offset": 1857.076,
+      "duration": 2.834
+    },
+    {
+      "lang": "en",
+      "text": "- From my, from the stuff that I've done.",
+      "offset": 1859.91,
+      "duration": 1.83
+    },
+    {
+      "lang": "en",
+      "text": "maybe piggybacking off your idea",
+      "offset": 1861.74,
+      "duration": 1.74
+    },
+    {
+      "lang": "en",
+      "text": "before of understanding",
+      "offset": 1863.48,
+      "duration": 1.86
+    },
+    {
+      "lang": "en",
+      "text": "the the untrusted trusted gap",
+      "offset": 1865.34,
+      "duration": 1.89
+    },
+    {
+      "lang": "en",
+      "text": "or this protocol versus the thing",
+      "offset": 1867.23,
+      "duration": 3.03
+    },
+    {
+      "lang": "en",
+      "text": "that's being deployed",
+      "offset": 1870.26,
+      "duration": 0.869
+    },
+    {
+      "lang": "en",
+      "text": "and that helped us it meant that",
+      "offset": 1871.129,
+      "duration": 2.851
+    },
+    {
+      "lang": "en",
+      "text": "when because these failure\nmodes weren't correlated,",
+      "offset": 1873.98,
+      "duration": 2.522
+    },
+    {
+      "lang": "en",
+      "text": "that the monitor was actually\nmuch better in this situation.",
+      "offset": 1876.502,
+      "duration": 2.698
+    },
+    {
+      "lang": "en",
+      "text": "- Yeah we found basically\nan identical thing actually",
+      "offset": 1879.2,
+      "duration": 2.34
+    },
+    {
+      "lang": "en",
+      "text": "on our alignment evaluations.",
+      "offset": 1881.54,
+      "duration": 1.86
+    },
+    {
+      "lang": "en",
+      "text": "So the various generations of sonnet",
+      "offset": 1883.4,
+      "duration": 1.5
+    },
+    {
+      "lang": "en",
+      "text": "are surprisingly de-correlated.",
+      "offset": 1884.9,
+      "duration": 2.114
+    },
+    {
+      "lang": "en",
+      "text": "- Yeah.\n- Especially when trying",
+      "offset": 1887.014,
+      "duration": 1.191
+    },
+    {
+      "lang": "en",
+      "text": "to predict each other's\nfailures which is both",
+      "offset": 1888.205,
+      "duration": 2.725
+    },
+    {
+      "lang": "en",
+      "text": "maybe not what you would've guessed",
+      "offset": 1890.93,
+      "duration": 1.68
+    },
+    {
+      "lang": "en",
+      "text": "and in a sense kind of\nuseful for this control work,",
+      "offset": 1892.61,
+      "duration": 2.777
+    },
+    {
+      "lang": "en",
+      "text": "'cause a lot of the most\nscary red team policies",
+      "offset": 1895.387,
+      "duration": 3.103
+    },
+    {
+      "lang": "en",
+      "text": "involve a lot of coordination\nwhich it turns out models",
+      "offset": 1898.49,
+      "duration": 2.25
+    },
+    {
+      "lang": "en",
+      "text": "just find pretty brutal.",
+      "offset": 1900.74,
+      "duration": 1.14
+    },
+    {
+      "lang": "en",
+      "text": "- Yeah, so I'm just would love",
+      "offset": 1901.88,
+      "duration": 1.98
+    },
+    {
+      "lang": "en",
+      "text": "to people to explore this further right,",
+      "offset": 1903.86,
+      "duration": 1.62
+    },
+    {
+      "lang": "en",
+      "text": "'cause if this is a general phenomena",
+      "offset": 1905.48,
+      "duration": 1.2
+    },
+    {
+      "lang": "en",
+      "text": "it'd be incredibly useful to understand",
+      "offset": 1906.68,
+      "duration": 2.28
+    },
+    {
+      "lang": "en",
+      "text": "are yeah working out\nwhich models are better",
+      "offset": 1908.96,
+      "duration": 3.18
+    },
+    {
+      "lang": "en",
+      "text": "for monitoring which ones aren't is one.",
+      "offset": 1912.14,
+      "duration": 2.075
+    },
+    {
+      "lang": "en",
+      "text": "And then the the other kind\nof open question I have is,",
+      "offset": 1914.215,
+      "duration": 2.864
+    },
+    {
+      "lang": "en",
+      "text": "and you kind of, you talked\nabout this when you talked about",
+      "offset": 1917.079,
+      "duration": 2.411
+    },
+    {
+      "lang": "en",
+      "text": "untrusted monitoring where\nwe can have a monitor",
+      "offset": 1919.49,
+      "duration": 1.98
+    },
+    {
+      "lang": "en",
+      "text": "which is actually the\nthing that we don't trust",
+      "offset": 1921.47,
+      "duration": 3.06
+    },
+    {
+      "lang": "en",
+      "text": "but because it's having\nto introduce an exploit",
+      "offset": 1924.53,
+      "duration": 2.681
+    },
+    {
+      "lang": "en",
+      "text": "and then it has to also notice the exploit",
+      "offset": 1927.211,
+      "duration": 2.899
+    },
+    {
+      "lang": "en",
+      "text": "when it's monitoring the thing",
+      "offset": 1930.11,
+      "duration": 1.5
+    },
+    {
+      "lang": "en",
+      "text": "then it's low probability of happening",
+      "offset": 1931.61,
+      "duration": 1.702
+    },
+    {
+      "lang": "en",
+      "text": "or I feel that's the\nmain way of explaining",
+      "offset": 1933.312,
+      "duration": 3.878
+    },
+    {
+      "lang": "en",
+      "text": "that phenomenon of work of why it works.",
+      "offset": 1937.19,
+      "duration": 2
+    },
+    {
+      "lang": "en",
+      "text": "I think a lot of that\nwork is only successful",
+      "offset": 1940.7,
+      "duration": 4.29
+    },
+    {
+      "lang": "en",
+      "text": "because at the moment",
+      "offset": 1944.99,
+      "duration": 1.86
+    },
+    {
+      "lang": "en",
+      "text": "the deceptive model doesn't know",
+      "offset": 1946.85,
+      "duration": 1.47
+    },
+    {
+      "lang": "en",
+      "text": "how many times it's been\ndeployed at the moment.",
+      "offset": 1948.32,
+      "duration": 2.94
+    },
+    {
+      "lang": "en",
+      "text": "So it can't kind of guess\nwhen the right time is",
+      "offset": 1951.26,
+      "duration": 2.91
+    },
+    {
+      "lang": "en",
+      "text": "to coordinate copying its weights out",
+      "offset": 1954.17,
+      "duration": 2.19
+    },
+    {
+      "lang": "en",
+      "text": "or introducing a subtle book",
+      "offset": 1956.36,
+      "duration": 1.31
+    },
+    {
+      "lang": "en",
+      "text": "because it's trying really to\nkeep that number really low",
+      "offset": 1957.67,
+      "duration": 3.01
+    },
+    {
+      "lang": "en",
+      "text": "so that it can just do it occasionally",
+      "offset": 1960.68,
+      "duration": 1.98
+    },
+    {
+      "lang": "en",
+      "text": "and get through monitoring",
+      "offset": 1962.66,
+      "duration": 1.501
+    },
+    {
+      "lang": "en",
+      "text": "and I'd love to see some control work",
+      "offset": 1964.161,
+      "duration": 2.189
+    },
+    {
+      "lang": "en",
+      "text": "that doesn't have this\nassumption that the red team",
+      "offset": 1966.35,
+      "duration": 3.18
+    },
+    {
+      "lang": "en",
+      "text": "or the untrusted model can't see stuff.",
+      "offset": 1969.53,
+      "duration": 2.653
+    },
+    {
+      "lang": "en",
+      "text": "= Yeah I mean I think\nthere's this general dynamic",
+      "offset": 1972.183,
+      "duration": 2.147
+    },
+    {
+      "lang": "en",
+      "text": "you often find in control protocols",
+      "offset": 1974.33,
+      "duration": 2.76
+    },
+    {
+      "lang": "en",
+      "text": "when trying to tune the parameters,",
+      "offset": 1977.09,
+      "duration": 1.38
+    },
+    {
+      "lang": "en",
+      "text": "is that what you often care about",
+      "offset": 1978.47,
+      "duration": 3.42
+    },
+    {
+      "lang": "en",
+      "text": "is even a very small rate",
+      "offset": 1981.89,
+      "duration": 1.44
+    },
+    {
+      "lang": "en",
+      "text": "of failure can be quite bad.",
+      "offset": 1983.33,
+      "duration": 1.39
+    },
+    {
+      "lang": "en",
+      "text": "- Yeah.\n- And so both",
+      "offset": 1984.72,
+      "duration": 2.6
+    },
+    {
+      "lang": "en",
+      "text": "you care about the far tails of safety,",
+      "offset": 1987.32,
+      "duration": 3.72
+    },
+    {
+      "lang": "en",
+      "text": "the model,",
+      "offset": 1991.04,
+      "duration": 0.9
+    },
+    {
+      "lang": "en",
+      "text": "basically never being able",
+      "offset": 1991.94,
+      "duration": 1.35
+    },
+    {
+      "lang": "en",
+      "text": "to cause an egregious problem.",
+      "offset": 1993.29,
+      "duration": 1.56
+    },
+    {
+      "lang": "en",
+      "text": "- Yeah\n- And simply the model",
+      "offset": 1994.85,
+      "duration": 0.833
+    },
+    {
+      "lang": "en",
+      "text": "if it's trying to cause a problem",
+      "offset": 1995.683,
+      "duration": 1.987
+    },
+    {
+      "lang": "en",
+      "text": "only he needs to get a success rate",
+      "offset": 1997.67,
+      "duration": 1.8
+    },
+    {
+      "lang": "en",
+      "text": "of not 0.1% or naught point naught 1%.",
+      "offset": 1999.47,
+      "duration": 3.06
+    },
+    {
+      "lang": "en",
+      "text": "- Yeah.\n- And so",
+      "offset": 2002.53,
+      "duration": 1.481
+    },
+    {
+      "lang": "en",
+      "text": "one of the things",
+      "offset": 2004.011,
+      "duration": 0.833
+    },
+    {
+      "lang": "en",
+      "text": "that I think we went along\nby playing these games is",
+      "offset": 2004.844,
+      "duration": 2.156
+    },
+    {
+      "lang": "en",
+      "text": "that the middles of the distribution",
+      "offset": 2007,
+      "duration": 2.01
+    },
+    {
+      "lang": "en",
+      "text": "of suspiciousness",
+      "offset": 2009.01,
+      "duration": 1.11
+    },
+    {
+      "lang": "en",
+      "text": "and harmfulness don't really matter.",
+      "offset": 2010.12,
+      "duration": 2.31
+    },
+    {
+      "lang": "en",
+      "text": "You really care about the tails here.",
+      "offset": 2012.43,
+      "duration": 1.92
+    },
+    {
+      "lang": "en",
+      "text": "- Yeah I mean actually this\nis just a third point now",
+      "offset": 2014.35,
+      "duration": 1.533
+    },
+    {
+      "lang": "en",
+      "text": "which is I would love for better ways",
+      "offset": 2015.883,
+      "duration": 2.4
+    },
+    {
+      "lang": "en",
+      "text": "to evaluate the rare events",
+      "offset": 2018.283,
+      "duration": 1.794
+    },
+    {
+      "lang": "en",
+      "text": "or the rare occurrences\nthan we currently do.",
+      "offset": 2020.077,
+      "duration": 3.093
+    },
+    {
+      "lang": "en",
+      "text": "- Yeah, well it's the obviously the",
+      "offset": 2023.17,
+      "duration": 1.906
+    },
+    {
+      "lang": "en",
+      "text": "consequence if you really\ncare about the tails",
+      "offset": 2025.076,
+      "duration": 1.964
+    },
+    {
+      "lang": "en",
+      "text": "and you need an awful lot of samples.",
+      "offset": 2027.04,
+      "duration": 1.35
+    },
+    {
+      "lang": "en",
+      "text": "- Yeah, exactly.\n- To be able to actually",
+      "offset": 2028.39,
+      "duration": 1.05
+    },
+    {
+      "lang": "en",
+      "text": "measure the quantities you\ncare about in any detail",
+      "offset": 2029.44,
+      "duration": 1.955
+    },
+    {
+      "lang": "en",
+      "text": "and especially you if\nconstructing those environments",
+      "offset": 2031.395,
+      "duration": 3.145
+    },
+    {
+      "lang": "en",
+      "text": "is really costly,",
+      "offset": 2034.54,
+      "duration": 1.11
+    },
+    {
+      "lang": "en",
+      "text": "that's that's the real\nchallenge for this research.",
+      "offset": 2035.65,
+      "duration": 2.31
+    },
+    {
+      "lang": "en",
+      "text": "- Yeah, guarantee five nines\nof liability is actually",
+      "offset": 2037.96,
+      "duration": 2.539
+    },
+    {
+      "lang": "en",
+      "text": "incredibly difficult.",
+      "offset": 2040.499,
+      "duration": 1.768
+    },
+    {
+      "lang": "en",
+      "text": "- Yeah.",
+      "offset": 2042.267,
+      "duration": 0.833
+    },
+    {
+      "lang": "en",
+      "text": "- That would be my takeaway from control.",
+      "offset": 2043.1,
+      "duration": 0.833
+    },
+    {
+      "lang": "en",
+      "text": "- Especially if you're handwriting",
+      "offset": 2043.933,
+      "duration": 1.437
+    },
+    {
+      "lang": "en",
+      "text": "all the environments",
+      "offset": 2045.37,
+      "duration": 0.87
+    },
+    {
+      "lang": "en",
+      "text": "as I have been doing on some projects,",
+      "offset": 2046.24,
+      "duration": 2.13
+    },
+    {
+      "lang": "en",
+      "text": "you do not wanna be writing",
+      "offset": 2048.37,
+      "duration": 1.38
+    },
+    {
+      "lang": "en",
+      "text": "10,000 data points yourself.",
+      "offset": 2049.75,
+      "duration": 1.92
+    },
+    {
+      "lang": "en",
+      "text": "- It's fine. Claude will\nhelp us eventually, right?",
+      "offset": 2051.67,
+      "duration": 1.8
+    },
+    {
+      "lang": "en",
+      "text": "- Claude is helping a bit.\nClaude is helping a bit.",
+      "offset": 2053.47,
+      "duration": 1.8
+    },
+    {
+      "lang": "en",
+      "text": "- Yeah. Ethan do you have\nany particular lessons",
+      "offset": 2055.27,
+      "duration": 3.715
+    },
+    {
+      "lang": "en",
+      "text": "that you've learned from\ncontrol that you know,",
+      "offset": 2058.985,
+      "duration": 2.307
+    },
+    {
+      "lang": "en",
+      "text": "you you've brought to up\na part of your research?",
+      "offset": 2061.292,
+      "duration": 2.738
+    },
+    {
+      "lang": "en",
+      "text": "I think just we've learned five nines is",
+      "offset": 2064.03,
+      "duration": 2.25
+    },
+    {
+      "lang": "en",
+      "text": "really hard to , you know, guarantee.",
+      "offset": 2066.28,
+      "duration": 2.16
+    },
+    {
+      "lang": "en",
+      "text": "- Yeah let me think.",
+      "offset": 2068.44,
+      "duration": 1.173
+    },
+    {
+      "lang": "en",
+      "text": "I guess a lot of what's come up",
+      "offset": 2070.51,
+      "duration": 2.357
+    },
+    {
+      "lang": "en",
+      "text": "when we've worked on control I\nthink has been just that the,",
+      "offset": 2072.867,
+      "duration": 5
+    },
+    {
+      "lang": "en",
+      "text": "it's helpful to have just frontier,",
+      "offset": 2080.47,
+      "duration": 2.88
+    },
+    {
+      "lang": "en",
+      "text": "access to frontier models to\ndo a lot of this research.",
+      "offset": 2083.35,
+      "duration": 2.7
+    },
+    {
+      "lang": "en",
+      "text": "I think a lot of the threat\nmodels that we worry about",
+      "offset": 2086.05,
+      "duration": 2.76
+    },
+    {
+      "lang": "en",
+      "text": "are are models copying their weights out,",
+      "offset": 2088.81,
+      "duration": 3.96
+    },
+    {
+      "lang": "en",
+      "text": "that is the kind of thing\nthat requires models",
+      "offset": 2092.77,
+      "duration": 3.9
+    },
+    {
+      "lang": "en",
+      "text": "to be doing multi-step tasks",
+      "offset": 2096.67,
+      "duration": 2.564
+    },
+    {
+      "lang": "en",
+      "text": "within a company coding environment.",
+      "offset": 2099.234,
+      "duration": 4.196
+    },
+    {
+      "lang": "en",
+      "text": "And I think we're sort\nof really pushing on",
+      "offset": 2103.43,
+      "duration": 5
+    },
+    {
+      "lang": "en",
+      "text": "in order to get to test on settings",
+      "offset": 2108.64,
+      "duration": 2.43
+    },
+    {
+      "lang": "en",
+      "text": "that we're really having to push on",
+      "offset": 2111.07,
+      "duration": 2.46
+    },
+    {
+      "lang": "en",
+      "text": "we're kind of at the frontier of",
+      "offset": 2115.21,
+      "duration": 1.41
+    },
+    {
+      "lang": "en",
+      "text": "model capabilities and even then",
+      "offset": 2116.62,
+      "duration": 1.509
+    },
+    {
+      "lang": "en",
+      "text": "it's not really able to\ndo the models aren't able",
+      "offset": 2118.129,
+      "duration": 2.699
+    },
+    {
+      "lang": "en",
+      "text": "to do a lot of these\ntasks that effectively",
+      "offset": 2120.828,
+      "duration": 2.477
+    },
+    {
+      "lang": "en",
+      "text": "and very simple mitigations",
+      "offset": 2123.305,
+      "duration": 1.91
+    },
+    {
+      "lang": "en",
+      "text": "just checking the model",
+      "offset": 2125.215,
+      "duration": 1.425
+    },
+    {
+      "lang": "en",
+      "text": "with a less capable models will obviously",
+      "offset": 2126.64,
+      "duration": 2.43
+    },
+    {
+      "lang": "en",
+      "text": "just catch a lot of the behavior",
+      "offset": 2129.07,
+      "duration": 1.5
+    },
+    {
+      "lang": "en",
+      "text": "for some of these more\nsophisticated things.",
+      "offset": 2130.57,
+      "duration": 2.25
+    },
+    {
+      "lang": "en",
+      "text": "So I think, yeah I think my overall sense",
+      "offset": 2132.82,
+      "duration": 3.99
+    },
+    {
+      "lang": "en",
+      "text": "for a lot of these threat\nmodels has been that",
+      "offset": 2136.81,
+      "duration": 2.471
+    },
+    {
+      "lang": "en",
+      "text": "it's pretty difficult to pick both",
+      "offset": 2139.281,
+      "duration": 2.959
+    },
+    {
+      "lang": "en",
+      "text": "an interesting setting that's,",
+      "offset": 2142.24,
+      "duration": 2.613
+    },
+    {
+      "lang": "en",
+      "text": "but that's also kind\nof a real threat model",
+      "offset": 2146.08,
+      "duration": 2.708
+    },
+    {
+      "lang": "en",
+      "text": "that models can also do.",
+      "offset": 2148.788,
+      "duration": 1.702
+    },
+    {
+      "lang": "en",
+      "text": "And so at least for a\nlot of these settings",
+      "offset": 2150.49,
+      "duration": 2.28
+    },
+    {
+      "lang": "en",
+      "text": "it feels a little bit early",
+      "offset": 2152.77,
+      "duration": 1.11
+    },
+    {
+      "lang": "en",
+      "text": "to explore these but the persuasion",
+      "offset": 2153.88,
+      "duration": 1.92
+    },
+    {
+      "lang": "en",
+      "text": "business justification setting",
+      "offset": 2155.8,
+      "duration": 1.831
+    },
+    {
+      "lang": "en",
+      "text": "seems one of the settings",
+      "offset": 2157.631,
+      "duration": 1.649
+    },
+    {
+      "lang": "en",
+      "text": "that we have some signs of life on",
+      "offset": 2159.28,
+      "duration": 1.83
+    },
+    {
+      "lang": "en",
+      "text": "and building more data sets",
+      "offset": 2161.11,
+      "duration": 1.62
+    },
+    {
+      "lang": "en",
+      "text": "and evals is pretty helpful\nfor creating more of these.",
+      "offset": 2162.73,
+      "duration": 2.52
+    },
+    {
+      "lang": "en",
+      "text": "- Yeah I think that's interesting,",
+      "offset": 2165.25,
+      "duration": 1.17
+    },
+    {
+      "lang": "en",
+      "text": "the persuasion setting I think\nwe're seeing signs of life on",
+      "offset": 2166.42,
+      "duration": 2.97
+    },
+    {
+      "lang": "en",
+      "text": "because fundamentally the thing a strategy",
+      "offset": 2169.39,
+      "duration": 2.73
+    },
+    {
+      "lang": "en",
+      "text": "that works very well for\nthe model is just being",
+      "offset": 2172.12,
+      "duration": 1.65
+    },
+    {
+      "lang": "en",
+      "text": "generally a bit biased",
+      "offset": 2173.77,
+      "duration": 1.47
+    },
+    {
+      "lang": "en",
+      "text": "and it doesn't really\nhave to think about that.",
+      "offset": 2175.24,
+      "duration": 1.523
+    },
+    {
+      "lang": "en",
+      "text": "I think they're kind of\nat an interesting point",
+      "offset": 2176.763,
+      "duration": 2.557
+    },
+    {
+      "lang": "en",
+      "text": "with respect to control\nresearch at the minute",
+      "offset": 2179.32,
+      "duration": 2.1
+    },
+    {
+      "lang": "en",
+      "text": "where models are just\nstarting to become capable",
+      "offset": 2181.42,
+      "duration": 3.067
+    },
+    {
+      "lang": "en",
+      "text": "of the longer term more intended planning",
+      "offset": 2184.487,
+      "duration": 3.863
+    },
+    {
+      "lang": "en",
+      "text": "that might be needed to\nexecute on more subtle",
+      "offset": 2188.35,
+      "duration": 2.768
+    },
+    {
+      "lang": "en",
+      "text": "sabotage policies.",
+      "offset": 2191.118,
+      "duration": 2.512
+    },
+    {
+      "lang": "en",
+      "text": "And so right now",
+      "offset": 2193.63,
+      "duration": 1.29
+    },
+    {
+      "lang": "en",
+      "text": "what we're seeing at the\nminute is for environments",
+      "offset": 2194.92,
+      "duration": 4.41
+    },
+    {
+      "lang": "en",
+      "text": "that look moderately realistic models",
+      "offset": 2199.33,
+      "duration": 1.827
+    },
+    {
+      "lang": "en",
+      "text": "are basically scoring zero at being able",
+      "offset": 2201.157,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "to do something subtle",
+      "offset": 2204.837,
+      "duration": 2.405
+    },
+    {
+      "lang": "en",
+      "text": "and actually achieve the\ngoal but not get caught.",
+      "offset": 2207.242,
+      "duration": 3.818
+    },
+    {
+      "lang": "en",
+      "text": "But I think the thing\nthat is stopping them",
+      "offset": 2211.06,
+      "duration": 1.62
+    },
+    {
+      "lang": "en",
+      "text": "from doing that is a planning capability",
+      "offset": 2212.68,
+      "duration": 2.7
+    },
+    {
+      "lang": "en",
+      "text": "that I expect models to get\nbetter at pretty rapidly",
+      "offset": 2215.38,
+      "duration": 2.85
+    },
+    {
+      "lang": "en",
+      "text": "and it wouldn't surprise\nme if in one year's time",
+      "offset": 2218.23,
+      "duration": 3.627
+    },
+    {
+      "lang": "en",
+      "text": "models are suddenly slightly\nscarily good at this",
+      "offset": 2221.857,
+      "duration": 4.473
+    },
+    {
+      "lang": "en",
+      "text": "and right now one of the things",
+      "offset": 2226.33,
+      "duration": 1.23
+    },
+    {
+      "lang": "en",
+      "text": "that I'm thinking hardest about is well",
+      "offset": 2227.56,
+      "duration": 1.32
+    },
+    {
+      "lang": "en",
+      "text": "how do we build the evaluations",
+      "offset": 2228.88,
+      "duration": 1.71
+    },
+    {
+      "lang": "en",
+      "text": "that are gonna really demonstrate that",
+      "offset": 2230.59,
+      "duration": 1.65
+    },
+    {
+      "lang": "en",
+      "text": "at the end of this year?",
+      "offset": 2232.24,
+      "duration": 1.51
+    },
+    {
+      "lang": "en",
+      "text": "- Yeah.\n- Yeah.",
+      "offset": 2233.75,
+      "duration": 0.833
+    },
+    {
+      "lang": "en",
+      "text": "I guess maybe this leads onto",
+      "offset": 2234.583,
+      "duration": 1.497
+    },
+    {
+      "lang": "en",
+      "text": "an interesting question of",
+      "offset": 2236.08,
+      "duration": 0.99
+    },
+    {
+      "lang": "en",
+      "text": "why do control now as opposed",
+      "offset": 2237.07,
+      "duration": 1.98
+    },
+    {
+      "lang": "en",
+      "text": "to the other alignment stuff.",
+      "offset": 2239.05,
+      "duration": 1.05
+    },
+    {
+      "lang": "en",
+      "text": "I feel you've, you've really gone in",
+      "offset": 2240.1,
+      "duration": 1.44
+    },
+    {
+      "lang": "en",
+      "text": "hard on the control paradigm.",
+      "offset": 2241.54,
+      "duration": 2.19
+    },
+    {
+      "lang": "en",
+      "text": "Yeah.\n- Yeah.",
+      "offset": 2243.73,
+      "duration": 0.833
+    },
+    {
+      "lang": "en",
+      "text": "I mean I guess maybe\nit's worth flushing out",
+      "offset": 2244.563,
+      "duration": 1.747
+    },
+    {
+      "lang": "en",
+      "text": "what the kind of end game is.",
+      "offset": 2246.31,
+      "duration": 1.98
+    },
+    {
+      "lang": "en",
+      "text": "I think, I think almost all people",
+      "offset": 2248.29,
+      "duration": 4.022
+    },
+    {
+      "lang": "en",
+      "text": "I've talked with,",
+      "offset": 2252.312,
+      "duration": 1.378
+    },
+    {
+      "lang": "en",
+      "text": "even people who are fans of control",
+      "offset": 2253.69,
+      "duration": 2.08
+    },
+    {
+      "lang": "en",
+      "text": "think that eventually\nwe need to align models",
+      "offset": 2256.932,
+      "duration": 3.928
+    },
+    {
+      "lang": "en",
+      "text": "for sufficiently capable models.",
+      "offset": 2260.86,
+      "duration": 1.68
+    },
+    {
+      "lang": "en",
+      "text": "I think the key key reason\nbeing that it's hard",
+      "offset": 2262.54,
+      "duration": 4.23
+    },
+    {
+      "lang": "en",
+      "text": "to control something that's much more ,",
+      "offset": 2266.77,
+      "duration": 2.867
+    },
+    {
+      "lang": "en",
+      "text": "that's just much smarter\nthan you basically",
+      "offset": 2269.637,
+      "duration": 2.759
+    },
+    {
+      "lang": "en",
+      "text": "and you could do fancy pants stuff",
+      "offset": 2272.396,
+      "duration": 3.434
+    },
+    {
+      "lang": "en",
+      "text": "and make it so that you know",
+      "offset": 2275.83,
+      "duration": 1.65
+    },
+    {
+      "lang": "en",
+      "text": "you as your human review",
+      "offset": 2278.71,
+      "duration": 1.65
+    },
+    {
+      "lang": "en",
+      "text": "plus some augment some\nother trusted models",
+      "offset": 2280.36,
+      "duration": 3.03
+    },
+    {
+      "lang": "en",
+      "text": "can really be effective at checking",
+      "offset": 2283.39,
+      "duration": 2.128
+    },
+    {
+      "lang": "en",
+      "text": "the work of a really, really capable",
+      "offset": 2285.518,
+      "duration": 3.062
+    },
+    {
+      "lang": "en",
+      "text": "superhuman model",
+      "offset": 2288.58,
+      "duration": 1.17
+    },
+    {
+      "lang": "en",
+      "text": "but at some level of\ncapability gap it seems",
+      "offset": 2289.75,
+      "duration": 2.28
+    },
+    {
+      "lang": "en",
+      "text": "to be probably it's just quite hard to",
+      "offset": 2292.03,
+      "duration": 2.761
+    },
+    {
+      "lang": "en",
+      "text": "have that much confidence",
+      "offset": 2294.791,
+      "duration": 2.429
+    },
+    {
+      "lang": "en",
+      "text": "that you're you're doing this effectively.",
+      "offset": 2297.22,
+      "duration": 1.734
+    },
+    {
+      "lang": "en",
+      "text": "- Yeah I mean people have\nbeen talking for years",
+      "offset": 2298.954,
+      "duration": 0.966
+    },
+    {
+      "lang": "en",
+      "text": "about the difficulty of\nkeeping a super intelligence",
+      "offset": 2299.92,
+      "duration": 1.92
+    },
+    {
+      "lang": "en",
+      "text": "in a box.",
+      "offset": 2301.84,
+      "duration": 1.11
+    },
+    {
+      "lang": "en",
+      "text": "- Yeah.",
+      "offset": 2302.95,
+      "duration": 1.024
+    },
+    {
+      "lang": "en",
+      "text": "- At some point in the limit control",
+      "offset": 2303.974,
+      "duration": 1.136
+    },
+    {
+      "lang": "en",
+      "text": "almost certainly breaks.",
+      "offset": 2305.11,
+      "duration": 1.234
+    },
+    {
+      "lang": "en",
+      "text": "- Yeah I think, I dunno,\nI've at least talked",
+      "offset": 2306.344,
+      "duration": 4.676
+    },
+    {
+      "lang": "en",
+      "text": "with one person who's , well maybe,",
+      "offset": 2311.02,
+      "duration": 1.71
+    },
+    {
+      "lang": "en",
+      "text": "you use the the super to monitor itself",
+      "offset": 2312.73,
+      "duration": 4.2
+    },
+    {
+      "lang": "en",
+      "text": "and there's ways to make\nit make that go well.",
+      "offset": 2316.93,
+      "duration": 2.7
+    },
+    {
+      "lang": "en",
+      "text": "So I guess there's still",
+      "offset": 2319.63,
+      "duration": 2.715
+    },
+    {
+      "lang": "en",
+      "text": "some at least non-zero\ndiscussion about this,",
+      "offset": 2322.345,
+      "duration": 2.625
+    },
+    {
+      "lang": "en",
+      "text": "but I think generally I\nthink a lot of people are ,",
+      "offset": 2324.97,
+      "duration": 2.22
+    },
+    {
+      "lang": "en",
+      "text": "well okay, the general strategy would be",
+      "offset": 2327.19,
+      "duration": 2.11
+    },
+    {
+      "lang": "en",
+      "text": "you control your maybe\nslightly superhuman system",
+      "offset": 2330.61,
+      "duration": 2.939
+    },
+    {
+      "lang": "en",
+      "text": "or at least human level\nsystem which is able to do",
+      "offset": 2333.549,
+      "duration": 4.531
+    },
+    {
+      "lang": "en",
+      "text": "lots of autonomous tasks",
+      "offset": 2338.08,
+      "duration": 2.16
+    },
+    {
+      "lang": "en",
+      "text": "including importantly AI safety research",
+      "offset": 2340.24,
+      "duration": 3.45
+    },
+    {
+      "lang": "en",
+      "text": "and AI alignment research,",
+      "offset": 2343.69,
+      "duration": 1.71
+    },
+    {
+      "lang": "en",
+      "text": "and then you have the model do a lot,",
+      "offset": 2345.4,
+      "duration": 2.85
+    },
+    {
+      "lang": "en",
+      "text": "a large amount of alignment research",
+      "offset": 2348.25,
+      "duration": 1.95
+    },
+    {
+      "lang": "en",
+      "text": "including meccas interpretability,",
+      "offset": 2350.2,
+      "duration": 2.31
+    },
+    {
+      "lang": "en",
+      "text": "you shore up your science,",
+      "offset": 2352.51,
+      "duration": 1.65
+    },
+    {
+      "lang": "en",
+      "text": "of how to evaluate",
+      "offset": 2354.16,
+      "duration": 3.27
+    },
+    {
+      "lang": "en",
+      "text": "whether models are aligned or not",
+      "offset": 2357.43,
+      "duration": 1.32
+    },
+    {
+      "lang": "en",
+      "text": "and then use that to\ndevelop better techniques",
+      "offset": 2358.75,
+      "duration": 2.31
+    },
+    {
+      "lang": "en",
+      "text": "for aligning models and\nalso gaining confidence",
+      "offset": 2361.06,
+      "duration": 2.07
+    },
+    {
+      "lang": "en",
+      "text": "in in your alignment techniques.",
+      "offset": 2363.13,
+      "duration": 1.83
+    },
+    {
+      "lang": "en",
+      "text": "And then hopefully you yeah",
+      "offset": 2364.96,
+      "duration": 3
+    },
+    {
+      "lang": "en",
+      "text": "then then you're able to use those on your",
+      "offset": 2367.96,
+      "duration": 2.07
+    },
+    {
+      "lang": "en",
+      "text": "more more capable systems",
+      "offset": 2370.03,
+      "duration": 2.49
+    },
+    {
+      "lang": "en",
+      "text": "your superhuman systems",
+      "offset": 2372.52,
+      "duration": 2.044
+    },
+    {
+      "lang": "en",
+      "text": "and from there yeah I\nthink you now you have",
+      "offset": 2374.564,
+      "duration": 3.326
+    },
+    {
+      "lang": "en",
+      "text": "a superhuman aligned system",
+      "offset": 2377.89,
+      "duration": 1.29
+    },
+    {
+      "lang": "en",
+      "text": "and then hopefully you\njust eventually solve",
+      "offset": 2379.18,
+      "duration": 3.05
+    },
+    {
+      "lang": "en",
+      "text": "the alignment problem just\nin general with the solution",
+      "offset": 2382.23,
+      "duration": 2.83
+    },
+    {
+      "lang": "en",
+      "text": "that works for all intelligence levels,",
+      "offset": 2385.06,
+      "duration": 1.86
+    },
+    {
+      "lang": "en",
+      "text": "but you might need to do\nthis process a few times",
+      "offset": 2386.92,
+      "duration": 2.37
+    },
+    {
+      "lang": "en",
+      "text": "where you have your\naligned superhuman model",
+      "offset": 2389.29,
+      "duration": 3.12
+    },
+    {
+      "lang": "en",
+      "text": "which then controls even\nmore superhuman systems.",
+      "offset": 2392.41,
+      "duration": 4.879
+    },
+    {
+      "lang": "en",
+      "text": "You use that to do\nbetter alignment research",
+      "offset": 2397.289,
+      "duration": 3.345
+    },
+    {
+      "lang": "en",
+      "text": "and keep doing this",
+      "offset": 2400.634,
+      "duration": 1.886
+    },
+    {
+      "lang": "en",
+      "text": "until you have a more\nlong-term solution or yeah.",
+      "offset": 2402.52,
+      "duration": 4.83
+    },
+    {
+      "lang": "en",
+      "text": "So something, something that would be kind",
+      "offset": 2407.35,
+      "duration": 1.65
+    },
+    {
+      "lang": "en",
+      "text": "of the the general longer term approach.",
+      "offset": 2409,
+      "duration": 2.58
+    },
+    {
+      "lang": "en",
+      "text": "- I do think the looking\ntowards an end game,",
+      "offset": 2411.58,
+      "duration": 2.1
+    },
+    {
+      "lang": "en",
+      "text": "hopefully if we end up in\nthat regime we can use models",
+      "offset": 2413.68,
+      "duration": 2.31
+    },
+    {
+      "lang": "en",
+      "text": "to actually do a lot of basic science,",
+      "offset": 2415.99,
+      "duration": 1.86
+    },
+    {
+      "lang": "en",
+      "text": "maybe a lot of the alignment\nscience we need to do",
+      "offset": 2417.85,
+      "duration": 1.59
+    },
+    {
+      "lang": "en",
+      "text": "to align harder models.",
+      "offset": 2419.44,
+      "duration": 1.29
+    },
+    {
+      "lang": "en",
+      "text": "Maybe if we get into that regime",
+      "offset": 2420.73,
+      "duration": 1.83
+    },
+    {
+      "lang": "en",
+      "text": "and models are controlled",
+      "offset": 2422.56,
+      "duration": 1.275
+    },
+    {
+      "lang": "en",
+      "text": "but still showing signs of misalignment,",
+      "offset": 2423.835,
+      "duration": 1.995
+    },
+    {
+      "lang": "en",
+      "text": "we can at that point pause",
+      "offset": 2425.83,
+      "duration": 1.68
+    },
+    {
+      "lang": "en",
+      "text": "and actually start to study some of the",
+      "offset": 2427.51,
+      "duration": 1.44
+    },
+    {
+      "lang": "en",
+      "text": "really dangerous systems\nwe're worried about.",
+      "offset": 2428.95,
+      "duration": 1.59
+    },
+    {
+      "lang": "en",
+      "text": "One of the big problems we have",
+      "offset": 2430.54,
+      "duration": 1.14
+    },
+    {
+      "lang": "en",
+      "text": "with alignment research\nat the minute is models",
+      "offset": 2431.68,
+      "duration": 2.7
+    },
+    {
+      "lang": "en",
+      "text": "can do bad stuff but they\nfeel qualitatively different",
+      "offset": 2434.38,
+      "duration": 3.33
+    },
+    {
+      "lang": "en",
+      "text": "from the sort of misaligned\ntransformative AI systems",
+      "offset": 2437.71,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "that I think we are all\nreally worried about.",
+      "offset": 2441.07,
+      "duration": 3.15
+    },
+    {
+      "lang": "en",
+      "text": "So yeah, I think viewing that",
+      "offset": 2444.22,
+      "duration": 2.28
+    },
+    {
+      "lang": "en",
+      "text": "let's get to a system",
+      "offset": 2446.5,
+      "duration": 2.07
+    },
+    {
+      "lang": "en",
+      "text": "where models are\neconomically transformative",
+      "offset": 2448.57,
+      "duration": 2.82
+    },
+    {
+      "lang": "en",
+      "text": "but are controlled as\nan intermediate goal,",
+      "offset": 2451.39,
+      "duration": 2.94
+    },
+    {
+      "lang": "en",
+      "text": "opens up a lot of tactics.",
+      "offset": 2454.33,
+      "duration": 1.478
+    },
+    {
+      "lang": "en",
+      "text": "- Yeah, I think that's right.",
+      "offset": 2455.808,
+      "duration": 1.042
+    },
+    {
+      "lang": "en",
+      "text": "I think an important point to make is that",
+      "offset": 2456.85,
+      "duration": 2.19
+    },
+    {
+      "lang": "en",
+      "text": "a huge amount of the benefits\npeople are excited about",
+      "offset": 2459.04,
+      "duration": 4.63
+    },
+    {
+      "lang": "en",
+      "text": "and talk about maybe yeah\nalmost all the benefits",
+      "offset": 2464.8,
+      "duration": 2.76
+    },
+    {
+      "lang": "en",
+      "text": "people talk about today are\nbenefits you would get with",
+      "offset": 2467.56,
+      "duration": 3.304
+    },
+    {
+      "lang": "en",
+      "text": "effectively if you got\nan extremely, you know,",
+      "offset": 2470.864,
+      "duration": 4.166
+    },
+    {
+      "lang": "en",
+      "text": "extremely capable human",
+      "offset": 2475.03,
+      "duration": 2.197
+    },
+    {
+      "lang": "en",
+      "text": "replicated in an AI system",
+      "offset": 2477.227,
+      "duration": 3.113
+    },
+    {
+      "lang": "en",
+      "text": "or that level of capability you yeah",
+      "offset": 2480.34,
+      "duration": 3.33
+    },
+    {
+      "lang": "en",
+      "text": "you were able to get\nthe world's best expert",
+      "offset": 2483.67,
+      "duration": 2.43
+    },
+    {
+      "lang": "en",
+      "text": "in every single domain",
+      "offset": 2486.1,
+      "duration": 1.29
+    },
+    {
+      "lang": "en",
+      "text": "that's still basically human level",
+      "offset": 2487.39,
+      "duration": 2.67
+    },
+    {
+      "lang": "en",
+      "text": "or maybe the combination is superhuman",
+      "offset": 2490.06,
+      "duration": 2.25
+    },
+    {
+      "lang": "en",
+      "text": "but at least there's\none person in the world",
+      "offset": 2492.31,
+      "duration": 2.01
+    },
+    {
+      "lang": "en",
+      "text": "who could properly evaluate",
+      "offset": 2494.32,
+      "duration": 1.915
+    },
+    {
+      "lang": "en",
+      "text": "and replicate the behavior of the system",
+      "offset": 2496.235,
+      "duration": 3.364
+    },
+    {
+      "lang": "en",
+      "text": "and that already would be completely",
+      "offset": 2499.599,
+      "duration": 2.731
+    },
+    {
+      "lang": "en",
+      "text": "world changing is is\nmaybe doable to control",
+      "offset": 2502.33,
+      "duration": 5
+    },
+    {
+      "lang": "en",
+      "text": "and it it is,",
+      "offset": 2509.2,
+      "duration": 1.79
+    },
+    {
+      "lang": "en",
+      "text": "it is possible basically",
+      "offset": 2510.99,
+      "duration": 1.67
+    },
+    {
+      "lang": "en",
+      "text": "the additional returns to intelligence.,",
+      "offset": 2513.774,
+      "duration": 3.463
+    },
+    {
+      "lang": "en",
+      "text": "it is possible that it\nis just much more unsafe,",
+      "offset": 2518.41,
+      "duration": 3.66
+    },
+    {
+      "lang": "en",
+      "text": "if we no longer able to\ncontrol those systems,",
+      "offset": 2522.07,
+      "duration": 2.8
+    },
+    {
+      "lang": "en",
+      "text": "the risks become much larger at that point",
+      "offset": 2526.09,
+      "duration": 3.06
+    },
+    {
+      "lang": "en",
+      "text": "and it's not actually clear",
+      "offset": 2529.15,
+      "duration": 2.7
+    },
+    {
+      "lang": "en",
+      "text": "that additional intelligence beyond",
+      "offset": 2531.85,
+      "duration": 2.46
+    },
+    {
+      "lang": "en",
+      "text": "that point will have very\nlarge returns probably",
+      "offset": 2534.31,
+      "duration": 3.15
+    },
+    {
+      "lang": "en",
+      "text": "for some domains math.",
+      "offset": 2537.46,
+      "duration": 1.53
+    },
+    {
+      "lang": "en",
+      "text": "Sure probably will have pure math yeah,",
+      "offset": 2538.99,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "might have more returns\nbut it's very unclear",
+      "offset": 2542.35,
+      "duration": 2.82
+    },
+    {
+      "lang": "en",
+      "text": "and efficiency may have returns",
+      "offset": 2545.17,
+      "duration": 1.71
+    },
+    {
+      "lang": "en",
+      "text": "but efficiency isn't necessarily going",
+      "offset": 2546.88,
+      "duration": 2.43
+    },
+    {
+      "lang": "en",
+      "text": "to make the model",
+      "offset": 2549.31,
+      "duration": 1.14
+    },
+    {
+      "lang": "en",
+      "text": "or that's not a, it's not becoming smarter",
+      "offset": 2550.45,
+      "duration": 3.423
+    },
+    {
+      "lang": "en",
+      "text": "unless you're doing something non-trivial.",
+      "offset": 2553.873,
+      "duration": 2.1
+    },
+    {
+      "lang": "en",
+      "text": "And so if we just run those intelligences",
+      "offset": 2556.99,
+      "duration": 1.957
+    },
+    {
+      "lang": "en",
+      "text": "really fast,",
+      "offset": 2558.947,
+      "duration": 1.253
+    },
+    {
+      "lang": "en",
+      "text": "I think we could get a\nhuge amount of the value",
+      "offset": 2560.2,
+      "duration": 2.79
+    },
+    {
+      "lang": "en",
+      "text": "and then yeah I think\nuse that to figure out",
+      "offset": 2562.99,
+      "duration": 2.16
+    },
+    {
+      "lang": "en",
+      "text": "what a better longer term solution is.",
+      "offset": 2565.15,
+      "duration": 2.433
+    },
+    {
+      "lang": "en",
+      "text": "maybe stay there for a while. Yeah.",
+      "offset": 2567.583,
+      "duration": 2.727
+    },
+    {
+      "lang": "en",
+      "text": "- Yeah I think part of your\nquestion also was not just",
+      "offset": 2570.31,
+      "duration": 1.643
+    },
+    {
+      "lang": "en",
+      "text": "why work on control\nbut why work on it now?",
+      "offset": 2571.953,
+      "duration": 1.706
+    },
+    {
+      "lang": "en",
+      "text": "- Yes.",
+      "offset": 2573.659,
+      "duration": 0.833
+    },
+    {
+      "lang": "en",
+      "text": "- And I think the elephant\nin the room there is",
+      "offset": 2574.492,
+      "duration": 1.971
+    },
+    {
+      "lang": "en",
+      "text": "that the AI field seems to\nbe moving pretty quickly",
+      "offset": 2576.463,
+      "duration": 2.554
+    },
+    {
+      "lang": "en",
+      "text": "and I think a lot of us are feeling",
+      "offset": 2579.017,
+      "duration": 2.423
+    },
+    {
+      "lang": "en",
+      "text": "that while it would be nice\nto have a general solution",
+      "offset": 2581.44,
+      "duration": 3.24
+    },
+    {
+      "lang": "en",
+      "text": "to the alignment problem that scales",
+      "offset": 2584.68,
+      "duration": 1.74
+    },
+    {
+      "lang": "en",
+      "text": "to transformative AI and all\nthe way to super intelligence,",
+      "offset": 2586.42,
+      "duration": 2.148
+    },
+    {
+      "lang": "en",
+      "text": "it's not clear how long we have to get",
+      "offset": 2588.568,
+      "duration": 3.132
+    },
+    {
+      "lang": "en",
+      "text": "that sort of solution\nand a control solution",
+      "offset": 2591.7,
+      "duration": 2.82
+    },
+    {
+      "lang": "en",
+      "text": "that got us into the\ntransformative AI regime safely",
+      "offset": 2594.52,
+      "duration": 3.06
+    },
+    {
+      "lang": "en",
+      "text": "but didn't necessarily take us further",
+      "offset": 2597.58,
+      "duration": 1.38
+    },
+    {
+      "lang": "en",
+      "text": "might still be super valuable.",
+      "offset": 2598.96,
+      "duration": 1.2
+    },
+    {
+      "lang": "en",
+      "text": "Especially if we need\nsomething in the next,",
+      "offset": 2600.16,
+      "duration": 2.4
+    },
+    {
+      "lang": "en",
+      "text": "I don't know, two to three years.",
+      "offset": 2602.56,
+      "duration": 1.44
+    },
+    {
+      "lang": "en",
+      "text": "- Cool, so what are the fret\nmodels that you care about?",
+      "offset": 2604,
+      "duration": 2.546
+    },
+    {
+      "lang": "en",
+      "text": "Because I feel that's\na really good way to ,",
+      "offset": 2606.546,
+      "duration": 1.564
+    },
+    {
+      "lang": "en",
+      "text": "you know, frame alignment work.",
+      "offset": 2608.11,
+      "duration": 1.218
+    },
+    {
+      "lang": "en",
+      "text": "- One of the really key things\nabout control is that yeah,",
+      "offset": 2609.328,
+      "duration": 4.302
+    },
+    {
+      "lang": "en",
+      "text": "there's kind of this hypothesis",
+      "offset": 2613.63,
+      "duration": 1.02
+    },
+    {
+      "lang": "en",
+      "text": "that if you guard against\nthe key threat models",
+      "offset": 2614.65,
+      "duration": 2.88
+    },
+    {
+      "lang": "en",
+      "text": "then that's sufficient.",
+      "offset": 2617.53,
+      "duration": 2.19
+    },
+    {
+      "lang": "en",
+      "text": "And so you don't actually need to ensure",
+      "offset": 2619.72,
+      "duration": 2.4
+    },
+    {
+      "lang": "en",
+      "text": "that your model's doing nothing bad.",
+      "offset": 2622.12,
+      "duration": 1.98
+    },
+    {
+      "lang": "en",
+      "text": "You just need to list through",
+      "offset": 2624.1,
+      "duration": 1.65
+    },
+    {
+      "lang": "en",
+      "text": "what are the most major\nthings that the model could do",
+      "offset": 2625.75,
+      "duration": 2.49
+    },
+    {
+      "lang": "en",
+      "text": "that would be really bad,",
+      "offset": 2628.24,
+      "duration": 1.6
+    },
+    {
+      "lang": "en",
+      "text": "block those reliably",
+      "offset": 2629.84,
+      "duration": 1.52
+    },
+    {
+      "lang": "en",
+      "text": "and then hopefully from there\nyou're pretty safe to deploy,",
+      "offset": 2631.36,
+      "duration": 3.3
+    },
+    {
+      "lang": "en",
+      "text": "the main threat models that yeah,",
+      "offset": 2634.66,
+      "duration": 3.78
+    },
+    {
+      "lang": "en",
+      "text": "we've been thinking about Anthropic,",
+      "offset": 2638.44,
+      "duration": 1.741
+    },
+    {
+      "lang": "en",
+      "text": "it's possible there are more,",
+      "offset": 2640.181,
+      "duration": 1.469
+    },
+    {
+      "lang": "en",
+      "text": "but I think these are the\nmost salient ones to us",
+      "offset": 2641.65,
+      "duration": 1.98
+    },
+    {
+      "lang": "en",
+      "text": "currently are models\ncopying their weights out,",
+      "offset": 2643.63,
+      "duration": 3.71
+    },
+    {
+      "lang": "en",
+      "text": "models deploying themself within a company",
+      "offset": 2647.34,
+      "duration": 5
+    },
+    {
+      "lang": "en",
+      "text": "in an unmonitored way,",
+      "offset": 2653.177,
+      "duration": 2.13
+    },
+    {
+      "lang": "en",
+      "text": "and the third one would be\nsabotaging AI safety research.",
+      "offset": 2655.307,
+      "duration": 5
+    },
+    {
+      "lang": "en",
+      "text": "The reason the first two are important,",
+      "offset": 2660.44,
+      "duration": 2.24
+    },
+    {
+      "lang": "en",
+      "text": "the first two copying weights\nout of the data center",
+      "offset": 2662.68,
+      "duration": 2.723
+    },
+    {
+      "lang": "en",
+      "text": "and launching unmonitored\ncopies of the model internally.",
+      "offset": 2665.403,
+      "duration": 3.421
+    },
+    {
+      "lang": "en",
+      "text": "Those are both important",
+      "offset": 2668.824,
+      "duration": 1.566
+    },
+    {
+      "lang": "en",
+      "text": "because we can then no longer,",
+      "offset": 2670.39,
+      "duration": 3.66
+    },
+    {
+      "lang": "en",
+      "text": "it becomes much more challenging",
+      "offset": 2674.05,
+      "duration": 2.31
+    },
+    {
+      "lang": "en",
+      "text": "or impossible to do yeah,",
+      "offset": 2676.36,
+      "duration": 4.02
+    },
+    {
+      "lang": "en",
+      "text": "monitor what the model is doing,",
+      "offset": 2680.38,
+      "duration": 1.53
+    },
+    {
+      "lang": "en",
+      "text": "block it from doing certain things,",
+      "offset": 2681.91,
+      "duration": 1.44
+    },
+    {
+      "lang": "en",
+      "text": "retrain it, delete it,\nshut it down, things that.",
+      "offset": 2683.35,
+      "duration": 4.07
+    },
+    {
+      "lang": "en",
+      "text": "If the model escapes\nand starts spinning up",
+      "offset": 2687.42,
+      "duration": 3.438
+    },
+    {
+      "lang": "en",
+      "text": "yeah versions of itself on cloud compute",
+      "offset": 2690.858,
+      "duration": 3.352
+    },
+    {
+      "lang": "en",
+      "text": "or other compute resource\nit's able to find then",
+      "offset": 2694.21,
+      "duration": 2.611
+    },
+    {
+      "lang": "en",
+      "text": "yeah then it's sort of very\ndifficult to shut it down",
+      "offset": 2696.821,
+      "duration": 5
+    },
+    {
+      "lang": "en",
+      "text": "And then yeah, I think if it\nlaunches itself internally on",
+      "offset": 2704.05,
+      "duration": 3.279
+    },
+    {
+      "lang": "en",
+      "text": "the cluster on on some,",
+      "offset": 2707.329,
+      "duration": 3.021
+    },
+    {
+      "lang": "en",
+      "text": "yeah some internal cluster",
+      "offset": 2710.35,
+      "duration": 1.17
+    },
+    {
+      "lang": "en",
+      "text": "then I think that then it also becomes",
+      "offset": 2711.52,
+      "duration": 2.292
+    },
+    {
+      "lang": "en",
+      "text": "potentially also similarly difficult",
+      "offset": 2713.812,
+      "duration": 3.618
+    },
+    {
+      "lang": "en",
+      "text": "or maybe not, yeah, I don't know.",
+      "offset": 2717.43,
+      "duration": 1.23
+    },
+    {
+      "lang": "en",
+      "text": "It at least becomes difficult to catch",
+      "offset": 2718.66,
+      "duration": 2.01
+    },
+    {
+      "lang": "en",
+      "text": "that there's something going wrong.",
+      "offset": 2720.67,
+      "duration": 1.92
+    },
+    {
+      "lang": "en",
+      "text": "You maybe need to check the logs",
+      "offset": 2722.59,
+      "duration": 2.1
+    },
+    {
+      "lang": "en",
+      "text": "to understand is this a real\njob that someone launched",
+      "offset": 2724.69,
+      "duration": 3.319
+    },
+    {
+      "lang": "en",
+      "text": "or is this something\nthat a rogue AI is doing?",
+      "offset": 2728.009,
+      "duration": 4.361
+    },
+    {
+      "lang": "en",
+      "text": "Maybe the rogue AI can then do",
+      "offset": 2732.37,
+      "duration": 2.04
+    },
+    {
+      "lang": "en",
+      "text": "unmonitored additional security research,",
+      "offset": 2734.41,
+      "duration": 1.89
+    },
+    {
+      "lang": "en",
+      "text": "research on how to then later escape",
+      "offset": 2736.3,
+      "duration": 3.12
+    },
+    {
+      "lang": "en",
+      "text": "or make some PRs which then\nenable it to do something else",
+      "offset": 2739.42,
+      "duration": 3.03
+    },
+    {
+      "lang": "en",
+      "text": "that's bad or additional\nthings that are bad.",
+      "offset": 2742.45,
+      "duration": 2.16
+    },
+    {
+      "lang": "en",
+      "text": "So yeah, I think those,",
+      "offset": 2744.61,
+      "duration": 3.15
+    },
+    {
+      "lang": "en",
+      "text": "those are two of the key threats",
+      "offset": 2747.76,
+      "duration": 2.07
+    },
+    {
+      "lang": "en",
+      "text": "on the sort of unmonitored\ndeployment side.",
+      "offset": 2749.83,
+      "duration": 3.66
+    },
+    {
+      "lang": "en",
+      "text": "Then there's another, yeah,",
+      "offset": 2753.49,
+      "duration": 1.35
+    },
+    {
+      "lang": "en",
+      "text": "I guess sabotaging safety research is",
+      "offset": 2754.84,
+      "duration": 2.73
+    },
+    {
+      "lang": "en",
+      "text": "the other threat and models,",
+      "offset": 2757.57,
+      "duration": 1.95
+    },
+    {
+      "lang": "en",
+      "text": "I mean already models are\nproducing a large fraction",
+      "offset": 2759.52,
+      "duration": 2.7
+    },
+    {
+      "lang": "en",
+      "text": "of the code yeah surprising\nlarge fraction of the code",
+      "offset": 2762.22,
+      "duration": 3.9
+    },
+    {
+      "lang": "en",
+      "text": "that the world is producing.",
+      "offset": 2766.12,
+      "duration": 1.92
+    },
+    {
+      "lang": "en",
+      "text": "But yeah, also also\nincluding people are doing",
+      "offset": 2768.04,
+      "duration": 4.5
+    },
+    {
+      "lang": "en",
+      "text": "AI research with, with tools cursor",
+      "offset": 2772.54,
+      "duration": 3.21
+    },
+    {
+      "lang": "en",
+      "text": "or Copilot using LMs to generate the code",
+      "offset": 2775.75,
+      "duration": 3.25
+    },
+    {
+      "lang": "en",
+      "text": "and yeah pretty soon it\nseems pretty plausible",
+      "offset": 2780.1,
+      "duration": 2.07
+    },
+    {
+      "lang": "en",
+      "text": "that people use more\nagentic coding systems",
+      "offset": 2782.17,
+      "duration": 2.7
+    },
+    {
+      "lang": "en",
+      "text": "which are doing sort of multi-step coding,",
+      "offset": 2784.87,
+      "duration": 2.227
+    },
+    {
+      "lang": "en",
+      "text": "coding tasks writing code, running it,",
+      "offset": 2787.097,
+      "duration": 3.173
+    },
+    {
+      "lang": "en",
+      "text": "checking the results\nand repeating that loop.",
+      "offset": 2790.27,
+      "duration": 2.43
+    },
+    {
+      "lang": "en",
+      "text": "And with those systems we ,",
+      "offset": 2792.7,
+      "duration": 3.81
+    },
+    {
+      "lang": "en",
+      "text": "yeah I think there's a kind of",
+      "offset": 2796.51,
+      "duration": 1.922
+    },
+    {
+      "lang": "en",
+      "text": "strong poll towards just\nusing those to automate",
+      "offset": 2798.432,
+      "duration": 3.898
+    },
+    {
+      "lang": "en",
+      "text": "a lot of safety work and that",
+      "offset": 2802.33,
+      "duration": 1.53
+    },
+    {
+      "lang": "en",
+      "text": "the upside of that would be really high.",
+      "offset": 2803.86,
+      "duration": 1.26
+    },
+    {
+      "lang": "en",
+      "text": "We could get way more safety research done",
+      "offset": 2805.12,
+      "duration": 2.104
+    },
+    {
+      "lang": "en",
+      "text": "but also on the other hand\nif we don't trust the models",
+      "offset": 2807.224,
+      "duration": 3.086
+    },
+    {
+      "lang": "en",
+      "text": "they might actually\nsabotage that research,",
+      "offset": 2810.31,
+      "duration": 2.31
+    },
+    {
+      "lang": "en",
+      "text": "persuade us that of a wrong interpretation",
+      "offset": 2812.62,
+      "duration": 2.82
+    },
+    {
+      "lang": "en",
+      "text": "of some certain plot,",
+      "offset": 2815.44,
+      "duration": 0.96
+    },
+    {
+      "lang": "en",
+      "text": "persuade us to go down a diff,",
+      "offset": 2816.4,
+      "duration": 1.62
+    },
+    {
+      "lang": "en",
+      "text": "a wrong research direction,",
+      "offset": 2818.02,
+      "duration": 1.53
+    },
+    {
+      "lang": "en",
+      "text": "which is actually a rabbit hole",
+      "offset": 2819.55,
+      "duration": 1.26
+    },
+    {
+      "lang": "en",
+      "text": "and waste a lot of our time,",
+      "offset": 2820.81,
+      "duration": 1.444
+    },
+    {
+      "lang": "en",
+      "text": "persuades us that a certain model is safe,",
+      "offset": 2822.254,
+      "duration": 3.056
+    },
+    {
+      "lang": "en",
+      "text": "maybe even runs experiments to justify",
+      "offset": 2825.31,
+      "duration": 2.37
+    },
+    {
+      "lang": "en",
+      "text": "that the the model is safe",
+      "offset": 2827.68,
+      "duration": 2.43
+    },
+    {
+      "lang": "en",
+      "text": "and then gets us to deploy\nan actually unsafe model.",
+      "offset": 2830.11,
+      "duration": 2.883
+    },
+    {
+      "lang": "en",
+      "text": "So yeah, I think there's\njust a lot of risks",
+      "offset": 2834.4,
+      "duration": 1.47
+    },
+    {
+      "lang": "en",
+      "text": "related to yeah,",
+      "offset": 2835.87,
+      "duration": 2.22
+    },
+    {
+      "lang": "en",
+      "text": "sabotaging our understanding\nof the safety of models.",
+      "offset": 2838.09,
+      "duration": 2.61
+    },
+    {
+      "lang": "en",
+      "text": "So yeah, I think those\nare, yeah that's another,",
+      "offset": 2840.7,
+      "duration": 2.779
+    },
+    {
+      "lang": "en",
+      "text": "another key threat as well.",
+      "offset": 2843.479,
+      "duration": 1.814
+    },
+    {
+      "lang": "en",
+      "text": "- Yeah, there are other sketchy\nthings that models could do.",
+      "offset": 2846.13,
+      "duration": 2.07
+    },
+    {
+      "lang": "en",
+      "text": "For example, they're deployed",
+      "offset": 2848.2,
+      "duration": 1.002
+    },
+    {
+      "lang": "en",
+      "text": "insert general security vulnerabilities",
+      "offset": 2849.202,
+      "duration": 2.118
+    },
+    {
+      "lang": "en",
+      "text": "that someone then from\nthe outside could exploit",
+      "offset": 2851.32,
+      "duration": 4.02
+    },
+    {
+      "lang": "en",
+      "text": "or maybe not directly\ninfluencing our AI research",
+      "offset": 2855.34,
+      "duration": 3.81
+    },
+    {
+      "lang": "en",
+      "text": "but poisoning data for future models",
+      "offset": 2859.15,
+      "duration": 2.335
+    },
+    {
+      "lang": "en",
+      "text": "or persuading internal people",
+      "offset": 2861.485,
+      "duration": 2.345
+    },
+    {
+      "lang": "en",
+      "text": "or even external people at\nvery important organizations",
+      "offset": 2863.83,
+      "duration": 2.429
+    },
+    {
+      "lang": "en",
+      "text": "about certain key decisions",
+      "offset": 2866.259,
+      "duration": 2.291
+    },
+    {
+      "lang": "en",
+      "text": "or doing kind of research",
+      "offset": 2869.95,
+      "duration": 3.12
+    },
+    {
+      "lang": "en",
+      "text": "helping people externally\nwith AI research.",
+      "offset": 2873.07,
+      "duration": 2.52
+    },
+    {
+      "lang": "en",
+      "text": "Maybe if we're in a\nsituation where we kind of,",
+      "offset": 2875.59,
+      "duration": 2.195
+    },
+    {
+      "lang": "en",
+      "text": "we would much prefer",
+      "offset": 2877.785,
+      "duration": 2.215
+    },
+    {
+      "lang": "en",
+      "text": "that AI research was happening",
+      "offset": 2880,
+      "duration": 1.08
+    },
+    {
+      "lang": "en",
+      "text": "at a small number of well-regulated",
+      "offset": 2881.08,
+      "duration": 2.31
+    },
+    {
+      "lang": "en",
+      "text": "or kind of well understood\ninstitutions instead model",
+      "offset": 2883.39,
+      "duration": 3.42
+    },
+    {
+      "lang": "en",
+      "text": "might kind of help people\noutside do a lot of AI research.",
+      "offset": 2886.81,
+      "duration": 3.15
+    },
+    {
+      "lang": "en",
+      "text": "That's another thing we\nmight wanna monitor for",
+      "offset": 2889.96,
+      "duration": 1.68
+    },
+    {
+      "lang": "en",
+      "text": "but yeah I think roughly most all things",
+      "offset": 2891.64,
+      "duration": 3.873
+    },
+    {
+      "lang": "en",
+      "text": "that that we care about",
+      "offset": 2895.513,
+      "duration": 1.017
+    },
+    {
+      "lang": "en",
+      "text": "boil down to the three things\nyou outlined or close to it.",
+      "offset": 2896.53,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "- Scary future or scary risks",
+      "offset": 2899.89,
+      "duration": 2.52
+    },
+    {
+      "lang": "en",
+      "text": "that we should definitely mitigate",
+      "offset": 2902.41,
+      "duration": 1.23
+    },
+    {
+      "lang": "en",
+      "text": "or work towards mitigating.",
+      "offset": 2903.64,
+      "duration": 2.298
+    },
+    {
+      "lang": "en",
+      "text": "I wonder maybe to leave\non an optimistic note",
+      "offset": 2905.938,
+      "duration": 3.672
+    },
+    {
+      "lang": "en",
+      "text": "what model developments\ndo you think have happened",
+      "offset": 2909.61,
+      "duration": 1.83
+    },
+    {
+      "lang": "en",
+      "text": "or what has given you positive evidence",
+      "offset": 2911.44,
+      "duration": 3.48
+    },
+    {
+      "lang": "en",
+      "text": "that control will work",
+      "offset": 2914.92,
+      "duration": 1.396
+    },
+    {
+      "lang": "en",
+      "text": "or other alignment techniques\nwill work in the future?",
+      "offset": 2916.316,
+      "duration": 3.494
+    },
+    {
+      "lang": "en",
+      "text": "- Yeah, well I think that one thing",
+      "offset": 2919.81,
+      "duration": 2.791
+    },
+    {
+      "lang": "en",
+      "text": "that's been maybe pretty\noptimistic recently is this",
+      "offset": 2922.601,
+      "duration": 3.599
+    },
+    {
+      "lang": "en",
+      "text": "trend towards models doing more",
+      "offset": 2926.2,
+      "duration": 1.289
+    },
+    {
+      "lang": "en",
+      "text": "and more externalized reasoning",
+      "offset": 2927.489,
+      "duration": 2.161
+    },
+    {
+      "lang": "en",
+      "text": "and people being able to get",
+      "offset": 2929.65,
+      "duration": 1.269
+    },
+    {
+      "lang": "en",
+      "text": "a lot of additional\nintelligence juice outta models",
+      "offset": 2930.919,
+      "duration": 4.521
+    },
+    {
+      "lang": "en",
+      "text": "by getting them to do these\nkind of long form reasoning",
+      "offset": 2935.44,
+      "duration": 2.182
+    },
+    {
+      "lang": "en",
+      "text": "kind of traces,",
+      "offset": 2937.622,
+      "duration": 2.558
+    },
+    {
+      "lang": "en",
+      "text": "and this is kind of great in a sense in",
+      "offset": 2940.18,
+      "duration": 2.61
+    },
+    {
+      "lang": "en",
+      "text": "that the models are putting\ntheir thoughts out there",
+      "offset": 2942.79,
+      "duration": 2.1
+    },
+    {
+      "lang": "en",
+      "text": "and you can read them",
+      "offset": 2944.89,
+      "duration": 1.32
+    },
+    {
+      "lang": "en",
+      "text": "and kind of assuming they're\nan accurate representation",
+      "offset": 2946.21,
+      "duration": 3.93
+    },
+    {
+      "lang": "en",
+      "text": "of what is going on,",
+      "offset": 2950.14,
+      "duration": 1.05
+    },
+    {
+      "lang": "en",
+      "text": "what the model's, actual\nreasons for doing stuff,",
+      "offset": 2951.19,
+      "duration": 2.67
+    },
+    {
+      "lang": "en",
+      "text": "and that's a huge surface\narea to be monitored.",
+      "offset": 2953.86,
+      "duration": 2.61
+    },
+    {
+      "lang": "en",
+      "text": "And I think if you're thinking about this",
+      "offset": 2956.47,
+      "duration": 0.833
+    },
+    {
+      "lang": "en",
+      "text": "from a control perspective,",
+      "offset": 2957.303,
+      "duration": 1.297
+    },
+    {
+      "lang": "en",
+      "text": "then the kind of questions\nyou might ask are,",
+      "offset": 2958.6,
+      "duration": 2.91
+    },
+    {
+      "lang": "en",
+      "text": "okay, well suppose we put a model",
+      "offset": 2961.51,
+      "duration": 3.39
+    },
+    {
+      "lang": "en",
+      "text": "that uses a very long chain of thought",
+      "offset": 2964.9,
+      "duration": 2.232
+    },
+    {
+      "lang": "en",
+      "text": "into an environment",
+      "offset": 2967.132,
+      "duration": 1.518
+    },
+    {
+      "lang": "en",
+      "text": "where it has the opportunity\nto sabotage something",
+      "offset": 2968.65,
+      "duration": 2.101
+    },
+    {
+      "lang": "en",
+      "text": "and we let it try,",
+      "offset": 2970.751,
+      "duration": 2.519
+    },
+    {
+      "lang": "en",
+      "text": "firstly can it, can it\nuse the chain of thought",
+      "offset": 2973.27,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "to do that task",
+      "offset": 2977.35,
+      "duration": 1.44
+    },
+    {
+      "lang": "en",
+      "text": "and well maybe it can't,",
+      "offset": 2978.79,
+      "duration": 1.95
+    },
+    {
+      "lang": "en",
+      "text": "in which case probably\nwe're just not worried",
+      "offset": 2980.74,
+      "duration": 1.29
+    },
+    {
+      "lang": "en",
+      "text": "'cause the model can't sabotage,",
+      "offset": 2982.03,
+      "duration": 1.32
+    },
+    {
+      "lang": "en",
+      "text": "but if it can then it seems pretty ly",
+      "offset": 2983.35,
+      "duration": 3.388
+    },
+    {
+      "lang": "en",
+      "text": "that the models are much\nbetter at doing this task",
+      "offset": 2986.738,
+      "duration": 4.142
+    },
+    {
+      "lang": "en",
+      "text": "with the long chain of\nthought than without.",
+      "offset": 2990.88,
+      "duration": 1.59
+    },
+    {
+      "lang": "en",
+      "text": "So in some sense that chain\nof thought is load bearing",
+      "offset": 2992.47,
+      "duration": 2.447
+    },
+    {
+      "lang": "en",
+      "text": "and if the chain of thought\nis load bearing then it seems",
+      "offset": 2994.917,
+      "duration": 2.083
+    },
+    {
+      "lang": "en",
+      "text": "pretty ly that actually there are going",
+      "offset": 2997,
+      "duration": 4.59
+    },
+    {
+      "lang": "en",
+      "text": "to be explicit references\nto the sabotage attempts",
+      "offset": 3001.59,
+      "duration": 3.99
+    },
+    {
+      "lang": "en",
+      "text": "in that chain of thought,",
+      "offset": 3005.58,
+      "duration": 1.62
+    },
+    {
+      "lang": "en",
+      "text": "you're gonna think of the converse,",
+      "offset": 3007.2,
+      "duration": 0.87
+    },
+    {
+      "lang": "en",
+      "text": "if that weren't the case then the model",
+      "offset": 3008.07,
+      "duration": 1.95
+    },
+    {
+      "lang": "en",
+      "text": "must be using the chain of thought",
+      "offset": 3010.02,
+      "duration": 2.82
+    },
+    {
+      "lang": "en",
+      "text": "for reasoning about how to sabotage",
+      "offset": 3012.84,
+      "duration": 2.52
+    },
+    {
+      "lang": "en",
+      "text": "but still managing not to\nsay anything about sabotage",
+      "offset": 3015.36,
+      "duration": 2.7
+    },
+    {
+      "lang": "en",
+      "text": "in its chain of thought,",
+      "offset": 3018.06,
+      "duration": 0.833
+    },
+    {
+      "lang": "en",
+      "text": "and that's certainly in theory possible",
+      "offset": 3018.893,
+      "duration": 2.107
+    },
+    {
+      "lang": "en",
+      "text": "but in practice seems pretty unly,",
+      "offset": 3021,
+      "duration": 3.27
+    },
+    {
+      "lang": "en",
+      "text": "at least for models that\nhave only just become capable",
+      "offset": 3024.27,
+      "duration": 2.51
+    },
+    {
+      "lang": "en",
+      "text": "of the sabotage and then\nwe're not training by default",
+      "offset": 3026.78,
+      "duration": 3.4
+    },
+    {
+      "lang": "en",
+      "text": "to be able to obfuscate\ntheir chains of thought.",
+      "offset": 3030.18,
+      "duration": 3.27
+    },
+    {
+      "lang": "en",
+      "text": "- I think a massive winner is",
+      "offset": 3033.45,
+      "duration": 1.14
+    },
+    {
+      "lang": "en",
+      "text": "in Constitutional Classifiers,",
+      "offset": 3034.59,
+      "duration": 1.077
+    },
+    {
+      "lang": "en",
+      "text": "but the classifier can be",
+      "offset": 3035.667,
+      "duration": 1.443
+    },
+    {
+      "lang": "en",
+      "text": "so much smaller than the main model",
+      "offset": 3037.11,
+      "duration": 1.57
+    },
+    {
+      "lang": "en",
+      "text": "which is checking\nsomething I'm impressed at",
+      "offset": 3038.68,
+      "duration": 1.879
+    },
+    {
+      "lang": "en",
+      "text": "how small monitors can be now.",
+      "offset": 3040.559,
+      "duration": 2.221
+    },
+    {
+      "lang": "en",
+      "text": "- Yeah that is a concrete\nwin for monitoring that",
+      "offset": 3042.78,
+      "duration": 3.51
+    },
+    {
+      "lang": "en",
+      "text": "I think we're pretty hopeful",
+      "offset": 3046.29,
+      "duration": 1.89
+    },
+    {
+      "lang": "en",
+      "text": "will actually work in the real world.",
+      "offset": 3048.18,
+      "duration": 1.68
+    },
+    {
+      "lang": "en",
+      "text": "- Yeah.\n- And shows",
+      "offset": 3049.86,
+      "duration": 1.17
+    },
+    {
+      "lang": "en",
+      "text": "that these things are\ndeployable in practice.",
+      "offset": 3051.03,
+      "duration": 1.696
+    },
+    {
+      "lang": "en",
+      "text": "Yeah, I think it's yet to be shown exactly",
+      "offset": 3052.726,
+      "duration": 2.864
+    },
+    {
+      "lang": "en",
+      "text": "how useful this is for\nmisalignment type risks",
+      "offset": 3055.59,
+      "duration": 1.95
+    },
+    {
+      "lang": "en",
+      "text": "and whether we should\nworry about the monitoring",
+      "offset": 3057.54,
+      "duration": 1.56
+    },
+    {
+      "lang": "en",
+      "text": "the policy colluding or\nwhether AI systems have",
+      "offset": 3059.1,
+      "duration": 3.12
+    },
+    {
+      "lang": "en",
+      "text": "correlated failures.",
+      "offset": 3062.22,
+      "duration": 1.35
+    },
+    {
+      "lang": "en",
+      "text": "But I do think that it's\nde-risked a big chunk",
+      "offset": 3063.57,
+      "duration": 2.462
+    },
+    {
+      "lang": "en",
+      "text": "of the technical risk",
+      "offset": 3066.032,
+      "duration": 1.618
+    },
+    {
+      "lang": "en",
+      "text": "for deploying monitors in practice.",
+      "offset": 3067.65,
+      "duration": 1.68
+    },
+    {
+      "lang": "en",
+      "text": "- Nice so control super\nimportant for the next two years",
+      "offset": 3069.33,
+      "duration": 3
+    },
+    {
+      "lang": "en",
+      "text": "and we're optimistic we can do it.",
+      "offset": 3072.33,
+      "duration": 1.35
+    },
+    {
+      "lang": "en",
+      "text": "Sound about right?",
+      "offset": 3073.68,
+      "duration": 0.96
+    },
+    {
+      "lang": "en",
+      "text": "- Oh.\n- Hope so.",
+      "offset": 3074.64,
+      "duration": 1.11
+    },
+    {
+      "lang": "en",
+      "text": "- Okay, nice.",
+      "offset": 3075.75,
+      "duration": 1.17
+    },
+    {
+      "lang": "en",
+      "text": "Thank you for watching this round table.",
+      "offset": 3076.92,
+      "duration": 2.596
+    },
+    {
+      "lang": "en",
+      "text": "We've been Anthropic, peace.",
+      "offset": 3079.516,
+      "duration": 2.567
+    }
+  ],
+  "cleanText": null,
+  "dumpedAt": "2025-07-21T18:43:25.998Z"
+}

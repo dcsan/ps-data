@@ -1,0 +1,3052 @@
+{
+  "episodeId": "8EQo4J2BWKw",
+  "channelSlug": "@aidotengineer",
+  "title": "Thinking Deeper in Gemini — Jack Rae, Google DeepMind",
+  "publishedAt": "2025-07-10T16:00:06.000Z",
+  "rawLines": [
+    {
+      "lang": "en",
+      "text": "[Music]",
+      "offset": 0.33,
+      "duration": 7.479
+    },
+    {
+      "lang": "en",
+      "text": "[Music]",
+      "offset": 15.45,
+      "duration": 7.629
+    },
+    {
+      "lang": "en",
+      "text": "[Applause]",
+      "offset": 20.01,
+      "duration": 3.069
+    },
+    {
+      "lang": "en",
+      "text": "Hi everybody. Uh yeah, my name is Jack.",
+      "offset": 24.08,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "I'm a researcher at Google and I'm the",
+      "offset": 26.56,
+      "duration": 4.799
+    },
+    {
+      "lang": "en",
+      "text": "tech lead of thinking within Gemini and",
+      "offset": 28.72,
+      "duration": 6.24
+    },
+    {
+      "lang": "en",
+      "text": "I'm going to give a brief deep dive into",
+      "offset": 31.359,
+      "duration": 7.2
+    },
+    {
+      "lang": "en",
+      "text": "thinking from the research perspective",
+      "offset": 34.96,
+      "duration": 6.64
+    },
+    {
+      "lang": "en",
+      "text": "uh within Gemini. So",
+      "offset": 38.559,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "um",
+      "offset": 41.6,
+      "duration": 6.16
+    },
+    {
+      "lang": "en",
+      "text": "it's it's thinking so much",
+      "offset": 44.079,
+      "duration": 5.521
+    },
+    {
+      "lang": "en",
+      "text": "I think this clicker might not work. So",
+      "offset": 47.76,
+      "duration": 5.68
+    },
+    {
+      "lang": "en",
+      "text": "let's drive the next slide.",
+      "offset": 49.6,
+      "duration": 5.92
+    },
+    {
+      "lang": "en",
+      "text": "If you can drive SL, whoever the slide",
+      "offset": 53.44,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "driver is, please drive to the next",
+      "offset": 55.52,
+      "duration": 5.96
+    },
+    {
+      "lang": "en",
+      "text": "slide.",
+      "offset": 58.48,
+      "duration": 3
+    },
+    {
+      "lang": "en",
+      "text": "Gemini",
+      "offset": 62.879,
+      "duration": 3
+    },
+    {
+      "lang": "en",
+      "text": "um",
+      "offset": 67.04,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "but yeah, what I'm whilst whilst we",
+      "offset": 68.72,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "maybe sort out the slide issue, um I'm",
+      "offset": 70.88,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "going to kind of give this talk in three",
+      "offset": 73.92,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "stages. One is to give a research",
+      "offset": 75.68,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "motivation of why we actually are",
+      "offset": 77.28,
+      "duration": 4.879
+    },
+    {
+      "lang": "en",
+      "text": "excited about thinking in terms of",
+      "offset": 79.04,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "unblocking bottlenecks towards",
+      "offset": 82.159,
+      "duration": 3.441
+    },
+    {
+      "lang": "en",
+      "text": "intelligence. And I'm going to give a",
+      "offset": 84.24,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "kind of uh give a few examples of how",
+      "offset": 85.6,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "often discovering the most precient",
+      "offset": 88.24,
+      "duration": 5.919
+    },
+    {
+      "lang": "en",
+      "text": "bottlenecks uh in kind of our current uh",
+      "offset": 90.64,
+      "duration": 6.32
+    },
+    {
+      "lang": "en",
+      "text": "models uh our most advanced systems. How",
+      "offset": 94.159,
+      "duration": 5.201
+    },
+    {
+      "lang": "en",
+      "text": "often if you can just identify the",
+      "offset": 96.96,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "crucial kind of uh issues and",
+      "offset": 99.36,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "shortcomings you often will then find a",
+      "offset": 101.6,
+      "duration": 3.28
+    },
+    {
+      "lang": "en",
+      "text": "solution. And there's a reason how that",
+      "offset": 103.28,
+      "duration": 3.519
+    },
+    {
+      "lang": "en",
+      "text": "is linked to thinking and then going to",
+      "offset": 104.88,
+      "duration": 5.68
+    },
+    {
+      "lang": "en",
+      "text": "talk um a little bit more um just",
+      "offset": 106.799,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "pragmatically about what is thinking in",
+      "offset": 110.56,
+      "duration": 3.28
+    },
+    {
+      "lang": "en",
+      "text": "Gemini, why is it interesting to",
+      "offset": 112.159,
+      "duration": 4.081
+    },
+    {
+      "lang": "en",
+      "text": "developers? And I think you're someone",
+      "offset": 113.84,
+      "duration": 7.919
+    },
+    {
+      "lang": "en",
+      "text": "is okay the slides are still not here.",
+      "offset": 116.24,
+      "duration": 7.199
+    },
+    {
+      "lang": "en",
+      "text": "We did do a rehearsal this morning where",
+      "offset": 121.759,
+      "duration": 4.561
+    },
+    {
+      "lang": "en",
+      "text": "the slides are there but yeah keynote",
+      "offset": 123.439,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "speaker SL. Yeah, someone's I can see",
+      "offset": 126.32,
+      "duration": 8.559
+    },
+    {
+      "lang": "en",
+      "text": "someone. Yeah, keynote speaker folder.",
+      "offset": 128.239,
+      "duration": 6.64
+    },
+    {
+      "lang": "en",
+      "text": "Jack Ray",
+      "offset": 136.16,
+      "duration": 3.32
+    },
+    {
+      "lang": "en",
+      "text": "think it's under a keynote speaker that",
+      "offset": 140.319,
+      "duration": 5.92
+    },
+    {
+      "lang": "en",
+      "text": "one. Um anyway um it's going to come up",
+      "offset": 142.72,
+      "duration": 6.8
+    },
+    {
+      "lang": "en",
+      "text": "soon. You are close um person.",
+      "offset": 146.239,
+      "duration": 6.801
+    },
+    {
+      "lang": "en",
+      "text": "Um yeah but um and then I'm also going",
+      "offset": 149.52,
+      "duration": 6.96
+    },
+    {
+      "lang": "en",
+      "text": "to talk a little bit about what's next.",
+      "offset": 153.04,
+      "duration": 6.4
+    },
+    {
+      "lang": "en",
+      "text": "Ah I'm just sorry I'm just watching you.",
+      "offset": 156.48,
+      "duration": 7.16
+    },
+    {
+      "lang": "en",
+      "text": "There you go. Nice one.",
+      "offset": 159.44,
+      "duration": 4.2
+    },
+    {
+      "lang": "en",
+      "text": "Yeah, that's great. Okay, the slides",
+      "offset": 164.319,
+      "duration": 5.041
+    },
+    {
+      "lang": "en",
+      "text": "will appear. Thank you, whoever is",
+      "offset": 167.2,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "coordinated. Apologies, I don't know",
+      "offset": 169.36,
+      "duration": 3.28
+    },
+    {
+      "lang": "en",
+      "text": "what happened. Um, and then I'm just",
+      "offset": 170.64,
+      "duration": 3.12
+    },
+    {
+      "lang": "en",
+      "text": "going to talk a bit about what's next.",
+      "offset": 172.64,
+      "duration": 2.879
+    },
+    {
+      "lang": "en",
+      "text": "So, Logan did a great job of kind of",
+      "offset": 173.76,
+      "duration": 3.759
+    },
+    {
+      "lang": "en",
+      "text": "giving an incredible overview of Gemini",
+      "offset": 175.519,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "as a whole ecosystem, everything that's",
+      "offset": 177.519,
+      "duration": 3.521
+    },
+    {
+      "lang": "en",
+      "text": "going on. Uh, I'm going to really be",
+      "offset": 179.519,
+      "duration": 3.281
+    },
+    {
+      "lang": "en",
+      "text": "focusing on on kind of what we're",
+      "offset": 181.04,
+      "duration": 5.279
+    },
+    {
+      "lang": "en",
+      "text": "excited about in the reasoning space. So",
+      "offset": 182.8,
+      "duration": 5.84
+    },
+    {
+      "lang": "en",
+      "text": "with intelligence bottlenecks uh we're",
+      "offset": 186.319,
+      "duration": 4.241
+    },
+    {
+      "lang": "en",
+      "text": "kind of the message of this section is",
+      "offset": 188.64,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "really about uh progress. So progress",
+      "offset": 190.56,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "has really been marked by identifying",
+      "offset": 192.72,
+      "duration": 4.879
+    },
+    {
+      "lang": "en",
+      "text": "key bottlenecks towards intelligence and",
+      "offset": 195.28,
+      "duration": 4.239
+    },
+    {
+      "lang": "en",
+      "text": "then solving them. And I'm going to kind",
+      "offset": 197.599,
+      "duration": 3.041
+    },
+    {
+      "lang": "en",
+      "text": "of give some examples throughout",
+      "offset": 199.519,
+      "duration": 2.481
+    },
+    {
+      "lang": "en",
+      "text": "history. I'm going to actually rewind",
+      "offset": 200.64,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "the clock to 1948. Claude Shannon he",
+      "offset": 202,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "invents the language model mathematical",
+      "offset": 204.8,
+      "duration": 3.439
+    },
+    {
+      "lang": "en",
+      "text": "theory of communication. and he builds a",
+      "offset": 206.72,
+      "duration": 4.079
+    },
+    {
+      "lang": "en",
+      "text": "language model a two gram using a a",
+      "offset": 208.239,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "textbook of word statistics that was",
+      "offset": 210.799,
+      "duration": 4.321
+    },
+    {
+      "lang": "en",
+      "text": "hand calculated and he samples from it",
+      "offset": 212.799,
+      "duration": 4.481
+    },
+    {
+      "lang": "en",
+      "text": "and he kind of marvels at the samples he",
+      "offset": 215.12,
+      "duration": 3.28
+    },
+    {
+      "lang": "en",
+      "text": "feels like these are these are getting",
+      "offset": 217.28,
+      "duration": 2.239
+    },
+    {
+      "lang": "en",
+      "text": "pretty good they're a lot better than",
+      "offset": 218.4,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "unogram character this two gram word",
+      "offset": 219.519,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "model but uh kind of he remarks like I",
+      "offset": 221.76,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "think this would be better if we could",
+      "offset": 224.239,
+      "duration": 3.041
+    },
+    {
+      "lang": "en",
+      "text": "really like make a better language model",
+      "offset": 225.84,
+      "duration": 3.679
+    },
+    {
+      "lang": "en",
+      "text": "and scale up this current method so he",
+      "offset": 227.28,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "really wanted to just scale up the",
+      "offset": 229.519,
+      "duration": 3.121
+    },
+    {
+      "lang": "en",
+      "text": "engram that was the bottleneck like",
+      "offset": 230.64,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "small amount of data very you know",
+      "offset": 232.64,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "elementary statistics and And",
+      "offset": 235.28,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "unfortunately for core Shannon kind of",
+      "offset": 237.28,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "the solution was pretty hard. He needed",
+      "offset": 239.04,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "the digitalization of human knowledge",
+      "offset": 240.72,
+      "duration": 3.28
+    },
+    {
+      "lang": "en",
+      "text": "and he needed modern computing to be",
+      "offset": 242.48,
+      "duration": 2.959
+    },
+    {
+      "lang": "en",
+      "text": "able to aggregate these statistics at",
+      "offset": 244,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "scale. So you know that wasn't so easy",
+      "offset": 245.439,
+      "duration": 3.921
+    },
+    {
+      "lang": "en",
+      "text": "for him to solve. He had it a bit more",
+      "offset": 247.68,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "tricky. But fast forward a few decades",
+      "offset": 249.36,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "at Google uh in in the 2000s uh my",
+      "offset": 251.76,
+      "duration": 5.759
+    },
+    {
+      "lang": "en",
+      "text": "colleagues such as uh Jeff Dean are",
+      "offset": 255.12,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "training engram language models over",
+      "offset": 257.519,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "trillions of tokens. These are powering",
+      "offset": 259.44,
+      "duration": 3.759
+    },
+    {
+      "lang": "en",
+      "text": "at the time the most sophisticated",
+      "offset": 261.359,
+      "duration": 3.521
+    },
+    {
+      "lang": "en",
+      "text": "speech recognition and translation",
+      "offset": 263.199,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "systems uh and and a lot of progress has",
+      "offset": 264.88,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "been made but their bottleneck was",
+      "offset": 267.199,
+      "duration": 3.601
+    },
+    {
+      "lang": "en",
+      "text": "actually uh with these systems was that",
+      "offset": 269.12,
+      "duration": 3.28
+    },
+    {
+      "lang": "en",
+      "text": "these engram language models were very",
+      "offset": 270.8,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "restricted to short context and they",
+      "offset": 272.4,
+      "duration": 4.799
+    },
+    {
+      "lang": "en",
+      "text": "were because um there's an exponential",
+      "offset": 274.4,
+      "duration": 5.519
+    },
+    {
+      "lang": "en",
+      "text": "storage cost with uh context length and",
+      "offset": 277.199,
+      "duration": 3.921
+    },
+    {
+      "lang": "en",
+      "text": "there wasn't really a way around that",
+      "offset": 279.919,
+      "duration": 3.361
+    },
+    {
+      "lang": "en",
+      "text": "with with just sticking with engrams.",
+      "offset": 281.12,
+      "duration": 4.639
+    },
+    {
+      "lang": "en",
+      "text": "The solution was the early kind of uh",
+      "offset": 283.28,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "introduction of deep learning in 2010 uh",
+      "offset": 285.759,
+      "duration": 5.121
+    },
+    {
+      "lang": "en",
+      "text": "with uh the introduction of recurrent uh",
+      "offset": 288.32,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "neural uh language models. So recurrent",
+      "offset": 290.88,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "neural networks applied to modeling text",
+      "offset": 293.04,
+      "duration": 3.28
+    },
+    {
+      "lang": "en",
+      "text": "where the recurrent neural networks",
+      "offset": 294.96,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "could avoid this problem by uh storing",
+      "offset": 296.32,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "compressed representation of the pass",
+      "offset": 298.96,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "into the state of a neural network and",
+      "offset": 300.72,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "they could now start to model beyond a",
+      "offset": 302.32,
+      "duration": 4.719
+    },
+    {
+      "lang": "en",
+      "text": "five gram sentences or even paragraphs.",
+      "offset": 304.56,
+      "duration": 4.639
+    },
+    {
+      "lang": "en",
+      "text": "And this was a massive kind of uh uh",
+      "offset": 307.039,
+      "duration": 4.401
+    },
+    {
+      "lang": "en",
+      "text": "step change in improvement. However, a",
+      "offset": 309.199,
+      "duration": 3.361
+    },
+    {
+      "lang": "en",
+      "text": "couple of years later, people would",
+      "offset": 311.44,
+      "duration": 2.08
+    },
+    {
+      "lang": "en",
+      "text": "notice even there there was a",
+      "offset": 312.56,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "bottleneck. So, uh the recurrent neural",
+      "offset": 313.52,
+      "duration": 4.399
+    },
+    {
+      "lang": "en",
+      "text": "network's representation of the past is",
+      "offset": 316.08,
+      "duration": 3.679
+    },
+    {
+      "lang": "en",
+      "text": "in a fixed size state and this",
+      "offset": 317.919,
+      "duration": 4.961
+    },
+    {
+      "lang": "en",
+      "text": "fixedsized state uh uh there's only so",
+      "offset": 319.759,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "much information you could put into it",
+      "offset": 322.88,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "and so as a result there's often",
+      "offset": 324.479,
+      "duration": 4.081
+    },
+    {
+      "lang": "en",
+      "text": "observed to be kind of lossy a lossy",
+      "offset": 326.32,
+      "duration": 4.159
+    },
+    {
+      "lang": "en",
+      "text": "kind of representation of its context.",
+      "offset": 328.56,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "The solution that was derived I think",
+      "offset": 330.479,
+      "duration": 2.961
+    },
+    {
+      "lang": "en",
+      "text": "once once people kind of really",
+      "offset": 332.08,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "encountered this this um information",
+      "offset": 333.44,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "bottleneck in the past was actually just",
+      "offset": 335.6,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "keep everything around in terms of your",
+      "offset": 337.52,
+      "duration": 5.119
+    },
+    {
+      "lang": "en",
+      "text": "past uh neural uh embeddings and use an",
+      "offset": 339.52,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "attention operator to aggregate things",
+      "offset": 342.639,
+      "duration": 3.601
+    },
+    {
+      "lang": "en",
+      "text": "on the fly. So this was the birth of",
+      "offset": 344.24,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "attention and then shortly after",
+      "offset": 346.24,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "transformers. So um transformers then",
+      "offset": 347.84,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "kind of led to the modern deep learning",
+      "offset": 350.96,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "revolution as we know it and uh many",
+      "offset": 352.88,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "other progress was made. But if we skip",
+      "offset": 355.28,
+      "duration": 4.639
+    },
+    {
+      "lang": "en",
+      "text": "forward 10 years, we then are in 2024.",
+      "offset": 357.28,
+      "duration": 5.199
+    },
+    {
+      "lang": "en",
+      "text": "We have uh large language models.",
+      "offset": 359.919,
+      "duration": 4.321
+    },
+    {
+      "lang": "en",
+      "text": "They're increasingly powerful general",
+      "offset": 362.479,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "conversational agents. We have uh models",
+      "offset": 364.24,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "such as Gemini chat GBT. People are",
+      "offset": 366.479,
+      "duration": 4.481
+    },
+    {
+      "lang": "en",
+      "text": "using them for all sorts of use cases.",
+      "offset": 368.8,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "And there that's where we kind of come",
+      "offset": 370.96,
+      "duration": 2.72
+    },
+    {
+      "lang": "en",
+      "text": "to the bottleneck that's relevant to",
+      "offset": 372.4,
+      "duration": 2.639
+    },
+    {
+      "lang": "en",
+      "text": "this talk, which is that although these",
+      "offset": 373.68,
+      "duration": 3.359
+    },
+    {
+      "lang": "en",
+      "text": "models are very very powerful, they are",
+      "offset": 375.039,
+      "duration": 4.481
+    },
+    {
+      "lang": "en",
+      "text": "still trained to respond immediately to",
+      "offset": 377.039,
+      "duration": 4.481
+    },
+    {
+      "lang": "en",
+      "text": "requests. So in other words, in terms of",
+      "offset": 379.52,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "a compute bottleneck, there is a",
+      "offset": 381.52,
+      "duration": 3.2
+    },
+    {
+      "lang": "en",
+      "text": "constant amount of compute that they",
+      "offset": 383.12,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "apply at test time to transition from",
+      "offset": 384.72,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "your request or your question to the",
+      "offset": 386.96,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "response or your answer.",
+      "offset": 389.44,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "So the bottleneck of test time compute,",
+      "offset": 392.16,
+      "duration": 4.479
+    },
+    {
+      "lang": "en",
+      "text": "this is relevant to thinking. Uh so we",
+      "offset": 394.56,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "can unpack this a little bit more. So",
+      "offset": 396.639,
+      "duration": 2.961
+    },
+    {
+      "lang": "en",
+      "text": "when we talk about a fixed amount of",
+      "offset": 398.08,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "test time compute, the test time compute",
+      "offset": 399.6,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "is interesting to you because that's the",
+      "offset": 401.68,
+      "duration": 3.2
+    },
+    {
+      "lang": "en",
+      "text": "compute that the model is spending on",
+      "offset": 403.36,
+      "duration": 3.279
+    },
+    {
+      "lang": "en",
+      "text": "your particular problem, your particular",
+      "offset": 404.88,
+      "duration": 4.319
+    },
+    {
+      "lang": "en",
+      "text": "question. And it and and and the way it",
+      "offset": 406.639,
+      "duration": 4.321
+    },
+    {
+      "lang": "en",
+      "text": "actually kind of mechanically works is",
+      "offset": 409.199,
+      "duration": 4.401
+    },
+    {
+      "lang": "en",
+      "text": "you have some text in your request. It",
+      "offset": 410.96,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "gets translated to tokens and then it's",
+      "offset": 413.6,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "going to go through a language model.",
+      "offset": 415.84,
+      "duration": 3.28
+    },
+    {
+      "lang": "en",
+      "text": "And at the transition from the request",
+      "offset": 417.28,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "to its response, it's going to pass some",
+      "offset": 419.12,
+      "duration": 4.479
+    },
+    {
+      "lang": "en",
+      "text": "computation up through a large language",
+      "offset": 421.44,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "model which will have some parallel",
+      "offset": 423.599,
+      "duration": 3.121
+    },
+    {
+      "lang": "en",
+      "text": "computation for every layer and it'll",
+      "offset": 424.96,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "have some iterative computation across",
+      "offset": 426.72,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "layers. So that computation is really",
+      "offset": 428.88,
+      "duration": 3.599
+    },
+    {
+      "lang": "en",
+      "text": "where the model can apply its",
+      "offset": 431.36,
+      "duration": 2.559
+    },
+    {
+      "lang": "en",
+      "text": "intelligence to your particular problem",
+      "offset": 432.479,
+      "duration": 4.481
+    },
+    {
+      "lang": "en",
+      "text": "and it's of fixed size. One solution if",
+      "offset": 433.919,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "you wanted a smarter model and more",
+      "offset": 436.96,
+      "duration": 3.2
+    },
+    {
+      "lang": "en",
+      "text": "computation is just to make the model",
+      "offset": 438.479,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "larger. Then you can have more compute",
+      "offset": 440.16,
+      "duration": 4.159
+    },
+    {
+      "lang": "en",
+      "text": "and you can get a smarter response.",
+      "offset": 442.319,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "However, it's still not really enough.",
+      "offset": 444.319,
+      "duration": 3.921
+    },
+    {
+      "lang": "en",
+      "text": "Users might want to be able to think a",
+      "offset": 446.319,
+      "duration": 3.521
+    },
+    {
+      "lang": "en",
+      "text": "thousand or a million times and have a",
+      "offset": 448.24,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "very large dynamic range and a lot of",
+      "offset": 449.84,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "compute for very hard or challenging or",
+      "offset": 452.24,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "valuable tasks. And also users might",
+      "offset": 454.16,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "want to have a very dynamic application",
+      "offset": 456.4,
+      "duration": 4.079
+    },
+    {
+      "lang": "en",
+      "text": "of test time compute. So less compute",
+      "offset": 458.24,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "for simpler requests, more compute for",
+      "offset": 460.479,
+      "duration": 3.12
+    },
+    {
+      "lang": "en",
+      "text": "harder requests and have this process be",
+      "offset": 462,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "very dynamic and and and instigated by",
+      "offset": 463.599,
+      "duration": 4.801
+    },
+    {
+      "lang": "en",
+      "text": "the model. And that is what motivates",
+      "offset": 465.52,
+      "duration": 6.56
+    },
+    {
+      "lang": "en",
+      "text": "thinking. So thinking in Gemini",
+      "offset": 468.4,
+      "duration": 5.919
+    },
+    {
+      "lang": "en",
+      "text": "mechanically, I'm sure almost everyone",
+      "offset": 472.08,
+      "duration": 4.239
+    },
+    {
+      "lang": "en",
+      "text": "in this room is familiar with this",
+      "offset": 474.319,
+      "duration": 4.241
+    },
+    {
+      "lang": "en",
+      "text": "general process where we'll now have a",
+      "offset": 476.319,
+      "duration": 5.6
+    },
+    {
+      "lang": "en",
+      "text": "model and we insert a thinking stage uh",
+      "offset": 478.56,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "that the model can emit some additional",
+      "offset": 481.919,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "text before it decides to emit a final",
+      "offset": 483.84,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "answer.",
+      "offset": 485.919,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "So going back to this notion of test",
+      "offset": 487.44,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "time compute now we've added an",
+      "offset": 489.599,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "additional kind of loop uh of",
+      "offset": 491.68,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "computation where the model can kind of",
+      "offset": 493.599,
+      "duration": 4.481
+    },
+    {
+      "lang": "en",
+      "text": "iteratively uh loop and and perform",
+      "offset": 495.52,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "additional test time compute uh during",
+      "offset": 498.08,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "this thinking stage and this loop can be",
+      "offset": 500.24,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "potentially thousands or tens of",
+      "offset": 503.12,
+      "duration": 3.759
+    },
+    {
+      "lang": "en",
+      "text": "thousands of iterations which gives you",
+      "offset": 504.8,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "tens of thousands more uh compute before",
+      "offset": 506.879,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "it decides to commit to what its",
+      "offset": 508.8,
+      "duration": 3.119
+    },
+    {
+      "lang": "en",
+      "text": "response will be. And also because it's",
+      "offset": 510.319,
+      "duration": 3.28
+    },
+    {
+      "lang": "en",
+      "text": "a loop, it's dynamic. So the model can",
+      "offset": 511.919,
+      "duration": 3.441
+    },
+    {
+      "lang": "en",
+      "text": "learn how many iterations of this loop",
+      "offset": 513.599,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "to apply before it decides to actually",
+      "offset": 515.36,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "commit to its answer.",
+      "offset": 517.519,
+      "duration": 6.08
+    },
+    {
+      "lang": "en",
+      "text": "We train this model um to think to use",
+      "offset": 520,
+      "duration": 5.519
+    },
+    {
+      "lang": "en",
+      "text": "this kind of thinking stage via",
+      "offset": 523.599,
+      "duration": 3.841
+    },
+    {
+      "lang": "en",
+      "text": "reinforcement learning. So when we",
+      "offset": 525.519,
+      "duration": 5.041
+    },
+    {
+      "lang": "en",
+      "text": "pre-train Gemini, uh we then have after",
+      "offset": 527.44,
+      "duration": 4.959
+    },
+    {
+      "lang": "en",
+      "text": "a reinforcement learning stage where we",
+      "offset": 530.56,
+      "duration": 3.12
+    },
+    {
+      "lang": "en",
+      "text": "train it to do many different tasks and",
+      "offset": 532.399,
+      "duration": 2.961
+    },
+    {
+      "lang": "en",
+      "text": "we give it positive or negative rewards",
+      "offset": 533.68,
+      "duration": 3.839
+    },
+    {
+      "lang": "en",
+      "text": "depending on whether or not it solves",
+      "offset": 535.36,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "the uh solves the task correctly or not.",
+      "offset": 537.519,
+      "duration": 5.521
+    },
+    {
+      "lang": "en",
+      "text": "And this is essentially a very general",
+      "offset": 540.64,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "uh training recipe really. And it's kind",
+      "offset": 543.04,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "of remarkable it works that the model is",
+      "offset": 545.44,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "able to just get a very vague signal of",
+      "offset": 547.68,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "what is correct and what is not correct",
+      "offset": 550.24,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "and to back propagate this through this",
+      "offset": 552,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "loop of thinking stage such that it can",
+      "offset": 554.32,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "try and shape how it uses its thinking",
+      "offset": 556.56,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "computation and thinking tokens in order",
+      "offset": 558.72,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "to be more useful.",
+      "offset": 560.64,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "In fact, we weren't really sure this",
+      "offset": 563.44,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "would work. um it wasn't clear how much",
+      "offset": 565.12,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "structure we should put into something",
+      "offset": 567.76,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "like a reasoning stage. And um although",
+      "offset": 569.2,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "I think probably many people here have",
+      "offset": 571.44,
+      "duration": 3.2
+    },
+    {
+      "lang": "en",
+      "text": "now seen reasoning traces and played",
+      "offset": 573.04,
+      "duration": 3.2
+    },
+    {
+      "lang": "en",
+      "text": "with these models, I'll just show you a",
+      "offset": 574.64,
+      "duration": 4.639
+    },
+    {
+      "lang": "en",
+      "text": "historical artifact um from one of the",
+      "offset": 576.24,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "times we were trying to use",
+      "offset": 579.279,
+      "duration": 2.801
+    },
+    {
+      "lang": "en",
+      "text": "reinforcement learning. We started to",
+      "offset": 580.88,
+      "duration": 3.519
+    },
+    {
+      "lang": "en",
+      "text": "see cool emergent behavior. So in in",
+      "offset": 582.08,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "this problem there's kind of like an",
+      "offset": 584.399,
+      "duration": 3.12
+    },
+    {
+      "lang": "en",
+      "text": "integer prediction problem. This was",
+      "offset": 585.68,
+      "duration": 4.719
+    },
+    {
+      "lang": "en",
+      "text": "just like a kind of a particular uh",
+      "offset": 587.519,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "example uh in this case kind of like um",
+      "offset": 590.399,
+      "duration": 5.201
+    },
+    {
+      "lang": "en",
+      "text": "kind of like a mathsy example. And what",
+      "offset": 593.519,
+      "duration": 3.841
+    },
+    {
+      "lang": "en",
+      "text": "we saw was the model was using its",
+      "offset": 595.6,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "thinking tokens to actually first pose a",
+      "offset": 597.36,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "hypothesis and then test out the",
+      "offset": 600.16,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "hypothesis and then it found that",
+      "offset": 601.76,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "basically things weren't really working",
+      "offset": 603.6,
+      "duration": 3.679
+    },
+    {
+      "lang": "en",
+      "text": "and and it kind of states that this",
+      "offset": 605.68,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "formula doesn't hold. It rejects its own",
+      "offset": 607.279,
+      "duration": 3.841
+    },
+    {
+      "lang": "en",
+      "text": "idea and then it tries an alternative",
+      "offset": 609.36,
+      "duration": 4.159
+    },
+    {
+      "lang": "en",
+      "text": "approach. And I think it's easy to",
+      "offset": 611.12,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "become desensitized to technology",
+      "offset": 613.519,
+      "duration": 3.041
+    },
+    {
+      "lang": "en",
+      "text": "because it's so amazing every single",
+      "offset": 615.12,
+      "duration": 3.04
+    },
+    {
+      "lang": "en",
+      "text": "day. But we were truly blown away when",
+      "offset": 616.56,
+      "duration": 3.279
+    },
+    {
+      "lang": "en",
+      "text": "we saw the general recipe of",
+      "offset": 618.16,
+      "duration": 3.28
+    },
+    {
+      "lang": "en",
+      "text": "reinforcement learning was creating all",
+      "offset": 619.839,
+      "duration": 3.361
+    },
+    {
+      "lang": "en",
+      "text": "sorts of interesting emergent behavior,",
+      "offset": 621.44,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "trying different ideas, selfcorrection.",
+      "offset": 623.2,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "And I think these days we see a lot of",
+      "offset": 625.92,
+      "duration": 3.359
+    },
+    {
+      "lang": "en",
+      "text": "different strategies that the model",
+      "offset": 628,
+      "duration": 3.839
+    },
+    {
+      "lang": "en",
+      "text": "learns to do. So it learns to break down",
+      "offset": 629.279,
+      "duration": 4.721
+    },
+    {
+      "lang": "en",
+      "text": "uh the problem into various components,",
+      "offset": 631.839,
+      "duration": 4.401
+    },
+    {
+      "lang": "en",
+      "text": "explore multiple solutions, draft",
+      "offset": 634,
+      "duration": 4.079
+    },
+    {
+      "lang": "en",
+      "text": "fragments of code and and and build",
+      "offset": 636.24,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "these up in a modular way, perform",
+      "offset": 638.079,
+      "duration": 5.281
+    },
+    {
+      "lang": "en",
+      "text": "intermediate calculations and use tools.",
+      "offset": 640.24,
+      "duration": 5.039
+    },
+    {
+      "lang": "en",
+      "text": "All under the umbrella of using more",
+      "offset": 643.36,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "test compute to give you a smarter",
+      "offset": 645.279,
+      "duration": 4.401
+    },
+    {
+      "lang": "en",
+      "text": "response.",
+      "offset": 647.44,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "Okay, so I've talked a bit about uh why",
+      "offset": 649.68,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "we are interested in thinking in terms",
+      "offset": 652.72,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "of the path to AGI and unblocking",
+      "offset": 654.24,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "bottlenecks of intelligence and just a",
+      "offset": 656.32,
+      "duration": 3.199
+    },
+    {
+      "lang": "en",
+      "text": "little bit about mechanically what it",
+      "offset": 658.24,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "is. Why is it interesting to developers?",
+      "offset": 659.519,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "Obviously the number one reason is we",
+      "offset": 661.68,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "think this is driving uh more capable",
+      "offset": 663.519,
+      "duration": 4.801
+    },
+    {
+      "lang": "en",
+      "text": "models and it also stacks on top of our",
+      "offset": 665.92,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "current paradigms of how we accelerate",
+      "offset": 668.32,
+      "duration": 6.88
+    },
+    {
+      "lang": "en",
+      "text": "model progress. So thinking uh we can uh",
+      "offset": 670.16,
+      "duration": 6.88
+    },
+    {
+      "lang": "en",
+      "text": "kind of accelerate this process by",
+      "offset": 675.2,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "scaling the amount of test time compute",
+      "offset": 677.04,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "and we find that this can stack as a",
+      "offset": 678.8,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "paradigm on top of pre-existing",
+      "offset": 680.64,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "paradigms such as pre-training where you",
+      "offset": 682.64,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "can scale the amount of pre-training",
+      "offset": 684.32,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "data and and model size and also",
+      "offset": 686,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "post-training where you can scale the",
+      "offset": 688.72,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "quality uh and diversity of human",
+      "offset": 690.16,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "feedback for many different types of",
+      "offset": 692.64,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "tasks. And as a result by within within",
+      "offset": 693.92,
+      "duration": 5.68
+    },
+    {
+      "lang": "en",
+      "text": "Google by investing in all of these and",
+      "offset": 697.36,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "really accelerating all of them uh we",
+      "offset": 699.6,
+      "duration": 3.679
+    },
+    {
+      "lang": "en",
+      "text": "get kind of a multiplicative effect. And",
+      "offset": 701.76,
+      "duration": 3.519
+    },
+    {
+      "lang": "en",
+      "text": "why is this interesting to developers? I",
+      "offset": 703.279,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "think it results in just overall faster",
+      "offset": 705.279,
+      "duration": 5.761
+    },
+    {
+      "lang": "en",
+      "text": "model improvement which is very nice.",
+      "offset": 707.279,
+      "duration": 6.24
+    },
+    {
+      "lang": "en",
+      "text": "We also see if we kind of uh look back",
+      "offset": 711.04,
+      "duration": 6.4
+    },
+    {
+      "lang": "en",
+      "text": "over uh a lineage of uh recent um Gemini",
+      "offset": 713.519,
+      "duration": 6.32
+    },
+    {
+      "lang": "en",
+      "text": "launches um you know there's improved",
+      "offset": 717.44,
+      "duration": 4.079
+    },
+    {
+      "lang": "en",
+      "text": "reasoning performance and and we can",
+      "offset": 719.839,
+      "duration": 3.921
+    },
+    {
+      "lang": "en",
+      "text": "actually map this to how much test time",
+      "offset": 721.519,
+      "duration": 3.921
+    },
+    {
+      "lang": "en",
+      "text": "compute these models will devote to",
+      "offset": 723.76,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "problems. So there's kind of like a log",
+      "offset": 725.44,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "scale test time compute on the x-axis",
+      "offset": 727.44,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "and performance across like math code",
+      "offset": 729.12,
+      "duration": 4.719
+    },
+    {
+      "lang": "en",
+      "text": "and some science topics. And we see that",
+      "offset": 731.44,
+      "duration": 4.079
+    },
+    {
+      "lang": "en",
+      "text": "there's kind of this trend in increasing",
+      "offset": 733.839,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "reasoning performance whilst also it",
+      "offset": 735.519,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "tracks very well with increasing test",
+      "offset": 737.279,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "time compute. And on the far left uh you",
+      "offset": 738.959,
+      "duration": 5.361
+    },
+    {
+      "lang": "en",
+      "text": "know you have 2.0 flash experimental.",
+      "offset": 741.839,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "This was a model that uh was not",
+      "offset": 744.32,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "launched with thinking back in uh back",
+      "offset": 746.079,
+      "duration": 4.721
+    },
+    {
+      "lang": "en",
+      "text": "in December last year. So ancient",
+      "offset": 748.56,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "history uh and now we have uh uh on the",
+      "offset": 750.8,
+      "duration": 6.159
+    },
+    {
+      "lang": "en",
+      "text": "left on the right hand side what the the",
+      "offset": 754.56,
+      "duration": 6.16
+    },
+    {
+      "lang": "en",
+      "text": "first uh launched version of 2.5 Pro.",
+      "offset": 756.959,
+      "duration": 5.281
+    },
+    {
+      "lang": "en",
+      "text": "So test time scaling is working",
+      "offset": 760.72,
+      "duration": 3.04
+    },
+    {
+      "lang": "en",
+      "text": "empirically.",
+      "offset": 762.24,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "Um but it's not just capability that",
+      "offset": 763.76,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "matters. It's also interesting from the",
+      "offset": 765.76,
+      "duration": 4.319
+    },
+    {
+      "lang": "en",
+      "text": "notion of being able to steer the models",
+      "offset": 767.68,
+      "duration": 6.56
+    },
+    {
+      "lang": "en",
+      "text": "uh quality uh over cost. So um you know",
+      "offset": 770.079,
+      "duration": 6.401
+    },
+    {
+      "lang": "en",
+      "text": "before uh you had the option of choosing",
+      "offset": 774.24,
+      "duration": 3.839
+    },
+    {
+      "lang": "en",
+      "text": "a discrete number of possible model",
+      "offset": 776.48,
+      "duration": 4.159
+    },
+    {
+      "lang": "en",
+      "text": "sizes and that was a way to gauge how",
+      "offset": 778.079,
+      "duration": 4.161
+    },
+    {
+      "lang": "en",
+      "text": "much quality you wanted and also how",
+      "offset": 780.639,
+      "duration": 4.721
+    },
+    {
+      "lang": "en",
+      "text": "much cost you wanted to spend um cost",
+      "offset": 782.24,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "you wanted to kind of incur for any",
+      "offset": 785.36,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "given task. But it was kind of a",
+      "offset": 787.44,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "discreet choice.",
+      "offset": 788.88,
+      "duration": 3.759
+    },
+    {
+      "lang": "en",
+      "text": "Now with thinking we can have a",
+      "offset": 790.8,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "continuous uh budget uh which allows you",
+      "offset": 792.639,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "to have a much more granular slider of",
+      "offset": 795.44,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "how much capability you want uh for any",
+      "offset": 797.519,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "given kind of class of tasks. And we",
+      "offset": 800.88,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "have thinking budgets now launched in uh",
+      "offset": 802.959,
+      "duration": 6.721
+    },
+    {
+      "lang": "en",
+      "text": "flash and pro uh in the 2.5 series. And",
+      "offset": 805.68,
+      "duration": 5.92
+    },
+    {
+      "lang": "en",
+      "text": "um this allows you to have very granular",
+      "offset": 809.68,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "choice of cost to performance and also",
+      "offset": 811.6,
+      "duration": 5.359
+    },
+    {
+      "lang": "en",
+      "text": "allows us to then push the frontier and",
+      "offset": 814.16,
+      "duration": 5.919
+    },
+    {
+      "lang": "en",
+      "text": "and and allow you to kind of augment and",
+      "offset": 816.959,
+      "duration": 4.961
+    },
+    {
+      "lang": "en",
+      "text": "drive cost higher and performance higher",
+      "offset": 820.079,
+      "duration": 5.921
+    },
+    {
+      "lang": "en",
+      "text": "if if your application requires it.",
+      "offset": 821.92,
+      "duration": 6.24
+    },
+    {
+      "lang": "en",
+      "text": "So okay, I think a lot of this stuff is",
+      "offset": 826,
+      "duration": 4.639
+    },
+    {
+      "lang": "en",
+      "text": "really covering uh ground that you know",
+      "offset": 828.16,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "uh up to the present day. So what what",
+      "offset": 830.639,
+      "duration": 4.081
+    },
+    {
+      "lang": "en",
+      "text": "what's next and what are we excited",
+      "offset": 833.36,
+      "duration": 3.039
+    },
+    {
+      "lang": "en",
+      "text": "about?",
+      "offset": 834.72,
+      "duration": 3.119
+    },
+    {
+      "lang": "en",
+      "text": "So we're we're very excited about just",
+      "offset": 836.399,
+      "duration": 2.641
+    },
+    {
+      "lang": "en",
+      "text": "generally improving the models and",
+      "offset": 837.839,
+      "duration": 2.881
+    },
+    {
+      "lang": "en",
+      "text": "having better reasoning. Of course,",
+      "offset": 839.04,
+      "duration": 3.599
+    },
+    {
+      "lang": "en",
+      "text": "we're also excited about making the",
+      "offset": 840.72,
+      "duration": 3.359
+    },
+    {
+      "lang": "en",
+      "text": "thinking process as efficient as",
+      "offset": 842.639,
+      "duration": 3.601
+    },
+    {
+      "lang": "en",
+      "text": "possible. Really, we want thinking to",
+      "offset": 844.079,
+      "duration": 4.641
+    },
+    {
+      "lang": "en",
+      "text": "just work for you and be quite adaptive",
+      "offset": 846.24,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "and and be something that you don't have",
+      "offset": 848.72,
+      "duration": 3.28
+    },
+    {
+      "lang": "en",
+      "text": "to actively spend a lot of energy",
+      "offset": 850.24,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "tuning. And a big part of that is",
+      "offset": 852,
+      "duration": 3.519
+    },
+    {
+      "lang": "en",
+      "text": "ensuring our models uh are very",
+      "offset": 853.68,
+      "duration": 2.959
+    },
+    {
+      "lang": "en",
+      "text": "efficient in how they use their",
+      "offset": 855.519,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "thoughts. Uh this is definitely an area",
+      "offset": 856.639,
+      "duration": 3.921
+    },
+    {
+      "lang": "en",
+      "text": "of progress. I think we can find",
+      "offset": 858.959,
+      "duration": 3.361
+    },
+    {
+      "lang": "en",
+      "text": "examples of our models overthinking on",
+      "offset": 860.56,
+      "duration": 3.279
+    },
+    {
+      "lang": "en",
+      "text": "tasks and this is just an area of",
+      "offset": 862.32,
+      "duration": 3.28
+    },
+    {
+      "lang": "en",
+      "text": "research to get these things faster and",
+      "offset": 863.839,
+      "duration": 3.841
+    },
+    {
+      "lang": "en",
+      "text": "faster and and as cost effective as",
+      "offset": 865.6,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "possible. We're very proud of how cost-",
+      "offset": 867.68,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "effective our Gemini models are and this",
+      "offset": 869.68,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "is just an area uh for improvement as",
+      "offset": 871.36,
+      "duration": 4.479
+    },
+    {
+      "lang": "en",
+      "text": "well. And there's also deeper thinking",
+      "offset": 873.6,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "which is really about scaling the amount",
+      "offset": 875.839,
+      "duration": 3.521
+    },
+    {
+      "lang": "en",
+      "text": "of inference compute further to drive",
+      "offset": 877.44,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "even higher capability.",
+      "offset": 879.36,
+      "duration": 4.479
+    },
+    {
+      "lang": "en",
+      "text": "So people may be familiar with Gemini",
+      "offset": 881.6,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "deep research where you can kind of uh",
+      "offset": 883.839,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "type in a query and then and then the",
+      "offset": 885.68,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "model will go away for a long period of",
+      "offset": 887.199,
+      "duration": 3.841
+    },
+    {
+      "lang": "en",
+      "text": "time and research a topic. We're also",
+      "offset": 889.04,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "now uh have announced at IO and we're",
+      "offset": 891.04,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "launching to trusted testers a notion of",
+      "offset": 893.36,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "deep think. Deep Think is a very a very",
+      "offset": 895.12,
+      "duration": 4.959
+    },
+    {
+      "lang": "en",
+      "text": "high budget uh mode um thinking budget",
+      "offset": 897.36,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "mode built on top of 2.5 Pro and its",
+      "offset": 900.079,
+      "duration": 4.801
+    },
+    {
+      "lang": "en",
+      "text": "desired application is for things where",
+      "offset": 902.56,
+      "duration": 3.839
+    },
+    {
+      "lang": "en",
+      "text": "uh you have a very hard problem and",
+      "offset": 904.88,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "you're happy to essentially um uh fire",
+      "offset": 906.399,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "off the query and then have some",
+      "offset": 909.36,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "asynchronous process that's running for",
+      "offset": 911.279,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "a while and you'll come back to to",
+      "offset": 913.04,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "arrive at a stronger solution. And its",
+      "offset": 914.959,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "key idea is uh we leverage much deeper",
+      "offset": 917.04,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "chains of thought uh and parallel uh",
+      "offset": 919.839,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "chains of thought that can integrate",
+      "offset": 922.16,
+      "duration": 2.64
+    },
+    {
+      "lang": "en",
+      "text": "with each other to produce better",
+      "offset": 923.519,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "responses. We find this uh enhances",
+      "offset": 924.8,
+      "duration": 4.479
+    },
+    {
+      "lang": "en",
+      "text": "model performance on very tough",
+      "offset": 928.079,
+      "duration": 3.041
+    },
+    {
+      "lang": "en",
+      "text": "multimodal code math problems. An",
+      "offset": 929.279,
+      "duration": 4.081
+    },
+    {
+      "lang": "en",
+      "text": "example would be USA math olympiad. This",
+      "offset": 931.12,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "is a task that basically the",
+      "offset": 933.36,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "state-of-the-art model in January was",
+      "offset": 935.04,
+      "duration": 4.159
+    },
+    {
+      "lang": "en",
+      "text": "completely negligible performance. uh",
+      "offset": 936.88,
+      "duration": 5.68
+    },
+    {
+      "lang": "en",
+      "text": "2.5 Pro is now probably even better uh",
+      "offset": 939.199,
+      "duration": 5.521
+    },
+    {
+      "lang": "en",
+      "text": "with the the updated one today was about",
+      "offset": 942.56,
+      "duration": 4.079
+    },
+    {
+      "lang": "en",
+      "text": "a 50th percentile of all participants",
+      "offset": 944.72,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "that participated in math olympiad and",
+      "offset": 946.639,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "and with deep think it goes up to 6 65",
+      "offset": 948.8,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "uh percentile and the interesting thing",
+      "offset": 951.759,
+      "duration": 3.841
+    },
+    {
+      "lang": "en",
+      "text": "about deep think is as we continue to",
+      "offset": 953.68,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "both improve the base model and improve",
+      "offset": 955.6,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "the algorithmic ingredients that go into",
+      "offset": 957.36,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "deep think those two will stack together",
+      "offset": 959.04,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "as well.",
+      "offset": 961.12,
+      "duration": 5.92
+    },
+    {
+      "lang": "en",
+      "text": "Um, here is kind of like a just like a",
+      "offset": 963.04,
+      "duration": 6.56
+    },
+    {
+      "lang": "en",
+      "text": "video animation of of one of these USA",
+      "offset": 967.04,
+      "duration": 4.799
+    },
+    {
+      "lang": "en",
+      "text": "Math Olympiad algebra problems. And and",
+      "offset": 969.6,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "the key idea really with this video is",
+      "offset": 971.839,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "just this notion of having multiple",
+      "offset": 973.68,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "iterative uh ideas. So maybe the model",
+      "offset": 975.759,
+      "duration": 3.681
+    },
+    {
+      "lang": "en",
+      "text": "starts out with some proof by",
+      "offset": 978.24,
+      "duration": 2.64
+    },
+    {
+      "lang": "en",
+      "text": "contradiction idea, but then it explores",
+      "offset": 979.44,
+      "duration": 3.199
+    },
+    {
+      "lang": "en",
+      "text": "two different aspects, some rolls",
+      "offset": 980.88,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "theorem, Newton's inequalities. It",
+      "offset": 982.639,
+      "duration": 3.841
+    },
+    {
+      "lang": "en",
+      "text": "integrates them and eventually arrives",
+      "offset": 984.24,
+      "duration": 4.719
+    },
+    {
+      "lang": "en",
+      "text": "at some correct proof.",
+      "offset": 986.48,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "There's not that much you can take away",
+      "offset": 988.959,
+      "duration": 2.56
+    },
+    {
+      "lang": "en",
+      "text": "from this video, but it looks pretty",
+      "offset": 990.32,
+      "duration": 6.24
+    },
+    {
+      "lang": "en",
+      "text": "cool, so I added it. Yeah. Yeah.",
+      "offset": 991.519,
+      "duration": 6.481
+    },
+    {
+      "lang": "en",
+      "text": "One thing that's, you know, other than",
+      "offset": 996.56,
+      "duration": 2.88
+    },
+    {
+      "lang": "en",
+      "text": "we talked about math a little bit in the",
+      "offset": 998,
+      "duration": 3.04
+    },
+    {
+      "lang": "en",
+      "text": "previous slides, I'm very excited about",
+      "offset": 999.44,
+      "duration": 2.959
+    },
+    {
+      "lang": "en",
+      "text": "any application where the model can",
+      "offset": 1001.04,
+      "duration": 3.2
+    },
+    {
+      "lang": "en",
+      "text": "spend longer and longer thinking on very",
+      "offset": 1002.399,
+      "duration": 4.321
+    },
+    {
+      "lang": "en",
+      "text": "open-ended coding tasks and oneshot or",
+      "offset": 1004.24,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "very few interaction vibe code, things",
+      "offset": 1006.72,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "that would have taken us months uh in",
+      "offset": 1009.36,
+      "duration": 4.399
+    },
+    {
+      "lang": "en",
+      "text": "the past. And and one example that I",
+      "offset": 1011.6,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "like from a researcher is just um um",
+      "offset": 1013.759,
+      "duration": 4.801
+    },
+    {
+      "lang": "en",
+      "text": "some of my colleagues kind of vibecoded",
+      "offset": 1016.32,
+      "duration": 5.199
+    },
+    {
+      "lang": "en",
+      "text": "uh from from deep mind's original DQN",
+      "offset": 1018.56,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "paper which was a a revolution in deep",
+      "offset": 1021.519,
+      "duration": 3.841
+    },
+    {
+      "lang": "en",
+      "text": "reinforcement learning kind of vibe",
+      "offset": 1023.68,
+      "duration": 4.239
+    },
+    {
+      "lang": "en",
+      "text": "coded uh Gemini vibe coded the the kind",
+      "offset": 1025.36,
+      "duration": 4.719
+    },
+    {
+      "lang": "en",
+      "text": "of training setup the algorithm uh even",
+      "offset": 1027.919,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "an Atari emulator such that it could",
+      "offset": 1030.079,
+      "duration": 3.921
+    },
+    {
+      "lang": "en",
+      "text": "play some of the games and you know this",
+      "offset": 1032.079,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "is uh remarkable to me because this",
+      "offset": 1034,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "these kind of things would have taken me",
+      "offset": 1035.919,
+      "duration": 3.681
+    },
+    {
+      "lang": "en",
+      "text": "and my colleagues uh months in the past",
+      "offset": 1037.36,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "and these things are starting to happen",
+      "offset": 1039.6,
+      "duration": 6.239
+    },
+    {
+      "lang": "en",
+      "text": "um uh kind of in minutes.",
+      "offset": 1041.76,
+      "duration": 5.679
+    },
+    {
+      "lang": "en",
+      "text": "One thing I'm quite excited about",
+      "offset": 1045.839,
+      "duration": 3.521
+    },
+    {
+      "lang": "en",
+      "text": "looking forward to the future is not",
+      "offset": 1047.439,
+      "duration": 3.281
+    },
+    {
+      "lang": "en",
+      "text": "really the landscape of models but",
+      "offset": 1049.36,
+      "duration": 2.88
+    },
+    {
+      "lang": "en",
+      "text": "coming back to like what's our gold",
+      "offset": 1050.72,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "standard which is the human mind. I",
+      "offset": 1052.24,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "would love for our models to be able to",
+      "offset": 1054.96,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "contemplate from a very small set of",
+      "offset": 1057.2,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "knowledge and think about it incredibly",
+      "offset": 1059.84,
+      "duration": 2.959
+    },
+    {
+      "lang": "en",
+      "text": "deeply such that we can push the",
+      "offset": 1061.36,
+      "duration": 3.28
+    },
+    {
+      "lang": "en",
+      "text": "frontier. And one example I often think",
+      "offset": 1062.799,
+      "duration": 3.921
+    },
+    {
+      "lang": "en",
+      "text": "about is Raman Jean who was a uh one of",
+      "offset": 1064.64,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "the world's greatest mathematicians uh",
+      "offset": 1066.72,
+      "duration": 4.319
+    },
+    {
+      "lang": "en",
+      "text": "from the early 20th century and famously",
+      "offset": 1068.72,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "he he just had this one math textbook.",
+      "offset": 1071.039,
+      "duration": 4.481
+    },
+    {
+      "lang": "en",
+      "text": "He was kind of cut away from from the",
+      "offset": 1073.12,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "mathematical community. But he just from",
+      "offset": 1075.52,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "a small set of problems he spent uh many",
+      "offset": 1077.52,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "textbooks worth of thinking going",
+      "offset": 1080.08,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "through problems inventing his own",
+      "offset": 1082,
+      "duration": 4.799
+    },
+    {
+      "lang": "en",
+      "text": "theories to further extend ideas and he",
+      "offset": 1084.16,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "invented a an incredible quantity of",
+      "offset": 1086.799,
+      "duration": 4.801
+    },
+    {
+      "lang": "en",
+      "text": "mathematics really just by deepling",
+      "offset": 1089.28,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "deeply thinking from a small source",
+      "offset": 1091.6,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "subset and this is where I think we are",
+      "offset": 1093.84,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "going with thinking. We want a model to",
+      "offset": 1096.4,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "be able to be incredibly data efficient",
+      "offset": 1098.88,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "and actually go to millions uh or or",
+      "offset": 1100.64,
+      "duration": 5.84
+    },
+    {
+      "lang": "en",
+      "text": "beyond of of of inference tokens where",
+      "offset": 1104.16,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "the model is really building up",
+      "offset": 1106.48,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "knowledge and artifacts such that we can",
+      "offset": 1108,
+      "duration": 4.559
+    },
+    {
+      "lang": "en",
+      "text": "eventually start to push the frontier of",
+      "offset": 1110.08,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "human understanding.",
+      "offset": 1112.559,
+      "duration": 6.161
+    },
+    {
+      "lang": "en",
+      "text": "So with that said, thank you very much",
+      "offset": 1115.84,
+      "duration": 6.36
+    },
+    {
+      "lang": "en",
+      "text": "and uh",
+      "offset": 1118.72,
+      "duration": 3.48
+    }
+  ],
+  "cleanText": "[Music]\n[Music]\n[Applause]\nHi everybody.\nUh, yeah, my name is Jack Rae.\nI'm a researcher at Google and I'm the tech lead of thinking within Gemini, and I'm going to give a brief deep dive into thinking from the research perspective within Gemini.\nSo, um, it's, it's thinking so much.\nI think this clicker might not work.\nSo let's drive the next slide.\nIf you can drive SL, whoever the slide driver is, please drive to the next slide.\nGemini, um, but yeah, what I'm whilst whilst we maybe sort out the slide issue, um, I'm going to kind of give this talk in three stages.\nOne is to give a research motivation of why we actually are excited about thinking in terms of unblocking bottlenecks towards general intelligence.\nAnd I'm going to give a kind of uh, give a few examples of how often discovering the most precient bottlenecks uh in kind of our current uh models uh our most advanced systems.\nHow often if you can just identify the crucial kind of uh issues and shortcomings, you often will then find a solution.\nAnd there's a reason how that is linked to thinking, and then going to talk um a little bit more um just pragmatically about what is thinking in Gemini, why is it interesting to developers?\nAnd I think you're someone is okay, the slides are still not here.\nWe did do a rehearsal this morning where the slides are there, but yeah, keynote speaker SL.\nYeah, someone's I can see someone.\nYeah, keynote speaker folder.\nJack Rae, think it's under a keynote speaker that one.\nUm, anyway, um, it's going to come up soon.\nYou are close, um, person.\nUm, yeah, but um, and then I'm also going to talk a little bit about what's next.\nAh, I'm just sorry, I'm just watching you.\nThere you go.\nNice one.\nYeah, that's great.\nOkay, the slides will appear.\nThank you, whoever is coordinated.\nApologies, I don't know what happened.\nUm, and then I'm just going to talk a bit about what's next.\nSo, Logan did a great job of kind of giving an incredible overview of Gemini as a whole ecosystem, everything that's going on.\nUh, I'm going to really be focusing on on kind of what we're excited about in the reasoning space.\nSo with intelligence bottlenecks, uh, we're kind of the message of this section is really about uh, progress.\nSo progress has really been marked by identifying key bottlenecks towards intelligence and then solving them.\nAnd I'm going to kind of give some examples throughout history.\nI'm going to actually rewind the clock to 1948.\nClaude Shannon, he invents the language model mathematical theory of communication, and he builds a language model, a two-gram, using a textbook of word statistics that was hand-calculated, and he samples from it, and he kind of marvels at the samples.\nHe feels like these are, these are getting pretty good, they're a lot better than unigram character, this two-gram word model, but uh, kind of he remarks like, I think this would be better if we could really like make a better language model and scale up this current method.\nSo he really wanted to just scale up the engram, that was the bottleneck, like small amount of data, very, you know, elementary statistics.\nAnd, and unfortunately for Claude Shannon, kind of the solution was pretty hard.\nHe needed the digitalization of human knowledge, and he needed modern computing to be able to aggregate these statistics at scale.\nSo, you know, that wasn't so easy for him to solve.\nHe had it a bit more tricky.\nBut fast forward a few decades at Google, uh, in in the 2000s, uh, my colleagues such as Jeff Dean are training engram language models over trillions of tokens.\nThese are powering at the time the most sophisticated speech recognition and translation systems, uh, and and a lot of progress has been made, but their bottleneck was actually uh, with these systems was that these engram language models were very restricted to short context, and they were because um, there's an exponential storage cost with uh, context length, and there wasn't really a way around that with with just sticking with engrams.\nThe solution was the early kind of uh, introduction of deep learning in 2010 uh, with uh, the introduction of recurrent uh, neural uh, language models.\nSo recurrent neural networks applied to modeling text where the recurrent neural networks could avoid this problem by uh, storing a compressed representation of the past into the state of a neural network, and they could now start to model beyond a five-gram sentences or even paragraphs.\nAnd this was a massive kind of uh, uh, step change in improvement.\nHowever, a couple of years later, people would notice even there there was a bottleneck.\nSo, uh, the recurrent neural network's representation of the past is in a fixed-size state, and this fixed-sized state, uh, uh, there's only so much information you could put into it, and so as a result, there's often observed to be kind of lossy, a lossy kind of representation of its context.\nThe solution that was derived, I think once once people kind of really encountered this this um, information bottleneck in the past was actually just keep everything around in terms of your past uh, neural uh, embeddings and use an attention operator to aggregate things on the fly.\nSo this was the birth of attention and then shortly after transformers.\nSo, um, transformers then kind of led to the modern deep learning revolution as we know it and uh, many other progress was made.\nBut if we skip forward 10 years, we then are in 2024.\nWe have uh, large language models.\nThey're increasingly powerful general conversational agents.\nWe have uh, models such as Gemini, ChatGPT.\nPeople are using them for all sorts of use cases.\nAnd there that's where we kind of come to the bottleneck that's relevant to this talk, which is that although these models are very, very powerful, they are still trained to respond immediately to requests.\nSo in other words, in terms of a compute bottleneck, there is a constant amount of compute that they apply at test time to transition from your request or your question to the response or your answer.\nSo the bottleneck of test time compute, this is relevant to thinking.\nUh, so we can unpack this a little bit more.\nSo when we talk about a fixed amount of test time compute, the test time compute is interesting to you because that's the compute that the model is spending on your particular problem, your particular question.\nAnd it and and and the way it actually kind of mechanically works is you have some text in your request.\nIt gets translated to tokens, and then it's going to go through a language model.\nAnd at the transition from the request to its response, it's going to pass some computation up through a large language model which will have some parallel computation for every layer and it'll have some iterative computation across layers.\nSo that computation is really where the model can apply its intelligence to your particular problem, and it's of fixed size.\nOne solution if you wanted a smarter model and more computation is just to make the model larger.\nThen you can have more compute and you can get a smarter response.\nHowever, it's still not really enough.\nUsers might want to be able to think a thousand or a million times and have a very large dynamic range and a lot of compute for very hard or challenging or valuable tasks.\nAnd also users might want to have a very dynamic application of test time compute.\nSo less compute for simpler requests, more compute for harder requests and have this process be very dynamic and and and instigated by the model.\nAnd that is what motivates thinking.\nSo thinking in Gemini mechanically, I'm sure almost everyone in this room is familiar with this general process where we'll now have a model and we insert a thinking stage uh, that the model can emit some additional text before it decides to emit a final answer.\nSo going back to this notion of test time compute, now we've added an additional kind of loop uh, of computation where the model can kind of iteratively uh, loop and and perform additional test time compute uh, during this thinking stage, and this loop can be potentially thousands or tens of thousands of iterations, which gives you tens of thousands more uh, compute before it decides to commit to what its response will be.\nAnd also because it's a loop, it's dynamic.\nSo the model can learn how many iterations of this loop to apply before it decides to actually commit to its answer.\nWe train this model um, to think, to use this kind of thinking stage via reinforcement learning.\nSo when we pre-train Gemini, uh, we then have after a reinforcement learning stage where we train it to do many different tasks and we give it positive or negative rewards depending on whether or not it solves the uh, solves the task correctly or not.\nAnd this is essentially a very general uh, training recipe really.\nAnd it's kind of remarkable it works that the model is able to just get a very vague signal of what is correct and what is not correct and to back propagate this through this loop of thinking stage such that it can try and shape how it uses its thinking computation and thinking tokens in order to be more useful.\nIn fact, we weren't really sure this would work.\nUm, it wasn't clear how much structure we should put into something like a reasoning stage.\nAnd um, although I think probably many people here have now seen reasoning traces and played with these models, I'll just show you a historical artifact um, from one of the times we were trying to use reinforcement learning.\nWe started to see cool emergent behavior.\nSo in in this problem there's kind of like an integer prediction problem.\nThis was just like a kind of a particular uh, example uh, in this case kind of like um, kind of like a mathsy example.\nAnd what we saw was the model was using its thinking tokens to actually first pose a hypothesis and then test out the hypothesis and then it found that basically things weren't really working and and it kind of states that this formula doesn't hold.\nIt rejects its own idea and then it tries an alternative approach.\nAnd I think it's easy to become desensitized to technology because it's so amazing every single day.\nBut we were truly blown away when we saw the general recipe of reinforcement learning was creating all sorts of interesting emergent behavior, trying different ideas, self-correction.\nAnd I think these days we see a lot of different strategies that the model learns to do.\nSo it learns to break down uh, the problem into various components, explore multiple solutions, draft fragments of code and and and build these up in a modular way, perform intermediate calculations and use tools.\nAll under the umbrella of using more test compute to give you a smarter response.\nOkay, so I've talked a bit about uh, why we are interested in thinking in terms of the path to AGI and unblocking bottlenecks of intelligence and just a little bit about mechanically what it is.\nWhy is it interesting to developers?\nObviously the number one reason is we think this is driving uh, more capable models and it also stacks on top of our current paradigms of how we accelerate model progress.\nSo thinking uh, we can uh, kind of accelerate this process by scaling the amount of test time compute and we find that this can stack as a paradigm on top of pre-existing paradigms such as pre-training where you can scale the amount of pre-training data and and model size and also post-training where you can scale the quality uh, and diversity of human feedback for many different types of tasks.\nAnd as a result by within within Google by investing in all of these and really accelerating all of them uh, we get kind of a multiplicative effect.\nAnd why is this interesting to developers?\nI think it results in just overall faster model improvement which is very nice.\nWe also see if we kind of uh, look back over uh, a lineage of uh, recent um, Gemini launches, um, you know, there's improved reasoning performance and and we can actually map this to how much test time compute these models will devote to problems.\nSo there's kind of like a log scale test time compute on the x-axis and performance across like math code and some science topics.\nAnd we see that there's kind of this trend in increasing reasoning performance whilst also it tracks very well with increasing test time compute.\nAnd on the far left uh, you know, you have 2.0 flash experimental.\nThis was a model that uh, was not launched with thinking back in uh, back in December last year.\nSo ancient history uh, and now we have uh, uh, on the left on the right hand side what the the first uh, launched version of 2.5 Pro.\nSo test time scaling is working empirically.\nUm, but it's not just capability that matters.\nIt's also interesting from the notion of being able to steer the models uh, quality uh, over cost.\nSo um, you know, before uh, you had the option of choosing a discrete number of possible model sizes and that was a way to gauge how much quality you wanted and also how much cost you wanted to spend um, cost you wanted to kind of incur for any given task.\nBut it was kind of a discreet choice.\nNow with thinking we can have a continuous uh, budget uh, which allows you to have a much more granular slider of how much capability you want uh, for any given kind of class of tasks.\nAnd we have thinking budgets now launched in uh, flash and pro uh, in the 2.5 series.\nAnd um, this allows you to have very granular choice of cost to performance and also allows us to then push the frontier and and and allow you to kind of augment and drive cost higher and performance higher if if your application requires it.\nSo okay, I think a lot of this stuff is really covering uh, ground that you know uh, up to the present day.\nSo what what what's next and what are we excited about?\nSo we're we're very excited about just generally improving the models and having better reasoning.\nOf course, we're also excited about making the thinking process as efficient as possible.\nReally, we want thinking to just work for you and be quite adaptive and and be something that you don't have to actively spend a lot of energy tuning.\nAnd a big part of that is ensuring our models uh, are very efficient in how they use their thoughts.\nUh, this is definitely an area of progress.\nI think we can find examples of our models overthinking on tasks and this is just an area of research to get these things faster and faster and and as cost effective as possible.\nWe're very proud of how cost-effective our Gemini models are and this is just an area uh, for improvement as well.\nAnd there's also deeper thinking which is really about scaling the amount of inference compute further to drive even higher capability.\nSo people may be familiar with Gemini deep research where you can kind of uh, type in a query and then and then the model will go away for a long period of time and research a topic.\nWe're also now uh, have announced at IO and we're launching to trusted testers a notion of deep think.\nDeep Think is a very a very high budget uh, mode um, thinking budget mode built on top of 2.5 Pro and its desired application is for things where uh, you have a very hard problem and you're happy to essentially um, uh, fire off the query and then have some asynchronous process that's running for a while and you'll come back to to arrive at a stronger solution.\nAnd its key idea is uh, we leverage much deeper chains of thought uh, and parallel uh, chains of thought that can integrate with each other to produce better responses.\nWe find this uh, enhances model performance on very tough multimodal\n\n\nCode math problems. An example would be USA Math Olympiad. This is a task that basically the state-of-the-art model in January was completely negligible performance. Uh, 2.5 Pro is now probably even better. Uh, with the updated one today was about a 50th percentile of all participants that participated in math olympiad, and with deep think, it goes up to 65th percentile. And the interesting thing about deep think is as we continue to both improve the base model and improve the algorithmic ingredients that go into deep think, those two will stack together as well.\n\nUm, here is kind of like a just like a video animation of one of these USA Math Olympiad algebra problems. And the key idea really with this video is just this notion of having multiple iterative uh ideas. So maybe the model starts out with some proof by contradiction idea, but then it explores two different aspects, some rolls theorem, Newton's inequalities. It integrates them and eventually arrives at some correct proof.\n\nThere's not that much you can take away from this video, but it looks pretty cool, so I added it. Yeah. Yeah.\n\nOne thing that's, you know, other than we talked about math a little bit in the previous slides, I'm very excited about any application where the model can spend longer and longer thinking on very open-ended coding tasks and one-shot or very few interaction vibe code, things that would have taken us months uh in the past. And one example that I like from a researcher is just um, some of my colleagues kind of vibe-coded uh from DeepMind's original DQN paper, which was a revolution in deep reinforcement learning, kind of vibe coded, uh, Gemini vibe coded the kind of training setup, the algorithm, uh, even an Atari emulator such that it could play some of the games. And you know, this is remarkable to me because these kind of things would have taken me and my colleagues uh months in the past, and these things are starting to happen um, uh, kind of in minutes.\n\nOne thing I'm quite excited about looking forward to the future is not really the landscape of models but coming back to like what's our gold standard, which is the human mind. I would love for our models to be able to contemplate from a very small set of knowledge and think about it incredibly deeply such that we can push the frontier. And one example I often think about is Raman Jean, who was a uh, one of the world's greatest mathematicians uh, from the early 20th century, and famously he just had this one math textbook. He was kind of cut away from the mathematical community. But he just from a small set of problems he spent uh, many textbooks worth of thinking going through problems, inventing his own theories to further extend ideas, and he invented a an incredible quantity of mathematics really just by deepling deeply thinking from a small source subset, and this is where I think we are going with thinking. We want a model to be able to be incredibly data efficient and actually go to millions uh, or or beyond of of of inference tokens where the model is really building up knowledge and artifacts such that we can eventually start to push the frontier of human understanding.\n\nSo with that said, thank you very much and uh,\n",
+  "dumpedAt": "2025-07-21T18:43:25.268Z"
+}

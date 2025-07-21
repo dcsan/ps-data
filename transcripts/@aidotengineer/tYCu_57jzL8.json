@@ -1,0 +1,3802 @@
+{
+  "episodeId": "tYCu_57jzL8",
+  "channelSlug": "@aidotengineer",
+  "title": "The Knowledge Graph Mullet: Trimming GraphRAG Complexity - William Lyon",
+  "publishedAt": "2025-06-03T22:22:29.000Z",
+  "rawLines": [
+    {
+      "lang": "en",
+      "text": "Hey everyone, my name is Will and in",
+      "offset": 0.24,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "this talk we're going to be learning all",
+      "offset": 2.32,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "about the knowledge graph mullet and how",
+      "offset": 3.84,
+      "duration": 6.6
+    },
+    {
+      "lang": "en",
+      "text": "it can trim graph rag",
+      "offset": 7.44,
+      "duration": 7.359
+    },
+    {
+      "lang": "en",
+      "text": "complexity. Uh let's jump right in. So",
+      "offset": 10.44,
+      "duration": 5.8
+    },
+    {
+      "lang": "en",
+      "text": "bear with me a little bit in this",
+      "offset": 14.799,
+      "duration": 3.681
+    },
+    {
+      "lang": "en",
+      "text": "analogy. Uh, but if you're famili",
+      "offset": 16.24,
+      "duration": 5.119
+    },
+    {
+      "lang": "en",
+      "text": "familiar with the mullet haircut, this",
+      "offset": 18.48,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "is a classic business in the front,",
+      "offset": 21.359,
+      "duration": 5.521
+    },
+    {
+      "lang": "en",
+      "text": "party in the back, uh, sort of short up",
+      "offset": 23.92,
+      "duration": 6.16
+    },
+    {
+      "lang": "en",
+      "text": "front, long in the back, uh, hairstyle",
+      "offset": 26.88,
+      "duration": 5.519
+    },
+    {
+      "lang": "en",
+      "text": "that, uh, was popular in the in the 80s",
+      "offset": 30.08,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "and '90s. And if we think of like what",
+      "offset": 32.399,
+      "duration": 5.68
+    },
+    {
+      "lang": "en",
+      "text": "are the benefits of the mullet haircut,",
+      "offset": 34.96,
+      "duration": 5.84
+    },
+    {
+      "lang": "en",
+      "text": "it's really all about lowmaintenance,",
+      "offset": 38.079,
+      "duration": 5.441
+    },
+    {
+      "lang": "en",
+      "text": "easy to work with, but versatile and",
+      "offset": 40.8,
+      "duration": 5.439
+    },
+    {
+      "lang": "en",
+      "text": "adaptable in different environments.",
+      "offset": 43.52,
+      "duration": 5.68
+    },
+    {
+      "lang": "en",
+      "text": "And if we extend that analogy to",
+      "offset": 46.239,
+      "duration": 5.921
+    },
+    {
+      "lang": "en",
+      "text": "knowledge graphs, that gives us the",
+      "offset": 49.2,
+      "duration": 5.039
+    },
+    {
+      "lang": "en",
+      "text": "knowledge graph mullet, which is all",
+      "offset": 52.16,
+      "duration": 4.719
+    },
+    {
+      "lang": "en",
+      "text": "about property graph in the front and",
+      "offset": 54.239,
+      "duration": 7.041
+    },
+    {
+      "lang": "en",
+      "text": "RDF triples in the back. So really what",
+      "offset": 56.879,
+      "duration": 8.081
+    },
+    {
+      "lang": "en",
+      "text": "this talk is about is combining concepts",
+      "offset": 61.28,
+      "duration": 6.96
+    },
+    {
+      "lang": "en",
+      "text": "from the property graph world and the",
+      "offset": 64.96,
+      "duration": 8.56
+    },
+    {
+      "lang": "en",
+      "text": "RDF world to have a hybrid and versatile",
+      "offset": 68.24,
+      "duration": 7.919
+    },
+    {
+      "lang": "en",
+      "text": "approach for working with knowledge",
+      "offset": 73.52,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "graphs.",
+      "offset": 76.159,
+      "duration": 3.841
+    },
+    {
+      "lang": "en",
+      "text": "So, if you're familiar with the graph",
+      "offset": 78,
+      "duration": 4.479
+    },
+    {
+      "lang": "en",
+      "text": "ecosystem at all, you've probably heard",
+      "offset": 80,
+      "duration": 5.439
+    },
+    {
+      "lang": "en",
+      "text": "some of this terminology. But property",
+      "offset": 82.479,
+      "duration": 6.481
+    },
+    {
+      "lang": "en",
+      "text": "graph and RDF are typically thought of",
+      "offset": 85.439,
+      "duration": 7.521
+    },
+    {
+      "lang": "en",
+      "text": "as two totally different paradigms for",
+      "offset": 88.96,
+      "duration": 8
+    },
+    {
+      "lang": "en",
+      "text": "working with graphs. Uh, in the property",
+      "offset": 92.96,
+      "duration": 7.88
+    },
+    {
+      "lang": "en",
+      "text": "graph world, we're thinking about nodes,",
+      "offset": 96.96,
+      "duration": 5.839
+    },
+    {
+      "lang": "en",
+      "text": "relationships, key value pair",
+      "offset": 100.84,
+      "duration": 4.84
+    },
+    {
+      "lang": "en",
+      "text": "properties. We're thinking about",
+      "offset": 102.799,
+      "duration": 5.521
+    },
+    {
+      "lang": "en",
+      "text": "traversing the graph using pattern",
+      "offset": 105.68,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "matching uh often with a query language",
+      "offset": 108.32,
+      "duration": 6.64
+    },
+    {
+      "lang": "en",
+      "text": "called cipher. In the RDF world, we're",
+      "offset": 110.72,
+      "duration": 8.079
+    },
+    {
+      "lang": "en",
+      "text": "typically talking about uh ontologies",
+      "offset": 114.96,
+      "duration": 6.56
+    },
+    {
+      "lang": "en",
+      "text": "using a query language called sparkle,",
+      "offset": 118.799,
+      "duration": 6.401
+    },
+    {
+      "lang": "en",
+      "text": "thinking about triples. Uh RDF comes",
+      "offset": 121.52,
+      "duration": 7.04
+    },
+    {
+      "lang": "en",
+      "text": "from the semantic web and linked data",
+      "offset": 125.2,
+      "duration": 4.92
+    },
+    {
+      "lang": "en",
+      "text": "world.",
+      "offset": 128.56,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "And what I want to show today is that",
+      "offset": 130.12,
+      "duration": 5
+    },
+    {
+      "lang": "en",
+      "text": "really these concepts can be used",
+      "offset": 132.64,
+      "duration": 5.4
+    },
+    {
+      "lang": "en",
+      "text": "together where we can really leverage",
+      "offset": 135.12,
+      "duration": 6.56
+    },
+    {
+      "lang": "en",
+      "text": "the benefits and sort of best of both",
+      "offset": 138.04,
+      "duration": 8.76
+    },
+    {
+      "lang": "en",
+      "text": "worlds uh to again expose a property",
+      "offset": 141.68,
+      "duration": 8.32
+    },
+    {
+      "lang": "en",
+      "text": "graph model for how we want to think",
+      "offset": 146.8,
+      "duration": 6.56
+    },
+    {
+      "lang": "en",
+      "text": "about and query the data but leverage",
+      "offset": 150,
+      "duration": 8.879
+    },
+    {
+      "lang": "en",
+      "text": "the scalability of RDF triples uh in our",
+      "offset": 153.36,
+      "duration": 7.32
+    },
+    {
+      "lang": "en",
+      "text": "knowledge graph.",
+      "offset": 158.879,
+      "duration": 4.881
+    },
+    {
+      "lang": "en",
+      "text": "system. We're going to take a look at an",
+      "offset": 160.68,
+      "duration": 7.559
+    },
+    {
+      "lang": "en",
+      "text": "open source project called Dgraph to uh",
+      "offset": 163.76,
+      "duration": 7.44
+    },
+    {
+      "lang": "en",
+      "text": "work with our knowledge graphs. Um let's",
+      "offset": 168.239,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "talk about really like a working",
+      "offset": 171.2,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "definition of knowledge graph first of",
+      "offset": 173.599,
+      "duration": 4.401
+    },
+    {
+      "lang": "en",
+      "text": "all. So we're going to say that a",
+      "offset": 175.68,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "knowledge graph is really just an",
+      "offset": 178,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "instance of a property graph. So the",
+      "offset": 180.08,
+      "duration": 6.879
+    },
+    {
+      "lang": "en",
+      "text": "property graph model is all about nodes.",
+      "offset": 183.28,
+      "duration": 6.48
+    },
+    {
+      "lang": "en",
+      "text": "Nodes can have one or more labels, which",
+      "offset": 186.959,
+      "duration": 8.401
+    },
+    {
+      "lang": "en",
+      "text": "is a way to uh tell us what type of node",
+      "offset": 189.76,
+      "duration": 7.36
+    },
+    {
+      "lang": "en",
+      "text": "uh we're talking about, a way to group",
+      "offset": 195.36,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "nodes. You can think of labels as kind",
+      "offset": 197.12,
+      "duration": 5.039
+    },
+    {
+      "lang": "en",
+      "text": "of similar to like tables from the",
+      "offset": 199.84,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "relational database world. Uh and then",
+      "offset": 202.159,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "we have relationships that have a single",
+      "offset": 204.8,
+      "duration": 6.04
+    },
+    {
+      "lang": "en",
+      "text": "type and direction. Then we can store",
+      "offset": 207.519,
+      "duration": 6.64
+    },
+    {
+      "lang": "en",
+      "text": "arbitrary key value pair properties on",
+      "offset": 210.84,
+      "duration": 5.679
+    },
+    {
+      "lang": "en",
+      "text": "nodes and",
+      "offset": 214.159,
+      "duration": 5.841
+    },
+    {
+      "lang": "en",
+      "text": "relationships and the the semantics",
+      "offset": 216.519,
+      "duration": 7.401
+    },
+    {
+      "lang": "en",
+      "text": "right so how our entities are connected",
+      "offset": 220,
+      "duration": 6.4
+    },
+    {
+      "lang": "en",
+      "text": "is encoded in the data model we don't",
+      "offset": 223.92,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "just say that two nodes are related to",
+      "offset": 226.4,
+      "duration": 7.44
+    },
+    {
+      "lang": "en",
+      "text": "each other we say that this talk has a",
+      "offset": 229.12,
+      "duration": 8.479
+    },
+    {
+      "lang": "en",
+      "text": "certain topic or this talk was presented",
+      "offset": 233.84,
+      "duration": 6.24
+    },
+    {
+      "lang": "en",
+      "text": "at a conference ments, right? We're",
+      "offset": 237.599,
+      "duration": 5.92
+    },
+    {
+      "lang": "en",
+      "text": "talking about things, not strings, which",
+      "offset": 240.08,
+      "duration": 6.32
+    },
+    {
+      "lang": "en",
+      "text": "was the the title of Google's blog post",
+      "offset": 243.519,
+      "duration": 5.841
+    },
+    {
+      "lang": "en",
+      "text": "in 2012 introducing the Google knowledge",
+      "offset": 246.4,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "graph. But I think that's I think that's",
+      "offset": 249.36,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "right. I think that's one of the most",
+      "offset": 251.36,
+      "duration": 4.239
+    },
+    {
+      "lang": "en",
+      "text": "important pieces of thinking about",
+      "offset": 253.04,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "knowledge graphs is that we have a",
+      "offset": 255.599,
+      "duration": 7.521
+    },
+    {
+      "lang": "en",
+      "text": "canonical representation of the thing.",
+      "offset": 257.6,
+      "duration": 8.4
+    },
+    {
+      "lang": "en",
+      "text": "Dgraph was first open sourced and",
+      "offset": 263.12,
+      "duration": 4.84
+    },
+    {
+      "lang": "en",
+      "text": "released in",
+      "offset": 266,
+      "duration": 5.96
+    },
+    {
+      "lang": "en",
+      "text": "2017 and uh initially",
+      "offset": 267.96,
+      "duration": 9.239
+    },
+    {
+      "lang": "en",
+      "text": "was really optimizing for large scale",
+      "offset": 271.96,
+      "duration": 7.959
+    },
+    {
+      "lang": "en",
+      "text": "graph data. So the the D is for",
+      "offset": 277.199,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "distributed and scale in terms of",
+      "offset": 279.919,
+      "duration": 6.481
+    },
+    {
+      "lang": "en",
+      "text": "volume. Uh so the original Dgraph team",
+      "offset": 282.639,
+      "duration": 7.361
+    },
+    {
+      "lang": "en",
+      "text": "came from uh expols from Google that",
+      "offset": 286.4,
+      "duration": 7.56
+    },
+    {
+      "lang": "en",
+      "text": "were inspired by uh Google's spanner",
+      "offset": 290,
+      "duration": 7.52
+    },
+    {
+      "lang": "en",
+      "text": "graph. Dgraph is this really interesting",
+      "offset": 293.96,
+      "duration": 5.88
+    },
+    {
+      "lang": "en",
+      "text": "sort of hybrid in this world of graph",
+      "offset": 297.52,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "databases where we use the property",
+      "offset": 299.84,
+      "duration": 5.24
+    },
+    {
+      "lang": "en",
+      "text": "graph model for uh data modeling and",
+      "offset": 301.6,
+      "duration": 8.319
+    },
+    {
+      "lang": "en",
+      "text": "querying uh but we use RDF uh for data",
+      "offset": 305.08,
+      "duration": 7.64
+    },
+    {
+      "lang": "en",
+      "text": "interchange and we work with triples as",
+      "offset": 309.919,
+      "duration": 6.401
+    },
+    {
+      "lang": "en",
+      "text": "the smallest unit of record. So if we",
+      "offset": 312.72,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "take a look at these two paradigms that",
+      "offset": 316.32,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "we're talking about the property graph",
+      "offset": 318.72,
+      "duration": 6.88
+    },
+    {
+      "lang": "en",
+      "text": "model uh where nodes node labels",
+      "offset": 320.96,
+      "duration": 7.36
+    },
+    {
+      "lang": "en",
+      "text": "relationship types and key value pair",
+      "offset": 325.6,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "properties are sort of the the core",
+      "offset": 328.32,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "fundamentals of the data model and if we",
+      "offset": 330.8,
+      "duration": 6.72
+    },
+    {
+      "lang": "en",
+      "text": "compare that with RDF which is all about",
+      "offset": 333.52,
+      "duration": 7.44
+    },
+    {
+      "lang": "en",
+      "text": "triples. So subject predicate object",
+      "offset": 337.52,
+      "duration": 6.32
+    },
+    {
+      "lang": "en",
+      "text": "which we can think of as like a",
+      "offset": 340.96,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "sentence. Uh the subject this is always",
+      "offset": 343.84,
+      "duration": 6.12
+    },
+    {
+      "lang": "en",
+      "text": "going to be a node. A predicate can be a",
+      "offset": 346.16,
+      "duration": 7.68
+    },
+    {
+      "lang": "en",
+      "text": "relationship or a property. And then an",
+      "offset": 349.96,
+      "duration": 6.2
+    },
+    {
+      "lang": "en",
+      "text": "object in the case where uh the",
+      "offset": 353.84,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "predicate is a relationship is a node or",
+      "offset": 356.16,
+      "duration": 6.479
+    },
+    {
+      "lang": "en",
+      "text": "the value of a property.",
+      "offset": 358.88,
+      "duration": 7.36
+    },
+    {
+      "lang": "en",
+      "text": "Let's look at how Dgraph works with both",
+      "offset": 362.639,
+      "duration": 7.521
+    },
+    {
+      "lang": "en",
+      "text": "property graphs and triples. So the",
+      "offset": 366.24,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "first thing we need to do to model a",
+      "offset": 370.16,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "property graph as an RDF triple is to",
+      "offset": 372.24,
+      "duration": 7.92
+    },
+    {
+      "lang": "en",
+      "text": "have a unique ID for each node. The",
+      "offset": 375.28,
+      "duration": 9.199
+    },
+    {
+      "lang": "en",
+      "text": "unique ID maps to some offset in disk so",
+      "offset": 380.16,
+      "duration": 6.56
+    },
+    {
+      "lang": "en",
+      "text": "that we're able to traverse the graph",
+      "offset": 384.479,
+      "duration": 6.321
+    },
+    {
+      "lang": "en",
+      "text": "very quickly and efficiently.",
+      "offset": 386.72,
+      "duration": 9.759
+    },
+    {
+      "lang": "en",
+      "text": "Then the next piece is again to",
+      "offset": 390.8,
+      "duration": 9.44
+    },
+    {
+      "lang": "en",
+      "text": "uh think of our node as the value of our",
+      "offset": 396.479,
+      "duration": 5.84
+    },
+    {
+      "lang": "en",
+      "text": "unique ID. So the subject we said is",
+      "offset": 400.24,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "always going to be a node and uh really",
+      "offset": 402.319,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "specifically it's always going to be a",
+      "offset": 405.6,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "unique ID. That's like a pointer to the",
+      "offset": 407.759,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "node. Then the predicate is going to be",
+      "offset": 410.16,
+      "duration": 8.56
+    },
+    {
+      "lang": "en",
+      "text": "uh a relationship or a property. And in",
+      "offset": 413.759,
+      "duration": 6.921
+    },
+    {
+      "lang": "en",
+      "text": "the case where it's",
+      "offset": 418.72,
+      "duration": 5.199
+    },
+    {
+      "lang": "en",
+      "text": "a relationship then our object is going",
+      "offset": 420.68,
+      "duration": 6.28
+    },
+    {
+      "lang": "en",
+      "text": "to be another uh node ID. So this is",
+      "offset": 423.919,
+      "duration": 4.881
+    },
+    {
+      "lang": "en",
+      "text": "going to be a predicate that connects",
+      "offset": 426.96,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "two nodes as a relationship or it's",
+      "offset": 428.8,
+      "duration": 6.08
+    },
+    {
+      "lang": "en",
+      "text": "going to be the value of our property.",
+      "offset": 430.88,
+      "duration": 6.64
+    },
+    {
+      "lang": "en",
+      "text": "Dgraph uses an important optimization",
+      "offset": 434.88,
+      "duration": 6.879
+    },
+    {
+      "lang": "en",
+      "text": "called a posting list where we are uh",
+      "offset": 437.52,
+      "duration": 7.519
+    },
+    {
+      "lang": "en",
+      "text": "grouping by predicate and uh using a",
+      "offset": 441.759,
+      "duration": 4.921
+    },
+    {
+      "lang": "en",
+      "text": "list of",
+      "offset": 445.039,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "the unique node ids of all the nodes",
+      "offset": 446.68,
+      "duration": 5.56
+    },
+    {
+      "lang": "en",
+      "text": "that this node is connected to by that",
+      "offset": 450.319,
+      "duration": 4.081
+    },
+    {
+      "lang": "en",
+      "text": "predicate. So this allows us to traverse",
+      "offset": 452.24,
+      "duration": 6.359
+    },
+    {
+      "lang": "en",
+      "text": "the graph uh very efficiently.",
+      "offset": 454.4,
+      "duration": 7.519
+    },
+    {
+      "lang": "en",
+      "text": "DQL we said is the query language that",
+      "offset": 458.599,
+      "duration": 8.521
+    },
+    {
+      "lang": "en",
+      "text": "we use with Dgraph. Uh DQL was very much",
+      "offset": 461.919,
+      "duration": 9.12
+    },
+    {
+      "lang": "en",
+      "text": "inspired by GraphQL. GraphQL was uh open",
+      "offset": 467.12,
+      "duration": 8.16
+    },
+    {
+      "lang": "en",
+      "text": "sourced by Facebook shortly uh before",
+      "offset": 471.039,
+      "duration": 7.44
+    },
+    {
+      "lang": "en",
+      "text": "Dgraph uh was released and uh at that",
+      "offset": 475.28,
+      "duration": 6.4
+    },
+    {
+      "lang": "en",
+      "text": "time there's a lot of interest in uh",
+      "offset": 478.479,
+      "duration": 7.201
+    },
+    {
+      "lang": "en",
+      "text": "exploring GraphQL beyond its intention",
+      "offset": 481.68,
+      "duration": 7.359
+    },
+    {
+      "lang": "en",
+      "text": "as an API query language. So we can see",
+      "offset": 485.68,
+      "duration": 6.959
+    },
+    {
+      "lang": "en",
+      "text": "some similar concepts from DQL.",
+      "offset": 489.039,
+      "duration": 7.761
+    },
+    {
+      "lang": "en",
+      "text": "uh we start every DQL graph traversal",
+      "offset": 492.639,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "with a well- definfined starting point.",
+      "offset": 496.8,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "So that's our root criteria here where",
+      "offset": 498.639,
+      "duration": 5.68
+    },
+    {
+      "lang": "en",
+      "text": "we're often using an index to find the",
+      "offset": 501.44,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "nodes as the starting point for our",
+      "offset": 504.319,
+      "duration": 5.121
+    },
+    {
+      "lang": "en",
+      "text": "traversal. Then we use a selection set",
+      "offset": 506.16,
+      "duration": 6.08
+    },
+    {
+      "lang": "en",
+      "text": "structure which is this nested structure",
+      "offset": 509.44,
+      "duration": 6.88
+    },
+    {
+      "lang": "en",
+      "text": "that uh specifies both the properties",
+      "offset": 512.24,
+      "duration": 6.88
+    },
+    {
+      "lang": "en",
+      "text": "that we want to return to our query uh",
+      "offset": 516.32,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "but also this nested structure",
+      "offset": 519.12,
+      "duration": 7
+    },
+    {
+      "lang": "en",
+      "text": "represents a traversal in the",
+      "offset": 521.12,
+      "duration": 8.32
+    },
+    {
+      "lang": "en",
+      "text": "graph. Similar to GraphQL the data",
+      "offset": 526.12,
+      "duration": 6.12
+    },
+    {
+      "lang": "en",
+      "text": "returned from a DQL query is JSON that",
+      "offset": 529.44,
+      "duration": 6.079
+    },
+    {
+      "lang": "en",
+      "text": "matches the structure of our selection",
+      "offset": 532.24,
+      "duration": 7.2
+    },
+    {
+      "lang": "en",
+      "text": "set. Let's take a look at an example uh",
+      "offset": 535.519,
+      "duration": 8
+    },
+    {
+      "lang": "en",
+      "text": "using news data. Uh so how would we",
+      "offset": 539.44,
+      "duration": 6.519
+    },
+    {
+      "lang": "en",
+      "text": "create a knowledge graph of news",
+      "offset": 543.519,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "articles? So here's an example from the",
+      "offset": 545.959,
+      "duration": 6.361
+    },
+    {
+      "lang": "en",
+      "text": "New York Times. Uh so we have uh a news",
+      "offset": 549.279,
+      "duration": 5.361
+    },
+    {
+      "lang": "en",
+      "text": "article and if we think of what sort of",
+      "offset": 552.32,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "graph model we would build from this,",
+      "offset": 554.64,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "well we think of the uh entities that",
+      "offset": 556.64,
+      "duration": 4.52
+    },
+    {
+      "lang": "en",
+      "text": "are mentioned like what are the",
+      "offset": 559.68,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "organizations, the uh people, the topics",
+      "offset": 561.16,
+      "duration": 5.48
+    },
+    {
+      "lang": "en",
+      "text": "that are mentioned. we might model those",
+      "offset": 564.72,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "as nodes in the graph. We also have uh",
+      "offset": 566.64,
+      "duration": 6.4
+    },
+    {
+      "lang": "en",
+      "text": "the author. We have images to think of",
+      "offset": 569.76,
+      "duration": 6.079
+    },
+    {
+      "lang": "en",
+      "text": "and we also have unstructured data to",
+      "offset": 573.04,
+      "duration": 6.64
+    },
+    {
+      "lang": "en",
+      "text": "work with in the graph. Now there are",
+      "offset": 575.839,
+      "duration": 5.921
+    },
+    {
+      "lang": "en",
+      "text": "different approaches for how we might",
+      "offset": 579.68,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "chunk and embed unstructured data uh",
+      "offset": 581.76,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "maybe using the semantic structure of",
+      "offset": 585.12,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "the article. In this example, we're just",
+      "offset": 587.76,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "going to say every paragraph is a chunk.",
+      "offset": 590,
+      "duration": 6.72
+    },
+    {
+      "lang": "en",
+      "text": "uh and we're going to model those chunks",
+      "offset": 593.2,
+      "duration": 5.4
+    },
+    {
+      "lang": "en",
+      "text": "as nodes in the",
+      "offset": 596.72,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "graph. So here's a graph model uh that",
+      "offset": 598.6,
+      "duration": 4.919
+    },
+    {
+      "lang": "en",
+      "text": "we're going to use to represent our news",
+      "offset": 601.44,
+      "duration": 4.079
+    },
+    {
+      "lang": "en",
+      "text": "knowledge graph. We have an article node",
+      "offset": 603.519,
+      "duration": 4.241
+    },
+    {
+      "lang": "en",
+      "text": "that represents the article itself. you",
+      "offset": 605.519,
+      "duration": 6.241
+    },
+    {
+      "lang": "en",
+      "text": "h it has a a URL, a publish date, a",
+      "offset": 607.76,
+      "duration": 7.28
+    },
+    {
+      "lang": "en",
+      "text": "title, an abstract, but then we have uh",
+      "offset": 611.76,
+      "duration": 6.319
+    },
+    {
+      "lang": "en",
+      "text": "the author of the article, topics that",
+      "offset": 615.04,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "may be mentioned in the article,",
+      "offset": 618.079,
+      "duration": 4.561
+    },
+    {
+      "lang": "en",
+      "text": "organizations that may be mentioned. Uh",
+      "offset": 620,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "we also have geographic areas that might",
+      "offset": 622.64,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "be mentioned in the article, uh and",
+      "offset": 624.72,
+      "duration": 5.359
+    },
+    {
+      "lang": "en",
+      "text": "images, uh as well. So you can see how",
+      "offset": 627.44,
+      "duration": 5.519
+    },
+    {
+      "lang": "en",
+      "text": "we can traverse from the article to the",
+      "offset": 630.079,
+      "duration": 5.281
+    },
+    {
+      "lang": "en",
+      "text": "topic node to then other articles that",
+      "offset": 632.959,
+      "duration": 5.841
+    },
+    {
+      "lang": "en",
+      "text": "have the same topic or that mention the",
+      "offset": 635.36,
+      "duration": 5.479
+    },
+    {
+      "lang": "en",
+      "text": "same geographic",
+      "offset": 638.8,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "location. Now we mentioned uh chunking",
+      "offset": 640.839,
+      "duration": 6.44
+    },
+    {
+      "lang": "en",
+      "text": "and embedding earlier. Uh what we're",
+      "offset": 644.24,
+      "duration": 6.24
+    },
+    {
+      "lang": "en",
+      "text": "going to do is calculate an embedding of",
+      "offset": 647.279,
+      "duration": 6.881
+    },
+    {
+      "lang": "en",
+      "text": "each chunk and store that as a node",
+      "offset": 650.48,
+      "duration": 5.919
+    },
+    {
+      "lang": "en",
+      "text": "property. This will allow us to use",
+      "offset": 654.16,
+      "duration": 5.88
+    },
+    {
+      "lang": "en",
+      "text": "vector search as an entry point for our",
+      "offset": 656.399,
+      "duration": 7.68
+    },
+    {
+      "lang": "en",
+      "text": "graph. So, uh, vector similarity search",
+      "offset": 660.04,
+      "duration": 6.6
+    },
+    {
+      "lang": "en",
+      "text": "gives us an entry point into the graph.",
+      "offset": 664.079,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "We can think of this as the lexical",
+      "offset": 666.64,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "graph where we're identifying chunks of",
+      "offset": 669.519,
+      "duration": 5.201
+    },
+    {
+      "lang": "en",
+      "text": "a document that are uh, close to vector",
+      "offset": 671.44,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "space",
+      "offset": 674.72,
+      "duration": 6.08
+    },
+    {
+      "lang": "en",
+      "text": "uh, of a embedding of our query. But",
+      "offset": 676.32,
+      "duration": 7.6
+    },
+    {
+      "lang": "en",
+      "text": "that's just the start in graph rag. Uh",
+      "offset": 680.8,
+      "duration": 5.599
+    },
+    {
+      "lang": "en",
+      "text": "in a naive rag approach, we would do the",
+      "offset": 683.92,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "vector search to find these chunks. That",
+      "offset": 686.399,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "document would then be injected into the",
+      "offset": 689.2,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "prompt to add uh context. But in graph",
+      "offset": 691.519,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "rag, that's just the starting point.",
+      "offset": 694.56,
+      "duration": 4.719
+    },
+    {
+      "lang": "en",
+      "text": "Then we traverse through the graph to",
+      "offset": 696.959,
+      "duration": 5.681
+    },
+    {
+      "lang": "en",
+      "text": "the article nodes to the topics that are",
+      "offset": 699.279,
+      "duration": 5.68
+    },
+    {
+      "lang": "en",
+      "text": "relevant for this article to other",
+      "offset": 702.64,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "articles that have the same topic or",
+      "offset": 704.959,
+      "duration": 4.44
+    },
+    {
+      "lang": "en",
+      "text": "that mention the same",
+      "offset": 707.68,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "organization. Um, and again that's just",
+      "offset": 709.399,
+      "duration": 6.201
+    },
+    {
+      "lang": "en",
+      "text": "one entry point. The uh other entry",
+      "offset": 712.16,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "points might be using a geospatial",
+      "offset": 715.6,
+      "duration": 6.56
+    },
+    {
+      "lang": "en",
+      "text": "index. Maybe we want to find all of the",
+      "offset": 718.16,
+      "duration": 8.799
+    },
+    {
+      "lang": "en",
+      "text": "uh news about uh areas within a certain",
+      "offset": 722.16,
+      "duration": 9.119
+    },
+    {
+      "lang": "en",
+      "text": "region or find news articles uh near me",
+      "offset": 726.959,
+      "duration": 7.44
+    },
+    {
+      "lang": "en",
+      "text": "and then traverse the graph to find",
+      "offset": 731.279,
+      "duration": 5.68
+    },
+    {
+      "lang": "en",
+      "text": "other relevant articles that become",
+      "offset": 734.399,
+      "duration": 7.281
+    },
+    {
+      "lang": "en",
+      "text": "context for uh for our model. Similarly,",
+      "offset": 736.959,
+      "duration": 7.68
+    },
+    {
+      "lang": "en",
+      "text": "we might have uh an image embedding",
+      "offset": 741.68,
+      "duration": 5.279
+    },
+    {
+      "lang": "en",
+      "text": "model where we're doing uh image",
+      "offset": 744.639,
+      "duration": 4.481
+    },
+    {
+      "lang": "en",
+      "text": "similarity search as well. again just as",
+      "offset": 746.959,
+      "duration": 5.041
+    },
+    {
+      "lang": "en",
+      "text": "an entry point. So I like to think of",
+      "offset": 749.12,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "graph rag really being all about",
+      "offset": 752,
+      "duration": 4.399
+    },
+    {
+      "lang": "en",
+      "text": "different subgraph entry points where we",
+      "offset": 753.68,
+      "duration": 5.279
+    },
+    {
+      "lang": "en",
+      "text": "have this concept of the lexical graph",
+      "offset": 756.399,
+      "duration": 4.401
+    },
+    {
+      "lang": "en",
+      "text": "for vector search with unstructured",
+      "offset": 758.959,
+      "duration": 5.041
+    },
+    {
+      "lang": "en",
+      "text": "data. Uh the domain graph that we're",
+      "offset": 760.8,
+      "duration": 5.68
+    },
+    {
+      "lang": "en",
+      "text": "sort of traversing through to find",
+      "offset": 764,
+      "duration": 5.32
+    },
+    {
+      "lang": "en",
+      "text": "relevant context for the",
+      "offset": 766.48,
+      "duration": 6.08
+    },
+    {
+      "lang": "en",
+      "text": "model. Let's take a look at uh a",
+      "offset": 769.32,
+      "duration": 6.12
+    },
+    {
+      "lang": "en",
+      "text": "hands-on example of actually using this",
+      "offset": 772.56,
+      "duration": 6.56
+    },
+    {
+      "lang": "en",
+      "text": "data uh with Dgraph. This is a tool",
+      "offset": 775.44,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "called Rattell which is a query",
+      "offset": 779.12,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "workbench for Dgraph. Uh we can execute",
+      "offset": 781.2,
+      "duration": 6.96
+    },
+    {
+      "lang": "en",
+      "text": "DQL queries and work with and visualize",
+      "offset": 784.88,
+      "duration": 5.6
+    },
+    {
+      "lang": "en",
+      "text": "the results. Our initial query was just",
+      "offset": 788.16,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "a simple count of the number of",
+      "offset": 790.48,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "articles. Let's look at a more complex",
+      "offset": 791.92,
+      "duration": 5.68
+    },
+    {
+      "lang": "en",
+      "text": "query uh where we are searching for the",
+      "offset": 794.48,
+      "duration": 6.4
+    },
+    {
+      "lang": "en",
+      "text": "first 10 articles then traversing the",
+      "offset": 797.6,
+      "duration": 6.799
+    },
+    {
+      "lang": "en",
+      "text": "graph to find topics connected to those",
+      "offset": 800.88,
+      "duration": 8
+    },
+    {
+      "lang": "en",
+      "text": "articles. So we can uh inspect the graph",
+      "offset": 804.399,
+      "duration": 6.88
+    },
+    {
+      "lang": "en",
+      "text": "in this graph visualization to have an",
+      "offset": 808.88,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "idea of how these topics are connected",
+      "offset": 811.279,
+      "duration": 5.441
+    },
+    {
+      "lang": "en",
+      "text": "to articles. Let's look at a more",
+      "offset": 814,
+      "duration": 6.72
+    },
+    {
+      "lang": "en",
+      "text": "complex example. Uh so here we are",
+      "offset": 816.72,
+      "duration": 6.88
+    },
+    {
+      "lang": "en",
+      "text": "filtering for articles that are",
+      "offset": 820.72,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "published after a certain date and then",
+      "offset": 823.6,
+      "duration": 6.32
+    },
+    {
+      "lang": "en",
+      "text": "traversing to the geographic areas",
+      "offset": 826.48,
+      "duration": 8.159
+    },
+    {
+      "lang": "en",
+      "text": "mentioned in those articles.",
+      "offset": 829.92,
+      "duration": 7.76
+    },
+    {
+      "lang": "en",
+      "text": "Let's see how we can use the",
+      "offset": 834.639,
+      "duration": 6.56
+    },
+    {
+      "lang": "en",
+      "text": "uh geographic distance search in Dgraph.",
+      "offset": 837.68,
+      "duration": 6.48
+    },
+    {
+      "lang": "en",
+      "text": "So here we're looking for geographic",
+      "offset": 841.199,
+      "duration": 6.44
+    },
+    {
+      "lang": "en",
+      "text": "areas in the news that are within 50",
+      "offset": 844.16,
+      "duration": 6.799
+    },
+    {
+      "lang": "en",
+      "text": "kilometers of New York City and then",
+      "offset": 847.639,
+      "duration": 5.32
+    },
+    {
+      "lang": "en",
+      "text": "traversing to find the articles",
+      "offset": 850.959,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "connected to those geographic regions.",
+      "offset": 852.959,
+      "duration": 5.721
+    },
+    {
+      "lang": "en",
+      "text": "And we can see things like Manhattan and",
+      "offset": 855.839,
+      "duration": 4.961
+    },
+    {
+      "lang": "en",
+      "text": "Brooklyn. Uh let's look at a vector",
+      "offset": 858.68,
+      "duration": 5.399
+    },
+    {
+      "lang": "en",
+      "text": "search example. So using the uh vector",
+      "offset": 860.8,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "similarity search functionality in",
+      "offset": 864.079,
+      "duration": 6.32
+    },
+    {
+      "lang": "en",
+      "text": "Dgraph, we're passing a embedding uh I",
+      "offset": 866.32,
+      "duration": 8.12
+    },
+    {
+      "lang": "en",
+      "text": "think this is an embedding of the phrase",
+      "offset": 870.399,
+      "duration": 7.921
+    },
+    {
+      "lang": "en",
+      "text": "moneyaundering and looking for articles",
+      "offset": 874.44,
+      "duration": 6.92
+    },
+    {
+      "lang": "en",
+      "text": "that are close in vector space and then",
+      "offset": 878.32,
+      "duration": 7.68
+    },
+    {
+      "lang": "en",
+      "text": "traversing to find uh topics, geographic",
+      "offset": 881.36,
+      "duration": 7.839
+    },
+    {
+      "lang": "en",
+      "text": "regions, organizations connected to",
+      "offset": 886,
+      "duration": 5.92
+    },
+    {
+      "lang": "en",
+      "text": "these uh these articles.",
+      "offset": 889.199,
+      "duration": 5.681
+    },
+    {
+      "lang": "en",
+      "text": "We can then add a more complex traversal",
+      "offset": 891.92,
+      "duration": 7.919
+    },
+    {
+      "lang": "en",
+      "text": "to then search from those articles that",
+      "offset": 894.88,
+      "duration": 7.199
+    },
+    {
+      "lang": "en",
+      "text": "were a match for our vector similarity",
+      "offset": 899.839,
+      "duration": 5.68
+    },
+    {
+      "lang": "en",
+      "text": "search to traverse through the topic",
+      "offset": 902.079,
+      "duration": 6.56
+    },
+    {
+      "lang": "en",
+      "text": "nodes to find other articles that have",
+      "offset": 905.519,
+      "duration": 5.68
+    },
+    {
+      "lang": "en",
+      "text": "overlapping topics but that may not have",
+      "offset": 908.639,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "shown up through our vector similarity",
+      "offset": 911.199,
+      "duration": 6.161
+    },
+    {
+      "lang": "en",
+      "text": "search. And this gives us uh a way to in",
+      "offset": 914.399,
+      "duration": 6.081
+    },
+    {
+      "lang": "en",
+      "text": "this case visually explore uh the graph.",
+      "offset": 917.36,
+      "duration": 5.279
+    },
+    {
+      "lang": "en",
+      "text": "But of course we can look at the JSON",
+      "offset": 920.48,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "representation uh of the data returned",
+      "offset": 922.639,
+      "duration": 6.401
+    },
+    {
+      "lang": "en",
+      "text": "that matches our selection set. Okay,",
+      "offset": 925.04,
+      "duration": 7.12
+    },
+    {
+      "lang": "en",
+      "text": "that was a quick look at using DQL to",
+      "offset": 929.04,
+      "duration": 6.479
+    },
+    {
+      "lang": "en",
+      "text": "query our Dgraph instance. Um I want to",
+      "offset": 932.16,
+      "duration": 5.359
+    },
+    {
+      "lang": "en",
+      "text": "talk about some of the features in the",
+      "offset": 935.519,
+      "duration": 5.921
+    },
+    {
+      "lang": "en",
+      "text": "latest release of Dgraph. Uh the first",
+      "offset": 937.519,
+      "duration": 6.921
+    },
+    {
+      "lang": "en",
+      "text": "interesting bit is that uh all of the",
+      "offset": 941.44,
+      "duration": 6.56
+    },
+    {
+      "lang": "en",
+      "text": "enterprise features of Dgraph have been",
+      "offset": 944.44,
+      "duration": 7.319
+    },
+    {
+      "lang": "en",
+      "text": "moved into a single open-source release.",
+      "offset": 948,
+      "duration": 6.759
+    },
+    {
+      "lang": "en",
+      "text": "Uh and we were continuing to add new",
+      "offset": 951.759,
+      "duration": 5.921
+    },
+    {
+      "lang": "en",
+      "text": "features. Uh the interesting one I want",
+      "offset": 954.759,
+      "duration": 7
+    },
+    {
+      "lang": "en",
+      "text": "to dive into in this case is model",
+      "offset": 957.68,
+      "duration": 7.719
+    },
+    {
+      "lang": "en",
+      "text": "context protocol. So the MCP server for",
+      "offset": 961.759,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "Dgraph. Uh so let's talk a little bit",
+      "offset": 965.399,
+      "duration": 4.201
+    },
+    {
+      "lang": "en",
+      "text": "about MCP and then we'll look",
+      "offset": 967.759,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "specifically at the Dgraph MCP server.",
+      "offset": 969.6,
+      "duration": 6.32
+    },
+    {
+      "lang": "en",
+      "text": "Uh so this is a screenshot from the",
+      "offset": 973.279,
+      "duration": 5.441
+    },
+    {
+      "lang": "en",
+      "text": "anthropic deep learning.ai course uh",
+      "offset": 975.92,
+      "duration": 5.039
+    },
+    {
+      "lang": "en",
+      "text": "which is linked here. This is um I think",
+      "offset": 978.72,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "a really good course if you're",
+      "offset": 980.959,
+      "duration": 3.841
+    },
+    {
+      "lang": "en",
+      "text": "interested in not just learning about",
+      "offset": 982.24,
+      "duration": 5.68
+    },
+    {
+      "lang": "en",
+      "text": "the concepts of MCP but how do you",
+      "offset": 984.8,
+      "duration": 8.24
+    },
+    {
+      "lang": "en",
+      "text": "actually build and deploy MCP servers?",
+      "offset": 987.92,
+      "duration": 8.8
+    },
+    {
+      "lang": "en",
+      "text": "Fundamentally, MCP is a way of exposing",
+      "offset": 993.04,
+      "duration": 7.64
+    },
+    {
+      "lang": "en",
+      "text": "tools to models. And in the context of",
+      "offset": 996.72,
+      "duration": 6.64
+    },
+    {
+      "lang": "en",
+      "text": "databases, this means we're giving uh",
+      "offset": 1000.68,
+      "duration": 5.719
+    },
+    {
+      "lang": "en",
+      "text": "the database uh we're giving the model",
+      "offset": 1003.36,
+      "duration": 7.24
+    },
+    {
+      "lang": "en",
+      "text": "rather a way to interact with our",
+      "offset": 1006.399,
+      "duration": 7.521
+    },
+    {
+      "lang": "en",
+      "text": "database. With Dgraph, uh each Dgraph",
+      "offset": 1010.6,
+      "duration": 8.359
+    },
+    {
+      "lang": "en",
+      "text": "instance serves a MCP server. There's a",
+      "offset": 1013.92,
+      "duration": 7.52
+    },
+    {
+      "lang": "en",
+      "text": "uh readonly instance which will only",
+      "offset": 1018.959,
+      "duration": 4.641
+    },
+    {
+      "lang": "en",
+      "text": "expose uh the ability to execute queries",
+      "offset": 1021.44,
+      "duration": 5.519
+    },
+    {
+      "lang": "en",
+      "text": "or inspect the schema. Uh and then the",
+      "offset": 1023.6,
+      "duration": 6.479
+    },
+    {
+      "lang": "en",
+      "text": "full endpoint also exposes functionality",
+      "offset": 1026.959,
+      "duration": 6.88
+    },
+    {
+      "lang": "en",
+      "text": "for mutations. So adding data and also",
+      "offset": 1030.079,
+      "duration": 7.641
+    },
+    {
+      "lang": "en",
+      "text": "tool for altering the",
+      "offset": 1033.839,
+      "duration": 7.281
+    },
+    {
+      "lang": "en",
+      "text": "schema. So some of the use cases for the",
+      "offset": 1037.72,
+      "duration": 8.119
+    },
+    {
+      "lang": "en",
+      "text": "Dgraph MCP server are in agentic coding",
+      "offset": 1041.12,
+      "duration": 7.439
+    },
+    {
+      "lang": "en",
+      "text": "assistant uh environments. So tools like",
+      "offset": 1045.839,
+      "duration": 6.241
+    },
+    {
+      "lang": "en",
+      "text": "windsurf or cursor uh where we're able",
+      "offset": 1048.559,
+      "duration": 7.041
+    },
+    {
+      "lang": "en",
+      "text": "to do things like leveraging the schema",
+      "offset": 1052.08,
+      "duration": 7.2
+    },
+    {
+      "lang": "en",
+      "text": "or the data that are retrieved to the",
+      "offset": 1055.6,
+      "duration": 9.52
+    },
+    {
+      "lang": "en",
+      "text": "MCP server to um autogenerate writing uh",
+      "offset": 1059.28,
+      "duration": 8.96
+    },
+    {
+      "lang": "en",
+      "text": "CRUD endpoints in our app or other way",
+      "offset": 1065.12,
+      "duration": 7.28
+    },
+    {
+      "lang": "en",
+      "text": "generating uh DQL queries in our app.",
+      "offset": 1068.24,
+      "duration": 6.24
+    },
+    {
+      "lang": "en",
+      "text": "Another use case might be more",
+      "offset": 1072.4,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "exploratory data analysis uh which we",
+      "offset": 1074.48,
+      "duration": 6.24
+    },
+    {
+      "lang": "en",
+      "text": "might do in a tool like cloud desktop",
+      "offset": 1077.44,
+      "duration": 6.56
+    },
+    {
+      "lang": "en",
+      "text": "where we're actually generating DQL",
+      "offset": 1080.72,
+      "duration": 5.24
+    },
+    {
+      "lang": "en",
+      "text": "queries uh",
+      "offset": 1084,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "and fetching data from the database to",
+      "offset": 1085.96,
+      "duration": 6.079
+    },
+    {
+      "lang": "en",
+      "text": "understand uh what data is in our",
+      "offset": 1088.96,
+      "duration": 6.4
+    },
+    {
+      "lang": "en",
+      "text": "graph. Let's take a look at using the",
+      "offset": 1092.039,
+      "duration": 7.64
+    },
+    {
+      "lang": "en",
+      "text": "Dgraph MCP server uh with cloud desktop.",
+      "offset": 1095.36,
+      "duration": 6.88
+    },
+    {
+      "lang": "en",
+      "text": "So the first thing I'm going to do is",
+      "offset": 1099.679,
+      "duration": 7.12
+    },
+    {
+      "lang": "en",
+      "text": "sign in to uh hyper mode and create a",
+      "offset": 1102.24,
+      "duration": 8.24
+    },
+    {
+      "lang": "en",
+      "text": "new graph. Hyper mode graphs are uh",
+      "offset": 1106.799,
+      "duration": 6.481
+    },
+    {
+      "lang": "en",
+      "text": "powered by Dgraph. So this is going to",
+      "offset": 1110.48,
+      "duration": 6.8
+    },
+    {
+      "lang": "en",
+      "text": "deploy a Dgraph cluster including the",
+      "offset": 1113.28,
+      "duration": 6.639
+    },
+    {
+      "lang": "en",
+      "text": "MCP server endpoint. So we can see the",
+      "offset": 1117.28,
+      "duration": 6.399
+    },
+    {
+      "lang": "en",
+      "text": "MCP configuration uh in addition to the",
+      "offset": 1119.919,
+      "duration": 6.64
+    },
+    {
+      "lang": "en",
+      "text": "Dgraph connection string. So we'll copy",
+      "offset": 1123.679,
+      "duration": 4.201
+    },
+    {
+      "lang": "en",
+      "text": "the MCP",
+      "offset": 1126.559,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "configuration and in cloud desktop we'll",
+      "offset": 1127.88,
+      "duration": 7.96
+    },
+    {
+      "lang": "en",
+      "text": "edit the developer config and paste in",
+      "offset": 1131.919,
+      "duration": 7.281
+    },
+    {
+      "lang": "en",
+      "text": "that MCP configuration. Uh and then",
+      "offset": 1135.84,
+      "duration": 6.24
+    },
+    {
+      "lang": "en",
+      "text": "restart cloud which will give us access",
+      "offset": 1139.2,
+      "duration": 7.68
+    },
+    {
+      "lang": "en",
+      "text": "to the MCP server tools for Dgraph. Uh",
+      "offset": 1142.08,
+      "duration": 8.16
+    },
+    {
+      "lang": "en",
+      "text": "let's load some sample data into Dgraph.",
+      "offset": 1146.88,
+      "duration": 6.56
+    },
+    {
+      "lang": "en",
+      "text": "So let's uh create fictitious customer",
+      "offset": 1150.24,
+      "duration": 7.12
+    },
+    {
+      "lang": "en",
+      "text": "product and order data for say uh for an",
+      "offset": 1153.44,
+      "duration": 5.239
+    },
+    {
+      "lang": "en",
+      "text": "e-commerce use",
+      "offset": 1157.36,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "case. And so the first thing that Claude",
+      "offset": 1158.679,
+      "duration": 6.921
+    },
+    {
+      "lang": "en",
+      "text": "is going to do is update the schema uh I",
+      "offset": 1161.12,
+      "duration": 5.679
+    },
+    {
+      "lang": "en",
+      "text": "should say actually the first thing it's",
+      "offset": 1165.6,
+      "duration": 3.439
+    },
+    {
+      "lang": "en",
+      "text": "going to do is inspect the schema uh and",
+      "offset": 1166.799,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "see that our database is empty. Then",
+      "offset": 1169.039,
+      "duration": 5.921
+    },
+    {
+      "lang": "en",
+      "text": "generate a graph schema that represents",
+      "offset": 1172.559,
+      "duration": 4.961
+    },
+    {
+      "lang": "en",
+      "text": "the data model that we're going to work",
+      "offset": 1174.96,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "with. So orders and how they're",
+      "offset": 1177.52,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "connected to products and customers. Uh",
+      "offset": 1179.52,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "then Claude is going to generate a",
+      "offset": 1182.96,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "series of mutations to actually create",
+      "offset": 1184.72,
+      "duration": 5.92
+    },
+    {
+      "lang": "en",
+      "text": "data in the graph generating uh",
+      "offset": 1187.52,
+      "duration": 5.519
+    },
+    {
+      "lang": "en",
+      "text": "fictitious customer names, customer",
+      "offset": 1190.64,
+      "duration": 4.039
+    },
+    {
+      "lang": "en",
+      "text": "information,",
+      "offset": 1193.039,
+      "duration": 4.801
+    },
+    {
+      "lang": "en",
+      "text": "uh products and so on. Now, it's",
+      "offset": 1194.679,
+      "duration": 6.201
+    },
+    {
+      "lang": "en",
+      "text": "important to to point out here that with",
+      "offset": 1197.84,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "database MCP servers, it's the model",
+      "offset": 1200.88,
+      "duration": 6.08
+    },
+    {
+      "lang": "en",
+      "text": "that is generating the database query",
+      "offset": 1203.6,
+      "duration": 5.68
+    },
+    {
+      "lang": "en",
+      "text": "and then using the tools defined in the",
+      "offset": 1206.96,
+      "duration": 6.16
+    },
+    {
+      "lang": "en",
+      "text": "MCP server to execute those queries",
+      "offset": 1209.28,
+      "duration": 7.6
+    },
+    {
+      "lang": "en",
+      "text": "against the database and claude is smart",
+      "offset": 1213.12,
+      "duration": 7.76
+    },
+    {
+      "lang": "en",
+      "text": "enough to verify that the data created",
+      "offset": 1216.88,
+      "duration": 6.08
+    },
+    {
+      "lang": "en",
+      "text": "in the database matches its",
+      "offset": 1220.88,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "expectations. So here we can see uh that",
+      "offset": 1222.96,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "claude is generating DQL queries to",
+      "offset": 1226.08,
+      "duration": 6.719
+    },
+    {
+      "lang": "en",
+      "text": "verify uh the data was actually created",
+      "offset": 1228.96,
+      "duration": 6.28
+    },
+    {
+      "lang": "en",
+      "text": "uh as",
+      "offset": 1232.799,
+      "duration": 4.721
+    },
+    {
+      "lang": "en",
+      "text": "expected. Uh in this case it found",
+      "offset": 1235.24,
+      "duration": 5
+    },
+    {
+      "lang": "en",
+      "text": "missing relationships uh and so it's",
+      "offset": 1237.52,
+      "duration": 5.92
+    },
+    {
+      "lang": "en",
+      "text": "adding a mutation to add those",
+      "offset": 1240.24,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "relationships to the graph. Now this is",
+      "offset": 1243.44,
+      "duration": 5.119
+    },
+    {
+      "lang": "en",
+      "text": "a really interesting way for learning",
+      "offset": 1245.76,
+      "duration": 6.52
+    },
+    {
+      "lang": "en",
+      "text": "new developer tooling. So here we've uh",
+      "offset": 1248.559,
+      "duration": 6.48
+    },
+    {
+      "lang": "en",
+      "text": "created uh a graph schema. We've added",
+      "offset": 1252.28,
+      "duration": 5.399
+    },
+    {
+      "lang": "en",
+      "text": "data to the graph without really having",
+      "offset": 1255.039,
+      "duration": 5.921
+    },
+    {
+      "lang": "en",
+      "text": "to uh to worry about the specific query",
+      "offset": 1257.679,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "language. But it's a great way to learn",
+      "offset": 1260.96,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "that query language, learn how to use",
+      "offset": 1263.039,
+      "duration": 4.721
+    },
+    {
+      "lang": "en",
+      "text": "these developer tools. Uh now let's",
+      "offset": 1264.64,
+      "duration": 6.159
+    },
+    {
+      "lang": "en",
+      "text": "generate a graph visualization to",
+      "offset": 1267.76,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "understand the data in the graph. So",
+      "offset": 1270.799,
+      "duration": 5.921
+    },
+    {
+      "lang": "en",
+      "text": "here Claude generates a query to fetch",
+      "offset": 1273.52,
+      "duration": 6.08
+    },
+    {
+      "lang": "en",
+      "text": "data from the graph and generates the",
+      "offset": 1276.72,
+      "duration": 5.4
+    },
+    {
+      "lang": "en",
+      "text": "JavaScript to render a graph",
+      "offset": 1279.6,
+      "duration": 5.199
+    },
+    {
+      "lang": "en",
+      "text": "visualization. Um so this is a helpful",
+      "offset": 1282.12,
+      "duration": 7.12
+    },
+    {
+      "lang": "en",
+      "text": "way to understand the connections in our",
+      "offset": 1284.799,
+      "duration": 8.88
+    },
+    {
+      "lang": "en",
+      "text": "graph. Uh and we have ways for viewing",
+      "offset": 1289.24,
+      "duration": 7.799
+    },
+    {
+      "lang": "en",
+      "text": "the schema uh zeroing in on customers",
+      "offset": 1293.679,
+      "duration": 7.561
+    },
+    {
+      "lang": "en",
+      "text": "and orders or just inspecting uh product",
+      "offset": 1297.039,
+      "duration": 6.561
+    },
+    {
+      "lang": "en",
+      "text": "information. We have different layout",
+      "offset": 1301.24,
+      "duration": 4.679
+    },
+    {
+      "lang": "en",
+      "text": "options in addition to the typical",
+      "offset": 1303.6,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "forced directed layout. Uh hierarchical",
+      "offset": 1305.919,
+      "duration": 6.561
+    },
+    {
+      "lang": "en",
+      "text": "or radial layouts can be useful for",
+      "offset": 1308.96,
+      "duration": 6.4
+    },
+    {
+      "lang": "en",
+      "text": "interpreting graphs. Um but let's stick",
+      "offset": 1312.48,
+      "duration": 5.84
+    },
+    {
+      "lang": "en",
+      "text": "with the forced directed layout and",
+      "offset": 1315.36,
+      "duration": 6.16
+    },
+    {
+      "lang": "en",
+      "text": "let's explore using Dgraph for",
+      "offset": 1318.32,
+      "duration": 6.719
+    },
+    {
+      "lang": "en",
+      "text": "generating product recommendations for a",
+      "offset": 1321.52,
+      "duration": 6.8
+    },
+    {
+      "lang": "en",
+      "text": "specific user. So this is a a typical",
+      "offset": 1325.039,
+      "duration": 6.401
+    },
+    {
+      "lang": "en",
+      "text": "graph database use case uh generating",
+      "offset": 1328.32,
+      "duration": 5.359
+    },
+    {
+      "lang": "en",
+      "text": "personalized recommendations by",
+      "offset": 1331.44,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "traversing the graph. Uh you can think",
+      "offset": 1333.679,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "of the different approaches we could",
+      "offset": 1336.24,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "take here from collaborative filtering",
+      "offset": 1337.919,
+      "duration": 5.681
+    },
+    {
+      "lang": "en",
+      "text": "uh which could be find similar users in",
+      "offset": 1341.36,
+      "duration": 4.319
+    },
+    {
+      "lang": "en",
+      "text": "the graph. What are those users",
+      "offset": 1343.6,
+      "duration": 6.319
+    },
+    {
+      "lang": "en",
+      "text": "purchasing that uh our user is not?",
+      "offset": 1345.679,
+      "duration": 6.48
+    },
+    {
+      "lang": "en",
+      "text": "those may be good items to recommend to",
+      "offset": 1349.919,
+      "duration": 5.321
+    },
+    {
+      "lang": "en",
+      "text": "the user to content based",
+      "offset": 1352.159,
+      "duration": 5.921
+    },
+    {
+      "lang": "en",
+      "text": "recommendations based on the purchase",
+      "offset": 1355.24,
+      "duration": 6.6
+    },
+    {
+      "lang": "en",
+      "text": "history of our user. Uh what are",
+      "offset": 1358.08,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "attributes that they may be interested",
+      "offset": 1361.84,
+      "duration": 4.959
+    },
+    {
+      "lang": "en",
+      "text": "in uh demographic approaches as well.",
+      "offset": 1363.52,
+      "duration": 6.56
+    },
+    {
+      "lang": "en",
+      "text": "And here Claude is generating uh queries",
+      "offset": 1366.799,
+      "duration": 6.161
+    },
+    {
+      "lang": "en",
+      "text": "that show us using these different",
+      "offset": 1370.08,
+      "duration": 6.88
+    },
+    {
+      "lang": "en",
+      "text": "approaches uh and then how these can be",
+      "offset": 1372.96,
+      "duration": 8.12
+    },
+    {
+      "lang": "en",
+      "text": "combined to generate a single database",
+      "offset": 1376.96,
+      "duration": 7.199
+    },
+    {
+      "lang": "en",
+      "text": "query. Now Claude doesn't always get the",
+      "offset": 1381.08,
+      "duration": 7.16
+    },
+    {
+      "lang": "en",
+      "text": "the queries right. So this example uh we",
+      "offset": 1384.159,
+      "duration": 6.081
+    },
+    {
+      "lang": "en",
+      "text": "can see there's an error with the first",
+      "offset": 1388.24,
+      "duration": 3.439
+    },
+    {
+      "lang": "en",
+      "text": "approach and so Claude is going to",
+      "offset": 1390.24,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "iterate a bit uh until we get back",
+      "offset": 1391.679,
+      "duration": 5.721
+    },
+    {
+      "lang": "en",
+      "text": "results as",
+      "offset": 1394.88,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "expected. Again really useful tool I",
+      "offset": 1397.4,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "think for understanding some of these",
+      "offset": 1400,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "concepts. Uh now our final deliverable",
+      "offset": 1402.36,
+      "duration": 6.84
+    },
+    {
+      "lang": "en",
+      "text": "here is going to be a HTML report that",
+      "offset": 1405.44,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "Claude is going to generate that allows",
+      "offset": 1409.2,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "us to explore the different approaches",
+      "offset": 1410.88,
+      "duration": 5.64
+    },
+    {
+      "lang": "en",
+      "text": "for implementing these uh",
+      "offset": 1414,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "recommendations and show us the results",
+      "offset": 1416.52,
+      "duration": 6.92
+    },
+    {
+      "lang": "en",
+      "text": "as well as the DQL query used for each",
+      "offset": 1419.2,
+      "duration": 7.68
+    },
+    {
+      "lang": "en",
+      "text": "of these. So that was a look at the",
+      "offset": 1423.44,
+      "duration": 7.2
+    },
+    {
+      "lang": "en",
+      "text": "Dgraph MCP server. If we zoom out a",
+      "offset": 1426.88,
+      "duration": 6.64
+    },
+    {
+      "lang": "en",
+      "text": "little bit, so far we've seen how to",
+      "offset": 1430.64,
+      "duration": 7.72
+    },
+    {
+      "lang": "en",
+      "text": "work with knowledge graphs, uh how to",
+      "offset": 1433.52,
+      "duration": 8.8
+    },
+    {
+      "lang": "en",
+      "text": "expose tools to a model for interacting",
+      "offset": 1438.36,
+      "duration": 6.72
+    },
+    {
+      "lang": "en",
+      "text": "with that knowledge graph uh through",
+      "offset": 1442.32,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "Dgraph. Uh but there's a piece that's",
+      "offset": 1445.08,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "missing here which is the agent",
+      "offset": 1447.36,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "orchestration. Uh and so to enable",
+      "offset": 1449.72,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "building uh agentic",
+      "offset": 1452.48,
+      "duration": 6.24
+    },
+    {
+      "lang": "en",
+      "text": "apps at hyper mode, we've created the",
+      "offset": 1454.84,
+      "duration": 6.28
+    },
+    {
+      "lang": "en",
+      "text": "modus agent orchestration framework",
+      "offset": 1458.72,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "which is an open- source framework for",
+      "offset": 1461.12,
+      "duration": 7.4
+    },
+    {
+      "lang": "en",
+      "text": "creating AI agents uh really for",
+      "offset": 1463.84,
+      "duration": 9.76
+    },
+    {
+      "lang": "en",
+      "text": "bringing data to models and exposing",
+      "offset": 1468.52,
+      "duration": 9.48
+    },
+    {
+      "lang": "en",
+      "text": "tools uh and abstractions for working uh",
+      "offset": 1473.6,
+      "duration": 7.12
+    },
+    {
+      "lang": "en",
+      "text": "with agentic flows. So modus is an open",
+      "offset": 1478,
+      "duration": 5.64
+    },
+    {
+      "lang": "en",
+      "text": "source project. Uh you can find this on",
+      "offset": 1480.72,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "GitHub. Really the functionality we",
+      "offset": 1483.64,
+      "duration": 7.159
+    },
+    {
+      "lang": "en",
+      "text": "think of uh in modus is abstractions not",
+      "offset": 1486.48,
+      "duration": 7.199
+    },
+    {
+      "lang": "en",
+      "text": "only for working with models and data",
+      "offset": 1490.799,
+      "duration": 8.681
+    },
+    {
+      "lang": "en",
+      "text": "but a runtime for uh working with",
+      "offset": 1493.679,
+      "duration": 10.24
+    },
+    {
+      "lang": "en",
+      "text": "largecale number of agents that are",
+      "offset": 1499.48,
+      "duration": 7.72
+    },
+    {
+      "lang": "en",
+      "text": "stateful and longunning. uh which is why",
+      "offset": 1503.919,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "we think it's important to have a",
+      "offset": 1507.2,
+      "duration": 6.16
+    },
+    {
+      "lang": "en",
+      "text": "runtime uh as well as an SDK library for",
+      "offset": 1509.679,
+      "duration": 6.88
+    },
+    {
+      "lang": "en",
+      "text": "working with agents. Modus does some",
+      "offset": 1513.36,
+      "duration": 6.72
+    },
+    {
+      "lang": "en",
+      "text": "interesting things with web assembly. So",
+      "offset": 1516.559,
+      "duration": 6.641
+    },
+    {
+      "lang": "en",
+      "text": "we use web assembly to target multiple",
+      "offset": 1520.08,
+      "duration": 7.199
+    },
+    {
+      "lang": "en",
+      "text": "languages uh for different SDKs. So",
+      "offset": 1523.2,
+      "duration": 5.92
+    },
+    {
+      "lang": "en",
+      "text": "you're able to write your logic in",
+      "offset": 1527.279,
+      "duration": 5.361
+    },
+    {
+      "lang": "en",
+      "text": "languages like go or assembly script and",
+      "offset": 1529.12,
+      "duration": 7.12
+    },
+    {
+      "lang": "en",
+      "text": "then under the hood that is compiled to",
+      "offset": 1532.64,
+      "duration": 6.56
+    },
+    {
+      "lang": "en",
+      "text": "web assembly and a single unified",
+      "offset": 1536.24,
+      "duration": 6.96
+    },
+    {
+      "lang": "en",
+      "text": "graphqle API is generated that leverages",
+      "offset": 1539.2,
+      "duration": 6.88
+    },
+    {
+      "lang": "en",
+      "text": "uh the types that you've defined in your",
+      "offset": 1543.2,
+      "duration": 6.479
+    },
+    {
+      "lang": "en",
+      "text": "modus app and the signature uh of the",
+      "offset": 1546.08,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "functions you've defined to stitch a",
+      "offset": 1549.679,
+      "duration": 5.761
+    },
+    {
+      "lang": "en",
+      "text": "single graphql schema uh together. Uh",
+      "offset": 1551.6,
+      "duration": 7.48
+    },
+    {
+      "lang": "en",
+      "text": "the modus runtime uh leveraging web",
+      "offset": 1555.44,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "assembly gives us some advantages as",
+      "offset": 1559.08,
+      "duration": 5
+    },
+    {
+      "lang": "en",
+      "text": "well for security and a sandbox",
+      "offset": 1561.44,
+      "duration": 6.88
+    },
+    {
+      "lang": "en",
+      "text": "environment for your AI agent to run in.",
+      "offset": 1564.08,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "Uh but all of that web assembly aspect",
+      "offset": 1568.32,
+      "duration": 6.359
+    },
+    {
+      "lang": "en",
+      "text": "is abstracted away from uh from the",
+      "offset": 1570.08,
+      "duration": 7.52
+    },
+    {
+      "lang": "en",
+      "text": "user. So leveraging now these open",
+      "offset": 1574.679,
+      "duration": 4.921
+    },
+    {
+      "lang": "en",
+      "text": "source components. So the mo modus",
+      "offset": 1577.6,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "orchestration",
+      "offset": 1579.6,
+      "duration": 4.319
+    },
+    {
+      "lang": "en",
+      "text": "uh framework leveraging dgraph for",
+      "offset": 1581.2,
+      "duration": 5.359
+    },
+    {
+      "lang": "en",
+      "text": "building knowledge graphs. Uh let's take",
+      "offset": 1583.919,
+      "duration": 3.801
+    },
+    {
+      "lang": "en",
+      "text": "a look",
+      "offset": 1586.559,
+      "duration": 4.641
+    },
+    {
+      "lang": "en",
+      "text": "at building domain specific agents",
+      "offset": 1587.72,
+      "duration": 7.48
+    },
+    {
+      "lang": "en",
+      "text": "starting with a prompt. Uh so this is uh",
+      "offset": 1591.2,
+      "duration": 6.88
+    },
+    {
+      "lang": "en",
+      "text": "the core for hyper mode agents where we",
+      "offset": 1595.2,
+      "duration": 4.959
+    },
+    {
+      "lang": "en",
+      "text": "think it's really important to be able",
+      "offset": 1598.08,
+      "duration": 5.199
+    },
+    {
+      "lang": "en",
+      "text": "uh to get up and running with a domain",
+      "offset": 1600.159,
+      "duration": 7.081
+    },
+    {
+      "lang": "en",
+      "text": "specific agent by writing a prompt and",
+      "offset": 1603.279,
+      "duration": 9.601
+    },
+    {
+      "lang": "en",
+      "text": "exposing tools via MCP server. Uh so uh",
+      "offset": 1607.24,
+      "duration": 8.28
+    },
+    {
+      "lang": "en",
+      "text": "for my final demo, we'll take uh a quick",
+      "offset": 1612.88,
+      "duration": 7.279
+    },
+    {
+      "lang": "en",
+      "text": "look at uh hyper mode agents.",
+      "offset": 1615.52,
+      "duration": 7.36
+    },
+    {
+      "lang": "en",
+      "text": "I'm going to switch back to hyper mode",
+      "offset": 1620.159,
+      "duration": 6.241
+    },
+    {
+      "lang": "en",
+      "text": "and we're going to go to the threads tab",
+      "offset": 1622.88,
+      "duration": 6.44
+    },
+    {
+      "lang": "en",
+      "text": "uh which is our uh area for building",
+      "offset": 1626.4,
+      "duration": 6.8
+    },
+    {
+      "lang": "en",
+      "text": "agents. Uh let's create a new agent.",
+      "offset": 1629.32,
+      "duration": 5.88
+    },
+    {
+      "lang": "en",
+      "text": "We'll give him a name blah blah blah",
+      "offset": 1633.2,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "works in our marketing department as a",
+      "offset": 1635.2,
+      "duration": 4.479
+    },
+    {
+      "lang": "en",
+      "text": "social media intern. Uh we're going to",
+      "offset": 1637.2,
+      "duration": 6.16
+    },
+    {
+      "lang": "en",
+      "text": "define a prompt which gives our agent a",
+      "offset": 1639.679,
+      "duration": 5.921
+    },
+    {
+      "lang": "en",
+      "text": "bit of background. He's going to be a",
+      "offset": 1643.36,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "social media expert uh who's really good",
+      "offset": 1645.6,
+      "duration": 7.36
+    },
+    {
+      "lang": "en",
+      "text": "at uh creating short snippets that are",
+      "offset": 1648.32,
+      "duration": 7.2
+    },
+    {
+      "lang": "en",
+      "text": "showing developers how to use uh deep",
+      "offset": 1652.96,
+      "duration": 5.319
+    },
+    {
+      "lang": "en",
+      "text": "technical tooling and explain technical",
+      "offset": 1655.52,
+      "duration": 5.279
+    },
+    {
+      "lang": "en",
+      "text": "concepts. Uh we'll choose a reasoning",
+      "offset": 1658.279,
+      "duration": 6.361
+    },
+    {
+      "lang": "en",
+      "text": "model. Uh we'll use the GPT41",
+      "offset": 1660.799,
+      "duration": 7.041
+    },
+    {
+      "lang": "en",
+      "text": "uh model to orchestrate this agent. Uh",
+      "offset": 1664.64,
+      "duration": 6.159
+    },
+    {
+      "lang": "en",
+      "text": "and the next thing we need to do is add",
+      "offset": 1667.84,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "connections. So our agent needs to be",
+      "offset": 1670.799,
+      "duration": 4.041
+    },
+    {
+      "lang": "en",
+      "text": "able to uh interact with its",
+      "offset": 1672.48,
+      "duration": 4.799
+    },
+    {
+      "lang": "en",
+      "text": "environment. So we'll give him access to",
+      "offset": 1674.84,
+      "duration": 5.719
+    },
+    {
+      "lang": "en",
+      "text": "GitHub, Notion uh and our company docs",
+      "offset": 1677.279,
+      "duration": 6.321
+    },
+    {
+      "lang": "en",
+      "text": "through ref. These are all MCP servers",
+      "offset": 1680.559,
+      "duration": 8.321
+    },
+    {
+      "lang": "en",
+      "text": "that are uh exposing tools that uh allow",
+      "offset": 1683.6,
+      "duration": 7.92
+    },
+    {
+      "lang": "en",
+      "text": "the agent to interact uh with those",
+      "offset": 1688.88,
+      "duration": 6.399
+    },
+    {
+      "lang": "en",
+      "text": "services uh and authorized uh our",
+      "offset": 1691.52,
+      "duration": 6.44
+    },
+    {
+      "lang": "en",
+      "text": "behalf. So let's give him a task to",
+      "offset": 1695.279,
+      "duration": 6.561
+    },
+    {
+      "lang": "en",
+      "text": "analyze a specific GitHub repo. In this",
+      "offset": 1697.96,
+      "duration": 7.319
+    },
+    {
+      "lang": "en",
+      "text": "case, the Hypernews repo, which has uh",
+      "offset": 1701.84,
+      "duration": 6.16
+    },
+    {
+      "lang": "en",
+      "text": "the tooling for importing, building,",
+      "offset": 1705.279,
+      "duration": 5.201
+    },
+    {
+      "lang": "en",
+      "text": "quering, and working with that news",
+      "offset": 1708,
+      "duration": 4.36
+    },
+    {
+      "lang": "en",
+      "text": "knowledge graph that uh I showed",
+      "offset": 1710.48,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "earlier. And we're going to generate uh",
+      "offset": 1712.36,
+      "duration": 5.88
+    },
+    {
+      "lang": "en",
+      "text": "social media posts that explain how to",
+      "offset": 1715.2,
+      "duration": 5.92
+    },
+    {
+      "lang": "en",
+      "text": "use some of the concepts explained in",
+      "offset": 1718.24,
+      "duration": 5.84
+    },
+    {
+      "lang": "en",
+      "text": "that GitHub repo. So at the beginning we",
+      "offset": 1721.12,
+      "duration": 6.88
+    },
+    {
+      "lang": "en",
+      "text": "can see the tool calls that our agent",
+      "offset": 1724.08,
+      "duration": 6.479
+    },
+    {
+      "lang": "en",
+      "text": "made. So first he's searching for the",
+      "offset": 1728,
+      "duration": 5.919
+    },
+    {
+      "lang": "en",
+      "text": "Hyperne GitHub repo using uh tools from",
+      "offset": 1730.559,
+      "duration": 6.801
+    },
+    {
+      "lang": "en",
+      "text": "the GitHub MCP server. then getting uh",
+      "offset": 1733.919,
+      "duration": 7.24
+    },
+    {
+      "lang": "en",
+      "text": "specific file contents to use uh to",
+      "offset": 1737.36,
+      "duration": 7.039
+    },
+    {
+      "lang": "en",
+      "text": "generate social media posts uh that show",
+      "offset": 1741.159,
+      "duration": 6.361
+    },
+    {
+      "lang": "en",
+      "text": "how to use specific features uh",
+      "offset": 1744.399,
+      "duration": 5.921
+    },
+    {
+      "lang": "en",
+      "text": "explained in uh or I should say",
+      "offset": 1747.52,
+      "duration": 6.24
+    },
+    {
+      "lang": "en",
+      "text": "implemented in this GitHub repo. So this",
+      "offset": 1750.32,
+      "duration": 6.32
+    },
+    {
+      "lang": "en",
+      "text": "is a good start. Um but let's ask our",
+      "offset": 1753.76,
+      "duration": 7.68
+    },
+    {
+      "lang": "en",
+      "text": "agent to update these posts to include",
+      "offset": 1756.64,
+      "duration": 7.759
+    },
+    {
+      "lang": "en",
+      "text": "some relevant code snippets.",
+      "offset": 1761.44,
+      "duration": 6.92
+    },
+    {
+      "lang": "en",
+      "text": "Uh, and so our agent is now going",
+      "offset": 1764.399,
+      "duration": 8.321
+    },
+    {
+      "lang": "en",
+      "text": "to choose uh what tools to call here.",
+      "offset": 1768.36,
+      "duration": 8.76
+    },
+    {
+      "lang": "en",
+      "text": "Uh, going back to GitHub, looking at uh,",
+      "offset": 1772.72,
+      "duration": 6.959
+    },
+    {
+      "lang": "en",
+      "text": "source files that may be relevant and",
+      "offset": 1777.12,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "adding code snippets here. So now you",
+      "offset": 1779.679,
+      "duration": 5.681
+    },
+    {
+      "lang": "en",
+      "text": "can see our social media posts have uh,",
+      "offset": 1782,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "code snippets where appropriate. And",
+      "offset": 1785.36,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "this is a mix of DQL queries when we're",
+      "offset": 1787.44,
+      "duration": 7.2
+    },
+    {
+      "lang": "en",
+      "text": "talking about Dgraph, some Go code from",
+      "offset": 1790.48,
+      "duration": 6.439
+    },
+    {
+      "lang": "en",
+      "text": "uh the modus SDK, some terminal",
+      "offset": 1794.64,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "commands. Uh this looks good. Uh let's",
+      "offset": 1796.919,
+      "duration": 8.041
+    },
+    {
+      "lang": "en",
+      "text": "ask our agent to save this to our uh",
+      "offset": 1800.08,
+      "duration": 6.8
+    },
+    {
+      "lang": "en",
+      "text": "notion workspace so that we can cue",
+      "offset": 1804.96,
+      "duration": 6.319
+    },
+    {
+      "lang": "en",
+      "text": "these up uh to post on uh our Twitter",
+      "offset": 1806.88,
+      "duration": 5.919
+    },
+    {
+      "lang": "en",
+      "text": "account.",
+      "offset": 1811.279,
+      "duration": 6.321
+    },
+    {
+      "lang": "en",
+      "text": "And uh we need to tell our agent uh what",
+      "offset": 1812.799,
+      "duration": 8.24
+    },
+    {
+      "lang": "en",
+      "text": "page uh to use. So we'll say uh let's",
+      "offset": 1817.6,
+      "duration": 7.079
+    },
+    {
+      "lang": "en",
+      "text": "post these to my private",
+      "offset": 1821.039,
+      "duration": 6.64
+    },
+    {
+      "lang": "en",
+      "text": "scratchpad. And again, we've authorized",
+      "offset": 1824.679,
+      "duration": 6.201
+    },
+    {
+      "lang": "en",
+      "text": "uh the agent to have access to our",
+      "offset": 1827.679,
+      "duration": 7.12
+    },
+    {
+      "lang": "en",
+      "text": "notion workspace through the notion MCP",
+      "offset": 1830.88,
+      "duration": 6.64
+    },
+    {
+      "lang": "en",
+      "text": "server. Uh so that's how our agent is",
+      "offset": 1834.799,
+      "duration": 6.961
+    },
+    {
+      "lang": "en",
+      "text": "able to access my scratchpad page. Uh,",
+      "offset": 1837.52,
+      "duration": 8.96
+    },
+    {
+      "lang": "en",
+      "text": "and we can see the notion tools that our",
+      "offset": 1841.76,
+      "duration": 8.72
+    },
+    {
+      "lang": "en",
+      "text": "agent used to update our notion page.",
+      "offset": 1846.48,
+      "duration": 7.04
+    },
+    {
+      "lang": "en",
+      "text": "And we switch over to notion, we can see",
+      "offset": 1850.48,
+      "duration": 6.72
+    },
+    {
+      "lang": "en",
+      "text": "my scratch pad that includes our updated",
+      "offset": 1853.52,
+      "duration": 7.56
+    },
+    {
+      "lang": "en",
+      "text": "code snippets for our social media",
+      "offset": 1857.2,
+      "duration": 7.28
+    },
+    {
+      "lang": "en",
+      "text": "posts. So, that's really cool. We uh",
+      "offset": 1861.08,
+      "duration": 5.719
+    },
+    {
+      "lang": "en",
+      "text": "built an agent just from a prompt, gave",
+      "offset": 1864.48,
+      "duration": 6.559
+    },
+    {
+      "lang": "en",
+      "text": "him access to actually interact with",
+      "offset": 1866.799,
+      "duration": 9.201
+    },
+    {
+      "lang": "en",
+      "text": "GitHub and notion uh on my behalf. One",
+      "offset": 1871.039,
+      "duration": 7.441
+    },
+    {
+      "lang": "en",
+      "text": "thing that's really neat uh about hyper",
+      "offset": 1876,
+      "duration": 6.32
+    },
+    {
+      "lang": "en",
+      "text": "mode agents is I can now eject to code",
+      "offset": 1878.48,
+      "duration": 8.319
+    },
+    {
+      "lang": "en",
+      "text": "uh to have the modus code that uh we're",
+      "offset": 1882.32,
+      "duration": 8.16
+    },
+    {
+      "lang": "en",
+      "text": "using to actually run this agent. So I",
+      "offset": 1886.799,
+      "duration": 6.081
+    },
+    {
+      "lang": "en",
+      "text": "can then add more complex logic, other",
+      "offset": 1890.48,
+      "duration": 7.039
+    },
+    {
+      "lang": "en",
+      "text": "connections uh to enhance my agent using",
+      "offset": 1892.88,
+      "duration": 7.6
+    },
+    {
+      "lang": "en",
+      "text": "modus. So, that was a quick look at",
+      "offset": 1897.519,
+      "duration": 7.201
+    },
+    {
+      "lang": "en",
+      "text": "hyper mode agents, being able to create",
+      "offset": 1900.48,
+      "duration": 12.16
+    },
+    {
+      "lang": "en",
+      "text": "an agent from a prompt and access to MCP",
+      "offset": 1904.72,
+      "duration": 10.079
+    },
+    {
+      "lang": "en",
+      "text": "powered connections",
+      "offset": 1912.64,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "uh while also being able to eject to",
+      "offset": 1914.799,
+      "duration": 7.561
+    },
+    {
+      "lang": "en",
+      "text": "code leveraging uh our open-source",
+      "offset": 1917.84,
+      "duration": 7.92
+    },
+    {
+      "lang": "en",
+      "text": "tooling. Hypermote agents is in early",
+      "offset": 1922.36,
+      "duration": 5.4
+    },
+    {
+      "lang": "en",
+      "text": "access now. Uh so there's a link there",
+      "offset": 1925.76,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "on the screen if you'd like to uh sign",
+      "offset": 1927.76,
+      "duration": 6.919
+    },
+    {
+      "lang": "en",
+      "text": "up to give this a try for early",
+      "offset": 1930.64,
+      "duration": 6.879
+    },
+    {
+      "lang": "en",
+      "text": "access. Great. Well, that was a look at",
+      "offset": 1934.679,
+      "duration": 6.6
+    },
+    {
+      "lang": "en",
+      "text": "the knowledge graph mullet uh how we can",
+      "offset": 1937.519,
+      "duration": 6.4
+    },
+    {
+      "lang": "en",
+      "text": "leverage tools from the property graph",
+      "offset": 1941.279,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "and RDF ecosystems",
+      "offset": 1943.919,
+      "duration": 6.961
+    },
+    {
+      "lang": "en",
+      "text": "uh to build powerful graph rag workflows",
+      "offset": 1946.559,
+      "duration": 7.201
+    },
+    {
+      "lang": "en",
+      "text": "as the foundation for building AI",
+      "offset": 1950.88,
+      "duration": 5.919
+    },
+    {
+      "lang": "en",
+      "text": "agents. Uh I hope you found that useful.",
+      "offset": 1953.76,
+      "duration": 7.519
+    },
+    {
+      "lang": "en",
+      "text": "Uh feel free to uh use that link on the",
+      "offset": 1956.799,
+      "duration": 7.281
+    },
+    {
+      "lang": "en",
+      "text": "screen to check out the slides and also",
+      "offset": 1961.279,
+      "duration": 4.561
+    },
+    {
+      "lang": "en",
+      "text": "look at the resources uh that we've",
+      "offset": 1964.08,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "added in the video description. Uh",
+      "offset": 1965.84,
+      "duration": 7.04
+    },
+    {
+      "lang": "en",
+      "text": "thanks a lot for watching. Cheers.",
+      "offset": 1968.96,
+      "duration": 3.92
+    }
+  ],
+  "cleanText": "Hey everyone, my name is Will, and in this talk, we're going to be learning all about the Knowledge Graph Mullet and how it can trim GraphRAG complexity. Let's jump right in. So bear with me a little bit in this analogy, but if you're familiar with the mullet haircut, this is a classic \"business in the front, party in the back\" sort of short up front, long in the back hairstyle that was popular in the 80s and 90s. And if we think of what are the benefits of the mullet haircut, it's really all about low-maintenance, easy to work with, but versatile and adaptable in different environments. And if we extend that analogy to knowledge graphs, that gives us the Knowledge Graph Mullet, which is all about property graphs in the front and RDF triples in the back. So really what this talk is about is combining concepts from the property graph world and the RDF world to have a hybrid and versatile approach for working with knowledge graphs.\n\nSo, if you're familiar with the graph ecosystem at all, you've probably heard some of this terminology. But property graphs and RDF are typically thought of as two totally different paradigms for working with graphs. In the property graph world, we're thinking about nodes, relationships, and key-value pair properties. We're thinking about traversing the graph using pattern matching, often with a query language called Cypher. In the RDF world, we're typically talking about ontologies using a query language called SPARQL, thinking about triples. RDF comes from the semantic web and linked data world.\n\nAnd what I want to show today is that really these concepts can be used together, where we can really leverage the benefits and sort of best of both worlds to again expose a property graph model for how we want to think about and query the data, but leverage the scalability of RDF triples in our knowledge graph system. We're going to take a look at an open-source project called Dgraph to work with our knowledge graphs. Let's talk about a working definition of knowledge graph first of all. So we're going to say that a knowledge graph is really just an instance of a property graph. So the property graph model is all about nodes. Nodes can have one or more labels, which is a way to tell us what type of node we're talking about, a way to group nodes. You can think of labels as kind of similar to tables from the relational database world. And then we have relationships that have a single type and direction. Then we can store arbitrary key-value pair properties on nodes and relationships, and the semantics, right? So how our entities are connected is encoded in the data model. We don't just say that two nodes are related to each other; we say that this talk has a certain topic or this talk was presented at a conference. We're talking about things, not strings, which was the title of Google's blog post in 2012 introducing the Google knowledge graph. But I think that's right. I think that's one of the most important pieces of thinking about knowledge graphs is that we have a canonical representation of the thing.\n\nDgraph was first open-sourced and released in 2017, and initially was really optimizing for large-scale graph data. So the \"D\" is for distributed and scale in terms of volume. The original Dgraph team came from expols from Google that were inspired by Google's Spanner graph. Dgraph is this really interesting sort of hybrid in this world of graph databases where we use the property graph model for data modeling and querying, but we use RDF for data interchange, and we work with triples as the smallest unit of record. So if we take a look at these two paradigms that we're talking about, the property graph model, where nodes, node labels, relationship types, and key-value pair properties are sort of the core fundamentals of the data model, and if we compare that with RDF, which is all about triples, so subject, predicate, object, which we can think of as like a sentence. The subject, this is always going to be a node. A predicate can be a relationship or a property. And then an object, in the case where the predicate is a relationship, is a node or the value of a property.\n\nLet's look at how Dgraph works with both property graphs and triples. So the first thing we need to do to model a property graph as an RDF triple is to have a unique ID for each node. The unique ID maps to some offset in disk so that we're able to traverse the graph very quickly and efficiently. Then the next piece is again to think of our node as the value of our unique ID. So the subject, we said, is always going to be a node, and really specifically, it's always going to be a unique ID. That's like a pointer to the node. Then the predicate is going to be a relationship or a property. And in the case where it's a relationship, then our object is going to be another node ID. So this is going to be a predicate that connects two nodes as a relationship or it's going to be the value of our property.\n\nDgraph uses an important optimization called a posting list where we are grouping by predicate and using a list of the unique node IDs of all the nodes that this node is connected to by that predicate. So this allows us to traverse the graph very efficiently.\n\nDQL, we said, is the query language that we use with Dgraph. DQL was very much inspired by GraphQL. GraphQL was open-sourced by Facebook shortly before Dgraph was released, and at that time, there was a lot of interest in exploring GraphQL beyond its intention as an API query language. So we can see some similar concepts from DQL.\n\nWe start every DQL graph traversal with a well-defined starting point. So that's our root criteria here, where we're often using an index to find the nodes as the starting point for our traversal. Then we use a selection set structure, which is this nested structure that specifies both the properties that we want to return to our query, but also this nested structure represents a traversal in the graph. Similar to GraphQL, the data returned from a DQL query is JSON that matches the structure of our selection set. Let's take a look at an example using news data. So how would we create a knowledge graph of news articles? So here's an example from the New York Times. So we have a news article, and if we think of what sort of graph model we would build from this, well, we think of the entities that are mentioned, like what are the organizations, the people, the topics that are mentioned. We might model those as nodes in the graph. We also have the author. We have images to think of, and we also have unstructured data to work with in the graph. Now there are different approaches for how we might chunk and embed unstructured data, maybe using the semantic structure of the article. In this example, we're just going to say every paragraph is a chunk, and we're going to model those chunks as nodes in the graph. So here's a graph model that we're going to use to represent our news knowledge graph. We have an article node that represents the article itself. It has a URL, a publish date, a title, an abstract, but then we have the author of the article, topics that may be mentioned in the article, organizations that may be mentioned. We also have geographic areas that might be mentioned in the article, and images as well. So you can see how we can traverse from the article to the topic node to then other articles that have the same topic or that mention the same geographic location. Now we mentioned chunking and embedding earlier. What we're going to do is calculate an embedding of each chunk and store that as a node property. This will allow us to use vector search as an entry point for our graph. So, vector similarity search gives us an entry point into the graph. We can think of this as the lexical graph where we're identifying chunks of a document that are close to vector space of an embedding of our query. But that's just the start in GraphRAG. In a naive RAG approach, we would do the vector search to find these chunks. That document would then be injected into the prompt to add context. But in GraphRAG, that's just the starting point. Then we traverse through the graph to the article nodes to the topics that are relevant for this article to other articles that have the same topic or that mention the same organization. And again, that's just one entry point. The other entry points might be using a geospatial index. Maybe we want to find all of the news about areas within a certain region or find news articles near me and then traverse the graph to find other relevant articles that become context for our model. Similarly, we might have an image embedding model where we're doing image similarity search as well, again just as an entry point. So I like to think of GraphRAG really being all about different subgraph entry points where we have this concept of the lexical graph for vector search with unstructured data, the domain graph that we're sort of traversing through to find relevant context for the model.\n\nLet's take a look at a hands-on example of actually using this data with Dgraph. This is a tool called Rattell, which is a query workbench for Dgraph. We can execute DQL queries and work with and visualize the results. Our initial query was just a simple count of the number of articles. Let's look at a more complex query where we are searching for the first 10 articles then traversing the graph to find topics connected to those articles. So we can inspect the graph in this graph visualization to have an idea of how these topics are connected to articles. Let's look at a more complex example. So here we are filtering for articles that are published after a certain date and then traversing to the geographic areas mentioned in those articles.\n\nLet's see how we can use the geographic distance search in Dgraph. So here we're looking for geographic areas in the news that are within 50 kilometers of New York City and then traversing to find the articles connected to those geographic regions. And we can see things like Manhattan and Brooklyn. Let's look at a vector search example. So using the vector similarity search functionality in Dgraph, we're passing an embedding, I think this is an embedding of the phrase \"money laundering,\" and looking for articles that are close in vector space and then traversing to find topics, geographic regions, organizations connected to these articles.\n\nWe can then add a more complex traversal to then search from those articles that were a match for our vector similarity search to traverse through the topic nodes to find other articles that have overlapping topics but that may not have shown up through our vector similarity search. And this gives us a way to, in this case, visually explore the graph. But of course, we can look at the JSON representation of the data returned that matches our selection set. Okay, that was a quick look at using DQL to query our Dgraph instance. I want to talk about some of the features in the latest release of Dgraph. The first interesting bit is that all of the enterprise features of Dgraph have been moved into a single open-source release. And we were continuing to add new features. The interesting one I want to dive into in this case is Model Context Protocol. So the MCP server for Dgraph. So let's talk a little bit about MCP and then we'll look specifically at the Dgraph MCP server.\n\nThis is a screenshot from the Anthropic deeplearning.ai course, which is linked here. This is, I think, a really good course if you're interested in not just learning about the concepts of MCP, but how do you actually build and deploy MCP servers? Fundamentally, MCP is a way of exposing tools to models. And in the context of databases, this means we're giving the database, we're giving the model rather, a way to interact with our database. With Dgraph, each Dgraph instance serves an MCP server. There's a read-only instance which will only expose the ability to execute queries or inspect the schema, and then the full endpoint also exposes functionality for mutations. So adding data and also a tool for altering the schema. So some of the use cases for the Dgraph MCP server are in agentic coding assistant environments. So tools like Windsurf or Cursor, where we're able to do things like leveraging the schema or the data that are retrieved to the MCP server to autogenerate writing CRUD endpoints in our app or other way generating DQL queries in our app. Another use case might be more exploratory data analysis, which we might do in a tool like Cloud Desktop, where we're actually generating DQL queries and fetching data from the database to understand what data is in our graph.\n\nLet's take a look at using the Dgraph MCP server with Cloud Desktop. So the first thing I'm going to do is sign in to Hypermode and create a new graph. Hypermode graphs are powered by Dgraph. So this is going to deploy a Dgraph cluster including the MCP server endpoint. So we can see the MCP configuration in addition to the Dgraph connection string. So we'll copy the MCP configuration, and in Cloud Desktop, we'll edit the developer config and paste in that MCP configuration, and then restart cloud, which will give us access to the MCP server tools for Dgraph. Let's load some sample data into Dgraph. So let's create fictitious customer, product, and order data for, say, for an e-commerce use case. And so the first thing that Claude is going to do is update the schema, I should say actually the first thing it's going to do is inspect the schema and see that our database is empty. Then generate a graph schema that represents the data model that we're going to work with. So orders and how they're connected to products and customers. Then Claude is going to generate a series of mutations to actually create data in the graph, generating fictitious customer names, customer information, products, and so on. Now, it's important to point out here that with database MCP servers, it's the model that is generating the database query and then using the tools defined in the MCP server to execute those queries against the database, and Claude is smart enough to verify that the data created in the database matches its expectations. So here we can see that Claude is generating DQL queries to verify the data was actually created as expected. In this case, it found missing relationships, and so it's adding a mutation to add those relationships to the graph. Now this is a really interesting way for learning new developer tooling. So here we've created a graph schema. We've added data to the\n\n\nA graph without really having to uh to worry about the specific query language.\nBut it's a great way to learn that query language, learn how to use these developer tools.\nUh now let's generate a graph visualization to understand the data in the graph.\nSo here Claude generates a query to fetch data from the graph and generates the JavaScript to render a graph visualization.\nUm so this is a helpful way to understand the connections in our graph.\nUh and we have ways for viewing the schema uh zeroing in on customers and orders or just inspecting uh product information.\nWe have different layout options in addition to the typical forced directed layout.\nUh hierarchical or radial layouts can be useful for interpreting graphs.\nUm but let's stick with the forced directed layout and let's explore using Dgraph for generating product recommendations for a specific user.\nSo this is a a typical graph database use case uh generating personalized recommendations by traversing the graph.\nUh you can think of the different approaches we could take here from collaborative filtering uh which could be find similar users in the graph.\nWhat are those users purchasing that uh our user is not?\nThose may be good items to recommend to the user to content based recommendations based on the purchase history of our user.\nUh what are attributes that they may be interested in uh demographic approaches as well.\nAnd here Claude is generating uh queries that show us using these different approaches uh and then how these can be combined to generate a single database query.\nNow Claude doesn't always get the the queries right.\nSo this example uh we can see there's an error with the first approach and so Claude is going to iterate a bit uh until we get back results as expected.\nAgain really useful tool I think for understanding some of these concepts.\nUh now our final deliverable here is going to be a HTML report that Claude is going to generate that allows us to explore the different approaches for implementing these uh recommendations and show us the results as well as the DQL query used for each of these.\nSo that was a look at the Dgraph MCP server.\nIf we zoom out a little bit, so far we've seen how to work with knowledge graphs, uh how to expose tools to a model for interacting with that knowledge graph uh through Dgraph.\nUh but there's a piece that's missing here which is the agent orchestration.\nUh and so to enable building uh agentic apps at Hypermode, we've created the Modus agent orchestration framework which is an open- source framework for creating AI agents uh really for bringing data to models and exposing tools uh and abstractions for working uh with agentic flows.\nSo Modus is an open source project.\nUh you can find this on GitHub.\nReally the functionality we think of uh in Modus is abstractions not only for working with models and data but a runtime for uh working with large-scale number of agents that are stateful and long-running.\nUh which is why we think it's important to have a runtime uh as well as an SDK library for working with agents.\nModus does some interesting things with web assembly.\nSo we use web assembly to target multiple languages uh for different SDKs.\nSo you're able to write your logic in languages like go or assembly script and then under the hood that is compiled to web assembly and a single unified GraphQL API is generated that leverages uh the types that you've defined in your Modus app and the signature uh of the functions you've defined to stitch a single GraphQL schema uh together.\nUh the Modus runtime uh leveraging web assembly gives us some advantages as well for security and a sandbox environment for your AI agent to run in.\nUh but all of that web assembly aspect is abstracted away from uh from the user.\nSo leveraging now these open source components.\nSo the Modus orchestration uh framework leveraging Dgraph for building knowledge graphs.\nUh let's take a look at building domain specific agents starting with a prompt.\nUh so this is uh the core for Hypermode Agents where we think it's really important to be able uh to get up and running with a domain specific agent by writing a prompt and exposing tools via MCP server.\nUh so uh for my final demo, we'll take uh a quick look at uh Hypermode Agents.\nI'm going to switch back to Hypermode and we're going to go to the threads tab uh which is our uh area for building agents.\nUh let's create a new agent.\nWe'll give him a name blah blah blah works in our marketing department as a social media intern.\nUh we're going to define a prompt which gives our agent a bit of background.\nHe's going to be a social media expert uh who's really good at uh creating short snippets that are showing developers how to use uh deep technical tooling and explain technical concepts.\nUh we'll choose a reasoning model.\nUh we'll use the GPT41 uh model to orchestrate this agent.\nUh and the next thing we need to do is add connections.\nSo our agent needs to be able to uh interact with its environment.\nSo we'll give him access to GitHub, Notion uh and our company docs through ref.\nThese are all MCP servers that are uh exposing tools that uh allow the agent to interact uh with those services uh and authorized uh our behalf.\nSo let's give him a task to analyze a specific GitHub repo.\nIn this case, the Hypernews repo, which has uh the tooling for importing, building, querying, and working with that news knowledge graph that uh I showed earlier.\nAnd we're going to generate uh social media posts that explain how to use some of the concepts explained in that GitHub repo.\nSo at the beginning we can see the tool calls that our agent made.\nSo first he's searching for the Hypernews GitHub repo using uh tools from the GitHub MCP server.\nThen getting uh specific file contents to use uh to generate social media posts uh that show how to use specific features uh explained in uh or I should say implemented in this GitHub repo.\nSo this is a good start.\nUm but let's ask our agent to update these posts to include some relevant code snippets.\nUh, and so our agent is now going to choose uh what tools to call here.\nUh, going back to GitHub, looking at uh, source files that may be relevant and adding code snippets here.\nSo now you can see our social media posts have uh, code snippets where appropriate.\nAnd this is a mix of DQL queries when we're talking about Dgraph, some Go code from uh the Modus SDK, some terminal commands.\nUh this looks good.\nUh let's ask our agent to save this to our uh notion workspace so that we can cue these up uh to post on uh our Twitter account.\nAnd uh we need to tell our agent uh what page uh to use.\nSo we'll say uh let's post these to my private scratchpad.\nAnd again, we've authorized uh the agent to have access to our notion workspace through the notion MCP server.\nUh so that's how our agent is able to access my scratchpad page.\nUh, and we can see the notion tools that our agent used to update our notion page.\nAnd we switch over to notion, we can see my scratch pad that includes our updated code snippets for our social media posts.\nSo, that's really cool.\nWe uh built an agent just from a prompt, gave him access to actually interact with GitHub and notion uh on my behalf.\nOne thing that's really neat uh about Hypermode Agents is I can now eject to code uh to have the Modus code that uh we're using to actually run this agent.\nSo I can then add more complex logic, other connections uh to enhance my agent using Modus.\nSo, that was a quick look at Hypermode Agents, being able to create an agent from a prompt and access to MCP powered connections uh while also being able to eject to code leveraging uh our open-source tooling.\nHypermode Agents is in early access now.\nUh so there's a link there on the screen if you'd like to uh sign up to give this a try for early access.\nGreat.\nWell, that was a look at the Knowledge Graph Mullet uh how we can leverage tools from the property graph and RDF ecosystems uh to build powerful graph RAG workflows as the foundation for building AI agents.\nUh I hope you found that useful.\nUh feel free to uh use that link on the screen to check out the slides and also look at the resources uh that we've added in the video description.\nUh thanks a lot for watching.\nCheers.\n",
+  "dumpedAt": "2025-07-21T18:43:24.357Z"
+}

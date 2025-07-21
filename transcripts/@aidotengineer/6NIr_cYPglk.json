@@ -1,0 +1,2746 @@
+{
+  "episodeId": "6NIr_cYPglk",
+  "channelSlug": "@aidotengineer",
+  "title": "To the moon! Navigating deep context in legacy code with Augment Agent — Forrest Brazeal, Matt Ball",
+  "publishedAt": "2025-06-27T10:46:59.000Z",
+  "rawLines": [
+    {
+      "lang": "en",
+      "text": "[Music]",
+      "offset": 0.37,
+      "duration": 7.439
+    },
+    {
+      "lang": "en",
+      "text": "Welcome everyone. Thank you so much for",
+      "offset": 15.04,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "coming. My name is Forest. This is Matt.",
+      "offset": 16.88,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "Uh and we're going to be talking to you",
+      "offset": 20.16,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "today about augment agent and",
+      "offset": 21.68,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "specifically legacy code. how we get the",
+      "offset": 23.92,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "most out of gnarly legacy code bases",
+      "offset": 26.24,
+      "duration": 5.999
+    },
+    {
+      "lang": "en",
+      "text": "using an AI agent. So I do not work for",
+      "offset": 28.72,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "Augment Code. Um I am a friend and",
+      "offset": 32.239,
+      "duration": 3.441
+    },
+    {
+      "lang": "en",
+      "text": "partner of Augment Code. So I helped to",
+      "offset": 34,
+      "duration": 3.2
+    },
+    {
+      "lang": "en",
+      "text": "put this talk together. Matt is from",
+      "offset": 35.68,
+      "duration": 2.96
+    },
+    {
+      "lang": "en",
+      "text": "Augment Code. So he's going to be your",
+      "offset": 37.2,
+      "duration": 3.28
+    },
+    {
+      "lang": "en",
+      "text": "best person to come to with your most",
+      "offset": 38.64,
+      "duration": 3.439
+    },
+    {
+      "lang": "en",
+      "text": "detailed technical questions after the",
+      "offset": 40.48,
+      "duration": 3.12
+    },
+    {
+      "lang": "en",
+      "text": "session. Matt, anything you want to uh",
+      "offset": 42.079,
+      "duration": 4.081
+    },
+    {
+      "lang": "en",
+      "text": "say about yourself?\n Yeah, uh I was once",
+      "offset": 43.6,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "a software engineer and then got into",
+      "offset": 46.16,
+      "duration": 4.719
+    },
+    {
+      "lang": "en",
+      "text": "the developer tool space. Um, I was at",
+      "offset": 48.16,
+      "duration": 4.399
+    },
+    {
+      "lang": "en",
+      "text": "Postman for a number of years and then",
+      "offset": 50.879,
+      "duration": 4.401
+    },
+    {
+      "lang": "en",
+      "text": "got really excited by the the AI boom.",
+      "offset": 52.559,
+      "duration": 4.401
+    },
+    {
+      "lang": "en",
+      "text": "So, I've been at Augment for the last",
+      "offset": 55.28,
+      "duration": 3.919
+    },
+    {
+      "lang": "en",
+      "text": "two years or so. Um, I'm a solutions",
+      "offset": 56.96,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "architect.\n Fantastic. All right. So,",
+      "offset": 59.199,
+      "duration": 4.081
+    },
+    {
+      "lang": "en",
+      "text": "just a quick road map of where we're",
+      "offset": 61.6,
+      "duration": 3.04
+    },
+    {
+      "lang": "en",
+      "text": "going. We're going to talk a little bit",
+      "offset": 63.28,
+      "duration": 3.199
+    },
+    {
+      "lang": "en",
+      "text": "about augment agent. Uh,\n oh, do we not",
+      "offset": 64.64,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "have um",
+      "offset": 66.479,
+      "duration": 3.601
+    },
+    {
+      "lang": "en",
+      "text": "I see someone point. We good now? Okay.",
+      "offset": 68.32,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "Fantastic. So, we've got augment agent.",
+      "offset": 70.08,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "We're going to talk a little bit about",
+      "offset": 72.32,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "the Apollo 11 guidance computer and then",
+      "offset": 73.84,
+      "duration": 3.12
+    },
+    {
+      "lang": "en",
+      "text": "we're going to show you some really",
+      "offset": 75.92,
+      "duration": 2.64
+    },
+    {
+      "lang": "en",
+      "text": "interesting things you can do with that",
+      "offset": 76.96,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "codebase uh and augment agent. So,",
+      "offset": 78.56,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "Augment is the uh it's the product we're",
+      "offset": 81.52,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "going to be using today. Um you do not",
+      "offset": 84,
+      "duration": 2.96
+    },
+    {
+      "lang": "en",
+      "text": "need your laptop out to follow along",
+      "offset": 85.52,
+      "duration": 2.959
+    },
+    {
+      "lang": "en",
+      "text": "with this session. We will do it all in",
+      "offset": 86.96,
+      "duration": 2.88
+    },
+    {
+      "lang": "en",
+      "text": "front of your eyes, but if you want you",
+      "offset": 88.479,
+      "duration": 2.881
+    },
+    {
+      "lang": "en",
+      "text": "can sign up. There's a free trial at",
+      "offset": 89.84,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "augmentode.com",
+      "offset": 91.36,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "and uh Matt will tell you a little bit",
+      "offset": 93.28,
+      "duration": 3.12
+    },
+    {
+      "lang": "en",
+      "text": "about the most important features of",
+      "offset": 94.96,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "Augment Code.\n Yeah. Uh number one is our",
+      "offset": 96.4,
+      "duration": 7.039
+    },
+    {
+      "lang": "en",
+      "text": "context engine. So we really identified",
+      "offset": 99.68,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "early on that in order to get high",
+      "offset": 103.439,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "quality outputs from any of the models,",
+      "offset": 105.04,
+      "duration": 5.119
+    },
+    {
+      "lang": "en",
+      "text": "they require high quality input. Uh",
+      "offset": 107.439,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "doing that for for code bases is not",
+      "offset": 110.159,
+      "duration": 3.761
+    },
+    {
+      "lang": "en",
+      "text": "necessarily straightforward. It's not",
+      "offset": 112.399,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "just like text. Um so uh this is",
+      "offset": 113.92,
+      "duration": 5.6
+    },
+    {
+      "lang": "en",
+      "text": "something that we've seen in the in the",
+      "offset": 117.439,
+      "duration": 4.241
+    },
+    {
+      "lang": "en",
+      "text": "market. Uh a lot of folks think that",
+      "offset": 119.52,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "there's a way to do this. We spent two",
+      "offset": 121.68,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "years building a proprietary system that",
+      "offset": 124.32,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "can lift the right knowledge from",
+      "offset": 126.24,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "codebase and pass it over to the models.",
+      "offset": 128,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "And we think that results in higher",
+      "offset": 129.84,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "quality outputs and more accurate",
+      "offset": 131.68,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "understanding. Uh we're a plugin to",
+      "offset": 133.28,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "existing idees. We see in a lot of",
+      "offset": 135.92,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "enterprise that if you've got a",
+      "offset": 137.76,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "10-year-old Java codebase, you're using",
+      "offset": 139.52,
+      "duration": 2.96
+    },
+    {
+      "lang": "en",
+      "text": "IntelliJ, you don't want to have to",
+      "offset": 141.2,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "switch. Um and then from day zero,",
+      "offset": 142.48,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "because we were targeting enterprise,",
+      "offset": 145.2,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "we've focused a lot of security",
+      "offset": 146.8,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "capabilities. So we have things that are",
+      "offset": 148.64,
+      "duration": 3.679
+    },
+    {
+      "lang": "en",
+      "text": "unique to us versus any other vendor",
+      "offset": 150.48,
+      "duration": 4.479
+    },
+    {
+      "lang": "en",
+      "text": "like customer manage encryption keys. We",
+      "offset": 152.319,
+      "duration": 6.801
+    },
+    {
+      "lang": "en",
+      "text": "have ISO 420001 which is a new AI ISO",
+      "offset": 154.959,
+      "duration": 6.56
+    },
+    {
+      "lang": "en",
+      "text": "standard. Uh so we really wanted to to",
+      "offset": 159.12,
+      "duration": 6.32
+    },
+    {
+      "lang": "en",
+      "text": "laser in on providing security over what",
+      "offset": 161.519,
+      "duration": 6.241
+    },
+    {
+      "lang": "en",
+      "text": "is very important uh a very important",
+      "offset": 165.44,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "asset in your codebase.\n Awesome. And",
+      "offset": 167.76,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "then we've got a couple of tools we'll",
+      "offset": 169.68,
+      "duration": 2.88
+    },
+    {
+      "lang": "en",
+      "text": "be referring to today. Mainly the chat",
+      "offset": 171.12,
+      "duration": 3.04
+    },
+    {
+      "lang": "en",
+      "text": "and agent modes of augment code. And",
+      "offset": 172.56,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "when would you use each of those Matt?",
+      "offset": 174.16,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "Yeah, chat is great for kind of simple",
+      "offset": 176,
+      "duration": 4.879
+    },
+    {
+      "lang": "en",
+      "text": "back and forth question and answer. Uh",
+      "offset": 178.48,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "or when you want to leverage a little",
+      "offset": 180.879,
+      "duration": 3.921
+    },
+    {
+      "lang": "en",
+      "text": "bit more control over the the models and",
+      "offset": 182.64,
+      "duration": 4.959
+    },
+    {
+      "lang": "en",
+      "text": "you just want to go one turn at a time.",
+      "offset": 184.8,
+      "duration": 5.359
+    },
+    {
+      "lang": "en",
+      "text": "Uh obviously we see that agents can",
+      "offset": 187.599,
+      "duration": 4.481
+    },
+    {
+      "lang": "en",
+      "text": "integrate into other tools are much more",
+      "offset": 190.159,
+      "duration": 5.121
+    },
+    {
+      "lang": "en",
+      "text": "capable of larger more complex tasks. Um",
+      "offset": 192.08,
+      "duration": 4.879
+    },
+    {
+      "lang": "en",
+      "text": "and then remote agents are great when",
+      "offset": 195.28,
+      "duration": 3.2
+    },
+    {
+      "lang": "en",
+      "text": "you actually want to close the lid on",
+      "offset": 196.959,
+      "duration": 3.681
+    },
+    {
+      "lang": "en",
+      "text": "your machine and allow them to continue",
+      "offset": 198.48,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "to run in the background and in",
+      "offset": 200.64,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "parallel. Yes, we did a workshop on",
+      "offset": 202.08,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "Tuesday that involved a contest",
+      "offset": 204.08,
+      "duration": 2.96
+    },
+    {
+      "lang": "en",
+      "text": "component and I had someone come up to",
+      "offset": 205.44,
+      "duration": 3.04
+    },
+    {
+      "lang": "en",
+      "text": "me afterwards afterwards saying, &quot;I",
+      "offset": 207.04,
+      "duration": 3.119
+    },
+    {
+      "lang": "en",
+      "text": "don't understand how the winners were so",
+      "offset": 208.48,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "fast at submitting their solutions",
+      "offset": 210.159,
+      "duration": 3.201
+    },
+    {
+      "lang": "en",
+      "text": "because we had eight or nine problems we",
+      "offset": 211.84,
+      "duration": 3.28
+    },
+    {
+      "lang": "en",
+      "text": "were doing and it's possible some of",
+      "offset": 213.36,
+      "duration": 3.28
+    },
+    {
+      "lang": "en",
+      "text": "them were using remote agent to do some",
+      "offset": 215.12,
+      "duration": 3.039
+    },
+    {
+      "lang": "en",
+      "text": "of those tasks in parallel.&quot; So, it can",
+      "offset": 216.64,
+      "duration": 3.519
+    },
+    {
+      "lang": "en",
+      "text": "come in handy for that as well. All",
+      "offset": 218.159,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "right, so we're going to be talking",
+      "offset": 220.159,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "today about the Apollo 11 uh mission in",
+      "offset": 221.599,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "1969. I think most of us are familiar",
+      "offset": 224.319,
+      "duration": 3.521
+    },
+    {
+      "lang": "en",
+      "text": "with this, the first time humans landed",
+      "offset": 226.239,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "on the moon. There were three astronauts",
+      "offset": 227.84,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "in that capsule. Neil Armstrong, Buzz",
+      "offset": 229.599,
+      "duration": 3.681
+    },
+    {
+      "lang": "en",
+      "text": "Aldrin, and Michael Collins. But",
+      "offset": 231.76,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "sometimes people say there was a fourth",
+      "offset": 233.28,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "astronaut on the Apollo 11 mission. Does",
+      "offset": 235.36,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "anyone know what that astronaut was?",
+      "offset": 237.2,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "Yeah, the the Apollo guidance computer",
+      "offset": 240.48,
+      "duration": 4.319
+    },
+    {
+      "lang": "en",
+      "text": "or the AGC.",
+      "offset": 242.56,
+      "duration": 3.599
+    },
+    {
+      "lang": "en",
+      "text": "And the main things to know about the",
+      "offset": 244.799,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "AGC? So, this is used to land the lunar",
+      "offset": 246.159,
+      "duration": 3.201
+    },
+    {
+      "lang": "en",
+      "text": "module. If you've ever seen that picture",
+      "offset": 248.239,
+      "duration": 2.56
+    },
+    {
+      "lang": "en",
+      "text": "of Margaret Hamilton with like that",
+      "offset": 249.36,
+      "duration": 3.28
+    },
+    {
+      "lang": "en",
+      "text": "giant stack of papers uh with the code",
+      "offset": 250.799,
+      "duration": 3.201
+    },
+    {
+      "lang": "en",
+      "text": "on it, that was the source code for the",
+      "offset": 252.64,
+      "duration": 3.28
+    },
+    {
+      "lang": "en",
+      "text": "Apollo guidance computer. It was one",
+      "offset": 254,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "giant monolithic source file developed",
+      "offset": 255.92,
+      "duration": 4.159
+    },
+    {
+      "lang": "en",
+      "text": "over a period of several years at MIT.",
+      "offset": 258,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "in the 1960s. It was written in assembly",
+      "offset": 260.079,
+      "duration": 4.241
+    },
+    {
+      "lang": "en",
+      "text": "language. Who here has written assembly",
+      "offset": 262.8,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "at some point in their lives? Who put",
+      "offset": 264.32,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "your hand down if it was in college? All",
+      "offset": 266.32,
+      "duration": 3.599
+    },
+    {
+      "lang": "en",
+      "text": "right. So, keep your hand up if it was",
+      "offset": 268.72,
+      "duration": 2.4
+    },
+    {
+      "lang": "en",
+      "text": "in production in some cap. Yeah,",
+      "offset": 269.919,
+      "duration": 3.28
+    },
+    {
+      "lang": "en",
+      "text": "exactly. That's what I thought. Uh, so",
+      "offset": 271.12,
+      "duration": 3.359
+    },
+    {
+      "lang": "en",
+      "text": "not a lot of us are going to be able to",
+      "offset": 273.199,
+      "duration": 2.961
+    },
+    {
+      "lang": "en",
+      "text": "look at assembly code and be able to",
+      "offset": 274.479,
+      "duration": 3.521
+    },
+    {
+      "lang": "en",
+      "text": "tell you confidently what it does on",
+      "offset": 276.16,
+      "duration": 3.759
+    },
+    {
+      "lang": "en",
+      "text": "first glance. I certainly can. I haven't",
+      "offset": 278,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "written much assembly since I was in",
+      "offset": 279.919,
+      "duration": 4.481
+    },
+    {
+      "lang": "en",
+      "text": "computer systems 2011. Uh, so in some",
+      "offset": 281.44,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "ways, this is the ultimate legacy",
+      "offset": 284.4,
+      "duration": 3.2
+    },
+    {
+      "lang": "en",
+      "text": "codebase. It is on GitHub. You can check",
+      "offset": 285.68,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "it out yourself if you want. It's easy",
+      "offset": 287.6,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "to find. We are going to try to navigate",
+      "offset": 289.28,
+      "duration": 3.12
+    },
+    {
+      "lang": "en",
+      "text": "it well enough to see if we can",
+      "offset": 291.04,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "understand it and land the Lunar module",
+      "offset": 292.4,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "ourselves. And augment agent is going to",
+      "offset": 294.4,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "help us do that. So the first thing you",
+      "offset": 296.32,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "want to do anytime you pop open a large",
+      "offset": 298,
+      "duration": 3.919
+    },
+    {
+      "lang": "en",
+      "text": "legacy codebase is you want to see if",
+      "offset": 300.16,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "you can get your head around it, right?",
+      "offset": 301.919,
+      "duration": 3.121
+    },
+    {
+      "lang": "en",
+      "text": "Someone put a lot of their time and",
+      "offset": 303.52,
+      "duration": 3.519
+    },
+    {
+      "lang": "en",
+      "text": "mental energy into putting this codebase",
+      "offset": 305.04,
+      "duration": 3.599
+    },
+    {
+      "lang": "en",
+      "text": "together and you've got to catch up with",
+      "offset": 307.039,
+      "duration": 3.361
+    },
+    {
+      "lang": "en",
+      "text": "them. That historically has been a long",
+      "offset": 308.639,
+      "duration": 3.441
+    },
+    {
+      "lang": "en",
+      "text": "process. It's been a fraught process.",
+      "offset": 310.4,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "It's been an imprecise process. And AI",
+      "offset": 312.08,
+      "duration": 3.839
+    },
+    {
+      "lang": "en",
+      "text": "agents such as augment code can help a",
+      "offset": 314.4,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "lot with that. So, let's look at a",
+      "offset": 315.919,
+      "duration": 4.401
+    },
+    {
+      "lang": "en",
+      "text": "specific example. And I'm choosing the",
+      "offset": 318.56,
+      "duration": 4.079
+    },
+    {
+      "lang": "en",
+      "text": "1201 and 122 program alarms. If you're",
+      "offset": 320.32,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "an Apollo 11 history buff, you know",
+      "offset": 322.639,
+      "duration": 3.601
+    },
+    {
+      "lang": "en",
+      "text": "about these because during the final",
+      "offset": 324.56,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "descent onto the surface of the moon,",
+      "offset": 326.24,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "the astronauts called to Houston and",
+      "offset": 328.72,
+      "duration": 3.12
+    },
+    {
+      "lang": "en",
+      "text": "said, &quot;Hey, we're getting this alarm.",
+      "offset": 330.4,
+      "duration": 4.239
+    },
+    {
+      "lang": "en",
+      "text": "It's a 122 uh the uh give us a reading",
+      "offset": 331.84,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "on the 122 program.&quot; This alarm went off",
+      "offset": 334.639,
+      "duration": 5.921
+    },
+    {
+      "lang": "en",
+      "text": "five times uh as the lunar module, the",
+      "offset": 337.36,
+      "duration": 4.559
+    },
+    {
+      "lang": "en",
+      "text": "Eagle, was making its descent onto the",
+      "offset": 340.56,
+      "duration": 2.8
+    },
+    {
+      "lang": "en",
+      "text": "lunar surface. And there was a question",
+      "offset": 341.919,
+      "duration": 2.72
+    },
+    {
+      "lang": "en",
+      "text": "for a moment about whether the landing",
+      "offset": 343.36,
+      "duration": 2.88
+    },
+    {
+      "lang": "en",
+      "text": "would need to be aborted. And finally,",
+      "offset": 344.639,
+      "duration": 3.601
+    },
+    {
+      "lang": "en",
+      "text": "Houston said, &quot;No, you're okay. You can",
+      "offset": 346.24,
+      "duration": 4.399
+    },
+    {
+      "lang": "en",
+      "text": "continue.&quot; So, our question is, could we",
+      "offset": 348.24,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "determine that for ourselves, right? If",
+      "offset": 350.639,
+      "duration": 3.041
+    },
+    {
+      "lang": "en",
+      "text": "you were given the Apollo guidance",
+      "offset": 352.4,
+      "duration": 3.04
+    },
+    {
+      "lang": "en",
+      "text": "computer source code, would you be as",
+      "offset": 353.68,
+      "duration": 3.2
+    },
+    {
+      "lang": "en",
+      "text": "confident as Houston was to say, &quot;No,",
+      "offset": 355.44,
+      "duration": 2.479
+    },
+    {
+      "lang": "en",
+      "text": "this is not a problem that's going to",
+      "offset": 356.88,
+      "duration": 2.96
+    },
+    {
+      "lang": "en",
+      "text": "affect the success or stability of the",
+      "offset": 357.919,
+      "duration": 3.601
+    },
+    {
+      "lang": "en",
+      "text": "mission.&quot; So, the way I would do this is",
+      "offset": 359.84,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "I'm going to pop open I've got VS Code",
+      "offset": 361.52,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "up here, and I've got uh a slightly",
+      "offset": 363.36,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "modified version of the Apollo 11",
+      "offset": 365.44,
+      "duration": 4.319
+    },
+    {
+      "lang": "en",
+      "text": "codebase just to orient you. It looks",
+      "offset": 367.68,
+      "duration": 4.239
+    },
+    {
+      "lang": "en",
+      "text": "like this. All right, this is uh this is",
+      "offset": 369.759,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "their version of assembly code. It's",
+      "offset": 371.919,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "truly just a bunch of two-word commands",
+      "offset": 373.759,
+      "duration": 3.841
+    },
+    {
+      "lang": "en",
+      "text": "saying move this piece of data into this",
+      "offset": 375.759,
+      "duration": 3.601
+    },
+    {
+      "lang": "en",
+      "text": "register somewhere. So, it's it's not",
+      "offset": 377.6,
+      "duration": 4.319
+    },
+    {
+      "lang": "en",
+      "text": "fantastically readable. And even if you",
+      "offset": 379.36,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "did a like a GP and looked for 1201 or",
+      "offset": 381.919,
+      "duration": 3.921
+    },
+    {
+      "lang": "en",
+      "text": "1202, it's not going to tell you what",
+      "offset": 384,
+      "duration": 4.319
+    },
+    {
+      "lang": "en",
+      "text": "the value of those alarms actually is.",
+      "offset": 385.84,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "So, I can go to augment chat and I can",
+      "offset": 388.319,
+      "duration": 6.88
+    },
+    {
+      "lang": "en",
+      "text": "say um what does the 1202 program alarm",
+      "offset": 390.08,
+      "duration": 7.119
+    },
+    {
+      "lang": "en",
+      "text": "do?",
+      "offset": 395.199,
+      "duration": 5.361
+    },
+    {
+      "lang": "en",
+      "text": "And let's see what it tells me.",
+      "offset": 397.199,
+      "duration": 5.761
+    },
+    {
+      "lang": "en",
+      "text": "It's generating our response. All right.",
+      "offset": 400.56,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "And so it's going to take a minute to",
+      "offset": 402.96,
+      "duration": 2.959
+    },
+    {
+      "lang": "en",
+      "text": "churn on that and it's going to come",
+      "offset": 404.08,
+      "duration": 4.239
+    },
+    {
+      "lang": "en",
+      "text": "back to me with a number of pieces of",
+      "offset": 405.919,
+      "duration": 3.681
+    },
+    {
+      "lang": "en",
+      "text": "information both from the codebase",
+      "offset": 408.319,
+      "duration": 2.801
+    },
+    {
+      "lang": "en",
+      "text": "itself and it will also be able to call",
+      "offset": 409.6,
+      "duration": 3.28
+    },
+    {
+      "lang": "en",
+      "text": "out to the web and it'll be able to look",
+      "offset": 411.12,
+      "duration": 3.359
+    },
+    {
+      "lang": "en",
+      "text": "there. One of the things I think is",
+      "offset": 412.88,
+      "duration": 3.599
+    },
+    {
+      "lang": "en",
+      "text": "interesting about using a chat mode like",
+      "offset": 414.479,
+      "duration": 4.401
+    },
+    {
+      "lang": "en",
+      "text": "this is it's kind of similar to calling",
+      "offset": 416.479,
+      "duration": 4.401
+    },
+    {
+      "lang": "en",
+      "text": "back to mission control in Houston. Um",
+      "offset": 418.88,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "and if you were to plug in like you know",
+      "offset": 420.88,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "some MCP servers to this right there's",
+      "offset": 422.4,
+      "duration": 4.639
+    },
+    {
+      "lang": "en",
+      "text": "it gives you an even an even larger",
+      "offset": 424.72,
+      "duration": 3.919
+    },
+    {
+      "lang": "en",
+      "text": "mission control element to work with.",
+      "offset": 427.039,
+      "duration": 3.841
+    },
+    {
+      "lang": "en",
+      "text": "Okay. So uh it's it's actually reading",
+      "offset": 428.639,
+      "duration": 4.881
+    },
+    {
+      "lang": "en",
+      "text": "this file for us. Uh uh so the ACG",
+      "offset": 430.88,
+      "duration": 4.719
+    },
+    {
+      "lang": "en",
+      "text": "executive system runs out of available",
+      "offset": 433.52,
+      "duration": 4.399
+    },
+    {
+      "lang": "en",
+      "text": "core sets. All right. And it shows us",
+      "offset": 435.599,
+      "duration": 4.081
+    },
+    {
+      "lang": "en",
+      "text": "where that happens. Look there's uh",
+      "offset": 437.919,
+      "duration": 4.241
+    },
+    {
+      "lang": "en",
+      "text": "octal value 122 right there. It explains",
+      "offset": 439.68,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "the number of registers there are. Uh it",
+      "offset": 442.16,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "explains the um yeah along with 121",
+      "offset": 444.4,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "novac area. So it pulled both of these",
+      "offset": 446.4,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "and look it went out to the web and it's",
+      "offset": 448.16,
+      "duration": 3.2
+    },
+    {
+      "lang": "en",
+      "text": "giving us the context of what actually",
+      "offset": 449.84,
+      "duration": 3.199
+    },
+    {
+      "lang": "en",
+      "text": "caused the error. It was an external",
+      "offset": 451.36,
+      "duration": 3.839
+    },
+    {
+      "lang": "en",
+      "text": "radar system being left on. And the",
+      "offset": 453.039,
+      "duration": 4.321
+    },
+    {
+      "lang": "en",
+      "text": "Apollo 11 computer was smart enough then",
+      "offset": 455.199,
+      "duration": 4.481
+    },
+    {
+      "lang": "en",
+      "text": "to offload some low priority tasks so",
+      "offset": 457.36,
+      "duration": 4.559
+    },
+    {
+      "lang": "en",
+      "text": "that it could continue executing mission",
+      "offset": 459.68,
+      "duration": 4.239
+    },
+    {
+      "lang": "en",
+      "text": "mission critical components inside the",
+      "offset": 461.919,
+      "duration": 3.201
+    },
+    {
+      "lang": "en",
+      "text": "computer. That's why they were able to",
+      "offset": 463.919,
+      "duration": 4.161
+    },
+    {
+      "lang": "en",
+      "text": "land. Uh so yeah, and then there's your",
+      "offset": 465.12,
+      "duration": 5.519
+    },
+    {
+      "lang": "en",
+      "text": "little TLDDR 122 means the computer's",
+      "offset": 468.08,
+      "duration": 3.679
+    },
+    {
+      "lang": "en",
+      "text": "trying to do too many things at once and",
+      "offset": 470.639,
+      "duration": 2.481
+    },
+    {
+      "lang": "en",
+      "text": "has run out of memory to track all the",
+      "offset": 471.759,
+      "duration": 3.12
+    },
+    {
+      "lang": "en",
+      "text": "concurrent jobs. How long would it have",
+      "offset": 473.12,
+      "duration": 3.28
+    },
+    {
+      "lang": "en",
+      "text": "taken you to figure that out on your own",
+      "offset": 474.879,
+      "duration": 3.201
+    },
+    {
+      "lang": "en",
+      "text": "reading through that codebase? Right. I",
+      "offset": 476.4,
+      "duration": 2.799
+    },
+    {
+      "lang": "en",
+      "text": "can tell you it would have taken me more",
+      "offset": 478.08,
+      "duration": 2.72
+    },
+    {
+      "lang": "en",
+      "text": "than the 30 seconds we've been talking",
+      "offset": 479.199,
+      "duration": 4.961
+    },
+    {
+      "lang": "en",
+      "text": "here. So that's pretty cool to see.",
+      "offset": 480.8,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "All right, the second thing I want to do",
+      "offset": 484.16,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "is do a little bit of code modernization",
+      "offset": 486,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "here. Now, when the Lunar module",
+      "offset": 487.84,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "actually landed on the surface, uh Neil",
+      "offset": 490.16,
+      "duration": 4.479
+    },
+    {
+      "lang": "en",
+      "text": "Armstrong used a routine in the Lunar",
+      "offset": 492.24,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "landing guidance equations file called",
+      "offset": 494.639,
+      "duration": 5.441
+    },
+    {
+      "lang": "en",
+      "text": "P65, and that was kind of like a manual",
+      "offset": 497.28,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "override mode. They didn't really trust",
+      "offset": 500.08,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "the computer enough to let it land the",
+      "offset": 502.16,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "eagle all by itself. Neil Armstrong kind",
+      "offset": 504,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "of had a thumb on the controls",
+      "offset": 506.08,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "throughout that process. There is also a",
+      "offset": 507.68,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "routine in that file as I discovered",
+      "offset": 510.08,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "called P66.",
+      "offset": 512.32,
+      "duration": 3.12
+    },
+    {
+      "lang": "en",
+      "text": "Sorry, he used P66. We're going to use",
+      "offset": 514.08,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "P65. P65 is full automatic. That's where",
+      "offset": 515.44,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "you just let the lunar module land by",
+      "offset": 518,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "itself. It turns out that augment agent",
+      "offset": 520.24,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "has a thing called auto mode. Yes.\n Yes.",
+      "offset": 522.24,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "Uh I'm going to show you what that looks",
+      "offset": 524.72,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "like. Uh so you see down in my chat",
+      "offset": 526.16,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "here, um I actually was on augment uh on",
+      "offset": 529.04,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "agent mode before. So we could have been",
+      "offset": 531.68,
+      "duration": 3.279
+    },
+    {
+      "lang": "en",
+      "text": "in chat mode, but I can also be in agent",
+      "offset": 533.2,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "mode. And this is going to, if I ask it",
+      "offset": 534.959,
+      "duration": 3.361
+    },
+    {
+      "lang": "en",
+      "text": "to write some code for me or to run some",
+      "offset": 536.88,
+      "duration": 2.88
+    },
+    {
+      "lang": "en",
+      "text": "code, it's not going to ask me for",
+      "offset": 538.32,
+      "duration": 2.8
+    },
+    {
+      "lang": "en",
+      "text": "permission. It's not going to wait and",
+      "offset": 539.76,
+      "duration": 2.8
+    },
+    {
+      "lang": "en",
+      "text": "have me click on something. It's just",
+      "offset": 541.12,
+      "duration": 3.2
+    },
+    {
+      "lang": "en",
+      "text": "going to go do it. I could go get a, you",
+      "offset": 542.56,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "know, a cup of coffee and I could let",
+      "offset": 544.32,
+      "duration": 3.519
+    },
+    {
+      "lang": "en",
+      "text": "Augment agent land on the moon for me.",
+      "offset": 546,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "So, what I'm going to do, I've added a",
+      "offset": 547.839,
+      "duration": 5.281
+    },
+    {
+      "lang": "en",
+      "text": "couple of files to this codebase. Uh,",
+      "offset": 551.12,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "one is called simulator.py. I wrote a",
+      "offset": 553.12,
+      "duration": 5.279
+    },
+    {
+      "lang": "en",
+      "text": "little simulator that expects a file to",
+      "offset": 555.6,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "exist called descent, and it expects a",
+      "offset": 558.399,
+      "duration": 3.681
+    },
+    {
+      "lang": "en",
+      "text": "class to exist in that file called lunar",
+      "offset": 560.48,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "descent guidance that implements the p65",
+      "offset": 562.08,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "algorithm. That file is not written. I'm",
+      "offset": 564.16,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "going to see if Augment agent can write",
+      "offset": 566.48,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "that file, run the simulator, and land",
+      "offset": 568.24,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "on the moon without any human assistance",
+      "offset": 570.8,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "whatsoever, just like the actual P65",
+      "offset": 573.44,
+      "duration": 4.399
+    },
+    {
+      "lang": "en",
+      "text": "would have run. Should we give it a try?",
+      "offset": 575.6,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "All right. So, this is my favorite",
+      "offset": 577.839,
+      "duration": 4.161
+    },
+    {
+      "lang": "en",
+      "text": "prompt to do this. It's just run",
+      "offset": 580.08,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "simulator.py",
+      "offset": 582,
+      "duration": 5.519
+    },
+    {
+      "lang": "en",
+      "text": "until it succeeds.",
+      "offset": 583.68,
+      "duration": 7.599
+    },
+    {
+      "lang": "en",
+      "text": "Do not change simulator.py. All right.",
+      "offset": 587.519,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "See, that's that's where it would try to",
+      "offset": 591.279,
+      "duration": 3.441
+    },
+    {
+      "lang": "en",
+      "text": "get me, right? Okay. Let's see what",
+      "offset": 592.959,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "happens. All right. So, what's augment",
+      "offset": 594.72,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "agent doing here?",
+      "offset": 597.279,
+      "duration": 3.601
+    },
+    {
+      "lang": "en",
+      "text": "All right. It's going to run the",
+      "offset": 600.08,
+      "duration": 2.319
+    },
+    {
+      "lang": "en",
+      "text": "simulator.py file and work through any",
+      "offset": 600.88,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "issues. So, uh Matt, any comments you",
+      "offset": 602.399,
+      "duration": 3.12
+    },
+    {
+      "lang": "en",
+      "text": "want to make about like how augment",
+      "offset": 604.24,
+      "duration": 3.12
+    },
+    {
+      "lang": "en",
+      "text": "builds its plan for what it wants to run",
+      "offset": 605.519,
+      "duration": 4.481
+    },
+    {
+      "lang": "en",
+      "text": "here?\n Yeah. So, it's going to use",
+      "offset": 607.36,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "codebase knowledge as a starting point",
+      "offset": 610,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "to figure out, you know, how it should",
+      "offset": 612.24,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "what tools it should run, what commands",
+      "offset": 614.72,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "might be important. Um, and so from",
+      "offset": 616.64,
+      "duration": 4.879
+    },
+    {
+      "lang": "en",
+      "text": "there, it can start to understand what",
+      "offset": 619.44,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "might be missing. Um, and then typically",
+      "offset": 621.519,
+      "duration": 4.241
+    },
+    {
+      "lang": "en",
+      "text": "you'll see the agent start to put",
+      "offset": 624.24,
+      "duration": 3.279
+    },
+    {
+      "lang": "en",
+      "text": "together the framework of a plan as to",
+      "offset": 625.76,
+      "duration": 3.759
+    },
+    {
+      "lang": "en",
+      "text": "how to solve this. So it might go and",
+      "offset": 627.519,
+      "duration": 4.241
+    },
+    {
+      "lang": "en",
+      "text": "read individual files and just start to",
+      "offset": 629.519,
+      "duration": 4.481
+    },
+    {
+      "lang": "en",
+      "text": "gather a better sense of what it's going",
+      "offset": 631.76,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "to take to complete the the task. So",
+      "offset": 634,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "here it's realizing at this point that",
+      "offset": 636.16,
+      "duration": 3.679
+    },
+    {
+      "lang": "en",
+      "text": "the files missing and then it's going to",
+      "offset": 637.76,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "start exploring the codebase more",
+      "offset": 639.839,
+      "duration": 3.521
+    },
+    {
+      "lang": "en",
+      "text": "generally with our context engine so it",
+      "offset": 641.44,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "can kind of gro some of that assembly",
+      "offset": 643.36,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "code and start to think about what an",
+      "offset": 645.76,
+      "duration": 4.319
+    },
+    {
+      "lang": "en",
+      "text": "implementation would look like.\n That's",
+      "offset": 648.48,
+      "duration": 2.72
+    },
+    {
+      "lang": "en",
+      "text": "right. And it's actually like it's",
+      "offset": 650.079,
+      "duration": 2.561
+    },
+    {
+      "lang": "en",
+      "text": "running little terminal commands for us,",
+      "offset": 651.2,
+      "duration": 2.96
+    },
+    {
+      "lang": "en",
+      "text": "right? And it's not waiting for us to",
+      "offset": 652.64,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "intervene here. It's just doing it. All",
+      "offset": 654.16,
+      "duration": 7.4
+    },
+    {
+      "lang": "en",
+      "text": "right. So, it's mapped things out. Uh,",
+      "offset": 656.72,
+      "duration": 4.84
+    },
+    {
+      "lang": "en",
+      "text": "yes. All right. So, look based on So,",
+      "offset": 661.6,
+      "duration": 3.359
+    },
+    {
+      "lang": "en",
+      "text": "there's a little test file in here. Oh,",
+      "offset": 663.04,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "it already succeeded. Okay. It it got",
+      "offset": 664.959,
+      "duration": 3.041
+    },
+    {
+      "lang": "en",
+      "text": "ahead of me. So, based on the test",
+      "offset": 666.64,
+      "duration": 2.639
+    },
+    {
+      "lang": "en",
+      "text": "files, I can understand what the lunar",
+      "offset": 668,
+      "duration": 2.399
+    },
+    {
+      "lang": "en",
+      "text": "descent guidance class should look like.",
+      "offset": 669.279,
+      "duration": 2.721
+    },
+    {
+      "lang": "en",
+      "text": "So, it created the missing descent.py",
+      "offset": 670.399,
+      "duration": 3.521
+    },
+    {
+      "lang": "en",
+      "text": "file. Let's take a look at that and see.",
+      "offset": 672,
+      "duration": 3.12
+    },
+    {
+      "lang": "en",
+      "text": "So, there you go. So, it wrote",
+      "offset": 673.92,
+      "duration": 3.919
+    },
+    {
+      "lang": "en",
+      "text": "descent.py. It's a implementation of the",
+      "offset": 675.12,
+      "duration": 4.399
+    },
+    {
+      "lang": "en",
+      "text": "P65 vertical descent guidance. So,",
+      "offset": 677.839,
+      "duration": 2.961
+    },
+    {
+      "lang": "en",
+      "text": "Augment has indexed this entire",
+      "offset": 679.519,
+      "duration": 2.88
+    },
+    {
+      "lang": "en",
+      "text": "codebase. It's able to go look at it.",
+      "offset": 680.8,
+      "duration": 3.2
+    },
+    {
+      "lang": "en",
+      "text": "So, it found, you know, where it is in",
+      "offset": 682.399,
+      "duration": 4.961
+    },
+    {
+      "lang": "en",
+      "text": "the original source code. And then, I",
+      "offset": 684,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "got to tell you, it's easier for me to",
+      "offset": 687.36,
+      "duration": 3.2
+    },
+    {
+      "lang": "en",
+      "text": "read Python than it is to read assembly",
+      "offset": 688.64,
+      "duration": 3.28
+    },
+    {
+      "lang": "en",
+      "text": "code, right? But it's actually laying",
+      "offset": 690.56,
+      "duration": 2.959
+    },
+    {
+      "lang": "en",
+      "text": "this out for us. So, here's where the",
+      "offset": 691.92,
+      "duration": 3.599
+    },
+    {
+      "lang": "en",
+      "text": "position and velocity are. It's got the",
+      "offset": 693.519,
+      "duration": 3.921
+    },
+    {
+      "lang": "en",
+      "text": "desired velocity. It's got the gravity",
+      "offset": 695.519,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "fields. Uh, and then it pulls the",
+      "offset": 697.44,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "routine together, and it should actually",
+      "offset": 699.279,
+      "duration": 3.281
+    },
+    {
+      "lang": "en",
+      "text": "have a yeah, an algorithm in here called",
+      "offset": 701.12,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "P65 guidance that implements this in",
+      "offset": 702.56,
+      "duration": 6.16
+    },
+    {
+      "lang": "en",
+      "text": "Python. And so our final position as it",
+      "offset": 705.92,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "ran this here. Let me go let me catch up",
+      "offset": 708.72,
+      "duration": 6.16
+    },
+    {
+      "lang": "en",
+      "text": "with my uh with my chat.",
+      "offset": 710.8,
+      "duration": 6.08
+    },
+    {
+      "lang": "en",
+      "text": "Yeah. And it ran the simulator. Final",
+      "offset": 714.88,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "position this number of meters. Final",
+      "offset": 716.88,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "vertical and horizontal velocity. And",
+      "offset": 719.44,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "you can see that it landed, you know,",
+      "offset": 721.76,
+      "duration": 4.079
+    },
+    {
+      "lang": "en",
+      "text": "within our 0ero to one meters that we",
+      "offset": 723.2,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "would expect for our final simulation",
+      "offset": 725.839,
+      "duration": 5.841
+    },
+    {
+      "lang": "en",
+      "text": "values. So yay augment agent. Good job.",
+      "offset": 727.92,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "It landed on the moon for us. Okay. Most",
+      "offset": 731.68,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "of us are not landing on the moon as",
+      "offset": 733.92,
+      "duration": 2.88
+    },
+    {
+      "lang": "en",
+      "text": "part of our day job. So is this a parlor",
+      "offset": 735.2,
+      "duration": 2.639
+    },
+    {
+      "lang": "en",
+      "text": "trick? Is there something we can",
+      "offset": 736.8,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "actually learn here? So this is what I",
+      "offset": 737.839,
+      "duration": 4.881
+    },
+    {
+      "lang": "en",
+      "text": "would take back to a legacy codebase of",
+      "offset": 740.8,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "mine based on what we've seen today.",
+      "offset": 742.72,
+      "duration": 3.359
+    },
+    {
+      "lang": "en",
+      "text": "There's three basic steps. Number one,",
+      "offset": 744.32,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "anytime you pull this open, you're going",
+      "offset": 746.079,
+      "duration": 3.521
+    },
+    {
+      "lang": "en",
+      "text": "to try to use the agent to help you",
+      "offset": 747.76,
+      "duration": 3.519
+    },
+    {
+      "lang": "en",
+      "text": "understand on your own what's going on",
+      "offset": 749.6,
+      "duration": 3.12
+    },
+    {
+      "lang": "en",
+      "text": "in that codebase. So Augment agent will",
+      "offset": 751.279,
+      "duration": 2.8
+    },
+    {
+      "lang": "en",
+      "text": "index it for you. You can ask questions",
+      "offset": 752.72,
+      "duration": 2.559
+    },
+    {
+      "lang": "en",
+      "text": "in chat. You're going to be asking",
+      "offset": 754.079,
+      "duration": 3.041
+    },
+    {
+      "lang": "en",
+      "text": "questions like, what does this codebase",
+      "offset": 755.279,
+      "duration": 3.281
+    },
+    {
+      "lang": "en",
+      "text": "actually do, right? What is this piece",
+      "offset": 757.12,
+      "duration": 3.839
+    },
+    {
+      "lang": "en",
+      "text": "of the code? What does file XYZ do for",
+      "offset": 758.56,
+      "duration": 4.719
+    },
+    {
+      "lang": "en",
+      "text": "me? Are there style or convention things",
+      "offset": 760.959,
+      "duration": 4.241
+    },
+    {
+      "lang": "en",
+      "text": "going on here that I should be aware of?",
+      "offset": 763.279,
+      "duration": 3.281
+    },
+    {
+      "lang": "en",
+      "text": "uh and then you can start writing some",
+      "offset": 765.2,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "tests. So sometimes people ask like you",
+      "offset": 766.56,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "know if I am not sure I fully understand",
+      "offset": 768.56,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "this code am I going to know if the new",
+      "offset": 770.8,
+      "duration": 4.159
+    },
+    {
+      "lang": "en",
+      "text": "code that I create is actually correct.",
+      "offset": 773.04,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "So I think a blend of agent and chat",
+      "offset": 774.959,
+      "duration": 3.041
+    },
+    {
+      "lang": "en",
+      "text": "mode are going to help you out a lot",
+      "offset": 776.8,
+      "duration": 3.12
+    },
+    {
+      "lang": "en",
+      "text": "here. Use chat mode to predict what you",
+      "offset": 778,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "think the code should do. So in the case",
+      "offset": 779.92,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "of the p65 algorithm you know tell me",
+      "offset": 781.36,
+      "duration": 4.479
+    },
+    {
+      "lang": "en",
+      "text": "what I think should happen when I run",
+      "offset": 783.68,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "this lunar descent given these input",
+      "offset": 785.839,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "parameters and then have the agent mode",
+      "offset": 787.76,
+      "duration": 3.04
+    },
+    {
+      "lang": "en",
+      "text": "write some tests to check that behavior.",
+      "offset": 789.279,
+      "duration": 3.281
+    },
+    {
+      "lang": "en",
+      "text": "It's not always going to get it right. I",
+      "offset": 790.8,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "had a case where it was working with the",
+      "offset": 792.56,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "scheduler and it couldn't decide for",
+      "offset": 794.32,
+      "duration": 3.519
+    },
+    {
+      "lang": "en",
+      "text": "itself whether priority level zero was",
+      "offset": 796,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "the highest level or lowest level in the",
+      "offset": 797.839,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "system and you could convince it either",
+      "offset": 799.68,
+      "duration": 3.279
+    },
+    {
+      "lang": "en",
+      "text": "way. Like it's a classic thing an agent",
+      "offset": 801.279,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "would struggle with. So take the time to",
+      "offset": 802.959,
+      "duration": 3.921
+    },
+    {
+      "lang": "en",
+      "text": "go, you know, read yourself, right? Have",
+      "offset": 805.279,
+      "duration": 3.441
+    },
+    {
+      "lang": "en",
+      "text": "it surface those pieces of the code for",
+      "offset": 806.88,
+      "duration": 3.28
+    },
+    {
+      "lang": "en",
+      "text": "you and then, you know, you're an",
+      "offset": 808.72,
+      "duration": 3.119
+    },
+    {
+      "lang": "en",
+      "text": "engineer, you can apply your human",
+      "offset": 810.16,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "ingenuity to it and then modernize.",
+      "offset": 811.839,
+      "duration": 3.361
+    },
+    {
+      "lang": "en",
+      "text": "start converting small portions of the",
+      "offset": 813.68,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "code in modular fashion to the desired",
+      "offset": 815.2,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "language or you know style that you want",
+      "offset": 817.2,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "and apply those same tests to make sure",
+      "offset": 819.36,
+      "duration": 3.919
+    },
+    {
+      "lang": "en",
+      "text": "that you're not getting far a field from",
+      "offset": 821.36,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "what the actual functionality of the",
+      "offset": 823.279,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "code should be and that is not just a",
+      "offset": 824.88,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "strategy for success landing the Apollo",
+      "offset": 827.839,
+      "duration": 4.961
+    },
+    {
+      "lang": "en",
+      "text": "11 guidance computer on the moon but for",
+      "offset": 830.16,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "working with your code as well. All",
+      "offset": 832.8,
+      "duration": 3.599
+    },
+    {
+      "lang": "en",
+      "text": "right, once again you can try Augment",
+      "offset": 834.8,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "agent yourself uh for free at",
+      "offset": 836.399,
+      "duration": 4.161
+    },
+    {
+      "lang": "en",
+      "text": "augmentode.com. Uh bring your gnarliest",
+      "offset": 838.16,
+      "duration": 3.919
+    },
+    {
+      "lang": "en",
+      "text": "legacy code bases and refactoring",
+      "offset": 840.56,
+      "duration": 3.04
+    },
+    {
+      "lang": "en",
+      "text": "projects. I forget how many lines of",
+      "offset": 842.079,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "code are in the Apollo guidance computer",
+      "offset": 843.6,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "repo. It's thousands. Um I mean that's",
+      "offset": 845.519,
+      "duration": 5.281
+    },
+    {
+      "lang": "en",
+      "text": "reasonable for this, right?\n Yeah, it's",
+      "offset": 848.8,
+      "duration": 3.839
+    },
+    {
+      "lang": "en",
+      "text": "pretty small fry when it comes to like",
+      "offset": 850.8,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "enterprise projects these days. So, you",
+      "offset": 852.639,
+      "duration": 3.601
+    },
+    {
+      "lang": "en",
+      "text": "know, the real world equivalent of this",
+      "offset": 854.72,
+      "duration": 3.119
+    },
+    {
+      "lang": "en",
+      "text": "kind of thing might be like I've got a",
+      "offset": 856.24,
+      "duration": 4.719
+    },
+    {
+      "lang": "en",
+      "text": "Java 8 project. I want to go to Java 17.",
+      "offset": 857.839,
+      "duration": 5.201
+    },
+    {
+      "lang": "en",
+      "text": "That's really tedious, toilsome. How do",
+      "offset": 860.959,
+      "duration": 4.401
+    },
+    {
+      "lang": "en",
+      "text": "I pass some of that over to to AI? Yep.",
+      "offset": 863.04,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "That's the that's the like real world",
+      "offset": 865.36,
+      "duration": 2.96
+    },
+    {
+      "lang": "en",
+      "text": "equivalent. Yeah,\n that's right. And as",
+      "offset": 867.04,
+      "duration": 2.88
+    },
+    {
+      "lang": "en",
+      "text": "you can see, it's pretty fast, too. Um",
+      "offset": 868.32,
+      "duration": 2.8
+    },
+    {
+      "lang": "en",
+      "text": "and you can bring your green field",
+      "offset": 869.92,
+      "duration": 2.96
+    },
+    {
+      "lang": "en",
+      "text": "projects. There's no shame in that, but",
+      "offset": 871.12,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "uh the legacy ones I think are a little",
+      "offset": 872.88,
+      "duration": 4.079
+    },
+    {
+      "lang": "en",
+      "text": "bit more fun. That's all we've got. Yes,",
+      "offset": 874.56,
+      "duration": 4.639
+    },
+    {
+      "lang": "en",
+      "text": "sir.\n What about things like checking for",
+      "offset": 876.959,
+      "duration": 5.841
+    },
+    {
+      "lang": "en",
+      "text": "dependencies across like a large code",
+      "offset": 879.199,
+      "duration": 6.801
+    },
+    {
+      "lang": "en",
+      "text": "base?\n It loves to do that. Yeah.\n And it",
+      "offset": 882.8,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "can actually go back in.\n Yes, it can.",
+      "offset": 886,
+      "duration": 4.079
+    },
+    {
+      "lang": "en",
+      "text": "And you actually in 20 seconds you",
+      "offset": 888.16,
+      "duration": 3.359
+    },
+    {
+      "lang": "en",
+      "text": "actually saw a little bit of that here,",
+      "offset": 890.079,
+      "duration": 2.641
+    },
+    {
+      "lang": "en",
+      "text": "right? Where it went through and like",
+      "offset": 891.519,
+      "duration": 2.641
+    },
+    {
+      "lang": "en",
+      "text": "there were some missing files. It tried",
+      "offset": 892.72,
+      "duration": 2.96
+    },
+    {
+      "lang": "en",
+      "text": "to run Python and said, &quot;Oops, it's not",
+      "offset": 894.16,
+      "duration": 2.72
+    },
+    {
+      "lang": "en",
+      "text": "installed. I'm going to use Python 3",
+      "offset": 895.68,
+      "duration": 2.64
+    },
+    {
+      "lang": "en",
+      "text": "instead.&quot; Right? There's it's happy to",
+      "offset": 896.88,
+      "duration": 3.759
+    },
+    {
+      "lang": "en",
+      "text": "do that in 12 seconds. Go ahead, Drew.",
+      "offset": 898.32,
+      "duration": 4.079
+    },
+    {
+      "lang": "en",
+      "text": "What you showed was test driven",
+      "offset": 900.639,
+      "duration": 6.121
+    },
+    {
+      "lang": "en",
+      "text": "development effectively.\n Yes.",
+      "offset": 902.399,
+      "duration": 4.361
+    },
+    {
+      "lang": "en",
+      "text": "Yeah. Agents love to reason and iterate.",
+      "offset": 908.639,
+      "duration": 4.241
+    },
+    {
+      "lang": "en",
+      "text": "So any way they can check their own",
+      "offset": 910.959,
+      "duration": 3.921
+    },
+    {
+      "lang": "en",
+      "text": "result is very helpful. So tests are",
+      "offset": 912.88,
+      "duration": 3.28
+    },
+    {
+      "lang": "en",
+      "text": "good for that.\n That's a great question.",
+      "offset": 914.88,
+      "duration": 2.959
+    },
+    {
+      "lang": "en",
+      "text": "We are out of time. Thanks everyone. We",
+      "offset": 916.16,
+      "duration": 5
+    },
+    {
+      "lang": "en",
+      "text": "appreciate you.",
+      "offset": 917.839,
+      "duration": 3.321
+    },
+    {
+      "lang": "en",
+      "text": "[Music]",
+      "offset": 922.85,
+      "duration": 2.949
+    }
+  ],
+  "cleanText": "[Music]\nWelcome everyone. Thank you so much for coming. My name is Forrest. This is Matt. Uh and we're going to be talking to you today about Augment Agent and specifically legacy code, how we get the most out of gnarly legacy code bases using an AI agent. So I do not work for Augment Code. Um I am a friend and partner of Augment Code. So I helped to put this talk together. Matt is from Augment Code. So he's going to be your best person to come to with your most detailed technical questions after the session. Matt, anything you want to uh say about yourself?\n Yeah, uh I was once a software engineer and then got into the developer tool space. Um, I was at Postman for a number of years and then got really excited by the the AI boom. So, I've been at Augment for the last two years or so. Um, I'm a Solutions Architect.\n Fantastic. All right. So, just a quick road map of where we're going. We're going to talk a little bit about Augment Agent. Uh,\n oh, do we not have um\nI see someone point. We good now? Okay.\nFantastic. So, we've got Augment Agent. We're going to talk a little bit about the Apollo 11 guidance computer and then we're going to show you some really interesting things you can do with that codebase uh and Augment Agent. So, Augment is the uh it's the product we're going to be using today. Um you do not need your laptop out to follow along with this session. We will do it all in front of your eyes, but if you want you can sign up. There's a free trial at augmentode.com\nand uh Matt will tell you a little bit about the most important features of Augment Code.\n Yeah. Uh number one is our context engine. So we really identified early on that in order to get high quality outputs from any of the models, they require high quality input. Uh doing that for for code bases is not necessarily straightforward. It's not just like text. Um so uh this is something that we've seen in the in the market. Uh a lot of folks think that there's a way to do this. We spent two years building a proprietary system that can lift the right knowledge from codebase and pass it over to the models. And we think that results in higher quality outputs and more accurate understanding. Uh we're a plugin to existing IDEs. We see in a lot of enterprise that if you've got a 10-year-old Java codebase, you're using IntelliJ, you don't want to have to switch. Um and then from day zero, because we were targeting enterprise, we've focused a lot of security capabilities. So we have things that are unique to us versus any other vendor like customer manage encryption keys. We have ISO 420001 which is a new AI ISO standard. Uh so we really wanted to to laser in on providing security over what is very important uh a very important asset in your codebase.\n Awesome. And then we've got a couple of tools we'll be referring to today. Mainly the chat and agent modes of Augment Code. And when would you use each of those Matt?\nYeah, chat is great for kind of simple back and forth question and answer. Uh or when you want to leverage a little bit more control over the the models and you just want to go one turn at a time. Uh obviously we see that agents can integrate into other tools are much more capable of larger more complex tasks. Um and then remote agents are great when you actually want to close the lid on your machine and allow them to continue to run in the background and in parallel. Yes, we did a workshop on Tuesday that involved a contest component and I had someone come up to me afterwards saying, \"I don't understand how the winners were so fast at submitting their solutions because we had eight or nine problems we were doing and it's possible some of them were using remote agent to do some of those tasks in parallel.\" So, it can come in handy for that as well. All right, so we're going to be talking today about the Apollo 11 uh mission in 1969. I think most of us are familiar with this, the first time humans landed on the moon. There were three astronauts in that capsule: Neil Armstrong, Buzz Aldrin, and Michael Collins. But sometimes people say there was a fourth astronaut on the Apollo 11 mission. Does anyone know what that astronaut was?\nYeah, the the Apollo guidance computer or the AGC.\nAnd the main things to know about the AGC? So, this is used to land the lunar module. If you've ever seen that picture of Margaret Hamilton with like that giant stack of papers uh with the code on it, that was the source code for the Apollo guidance computer. It was one giant monolithic source file developed over a period of several years at MIT in the 1960s. It was written in assembly language. Who here has written assembly at some point in their lives? Who put your hand down if it was in college? All right. So, keep your hand up if it was in production in some cap. Yeah, exactly. That's what I thought. Uh, so not a lot of us are going to be able to look at assembly code and be able to tell you confidently what it does on first glance. I certainly can. I haven't written much assembly since I was in computer systems 2011. Uh, so in some ways, this is the ultimate legacy codebase. It is on GitHub. You can check it out yourself if you want. It's easy to find. We are going to try to navigate it well enough to see if we can understand it and land the Lunar module ourselves. And Augment Agent is going to help us do that. So the first thing you want to do anytime you pop open a large legacy codebase is you want to see if you can get your head around it, right? Someone put a lot of their time and mental energy into putting this codebase together and you've got to catch up with them. That historically has been a long process. It's been a fraught process. It's been an imprecise process. And AI agents such as Augment Code can help a lot with that. So, let's look at a specific example. And I'm choosing the 1201 and 122 program alarms. If you're an Apollo 11 history buff, you know about these because during the final descent onto the surface of the moon, the astronauts called to Houston and said, \"Hey, we're getting this alarm. It's a 122 uh the uh give us a reading on the 122 program.\" This alarm went off five times uh as the lunar module, the Eagle, was making its descent onto the lunar surface. And there was a question for a moment about whether the landing would need to be aborted. And finally, Houston said, \"No, you're okay. You can continue.\" So, our question is, could we determine that for ourselves, right? If you were given the Apollo guidance computer source code, would you be as confident as Houston was to say, \"No, this is not a problem that's going to affect the success or stability of the mission.\" So, the way I would do this is I'm going to pop open I've got VS Code up here, and I've got uh a slightly modified version of the Apollo 11 codebase just to orient you. It looks like this. All right, this is uh this is their version of assembly code. It's truly just a bunch of two-word commands saying move this piece of data into this register somewhere. So, it's it's not fantastically readable. And even if you did a like a GP and looked for 1201 or 1202, it's not going to tell you what the value of those alarms actually is.\nSo, I can go to Augment Chat and I can say um what does the 1202 program alarm do?\nAnd let's see what it tells me.\nIt's generating our response. All right.\nAnd so it's going to take a minute to churn on that and it's going to come back to me with a number of pieces of information both from the codebase itself and it will also be able to call out to the web and it'll be able to look there. One of the things I think is interesting about using a chat mode like this is it's kind of similar to calling back to mission control in Houston. Um and if you were to plug in like you know some MCP servers to this right there's it gives you an even an even larger mission control element to work with.\nOkay. So uh it's it's actually reading this file for us. Uh uh so the ACG executive system runs out of available core sets. All right. And it shows us where that happens. Look there's uh octal value 122 right there. It explains the number of registers there are. Uh it explains the um yeah along with 121 novac area. So it pulled both of these and look it went out to the web and it's giving us the context of what actually caused the error. It was an external radar system being left on. And the Apollo 11 computer was smart enough then to offload some low priority tasks so that it could continue executing mission mission critical components inside the computer. That's why they were able to land. Uh so yeah, and then there's your little TLDDR 122 means the computer's trying to do too many things at once and has run out of memory to track all the concurrent jobs. How long would it have taken you to figure that out on your own reading through that codebase? Right. I can tell you it would have taken me more than the 30 seconds we've been talking here. So that's pretty cool to see.\nAll right, the second thing I want to do is do a little bit of code modernization here. Now, when the Lunar module actually landed on the surface, uh Neil Armstrong used a routine in the Lunar landing guidance equations file called P65, and that was kind of like a manual override mode. They didn't really trust the computer enough to let it land the eagle all by itself. Neil Armstrong kind of had a thumb on the controls throughout that process. There is also a routine in that file as I discovered called P66.\nSorry, he used P66. We're going to use P65. P65 is full automatic. That's where you just let the lunar module land by itself. It turns out that Augment Agent has a thing called auto mode. Yes.\n Yes.\nUh I'm going to show you what that looks like. Uh so you see down in my chat here, um I actually was on augment uh on agent mode before. So we could have been in chat mode, but I can also be in agent mode. And this is going to, if I ask it to write some code for me or to run some code, it's not going to ask me for permission. It's not going to wait and have me click on something. It's just going to go do it. I could go get a, you know, a cup of coffee and I could let Augment Agent land on the moon for me.\nSo, what I'm going to do, I've added a couple of files to this codebase. Uh, one is called simulator.py. I wrote a little simulator that expects a file to exist called descent, and it expects a class to exist in that file called lunar descent guidance that implements the p65 algorithm. That file is not written. I'm going to see if Augment Agent can write that file, run the simulator, and land on the moon without any human assistance whatsoever, just like the actual P65 would have run. Should we give it a try?\nAll right. So, this is my favorite prompt to do this. It's just run simulator.py\nuntil it succeeds.\nDo not change simulator.py. All right.\nSee, that's that's where it would try to get me, right? Okay. Let's see what happens. All right. So, what's Augment Agent doing here?\nAll right. It's going to run the simulator.py file and work through any issues. So, uh Matt, any comments you want to make about like how Augment builds its plan for what it wants to run here?\n Yeah. So, it's going to use codebase knowledge as a starting point to figure out, you know, how it should what tools it should run, what commands might be important. Um, and so from there, it can start to understand what might be missing. Um, and then typically you'll see the agent start to put together the framework of a plan as to how to solve this. So it might go and read individual files and just start to gather a better sense of what it's going to take to complete the the task. So here it's realizing at this point that the files missing and then it's going to start exploring the codebase more generally with our context engine so it can kind of gro some of that assembly code and start to think about what an implementation would look like.\n That's right. And it's actually like it's running little terminal commands for us, right? And it's not waiting for us to intervene here. It's just doing it. All right. So, it's mapped things out. Uh, yes. All right. So, look based on So, there's a little test file in here. Oh, it already succeeded. Okay. It it got ahead of me. So, based on the test files, I can understand what the lunar descent guidance class should look like. So, it created the missing descent.py file. Let's take a look at that and see.\nSo, there you go. So, it wrote descent.py. It's a implementation of the P65 vertical descent guidance. So, Augment has indexed this entire codebase. It's able to go look at it. So, it found, you know, where it is in the original source code. And then, I got to tell you, it's easier for me to read Python than it is to read assembly code, right? But it's actually laying this out for us. So, here's where the position and velocity are. It's got the desired velocity. It's got the gravity fields. Uh, and then it pulls the routine together, and it should actually have a yeah, an algorithm in here called P65 guidance that implements this in Python. And so our final position as it ran this here. Let me go let me catch up with my uh with my chat.\nYeah. And it ran the simulator. Final position this number of meters. Final vertical and horizontal velocity. And you can see that it landed, you know, within our 0ero to one meters that we would expect for our final simulation values. So yay Augment Agent. Good job. It landed on the moon for us. Okay. Most of us are not landing on the moon as part of our day job. So is this a parlor trick? Is there something we can actually learn here? So this is what I would take back to a legacy codebase of mine based on what we've seen today.\nThere's three basic steps. Number one, anytime you pull this open, you're going to try to use the agent to help you understand on your own what's going on in that codebase. So Augment Agent will index it for you. You can ask questions in chat\n\n\nYou're going to be asking questions like, what does this codebase actually do, right?\nWhat is this piece of the code?\nWhat does file XYZ do for me?\nAre there style or convention things going on here that I should be aware of?\nUh, and then you can start writing some tests.\nSo sometimes people ask like, you know, if I am not sure I fully understand this code, am I going to know if the new code that I create is actually correct?\nSo I think a blend of agent and chat mode are going to help you out a lot here.\nUse chat mode to predict what you think the code should do.\nSo in the case of the p65 algorithm, you know, tell me what I think should happen when I run this lunar descent given these input parameters and then have the agent mode write some tests to check that behavior.\nIt's not always going to get it right.\nI had a case where it was working with the scheduler and it couldn't decide for itself whether priority level zero was the highest level or lowest level in the system and you could convince it either way.\nLike it's a classic thing an agent would struggle with.\nSo take the time to go, you know, read yourself, right?\nHave it surface those pieces of the code for you and then, you know, you're an engineer, you can apply your human ingenuity to it and then modernize.\nStart converting small portions of the code in modular fashion to the desired language or you know style that you want and apply those same tests to make sure that you're not getting far a field from what the actual functionality of the code should be and that is not just a strategy for success landing the Apollo 11 guidance computer on the moon but for working with your code as well.\nAll right, once again you can try Augment Agent yourself uh for free at augmentode.com.\nUh, bring your gnarliest legacy code bases and refactoring projects.\nI forget how many lines of code are in the Apollo guidance computer repo.\nIt's thousands.\nUm, I mean that's reasonable for this, right?\nYeah, it's pretty small fry when it comes to like enterprise projects these days.\nSo, you know, the real world equivalent of this kind of thing might be like I've got a Java 8 project.\nI want to go to Java 17.\nThat's really tedious, toilsome.\nHow do I pass some of that over to to AI?\nYep.\nThat's the that's the like real world equivalent.\nYeah, that's right.\nAnd as you can see, it's pretty fast, too.\nUm, and you can bring your green field projects.\nThere's no shame in that, but uh the legacy ones I think are a little bit more fun.\nThat's all we've got.\nYes, sir.\nWhat about things like checking for dependencies across like a large codebase?\nIt loves to do that.\nYeah.\nAnd it can actually go back in.\nYes, it can.\nAnd you actually in 20 seconds you actually saw a little bit of that here, right?\nWhere it went through and like there were some missing files.\nIt tried to run Python and said, &quot;Oops, it's not installed.\nI'm going to use Python 3 instead.&quot;\nRight?\nThere's it's happy to do that in 12 seconds.\nGo ahead, Drew.\nWhat you showed was test driven development effectively.\nYes.\nYeah.\nAgents love to reason and iterate.\nSo any way they can check their own result is very helpful.\nSo tests are good for that.\nThat's a great question.\nWe are out of time.\nThanks everyone.\nWe appreciate you.\n[Music]\n",
+  "dumpedAt": "2025-07-21T18:43:26.203Z"
+}

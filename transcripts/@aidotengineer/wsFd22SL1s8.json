@@ -1,0 +1,5794 @@
+{
+  "episodeId": "wsFd22SL1s8",
+  "channelSlug": "@aidotengineer",
+  "title": "Arrakis: How To Build An AI Sandbox From Scratch - Abhishek Bhardwaj",
+  "publishedAt": "2025-06-03T22:22:29.000Z",
+  "rawLines": [
+    {
+      "lang": "en",
+      "text": "Hello everyone, my name is Abhishek. I'm",
+      "offset": 0.719,
+      "duration": 4.161
+    },
+    {
+      "lang": "en",
+      "text": "the solo founder and developer of",
+      "offset": 3.2,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "Arachis, an open-source code execution",
+      "offset": 4.88,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "and computer use sandboxing service for",
+      "offset": 7.52,
+      "duration": 5.199
+    },
+    {
+      "lang": "en",
+      "text": "AI agents. Today we'll chat about why",
+      "offset": 9.92,
+      "duration": 4.919
+    },
+    {
+      "lang": "en",
+      "text": "sandboxing is the next big unlock in",
+      "offset": 12.719,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "intelligence and what goes into building",
+      "offset": 14.839,
+      "duration": 4.801
+    },
+    {
+      "lang": "en",
+      "text": "an AI sandbox",
+      "offset": 17.039,
+      "duration": 5.441
+    },
+    {
+      "lang": "en",
+      "text": "like a little bit about my background. I",
+      "offset": 19.64,
+      "duration": 4.84
+    },
+    {
+      "lang": "en",
+      "text": "went to school at Carnegie Melon where I",
+      "offset": 22.48,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "studied distributed systems and",
+      "offset": 24.48,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "operating systems. At Microsoft, I",
+      "offset": 26.32,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "worked on Windows Subsystem for Linux",
+      "offset": 28.8,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "and a smart watch OS from scratch. At",
+      "offset": 30.64,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "Google, I worked on cutting edge systems",
+      "offset": 33.68,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "using containers and inventing something",
+      "offset": 35.52,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "called microVMs, which we'll discuss in",
+      "offset": 37.44,
+      "duration": 4.639
+    },
+    {
+      "lang": "en",
+      "text": "plenty detail today. The last couple of",
+      "offset": 39.68,
+      "duration": 4.879
+    },
+    {
+      "lang": "en",
+      "text": "years, I was at Replet working on infra",
+      "offset": 42.079,
+      "duration": 4.561
+    },
+    {
+      "lang": "en",
+      "text": "and rack based code chat before I",
+      "offset": 44.559,
+      "duration": 4.401
+    },
+    {
+      "lang": "en",
+      "text": "founded Ara right at the intersection of",
+      "offset": 46.64,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "my background in operating systems,",
+      "offset": 48.96,
+      "duration": 6.32
+    },
+    {
+      "lang": "en",
+      "text": "sandboxes, and AI agents.",
+      "offset": 51.28,
+      "duration": 5.88
+    },
+    {
+      "lang": "en",
+      "text": "So why do we need AI",
+      "offset": 55.28,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "sandboxes? For one, the latest models",
+      "offset": 57.16,
+      "duration": 5.48
+    },
+    {
+      "lang": "en",
+      "text": "like 03 all leverage tool calling such",
+      "offset": 59.84,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "as search or code exec during inference",
+      "offset": 62.64,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "to give smarter replies to user queries.",
+      "offset": 64.96,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "These tool calls require AI sandboxes",
+      "offset": 67.6,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "for execution. For reinforcement",
+      "offset": 69.84,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "learning as well during the training",
+      "offset": 72.24,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "phase, you need sandboxes to run reward",
+      "offset": 74,
+      "duration": 3.88
+    },
+    {
+      "lang": "en",
+      "text": "functions at",
+      "offset": 76.32,
+      "duration": 4.799
+    },
+    {
+      "lang": "en",
+      "text": "scale. Agents can also go a long way",
+      "offset": 77.88,
+      "duration": 5.16
+    },
+    {
+      "lang": "en",
+      "text": "with the full Linux sandbox at their",
+      "offset": 81.119,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "disposal. For example, during code",
+      "offset": 83.04,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "generation, they can debug entire apps",
+      "offset": 85.119,
+      "duration": 5.521
+    },
+    {
+      "lang": "en",
+      "text": "by using Linux commands like ps lsoft to",
+      "offset": 88,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "see if the code is running and debugging",
+      "offset": 90.64,
+      "duration": 4.479
+    },
+    {
+      "lang": "en",
+      "text": "it. They can backtrack, replan, and work",
+      "offset": 92.56,
+      "duration": 4.559
+    },
+    {
+      "lang": "en",
+      "text": "towards the goal again with a sandbox at",
+      "offset": 95.119,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "their disposal. Security is paramount.",
+      "offset": 97.119,
+      "duration": 5.281
+    },
+    {
+      "lang": "en",
+      "text": "Agent code is no different than you",
+      "offset": 100.159,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "using any code from GitHub or Stack",
+      "offset": 102.4,
+      "duration": 3.679
+    },
+    {
+      "lang": "en",
+      "text": "Overflow and running it on your host or",
+      "offset": 104.159,
+      "duration": 3.761
+    },
+    {
+      "lang": "en",
+      "text": "production server. This code could be",
+      "offset": 106.079,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "buggy or malicious and can get root and",
+      "offset": 107.92,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "can access your data or your client's",
+      "offset": 110.399,
+      "duration": 3.921
+    },
+    {
+      "lang": "en",
+      "text": "data. So we need some amount of locking",
+      "offset": 112.24,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "down uh in this",
+      "offset": 114.32,
+      "duration": 2.88
+    },
+    {
+      "lang": "en",
+      "text": "sandbox. Let's see a sandbox around us.",
+      "offset": 117.799,
+      "duration": 5.721
+    },
+    {
+      "lang": "en",
+      "text": "I know we've seen uh canvas by OpenAI",
+      "offset": 120.479,
+      "duration": 5.761
+    },
+    {
+      "lang": "en",
+      "text": "claw artifacts. This is Manas AI. Uh it",
+      "offset": 123.52,
+      "duration": 5.519
+    },
+    {
+      "lang": "en",
+      "text": "uses a sandbox very heavily. Uh you can",
+      "offset": 126.24,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "see that I've asked it to create a chat",
+      "offset": 129.039,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "GPT clone and it it's running all sorts",
+      "offset": 130.72,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "of commands inside the Linux sandbox. Uh",
+      "offset": 133.599,
+      "duration": 4.321
+    },
+    {
+      "lang": "en",
+      "text": "it will also try to run the app, see if",
+      "offset": 135.84,
+      "duration": 3.759
+    },
+    {
+      "lang": "en",
+      "text": "it didn't work and then try to fix it",
+      "offset": 137.92,
+      "duration": 4.399
+    },
+    {
+      "lang": "en",
+      "text": "itself. You don't need a big prompt or a",
+      "offset": 139.599,
+      "duration": 5.521
+    },
+    {
+      "lang": "en",
+      "text": "lot of like uh alignment and frameworks",
+      "offset": 142.319,
+      "duration": 4.721
+    },
+    {
+      "lang": "en",
+      "text": "to make a coding agent when it has a",
+      "offset": 145.12,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "Linux sandbox at its disposal just",
+      "offset": 147.04,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "because it has all of this uh like Linux",
+      "offset": 149.2,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "knowledge uh in its pre-training data.",
+      "offset": 151.68,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "So it could go a long way uh for code",
+      "offset": 153.44,
+      "duration": 6.72
+    },
+    {
+      "lang": "en",
+      "text": "generation tasks inside the sandbox.",
+      "offset": 156,
+      "duration": 6.28
+    },
+    {
+      "lang": "en",
+      "text": "With that background, introducing",
+      "offset": 160.16,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "Arachus. Arachus provides a secure,",
+      "offset": 162.28,
+      "duration": 5
+    },
+    {
+      "lang": "en",
+      "text": "fully customizable and self-hosted",
+      "offset": 165.2,
+      "duration": 4.319
+    },
+    {
+      "lang": "en",
+      "text": "solution to spawn and manage AI",
+      "offset": 167.28,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "sandboxes for code execution and",
+      "offset": 169.519,
+      "duration": 4.161
+    },
+    {
+      "lang": "en",
+      "text": "computer use. It has out ofthe-box",
+      "offset": 171.44,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "support for backtracking via snapshot",
+      "offset": 173.68,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "and restore. And what that means is",
+      "offset": 175.92,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "agents can backtrack and don't have to",
+      "offset": 177.76,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "start from scratch if they fail during",
+      "offset": 179.92,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "multi-step workflows. Best of all, it is",
+      "offset": 181.68,
+      "duration": 4.639
+    },
+    {
+      "lang": "en",
+      "text": "completely open source and you can dive",
+      "offset": 184.56,
+      "duration": 3.679
+    },
+    {
+      "lang": "en",
+      "text": "into the code and we will do that today",
+      "offset": 186.319,
+      "duration": 4.081
+    },
+    {
+      "lang": "en",
+      "text": "to see how to make an AI sandbox like",
+      "offset": 188.239,
+      "duration": 4.681
+    },
+    {
+      "lang": "en",
+      "text": "Arachus from",
+      "offset": 190.4,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "scratch. Now let's go over the features",
+      "offset": 192.92,
+      "duration": 5.64
+    },
+    {
+      "lang": "en",
+      "text": "of Arachus. U let's start with microVM",
+      "offset": 195.2,
+      "duration": 5
+    },
+    {
+      "lang": "en",
+      "text": "based secure code",
+      "offset": 198.56,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "execution. As discussed, security is",
+      "offset": 200.2,
+      "duration": 5.319
+    },
+    {
+      "lang": "en",
+      "text": "paramount for AI sandboxes. Arachus uses",
+      "offset": 202.8,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "microVMs as a runtime and we'll go into",
+      "offset": 205.519,
+      "duration": 4.321
+    },
+    {
+      "lang": "en",
+      "text": "more detail there. But like I mentioned",
+      "offset": 207.68,
+      "duration": 4.639
+    },
+    {
+      "lang": "en",
+      "text": "code generated by AI AI agents would",
+      "offset": 209.84,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "increase exponentially uh as people are",
+      "offset": 212.319,
+      "duration": 4.081
+    },
+    {
+      "lang": "en",
+      "text": "using windsurf cursor and more and more",
+      "offset": 214.56,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "coding agents. We don't want these",
+      "offset": 216.4,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "malicious or potentially buggy code to",
+      "offset": 218.72,
+      "duration": 3.519
+    },
+    {
+      "lang": "en",
+      "text": "get root and we want to protect your",
+      "offset": 220.56,
+      "duration": 4.36
+    },
+    {
+      "lang": "en",
+      "text": "data, your systems, your client's data.",
+      "offset": 222.239,
+      "duration": 6.241
+    },
+    {
+      "lang": "en",
+      "text": "Um second is speed. Speed is paramount",
+      "offset": 224.92,
+      "duration": 5.8
+    },
+    {
+      "lang": "en",
+      "text": "for AI sandboxes. You want these things",
+      "offset": 228.48,
+      "duration": 4.479
+    },
+    {
+      "lang": "en",
+      "text": "at scale to be able to call tools,",
+      "offset": 230.72,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "generate code fast. Currently, Iraqis",
+      "offset": 232.959,
+      "duration": 4.161
+    },
+    {
+      "lang": "en",
+      "text": "boots in less than 7 seconds, which is",
+      "offset": 235.2,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "way way better than 40 seconds for a",
+      "offset": 237.12,
+      "duration": 5.119
+    },
+    {
+      "lang": "en",
+      "text": "traditional old VM on Mac OS. We have a",
+      "offset": 239.36,
+      "duration": 5.599
+    },
+    {
+      "lang": "en",
+      "text": "PR out right now to get that time below",
+      "offset": 242.239,
+      "duration": 5.92
+    },
+    {
+      "lang": "en",
+      "text": "a second. Um, also snapshots are super",
+      "offset": 244.959,
+      "duration": 4.881
+    },
+    {
+      "lang": "en",
+      "text": "fast, singledigit seconds and just",
+      "offset": 248.159,
+      "duration": 4.681
+    },
+    {
+      "lang": "en",
+      "text": "getting uh lower and lower with",
+      "offset": 249.84,
+      "duration": 6.08
+    },
+    {
+      "lang": "en",
+      "text": "work. Uh, Arais handles all also port",
+      "offset": 252.84,
+      "duration": 4.919
+    },
+    {
+      "lang": "en",
+      "text": "forwarding for you. So, code exec",
+      "offset": 255.92,
+      "duration": 4.719
+    },
+    {
+      "lang": "en",
+      "text": "browser use, you can access them easily",
+      "offset": 257.759,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "uh via just a public URL and a port. You",
+      "offset": 260.639,
+      "duration": 4.081
+    },
+    {
+      "lang": "en",
+      "text": "don't have to muck with IP tables,",
+      "offset": 263.199,
+      "duration": 5.56
+    },
+    {
+      "lang": "en",
+      "text": "firewalls. Arachis takes care of all of",
+      "offset": 264.72,
+      "duration": 6.8
+    },
+    {
+      "lang": "en",
+      "text": "that. Easy computer use agent sort of",
+      "offset": 268.759,
+      "duration": 4.841
+    },
+    {
+      "lang": "en",
+      "text": "workflows. Chrome is pre-installed and",
+      "offset": 271.52,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "there's a VNC server that's hooked up",
+      "offset": 273.6,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "pre-installed and so you can access the",
+      "offset": 275.36,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "guey of your browser very easily. Uh you",
+      "offset": 277.68,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "can see uh Chrome instance opened in an",
+      "offset": 280.32,
+      "duration": 5.08
+    },
+    {
+      "lang": "en",
+      "text": "Ara sandbox here.",
+      "offset": 282.72,
+      "duration": 5.84
+    },
+    {
+      "lang": "en",
+      "text": "Um backtracking is super in important as",
+      "offset": 285.4,
+      "duration": 5.4
+    },
+    {
+      "lang": "en",
+      "text": "well. Like I mentioned, Ara supports",
+      "offset": 288.56,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "snapshot and restore. So agents can",
+      "offset": 290.8,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "checkpoint progress by snapshotting the",
+      "offset": 293.04,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "sandbox. If they fail in their",
+      "offset": 295.44,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "multi-step flows, they can restore an",
+      "offset": 297.36,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "old snapshot. Uh this way we can get",
+      "offset": 300.16,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "more reliable, higher order complex task",
+      "offset": 302.32,
+      "duration": 5.56
+    },
+    {
+      "lang": "en",
+      "text": "execution via",
+      "offset": 305.12,
+      "duration": 5.359
+    },
+    {
+      "lang": "en",
+      "text": "agents. Arachus is a dead simple and",
+      "offset": 307.88,
+      "duration": 5.56
+    },
+    {
+      "lang": "en",
+      "text": "ubiquitous API. Uh it has a Python API,",
+      "offset": 310.479,
+      "duration": 5.841
+    },
+    {
+      "lang": "en",
+      "text": "a Golang client and MCP server. It has",
+      "offset": 313.44,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "an open API compatible YAML file. So you",
+      "offset": 316.32,
+      "duration": 4.319
+    },
+    {
+      "lang": "en",
+      "text": "can generate any client in any language",
+      "offset": 318.88,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "that you want.",
+      "offset": 320.639,
+      "duration": 4.881
+    },
+    {
+      "lang": "en",
+      "text": "Lastly, it's configurable with Docker",
+      "offset": 323.52,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "tooling. So, you can use your existing",
+      "offset": 325.52,
+      "duration": 3.28
+    },
+    {
+      "lang": "en",
+      "text": "Docker commands and there's a Docker",
+      "offset": 327.36,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "file to customize what binaries and",
+      "offset": 328.8,
+      "duration": 4.239
+    },
+    {
+      "lang": "en",
+      "text": "packages are installed in the sandbox.",
+      "offset": 330.72,
+      "duration": 4.319
+    },
+    {
+      "lang": "en",
+      "text": "So, Arachus gives you complete control",
+      "offset": 333.039,
+      "duration": 3.761
+    },
+    {
+      "lang": "en",
+      "text": "and freedom on what you want to run",
+      "offset": 335.039,
+      "duration": 2.921
+    },
+    {
+      "lang": "en",
+      "text": "inside your",
+      "offset": 336.8,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "sandbox. So, this is the highle",
+      "offset": 337.96,
+      "duration": 4.519
+    },
+    {
+      "lang": "en",
+      "text": "architecture of Arachus. Uh you can see",
+      "offset": 340.16,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "it has a REST server that spawns and",
+      "offset": 342.479,
+      "duration": 5.201
+    },
+    {
+      "lang": "en",
+      "text": "manages microVM sandboxes. Each of the",
+      "offset": 344.88,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "sandboxes runs a VNC server and a code",
+      "offset": 347.68,
+      "duration": 4.959
+    },
+    {
+      "lang": "en",
+      "text": "server. We do the port forwarding to",
+      "offset": 350.24,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "expose a VNC server and you can access",
+      "offset": 352.639,
+      "duration": 5.601
+    },
+    {
+      "lang": "en",
+      "text": "the guey and chrome via VNC client. We",
+      "offset": 354.96,
+      "duration": 5.84
+    },
+    {
+      "lang": "en",
+      "text": "give a rackis CLI Golang based CLI",
+      "offset": 358.24,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "called a rack client. There's a Python",
+      "offset": 360.8,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "SDK. There's also an MCP server that's",
+      "offset": 362.88,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "not shown here. Uh so there's a lot",
+      "offset": 364.96,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "going on here but in the next half of",
+      "offset": 367.12,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "the presentation we'll work towards what",
+      "offset": 369.52,
+      "duration": 4.799
+    },
+    {
+      "lang": "en",
+      "text": "all go inside each of these uh",
+      "offset": 371.84,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "components and see how an AI sandbox uh",
+      "offset": 374.319,
+      "duration": 6.081
+    },
+    {
+      "lang": "en",
+      "text": "is made. Um, Arachus is tied to Linux",
+      "offset": 377.36,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "just because the microVM tech that we",
+      "offset": 380.4,
+      "duration": 5.519
+    },
+    {
+      "lang": "en",
+      "text": "used uh is tied to uh dev KVM which is",
+      "offset": 382.4,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "the Linux virtualization uh device. So",
+      "offset": 385.919,
+      "duration": 6.081
+    },
+    {
+      "lang": "en",
+      "text": "it's tied to the Linux virtualization",
+      "offset": 388.4,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "stack. Let's move to the API of Arachus.",
+      "offset": 393.479,
+      "duration": 5.241
+    },
+    {
+      "lang": "en",
+      "text": "And uh you can see we have a very simple",
+      "offset": 396.72,
+      "duration": 6.16
+    },
+    {
+      "lang": "en",
+      "text": "rest based API. uh there's a key VMs uh",
+      "offset": 398.72,
+      "duration": 7.28
+    },
+    {
+      "lang": "en",
+      "text": "uh resource that you use to like uh like",
+      "offset": 402.88,
+      "duration": 6.4
+    },
+    {
+      "lang": "en",
+      "text": "start, stop, delete a VM. Inside that",
+      "offset": 406,
+      "duration": 5.6
+    },
+    {
+      "lang": "en",
+      "text": "you can you also have a snapshots",
+      "offset": 409.28,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "resource. So you can like snapshot a VM",
+      "offset": 411.6,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "very easily by this snapshots API and",
+      "offset": 414.16,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "within a VM you get command execution",
+      "offset": 416.8,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "with the command resource and you can",
+      "offset": 418.8,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "upload and download files from within",
+      "offset": 420.88,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "the sandbox using the files API. And",
+      "offset": 422.72,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "finally, there's a health check endpoint",
+      "offset": 425.12,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "as well. If you want uh to have a",
+      "offset": 426.96,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "distributed version and you want to see",
+      "offset": 429.44,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "the health of your Arachus REST server,",
+      "offset": 430.88,
+      "duration": 6.28
+    },
+    {
+      "lang": "en",
+      "text": "uh this is what the API",
+      "offset": 434.24,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "exposes. Okay, we discussed about the",
+      "offset": 437.16,
+      "duration": 5.24
+    },
+    {
+      "lang": "en",
+      "text": "API that Arachus exposes and now we have",
+      "offset": 439.68,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "an updated architecture. We can see that",
+      "offset": 442.4,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "we have a rest server running on a Linux",
+      "offset": 444.56,
+      "duration": 5.039
+    },
+    {
+      "lang": "en",
+      "text": "host or a Linux server uh exposing a",
+      "offset": 446.88,
+      "duration": 6.319
+    },
+    {
+      "lang": "en",
+      "text": "REST API uh via the Python SDK or the",
+      "offset": 449.599,
+      "duration": 6.961
+    },
+    {
+      "lang": "en",
+      "text": "Golang uh CLI. We also have an M MCP",
+      "offset": 453.199,
+      "duration": 6.961
+    },
+    {
+      "lang": "en",
+      "text": "server and an open API uh based YAML",
+      "offset": 456.56,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "file that you can use to generate",
+      "offset": 460.16,
+      "duration": 4.319
+    },
+    {
+      "lang": "en",
+      "text": "clients in any languages. Um and we'll",
+      "offset": 461.84,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "keep updating this architecture as we go",
+      "offset": 464.479,
+      "duration": 3.921
+    },
+    {
+      "lang": "en",
+      "text": "inside the architecture of the sandbox.",
+      "offset": 466.4,
+      "duration": 4.919
+    },
+    {
+      "lang": "en",
+      "text": "Uh so let's move forward.",
+      "offset": 468.4,
+      "duration": 5.84
+    },
+    {
+      "lang": "en",
+      "text": "Arachus uses something called microVMs",
+      "offset": 471.319,
+      "duration": 6.041
+    },
+    {
+      "lang": "en",
+      "text": "to give secure sandboxes to uh models",
+      "offset": 474.24,
+      "duration": 6.88
+    },
+    {
+      "lang": "en",
+      "text": "and AI agents. Uh but what are microVMs",
+      "offset": 477.36,
+      "duration": 6.16
+    },
+    {
+      "lang": "en",
+      "text": "and why do they or how do they provide a",
+      "offset": 481.12,
+      "duration": 4.479
+    },
+    {
+      "lang": "en",
+      "text": "secure environment? For that, let's take",
+      "offset": 483.52,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "a quick tour of Linux sandboxing and",
+      "offset": 485.599,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "I'll build from scratch uh your",
+      "offset": 487.52,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "knowledge about Linux sandboxing and",
+      "offset": 489.599,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "what are different options are and why",
+      "offset": 491.28,
+      "duration": 3.16
+    },
+    {
+      "lang": "en",
+      "text": "we chose",
+      "offset": 493.039,
+      "duration": 3.681
+    },
+    {
+      "lang": "en",
+      "text": "microVMs. Let's start with the Linux",
+      "offset": 494.44,
+      "duration": 5.24
+    },
+    {
+      "lang": "en",
+      "text": "execution model. So this diagram kind of",
+      "offset": 496.72,
+      "duration": 5
+    },
+    {
+      "lang": "en",
+      "text": "goes over the basic Linux execution",
+      "offset": 499.68,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "model. Uh a thread is the smallest unit",
+      "offset": 501.72,
+      "duration": 6.039
+    },
+    {
+      "lang": "en",
+      "text": "of execution on Linux. Each thread has a",
+      "offset": 504.72,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "task truck in the kernel that's in the",
+      "offset": 507.759,
+      "duration": 4.081
+    },
+    {
+      "lang": "en",
+      "text": "scheduleuler run Q. And what that means",
+      "offset": 510.08,
+      "duration": 3.28
+    },
+    {
+      "lang": "en",
+      "text": "is there's a link list or a data",
+      "offset": 511.84,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "structure uh connecting these like task",
+      "offset": 513.36,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "trucks and these are used to represent",
+      "offset": 516.08,
+      "duration": 6.079
+    },
+    {
+      "lang": "en",
+      "text": "uh each thread or the unit of execution.",
+      "offset": 518.8,
+      "duration": 6.159
+    },
+    {
+      "lang": "en",
+      "text": "A process is a logical construct made up",
+      "offset": 522.159,
+      "duration": 5.521
+    },
+    {
+      "lang": "en",
+      "text": "of multiple threads. Um threads in a",
+      "offset": 524.959,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "process have different tids but the same",
+      "offset": 527.68,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "pit. They share page table and other",
+      "offset": 529.519,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "resources. Uh and so they're logically",
+      "offset": 531.76,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "bound and connected by shared resources.",
+      "offset": 533.519,
+      "duration": 5.281
+    },
+    {
+      "lang": "en",
+      "text": "Uh kernel provides privileged access to",
+      "offset": 536.08,
+      "duration": 5.199
+    },
+    {
+      "lang": "en",
+      "text": "hardware. Um if this wasn't the case",
+      "offset": 538.8,
+      "duration": 6.08
+    },
+    {
+      "lang": "en",
+      "text": "then any buggy or malicious uh uh like",
+      "offset": 541.279,
+      "duration": 5.841
+    },
+    {
+      "lang": "en",
+      "text": "code running in a thread can just crash",
+      "offset": 544.88,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "an entire device or or do malicious",
+      "offset": 547.12,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "things. Um and special instructions are",
+      "offset": 549.6,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "needed to switch to kernel mode uh or",
+      "offset": 552.16,
+      "duration": 4.239
+    },
+    {
+      "lang": "en",
+      "text": "supervisor mode. Um and we need to",
+      "offset": 554.24,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "invoke a system call for privileged",
+      "offset": 556.399,
+      "duration": 4.081
+    },
+    {
+      "lang": "en",
+      "text": "access. Uh and so you can see in the",
+      "offset": 558.32,
+      "duration": 4.639
+    },
+    {
+      "lang": "en",
+      "text": "diagram when we do like int o o x80",
+      "offset": 560.48,
+      "duration": 4.479
+    },
+    {
+      "lang": "en",
+      "text": "that's us trying to get to privileged",
+      "offset": 562.959,
+      "duration": 4.801
+    },
+    {
+      "lang": "en",
+      "text": "mode and uh get access to hardware or do",
+      "offset": 564.959,
+      "duration": 5.481
+    },
+    {
+      "lang": "en",
+      "text": "like privileged operations on our",
+      "offset": 567.76,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "OS. Okay, we've discussed the basic",
+      "offset": 570.44,
+      "duration": 5.24
+    },
+    {
+      "lang": "en",
+      "text": "Linux threadbased execution model. Now",
+      "offset": 573.12,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "let's discuss about containers. Uh why",
+      "offset": 575.68,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "do we have them and what they are? So",
+      "offset": 578.32,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "first uh let me give you a programmer's",
+      "offset": 581.2,
+      "duration": 4.319
+    },
+    {
+      "lang": "en",
+      "text": "perspective of uh what problem",
+      "offset": 583.6,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "containers solve. Uh and so in this",
+      "offset": 585.519,
+      "duration": 4.641
+    },
+    {
+      "lang": "en",
+      "text": "diagram you can see a container and the",
+      "offset": 587.92,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "concept of name spaces. But yeah let's",
+      "offset": 590.16,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "dive deeper. Um so first why like let's",
+      "offset": 592,
+      "duration": 7.279
+    },
+    {
+      "lang": "en",
+      "text": "say my app needs Python 3.8 uh a version",
+      "offset": 595.36,
+      "duration": 7.2
+    },
+    {
+      "lang": "en",
+      "text": "of a library fu with 1.2 and my server",
+      "offset": 599.279,
+      "duration": 7.12
+    },
+    {
+      "lang": "en",
+      "text": "has Python 3.9 3.6 3.12 but doesn't have",
+      "offset": 602.56,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "3.8 and it doesn't even have the library",
+      "offset": 606.399,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "fu. So how do I run my app on like an",
+      "offset": 608.56,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "arbitrary server without these things",
+      "offset": 611.839,
+      "duration": 3.361
+    },
+    {
+      "lang": "en",
+      "text": "right? And so containers from a",
+      "offset": 613.6,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "programmer's perspective are a way to",
+      "offset": 615.2,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "package an app's dependencies along with",
+      "offset": 617.2,
+      "duration": 5.199
+    },
+    {
+      "lang": "en",
+      "text": "the core business logic. Um uh as a",
+      "offset": 619.12,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "corollery they let you run arbitrary",
+      "offset": 622.399,
+      "duration": 4.321
+    },
+    {
+      "lang": "en",
+      "text": "user code on your machine which as we've",
+      "offset": 624.56,
+      "duration": 3.839
+    },
+    {
+      "lang": "en",
+      "text": "discussed is one of the core features",
+      "offset": 626.72,
+      "duration": 5.359
+    },
+    {
+      "lang": "en",
+      "text": "required by an AI sandbox. Um getting",
+      "offset": 628.399,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "more technical on a Linux a container is",
+      "offset": 632.079,
+      "duration": 4.401
+    },
+    {
+      "lang": "en",
+      "text": "a collection of namespaces of different",
+      "offset": 634.399,
+      "duration": 6.081
+    },
+    {
+      "lang": "en",
+      "text": "resources. So process mount and net for",
+      "offset": 636.48,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "our example of key resources that you",
+      "offset": 640.48,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "can abstract in namespaces. What that",
+      "offset": 642.48,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "means is like if you have a process name",
+      "offset": 644.8,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "space uh for instance in a container um",
+      "offset": 647.36,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "it sees certain processes as pit 1, pit",
+      "offset": 650.32,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "2 and pit 3 within its name space but",
+      "offset": 652.8,
+      "duration": 4.719
+    },
+    {
+      "lang": "en",
+      "text": "outside these are like arbitrary",
+      "offset": 655.36,
+      "duration": 4.719
+    },
+    {
+      "lang": "en",
+      "text": "processes uh running in the user space",
+      "offset": 657.519,
+      "duration": 4.961
+    },
+    {
+      "lang": "en",
+      "text": "in the root name space. So container has",
+      "offset": 660.079,
+      "duration": 5.601
+    },
+    {
+      "lang": "en",
+      "text": "a very like uh abstracted or bound view",
+      "offset": 662.48,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "of its own resources. Uh and the host",
+      "offset": 665.68,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "can peak inside a child container",
+      "offset": 668.24,
+      "duration": 5.039
+    },
+    {
+      "lang": "en",
+      "text": "namespace but a container cannot like",
+      "offset": 670.72,
+      "duration": 4.559
+    },
+    {
+      "lang": "en",
+      "text": "look upwards and see in its host name",
+      "offset": 673.279,
+      "duration": 5.081
+    },
+    {
+      "lang": "en",
+      "text": "space. So this is one way of like",
+      "offset": 675.279,
+      "duration": 6.641
+    },
+    {
+      "lang": "en",
+      "text": "um telling processes or like contents",
+      "offset": 678.36,
+      "duration": 6.12
+    },
+    {
+      "lang": "en",
+      "text": "running in the container uh that like",
+      "offset": 681.92,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "you have your own uh controllable like",
+      "offset": 684.48,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "resources u uh and it's like a little",
+      "offset": 687.04,
+      "duration": 6.88
+    },
+    {
+      "lang": "en",
+      "text": "bit of a false boundary so to speak. Uh",
+      "offset": 689.6,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "so like I said yeah outside the",
+      "offset": 693.92,
+      "duration": 3.28
+    },
+    {
+      "lang": "en",
+      "text": "container you can see everything inside",
+      "offset": 695.36,
+      "duration": 3.919
+    },
+    {
+      "lang": "en",
+      "text": "your inside your child's namespace but",
+      "offset": 697.2,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "it doesn't work the opposite way. uh we",
+      "offset": 699.279,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "also use something called croups uh in",
+      "offset": 701.76,
+      "duration": 4.639
+    },
+    {
+      "lang": "en",
+      "text": "tandem with namespaces. So containers",
+      "offset": 704.079,
+      "duration": 4.561
+    },
+    {
+      "lang": "en",
+      "text": "are collections of namespaces and croups",
+      "offset": 706.399,
+      "duration": 5.041
+    },
+    {
+      "lang": "en",
+      "text": "like uh can control how many resource a",
+      "offset": 708.64,
+      "duration": 6.72
+    },
+    {
+      "lang": "en",
+      "text": "resource and container can uh access. So",
+      "offset": 711.44,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "what percentage of memory, what",
+      "offset": 715.36,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "percentage of CPU do you want to give uh",
+      "offset": 716.88,
+      "duration": 5.399
+    },
+    {
+      "lang": "en",
+      "text": "to a specific container running on your",
+      "offset": 719.12,
+      "duration": 5.6
+    },
+    {
+      "lang": "en",
+      "text": "machine. Let's talk about the security",
+      "offset": 722.279,
+      "duration": 6.24
+    },
+    {
+      "lang": "en",
+      "text": "story of containers.",
+      "offset": 724.72,
+      "duration": 3.799
+    },
+    {
+      "lang": "en",
+      "text": "Um and so here you can see a container",
+      "offset": 728.959,
+      "duration": 4.961
+    },
+    {
+      "lang": "en",
+      "text": "uh consisting of a paid name space",
+      "offset": 731.839,
+      "duration": 3.481
+    },
+    {
+      "lang": "en",
+      "text": "running on top",
+      "offset": 733.92,
+      "duration": 6.08
+    },
+    {
+      "lang": "en",
+      "text": "of a a kernel uh on a server. Uh and so",
+      "offset": 735.32,
+      "duration": 6.84
+    },
+    {
+      "lang": "en",
+      "text": "you can see that after all containers",
+      "offset": 740,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "run as native processes on top of the",
+      "offset": 742.16,
+      "duration": 5.119
+    },
+    {
+      "lang": "en",
+      "text": "kernel. U there's a logical binding of",
+      "offset": 744.88,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "resources but at the end these are just",
+      "offset": 747.279,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "like processes running on top of the",
+      "offset": 749.04,
+      "duration": 4.239
+    },
+    {
+      "lang": "en",
+      "text": "kernel. So you can imagine now that if",
+      "offset": 750.959,
+      "duration": 5.041
+    },
+    {
+      "lang": "en",
+      "text": "you have a kernel vulnerability um uh",
+      "offset": 753.279,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "any malicious or buggy process can",
+      "offset": 756,
+      "duration": 4.079
+    },
+    {
+      "lang": "en",
+      "text": "attack the kernel and gain root and then",
+      "offset": 757.839,
+      "duration": 4.481
+    },
+    {
+      "lang": "en",
+      "text": "once it became becomes root it can do",
+      "offset": 760.079,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "basically anything it wants. It can dump",
+      "offset": 762.32,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "me. It can read your data. It can like",
+      "offset": 763.839,
+      "duration": 6.641
+    },
+    {
+      "lang": "en",
+      "text": "pretend to be like uh someone it's not.",
+      "offset": 766.88,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "So all sorts of attack vectors are on",
+      "offset": 770.48,
+      "duration": 2.919
+    },
+    {
+      "lang": "en",
+      "text": "the",
+      "offset": 772.32,
+      "duration": 3.759
+    },
+    {
+      "lang": "en",
+      "text": "cards. Okay. So we now know what",
+      "offset": 773.399,
+      "duration": 5.401
+    },
+    {
+      "lang": "en",
+      "text": "containers are and like what's what one",
+      "offset": 776.079,
+      "duration": 4.641
+    },
+    {
+      "lang": "en",
+      "text": "of the security flaws that containers",
+      "offset": 778.8,
+      "duration": 3.839
+    },
+    {
+      "lang": "en",
+      "text": "have. Um so what are what are the",
+      "offset": 780.72,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "alternatives like uh how can we let's",
+      "offset": 782.639,
+      "duration": 5.041
+    },
+    {
+      "lang": "en",
+      "text": "say like sandbox or jail container uh to",
+      "offset": 784.72,
+      "duration": 4.559
+    },
+    {
+      "lang": "en",
+      "text": "kind of mitigate these things. So let's",
+      "offset": 787.68,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "look into",
+      "offset": 789.279,
+      "duration": 2.401
+    },
+    {
+      "lang": "en",
+      "text": "that right and so like I said like if",
+      "offset": 792.44,
+      "duration": 4.6
+    },
+    {
+      "lang": "en",
+      "text": "there's a kernel vulnerability a",
+      "offset": 795.36,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "container can attack it and get root but",
+      "offset": 797.04,
+      "duration": 4.479
+    },
+    {
+      "lang": "en",
+      "text": "let's see how we can reduce the attack",
+      "offset": 799.76,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "surface by uh using some techniques that",
+      "offset": 801.519,
+      "duration": 5.041
+    },
+    {
+      "lang": "en",
+      "text": "we have. So one is like the fundamental",
+      "offset": 804,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "principle is to jail the containers by",
+      "offset": 806.56,
+      "duration": 4.399
+    },
+    {
+      "lang": "en",
+      "text": "restricting like the Linux capabilities",
+      "offset": 808.56,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "and like the sys calls they can call and",
+      "offset": 810.959,
+      "duration": 4.801
+    },
+    {
+      "lang": "en",
+      "text": "so in effect reducing the attack surface",
+      "offset": 813.36,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "that's available to it and so the way",
+      "offset": 815.76,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "this works is right like Linux has a",
+      "offset": 818.16,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "concept of caps or capabilities and that",
+      "offset": 820.16,
+      "duration": 6.479
+    },
+    {
+      "lang": "en",
+      "text": "kind of govern what sys calls or",
+      "offset": 823.44,
+      "duration": 5.519
+    },
+    {
+      "lang": "en",
+      "text": "privileged operations a process can do",
+      "offset": 826.639,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "and so you only give capabilities that",
+      "offset": 828.959,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "are required by your container to do its",
+      "offset": 831.279,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "work. you don't give it like a catch",
+      "offset": 833.519,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "all. Um and these indirectly control",
+      "offset": 834.959,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "what system calls and what code paths",
+      "offset": 837.519,
+      "duration": 4.081
+    },
+    {
+      "lang": "en",
+      "text": "they can take within the system call.",
+      "offset": 839.519,
+      "duration": 5.201
+    },
+    {
+      "lang": "en",
+      "text": "Another thing is sec which like uh",
+      "offset": 841.6,
+      "duration": 6.4
+    },
+    {
+      "lang": "en",
+      "text": "filters the arguments you can give to a",
+      "offset": 844.72,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "system call or just block system calls",
+      "offset": 848,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "all together. So sec filters is another",
+      "offset": 850,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "option. Um and so you can these are like",
+      "offset": 851.92,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "gnarly or hard to use APIs with a lot of",
+      "offset": 854.8,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "granular error checking. So there's a",
+      "offset": 857.68,
+      "duration": 3.599
+    },
+    {
+      "lang": "en",
+      "text": "library called mini jail that we used to",
+      "offset": 859.68,
+      "duration": 3.519
+    },
+    {
+      "lang": "en",
+      "text": "use at Chrome OS that I highly recommend",
+      "offset": 861.279,
+      "duration": 4.081
+    },
+    {
+      "lang": "en",
+      "text": "to check out that helps in like jailing",
+      "offset": 863.199,
+      "duration": 4.44
+    },
+    {
+      "lang": "en",
+      "text": "and sandboxing of uh containers and",
+      "offset": 865.36,
+      "duration": 6.159
+    },
+    {
+      "lang": "en",
+      "text": "processes. Okay, sandboxing can only go",
+      "offset": 867.639,
+      "duration": 6.841
+    },
+    {
+      "lang": "en",
+      "text": "so far and jails also have their limits.",
+      "offset": 871.519,
+      "duration": 4.961
+    },
+    {
+      "lang": "en",
+      "text": "This can still bypass them. Uh let's say",
+      "offset": 874.48,
+      "duration": 4.159
+    },
+    {
+      "lang": "en",
+      "text": "you need a heavier hammer, right? Uh",
+      "offset": 876.48,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "what options do we have? So let's",
+      "offset": 878.639,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "discuss going from containers to",
+      "offset": 880.88,
+      "duration": 3.399
+    },
+    {
+      "lang": "en",
+      "text": "virtualization on",
+      "offset": 882.639,
+      "duration": 4.801
+    },
+    {
+      "lang": "en",
+      "text": "Linux. So let's discuss a highle view of",
+      "offset": 884.279,
+      "duration": 5.481
+    },
+    {
+      "lang": "en",
+      "text": "virtualization. Um, virtualization",
+      "offset": 887.44,
+      "duration": 3.839
+    },
+    {
+      "lang": "en",
+      "text": "provides another primitive to run",
+      "offset": 889.76,
+      "duration": 3.439
+    },
+    {
+      "lang": "en",
+      "text": "untrusted or arbitrary code on your",
+      "offset": 891.279,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "machines. Um, each VM has its own guest",
+      "offset": 893.199,
+      "duration": 5.681
+    },
+    {
+      "lang": "en",
+      "text": "user space and guest kernel. And so",
+      "offset": 896.399,
+      "duration": 4.321
+    },
+    {
+      "lang": "en",
+      "text": "unlike the container model where the",
+      "offset": 898.88,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "processes run directly on top of the",
+      "offset": 900.72,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "host kernel, uh, this in this way the",
+      "offset": 902.8,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "processes have their own isolated kernel",
+      "offset": 905.44,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "and user space. And um, there's a very",
+      "offset": 907.68,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "little there's a smaller attack surface",
+      "offset": 910.56,
+      "duration": 3.839
+    },
+    {
+      "lang": "en",
+      "text": "to get to the host kernel compared to a",
+      "offset": 912.32,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "container. And so the question is in",
+      "offset": 914.399,
+      "duration": 3.921
+    },
+    {
+      "lang": "en",
+      "text": "this diagram like you need to access",
+      "offset": 916.32,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "like hardware and other like resources.",
+      "offset": 918.32,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "So how do VMs then access the host",
+      "offset": 920.24,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "resources in this virtualization model",
+      "offset": 922.16,
+      "duration": 3.32
+    },
+    {
+      "lang": "en",
+      "text": "on",
+      "offset": 924.48,
+      "duration": 3.919
+    },
+    {
+      "lang": "en",
+      "text": "Linux. Okay. Now let's dive deeper into",
+      "offset": 925.48,
+      "duration": 5.32
+    },
+    {
+      "lang": "en",
+      "text": "Linux",
+      "offset": 928.399,
+      "duration": 2.401
+    },
+    {
+      "lang": "en",
+      "text": "virtualization. Yeah, as you can see",
+      "offset": 934.04,
+      "duration": 4.12
+    },
+    {
+      "lang": "en",
+      "text": "that uh this is a more fleshed out",
+      "offset": 936.399,
+      "duration": 4.081
+    },
+    {
+      "lang": "en",
+      "text": "diagram of Linux virtualization. Let me",
+      "offset": 938.16,
+      "duration": 4.799
+    },
+    {
+      "lang": "en",
+      "text": "go over the main parts here. So on the",
+      "offset": 940.48,
+      "duration": 4.159
+    },
+    {
+      "lang": "en",
+      "text": "right hand side there's some client that",
+      "offset": 942.959,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "wants to spawn a virtual machine. Um and",
+      "offset": 944.639,
+      "duration": 6.081
+    },
+    {
+      "lang": "en",
+      "text": "the main actor here is this process",
+      "offset": 948.079,
+      "duration": 4.721
+    },
+    {
+      "lang": "en",
+      "text": "called the VMM. The virtual machine",
+      "offset": 950.72,
+      "duration": 4.799
+    },
+    {
+      "lang": "en",
+      "text": "monitor and you might have heard of QMU",
+      "offset": 952.8,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "CrossVM or firecracker. The main process",
+      "offset": 955.519,
+      "duration": 5.921
+    },
+    {
+      "lang": "en",
+      "text": "here is the VMM. The VMM sits on top of",
+      "offset": 958.24,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "devk which is like a device in the Linux",
+      "offset": 961.44,
+      "duration": 5.519
+    },
+    {
+      "lang": "en",
+      "text": "kernel that exposes uh the processor's",
+      "offset": 964.24,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "virtualization stack uh and provides a",
+      "offset": 966.959,
+      "duration": 5.921
+    },
+    {
+      "lang": "en",
+      "text": "nice API for the VMM process uh to talk",
+      "offset": 969.44,
+      "duration": 7.68
+    },
+    {
+      "lang": "en",
+      "text": "to in order to start a VM uh and uh give",
+      "offset": 972.88,
+      "duration": 7.759
+    },
+    {
+      "lang": "en",
+      "text": "it access to privileged resources. Uh so",
+      "offset": 977.12,
+      "duration": 6.399
+    },
+    {
+      "lang": "en",
+      "text": "let's discuss how this works. Um the VMM",
+      "offset": 980.639,
+      "duration": 5.921
+    },
+    {
+      "lang": "en",
+      "text": "talks to the KVM device to spawn VMs and",
+      "offset": 983.519,
+      "duration": 5.601
+    },
+    {
+      "lang": "en",
+      "text": "it also manages emulated devices inside.",
+      "offset": 986.56,
+      "duration": 4.399
+    },
+    {
+      "lang": "en",
+      "text": "So you can see there's a block device",
+      "offset": 989.12,
+      "duration": 4.079
+    },
+    {
+      "lang": "en",
+      "text": "and there's a net device. Some VMMs",
+      "offset": 990.959,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "spawn these in other uh sandbox",
+      "offset": 993.199,
+      "duration": 5.281
+    },
+    {
+      "lang": "en",
+      "text": "processes and some VMMs have them in the",
+      "offset": 995.519,
+      "duration": 6.081
+    },
+    {
+      "lang": "en",
+      "text": "same process. Um to the client process",
+      "offset": 998.48,
+      "duration": 5.599
+    },
+    {
+      "lang": "en",
+      "text": "it looks like the VMM thread is blocked",
+      "offset": 1001.6,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "but really inside that thread we are",
+      "offset": 1004.079,
+      "duration": 5.361
+    },
+    {
+      "lang": "en",
+      "text": "running all the guest code on the",
+      "offset": 1006.72,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "hardware. So in a separate",
+      "offset": 1009.44,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "virtualization context on your processor",
+      "offset": 1010.88,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "this hardware code is running whenever",
+      "offset": 1013.44,
+      "duration": 5.199
+    },
+    {
+      "lang": "en",
+      "text": "the virtual machine needs to access disk",
+      "offset": 1016.32,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "or net or any other like privilege",
+      "offset": 1018.639,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "resource on the host. It returns back to",
+      "offset": 1020.56,
+      "duration": 6.16
+    },
+    {
+      "lang": "en",
+      "text": "the host. So the VMM process gets a VM",
+      "offset": 1023.279,
+      "duration": 6.241
+    },
+    {
+      "lang": "en",
+      "text": "exit uh and then it figures out why the",
+      "offset": 1026.72,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "exit happened like which device caused",
+      "offset": 1029.52,
+      "duration": 4.399
+    },
+    {
+      "lang": "en",
+      "text": "the exit block net or something else. It",
+      "offset": 1031.36,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "then talks to the host kernel to do talk",
+      "offset": 1033.919,
+      "duration": 4.241
+    },
+    {
+      "lang": "en",
+      "text": "to the block disk device or the net",
+      "offset": 1036.48,
+      "duration": 3.839
+    },
+    {
+      "lang": "en",
+      "text": "device gets the response and sends it",
+      "offset": 1038.16,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "back to the guest with a VM resume. So",
+      "offset": 1040.319,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "the whole the whole idea is that VM",
+      "offset": 1042.72,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "exits and resumes are very very like",
+      "offset": 1045.839,
+      "duration": 5.121
+    },
+    {
+      "lang": "en",
+      "text": "performance uh uh uh affecting and so",
+      "offset": 1048,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "you want to minimize this and want to",
+      "offset": 1050.96,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "keep the uh guest code running in the",
+      "offset": 1052.88,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "guest context as much as possible. So if",
+      "offset": 1055.44,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "you're like CPU bound inside the guest,",
+      "offset": 1057.76,
+      "duration": 4.799
+    },
+    {
+      "lang": "en",
+      "text": "you're technically paying no penalty in",
+      "offset": 1060.08,
+      "duration": 5.68
+    },
+    {
+      "lang": "en",
+      "text": "a uh hardware virtualization model",
+      "offset": 1062.559,
+      "duration": 4.721
+    },
+    {
+      "lang": "en",
+      "text": "because you're running directly on the",
+      "offset": 1065.76,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "processor. But if you need a lot of like",
+      "offset": 1067.28,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "disk and net and other device access uh",
+      "offset": 1069.12,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "then there are other ways to you to",
+      "offset": 1071.76,
+      "duration": 3.2
+    },
+    {
+      "lang": "en",
+      "text": "think about performance because you",
+      "offset": 1073.6,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "might be exiting too often. Uh and there",
+      "offset": 1074.96,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "are other things you can do. You can",
+      "offset": 1077.36,
+      "duration": 2.72
+    },
+    {
+      "lang": "en",
+      "text": "cache more state and the guest memory",
+      "offset": 1078.4,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "and things but but yeah containers run",
+      "offset": 1080.08,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "directly on top of your host OS. So",
+      "offset": 1082.64,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "performance isn't uh a big factor",
+      "offset": 1084.72,
+      "duration": 4.079
+    },
+    {
+      "lang": "en",
+      "text": "because they're like native processes",
+      "offset": 1086.88,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "but the trade-off is of security. Here",
+      "offset": 1088.799,
+      "duration": 4.561
+    },
+    {
+      "lang": "en",
+      "text": "you get better security but in some",
+      "offset": 1091.12,
+      "duration": 4.76
+    },
+    {
+      "lang": "en",
+      "text": "loads the trade-off might be in",
+      "offset": 1093.36,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "performance. Okay, we've now discussed",
+      "offset": 1095.88,
+      "duration": 5.56
+    },
+    {
+      "lang": "en",
+      "text": "Linux virtualization and how it works.",
+      "offset": 1098.72,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "So what are microVMs and how do they",
+      "offset": 1101.44,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "differ from traditional VMs? Um so let's",
+      "offset": 1103.84,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "take a",
+      "offset": 1106.08,
+      "duration": 2.24
+    },
+    {
+      "lang": "en",
+      "text": "look. Okay. And so as you can see that",
+      "offset": 1108.6,
+      "duration": 5.8
+    },
+    {
+      "lang": "en",
+      "text": "um microVMs are slightly different from",
+      "offset": 1112.08,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "traditional VMs. So first of all um this",
+      "offset": 1114.4,
+      "duration": 6.24
+    },
+    {
+      "lang": "en",
+      "text": "term came from the crossvm project at",
+      "offset": 1118.08,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "chrome OS. CrossVM was the first rust",
+      "offset": 1120.64,
+      "duration": 5.84
+    },
+    {
+      "lang": "en",
+      "text": "based virtual machine monitor monitor",
+      "offset": 1123.28,
+      "duration": 5.759
+    },
+    {
+      "lang": "en",
+      "text": "and the reason we rewrote uh QMU like",
+      "offset": 1126.48,
+      "duration": 6.079
+    },
+    {
+      "lang": "en",
+      "text": "VMMs into Rust is they provide uh a",
+      "offset": 1129.039,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "memory safe implementation of",
+      "offset": 1132.559,
+      "duration": 4.721
+    },
+    {
+      "lang": "en",
+      "text": "virtualization. And so one aspect is",
+      "offset": 1134.559,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "that u technically untrusted code",
+      "offset": 1137.28,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "running in a guest can attack your host",
+      "offset": 1139.919,
+      "duration": 4.401
+    },
+    {
+      "lang": "en",
+      "text": "by attacking the devices written in C",
+      "offset": 1142.08,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "which have like memory safety related",
+      "offset": 1144.32,
+      "duration": 4.719
+    },
+    {
+      "lang": "en",
+      "text": "bugs. Um so writing rust gives you some",
+      "offset": 1146.24,
+      "duration": 5.679
+    },
+    {
+      "lang": "en",
+      "text": "degree of uh sanity there separately.",
+      "offset": 1149.039,
+      "duration": 5.361
+    },
+    {
+      "lang": "en",
+      "text": "Another feature of these VMMs is they",
+      "offset": 1151.919,
+      "duration": 5.281
+    },
+    {
+      "lang": "en",
+      "text": "jail their emulated devices separately.",
+      "offset": 1154.4,
+      "duration": 5.519
+    },
+    {
+      "lang": "en",
+      "text": "So um you can jail the block device to",
+      "offset": 1157.2,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "only have block related system calls. So",
+      "offset": 1159.919,
+      "duration": 4.561
+    },
+    {
+      "lang": "en",
+      "text": "if you compromise block you won't access",
+      "offset": 1162.24,
+      "duration": 4.559
+    },
+    {
+      "lang": "en",
+      "text": "network related things and vice versa",
+      "offset": 1164.48,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "you jail the net device to just have",
+      "offset": 1166.799,
+      "duration": 3.841
+    },
+    {
+      "lang": "en",
+      "text": "network related system calls. So yeah",
+      "offset": 1168.32,
+      "duration": 4.239
+    },
+    {
+      "lang": "en",
+      "text": "one way microvms are different is",
+      "offset": 1170.64,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "they're written in rust and they have",
+      "offset": 1172.559,
+      "duration": 3.921
+    },
+    {
+      "lang": "en",
+      "text": "this like more jailing uh based",
+      "offset": 1174,
+      "duration": 5.039
+    },
+    {
+      "lang": "en",
+      "text": "architecture for their emulated devices.",
+      "offset": 1176.48,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "And so one aspect is security. The other",
+      "offset": 1179.039,
+      "duration": 5.841
+    },
+    {
+      "lang": "en",
+      "text": "aspect is why are they called micro VMs?",
+      "offset": 1181.76,
+      "duration": 5.68
+    },
+    {
+      "lang": "en",
+      "text": "Where does a micro come from? And like",
+      "offset": 1184.88,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "they're known to boot really fast. So",
+      "offset": 1187.44,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "why and how do they boot fast? and also",
+      "offset": 1189.2,
+      "duration": 4.92
+    },
+    {
+      "lang": "en",
+      "text": "like take less memory.",
+      "offset": 1192,
+      "duration": 6.32
+    },
+    {
+      "lang": "en",
+      "text": "So old VMMs like QMU support a lot of",
+      "offset": 1194.12,
+      "duration": 6.2
+    },
+    {
+      "lang": "en",
+      "text": "architectures and have many many",
+      "offset": 1198.32,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "emulated devices supported. Um uh",
+      "offset": 1200.32,
+      "duration": 5.359
+    },
+    {
+      "lang": "en",
+      "text": "microVMs like cross VM, firecracker,",
+      "offset": 1203.6,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "cloud hypervisor don't do that. They",
+      "offset": 1205.679,
+      "duration": 3.281
+    },
+    {
+      "lang": "en",
+      "text": "only support like one or two",
+      "offset": 1207.36,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "architectures Intel and ARM and have",
+      "offset": 1208.96,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "support for the major devices and not",
+      "offset": 1211.52,
+      "duration": 5.519
+    },
+    {
+      "lang": "en",
+      "text": "like any like uh obscure device as well.",
+      "offset": 1213.76,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "What this means is that there's less",
+      "offset": 1217.039,
+      "duration": 4.161
+    },
+    {
+      "lang": "en",
+      "text": "code, less code paths at boot. Uh, and",
+      "offset": 1218.4,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "so they just boot up blazing fast and at",
+      "offset": 1221.2,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "runtime like take less memory. Uh, and",
+      "offset": 1223.36,
+      "duration": 5.84
+    },
+    {
+      "lang": "en",
+      "text": "so the microVM, the micro is actually a",
+      "offset": 1226.64,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "reflection of the VMM process either",
+      "offset": 1229.2,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "crossVM or firecracker versus what's",
+      "offset": 1231.76,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "running inside the guest. And so you can",
+      "offset": 1234.64,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "think of microVM as this new security",
+      "offset": 1237.12,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "first way of running virtual machines",
+      "offset": 1239.76,
+      "duration": 3.919
+    },
+    {
+      "lang": "en",
+      "text": "that are like lighter weight, boost,",
+      "offset": 1241.84,
+      "duration": 6.079
+    },
+    {
+      "lang": "en",
+      "text": "boot fast, and consume less memory.",
+      "offset": 1243.679,
+      "duration": 6.321
+    },
+    {
+      "lang": "en",
+      "text": "Okay, hopefully that background was",
+      "offset": 1247.919,
+      "duration": 3.841
+    },
+    {
+      "lang": "en",
+      "text": "useful on the different ways of",
+      "offset": 1250,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "sandboxing untrusted code on Linux. Oh,",
+      "offset": 1251.76,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "so with that, Arachis chooses a microVM",
+      "offset": 1254.24,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "runtime as the final execution",
+      "offset": 1257.28,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "environment for these AI sandboxes. Uh",
+      "offset": 1259.28,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "and so security is one of the key design",
+      "offset": 1262.4,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "choices of rack is because it's written",
+      "offset": 1264.64,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "it's written with coding agents in mind",
+      "offset": 1267.52,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "and coding agents might use um might",
+      "offset": 1269.44,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "have multi-tenant or like different",
+      "offset": 1272.48,
+      "duration": 5.92
+    },
+    {
+      "lang": "en",
+      "text": "clients uh running on the same server uh",
+      "offset": 1274.4,
+      "duration": 6.56
+    },
+    {
+      "lang": "en",
+      "text": "with LLM generated code accessing",
+      "offset": 1278.4,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "different clients data. So we don't want",
+      "offset": 1280.96,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "uh one piece of untrusted code getting",
+      "offset": 1283.6,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "root on your server and accessing some",
+      "offset": 1286.24,
+      "duration": 4.559
+    },
+    {
+      "lang": "en",
+      "text": "other uh client's data. And so",
+      "offset": 1288.24,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "multi-tenant code execution is untrusted",
+      "offset": 1290.799,
+      "duration": 5.281
+    },
+    {
+      "lang": "en",
+      "text": "code execution is a very very uh key use",
+      "offset": 1293.12,
+      "duration": 5.559
+    },
+    {
+      "lang": "en",
+      "text": "case and design factor behind choosing",
+      "offset": 1296.08,
+      "duration": 4.959
+    },
+    {
+      "lang": "en",
+      "text": "microVMs. They also provide fast boot",
+      "offset": 1298.679,
+      "duration": 4.841
+    },
+    {
+      "lang": "en",
+      "text": "times as we discussed. Uh snapshotting",
+      "offset": 1301.039,
+      "duration": 4.601
+    },
+    {
+      "lang": "en",
+      "text": "is super important for Arachus and",
+      "offset": 1303.52,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "microVMs provide a way to fast snapshot",
+      "offset": 1305.64,
+      "duration": 5.159
+    },
+    {
+      "lang": "en",
+      "text": "by just dumping the entire guest memory.",
+      "offset": 1308.48,
+      "duration": 5.199
+    },
+    {
+      "lang": "en",
+      "text": "This isn't as easy to do with containers",
+      "offset": 1310.799,
+      "duration": 5.041
+    },
+    {
+      "lang": "en",
+      "text": "and uh even with G visor that we'll",
+      "offset": 1313.679,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "discuss. uh and with microVMs you can",
+      "offset": 1315.84,
+      "duration": 5.199
+    },
+    {
+      "lang": "en",
+      "text": "just allocate uh some virtual memory and",
+      "offset": 1318.159,
+      "duration": 4.241
+    },
+    {
+      "lang": "en",
+      "text": "then just dump it when you want to",
+      "offset": 1321.039,
+      "duration": 3.041
+    },
+    {
+      "lang": "en",
+      "text": "snapshot and restore it when you want to",
+      "offset": 1322.4,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "restore the VM. uh and so I wanted to",
+      "offset": 1324.08,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "discuss like different VMMs that we have",
+      "offset": 1327.28,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "the option of choosing. So like I said",
+      "offset": 1329.6,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "crossVM started the whole microVM",
+      "offset": 1331.2,
+      "duration": 4.479
+    },
+    {
+      "lang": "en",
+      "text": "revolution and with that came a bunch of",
+      "offset": 1333.12,
+      "duration": 5.6
+    },
+    {
+      "lang": "en",
+      "text": "other rust based VMM. So firecracker and",
+      "offset": 1335.679,
+      "duration": 5.841
+    },
+    {
+      "lang": "en",
+      "text": "cloud hypervisor are two VMMs folk from",
+      "offset": 1338.72,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "crossvm. If you go over the codebase,",
+      "offset": 1341.52,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "you'll see many remnants of crossVM in",
+      "offset": 1343.84,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "both. Um, firecracker is the",
+      "offset": 1345.84,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "underpinninging behind AWS Lambda. It's",
+      "offset": 1347.76,
+      "duration": 4.159
+    },
+    {
+      "lang": "en",
+      "text": "used for like serverless serverless",
+      "offset": 1350,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "loads. Um, and uh, it has a more fleshed",
+      "offset": 1351.919,
+      "duration": 5.681
+    },
+    {
+      "lang": "en",
+      "text": "out like REST API, I would say, and it",
+      "offset": 1355.36,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "also has a better jailing architecture.",
+      "offset": 1357.6,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "Cloud hypervisor is a more general",
+      "offset": 1360.4,
+      "duration": 4.399
+    },
+    {
+      "lang": "en",
+      "text": "purpose enterprise VMM. uh when I chose",
+      "offset": 1362.24,
+      "duration": 4.799
+    },
+    {
+      "lang": "en",
+      "text": "it, it had hot plugging of devices,",
+      "offset": 1364.799,
+      "duration": 4.961
+    },
+    {
+      "lang": "en",
+      "text": "which means you could add and remove RAM",
+      "offset": 1367.039,
+      "duration": 5.041
+    },
+    {
+      "lang": "en",
+      "text": "uh very easily as a PCI device when",
+      "offset": 1369.76,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "you're running a sandbox. It had GPU",
+      "offset": 1372.08,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "support and it had snapshot support at",
+      "offset": 1374.24,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "the time. Uh and from a software project",
+      "offset": 1376.08,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "point of view, it it isn't controlled by",
+      "offset": 1379.28,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "one specific company. There are",
+      "offset": 1381.36,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "different companies there. So, it made a",
+      "offset": 1382.64,
+      "duration": 3.919
+    },
+    {
+      "lang": "en",
+      "text": "lot of sense to use cloud hypervisor as",
+      "offset": 1384.72,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "the microVM VMM for Arais. Uh another",
+      "offset": 1386.559,
+      "duration": 5.6
+    },
+    {
+      "lang": "en",
+      "text": "option we didn't discuss separate from",
+      "offset": 1389.84,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "microVMs is G Visor which I would say is",
+      "offset": 1392.159,
+      "duration": 5.601
+    },
+    {
+      "lang": "en",
+      "text": "closer to a container uh in performance",
+      "offset": 1394.96,
+      "duration": 4.959
+    },
+    {
+      "lang": "en",
+      "text": "and like uh but slightly better in",
+      "offset": 1397.76,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "security still you can attack the host",
+      "offset": 1399.919,
+      "duration": 5.201
+    },
+    {
+      "lang": "en",
+      "text": "kernel with untrusted code running in G",
+      "offset": 1402.96,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "Visor but based on your needs and",
+      "offset": 1405.12,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "security guarantees um it's a good in",
+      "offset": 1407.12,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "between option you do get GPU access",
+      "offset": 1409.36,
+      "duration": 5.439
+    },
+    {
+      "lang": "en",
+      "text": "more easily in G Visor and containers",
+      "offset": 1412.4,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "versus like microVMs so if that's a",
+      "offset": 1414.799,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "factor then you and choose one of those",
+      "offset": 1417.2,
+      "duration": 5.8
+    },
+    {
+      "lang": "en",
+      "text": "and decide what your security guarantees",
+      "offset": 1419.679,
+      "duration": 6.24
+    },
+    {
+      "lang": "en",
+      "text": "are. Okay, so now we've discussed why we",
+      "offset": 1423,
+      "duration": 5.48
+    },
+    {
+      "lang": "en",
+      "text": "chose cloud hypervisor and microvms as",
+      "offset": 1425.919,
+      "duration": 5
+    },
+    {
+      "lang": "en",
+      "text": "the runtime for AI sandboxes and",
+      "offset": 1428.48,
+      "duration": 5.88
+    },
+    {
+      "lang": "en",
+      "text": "rackets. Uh let's move",
+      "offset": 1430.919,
+      "duration": 6.76
+    },
+    {
+      "lang": "en",
+      "text": "forward. Okay, so now we can see that uh",
+      "offset": 1434.36,
+      "duration": 6.6
+    },
+    {
+      "lang": "en",
+      "text": "there's the uh updated architecture from",
+      "offset": 1437.679,
+      "duration": 5.201
+    },
+    {
+      "lang": "en",
+      "text": "the one we started off before. So",
+      "offset": 1440.96,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "earlier we had just an API. Now we can",
+      "offset": 1442.88,
+      "duration": 5.279
+    },
+    {
+      "lang": "en",
+      "text": "see that uh the rest server is managing",
+      "offset": 1445.52,
+      "duration": 6.48
+    },
+    {
+      "lang": "en",
+      "text": "these uh microVM based sandboxes. The",
+      "offset": 1448.159,
+      "duration": 5.841
+    },
+    {
+      "lang": "en",
+      "text": "dotted process is actually the cloud",
+      "offset": 1452,
+      "duration": 6.559
+    },
+    {
+      "lang": "en",
+      "text": "hypervisor VMM process. Um it runs uh",
+      "offset": 1454,
+      "duration": 7.2
+    },
+    {
+      "lang": "en",
+      "text": "the guest code in a thread in a virtual",
+      "offset": 1458.559,
+      "duration": 7.12
+    },
+    {
+      "lang": "en",
+      "text": "context and it's talking to devk um to",
+      "offset": 1461.2,
+      "duration": 7.04
+    },
+    {
+      "lang": "en",
+      "text": "uh run these like microb virtual",
+      "offset": 1465.679,
+      "duration": 6.48
+    },
+    {
+      "lang": "en",
+      "text": "machines. Um okay so let's move forward.",
+      "offset": 1468.24,
+      "duration": 6.559
+    },
+    {
+      "lang": "en",
+      "text": "Okay. Now let's discuss the storage or",
+      "offset": 1472.159,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "the file system within each sandbox.",
+      "offset": 1474.799,
+      "duration": 4.401
+    },
+    {
+      "lang": "en",
+      "text": "After all, it might need to create",
+      "offset": 1477.039,
+      "duration": 3.921
+    },
+    {
+      "lang": "en",
+      "text": "files, read from them, and write to",
+      "offset": 1479.2,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "them. Um, and so one attack vector we",
+      "offset": 1480.96,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "haven't considered is like untrusted,",
+      "offset": 1483.84,
+      "duration": 4.199
+    },
+    {
+      "lang": "en",
+      "text": "malicious or buggy code that can",
+      "offset": 1486.32,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "actually delete files inside your",
+      "offset": 1488.039,
+      "duration": 4.601
+    },
+    {
+      "lang": "en",
+      "text": "sandbox and it could delete very",
+      "offset": 1490.32,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "important files on your file system and",
+      "offset": 1492.64,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "could make the sandbox like",
+      "offset": 1494.64,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "non-functional basically. And so we need",
+      "offset": 1496.08,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "to kind of protect the root FS running",
+      "offset": 1498.24,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "on inside the sandbox. So we have a have",
+      "offset": 1500.4,
+      "duration": 6.96
+    },
+    {
+      "lang": "en",
+      "text": "a shared base layer u of a rot fs that's",
+      "offset": 1503.6,
+      "duration": 5.92
+    },
+    {
+      "lang": "en",
+      "text": "shared between sandboxes and you can see",
+      "offset": 1507.36,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "that this is the yellow one with user",
+      "offset": 1509.52,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "bin a here but on top of that every",
+      "offset": 1511.52,
+      "duration": 5.84
+    },
+    {
+      "lang": "en",
+      "text": "sandbox gets its own like readrite",
+      "offset": 1514.64,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "layer. So this is where all the new",
+      "offset": 1517.36,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "files it creates uh go uh and so you",
+      "offset": 1518.72,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "have this very nice uh balance between",
+      "offset": 1522.24,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "the root fs being protected and shared",
+      "offset": 1524.72,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "between sandboxes. uh but uh they get",
+      "offset": 1526.96,
+      "duration": 4.719
+    },
+    {
+      "lang": "en",
+      "text": "their own like read write layer u and",
+      "offset": 1529.84,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "when we snapshot a sandbox we also",
+      "offset": 1531.679,
+      "duration": 4.321
+    },
+    {
+      "lang": "en",
+      "text": "persist or back up just the read write",
+      "offset": 1533.76,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "layer we don't need to persist the reado",
+      "offset": 1536,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "layer so we have this like nice sharing",
+      "offset": 1538.08,
+      "duration": 6.479
+    },
+    {
+      "lang": "en",
+      "text": "and like per sandbox uh semantics",
+      "offset": 1540.24,
+      "duration": 4.319
+    },
+    {
+      "lang": "en",
+      "text": "here okay and now let's go to the code",
+      "offset": 1545,
+      "duration": 4.6
+    },
+    {
+      "lang": "en",
+      "text": "and actually see how this happens right",
+      "offset": 1547.6,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "so u the sandbox when it boots up",
+      "offset": 1549.6,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "already has this setup all it sees is",
+      "offset": 1552,
+      "duration": 5.279
+    },
+    {
+      "lang": "en",
+      "text": "like a root mount path and just like any",
+      "offset": 1554.32,
+      "duration": 4.719
+    },
+    {
+      "lang": "en",
+      "text": "other like Linux system. There's no",
+      "offset": 1557.279,
+      "duration": 3.841
+    },
+    {
+      "lang": "en",
+      "text": "difference. But we do all the magic",
+      "offset": 1559.039,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "before the sandbox uh as soon as the",
+      "offset": 1561.12,
+      "duration": 5.039
+    },
+    {
+      "lang": "en",
+      "text": "sandbox boots uh and we start like the",
+      "offset": 1563.679,
+      "duration": 6.24
+    },
+    {
+      "lang": "en",
+      "text": "first uh pit one inside the sandbox. Uh",
+      "offset": 1566.159,
+      "duration": 6.241
+    },
+    {
+      "lang": "en",
+      "text": "and so you can see here we like uh uh",
+      "offset": 1569.919,
+      "duration": 5.281
+    },
+    {
+      "lang": "en",
+      "text": "this is the init. script running inside",
+      "offset": 1572.4,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "uh the guest which is our sandbox and",
+      "offset": 1575.2,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "it's setting up this uh like overlay FS",
+      "offset": 1577.2,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "here. Uh and as soon as it does that we",
+      "offset": 1579.76,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "start like the booting process and like",
+      "offset": 1582.64,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "boot to pit one. Um and every process uh",
+      "offset": 1584.96,
+      "duration": 6.4
+    },
+    {
+      "lang": "en",
+      "text": "within our sandbox just sees like a",
+      "offset": 1588.64,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "regular like file system but we've done",
+      "offset": 1591.36,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "the magic",
+      "offset": 1593.2,
+      "duration": 2.56
+    },
+    {
+      "lang": "en",
+      "text": "underneath. Yeah. And with that like",
+      "offset": 1596.6,
+      "duration": 3.88
+    },
+    {
+      "lang": "en",
+      "text": "let's see our updated architecture. So",
+      "offset": 1598.72,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "we had the rest server we have these",
+      "offset": 1600.48,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "like microVM sandboxes and now we see",
+      "offset": 1602.32,
+      "duration": 6.32
+    },
+    {
+      "lang": "en",
+      "text": "like uh every disk device is uh mounted",
+      "offset": 1605.44,
+      "duration": 6.32
+    },
+    {
+      "lang": "en",
+      "text": "on top of this overlay FS u and each",
+      "offset": 1608.64,
+      "duration": 5.039
+    },
+    {
+      "lang": "en",
+      "text": "sandbox gets its own like readrite",
+      "offset": 1611.76,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "layer.",
+      "offset": 1613.679,
+      "duration": 6.12
+    },
+    {
+      "lang": "en",
+      "text": "Okay, with that let's move on to",
+      "offset": 1615.84,
+      "duration": 6.959
+    },
+    {
+      "lang": "en",
+      "text": "networking. Okay, every sandbox needs to",
+      "offset": 1619.799,
+      "duration": 5
+    },
+    {
+      "lang": "en",
+      "text": "have networking. It might need to do",
+      "offset": 1622.799,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "other actions or call other tools or",
+      "offset": 1624.799,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "APIs. Um, and so we need to provide each",
+      "offset": 1626.799,
+      "duration": 5.921
+    },
+    {
+      "lang": "en",
+      "text": "sandbox with a network. Um, and so each",
+      "offset": 1629.679,
+      "duration": 5.6
+    },
+    {
+      "lang": "en",
+      "text": "sandbox in Ara runs in a virtual machine",
+      "offset": 1632.72,
+      "duration": 4.319
+    },
+    {
+      "lang": "en",
+      "text": "like we discussed with its own isolated",
+      "offset": 1635.279,
+      "duration": 3.921
+    },
+    {
+      "lang": "en",
+      "text": "networking. The networking setup",
+      "offset": 1637.039,
+      "duration": 5.441
+    },
+    {
+      "lang": "en",
+      "text": "consists of a tab device. So each it's",
+      "offset": 1639.2,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "like a virtual networking interface on",
+      "offset": 1642.48,
+      "duration": 4.079
+    },
+    {
+      "lang": "en",
+      "text": "Linux. Each sandbox gets a unique tap",
+      "offset": 1644.24,
+      "duration": 5.439
+    },
+    {
+      "lang": "en",
+      "text": "network device. So when we spawn the uh",
+      "offset": 1646.559,
+      "duration": 5.441
+    },
+    {
+      "lang": "en",
+      "text": "microb sandbox, we are creating this tab",
+      "offset": 1649.679,
+      "duration": 4.801
+    },
+    {
+      "lang": "en",
+      "text": "device for it. Um and we have a Linux",
+      "offset": 1652,
+      "duration": 4.799
+    },
+    {
+      "lang": "en",
+      "text": "bridge on the host uh which is the Linux",
+      "offset": 1654.48,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "server where um all the tab D tab",
+      "offset": 1656.799,
+      "duration": 4.641
+    },
+    {
+      "lang": "en",
+      "text": "devices are connected to the Linux",
+      "offset": 1659.84,
+      "duration": 4.319
+    },
+    {
+      "lang": "en",
+      "text": "bridge on the host. And the last part is",
+      "offset": 1661.44,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "uh we take care of port forwarding. So",
+      "offset": 1664.159,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "rack is like forwards post ports from",
+      "offset": 1666.48,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "your host into like the code server or",
+      "offset": 1668.799,
+      "duration": 4.641
+    },
+    {
+      "lang": "en",
+      "text": "the VNC server. So you don't have to",
+      "offset": 1671.6,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "worry about how to access uh these",
+      "offset": 1673.44,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "things uh on on your",
+      "offset": 1675.76,
+      "duration": 3.2
+    },
+    {
+      "lang": "en",
+      "text": "sandbox. Okay. Uh let's go over some",
+      "offset": 1680.6,
+      "duration": 5.959
+    },
+    {
+      "lang": "en",
+      "text": "code to set up networking here. So this",
+      "offset": 1683.919,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "is a function from Arais. It sets up the",
+      "offset": 1686.559,
+      "duration": 4.401
+    },
+    {
+      "lang": "en",
+      "text": "bridge device and it also sets up the",
+      "offset": 1689.039,
+      "duration": 4.801
+    },
+    {
+      "lang": "en",
+      "text": "firewall rules to uh forward data back",
+      "offset": 1690.96,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "and forth uh from the host to the",
+      "offset": 1693.84,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "sandbox and the sandbox to the host. Um",
+      "offset": 1696,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "and so you can see that like here we",
+      "offset": 1698.64,
+      "duration": 4.639
+    },
+    {
+      "lang": "en",
+      "text": "come in and we create a bridge uh and we",
+      "offset": 1700.48,
+      "duration": 5.199
+    },
+    {
+      "lang": "en",
+      "text": "set it to up u and then we set these",
+      "offset": 1703.279,
+      "duration": 4.161
+    },
+    {
+      "lang": "en",
+      "text": "like firewall or forwarding rules that",
+      "offset": 1705.679,
+      "duration": 3.681
+    },
+    {
+      "lang": "en",
+      "text": "are quite gnarly to set up but we've",
+      "offset": 1707.44,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "taken uh care of them uh for you and",
+      "offset": 1709.36,
+      "duration": 6.24
+    },
+    {
+      "lang": "en",
+      "text": "these decide how data flows from uh from",
+      "offset": 1712.08,
+      "duration": 8.12
+    },
+    {
+      "lang": "en",
+      "text": "the host to the sandbox and back.",
+      "offset": 1715.6,
+      "duration": 4.6
+    },
+    {
+      "lang": "en",
+      "text": "uh another function here that takes care",
+      "offset": 1721.919,
+      "duration": 4.161
+    },
+    {
+      "lang": "en",
+      "text": "of port forwarding and you can see we",
+      "offset": 1724,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "use like Linux IP tables command to do",
+      "offset": 1726.08,
+      "duration": 5.68
+    },
+    {
+      "lang": "en",
+      "text": "that and uh uh like we have a",
+      "offset": 1728.32,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "destination port inside the guest and we",
+      "offset": 1731.76,
+      "duration": 4.799
+    },
+    {
+      "lang": "en",
+      "text": "have this like uh dnat argument here",
+      "offset": 1733.84,
+      "duration": 5.92
+    },
+    {
+      "lang": "en",
+      "text": "that does all the magic and uh we call",
+      "offset": 1736.559,
+      "duration": 7.401
+    },
+    {
+      "lang": "en",
+      "text": "this using like go command run um uh",
+      "offset": 1739.76,
+      "duration": 7.279
+    },
+    {
+      "lang": "en",
+      "text": "yeah okay with networking setup our",
+      "offset": 1743.96,
+      "duration": 5.56
+    },
+    {
+      "lang": "en",
+      "text": "updated architecture looks like this uh",
+      "offset": 1747.039,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "we have the rest server spawning these",
+      "offset": 1749.52,
+      "duration": 5.279
+    },
+    {
+      "lang": "en",
+      "text": "microVM sandboxes. U and now we see that",
+      "offset": 1751.679,
+      "duration": 5.281
+    },
+    {
+      "lang": "en",
+      "text": "we've taken care of port forwarding. So",
+      "offset": 1754.799,
+      "duration": 4.561
+    },
+    {
+      "lang": "en",
+      "text": "a VNC client running on your MacBook or",
+      "offset": 1756.96,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "your laptop can easily access the GUI",
+      "offset": 1759.36,
+      "duration": 7.24
+    },
+    {
+      "lang": "en",
+      "text": "via the VNC server uh running inside the",
+      "offset": 1762,
+      "duration": 7.679
+    },
+    {
+      "lang": "en",
+      "text": "sandbox. Um as mentioned before uh we",
+      "offset": 1766.6,
+      "duration": 6.16
+    },
+    {
+      "lang": "en",
+      "text": "use Docker tooling to customize Arais",
+      "offset": 1769.679,
+      "duration": 5.201
+    },
+    {
+      "lang": "en",
+      "text": "sandboxes. So you can run whatever",
+      "offset": 1772.76,
+      "duration": 4.76
+    },
+    {
+      "lang": "en",
+      "text": "packages and binaries you want uh by",
+      "offset": 1774.88,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "just modifying a Docker file inside",
+      "offset": 1777.52,
+      "duration": 5.039
+    },
+    {
+      "lang": "en",
+      "text": "Arais. Uh so let's take over the let's",
+      "offset": 1779.44,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "take a look over the docker file that we",
+      "offset": 1782.559,
+      "duration": 4.321
+    },
+    {
+      "lang": "en",
+      "text": "have by default. Uh and so you can see",
+      "offset": 1784.88,
+      "duration": 4.44
+    },
+    {
+      "lang": "en",
+      "text": "we base it on",
+      "offset": 1786.88,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "Ubuntu22.04 have these like standard",
+      "offset": 1789.32,
+      "duration": 4.52
+    },
+    {
+      "lang": "en",
+      "text": "packages inside for your agents to be",
+      "offset": 1791.44,
+      "duration": 4.479
+    },
+    {
+      "lang": "en",
+      "text": "productive without installing uh",
+      "offset": 1793.84,
+      "duration": 4.959
+    },
+    {
+      "lang": "en",
+      "text": "anything else at runtime. Um and you can",
+      "offset": 1795.919,
+      "duration": 5.281
+    },
+    {
+      "lang": "en",
+      "text": "see we also give you chrome uh installed",
+      "offset": 1798.799,
+      "duration": 5.041
+    },
+    {
+      "lang": "en",
+      "text": "and we boot it via systemd inside the",
+      "offset": 1801.2,
+      "duration": 5.839
+    },
+    {
+      "lang": "en",
+      "text": "sandbox. uh and also install like NodeJS",
+      "offset": 1803.84,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "and npm so that you can make like node",
+      "offset": 1807.039,
+      "duration": 5.041
+    },
+    {
+      "lang": "en",
+      "text": "apps. Python's also already installed.",
+      "offset": 1809.84,
+      "duration": 4.719
+    },
+    {
+      "lang": "en",
+      "text": "So you can the agents can do a lot uh",
+      "offset": 1812.08,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "with these tools inside the sandbox and",
+      "offset": 1814.559,
+      "duration": 4.641
+    },
+    {
+      "lang": "en",
+      "text": "you can configure them for uh in the",
+      "offset": 1816.64,
+      "duration": 4.519
+    },
+    {
+      "lang": "en",
+      "text": "future with whatever binaries you want",
+      "offset": 1819.2,
+      "duration": 4.719
+    },
+    {
+      "lang": "en",
+      "text": "inside. Okay, let's put it all together",
+      "offset": 1821.159,
+      "duration": 5.64
+    },
+    {
+      "lang": "en",
+      "text": "and see how we create a VM in code. Um",
+      "offset": 1823.919,
+      "duration": 5.441
+    },
+    {
+      "lang": "en",
+      "text": "so as you can see like we create all the",
+      "offset": 1826.799,
+      "duration": 4.721
+    },
+    {
+      "lang": "en",
+      "text": "devices we talked about. So there's a",
+      "offset": 1829.36,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "root f there's the overlay fs writable",
+      "offset": 1831.52,
+      "duration": 6.24
+    },
+    {
+      "lang": "en",
+      "text": "path. Here we allocate uh some vcpus",
+      "offset": 1834.08,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "which are nothing but threads on your",
+      "offset": 1837.76,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "host OS. We calculate some memory and",
+      "offset": 1839.52,
+      "duration": 6.24
+    },
+    {
+      "lang": "en",
+      "text": "give it uh give it as a fraction of the",
+      "offset": 1842.64,
+      "duration": 5.6
+    },
+    {
+      "lang": "en",
+      "text": "host memory available. Uh there's a",
+      "offset": 1845.76,
+      "duration": 4.399
+    },
+    {
+      "lang": "en",
+      "text": "networking device so we created the tap",
+      "offset": 1848.24,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "device uh as well and uh above in the",
+      "offset": 1850.159,
+      "duration": 5.281
+    },
+    {
+      "lang": "en",
+      "text": "snippet we also did the port forwarding.",
+      "offset": 1852.88,
+      "duration": 5.6
+    },
+    {
+      "lang": "en",
+      "text": "Um voc is a way to communicate between",
+      "offset": 1855.44,
+      "duration": 5.839
+    },
+    {
+      "lang": "en",
+      "text": "the guest and the host. uh again uh and",
+      "offset": 1858.48,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "then yeah finally we spawned a VMM",
+      "offset": 1861.279,
+      "duration": 6.721
+    },
+    {
+      "lang": "en",
+      "text": "process um and then call this create VM",
+      "offset": 1864.24,
+      "duration": 6.4
+    },
+    {
+      "lang": "en",
+      "text": "API on it with this configuration to",
+      "offset": 1868,
+      "duration": 4.679
+    },
+    {
+      "lang": "en",
+      "text": "start a guest",
+      "offset": 1870.64,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "VM as mentioned before uh code exec is",
+      "offset": 1872.679,
+      "duration": 4.921
+    },
+    {
+      "lang": "en",
+      "text": "one of the very important",
+      "offset": 1876,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "functionalities of an AI sandbox uh",
+      "offset": 1877.6,
+      "duration": 4.799
+    },
+    {
+      "lang": "en",
+      "text": "arachis comes in bundled with a code",
+      "offset": 1880.08,
+      "duration": 4.959
+    },
+    {
+      "lang": "en",
+      "text": "execution server uh here I show you the",
+      "offset": 1882.399,
+      "duration": 5.441
+    },
+    {
+      "lang": "en",
+      "text": "exact code uh that's running inside the",
+      "offset": 1885.039,
+      "duration": 4.801
+    },
+    {
+      "lang": "en",
+      "text": "code execution server there's the files",
+      "offset": 1887.84,
+      "duration": 4.719
+    },
+    {
+      "lang": "en",
+      "text": "API to upload and download files. We'll",
+      "offset": 1889.84,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "see in the cloud demo how this API is",
+      "offset": 1892.559,
+      "duration": 5.041
+    },
+    {
+      "lang": "en",
+      "text": "used liberally by claude to send data",
+      "offset": 1895.12,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "back and forth. And there's of course a",
+      "offset": 1897.6,
+      "duration": 5.84
+    },
+    {
+      "lang": "en",
+      "text": "command uh uh API which takes in a",
+      "offset": 1899.76,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "command, executes it and returns either",
+      "offset": 1903.44,
+      "duration": 5.119
+    },
+    {
+      "lang": "en",
+      "text": "an output or error uh in the form of",
+      "offset": 1905.2,
+      "duration": 7.04
+    },
+    {
+      "lang": "en",
+      "text": "JSON. Um we're running in a guest VM. So",
+      "offset": 1908.559,
+      "duration": 6.081
+    },
+    {
+      "lang": "en",
+      "text": "I'm much more confident about this code",
+      "offset": 1912.24,
+      "duration": 5.439
+    },
+    {
+      "lang": "en",
+      "text": "not escaping out and we can be relaxed",
+      "offset": 1914.64,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "with it versus if we were running",
+      "offset": 1917.679,
+      "duration": 4.081
+    },
+    {
+      "lang": "en",
+      "text": "directly on top of our host OS then I'd",
+      "offset": 1919.6,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "be very very scared exposing something",
+      "offset": 1921.76,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "like this. Uh on top of the code",
+      "offset": 1923.6,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "execution server we also have Chrome",
+      "offset": 1926.48,
+      "duration": 5.6
+    },
+    {
+      "lang": "en",
+      "text": "pre-installed and like I said uh we have",
+      "offset": 1928.64,
+      "duration": 5.519
+    },
+    {
+      "lang": "en",
+      "text": "we do port forwarding for you to the to",
+      "offset": 1932.08,
+      "duration": 4.719
+    },
+    {
+      "lang": "en",
+      "text": "your VNC server inside the sandbox. So",
+      "offset": 1934.159,
+      "duration": 5.201
+    },
+    {
+      "lang": "en",
+      "text": "you can actually access Chrome directly",
+      "offset": 1936.799,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "and the GUI directly inside your sandbox",
+      "offset": 1939.36,
+      "duration": 4.679
+    },
+    {
+      "lang": "en",
+      "text": "very easily with",
+      "offset": 1941.519,
+      "duration": 5.361
+    },
+    {
+      "lang": "en",
+      "text": "Arachus. Okay. Now let's talk about one",
+      "offset": 1944.039,
+      "duration": 6.401
+    },
+    {
+      "lang": "en",
+      "text": "of the most exciting features of Arachus",
+      "offset": 1946.88,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "snapshotting. Uh so what's the",
+      "offset": 1950.44,
+      "duration": 4.839
+    },
+    {
+      "lang": "en",
+      "text": "motivation behind saving state of a",
+      "offset": 1952.64,
+      "duration": 6.639
+    },
+    {
+      "lang": "en",
+      "text": "sandbox and snapshotting? So in general",
+      "offset": 1955.279,
+      "duration": 6.88
+    },
+    {
+      "lang": "en",
+      "text": "um agents fail when you're giving them a",
+      "offset": 1959.279,
+      "duration": 5.841
+    },
+    {
+      "lang": "en",
+      "text": "very big task like make me a Google News",
+      "offset": 1962.159,
+      "duration": 7.201
+    },
+    {
+      "lang": "en",
+      "text": "like app. um because uh in inevitably",
+      "offset": 1965.12,
+      "duration": 6.24
+    },
+    {
+      "lang": "en",
+      "text": "they fail somewhere during this big wake",
+      "offset": 1969.36,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "task. So they need like a step-by-step",
+      "offset": 1971.36,
+      "duration": 5.679
+    },
+    {
+      "lang": "en",
+      "text": "plan and as specific and as small the",
+      "offset": 1974,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "plan the better the reliability. But",
+      "offset": 1977.039,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "even then multi-stage plans can fail. So",
+      "offset": 1979.36,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "imagine if you have a deep like almost",
+      "offset": 1981.679,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "like a dag of execution. You do all the",
+      "offset": 1984,
+      "duration": 4.799
+    },
+    {
+      "lang": "en",
+      "text": "work and you fail towards the very end.",
+      "offset": 1986.559,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "Um you shouldn't have to start from",
+      "offset": 1988.799,
+      "duration": 3.841
+    },
+    {
+      "lang": "en",
+      "text": "scratch. you should be able to backtrack",
+      "offset": 1990.799,
+      "duration": 4.641
+    },
+    {
+      "lang": "en",
+      "text": "to the last good checkpoint, replan and",
+      "offset": 1992.64,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "try again. So that's the motivation",
+      "offset": 1995.44,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "behind snapshotting giving agents the",
+      "offset": 1997.44,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "capability to fail and backtrack uh and",
+      "offset": 2000.08,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "then at scale getting more reliable",
+      "offset": 2003.2,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "results by exploring multiple paths uh",
+      "offset": 2004.96,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "in parallel. Um so Arais lets agents",
+      "offset": 2007.44,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "save the entire running state of a",
+      "offset": 2010.48,
+      "duration": 3.679
+    },
+    {
+      "lang": "en",
+      "text": "sandbox. So this includes like just the",
+      "offset": 2012.24,
+      "duration": 3.919
+    },
+    {
+      "lang": "en",
+      "text": "guest memory and the file system which",
+      "offset": 2014.159,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "is the RW part of the overlays. So any",
+      "offset": 2016.159,
+      "duration": 5.281
+    },
+    {
+      "lang": "en",
+      "text": "files it created, any processes it",
+      "offset": 2019.039,
+      "duration": 5.601
+    },
+    {
+      "lang": "en",
+      "text": "spawned all will be u restored as is. So",
+      "offset": 2021.44,
+      "duration": 5.359
+    },
+    {
+      "lang": "en",
+      "text": "imagine on your MacBook if you close the",
+      "offset": 2024.64,
+      "duration": 4.399
+    },
+    {
+      "lang": "en",
+      "text": "lid and you open it up, it's exactly the",
+      "offset": 2026.799,
+      "duration": 4.641
+    },
+    {
+      "lang": "en",
+      "text": "same semantic. Um and so yeah, any",
+      "offset": 2029.039,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "processes found even like windows opened",
+      "offset": 2031.44,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "in the GUI there that's nothing but uh",
+      "offset": 2033.679,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "uh guest memory state. So they'll be",
+      "offset": 2036.48,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "restored as is. Um and so agents can",
+      "offset": 2038.399,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "backtrack to a good snapshot if they",
+      "offset": 2041.36,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "fail and then replan and continue the",
+      "offset": 2043.679,
+      "duration": 4.561
+    },
+    {
+      "lang": "en",
+      "text": "workflow. So this diagram shows like how",
+      "offset": 2045.6,
+      "duration": 5.519
+    },
+    {
+      "lang": "en",
+      "text": "we can do this at scale. Um uh if we",
+      "offset": 2048.24,
+      "duration": 6.639
+    },
+    {
+      "lang": "en",
+      "text": "fail we can just like back to um our",
+      "offset": 2051.119,
+      "duration": 6.48
+    },
+    {
+      "lang": "en",
+      "text": "path of execution to a last known good",
+      "offset": 2054.879,
+      "duration": 5.121
+    },
+    {
+      "lang": "en",
+      "text": "hash and like replan and try again.",
+      "offset": 2057.599,
+      "duration": 4.721
+    },
+    {
+      "lang": "en",
+      "text": "Currently we don't use butterfs but our",
+      "offset": 2060,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "plan is to use a um a file system that",
+      "offset": 2062.32,
+      "duration": 6.079
+    },
+    {
+      "lang": "en",
+      "text": "natively aware is aware of uh",
+      "offset": 2065.44,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "incremental snapshots and optimized for",
+      "offset": 2068.399,
+      "duration": 4.401
+    },
+    {
+      "lang": "en",
+      "text": "such um and so we are exploring using",
+      "offset": 2070.56,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "butterfs instead of ext4 for the file",
+      "offset": 2072.8,
+      "duration": 4.2
+    },
+    {
+      "lang": "en",
+      "text": "system as",
+      "offset": 2075.28,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "well. Uh now let's go over like how we",
+      "offset": 2077,
+      "duration": 5.24
+    },
+    {
+      "lang": "en",
+      "text": "actually do the snapshotting in code and",
+      "offset": 2079.76,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "there are like four steps. Um we",
+      "offset": 2082.24,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "actually first pause the VM by calling",
+      "offset": 2084.56,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "the pause API on the VMM. Um uh then we",
+      "offset": 2087.04,
+      "duration": 7.039
+    },
+    {
+      "lang": "en",
+      "text": "call the snapshot API and um dump the",
+      "offset": 2090.56,
+      "duration": 6.799
+    },
+    {
+      "lang": "en",
+      "text": "guest uh memory. Uh and then out of band",
+      "offset": 2094.079,
+      "duration": 6.881
+    },
+    {
+      "lang": "en",
+      "text": "we manually like persist the thin uh",
+      "offset": 2097.359,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "readwrite overlay FS to persist all the",
+      "offset": 2100.96,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "files uh that the sandbox or the agent",
+      "offset": 2103.359,
+      "duration": 5.441
+    },
+    {
+      "lang": "en",
+      "text": "uh created inside the sandbox. And",
+      "offset": 2106.72,
+      "duration": 4.399
+    },
+    {
+      "lang": "en",
+      "text": "finally we resumed the VMM. So we",
+      "offset": 2108.8,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "checkpointed it and then we just ran",
+      "offset": 2111.119,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "sandbox again. So it keeps doing what it",
+      "offset": 2113.2,
+      "duration": 3.919
+    },
+    {
+      "lang": "en",
+      "text": "has doing before. Uh and you can see",
+      "offset": 2115.119,
+      "duration": 4.641
+    },
+    {
+      "lang": "en",
+      "text": "this in code, right? Um uh we go ahead",
+      "offset": 2117.119,
+      "duration": 5.681
+    },
+    {
+      "lang": "en",
+      "text": "and pause the VM here. Um we make sure",
+      "offset": 2119.76,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "we resume before we exit the function",
+      "offset": 2122.8,
+      "duration": 6.08
+    },
+    {
+      "lang": "en",
+      "text": "here. Um we create a copy of the",
+      "offset": 2125.28,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "stateful disk which is the readwrite",
+      "offset": 2128.88,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "layer of the overlay FS. Uh yeah and",
+      "offset": 2130.8,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "finally call snapshot which dumps the",
+      "offset": 2133.52,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "guest memory uh for the VM and creates",
+      "offset": 2135.92,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "this magical experience when you resume",
+      "offset": 2138.64,
+      "duration": 3.12
+    },
+    {
+      "lang": "en",
+      "text": "it.",
+      "offset": 2140.4,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "Okay, we've gone through the entire",
+      "offset": 2141.76,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "architecture of Arachus and how you",
+      "offset": 2143.92,
+      "duration": 5.679
+    },
+    {
+      "lang": "en",
+      "text": "would build AI sandbox like Arachus. Uh",
+      "offset": 2146,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "let's put it all together and how would",
+      "offset": 2149.599,
+      "duration": 4.801
+    },
+    {
+      "lang": "en",
+      "text": "we actually use it. So u Arachis comes",
+      "offset": 2151.52,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "with a first class support for a Python",
+      "offset": 2154.4,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "SDK. So you pip install the Pakis",
+      "offset": 2156.64,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "package and it's very simple from then",
+      "offset": 2158.96,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "on. You uh you self host Arais on your",
+      "offset": 2161.2,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "own infrastructure, give it the IP here",
+      "offset": 2164.16,
+      "duration": 5.199
+    },
+    {
+      "lang": "en",
+      "text": "to the sandbox manager. Um, you figure",
+      "offset": 2166.32,
+      "duration": 5.039
+    },
+    {
+      "lang": "en",
+      "text": "out what all VMs are running by calling",
+      "offset": 2169.359,
+      "duration": 4.321
+    },
+    {
+      "lang": "en",
+      "text": "the list all API that gives you metadata",
+      "offset": 2171.359,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "about the VM, its IP, its ports. Um, you",
+      "offset": 2173.68,
+      "duration": 5.439
+    },
+    {
+      "lang": "en",
+      "text": "start a sandbox with the start sandbox",
+      "offset": 2177.119,
+      "duration": 4.641
+    },
+    {
+      "lang": "en",
+      "text": "API, run a command and see the output or",
+      "offset": 2179.119,
+      "duration": 5.281
+    },
+    {
+      "lang": "en",
+      "text": "the error using the output or error JSON",
+      "offset": 2181.76,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "keys. Um, and here's how you can",
+      "offset": 2184.4,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "actually snapshot with just one command.",
+      "offset": 2186.4,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "Like you give a snapshot ID. Um, and",
+      "offset": 2188.32,
+      "duration": 5.039
+    },
+    {
+      "lang": "en",
+      "text": "then you destroy the VM if uh if when",
+      "offset": 2190.72,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "you're done. Um, and later on when you",
+      "offset": 2193.359,
+      "duration": 5.041
+    },
+    {
+      "lang": "en",
+      "text": "want to actually restore the checkpoint",
+      "offset": 2195.92,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "from your snapshot, it's very simple.",
+      "offset": 2198.4,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "You just call restore with your VM name",
+      "offset": 2200.4,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "and you give the snapshot ID that you",
+      "offset": 2202.8,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "got here from the snapshot call. So all",
+      "offset": 2205.2,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "in all, a very dead simple API to use uh",
+      "offset": 2207.52,
+      "duration": 6.319
+    },
+    {
+      "lang": "en",
+      "text": "spawn and use AI sandboxes for codeex",
+      "offset": 2210.4,
+      "duration": 4.92
+    },
+    {
+      "lang": "en",
+      "text": "and other",
+      "offset": 2213.839,
+      "duration": 3.921
+    },
+    {
+      "lang": "en",
+      "text": "things. Okay, so we've seen the",
+      "offset": 2215.32,
+      "duration": 5.799
+    },
+    {
+      "lang": "en",
+      "text": "architecture of Ara. Uh now let's see uh",
+      "offset": 2217.76,
+      "duration": 6.4
+    },
+    {
+      "lang": "en",
+      "text": "it in action. Um let's see claw desktop",
+      "offset": 2221.119,
+      "duration": 6.24
+    },
+    {
+      "lang": "en",
+      "text": "make a Google Docs clone using Arais via",
+      "offset": 2224.16,
+      "duration": 6.24
+    },
+    {
+      "lang": "en",
+      "text": "its MCP server. Um and you'll see that",
+      "offset": 2227.359,
+      "duration": 4.401
+    },
+    {
+      "lang": "en",
+      "text": "we don't have to do a whole lot of",
+      "offset": 2230.4,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "prompting or create a whole coding age",
+      "offset": 2231.76,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "tool or framework. Uh it really does a",
+      "offset": 2233.76,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "lot of heavy lifting if it once it",
+      "offset": 2236.56,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "realizes it has access to a full-blown",
+      "offset": 2238.48,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "like Linux sandbox. Uh so yeah, let's go",
+      "offset": 2241.04,
+      "duration": 5.24
+    },
+    {
+      "lang": "en",
+      "text": "over the demo real",
+      "offset": 2243.52,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "quick. Uh so you can see I prompted to",
+      "offset": 2246.28,
+      "duration": 4.76
+    },
+    {
+      "lang": "en",
+      "text": "create a Google Docs clone. uh and that",
+      "offset": 2248.88,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "has collaboration built in so multiple",
+      "offset": 2251.04,
+      "duration": 4.799
+    },
+    {
+      "lang": "en",
+      "text": "people can join. Um we'll see that on",
+      "offset": 2253.28,
+      "duration": 3.839
+    },
+    {
+      "lang": "en",
+      "text": "the right hand side we are running",
+      "offset": 2255.839,
+      "duration": 5.681
+    },
+    {
+      "lang": "en",
+      "text": "arachis um and uh off the black claude",
+      "offset": 2257.119,
+      "duration": 7.041
+    },
+    {
+      "lang": "en",
+      "text": "is just piping commands uh creates a",
+      "offset": 2261.52,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "sandbox and pipes commands directly in",
+      "offset": 2264.16,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "it creates this Google docs clone and we",
+      "offset": 2266.72,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "have networking setup so people can type",
+      "offset": 2268.8,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "in together. We can snapshot this",
+      "offset": 2271.28,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "version as well. So we created a",
+      "offset": 2273.76,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "snapshot of that copy and now we try to",
+      "offset": 2276,
+      "duration": 5.68
+    },
+    {
+      "lang": "en",
+      "text": "add a feature on top of that uh clone.",
+      "offset": 2278.48,
+      "duration": 5.359
+    },
+    {
+      "lang": "en",
+      "text": "Uh and so yeah we try to add dark mode",
+      "offset": 2281.68,
+      "duration": 5.32
+    },
+    {
+      "lang": "en",
+      "text": "inside the Google Docs",
+      "offset": 2283.839,
+      "duration": 6.841
+    },
+    {
+      "lang": "en",
+      "text": "clone. Let's see do this as",
+      "offset": 2287,
+      "duration": 7.16
+    },
+    {
+      "lang": "en",
+      "text": "well. Okay let's see. So it added that",
+      "offset": 2290.68,
+      "duration": 5.72
+    },
+    {
+      "lang": "en",
+      "text": "dark mode feature inside and you can see",
+      "offset": 2294.16,
+      "duration": 4.959
+    },
+    {
+      "lang": "en",
+      "text": "it works. Collaboration hasn't broken.",
+      "offset": 2296.4,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "Uh but I changed my mind. And I want to",
+      "offset": 2299.119,
+      "duration": 4.401
+    },
+    {
+      "lang": "en",
+      "text": "go back to the snapshot we had before",
+      "offset": 2301.04,
+      "duration": 4.559
+    },
+    {
+      "lang": "en",
+      "text": "without the dark mode. And so you can",
+      "offset": 2303.52,
+      "duration": 4.319
+    },
+    {
+      "lang": "en",
+      "text": "see we can restore the old checkpoint",
+      "offset": 2305.599,
+      "duration": 6.321
+    },
+    {
+      "lang": "en",
+      "text": "and go back to without dark mode",
+      "offset": 2307.839,
+      "duration": 4.081
+    },
+    {
+      "lang": "en",
+      "text": "here. Right? So the cool part here is",
+      "offset": 2315.64,
+      "duration": 6.76
+    },
+    {
+      "lang": "en",
+      "text": "that um uh it did the snapshotting and",
+      "offset": 2318.4,
+      "duration": 5.84
+    },
+    {
+      "lang": "en",
+      "text": "and you could see it created end to end",
+      "offset": 2322.4,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "apps without me prompting it again and",
+      "offset": 2324.24,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "again. But since we took care of",
+      "offset": 2326,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "networking, we could actually get a",
+      "offset": 2327.76,
+      "duration": 3.839
+    },
+    {
+      "lang": "en",
+      "text": "completely collaborative experience like",
+      "offset": 2329.52,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "full-on Google Docs thing uh versus just",
+      "offset": 2331.599,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "like fake collaboration that other",
+      "offset": 2334.48,
+      "duration": 7.04
+    },
+    {
+      "lang": "en",
+      "text": "client side uh uh codegen uh tools might",
+      "offset": 2337.359,
+      "duration": 6.801
+    },
+    {
+      "lang": "en",
+      "text": "do. Um so that was like a one cool side",
+      "offset": 2341.52,
+      "duration": 5.8
+    },
+    {
+      "lang": "en",
+      "text": "effect uh of the demo. Uh",
+      "offset": 2344.16,
+      "duration": 6.959
+    },
+    {
+      "lang": "en",
+      "text": "yeah. Okay, let's discuss uh some of the",
+      "offset": 2347.32,
+      "duration": 6.84
+    },
+    {
+      "lang": "en",
+      "text": "ongoing work in Arachus. Um top of mind",
+      "offset": 2351.119,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "is definitely getting boot time to be",
+      "offset": 2354.16,
+      "duration": 3.919
+    },
+    {
+      "lang": "en",
+      "text": "under 1 second uh and even lower if",
+      "offset": 2355.839,
+      "duration": 4.721
+    },
+    {
+      "lang": "en",
+      "text": "possible. I know other sandboxes are",
+      "offset": 2358.079,
+      "duration": 6.081
+    },
+    {
+      "lang": "en",
+      "text": "also going uh on this metric. Um second",
+      "offset": 2360.56,
+      "duration": 5.039
+    },
+    {
+      "lang": "en",
+      "text": "is really really have first class",
+      "offset": 2364.16,
+      "duration": 3.199
+    },
+    {
+      "lang": "en",
+      "text": "support for snapshots and persistence.",
+      "offset": 2365.599,
+      "duration": 4.721
+    },
+    {
+      "lang": "en",
+      "text": "So what that means is moving to butterfs",
+      "offset": 2367.359,
+      "duration": 5.601
+    },
+    {
+      "lang": "en",
+      "text": "um which is uh tailor made for",
+      "offset": 2370.32,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "incremental snapshots. Um and then we",
+      "offset": 2372.96,
+      "duration": 5.119
+    },
+    {
+      "lang": "en",
+      "text": "want to binack as many sandboxes on one",
+      "offset": 2375.76,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "server as possible. So we need to do",
+      "offset": 2378.079,
+      "duration": 4.561
+    },
+    {
+      "lang": "en",
+      "text": "dynamic memory management and resource",
+      "offset": 2380.48,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "management. So ballooning or hot",
+      "offset": 2382.64,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "plugging of uh uh or removal of memory",
+      "offset": 2384.48,
+      "duration": 6.44
+    },
+    {
+      "lang": "en",
+      "text": "at runtime is very very important.",
+      "offset": 2388,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "Um yeah that's it for today. I hope you",
+      "offset": 2390.92,
+      "duration": 5.96
+    },
+    {
+      "lang": "en",
+      "text": "liked uh the presentation and you got an",
+      "offset": 2394,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "why sandboxes are important, how they",
+      "offset": 2396.88,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "are made uh from scratch and a taste of",
+      "offset": 2399.52,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "like cutting edge Linux systems work.",
+      "offset": 2402.16,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "Um, if any of this is interesting,",
+      "offset": 2404.24,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "please get in touch with me uh at those",
+      "offset": 2406.16,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "links. Uh, and I've uh left the links",
+      "offset": 2408.64,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "for the launch video, the GitHub repo.",
+      "offset": 2411.52,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "Yeah, happy to help anyone. Thanks so",
+      "offset": 2414,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "much. Bye.",
+      "offset": 2416.32,
+      "duration": 3.44
+    }
+  ],
+  "cleanText": "Hello everyone, my name is Abhishek. I'm the solo founder and developer of Arrakis, an open-source code execution and computer use sandboxing service for AI agents. Today we'll chat about why sandboxing is the next big unlock in AI and what goes into building an AI sandbox.\n\nA little bit about my background: I went to school at Carnegie Mellon, where I studied distributed systems and operating systems. At Microsoft, I worked on Windows Subsystem for Linux and a smartwatch OS from scratch. At Google, I worked on cutting-edge systems using containers and inventing something called microVMs, which we'll discuss in plenty of detail today. The last couple of years, I was at Replit working on infra and rack-based code chat before I founded Arrakis, right at the intersection of my background in operating systems, sandboxes, and AI agents.\n\nSo why do we need AI sandboxes? For one, the latest models like GPT-3 all leverage tool calling, such as search or code execution during inference, to give smarter replies to user queries. These tool calls require AI sandboxes for execution. For reinforcement learning as well, during the training phase, you need sandboxes to run reward functions at scale. Agents can also go a long way with the full Linux sandbox at their disposal. For example, during code generation, they can debug entire apps by using Linux commands like `ps` or `lsof` to see if the code is running and debugging it. They can backtrack, replan, and work towards the goal again with a sandbox at their disposal.\n\nSecurity is paramount. Agent code is no different than you using any code from GitHub or Stack Overflow and running it on your host or production server. This code could be buggy or malicious and can get root and can access your data or your client's data. So we need some amount of locking down in this sandbox.\n\nLet's see a sandbox around us. I know we've seen Canvas by OpenAI, Claude artifacts. This is Manas AI. It uses a sandbox very heavily. You can see that I've asked it to create a ChatGPT clone, and it's running all sorts of commands inside the Linux sandbox. It will also try to run the app, see if it didn't work, and then try to fix it itself. You don't need a big prompt or a lot of alignment and frameworks to make a coding agent when it has a Linux sandbox at its disposal, just because it has all of this Linux knowledge in its pre-training data. So it could go a long way for code generation tasks inside the sandbox.\n\nWith that background, introducing Arrakis. Arrakis provides a secure, fully customizable, and self-hosted solution to spawn and manage AI sandboxes for code execution and computer use. It has out-of-the-box support for backtracking via snapshot and restore. And what that means is agents can backtrack and don't have to start from scratch if they fail during multi-step workflows. Best of all, it is completely open source, and you can dive into the code, and we will do that today to see how to make an AI sandbox like Arrakis from scratch.\n\nNow let's go over the features of Arrakis. Let's start with microVM-based secure code execution. As discussed, security is paramount for AI sandboxes. Arrakis uses microVMs as a runtime, and we'll go into more detail there. But like I mentioned, code generated by AI agents would increase exponentially as people are using Windsurf, Cursor, and more and more coding agents. We don't want these malicious or potentially buggy code to get root, and we want to protect your data, your systems, your client's data.\n\nSecond is speed. Speed is paramount for AI sandboxes. You want these things at scale to be able to call tools, generate code fast. Currently, Arrakis boots in less than 7 seconds, which is way, way better than 40 seconds for a traditional old VM on macOS. We have a PR out right now to get that time below a second. Also, snapshots are super fast, single-digit seconds and just getting lower and lower with work. Arrakis also handles port forwarding for you. So, code execution, browser use, you can access them easily via just a public URL and a port. You don't have to muck with IP tables, firewalls. Arrakis takes care of all of that.\n\nEasy computer use agent sort of workflows. Chrome is pre-installed, and there's a VNC server that's hooked up pre-installed, and so you can access the GUI of your browser very easily. You can see a Chrome instance opened in an Arrakis sandbox here.\n\nBacktracking is super important as well. Like I mentioned, Arrakis supports snapshot and restore. So agents can checkpoint progress by snapshotting the sandbox. If they fail in their multi-step flows, they can restore an old snapshot. This way, we can get more reliable, higher-order complex task execution via agents.\n\nArrakis is a dead simple and ubiquitous API. It has a Python API, a Golang client, and MCP server. It has an open API compatible YAML file. So you can generate any client in any language that you want.\n\nLastly, it's configurable with Docker tooling. So, you can use your existing Docker commands, and there's a Docker file to customize what binaries and packages are installed in the sandbox. So, Arrakis gives you complete control and freedom on what you want to run inside your sandbox.\n\nSo, this is the high-level architecture of Arrakis. You can see it has a REST server that spawns and manages microVM sandboxes. Each of the sandboxes runs a VNC server and a code server. We do the port forwarding to expose a VNC server, and you can access the GUI and Chrome via VNC client. We give an Arrakis CLI Golang-based CLI called Arrakis client. There's a Python SDK. There's also an MCP server that's not shown here. So there's a lot going on here, but in the next half of the presentation, we'll work towards what all goes inside each of these components and see how an AI sandbox is made.\n\nArrakis is tied to Linux just because the microVM tech that we used is tied to dev KVM, which is the Linux virtualization device. So it's tied to the Linux virtualization stack.\n\nLet's move to the API of Arrakis. And you can see we have a very simple REST-based API. There's a key VMs resource that you use to like start, stop, delete a VM. Inside that, you can also have a snapshots resource. So you can like snapshot a VM very easily by this snapshots API, and within a VM, you get command execution with the command resource, and you can upload and download files from within the sandbox using the files API. And finally, there's a health check endpoint as well. If you want to have a distributed version and you want to see the health of your Arrakis REST server, this is what the API exposes.\n\nOkay, we discussed about the API that Arrakis exposes, and now we have an updated architecture. We can see that we have a REST server running on a Linux host or a Linux server exposing a REST API via the Python SDK or the Golang CLI. We also have an MCP server and an open API-based YAML file that you can use to generate clients in any languages. And we'll keep updating this architecture as we go inside the architecture of the sandbox. So let's move forward.\n\nArrakis uses something called microVMs to give secure sandboxes to models and AI agents. But what are microVMs and why do they or how do they provide a secure environment? For that, let's take a quick tour of Linux sandboxing, and I'll build from scratch your knowledge about Linux sandboxing and what are different options are and why we chose microVMs.\n\nLet's start with the Linux execution model. So this diagram kind of goes over the basic Linux execution model. A thread is the smallest unit of execution on Linux. Each thread has a task truck in the kernel that's in the scheduler run queue. And what that means is there's a link list or a data structure connecting these task trucks, and these are used to represent each thread or the unit of execution. A process is a logical construct made up of multiple threads. Threads in a process have different TIDs but the same PID. They share page tables and other resources. And so they're logically bound and connected by shared resources.\n\nThe kernel provides privileged access to hardware. If this wasn't the case, then any buggy or malicious code running in a thread can just crash an entire device or do malicious things. And special instructions are needed to switch to kernel mode or supervisor mode. And we need to invoke a system call for privileged access. And so you can see in the diagram when we do like `int 0x80`, that's us trying to get to privileged mode and get access to hardware or do like privileged operations on our OS.\n\nOkay, we've discussed the basic Linux thread-based execution model. Now let's discuss about containers. Why do we have them and what they are? So first, let me give you a programmer's perspective of what problem containers solve. And so in this diagram, you can see a container and the concept of namespaces. But yeah, let's dive deeper. So first, why, let's say my app needs Python 3.8, a version of a library `fu` with 1.2, and my server has Python 3.9, 3.6, 3.12, but doesn't have 3.8, and it doesn't even have the library `fu`. So how do I run my app on like an arbitrary server without these things, right? And so containers from a programmer's perspective are a way to package an app's dependencies along with the core business logic. As a corollary, they let you run arbitrary user code on your machine, which as we've discussed, is one of the core features required by an AI sandbox.\n\nGetting more technical on a Linux, a container is a collection of namespaces of different resources. So process, mount, and net for our example of key resources that you can abstract in namespaces. What that means is like if you have a process namespace, for instance, in a container, it sees certain processes as PID 1, PID 2, and PID 3 within its namespace, but outside, these are like arbitrary processes running in the user space in the root namespace. So a container has a very like abstracted or bound view of its own resources. And the host can peek inside a child container namespace, but a container cannot look upwards and see in its host namespace. So this is one way of like telling processes or like contents running in the container that like you have your own controllable like resources, and it's like a little bit of a false boundary, so to speak. So like I said, yeah, outside the container, you can see everything inside your inside your child's namespace, but it doesn't work the opposite way.\n\nWe also use something called cgroups in tandem with namespaces. So containers are collections of namespaces, and cgroups like can control how many resource a resource and container can access. So what percentage of memory, what percentage of CPU do you want to give to a specific container running on your machine.\n\nLet's talk about the security story of containers. And so here you can see a container consisting of a PID namespace running on top of a kernel on a server. And so you can see that after all, containers run as native processes on top of the kernel. There's a logical binding of resources, but at the end, these are just like processes running on top of the kernel. So you can imagine now that if you have a kernel vulnerability, any malicious or buggy process can attack the kernel and gain root, and then once it becomes root, it can do basically anything it wants. It can dump me. It can read your data. It can like pretend to be like someone it's not. So all sorts of attack vectors are on the cards.\n\nOkay. So we now know what containers are and like what's what one of the security flaws that containers have. So what are what are the alternatives, like how can we, let's say, like sandbox or jail container to kind of mitigate these things? So let's look into that, right? And so like I said, like if there's a kernel vulnerability, a container can attack it and get root, but let's see how we can reduce the attack surface by using some techniques that we have. So one is like the fundamental principle is to jail the containers by restricting like the Linux capabilities and like the syscalls they can call, and so in effect reducing the attack surface that's available to it. And so the way this works is right, like Linux has a concept of caps or capabilities, and that kind of govern what syscalls or privileged operations a process can do, and so you only give capabilities that are required by your container to do its work. You don't give it like a catch-all. And these indirectly control what system calls and what code paths they can take within the system call.\n\nAnother thing is seccomp, which like filters the arguments you can give to a system call or just block system calls all together. So seccomp filters is another option. And so you can these are like gnarly or hard to use APIs with a lot of granular error checking. So there's a library called mini jail that we used to use at Chrome OS that I highly recommend to check out that helps in like jailing and sandboxing of containers and processes.\n\nOkay, sandboxing can only go so far, and jails also have their limits. This can still bypass them. Let's say you need a heavier hammer, right? What options do we have? So let's discuss going from containers to virtualization on Linux.\n\nSo let's discuss a high-level view of virtualization. Virtualization provides another primitive to run untrusted or arbitrary code on your machines. Each VM has its own guest user space and guest kernel. And so unlike the container model where the processes run directly on top of the host kernel, in this way, the processes have their own isolated kernel and user space. And there's a very little, there's a smaller attack surface to get to the host kernel compared to a container. And so the question is in this diagram, like you need to access like hardware and other like resources. So how do VMs then access the host resources in this virtualization model on Linux?\n\nOkay. Now let's dive deeper into Linux virtualization. Yeah, as you can see that this is a more fleshed out diagram of Linux virtualization. Let me go over the main parts here. So on the right-hand side, there's some client that wants to spawn a virtual machine. And the main actor here is this process called the VMM, the virtual machine monitor, and you might have heard of QEMU, CrossVM, or firecracker. The main process here is the VMM. The VMM sits on top of dev KVM, which is like a device in the Linux kernel that exposes the processor's virtualization stack and provides a nice API for the VMM process to talk to in order to start\n\n\nA VM, uh, and uh, give it access to privileged resources.\nUh, so let's discuss how this works.\nUm, the VMM talks to the KVM device to spawn VMs, and it also manages emulated devices inside.\nSo you can see there's a block device and there's a net device.\nSome VMMs spawn these in other, uh, sandbox processes, and some VMMs have them in the same process.\nUm, to the client process, it looks like the VMM thread is blocked, but really inside that thread, we are running all the guest code on the hardware.\nSo in a separate virtualization context on your processor, this hardware code is running whenever the virtual machine needs to access disk or net or any other like privilege resource on the host.\nIt returns back to the host.\nSo the VMM process gets a VM exit, uh, and then it figures out why the exit happened, like which device caused the exit, block, net, or something else.\nIt then talks to the host kernel to do talk to the block disk device or the net device, gets the response, and sends it back to the guest with a VM resume.\nSo the whole, the whole idea is that VM exits and resumes are very, very, like performance, uh, uh, affecting, and so you want to minimize this and want to keep the, uh, guest code running in the guest context as much as possible.\nSo if you're like CPU bound inside the guest, you're technically paying no penalty in a, uh, hardware virtualization model because you're running directly on the processor.\nBut if you need a lot of like disk and net and other device access, uh, then there are other ways to you to think about performance because you might be exiting too often.\nUh, and there are other things you can do.\nYou can cache more state and the guest memory and things, but, but yeah, containers run directly on top of your host OS.\nSo performance isn't, uh, a big factor because they're like native processes, but the trade-off is of security.\nHere you get better security, but in some loads, the trade-off might be in performance.\nOkay, we've now discussed Linux virtualization and how it works.\nSo what are microVMs and how do they differ from traditional VMs?\nUm, so let's take a look.\nOkay.\nAnd so as you can see that, um, microVMs are slightly different from traditional VMs.\nSo first of all, um, this term came from the CrossVM project at Chrome OS.\nCrossVM was the first Rust-based virtual machine monitor, and the reason we rewrote, uh, QEMU-like VMMs into Rust is they provide, uh, a memory-safe implementation of virtualization.\nAnd so one aspect is that, uh, technically untrusted code running in a guest can attack your host by attacking the devices written in C, which have like memory safety-related bugs.\nUm, so writing Rust gives you some degree of, uh, sanity there separately.\nAnother feature of these VMMs is they jail their emulated devices separately.\nSo, um, you can jail the block device to only have block-related system calls.\nSo if you compromise block, you won't access network-related things, and vice versa, you jail the net device to just have network-related system calls.\nSo yeah, one way microVMs are different is they're written in Rust, and they have this like more jailing, uh, based architecture for their emulated devices.\nAnd so one aspect is security.\nThe other aspect is why are they called microVMs?\nWhere does a micro come from?\nAnd like they're known to boot really fast.\nSo why and how do they boot fast?\nAnd also like take less memory.\nSo old VMMs like QEMU support a lot of architectures and have many, many emulated devices supported.\nUm, uh, microVMs like CrossVM, Firecracker, Cloud Hypervisor don't do that.\nThey only support like one or two architectures, Intel and ARM, and have support for the major devices and not like any like, uh, obscure device as well.\nWhat this means is that there's less code, less code paths at boot, uh, and so they just boot up blazing fast and at runtime like take less memory.\nUh, and so the microVM, the micro is actually a reflection of the VMM process, either CrossVM or Firecracker versus what's running inside the guest.\nAnd so you can think of microVM as this new security-first way of running virtual machines that are like lighter weight, boost, boot fast, and consume less memory.\nOkay, hopefully that background was useful on the different ways of sandboxing untrusted code on Linux.\nOh, so with that, Arrakis chooses a microVM runtime as the final execution environment for these AI sandboxes.\nUh, and so security is one of the key design choices of Arrakis because it's written, it's written with coding agents in mind, and coding agents might use, um, might have multi-tenant or like different clients, uh, running on the same server, uh, with LLM-generated code accessing different clients' data.\nSo we don't want, uh, one piece of untrusted code getting root on your server and accessing some other, uh, client's data.\nAnd so multi-tenant code execution is untrusted code execution is a very, very, uh, key use case and design factor behind choosing microVMs.\nThey also provide fast boot times as we discussed.\nUh, snapshotting is super important for Arrakis, and microVMs provide a way to fast snapshot by just dumping the entire guest memory.\nThis isn't as easy to do with containers and, uh, even with G Visor that we'll discuss.\nUh, and with microVMs, you can just allocate, uh, some virtual memory and then just dump it when you want to snapshot and restore it when you want to restore the VM.\nUh, and so I wanted to discuss like different VMMs that we have the option of choosing.\nSo like I said, CrossVM started the whole microVM revolution, and with that came a bunch of other Rust-based VMMs.\nSo Firecracker and Cloud Hypervisor are two VMMs folk from CrossVM.\nIf you go over the codebase, you'll see many remnants of CrossVM in both.\nUm, Firecracker is the underpinning behind AWS Lambda.\nIt's used for like serverless serverless loads.\nUm, and, uh, it has a more fleshed-out like REST API, I would say, and it also has a better jailing architecture.\nCloud Hypervisor is a more general-purpose enterprise VMM.\nUh, when I chose it, it had hot plugging of devices, which means you could add and remove RAM, uh, very easily as a PCI device when you're running a sandbox.\nIt had GPU support, and it had snapshot support at the time.\nUh, and from a software project point of view, it, it isn't controlled by one specific company.\nThere are different companies there.\nSo, it made a lot of sense to use Cloud Hypervisor as the microVM VMM for Arrakis.\nUh, another option we didn't discuss separate from microVMs is G Visor, which I would say is closer to a container, uh, in performance and like, uh, but slightly better in security.\nStill, you can attack the host kernel with untrusted code running in G Visor, but based on your needs and security guarantees, um, it's a good in-between option.\nYou do get GPU access more easily in G Visor and containers versus like microVMs, so if that's a factor, then you and choose one of those and decide what your security guarantees are.\nOkay, so now we've discussed why we chose Cloud Hypervisor and microVMs as the runtime for AI sandboxes and Arrakis.\nUh, let's move forward.\nOkay, so now we can see that, uh, there's the, uh, updated architecture from the one we started off before.\nSo earlier we had just an API.\nNow we can see that, uh, the rest server is managing these, uh, microVM-based sandboxes.\nThe dotted process is actually the Cloud Hypervisor VMM process.\nUm, it runs, uh, the guest code in a thread in a virtual context, and it's talking to devk, um, to, uh, run these like microb virtual machines.\nUm, okay, so let's move forward.\nOkay.\nNow let's discuss the storage or the file system within each sandbox.\nAfter all, it might need to create files, read from them, and write to them.\nUm, and so one attack vector we haven't considered is like untrusted, malicious, or buggy code that can actually delete files inside your sandbox, and it could delete very important files on your file system and could make the sandbox like non-functional basically.\nAnd so we need to kind of protect the root FS running on inside the sandbox.\nSo we have a, have a shared base layer, uh, of a root FS that's shared between sandboxes, and you can see that this is the yellow one with user bin a here, but on top of that, every sandbox gets its own like read-write layer.\nSo this is where all the new files it creates, uh, go, uh, and so you have this very nice, uh, balance between the root FS being protected and shared between sandboxes, uh, but, uh, they get their own like read-write layer, uh, and when we snapshot a sandbox, we also persist or back up just the read-write layer.\nWe don't need to persist the read-only layer, so we have this like nice sharing and like per sandbox, uh, semantics here.\nOkay, and now let's go to the code and actually see how this happens, right?\nSo, uh, the sandbox when it boots up already has this setup.\nAll it sees is like a root mount path and just like any other like Linux system.\nThere's no difference.\nBut we do all the magic before the sandbox, uh, as soon as the sandbox boots, uh, and we start like the first, uh, pit one inside the sandbox.\nUh, and so you can see here we like, uh, uh, this is the init script running inside, uh, the guest, which is our sandbox, and it's setting up this, uh, like overlay FS here.\nUh, and as soon as it does that, we start like the booting process and like boot to pit one.\nUm, and every process, uh, within our sandbox just sees like a regular like file system, but we've done the magic underneath.\nYeah.\nAnd with that, like, let's see our updated architecture.\nSo we had the rest server, we have these like microVM sandboxes, and now we see like, uh, every disk device is, uh, mounted on top of this overlay FS, uh, and each sandbox gets its own like read-write layer.\nOkay, with that, let's move on to networking.\nOkay, every sandbox needs to have networking.\nIt might need to do other actions or call other tools or APIs.\nUm, and so we need to provide each sandbox with a network.\nUm, and so each sandbox in Arrakis runs in a virtual machine, like we discussed, with its own isolated networking.\nThe networking setup consists of a tap device.\nSo each, it's like a virtual networking interface on Linux.\nEach sandbox gets a unique tap network device.\nSo when we spawn the, uh, microb sandbox, we are creating this tap device for it.\nUm, and we have a Linux bridge on the host, uh, which is the Linux server where, um, all the tap D tap devices are connected to the Linux bridge on the host.\nAnd the last part is, uh, we take care of port forwarding.\nSo Arrakis like forwards post ports from your host into like the code server or the VNC server.\nSo you don't have to worry about how to access, uh, these things, uh, on, on your sandbox.\nOkay.\nUh, let's go over some code to set up networking here.\nSo this is a function from Arrakis.\nIt sets up the bridge device, and it also sets up the firewall rules to, uh, forward data back and forth, uh, from the host to the sandbox and the sandbox to the host.\nUm, and so you can see that like here we come in and we create a bridge, uh, and we set it to up, uh, and then we set these like firewall or forwarding rules that are quite gnarly to set up, but we've taken, uh, care of them, uh, for you, and these decide how data flows from, uh, from the host to the sandbox and back.\nUh, another function here that takes care of port forwarding, and you can see we use like Linux IP tables command to do that, and, uh, uh, like we have a destination port inside the guest, and we have this like, uh, dnat argument here that does all the magic, and, uh, we call this using like go command run, um, uh, yeah, okay, with networking setup, our updated architecture looks like this, uh, we have the rest server spawning these microVM sandboxes.\nU, and now we see that we've taken care of port forwarding.\nSo a VNC client running on your MacBook or your laptop can easily access the GUI via the VNC server, uh, running inside the sandbox.\nUm, as mentioned before, uh, we use Docker tooling to customize Arrakis sandboxes.\nSo you can run whatever packages and binaries you want, uh, by just modifying a Docker file inside Arrakis.\nUh, so let's take over the, let's take a look over the Docker file that we have by default.\nUh, and so you can see we base it on Ubuntu 22.04, have these like standard packages inside for your agents to be productive without installing, uh, anything else at runtime.\nUm, and you can see we also give you Chrome, uh, installed, and we boot it via systemd inside the sandbox, uh, and also install like NodeJS and npm so that you can make like node apps.\nPython's also already installed.\nSo you can the agents can do a lot, uh, with these tools inside the sandbox, and you can configure them for, uh, in the future with whatever binaries you want inside.\nOkay, let's put it all together and see how we create a VM in code.\nUm, so as you can see, like we create all the devices we talked about.\nSo there's a root f, there's the overlay FS writable path.\nHere we allocate, uh, some vcpus, which are nothing but threads on your host OS.\nWe calculate some memory and give it, uh, give it as a fraction of the host memory available.\nUh, there's a networking device, so we created the tap device, uh, as well, and, uh, above in the snippet, we also did the port forwarding.\nUm, voc is a way to communicate between the guest and the host.\nUh, again, uh, and then yeah, finally, we spawned a VMM process, um, and then call this create VM API on it with this configuration to start a guest VM.\nAs mentioned before, uh, code exec is one of the very important functionalities of an AI sandbox.\nArrakis comes in bundled with a code execution server.\nUh, here I show you the exact code, uh, that's running inside the code execution server.\nThere's the files API to upload and download files.\nWe'll see in the cloud demo how this API is used liberally by Claude to send data back and forth.\nAnd there's of course a command, uh, uh, API which takes in a command, executes it, and returns either an output or error, uh, in the form of JSON.\nUm, we're running in a guest VM.\nSo I'm much more confident about this code not escaping out, and we can be relaxed with it versus if we were running directly on top of our host OS, then I'd be very, very scared exposing something like this.\nUh, on top of the code execution server, we also have Chrome pre-installed, and like I said, uh, we have, we do port forwarding for you to the to your VNC server inside the sandbox.\nSo you can actually access Chrome directly and the GUI directly inside your sandbox very easily with Arrakis.\nOkay.\nNow let's talk about one of the most exciting features of Arrakis, snapshotting.\nUh, so what's the motivation behind saving state of a sandbox and snapshotting?\nSo in general, um, agents fail when you're giving them a very big task, like make me a Google News-like app.\nUm, because, uh, in inevitably, they fail somewhere during this big wake task.\nSo they need like a step-by-step plan and as specific and as small the plan the better the reliability.\nBut even then multi-stage plans can fail.\n\n\nSo, imagine if you have a deep, like almost like a DAG of execution. You do all the work and you fail towards the very end. Um, you shouldn't have to start from scratch. You should be able to backtrack to the last good checkpoint, replan, and try again. So that's the motivation behind snapshotting, giving agents the capability to fail and backtrack, uh, and then at scale, getting more reliable results by exploring multiple paths, uh, in parallel.\n\nUm, so Arrakis lets agents save the entire running state of a sandbox. So this includes like just the guest memory and the file system, which is the RW part of the overlays. So any files it created, any processes it spawned, all will be restored as is. So imagine on your MacBook, if you close the lid and you open it up, it's exactly the same semantic. Um, and so yeah, any processes found, even like windows opened in the GUI there, that's nothing but uh, uh, guest memory state. So they'll be restored as is. Um, and so agents can backtrack to a good snapshot if they fail and then replan and continue the workflow. So this diagram shows like how we can do this at scale. Um, uh, if we fail, we can just like back to um our path of execution to a last known good hash and like replan and try again.\n\nCurrently, we don't use butterfs, but our plan is to use a um a file system that natively aware is aware of uh incremental snapshots and optimized for such. Um, and so we are exploring using butterfs instead of ext4 for the file system as well.\n\nUh, now let's go over like how we actually do the snapshotting in code, and there are like four steps. Um, we actually first pause the VM by calling the pause API on the VMM. Um, uh, then we call the snapshot API and um dump the guest uh memory. Uh, and then out of band, we manually like persist the thin uh readwrite overlay FS to persist all the files uh that the sandbox or the agent uh created inside the sandbox. And finally, we resumed the VMM. So we checkpointed it and then we just ran sandbox again. So it keeps doing what it has doing before. Uh, and you can see this in code, right? Um, uh, we go ahead and pause the VM here. Um, we make sure we resume before we exit the function here. Um, we create a copy of the stateful disk, which is the readwrite layer of the overlay FS. Uh, yeah, and finally call snapshot, which dumps the guest memory uh for the VM and creates this magical experience when you resume it.\n\nOkay, we've gone through the entire architecture of Arrakis and how you would build AI sandbox like Arrakis. Uh, let's put it all together and how would we actually use it. So, uh, Arrakis comes with a first class support for a Python SDK. So you pip install the Pakis package and it's very simple from then on. You uh, you self host Arrakis on your own infrastructure, give it the IP here to the sandbox manager. Um, you figure out what all VMs are running by calling the list all API that gives you metadata about the VM, its IP, its ports. Um, you start a sandbox with the start sandbox API, run a command and see the output or the error using the output or error JSON keys. Um, and here's how you can actually snapshot with just one command. Like you give a snapshot ID. Um, and then you destroy the VM if uh if when you're done. Um, and later on when you want to actually restore the checkpoint from your snapshot, it's very simple. You just call restore with your VM name and you give the snapshot ID that you got here from the snapshot call. So all in all, a very dead simple API to use uh spawn and use AI sandboxes for codeex and other things.\n\nOkay, so we've seen the architecture of Arrakis. Uh, now let's see uh it in action. Um, let's see Claude desktop make a Google Docs clone using Arrakis via its MCP server. Um, and you'll see that we don't have to do a whole lot of prompting or create a whole coding age tool or framework. Uh, it really does a lot of heavy lifting if it once it realizes it has access to a full-blown like Linux sandbox. Uh, so yeah, let's go over the demo real quick.\n\nUh, so you can see I prompted to create a Google Docs clone, uh, and that has collaboration built in so multiple people can join. Um, we'll see that on the right hand side we are running Arrakis, um, and uh, off the black Claude is just piping commands, uh, creates a sandbox and pipes commands directly in it, creates this Google docs clone and we have networking setup so people can type in together. We can snapshot this version as well. So we created a snapshot of that copy and now we try to add a feature on top of that uh clone. Uh, and so yeah, we try to add dark mode inside the Google Docs clone. Let's see do this as well. Okay, let's see. So it added that dark mode feature inside and you can see it works. Collaboration hasn't broken. Uh, but I changed my mind. And I want to go back to the snapshot we had before without the dark mode. And so you can see we can restore the old checkpoint and go back to without dark mode here. Right? So the cool part here is that um uh it did the snapshotting and and you could see it created end to end apps without me prompting it again and again. But since we took care of networking, we could actually get a completely collaborative experience like full-on Google Docs thing uh versus just like fake collaboration that other client side uh uh codegen uh tools might do. Um, so that was like a one cool side effect uh of the demo.\n\nUh, yeah. Okay, let's discuss uh some of the ongoing work in Arrakis. Um, top of mind is definitely getting boot time to be under 1 second uh and even lower if possible. I know other sandboxes are also going uh on this metric. Um, second is really really have first class support for snapshots and persistence. So what that means is moving to butterfs, um, which is uh tailor made for incremental snapshots. Um, and then we want to binack as many sandboxes on one server as possible. So we need to do dynamic memory management and resource management. So ballooning or hot plugging of uh uh or removal of memory at runtime is very very important.\n\nUm, yeah, that's it for today. I hope you liked uh the presentation and you got an why sandboxes are important, how they are made uh from scratch and a taste of like cutting edge Linux systems work. Um, if any of this is interesting, please get in touch with me uh at those links. Uh, and I've uh left the links for the launch video, the GitHub repo. Yeah, happy to help anyone. Thanks so much. Bye.\n",
+  "dumpedAt": "2025-07-21T18:43:24.330Z"
+}

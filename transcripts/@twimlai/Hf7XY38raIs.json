@@ -1,0 +1,6658 @@
+{
+  "episodeId": "Hf7XY38raIs",
+  "channelSlug": "@twimlai",
+  "title": "Dynamic Token Merging for Efficient Byte-level Language Models with Julie Kallini - 724",
+  "publishedAt": "2025-03-24T20:26:27.000Z",
+  "rawLines": [
+    {
+      "lang": "en",
+      "text": "probably the more important reason",
+      "offset": 0.04,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "tokenization is kind of flawed is that",
+      "offset": 2,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "there are different compression rates",
+      "offset": 4.52,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "for different languages and scripts so",
+      "offset": 5.92,
+      "duration": 3.639
+    },
+    {
+      "lang": "en",
+      "text": "like high resource languages like",
+      "offset": 8.12,
+      "duration": 3.439
+    },
+    {
+      "lang": "en",
+      "text": "English are totally fine you know on",
+      "offset": 9.559,
+      "duration": 4.441
+    },
+    {
+      "lang": "en",
+      "text": "average a token is like maybe four or",
+      "offset": 11.559,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "five characters or approximately a word",
+      "offset": 14,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "but for other languages the same",
+      "offset": 16.279,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "sentence could be tokenized into so many",
+      "offset": 18.16,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "tokens users who speak those languages",
+      "offset": 20.199,
+      "duration": 3.881
+    },
+    {
+      "lang": "en",
+      "text": "when they interact with language model",
+      "offset": 22.64,
+      "duration": 4.479
+    },
+    {
+      "lang": "en",
+      "text": "apis where uh users are charged per",
+      "offset": 24.08,
+      "duration": 7.72
+    },
+    {
+      "lang": "en",
+      "text": "token they'll be overcharged basically",
+      "offset": 27.119,
+      "duration": 4.681
+    },
+    {
+      "lang": "en",
+      "text": "all right everyone welcome to another",
+      "offset": 42.559,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "episode of the twiml AI podcast I am",
+      "offset": 44.239,
+      "duration": 4.561
+    },
+    {
+      "lang": "en",
+      "text": "your host Sam charington today I'm",
+      "offset": 46.559,
+      "duration": 5
+    },
+    {
+      "lang": "en",
+      "text": "joined by Julie Kini Julie is a PhD",
+      "offset": 48.8,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "student at Stanford University before we",
+      "offset": 51.559,
+      "duration": 4.52
+    },
+    {
+      "lang": "en",
+      "text": "get started be sure to hit that",
+      "offset": 54.8,
+      "duration": 2.68
+    },
+    {
+      "lang": "en",
+      "text": "subscribe button wherever you're",
+      "offset": 56.079,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "listening to Today's Show Julie welcome",
+      "offset": 57.48,
+      "duration": 4.559
+    },
+    {
+      "lang": "en",
+      "text": "to the podcast thank you so much for",
+      "offset": 60.079,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "having me Sam I'm looking forward to",
+      "offset": 62.039,
+      "duration": 4.001
+    },
+    {
+      "lang": "en",
+      "text": "jumping into our conversation I came",
+      "offset": 64.239,
+      "duration": 4.161
+    },
+    {
+      "lang": "en",
+      "text": "across a couple of your papers recently",
+      "offset": 66.04,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "that I'd like to dig into we'll be",
+      "offset": 68.4,
+      "duration": 5.48
+    },
+    {
+      "lang": "en",
+      "text": "focusing primarily on uh the most recent",
+      "offset": 71.24,
+      "duration": 6.12
+    },
+    {
+      "lang": "en",
+      "text": "of the two called Mr T5 love that name",
+      "offset": 73.88,
+      "duration": 5.96
+    },
+    {
+      "lang": "en",
+      "text": "Dynamic token merging for efficient bite",
+      "offset": 77.36,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "level language models uh but you've also",
+      "offset": 79.84,
+      "duration": 3.8
+    },
+    {
+      "lang": "en",
+      "text": "got a really interesting paper called",
+      "offset": 82.24,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "Mission Impossible language models that",
+      "offset": 83.64,
+      "duration": 4.36
+    },
+    {
+      "lang": "en",
+      "text": "time permitting will touch",
+      "offset": 86,
+      "duration": 4.479
+    },
+    {
+      "lang": "en",
+      "text": "on before we get going I'd love to have",
+      "offset": 88,
+      "duration": 4.079
+    },
+    {
+      "lang": "en",
+      "text": "you share a little bit about your",
+      "offset": 90.479,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "background and uh how you got started in",
+      "offset": 92.079,
+      "duration": 6.161
+    },
+    {
+      "lang": "en",
+      "text": "the field yeah um thanks so much for the",
+      "offset": 95.439,
+      "duration": 6.761
+    },
+    {
+      "lang": "en",
+      "text": "introduction um so I kind of just uh uh",
+      "offset": 98.24,
+      "duration": 5.839
+    },
+    {
+      "lang": "en",
+      "text": "starting from where I got into computer",
+      "offset": 102.2,
+      "duration": 5.16
+    },
+    {
+      "lang": "en",
+      "text": "science um I really just loved Math and",
+      "offset": 104.079,
+      "duration": 6.121
+    },
+    {
+      "lang": "en",
+      "text": "Science in high school um when it came",
+      "offset": 107.36,
+      "duration": 5.6
+    },
+    {
+      "lang": "en",
+      "text": "around like junior year I think it was",
+      "offset": 110.2,
+      "duration": 4.76
+    },
+    {
+      "lang": "en",
+      "text": "my sister that told me it's time to",
+      "offset": 112.96,
+      "duration": 3.04
+    },
+    {
+      "lang": "en",
+      "text": "start thinking about what you're going",
+      "offset": 114.96,
+      "duration": 4.479
+    },
+    {
+      "lang": "en",
+      "text": "to major in in college kiddo so uh she",
+      "offset": 116,
+      "duration": 4.799
+    },
+    {
+      "lang": "en",
+      "text": "suggest",
+      "offset": 119.439,
+      "duration": 3.401
+    },
+    {
+      "lang": "en",
+      "text": "uh I think about computer science just",
+      "offset": 120.799,
+      "duration": 4.201
+    },
+    {
+      "lang": "en",
+      "text": "because it's really like applied math",
+      "offset": 122.84,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "like taking math and applying it to",
+      "offset": 125,
+      "duration": 4.959
+    },
+    {
+      "lang": "en",
+      "text": "making computers work um I started to",
+      "offset": 126.6,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "learn a little bit of programming on my",
+      "offset": 129.959,
+      "duration": 3.721
+    },
+    {
+      "lang": "en",
+      "text": "own and I was like oh this actually",
+      "offset": 131.72,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "seems pretty fun um jumped to college",
+      "offset": 133.68,
+      "duration": 6.76
+    },
+    {
+      "lang": "en",
+      "text": "and I I took my first um computer",
+      "offset": 137.48,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "science course like actual structured",
+      "offset": 140.44,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "computer science course and um you know",
+      "offset": 142.44,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "it was a little bit daunting because I",
+      "offset": 144.76,
+      "duration": 3.199
+    },
+    {
+      "lang": "en",
+      "text": "think like most of my peers were not in",
+      "offset": 146.28,
+      "duration": 3
+    },
+    {
+      "lang": "en",
+      "text": "the position of taking their first",
+      "offset": 147.959,
+      "duration": 3.481
+    },
+    {
+      "lang": "en",
+      "text": "computer science S course but uh I stuck",
+      "offset": 149.28,
+      "duration": 5.319
+    },
+    {
+      "lang": "en",
+      "text": "through it I loved it um and yeah it",
+      "offset": 151.44,
+      "duration": 5.799
+    },
+    {
+      "lang": "en",
+      "text": "seemed to all work out and uh in terms",
+      "offset": 154.599,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "of actually getting into the field of",
+      "offset": 157.239,
+      "duration": 5.521
+    },
+    {
+      "lang": "en",
+      "text": "NLP or natural language processing um I",
+      "offset": 159.319,
+      "duration": 6.441
+    },
+    {
+      "lang": "en",
+      "text": "think uh throughout College I kind of",
+      "offset": 162.76,
+      "duration": 4.759
+    },
+    {
+      "lang": "en",
+      "text": "wasn't sure about what topic within",
+      "offset": 165.76,
+      "duration": 4.119
+    },
+    {
+      "lang": "en",
+      "text": "computer science was really my focus",
+      "offset": 167.519,
+      "duration": 3.64
+    },
+    {
+      "lang": "en",
+      "text": "like I thought I could have been a",
+      "offset": 169.879,
+      "duration": 4.521
+    },
+    {
+      "lang": "en",
+      "text": "systems person or a theory person for a",
+      "offset": 171.159,
+      "duration": 5.921
+    },
+    {
+      "lang": "en",
+      "text": "long time um but then the thing that",
+      "offset": 174.4,
+      "duration": 4.559
+    },
+    {
+      "lang": "en",
+      "text": "brought me toward machine learning was",
+      "offset": 177.08,
+      "duration": 4.92
+    },
+    {
+      "lang": "en",
+      "text": "taking my first l Linguistics class um",
+      "offset": 178.959,
+      "duration": 6.36
+    },
+    {
+      "lang": "en",
+      "text": "and I really enjoyed um looking at",
+      "offset": 182,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "language in a different way that I",
+      "offset": 185.319,
+      "duration": 3.761
+    },
+    {
+      "lang": "en",
+      "text": "hadn't before like uh Linguistics really",
+      "offset": 186.48,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "approaches studying language as a",
+      "offset": 189.08,
+      "duration": 5.719
+    },
+    {
+      "lang": "en",
+      "text": "science as well um and then marrying",
+      "offset": 190.64,
+      "duration": 5.72
+    },
+    {
+      "lang": "en",
+      "text": "Linguistics and computer science like",
+      "offset": 194.799,
+      "duration": 3.761
+    },
+    {
+      "lang": "en",
+      "text": "natural language processing is the is",
+      "offset": 196.36,
+      "duration": 4.36
+    },
+    {
+      "lang": "en",
+      "text": "the most natural way to do that or the",
+      "offset": 198.56,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "the perfect marriage of the two uh so",
+      "offset": 200.72,
+      "duration": 5.239
+    },
+    {
+      "lang": "en",
+      "text": "that's what got me interested in NLP",
+      "offset": 203.36,
+      "duration": 4.2
+    },
+    {
+      "lang": "en",
+      "text": "awesome awesome and what year are you in",
+      "offset": 205.959,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "your program I'm a second year PhD",
+      "offset": 207.56,
+      "duration": 3.679
+    },
+    {
+      "lang": "en",
+      "text": "what's your research Focus how do you",
+      "offset": 209.879,
+      "duration": 2.881
+    },
+    {
+      "lang": "en",
+      "text": "think about the things that you're",
+      "offset": 211.239,
+      "duration": 3.481
+    },
+    {
+      "lang": "en",
+      "text": "interested in I like to say that what I",
+      "offset": 212.76,
+      "duration": 4.479
+    },
+    {
+      "lang": "en",
+      "text": "work on is uh fitting pop culture",
+      "offset": 214.72,
+      "duration": 4.68
+    },
+    {
+      "lang": "en",
+      "text": "references into my paper titles but if",
+      "offset": 217.239,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "you",
+      "offset": 219.4,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "wanna if you want a more uh serious",
+      "offset": 221.159,
+      "duration": 5.121
+    },
+    {
+      "lang": "en",
+      "text": "answer uh I think there are two strands",
+      "offset": 224.12,
+      "duration": 5.6
+    },
+    {
+      "lang": "en",
+      "text": "right now to my research um uh right now",
+      "offset": 226.28,
+      "duration": 5.319
+    },
+    {
+      "lang": "en",
+      "text": "I've been really interested in",
+      "offset": 229.72,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "tokenization and bite level models which",
+      "offset": 231.599,
+      "duration": 3.801
+    },
+    {
+      "lang": "en",
+      "text": "is the focus of the Mr te paper we're",
+      "offset": 233.56,
+      "duration": 4.319
+    },
+    {
+      "lang": "en",
+      "text": "going to be talking about and then uh",
+      "offset": 235.4,
+      "duration": 4.44
+    },
+    {
+      "lang": "en",
+      "text": "another big strand of my research that's",
+      "offset": 237.879,
+      "duration": 4.92
+    },
+    {
+      "lang": "en",
+      "text": "focus of the mission impossible paper um",
+      "offset": 239.84,
+      "duration": 5.039
+    },
+    {
+      "lang": "en",
+      "text": "as well as follow-ups we're doing to to",
+      "offset": 242.799,
+      "duration": 4.881
+    },
+    {
+      "lang": "en",
+      "text": "that paper uh is um kind of looking at",
+      "offset": 244.879,
+      "duration": 5.521
+    },
+    {
+      "lang": "en",
+      "text": "how language models could help us",
+      "offset": 247.68,
+      "duration": 5.32
+    },
+    {
+      "lang": "en",
+      "text": "understand um Linguistics or cognitive",
+      "offset": 250.4,
+      "duration": 5
+    },
+    {
+      "lang": "en",
+      "text": "science um so these are the big strands",
+      "offset": 253,
+      "duration": 4.959
+    },
+    {
+      "lang": "en",
+      "text": "you know it used to be the case where uh",
+      "offset": 255.4,
+      "duration": 4.359
+    },
+    {
+      "lang": "en",
+      "text": "we just want computers to be able to",
+      "offset": 257.959,
+      "duration": 4.361
+    },
+    {
+      "lang": "en",
+      "text": "mimic human language in some way but now",
+      "offset": 259.759,
+      "duration": 5.88
+    },
+    {
+      "lang": "en",
+      "text": "that they're so good um the question is",
+      "offset": 262.32,
+      "duration": 5.08
+    },
+    {
+      "lang": "en",
+      "text": "can they help us learn more about",
+      "offset": 265.639,
+      "duration": 4.84
+    },
+    {
+      "lang": "en",
+      "text": "language well let's dig into the Mr te",
+      "offset": 267.4,
+      "duration": 7.16
+    },
+    {
+      "lang": "en",
+      "text": "paper and I'd like to maybe start at the",
+      "offset": 270.479,
+      "duration": 6.521
+    },
+    {
+      "lang": "en",
+      "text": "top and talk about tokenization why is",
+      "offset": 274.56,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "tokenization so important for large",
+      "offset": 277,
+      "duration": 6.4
+    },
+    {
+      "lang": "en",
+      "text": "language models yeah so um tokenization",
+      "offset": 279.36,
+      "duration": 6.64
+    },
+    {
+      "lang": "en",
+      "text": "is the pre-processing step that's",
+      "offset": 283.4,
+      "duration": 5.88
+    },
+    {
+      "lang": "en",
+      "text": "Central to basically every language",
+      "offset": 286,
+      "duration": 6.4
+    },
+    {
+      "lang": "en",
+      "text": "model that you've heard of um these days",
+      "offset": 289.28,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "um so it's the pre-processing step that",
+      "offset": 292.4,
+      "duration": 6.44
+    },
+    {
+      "lang": "en",
+      "text": "breaks up text into uh into chunks or",
+      "offset": 294.16,
+      "duration": 8.84
+    },
+    {
+      "lang": "en",
+      "text": "units um called tokens so you can think",
+      "offset": 298.84,
+      "duration": 7.4
+    },
+    {
+      "lang": "en",
+      "text": "of these as words or parts of words um",
+      "offset": 303,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "and these are the units that we feed",
+      "offset": 306.24,
+      "duration": 4.679
+    },
+    {
+      "lang": "en",
+      "text": "into a language model um you can think",
+      "offset": 307.8,
+      "duration": 5.88
+    },
+    {
+      "lang": "en",
+      "text": "of tokenization as a form of compression",
+      "offset": 310.919,
+      "duration": 4.881
+    },
+    {
+      "lang": "en",
+      "text": "um because it's basically taking a long",
+      "offset": 313.68,
+      "duration": 4.239
+    },
+    {
+      "lang": "en",
+      "text": "text sequence and making it into a",
+      "offset": 315.8,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "smaller set of units that um you know if",
+      "offset": 317.919,
+      "duration": 4.321
+    },
+    {
+      "lang": "en",
+      "text": "you think about the Transformer which is",
+      "offset": 320.52,
+      "duration": 3.56
+    },
+    {
+      "lang": "en",
+      "text": "the the component that's really Central",
+      "offset": 322.24,
+      "duration": 4.079
+    },
+    {
+      "lang": "en",
+      "text": "to all of the large language models that",
+      "offset": 324.08,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "we know today um uh it can be very",
+      "offset": 326.319,
+      "duration": 7.44
+    },
+    {
+      "lang": "en",
+      "text": "expensive you know uh uh the the termal",
+      "offset": 330.08,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "here is like quadratic complexity in",
+      "offset": 333.759,
+      "duration": 4.121
+    },
+    {
+      "lang": "en",
+      "text": "terms of the sequence length for for the",
+      "offset": 336.08,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "attention mechanism um so uh long",
+      "offset": 337.88,
+      "duration": 5.4
+    },
+    {
+      "lang": "en",
+      "text": "sequences are pretty inefficient and",
+      "offset": 341.12,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "tokenization compresses it into these uh",
+      "offset": 343.28,
+      "duration": 5.72
+    },
+    {
+      "lang": "en",
+      "text": "smaller units um however there's some",
+      "offset": 345.84,
+      "duration": 6.639
+    },
+    {
+      "lang": "en",
+      "text": "big problems with tokenization um for",
+      "offset": 349,
+      "duration": 6.88
+    },
+    {
+      "lang": "en",
+      "text": "for one um it can be really sensitive to",
+      "offset": 352.479,
+      "duration": 5.72
+    },
+    {
+      "lang": "en",
+      "text": "character manipulations or character",
+      "offset": 355.88,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "level noise so uh a simple spelling",
+      "offset": 358.199,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "error can result in a sequence being",
+      "offset": 361.16,
+      "duration": 3.319
+    },
+    {
+      "lang": "en",
+      "text": "represented by a completely different",
+      "offset": 362.919,
+      "duration": 6.321
+    },
+    {
+      "lang": "en",
+      "text": "set of tokens um uh it's also I think",
+      "offset": 364.479,
+      "duration": 6.881
+    },
+    {
+      "lang": "en",
+      "text": "the the probably the more important",
+      "offset": 369.24,
+      "duration": 5.239
+    },
+    {
+      "lang": "en",
+      "text": "reason tokenization is kind of flawed is",
+      "offset": 371.36,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "that uh there are different compression",
+      "offset": 374.479,
+      "duration": 3.361
+    },
+    {
+      "lang": "en",
+      "text": "rates for different languages and",
+      "offset": 376.4,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "scripts so like high resource languages",
+      "offset": 377.84,
+      "duration": 4.28
+    },
+    {
+      "lang": "en",
+      "text": "like English are totally fine you know",
+      "offset": 380.16,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "on average a token is like maybe four or",
+      "offset": 382.12,
+      "duration": 5.24
+    },
+    {
+      "lang": "en",
+      "text": "five characters or approximately a word",
+      "offset": 384.72,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "um but for other languages",
+      "offset": 387.36,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "um uh the same sentence could be",
+      "offset": 390.24,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "tokenized basically into into so many",
+      "offset": 392.88,
+      "duration": 5.4
+    },
+    {
+      "lang": "en",
+      "text": "charact like so many uh tokens um",
+      "offset": 395.36,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "basically operating at a at a character",
+      "offset": 398.28,
+      "duration": 3.88
+    },
+    {
+      "lang": "en",
+      "text": "level so then all the problems of",
+      "offset": 400.56,
+      "duration": 5.56
+    },
+    {
+      "lang": "en",
+      "text": "efficiency come in um and uh users of",
+      "offset": 402.16,
+      "duration": 6.56
+    },
+    {
+      "lang": "en",
+      "text": "those language um users who speak those",
+      "offset": 406.12,
+      "duration": 4.079
+    },
+    {
+      "lang": "en",
+      "text": "languages when they interact with",
+      "offset": 408.72,
+      "duration": 4.12
+    },
+    {
+      "lang": "en",
+      "text": "language model apis where uh users are",
+      "offset": 410.199,
+      "duration": 5.4
+    },
+    {
+      "lang": "en",
+      "text": "charged per token they'll be overcharged",
+      "offset": 412.84,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "basically um so I think the UN the",
+      "offset": 415.599,
+      "duration": 5.401
+    },
+    {
+      "lang": "en",
+      "text": "unfairness aspect uh is really",
+      "offset": 417.96,
+      "duration": 6.959
+    },
+    {
+      "lang": "en",
+      "text": "interesting to me you mentioned that um",
+      "offset": 421,
+      "duration": 7.4
+    },
+    {
+      "lang": "en",
+      "text": "one of the issues with tokenization is",
+      "offset": 424.919,
+      "duration": 7.081
+    },
+    {
+      "lang": "en",
+      "text": "that it's sensitive to character errors",
+      "offset": 428.4,
+      "duration": 5.4
+    },
+    {
+      "lang": "en",
+      "text": "uh and yet I think a lot of our",
+      "offset": 432,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "experience with llms is that we almost",
+      "offset": 433.8,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "get really sloppy with the way we",
+      "offset": 435.68,
+      "duration": 2.76
+    },
+    {
+      "lang": "en",
+      "text": "communicate with them because we know",
+      "offset": 437.16,
+      "duration": 2.879
+    },
+    {
+      "lang": "en",
+      "text": "they'll figure it out how do you",
+      "offset": 438.44,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "reconcile those two experiences yeah",
+      "offset": 440.039,
+      "duration": 5.241
+    },
+    {
+      "lang": "en",
+      "text": "that's a that's a great question uh so",
+      "offset": 442.52,
+      "duration": 5.959
+    },
+    {
+      "lang": "en",
+      "text": "intuitively uh to me when I think about",
+      "offset": 445.28,
+      "duration": 5.84
+    },
+    {
+      "lang": "en",
+      "text": "tokenization and how uh it's sensitive",
+      "offset": 448.479,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "to character errors like I wouldn't",
+      "offset": 451.12,
+      "duration": 6.759
+    },
+    {
+      "lang": "en",
+      "text": "necessarily want the um like two words",
+      "offset": 453.599,
+      "duration": 6.761
+    },
+    {
+      "lang": "en",
+      "text": "that are spelled slightly if a word is",
+      "offset": 457.879,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "spelled slightly differently it can be",
+      "offset": 460.36,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "CH chunked in a different way or",
+      "offset": 462.199,
+      "duration": 6.68
+    },
+    {
+      "lang": "en",
+      "text": "um maybe if a if a letter is capital",
+      "offset": 465.72,
+      "duration": 5.96
+    },
+    {
+      "lang": "en",
+      "text": "then then that that word will get a",
+      "offset": 468.879,
+      "duration": 4.04
+    },
+    {
+      "lang": "en",
+      "text": "completely different input",
+      "offset": 471.68,
+      "duration": 2.6
+    },
+    {
+      "lang": "en",
+      "text": "representation and then the model",
+      "offset": 472.919,
+      "duration": 4.12
+    },
+    {
+      "lang": "en",
+      "text": "basically has to learn that oh um this",
+      "offset": 474.28,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "word that you meant actually means this",
+      "offset": 477.039,
+      "duration": 5.521
+    },
+    {
+      "lang": "en",
+      "text": "other word um it has to kind of learn",
+      "offset": 479.72,
+      "duration": 4.599
+    },
+    {
+      "lang": "en",
+      "text": "that implicitly I think the models are",
+      "offset": 482.56,
+      "duration": 3.12
+    },
+    {
+      "lang": "en",
+      "text": "just",
+      "offset": 484.319,
+      "duration": 4.44
+    },
+    {
+      "lang": "en",
+      "text": "trained um trained on a ton of data and",
+      "offset": 485.68,
+      "duration": 5.359
+    },
+    {
+      "lang": "en",
+      "text": "trained for very long that um maybe",
+      "offset": 488.759,
+      "duration": 6.241
+    },
+    {
+      "lang": "en",
+      "text": "these differences uh don't uh on the",
+      "offset": 491.039,
+      "duration": 7.84
+    },
+    {
+      "lang": "en",
+      "text": "surface seem to to not matter as much um",
+      "offset": 495,
+      "duration": 6.759
+    },
+    {
+      "lang": "en",
+      "text": "but I think that it can still result in",
+      "offset": 498.879,
+      "duration": 5.641
+    },
+    {
+      "lang": "en",
+      "text": "weird interesting failure cases in",
+      "offset": 501.759,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "certain points the second idea that you",
+      "offset": 504.52,
+      "duration": 5.56
+    },
+    {
+      "lang": "en",
+      "text": "mentioned is the idea that sub word",
+      "offset": 506.879,
+      "duration": 7.201
+    },
+    {
+      "lang": "en",
+      "text": "tokenization is less efficient for under",
+      "offset": 510.08,
+      "duration": 7.519
+    },
+    {
+      "lang": "en",
+      "text": "resource languages can you uh give some",
+      "offset": 514.08,
+      "duration": 6.16
+    },
+    {
+      "lang": "en",
+      "text": "examples of how that comes to play yeah",
+      "offset": 517.599,
+      "duration": 5.8
+    },
+    {
+      "lang": "en",
+      "text": "for sure um",
+      "offset": 520.24,
+      "duration": 7.08
+    },
+    {
+      "lang": "en",
+      "text": "so um basically like I I I have this",
+      "offset": 523.399,
+      "duration": 7.601
+    },
+    {
+      "lang": "en",
+      "text": "example um when I give talks about Mr T",
+      "offset": 527.32,
+      "duration": 5.24
+    },
+    {
+      "lang": "en",
+      "text": "I kind of have this example where I take",
+      "offset": 531,
+      "duration": 5.399
+    },
+    {
+      "lang": "en",
+      "text": "the gp4 tokenizer and I have a sentence",
+      "offset": 532.56,
+      "duration": 7.68
+    },
+    {
+      "lang": "en",
+      "text": "in English and I have its translation in",
+      "offset": 536.399,
+      "duration": 6.601
+    },
+    {
+      "lang": "en",
+      "text": "Arabic um and we know that these",
+      "offset": 540.24,
+      "duration": 5.88
+    },
+    {
+      "lang": "en",
+      "text": "sentences mean the the same exact thing",
+      "offset": 543,
+      "duration": 5.92
+    },
+    {
+      "lang": "en",
+      "text": "um because it's it's literally the the",
+      "offset": 546.12,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "same sentence just translated into",
+      "offset": 548.92,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "Arabic um but uh the exact number I have",
+      "offset": 550.68,
+      "duration": 6.08
+    },
+    {
+      "lang": "en",
+      "text": "for the gp4 tokenizer on that language",
+      "offset": 554.12,
+      "duration": 7.12
+    },
+    {
+      "lang": "en",
+      "text": "is uh like the English sentence is uh um",
+      "offset": 556.76,
+      "duration": 6.92
+    },
+    {
+      "lang": "en",
+      "text": "tokenized into 10 tokens or so or nine",
+      "offset": 561.24,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "tokens and then the Arabic sentences",
+      "offset": 563.68,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "tokenized into 31 tokens even though the",
+      "offset": 565.72,
+      "duration": 6.28
+    },
+    {
+      "lang": "en",
+      "text": "number of characters is there actually",
+      "offset": 568.72,
+      "duration": 6.16
+    },
+    {
+      "lang": "en",
+      "text": "fewer characters in the Arabic sequence",
+      "offset": 572,
+      "duration": 5
+    },
+    {
+      "lang": "en",
+      "text": "um there are a variety of factors that",
+      "offset": 574.88,
+      "duration": 4.6
+    },
+    {
+      "lang": "en",
+      "text": "go into this so you know perhaps it's",
+      "offset": 577,
+      "duration": 4.2
+    },
+    {
+      "lang": "en",
+      "text": "just that the tokenizer is not trained",
+      "offset": 579.48,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "on enough Arabic or maybe English is the",
+      "offset": 581.2,
+      "duration": 4.68
+    },
+    {
+      "lang": "en",
+      "text": "dominant language but also from a",
+      "offset": 583.56,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "linguistic perspective",
+      "offset": 585.88,
+      "duration": 6.28
+    },
+    {
+      "lang": "en",
+      "text": "um there and Arabic is is one of those",
+      "offset": 588.6,
+      "duration": 5.96
+    },
+    {
+      "lang": "en",
+      "text": "languages from a linguistic perspective",
+      "offset": 592.16,
+      "duration": 4.52
+    },
+    {
+      "lang": "en",
+      "text": "um there's some languages where",
+      "offset": 594.56,
+      "duration": 4.279
+    },
+    {
+      "lang": "en",
+      "text": "meaningful units are not necessarily",
+      "offset": 596.68,
+      "duration": 4.719
+    },
+    {
+      "lang": "en",
+      "text": "adjacent so like these things are called",
+      "offset": 598.839,
+      "duration": 6.56
+    },
+    {
+      "lang": "en",
+      "text": "like infixes in in languages um rather",
+      "offset": 601.399,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "than putting like a prefix or a suffix",
+      "offset": 605.399,
+      "duration": 3.241
+    },
+    {
+      "lang": "en",
+      "text": "like we do in English to add some",
+      "offset": 607.399,
+      "duration": 3.041
+    },
+    {
+      "lang": "en",
+      "text": "meaning to a word where you put like",
+      "offset": 608.64,
+      "duration": 4.36
+    },
+    {
+      "lang": "en",
+      "text": "let's say Ed to make mean the past tense",
+      "offset": 610.44,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "you can like shove it in the middle of a",
+      "offset": 613,
+      "duration": 7
+    },
+    {
+      "lang": "en",
+      "text": "word um and now it's no longer like",
+      "offset": 615.24,
+      "duration": 7.719
+    },
+    {
+      "lang": "en",
+      "text": "um yeah now now it it's like no longer",
+      "offset": 620,
+      "duration": 4.76
+    },
+    {
+      "lang": "en",
+      "text": "like concatenating something to the end",
+      "offset": 622.959,
+      "duration": 3.521
+    },
+    {
+      "lang": "en",
+      "text": "it's uh it's like inserting it in the",
+      "offset": 624.76,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "middle so like the way the morphy works",
+      "offset": 626.48,
+      "duration": 4.919
+    },
+    {
+      "lang": "en",
+      "text": "is actually breaking up theout into",
+      "offset": 629.8,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "pieces um um so from a linguistic",
+      "offset": 631.399,
+      "duration": 5.921
+    },
+    {
+      "lang": "en",
+      "text": "perspective I can see why an algorithm",
+      "offset": 634.68,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "that is kind of merging frequent",
+      "offset": 637.32,
+      "duration": 4.199
+    },
+    {
+      "lang": "en",
+      "text": "adjacent tokens might not be the best",
+      "offset": 639,
+      "duration": 5.079
+    },
+    {
+      "lang": "en",
+      "text": "for all languages Beyond just having",
+      "offset": 641.519,
+      "duration": 5.041
+    },
+    {
+      "lang": "en",
+      "text": "enough data for that language during the",
+      "offset": 644.079,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "tokenizer training and so the contention",
+      "offset": 646.56,
+      "duration": 6.04
+    },
+    {
+      "lang": "en",
+      "text": "in this paper is that a big part of the",
+      "offset": 649.519,
+      "duration": 7.041
+    },
+    {
+      "lang": "en",
+      "text": "issue arises from the unit of",
+      "offset": 652.6,
+      "duration": 6.32
+    },
+    {
+      "lang": "en",
+      "text": "tokenization Might did I get that right",
+      "offset": 656.56,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "yeah yeah basically",
+      "offset": 658.92,
+      "duration": 7.28
+    },
+    {
+      "lang": "en",
+      "text": "that um yes performing tokenization can",
+      "offset": 662,
+      "duration": 7.16
+    },
+    {
+      "lang": "en",
+      "text": "have these drawbacks uh for for certain",
+      "offset": 666.2,
+      "duration": 6.24
+    },
+    {
+      "lang": "en",
+      "text": "languages um yeah and the units of",
+      "offset": 669.16,
+      "duration": 5.679
+    },
+    {
+      "lang": "en",
+      "text": "tokenization can be very different for",
+      "offset": 672.44,
+      "duration": 4.68
+    },
+    {
+      "lang": "en",
+      "text": "for or or how how much compression you",
+      "offset": 674.839,
+      "duration": 5.521
+    },
+    {
+      "lang": "en",
+      "text": "achieve in different languages uh uh is",
+      "offset": 677.12,
+      "duration": 7.04
+    },
+    {
+      "lang": "en",
+      "text": "a big is a big factor and also like um",
+      "offset": 680.36,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "how efficient it's going to be in each",
+      "offset": 684.16,
+      "duration": 4.6
+    },
+    {
+      "lang": "en",
+      "text": "language and so one of the distinctions",
+      "offset": 685.56,
+      "duration": 5.079
+    },
+    {
+      "lang": "en",
+      "text": "that you call is between subword",
+      "offset": 688.76,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "tokenization and character level",
+      "offset": 690.639,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "tokenization um and bite tokenization",
+      "offset": 693.32,
+      "duration": 6.199
+    },
+    {
+      "lang": "en",
+      "text": "can you talk about the differences there",
+      "offset": 696.399,
+      "duration": 5.921
+    },
+    {
+      "lang": "en",
+      "text": "so um most of the main models use",
+      "offset": 699.519,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "subword tokenization which is what we've",
+      "offset": 702.32,
+      "duration": 4.319
+    },
+    {
+      "lang": "en",
+      "text": "talked about uh the alternative would be",
+      "offset": 704.079,
+      "duration": 5.041
+    },
+    {
+      "lang": "en",
+      "text": "uh character level or bite level models",
+      "offset": 706.639,
+      "duration": 5.841
+    },
+    {
+      "lang": "en",
+      "text": "so these characters don't perform um a",
+      "offset": 709.12,
+      "duration": 5.24
+    },
+    {
+      "lang": "en",
+      "text": "tokenization uh sorry these language",
+      "offset": 712.48,
+      "duration": 4.68
+    },
+    {
+      "lang": "en",
+      "text": "models don't perform a a tokenization",
+      "offset": 714.36,
+      "duration": 5.719
+    },
+    {
+      "lang": "en",
+      "text": "pre-processing step they just take in",
+      "offset": 717.16,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "the Raw character or bite sequences as",
+      "offset": 720.079,
+      "duration": 6.041
+    },
+    {
+      "lang": "en",
+      "text": "the units that um the the Transformer or",
+      "offset": 722.44,
+      "duration": 6.48
+    },
+    {
+      "lang": "en",
+      "text": "the the language model will operate on",
+      "offset": 726.12,
+      "duration": 7.2
+    },
+    {
+      "lang": "en",
+      "text": "um and the benefit here is that uh you",
+      "offset": 728.92,
+      "duration": 5.919
+    },
+    {
+      "lang": "en",
+      "text": "know some some of the issues that we",
+      "offset": 733.32,
+      "duration": 4.079
+    },
+    {
+      "lang": "en",
+      "text": "talked about like let's say sensitivity",
+      "offset": 734.839,
+      "duration": 4.401
+    },
+    {
+      "lang": "en",
+      "text": "to character level",
+      "offset": 737.399,
+      "duration": 5.56
+    },
+    {
+      "lang": "en",
+      "text": "manipulations um or the model having",
+      "offset": 739.24,
+      "duration": 5.599
+    },
+    {
+      "lang": "en",
+      "text": "like more awareness of what characters",
+      "offset": 742.959,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "comprise its tokens um a lot of these",
+      "offset": 744.839,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "issues are addressed by modeling at the",
+      "offset": 747.279,
+      "duration": 6.36
+    },
+    {
+      "lang": "en",
+      "text": "character or bite level um the issue is",
+      "offset": 749.959,
+      "duration": 6.32
+    },
+    {
+      "lang": "en",
+      "text": "that you still get uh uh you you get",
+      "offset": 753.639,
+      "duration": 4.041
+    },
+    {
+      "lang": "en",
+      "text": "these problems of having very long",
+      "offset": 756.279,
+      "duration": 2.761
+    },
+    {
+      "lang": "en",
+      "text": "sequence lengths when you're just",
+      "offset": 757.68,
+      "duration": 3.519
+    },
+    {
+      "lang": "en",
+      "text": "operating on the raw character or bite",
+      "offset": 759.04,
+      "duration": 4.84
+    },
+    {
+      "lang": "en",
+      "text": "streams um so there are different",
+      "offset": 761.199,
+      "duration": 5.361
+    },
+    {
+      "lang": "en",
+      "text": "architectures that have kind of um",
+      "offset": 763.88,
+      "duration": 5.68
+    },
+    {
+      "lang": "en",
+      "text": "address this so um I guess in in the",
+      "offset": 766.56,
+      "duration": 5.56
+    },
+    {
+      "lang": "en",
+      "text": "related work section I talk about uh",
+      "offset": 769.56,
+      "duration": 5.24
+    },
+    {
+      "lang": "en",
+      "text": "like Char former or K9 is Google's",
+      "offset": 772.12,
+      "duration": 5.399
+    },
+    {
+      "lang": "en",
+      "text": "character level um counterart uh",
+      "offset": 774.8,
+      "duration": 5.24
+    },
+    {
+      "lang": "en",
+      "text": "counterpart to multilingual",
+      "offset": 777.519,
+      "duration": 4.241
+    },
+    {
+      "lang": "en",
+      "text": "um there are different architectures to",
+      "offset": 780.04,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "try and kind of um down sample the",
+      "offset": 781.76,
+      "duration": 7.879
+    },
+    {
+      "lang": "en",
+      "text": "sequence um in a learned way um the",
+      "offset": 785.56,
+      "duration": 7.68
+    },
+    {
+      "lang": "en",
+      "text": "focus of our paper is on bite T5 and uh",
+      "offset": 789.639,
+      "duration": 7.56
+    },
+    {
+      "lang": "en",
+      "text": "the reason we focused on bite T5 is um",
+      "offset": 793.24,
+      "duration": 6.56
+    },
+    {
+      "lang": "en",
+      "text": "it had very impressive performance",
+      "offset": 797.199,
+      "duration": 5.161
+    },
+    {
+      "lang": "en",
+      "text": "compared to its token level counterpart",
+      "offset": 799.8,
+      "duration": 5.839
+    },
+    {
+      "lang": "en",
+      "text": "which was multilingual T5 um so on all",
+      "offset": 802.36,
+      "duration": 5.599
+    },
+    {
+      "lang": "en",
+      "text": "these benchmarks it matched or even",
+      "offset": 805.639,
+      "duration": 5.681
+    },
+    {
+      "lang": "en",
+      "text": "outperformed um mt5 but the main problem",
+      "offset": 807.959,
+      "duration": 6.841
+    },
+    {
+      "lang": "en",
+      "text": "was it was efficiency it just uh uh it",
+      "offset": 811.32,
+      "duration": 5.6
+    },
+    {
+      "lang": "en",
+      "text": "was exactly the architecture of mt5 but",
+      "offset": 814.8,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "operating on bytes so you get these very",
+      "offset": 816.92,
+      "duration": 7.08
+    },
+    {
+      "lang": "en",
+      "text": "long sequence lengths um and uh our idea",
+      "offset": 818.88,
+      "duration": 6.6
+    },
+    {
+      "lang": "en",
+      "text": "was kind of like how how can we take",
+      "offset": 824,
+      "duration": 3.079
+    },
+    {
+      "lang": "en",
+      "text": "this existing bite level model and make",
+      "offset": 825.48,
+      "duration": 4.28
+    },
+    {
+      "lang": "en",
+      "text": "it more efficient um specifically",
+      "offset": 827.079,
+      "duration": 4.641
+    },
+    {
+      "lang": "en",
+      "text": "through minimal",
+      "offset": 829.76,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "fine-tuning um and that's where the the",
+      "offset": 831.72,
+      "duration": 5.479
+    },
+    {
+      "lang": "en",
+      "text": "idea kind of started but what you're",
+      "offset": 834.56,
+      "duration": 5.399
+    },
+    {
+      "lang": "en",
+      "text": "talking about here is",
+      "offset": 837.199,
+      "duration": 5.08
+    },
+    {
+      "lang": "en",
+      "text": "modeling directly at the character or",
+      "offset": 839.959,
+      "duration": 5.521
+    },
+    {
+      "lang": "en",
+      "text": "bite level as opposed to some other type",
+      "offset": 842.279,
+      "duration": 6.56
+    },
+    {
+      "lang": "en",
+      "text": "of tokenization that's more granular yes",
+      "offset": 845.48,
+      "duration": 6.799
+    },
+    {
+      "lang": "en",
+      "text": "to tokenization um specifically as",
+      "offset": 848.839,
+      "duration": 4.961
+    },
+    {
+      "lang": "en",
+      "text": "pre-processing",
+      "offset": 852.279,
+      "duration": 4.68
+    },
+    {
+      "lang": "en",
+      "text": "before uh feeding it into the",
+      "offset": 853.8,
+      "duration": 6.32
+    },
+    {
+      "lang": "en",
+      "text": "Transformer um there there are methods",
+      "offset": 856.959,
+      "duration": 5.601
+    },
+    {
+      "lang": "en",
+      "text": "that uh some would call soft",
+      "offset": 860.12,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "tokenization which is like maybe you",
+      "offset": 862.56,
+      "duration": 6.079
+    },
+    {
+      "lang": "en",
+      "text": "have uh you feed in a character or bite",
+      "offset": 864.68,
+      "duration": 5.24
+    },
+    {
+      "lang": "en",
+      "text": "sequence",
+      "offset": 868.639,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "um but the Transformer kind of learns",
+      "offset": 869.92,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "how to group tokens implicitly via some",
+      "offset": 872.639,
+      "duration": 4.801
+    },
+    {
+      "lang": "en",
+      "text": "learned mechanism so that would be an",
+      "offset": 875.44,
+      "duration": 4.959
+    },
+    {
+      "lang": "en",
+      "text": "example would be like the Char forer",
+      "offset": 877.44,
+      "duration": 6.199
+    },
+    {
+      "lang": "en",
+      "text": "architecture um or like um another",
+      "offset": 880.399,
+      "duration": 5.481
+    },
+    {
+      "lang": "en",
+      "text": "example is ourglass Transformer which we",
+      "offset": 883.639,
+      "duration": 4.921
+    },
+    {
+      "lang": "en",
+      "text": "also like uh partially like replicate in",
+      "offset": 885.88,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "the in the paper",
+      "offset": 888.56,
+      "duration": 6.12
+    },
+    {
+      "lang": "en",
+      "text": "um someone call those soft tokenization",
+      "offset": 891.32,
+      "duration": 6.84
+    },
+    {
+      "lang": "en",
+      "text": "um I'm uh I'm Pro those methods or I",
+      "offset": 894.68,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "would consider that to be separate from",
+      "offset": 898.16,
+      "duration": 3.28
+    },
+    {
+      "lang": "en",
+      "text": "like the typical subword",
+      "offset": 899.56,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "tokenization uh that we know about in in",
+      "offset": 901.44,
+      "duration": 5.639
+    },
+    {
+      "lang": "en",
+      "text": "most language models like your your",
+      "offset": 904.68,
+      "duration": 7.48
+    },
+    {
+      "lang": "en",
+      "text": "llamas or your um GPT hope maybe gp4",
+      "offset": 907.079,
+      "duration": 7.161
+    },
+    {
+      "lang": "en",
+      "text": "yeah we know it uses a tokenizer so yes",
+      "offset": 912.16,
+      "duration": 4.039
+    },
+    {
+      "lang": "en",
+      "text": "gp4 and",
+      "offset": 914.24,
+      "duration": 6.12
+    },
+    {
+      "lang": "en",
+      "text": "so Mr T5 isn't an alternative approach",
+      "offset": 916.199,
+      "duration": 6.801
+    },
+    {
+      "lang": "en",
+      "text": "to tokenization it is an alternative",
+      "offset": 920.36,
+      "duration": 5.159
+    },
+    {
+      "lang": "en",
+      "text": "model architecture that doesn't require",
+      "offset": 923,
+      "duration": 5.519
+    },
+    {
+      "lang": "en",
+      "text": "tokenization and it's based on the B T5",
+      "offset": 925.519,
+      "duration": 5.8
+    },
+    {
+      "lang": "en",
+      "text": "which receded it which had some",
+      "offset": 928.519,
+      "duration": 5.481
+    },
+    {
+      "lang": "en",
+      "text": "inefficiencies yes exactly so actually",
+      "offset": 931.319,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "how this project came about was um I was",
+      "offset": 934,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "just exploring doing some",
+      "offset": 937.319,
+      "duration": 4.52
+    },
+    {
+      "lang": "en",
+      "text": "interpretability work on character level",
+      "offset": 939.44,
+      "duration": 4.12
+    },
+    {
+      "lang": "en",
+      "text": "language models like what do they what",
+      "offset": 941.839,
+      "duration": 4.281
+    },
+    {
+      "lang": "en",
+      "text": "do models learn about uh words when",
+      "offset": 943.56,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "they're operating at the Character level",
+      "offset": 946.12,
+      "duration": 5.68
+    },
+    {
+      "lang": "en",
+      "text": "or the bite level um this was uh uh",
+      "offset": 947.8,
+      "duration": 7.2
+    },
+    {
+      "lang": "en",
+      "text": "early last year during my still it was",
+      "offset": 951.8,
+      "duration": 5.64
+    },
+    {
+      "lang": "en",
+      "text": "during my second quarter of my first",
+      "offset": 955,
+      "duration": 6.92
+    },
+    {
+      "lang": "en",
+      "text": "year of grad school um and uh I was uh",
+      "offset": 957.44,
+      "duration": 6.839
+    },
+    {
+      "lang": "en",
+      "text": "in a meeting with my advisers Chris pots",
+      "offset": 961.92,
+      "duration": 4.599
+    },
+    {
+      "lang": "en",
+      "text": "and Dan drai and I think we just came to",
+      "offset": 964.279,
+      "duration": 4.641
+    },
+    {
+      "lang": "en",
+      "text": "a point where uh we said why aren't",
+      "offset": 966.519,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "people using these models like if there",
+      "offset": 968.92,
+      "duration": 4.68
+    },
+    {
+      "lang": "en",
+      "text": "are these benefits to abandoning subord",
+      "offset": 970.839,
+      "duration": 4.321
+    },
+    {
+      "lang": "en",
+      "text": "tokenization like what's preventing them",
+      "offset": 973.6,
+      "duration": 4.28
+    },
+    {
+      "lang": "en",
+      "text": "from taking off um and it seems like the",
+      "offset": 975.16,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "main thing is is the efficiency aspect",
+      "offset": 977.88,
+      "duration": 7.56
+    },
+    {
+      "lang": "en",
+      "text": "um so uh I I geared toward uh an",
+      "offset": 980.92,
+      "duration": 6.96
+    },
+    {
+      "lang": "en",
+      "text": "architecture project uh that could",
+      "offset": 985.44,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "address that now how how do we",
+      "offset": 987.88,
+      "duration": 5.199
+    },
+    {
+      "lang": "en",
+      "text": "characterize that efficiency aspect in",
+      "offset": 989.6,
+      "duration": 6.679
+    },
+    {
+      "lang": "en",
+      "text": "our in our paper we uh we look specific",
+      "offset": 993.079,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "I think it's always helpful to look",
+      "offset": 996.279,
+      "duration": 4.321
+    },
+    {
+      "lang": "en",
+      "text": "specifically at like wall clock time um",
+      "offset": 997.639,
+      "duration": 6.2
+    },
+    {
+      "lang": "en",
+      "text": "usually also a flops analysis is",
+      "offset": 1000.6,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "important so like how many floating",
+      "offset": 1003.839,
+      "duration": 2.401
+    },
+    {
+      "lang": "en",
+      "text": "Point",
+      "offset": 1005.48,
+      "duration": 3.719
+    },
+    {
+      "lang": "en",
+      "text": "operations um are are done in the model",
+      "offset": 1006.24,
+      "duration": 5.399
+    },
+    {
+      "lang": "en",
+      "text": "compared to let's say it's uh it's token",
+      "offset": 1009.199,
+      "duration": 6.08
+    },
+    {
+      "lang": "en",
+      "text": "level counterpart um yeah we include",
+      "offset": 1011.639,
+      "duration": 7.801
+    },
+    {
+      "lang": "en",
+      "text": "both of those analyses in the paper um",
+      "offset": 1015.279,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "yeah in in the end I think it's It's",
+      "offset": 1019.44,
+      "duration": 4.44
+    },
+    {
+      "lang": "en",
+      "text": "always important to include the the wall",
+      "offset": 1021.279,
+      "duration": 5.121
+    },
+    {
+      "lang": "en",
+      "text": "clock time per example so we so we made",
+      "offset": 1023.88,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "sure to include those in the paper and",
+      "offset": 1026.4,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "so let's talk a little bit about the",
+      "offset": 1028.28,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "architecture and the the way you",
+      "offset": 1030.16,
+      "duration": 6.679
+    },
+    {
+      "lang": "en",
+      "text": "approached it so the idea of Mr T5 um is",
+      "offset": 1032.36,
+      "duration": 9.76
+    },
+    {
+      "lang": "en",
+      "text": "to uh you uh take bite T5 which bite T5",
+      "offset": 1036.839,
+      "duration": 8.321
+    },
+    {
+      "lang": "en",
+      "text": "um they kind of put all of the uh or",
+      "offset": 1042.12,
+      "duration": 4.76
+    },
+    {
+      "lang": "en",
+      "text": "most of the parameters in this heavy",
+      "offset": 1045.16,
+      "duration": 4.68
+    },
+    {
+      "lang": "en",
+      "text": "encoder so most of the efficiency comes",
+      "offset": 1046.88,
+      "duration": 5.96
+    },
+    {
+      "lang": "en",
+      "text": "from um processing sequences in this",
+      "offset": 1049.84,
+      "duration": 5.24
+    },
+    {
+      "lang": "en",
+      "text": "heavy encoder architecture so just to",
+      "offset": 1052.84,
+      "duration": 4.76
+    },
+    {
+      "lang": "en",
+      "text": "just to also take a step back um the T5",
+      "offset": 1055.08,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "architecture is an encoder decoder model",
+      "offset": 1057.6,
+      "duration": 7.199
+    },
+    {
+      "lang": "en",
+      "text": "um and in B T5 the encoder uh is the is",
+      "offset": 1060.2,
+      "duration": 9.52
+    },
+    {
+      "lang": "en",
+      "text": "the massive part um so uh the idea that",
+      "offset": 1064.799,
+      "duration": 7.801
+    },
+    {
+      "lang": "en",
+      "text": "uh we kind of uh came up with is you",
+      "offset": 1069.72,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "know maybe after a a couple of uh",
+      "offset": 1072.6,
+      "duration": 5.24
+    },
+    {
+      "lang": "en",
+      "text": "contextual layers of the model so maybe",
+      "offset": 1075.72,
+      "duration": 4.199
+    },
+    {
+      "lang": "en",
+      "text": "after you've processed this entire bite",
+      "offset": 1077.84,
+      "duration": 5.8
+    },
+    {
+      "lang": "en",
+      "text": "or character sequence um um after you've",
+      "offset": 1079.919,
+      "duration": 5.801
+    },
+    {
+      "lang": "en",
+      "text": "processed it through a couple of encoder",
+      "offset": 1083.64,
+      "duration": 6.08
+    },
+    {
+      "lang": "en",
+      "text": "layers um tokens already contain",
+      "offset": 1085.72,
+      "duration": 5.959
+    },
+    {
+      "lang": "en",
+      "text": "information about other tokens via the",
+      "offset": 1089.72,
+      "duration": 5
+    },
+    {
+      "lang": "en",
+      "text": "attention mechanism and then um the",
+      "offset": 1091.679,
+      "duration": 6.201
+    },
+    {
+      "lang": "en",
+      "text": "model can um decide what tokens it can",
+      "offset": 1094.72,
+      "duration": 6.68
+    },
+    {
+      "lang": "en",
+      "text": "drop and what tokens can remain um to be",
+      "offset": 1097.88,
+      "duration": 5.799
+    },
+    {
+      "lang": "en",
+      "text": "processed by the rest of the encoder",
+      "offset": 1101.4,
+      "duration": 5.92
+    },
+    {
+      "lang": "en",
+      "text": "layers um and that's the main idea and",
+      "offset": 1103.679,
+      "duration": 5.721
+    },
+    {
+      "lang": "en",
+      "text": "the way we do this is with a a gating",
+      "offset": 1107.32,
+      "duration": 5.88
+    },
+    {
+      "lang": "en",
+      "text": "mechanism uh that learns um that learns",
+      "offset": 1109.4,
+      "duration": 7.56
+    },
+    {
+      "lang": "en",
+      "text": "to drop tokens um um and then learns",
+      "offset": 1113.2,
+      "duration": 6.719
+    },
+    {
+      "lang": "en",
+      "text": "which ones to keep as well um so the",
+      "offset": 1116.96,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "skating mechanism is the one that does",
+      "offset": 1119.919,
+      "duration": 3.401
+    },
+    {
+      "lang": "en",
+      "text": "the work of deciding which tokens will",
+      "offset": 1121.44,
+      "duration": 6.44
+    },
+    {
+      "lang": "en",
+      "text": "be uh removed from the sequence um and",
+      "offset": 1123.32,
+      "duration": 7.8
+    },
+    {
+      "lang": "en",
+      "text": "uh the way I like to think of it is uh",
+      "offset": 1127.88,
+      "duration": 6.08
+    },
+    {
+      "lang": "en",
+      "text": "during training Mr T5 is doing this",
+      "offset": 1131.12,
+      "duration": 6.559
+    },
+    {
+      "lang": "en",
+      "text": "dropping as an attention masking process",
+      "offset": 1133.96,
+      "duration": 6.92
+    },
+    {
+      "lang": "en",
+      "text": "so uh um to describe what attention",
+      "offset": 1137.679,
+      "duration": 6.761
+    },
+    {
+      "lang": "en",
+      "text": "masking is it's uh it's this uh process",
+      "offset": 1140.88,
+      "duration": 5.88
+    },
+    {
+      "lang": "en",
+      "text": "that that we use in language models to",
+      "offset": 1144.44,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "prevent certain tokens from looking at",
+      "offset": 1146.76,
+      "duration": 5.84
+    },
+    {
+      "lang": "en",
+      "text": "other tokens uh during the attention",
+      "offset": 1149.64,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "computation so the typical uses of",
+      "offset": 1152.6,
+      "duration": 5.88
+    },
+    {
+      "lang": "en",
+      "text": "attention masking are like in a decoder",
+      "offset": 1154.84,
+      "duration": 5.959
+    },
+    {
+      "lang": "en",
+      "text": "model which or an auto regressive model",
+      "offset": 1158.48,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "you don't want preceding tokens to be",
+      "offset": 1160.799,
+      "duration": 3.561
+    },
+    {
+      "lang": "en",
+      "text": "able to look into the future because",
+      "offset": 1162.88,
+      "duration": 3
+    },
+    {
+      "lang": "en",
+      "text": "that would defeat the purpose of next",
+      "offset": 1164.36,
+      "duration": 3.4
+    },
+    {
+      "lang": "en",
+      "text": "token prediction so you would mask out",
+      "offset": 1165.88,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "future tokens",
+      "offset": 1167.76,
+      "duration": 4.279
+    },
+    {
+      "lang": "en",
+      "text": "um in an encoder model you might have",
+      "offset": 1169.48,
+      "duration": 5.319
+    },
+    {
+      "lang": "en",
+      "text": "sequences of different lengths so when",
+      "offset": 1172.039,
+      "duration": 4.76
+    },
+    {
+      "lang": "en",
+      "text": "you process them in a batch you pad it",
+      "offset": 1174.799,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "up and um you you want to mask out the",
+      "offset": 1176.799,
+      "duration": 5.441
+    },
+    {
+      "lang": "en",
+      "text": "pad tokens because you wouldn't want it",
+      "offset": 1180.799,
+      "duration": 2.88
+    },
+    {
+      "lang": "en",
+      "text": "to affect the representation you",
+      "offset": 1182.24,
+      "duration": 2.84
+    },
+    {
+      "lang": "en",
+      "text": "wouldn't want pad tokens to affect the",
+      "offset": 1183.679,
+      "duration": 4.761
+    },
+    {
+      "lang": "en",
+      "text": "representations of other tokens um so",
+      "offset": 1185.08,
+      "duration": 5.719
+    },
+    {
+      "lang": "en",
+      "text": "the way we we do this in Mr T5 is",
+      "offset": 1188.44,
+      "duration": 5.92
+    },
+    {
+      "lang": "en",
+      "text": "basically can the model learn uh which",
+      "offset": 1190.799,
+      "duration": 5.841
+    },
+    {
+      "lang": "en",
+      "text": "tokens to mask out via a learned",
+      "offset": 1194.36,
+      "duration": 5.559
+    },
+    {
+      "lang": "en",
+      "text": "attention masking mechanism",
+      "offset": 1196.64,
+      "duration": 5.72
+    },
+    {
+      "lang": "en",
+      "text": "um and that's what we do during training",
+      "offset": 1199.919,
+      "duration": 5.081
+    },
+    {
+      "lang": "en",
+      "text": "um basically the model implicit or the",
+      "offset": 1202.36,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "model has a learned attention masking uh",
+      "offset": 1205,
+      "duration": 6.12
+    },
+    {
+      "lang": "en",
+      "text": "sort of function uh that that removes",
+      "offset": 1207.64,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "tokens from the sequence during training",
+      "offset": 1211.12,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "or doesn't allow a c the the tokens that",
+      "offset": 1212.84,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "remain to look at the other tokens uh",
+      "offset": 1215.36,
+      "duration": 3.559
+    },
+    {
+      "lang": "en",
+      "text": "for most of the encoder",
+      "offset": 1217.4,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "layers and then during inference is when",
+      "offset": 1218.919,
+      "duration": 6.401
+    },
+    {
+      "lang": "en",
+      "text": "um we actually remove those tokens from",
+      "offset": 1221.72,
+      "duration": 5.8
+    },
+    {
+      "lang": "en",
+      "text": "uh the sequence in what we call like a",
+      "offset": 1225.32,
+      "duration": 4.479
+    },
+    {
+      "lang": "en",
+      "text": "hard deletion mechanism so those tokens",
+      "offset": 1227.52,
+      "duration": 4.36
+    },
+    {
+      "lang": "en",
+      "text": "are actually removed from the the",
+      "offset": 1229.799,
+      "duration": 5.321
+    },
+    {
+      "lang": "en",
+      "text": "sequence and uh the sequence length is",
+      "offset": 1231.88,
+      "duration": 6.679
+    },
+    {
+      "lang": "en",
+      "text": "resized um into a a shorter uh more",
+      "offset": 1235.12,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "compact sequence when you're talking",
+      "offset": 1238.559,
+      "duration": 5.441
+    },
+    {
+      "lang": "en",
+      "text": "about tokens here are these tokens",
+      "offset": 1240.32,
+      "duration": 6.2
+    },
+    {
+      "lang": "en",
+      "text": "characters or btes or yes these tokens",
+      "offset": 1244,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "are characters are bytes sorry the",
+      "offset": 1246.52,
+      "duration": 3.279
+    },
+    {
+      "lang": "en",
+      "text": "terminology is a little bit confusing",
+      "offset": 1248.08,
+      "duration": 3.599
+    },
+    {
+      "lang": "en",
+      "text": "but whenever I'm talking about bite T5",
+      "offset": 1249.799,
+      "duration": 6.641
+    },
+    {
+      "lang": "en",
+      "text": "or Mr T5 um the tokens are the the bites",
+      "offset": 1251.679,
+      "duration": 7.761
+    },
+    {
+      "lang": "en",
+      "text": "um yeah it we we usually just refer to",
+      "offset": 1256.44,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "the units we also just refer to the",
+      "offset": 1259.44,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "units that the Transformer is working",
+      "offset": 1261.48,
+      "duration": 4.199
+    },
+    {
+      "lang": "en",
+      "text": "with we refer to those as tokens sure",
+      "offset": 1263.36,
+      "duration": 5.559
+    },
+    {
+      "lang": "en",
+      "text": "sure too yeah and so what you are",
+      "offset": 1265.679,
+      "duration": 6.441
+    },
+    {
+      "lang": "en",
+      "text": "essentially doing with the the dynamic",
+      "offset": 1268.919,
+      "duration": 5.401
+    },
+    {
+      "lang": "en",
+      "text": "token merging or the deleting of these",
+      "offset": 1272.12,
+      "duration": 5.88
+    },
+    {
+      "lang": "en",
+      "text": "tokens is an alternate kind of learned",
+      "offset": 1274.32,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "compression",
+      "offset": 1278,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "scheme um ultimately so un you know",
+      "offset": 1279.12,
+      "duration": 7.64
+    },
+    {
+      "lang": "en",
+      "text": "unlike pre-processing into some reduced",
+      "offset": 1283.12,
+      "duration": 7.24
+    },
+    {
+      "lang": "en",
+      "text": "amount of um tokens here you're doing it",
+      "offset": 1286.76,
+      "duration": 6.08
+    },
+    {
+      "lang": "en",
+      "text": "via this dropping scheme yes that's",
+      "offset": 1290.36,
+      "duration": 5.88
+    },
+    {
+      "lang": "en",
+      "text": "exactly right um and the idea of merging",
+      "offset": 1292.84,
+      "duration": 7.839
+    },
+    {
+      "lang": "en",
+      "text": "is that we we allow the model to kind of",
+      "offset": 1296.24,
+      "duration": 6.2
+    },
+    {
+      "lang": "en",
+      "text": "you know the the attention mechanism of",
+      "offset": 1300.679,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "early layers kind of already does a sort",
+      "offset": 1302.44,
+      "duration": 5.08
+    },
+    {
+      "lang": "en",
+      "text": "of merging because every uh every unit",
+      "offset": 1304.679,
+      "duration": 5.161
+    },
+    {
+      "lang": "en",
+      "text": "or every every token is through",
+      "offset": 1307.52,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "attention is a combination of the tokens",
+      "offset": 1309.84,
+      "duration": 4.6
+    },
+    {
+      "lang": "en",
+      "text": "around it so information has already",
+      "offset": 1312.72,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "been uh merged to other tokens and maybe",
+      "offset": 1314.44,
+      "duration": 4.719
+    },
+    {
+      "lang": "en",
+      "text": "the the the some of them could be",
+      "offset": 1317.36,
+      "duration": 3.88
+    },
+    {
+      "lang": "en",
+      "text": "dropped now because they've merged their",
+      "offset": 1319.159,
+      "duration": 3.64
+    },
+    {
+      "lang": "en",
+      "text": "information into other tokens in the",
+      "offset": 1321.24,
+      "duration": 5.799
+    },
+    {
+      "lang": "en",
+      "text": "early early layers uh so is there an",
+      "offset": 1322.799,
+      "duration": 9.76
+    },
+    {
+      "lang": "en",
+      "text": "analogy of the the multilingual example",
+      "offset": 1327.039,
+      "duration": 8.201
+    },
+    {
+      "lang": "en",
+      "text": "you gave where you can kind of look at",
+      "offset": 1332.559,
+      "duration": 5.281
+    },
+    {
+      "lang": "en",
+      "text": "the effective compression rate for",
+      "offset": 1335.24,
+      "duration": 5.319
+    },
+    {
+      "lang": "en",
+      "text": "English versus some other language and",
+      "offset": 1337.84,
+      "duration": 4.52
+    },
+    {
+      "lang": "en",
+      "text": "uh have you demonstrated that it's kind",
+      "offset": 1340.559,
+      "duration": 4.441
+    },
+    {
+      "lang": "en",
+      "text": "of invariant to language or less variant",
+      "offset": 1342.36,
+      "duration": 5.24
+    },
+    {
+      "lang": "en",
+      "text": "to to language or script yeah yeah",
+      "offset": 1345,
+      "duration": 4.44
+    },
+    {
+      "lang": "en",
+      "text": "that's that's a great question",
+      "offset": 1347.6,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "so uh in our main results or in our main",
+      "offset": 1349.44,
+      "duration": 6.479
+    },
+    {
+      "lang": "en",
+      "text": "experiments we train um Mr T5 on",
+      "offset": 1353.36,
+      "duration": 6.439
+    },
+    {
+      "lang": "en",
+      "text": "multilingual data so uh sampling like 15",
+      "offset": 1355.919,
+      "duration": 7
+    },
+    {
+      "lang": "en",
+      "text": "different languages from multilingual C4",
+      "offset": 1359.799,
+      "duration": 6.601
+    },
+    {
+      "lang": "en",
+      "text": "um uh for for our continued pre-training",
+      "offset": 1362.919,
+      "duration": 8.24
+    },
+    {
+      "lang": "en",
+      "text": "experiments um and we don't give Mr T5 a",
+      "offset": 1366.4,
+      "duration": 8.8
+    },
+    {
+      "lang": "en",
+      "text": "certain prior to compress um languages",
+      "offset": 1371.159,
+      "duration": 7.681
+    },
+    {
+      "lang": "en",
+      "text": "at different uh compression rates um",
+      "offset": 1375.2,
+      "duration": 5.359
+    },
+    {
+      "lang": "en",
+      "text": "like we we have this formulation where",
+      "offset": 1378.84,
+      "duration": 4.6
+    },
+    {
+      "lang": "en",
+      "text": "we can uh using this controller",
+      "offset": 1380.559,
+      "duration": 4.561
+    },
+    {
+      "lang": "en",
+      "text": "algorithm that's uh detailed in the",
+      "offset": 1383.44,
+      "duration": 4.239
+    },
+    {
+      "lang": "en",
+      "text": "paper uh we can Target a specific",
+      "offset": 1385.12,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "compression rate if it's desired like",
+      "offset": 1387.679,
+      "duration": 3.761
+    },
+    {
+      "lang": "en",
+      "text": "let's say I want on average Mr T to",
+      "offset": 1389.2,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "compress sequences by 50% um and Mr T",
+      "offset": 1391.44,
+      "duration": 7.719
+    },
+    {
+      "lang": "en",
+      "text": "will do that uh but um when I I tested",
+      "offset": 1394.72,
+      "duration": 7.92
+    },
+    {
+      "lang": "en",
+      "text": "on individual languages um",
+      "offset": 1399.159,
+      "duration": 6.721
+    },
+    {
+      "lang": "en",
+      "text": "separately um we actually found that uh",
+      "offset": 1402.64,
+      "duration": 5.84
+    },
+    {
+      "lang": "en",
+      "text": "Mr T learns language specific comp",
+      "offset": 1405.88,
+      "duration": 7.2
+    },
+    {
+      "lang": "en",
+      "text": "ression rates so for example um Chinese",
+      "offset": 1408.48,
+      "duration": 6.96
+    },
+    {
+      "lang": "en",
+      "text": "which already has a very information",
+      "offset": 1413.08,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "dense script like individual characters",
+      "offset": 1415.44,
+      "duration": 5.56
+    },
+    {
+      "lang": "en",
+      "text": "could mean entire words um in that's",
+      "offset": 1418.36,
+      "duration": 5.48
+    },
+    {
+      "lang": "en",
+      "text": "just how the orthography of Chinese is",
+      "offset": 1421,
+      "duration": 6.2
+    },
+    {
+      "lang": "en",
+      "text": "um uh Mr T had lower compression rates",
+      "offset": 1423.84,
+      "duration": 5.959
+    },
+    {
+      "lang": "en",
+      "text": "than for uh a lower compression rate for",
+      "offset": 1427.2,
+      "duration": 5
+    },
+    {
+      "lang": "en",
+      "text": "Chinese than for other like Latin script",
+      "offset": 1429.799,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "languages um so it kind of already it",
+      "offset": 1432.2,
+      "duration": 4.839
+    },
+    {
+      "lang": "en",
+      "text": "notices that Chinese is already pretty",
+      "offset": 1434.919,
+      "duration": 3.921
+    },
+    {
+      "lang": "en",
+      "text": "compressed um I'm not not going to",
+      "offset": 1437.039,
+      "duration": 5.601
+    },
+    {
+      "lang": "en",
+      "text": "compress it as much as a a language that",
+      "offset": 1438.84,
+      "duration": 6.04
+    },
+    {
+      "lang": "en",
+      "text": "uses another script that is not as",
+      "offset": 1442.64,
+      "duration": 4.159
+    },
+    {
+      "lang": "en",
+      "text": "compressed um which I thought was super",
+      "offset": 1444.88,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "interesting because we're not injecting",
+      "offset": 1446.799,
+      "duration": 3.681
+    },
+    {
+      "lang": "en",
+      "text": "that prior it just learns it implicitly",
+      "offset": 1448.24,
+      "duration": 5.64
+    },
+    {
+      "lang": "en",
+      "text": "in terms of the ultimate performance of",
+      "offset": 1450.48,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "the model what benchmarks are you",
+      "offset": 1453.88,
+      "duration": 6.88
+    },
+    {
+      "lang": "en",
+      "text": "looking at yeah so um uh in in uh the",
+      "offset": 1455.84,
+      "duration": 7.36
+    },
+    {
+      "lang": "en",
+      "text": "section on Downstream uh fine-tuning in",
+      "offset": 1460.76,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "the in the paper we we fine-tune on some",
+      "offset": 1463.2,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "additional tasks so uh from the bite T5",
+      "offset": 1465.88,
+      "duration": 8
+    },
+    {
+      "lang": "en",
+      "text": "paper we uh um look at the xnl and tiqa",
+      "offset": 1469.2,
+      "duration": 6.88
+    },
+    {
+      "lang": "en",
+      "text": "tasks so those are both multilingual",
+      "offset": 1473.88,
+      "duration": 4.84
+    },
+    {
+      "lang": "en",
+      "text": "benchmarks um xn is a classif",
+      "offset": 1476.08,
+      "duration": 6.76
+    },
+    {
+      "lang": "en",
+      "text": "classification task um so um natural",
+      "offset": 1478.72,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "language inference is kind of like you",
+      "offset": 1482.84,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "take two sentences and you need to",
+      "offset": 1484.48,
+      "duration": 4.919
+    },
+    {
+      "lang": "en",
+      "text": "determine whether they entail contradict",
+      "offset": 1486.36,
+      "duration": 4.799
+    },
+    {
+      "lang": "en",
+      "text": "or or contradict each other or if",
+      "offset": 1489.399,
+      "duration": 2.721
+    },
+    {
+      "lang": "en",
+      "text": "there's no",
+      "offset": 1491.159,
+      "duration": 4.361
+    },
+    {
+      "lang": "en",
+      "text": "relationship um tied iqa is a question",
+      "offset": 1492.12,
+      "duration": 7.4
+    },
+    {
+      "lang": "en",
+      "text": "answering um task so given a passage and",
+      "offset": 1495.52,
+      "duration": 5.96
+    },
+    {
+      "lang": "en",
+      "text": "a question can can the model retrieve",
+      "offset": 1499.52,
+      "duration": 5.039
+    },
+    {
+      "lang": "en",
+      "text": "the answer from it um and these are",
+      "offset": 1501.48,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "these are both multilingual so it it it",
+      "offset": 1504.559,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "tests the multilingual capabilities of",
+      "offset": 1506.84,
+      "duration": 6.959
+    },
+    {
+      "lang": "en",
+      "text": "Mr T as well um and uh we found that um",
+      "offset": 1508.559,
+      "duration": 9.401
+    },
+    {
+      "lang": "en",
+      "text": "Mr T5 uh can can reduce sequence lengths",
+      "offset": 1513.799,
+      "duration": 6.201
+    },
+    {
+      "lang": "en",
+      "text": "on those tasks I think it was up to like",
+      "offset": 1517.96,
+      "duration": 7.8
+    },
+    {
+      "lang": "en",
+      "text": "uh 45 or 50% um while um uh maintaining",
+      "offset": 1520,
+      "duration": 8.52
+    },
+    {
+      "lang": "en",
+      "text": "uh close to the same performances by T5",
+      "offset": 1525.76,
+      "duration": 5.399
+    },
+    {
+      "lang": "en",
+      "text": "I think even for xnl it uh outperformed",
+      "offset": 1528.52,
+      "duration": 4.519
+    },
+    {
+      "lang": "en",
+      "text": "by T5 which was interesting because you",
+      "offset": 1531.159,
+      "duration": 3.481
+    },
+    {
+      "lang": "en",
+      "text": "know you would think that by T5 since",
+      "offset": 1533.039,
+      "duration": 3.601
+    },
+    {
+      "lang": "en",
+      "text": "we're fine-tuning on top of by T5 it",
+      "offset": 1534.64,
+      "duration": 4.399
+    },
+    {
+      "lang": "en",
+      "text": "would present like a bound on how good",
+      "offset": 1536.64,
+      "duration": 5.919
+    },
+    {
+      "lang": "en",
+      "text": "you can get um uh but yeah so Mr T5",
+      "offset": 1539.039,
+      "duration": 6.841
+    },
+    {
+      "lang": "en",
+      "text": "could match the performance uh while uh",
+      "offset": 1542.559,
+      "duration": 7.041
+    },
+    {
+      "lang": "en",
+      "text": "significantly speeding up the model um",
+      "offset": 1545.88,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "and we also tested on some character",
+      "offset": 1549.6,
+      "duration": 6.199
+    },
+    {
+      "lang": "en",
+      "text": "level manipulations so uh um we took two",
+      "offset": 1551.24,
+      "duration": 8.12
+    },
+    {
+      "lang": "en",
+      "text": "tasks from uh character level Benchmark",
+      "offset": 1555.799,
+      "duration": 5.441
+    },
+    {
+      "lang": "en",
+      "text": "uh a spelling correction task and a word",
+      "offset": 1559.36,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "search task so the spelling correction",
+      "offset": 1561.24,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "task is just like um given a sentence",
+      "offset": 1563.12,
+      "duration": 4.2
+    },
+    {
+      "lang": "en",
+      "text": "that contains some spelling error can",
+      "offset": 1565.88,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "you reproduce the sentence but uh",
+      "offset": 1567.32,
+      "duration": 5.88
+    },
+    {
+      "lang": "en",
+      "text": "corrected um and the word search task is",
+      "offset": 1569.96,
+      "duration": 6.56
+    },
+    {
+      "lang": "en",
+      "text": "given like a random sequence of a bunch",
+      "offset": 1573.2,
+      "duration": 5.4
+    },
+    {
+      "lang": "en",
+      "text": "of Chara like a bunch of characters or",
+      "offset": 1576.52,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "numbers can you like find the English",
+      "offset": 1578.6,
+      "duration": 5.4
+    },
+    {
+      "lang": "en",
+      "text": "word um that matches some",
+      "offset": 1581.08,
+      "duration": 5.68
+    },
+    {
+      "lang": "en",
+      "text": "definition um so subord models are",
+      "offset": 1584,
+      "duration": 6.12
+    },
+    {
+      "lang": "en",
+      "text": "really uh really at these two tasks um",
+      "offset": 1586.76,
+      "duration": 8.799
+    },
+    {
+      "lang": "en",
+      "text": "so I would um the the this comes from uh",
+      "offset": 1590.12,
+      "duration": 9.2
+    },
+    {
+      "lang": "en",
+      "text": "a benchmark created by uh uh another PhD",
+      "offset": 1595.559,
+      "duration": 6.161
+    },
+    {
+      "lang": "en",
+      "text": "student in my lab uh her name is Jing",
+      "offset": 1599.32,
+      "duration": 6.2
+    },
+    {
+      "lang": "en",
+      "text": "hang and she evaluated on like subword",
+      "offset": 1601.72,
+      "duration": 6.079
+    },
+    {
+      "lang": "en",
+      "text": "uh T5 and compared it to by T5 at the",
+      "offset": 1605.52,
+      "duration": 4.92
+    },
+    {
+      "lang": "en",
+      "text": "time this was before Mr T and like the",
+      "offset": 1607.799,
+      "duration": 4.281
+    },
+    {
+      "lang": "en",
+      "text": "the the subword models really struggle",
+      "offset": 1610.44,
+      "duration": 3.2
+    },
+    {
+      "lang": "en",
+      "text": "on on these sorts of character level",
+      "offset": 1612.08,
+      "duration": 5.24
+    },
+    {
+      "lang": "en",
+      "text": "tasks um but again um back to our paper",
+      "offset": 1613.64,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "uh Mr T5",
+      "offset": 1617.32,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "is able to um significantly reduce the",
+      "offset": 1619,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "sequence lengths and improve the runtime",
+      "offset": 1622.44,
+      "duration": 4.52
+    },
+    {
+      "lang": "en",
+      "text": "while um coming close to matching by",
+      "offset": 1624.44,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "t5's performance on the task um so you",
+      "offset": 1626.96,
+      "duration": 5.56
+    },
+    {
+      "lang": "en",
+      "text": "get the benefits of the compression um",
+      "offset": 1629.72,
+      "duration": 5.6
+    },
+    {
+      "lang": "en",
+      "text": "without uh an effect on the model's",
+      "offset": 1632.52,
+      "duration": 5.279
+    },
+    {
+      "lang": "en",
+      "text": "performance and in terms of the",
+      "offset": 1635.32,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "inference efficiency that you were going",
+      "offset": 1637.799,
+      "duration": 5.24
+    },
+    {
+      "lang": "en",
+      "text": "for how does it compare to by T5 yeah so",
+      "offset": 1639.48,
+      "duration": 6.84
+    },
+    {
+      "lang": "en",
+      "text": "the the task efficiency will vary",
+      "offset": 1643.039,
+      "duration": 5.64
+    },
+    {
+      "lang": "en",
+      "text": "depending on um",
+      "offset": 1646.32,
+      "duration": 5.56
+    },
+    {
+      "lang": "en",
+      "text": "how big the encoder sequence lengths are",
+      "offset": 1648.679,
+      "duration": 6.801
+    },
+    {
+      "lang": "en",
+      "text": "relative to the decoder um so if you",
+      "offset": 1651.88,
+      "duration": 6.44
+    },
+    {
+      "lang": "en",
+      "text": "have very long encoder sequence lengths",
+      "offset": 1655.48,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "and very short decoder sequence lengths",
+      "offset": 1658.32,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "you're going to get the most gains so I",
+      "offset": 1659.96,
+      "duration": 4.079
+    },
+    {
+      "lang": "en",
+      "text": "think we saw the most gains on the xnl",
+      "offset": 1662.08,
+      "duration": 6.079
+    },
+    {
+      "lang": "en",
+      "text": "task because um the encoder sequences",
+      "offset": 1664.039,
+      "duration": 6.12
+    },
+    {
+      "lang": "en",
+      "text": "are very long and then the decoder it's",
+      "offset": 1668.159,
+      "duration": 3.681
+    },
+    {
+      "lang": "en",
+      "text": "just a classification task so you're",
+      "offset": 1670.159,
+      "duration": 5.321
+    },
+    {
+      "lang": "en",
+      "text": "like outputting a number um so with like",
+      "offset": 1671.84,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "a",
+      "offset": 1675.48,
+      "duration": 5.84
+    },
+    {
+      "lang": "en",
+      "text": "45% sor with a 50 50% compression rate",
+      "offset": 1676.88,
+      "duration": 6.919
+    },
+    {
+      "lang": "en",
+      "text": "of the sequence so I cut the the encoder",
+      "offset": 1681.32,
+      "duration": 4.839
+    },
+    {
+      "lang": "en",
+      "text": "sequence length by half I also got like",
+      "offset": 1683.799,
+      "duration": 5.201
+    },
+    {
+      "lang": "en",
+      "text": "around a 45% speed up um compared to",
+      "offset": 1686.159,
+      "duration": 6.161
+    },
+    {
+      "lang": "en",
+      "text": "bite T5 on that task um so that task was",
+      "offset": 1689,
+      "duration": 5
+    },
+    {
+      "lang": "en",
+      "text": "probably the best in terms of improving",
+      "offset": 1692.32,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "efficiency at around a 50% compression",
+      "offset": 1694,
+      "duration": 6.84
+    },
+    {
+      "lang": "en",
+      "text": "rate um so this is great like um I know",
+      "offset": 1697.12,
+      "duration": 5.919
+    },
+    {
+      "lang": "en",
+      "text": "the the field is very focused on decoder",
+      "offset": 1700.84,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "models but there are plenty of of use",
+      "offset": 1703.039,
+      "duration": 4.801
+    },
+    {
+      "lang": "en",
+      "text": "cases like uh as someone who who came",
+      "offset": 1705.08,
+      "duration": 4.28
+    },
+    {
+      "lang": "en",
+      "text": "from industry there are plenty of use",
+      "offset": 1707.84,
+      "duration": 3.64
+    },
+    {
+      "lang": "en",
+      "text": "cases for encoder models that use that",
+      "offset": 1709.36,
+      "duration": 7.48
+    },
+    {
+      "lang": "en",
+      "text": "do classification um uh so uh yeah this",
+      "offset": 1711.48,
+      "duration": 7.079
+    },
+    {
+      "lang": "en",
+      "text": "this would be great like imagine anyone",
+      "offset": 1716.84,
+      "duration": 4.04
+    },
+    {
+      "lang": "en",
+      "text": "who was using bite T5 for some use case",
+      "offset": 1718.559,
+      "duration": 4.201
+    },
+    {
+      "lang": "en",
+      "text": "and you could you know have your",
+      "offset": 1720.88,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "inference time um that would just be a",
+      "offset": 1722.76,
+      "duration": 8.039
+    },
+    {
+      "lang": "en",
+      "text": "great gain in my opinion and now um your",
+      "offset": 1726.88,
+      "duration": 5.96
+    },
+    {
+      "lang": "en",
+      "text": "work primarily focuses",
+      "offset": 1730.799,
+      "duration": 5.841
+    },
+    {
+      "lang": "en",
+      "text": "on an a set of enhancements to bite T5",
+      "offset": 1732.84,
+      "duration": 6.6
+    },
+    {
+      "lang": "en",
+      "text": "but like situate the work for us in the",
+      "offset": 1736.64,
+      "duration": 6.759
+    },
+    {
+      "lang": "en",
+      "text": "broader contexts um like relative to T5",
+      "offset": 1739.44,
+      "duration": 7.239
+    },
+    {
+      "lang": "en",
+      "text": "and other models are you giving up a lot",
+      "offset": 1743.399,
+      "duration": 7.601
+    },
+    {
+      "lang": "en",
+      "text": "for this character level um efficiency",
+      "offset": 1746.679,
+      "duration": 7.921
+    },
+    {
+      "lang": "en",
+      "text": "yeah that that's a great question um so",
+      "offset": 1751,
+      "duration": 8.6
+    },
+    {
+      "lang": "en",
+      "text": "I think uh um a great like direction to",
+      "offset": 1754.6,
+      "duration": 7.079
+    },
+    {
+      "lang": "en",
+      "text": "take this work would be to try to see",
+      "offset": 1759.6,
+      "duration": 3.319
+    },
+    {
+      "lang": "en",
+      "text": "how we could adapt this method for",
+      "offset": 1761.679,
+      "duration": 3.72
+    },
+    {
+      "lang": "en",
+      "text": "decoder models I'm not yet entirely sure",
+      "offset": 1762.919,
+      "duration": 5.201
+    },
+    {
+      "lang": "en",
+      "text": "what that would look like uh but I think",
+      "offset": 1765.399,
+      "duration": 4.681
+    },
+    {
+      "lang": "en",
+      "text": "I think that would be uh a great Next",
+      "offset": 1768.12,
+      "duration": 6.919
+    },
+    {
+      "lang": "en",
+      "text": "Step um and the yeah this while while",
+      "offset": 1770.08,
+      "duration": 7.8
+    },
+    {
+      "lang": "en",
+      "text": "this is a particularly an architecture",
+      "offset": 1775.039,
+      "duration": 7.841
+    },
+    {
+      "lang": "en",
+      "text": "that um um enhances bite T5 like if we",
+      "offset": 1777.88,
+      "duration": 6.799
+    },
+    {
+      "lang": "en",
+      "text": "had the resources to train from scratch",
+      "offset": 1782.88,
+      "duration": 4.519
+    },
+    {
+      "lang": "en",
+      "text": "or train at large scales uh maybe the",
+      "offset": 1784.679,
+      "duration": 4.401
+    },
+    {
+      "lang": "en",
+      "text": "benefits would be even greater or I bet",
+      "offset": 1787.399,
+      "duration": 3.4
+    },
+    {
+      "lang": "en",
+      "text": "the benefits would be even greater one",
+      "offset": 1789.08,
+      "duration": 5.88
+    },
+    {
+      "lang": "en",
+      "text": "of the um results that we have in the",
+      "offset": 1790.799,
+      "duration": 8.561
+    },
+    {
+      "lang": "en",
+      "text": "um uh uh new version of the paper is uh",
+      "offset": 1794.96,
+      "duration": 7.599
+    },
+    {
+      "lang": "en",
+      "text": "um training at a larger like 1.2 billion",
+      "offset": 1799.36,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "parameter model and seeing how the",
+      "offset": 1802.559,
+      "duration": 4.441
+    },
+    {
+      "lang": "en",
+      "text": "efficiency gains are are uh even greater",
+      "offset": 1804.24,
+      "duration": 5.799
+    },
+    {
+      "lang": "en",
+      "text": "at that scale um so this just makes me",
+      "offset": 1807,
+      "duration": 5.919
+    },
+    {
+      "lang": "en",
+      "text": "think about if we could scale these",
+      "offset": 1810.039,
+      "duration": 5.921
+    },
+    {
+      "lang": "en",
+      "text": "models up as much as we've scaled up",
+      "offset": 1812.919,
+      "duration": 8.6
+    },
+    {
+      "lang": "en",
+      "text": "like subo level models um uh then maybe",
+      "offset": 1815.96,
+      "duration": 7.28
+    },
+    {
+      "lang": "en",
+      "text": "they could maybe we could get back to",
+      "offset": 1821.519,
+      "duration": 3.601
+    },
+    {
+      "lang": "en",
+      "text": "the to the problem of like why haven't",
+      "offset": 1823.24,
+      "duration": 3.64
+    },
+    {
+      "lang": "en",
+      "text": "these caught on and maybe it's just we",
+      "offset": 1825.12,
+      "duration": 3.919
+    },
+    {
+      "lang": "en",
+      "text": "we we haven't scaled them up enough to",
+      "offset": 1826.88,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "that point U I should mention um it",
+      "offset": 1829.039,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "would be remiss of me not to mention a",
+      "offset": 1831.84,
+      "duration": 4.92
+    },
+    {
+      "lang": "en",
+      "text": "new paper um from meta uh the bite",
+      "offset": 1833.679,
+      "duration": 6.521
+    },
+    {
+      "lang": "en",
+      "text": "latent Transformer um that scaled up uh",
+      "offset": 1836.76,
+      "duration": 4.799
+    },
+    {
+      "lang": "en",
+      "text": "their their they had a particular",
+      "offset": 1840.2,
+      "duration": 3.319
+    },
+    {
+      "lang": "en",
+      "text": "architecture they scaled up bite level",
+      "offset": 1841.559,
+      "duration": 5.561
+    },
+    {
+      "lang": "en",
+      "text": "models uh to 8 billion parameters um and",
+      "offset": 1843.519,
+      "duration": 6.88
+    },
+    {
+      "lang": "en",
+      "text": "found that it it's their yeah training",
+      "offset": 1847.12,
+      "duration": 6.439
+    },
+    {
+      "lang": "en",
+      "text": "from scratch and it matched their uh um",
+      "offset": 1850.399,
+      "duration": 5.201
+    },
+    {
+      "lang": "en",
+      "text": "llama llama model I think it was llama 2",
+      "offset": 1853.559,
+      "duration": 5.441
+    },
+    {
+      "lang": "en",
+      "text": "that they compared to um and and uh yeah",
+      "offset": 1855.6,
+      "duration": 6.079
+    },
+    {
+      "lang": "en",
+      "text": "I just think that the the field is is",
+      "offset": 1859,
+      "duration": 5.039
+    },
+    {
+      "lang": "en",
+      "text": "starting to go sounds promising sounds",
+      "offset": 1861.679,
+      "duration": 3.88
+    },
+    {
+      "lang": "en",
+      "text": "very promising and I would I would love",
+      "offset": 1864.039,
+      "duration": 4.441
+    },
+    {
+      "lang": "en",
+      "text": "to be able to scale up Mr T or other",
+      "offset": 1865.559,
+      "duration": 5.441
+    },
+    {
+      "lang": "en",
+      "text": "architectures to that size and then uh",
+      "offset": 1868.48,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "see uh See if uh they would scale up",
+      "offset": 1871,
+      "duration": 5.399
+    },
+    {
+      "lang": "en",
+      "text": "just as well so do you ultimately think",
+      "offset": 1874.24,
+      "duration": 6.039
+    },
+    {
+      "lang": "en",
+      "text": "that um bite level encoding or modeling",
+      "offset": 1876.399,
+      "duration": 7.52
+    },
+    {
+      "lang": "en",
+      "text": "is going to replace subware token level",
+      "offset": 1880.279,
+      "duration": 6.681
+    },
+    {
+      "lang": "en",
+      "text": "modeling I think that it's hard to tell",
+      "offset": 1883.919,
+      "duration": 5.64
+    },
+    {
+      "lang": "en",
+      "text": "the the future but but uh I think that",
+      "offset": 1886.96,
+      "duration": 5.24
+    },
+    {
+      "lang": "en",
+      "text": "that it's there it's very promising",
+      "offset": 1889.559,
+      "duration": 6.161
+    },
+    {
+      "lang": "en",
+      "text": "um not even just uh uh the issues that I",
+      "offset": 1892.2,
+      "duration": 5.319
+    },
+    {
+      "lang": "en",
+      "text": "kind of talked about previously but",
+      "offset": 1895.72,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "maybe there are even sequences that",
+      "offset": 1897.519,
+      "duration": 4.52
+    },
+    {
+      "lang": "en",
+      "text": "could be compressed more that a token",
+      "offset": 1899.96,
+      "duration": 4.319
+    },
+    {
+      "lang": "en",
+      "text": "level model doesn't compress like",
+      "offset": 1902.039,
+      "duration": 3.561
+    },
+    {
+      "lang": "en",
+      "text": "there's some very",
+      "offset": 1904.279,
+      "duration": 4.721
+    },
+    {
+      "lang": "en",
+      "text": "predictable um sequences that I could",
+      "offset": 1905.6,
+      "duration": 5.72
+    },
+    {
+      "lang": "en",
+      "text": "imagine I wouldn't want a Transformer to",
+      "offset": 1909,
+      "duration": 4.519
+    },
+    {
+      "lang": "en",
+      "text": "spend so much time operating on like",
+      "offset": 1911.32,
+      "duration": 4.239
+    },
+    {
+      "lang": "en",
+      "text": "let's say I give it a sequence that's",
+      "offset": 1913.519,
+      "duration": 4.081
+    },
+    {
+      "lang": "en",
+      "text": "like to be or not to be that is the",
+      "offset": 1915.559,
+      "duration": 3.96
+    },
+    {
+      "lang": "en",
+      "text": "question like I know what that I know",
+      "offset": 1917.6,
+      "duration": 3.48
+    },
+    {
+      "lang": "en",
+      "text": "what that is and maybe the model knows",
+      "offset": 1919.519,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "like that's a very predictable sequence",
+      "offset": 1921.08,
+      "duration": 6.559
+    },
+    {
+      "lang": "en",
+      "text": "maybe uh spending all the spending like",
+      "offset": 1923.919,
+      "duration": 8.081
+    },
+    {
+      "lang": "en",
+      "text": "several uh tokens to to process that uh",
+      "offset": 1927.639,
+      "duration": 6.321
+    },
+    {
+      "lang": "en",
+      "text": "you know whereas maybe a bite level",
+      "offset": 1932,
+      "duration": 4.12
+    },
+    {
+      "lang": "en",
+      "text": "model or another model that uses some",
+      "offset": 1933.96,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "sort of down sampling could compress",
+      "offset": 1936.12,
+      "duration": 4.919
+    },
+    {
+      "lang": "en",
+      "text": "that whole sequence uh into like one",
+      "offset": 1938.44,
+      "duration": 7.079
+    },
+    {
+      "lang": "en",
+      "text": "unit um there I I could see how the the",
+      "offset": 1941.039,
+      "duration": 6.24
+    },
+    {
+      "lang": "en",
+      "text": "efficiency gains might even be better",
+      "offset": 1945.519,
+      "duration": 5.201
+    },
+    {
+      "lang": "en",
+      "text": "than a than subo model um and I think",
+      "offset": 1947.279,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "these started to be explored more in",
+      "offset": 1950.72,
+      "duration": 5.24
+    },
+    {
+      "lang": "en",
+      "text": "like the the bite Lon Transformer paper",
+      "offset": 1952.799,
+      "duration": 7.081
+    },
+    {
+      "lang": "en",
+      "text": "um but yeah I'd love to see um character",
+      "offset": 1955.96,
+      "duration": 5.88
+    },
+    {
+      "lang": "en",
+      "text": "law models like other architectures",
+      "offset": 1959.88,
+      "duration": 4.639
+    },
+    {
+      "lang": "en",
+      "text": "scaled up including Mr T the comment",
+      "offset": 1961.84,
+      "duration": 5.559
+    },
+    {
+      "lang": "en",
+      "text": "about um the to be or not to be kind of",
+      "offset": 1964.519,
+      "duration": 6.841
+    },
+    {
+      "lang": "en",
+      "text": "highlights for me that this work is",
+      "offset": 1967.399,
+      "duration": 6.601
+    },
+    {
+      "lang": "en",
+      "text": "really about two things one is kind of",
+      "offset": 1971.36,
+      "duration": 5.48
+    },
+    {
+      "lang": "en",
+      "text": "the bite level Paradigm and the",
+      "offset": 1974,
+      "duration": 6.039
+    },
+    {
+      "lang": "en",
+      "text": "advantages of that relative to sub",
+      "offset": 1976.84,
+      "duration": 6.439
+    },
+    {
+      "lang": "en",
+      "text": "tokenization but also uh maybe even more",
+      "offset": 1980.039,
+      "duration": 5.441
+    },
+    {
+      "lang": "en",
+      "text": "importantly to that last point is the",
+      "offset": 1983.279,
+      "duration": 4.801
+    },
+    {
+      "lang": "en",
+      "text": "idea of dynamic compression as opposed",
+      "offset": 1985.48,
+      "duration": 4.919
+    },
+    {
+      "lang": "en",
+      "text": "to like static you know fixed",
+      "offset": 1988.08,
+      "duration": 6.079
+    },
+    {
+      "lang": "en",
+      "text": "compression yes absolutely so Dynamic",
+      "offset": 1990.399,
+      "duration": 6.721
+    },
+    {
+      "lang": "en",
+      "text": "compression is the big um the big",
+      "offset": 1994.159,
+      "duration": 6.841
+    },
+    {
+      "lang": "en",
+      "text": "benefit there um other models that maybe",
+      "offset": 1997.12,
+      "duration": 6.439
+    },
+    {
+      "lang": "en",
+      "text": "do fixed length down sampling I don't",
+      "offset": 2001,
+      "duration": 4.919
+    },
+    {
+      "lang": "en",
+      "text": "see as much like B like maybe every",
+      "offset": 2003.559,
+      "duration": 5.24
+    },
+    {
+      "lang": "en",
+      "text": "every four characters going to chunk",
+      "offset": 2005.919,
+      "duration": 7.48
+    },
+    {
+      "lang": "en",
+      "text": "into a um it's into one representation",
+      "offset": 2008.799,
+      "duration": 7.201
+    },
+    {
+      "lang": "en",
+      "text": "um that still has benefits of being more",
+      "offset": 2013.399,
+      "duration": 3.961
+    },
+    {
+      "lang": "en",
+      "text": "character aware because maybe you're",
+      "offset": 2016,
+      "duration": 3.12
+    },
+    {
+      "lang": "en",
+      "text": "pooling over representations of",
+      "offset": 2017.36,
+      "duration": 4.12
+    },
+    {
+      "lang": "en",
+      "text": "characters but still it's not it's not",
+      "offset": 2019.12,
+      "duration": 5.96
+    },
+    {
+      "lang": "en",
+      "text": "dynamic in a way that you would get um",
+      "offset": 2021.48,
+      "duration": 5.199
+    },
+    {
+      "lang": "en",
+      "text": "those sorts of benefits of actually",
+      "offset": 2025.08,
+      "duration": 3.12
+    },
+    {
+      "lang": "en",
+      "text": "being able to compress really long",
+      "offset": 2026.679,
+      "duration": 5
+    },
+    {
+      "lang": "en",
+      "text": "sequences into uh fewer representations",
+      "offset": 2028.2,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "I think we've got a few minutes to touch",
+      "offset": 2031.679,
+      "duration": 5
+    },
+    {
+      "lang": "en",
+      "text": "on the mission impossible paper um why",
+      "offset": 2033,
+      "duration": 7.639
+    },
+    {
+      "lang": "en",
+      "text": "don't we start with an overview of that",
+      "offset": 2036.679,
+      "duration": 6.6
+    },
+    {
+      "lang": "en",
+      "text": "paper and U maybe even the origins of",
+      "offset": 2040.639,
+      "duration": 5.121
+    },
+    {
+      "lang": "en",
+      "text": "that paper the the the the setting or",
+      "offset": 2043.279,
+      "duration": 4.481
+    },
+    {
+      "lang": "en",
+      "text": "the conversation that that paper uh",
+      "offset": 2045.76,
+      "duration": 5.48
+    },
+    {
+      "lang": "en",
+      "text": "jumped into yeah absolutely uh so",
+      "offset": 2047.76,
+      "duration": 6.359
+    },
+    {
+      "lang": "en",
+      "text": "Mission Impossible was the first paper",
+      "offset": 2051.24,
+      "duration": 6.8
+    },
+    {
+      "lang": "en",
+      "text": "um uh of my grad school uh experience or",
+      "offset": 2054.119,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "I guess it's the first first paper I",
+      "offset": 2058.04,
+      "duration": 5.039
+    },
+    {
+      "lang": "en",
+      "text": "wrote in grad school uh so uh I remember",
+      "offset": 2059.399,
+      "duration": 5.161
+    },
+    {
+      "lang": "en",
+      "text": "I was just starting off and I was",
+      "offset": 2063.079,
+      "duration": 4.481
+    },
+    {
+      "lang": "en",
+      "text": "talking to my adviser Chris Potts about",
+      "offset": 2064.56,
+      "duration": 7.48
+    },
+    {
+      "lang": "en",
+      "text": "uh potential first research topics um",
+      "offset": 2067.56,
+      "duration": 9.559
+    },
+    {
+      "lang": "en",
+      "text": "and I we we had both um read the this",
+      "offset": 2072.04,
+      "duration": 8.48
+    },
+    {
+      "lang": "en",
+      "text": "New York Times oped uh where Nom Chomsky",
+      "offset": 2077.119,
+      "duration": 6.681
+    },
+    {
+      "lang": "en",
+      "text": "who's a very like uh famous and um very",
+      "offset": 2080.52,
+      "duration": 8.399
+    },
+    {
+      "lang": "en",
+      "text": "important linguist um uh talked about um",
+      "offset": 2083.8,
+      "duration": 6.72
+    },
+    {
+      "lang": "en",
+      "text": "language models and whether they have a",
+      "offset": 2088.919,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "bearing on studying",
+      "offset": 2090.52,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "Linguistics and his argument in the New",
+      "offset": 2092.679,
+      "duration": 5.361
+    },
+    {
+      "lang": "en",
+      "text": "York Times article uh was was that",
+      "offset": 2095.32,
+      "duration": 4.36
+    },
+    {
+      "lang": "en",
+      "text": "language models kind of they they",
+      "offset": 2098.04,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "learned too much like they're they're",
+      "offset": 2099.68,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "they're too good uh and to the point",
+      "offset": 2102.04,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "where they could learn impossible",
+      "offset": 2104.56,
+      "duration": 3.559
+    },
+    {
+      "lang": "en",
+      "text": "languages which are languages that",
+      "offset": 2105.96,
+      "duration": 5.96
+    },
+    {
+      "lang": "en",
+      "text": "humans wouldn't be able to learn um and",
+      "offset": 2108.119,
+      "duration": 5.121
+    },
+    {
+      "lang": "en",
+      "text": "yeah I thought from a research",
+      "offset": 2111.92,
+      "duration": 3.08
+    },
+    {
+      "lang": "en",
+      "text": "perspective I thought this would be a",
+      "offset": 2113.24,
+      "duration": 6.119
+    },
+    {
+      "lang": "en",
+      "text": "really really cool problem to explore um",
+      "offset": 2115,
+      "duration": 6.88
+    },
+    {
+      "lang": "en",
+      "text": "and and just to jump in there maybe",
+      "offset": 2119.359,
+      "duration": 4.201
+    },
+    {
+      "lang": "en",
+      "text": "you're about to say this the",
+      "offset": 2121.88,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "idea behind his argument was that if",
+      "offset": 2123.56,
+      "duration": 4.76
+    },
+    {
+      "lang": "en",
+      "text": "language",
+      "offset": 2127.16,
+      "duration": 4.959
+    },
+    {
+      "lang": "en",
+      "text": "models are kind of just pattern matchers",
+      "offset": 2128.32,
+      "duration": 6.84
+    },
+    {
+      "lang": "en",
+      "text": "and aren't kind of learning things in a",
+      "offset": 2132.119,
+      "duration": 6.841
+    },
+    {
+      "lang": "en",
+      "text": "human like way that we can't really",
+      "offset": 2135.16,
+      "duration": 6.4
+    },
+    {
+      "lang": "en",
+      "text": "extrapolate from them to the way humans",
+      "offset": 2138.96,
+      "duration": 5.399
+    },
+    {
+      "lang": "en",
+      "text": "learn language is that the core idea",
+      "offset": 2141.56,
+      "duration": 5.24
+    },
+    {
+      "lang": "en",
+      "text": "yeah yeah I think that's the core idea",
+      "offset": 2144.359,
+      "duration": 6.321
+    },
+    {
+      "lang": "en",
+      "text": "of um a lot of his critiques of language",
+      "offset": 2146.8,
+      "duration": 6.72
+    },
+    {
+      "lang": "en",
+      "text": "up to this point this particular point",
+      "offset": 2150.68,
+      "duration": 6.639
+    },
+    {
+      "lang": "en",
+      "text": "was um yeah the how even how good",
+      "offset": 2153.52,
+      "duration": 7.24
+    },
+    {
+      "lang": "en",
+      "text": "language models are um",
+      "offset": 2157.319,
+      "duration": 8.401
+    },
+    {
+      "lang": "en",
+      "text": "is it it's detrimental to their use a as",
+      "offset": 2160.76,
+      "duration": 8.44
+    },
+    {
+      "lang": "en",
+      "text": "uh models of language or uh as um",
+      "offset": 2165.72,
+      "duration": 6.48
+    },
+    {
+      "lang": "en",
+      "text": "linguistic tools um because they",
+      "offset": 2169.2,
+      "duration": 6.56
+    },
+    {
+      "lang": "en",
+      "text": "couldn't possibly uh match uh certain",
+      "offset": 2172.2,
+      "duration": 6.24
+    },
+    {
+      "lang": "en",
+      "text": "human behaviors uh just because of how",
+      "offset": 2175.76,
+      "duration": 6.359
+    },
+    {
+      "lang": "en",
+      "text": "well they learn um yeah I think that was",
+      "offset": 2178.44,
+      "duration": 7.6
+    },
+    {
+      "lang": "en",
+      "text": "his main point in in that article um and",
+      "offset": 2182.119,
+      "duration": 6.441
+    },
+    {
+      "lang": "en",
+      "text": "uh he s cited a a a paper by Mitchell",
+      "offset": 2186.04,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "and Bowers that explored I think it I",
+      "offset": 2188.56,
+      "duration": 4.799
+    },
+    {
+      "lang": "en",
+      "text": "would consider it the one of the first",
+      "offset": 2191.16,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "papers to explore impossible languages",
+      "offset": 2193.359,
+      "duration": 5.121
+    },
+    {
+      "lang": "en",
+      "text": "from a computational lens and um that",
+      "offset": 2195.8,
+      "duration": 4.6
+    },
+    {
+      "lang": "en",
+      "text": "paper was was really cool but we thought",
+      "offset": 2198.48,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "we could expand to more languages and",
+      "offset": 2200.4,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "also test on",
+      "offset": 2202.48,
+      "duration": 5.879
+    },
+    {
+      "lang": "en",
+      "text": "um more modern architectures so rather",
+      "offset": 2204.72,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "than the recurrent neural networks that",
+      "offset": 2208.359,
+      "duration": 6.801
+    },
+    {
+      "lang": "en",
+      "text": "they tested on in um that paper uh they",
+      "offset": 2210.48,
+      "duration": 7.08
+    },
+    {
+      "lang": "en",
+      "text": "uh that we could also test on transform",
+      "offset": 2215.16,
+      "duration": 5.679
+    },
+    {
+      "lang": "en",
+      "text": "former based language models that are uh",
+      "offset": 2217.56,
+      "duration": 6.96
+    },
+    {
+      "lang": "en",
+      "text": "the the core of language models today so",
+      "offset": 2220.839,
+      "duration": 5.441
+    },
+    {
+      "lang": "en",
+      "text": "yeah uh I think Chris and I were both",
+      "offset": 2224.52,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "really excited about the topic um he",
+      "offset": 2226.28,
+      "duration": 4.839
+    },
+    {
+      "lang": "en",
+      "text": "remembers he tells me he remembers",
+      "offset": 2229,
+      "duration": 4.119
+    },
+    {
+      "lang": "en",
+      "text": "thinking it was maybe too ambitious of a",
+      "offset": 2231.119,
+      "duration": 5.761
+    },
+    {
+      "lang": "en",
+      "text": "project uh for a first project but I",
+      "offset": 2233.119,
+      "duration": 6.2
+    },
+    {
+      "lang": "en",
+      "text": "remember him saying I remember him being",
+      "offset": 2236.88,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "very positive and very supportive of",
+      "offset": 2239.319,
+      "duration": 6.721
+    },
+    {
+      "lang": "en",
+      "text": "pursuing this direction um yeah and so",
+      "offset": 2241.28,
+      "duration": 6.44
+    },
+    {
+      "lang": "en",
+      "text": "how do how does one Define and",
+      "offset": 2246.04,
+      "duration": 4.12
+    },
+    {
+      "lang": "en",
+      "text": "impossible language oh that's a that's a",
+      "offset": 2247.72,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "very good question and I don't think",
+      "offset": 2250.16,
+      "duration": 4.199
+    },
+    {
+      "lang": "en",
+      "text": "that there is a very clear answer still",
+      "offset": 2251.88,
+      "duration": 4.959
+    },
+    {
+      "lang": "en",
+      "text": "um truthfully there there's not a very",
+      "offset": 2254.359,
+      "duration": 5.041
+    },
+    {
+      "lang": "en",
+      "text": "clear answer because the definition of",
+      "offset": 2256.839,
+      "duration": 4.441
+    },
+    {
+      "lang": "en",
+      "text": "an impossible language is a language",
+      "offset": 2259.4,
+      "duration": 3.919
+    },
+    {
+      "lang": "en",
+      "text": "that a human wouldn't be able to learn",
+      "offset": 2261.28,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "and it would be very unethical I think",
+      "offset": 2263.319,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "to try out different languages on like",
+      "offset": 2265.52,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "babies that's the that's the ideal thing",
+      "offset": 2268.599,
+      "duration": 5.041
+    },
+    {
+      "lang": "en",
+      "text": "right like all of the languages that uh",
+      "offset": 2271.04,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "we test on we would want to be able to",
+      "offset": 2273.64,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "give to a baby and see if the baby would",
+      "offset": 2276,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "be able to learn it but we can't do that",
+      "offset": 2277.72,
+      "duration": 7.68
+    },
+    {
+      "lang": "en",
+      "text": "um for obvious reasons um so uh in the",
+      "offset": 2280.4,
+      "duration": 7.04
+    },
+    {
+      "lang": "en",
+      "text": "paper we kind of",
+      "offset": 2285.4,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "take um",
+      "offset": 2287.44,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "perspectives from linguistic Theory as",
+      "offset": 2289.24,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "well as perspectives that's more from",
+      "offset": 2291.92,
+      "duration": 6.159
+    },
+    {
+      "lang": "en",
+      "text": "the ml side of uh let's say um languages",
+      "offset": 2293.96,
+      "duration": 5.879
+    },
+    {
+      "lang": "en",
+      "text": "that have inherently more entropy and",
+      "offset": 2298.079,
+      "duration": 3.881
+    },
+    {
+      "lang": "en",
+      "text": "would be more difficult for both a human",
+      "offset": 2299.839,
+      "duration": 5.441
+    },
+    {
+      "lang": "en",
+      "text": "and a machine learning algorithm um and",
+      "offset": 2301.96,
+      "duration": 5.56
+    },
+    {
+      "lang": "en",
+      "text": "we try to test on a broad broad range of",
+      "offset": 2305.28,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "languages in the",
+      "offset": 2307.52,
+      "duration": 3.88
+    },
+    {
+      "lang": "en",
+      "text": "paper um so these these go from",
+      "offset": 2308.64,
+      "duration": 5.32
+    },
+    {
+      "lang": "en",
+      "text": "languages that are very in um",
+      "offset": 2311.4,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "intuitively impossible so like there",
+      "offset": 2313.96,
+      "duration": 3.2
+    },
+    {
+      "lang": "en",
+      "text": "were there were lots of languages that",
+      "offset": 2315.88,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "involved random shuffling of uh words",
+      "offset": 2317.16,
+      "duration": 6.919
+    },
+    {
+      "lang": "en",
+      "text": "within sentences so that that sounds",
+      "offset": 2320.28,
+      "duration": 6.96
+    },
+    {
+      "lang": "en",
+      "text": "fun it sounds yeah it sounds intuitively",
+      "offset": 2324.079,
+      "duration": 5.081
+    },
+    {
+      "lang": "en",
+      "text": "impossible but we even had to hedge",
+      "offset": 2327.24,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "there like we included a footnote um you",
+      "offset": 2329.16,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "know we believe that these languages are",
+      "offset": 2331.72,
+      "duration": 4.04
+    },
+    {
+      "lang": "en",
+      "text": "impossible given the context where we're",
+      "offset": 2333.96,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "scrambling like English words but um",
+      "offset": 2335.76,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "there are some languages in the world",
+      "offset": 2338.28,
+      "duration": 3.64
+    },
+    {
+      "lang": "en",
+      "text": "that are called scrambling languages or",
+      "offset": 2340.16,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "free word order languages uh where",
+      "offset": 2341.92,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "basically words can appear in almost any",
+      "offset": 2344.56,
+      "duration": 4.799
+    },
+    {
+      "lang": "en",
+      "text": "order but usually there's some other",
+      "offset": 2347.28,
+      "duration": 4.44
+    },
+    {
+      "lang": "en",
+      "text": "process in the language that",
+      "offset": 2349.359,
+      "duration": 4.681
+    },
+    {
+      "lang": "en",
+      "text": "disambiguates the meaning um in a",
+      "offset": 2351.72,
+      "duration": 4.2
+    },
+    {
+      "lang": "en",
+      "text": "different way I think I remember reading",
+      "offset": 2354.04,
+      "duration": 3.799
+    },
+    {
+      "lang": "en",
+      "text": "that about some Creo languages that they",
+      "offset": 2355.92,
+      "duration": 4.84
+    },
+    {
+      "lang": "en",
+      "text": "have a tendency to support free award",
+      "offset": 2357.839,
+      "duration": 6.24
+    },
+    {
+      "lang": "en",
+      "text": "order yeah yeah and I think uh lots of",
+      "offset": 2360.76,
+      "duration": 6.04
+    },
+    {
+      "lang": "en",
+      "text": "um polysynthetic languages so those mean",
+      "offset": 2364.079,
+      "duration": 5.601
+    },
+    {
+      "lang": "en",
+      "text": "languages that have lots of um affixes",
+      "offset": 2366.8,
+      "duration": 6.4
+    },
+    {
+      "lang": "en",
+      "text": "on Words um they will put more meaning",
+      "offset": 2369.68,
+      "duration": 5.679
+    },
+    {
+      "lang": "en",
+      "text": "into the a affixes rather than putting",
+      "offset": 2373.2,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "meaning into the actual ordering of the",
+      "offset": 2375.359,
+      "duration": 3.921
+    },
+    {
+      "lang": "en",
+      "text": "words in the sentence um which is",
+      "offset": 2377.2,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "different from English um because",
+      "offset": 2379.28,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "English I think a a lot of the meaning",
+      "offset": 2382,
+      "duration": 5.8
+    },
+    {
+      "lang": "en",
+      "text": "comes from the structure uh the the the",
+      "offset": 2385.04,
+      "duration": 5.279
+    },
+    {
+      "lang": "en",
+      "text": "syntactic structure um and you can't",
+      "offset": 2387.8,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "scramble words in in in that way and",
+      "offset": 2390.319,
+      "duration": 4.881
+    },
+    {
+      "lang": "en",
+      "text": "have have a have people know what you're",
+      "offset": 2393.24,
+      "duration": 6.28
+    },
+    {
+      "lang": "en",
+      "text": "talking about um yeah yeah uh so the",
+      "offset": 2395.2,
+      "duration": 6.96
+    },
+    {
+      "lang": "en",
+      "text": "impossible languages that the paper",
+      "offset": 2399.52,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "considers are these were these collected",
+      "offset": 2402.16,
+      "duration": 4.6
+    },
+    {
+      "lang": "en",
+      "text": "from the literature did you create",
+      "offset": 2404.96,
+      "duration": 3.119
+    },
+    {
+      "lang": "en",
+      "text": "impossible",
+      "offset": 2406.76,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "languages um you where did they come",
+      "offset": 2408.079,
+      "duration": 5.681
+    },
+    {
+      "lang": "en",
+      "text": "from yeah so uh the languages that we",
+      "offset": 2410.76,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "tested um",
+      "offset": 2413.76,
+      "duration": 5.359
+    },
+    {
+      "lang": "en",
+      "text": "like um most of these were kind of in",
+      "offset": 2415.56,
+      "duration": 5.84
+    },
+    {
+      "lang": "en",
+      "text": "invented by us but inspired by parts of",
+      "offset": 2419.119,
+      "duration": 4.441
+    },
+    {
+      "lang": "en",
+      "text": "the literature so like we had a set of",
+      "offset": 2421.4,
+      "duration": 4.719
+    },
+    {
+      "lang": "en",
+      "text": "languages of reverse languages that were",
+      "offset": 2423.56,
+      "duration": 3.799
+    },
+    {
+      "lang": "en",
+      "text": "actually replicated from the the",
+      "offset": 2426.119,
+      "duration": 3.48
+    },
+    {
+      "lang": "en",
+      "text": "Mitchell and Bowers paper that um I",
+      "offset": 2427.359,
+      "duration": 6.24
+    },
+    {
+      "lang": "en",
+      "text": "mentioned before um there there I think",
+      "offset": 2429.599,
+      "duration": 6.121
+    },
+    {
+      "lang": "en",
+      "text": "the main set of languages in the paper",
+      "offset": 2433.599,
+      "duration": 4.52
+    },
+    {
+      "lang": "en",
+      "text": "that we kind of focus on are these hop",
+      "offset": 2435.72,
+      "duration": 5.359
+    },
+    {
+      "lang": "en",
+      "text": "languages and uh these are these are",
+      "offset": 2438.119,
+      "duration": 8.441
+    },
+    {
+      "lang": "en",
+      "text": "inspired um a bit by um some artificial",
+      "offset": 2441.079,
+      "duration": 7.841
+    },
+    {
+      "lang": "en",
+      "text": "language learning experiments I'd say",
+      "offset": 2446.56,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "that have been done on like humans about",
+      "offset": 2448.92,
+      "duration": 6.159
+    },
+    {
+      "lang": "en",
+      "text": "um how humans kind of dis dis prefer",
+      "offset": 2451.76,
+      "duration": 4.839
+    },
+    {
+      "lang": "en",
+      "text": "languages that involve like certain",
+      "offset": 2455.079,
+      "duration": 4.361
+    },
+    {
+      "lang": "en",
+      "text": "Counting like count based rules so in",
+      "offset": 2456.599,
+      "duration": 5.401
+    },
+    {
+      "lang": "en",
+      "text": "the languages that we uh have in the",
+      "offset": 2459.44,
+      "duration": 7.32
+    },
+    {
+      "lang": "en",
+      "text": "paper um basically uh we take English so",
+      "offset": 2462,
+      "duration": 6.16
+    },
+    {
+      "lang": "en",
+      "text": "all all of our languages involve",
+      "offset": 2466.76,
+      "duration": 3.319
+    },
+    {
+      "lang": "en",
+      "text": "perturbing English uh there are a number",
+      "offset": 2468.16,
+      "duration": 3.4
+    },
+    {
+      "lang": "en",
+      "text": "of reasons why we go in that direction",
+      "offset": 2470.079,
+      "duration": 3.201
+    },
+    {
+      "lang": "en",
+      "text": "that I could talk about but to talk to",
+      "offset": 2471.56,
+      "duration": 5.4
+    },
+    {
+      "lang": "en",
+      "text": "talk about these hop languages basically",
+      "offset": 2473.28,
+      "duration": 8.079
+    },
+    {
+      "lang": "en",
+      "text": "we take verbs and um remove any sort of",
+      "offset": 2476.96,
+      "duration": 8.52
+    },
+    {
+      "lang": "en",
+      "text": "um inflection meaning how you mark tense",
+      "offset": 2481.359,
+      "duration": 7.841
+    },
+    {
+      "lang": "en",
+      "text": "or number and uh we put a a marker that",
+      "offset": 2485.48,
+      "duration": 6.44
+    },
+    {
+      "lang": "en",
+      "text": "signifies tense and number for Words",
+      "offset": 2489.2,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "later which you know there's nothing",
+      "offset": 2491.92,
+      "duration": 5.439
+    },
+    {
+      "lang": "en",
+      "text": "that that doesn't sound inherently too",
+      "offset": 2495.2,
+      "duration": 4.76
+    },
+    {
+      "lang": "en",
+      "text": "complex right um but it's something that",
+      "offset": 2497.359,
+      "duration": 5.96
+    },
+    {
+      "lang": "en",
+      "text": "no language really does uh having this",
+      "offset": 2499.96,
+      "duration": 6.48
+    },
+    {
+      "lang": "en",
+      "text": "uh verb inflection be marked by a marker",
+      "offset": 2503.319,
+      "duration": 7.52
+    },
+    {
+      "lang": "en",
+      "text": "that comes four words after a verb um",
+      "offset": 2506.44,
+      "duration": 7.72
+    },
+    {
+      "lang": "en",
+      "text": "and uh uh I remember it sounds like it",
+      "offset": 2510.839,
+      "duration": 5
+    },
+    {
+      "lang": "en",
+      "text": "should be pretty pretty easy for a",
+      "offset": 2514.16,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "language model um we have some targeted",
+      "offset": 2515.839,
+      "duration": 7.52
+    },
+    {
+      "lang": "en",
+      "text": "evaluations showing that um the model is",
+      "offset": 2518.72,
+      "duration": 7.2
+    },
+    {
+      "lang": "en",
+      "text": "actually more surprised by those markers",
+      "offset": 2523.359,
+      "duration": 4.561
+    },
+    {
+      "lang": "en",
+      "text": "or is worse at predicting those markers",
+      "offset": 2525.92,
+      "duration": 3.88
+    },
+    {
+      "lang": "en",
+      "text": "than in a control condition where the",
+      "offset": 2527.92,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "marker appears right next to the verb as",
+      "offset": 2529.8,
+      "duration": 5.039
+    },
+    {
+      "lang": "en",
+      "text": "it would in in the natural English",
+      "offset": 2532.16,
+      "duration": 6.4
+    },
+    {
+      "lang": "en",
+      "text": "setting um yeah so we thought that was",
+      "offset": 2534.839,
+      "duration": 5.48
+    },
+    {
+      "lang": "en",
+      "text": "that was pretty interesting and it is",
+      "offset": 2538.56,
+      "duration": 6.12
+    },
+    {
+      "lang": "en",
+      "text": "the core idea behind the research to",
+      "offset": 2540.319,
+      "duration": 7.121
+    },
+    {
+      "lang": "en",
+      "text": "demonstrate one where or the other the",
+      "offset": 2544.68,
+      "duration": 4.879
+    },
+    {
+      "lang": "en",
+      "text": "relative difficulty that Lang language",
+      "offset": 2547.44,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "models have with these impossible",
+      "offset": 2549.559,
+      "duration": 4.76
+    },
+    {
+      "lang": "en",
+      "text": "languages yeah so uh the the main",
+      "offset": 2551.44,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "takeaway there was that at least for the",
+      "offset": 2554.319,
+      "duration": 4.161
+    },
+    {
+      "lang": "en",
+      "text": "class of models we tested so like the",
+      "offset": 2556.24,
+      "duration": 5.079
+    },
+    {
+      "lang": "en",
+      "text": "gpt2 models we we trained from scratch",
+      "offset": 2558.48,
+      "duration": 5.119
+    },
+    {
+      "lang": "en",
+      "text": "we had to train uh yeah just to to",
+      "offset": 2561.319,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "clarify we had to train all the models",
+      "offset": 2563.599,
+      "duration": 3.841
+    },
+    {
+      "lang": "en",
+      "text": "from scratch on each impossible language",
+      "offset": 2565.319,
+      "duration": 4.721
+    },
+    {
+      "lang": "en",
+      "text": "so these models are not pre-trained or",
+      "offset": 2567.44,
+      "duration": 4.28
+    },
+    {
+      "lang": "en",
+      "text": "they're not um they're not pre-trained",
+      "offset": 2570.04,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "on top of like massive English corpora",
+      "offset": 2571.72,
+      "duration": 4.76
+    },
+    {
+      "lang": "en",
+      "text": "it's they only see their respective",
+      "offset": 2573.88,
+      "duration": 5.08
+    },
+    {
+      "lang": "en",
+      "text": "impossible l languages um there's",
+      "offset": 2576.48,
+      "duration": 4.879
+    },
+    {
+      "lang": "en",
+      "text": "something about the gpt2 architecture",
+      "offset": 2578.96,
+      "duration": 6.08
+    },
+    {
+      "lang": "en",
+      "text": "that biases it toward the natural",
+      "offset": 2581.359,
+      "duration": 6.401
+    },
+    {
+      "lang": "en",
+      "text": "language um meaning the the control the",
+      "offset": 2585.04,
+      "duration": 6.16
+    },
+    {
+      "lang": "en",
+      "text": "control languages in our experiments um",
+      "offset": 2587.76,
+      "duration": 5.48
+    },
+    {
+      "lang": "en",
+      "text": "and yeah that's kind that's kind of the",
+      "offset": 2591.2,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "main takeaway and um our thought was",
+      "offset": 2593.24,
+      "duration": 8.359
+    },
+    {
+      "lang": "en",
+      "text": "that uh it has to do M um or or our our",
+      "offset": 2596.72,
+      "duration": 7.72
+    },
+    {
+      "lang": "en",
+      "text": "hypothesis is that the gpd2 architecture",
+      "offset": 2601.599,
+      "duration": 6.281
+    },
+    {
+      "lang": "en",
+      "text": "um uh prefers information locality and",
+      "offset": 2604.44,
+      "duration": 6.6
+    },
+    {
+      "lang": "en",
+      "text": "what this basically means is um in in",
+      "offset": 2607.88,
+      "duration": 5.959
+    },
+    {
+      "lang": "en",
+      "text": "language uh words that are predictive of",
+      "offset": 2611.04,
+      "duration": 5.72
+    },
+    {
+      "lang": "en",
+      "text": "each other are often close together so",
+      "offset": 2613.839,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "when we mess with the locality of a",
+      "offset": 2616.76,
+      "duration": 6.16
+    },
+    {
+      "lang": "en",
+      "text": "language um uh it kind of uh is what",
+      "offset": 2618.559,
+      "duration": 6.361
+    },
+    {
+      "lang": "en",
+      "text": "makes it harder for gbt2 and we think it",
+      "offset": 2622.92,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "comes from the auto regressive uh",
+      "offset": 2624.92,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "language modeling objective where uh uh",
+      "offset": 2627.8,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "the language model has to predict the",
+      "offset": 2630.68,
+      "duration": 3.879
+    },
+    {
+      "lang": "en",
+      "text": "next token given the preceding tokens",
+      "offset": 2632.28,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "and that kind of creates uh information",
+      "offset": 2634.559,
+      "duration": 5.361
+    },
+    {
+      "lang": "en",
+      "text": "locality bias in gpt2 as well in terms",
+      "offset": 2637.16,
+      "duration": 4.52
+    },
+    {
+      "lang": "en",
+      "text": "of the training data set for these",
+      "offset": 2639.92,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "models did you define the rules for",
+      "offset": 2641.68,
+      "duration": 5.679
+    },
+    {
+      "lang": "en",
+      "text": "these impossible languages and then",
+      "offset": 2644.88,
+      "duration": 4.719
+    },
+    {
+      "lang": "en",
+      "text": "translate from",
+      "offset": 2647.359,
+      "duration": 6.76
+    },
+    {
+      "lang": "en",
+      "text": "English a English data set to an uh data",
+      "offset": 2649.599,
+      "duration": 6.441
+    },
+    {
+      "lang": "en",
+      "text": "set in the impossible language or did",
+      "offset": 2654.119,
+      "duration": 3.641
+    },
+    {
+      "lang": "en",
+      "text": "you use some other kind of synthetic",
+      "offset": 2656.04,
+      "duration": 5.039
+    },
+    {
+      "lang": "en",
+      "text": "generation that's a great question um so",
+      "offset": 2657.76,
+      "duration": 7.079
+    },
+    {
+      "lang": "en",
+      "text": "we started off from an English Corpus uh",
+      "offset": 2661.079,
+      "duration": 6.76
+    },
+    {
+      "lang": "en",
+      "text": "this is a BBL LM Corpus which is",
+      "offset": 2664.839,
+      "duration": 5.921
+    },
+    {
+      "lang": "en",
+      "text": "uh about 100 million words uh of text",
+      "offset": 2667.839,
+      "duration": 6.401
+    },
+    {
+      "lang": "en",
+      "text": "it's supposed to be approximately what a",
+      "offset": 2670.76,
+      "duration": 7.28
+    },
+    {
+      "lang": "en",
+      "text": "a child would hear up to age 12 um so uh",
+      "offset": 2674.24,
+      "duration": 5.68
+    },
+    {
+      "lang": "en",
+      "text": "I think it it's a it's a nice Corpus if",
+      "offset": 2678.04,
+      "duration": 3.519
+    },
+    {
+      "lang": "en",
+      "text": "you're trying to do these sorts of",
+      "offset": 2679.92,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "language learning experiments it also is",
+      "offset": 2681.559,
+      "duration": 3.841
+    },
+    {
+      "lang": "en",
+      "text": "supposed to mimic what a child would",
+      "offset": 2683.68,
+      "duration": 3.399
+    },
+    {
+      "lang": "en",
+      "text": "encounter during the first 12 years of",
+      "offset": 2685.4,
+      "duration": 5.84
+    },
+    {
+      "lang": "en",
+      "text": "life um and what we did was we defined",
+      "offset": 2687.079,
+      "duration": 6.881
+    },
+    {
+      "lang": "en",
+      "text": "these rules that uh would transform the",
+      "offset": 2691.24,
+      "duration": 5.48
+    },
+    {
+      "lang": "en",
+      "text": "English Corpus uh into each impossible",
+      "offset": 2693.96,
+      "duration": 4.119
+    },
+    {
+      "lang": "en",
+      "text": "language",
+      "offset": 2696.72,
+      "duration": 4.2
+    },
+    {
+      "lang": "en",
+      "text": "um so yeah the data is very controlled",
+      "offset": 2698.079,
+      "duration": 5.201
+    },
+    {
+      "lang": "en",
+      "text": "when we compare each impossible language",
+      "offset": 2700.92,
+      "duration": 4.12
+    },
+    {
+      "lang": "en",
+      "text": "like it's the it's the same sentences",
+      "offset": 2703.28,
+      "duration": 3.12
+    },
+    {
+      "lang": "en",
+      "text": "that have just been transformed by",
+      "offset": 2705.04,
+      "duration": 2.92
+    },
+    {
+      "lang": "en",
+      "text": "different",
+      "offset": 2706.4,
+      "duration": 3.679
+    },
+    {
+      "lang": "en",
+      "text": "rules yeah so that's how we went about",
+      "offset": 2707.96,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "it and then we pre-trained the GPT tws",
+      "offset": 2710.079,
+      "duration": 4.121
+    },
+    {
+      "lang": "en",
+      "text": "on each Corpus I guess it strikes me",
+      "offset": 2712.04,
+      "duration": 4.559
+    },
+    {
+      "lang": "en",
+      "text": "that so the the the language the",
+      "offset": 2714.2,
+      "duration": 3.639
+    },
+    {
+      "lang": "en",
+      "text": "language",
+      "offset": 2716.599,
+      "duration": 4.321
+    },
+    {
+      "lang": "en",
+      "text": "models that we use like",
+      "offset": 2717.839,
+      "duration": 6.441
+    },
+    {
+      "lang": "en",
+      "text": "gpt2 were they kind of evolved in the",
+      "offset": 2720.92,
+      "duration": 6.24
+    },
+    {
+      "lang": "en",
+      "text": "context of English",
+      "offset": 2724.28,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "um to some degree and so there's like I",
+      "offset": 2727.16,
+      "duration": 4.919
+    },
+    {
+      "lang": "en",
+      "text": "don't know some kind of selection bias",
+      "offset": 2730.28,
+      "duration": 5.279
+    },
+    {
+      "lang": "en",
+      "text": "there for English or something and you",
+      "offset": 2732.079,
+      "duration": 6.641
+    },
+    {
+      "lang": "en",
+      "text": "know so therefore you know if you were",
+      "offset": 2735.559,
+      "duration": 5.681
+    },
+    {
+      "lang": "en",
+      "text": "if your focus was some impossible",
+      "offset": 2738.72,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "language maybe you evolve some other",
+      "offset": 2741.24,
+      "duration": 5.56
+    },
+    {
+      "lang": "en",
+      "text": "language model architecture that work",
+      "offset": 2743.92,
+      "duration": 4.6
+    },
+    {
+      "lang": "en",
+      "text": "better for those",
+      "offset": 2746.8,
+      "duration": 6.12
+    },
+    {
+      "lang": "en",
+      "text": "languages um which I",
+      "offset": 2748.52,
+      "duration": 9.68
+    },
+    {
+      "lang": "en",
+      "text": "guess causes me to reflect on the you",
+      "offset": 2752.92,
+      "duration": 6.679
+    },
+    {
+      "lang": "en",
+      "text": "know the relationship between",
+      "offset": 2758.2,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "impossibility and language model",
+      "offset": 2759.599,
+      "duration": 4.401
+    },
+    {
+      "lang": "en",
+      "text": "architecture from the you know from",
+      "offset": 2761.96,
+      "duration": 4.44
+    },
+    {
+      "lang": "en",
+      "text": "Chi's perspective like does the fact",
+      "offset": 2764,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "that these language models that evolved",
+      "offset": 2766.4,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "in this English",
+      "offset": 2768.4,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "context um you know work or don't work",
+      "offset": 2769.76,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "for these impossible languages like what",
+      "offset": 2772.88,
+      "duration": 3.56
+    },
+    {
+      "lang": "en",
+      "text": "does that really mean oh that that's a",
+      "offset": 2774.48,
+      "duration": 5.839
+    },
+    {
+      "lang": "en",
+      "text": "great question um I I have to say I'm",
+      "offset": 2776.44,
+      "duration": 7.679
+    },
+    {
+      "lang": "en",
+      "text": "I'm really uh happy with some uh with",
+      "offset": 2780.319,
+      "duration": 5.601
+    },
+    {
+      "lang": "en",
+      "text": "like I guess the reception of the paper",
+      "offset": 2784.119,
+      "duration": 3.281
+    },
+    {
+      "lang": "en",
+      "text": "there has been like lots of follow-up",
+      "offset": 2785.92,
+      "duration": 4.919
+    },
+    {
+      "lang": "en",
+      "text": "work I think that tries uh the Sim or or",
+      "offset": 2787.4,
+      "duration": 5.32
+    },
+    {
+      "lang": "en",
+      "text": "tests this similar question but maybe",
+      "offset": 2790.839,
+      "duration": 5.081
+    },
+    {
+      "lang": "en",
+      "text": "starting from corpora um that are",
+      "offset": 2792.72,
+      "duration": 6.68
+    },
+    {
+      "lang": "en",
+      "text": "non-english you know um uh starting from",
+      "offset": 2795.92,
+      "duration": 7.24
+    },
+    {
+      "lang": "en",
+      "text": "other other base corpora um and I think",
+      "offset": 2799.4,
+      "duration": 5.439
+    },
+    {
+      "lang": "en",
+      "text": "it yeah it's definitely a question that",
+      "offset": 2803.16,
+      "duration": 4.919
+    },
+    {
+      "lang": "en",
+      "text": "could be explored more like if we um",
+      "offset": 2804.839,
+      "duration": 5.161
+    },
+    {
+      "lang": "en",
+      "text": "incorporate the comparison of different",
+      "offset": 2808.079,
+      "duration": 4.881
+    },
+    {
+      "lang": "en",
+      "text": "real natural languages versus impossible",
+      "offset": 2810,
+      "duration": 4.559
+    },
+    {
+      "lang": "en",
+      "text": "languages that are derived from each of",
+      "offset": 2812.96,
+      "duration": 4.879
+    },
+    {
+      "lang": "en",
+      "text": "those those natural languages um",
+      "offset": 2814.559,
+      "duration": 4.52
+    },
+    {
+      "lang": "en",
+      "text": "it's something that just needs to be",
+      "offset": 2817.839,
+      "duration": 3.28
+    },
+    {
+      "lang": "en",
+      "text": "explored and then the architecture",
+      "offset": 2819.079,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "question um that's what we think would",
+      "offset": 2821.119,
+      "duration": 6.121
+    },
+    {
+      "lang": "en",
+      "text": "be like a really natural Next Step um",
+      "offset": 2824.599,
+      "duration": 6.321
+    },
+    {
+      "lang": "en",
+      "text": "how can we find architectures that uh",
+      "offset": 2827.24,
+      "duration": 6.8
+    },
+    {
+      "lang": "en",
+      "text": "bias uh that are more biased toward the",
+      "offset": 2830.92,
+      "duration": 6.399
+    },
+    {
+      "lang": "en",
+      "text": "natural languages and less biased toward",
+      "offset": 2834.04,
+      "duration": 5.96
+    },
+    {
+      "lang": "en",
+      "text": "the The Impossible languages because",
+      "offset": 2837.319,
+      "duration": 6.721
+    },
+    {
+      "lang": "en",
+      "text": "ultimately like um all of the parts of",
+      "offset": 2840,
+      "duration": 6.48
+    },
+    {
+      "lang": "en",
+      "text": "gpt2 are engineering choices and there's",
+      "offset": 2844.04,
+      "duration": 4.079
+    },
+    {
+      "lang": "en",
+      "text": "no reason and we can't just change them",
+      "offset": 2846.48,
+      "duration": 3.56
+    },
+    {
+      "lang": "en",
+      "text": "in order to make them more cognitively",
+      "offset": 2848.119,
+      "duration": 5.761
+    },
+    {
+      "lang": "en",
+      "text": "plausible models um so yeah the these",
+      "offset": 2850.04,
+      "duration": 5.68
+    },
+    {
+      "lang": "en",
+      "text": "are these are great directions and I'm",
+      "offset": 2853.88,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "excited that that people are uh working",
+      "offset": 2855.72,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "on on them more and we're in the",
+      "offset": 2858.92,
+      "duration": 3.199
+    },
+    {
+      "lang": "en",
+      "text": "follow-up we are working on more on",
+      "offset": 2860.52,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "architecture question um that's what",
+      "offset": 2862.119,
+      "duration": 6.281
+    },
+    {
+      "lang": "en",
+      "text": "we're targeting in Mission Impossible",
+      "offset": 2864.92,
+      "duration": 3.48
+    },
+    {
+      "lang": "en",
+      "text": "Too continuing the theme of the uh pop",
+      "offset": 2868.88,
+      "duration": 6.36
+    },
+    {
+      "lang": "en",
+      "text": "culture reference in the title yeah that",
+      "offset": 2871.88,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "means you have like nine left",
+      "offset": 2875.24,
+      "duration": 3.119
+    },
+    {
+      "lang": "en",
+      "text": "[Laughter]",
+      "offset": 2876.92,
+      "duration": 4.52
+    },
+    {
+      "lang": "en",
+      "text": "oh man yeah nine",
+      "offset": 2878.359,
+      "duration": 6.441
+    },
+    {
+      "lang": "en",
+      "text": "left oh I I wanted to do a paper that",
+      "offset": 2881.44,
+      "duration": 5.639
+    },
+    {
+      "lang": "en",
+      "text": "had a spin on like Fast and Furious like",
+      "offset": 2884.8,
+      "duration": 5.039
+    },
+    {
+      "lang": "en",
+      "text": "Too Fast Too Furious or something um but",
+      "offset": 2887.079,
+      "duration": 5.201
+    },
+    {
+      "lang": "en",
+      "text": "it seems like the Almo team took it they",
+      "offset": 2889.839,
+      "duration": 4.841
+    },
+    {
+      "lang": "en",
+      "text": "they had their sequel to Almo was called",
+      "offset": 2892.28,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "to Almo to Furious oh",
+      "offset": 2894.68,
+      "duration": 6.6
+    },
+    {
+      "lang": "en",
+      "text": "nice well great I think we we covered",
+      "offset": 2898.04,
+      "duration": 6.48
+    },
+    {
+      "lang": "en",
+      "text": "these papers anything else uh you would",
+      "offset": 2901.28,
+      "duration": 4.559
+    },
+    {
+      "lang": "en",
+      "text": "like to share about what you're working",
+      "offset": 2904.52,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "on or excited about yeah I'm continuing",
+      "offset": 2905.839,
+      "duration": 4.681
+    },
+    {
+      "lang": "en",
+      "text": "to be very excited in tokenization and",
+      "offset": 2908.04,
+      "duration": 5.039
+    },
+    {
+      "lang": "en",
+      "text": "very excited in architectures so I think",
+      "offset": 2910.52,
+      "duration": 6.079
+    },
+    {
+      "lang": "en",
+      "text": "the the kind of the link between the two",
+      "offset": 2913.079,
+      "duration": 7.161
+    },
+    {
+      "lang": "en",
+      "text": "papers that I talked about is the uh",
+      "offset": 2916.599,
+      "duration": 6.881
+    },
+    {
+      "lang": "en",
+      "text": "exploration of kind of what is learnable",
+      "offset": 2920.24,
+      "duration": 6.76
+    },
+    {
+      "lang": "en",
+      "text": "and uh what architectures are best for",
+      "offset": 2923.48,
+      "duration": 6.2
+    },
+    {
+      "lang": "en",
+      "text": "your specific use cases like for for Mr",
+      "offset": 2927,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "T it's obviously like what architecture",
+      "offset": 2929.68,
+      "duration": 4.84
+    },
+    {
+      "lang": "en",
+      "text": "is going to be at best for uh achieving",
+      "offset": 2931.48,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "more efficient bite level models for",
+      "offset": 2934.52,
+      "duration": 5.68
+    },
+    {
+      "lang": "en",
+      "text": "um Mission Impossible I think the next",
+      "offset": 2937.24,
+      "duration": 4.76
+    },
+    {
+      "lang": "en",
+      "text": "the clear next step is to explore the",
+      "offset": 2940.2,
+      "duration": 3.919
+    },
+    {
+      "lang": "en",
+      "text": "architectures that make you more or less",
+      "offset": 2942,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "make a learner more or less biased",
+      "offset": 2944.119,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "toward natural or uh impossible language",
+      "offset": 2945.68,
+      "duration": 7.639
+    },
+    {
+      "lang": "en",
+      "text": "and um yeah I I'm just really excited",
+      "offset": 2949.559,
+      "duration": 7.161
+    },
+    {
+      "lang": "en",
+      "text": "for uh excited to do more work on on",
+      "offset": 2953.319,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "architecture I think that these two",
+      "offset": 2956.72,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "questions have allowed me to explore",
+      "offset": 2958.359,
+      "duration": 5.321
+    },
+    {
+      "lang": "en",
+      "text": "that um especially in a world where uh",
+      "offset": 2960.16,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "kind of the the standard Transformer",
+      "offset": 2963.68,
+      "duration": 4.879
+    },
+    {
+      "lang": "en",
+      "text": "architecture is is very dominant and uh",
+      "offset": 2965.52,
+      "duration": 6.039
+    },
+    {
+      "lang": "en",
+      "text": "I've been very happy to kind of break",
+      "offset": 2968.559,
+      "duration": 4.841
+    },
+    {
+      "lang": "en",
+      "text": "break away from that a bit awesome",
+      "offset": 2971.559,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "awesome well thanks so much Julie for",
+      "offset": 2973.4,
+      "duration": 3.959
+    },
+    {
+      "lang": "en",
+      "text": "sharing a bit about what you've been",
+      "offset": 2976.119,
+      "duration": 3.24
+    },
+    {
+      "lang": "en",
+      "text": "working on thank you so much Sam it was",
+      "offset": 2977.359,
+      "duration": 4.081
+    },
+    {
+      "lang": "en",
+      "text": "really a pleasure to talk to you thank",
+      "offset": 2979.359,
+      "duration": 5.081
+    },
+    {
+      "lang": "en",
+      "text": "you",
+      "offset": 2981.44,
+      "duration": 3
+    },
+    {
+      "lang": "en",
+      "text": "[Music]",
+      "offset": 2999.91,
+      "duration": 3.19
+    }
+  ],
+  "cleanText": null,
+  "dumpedAt": "2025-07-21T18:43:24.933Z"
+}

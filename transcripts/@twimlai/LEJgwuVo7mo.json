@@ -1,0 +1,6094 @@
+{
+  "episodeId": "LEJgwuVo7mo",
+  "channelSlug": "@twimlai",
+  "title": "Teaching LLMs to Self-Reflect with Reinforcement Learning with Maohao Shen - 726",
+  "publishedAt": "2025-04-07T21:54:24.000Z",
+  "rawLines": [
+    {
+      "lang": "en",
+      "text": "here's the thing this isn't how human",
+      "offset": 0,
+      "duration": 5.6
+    },
+    {
+      "lang": "en",
+      "text": "really naturally solve the hard problems",
+      "offset": 2.96,
+      "duration": 5.32
+    },
+    {
+      "lang": "en",
+      "text": "as human we are capable of extended",
+      "offset": 5.6,
+      "duration": 5.6
+    },
+    {
+      "lang": "en",
+      "text": "thinking and more importantly we can",
+      "offset": 8.28,
+      "duration": 6.2
+    },
+    {
+      "lang": "en",
+      "text": "self-reflect if we realize we've we have",
+      "offset": 11.2,
+      "duration": 7.2
+    },
+    {
+      "lang": "en",
+      "text": "made a mistake we can backtrack rethink",
+      "offset": 14.48,
+      "duration": 6.4
+    },
+    {
+      "lang": "en",
+      "text": "and correct the mistake and sometimes we",
+      "offset": 18.4,
+      "duration": 4.719
+    },
+    {
+      "lang": "en",
+      "text": "also propose better solutions and the",
+      "offset": 20.88,
+      "duration": 5.84
+    },
+    {
+      "lang": "en",
+      "text": "motivation is like um how we can train",
+      "offset": 23.119,
+      "duration": 7.601
+    },
+    {
+      "lang": "en",
+      "text": "the language model to do the similar",
+      "offset": 26.72,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "things all right everyone welcome to",
+      "offset": 41.16,
+      "duration": 4.84
+    },
+    {
+      "lang": "en",
+      "text": "another episode of the TwiML AI podcast",
+      "offset": 43.6,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "i am your host Sam Cherington today I'm",
+      "offset": 46,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "joined by Ma Shen mauow is a PhD student",
+      "offset": 48.8,
+      "duration": 6.079
+    },
+    {
+      "lang": "en",
+      "text": "at MIT before we get going be sure to",
+      "offset": 52,
+      "duration": 4.559
+    },
+    {
+      "lang": "en",
+      "text": "hit that subscribe button wherever",
+      "offset": 54.879,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "you're listening to today's show mhow",
+      "offset": 56.559,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "welcome to the podcast yeah thanks for",
+      "offset": 58.879,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "having me for this podcast we are going",
+      "offset": 61.039,
+      "duration": 5.681
+    },
+    {
+      "lang": "en",
+      "text": "to be talking about your paper Satori",
+      "offset": 64.239,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "reinforcement learning with chain of",
+      "offset": 66.72,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "action thought enhances LLM reasoning",
+      "offset": 68.479,
+      "duration": 4.881
+    },
+    {
+      "lang": "en",
+      "text": "via auto reggressive search that is",
+      "offset": 71.04,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "quite a mouthful uh but looking forward",
+      "offset": 73.36,
+      "duration": 6.24
+    },
+    {
+      "lang": "en",
+      "text": "to digging into it um maybe we can start",
+      "offset": 76.24,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "by having you share a little bit about",
+      "offset": 79.6,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "your background and research interests",
+      "offset": 81.04,
+      "duration": 6.32
+    },
+    {
+      "lang": "en",
+      "text": "so um I have a broad interest in various",
+      "offset": 83.84,
+      "duration": 5.919
+    },
+    {
+      "lang": "en",
+      "text": "uh AI and machine learning problems uh",
+      "offset": 87.36,
+      "duration": 6.079
+    },
+    {
+      "lang": "en",
+      "text": "in general my goal is to make AI system",
+      "offset": 89.759,
+      "duration": 7.601
+    },
+    {
+      "lang": "en",
+      "text": "more intelligent and also more reliable",
+      "offset": 93.439,
+      "duration": 7.121
+    },
+    {
+      "lang": "en",
+      "text": "and a large a large part of my research",
+      "offset": 97.36,
+      "duration": 6.079
+    },
+    {
+      "lang": "en",
+      "text": "focus on quantifying the uncertainty of",
+      "offset": 100.56,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "AI models",
+      "offset": 103.439,
+      "duration": 4.401
+    },
+    {
+      "lang": "en",
+      "text": "um because you know alenity can serve as",
+      "offset": 105.52,
+      "duration": 6.4
+    },
+    {
+      "lang": "en",
+      "text": "a a signal for users to decide whether",
+      "offset": 107.84,
+      "duration": 6.84
+    },
+    {
+      "lang": "en",
+      "text": "they should trust an an AI models",
+      "offset": 111.92,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "predictions and this is especially",
+      "offset": 114.68,
+      "duration": 5
+    },
+    {
+      "lang": "en",
+      "text": "important in those um highstake",
+      "offset": 117.36,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "applications such as you know autonomous",
+      "offset": 119.68,
+      "duration": 7.759
+    },
+    {
+      "lang": "en",
+      "text": "driving um hair scares uh where those",
+      "offset": 122.56,
+      "duration": 7.199
+    },
+    {
+      "lang": "en",
+      "text": "unreliable or misleading predictions",
+      "offset": 127.439,
+      "duration": 7.281
+    },
+    {
+      "lang": "en",
+      "text": "could um could have serious consequences",
+      "offset": 129.759,
+      "duration": 9.2
+    },
+    {
+      "lang": "en",
+      "text": "um and in recent years um I have also",
+      "offset": 134.72,
+      "duration": 6.2
+    },
+    {
+      "lang": "en",
+      "text": "been working on multiple language model",
+      "offset": 138.959,
+      "duration": 4.881
+    },
+    {
+      "lang": "en",
+      "text": "problems and one of the most exciting",
+      "offset": 140.92,
+      "duration": 7.48
+    },
+    {
+      "lang": "en",
+      "text": "challenge is moving beyond the chatbot",
+      "offset": 143.84,
+      "duration": 7.92
+    },
+    {
+      "lang": "en",
+      "text": "and how to develop the AI system that",
+      "offset": 148.4,
+      "duration": 6.4
+    },
+    {
+      "lang": "en",
+      "text": "can think more like humans and uh and",
+      "offset": 151.76,
+      "duration": 6.72
+    },
+    {
+      "lang": "en",
+      "text": "tackle those those complex problems",
+      "offset": 154.8,
+      "duration": 8.159
+    },
+    {
+      "lang": "en",
+      "text": "and this is my ultimate goal and Satari",
+      "offset": 158.48,
+      "duration": 7.96
+    },
+    {
+      "lang": "en",
+      "text": "is my latest exploration along this",
+      "offset": 162.959,
+      "duration": 6.881
+    },
+    {
+      "lang": "en",
+      "text": "direction and I believe that making AI",
+      "offset": 166.44,
+      "duration": 7.24
+    },
+    {
+      "lang": "en",
+      "text": "models with both smarter and",
+      "offset": 169.84,
+      "duration": 6.8
+    },
+    {
+      "lang": "en",
+      "text": "um more reliable is a key to achieve AGI",
+      "offset": 173.68,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "in the future what are some of the",
+      "offset": 176.64,
+      "duration": 3.599
+    },
+    {
+      "lang": "en",
+      "text": "things you've worked on in the past so",
+      "offset": 178.4,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "in the past I work on several problems",
+      "offset": 180.239,
+      "duration": 5.521
+    },
+    {
+      "lang": "en",
+      "text": "uh relevant to trustworthy machine",
+      "offset": 183.28,
+      "duration": 6.48
+    },
+    {
+      "lang": "en",
+      "text": "learning um how to as I said how to",
+      "offset": 185.76,
+      "duration": 6.96
+    },
+    {
+      "lang": "en",
+      "text": "enhance the alternating authenticity",
+      "offset": 189.76,
+      "duration": 6.32
+    },
+    {
+      "lang": "en",
+      "text": "quantification um performance of a",
+      "offset": 192.72,
+      "duration": 6.64
+    },
+    {
+      "lang": "en",
+      "text": "machine learning system um usually using",
+      "offset": 196.08,
+      "duration": 6.48
+    },
+    {
+      "lang": "en",
+      "text": "some um auxiliary models building on top",
+      "offset": 199.36,
+      "duration": 5.92
+    },
+    {
+      "lang": "en",
+      "text": "of the neuronet network to predict the",
+      "offset": 202.56,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "uncenity or using some other algorithms",
+      "offset": 205.28,
+      "duration": 6.08
+    },
+    {
+      "lang": "en",
+      "text": "such as bashing algorithms to to",
+      "offset": 208.56,
+      "duration": 4.12
+    },
+    {
+      "lang": "en",
+      "text": "estimate the",
+      "offset": 211.36,
+      "duration": 4.799
+    },
+    {
+      "lang": "en",
+      "text": "alenity um and this this project",
+      "offset": 212.68,
+      "duration": 6.36
+    },
+    {
+      "lang": "en",
+      "text": "Sattorii is more like a a new direction",
+      "offset": 216.159,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "to be explored and so talk a little bit",
+      "offset": 219.04,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "about how this particular project fits",
+      "offset": 221.519,
+      "duration": 6.8
+    },
+    {
+      "lang": "en",
+      "text": "into some of the current trends in uh AI",
+      "offset": 224.08,
+      "duration": 6.4
+    },
+    {
+      "lang": "en",
+      "text": "research you know we're seeing a lot of",
+      "offset": 228.319,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "development around reasoning models",
+      "offset": 230.48,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "around test time compute recently",
+      "offset": 233.519,
+      "duration": 6.161
+    },
+    {
+      "lang": "en",
+      "text": "DeepSeek uh R1 explored the use of",
+      "offset": 235.76,
+      "duration": 6.399
+    },
+    {
+      "lang": "en",
+      "text": "reinforcement learning to aid in model",
+      "offset": 239.68,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "training like there's so much going on",
+      "offset": 242.159,
+      "duration": 4.481
+    },
+    {
+      "lang": "en",
+      "text": "like how does uh your project fit into",
+      "offset": 244,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "that menu so our work is definitely in",
+      "offset": 246.64,
+      "duration": 5.84
+    },
+    {
+      "lang": "en",
+      "text": "in line with the broader research on on",
+      "offset": 249.36,
+      "duration": 6.079
+    },
+    {
+      "lang": "en",
+      "text": "improving reasoning in in language model",
+      "offset": 252.48,
+      "duration": 5.759
+    },
+    {
+      "lang": "en",
+      "text": "but I would say it takes a a different",
+      "offset": 255.439,
+      "duration": 6.721
+    },
+    {
+      "lang": "en",
+      "text": "approach from the traditional methods um",
+      "offset": 258.239,
+      "duration": 7.361
+    },
+    {
+      "lang": "en",
+      "text": "one of the most well-known technique is",
+      "offset": 262.16,
+      "duration": 6.64
+    },
+    {
+      "lang": "en",
+      "text": "chain of solid reasoning uh where you",
+      "offset": 265.6,
+      "duration": 5.599
+    },
+    {
+      "lang": "en",
+      "text": "prompt the the model to break down a",
+      "offset": 268.8,
+      "duration": 5.119
+    },
+    {
+      "lang": "en",
+      "text": "problem step by step and this kind of",
+      "offset": 271.199,
+      "duration": 4.801
+    },
+    {
+      "lang": "en",
+      "text": "structural reasoning is really helpful",
+      "offset": 273.919,
+      "duration": 6.681
+    },
+    {
+      "lang": "en",
+      "text": "for handling those complex problems and",
+      "offset": 276,
+      "duration": 7.6
+    },
+    {
+      "lang": "en",
+      "text": "previously people tried improving",
+      "offset": 280.6,
+      "duration": 6.599
+    },
+    {
+      "lang": "en",
+      "text": "language model by training the model on",
+      "offset": 283.6,
+      "duration": 7.28
+    },
+    {
+      "lang": "en",
+      "text": "a lot of train data um and those data",
+      "offset": 287.199,
+      "duration": 6.161
+    },
+    {
+      "lang": "en",
+      "text": "are coming from uh either human",
+      "offset": 290.88,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "annotation or distillation of the",
+      "offset": 293.36,
+      "duration": 6.399
+    },
+    {
+      "lang": "en",
+      "text": "teacher model for example but uh as you",
+      "offset": 295.84,
+      "duration": 6.639
+    },
+    {
+      "lang": "en",
+      "text": "can imagine that's really expensive in",
+      "offset": 299.759,
+      "duration": 5.121
+    },
+    {
+      "lang": "en",
+      "text": "terms of both data collection and",
+      "offset": 302.479,
+      "duration": 3.961
+    },
+    {
+      "lang": "en",
+      "text": "training",
+      "offset": 304.88,
+      "duration": 4.68
+    },
+    {
+      "lang": "en",
+      "text": "compute and more recently",
+      "offset": 306.44,
+      "duration": 6.12
+    },
+    {
+      "lang": "en",
+      "text": "um uh instead of just scaling up the",
+      "offset": 309.56,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "training compute um people also started",
+      "offset": 312.56,
+      "duration": 6.6
+    },
+    {
+      "lang": "en",
+      "text": "to think about scaling the test time",
+      "offset": 315.56,
+      "duration": 7.32
+    },
+    {
+      "lang": "en",
+      "text": "compute so basically test time compute",
+      "offset": 319.16,
+      "duration": 7.8
+    },
+    {
+      "lang": "en",
+      "text": "um scaling test time compute means",
+      "offset": 322.88,
+      "duration": 6.4
+    },
+    {
+      "lang": "en",
+      "text": "um they don't require training the model",
+      "offset": 326.96,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "itself they just push they try to push",
+      "offset": 329.28,
+      "duration": 6.08
+    },
+    {
+      "lang": "en",
+      "text": "the limit of an existing model by",
+      "offset": 332.08,
+      "duration": 6.959
+    },
+    {
+      "lang": "en",
+      "text": "letting it generate more response and a",
+      "offset": 335.36,
+      "duration": 7.399
+    },
+    {
+      "lang": "en",
+      "text": "a a super simple example is is majority",
+      "offset": 339.039,
+      "duration": 6.961
+    },
+    {
+      "lang": "en",
+      "text": "voting um you ask the model the same",
+      "offset": 342.759,
+      "duration": 5.641
+    },
+    {
+      "lang": "en",
+      "text": "question multiple times get different",
+      "offset": 346,
+      "duration": 4.639
+    },
+    {
+      "lang": "en",
+      "text": "answers different response and pick the",
+      "offset": 348.4,
+      "duration": 5.4
+    },
+    {
+      "lang": "en",
+      "text": "one that um that is most frequent",
+      "offset": 350.639,
+      "duration": 6.721
+    },
+    {
+      "lang": "en",
+      "text": "basically and and it turns out this is",
+      "offset": 353.8,
+      "duration": 5.72
+    },
+    {
+      "lang": "en",
+      "text": "this is quite effective it's it's more",
+      "offset": 357.36,
+      "duration": 5.8
+    },
+    {
+      "lang": "en",
+      "text": "accurate than just just taking a single",
+      "offset": 359.52,
+      "duration": 7.44
+    },
+    {
+      "lang": "en",
+      "text": "answer and and more advanced uh test",
+      "offset": 363.16,
+      "duration": 7.52
+    },
+    {
+      "lang": "en",
+      "text": "methods test search methods they usually",
+      "offset": 366.96,
+      "duration": 8.079
+    },
+    {
+      "lang": "en",
+      "text": "um rely on a reward model to guide the",
+      "offset": 370.68,
+      "duration": 6.2
+    },
+    {
+      "lang": "en",
+      "text": "selection process",
+      "offset": 375.039,
+      "duration": 4.961
+    },
+    {
+      "lang": "en",
+      "text": "so instead of just uh uh you know",
+      "offset": 376.88,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "counting answers you can uh sample",
+      "offset": 380,
+      "duration": 5.759
+    },
+    {
+      "lang": "en",
+      "text": "multiple solutions um having a reward",
+      "offset": 382.4,
+      "duration": 6.639
+    },
+    {
+      "lang": "en",
+      "text": "model to um score the different",
+      "offset": 385.759,
+      "duration": 7.121
+    },
+    {
+      "lang": "en",
+      "text": "solutions and pick the optimal solution",
+      "offset": 389.039,
+      "duration": 7.6
+    },
+    {
+      "lang": "en",
+      "text": "um and and and the the the intuition",
+      "offset": 392.88,
+      "duration": 7.039
+    },
+    {
+      "lang": "en",
+      "text": "behind this kind of approach is there's",
+      "offset": 396.639,
+      "duration": 6.28
+    },
+    {
+      "lang": "en",
+      "text": "even one correct answer among the",
+      "offset": 399.919,
+      "duration": 5.601
+    },
+    {
+      "lang": "en",
+      "text": "samples then the real world model can",
+      "offset": 402.919,
+      "duration": 5.56
+    },
+    {
+      "lang": "en",
+      "text": "help to find it",
+      "offset": 405.52,
+      "duration": 6.959
+    },
+    {
+      "lang": "en",
+      "text": "some so some other approach u even more",
+      "offset": 408.479,
+      "duration": 9.041
+    },
+    {
+      "lang": "en",
+      "text": "advanced um the the try to score each",
+      "offset": 412.479,
+      "duration": 7.84
+    },
+    {
+      "lang": "en",
+      "text": "reasoning step uh along the way and",
+      "offset": 417.52,
+      "duration": 5.519
+    },
+    {
+      "lang": "en",
+      "text": "doing a tree search to find the best",
+      "offset": 420.319,
+      "duration": 4.041
+    },
+    {
+      "lang": "en",
+      "text": "reasoning",
+      "offset": 423.039,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "path but but but I mean what's the",
+      "offset": 424.36,
+      "duration": 6.44
+    },
+    {
+      "lang": "en",
+      "text": "downside of this this kind of approach",
+      "offset": 428.319,
+      "duration": 5.681
+    },
+    {
+      "lang": "en",
+      "text": "so this this method they require running",
+      "offset": 430.8,
+      "duration": 5.519
+    },
+    {
+      "lang": "en",
+      "text": "uh multiple models at once they need to",
+      "offset": 434,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "deploy two models at least",
+      "offset": 436.319,
+      "duration": 6.16
+    },
+    {
+      "lang": "en",
+      "text": "uh which got expensive and meaning the",
+      "offset": 439.28,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "model that's scoring as well as the",
+      "offset": 442.479,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "model that's right the real world model",
+      "offset": 444.4,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "and the generator right so two models",
+      "offset": 445.919,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "this is a two-player system and and they",
+      "offset": 448,
+      "duration": 5.759
+    },
+    {
+      "lang": "en",
+      "text": "also throw away a lot of uh useful",
+      "offset": 451.199,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "information you can tell for example if",
+      "offset": 453.759,
+      "duration": 5.921
+    },
+    {
+      "lang": "en",
+      "text": "you sample 100 times but only keep the",
+      "offset": 456.319,
+      "duration": 5.761
+    },
+    {
+      "lang": "en",
+      "text": "best result you're you're essentially",
+      "offset": 459.68,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "discarding every everything else this is",
+      "offset": 462.08,
+      "duration": 5.08
+    },
+    {
+      "lang": "en",
+      "text": "quite inefficient",
+      "offset": 465.44,
+      "duration": 5.68
+    },
+    {
+      "lang": "en",
+      "text": "it and that's why uh reinforced learning",
+      "offset": 467.16,
+      "duration": 6.719
+    },
+    {
+      "lang": "en",
+      "text": "comes in and um",
+      "offset": 471.12,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "um this is a a I would say a quite",
+      "offset": 473.879,
+      "duration": 5.561
+    },
+    {
+      "lang": "en",
+      "text": "different approach so instead of just",
+      "offset": 477.12,
+      "duration": 5.68
+    },
+    {
+      "lang": "en",
+      "text": "relying on huge amount of labeled",
+      "offset": 479.44,
+      "duration": 6.08
+    },
+    {
+      "lang": "en",
+      "text": "uh supervised fine-tuning data or",
+      "offset": 482.8,
+      "duration": 6.56
+    },
+    {
+      "lang": "en",
+      "text": "complex uh test time search methods uh",
+      "offset": 485.52,
+      "duration": 4.92
+    },
+    {
+      "lang": "en",
+      "text": "reinforce",
+      "offset": 489.36,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "learning allows the model to learn from",
+      "offset": 490.44,
+      "duration": 5.199
+    },
+    {
+      "lang": "en",
+      "text": "its own generated",
+      "offset": 493.68,
+      "duration": 4.799
+    },
+    {
+      "lang": "en",
+      "text": "response and this is also the magic of",
+      "offset": 495.639,
+      "duration": 4.881
+    },
+    {
+      "lang": "en",
+      "text": "reinforce learning",
+      "offset": 498.479,
+      "duration": 6.56
+    },
+    {
+      "lang": "en",
+      "text": "um once you define a reward signal the",
+      "offset": 500.52,
+      "duration": 7.88
+    },
+    {
+      "lang": "en",
+      "text": "model can essentially teach itself to",
+      "offset": 505.039,
+      "duration": 4.521
+    },
+    {
+      "lang": "en",
+      "text": "get better",
+      "offset": 508.4,
+      "duration": 5.199
+    },
+    {
+      "lang": "en",
+      "text": "by using its own knowledge um and this",
+      "offset": 509.56,
+      "duration": 6.12
+    },
+    {
+      "lang": "en",
+      "text": "kind of knowledge is obtained from the",
+      "offset": 513.599,
+      "duration": 4.36
+    },
+    {
+      "lang": "en",
+      "text": "pre-training stage of launch",
+      "offset": 515.68,
+      "duration": 5.919
+    },
+    {
+      "lang": "en",
+      "text": "model and we already know this is quite",
+      "offset": 517.959,
+      "duration": 8.761
+    },
+    {
+      "lang": "en",
+      "text": "um successful um for some models like",
+      "offset": 521.599,
+      "duration": 8.36
+    },
+    {
+      "lang": "en",
+      "text": "open AI's 01 model and deepseek",
+      "offset": 526.72,
+      "duration": 7.28
+    },
+    {
+      "lang": "en",
+      "text": "R1 and this model already proved that",
+      "offset": 529.959,
+      "duration": 6.601
+    },
+    {
+      "lang": "en",
+      "text": "reinforced learning could be used to",
+      "offset": 534,
+      "duration": 5.6
+    },
+    {
+      "lang": "en",
+      "text": "train language model in an efficient way",
+      "offset": 536.56,
+      "duration": 4.719
+    },
+    {
+      "lang": "en",
+      "text": "without requiring too much human",
+      "offset": 539.6,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "supervision",
+      "offset": 541.279,
+      "duration": 5.361
+    },
+    {
+      "lang": "en",
+      "text": "so right so that's pretty much the",
+      "offset": 543.6,
+      "duration": 6.16
+    },
+    {
+      "lang": "en",
+      "text": "entire picture in in about the reasoning",
+      "offset": 546.64,
+      "duration": 6.6
+    },
+    {
+      "lang": "en",
+      "text": "model and so with Satari",
+      "offset": 549.76,
+      "duration": 7.12
+    },
+    {
+      "lang": "en",
+      "text": "um we we are also inspired by this kind",
+      "offset": 553.24,
+      "duration": 5.56
+    },
+    {
+      "lang": "en",
+      "text": "of new direction using reinforce",
+      "offset": 556.88,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "learning",
+      "offset": 558.8,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "uh especially since the open AI release",
+      "offset": 560.48,
+      "duration": 6.32
+    },
+    {
+      "lang": "en",
+      "text": "01 model that",
+      "offset": 564.32,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "uh that model showed there was more like",
+      "offset": 566.8,
+      "duration": 5.84
+    },
+    {
+      "lang": "en",
+      "text": "there was a new path to be explored",
+      "offset": 569.68,
+      "duration": 7.2
+    },
+    {
+      "lang": "en",
+      "text": "and at the same time um we also realized",
+      "offset": 572.64,
+      "duration": 7.28
+    },
+    {
+      "lang": "en",
+      "text": "reinforce learning for reasoning uh",
+      "offset": 576.88,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "language model reasoning is quite",
+      "offset": 579.92,
+      "duration": 4.84
+    },
+    {
+      "lang": "en",
+      "text": "underexplored um in",
+      "offset": 582.16,
+      "duration": 7.52
+    },
+    {
+      "lang": "en",
+      "text": "academia and back to uh September we put",
+      "offset": 584.76,
+      "duration": 8.199
+    },
+    {
+      "lang": "en",
+      "text": "together a team and started to tackle",
+      "offset": 589.68,
+      "duration": 6.48
+    },
+    {
+      "lang": "en",
+      "text": "this tricky problems and as you know",
+      "offset": 592.959,
+      "duration": 6.641
+    },
+    {
+      "lang": "en",
+      "text": "after a a a lot of trial and error over",
+      "offset": 596.16,
+      "duration": 6.6
+    },
+    {
+      "lang": "en",
+      "text": "the three months we finally got Sattorii",
+      "offset": 599.6,
+      "duration": 6.4
+    },
+    {
+      "lang": "en",
+      "text": "working yeah that's a that's a that's a",
+      "offset": 602.76,
+      "duration": 7.24
+    },
+    {
+      "lang": "en",
+      "text": "story about Sattorii right um and and",
+      "offset": 606,
+      "duration": 8.64
+    },
+    {
+      "lang": "en",
+      "text": "you also ask about uh DeepSync R1 and uh",
+      "offset": 610,
+      "duration": 6.959
+    },
+    {
+      "lang": "en",
+      "text": "I would say that's more like a",
+      "offset": 614.64,
+      "duration": 5.56
+    },
+    {
+      "lang": "en",
+      "text": "concurrent work um it's an industry",
+      "offset": 616.959,
+      "duration": 7.44
+    },
+    {
+      "lang": "en",
+      "text": "project and and uh they they have done a",
+      "offset": 620.2,
+      "duration": 7.48
+    },
+    {
+      "lang": "en",
+      "text": "fantastic job I would say and and when",
+      "offset": 624.399,
+      "duration": 5.721
+    },
+    {
+      "lang": "en",
+      "text": "their report came out",
+      "offset": 627.68,
+      "duration": 6.88
+    },
+    {
+      "lang": "en",
+      "text": "um I I guess it's late January uh and we",
+      "offset": 630.12,
+      "duration": 6.279
+    },
+    {
+      "lang": "en",
+      "text": "were actually really surprised to see",
+      "offset": 634.56,
+      "duration": 5.279
+    },
+    {
+      "lang": "en",
+      "text": "how many of the high level ideas",
+      "offset": 636.399,
+      "duration": 5
+    },
+    {
+      "lang": "en",
+      "text": "uh overlap with",
+      "offset": 639.839,
+      "duration": 5.041
+    },
+    {
+      "lang": "en",
+      "text": "ors and right and and at the same time",
+      "offset": 641.399,
+      "duration": 6.12
+    },
+    {
+      "lang": "en",
+      "text": "it was it was also super exciting",
+      "offset": 644.88,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "because uh it's like it confirmed that",
+      "offset": 647.519,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "we were on the right track you know in",
+      "offset": 650.24,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "the in the in the working toward more",
+      "offset": 652.079,
+      "duration": 6.081
+    },
+    {
+      "lang": "en",
+      "text": "powerful uh reasoning models so it's",
+      "offset": 654.48,
+      "duration": 6.4
+    },
+    {
+      "lang": "en",
+      "text": "kind of a mixture of two feelings it's",
+      "offset": 658.16,
+      "duration": 5.119
+    },
+    {
+      "lang": "en",
+      "text": "surprising and it's also exciting can",
+      "offset": 660.88,
+      "duration": 6.639
+    },
+    {
+      "lang": "en",
+      "text": "you dig into a little bit more the um",
+      "offset": 663.279,
+      "duration": 8
+    },
+    {
+      "lang": "en",
+      "text": "the idea of applying RL to",
+      "offset": 667.519,
+      "duration": 6.88
+    },
+    {
+      "lang": "en",
+      "text": "um evaluating these these chain of",
+      "offset": 671.279,
+      "duration": 5.361
+    },
+    {
+      "lang": "en",
+      "text": "thought traces like how how do you set",
+      "offset": 674.399,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "that up from a research perspective so",
+      "offset": 676.64,
+      "duration": 5.199
+    },
+    {
+      "lang": "en",
+      "text": "when I was thinking about this research",
+      "offset": 679.279,
+      "duration": 5.841
+    },
+    {
+      "lang": "en",
+      "text": "problem um I always start by thinking",
+      "offset": 681.839,
+      "duration": 7.281
+    },
+    {
+      "lang": "en",
+      "text": "about how humans would solve a tricky",
+      "offset": 685.12,
+      "duration": 9.6
+    },
+    {
+      "lang": "en",
+      "text": "task uh step step by step and um then I",
+      "offset": 689.12,
+      "duration": 9.12
+    },
+    {
+      "lang": "en",
+      "text": "try to figure out how we can adapt this",
+      "offset": 694.72,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "kind of human thinking process to AI",
+      "offset": 698.24,
+      "duration": 4.12
+    },
+    {
+      "lang": "en",
+      "text": "systems",
+      "offset": 700.16,
+      "duration": 6.96
+    },
+    {
+      "lang": "en",
+      "text": "so uh as I mentioned earlier a lot of a",
+      "offset": 702.36,
+      "duration": 7.88
+    },
+    {
+      "lang": "en",
+      "text": "lot of researchers uh focus on the test",
+      "offset": 707.12,
+      "duration": 7.36
+    },
+    {
+      "lang": "en",
+      "text": "search methods but I would say that may",
+      "offset": 710.24,
+      "duration": 6.96
+    },
+    {
+      "lang": "en",
+      "text": "not be how human really solve the",
+      "offset": 714.48,
+      "duration": 3.799
+    },
+    {
+      "lang": "en",
+      "text": "problem in",
+      "offset": 717.2,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "practice right so let me give an uh an",
+      "offset": 718.279,
+      "duration": 7.201
+    },
+    {
+      "lang": "en",
+      "text": "analogy so imagine a student",
+      "offset": 722.24,
+      "duration": 6.48
+    },
+    {
+      "lang": "en",
+      "text": "um working on a tricky tricky math",
+      "offset": 725.48,
+      "duration": 5.359
+    },
+    {
+      "lang": "en",
+      "text": "problems with a teacher standing nearby",
+      "offset": 728.72,
+      "duration": 5.84
+    },
+    {
+      "lang": "en",
+      "text": "by um for example I'm the student you",
+      "offset": 730.839,
+      "duration": 5.881
+    },
+    {
+      "lang": "en",
+      "text": "are the teacher and the teacher the",
+      "offset": 734.56,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "student might try different approaches",
+      "offset": 736.72,
+      "duration": 6.44
+    },
+    {
+      "lang": "en",
+      "text": "and and you will pick the most promising",
+      "offset": 738.88,
+      "duration": 7.519
+    },
+    {
+      "lang": "en",
+      "text": "solution right and or maybe the students",
+      "offset": 743.16,
+      "duration": 6.119
+    },
+    {
+      "lang": "en",
+      "text": "write out uh several reasoning steps and",
+      "offset": 746.399,
+      "duration": 5.921
+    },
+    {
+      "lang": "en",
+      "text": "the teacher selects the best one and",
+      "offset": 749.279,
+      "duration": 5.281
+    },
+    {
+      "lang": "en",
+      "text": "tell the students to build on that",
+      "offset": 752.32,
+      "duration": 4.959
+    },
+    {
+      "lang": "en",
+      "text": "reasoning step and so on and so forth",
+      "offset": 754.56,
+      "duration": 5.839
+    },
+    {
+      "lang": "en",
+      "text": "right and this kind of method um It's",
+      "offset": 757.279,
+      "duration": 5.281
+    },
+    {
+      "lang": "en",
+      "text": "definitely better than the student just",
+      "offset": 760.399,
+      "duration": 5.841
+    },
+    {
+      "lang": "en",
+      "text": "working along with with with no feedback",
+      "offset": 762.56,
+      "duration": 6.399
+    },
+    {
+      "lang": "en",
+      "text": "but but here's here's the thing this",
+      "offset": 766.24,
+      "duration": 6.08
+    },
+    {
+      "lang": "en",
+      "text": "this is this isn't how human really",
+      "offset": 768.959,
+      "duration": 5.161
+    },
+    {
+      "lang": "en",
+      "text": "naturally solved the hard",
+      "offset": 772.32,
+      "duration": 4.959
+    },
+    {
+      "lang": "en",
+      "text": "problems we don't always need any",
+      "offset": 774.12,
+      "duration": 5.6
+    },
+    {
+      "lang": "en",
+      "text": "external guidance",
+      "offset": 777.279,
+      "duration": 6.641
+    },
+    {
+      "lang": "en",
+      "text": "um as human we are capable of extending",
+      "offset": 779.72,
+      "duration": 6.76
+    },
+    {
+      "lang": "en",
+      "text": "uh extended thinking and more",
+      "offset": 783.92,
+      "duration": 5.68
+    },
+    {
+      "lang": "en",
+      "text": "importantly we can self-reflect",
+      "offset": 786.48,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "if we realize we've we have made a",
+      "offset": 789.6,
+      "duration": 7.52
+    },
+    {
+      "lang": "en",
+      "text": "mistake we can backtrack rethink and and",
+      "offset": 792.48,
+      "duration": 7.28
+    },
+    {
+      "lang": "en",
+      "text": "correct the mistake and sometimes we",
+      "offset": 797.12,
+      "duration": 6.24
+    },
+    {
+      "lang": "en",
+      "text": "also prop propose better solutions and",
+      "offset": 799.76,
+      "duration": 7.519
+    },
+    {
+      "lang": "en",
+      "text": "and the motivation is like um how we can",
+      "offset": 803.36,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "train the language model to do the",
+      "offset": 807.279,
+      "duration": 4.961
+    },
+    {
+      "lang": "en",
+      "text": "similar things how we can make the",
+      "offset": 809.12,
+      "duration": 5.279
+    },
+    {
+      "lang": "en",
+      "text": "language model",
+      "offset": 812.24,
+      "duration": 5.039
+    },
+    {
+      "lang": "en",
+      "text": "um solving a problem just like the human",
+      "offset": 814.399,
+      "duration": 6.801
+    },
+    {
+      "lang": "en",
+      "text": "did i also mentioned that uh I did a lot",
+      "offset": 817.279,
+      "duration": 7.56
+    },
+    {
+      "lang": "en",
+      "text": "of work about unsending",
+      "offset": 821.2,
+      "duration": 6.879
+    },
+    {
+      "lang": "en",
+      "text": "quantification so actually in the",
+      "offset": 824.839,
+      "duration": 5.641
+    },
+    {
+      "lang": "en",
+      "text": "language model community there's also a",
+      "offset": 828.079,
+      "duration": 6.361
+    },
+    {
+      "lang": "en",
+      "text": "big um challenge is called",
+      "offset": 830.48,
+      "duration": 6.799
+    },
+    {
+      "lang": "en",
+      "text": "hallucination uh which means the model",
+      "offset": 834.44,
+      "duration": 5.8
+    },
+    {
+      "lang": "en",
+      "text": "will generate some response that sound",
+      "offset": 837.279,
+      "duration": 6.401
+    },
+    {
+      "lang": "en",
+      "text": "really competent but but actually they",
+      "offset": 840.24,
+      "duration": 6.32
+    },
+    {
+      "lang": "en",
+      "text": "actually they are full of factual errors",
+      "offset": 843.68,
+      "duration": 6.159
+    },
+    {
+      "lang": "en",
+      "text": "and for example take math problem",
+      "offset": 846.56,
+      "duration": 6.16
+    },
+    {
+      "lang": "en",
+      "text": "um as as an example so a typical",
+      "offset": 849.839,
+      "duration": 6.721
+    },
+    {
+      "lang": "en",
+      "text": "language model might uh generate a a a",
+      "offset": 852.72,
+      "duration": 6.4
+    },
+    {
+      "lang": "en",
+      "text": "step-by-step solution output a bunch of",
+      "offset": 856.56,
+      "duration": 4.2
+    },
+    {
+      "lang": "en",
+      "text": "you know equations",
+      "offset": 859.12,
+      "duration": 3.64
+    },
+    {
+      "lang": "en",
+      "text": "derivations",
+      "offset": 860.76,
+      "duration": 4.759
+    },
+    {
+      "lang": "en",
+      "text": "um and even though there are a lot of",
+      "offset": 862.76,
+      "duration": 5.72
+    },
+    {
+      "lang": "en",
+      "text": "mistake the language model cannot",
+      "offset": 865.519,
+      "duration": 5.56
+    },
+    {
+      "lang": "en",
+      "text": "backtrack and catch the",
+      "offset": 868.48,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "arrows even though those arrows are",
+      "offset": 871.079,
+      "duration": 5.681
+    },
+    {
+      "lang": "en",
+      "text": "quite actually quite obvious",
+      "offset": 873.44,
+      "duration": 7.639
+    },
+    {
+      "lang": "en",
+      "text": "so right so",
+      "offset": 876.76,
+      "duration": 8.6
+    },
+    {
+      "lang": "en",
+      "text": "um I have I've been working on a lot of",
+      "offset": 881.079,
+      "duration": 7.961
+    },
+    {
+      "lang": "en",
+      "text": "approach to um address this uh one",
+      "offset": 885.36,
+      "duration": 5.839
+    },
+    {
+      "lang": "en",
+      "text": "approach is certainly using uncontenting",
+      "offset": 889.04,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "quantification",
+      "offset": 891.199,
+      "duration": 4.161
+    },
+    {
+      "lang": "en",
+      "text": "um as I mentioned we can add some",
+      "offset": 892.72,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "additional modules or algorithms to",
+      "offset": 895.36,
+      "duration": 5.96
+    },
+    {
+      "lang": "en",
+      "text": "estimate how confident the model",
+      "offset": 898.48,
+      "duration": 6.28
+    },
+    {
+      "lang": "en",
+      "text": "prediction and if the uncertainty is",
+      "offset": 901.32,
+      "duration": 6.92
+    },
+    {
+      "lang": "en",
+      "text": "high we know the answer is unreliable",
+      "offset": 904.76,
+      "duration": 8.04
+    },
+    {
+      "lang": "en",
+      "text": "and um and if it's if uncertainty is low",
+      "offset": 908.24,
+      "duration": 8.36
+    },
+    {
+      "lang": "en",
+      "text": "then we trust the model predictions",
+      "offset": 912.8,
+      "duration": 6.719
+    },
+    {
+      "lang": "en",
+      "text": "but even though this kind of system is",
+      "offset": 916.6,
+      "duration": 5.56
+    },
+    {
+      "lang": "en",
+      "text": "useful it doesn't resolve the the",
+      "offset": 919.519,
+      "duration": 4.481
+    },
+    {
+      "lang": "en",
+      "text": "fundamental issue right it just it's",
+      "offset": 922.16,
+      "duration": 5.039
+    },
+    {
+      "lang": "en",
+      "text": "just tell us whether um whether we",
+      "offset": 924,
+      "duration": 5.639
+    },
+    {
+      "lang": "en",
+      "text": "should trust the model or",
+      "offset": 927.199,
+      "duration": 5.241
+    },
+    {
+      "lang": "en",
+      "text": "not so",
+      "offset": 929.639,
+      "duration": 7.56
+    },
+    {
+      "lang": "en",
+      "text": "um but later it's more like OpenAI's 01",
+      "offset": 932.44,
+      "duration": 9
+    },
+    {
+      "lang": "en",
+      "text": "model came out in September and it it it",
+      "offset": 937.199,
+      "duration": 6.801
+    },
+    {
+      "lang": "en",
+      "text": "was a game changer so they already",
+      "offset": 941.44,
+      "duration": 5.399
+    },
+    {
+      "lang": "en",
+      "text": "proved that the reflection and",
+      "offset": 944,
+      "duration": 5.839
+    },
+    {
+      "lang": "en",
+      "text": "selfcorrection is not something",
+      "offset": 946.839,
+      "duration": 5.56
+    },
+    {
+      "lang": "en",
+      "text": "theoretical it can actually work in",
+      "offset": 949.839,
+      "duration": 4.601
+    },
+    {
+      "lang": "en",
+      "text": "practice",
+      "offset": 952.399,
+      "duration": 6.88
+    },
+    {
+      "lang": "en",
+      "text": "so um it's more like I want to know how",
+      "offset": 954.44,
+      "duration": 6.639
+    },
+    {
+      "lang": "en",
+      "text": "to um",
+      "offset": 959.279,
+      "duration": 4.641
+    },
+    {
+      "lang": "en",
+      "text": "really uncover the technical details",
+      "offset": 961.079,
+      "duration": 6.76
+    },
+    {
+      "lang": "en",
+      "text": "behind it and we know the secret sauce",
+      "offset": 963.92,
+      "duration": 6.08
+    },
+    {
+      "lang": "en",
+      "text": "of all model is using reinforced",
+      "offset": 967.839,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "learning",
+      "offset": 970,
+      "duration": 5.759
+    },
+    {
+      "lang": "en",
+      "text": "um different from the classical training",
+      "offset": 972.399,
+      "duration": 6.8
+    },
+    {
+      "lang": "en",
+      "text": "pipeline that teach the model how to",
+      "offset": 975.759,
+      "duration": 6.561
+    },
+    {
+      "lang": "en",
+      "text": "reason using a bunch of supervised",
+      "offset": 979.199,
+      "duration": 6.401
+    },
+    {
+      "lang": "en",
+      "text": "finetuning data uh reinforce learning is",
+      "offset": 982.32,
+      "duration": 5.439
+    },
+    {
+      "lang": "en",
+      "text": "quite different it just assigns some",
+      "offset": 985.6,
+      "duration": 5.679
+    },
+    {
+      "lang": "en",
+      "text": "reward to the model and let the model to",
+      "offset": 987.759,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "interact with the environment and",
+      "offset": 991.279,
+      "duration": 5.92
+    },
+    {
+      "lang": "en",
+      "text": "secretly the model can learn some um",
+      "offset": 993.759,
+      "duration": 5.64
+    },
+    {
+      "lang": "en",
+      "text": "reasoning patterns and the general",
+      "offset": 997.199,
+      "duration": 6.721
+    },
+    {
+      "lang": "en",
+      "text": "abilities for reasoning um right so I I",
+      "offset": 999.399,
+      "duration": 8.68
+    },
+    {
+      "lang": "en",
+      "text": "think that's um pretty much the the main",
+      "offset": 1003.92,
+      "duration": 6.719
+    },
+    {
+      "lang": "en",
+      "text": "objective of our paper we just want to",
+      "offset": 1008.079,
+      "duration": 6.241
+    },
+    {
+      "lang": "en",
+      "text": "uncover um the secrets the secret sauce",
+      "offset": 1010.639,
+      "duration": 6.88
+    },
+    {
+      "lang": "en",
+      "text": "of how to use reinforced learning to",
+      "offset": 1014.32,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "really improve the reasoning",
+      "offset": 1017.519,
+      "duration": 4.481
+    },
+    {
+      "lang": "en",
+      "text": "capabilities of a launch model and in",
+      "offset": 1019.6,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "the title of the paper you refer to",
+      "offset": 1022,
+      "duration": 5.6
+    },
+    {
+      "lang": "en",
+      "text": "reasoning via auto reggressive search uh",
+      "offset": 1024,
+      "duration": 6.959
+    },
+    {
+      "lang": "en",
+      "text": "expand on the idea of search uh in this",
+      "offset": 1027.6,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "context what what are you getting at",
+      "offset": 1030.959,
+      "duration": 3.761
+    },
+    {
+      "lang": "en",
+      "text": "there so so we know we know most",
+      "offset": 1032.64,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "language model um use transformer",
+      "offset": 1034.72,
+      "duration": 5.359
+    },
+    {
+      "lang": "en",
+      "text": "architecture right so most most of",
+      "offset": 1037.28,
+      "duration": 5.88
+    },
+    {
+      "lang": "en",
+      "text": "language model is building on top of",
+      "offset": 1040.079,
+      "duration": 6.48
+    },
+    {
+      "lang": "en",
+      "text": "transformer and transformer are auto",
+      "offset": 1043.16,
+      "duration": 5.639
+    },
+    {
+      "lang": "en",
+      "text": "reggressing models it sequentially",
+      "offset": 1046.559,
+      "duration": 4.801
+    },
+    {
+      "lang": "en",
+      "text": "generate a bunch of tokens based on",
+      "offset": 1048.799,
+      "duration": 7.201
+    },
+    {
+      "lang": "en",
+      "text": "previous tokens and the search uh just",
+      "offset": 1051.36,
+      "duration": 7.12
+    },
+    {
+      "lang": "en",
+      "text": "means a long reasoning process with",
+      "offset": 1056,
+      "duration": 4.2
+    },
+    {
+      "lang": "en",
+      "text": "trials and",
+      "offset": 1058.48,
+      "duration": 4.559
+    },
+    {
+      "lang": "en",
+      "text": "errors so combine these two words",
+      "offset": 1060.2,
+      "duration": 5.24
+    },
+    {
+      "lang": "en",
+      "text": "together is like auto reggressive search",
+      "offset": 1063.039,
+      "duration": 5.281
+    },
+    {
+      "lang": "en",
+      "text": "means a single language model per",
+      "offset": 1065.44,
+      "duration": 5.84
+    },
+    {
+      "lang": "en",
+      "text": "performs a a humanlike reasoning process",
+      "offset": 1068.32,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "with self-reflection and self uh",
+      "offset": 1071.28,
+      "duration": 7.12
+    },
+    {
+      "lang": "en",
+      "text": "exploration of new strategies when it uh",
+      "offset": 1074.08,
+      "duration": 8.44
+    },
+    {
+      "lang": "en",
+      "text": "encounters a potential mistake uh it can",
+      "offset": 1078.4,
+      "duration": 7.279
+    },
+    {
+      "lang": "en",
+      "text": "selfidentify the the arrows and point",
+      "offset": 1082.52,
+      "duration": 7.159
+    },
+    {
+      "lang": "en",
+      "text": "out the mistake uh it can also uh start",
+      "offset": 1085.679,
+      "duration": 7.441
+    },
+    {
+      "lang": "en",
+      "text": "a new solution if it realize the current",
+      "offset": 1089.679,
+      "duration": 5.24
+    },
+    {
+      "lang": "en",
+      "text": "solution is actually",
+      "offset": 1093.12,
+      "duration": 3.32
+    },
+    {
+      "lang": "en",
+      "text": "suboptimal",
+      "offset": 1094.919,
+      "duration": 4.681
+    },
+    {
+      "lang": "en",
+      "text": "and different from the classical",
+      "offset": 1096.44,
+      "duration": 6.04
+    },
+    {
+      "lang": "en",
+      "text": "classical testine search approach that",
+      "offset": 1099.6,
+      "duration": 6.319
+    },
+    {
+      "lang": "en",
+      "text": "relies on external guidance i think the",
+      "offset": 1102.48,
+      "duration": 7.04
+    },
+    {
+      "lang": "en",
+      "text": "main objective is the main objective of",
+      "offset": 1105.919,
+      "duration": 6.081
+    },
+    {
+      "lang": "en",
+      "text": "auto reggressive search is teach a",
+      "offset": 1109.52,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "single language model to perform a",
+      "offset": 1112,
+      "duration": 5.039
+    },
+    {
+      "lang": "en",
+      "text": "testine search without any external",
+      "offset": 1114.88,
+      "duration": 5.32
+    },
+    {
+      "lang": "en",
+      "text": "guidance and is the idea",
+      "offset": 1117.039,
+      "duration": 8.681
+    },
+    {
+      "lang": "en",
+      "text": "with the test time search that",
+      "offset": 1120.2,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "um is it different than training the",
+      "offset": 1126.2,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "model",
+      "offset": 1129.44,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "uh to change the way it's generating the",
+      "offset": 1131.4,
+      "duration": 5.72
+    },
+    {
+      "lang": "en",
+      "text": "new token like how much evaluation is",
+      "offset": 1134.48,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "involved and reflection is involved and",
+      "offset": 1137.12,
+      "duration": 6.48
+    },
+    {
+      "lang": "en",
+      "text": "is is that all captured in the next",
+      "offset": 1140.24,
+      "duration": 5.439
+    },
+    {
+      "lang": "en",
+      "text": "token generation process or are there",
+      "offset": 1143.6,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "other aspects of the model like you know",
+      "offset": 1145.679,
+      "duration": 4.961
+    },
+    {
+      "lang": "en",
+      "text": "you we've established that there's not",
+      "offset": 1149.12,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "external models but are there internal",
+      "offset": 1150.64,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "you know modules or other things besides",
+      "offset": 1152.88,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "from the token generation pipeline that",
+      "offset": 1155.52,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "are coming into play because we know the",
+      "offset": 1158,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "classical approach they typically",
+      "offset": 1160.16,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "typically rely on external guidance",
+      "offset": 1162.08,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "there's a reward model to guide this um",
+      "offset": 1164.32,
+      "duration": 5.56
+    },
+    {
+      "lang": "en",
+      "text": "process like whether model want to",
+      "offset": 1167.44,
+      "duration": 5.119
+    },
+    {
+      "lang": "en",
+      "text": "trigger self-reflection or the current",
+      "offset": 1169.88,
+      "duration": 5.159
+    },
+    {
+      "lang": "en",
+      "text": "solution is suboptimal and the reward",
+      "offset": 1172.559,
+      "duration": 5.761
+    },
+    {
+      "lang": "en",
+      "text": "model will comes in and and and and",
+      "offset": 1175.039,
+      "duration": 6.241
+    },
+    {
+      "lang": "en",
+      "text": "provide some feedback and select select",
+      "offset": 1178.32,
+      "duration": 5.84
+    },
+    {
+      "lang": "en",
+      "text": "the optimal reasoning style for example",
+      "offset": 1181.28,
+      "duration": 5.279
+    },
+    {
+      "lang": "en",
+      "text": "uh if we want to achieve the similar",
+      "offset": 1184.16,
+      "duration": 5.48
+    },
+    {
+      "lang": "en",
+      "text": "thing similar behavior using auto",
+      "offset": 1186.559,
+      "duration": 7
+    },
+    {
+      "lang": "en",
+      "text": "reggressive predictions by generating uh",
+      "offset": 1189.64,
+      "duration": 7
+    },
+    {
+      "lang": "en",
+      "text": "token in a auto reggressive manner",
+      "offset": 1193.559,
+      "duration": 7.081
+    },
+    {
+      "lang": "en",
+      "text": "there's a challenge right so",
+      "offset": 1196.64,
+      "duration": 5.72
+    },
+    {
+      "lang": "en",
+      "text": "um it's",
+      "offset": 1200.64,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "like we the the traditional the",
+      "offset": 1202.36,
+      "duration": 5.84
+    },
+    {
+      "lang": "en",
+      "text": "traditional chain of thought approach",
+      "offset": 1205.76,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "doesn't really achieve this because it",
+      "offset": 1208.2,
+      "duration": 5.64
+    },
+    {
+      "lang": "en",
+      "text": "just produce a linear sequence of",
+      "offset": 1211.28,
+      "duration": 5.6
+    },
+    {
+      "lang": "en",
+      "text": "reasoning steps without without",
+      "offset": 1213.84,
+      "duration": 5
+    },
+    {
+      "lang": "en",
+      "text": "distinguishing the types of reasoning",
+      "offset": 1216.88,
+      "duration": 5.039
+    },
+    {
+      "lang": "en",
+      "text": "actions so we can treat self-reflection",
+      "offset": 1218.84,
+      "duration": 5.839
+    },
+    {
+      "lang": "en",
+      "text": "or proposing new strategy as different",
+      "offset": 1221.919,
+      "duration": 7.361
+    },
+    {
+      "lang": "en",
+      "text": "actions um the coot is more like uh a",
+      "offset": 1224.679,
+      "duration": 6.761
+    },
+    {
+      "lang": "en",
+      "text": "robot that can only move straight",
+      "offset": 1229.28,
+      "duration": 4.879
+    },
+    {
+      "lang": "en",
+      "text": "without the ability to you know change",
+      "offset": 1231.44,
+      "duration": 7.28
+    },
+    {
+      "lang": "en",
+      "text": "directions uh or stop or or rethink the",
+      "offset": 1234.159,
+      "duration": 7.921
+    },
+    {
+      "lang": "en",
+      "text": "approach and but we think about but",
+      "offset": 1238.72,
+      "duration": 5.4
+    },
+    {
+      "lang": "en",
+      "text": "let's think about how a human solve the",
+      "offset": 1242.08,
+      "duration": 5.839
+    },
+    {
+      "lang": "en",
+      "text": "problem um you might go through a few",
+      "offset": 1244.12,
+      "duration": 8.72
+    },
+    {
+      "lang": "en",
+      "text": "raising steps um pause and res and start",
+      "offset": 1247.919,
+      "duration": 7.361
+    },
+    {
+      "lang": "en",
+      "text": "self-reflection maybe backtracking",
+      "offset": 1252.84,
+      "duration": 5.56
+    },
+    {
+      "lang": "en",
+      "text": "verifying correctness correcting mistake",
+      "offset": 1255.28,
+      "duration": 6.879
+    },
+    {
+      "lang": "en",
+      "text": "or even coming up with new strategies to",
+      "offset": 1258.4,
+      "duration": 6.8
+    },
+    {
+      "lang": "en",
+      "text": "tackle this problem right so it's more",
+      "offset": 1262.159,
+      "duration": 6.161
+    },
+    {
+      "lang": "en",
+      "text": "like a robot navigating an environment",
+      "offset": 1265.2,
+      "duration": 7.52
+    },
+    {
+      "lang": "en",
+      "text": "if it hits a a war it stops and it",
+      "offset": 1268.32,
+      "duration": 7.28
+    },
+    {
+      "lang": "en",
+      "text": "decides the next movement and explores a",
+      "offset": 1272.72,
+      "duration": 4.839
+    },
+    {
+      "lang": "en",
+      "text": "different path different",
+      "offset": 1275.6,
+      "duration": 6.4
+    },
+    {
+      "lang": "en",
+      "text": "trajectory so um I think the core idea",
+      "offset": 1277.559,
+      "duration": 7.401
+    },
+    {
+      "lang": "en",
+      "text": "of our paper is this chain of action",
+      "offset": 1282,
+      "duration": 7.36
+    },
+    {
+      "lang": "en",
+      "text": "thought in this long title uh so it",
+      "offset": 1284.96,
+      "duration": 7.839
+    },
+    {
+      "lang": "en",
+      "text": "explicitly defines different actions the",
+      "offset": 1289.36,
+      "duration": 4.84
+    },
+    {
+      "lang": "en",
+      "text": "model can",
+      "offset": 1292.799,
+      "duration": 5.281
+    },
+    {
+      "lang": "en",
+      "text": "take and the unique technique we",
+      "offset": 1294.2,
+      "duration": 7.32
+    },
+    {
+      "lang": "en",
+      "text": "introduce is directly leveraging the",
+      "offset": 1298.08,
+      "duration": 6.16
+    },
+    {
+      "lang": "en",
+      "text": "special token to guide the language",
+      "offset": 1301.52,
+      "duration": 4.12
+    },
+    {
+      "lang": "en",
+      "text": "models",
+      "offset": 1304.24,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "generation because we know auto",
+      "offset": 1305.64,
+      "duration": 5.32
+    },
+    {
+      "lang": "en",
+      "text": "reggressing model can only produce a",
+      "offset": 1308.08,
+      "duration": 6.959
+    },
+    {
+      "lang": "en",
+      "text": "sequence of tokens nothing else but we",
+      "offset": 1310.96,
+      "duration": 6.32
+    },
+    {
+      "lang": "en",
+      "text": "can still use special tokens as some",
+      "offset": 1315.039,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "signal to tell the model how to take the",
+      "offset": 1317.28,
+      "duration": 4.759
+    },
+    {
+      "lang": "en",
+      "text": "next action",
+      "offset": 1320.159,
+      "duration": 5.681
+    },
+    {
+      "lang": "en",
+      "text": "so um we introduce a bunch of spe",
+      "offset": 1322.039,
+      "duration": 5.88
+    },
+    {
+      "lang": "en",
+      "text": "special tokens and each each special",
+      "offset": 1325.84,
+      "duration": 4.76
+    },
+    {
+      "lang": "en",
+      "text": "token corresponds to one specific",
+      "offset": 1327.919,
+      "duration": 4.521
+    },
+    {
+      "lang": "en",
+      "text": "actions",
+      "offset": 1330.6,
+      "duration": 5.84
+    },
+    {
+      "lang": "en",
+      "text": "and we basically define three types of",
+      "offset": 1332.44,
+      "duration": 7.88
+    },
+    {
+      "lang": "en",
+      "text": "actions continue reflect and explore",
+      "offset": 1336.44,
+      "duration": 5.84
+    },
+    {
+      "lang": "en",
+      "text": "alternative uh",
+      "offset": 1340.32,
+      "duration": 4.839
+    },
+    {
+      "lang": "en",
+      "text": "solutions and continue special",
+      "offset": 1342.28,
+      "duration": 6.24
+    },
+    {
+      "lang": "en",
+      "text": "token encouraged the language model to",
+      "offset": 1345.159,
+      "duration": 7
+    },
+    {
+      "lang": "en",
+      "text": "build upon its current um reasoning",
+      "offset": 1348.52,
+      "duration": 5.72
+    },
+    {
+      "lang": "en",
+      "text": "trajectory by generating the next",
+      "offset": 1352.159,
+      "duration": 5.601
+    },
+    {
+      "lang": "en",
+      "text": "intermediate step and reflection tells",
+      "offset": 1354.24,
+      "duration": 6.48
+    },
+    {
+      "lang": "en",
+      "text": "the model to stop reasoning and verify",
+      "offset": 1357.76,
+      "duration": 5.6
+    },
+    {
+      "lang": "en",
+      "text": "the correctness of its previous",
+      "offset": 1360.72,
+      "duration": 6.72
+    },
+    {
+      "lang": "en",
+      "text": "reasoning steps and explore exploration",
+      "offset": 1363.36,
+      "duration": 8.16
+    },
+    {
+      "lang": "en",
+      "text": "signals um signals the model to identify",
+      "offset": 1367.44,
+      "duration": 7.44
+    },
+    {
+      "lang": "en",
+      "text": "critical errors in reasoning and explore",
+      "offset": 1371.52,
+      "duration": 6.88
+    },
+    {
+      "lang": "en",
+      "text": "a new solution basically so we recycle",
+      "offset": 1374.88,
+      "duration": 5.84
+    },
+    {
+      "lang": "en",
+      "text": "the we cycle these three actions the",
+      "offset": 1378.4,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "model can um you know like iteratively",
+      "offset": 1380.72,
+      "duration": 6.72
+    },
+    {
+      "lang": "en",
+      "text": "refine it reasoning and and their their",
+      "offset": 1383.76,
+      "duration": 6.48
+    },
+    {
+      "lang": "en",
+      "text": "reasoning process is more like how",
+      "offset": 1387.44,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "humans solve the problem and so then the",
+      "offset": 1390.24,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "key challenge of the project is training",
+      "offset": 1392.4,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "a model to generate these new special",
+      "offset": 1395.12,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "tokens at the right time is that right i",
+      "offset": 1397.84,
+      "duration": 5.88
+    },
+    {
+      "lang": "en",
+      "text": "would say the the first stage of post",
+      "offset": 1400.48,
+      "duration": 5.48
+    },
+    {
+      "lang": "en",
+      "text": "training has a",
+      "offset": 1403.72,
+      "duration": 6.36
+    },
+    {
+      "lang": "en",
+      "text": "challenge uh we need use a format tuning",
+      "offset": 1405.96,
+      "duration": 8.36
+    },
+    {
+      "lang": "en",
+      "text": "stage as we propose in our paper to get",
+      "offset": 1410.08,
+      "duration": 6.719
+    },
+    {
+      "lang": "en",
+      "text": "the model familiar with the reasoning",
+      "offset": 1414.32,
+      "duration": 5.239
+    },
+    {
+      "lang": "en",
+      "text": "format of the chain of action s",
+      "offset": 1416.799,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "reasoning or in other word we should",
+      "offset": 1419.559,
+      "duration": 5
+    },
+    {
+      "lang": "en",
+      "text": "teach the model to get familiar with",
+      "offset": 1421.919,
+      "duration": 5.361
+    },
+    {
+      "lang": "en",
+      "text": "these special action tokens when it",
+      "offset": 1424.559,
+      "duration": 4.961
+    },
+    {
+      "lang": "en",
+      "text": "encounters these special tokens it needs",
+      "offset": 1427.28,
+      "duration": 5.759
+    },
+    {
+      "lang": "en",
+      "text": "to uh make the corresponding response",
+      "offset": 1429.52,
+      "duration": 5.92
+    },
+    {
+      "lang": "en",
+      "text": "response and take the actions can you",
+      "offset": 1433.039,
+      "duration": 4.401
+    },
+    {
+      "lang": "en",
+      "text": "walk us through the training process and",
+      "offset": 1435.44,
+      "duration": 4.479
+    },
+    {
+      "lang": "en",
+      "text": "how you accomplish these goals if we",
+      "offset": 1437.44,
+      "duration": 4.479
+    },
+    {
+      "lang": "en",
+      "text": "want to teach the language model to",
+      "offset": 1439.919,
+      "duration": 5.441
+    },
+    {
+      "lang": "en",
+      "text": "perform the CO reasoning uh there are",
+      "offset": 1441.919,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "actually two challenges the first",
+      "offset": 1445.36,
+      "duration": 5.799
+    },
+    {
+      "lang": "en",
+      "text": "challenge is as I said it's called",
+      "offset": 1447.919,
+      "duration": 7.12
+    },
+    {
+      "lang": "en",
+      "text": "unawareness of the meta action tokens so",
+      "offset": 1451.159,
+      "duration": 6.441
+    },
+    {
+      "lang": "en",
+      "text": "this means that without any training and",
+      "offset": 1455.039,
+      "duration": 3.88
+    },
+    {
+      "lang": "en",
+      "text": "without any post- training or",
+      "offset": 1457.6,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "fine-tuning the language model doesn't",
+      "offset": 1458.919,
+      "duration": 5.321
+    },
+    {
+      "lang": "en",
+      "text": "recognize that encountering these",
+      "offset": 1461.52,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "special meta tokens will require",
+      "offset": 1464.24,
+      "duration": 5.64
+    },
+    {
+      "lang": "en",
+      "text": "reflection or proposing alternative",
+      "offset": 1466.88,
+      "duration": 7.919
+    },
+    {
+      "lang": "en",
+      "text": "solutions uh so we can think about the",
+      "offset": 1469.88,
+      "duration": 7.88
+    },
+    {
+      "lang": "en",
+      "text": "robot example so without the training",
+      "offset": 1474.799,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "the robot doesn't know how to prop",
+      "offset": 1477.76,
+      "duration": 4.279
+    },
+    {
+      "lang": "en",
+      "text": "properly take actions based on different",
+      "offset": 1479.919,
+      "duration": 6.64
+    },
+    {
+      "lang": "en",
+      "text": "situations like how to grasp a a an",
+      "offset": 1482.039,
+      "duration": 8.12
+    },
+    {
+      "lang": "en",
+      "text": "object from the table and and the",
+      "offset": 1486.559,
+      "duration": 7.041
+    },
+    {
+      "lang": "en",
+      "text": "straightforward way to teach the robot",
+      "offset": 1490.159,
+      "duration": 6.12
+    },
+    {
+      "lang": "en",
+      "text": "um of course is using some",
+      "offset": 1493.6,
+      "duration": 6.24
+    },
+    {
+      "lang": "en",
+      "text": "demonstrations provided by humans and",
+      "offset": 1496.279,
+      "duration": 6.441
+    },
+    {
+      "lang": "en",
+      "text": "this technique is exactly called",
+      "offset": 1499.84,
+      "duration": 5.6
+    },
+    {
+      "lang": "en",
+      "text": "imitation learning uh we need to",
+      "offset": 1502.72,
+      "duration": 4.559
+    },
+    {
+      "lang": "en",
+      "text": "construct some demonstration",
+      "offset": 1505.44,
+      "duration": 3.599
+    },
+    {
+      "lang": "en",
+      "text": "trajectories",
+      "offset": 1507.279,
+      "duration": 4.481
+    },
+    {
+      "lang": "en",
+      "text": "uh with this kind of chain of action s",
+      "offset": 1509.039,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "reasoning format and let the language",
+      "offset": 1511.76,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "model emulate the behavior of the",
+      "offset": 1513.679,
+      "duration": 4.681
+    },
+    {
+      "lang": "en",
+      "text": "demonstration",
+      "offset": 1516.4,
+      "duration": 5.159
+    },
+    {
+      "lang": "en",
+      "text": "trajectories and then the problem boils",
+      "offset": 1518.36,
+      "duration": 6.04
+    },
+    {
+      "lang": "en",
+      "text": "down how to construct these kind of",
+      "offset": 1521.559,
+      "duration": 5.401
+    },
+    {
+      "lang": "en",
+      "text": "trajectories",
+      "offset": 1524.4,
+      "duration": 5.279
+    },
+    {
+      "lang": "en",
+      "text": "um human annotation might be an",
+      "offset": 1526.96,
+      "duration": 5.839
+    },
+    {
+      "lang": "en",
+      "text": "effective approach but it's of course",
+      "offset": 1529.679,
+      "duration": 4.6
+    },
+    {
+      "lang": "en",
+      "text": "really",
+      "offset": 1532.799,
+      "duration": 5.041
+    },
+    {
+      "lang": "en",
+      "text": "expensive so in our paper we instead",
+      "offset": 1534.279,
+      "duration": 6.721
+    },
+    {
+      "lang": "en",
+      "text": "propose a multi- aent data synthesis",
+      "offset": 1537.84,
+      "duration": 6.079
+    },
+    {
+      "lang": "en",
+      "text": "framework so there are two models",
+      "offset": 1541,
+      "duration": 5.72
+    },
+    {
+      "lang": "en",
+      "text": "basically it's also a two-player system",
+      "offset": 1543.919,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "uh there's a generator and there's a",
+      "offset": 1546.72,
+      "duration": 7.68
+    },
+    {
+      "lang": "en",
+      "text": "critique model so given an input problem",
+      "offset": 1549.679,
+      "duration": 7.761
+    },
+    {
+      "lang": "en",
+      "text": "the generator will propose solutions and",
+      "offset": 1554.4,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "the critic model will step in and",
+      "offset": 1557.44,
+      "duration": 6.16
+    },
+    {
+      "lang": "en",
+      "text": "provides feedback and these two model",
+      "offset": 1559.84,
+      "duration": 6.319
+    },
+    {
+      "lang": "en",
+      "text": "collaborate with each other to solve the",
+      "offset": 1563.6,
+      "duration": 6.72
+    },
+    {
+      "lang": "en",
+      "text": "tricky problem and the generator might",
+      "offset": 1566.159,
+      "duration": 7.201
+    },
+    {
+      "lang": "en",
+      "text": "make mistakes the critic model aims to",
+      "offset": 1570.32,
+      "duration": 6.64
+    },
+    {
+      "lang": "en",
+      "text": "identify this mistake and uh suggest an",
+      "offset": 1573.36,
+      "duration": 6.24
+    },
+    {
+      "lang": "en",
+      "text": "alternative solution and and and so on",
+      "offset": 1576.96,
+      "duration": 6.88
+    },
+    {
+      "lang": "en",
+      "text": "so forth so uh let me make an example",
+      "offset": 1579.6,
+      "duration": 7.52
+    },
+    {
+      "lang": "en",
+      "text": "this is more like the scenario that the",
+      "offset": 1583.84,
+      "duration": 6.68
+    },
+    {
+      "lang": "en",
+      "text": "two students collaborate to solve a",
+      "offset": 1587.12,
+      "duration": 7.84
+    },
+    {
+      "lang": "en",
+      "text": "problem uh or if we are solving a",
+      "offset": 1590.52,
+      "duration": 7.56
+    },
+    {
+      "lang": "en",
+      "text": "problem by ourself it's more like the",
+      "offset": 1594.96,
+      "duration": 5.839
+    },
+    {
+      "lang": "en",
+      "text": "situation that there are two voices in",
+      "offset": 1598.08,
+      "duration": 6.24
+    },
+    {
+      "lang": "en",
+      "text": "someone's head and they may they may or",
+      "offset": 1600.799,
+      "duration": 6.401
+    },
+    {
+      "lang": "en",
+      "text": "may not agree with each other right",
+      "offset": 1604.32,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "that's usually the case and but",
+      "offset": 1607.2,
+      "duration": 5.839
+    },
+    {
+      "lang": "en",
+      "text": "eventually we hope these two voices will",
+      "offset": 1609.44,
+      "duration": 6.64
+    },
+    {
+      "lang": "en",
+      "text": "end up one single solution and",
+      "offset": 1613.039,
+      "duration": 5.401
+    },
+    {
+      "lang": "en",
+      "text": "successfully solve the",
+      "offset": 1616.08,
+      "duration": 4.36
+    },
+    {
+      "lang": "en",
+      "text": "problem",
+      "offset": 1618.44,
+      "duration": 4.68
+    },
+    {
+      "lang": "en",
+      "text": "um you know through a long debate",
+      "offset": 1620.44,
+      "duration": 4.92
+    },
+    {
+      "lang": "en",
+      "text": "process right the two boys compete with",
+      "offset": 1623.12,
+      "duration": 4.159
+    },
+    {
+      "lang": "en",
+      "text": "with each other debate with each other",
+      "offset": 1625.36,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "and finally they successfully solve the",
+      "offset": 1627.279,
+      "duration": 6.561
+    },
+    {
+      "lang": "en",
+      "text": "problem and we want to con basically",
+      "offset": 1630.32,
+      "duration": 6.359
+    },
+    {
+      "lang": "en",
+      "text": "want to construct this kind of reasoning",
+      "offset": 1633.84,
+      "duration": 6.24
+    },
+    {
+      "lang": "en",
+      "text": "data and and then this kind of reasoning",
+      "offset": 1636.679,
+      "duration": 5.961
+    },
+    {
+      "lang": "en",
+      "text": "data is to fine-tune is used to",
+      "offset": 1640.08,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "fine-tune a language model a pre-trained",
+      "offset": 1642.64,
+      "duration": 5.6
+    },
+    {
+      "lang": "en",
+      "text": "language model and we call this entire",
+      "offset": 1644.88,
+      "duration": 7.12
+    },
+    {
+      "lang": "en",
+      "text": "process format tuning which aims to",
+      "offset": 1648.24,
+      "duration": 6.559
+    },
+    {
+      "lang": "en",
+      "text": "teach the language model follow the",
+      "offset": 1652,
+      "duration": 5.24
+    },
+    {
+      "lang": "en",
+      "text": "train of action salt reasoning",
+      "offset": 1654.799,
+      "duration": 6.401
+    },
+    {
+      "lang": "en",
+      "text": "format um and after this kind of uh",
+      "offset": 1657.24,
+      "duration": 7.08
+    },
+    {
+      "lang": "en",
+      "text": "training the model knows to tackle",
+      "offset": 1661.2,
+      "duration": 6.64
+    },
+    {
+      "lang": "en",
+      "text": "different um like like different",
+      "offset": 1664.32,
+      "duration": 6.239
+    },
+    {
+      "lang": "en",
+      "text": "problems using uh different actions",
+      "offset": 1667.84,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "triggered by uh corresponding special",
+      "offset": 1670.559,
+      "duration": 5.6
+    },
+    {
+      "lang": "en",
+      "text": "tokens is it learning that because that",
+      "offset": 1673.12,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "is the way that the critic is",
+      "offset": 1676.159,
+      "duration": 3.841
+    },
+    {
+      "lang": "en",
+      "text": "communicating to the generator when it",
+      "offset": 1678.08,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "needs to take a different action using",
+      "offset": 1680,
+      "duration": 5.6
+    },
+    {
+      "lang": "en",
+      "text": "those special tokens the critique is",
+      "offset": 1682.96,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "more like providing the self-reflection",
+      "offset": 1685.6,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "part it provides the the the feedback",
+      "offset": 1688.08,
+      "duration": 7.839
+    },
+    {
+      "lang": "en",
+      "text": "the u the suggestions and this kind of",
+      "offset": 1691.36,
+      "duration": 6.559
+    },
+    {
+      "lang": "en",
+      "text": "information can be viewed as a",
+      "offset": 1695.919,
+      "duration": 4.12
+    },
+    {
+      "lang": "en",
+      "text": "self-reflection",
+      "offset": 1697.919,
+      "duration": 5.441
+    },
+    {
+      "lang": "en",
+      "text": "process right and this is triggered by",
+      "offset": 1700.039,
+      "duration": 6.921
+    },
+    {
+      "lang": "en",
+      "text": "this reflection uh special token and and",
+      "offset": 1703.36,
+      "duration": 7.36
+    },
+    {
+      "lang": "en",
+      "text": "and also uh in practice we observe that",
+      "offset": 1706.96,
+      "duration": 6.319
+    },
+    {
+      "lang": "en",
+      "text": "using only 10,000",
+      "offset": 1710.72,
+      "duration": 5.16
+    },
+    {
+      "lang": "en",
+      "text": "um this kind of demonstration",
+      "offset": 1713.279,
+      "duration": 5.361
+    },
+    {
+      "lang": "en",
+      "text": "trajectories the model can already",
+      "offset": 1715.88,
+      "duration": 6.279
+    },
+    {
+      "lang": "en",
+      "text": "learned this chain of action salt format",
+      "offset": 1718.64,
+      "duration": 5.48
+    },
+    {
+      "lang": "en",
+      "text": "so we basically have two stage of",
+      "offset": 1722.159,
+      "duration": 5.201
+    },
+    {
+      "lang": "en",
+      "text": "training one is format tuning and the",
+      "offset": 1724.12,
+      "duration": 6.52
+    },
+    {
+      "lang": "en",
+      "text": "other is reinforce learning",
+      "offset": 1727.36,
+      "duration": 7.199
+    },
+    {
+      "lang": "en",
+      "text": "so the main mo the main motivation for",
+      "offset": 1730.64,
+      "duration": 6.2
+    },
+    {
+      "lang": "en",
+      "text": "this reinforce learning stage",
+      "offset": 1734.559,
+      "duration": 6.401
+    },
+    {
+      "lang": "en",
+      "text": "is the model although the model learned",
+      "offset": 1736.84,
+      "duration": 7
+    },
+    {
+      "lang": "en",
+      "text": "the the train of action thought format",
+      "offset": 1740.96,
+      "duration": 6.4
+    },
+    {
+      "lang": "en",
+      "text": "but it may struggle to generalize its",
+      "offset": 1743.84,
+      "duration": 7.199
+    },
+    {
+      "lang": "en",
+      "text": "reasoning performance to unseen province",
+      "offset": 1747.36,
+      "duration": 7.28
+    },
+    {
+      "lang": "en",
+      "text": "uh I think this is expected because the",
+      "offset": 1751.039,
+      "duration": 7
+    },
+    {
+      "lang": "en",
+      "text": "model only emulates the the expert",
+      "offset": 1754.64,
+      "duration": 6.48
+    },
+    {
+      "lang": "en",
+      "text": "demonstrations and and the quality and",
+      "offset": 1758.039,
+      "duration": 6.201
+    },
+    {
+      "lang": "en",
+      "text": "the the diversity of this demonstration",
+      "offset": 1761.12,
+      "duration": 5.679
+    },
+    {
+      "lang": "en",
+      "text": "usually um you know constrain the the",
+      "offset": 1764.24,
+      "duration": 4.039
+    },
+    {
+      "lang": "en",
+      "text": "performance of the",
+      "offset": 1766.799,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "model right so so in order to mitigate",
+      "offset": 1768.279,
+      "duration": 6.681
+    },
+    {
+      "lang": "en",
+      "text": "this issue we we need leverage reinforce",
+      "offset": 1772.159,
+      "duration": 5.281
+    },
+    {
+      "lang": "en",
+      "text": "learning to truly incentivize the",
+      "offset": 1774.96,
+      "duration": 5.439
+    },
+    {
+      "lang": "en",
+      "text": "model's reasoning capabilities",
+      "offset": 1777.44,
+      "duration": 5.839
+    },
+    {
+      "lang": "en",
+      "text": "um especially the capability to take",
+      "offset": 1780.399,
+      "duration": 5.201
+    },
+    {
+      "lang": "en",
+      "text": "different actions with respect to",
+      "offset": 1783.279,
+      "duration": 3.801
+    },
+    {
+      "lang": "en",
+      "text": "different",
+      "offset": 1785.6,
+      "duration": 3.16
+    },
+    {
+      "lang": "en",
+      "text": "situations",
+      "offset": 1787.08,
+      "duration": 6.599
+    },
+    {
+      "lang": "en",
+      "text": "so we we encourage the model to reason",
+      "offset": 1788.76,
+      "duration": 9.799
+    },
+    {
+      "lang": "en",
+      "text": "like an agent uh it learns from the",
+      "offset": 1793.679,
+      "duration": 6.281
+    },
+    {
+      "lang": "en",
+      "text": "trials and",
+      "offset": 1798.559,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "errors and gradually build a a policy",
+      "offset": 1799.96,
+      "duration": 6.68
+    },
+    {
+      "lang": "en",
+      "text": "that uh allow the model to get higher",
+      "offset": 1803.679,
+      "duration": 7.441
+    },
+    {
+      "lang": "en",
+      "text": "reward right but but there there is a",
+      "offset": 1806.64,
+      "duration": 7.759
+    },
+    {
+      "lang": "en",
+      "text": "second big challenge um that the problem",
+      "offset": 1811.12,
+      "duration": 5.32
+    },
+    {
+      "lang": "en",
+      "text": "of sparse",
+      "offset": 1814.399,
+      "duration": 6.64
+    },
+    {
+      "lang": "en",
+      "text": "rewards so let me explain so um language",
+      "offset": 1816.44,
+      "duration": 6.76
+    },
+    {
+      "lang": "en",
+      "text": "model reasoning is more like a long",
+      "offset": 1821.039,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "horizon decision making process um it",
+      "offset": 1823.2,
+      "duration": 5.599
+    },
+    {
+      "lang": "en",
+      "text": "needs to output multiple intermediate",
+      "offset": 1826.399,
+      "duration": 5.801
+    },
+    {
+      "lang": "en",
+      "text": "steps uh takes a lot of actions and",
+      "offset": 1828.799,
+      "duration": 7.201
+    },
+    {
+      "lang": "en",
+      "text": "finally it give you a final answer and",
+      "offset": 1832.2,
+      "duration": 7.479
+    },
+    {
+      "lang": "en",
+      "text": "receive the rewards from the environment",
+      "offset": 1836,
+      "duration": 7.08
+    },
+    {
+      "lang": "en",
+      "text": "uh we realize that the the reward is",
+      "offset": 1839.679,
+      "duration": 8.081
+    },
+    {
+      "lang": "en",
+      "text": "only received at the end and this this",
+      "offset": 1843.08,
+      "duration": 7.16
+    },
+    {
+      "lang": "en",
+      "text": "cause a problem because the language",
+      "offset": 1847.76,
+      "duration": 6.24
+    },
+    {
+      "lang": "en",
+      "text": "model attribution types of problems uh",
+      "offset": 1850.24,
+      "duration": 8
+    },
+    {
+      "lang": "en",
+      "text": "right so if right so if we if we",
+      "offset": 1854,
+      "duration": 7.039
+    },
+    {
+      "lang": "en",
+      "text": "encounter the problem that the language",
+      "offset": 1858.24,
+      "duration": 4.28
+    },
+    {
+      "lang": "en",
+      "text": "model",
+      "offset": 1861.039,
+      "duration": 4.961
+    },
+    {
+      "lang": "en",
+      "text": "cannot successfully solve the problem",
+      "offset": 1862.52,
+      "duration": 5.519
+    },
+    {
+      "lang": "en",
+      "text": "there's no any",
+      "offset": 1866,
+      "duration": 5.679
+    },
+    {
+      "lang": "en",
+      "text": "reward and as long as the the model",
+      "offset": 1868.039,
+      "duration": 7.401
+    },
+    {
+      "lang": "en",
+      "text": "fails it needs to start from the initial",
+      "offset": 1871.679,
+      "duration": 6.24
+    },
+    {
+      "lang": "en",
+      "text": "province the initial state meaning so",
+      "offset": 1875.44,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "you're not teaching the model to you're",
+      "offset": 1877.919,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "not giving it any partial credit it's",
+      "offset": 1880.32,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "all or thing yeah so so the the reward",
+      "offset": 1882.559,
+      "duration": 4.681
+    },
+    {
+      "lang": "en",
+      "text": "is only at the",
+      "offset": 1885.12,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "end um because for the math problems the",
+      "offset": 1887.24,
+      "duration": 6.12
+    },
+    {
+      "lang": "en",
+      "text": "most effective reward is just checking",
+      "offset": 1890.48,
+      "duration": 5.16
+    },
+    {
+      "lang": "en",
+      "text": "whether the final answer is correct or",
+      "offset": 1893.36,
+      "duration": 5.439
+    },
+    {
+      "lang": "en",
+      "text": "incorrect and such reward is at the end",
+      "offset": 1895.64,
+      "duration": 6.96
+    },
+    {
+      "lang": "en",
+      "text": "of course right and",
+      "offset": 1898.799,
+      "duration": 8.201
+    },
+    {
+      "lang": "en",
+      "text": "um so to address this challenge",
+      "offset": 1902.6,
+      "duration": 8.12
+    },
+    {
+      "lang": "en",
+      "text": "um we propose a key technique in our",
+      "offset": 1907,
+      "duration": 7.6
+    },
+    {
+      "lang": "en",
+      "text": "paper uh which is called restart and",
+      "offset": 1910.72,
+      "duration": 7.6
+    },
+    {
+      "lang": "en",
+      "text": "exploration restart and explore right so",
+      "offset": 1914.6,
+      "duration": 6.36
+    },
+    {
+      "lang": "en",
+      "text": "the idea is actually quite simple uh",
+      "offset": 1918.32,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "instead of starting from the problem",
+      "offset": 1920.96,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "statement or the initial state we also",
+      "offset": 1923.2,
+      "duration": 6.079
+    },
+    {
+      "lang": "en",
+      "text": "let the model to start from the",
+      "offset": 1926.48,
+      "duration": 5.96
+    },
+    {
+      "lang": "en",
+      "text": "intermediate steps the intermediate",
+      "offset": 1929.279,
+      "duration": 6.481
+    },
+    {
+      "lang": "en",
+      "text": "states and it will increase the the",
+      "offset": 1932.44,
+      "duration": 5.959
+    },
+    {
+      "lang": "en",
+      "text": "chance of the model that arrive at the",
+      "offset": 1935.76,
+      "duration": 6.24
+    },
+    {
+      "lang": "en",
+      "text": "correct answer and it also encourage the",
+      "offset": 1938.399,
+      "duration": 6.561
+    },
+    {
+      "lang": "en",
+      "text": "model to trigger self-reflection and",
+      "offset": 1942,
+      "duration": 4.76
+    },
+    {
+      "lang": "en",
+      "text": "self-correcting its",
+      "offset": 1944.96,
+      "duration": 5.4
+    },
+    {
+      "lang": "en",
+      "text": "mistake and this is similar to how a",
+      "offset": 1946.76,
+      "duration": 7.32
+    },
+    {
+      "lang": "en",
+      "text": "robot explore the environment instead of",
+      "offset": 1950.36,
+      "duration": 8.199
+    },
+    {
+      "lang": "en",
+      "text": "always putting the placing the robot at",
+      "offset": 1954.08,
+      "duration": 7.68
+    },
+    {
+      "lang": "en",
+      "text": "the same starting point we can we can",
+      "offset": 1958.559,
+      "duration": 5.761
+    },
+    {
+      "lang": "en",
+      "text": "always place the robot at some",
+      "offset": 1961.76,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "intermediate state that the model",
+      "offset": 1964.32,
+      "duration": 5.839
+    },
+    {
+      "lang": "en",
+      "text": "already the robot already explored and",
+      "offset": 1966.88,
+      "duration": 6.56
+    },
+    {
+      "lang": "en",
+      "text": "and we let the robot to to restart from",
+      "offset": 1970.159,
+      "duration": 5.681
+    },
+    {
+      "lang": "en",
+      "text": "their intermediate state and is a state",
+      "offset": 1973.44,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "in this case a a sequence of tokens that",
+      "offset": 1975.84,
+      "duration": 4.559
+    },
+    {
+      "lang": "en",
+      "text": "have been generated right in in the",
+      "offset": 1978.48,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "language model case that's a that's a",
+      "offset": 1980.399,
+      "duration": 5.201
+    },
+    {
+      "lang": "en",
+      "text": "case it's more like some intermediate",
+      "offset": 1982.88,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "reasoning steps the model already",
+      "offset": 1985.6,
+      "duration": 5.079
+    },
+    {
+      "lang": "en",
+      "text": "generated in its previous",
+      "offset": 1987.76,
+      "duration": 5.919
+    },
+    {
+      "lang": "en",
+      "text": "response",
+      "offset": 1990.679,
+      "duration": 3
+    },
+    {
+      "lang": "en",
+      "text": "right so",
+      "offset": 1994.12,
+      "duration": 6.64
+    },
+    {
+      "lang": "en",
+      "text": "so consider the scenario that",
+      "offset": 1997,
+      "duration": 6.519
+    },
+    {
+      "lang": "en",
+      "text": "um this this intermediate state is",
+      "offset": 2000.76,
+      "duration": 5.399
+    },
+    {
+      "lang": "en",
+      "text": "actually a failure state for example if",
+      "offset": 2003.519,
+      "duration": 4.201
+    },
+    {
+      "lang": "en",
+      "text": "we",
+      "offset": 2006.159,
+      "duration": 6.321
+    },
+    {
+      "lang": "en",
+      "text": "um if we allow a robot um to move a an",
+      "offset": 2007.72,
+      "duration": 8.839
+    },
+    {
+      "lang": "en",
+      "text": "object from point A to point B and the",
+      "offset": 2012.48,
+      "duration": 7.679
+    },
+    {
+      "lang": "en",
+      "text": "robot somehow fails at at certain point",
+      "offset": 2016.559,
+      "duration": 6.96
+    },
+    {
+      "lang": "en",
+      "text": "of point C at the middle and we can",
+      "offset": 2020.159,
+      "duration": 6.64
+    },
+    {
+      "lang": "en",
+      "text": "actually let the robot to restart from",
+      "offset": 2023.519,
+      "duration": 6.4
+    },
+    {
+      "lang": "en",
+      "text": "an intermediate uh state which is this",
+      "offset": 2026.799,
+      "duration": 8.6
+    },
+    {
+      "lang": "en",
+      "text": "point C and makes a a second attempt of",
+      "offset": 2029.919,
+      "duration": 8.721
+    },
+    {
+      "lang": "en",
+      "text": "exploration and in practice we observe",
+      "offset": 2035.399,
+      "duration": 5.88
+    },
+    {
+      "lang": "en",
+      "text": "that this kind of restart and explore is",
+      "offset": 2038.64,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "actually quite effective for the",
+      "offset": 2041.279,
+      "duration": 4.081
+    },
+    {
+      "lang": "en",
+      "text": "language model to learn how to",
+      "offset": 2043.12,
+      "duration": 5.6
+    },
+    {
+      "lang": "en",
+      "text": "self-reflect and so how to self correct",
+      "offset": 2045.36,
+      "duration": 5.479
+    },
+    {
+      "lang": "en",
+      "text": "the",
+      "offset": 2048.72,
+      "duration": 4.639
+    },
+    {
+      "lang": "en",
+      "text": "mistake right and and I think that's",
+      "offset": 2050.839,
+      "duration": 5.8
+    },
+    {
+      "lang": "en",
+      "text": "that's the that's the main um",
+      "offset": 2053.359,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "contribution of the reinforced learning",
+      "offset": 2056.639,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "part can you tie together the format",
+      "offset": 2058.639,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "tuning and the self-improvement are they",
+      "offset": 2061.359,
+      "duration": 5.32
+    },
+    {
+      "lang": "en",
+      "text": "totally independent steps or in in what",
+      "offset": 2063.599,
+      "duration": 5.841
+    },
+    {
+      "lang": "en",
+      "text": "way do the In what ways do they both",
+      "offset": 2066.679,
+      "duration": 4.92
+    },
+    {
+      "lang": "en",
+      "text": "need to be in place in order for you to",
+      "offset": 2069.44,
+      "duration": 5.199
+    },
+    {
+      "lang": "en",
+      "text": "achieve the goal so this is more like",
+      "offset": 2071.599,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "you need a pre-training stage for the",
+      "offset": 2074.639,
+      "duration": 4.881
+    },
+    {
+      "lang": "en",
+      "text": "language model right so the pre-training",
+      "offset": 2077.359,
+      "duration": 6.081
+    },
+    {
+      "lang": "en",
+      "text": "stage aims to inject all the necessary",
+      "offset": 2079.52,
+      "duration": 6.159
+    },
+    {
+      "lang": "en",
+      "text": "knowledge and information into the",
+      "offset": 2083.44,
+      "duration": 6.08
+    },
+    {
+      "lang": "en",
+      "text": "language model parameter and the format",
+      "offset": 2085.679,
+      "duration": 6.48
+    },
+    {
+      "lang": "en",
+      "text": "tuning as the first stage of oral",
+      "offset": 2089.52,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "training is more like you teach the",
+      "offset": 2092.159,
+      "duration": 5.041
+    },
+    {
+      "lang": "en",
+      "text": "model to reason according to a certain",
+      "offset": 2094.48,
+      "duration": 5.92
+    },
+    {
+      "lang": "en",
+      "text": "reasoning format and this format is",
+      "offset": 2097.2,
+      "duration": 5.6
+    },
+    {
+      "lang": "en",
+      "text": "defined using these special tokens and",
+      "offset": 2100.4,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "this is the so-called chain of action",
+      "offset": 2102.8,
+      "duration": 4.36
+    },
+    {
+      "lang": "en",
+      "text": "salt reasoning",
+      "offset": 2105.04,
+      "duration": 6.559
+    },
+    {
+      "lang": "en",
+      "text": "format and this training stage is is",
+      "offset": 2107.16,
+      "duration": 7
+    },
+    {
+      "lang": "en",
+      "text": "usually small scale because in practice",
+      "offset": 2111.599,
+      "duration": 6.041
+    },
+    {
+      "lang": "en",
+      "text": "we only use 10,000 of uh training",
+      "offset": 2114.16,
+      "duration": 7.439
+    },
+    {
+      "lang": "en",
+      "text": "data and the reinforced learning is more",
+      "offset": 2117.64,
+      "duration": 7.479
+    },
+    {
+      "lang": "en",
+      "text": "like how you can leverage this this kind",
+      "offset": 2121.599,
+      "duration": 7.041
+    },
+    {
+      "lang": "en",
+      "text": "of special reasoning format to really",
+      "offset": 2125.119,
+      "duration": 6.96
+    },
+    {
+      "lang": "en",
+      "text": "solve the problem um like take different",
+      "offset": 2128.64,
+      "duration": 5.6
+    },
+    {
+      "lang": "en",
+      "text": "actions and finally solve the problem",
+      "offset": 2132.079,
+      "duration": 4.881
+    },
+    {
+      "lang": "en",
+      "text": "and get a reward from the reinforced",
+      "offset": 2134.24,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "learning",
+      "offset": 2136.96,
+      "duration": 4.159
+    },
+    {
+      "lang": "en",
+      "text": "and this this ska this stage this",
+      "offset": 2138.56,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "reinforce learning stage is usually",
+      "offset": 2141.119,
+      "duration": 3
+    },
+    {
+      "lang": "en",
+      "text": "large",
+      "offset": 2143.2,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "scale um right so in practice how do you",
+      "offset": 2144.119,
+      "duration": 5.641
+    },
+    {
+      "lang": "en",
+      "text": "how would you characterize a scale of",
+      "offset": 2148.32,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "that in practice it's more like the for",
+      "offset": 2149.76,
+      "duration": 5.48
+    },
+    {
+      "lang": "en",
+      "text": "my tuning stage we only use 10,000",
+      "offset": 2151.76,
+      "duration": 6.64
+    },
+    {
+      "lang": "en",
+      "text": "examples um and reinforced learning we",
+      "offset": 2155.24,
+      "duration": 5.96
+    },
+    {
+      "lang": "en",
+      "text": "use more than 300,000",
+      "offset": 2158.4,
+      "duration": 6.24
+    },
+    {
+      "lang": "en",
+      "text": "uh examples and uh but that's that's",
+      "offset": 2161.2,
+      "duration": 6.639
+    },
+    {
+      "lang": "en",
+      "text": "actually quite efficient why because for",
+      "offset": 2164.64,
+      "duration": 5
+    },
+    {
+      "lang": "en",
+      "text": "reinforce learning we",
+      "offset": 2167.839,
+      "duration": 5.121
+    },
+    {
+      "lang": "en",
+      "text": "only we only require the the final",
+      "offset": 2169.64,
+      "duration": 7.32
+    },
+    {
+      "lang": "en",
+      "text": "answer as the target we don't need the",
+      "offset": 2172.96,
+      "duration": 6.2
+    },
+    {
+      "lang": "en",
+      "text": "intermediate coot",
+      "offset": 2176.96,
+      "duration": 5.92
+    },
+    {
+      "lang": "en",
+      "text": "part so for for all the the problems we",
+      "offset": 2179.16,
+      "duration": 7.959
+    },
+    {
+      "lang": "en",
+      "text": "only need to get the final um target",
+      "offset": 2182.88,
+      "duration": 6.64
+    },
+    {
+      "lang": "en",
+      "text": "final answer for example for the math",
+      "offset": 2187.119,
+      "duration": 5.201
+    },
+    {
+      "lang": "en",
+      "text": "problem then the only the only thing we",
+      "offset": 2189.52,
+      "duration": 4.599
+    },
+    {
+      "lang": "en",
+      "text": "need is the final",
+      "offset": 2192.32,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "answer but for the traditional training",
+      "offset": 2194.119,
+      "duration": 5
+    },
+    {
+      "lang": "en",
+      "text": "the traditional pipeline of training",
+      "offset": 2197.2,
+      "duration": 5.84
+    },
+    {
+      "lang": "en",
+      "text": "which usually relies on a large scale",
+      "offset": 2199.119,
+      "duration": 7.161
+    },
+    {
+      "lang": "en",
+      "text": "supervised fine-tuning with millions of",
+      "offset": 2203.04,
+      "duration": 6.88
+    },
+    {
+      "lang": "en",
+      "text": "examples millions of examples but that",
+      "offset": 2206.28,
+      "duration": 6.12
+    },
+    {
+      "lang": "en",
+      "text": "kind of supervised fine-tuning data they",
+      "offset": 2209.92,
+      "duration": 5.84
+    },
+    {
+      "lang": "en",
+      "text": "usually requires human annotation",
+      "offset": 2212.4,
+      "duration": 6.48
+    },
+    {
+      "lang": "en",
+      "text": "uh especially for this intermediate co",
+      "offset": 2215.76,
+      "duration": 6.24
+    },
+    {
+      "lang": "en",
+      "text": "is the is the idea of starting from an",
+      "offset": 2218.88,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "intermediate state novel in this context",
+      "offset": 2222,
+      "duration": 6.48
+    },
+    {
+      "lang": "en",
+      "text": "text or is that generally not done in RL",
+      "offset": 2224.88,
+      "duration": 6.88
+    },
+    {
+      "lang": "en",
+      "text": "in general it's actually inspired by a",
+      "offset": 2228.48,
+      "duration": 5.599
+    },
+    {
+      "lang": "en",
+      "text": "classical reinforced learning paper",
+      "offset": 2231.76,
+      "duration": 6.079
+    },
+    {
+      "lang": "en",
+      "text": "which is called go uh explore and that",
+      "offset": 2234.079,
+      "duration": 6.561
+    },
+    {
+      "lang": "en",
+      "text": "was using this kind of technique to",
+      "offset": 2237.839,
+      "duration": 7.441
+    },
+    {
+      "lang": "en",
+      "text": "train uh basically a a game agent um an",
+      "offset": 2240.64,
+      "duration": 7.32
+    },
+    {
+      "lang": "en",
+      "text": "agent that can navigate in the game",
+      "offset": 2245.28,
+      "duration": 6.96
+    },
+    {
+      "lang": "en",
+      "text": "environment but but this idea had hasn't",
+      "offset": 2247.96,
+      "duration": 6.2
+    },
+    {
+      "lang": "en",
+      "text": "been applied to the language model",
+      "offset": 2252.24,
+      "duration": 6.24
+    },
+    {
+      "lang": "en",
+      "text": "context so it's more like we borrowed a",
+      "offset": 2254.16,
+      "duration": 7.12
+    },
+    {
+      "lang": "en",
+      "text": "lot of insights and ideas from the",
+      "offset": 2258.48,
+      "duration": 4.639
+    },
+    {
+      "lang": "en",
+      "text": "classical reinforced learning community",
+      "offset": 2261.28,
+      "duration": 5.68
+    },
+    {
+      "lang": "en",
+      "text": "and apply that to um the language model",
+      "offset": 2263.119,
+      "duration": 7.841
+    },
+    {
+      "lang": "en",
+      "text": "case and do you have a sense of if you",
+      "offset": 2266.96,
+      "duration": 6.96
+    },
+    {
+      "lang": "en",
+      "text": "didn't incorporate that idea of starting",
+      "offset": 2270.96,
+      "duration": 5.6
+    },
+    {
+      "lang": "en",
+      "text": "at an intermediate state how that would",
+      "offset": 2273.92,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "change the number of samples you need or",
+      "offset": 2276.56,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "some other factor or the ultimate",
+      "offset": 2279.2,
+      "duration": 6.399
+    },
+    {
+      "lang": "en",
+      "text": "performance so two things one is if we",
+      "offset": 2282,
+      "duration": 8.48
+    },
+    {
+      "lang": "en",
+      "text": "update this uh restart and um explore",
+      "offset": 2285.599,
+      "duration": 7.76
+    },
+    {
+      "lang": "en",
+      "text": "technique we realize the overall",
+      "offset": 2290.48,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "benchmark performance will be worse",
+      "offset": 2293.359,
+      "duration": 5.361
+    },
+    {
+      "lang": "en",
+      "text": "compared to the original version and",
+      "offset": 2295.52,
+      "duration": 6.2
+    },
+    {
+      "lang": "en",
+      "text": "second is like we also check the",
+      "offset": 2298.72,
+      "duration": 6.56
+    },
+    {
+      "lang": "en",
+      "text": "selfcorrection capability of the model",
+      "offset": 2301.72,
+      "duration": 6.44
+    },
+    {
+      "lang": "en",
+      "text": "uh if we remove this kind of new",
+      "offset": 2305.28,
+      "duration": 5.839
+    },
+    {
+      "lang": "en",
+      "text": "technique the restart and exploration",
+      "offset": 2308.16,
+      "duration": 6.72
+    },
+    {
+      "lang": "en",
+      "text": "the model might not be that effective in",
+      "offset": 2311.119,
+      "duration": 6.96
+    },
+    {
+      "lang": "en",
+      "text": "terms of self-correcting its own mistake",
+      "offset": 2314.88,
+      "duration": 5.8
+    },
+    {
+      "lang": "en",
+      "text": "so we did conducted some ablation",
+      "offset": 2318.079,
+      "duration": 6.401
+    },
+    {
+      "lang": "en",
+      "text": "studies we extract those response where",
+      "offset": 2320.68,
+      "duration": 7.32
+    },
+    {
+      "lang": "en",
+      "text": "the previous attempt and the second",
+      "offset": 2324.48,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "attempt",
+      "offset": 2328,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "um answers are different the answers of",
+      "offset": 2329.52,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "of these two attempts are different and",
+      "offset": 2331.68,
+      "duration": 6.72
+    },
+    {
+      "lang": "en",
+      "text": "we we evaluate whether the model is",
+      "offset": 2334.88,
+      "duration": 6.56
+    },
+    {
+      "lang": "en",
+      "text": "actually correcting the wrong answer to",
+      "offset": 2338.4,
+      "duration": 6.08
+    },
+    {
+      "lang": "en",
+      "text": "the correct answer or it's actually",
+      "offset": 2341.44,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "correcting the correct answer to",
+      "offset": 2344.48,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "incorrect answer we calculate the ratio",
+      "offset": 2346.24,
+      "duration": 6.8
+    },
+    {
+      "lang": "en",
+      "text": "between these two scenarios and we we we",
+      "offset": 2349.04,
+      "duration": 7.039
+    },
+    {
+      "lang": "en",
+      "text": "realize that using reinforced learning",
+      "offset": 2353.04,
+      "duration": 6.039
+    },
+    {
+      "lang": "en",
+      "text": "and this restart and exploration",
+      "offset": 2356.079,
+      "duration": 6.721
+    },
+    {
+      "lang": "en",
+      "text": "technique the ratio between this um has",
+      "offset": 2359.079,
+      "duration": 7
+    },
+    {
+      "lang": "en",
+      "text": "a big improvement compared to the the",
+      "offset": 2362.8,
+      "duration": 7.44
+    },
+    {
+      "lang": "en",
+      "text": "format tuning model basically means only",
+      "offset": 2366.079,
+      "duration": 5.921
+    },
+    {
+      "lang": "en",
+      "text": "using the first stage of training the",
+      "offset": 2370.24,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "format tuning stage the model doesn't",
+      "offset": 2372,
+      "duration": 5.56
+    },
+    {
+      "lang": "en",
+      "text": "have any capability to self-correct its",
+      "offset": 2374.88,
+      "duration": 5.6
+    },
+    {
+      "lang": "en",
+      "text": "mistake but using large scale reinforce",
+      "offset": 2377.56,
+      "duration": 6.2
+    },
+    {
+      "lang": "en",
+      "text": "learning with restart and exploration it",
+      "offset": 2380.48,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "gradually learns the selfcorrection",
+      "offset": 2383.76,
+      "duration": 4.079
+    },
+    {
+      "lang": "en",
+      "text": "capability can you talk a little bit",
+      "offset": 2386,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "about the reward design for the",
+      "offset": 2387.839,
+      "duration": 5.681
+    },
+    {
+      "lang": "en",
+      "text": "reinforcement learning component I think",
+      "offset": 2390.72,
+      "duration": 6.56
+    },
+    {
+      "lang": "en",
+      "text": "the main algorithm of reinforced",
+      "offset": 2393.52,
+      "duration": 10.16
+    },
+    {
+      "lang": "en",
+      "text": "learning is the PO algorithm and we just",
+      "offset": 2397.28,
+      "duration": 9.36
+    },
+    {
+      "lang": "en",
+      "text": "build up on top of the PO algorithm the",
+      "offset": 2403.68,
+      "duration": 7
+    },
+    {
+      "lang": "en",
+      "text": "classical PO algorithm and uh the novel",
+      "offset": 2406.64,
+      "duration": 7.64
+    },
+    {
+      "lang": "en",
+      "text": "things involve this uh race star and",
+      "offset": 2410.68,
+      "duration": 8.04
+    },
+    {
+      "lang": "en",
+      "text": "exploration and also we proposed another",
+      "offset": 2414.28,
+      "duration": 6.52
+    },
+    {
+      "lang": "en",
+      "text": "method called it iterative",
+      "offset": 2418.72,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "self-improvement",
+      "offset": 2420.8,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "uh that's also something new in the",
+      "offset": 2422.88,
+      "duration": 6.08
+    },
+    {
+      "lang": "en",
+      "text": "literature But that's also inspired from",
+      "offset": 2425.52,
+      "duration": 5.48
+    },
+    {
+      "lang": "en",
+      "text": "the classical reinforce learning",
+      "offset": 2428.96,
+      "duration": 6.159
+    },
+    {
+      "lang": "en",
+      "text": "community uh and that's corresponding to",
+      "offset": 2431,
+      "duration": 6.8
+    },
+    {
+      "lang": "en",
+      "text": "a a classical technique called",
+      "offset": 2435.119,
+      "duration": 6.881
+    },
+    {
+      "lang": "en",
+      "text": "kickstarting uh the main approach is the",
+      "offset": 2437.8,
+      "duration": 8.12
+    },
+    {
+      "lang": "en",
+      "text": "main strategy is you train a reinforced",
+      "offset": 2442,
+      "duration": 7.359
+    },
+    {
+      "lang": "en",
+      "text": "learning policy as a teacher policy and",
+      "offset": 2445.92,
+      "duration": 5.84
+    },
+    {
+      "lang": "en",
+      "text": "you distill the knowledge from the",
+      "offset": 2449.359,
+      "duration": 5.441
+    },
+    {
+      "lang": "en",
+      "text": "teacher policy into a student policy and",
+      "offset": 2451.76,
+      "duration": 6.079
+    },
+    {
+      "lang": "en",
+      "text": "you start from the the student student",
+      "offset": 2454.8,
+      "duration": 6.559
+    },
+    {
+      "lang": "en",
+      "text": "policy and you um continue using",
+      "offset": 2457.839,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "reinforced learning to improve the",
+      "offset": 2461.359,
+      "duration": 4.801
+    },
+    {
+      "lang": "en",
+      "text": "student policy so why this is effective",
+      "offset": 2463.119,
+      "duration": 7.121
+    },
+    {
+      "lang": "en",
+      "text": "because um if you apply reinforce",
+      "offset": 2466.16,
+      "duration": 7.48
+    },
+    {
+      "lang": "en",
+      "text": "learning to train a single policy the",
+      "offset": 2470.24,
+      "duration": 6.32
+    },
+    {
+      "lang": "en",
+      "text": "policy might converge to some local",
+      "offset": 2473.64,
+      "duration": 4.479
+    },
+    {
+      "lang": "en",
+      "text": "optimal",
+      "offset": 2476.56,
+      "duration": 5.84
+    },
+    {
+      "lang": "en",
+      "text": "um um during optimization",
+      "offset": 2478.119,
+      "duration": 8.121
+    },
+    {
+      "lang": "en",
+      "text": "uh and by distilling the teacher policy",
+      "offset": 2482.4,
+      "duration": 7.12
+    },
+    {
+      "lang": "en",
+      "text": "into student policy it's more like you",
+      "offset": 2486.24,
+      "duration": 6.2
+    },
+    {
+      "lang": "en",
+      "text": "change the loss landscape of",
+      "offset": 2489.52,
+      "duration": 5.839
+    },
+    {
+      "lang": "en",
+      "text": "optimization and and it will help the",
+      "offset": 2492.44,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "model",
+      "offset": 2495.359,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "to jump out of the local optimal",
+      "offset": 2496.2,
+      "duration": 7.399
+    },
+    {
+      "lang": "en",
+      "text": "so in practice it's like we apply this",
+      "offset": 2500.319,
+      "duration": 6.321
+    },
+    {
+      "lang": "en",
+      "text": "reinforced learning in the first stage",
+      "offset": 2503.599,
+      "duration": 6.801
+    },
+    {
+      "lang": "en",
+      "text": "uh and we got a model and we distilled",
+      "offset": 2506.64,
+      "duration": 7.4
+    },
+    {
+      "lang": "en",
+      "text": "this um model into a new base",
+      "offset": 2510.4,
+      "duration": 6.48
+    },
+    {
+      "lang": "en",
+      "text": "model and starting from the distilled",
+      "offset": 2514.04,
+      "duration": 5.88
+    },
+    {
+      "lang": "en",
+      "text": "base model we apply the second round of",
+      "offset": 2516.88,
+      "duration": 4.28
+    },
+    {
+      "lang": "en",
+      "text": "reinforce",
+      "offset": 2519.92,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "learning so it's more like Sept stage",
+      "offset": 2521.16,
+      "duration": 6.28
+    },
+    {
+      "lang": "en",
+      "text": "reinforce learning stage distillation to",
+      "offset": 2524.64,
+      "duration": 6.64
+    },
+    {
+      "lang": "en",
+      "text": "a new base model and by supervised",
+      "offset": 2527.44,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "finetuning and starting from that new",
+      "offset": 2531.28,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "distillation",
+      "offset": 2533.2,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "uh distilled model we apply the second",
+      "offset": 2534.88,
+      "duration": 4.92
+    },
+    {
+      "lang": "en",
+      "text": "round of reinforced learning",
+      "offset": 2537.28,
+      "duration": 5.68
+    },
+    {
+      "lang": "en",
+      "text": "training and in practice we realize the",
+      "offset": 2539.8,
+      "duration": 5.48
+    },
+    {
+      "lang": "en",
+      "text": "second round of reinforced learning can",
+      "offset": 2542.96,
+      "duration": 5.84
+    },
+    {
+      "lang": "en",
+      "text": "further boost the performance did you",
+      "offset": 2545.28,
+      "duration": 7.12
+    },
+    {
+      "lang": "en",
+      "text": "look at a variety of base models or um",
+      "offset": 2548.8,
+      "duration": 6.64
+    },
+    {
+      "lang": "en",
+      "text": "how did you select the base model uh we",
+      "offset": 2552.4,
+      "duration": 5.8
+    },
+    {
+      "lang": "en",
+      "text": "only pick one base model uh in our",
+      "offset": 2555.44,
+      "duration": 7.04
+    },
+    {
+      "lang": "en",
+      "text": "experiment the base model uh should have",
+      "offset": 2558.2,
+      "duration": 6.639
+    },
+    {
+      "lang": "en",
+      "text": "the sufficient knowledge",
+      "offset": 2562.48,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "um uh like the knowledge obtained from",
+      "offset": 2564.839,
+      "duration": 7
+    },
+    {
+      "lang": "en",
+      "text": "the pre-training stage um right a wake",
+      "offset": 2567.76,
+      "duration": 6.319
+    },
+    {
+      "lang": "en",
+      "text": "based model we also right so in our",
+      "offset": 2571.839,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "experiment we also conduct some other",
+      "offset": 2574.079,
+      "duration": 7.121
+    },
+    {
+      "lang": "en",
+      "text": "interesting experiments we use two",
+      "offset": 2577.119,
+      "duration": 7.601
+    },
+    {
+      "lang": "en",
+      "text": "additional base models which are weaker",
+      "offset": 2581.2,
+      "duration": 5.96
+    },
+    {
+      "lang": "en",
+      "text": "in terms of the mass reasoning",
+      "offset": 2584.72,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "performance but the interesting",
+      "offset": 2587.16,
+      "duration": 6.28
+    },
+    {
+      "lang": "en",
+      "text": "experiment is we already obtained the",
+      "offset": 2590.16,
+      "duration": 6.28
+    },
+    {
+      "lang": "en",
+      "text": "strong uh reinforced learning model",
+      "offset": 2593.44,
+      "duration": 6.8
+    },
+    {
+      "lang": "en",
+      "text": "checkpoint and we distill the knowledge",
+      "offset": 2596.44,
+      "duration": 7.879
+    },
+    {
+      "lang": "en",
+      "text": "of this uh strong model checkpoint into",
+      "offset": 2600.24,
+      "duration": 7.28
+    },
+    {
+      "lang": "en",
+      "text": "the the weak base model and we realize",
+      "offset": 2604.319,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "this is actually quite effective the",
+      "offset": 2607.52,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "distillation can make base model uh",
+      "offset": 2610.319,
+      "duration": 6.401
+    },
+    {
+      "lang": "en",
+      "text": "become a really powerful reasoning model",
+      "offset": 2613.52,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "and this this is actually really",
+      "offset": 2616.72,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "effective because",
+      "offset": 2618.72,
+      "duration": 4.639
+    },
+    {
+      "lang": "en",
+      "text": "uh in practice we can first train a",
+      "offset": 2620.8,
+      "duration": 5.92
+    },
+    {
+      "lang": "en",
+      "text": "strong uh reasoning model using large",
+      "offset": 2623.359,
+      "duration": 5.361
+    },
+    {
+      "lang": "en",
+      "text": "scale of self-improvement using",
+      "offset": 2626.72,
+      "duration": 6.72
+    },
+    {
+      "lang": "en",
+      "text": "reinforce learning and then we can like",
+      "offset": 2628.72,
+      "duration": 6.879
+    },
+    {
+      "lang": "en",
+      "text": "improve the base model performance using",
+      "offset": 2633.44,
+      "duration": 4.6
+    },
+    {
+      "lang": "en",
+      "text": "this strong teacher",
+      "offset": 2635.599,
+      "duration": 6.401
+    },
+    {
+      "lang": "en",
+      "text": "model right and this is quite effective",
+      "offset": 2638.04,
+      "duration": 5.96
+    },
+    {
+      "lang": "en",
+      "text": "and this is also quite different from",
+      "offset": 2642,
+      "duration": 5.119
+    },
+    {
+      "lang": "en",
+      "text": "the classical way to train the model uh",
+      "offset": 2644,
+      "duration": 6.319
+    },
+    {
+      "lang": "en",
+      "text": "it's like we we still need to collect a",
+      "offset": 2647.119,
+      "duration": 5.881
+    },
+    {
+      "lang": "en",
+      "text": "large amount of supervised finetuning",
+      "offset": 2650.319,
+      "duration": 5.921
+    },
+    {
+      "lang": "en",
+      "text": "data and usually that's annotated by",
+      "offset": 2653,
+      "duration": 5.88
+    },
+    {
+      "lang": "en",
+      "text": "human and we we we train this model",
+      "offset": 2656.24,
+      "duration": 5.92
+    },
+    {
+      "lang": "en",
+      "text": "using uh supervised finetuning can you",
+      "offset": 2658.88,
+      "duration": 7.36
+    },
+    {
+      "lang": "en",
+      "text": "talk about um the various benchmarks you",
+      "offset": 2662.16,
+      "duration": 6.08
+    },
+    {
+      "lang": "en",
+      "text": "use and the results that you saw we",
+      "offset": 2666.24,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "mainly test our approach in the in the",
+      "offset": 2668.24,
+      "duration": 5.68
+    },
+    {
+      "lang": "en",
+      "text": "mass domain um we because we trained we",
+      "offset": 2670.56,
+      "duration": 5.92
+    },
+    {
+      "lang": "en",
+      "text": "train the model on uh computation level",
+      "offset": 2673.92,
+      "duration": 6.24
+    },
+    {
+      "lang": "en",
+      "text": "math problems and uh this is actually",
+      "offset": 2676.48,
+      "duration": 6.32
+    },
+    {
+      "lang": "en",
+      "text": "quite common in research communities",
+      "offset": 2680.16,
+      "duration": 5.24
+    },
+    {
+      "lang": "en",
+      "text": "because math is you know it's easy to",
+      "offset": 2682.8,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "evaluate you just check the final answer",
+      "offset": 2685.4,
+      "duration": 5.64
+    },
+    {
+      "lang": "en",
+      "text": "whether the final answer is correct and",
+      "offset": 2688.8,
+      "duration": 5.519
+    },
+    {
+      "lang": "en",
+      "text": "math problem is also a strong indicator",
+      "offset": 2691.04,
+      "duration": 5.68
+    },
+    {
+      "lang": "en",
+      "text": "of reasoning abilities",
+      "offset": 2694.319,
+      "duration": 5.681
+    },
+    {
+      "lang": "en",
+      "text": "so um",
+      "offset": 2696.72,
+      "duration": 6.48
+    },
+    {
+      "lang": "en",
+      "text": "uh so we just trained the Satari on mass",
+      "offset": 2700,
+      "duration": 6.4
+    },
+    {
+      "lang": "en",
+      "text": "data set and evalued the model on",
+      "offset": 2703.2,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "several standard benchmark uh and the",
+      "offset": 2706.4,
+      "duration": 5.679
+    },
+    {
+      "lang": "en",
+      "text": "results are quite exciting so Satari",
+      "offset": 2708.96,
+      "duration": 5
+    },
+    {
+      "lang": "en",
+      "text": "outperforms the",
+      "offset": 2712.079,
+      "duration": 4.881
+    },
+    {
+      "lang": "en",
+      "text": "industry level instruct models trained",
+      "offset": 2713.96,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "on the same base",
+      "offset": 2716.96,
+      "duration": 6.639
+    },
+    {
+      "lang": "en",
+      "text": "model and we actually use much fewer",
+      "offset": 2718.68,
+      "duration": 7.399
+    },
+    {
+      "lang": "en",
+      "text": "training data so compared to the",
+      "offset": 2723.599,
+      "duration": 6.081
+    },
+    {
+      "lang": "en",
+      "text": "instruct model we only use 1% of the the",
+      "offset": 2726.079,
+      "duration": 5.481
+    },
+    {
+      "lang": "en",
+      "text": "data in the SFT",
+      "offset": 2729.68,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "stage and instead of relying on massive",
+      "offset": 2731.56,
+      "duration": 7.24
+    },
+    {
+      "lang": "en",
+      "text": "uh amount of label data we mainly train",
+      "offset": 2735.68,
+      "duration": 5.679
+    },
+    {
+      "lang": "en",
+      "text": "the model using large scale reinforce",
+      "offset": 2738.8,
+      "duration": 3.88
+    },
+    {
+      "lang": "en",
+      "text": "learning as I",
+      "offset": 2741.359,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "mentioned right so",
+      "offset": 2742.68,
+      "duration": 4.439
+    },
+    {
+      "lang": "en",
+      "text": "uh and and given given that we train",
+      "offset": 2747.64,
+      "duration": 6.04
+    },
+    {
+      "lang": "en",
+      "text": "Sattorii on mass domains it's actually",
+      "offset": 2751.119,
+      "duration": 5.601
+    },
+    {
+      "lang": "en",
+      "text": "not surprising that it performs well on",
+      "offset": 2753.68,
+      "duration": 6.08
+    },
+    {
+      "lang": "en",
+      "text": "mass bench benchmarks but what's really",
+      "offset": 2756.72,
+      "duration": 6.44
+    },
+    {
+      "lang": "en",
+      "text": "exciting for us is its generalization",
+      "offset": 2759.76,
+      "duration": 6.88
+    },
+    {
+      "lang": "en",
+      "text": "capability even though the the model was",
+      "offset": 2763.16,
+      "duration": 6.04
+    },
+    {
+      "lang": "en",
+      "text": "only trained on mass we find that it",
+      "offset": 2766.64,
+      "duration": 4.479
+    },
+    {
+      "lang": "en",
+      "text": "actually transfers well to other",
+      "offset": 2769.2,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "reasoning domains like common sense",
+      "offset": 2771.119,
+      "duration": 6.161
+    },
+    {
+      "lang": "en",
+      "text": "reasoning logic reasoning and other STEM",
+      "offset": 2773.68,
+      "duration": 6.88
+    },
+    {
+      "lang": "en",
+      "text": "subjects like physics and chemistry",
+      "offset": 2777.28,
+      "duration": 6.24
+    },
+    {
+      "lang": "en",
+      "text": "and what's even more surprising is that",
+      "offset": 2780.56,
+      "duration": 6.4
+    },
+    {
+      "lang": "en",
+      "text": "Satari achieves comparable performance",
+      "offset": 2783.52,
+      "duration": 6.24
+    },
+    {
+      "lang": "en",
+      "text": "to those instruct models",
+      "offset": 2786.96,
+      "duration": 5.119
+    },
+    {
+      "lang": "en",
+      "text": "uh that were explicitly trained on a",
+      "offset": 2789.76,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "diverse uh of data sets across multiple",
+      "offset": 2792.079,
+      "duration": 6.401
+    },
+    {
+      "lang": "en",
+      "text": "different domains so this this means",
+      "offset": 2795.28,
+      "duration": 5.96
+    },
+    {
+      "lang": "en",
+      "text": "that our model isn't just memorizing",
+      "offset": 2798.48,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "those math problem solving skills it's",
+      "offset": 2801.24,
+      "duration": 5.079
+    },
+    {
+      "lang": "en",
+      "text": "actually learning the the general",
+      "offset": 2804.24,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "reasoning skills and some of the models",
+      "offset": 2806.319,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "you compared it against were much larger",
+      "offset": 2808.24,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "in terms of number of parameters and it",
+      "offset": 2810.079,
+      "duration": 4.881
+    },
+    {
+      "lang": "en",
+      "text": "seemed to do well we mainly compare with",
+      "offset": 2812.16,
+      "duration": 5.84
+    },
+    {
+      "lang": "en",
+      "text": "the the same scale models like uh the",
+      "offset": 2814.96,
+      "duration": 7.6
+    },
+    {
+      "lang": "en",
+      "text": "llama uh 3.1 uh 8 billion and these kind",
+      "offset": 2818,
+      "duration": 7.92
+    },
+    {
+      "lang": "en",
+      "text": "of models and we realize using or",
+      "offset": 2822.56,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "training framework but only train on",
+      "offset": 2825.92,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "mass domain we can match the the",
+      "offset": 2827.76,
+      "duration": 5.599
+    },
+    {
+      "lang": "en",
+      "text": "performance with llama 3.1 on a bunch of",
+      "offset": 2830,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "general reasoning domains yeah the my",
+      "offset": 2833.359,
+      "duration": 6.401
+    },
+    {
+      "lang": "en",
+      "text": "interpretation of the table is that for",
+      "offset": 2836,
+      "duration": 5.48
+    },
+    {
+      "lang": "en",
+      "text": "the math",
+      "offset": 2839.76,
+      "duration": 6.2
+    },
+    {
+      "lang": "en",
+      "text": "benchmarks the the sator outperform the",
+      "offset": 2841.48,
+      "duration": 9.48
+    },
+    {
+      "lang": "en",
+      "text": "comparable models but was uh the larger",
+      "offset": 2845.96,
+      "duration": 8.48
+    },
+    {
+      "lang": "en",
+      "text": "models did better um but for out of",
+      "offset": 2850.96,
+      "duration": 7.04
+    },
+    {
+      "lang": "en",
+      "text": "domain the Satori did better than both",
+      "offset": 2854.44,
+      "duration": 5.8
+    },
+    {
+      "lang": "en",
+      "text": "the comparable models and the larger",
+      "offset": 2858,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "models is that right some of them some",
+      "offset": 2860.24,
+      "duration": 5.359
+    },
+    {
+      "lang": "en",
+      "text": "of them for example satari achieved the",
+      "offset": 2862.88,
+      "duration": 6.08
+    },
+    {
+      "lang": "en",
+      "text": "comparable performance with llama 3.170",
+      "offset": 2865.599,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "billion I guess so actually we also",
+      "offset": 2868.96,
+      "duration": 7.04
+    },
+    {
+      "lang": "en",
+      "text": "conducted some study and the results is",
+      "offset": 2871.599,
+      "duration": 6.401
+    },
+    {
+      "lang": "en",
+      "text": "showing that this kind of general",
+      "offset": 2876,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "reasoning ability actually emerged from",
+      "offset": 2878,
+      "duration": 6.599
+    },
+    {
+      "lang": "en",
+      "text": "large scale reinforce learning",
+      "offset": 2881.76,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "um so this this is quite exciting",
+      "offset": 2884.599,
+      "duration": 5.401
+    },
+    {
+      "lang": "en",
+      "text": "because uh traditionally lounge model",
+      "offset": 2887.28,
+      "duration": 5.039
+    },
+    {
+      "lang": "en",
+      "text": "was more like chatbot",
+      "offset": 2890,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "trying to it's trying to memorize in",
+      "offset": 2892.319,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "patterns from the supervised fine-tuning",
+      "offset": 2894.56,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "data but using reinforce learning the",
+      "offset": 2897.839,
+      "duration": 5.041
+    },
+    {
+      "lang": "en",
+      "text": "model behaves more like an agent",
+      "offset": 2900.56,
+      "duration": 5.48
+    },
+    {
+      "lang": "en",
+      "text": "learning learning using trials and",
+      "offset": 2902.88,
+      "duration": 7.52
+    },
+    {
+      "lang": "en",
+      "text": "arrows and it gradually gradually builds",
+      "offset": 2906.04,
+      "duration": 7.24
+    },
+    {
+      "lang": "en",
+      "text": "uh more general reasoning skills and so",
+      "offset": 2910.4,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "how do you see this evolving where do",
+      "offset": 2913.28,
+      "duration": 4.2
+    },
+    {
+      "lang": "en",
+      "text": "you want to take this research direction",
+      "offset": 2914.96,
+      "duration": 8.159
+    },
+    {
+      "lang": "en",
+      "text": "um so I would say the ultimate goal of",
+      "offset": 2917.48,
+      "duration": 10.119
+    },
+    {
+      "lang": "en",
+      "text": "uh the Satari team uh is to build smart",
+      "offset": 2923.119,
+      "duration": 7.44
+    },
+    {
+      "lang": "en",
+      "text": "AI systems uh not not just not just",
+      "offset": 2927.599,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "language model with strong reasoning",
+      "offset": 2930.559,
+      "duration": 4.161
+    },
+    {
+      "lang": "en",
+      "text": "skills but also those agentic framework",
+      "offset": 2932.079,
+      "duration": 6.721
+    },
+    {
+      "lang": "en",
+      "text": "that can tackle uh really tricky task um",
+      "offset": 2934.72,
+      "duration": 7.92
+    },
+    {
+      "lang": "en",
+      "text": "as and as researchers we we are not just",
+      "offset": 2938.8,
+      "duration": 7.12
+    },
+    {
+      "lang": "en",
+      "text": "focused on building powerful models or",
+      "offset": 2942.64,
+      "duration": 6.08
+    },
+    {
+      "lang": "en",
+      "text": "products we also want to provide the",
+      "offset": 2945.92,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "useful insights and explore those",
+      "offset": 2948.72,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "fundamental research questions and",
+      "offset": 2951.44,
+      "duration": 4.28
+    },
+    {
+      "lang": "en",
+      "text": "benefit the research",
+      "offset": 2953.92,
+      "duration": 5.679
+    },
+    {
+      "lang": "en",
+      "text": "communities uh and and and one of the",
+      "offset": 2955.72,
+      "duration": 7.32
+    },
+    {
+      "lang": "en",
+      "text": "next big area we are looking at is",
+      "offset": 2959.599,
+      "duration": 8
+    },
+    {
+      "lang": "en",
+      "text": "building a more agentic uh system uh we",
+      "offset": 2963.04,
+      "duration": 7.2
+    },
+    {
+      "lang": "en",
+      "text": "we hope the model to interact with",
+      "offset": 2967.599,
+      "duration": 5.681
+    },
+    {
+      "lang": "en",
+      "text": "environment to use uh different tools",
+      "offset": 2970.24,
+      "duration": 4.76
+    },
+    {
+      "lang": "en",
+      "text": "for example search on the",
+      "offset": 2973.28,
+      "duration": 6.559
+    },
+    {
+      "lang": "en",
+      "text": "website um and and and the the the",
+      "offset": 2975,
+      "duration": 8.92
+    },
+    {
+      "lang": "en",
+      "text": "language model can act like a reasoning",
+      "offset": 2979.839,
+      "duration": 8.121
+    },
+    {
+      "lang": "en",
+      "text": "engine in this agentic framework",
+      "offset": 2983.92,
+      "duration": 8.399
+    },
+    {
+      "lang": "en",
+      "text": "um right so we just wanted it to tackle",
+      "offset": 2987.96,
+      "duration": 8.599
+    },
+    {
+      "lang": "en",
+      "text": "those trickier uh task not only limited",
+      "offset": 2992.319,
+      "duration": 8
+    },
+    {
+      "lang": "en",
+      "text": "to like mass problem solving um and",
+      "offset": 2996.559,
+      "duration": 7.441
+    },
+    {
+      "lang": "en",
+      "text": "another research direction is how to",
+      "offset": 3000.319,
+      "duration": 6.161
+    },
+    {
+      "lang": "en",
+      "text": "develop the new reinforce learning",
+      "offset": 3004,
+      "duration": 4.92
+    },
+    {
+      "lang": "en",
+      "text": "algorithms uh especially for language",
+      "offset": 3006.48,
+      "duration": 5.359
+    },
+    {
+      "lang": "en",
+      "text": "models because we know that reinforce",
+      "offset": 3008.92,
+      "duration": 5.8
+    },
+    {
+      "lang": "en",
+      "text": "learning has been well studied in u",
+      "offset": 3011.839,
+      "duration": 7.841
+    },
+    {
+      "lang": "en",
+      "text": "classical AI fields like robotics u and",
+      "offset": 3014.72,
+      "duration": 7.359
+    },
+    {
+      "lang": "en",
+      "text": "I always believe there are a lot of",
+      "offset": 3019.68,
+      "duration": 4.879
+    },
+    {
+      "lang": "en",
+      "text": "valuable insights from those classical",
+      "offset": 3022.079,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "fields that we can adapt for language",
+      "offset": 3024.559,
+      "duration": 4.28
+    },
+    {
+      "lang": "en",
+      "text": "models",
+      "offset": 3027.839,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "um I think we are still in the early",
+      "offset": 3028.839,
+      "duration": 7.321
+    },
+    {
+      "lang": "en",
+      "text": "stage of fig figuring out uh how to",
+      "offset": 3031.599,
+      "duration": 7.76
+    },
+    {
+      "lang": "en",
+      "text": "optimize reinforce learning for uh",
+      "offset": 3036.16,
+      "duration": 5.84
+    },
+    {
+      "lang": "en",
+      "text": "language model reasoning task but I",
+      "offset": 3039.359,
+      "duration": 4.881
+    },
+    {
+      "lang": "en",
+      "text": "think there's a a huge potential in the",
+      "offset": 3042,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "in this space well Maha thanks so much",
+      "offset": 3044.24,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "for sharing a bit about your project and",
+      "offset": 3046.4,
+      "duration": 6.88
+    },
+    {
+      "lang": "en",
+      "text": "uh the research yeah thanks again for",
+      "offset": 3050.24,
+      "duration": 6.44
+    },
+    {
+      "lang": "en",
+      "text": "having me today",
+      "offset": 3053.28,
+      "duration": 3.4
+    },
+    {
+      "lang": "en",
+      "text": "[Music]",
+      "offset": 3073.21,
+      "duration": 3.19
+    }
+  ],
+  "cleanText": null,
+  "dumpedAt": "2025-07-21T18:43:26.128Z"
+}

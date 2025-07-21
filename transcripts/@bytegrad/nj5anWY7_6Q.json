@@ -1,0 +1,2494 @@
+{
+  "episodeId": "nj5anWY7_6Q",
+  "channelSlug": "@bytegrad",
+  "title": "Secure Your AI API Endpoints (Rate Limiting, SQL, XSS, etc.) - Before It's Too Late!",
+  "publishedAt": "2025-06-13T10:11:29.000Z",
+  "rawLines": [
+    {
+      "lang": "en",
+      "text": "All right, let's talk about protecting",
+      "offset": 0.08,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "your API endpoints. I know a lot of you",
+      "offset": 1.52,
+      "duration": 4.319
+    },
+    {
+      "lang": "en",
+      "text": "are building AI applications and it's",
+      "offset": 3.76,
+      "duration": 4.159
+    },
+    {
+      "lang": "en",
+      "text": "even more important for those apps that",
+      "offset": 5.839,
+      "duration": 4.561
+    },
+    {
+      "lang": "en",
+      "text": "you have sufficient defense in place for",
+      "offset": 7.919,
+      "duration": 5.121
+    },
+    {
+      "lang": "en",
+      "text": "your well any endpoint. But I would say",
+      "offset": 10.4,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "especially for your AI endpoints, every",
+      "offset": 13.04,
+      "duration": 4.239
+    },
+    {
+      "lang": "en",
+      "text": "request may actually incur a lot of",
+      "offset": 15.36,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "cost. So if there is maybe uh an",
+      "offset": 17.279,
+      "duration": 4.961
+    },
+    {
+      "lang": "en",
+      "text": "attacker trying to drain your tokens,",
+      "offset": 19.76,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "they may fire off a lot of requests to",
+      "offset": 22.24,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "your API endpoint. And if you're making",
+      "offset": 24.48,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "a call to an AI service, you know, that",
+      "offset": 26.64,
+      "duration": 4.879
+    },
+    {
+      "lang": "en",
+      "text": "may be a few cents every incoming",
+      "offset": 28.96,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "request. And so if an attacker is",
+      "offset": 31.519,
+      "duration": 4.801
+    },
+    {
+      "lang": "en",
+      "text": "sending 50,000 requests per second, you",
+      "offset": 33.28,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "could potentially lose a lot of money if",
+      "offset": 36.32,
+      "duration": 3.04
+    },
+    {
+      "lang": "en",
+      "text": "you don't have any protections. Now,",
+      "offset": 38,
+      "duration": 3.12
+    },
+    {
+      "lang": "en",
+      "text": "it's not only about external attackers.",
+      "offset": 39.36,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "There are other reasons why this could",
+      "offset": 41.12,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "go wrong. Maybe a competitor is creating",
+      "offset": 43.04,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "an account in your app. They're trying",
+      "offset": 45.28,
+      "duration": 3.759
+    },
+    {
+      "lang": "en",
+      "text": "to drain your wallet. It may also be a",
+      "offset": 46.8,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "programming mistake where you have some",
+      "offset": 49.039,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "kind of loop in your client side app",
+      "offset": 50.64,
+      "duration": 3.759
+    },
+    {
+      "lang": "en",
+      "text": "running in the user's browser",
+      "offset": 52.719,
+      "duration": 4.081
+    },
+    {
+      "lang": "en",
+      "text": "continuously making requests to the",
+      "offset": 54.399,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "server. So it may actually hit the API",
+      "offset": 56.8,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "endpoint over and over again even when",
+      "offset": 59.359,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "you don't need to simply because of a",
+      "offset": 61.28,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "programming mistake. And so this is",
+      "offset": 62.719,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "another what you could say risk factor.",
+      "offset": 64.64,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "And of course you may have other",
+      "offset": 67.119,
+      "duration": 3.281
+    },
+    {
+      "lang": "en",
+      "text": "services in your system that may also",
+      "offset": 68.4,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "hit it and there may also be some kind",
+      "offset": 70.4,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "of uh mistake. So it's not always going",
+      "offset": 71.92,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "to be some deliberate attacker or",
+      "offset": 74.56,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "something on purpose. It could also be a",
+      "offset": 76.88,
+      "duration": 2.879
+    },
+    {
+      "lang": "en",
+      "text": "mistake, right? Maybe you're building an",
+      "offset": 78.56,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "XJS app. Um, but doesn't matter what",
+      "offset": 79.759,
+      "duration": 4.241
+    },
+    {
+      "lang": "en",
+      "text": "framework you use it. Conceptually, it's",
+      "offset": 81.92,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "the same, but you can have an API",
+      "offset": 84,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "endpoint. So, just as an example, I have",
+      "offset": 86.32,
+      "duration": 4.159
+    },
+    {
+      "lang": "en",
+      "text": "a text summarizer app here, right?",
+      "offset": 88.32,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "People just have a bunch of text. They",
+      "offset": 90.479,
+      "duration": 3.841
+    },
+    {
+      "lang": "en",
+      "text": "can click on the button and what that",
+      "offset": 92.56,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "will do is from the from the user's",
+      "offset": 94.32,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "browser, there's going to be a request",
+      "offset": 97.2,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "to my server side. So, in this app,",
+      "offset": 99.28,
+      "duration": 4.479
+    },
+    {
+      "lang": "en",
+      "text": "since it's a NextJS app, so here in",
+      "offset": 101.6,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "Next.js, I can do SL API/ AI for my URL.",
+      "offset": 103.759,
+      "duration": 5.68
+    },
+    {
+      "lang": "en",
+      "text": "I can use route.ts. Of course, I could",
+      "offset": 107.04,
+      "duration": 5.439
+    },
+    {
+      "lang": "en",
+      "text": "have also simply used / API/summarize,",
+      "offset": 109.439,
+      "duration": 5.281
+    },
+    {
+      "lang": "en",
+      "text": "but just to emphasize that this API",
+      "offset": 112.479,
+      "duration": 4.801
+    },
+    {
+      "lang": "en",
+      "text": "endpoint is using an AI service. Of",
+      "offset": 114.72,
+      "duration": 3.439
+    },
+    {
+      "lang": "en",
+      "text": "course, you may use a different",
+      "offset": 117.28,
+      "duration": 2.4
+    },
+    {
+      "lang": "en",
+      "text": "framework. The concepts are the same.",
+      "offset": 118.159,
+      "duration": 3.121
+    },
+    {
+      "lang": "en",
+      "text": "The point is you will ultimately get",
+      "offset": 119.68,
+      "duration": 3.439
+    },
+    {
+      "lang": "en",
+      "text": "some incoming requests. We can get the",
+      "offset": 121.28,
+      "duration": 3.28
+    },
+    {
+      "lang": "en",
+      "text": "data from there. In this case, the",
+      "offset": 123.119,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "actual text that the user has submitted.",
+      "offset": 124.56,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "And then at some point, we want to use",
+      "offset": 126.799,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "an AI service. Now, I'm using OpenAI as",
+      "offset": 128.64,
+      "duration": 3.679
+    },
+    {
+      "lang": "en",
+      "text": "an example here. There are other",
+      "offset": 131.039,
+      "duration": 3.681
+    },
+    {
+      "lang": "en",
+      "text": "services of course, but typically as of",
+      "offset": 132.319,
+      "duration": 4.961
+    },
+    {
+      "lang": "en",
+      "text": "recording, this type of request may cost",
+      "offset": 134.72,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "you a little bit. Of course, if it's",
+      "offset": 137.28,
+      "duration": 3.28
+    },
+    {
+      "lang": "en",
+      "text": "just one request here with a little bit",
+      "offset": 138.8,
+      "duration": 4.159
+    },
+    {
+      "lang": "en",
+      "text": "of text, it's very cheap. But users may",
+      "offset": 140.56,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "also submit a very large body of text.",
+      "offset": 142.959,
+      "duration": 4.881
+    },
+    {
+      "lang": "en",
+      "text": "That's actually another uh attack factor",
+      "offset": 145.76,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "you could say where they deliberately",
+      "offset": 147.84,
+      "duration": 3.759
+    },
+    {
+      "lang": "en",
+      "text": "put a lot of a lot of text in there so",
+      "offset": 149.44,
+      "duration": 4.079
+    },
+    {
+      "lang": "en",
+      "text": "that the actual request will cost a lot",
+      "offset": 151.599,
+      "duration": 3.441
+    },
+    {
+      "lang": "en",
+      "text": "of tokens, right? Because you're sending",
+      "offset": 153.519,
+      "duration": 3.601
+    },
+    {
+      "lang": "en",
+      "text": "this massive request over to your AI",
+      "offset": 155.04,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "service. So there are things we can do",
+      "offset": 157.12,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "both at the AI service level as well as",
+      "offset": 159.12,
+      "duration": 5.119
+    },
+    {
+      "lang": "en",
+      "text": "before we even get to there. So very",
+      "offset": 162.16,
+      "duration": 4.799
+    },
+    {
+      "lang": "en",
+      "text": "quickly at the AI service level one of",
+      "offset": 164.239,
+      "duration": 4.961
+    },
+    {
+      "lang": "en",
+      "text": "the things we can do is simply specify",
+      "offset": 166.959,
+      "duration": 5.201
+    },
+    {
+      "lang": "en",
+      "text": "and actually they now mention max",
+      "offset": 169.2,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "completion tokens. Basically we can",
+      "offset": 172.16,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "specify an upper bound for the number of",
+      "offset": 174.4,
+      "duration": 3.919
+    },
+    {
+      "lang": "en",
+      "text": "tokens that can be generated for a",
+      "offset": 176.4,
+      "duration": 4.479
+    },
+    {
+      "lang": "en",
+      "text": "completion. This helps us protect",
+      "offset": 178.319,
+      "duration": 5.121
+    },
+    {
+      "lang": "en",
+      "text": "against some attacker trying to extract",
+      "offset": 180.879,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "a huge response which cost a lot in",
+      "offset": 183.44,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "tokens. And something else that I",
+      "offset": 185.599,
+      "duration": 3.841
+    },
+    {
+      "lang": "en",
+      "text": "learned about actually from OpenAI a few",
+      "offset": 187.04,
+      "duration": 4.559
+    },
+    {
+      "lang": "en",
+      "text": "months ago is that you can actually also",
+      "offset": 189.44,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "pass along the user ID or some user",
+      "offset": 191.599,
+      "duration": 5.601
+    },
+    {
+      "lang": "en",
+      "text": "identification with the request. So what",
+      "offset": 194.72,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "I can do is for example user you can see",
+      "offset": 197.2,
+      "duration": 4.959
+    },
+    {
+      "lang": "en",
+      "text": "it is a parameter here. I can pass along",
+      "offset": 199.36,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "the user ID here. So if I'm using some",
+      "offset": 202.159,
+      "duration": 5.121
+    },
+    {
+      "lang": "en",
+      "text": "kind of authentication system here I can",
+      "offset": 204.4,
+      "duration": 4.559
+    },
+    {
+      "lang": "en",
+      "text": "maybe get the user ID. Let's just",
+      "offset": 207.28,
+      "duration": 4.959
+    },
+    {
+      "lang": "en",
+      "text": "hardcode it, write some ID, and then I",
+      "offset": 208.959,
+      "duration": 5.601
+    },
+    {
+      "lang": "en",
+      "text": "can use it here actually and pass it",
+      "offset": 212.239,
+      "duration": 4.801
+    },
+    {
+      "lang": "en",
+      "text": "along to OpenAI. End user IDs in your",
+      "offset": 214.56,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "request can be a useful tool to help",
+      "offset": 217.04,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "OpenAI monitor and detect abuse. So, it",
+      "offset": 219.12,
+      "duration": 4.399
+    },
+    {
+      "lang": "en",
+      "text": "should be something that uniquely",
+      "offset": 221.92,
+      "duration": 4.399
+    },
+    {
+      "lang": "en",
+      "text": "identifies a user. And if you're using a",
+      "offset": 223.519,
+      "duration": 4.401
+    },
+    {
+      "lang": "en",
+      "text": "username or email address, they",
+      "offset": 226.319,
+      "duration": 3.041
+    },
+    {
+      "lang": "en",
+      "text": "recommend hashing it so you're not",
+      "offset": 227.92,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "actually sending along sensitive",
+      "offset": 229.36,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "information about the user. And even if",
+      "offset": 231.44,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "you have a a product where non-logged in",
+      "offset": 233.76,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "users can use it, you can send a session",
+      "offset": 236.08,
+      "duration": 5.92
+    },
+    {
+      "lang": "en",
+      "text": "ID instead. So this may help OpenAI",
+      "offset": 238.56,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "detect some abuse and link it to a",
+      "offset": 242,
+      "duration": 4.319
+    },
+    {
+      "lang": "en",
+      "text": "particular user. So that's another thing",
+      "offset": 244.56,
+      "duration": 3.679
+    },
+    {
+      "lang": "en",
+      "text": "I think that is quite underrated. So",
+      "offset": 246.319,
+      "duration": 3.441
+    },
+    {
+      "lang": "en",
+      "text": "these are some very simple things we can",
+      "offset": 248.239,
+      "duration": 3.761
+    },
+    {
+      "lang": "en",
+      "text": "do at the AI service level. You need to",
+      "offset": 249.76,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "look at the service that you're trying",
+      "offset": 252,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "to use and usually they'll have some",
+      "offset": 253.68,
+      "duration": 5.6
+    },
+    {
+      "lang": "en",
+      "text": "little things like this that can help",
+      "offset": 256.32,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "you a little bit. Now unfortunately this",
+      "offset": 259.28,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "is not enough. So there's going to be a",
+      "offset": 261.28,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "bunch of other things that we want to do",
+      "offset": 263.04,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "before we even make that API call to",
+      "offset": 264.8,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "this AI service. There are some other",
+      "offset": 267.6,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "things we want to do before that. And I",
+      "offset": 269.6,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "would say the most important one is",
+      "offset": 271.84,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "going to be rate limiting. We don't even",
+      "offset": 273.52,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "want to invoke anything that could",
+      "offset": 275.6,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "potentially be costly if we don't need",
+      "offset": 277.36,
+      "duration": 3.839
+    },
+    {
+      "lang": "en",
+      "text": "to. If the user is spamming, we can",
+      "offset": 279.36,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "already detect that and stop the request",
+      "offset": 281.199,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "from continuing before we make the",
+      "offset": 283.68,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "actual API call. Right? So we may we may",
+      "offset": 285.759,
+      "duration": 4.081
+    },
+    {
+      "lang": "en",
+      "text": "already want to have some kind of rate",
+      "offset": 288.24,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "limiting check. Now, for rate limiting,",
+      "offset": 289.84,
+      "duration": 2.88
+    },
+    {
+      "lang": "en",
+      "text": "there are a couple of different",
+      "offset": 291.84,
+      "duration": 2.72
+    },
+    {
+      "lang": "en",
+      "text": "algorithms, and I actually think Arjot",
+      "offset": 292.72,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "has a great article on this. They are",
+      "offset": 294.56,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "also today's sponsor. I've worked with",
+      "offset": 296.24,
+      "duration": 3.2
+    },
+    {
+      "lang": "en",
+      "text": "them in the past. I had a good time",
+      "offset": 298.08,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "using them, and they list the algorithms",
+      "offset": 299.44,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "here that they support. And one of them",
+      "offset": 301.44,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "actually integrates really nicely with",
+      "offset": 303.6,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "an a an AI use case. But let's actually",
+      "offset": 305.6,
+      "duration": 4.319
+    },
+    {
+      "lang": "en",
+      "text": "just get a sense of the three different",
+      "offset": 308.24,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "options you have for rate limiting here.",
+      "offset": 309.919,
+      "duration": 4.161
+    },
+    {
+      "lang": "en",
+      "text": "The first one is an easy one. It's a",
+      "offset": 312,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "fixed window. So, for example, each",
+      "offset": 314.08,
+      "duration": 5.6
+    },
+    {
+      "lang": "en",
+      "text": "minute the user gets 10 requests and",
+      "offset": 316.8,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "that's it. So if the user has used those",
+      "offset": 319.68,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "10, they have to wait until that 1",
+      "offset": 322.16,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "minute window is finished. And then once",
+      "offset": 324.16,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "the 1 minute is over, there's a new",
+      "offset": 326.56,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "minute and there's a a new 10 requests",
+      "offset": 328.32,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "they can make. Okay, very simple and",
+      "offset": 330.72,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "it's useful when you want to apply a",
+      "offset": 332.8,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "simple fixed limit. U just I would say",
+      "offset": 334.32,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "just to get started I guess and there",
+      "offset": 336.88,
+      "duration": 3.039
+    },
+    {
+      "lang": "en",
+      "text": "are some downsides. So let's actually",
+      "offset": 338.4,
+      "duration": 3.12
+    },
+    {
+      "lang": "en",
+      "text": "also take a look at the other ones.",
+      "offset": 339.919,
+      "duration": 3.681
+    },
+    {
+      "lang": "en",
+      "text": "Sliding window. So in this case we're",
+      "offset": 341.52,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "sort of shifting over the window and",
+      "offset": 343.6,
+      "duration": 3.599
+    },
+    {
+      "lang": "en",
+      "text": "it's a little bit more sophisticated",
+      "offset": 345.68,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "than the fixed window. They're very",
+      "offset": 347.199,
+      "duration": 3.121
+    },
+    {
+      "lang": "en",
+      "text": "similar. It's just that this one's a",
+      "offset": 349.12,
+      "duration": 2.56
+    },
+    {
+      "lang": "en",
+      "text": "little bit more dynamic. If you want to",
+      "offset": 350.32,
+      "duration": 3.2
+    },
+    {
+      "lang": "en",
+      "text": "look at the examples, then I recommend",
+      "offset": 351.68,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "that you check out this article. But for",
+      "offset": 353.52,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "an AI application, I would say a token",
+      "offset": 355.68,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "bucket is going to be a very appealing",
+      "offset": 358,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "algorithm. So in this case, we're",
+      "offset": 360.56,
+      "duration": 3.199
+    },
+    {
+      "lang": "en",
+      "text": "dealing well actually literally with",
+      "offset": 362.24,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "token. So we may have a bucket and in",
+      "offset": 363.759,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "there we have a bunch of tokens. So",
+      "offset": 366.72,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "whenever the user is using one token, we",
+      "offset": 368.479,
+      "duration": 4.481
+    },
+    {
+      "lang": "en",
+      "text": "just take one out, right? So we just",
+      "offset": 371.28,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "take one out and if there are no tokens",
+      "offset": 372.96,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "left. So at some point the user has made",
+      "offset": 375.6,
+      "duration": 5.039
+    },
+    {
+      "lang": "en",
+      "text": "1 2 3 4 5 6 has used six tokens. Now",
+      "offset": 377.44,
+      "duration": 5.199
+    },
+    {
+      "lang": "en",
+      "text": "there are no tokens left and the user is",
+      "offset": 380.639,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "blocked because there is no there are no",
+      "offset": 382.639,
+      "duration": 4.961
+    },
+    {
+      "lang": "en",
+      "text": "tokens left. However with this algorithm",
+      "offset": 384.639,
+      "duration": 5.921
+    },
+    {
+      "lang": "en",
+      "text": "the bucket will refill every 10 seconds",
+      "offset": 387.6,
+      "duration": 4.879
+    },
+    {
+      "lang": "en",
+      "text": "let's say. So every 10 seconds there",
+      "offset": 390.56,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "will be a new token available right. So",
+      "offset": 392.479,
+      "duration": 4.481
+    },
+    {
+      "lang": "en",
+      "text": "every right then another one after 10",
+      "offset": 394.56,
+      "duration": 4.479
+    },
+    {
+      "lang": "en",
+      "text": "seconds another one after 10 seconds. So",
+      "offset": 396.96,
+      "duration": 4.239
+    },
+    {
+      "lang": "en",
+      "text": "the user simply has to wait for the",
+      "offset": 399.039,
+      "duration": 4.401
+    },
+    {
+      "lang": "en",
+      "text": "bucket to refill. And Arcjet also shows",
+      "offset": 401.199,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "you how to use that here in your",
+      "offset": 403.44,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "application. So let me actually copy",
+      "offset": 405.039,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "this and show you how this would work. I",
+      "offset": 406.88,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "would instantiate Arcjet here. I have",
+      "offset": 408.639,
+      "duration": 3.761
+    },
+    {
+      "lang": "en",
+      "text": "already installed their packages. You",
+      "offset": 410.88,
+      "duration": 2.96
+    },
+    {
+      "lang": "en",
+      "text": "can read about it in the documentation.",
+      "offset": 412.4,
+      "duration": 3.2
+    },
+    {
+      "lang": "en",
+      "text": "I have other videos with Arcjet as well.",
+      "offset": 413.84,
+      "duration": 3.199
+    },
+    {
+      "lang": "en",
+      "text": "If you want to see how to set it up from",
+      "offset": 415.6,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "scratch in nextJS, you will need an API",
+      "offset": 417.039,
+      "duration": 4.241
+    },
+    {
+      "lang": "en",
+      "text": "key. So you can log into their dashboard",
+      "offset": 419.12,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "and you can create a new site. I've",
+      "offset": 421.28,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "created a new project here and it will",
+      "offset": 423.36,
+      "duration": 4.399
+    },
+    {
+      "lang": "en",
+      "text": "give you an API key. So I have an API",
+      "offset": 425.84,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "key. Now it needs to know what to track",
+      "offset": 427.759,
+      "duration": 3.761
+    },
+    {
+      "lang": "en",
+      "text": "by. So in this case it's going to be an",
+      "offset": 429.52,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "IP address let's say. And then here we",
+      "offset": 431.52,
+      "duration": 4.079
+    },
+    {
+      "lang": "en",
+      "text": "can specify the rule for arjet. So we",
+      "offset": 433.52,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "will actually just pass the incoming",
+      "offset": 435.599,
+      "duration": 4.481
+    },
+    {
+      "lang": "en",
+      "text": "request to arcjet. We'll let arcjet make",
+      "offset": 437.28,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "the make the decision on whether it",
+      "offset": 440.08,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "should be allowed to continue or not.",
+      "offset": 442.24,
+      "duration": 3.359
+    },
+    {
+      "lang": "en",
+      "text": "And we can have special rules for that.",
+      "offset": 444.08,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "So in this case I have a token bucket",
+      "offset": 445.599,
+      "duration": 3.681
+    },
+    {
+      "lang": "en",
+      "text": "rule. We can have other rules like the",
+      "offset": 447.68,
+      "duration": 3.359
+    },
+    {
+      "lang": "en",
+      "text": "other algorithms that I just showed you",
+      "offset": 449.28,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "but also other things not just uh rate",
+      "offset": 451.039,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "limiting. There are other rules we can",
+      "offset": 453.28,
+      "duration": 3.199
+    },
+    {
+      "lang": "en",
+      "text": "put in place. I'll show that in a second",
+      "offset": 455.039,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "as well. But with a token bucket, we",
+      "offset": 456.479,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "basically specify the uh total capacity.",
+      "offset": 458.479,
+      "duration": 4.881
+    },
+    {
+      "lang": "en",
+      "text": "So how many can be in the bucket in",
+      "offset": 461.599,
+      "duration": 3.521
+    },
+    {
+      "lang": "en",
+      "text": "total and then by how much it should be",
+      "offset": 463.36,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "refilled every well 60 seconds in this",
+      "offset": 465.12,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "case. So 10 tokens are going to be added",
+      "offset": 467.68,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "every 60 seconds. But at most it's going",
+      "offset": 470.24,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "to be 100 tokens in the bucket. So now I",
+      "offset": 472.96,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "have instantiated arcj. So I get this AJ",
+      "offset": 474.8,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "variable. And now here we can we can",
+      "offset": 477.44,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "actually use it. Before we make the call",
+      "offset": 479.28,
+      "duration": 5.199
+    },
+    {
+      "lang": "en",
+      "text": "to open AAI, I'm adding one extra layer",
+      "offset": 481.12,
+      "duration": 5.759
+    },
+    {
+      "lang": "en",
+      "text": "of defense here with arcj. So I can part",
+      "offset": 484.479,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "I can pass the request to arcjet and I",
+      "offset": 486.879,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "can also specify then here how many",
+      "offset": 489.599,
+      "duration": 3.761
+    },
+    {
+      "lang": "en",
+      "text": "tokens should be taken out of that",
+      "offset": 491.599,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "bucket. Right? So in this case I'm just",
+      "offset": 493.36,
+      "duration": 5.279
+    },
+    {
+      "lang": "en",
+      "text": "using the the default example here and",
+      "offset": 495.039,
+      "duration": 5.761
+    },
+    {
+      "lang": "en",
+      "text": "then arcjet will make a decision. So we",
+      "offset": 498.639,
+      "duration": 4.161
+    },
+    {
+      "lang": "en",
+      "text": "can use that to check if it was denied",
+      "offset": 500.8,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "or not. So if archad is saying hm now",
+      "offset": 502.8,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "has already gone over the limit. We can",
+      "offset": 505.12,
+      "duration": 2.96
+    },
+    {
+      "lang": "en",
+      "text": "check for that here because there could",
+      "offset": 506.8,
+      "duration": 3.119
+    },
+    {
+      "lang": "en",
+      "text": "be other rules and so it could be denied",
+      "offset": 508.08,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "for other reasons. But if it's the rate",
+      "offset": 509.919,
+      "duration": 4.081
+    },
+    {
+      "lang": "en",
+      "text": "limit reason, we're already going to",
+      "offset": 512.24,
+      "duration": 3.919
+    },
+    {
+      "lang": "en",
+      "text": "return out of the out of the request",
+      "offset": 514,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "here out of the request response cycle",
+      "offset": 516.159,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "here and we'll just say something like",
+      "offset": 518.08,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "too many requests. That is the core of",
+      "offset": 519.519,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "it. Now, of course, I'm just using some",
+      "offset": 522.08,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "random numbers here, right? I'm only",
+      "offset": 523.839,
+      "duration": 5.041
+    },
+    {
+      "lang": "en",
+      "text": "subtracting one token here, but of",
+      "offset": 526.24,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "course, ideally, we can make it more",
+      "offset": 528.88,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "customized to what the user is actually",
+      "offset": 531.36,
+      "duration": 3.599
+    },
+    {
+      "lang": "en",
+      "text": "submitting. So if the user is submitting",
+      "offset": 533.36,
+      "duration": 3.599
+    },
+    {
+      "lang": "en",
+      "text": "a huge there should be more tokens",
+      "offset": 534.959,
+      "duration": 4.481
+    },
+    {
+      "lang": "en",
+      "text": "subtracted than if it's a smaller piece",
+      "offset": 536.959,
+      "duration": 5.121
+    },
+    {
+      "lang": "en",
+      "text": "of text let's say right. So actually I",
+      "offset": 539.44,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "may actually want to have a total",
+      "offset": 542.08,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "capacity of 5,000 tokens and every hour",
+      "offset": 543.68,
+      "duration": 5.68
+    },
+    {
+      "lang": "en",
+      "text": "it gets 2,000 tokens revealed. And then",
+      "offset": 546.64,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "how many should we subtract when there",
+      "offset": 549.36,
+      "duration": 2.96
+    },
+    {
+      "lang": "en",
+      "text": "is an incoming request? Well maybe I",
+      "offset": 550.72,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "want to estimate the number of tokens in",
+      "offset": 552.32,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "the text and use that from the bucket.",
+      "offset": 555.12,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "Okay. So there are some libraries out",
+      "offset": 557.36,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "there that allow you to estimate the",
+      "offset": 558.88,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "tokens. But here we get an incoming text",
+      "offset": 560.8,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "from the user and I can uh use a",
+      "offset": 562.8,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "function from one of those libraries",
+      "offset": 565.04,
+      "duration": 3.04
+    },
+    {
+      "lang": "en",
+      "text": "just as an example that there may be",
+      "offset": 566.48,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "better ones for your use case. I need to",
+      "offset": 568.08,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "sort of simulate that request I'm going",
+      "offset": 570.24,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "to make with that library and it will",
+      "offset": 572.16,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "give me the estimate of the tokens. It's",
+      "offset": 574.24,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "not very straightforward on how to",
+      "offset": 576.24,
+      "duration": 2.96
+    },
+    {
+      "lang": "en",
+      "text": "calculate the tokens. There are some",
+      "offset": 577.76,
+      "duration": 3.28
+    },
+    {
+      "lang": "en",
+      "text": "subtle nuances that you need to be aware",
+      "offset": 579.2,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "of. So it's quite hard to calculate it",
+      "offset": 581.04,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "yourself but we can get a rough estimate",
+      "offset": 582.64,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "and I can use that to subtract from the",
+      "offset": 585.12,
+      "duration": 5.92
+    },
+    {
+      "lang": "en",
+      "text": "tokens here. Let me actually log and see",
+      "offset": 588.64,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "just to get a feel for how much that",
+      "offset": 591.04,
+      "duration": 4.799
+    },
+    {
+      "lang": "en",
+      "text": "would be. So if I log this, if I just",
+      "offset": 593.12,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "submit this for example, if I submit",
+      "offset": 595.839,
+      "duration": 4.641
+    },
+    {
+      "lang": "en",
+      "text": "this, you can see I get estimated tokens",
+      "offset": 597.68,
+      "duration": 5.68
+    },
+    {
+      "lang": "en",
+      "text": "here of 192. So actually this is what I",
+      "offset": 600.48,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "submitted and this is estimated to be",
+      "offset": 603.36,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "192 token, right? So now I'm more",
+      "offset": 605.36,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "dynamically working with the tokens in",
+      "offset": 607.2,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "the rate limiting. So I think it",
+      "offset": 610.64,
+      "duration": 4.639
+    },
+    {
+      "lang": "en",
+      "text": "integrates nicely with the AI specific",
+      "offset": 612.08,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "uh use case that you may have as well. I",
+      "offset": 615.279,
+      "duration": 4.321
+    },
+    {
+      "lang": "en",
+      "text": "can actually also track by user ID and",
+      "offset": 617.44,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "then here when I'm using arcj here I can",
+      "offset": 619.6,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "specify the user ID here as well. So now",
+      "offset": 622.56,
+      "duration": 4.399
+    },
+    {
+      "lang": "en",
+      "text": "I'm also passing it to arcj and I'm also",
+      "offset": 624.8,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "passing it to the AI service provider.",
+      "offset": 626.959,
+      "duration": 3.841
+    },
+    {
+      "lang": "en",
+      "text": "Now for the estimate by the way it may",
+      "offset": 629.44,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "not be perfect. So the actual amount of",
+      "offset": 630.8,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "tokens used by the AI service provider",
+      "offset": 633.12,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "may deviate from the estimate here right",
+      "offset": 635.44,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "because here we are calculating the",
+      "offset": 638.64,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "incoming text but we don't know what the",
+      "offset": 640.24,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "response text is going to be and",
+      "offset": 642.64,
+      "duration": 3.439
+    },
+    {
+      "lang": "en",
+      "text": "typically you pay for both. You pay for",
+      "offset": 644.16,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "the prompt, you pay for the tokens, the",
+      "offset": 646.079,
+      "duration": 4.241
+    },
+    {
+      "lang": "en",
+      "text": "incoming tokens and the outgoing tokens,",
+      "offset": 647.76,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "the response tokens. So the actual total",
+      "offset": 650.32,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "amount of tokens used, you you simply",
+      "offset": 652.72,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "don't know yet. Now the AI service",
+      "offset": 655.04,
+      "duration": 3.359
+    },
+    {
+      "lang": "en",
+      "text": "provider may give you the amount of",
+      "offset": 656.64,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "tokens used in the result. So you can",
+      "offset": 658.399,
+      "duration": 4.081
+    },
+    {
+      "lang": "en",
+      "text": "then take that result and then perhaps",
+      "offset": 660.48,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "for the next request increase the",
+      "offset": 662.48,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "estimate or decrease the estimate to",
+      "offset": 664.48,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "make it match up better with what the",
+      "offset": 667.68,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "actual user has used so far. Right? So",
+      "offset": 669.76,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "there is a little bit of engineering",
+      "offset": 671.92,
+      "duration": 3.599
+    },
+    {
+      "lang": "en",
+      "text": "work involved here, but I think this is",
+      "offset": 673.2,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "a good start. Now, of course, any API",
+      "offset": 675.519,
+      "duration": 4.081
+    },
+    {
+      "lang": "en",
+      "text": "endpoint also needs to protect against",
+      "offset": 677.6,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "the common security risks any regardless",
+      "offset": 679.6,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "of if you're using AI services or not.",
+      "offset": 682.48,
+      "duration": 5.68
+    },
+    {
+      "lang": "en",
+      "text": "So OWASP actually lists the most common",
+      "offset": 684.88,
+      "duration": 5.199
+    },
+    {
+      "lang": "en",
+      "text": "security risks every few years. So you",
+      "offset": 688.16,
+      "duration": 3.2
+    },
+    {
+      "lang": "en",
+      "text": "may want to take a look at that. Now,",
+      "offset": 690.079,
+      "duration": 4.161
+    },
+    {
+      "lang": "en",
+      "text": "Arcjet offers a shield option as a rule",
+      "offset": 691.36,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "as well, and it's basically like an",
+      "offset": 694.24,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "umbrella against some of the common",
+      "offset": 695.92,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "attacks there as well. So I can actually",
+      "offset": 697.76,
+      "duration": 4.319
+    },
+    {
+      "lang": "en",
+      "text": "also add more things here to the list of",
+      "offset": 700,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "rules. It doesn't have to be only rate",
+      "offset": 702.079,
+      "duration": 3.681
+    },
+    {
+      "lang": "en",
+      "text": "limiting this. We can also add this",
+      "offset": 703.92,
+      "duration": 3.919
+    },
+    {
+      "lang": "en",
+      "text": "shield option here. So then if the",
+      "offset": 705.76,
+      "duration": 5.199
+    },
+    {
+      "lang": "en",
+      "text": "request is denied, we can check for that",
+      "offset": 707.839,
+      "duration": 4.641
+    },
+    {
+      "lang": "en",
+      "text": "here as well. We can do something like",
+      "offset": 710.959,
+      "duration": 4.081
+    },
+    {
+      "lang": "en",
+      "text": "this. And actually we want to return out",
+      "offset": 712.48,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "of this function regardless of what the",
+      "offset": 715.04,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "reason was. So let me just duplicate",
+      "offset": 717.04,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "this just to be sure. Right? So as long",
+      "offset": 718.56,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "as it was denied, we just want to return",
+      "offset": 720.88,
+      "duration": 3.28
+    },
+    {
+      "lang": "en",
+      "text": "out of here. So I'm adding a shield",
+      "offset": 722.48,
+      "duration": 3.2
+    },
+    {
+      "lang": "en",
+      "text": "here. What other things we can add here",
+      "offset": 724.16,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "with arcjet? Well, there are some other",
+      "offset": 725.68,
+      "duration": 4.399
+    },
+    {
+      "lang": "en",
+      "text": "things as well like bot protection. So,",
+      "offset": 727.6,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "so if you publish anything online",
+      "offset": 730.079,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "website uh API endpoints, you will see",
+      "offset": 731.6,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "that some of the actually a lot of",
+      "offset": 734.079,
+      "duration": 3.361
+    },
+    {
+      "lang": "en",
+      "text": "requests that you will get will not be",
+      "offset": 735.92,
+      "duration": 3.039
+    },
+    {
+      "lang": "en",
+      "text": "from actual people, it will be from",
+      "offset": 737.44,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "bots. And there are so many bots these",
+      "offset": 738.959,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "days and maybe you don't want to allow",
+      "offset": 741.2,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "all the bots to make requests. So there",
+      "offset": 743.279,
+      "duration": 4.641
+    },
+    {
+      "lang": "en",
+      "text": "is also a detect bot rule here from",
+      "offset": 745.6,
+      "duration": 4.239
+    },
+    {
+      "lang": "en",
+      "text": "Arch. And so maybe you want to allow",
+      "offset": 747.92,
+      "duration": 4.719
+    },
+    {
+      "lang": "en",
+      "text": "search engine bots, but maybe not um",
+      "offset": 749.839,
+      "duration": 4.641
+    },
+    {
+      "lang": "en",
+      "text": "bots. For example, if you share",
+      "offset": 752.639,
+      "duration": 3.841
+    },
+    {
+      "lang": "en",
+      "text": "something in a chat application, they",
+      "offset": 754.48,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "may show like a preview of the website.",
+      "offset": 756.48,
+      "duration": 3.599
+    },
+    {
+      "lang": "en",
+      "text": "So, there's usually a bot making a",
+      "offset": 758.56,
+      "duration": 3.519
+    },
+    {
+      "lang": "en",
+      "text": "request to your site to generate that",
+      "offset": 760.079,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "preview. Maybe you don't want to allow",
+      "offset": 762.079,
+      "duration": 3.681
+    },
+    {
+      "lang": "en",
+      "text": "that. For example, ARJ has a full list.",
+      "offset": 763.519,
+      "duration": 3.681
+    },
+    {
+      "lang": "en",
+      "text": "So, check that out if you're interested.",
+      "offset": 765.76,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "Now, Arjet also can detect sensitive",
+      "offset": 767.2,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "information. What people may do is they",
+      "offset": 769.68,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "may actually also uh submit sensitive",
+      "offset": 771.6,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "information in here. For example, their",
+      "offset": 774.16,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "emails or telephone numbers even. And if",
+      "offset": 775.92,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "you're going to store this in your",
+      "offset": 778.48,
+      "duration": 3.359
+    },
+    {
+      "lang": "en",
+      "text": "database, you want to be careful with",
+      "offset": 780.32,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "that because of regulation. So it's nice",
+      "offset": 781.839,
+      "duration": 4.481
+    },
+    {
+      "lang": "en",
+      "text": "if we can detect sensitive information",
+      "offset": 783.76,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "incoming into our API route as well or",
+      "offset": 786.32,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "even decline the request if it contains",
+      "offset": 788.72,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "sensitive email. So it there is also a",
+      "offset": 791.2,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "sensitive email rule that you may want",
+      "offset": 793.2,
+      "duration": 2.96
+    },
+    {
+      "lang": "en",
+      "text": "to take a look at. And you can even",
+      "offset": 794.8,
+      "duration": 3.599
+    },
+    {
+      "lang": "en",
+      "text": "protect your signup form with ARJ as",
+      "offset": 796.16,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "well. They have like a template here out",
+      "offset": 798.399,
+      "duration": 3.921
+    },
+    {
+      "lang": "en",
+      "text": "of the box which combines several rules.",
+      "offset": 800.32,
+      "duration": 3.759
+    },
+    {
+      "lang": "en",
+      "text": "So with emails for example, you not only",
+      "offset": 802.32,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "want to make sure that it has like an at",
+      "offset": 804.079,
+      "duration": 4.241
+    },
+    {
+      "lang": "en",
+      "text": "symbol in there and then it's like.com",
+      "offset": 806.48,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "like the structure of the email text.",
+      "offset": 808.32,
+      "duration": 4.079
+    },
+    {
+      "lang": "en",
+      "text": "It's also you may also want to check if",
+      "offset": 810.24,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "they have like something wrong with",
+      "offset": 812.399,
+      "duration": 3.761
+    },
+    {
+      "lang": "en",
+      "text": "their MX records or if they're",
+      "offset": 813.92,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "disposable emails for example. Maybe you",
+      "offset": 816.16,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "don't want to allow that. Now I'm",
+      "offset": 818.8,
+      "duration": 3.279
+    },
+    {
+      "lang": "en",
+      "text": "instantiating archet here and I'm only",
+      "offset": 820.16,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "using it in one API endpoint here. Of",
+      "offset": 822.079,
+      "duration": 4.481
+    },
+    {
+      "lang": "en",
+      "text": "course I may want to use the exact same",
+      "offset": 824.72,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "configuration in other routes as well",
+      "offset": 826.56,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "that we can do that as well. I can even",
+      "offset": 828.24,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "put it in middleware and maybe even do",
+      "offset": 829.92,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "it for a huge chunk of my app. And in",
+      "offset": 832,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "the dashboard, by the way, you will get",
+      "offset": 834.24,
+      "duration": 3.599
+    },
+    {
+      "lang": "en",
+      "text": "an overview of the requests and if they",
+      "offset": 835.6,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "were allowed or denied. So in this case,",
+      "offset": 837.839,
+      "duration": 4.081
+    },
+    {
+      "lang": "en",
+      "text": "you could see I had two requests here.",
+      "offset": 840,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "They were both allowed and got some nice",
+      "offset": 841.92,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "analytics here as well. So if you're",
+      "offset": 844,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "suddenly seeing a lot of denied",
+      "offset": 846.32,
+      "duration": 2.72
+    },
+    {
+      "lang": "en",
+      "text": "requests, that's maybe something you",
+      "offset": 847.6,
+      "duration": 3.039
+    },
+    {
+      "lang": "en",
+      "text": "want to inspect. So hopefully now you",
+      "offset": 849.04,
+      "duration": 3.599
+    },
+    {
+      "lang": "en",
+      "text": "have a better idea of how to protect API",
+      "offset": 850.639,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "endpoints and specifically those that",
+      "offset": 852.639,
+      "duration": 3.681
+    },
+    {
+      "lang": "en",
+      "text": "will invoke some kind of AI service.",
+      "offset": 854.399,
+      "duration": 3.361
+    },
+    {
+      "lang": "en",
+      "text": "Thanks to Archad for sponsoring the",
+      "offset": 856.32,
+      "duration": 2.72
+    },
+    {
+      "lang": "en",
+      "text": "video. Check them out. You can find a",
+      "offset": 857.76,
+      "duration": 2.8
+    },
+    {
+      "lang": "en",
+      "text": "link in the description. And I want to",
+      "offset": 859.04,
+      "duration": 3.039
+    },
+    {
+      "lang": "en",
+      "text": "thank you for watching and I hope to see",
+      "offset": 860.56,
+      "duration": 4.079
+    },
+    {
+      "lang": "en",
+      "text": "you in the next one.",
+      "offset": 862.079,
+      "duration": 2.56
+    }
+  ],
+  "cleanText": "All right, let's talk about protecting your API endpoints. I know a lot of you are building AI applications, and it's even more important for those apps that you have sufficient defense in place for your, well, any endpoint. But I would say especially for your AI endpoints, every request may actually incur a lot of cost. So if there is maybe an attacker trying to drain your tokens, they may fire off a lot of requests to your API endpoint. And if you're making a call to an AI service, you know, that may be a few cents every incoming request. And so if an attacker is sending 50,000 requests per second, you could potentially lose a lot of money if you don't have any protections.\n\nNow, it's not only about external attackers. There are other reasons why this could go wrong. Maybe a competitor is creating an account in your app. They're trying to drain your wallet. It may also be a programming mistake where you have some kind of loop in your client-side app running in the user's browser continuously making requests to the server. So it may actually hit the API endpoint over and over again even when you don't need to simply because of a programming mistake. And so this is another, what you could say, risk factor. And of course, you may have other services in your system that may also hit it, and there may also be some kind of mistake. So it's not always going to be some deliberate attacker or something on purpose. It could also be a mistake, right?\n\nMaybe you're building a Next.js app. Um, but it doesn't matter what framework you use. Conceptually, it's the same, but you can have an API endpoint. So, just as an example, I have a text summarizer app here, right? People just have a bunch of text. They can click on the button, and what that will do is from the user's browser, there's going to be a request to my server-side. So, in this app, since it's a Next.js app, so here in Next.js, I can do /API/AI for my URL. I can use route.ts. Of course, I could have also simply used /API/summarize, but just to emphasize that this API endpoint is using an AI service. Of course, you may use a different framework. The concepts are the same. The point is you will ultimately get some incoming requests. We can get the data from there. In this case, the actual text that the user has submitted. And then at some point, we want to use an AI service.\n\nNow, I'm using OpenAI as an example here. There are other services, of course, but typically as of recording, this type of request may cost you a little bit. Of course, if it's just one request here with a little bit of text, it's very cheap. But users may also submit a very large body of text. That's actually another attack factor, you could say, where they deliberately put a lot of text in there so that the actual request will cost a lot of tokens, right? Because you're sending this massive request over to your AI service.\n\nSo there are things we can do both at the AI service level as well as before we even get to there. So very quickly at the AI service level, one of the things we can do is simply specify, and actually they now mention max completion tokens. Basically, we can specify an upper bound for the number of tokens that can be generated for a completion. This helps us protect against some attacker trying to extract a huge response which costs a lot in tokens. And something else that I learned about actually from OpenAI a few months ago is that you can actually also pass along the user ID or some user identification with the request. So what I can do is, for example, user, you can see it is a parameter here. I can pass along the user ID here. So if I'm using some kind of authentication system here, I can maybe get the user ID. Let's just hardcode it, write some ID, and then I can use it here actually and pass it along to OpenAI. End user IDs in your request can be a useful tool to help OpenAI monitor and detect abuse. So, it should be something that uniquely identifies a user. And if you're using a username or email address, they recommend hashing it so you're not actually sending along sensitive information about the user. And even if you have a product where non-logged in users can use it, you can send a session ID instead. So this may help OpenAI detect some abuse and link it to a particular user. So that's another thing I think that is quite underrated.\n\nSo these are some very simple things we can do at the AI service level. You need to look at the service that you're trying to use, and usually they'll have some little things like this that can help you a little bit. Now unfortunately, this is not enough. So there's going to be a bunch of other things that we want to do before we even make that API call to this AI service. There are some other things we want to do before that. And I would say the most important one is going to be rate limiting. We don't even want to invoke anything that could potentially be costly if we don't need to. If the user is spamming, we can already detect that and stop the request from continuing before we make the actual API call, right? So we may already want to have some kind of rate limiting check.\n\nNow, for rate limiting, there are a couple of different algorithms, and I actually think Arcjet has a great article on this. They are also today's sponsor. I've worked with them in the past. I had a good time using them, and they list the algorithms here that they support. And one of them actually integrates really nicely with an AI use case. But let's actually just get a sense of the three different options you have for rate limiting here. The first one is an easy one. It's a fixed window. So, for example, each minute the user gets 10 requests, and that's it. So if the user has used those 10, they have to wait until that one-minute window is finished. And then once the one minute is over, there's a new minute, and there's a new 10 requests they can make. Okay, very simple, and it's useful when you want to apply a simple fixed limit. I would say just to get started, I guess, and there are some downsides. So let's actually also take a look at the other ones.\n\nSliding window. So in this case, we're sort of shifting over the window, and it's a little bit more sophisticated than the fixed window. They're very similar. It's just that this one's a little bit more dynamic. If you want to look at the examples, then I recommend that you check out this article. But for an AI application, I would say a token bucket is going to be a very appealing algorithm. So in this case, we're dealing, well, actually literally with tokens. So we may have a bucket, and in there we have a bunch of tokens. So whenever the user is using one token, we just take one out, right? So we just take one out, and if there are no tokens left. So at some point the user has made 1, 2, 3, 4, 5, 6, has used six tokens. Now there are no tokens left, and the user is blocked because there is no, there are no tokens left. However, with this algorithm, the bucket will refill every 10 seconds, let's say. So every 10 seconds there will be a new token available, right? So every right, then another one after 10 seconds, another one after 10 seconds. So the user simply has to wait for the bucket to refill.\n\nAnd Arcjet also shows you how to use that here in your application. So let me actually copy this and show you how this would work. I would instantiate Arcjet here. I have already installed their packages. You can read about it in the documentation. I have other videos with Arcjet as well. If you want to see how to set it up from scratch in Next.js, you will need an API key. So you can log into their dashboard, and you can create a new site. I've created a new project here, and it will give you an API key. So I have an API key. Now it needs to know what to track by. So in this case, it's going to be an IP address, let's say. And then here we can specify the rule for Arcjet. So we will actually just pass the incoming request to Arcjet. We'll let Arcjet make the decision on whether it should be allowed to continue or not. And we can have special rules for that. So in this case, I have a token bucket rule. We can have other rules like the other algorithms that I just showed you, but also other things, not just rate limiting. There are other rules we can put in place. I'll show that in a second as well. But with a token bucket, we basically specify the total capacity. So how many can be in the bucket in total, and then by how much it should be refilled every, well, 60 seconds in this case. So 10 tokens are going to be added every 60 seconds. But at most, it's going to be 100 tokens in the bucket.\n\nSo now I have instantiated Arcjet. So I get this AJ variable. And now here we can, we can actually use it. Before we make the call to OpenAI, I'm adding one extra layer of defense here with Arcjet. So I can pass the request to Arcjet, and I can also specify then here how many tokens should be taken out of that bucket, right? So in this case, I'm just using the default example here, and then Arcjet will make a decision. So we can use that to check if it was denied or not. So if Archad is saying, \"Hm, now has already gone over the limit,\" we can check for that here because there could be other rules, and so it could be denied for other reasons. But if it's the rate limit reason, we're already going to return out of the, out of the request here, out of the request response cycle here, and we'll just say something like \"too many requests.\" That is the core of it.\n\nNow, of course, I'm just using some random numbers here, right? I'm only subtracting one token here, but of course, ideally, we can make it more customized to what the user is actually submitting. So if the user is submitting a huge, there should be more tokens subtracted than if it's a smaller piece of text, let's say, right? So actually, I may actually want to have a total capacity of 5,000 tokens, and every hour it gets 2,000 tokens revealed. And then how many should we subtract when there is an incoming request? Well, maybe I want to estimate the number of tokens in the text and use that from the bucket. Okay. So there are some libraries out there that allow you to estimate the tokens. But here we get an incoming text from the user, and I can use a function from one of those libraries, just as an example, that there may be better ones for your use case. I need to sort of simulate that request I'm going to make with that library, and it will give me the estimate of the tokens. It's not very straightforward on how to calculate the tokens. There are some subtle nuances that you need to be aware of. So it's quite hard to calculate it yourself, but we can get a rough estimate, and I can use that to subtract from the tokens here.\n\nLet me actually log and see just to get a feel for how much that would be. So if I log this, if I just submit this, for example, if I submit this, you can see I get estimated tokens here of 192. So actually this is what I submitted, and this is estimated to be 192 tokens, right? So now I'm more dynamically working with the tokens in the rate limiting. So I think it integrates nicely with the AI-specific use case that you may have as well. I can actually also track by user ID, and then here when I'm using Arcjet here, I can specify the user ID here as well. So now I'm also passing it to Arcjet, and I'm also passing it to the AI service provider.\n\nNow for the estimate, by the way, it may not be perfect. So the actual amount of tokens used by the AI service provider may deviate from the estimate here, right? Because here we are calculating the incoming text, but we don't know what the response text is going to be, and typically you pay for both. You pay for the prompt, you pay for the tokens, the incoming tokens and the outgoing tokens, the response tokens. So the actual total amount of tokens used, you simply don't know yet. Now the AI service provider may give you the amount of tokens used in the result. So you can then take that result and then perhaps for the next request increase the estimate or decrease the estimate to make it match up better with what the actual user has used so far, right? So there is a little bit of engineering work involved here, but I think this is a good start.\n\nNow, of course, any API endpoint also needs to protect against the common security risks, any, regardless of if you're using AI services or not. So OWASP actually lists the most common security risks every few years. So you may want to take a look at that. Now, Arcjet offers a Shield option as a rule as well, and it's basically like an umbrella against some of the common attacks there as well. So I can actually also add more things here to the list of rules. It doesn't have to be only rate limiting this. We can also add this Shield option here. So then if the request is denied, we can check for that here as well. We can do something like this. And actually we want to return out of this function regardless of what the reason was. So let me just duplicate this just to be sure, right? So as long as it was denied, we just want to return out of here.\n\nSo I'm adding a shield here. What other things we can add here with Arcjet? Well, there are some other things as well, like bot protection. So, so if you publish anything online, website, API endpoints, you will see that some of the, actually a lot of requests that you will get will not be from actual people, it will be from bots. And there are so many bots these days, and maybe you don't want to allow all the bots to make requests. So there is also a detect bot rule here from Arcjet. And so maybe you want to allow search engine bots, but maybe not bots. For example, if you share something in a chat application, they may show like a preview of the website. So, there's usually a bot making a request to your site to generate that preview. Maybe you don't want to allow that. For example, Arcjet has a full list. So, check that out if you're interested.\n\nNow, Arcjet also can detect sensitive information. What people may do is they may actually also submit sensitive information in here. For example, their emails or telephone numbers even. And if you're going to store this in your database, you want to be careful with that because of regulation. So it's nice if we can detect sensitive information incoming into our API route as well or even decline the request if it contains sensitive email. So it, there is also a sensitive email rule that you may want\n\n\nTo take a look at. And you can even\nprotect your signup form with Arcjet as\nwell. They have like a template here out\nof the box which combines several rules.\nSo with emails for example, you not only\nwant to make sure that it has like an at\nsymbol in there and then it's like .com\nlike the structure of the email text.\nIt's also you may also want to check if\nthey have like something wrong with\ntheir MX records or if they're\ndisposable emails for example. Maybe you\ndon't want to allow that. Now I'm\ninstantiating Arcjet here and I'm only\nusing it in one API endpoint here. Of\ncourse I may want to use the exact same\nconfiguration in other routes as well\nthat we can do that as well. I can even\nput it in middleware and maybe even do\nit for a huge chunk of my app. And in\nthe dashboard, by the way, you will get\nan overview of the requests and if they\nwere allowed or denied. So in this case,\nyou could see I had two requests here.\nThey were both allowed and got some nice\nanalytics here as well. So if you're\nsuddenly seeing a lot of denied\nrequests, that's maybe something you\nwant to inspect. So hopefully now you\nhave a better idea of how to protect API\nendpoints and specifically those that\nwill invoke some kind of AI service.\nThanks to Arcjet for sponsoring the\nvideo. Check them out. You can find a\nlink in the description. And I want to\nthank you for watching and I hope to see\nyou in the next one.\n",
+  "dumpedAt": "2025-07-21T18:43:26.475Z"
+}

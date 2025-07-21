@@ -1,0 +1,3142 @@
+{
+  "episodeId": "FZoMSupg37E",
+  "channelSlug": "@aidotengineer",
+  "title": "Securing Agents with Open Standards — Bobby Tiernay and Kam Sween, Auth0",
+  "publishedAt": "2025-06-30T22:55:54.000Z",
+  "rawLines": [
+    {
+      "lang": "en",
+      "text": "[Music]",
+      "offset": 1.72,
+      "duration": 6.91
+    },
+    {
+      "lang": "en",
+      "text": "Hi everybody. I'm Bobby. This is Cam.",
+      "offset": 14.88,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "And uh we're both engineers here at",
+      "offset": 17.84,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "OPZero. and we've both been working a",
+      "offset": 19.68,
+      "duration": 6.48
+    },
+    {
+      "lang": "en",
+      "text": "lot in this uh the AI space lately um",
+      "offset": 22.8,
+      "duration": 7.04
+    },
+    {
+      "lang": "en",
+      "text": "trying to come up with clear ways for",
+      "offset": 26.16,
+      "duration": 5.039
+    },
+    {
+      "lang": "en",
+      "text": "identity and access control that's",
+      "offset": 29.84,
+      "duration": 3.28
+    },
+    {
+      "lang": "en",
+      "text": "designed for a world where agents are",
+      "offset": 31.199,
+      "duration": 4.641
+    },
+    {
+      "lang": "en",
+      "text": "center stage. So that's included our",
+      "offset": 33.12,
+      "duration": 6.16
+    },
+    {
+      "lang": "en",
+      "text": "work on our oforgi platform, our ozero",
+      "offset": 35.84,
+      "duration": 5.92
+    },
+    {
+      "lang": "en",
+      "text": "mcp server and our own firstparty agent",
+      "offset": 39.28,
+      "duration": 4.959
+    },
+    {
+      "lang": "en",
+      "text": "called tenant security manager. And just",
+      "offset": 41.76,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "like everyone here, we're learning from",
+      "offset": 44.239,
+      "duration": 3.601
+    },
+    {
+      "lang": "en",
+      "text": "the community as well as we do this.",
+      "offset": 45.92,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "just the main thing is trying to get to",
+      "offset": 47.84,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "grips with what delegation and access",
+      "offset": 49.92,
+      "duration": 4.799
+    },
+    {
+      "lang": "en",
+      "text": "means in a world where agents are acting",
+      "offset": 52.48,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "on users behalf. Um and today we want to",
+      "offset": 54.719,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "share some of those lessons that we've",
+      "offset": 57.84,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "learned in this journey. And um what's",
+      "offset": 59.199,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "actually worked, what hasn't worked, and",
+      "offset": 62.32,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "a few practical ways that you can get",
+      "offset": 64.559,
+      "duration": 3.521
+    },
+    {
+      "lang": "en",
+      "text": "started with identity and access right",
+      "offset": 66.4,
+      "duration": 3.759
+    },
+    {
+      "lang": "en",
+      "text": "from the start.",
+      "offset": 68.08,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "But uh I had to splash this slide",
+      "offset": 70.159,
+      "duration": 4.161
+    },
+    {
+      "lang": "en",
+      "text": "because we were show we were told we",
+      "offset": 72.72,
+      "duration": 3.04
+    },
+    {
+      "lang": "en",
+      "text": "could have opinions as long as we showed",
+      "offset": 74.32,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "it. So here we go. To kick things off,",
+      "offset": 75.76,
+      "duration": 5.359
+    },
+    {
+      "lang": "en",
+      "text": "let's talk about uh the security",
+      "offset": 78.96,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "challenges of smarter agents. Um as they",
+      "offset": 81.119,
+      "duration": 4.481
+    },
+    {
+      "lang": "en",
+      "text": "start to do more things in the real",
+      "offset": 84.08,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "world and once they're moving behind",
+      "offset": 85.6,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "beyond chat and actually doing things in",
+      "offset": 88.24,
+      "duration": 4.239
+    },
+    {
+      "lang": "en",
+      "text": "the in the real world cracks are",
+      "offset": 90.72,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "starting to appear and it's pretty clear",
+      "offset": 92.479,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "secrets end up in prompts, scopes get",
+      "offset": 94.32,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "too broad and troubleshooting gets",
+      "offset": 96.799,
+      "duration": 4.561
+    },
+    {
+      "lang": "en",
+      "text": "really really hard when you don't have",
+      "offset": 99.6,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "the right visibility. So agents are out",
+      "offset": 101.36,
+      "duration": 5.119
+    },
+    {
+      "lang": "en",
+      "text": "there making decisions, taking actions",
+      "offset": 104.32,
+      "duration": 4.799
+    },
+    {
+      "lang": "en",
+      "text": "on behalf of users, but it's very easy",
+      "offset": 106.479,
+      "duration": 4.801
+    },
+    {
+      "lang": "en",
+      "text": "to lose track of what's really going on.",
+      "offset": 109.119,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "Uh things might look fine on the",
+      "offset": 111.28,
+      "duration": 3.839
+    },
+    {
+      "lang": "en",
+      "text": "surface, right up until there's a",
+      "offset": 113.439,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "security incident and you realize you",
+      "offset": 115.119,
+      "duration": 4.161
+    },
+    {
+      "lang": "en",
+      "text": "don't have enough data to trace what",
+      "offset": 117.439,
+      "duration": 4.241
+    },
+    {
+      "lang": "en",
+      "text": "actually happened.",
+      "offset": 119.28,
+      "duration": 5.119
+    },
+    {
+      "lang": "en",
+      "text": "This is where a lot of the genai risks",
+      "offset": 121.68,
+      "duration": 6.079
+    },
+    {
+      "lang": "en",
+      "text": "begin. The OASP OASP calls it excessive",
+      "offset": 124.399,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "agency, but really that's just a fancy",
+      "offset": 127.759,
+      "duration": 3.681
+    },
+    {
+      "lang": "en",
+      "text": "way of saying giving agents too much",
+      "offset": 129.599,
+      "duration": 4.481
+    },
+    {
+      "lang": "en",
+      "text": "access without guardrails. And access",
+      "offset": 131.44,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "here means calling APIs, pulling data,",
+      "offset": 134.08,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "using tokens, touching credentials and",
+      "offset": 136.48,
+      "duration": 5.759
+    },
+    {
+      "lang": "en",
+      "text": "keys. If that access isn't scoped,",
+      "offset": 139.52,
+      "duration": 4.719
+    },
+    {
+      "lang": "en",
+      "text": "monitored, and tied to a real user,",
+      "offset": 142.239,
+      "duration": 4.321
+    },
+    {
+      "lang": "en",
+      "text": "you're wide open to abuse and unintended",
+      "offset": 144.239,
+      "duration": 5.201
+    },
+    {
+      "lang": "en",
+      "text": "behavior. And there's other OASP risks,",
+      "offset": 146.56,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "too, like sensitive data exposure. But",
+      "offset": 149.44,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "that often comes back to the same root",
+      "offset": 151.52,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "cause. If a agent reaches into something",
+      "offset": 153.2,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "they shouldn't, it's usually because no",
+      "offset": 155.36,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "one told it not to. And if you've been",
+      "offset": 157.44,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "listening to the talks here, it's pretty",
+      "offset": 160.48,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "clear that agents aren't just responding",
+      "offset": 162.16,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "to prompts anymore. They're actually",
+      "offset": 163.92,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "doing real things, calling APIs, kicking",
+      "offset": 166.16,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "off workflows, changing your systems.",
+      "offset": 168.48,
+      "duration": 4.479
+    },
+    {
+      "lang": "en",
+      "text": "And that means they're moving through",
+      "offset": 171.2,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "your stack, touching real user data,",
+      "offset": 172.959,
+      "duration": 5.041
+    },
+    {
+      "lang": "en",
+      "text": "interacting with real external systems.",
+      "offset": 175.12,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "And it all needs to happen under the",
+      "offset": 178,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "right context. Not just on behalf of",
+      "offset": 180,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "your app, but on behalf of your users,",
+      "offset": 182.08,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "individuals.",
+      "offset": 185.28,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "Here's what this looks like in practice.",
+      "offset": 187.36,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "Uh on the left, you see a pattern that's",
+      "offset": 189.28,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "very common. And an agent calling an API",
+      "offset": 191.76,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "using a shared uh key pulled from an",
+      "offset": 194.48,
+      "duration": 4.479
+    },
+    {
+      "lang": "en",
+      "text": "environmental variable. Um that key",
+      "offset": 196.64,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "probably gets reused across users,",
+      "offset": 198.959,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "environments, maybe even different",
+      "offset": 201.36,
+      "duration": 5.599
+    },
+    {
+      "lang": "en",
+      "text": "services. It works, but it's fragile.",
+      "offset": 202.879,
+      "duration": 6.561
+    },
+    {
+      "lang": "en",
+      "text": "You can't tell who did what and rotating",
+      "offset": 206.959,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "uh secrets and keys is manual and risky",
+      "offset": 209.44,
+      "duration": 4.879
+    },
+    {
+      "lang": "en",
+      "text": "and the axis is way too broad. On the",
+      "offset": 211.519,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "right, things are looking better.",
+      "offset": 214.319,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "Instead of a shared static key, the",
+      "offset": 215.599,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "agent asks your backend for a token",
+      "offset": 218.159,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "that's just for the one user and one",
+      "offset": 220.239,
+      "duration": 4.321
+    },
+    {
+      "lang": "en",
+      "text": "API. The backend uses something like",
+      "offset": 222.239,
+      "duration": 4.241
+    },
+    {
+      "lang": "en",
+      "text": "token exchange to hand out shortlived",
+      "offset": 224.56,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "token and the agent can safely use that.",
+      "offset": 226.48,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "Now you've got a real record of who did",
+      "offset": 229.04,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "what and you can easily rotate tokens,",
+      "offset": 231.44,
+      "duration": 5.519
+    },
+    {
+      "lang": "en",
+      "text": "support multiple upstream systems and",
+      "offset": 234.56,
+      "duration": 5.599
+    },
+    {
+      "lang": "en",
+      "text": "manage up uh all this in a centralized",
+      "offset": 236.959,
+      "duration": 5.84
+    },
+    {
+      "lang": "en",
+      "text": "way. And we've seen that this approach",
+      "offset": 240.159,
+      "duration": 4.401
+    },
+    {
+      "lang": "en",
+      "text": "scales much better even if you have",
+      "offset": 242.799,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "dozens or hundreds of agents. It's a",
+      "offset": 244.56,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "small tweak in your flow, but a big step",
+      "offset": 246.879,
+      "duration": 5.521
+    },
+    {
+      "lang": "en",
+      "text": "up in how you handle risk.",
+      "offset": 249.28,
+      "duration": 4.879
+    },
+    {
+      "lang": "en",
+      "text": "So we've talked about the secrets and",
+      "offset": 252.4,
+      "duration": 3.039
+    },
+    {
+      "lang": "en",
+      "text": "shared credentials problem, but",
+      "offset": 254.159,
+      "duration": 3.841
+    },
+    {
+      "lang": "en",
+      "text": "underneath it all is identity. If your",
+      "offset": 255.439,
+      "duration": 4.401
+    },
+    {
+      "lang": "en",
+      "text": "agent doesn't have identity, it doesn't",
+      "offset": 258,
+      "duration": 3.759
+    },
+    {
+      "lang": "en",
+      "text": "matter how well you scope your tokens or",
+      "offset": 259.84,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "rotate tokens, you still have don't have",
+      "offset": 261.759,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "real control here. And identity is what",
+      "offset": 263.68,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "connects actions to users. It lets you",
+      "offset": 265.919,
+      "duration": 4.321
+    },
+    {
+      "lang": "en",
+      "text": "understand what happened, trace the",
+      "offset": 268.24,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "activity, and decide what should happen",
+      "offset": 270.24,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "next. But before we talk about",
+      "offset": 273.12,
+      "duration": 3.519
+    },
+    {
+      "lang": "en",
+      "text": "delegation and scope, we need to get",
+      "offset": 274.88,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "identity right. So if identity is the",
+      "offset": 276.639,
+      "duration": 5.041
+    },
+    {
+      "lang": "en",
+      "text": "part we're often missing, the next",
+      "offset": 279.6,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "question is who's the agent actually",
+      "offset": 281.68,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "working for? If you don't have a clear",
+      "offset": 283.44,
+      "duration": 3.28
+    },
+    {
+      "lang": "en",
+      "text": "answer, chances are it's just running as",
+      "offset": 285.04,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "a service account. And that's how you",
+      "offset": 286.72,
+      "duration": 3.919
+    },
+    {
+      "lang": "en",
+      "text": "get the confused deputy problem that",
+      "offset": 288.96,
+      "duration": 3.28
+    },
+    {
+      "lang": "en",
+      "text": "you've been hearing a lot about uh this",
+      "offset": 290.639,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "week. The agent has access, but it",
+      "offset": 292.24,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "doesn't know who it's acting for, what",
+      "offset": 294.479,
+      "duration": 4.081
+    },
+    {
+      "lang": "en",
+      "text": "it should avoid. The fix is to anchor",
+      "offset": 296,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "that behavior into real users using",
+      "offset": 298.56,
+      "duration": 6.32
+    },
+    {
+      "lang": "en",
+      "text": "standard flows like OOTH 2.1, RAR, uh,",
+      "offset": 301.04,
+      "duration": 6.08
+    },
+    {
+      "lang": "en",
+      "text": "and token exchange to tightly control",
+      "offset": 304.88,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "what the agent can do. um that includes",
+      "offset": 307.12,
+      "duration": 5.6
+    },
+    {
+      "lang": "en",
+      "text": "refreshing tokens properly properly and",
+      "offset": 310.16,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "preserving upstream identity. And here's",
+      "offset": 312.72,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "how it works in practice. When an agent",
+      "offset": 315.28,
+      "duration": 3.919
+    },
+    {
+      "lang": "en",
+      "text": "needs to act, it doesn't grab a key from",
+      "offset": 317.28,
+      "duration": 4.639
+    },
+    {
+      "lang": "en",
+      "text": "a static config. Instead, it uh asks",
+      "offset": 319.199,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "your backend for help. The backend",
+      "offset": 321.919,
+      "duration": 3.601
+    },
+    {
+      "lang": "en",
+      "text": "reaches into a vault, fetches a",
+      "offset": 323.919,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "credential, and uses token exchange to",
+      "offset": 325.52,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "uh to to mint a token that's shortlived",
+      "offset": 327.759,
+      "duration": 5.921
+    },
+    {
+      "lang": "en",
+      "text": "just for this user and API. That token",
+      "offset": 331.28,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "never sits with the agent. It's handed",
+      "offset": 333.68,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "off, used, and gone. And this keeps your",
+      "offset": 335.68,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "agent focused on doing its job, not",
+      "offset": 338,
+      "duration": 4.479
+    },
+    {
+      "lang": "en",
+      "text": "carrying around secrets. And it lines up",
+      "offset": 340.24,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "with familiar OASH standards. So you're",
+      "offset": 342.479,
+      "duration": 3.041
+    },
+    {
+      "lang": "en",
+      "text": "not inventing the wheel, which you",
+      "offset": 344.32,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "should never do with identity. And let's",
+      "offset": 345.52,
+      "duration": 5.6
+    },
+    {
+      "lang": "en",
+      "text": "shift gears now to the rag systems. When",
+      "offset": 348.24,
+      "duration": 4.399
+    },
+    {
+      "lang": "en",
+      "text": "you're using rag, you're not just",
+      "offset": 351.12,
+      "duration": 3.12
+    },
+    {
+      "lang": "en",
+      "text": "handing data to the model. You're making",
+      "offset": 352.639,
+      "duration": 3.921
+    },
+    {
+      "lang": "en",
+      "text": "choices about what it sees. And not",
+      "offset": 354.24,
+      "duration": 4.399
+    },
+    {
+      "lang": "en",
+      "text": "every user should unlock the same data",
+      "offset": 356.56,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "context. This is where fine grain",
+      "offset": 358.639,
+      "duration": 4.241
+    },
+    {
+      "lang": "en",
+      "text": "authorization matters. You don't want",
+      "offset": 360.4,
+      "duration": 4.239
+    },
+    {
+      "lang": "en",
+      "text": "the agent deciding access inside your",
+      "offset": 362.88,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "LLM. You want that enforced much earlier",
+      "offset": 364.639,
+      "duration": 4.721
+    },
+    {
+      "lang": "en",
+      "text": "at the retrieval layer where policy",
+      "offset": 367.28,
+      "duration": 6.16
+    },
+    {
+      "lang": "en",
+      "text": "enforcement enforcement can kick in. So",
+      "offset": 369.36,
+      "duration": 5.839
+    },
+    {
+      "lang": "en",
+      "text": "you want to do this so that none of your",
+      "offset": 373.44,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "sensitive data leaks out and you keep",
+      "offset": 375.199,
+      "duration": 6.881
+    },
+    {
+      "lang": "en",
+      "text": "your company and your users secure. Um",
+      "offset": 378.72,
+      "duration": 5.919
+    },
+    {
+      "lang": "en",
+      "text": "early we covered how to scope access",
+      "offset": 382.08,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "which agent can see. But sometimes",
+      "offset": 384.639,
+      "duration": 4.081
+    },
+    {
+      "lang": "en",
+      "text": "that's not enough. You also need to",
+      "offset": 386.72,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "control when and how that access is",
+      "offset": 388.72,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "provisioned. That's where client",
+      "offset": 391.84,
+      "duration": 3.919
+    },
+    {
+      "lang": "en",
+      "text": "initiated back channel authentication",
+      "offset": 393.52,
+      "duration": 4.959
+    },
+    {
+      "lang": "en",
+      "text": "which is a mouthful or SIBA comes in.",
+      "offset": 395.759,
+      "duration": 5.361
+    },
+    {
+      "lang": "en",
+      "text": "Instead of showing a UI, the agent sends",
+      "offset": 398.479,
+      "duration": 4.881
+    },
+    {
+      "lang": "en",
+      "text": "a request to the authorization server.",
+      "offset": 401.12,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "The server reaches out to the user on a",
+      "offset": 403.36,
+      "duration": 4.559
+    },
+    {
+      "lang": "en",
+      "text": "trusted device via something like a push",
+      "offset": 405.28,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "notification and then the user decides",
+      "offset": 407.919,
+      "duration": 4.961
+    },
+    {
+      "lang": "en",
+      "text": "whether to approve, deny, or ask for",
+      "offset": 410.72,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "more information. Um, this pattern is",
+      "offset": 412.88,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "really great for agents running in the",
+      "offset": 415.52,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "background or in scenarios where there's",
+      "offset": 417.28,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "no screen to direct a user to. And Cam's",
+      "offset": 419.52,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "going to show the demo where this really",
+      "offset": 422.56,
+      "duration": 3.039
+    },
+    {
+      "lang": "en",
+      "text": "comes to life. So, keep this flow in the",
+      "offset": 423.84,
+      "duration": 3.919
+    },
+    {
+      "lang": "en",
+      "text": "back of your mind when you see that. And",
+      "offset": 425.599,
+      "duration": 4.401
+    },
+    {
+      "lang": "en",
+      "text": "of course, we can't talk about secure",
+      "offset": 427.759,
+      "duration": 4.321
+    },
+    {
+      "lang": "en",
+      "text": "agent execution without talking about",
+      "offset": 430,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "MCP. Um, MCP servers are showing up",
+      "offset": 432.08,
+      "duration": 5.679
+    },
+    {
+      "lang": "en",
+      "text": "everywhere these days. What started as",
+      "offset": 435.28,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "local standard IO input on your on your",
+      "offset": 437.759,
+      "duration": 4.641
+    },
+    {
+      "lang": "en",
+      "text": "laptop is quickly turning into a core",
+      "offset": 440.24,
+      "duration": 4.799
+    },
+    {
+      "lang": "en",
+      "text": "part of remote distributed systems. And",
+      "offset": 442.4,
+      "duration": 5.84
+    },
+    {
+      "lang": "en",
+      "text": "once you put it on the network, security",
+      "offset": 445.039,
+      "duration": 5.841
+    },
+    {
+      "lang": "en",
+      "text": "can't be an afterthought. This pattern",
+      "offset": 448.24,
+      "duration": 6.72
+    },
+    {
+      "lang": "en",
+      "text": "here uses um OOTH 2.1 flow. The user",
+      "offset": 450.88,
+      "duration": 6.4
+    },
+    {
+      "lang": "en",
+      "text": "signs in through the browser. MCP server",
+      "offset": 454.96,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "handles the token minting behind the",
+      "offset": 457.28,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "scenes. Agent gets scoped and bound up",
+      "offset": 458.96,
+      "duration": 4.639
+    },
+    {
+      "lang": "en",
+      "text": "front and the token is issued. Client",
+      "offset": 461.12,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "never exposes thirdparty credentials.",
+      "offset": 463.599,
+      "duration": 4.481
+    },
+    {
+      "lang": "en",
+      "text": "The key takeaway is that when every tool",
+      "offset": 466,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "in action runs on a shared server, the",
+      "offset": 468.08,
+      "duration": 4.239
+    },
+    {
+      "lang": "en",
+      "text": "need for solid guarantees about who's",
+      "offset": 470.56,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "making each request and doing what",
+      "offset": 472.319,
+      "duration": 3.841
+    },
+    {
+      "lang": "en",
+      "text": "they're actually doing becomes critical.",
+      "offset": 474,
+      "duration": 3.599
+    },
+    {
+      "lang": "en",
+      "text": "All right. So to bring this all",
+      "offset": 476.16,
+      "duration": 3.12
+    },
+    {
+      "lang": "en",
+      "text": "together, Cam's going to show what this",
+      "offset": 477.599,
+      "duration": 3.28
+    },
+    {
+      "lang": "en",
+      "text": "looks like in practice. He's going to go",
+      "offset": 479.28,
+      "duration": 3.759
+    },
+    {
+      "lang": "en",
+      "text": "through the the SIBA flow and example.",
+      "offset": 480.879,
+      "duration": 4.801
+    },
+    {
+      "lang": "en",
+      "text": "Cam, over to you.\n Sweet. Thanks, Bobby.",
+      "offset": 483.039,
+      "duration": 5.201
+    },
+    {
+      "lang": "en",
+      "text": "Um, a lot of talking points. This is not",
+      "offset": 485.68,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "going to be a challenging demo. Uh, so",
+      "offset": 488.24,
+      "duration": 3.2
+    },
+    {
+      "lang": "en",
+      "text": "thanks for outlining some of the uh",
+      "offset": 490.08,
+      "duration": 2.88
+    },
+    {
+      "lang": "en",
+      "text": "security and identity challenges that",
+      "offset": 491.44,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "are facing production grade uh API agent",
+      "offset": 492.96,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "or AI agents. Building on that overview,",
+      "offset": 495.12,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "um you can actually find this demo uh",
+      "offset": 497.68,
+      "duration": 3.28
+    },
+    {
+      "lang": "en",
+      "text": "alongside of a ton of other really great",
+      "offset": 499.28,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "working demos um at the following URL",
+      "offset": 500.96,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "that I've got highlighted in the",
+      "offset": 503.44,
+      "duration": 2.159
+    },
+    {
+      "lang": "en",
+      "text": "package. JSON of this little",
+      "offset": 504.4,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "application. Um, for our scenario, we're",
+      "offset": 505.599,
+      "duration": 4.401
+    },
+    {
+      "lang": "en",
+      "text": "going to do a a local AI trading",
+      "offset": 508,
+      "duration": 3.12
+    },
+    {
+      "lang": "en",
+      "text": "assistant that's going to make local",
+      "offset": 510,
+      "duration": 2.88
+    },
+    {
+      "lang": "en",
+      "text": "tool calls to a broker service in order",
+      "offset": 511.12,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "to buy stock, right? Uh, we tried to",
+      "offset": 512.88,
+      "duration": 4.159
+    },
+    {
+      "lang": "en",
+      "text": "make this as applicable as possible. Uh,",
+      "offset": 514.64,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "the AI agent is going to initiate the",
+      "offset": 517.039,
+      "duration": 2.8
+    },
+    {
+      "lang": "en",
+      "text": "request, but the user is going to have",
+      "offset": 518.64,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "to explicitly approve it before uh, it's",
+      "offset": 519.839,
+      "duration": 3.601
+    },
+    {
+      "lang": "en",
+      "text": "executed. I don't have enough screen, so",
+      "offset": 522,
+      "duration": 2.56
+    },
+    {
+      "lang": "en",
+      "text": "I'm going to pull another one up. This",
+      "offset": 523.44,
+      "duration": 3.28
+    },
+    {
+      "lang": "en",
+      "text": "will be really fun. Bear with me. All",
+      "offset": 524.56,
+      "duration": 4.399
+    },
+    {
+      "lang": "en",
+      "text": "right. So, um, this is going to really,",
+      "offset": 526.72,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "um, emphasize three critical components",
+      "offset": 528.959,
+      "duration": 3.201
+    },
+    {
+      "lang": "en",
+      "text": "for us. So we're going to have user",
+      "offset": 530.88,
+      "duration": 2.8
+    },
+    {
+      "lang": "en",
+      "text": "identification and context which is",
+      "offset": 532.16,
+      "duration": 2.88
+    },
+    {
+      "lang": "en",
+      "text": "going to identify the user so that the",
+      "offset": 533.68,
+      "duration": 3.599
+    },
+    {
+      "lang": "en",
+      "text": "agent can act on their behalf. Uh we're",
+      "offset": 535.04,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "going to use the token vault to prevent",
+      "offset": 537.279,
+      "duration": 3.841
+    },
+    {
+      "lang": "en",
+      "text": "us from embedding any kind of like you",
+      "offset": 539.2,
+      "duration": 4.079
+    },
+    {
+      "lang": "en",
+      "text": "know secrets or uh sensitive data inside",
+      "offset": 541.12,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "of our actual code. And then we're going",
+      "offset": 543.279,
+      "duration": 3.281
+    },
+    {
+      "lang": "en",
+      "text": "to use SIBA or client initiated back",
+      "offset": 544.8,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "channel authentication uh to request",
+      "offset": 546.56,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "user consent before the agent executes",
+      "offset": 548.32,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "sensitive actions. It's worth",
+      "offset": 550.32,
+      "duration": 2.72
+    },
+    {
+      "lang": "en",
+      "text": "highlighting uh this is going to require",
+      "offset": 551.76,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "an identity provider that supports SIBA.",
+      "offset": 553.04,
+      "duration": 4.239
+    },
+    {
+      "lang": "en",
+      "text": "Um you know our Ozero is the company we",
+      "offset": 555.12,
+      "duration": 4.399
+    },
+    {
+      "lang": "en",
+      "text": "work for. Um but importantly like SIBO",
+      "offset": 557.279,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "is part of the OIDC specification. So",
+      "offset": 559.519,
+      "duration": 3.041
+    },
+    {
+      "lang": "en",
+      "text": "this is going to become more ubiquitous",
+      "offset": 561.279,
+      "duration": 3.201
+    },
+    {
+      "lang": "en",
+      "text": "over time. Uh so taking a look at the",
+      "offset": 562.56,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "app that's driving this demo. Um",
+      "offset": 564.48,
+      "duration": 6.96
+    },
+    {
+      "lang": "en",
+      "text": "zoom out a couple here. Cattle love",
+      "offset": 568.32,
+      "duration": 6.16
+    },
+    {
+      "lang": "en",
+      "text": "Intelligj. I'm gonna hide this too.",
+      "offset": 571.44,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "There we go. Okay. So we're using a",
+      "offset": 574.48,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "pretty simple TypeScript CLI",
+      "offset": 576.72,
+      "duration": 3.119
+    },
+    {
+      "lang": "en",
+      "text": "application. Anybody speak TypeScript in",
+      "offset": 578.08,
+      "duration": 3.759
+    },
+    {
+      "lang": "en",
+      "text": "the room? Show of hands. Few. Okay. All",
+      "offset": 579.839,
+      "duration": 3.841
+    },
+    {
+      "lang": "en",
+      "text": "right. Uh the Python demo will come",
+      "offset": 581.839,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "later. Um so um this is basically just",
+      "offset": 583.68,
+      "duration": 5.279
+    },
+    {
+      "lang": "en",
+      "text": "going to expose a command line interface",
+      "offset": 587.279,
+      "duration": 3.921
+    },
+    {
+      "lang": "en",
+      "text": "on uh for the user uh which is",
+      "offset": 588.959,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "configured with a stock trading um tool.",
+      "offset": 591.2,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "Let me make sure that a couple of",
+      "offset": 593.519,
+      "duration": 5.841
+    },
+    {
+      "lang": "en",
+      "text": "prerexs that I need are true.",
+      "offset": 595.12,
+      "duration": 8.279
+    },
+    {
+      "lang": "en",
+      "text": "Bear with me one second.",
+      "offset": 599.36,
+      "duration": 4.039
+    },
+    {
+      "lang": "en",
+      "text": "All right. Um I do not see what I'm",
+      "offset": 604.08,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "looking for,",
+      "offset": 607.04,
+      "duration": 5.68
+    },
+    {
+      "lang": "en",
+      "text": "but that should be fine hopefully. Um so",
+      "offset": 609.6,
+      "duration": 5.6
+    },
+    {
+      "lang": "en",
+      "text": "um rolling back um in a more mature",
+      "offset": 612.72,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "mature trading environment it would",
+      "offset": 615.2,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "probably look something like this. Um so",
+      "offset": 616.72,
+      "duration": 3.359
+    },
+    {
+      "lang": "en",
+      "text": "you'll have this user who's going to",
+      "offset": 618.88,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "specify you know buy some stock um at a",
+      "offset": 620.079,
+      "duration": 3.521
+    },
+    {
+      "lang": "en",
+      "text": "certain threshold which will get",
+      "offset": 622.48,
+      "duration": 3.039
+    },
+    {
+      "lang": "en",
+      "text": "dispensed as a user action that'll",
+      "offset": 623.6,
+      "duration": 4.239
+    },
+    {
+      "lang": "en",
+      "text": "interface with your um chatbot. there'd",
+      "offset": 625.519,
+      "duration": 3.921
+    },
+    {
+      "lang": "en",
+      "text": "be some sort of polling system that",
+      "offset": 627.839,
+      "duration": 3.12
+    },
+    {
+      "lang": "en",
+      "text": "would be capable of understanding what",
+      "offset": 629.44,
+      "duration": 3.12
+    },
+    {
+      "lang": "en",
+      "text": "like the real-time value of that stock",
+      "offset": 630.959,
+      "duration": 3.361
+    },
+    {
+      "lang": "en",
+      "text": "trade is over time and then it would um",
+      "offset": 632.56,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "at the time where whatever threshold is",
+      "offset": 634.32,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "defined at that point it would then",
+      "offset": 636.32,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "execute the trade and prior to executing",
+      "offset": 638.24,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "the trade it would dispatch a SIBO",
+      "offset": 640.24,
+      "duration": 2.719
+    },
+    {
+      "lang": "en",
+      "text": "request to make sure that the user is",
+      "offset": 641.6,
+      "duration": 2.96
+    },
+    {
+      "lang": "en",
+      "text": "able to authenticate that right at the",
+      "offset": 642.959,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "at the last mile. Um now with today's",
+      "offset": 644.56,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "stock volatility being what it is, it'd",
+      "offset": 646.959,
+      "duration": 2.88
+    },
+    {
+      "lang": "en",
+      "text": "be a real challenge to define any",
+      "offset": 648.48,
+      "duration": 3.039
+    },
+    {
+      "lang": "en",
+      "text": "reliable trade rule based on vibes and",
+      "offset": 649.839,
+      "duration": 3.041
+    },
+    {
+      "lang": "en",
+      "text": "truth social posts. So we're going to",
+      "offset": 651.519,
+      "duration": 3.201
+    },
+    {
+      "lang": "en",
+      "text": "allide certain elements of this stack.",
+      "offset": 652.88,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "That was a joke. I hope you enjoyed",
+      "offset": 654.72,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "that. Um, let's stay on the script now.",
+      "offset": 656.48,
+      "duration": 4.479
+    },
+    {
+      "lang": "en",
+      "text": "Um, so we're going to take a look at the",
+      "offset": 659.68,
+      "duration": 2.56
+    },
+    {
+      "lang": "en",
+      "text": "actual application. So this is the",
+      "offset": 660.959,
+      "duration": 3.12
+    },
+    {
+      "lang": "en",
+      "text": "primary agent configuration and runtime",
+      "offset": 662.24,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "definition. Um, inside of this stack,",
+      "offset": 664.079,
+      "duration": 3.921
+    },
+    {
+      "lang": "en",
+      "text": "you can see it's bifurcated into two",
+      "offset": 666,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "primary methods. You've got the generate",
+      "offset": 668,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "messages method, which is basically the",
+      "offset": 669.92,
+      "duration": 3.039
+    },
+    {
+      "lang": "en",
+      "text": "handler that's interfacing between the",
+      "offset": 671.6,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "LLM and the user. Here we're passing in",
+      "offset": 672.959,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "this buy tool, which we're going to dig",
+      "offset": 675.04,
+      "duration": 3.919
+    },
+    {
+      "lang": "en",
+      "text": "into a little bit more. Um, then",
+      "offset": 676.399,
+      "duration": 3.841
+    },
+    {
+      "lang": "en",
+      "text": "subsequent to that, you have the main",
+      "offset": 678.959,
+      "duration": 2.32
+    },
+    {
+      "lang": "en",
+      "text": "method, which is going to run on the",
+      "offset": 680.24,
+      "duration": 2.48
+    },
+    {
+      "lang": "en",
+      "text": "main thread. Here's where we're going to",
+      "offset": 681.279,
+      "duration": 3.361
+    },
+    {
+      "lang": "en",
+      "text": "define the context and bind it to a",
+      "offset": 682.72,
+      "duration": 3.28
+    },
+    {
+      "lang": "en",
+      "text": "particular thread for this particular",
+      "offset": 684.64,
+      "duration": 2.8
+    },
+    {
+      "lang": "en",
+      "text": "session. This is going to give us the",
+      "offset": 686,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "ability to um durably identify who uh",
+      "offset": 687.44,
+      "duration": 6.639
+    },
+    {
+      "lang": "en",
+      "text": "who is using this particular um uh",
+      "offset": 690.72,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "session.",
+      "offset": 694.079,
+      "duration": 3.361
+    },
+    {
+      "lang": "en",
+      "text": "Um so within that let's take a look at",
+      "offset": 695.76,
+      "duration": 5.84
+    },
+    {
+      "lang": "en",
+      "text": "the actual tool call. Um so here we have",
+      "offset": 697.44,
+      "duration": 6.56
+    },
+    {
+      "lang": "en",
+      "text": "the definition of a tool call and uh",
+      "offset": 701.6,
+      "duration": 4.479
+    },
+    {
+      "lang": "en",
+      "text": "this application u you'll note that it's",
+      "offset": 704,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "wrapped in two higher order component uh",
+      "offset": 706.079,
+      "duration": 3.921
+    },
+    {
+      "lang": "en",
+      "text": "functions. So there's this use device",
+      "offset": 708.56,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "flow. taking a look at that. Um, this is",
+      "offset": 710,
+      "duration": 5.839
+    },
+    {
+      "lang": "en",
+      "text": "basically how it is um that we are uh",
+      "offset": 712.32,
+      "duration": 6.079
+    },
+    {
+      "lang": "en",
+      "text": "bootstrapping the OIDC uh wrapper within",
+      "offset": 715.839,
+      "duration": 4.081
+    },
+    {
+      "lang": "en",
+      "text": "this application. That's going to enable",
+      "offset": 718.399,
+      "duration": 3.761
+    },
+    {
+      "lang": "en",
+      "text": "us to have an OC client bootstrap for",
+      "offset": 719.92,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "the application. This enables me to use",
+      "offset": 722.16,
+      "duration": 3.359
+    },
+    {
+      "lang": "en",
+      "text": "access tokens on behalf of a user",
+      "offset": 723.92,
+      "duration": 2.8
+    },
+    {
+      "lang": "en",
+      "text": "basically. So there's a whole lot of",
+      "offset": 725.519,
+      "duration": 2.721
+    },
+    {
+      "lang": "en",
+      "text": "configuration that goes into that.",
+      "offset": 726.72,
+      "duration": 3.119
+    },
+    {
+      "lang": "en",
+      "text": "Stepping back, there's another handler",
+      "offset": 728.24,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "this use SBA um I order component. So",
+      "offset": 729.839,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "this is basically going to enable um",
+      "offset": 732.72,
+      "duration": 5.119
+    },
+    {
+      "lang": "en",
+      "text": "this application to um intercept a tool",
+      "offset": 734.639,
+      "duration": 4.721
+    },
+    {
+      "lang": "en",
+      "text": "call in which we want the user to be",
+      "offset": 737.839,
+      "duration": 3.041
+    },
+    {
+      "lang": "en",
+      "text": "able to approve or deny behavior and",
+      "offset": 739.36,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "that's really the heart of SIBA. It's",
+      "offset": 740.88,
+      "duration": 3.28
+    },
+    {
+      "lang": "en",
+      "text": "also where we provide configuration",
+      "offset": 742.72,
+      "duration": 3.119
+    },
+    {
+      "lang": "en",
+      "text": "information to our identity provider",
+      "offset": 744.16,
+      "duration": 2.799
+    },
+    {
+      "lang": "en",
+      "text": "about how we're going to use the",
+      "offset": 745.839,
+      "duration": 3.041
+    },
+    {
+      "lang": "en",
+      "text": "resources. So in our case we're using a",
+      "offset": 746.959,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "blocking call back down here um which is",
+      "offset": 748.88,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "going to um actually pause the",
+      "offset": 752.079,
+      "duration": 3.521
+    },
+    {
+      "lang": "en",
+      "text": "application while it's running in order",
+      "offset": 754,
+      "duration": 3.279
+    },
+    {
+      "lang": "en",
+      "text": "to wait for the approval. Um, you could",
+      "offset": 755.6,
+      "duration": 3.679
+    },
+    {
+      "lang": "en",
+      "text": "wire this up with an asynchronous flow",
+      "offset": 757.279,
+      "duration": 3.921
+    },
+    {
+      "lang": "en",
+      "text": "or polling or however you wanted to. Um,",
+      "offset": 759.279,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "but for the sake of this demo, this was",
+      "offset": 761.2,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "a lot easier. Uh, one last thing that",
+      "offset": 762.639,
+      "duration": 3.921
+    },
+    {
+      "lang": "en",
+      "text": "I'll highlight here, uh, inside of the",
+      "offset": 764.72,
+      "duration": 3.679
+    },
+    {
+      "lang": "en",
+      "text": "buy tool call, uh, the way that we're",
+      "offset": 766.56,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "handling credentials here on line 28.",
+      "offset": 768.399,
+      "duration": 4.321
+    },
+    {
+      "lang": "en",
+      "text": "Um, this prevents us from embedding, um,",
+      "offset": 770.56,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "client secrets directly inside of the",
+      "offset": 772.72,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "code, which is a nice utility, uh,",
+      "offset": 774.56,
+      "duration": 3.839
+    },
+    {
+      "lang": "en",
+      "text": "method in Ozero. We call this our token",
+      "offset": 776.24,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "vault. Uh, it's dissimilar from like um,",
+      "offset": 778.399,
+      "duration": 3.601
+    },
+    {
+      "lang": "en",
+      "text": "like one password or like a credential",
+      "offset": 780.48,
+      "duration": 3.12
+    },
+    {
+      "lang": "en",
+      "text": "manager. This is managing tokens, not",
+      "offset": 782,
+      "duration": 3.519
+    },
+    {
+      "lang": "en",
+      "text": "credentials. So, just a little bit of a",
+      "offset": 783.6,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "note there. So, let's get these services",
+      "offset": 785.519,
+      "duration": 3.281
+    },
+    {
+      "lang": "en",
+      "text": "running. Uh, fingers crossed we don't",
+      "offset": 787.2,
+      "duration": 5.92
+    },
+    {
+      "lang": "en",
+      "text": "run into uh any super fun Wi-Fi issues.",
+      "offset": 788.8,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "May the Wi-Fi gods be forever on our",
+      "offset": 793.12,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "side as that comes up. Um, so even with",
+      "offset": 794.8,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "local AI agents, identity matters,",
+      "offset": 797.44,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "especially when you're using um multiple",
+      "offset": 799.44,
+      "duration": 4.399
+    },
+    {
+      "lang": "en",
+      "text": "users with multiple agents involved um",
+      "offset": 801.6,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "or if the agent has access to, you know,",
+      "offset": 803.839,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "user data or user files, right? So, it's",
+      "offset": 805.92,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "crucial to know who the um who is",
+      "offset": 808.399,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "interacting with what and at what time.",
+      "offset": 810.16,
+      "duration": 3.28
+    },
+    {
+      "lang": "en",
+      "text": "uh especially like once compliance gets",
+      "offset": 811.839,
+      "duration": 4.161
+    },
+    {
+      "lang": "en",
+      "text": "into this, it gets a lot more um robust.",
+      "offset": 813.44,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "So, we're uh not using a fully stateful",
+      "offset": 816,
+      "duration": 3.839
+    },
+    {
+      "lang": "en",
+      "text": "service to preserve and persist the",
+      "offset": 818.16,
+      "duration": 3.359
+    },
+    {
+      "lang": "en",
+      "text": "user's identity. Um so, instead, we're",
+      "offset": 819.839,
+      "duration": 2.721
+    },
+    {
+      "lang": "en",
+      "text": "going to authenticate the user through",
+      "offset": 821.519,
+      "duration": 2.56
+    },
+    {
+      "lang": "en",
+      "text": "the UI. So, you'll notice that um little",
+      "offset": 822.56,
+      "duration": 3.279
+    },
+    {
+      "lang": "en",
+      "text": "blurb will pop up. After that, when the",
+      "offset": 824.079,
+      "duration": 3.361
+    },
+    {
+      "lang": "en",
+      "text": "AI agent needs to perform a sensitive",
+      "offset": 825.839,
+      "duration": 3.041
+    },
+    {
+      "lang": "en",
+      "text": "action like executing a trade, we're",
+      "offset": 827.44,
+      "duration": 2.959
+    },
+    {
+      "lang": "en",
+      "text": "going to rely on SIBA. That means no",
+      "offset": 828.88,
+      "duration": 3.519
+    },
+    {
+      "lang": "en",
+      "text": "additional userfacing UI is required",
+      "offset": 830.399,
+      "duration": 3.761
+    },
+    {
+      "lang": "en",
+      "text": "after the user has given us their",
+      "offset": 832.399,
+      "duration": 3.201
+    },
+    {
+      "lang": "en",
+      "text": "tokens. And I'll give you a little bit",
+      "offset": 834.16,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "of a demo of that. So we're definitely",
+      "offset": 835.6,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "aware that identity standards like OOTH",
+      "offset": 837.76,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "2, OIDC, SIBA, these are not always top",
+      "offset": 839.68,
+      "duration": 3.599
+    },
+    {
+      "lang": "en",
+      "text": "of mind or super interesting for",
+      "offset": 841.92,
+      "duration": 2.479
+    },
+    {
+      "lang": "en",
+      "text": "developers when you're building great",
+      "offset": 843.279,
+      "duration": 2.24
+    },
+    {
+      "lang": "en",
+      "text": "applications. That's why we're",
+      "offset": 844.399,
+      "duration": 2.641
+    },
+    {
+      "lang": "en",
+      "text": "highlighting that there are solutions to",
+      "offset": 845.519,
+      "duration": 2.961
+    },
+    {
+      "lang": "en",
+      "text": "these problems. There's open standards",
+      "offset": 847.04,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "that are evolving over time. Um and a",
+      "offset": 848.48,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "lot of those are live today. Um so that",
+      "offset": 850.56,
+      "duration": 3.839
+    },
+    {
+      "lang": "en",
+      "text": "can be something to be thought of uh in",
+      "offset": 852.56,
+      "duration": 3.519
+    },
+    {
+      "lang": "en",
+      "text": "the progenation of an application",
+      "offset": 854.399,
+      "duration": 3.361
+    },
+    {
+      "lang": "en",
+      "text": "instead of as an afterthought. So one",
+      "offset": 856.079,
+      "duration": 3.041
+    },
+    {
+      "lang": "en",
+      "text": "thing that we run into repeatedly while",
+      "offset": 857.76,
+      "duration": 2.879
+    },
+    {
+      "lang": "en",
+      "text": "building this demo is determining just",
+      "offset": 859.12,
+      "duration": 3.04
+    },
+    {
+      "lang": "en",
+      "text": "how much complexity is needed to",
+      "offset": 860.639,
+      "duration": 4.241
+    },
+    {
+      "lang": "en",
+      "text": "effectively showcase um you know these",
+      "offset": 862.16,
+      "duration": 4.799
+    },
+    {
+      "lang": "en",
+      "text": "sorts of scenarios. Um, please let us",
+      "offset": 864.88,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "know how we struck that balance. Uh, you",
+      "offset": 866.959,
+      "duration": 3.761
+    },
+    {
+      "lang": "en",
+      "text": "can email Bobby directly. Uh, he loves",
+      "offset": 868.88,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "feedback. All right. Uh, so now for the",
+      "offset": 870.72,
+      "duration": 4.239
+    },
+    {
+      "lang": "en",
+      "text": "fun part. Let's try and buy some stocks",
+      "offset": 873.12,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "with this. Uh, if the Wi-Fi gods are on",
+      "offset": 874.959,
+      "duration": 5.281
+    },
+    {
+      "lang": "en",
+      "text": "our side. So, um, buy me 10 stocks",
+      "offset": 876.72,
+      "duration": 6.96
+    },
+    {
+      "lang": "en",
+      "text": "of SECO, just some company. So, what",
+      "offset": 880.24,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "this is going to do, um, is the LLM is",
+      "offset": 883.68,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "going to process the intent and it's",
+      "offset": 885.76,
+      "duration": 3.12
+    },
+    {
+      "lang": "en",
+      "text": "going to select the buy stock tool. The",
+      "offset": 887.04,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "agent is going to send, uh, I love",
+      "offset": 888.88,
+      "duration": 5.759
+    },
+    {
+      "lang": "en",
+      "text": "Wi-Fi. It's my favorite thing. Um let's",
+      "offset": 892,
+      "duration": 6.8
+    },
+    {
+      "lang": "en",
+      "text": "see if there isn't a way around. Um I",
+      "offset": 894.639,
+      "duration": 5.521
+    },
+    {
+      "lang": "en",
+      "text": "can just sort of talk through this at a",
+      "offset": 898.8,
+      "duration": 4.399
+    },
+    {
+      "lang": "en",
+      "text": "high level. We'll take a look at um this",
+      "offset": 900.16,
+      "duration": 7.44
+    },
+    {
+      "lang": "en",
+      "text": "piece of our demo. So um what would have",
+      "offset": 903.199,
+      "duration": 6.481
+    },
+    {
+      "lang": "en",
+      "text": "you know ideally happened is we would",
+      "offset": 907.6,
+      "duration": 3.359
+    },
+    {
+      "lang": "en",
+      "text": "execute that trade because we have",
+      "offset": 909.68,
+      "duration": 2.8
+    },
+    {
+      "lang": "en",
+      "text": "bootstrapped our middleware inside of",
+      "offset": 910.959,
+      "duration": 2.961
+    },
+    {
+      "lang": "en",
+      "text": "this application. It would prompt me to",
+      "offset": 912.48,
+      "duration": 3.039
+    },
+    {
+      "lang": "en",
+      "text": "log in and once I logged in then the",
+      "offset": 913.92,
+      "duration": 3.2
+    },
+    {
+      "lang": "en",
+      "text": "agent would have tokens to use on my",
+      "offset": 915.519,
+      "duration": 3.361
+    },
+    {
+      "lang": "en",
+      "text": "behalf as a user. That would then",
+      "offset": 917.12,
+      "duration": 3.12
+    },
+    {
+      "lang": "en",
+      "text": "execute a trade. It's not actually",
+      "offset": 918.88,
+      "duration": 2.56
+    },
+    {
+      "lang": "en",
+      "text": "executing a trade. I have like a local",
+      "offset": 920.24,
+      "duration": 2.64
+    },
+    {
+      "lang": "en",
+      "text": "trade service running. So, you're not",
+      "offset": 921.44,
+      "duration": 3.04
+    },
+    {
+      "lang": "en",
+      "text": "missing many highlights, don't worry.",
+      "offset": 922.88,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "Um, and then once the trade um or once I",
+      "offset": 924.48,
+      "duration": 5.359
+    },
+    {
+      "lang": "en",
+      "text": "authenticated, then SIBO would",
+      "offset": 928.16,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "immediately dispatch a notification to",
+      "offset": 929.839,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "Odd Zero's back end and it would blow up",
+      "offset": 931.76,
+      "duration": 2.8
+    },
+    {
+      "lang": "en",
+      "text": "my phone and I would get a little",
+      "offset": 933.519,
+      "duration": 2.481
+    },
+    {
+      "lang": "en",
+      "text": "notification that's like, hey, would you",
+      "offset": 934.56,
+      "duration": 3.519
+    },
+    {
+      "lang": "en",
+      "text": "like to approve and authorize this",
+      "offset": 936,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "trade? One nice thing about the",
+      "offset": 938.079,
+      "duration": 3.521
+    },
+    {
+      "lang": "en",
+      "text": "notification that I get is it's not just",
+      "offset": 939.92,
+      "duration": 2.88
+    },
+    {
+      "lang": "en",
+      "text": "going to tell me, hey, something",
+      "offset": 941.6,
+      "duration": 2.4
+    },
+    {
+      "lang": "en",
+      "text": "happened. Would you like to approve it?",
+      "offset": 942.8,
+      "duration": 2
+    },
+    {
+      "lang": "en",
+      "text": "And I'm just going to be left",
+      "offset": 944,
+      "duration": 2.56
+    },
+    {
+      "lang": "en",
+      "text": "generically in the middle of the ether",
+      "offset": 944.8,
+      "duration": 2.56
+    },
+    {
+      "lang": "en",
+      "text": "trying to figure out where this",
+      "offset": 946.56,
+      "duration": 2.24
+    },
+    {
+      "lang": "en",
+      "text": "notification came from. It's actually",
+      "offset": 947.36,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "going to say this agent tried to do this",
+      "offset": 948.8,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "action, which in this case is purchasing",
+      "offset": 951.36,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "10 shares of something on your behalf.",
+      "offset": 952.88,
+      "duration": 3.199
+    },
+    {
+      "lang": "en",
+      "text": "Would you like to approve that",
+      "offset": 954.88,
+      "duration": 3.12
+    },
+    {
+      "lang": "en",
+      "text": "downstream flow? And then I have the",
+      "offset": 956.079,
+      "duration": 4.481
+    },
+    {
+      "lang": "en",
+      "text": "autonomy as an end user to to determine",
+      "offset": 958,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "whether or not I'm going to advance that",
+      "offset": 960.56,
+      "duration": 3.519
+    },
+    {
+      "lang": "en",
+      "text": "flow or cancel that flow. U one other",
+      "offset": 961.92,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "thing that I would have shown is once",
+      "offset": 964.079,
+      "duration": 3.12
+    },
+    {
+      "lang": "en",
+      "text": "I've authenticated the agent to act on",
+      "offset": 965.6,
+      "duration": 3.28
+    },
+    {
+      "lang": "en",
+      "text": "my behalf, subsequent trades no longer",
+      "offset": 967.199,
+      "duration": 3.601
+    },
+    {
+      "lang": "en",
+      "text": "need me um in the loop outside of the",
+      "offset": 968.88,
+      "duration": 4.399
+    },
+    {
+      "lang": "en",
+      "text": "SIBO flow. So once I've authentic or",
+      "offset": 970.8,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "yeah, once I've authenticated in the",
+      "offset": 973.279,
+      "duration": 2.8
+    },
+    {
+      "lang": "en",
+      "text": "authorization flow is then just",
+      "offset": 974.8,
+      "duration": 2.8
+    },
+    {
+      "lang": "en",
+      "text": "dispatched to SIBO, which is pretty",
+      "offset": 976.079,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "cool. Um, so going back to my notes, let",
+      "offset": 977.6,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "me see how many things that I missed. A",
+      "offset": 980.959,
+      "duration": 4.641
+    },
+    {
+      "lang": "en",
+      "text": "bunch of things, but that's okay. Um, so",
+      "offset": 983.6,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "in summary, we saw well kind of I talked",
+      "offset": 985.6,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "through how an agent can identify and",
+      "offset": 988,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "act on behalf of a specific user, how to",
+      "offset": 989.44,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "store and access credentials securely,",
+      "offset": 991.6,
+      "duration": 4.239
+    },
+    {
+      "lang": "en",
+      "text": "um, and how to use SIBA to get explicit",
+      "offset": 993.68,
+      "duration": 3.839
+    },
+    {
+      "lang": "en",
+      "text": "user approval for high-risisk actions",
+      "offset": 995.839,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "like trading without a browser to be",
+      "offset": 997.519,
+      "duration": 4.081
+    },
+    {
+      "lang": "en",
+      "text": "required. Um, so these patterns are",
+      "offset": 999.759,
+      "duration": 3.281
+    },
+    {
+      "lang": "en",
+      "text": "live. Um, they exist in defined",
+      "offset": 1001.6,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "standards like OIDC, SIBA, um, rich",
+      "offset": 1003.04,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "authorization requests, ozero, um,",
+      "offset": 1005.44,
+      "duration": 4.319
+    },
+    {
+      "lang": "en",
+      "text": "developer previews have like, um,",
+      "offset": 1007.6,
+      "duration": 3.679
+    },
+    {
+      "lang": "en",
+      "text": "attempts at a lot of these things or",
+      "offset": 1009.759,
+      "duration": 2.88
+    },
+    {
+      "lang": "en",
+      "text": "actual production versions of a lot of",
+      "offset": 1011.279,
+      "duration": 2.48
+    },
+    {
+      "lang": "en",
+      "text": "these things. So I'd encourage you guys",
+      "offset": 1012.639,
+      "duration": 2.721
+    },
+    {
+      "lang": "en",
+      "text": "to check some of those things out. Um,",
+      "offset": 1013.759,
+      "duration": 3.361
+    },
+    {
+      "lang": "en",
+      "text": "and some of these are GA like our, uh,",
+      "offset": 1015.36,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "SA I believe is GA or at least in early",
+      "offset": 1017.12,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "access um, inside of our platform. So",
+      "offset": 1019.12,
+      "duration": 4.079
+    },
+    {
+      "lang": "en",
+      "text": "that's pretty cool. Um, thanks. That's,",
+      "offset": 1020.88,
+      "duration": 5.039
+    },
+    {
+      "lang": "en",
+      "text": "uh, my demo.\n All right. So just moving",
+      "offset": 1023.199,
+      "duration": 5.201
+    },
+    {
+      "lang": "en",
+      "text": "back here, if you go to the next slide.",
+      "offset": 1025.919,
+      "duration": 4.801
+    },
+    {
+      "lang": "en",
+      "text": "Cool.",
+      "offset": 1028.4,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "As Cam was saying, like we're trying to",
+      "offset": 1030.72,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "make this easier for for developers. Um,",
+      "offset": 1032.64,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "the standards are great. It means you're",
+      "offset": 1035.52,
+      "duration": 3.519
+    },
+    {
+      "lang": "en",
+      "text": "not reinventing things over and over",
+      "offset": 1037.36,
+      "duration": 3.839
+    },
+    {
+      "lang": "en",
+      "text": "again, but there's still a lot of",
+      "offset": 1039.039,
+      "duration": 3.601
+    },
+    {
+      "lang": "en",
+      "text": "building blocks that you would have to",
+      "offset": 1041.199,
+      "duration": 4.161
+    },
+    {
+      "lang": "en",
+      "text": "build. The Ozuro, other platforms have",
+      "offset": 1042.64,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "similar things, but we're we're trying",
+      "offset": 1045.36,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "to wrap this all up in a nice experience",
+      "offset": 1047.28,
+      "duration": 4.399
+    },
+    {
+      "lang": "en",
+      "text": "for developers. So, the async user",
+      "offset": 1049.12,
+      "duration": 5.439
+    },
+    {
+      "lang": "en",
+      "text": "confirmation with SBA is like a very key",
+      "offset": 1051.679,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "component here. uh as well as calling",
+      "offset": 1054.559,
+      "duration": 4.561
+    },
+    {
+      "lang": "en",
+      "text": "APIs on BAP users, things like token",
+      "offset": 1056.799,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "exchange and token vault as well as fine",
+      "offset": 1059.12,
+      "duration": 4.799
+    },
+    {
+      "lang": "en",
+      "text": "grain authorization for rag. You don't",
+      "offset": 1061.679,
+      "duration": 3.761
+    },
+    {
+      "lang": "en",
+      "text": "have to use our platform for this. We",
+      "offset": 1063.919,
+      "duration": 3.681
+    },
+    {
+      "lang": "en",
+      "text": "have open FGA that can snap into this",
+      "offset": 1065.44,
+      "duration": 5.68
+    },
+    {
+      "lang": "en",
+      "text": "type of thing as well. Um and user",
+      "offset": 1067.6,
+      "duration": 6.319
+    },
+    {
+      "lang": "en",
+      "text": "authentication and authorization",
+      "offset": 1071.12,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "generally is is something that we do we",
+      "offset": 1073.919,
+      "duration": 6.64
+    },
+    {
+      "lang": "en",
+      "text": "think deeply about. And with that,",
+      "offset": 1076,
+      "duration": 6.16
+    },
+    {
+      "lang": "en",
+      "text": "here's what you can take with you.",
+      "offset": 1080.559,
+      "duration": 4.401
+    },
+    {
+      "lang": "en",
+      "text": "There's a nice QR code and we'd love to",
+      "offset": 1082.16,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "talk to anyone who's struggling with",
+      "offset": 1084.96,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "these challenges, what you've hit uh in",
+      "offset": 1086.48,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "your in your in your day-to-day life.",
+      "offset": 1089.2,
+      "duration": 5.92
+    },
+    {
+      "lang": "en",
+      "text": "Just come talk to us after the talk. Um",
+      "offset": 1092,
+      "duration": 6.96
+    },
+    {
+      "lang": "en",
+      "text": "I'm I'm also part of the open MCP spec",
+      "offset": 1095.12,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "uh driving some of those discussion as",
+      "offset": 1098.96,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "well. We're very interested in improving",
+      "offset": 1100.88,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "that for everybody. So it's not just",
+      "offset": 1102.64,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "about Ozero working with other um open",
+      "offset": 1104.4,
+      "duration": 5.519
+    },
+    {
+      "lang": "en",
+      "text": "source libraries like MCP O which is",
+      "offset": 1107.76,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "another great thing. So very deeply",
+      "offset": 1109.919,
+      "duration": 5.281
+    },
+    {
+      "lang": "en",
+      "text": "interested in this space.\n Thanks.\n Thank",
+      "offset": 1112.24,
+      "duration": 5.96
+    },
+    {
+      "lang": "en",
+      "text": "you.",
+      "offset": 1115.2,
+      "duration": 3
+    }
+  ],
+  "cleanText": "[Music]\nHi everybody.\nI'm Bobby.\nThis is Kam.\nAnd uh we're both engineers here at OPZero, and we've both been working a lot in this uh the AI space lately, um trying to come up with clear ways for identity and access control that's designed for a world where agents are center stage.\nSo that's included our work on our oforgi platform, our ozero mcp server, and our own firstparty agent called tenant security manager.\nAnd just like everyone here, we're learning from the community as well as we do this.\nJust the main thing is trying to get to grips with what delegation and access means in a world where agents are acting on users behalf.\nUm and today we want to share some of those lessons that we've learned in this journey.\nAnd um what's actually worked, what hasn't worked, and a few practical ways that you can get started with identity and access right from the start.\nBut uh I had to splash this slide because we were told we could have opinions as long as we showed it.\nSo here we go.\nTo kick things off, let's talk about uh the security challenges of smarter agents.\nUm as they start to do more things in the real world and once they're moving beyond chat and actually doing things in the in the real world, cracks are starting to appear, and it's pretty clear secrets end up in prompts, scopes get too broad, and troubleshooting gets really, really hard when you don't have the right visibility.\nSo agents are out there making decisions, taking actions on behalf of users, but it's very easy to lose track of what's really going on.\nUh things might look fine on the surface, right up until there's a security incident and you realize you don't have enough data to trace what actually happened.\nThis is where a lot of the GenAI risks begin.\nThe OASP OASP calls it excessive agency, but really that's just a fancy way of saying giving agents too much access without guardrails.\nAnd access here means calling APIs, pulling data, using tokens, touching credentials and keys.\nIf that access isn't scoped, monitored, and tied to a real user, you're wide open to abuse and unintended behavior.\nAnd there's other OASP risks, too, like sensitive data exposure.\nBut that often comes back to the same root cause.\nIf a agent reaches into something they shouldn't, it's usually because no one told it not to.\nAnd if you've been listening to the talks here, it's pretty clear that agents aren't just responding to prompts anymore.\nThey're actually doing real things, calling APIs, kicking off workflows, changing your systems.\nAnd that means they're moving through your stack, touching real user data, interacting with real external systems.\nAnd it all needs to happen under the right context, not just on behalf of your app, but on behalf of your users, individuals.\nHere's what this looks like in practice.\nUh on the left, you see a pattern that's very common.\nAnd an agent calling an API using a shared uh key pulled from an environmental variable.\nUm that key probably gets reused across users, environments, maybe even different services.\nIt works, but it's fragile.\nYou can't tell who did what, and rotating uh secrets and keys is manual and risky, and the axis is way too broad.\nOn the right, things are looking better.\nInstead of a shared static key, the agent asks your backend for a token that's just for the one user and one API.\nThe backend uses something like token exchange to hand out shortlived token, and the agent can safely use that.\nNow you've got a real record of who did what, and you can easily rotate tokens, support multiple upstream systems, and manage up uh all this in a centralized way.\nAnd we've seen that this approach scales much better even if you have dozens or hundreds of agents.\nIt's a small tweak in your flow, but a big step up in how you handle risk.\nSo we've talked about the secrets and shared credentials problem, but underneath it all is identity.\nIf your agent doesn't have identity, it doesn't matter how well you scope your tokens or rotate tokens, you still have don't have real control here.\nAnd identity is what connects actions to users.\nIt lets you understand what happened, trace the activity, and decide what should happen next.\nBut before we talk about delegation and scope, we need to get identity right.\nSo if identity is the part we're often missing, the next question is who's the agent actually working for?\nIf you don't have a clear answer, chances are it's just running as a service account.\nAnd that's how you get the confused deputy problem that you've been hearing a lot about uh this week.\nThe agent has access, but it doesn't know who it's acting for, what it should avoid.\nThe fix is to anchor that behavior into real users using standard flows like OOTH 2.1, RAR, uh, and token exchange to tightly control what the agent can do.\nUm that includes refreshing tokens properly and preserving upstream identity.\nAnd here's how it works in practice.\nWhen an agent needs to act, it doesn't grab a key from a static config.\nInstead, it uh asks your backend for help.\nThe backend reaches into a vault, fetches a credential, and uses token exchange to uh to to mint a token that's shortlived just for this user and API.\nThat token never sits with the agent.\nIt's handed off, used, and gone.\nAnd this keeps your agent focused on doing its job, not carrying around secrets.\nAnd it lines up with familiar OASH standards.\nSo you're not inventing the wheel, which you should never do with identity.\nAnd let's shift gears now to the rag systems.\nWhen you're using rag, you're not just handing data to the model.\nYou're making choices about what it sees.\nAnd not every user should unlock the same data context.\nThis is where fine grain authorization matters.\nYou don't want the agent deciding access inside your LLM.\nYou want that enforced much earlier at the retrieval layer where policy enforcement enforcement can kick in.\nSo you want to do this so that none of your sensitive data leaks out and you keep your company and your users secure.\nUm early we covered how to scope access which agent can see.\nBut sometimes that's not enough.\nYou also need to control when and how that access is provisioned.\nThat's where client initiated back channel authentication, which is a mouthful, or SIBA comes in.\nInstead of showing a UI, the agent sends a request to the authorization server.\nThe server reaches out to the user on a trusted device via something like a push notification, and then the user decides whether to approve, deny, or ask for more information.\nUm, this pattern is really great for agents running in the background or in scenarios where there's no screen to direct a user to.\nAnd Kam's going to show the demo where this really comes to life.\nSo, keep this flow in the back of your mind when you see that.\nAnd of course, we can't talk about secure agent execution without talking about MCP.\nUm, MCP servers are showing up everywhere these days.\nWhat started as local standard IO input on your on your laptop is quickly turning into a core part of remote distributed systems.\nAnd once you put it on the network, security can't be an afterthought.\nThis pattern here uses um OOTH 2.1 flow.\nThe user signs in through the browser.\nMCP server handles the token minting behind the scenes.\nAgent gets scoped and bound up front, and the token is issued.\nClient never exposes thirdparty credentials.\nThe key takeaway is that when every tool in action runs on a shared server, the need for solid guarantees about who's making each request and doing what they're actually doing becomes critical.\nAll right.\nSo to bring this all together, Kam's going to show what this looks like in practice.\nHe's going to go through the the SIBA flow and example.\nKam, over to you.\nSweet.\nThanks, Bobby.\nUm, a lot of talking points.\nThis is not going to be a challenging demo.\nUh, so thanks for outlining some of the uh security and identity challenges that are facing production grade uh API agent or AI agents.\nBuilding on that overview, um you can actually find this demo uh alongside of a ton of other really great working demos um at the following URL that I've got highlighted in the package.\nJSON of this little application.\nUm, for our scenario, we're going to do a a local AI trading assistant that's going to make local tool calls to a broker service in order to buy stock, right?\nUh, we tried to make this as applicable as possible.\nUh, the AI agent is going to initiate the request, but the user is going to have to explicitly approve it before uh, it's executed.\nI don't have enough screen, so I'm going to pull another one up.\nThis will be really fun.\nBear with me.\nAll right.\nSo, um, this is going to really, um, emphasize three critical components for us.\nSo we're going to have user identification and context which is going to identify the user so that the agent can act on their behalf.\nUh we're going to use the token vault to prevent us from embedding any kind of like you know secrets or uh sensitive data inside of our actual code.\nAnd then we're going to use SIBA or client initiated back channel authentication uh to request user consent before the agent executes sensitive actions.\nIt's worth highlighting uh this is going to require an identity provider that supports SIBA.\nUm you know our Ozero is the company we work for.\nUm but importantly like SIBO is part of the OIDC specification.\nSo this is going to become more ubiquitous over time.\nUh so taking a look at the app that's driving this demo.\nUm zoom out a couple here.\nCattle love Intelligj.\nI'm gonna hide this too.\nThere we go.\nOkay.\nSo we're using a pretty simple TypeScript CLI application.\nAnybody speak TypeScript in the room?\nShow of hands.\nFew.\nOkay.\nAll right.\nUh the Python demo will come later.\nUm so um this is basically just going to expose a command line interface on uh for the user uh which is configured with a stock trading um tool.\nLet me make sure that a couple of prerexs that I need are true.\nBear with me one second.\nAll right.\nUm I do not see what I'm looking for, but that should be fine hopefully.\nUm so um rolling back um in a more mature mature trading environment it would probably look something like this.\nUm so you'll have this user who's going to specify you know buy some stock um at a certain threshold which will get dispensed as a user action that'll interface with your um chatbot.\nthere'd be some sort of polling system that would be capable of understanding what like the real-time value of that stock trade is over time and then it would um at the time where whatever threshold is defined at that point it would then execute the trade and prior to executing the trade it would dispatch a SIBO request to make sure that the user is able to authenticate that right at the at the last mile.\nUm now with today's stock volatility being what it is, it'd be a real challenge to define any reliable trade rule based on vibes and truth social posts.\nSo we're going to allide certain elements of this stack.\nThat was a joke.\nI hope you enjoyed that.\nUm, let's stay on the script now.\nUm, so we're going to take a look at the actual application.\nSo this is the primary agent configuration and runtime definition.\nUm, inside of this stack, you can see it's bifurcated into two primary methods.\nYou've got the generate messages method, which is basically the handler that's interfacing between the LLM and the user.\nHere we're passing in this buy tool, which we're going to dig into a little bit more.\nUm, then subsequent to that, you have the main method, which is going to run on the main thread.\nHere's where we're going to define the context and bind it to a particular thread for this particular session.\nThis is going to give us the ability to um durably identify who uh who is using this particular um uh session.\nUm so within that let's take a look at the actual tool call.\nUm so here we have the definition of a tool call and uh this application u you'll note that it's wrapped in two higher order component uh functions.\nSo there's this use device flow.\ntaking a look at that.\nUm, this is basically how it is um that we are uh bootstrapping the OIDC uh wrapper within this application.\nThat's going to enable us to have an OC client bootstrap for the application.\nThis enables me to use access tokens on behalf of a user basically.\nSo there's a whole lot of configuration that goes into that.\nStepping back, there's another handler this use SBA um I order component.\nSo this is basically going to enable um this application to um intercept a tool call in which we want the user to be able to approve or deny behavior and that's really the heart of SIBA.\nIt's also where we provide configuration information to our identity provider about how we're going to use the resources.\nSo in our case we're using a blocking call back down here um which is going to um actually pause the application while it's running in order to wait for the approval.\nUm, you could wire this up with an asynchronous flow or polling or however you wanted to.\nUm, but for the sake of this demo, this was a lot easier.\nUh, one last thing that I'll highlight here, uh, inside of the buy tool call, uh, the way that we're handling credentials here on line 28.\nUm, this prevents us from embedding, um, client secrets directly inside of the code, which is a nice utility, uh, method in Ozero.\nWe call this our token vault.\nUh, it's dissimilar from like um, like one password or like a credential manager.\nThis is managing tokens, not credentials.\nSo, just a little bit of a note there.\nSo, let's get these services running.\nUh, fingers crossed we don't run into uh any super fun Wi-Fi issues.\nMay the Wi-Fi gods be forever on our side as that comes up.\nUm, so even with local AI agents, identity matters, especially when you're using um multiple users with multiple agents involved um or if the agent has access to, you know, user data or user files, right?\nSo, it's crucial to know who the um who is interacting with what and at what time.\nuh especially like once compliance gets into this, it gets a lot more um robust.\nSo, we're uh not using a fully stateful service to preserve and persist the user's identity.\nUm so, instead, we're going to authenticate the user through the UI.\nSo, you'll notice that um little blurb will pop up.\nAfter that, when the AI agent needs to perform a sensitive action like executing a trade, we're going to rely on SIBA.\nThat means no additional userfacing UI is required after the user has given us their tokens.\nAnd I'll give you a little bit of a demo of that.\nSo we're definitely aware that identity standards like OOTH 2, OIDC, SIBA, these are not always top of mind or super interesting for developers when you're building great applications.\nThat's why we're highlighting that there are\n\n\nSolutions to these problems.\nThere's open standards that are evolving over time.\nUm, and a lot of those are live today.\nUm, so that can be something to be thought of uh in the progenation of an application instead of as an afterthought.\nSo one thing that we run into repeatedly while building this demo is determining just how much complexity is needed to effectively showcase um, you know, these sorts of scenarios.\nUm, please let us know how we struck that balance.\nUh, you can email Bobby Tiernay directly.\nUh, he loves feedback.\nAll right.\nUh, so now for the fun part.\nLet's try and buy some stocks with this.\nUh, if the Wi-Fi gods are on our side.\nSo, um, buy me 10 stocks of SECO, just some company.\nSo, what this is going to do, um, is the LLM is going to process the intent and it's going to select the buy stock tool.\nThe agent is going to send, uh, I love Wi-Fi.\nIt's my favorite thing.\nUm, let's see if there isn't a way around.\nUm, I can just sort of talk through this at a high level.\nWe'll take a look at um this piece of our demo.\nSo um what would have you know ideally happened is we would execute that trade because we have bootstrapped our middleware inside of this application.\nIt would prompt me to log in and once I logged in then the agent would have tokens to use on my behalf as a user.\nThat would then execute a trade.\nIt's not actually executing a trade.\nI have like a local trade service running.\nSo, you're not missing many highlights, don't worry.\nUm, and then once the trade um or once I authenticated, then SIBO would immediately dispatch a notification to Auth0's back end and it would blow up my phone and I would get a little notification that's like, hey, would you like to approve and authorize this trade?\nOne nice thing about the notification that I get is it's not just going to tell me, hey, something happened.\nWould you like to approve it?\nAnd I'm just going to be left generically in the middle of the ether trying to figure out where this notification came from.\nIt's actually going to say this agent tried to do this action, which in this case is purchasing 10 shares of something on your behalf.\nWould you like to approve that downstream flow?\nAnd then I have the autonomy as an end user to to determine whether or not I'm going to advance that flow or cancel that flow.\nU one other thing that I would have shown is once I've authenticated the agent to act on my behalf, subsequent trades no longer need me um in the loop outside of the SIBO flow.\nSo once I've authentic or yeah, once I've authenticated in the authorization flow is then just dispatched to SIBO, which is pretty cool.\nUm, so going back to my notes, let me see how many things that I missed.\nA bunch of things, but that's okay.\nUm, so in summary, we saw well kind of I talked through how an agent can identify and act on behalf of a specific user, how to store and access credentials securely, um, and how to use SIBA to get explicit user approval for high-risisk actions like trading without a browser to be required.\nUm, so these patterns are live.\nUm, they exist in defined standards like OIDC, SIBA, um, rich authorization requests, Auth0, um, developer previews have like, um, attempts at a lot of these things or actual production versions of a lot of these things.\nSo I'd encourage you guys to check some of those things out.\nUm, and some of these are GA like our, uh, SA I believe is GA or at least in early access um, inside of our platform.\nSo that's pretty cool.\nUm, thanks.\nThat's, uh, my demo.\nAll right.\nSo just moving back here, if you go to the next slide.\nCool.\nAs Kam Sween was saying, like we're trying to make this easier for for developers.\nUm, the standards are great.\nIt means you're not reinventing things over and over again, but there's still a lot of building blocks that you would have to build.\nThe Auth0, other platforms have similar things, but we're we're trying to wrap this all up in a nice experience for developers.\nSo, the async user confirmation with SBA is like a very key component here.\nUh as well as calling APIs on BAP users, things like token exchange and token vault as well as fine grain authorization for rag.\nYou don't have to use our platform for this.\nWe have open FGA that can snap into this type of thing as well.\nUm and user authentication and authorization generally is is something that we do we think deeply about.\nAnd with that, here's what you can take with you.\nThere's a nice QR code and we'd love to talk to anyone who's struggling with these challenges, what you've hit uh in your in your in your day-to-day life.\nJust come talk to us after the talk.\nUm I'm I'm also part of the open MCP spec uh driving some of those discussion as well.\nWe're very interested in improving that for everybody.\nSo it's not just about Auth0 working with other um open source libraries like MCP O which is another great thing.\nSo very deeply interested in this space.\nThanks.\nThank you.\n",
+  "dumpedAt": "2025-07-21T18:43:25.114Z"
+}

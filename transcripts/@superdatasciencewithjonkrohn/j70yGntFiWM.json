@@ -1,0 +1,1660 @@
+{
+  "episodeId": "j70yGntFiWM",
+  "channelSlug": "@superdatasciencewithjonkrohn",
+  "title": "Inside NVIDIA’s AI Stack: CUDA, TensorRT, and NIM Microservices",
+  "publishedAt": "2025-05-04T12:01:14.000Z",
+  "rawLines": [
+    {
+      "lang": "en",
+      "text": "[Music]",
+      "offset": 2.35,
+      "duration": 3.009
+    },
+    {
+      "lang": "en",
+      "text": "I want to get back to the Nvidia story",
+      "offset": 4.08,
+      "duration": 2.56
+    },
+    {
+      "lang": "en",
+      "text": "from around the time and kind of this",
+      "offset": 5.359,
+      "duration": 3.361
+    },
+    {
+      "lang": "en",
+      "text": "this visionary nature of what Nvidia's",
+      "offset": 6.64,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "done and reflected in their share price",
+      "offset": 8.72,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "is this idea that okay deep learning is",
+      "offset": 10.96,
+      "duration": 3.679
+    },
+    {
+      "lang": "en",
+      "text": "going to be gigantic or let's assume",
+      "offset": 12.96,
+      "duration": 2.96
+    },
+    {
+      "lang": "en",
+      "text": "that deep learning is going to be",
+      "offset": 14.639,
+      "duration": 4.161
+    },
+    {
+      "lang": "en",
+      "text": "gigantic and so let's build a software",
+      "offset": 15.92,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "ecosystem going back to your point",
+      "offset": 18.8,
+      "duration": 4.719
+    },
+    {
+      "lang": "en",
+      "text": "earlier sama y that supports that um so",
+      "offset": 20,
+      "duration": 5.439
+    },
+    {
+      "lang": "en",
+      "text": "yeah so tell us about things like CUDA",
+      "offset": 23.519,
+      "duration": 4.801
+    },
+    {
+      "lang": "en",
+      "text": "tensor RT maybe a bit of the history and",
+      "offset": 25.439,
+      "duration": 4.561
+    },
+    {
+      "lang": "en",
+      "text": "why those are so important in in this",
+      "offset": 28.32,
+      "duration": 4.399
+    },
+    {
+      "lang": "en",
+      "text": "GPU ecosystem and in this AI era. Yep.",
+      "offset": 30,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "I'm I'm actually going to start first",
+      "offset": 32.719,
+      "duration": 3.281
+    },
+    {
+      "lang": "en",
+      "text": "with Nvidia AI Enterprise, right? Just",
+      "offset": 34.16,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "completing the story of how we're doing",
+      "offset": 36,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "things um especially with Dell Promax",
+      "offset": 37.76,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "AIPCs. So u think of Nvidia AI",
+      "offset": 39.76,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "enterprise as our version of you know",
+      "offset": 43.12,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "end toend um software development",
+      "offset": 44.96,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "platform which is helping you not just",
+      "offset": 47.6,
+      "duration": 4.479
+    },
+    {
+      "lang": "en",
+      "text": "accelerate your data science pipelines",
+      "offset": 50,
+      "duration": 4.719
+    },
+    {
+      "lang": "en",
+      "text": "but also really helping you uh build",
+      "offset": 52.079,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "nextgen it can be generative AI",
+      "offset": 54.719,
+      "duration": 3.601
+    },
+    {
+      "lang": "en",
+      "text": "applications it could be computer vision",
+      "offset": 56.719,
+      "duration": 3.281
+    },
+    {
+      "lang": "en",
+      "text": "applications it can be speech AI",
+      "offset": 58.32,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "applications and it has it has a lot of",
+      "offset": 60,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "components uh we've got NIM",
+      "offset": 62.32,
+      "duration": 5.68
+    },
+    {
+      "lang": "en",
+      "text": "microservices um this is how we are",
+      "offset": 64.4,
+      "duration": 6.16
+    },
+    {
+      "lang": "en",
+      "text": "delivering all kinds of AI models mod as",
+      "offset": 68,
+      "duration": 5.68
+    },
+    {
+      "lang": "en",
+      "text": "containerized microservices. So, uh",
+      "offset": 70.56,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "literally think of any other any AI",
+      "offset": 73.68,
+      "duration": 4.479
+    },
+    {
+      "lang": "en",
+      "text": "model in the world. We work with um open",
+      "offset": 75.68,
+      "duration": 4.479
+    },
+    {
+      "lang": "en",
+      "text": "source partners, proprietary partners.",
+      "offset": 78.159,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "Uh we have our own NVIDIA AI models as",
+      "offset": 80.159,
+      "duration": 5.521
+    },
+    {
+      "lang": "en",
+      "text": "well. Uh we're taking each of these AI",
+      "offset": 82.479,
+      "duration": 5.441
+    },
+    {
+      "lang": "en",
+      "text": "models uh putting them into a container.",
+      "offset": 85.68,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "Um and then adding our um I won't say",
+      "offset": 87.92,
+      "duration": 4.879
+    },
+    {
+      "lang": "en",
+      "text": "secret sauce source because everybody",
+      "offset": 91.68,
+      "duration": 3.759
+    },
+    {
+      "lang": "en",
+      "text": "knows about tensor TLM and all kinds of",
+      "offset": 92.799,
+      "duration": 5.201
+    },
+    {
+      "lang": "en",
+      "text": "services which are really helping you",
+      "offset": 95.439,
+      "duration": 4.961
+    },
+    {
+      "lang": "en",
+      "text": "get the best inference possible on",
+      "offset": 98,
+      "duration": 5.24
+    },
+    {
+      "lang": "en",
+      "text": "Nvidia GPUs and we're offering them as",
+      "offset": 100.4,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "microservices and the reason being and",
+      "offset": 103.24,
+      "duration": 4.28
+    },
+    {
+      "lang": "en",
+      "text": "you'll start soon start seeing this from",
+      "offset": 105.36,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "Nvidia perspective that we're providing",
+      "offset": 107.52,
+      "duration": 4.239
+    },
+    {
+      "lang": "en",
+      "text": "almost all of our AI software as",
+      "offset": 109.2,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "microservices is because things are",
+      "offset": 111.759,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "changing quickly. Uh I'm a developer",
+      "offset": 114.32,
+      "duration": 3.2
+    },
+    {
+      "lang": "en",
+      "text": "today who built an application with",
+      "offset": 116.079,
+      "duration": 3.521
+    },
+    {
+      "lang": "en",
+      "text": "Llama 3 and guess what in two months",
+      "offset": 117.52,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "Llama 3.1 comes and then another two",
+      "offset": 119.6,
+      "duration": 4.479
+    },
+    {
+      "lang": "en",
+      "text": "months 3.2 comes up. So we want to make",
+      "offset": 121.52,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "it really really easy for people to just",
+      "offset": 124.079,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "swap in the model as quickly as possible",
+      "offset": 126.32,
+      "duration": 3.719
+    },
+    {
+      "lang": "en",
+      "text": "without really disrupting that entire",
+      "offset": 128.319,
+      "duration": 4.321
+    },
+    {
+      "lang": "en",
+      "text": "pipeline. So um that's name",
+      "offset": 130.039,
+      "duration": 5.56
+    },
+    {
+      "lang": "en",
+      "text": "microservices. Um we've gotten all kinds",
+      "offset": 132.64,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "of models from uh if you want to build a",
+      "offset": 135.599,
+      "duration": 4.241
+    },
+    {
+      "lang": "en",
+      "text": "digital human to actually building",
+      "offset": 138,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "speech related applications to now uh we",
+      "offset": 139.84,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "also have NIM microservices for our",
+      "offset": 142.4,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "reasoning AI models as well. So that's",
+      "offset": 144,
+      "duration": 4.319
+    },
+    {
+      "lang": "en",
+      "text": "that's the first component of NVIDIA AI",
+      "offset": 146.4,
+      "duration": 5.199
+    },
+    {
+      "lang": "en",
+      "text": "enterprise. really quickly before so",
+      "offset": 148.319,
+      "duration": 5.441
+    },
+    {
+      "lang": "en",
+      "text": "it's it's going to be obvious for sure",
+      "offset": 151.599,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "to you to both of you as well as to many",
+      "offset": 153.76,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "of our listeners exactly what a microser",
+      "offset": 155.599,
+      "duration": 3.681
+    },
+    {
+      "lang": "en",
+      "text": "is but could you define that for our",
+      "offset": 157.44,
+      "duration": 3.28
+    },
+    {
+      "lang": "en",
+      "text": "listeners that don't know just so that",
+      "offset": 159.28,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "you know they understand what it is and",
+      "offset": 160.72,
+      "duration": 6.159
+    },
+    {
+      "lang": "en",
+      "text": "why it's important why it's helpful um I",
+      "offset": 163.04,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "actually don't have a definition of",
+      "offset": 166.879,
+      "duration": 3.841
+    },
+    {
+      "lang": "en",
+      "text": "micros well I'm going to give you not",
+      "offset": 168.08,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "like a textbook definition but I'm going",
+      "offset": 170.72,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "to give you a practical definition right",
+      "offset": 173.04,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "is let's say you're you know a data",
+      "offset": 175.28,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "scientist and you have created let's",
+      "offset": 177.36,
+      "duration": 7.36
+    },
+    {
+      "lang": "en",
+      "text": "just pretend a chatbot with llama 3 and",
+      "offset": 180.64,
+      "duration": 6.239
+    },
+    {
+      "lang": "en",
+      "text": "you create that without a micros service",
+      "offset": 184.72,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "without you know an nvidia nim like sama",
+      "offset": 186.879,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "said every time that that model updates",
+      "offset": 189.92,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "any if there's security all this stuff",
+      "offset": 192.159,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "you're doing a ton of I hate to say it",
+      "offset": 194.56,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "but background tedious work to get that",
+      "offset": 196.959,
+      "duration": 5.92
+    },
+    {
+      "lang": "en",
+      "text": "to a point where you can deploy it where",
+      "offset": 199.92,
+      "duration": 5.039
+    },
+    {
+      "lang": "en",
+      "text": "when things change for example if you",
+      "offset": 202.879,
+      "duration": 3.761
+    },
+    {
+      "lang": "en",
+      "text": "don't like that's the whole point of a",
+      "offset": 204.959,
+      "duration": 3.441
+    },
+    {
+      "lang": "en",
+      "text": "microser with n is you basically can",
+      "offset": 206.64,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "load that to literally one line of code",
+      "offset": 208.4,
+      "duration": 4.399
+    },
+    {
+      "lang": "en",
+      "text": "and the LLM part of it is really done",
+      "offset": 210.48,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "for you. It is containerized. It's",
+      "offset": 212.799,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "packaged. It's ready to go. So a data",
+      "offset": 214.72,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "scientist can focus on well how am I",
+      "offset": 216.959,
+      "duration": 2.801
+    },
+    {
+      "lang": "en",
+      "text": "going to customize it or building",
+      "offset": 218.4,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "whatever application wrapper around it",
+      "offset": 219.76,
+      "duration": 4.479
+    },
+    {
+      "lang": "en",
+      "text": "versus like ooh I need to update the",
+      "offset": 221.84,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "code here to get this to connect like",
+      "offset": 224.239,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "that's really the point of a NIM is how",
+      "offset": 226.08,
+      "duration": 4.879
+    },
+    {
+      "lang": "en",
+      "text": "quickly can I leverage the power of an",
+      "offset": 228.799,
+      "duration": 4.241
+    },
+    {
+      "lang": "en",
+      "text": "LM vision model whatever with one line",
+      "offset": 230.959,
+      "duration": 4.961
+    },
+    {
+      "lang": "en",
+      "text": "of code. That's the power of a NIM. And",
+      "offset": 233.04,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "it runs on a workstation too. runs on",
+      "offset": 235.92,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "Delp Pro Max servers. It runs pretty",
+      "offset": 238,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "much everywhere. Yeah, that that was",
+      "offset": 239.84,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "going to be my point that the key point",
+      "offset": 242.08,
+      "duration": 4.719
+    },
+    {
+      "lang": "en",
+      "text": "being with these NIM microservices, you",
+      "offset": 243.92,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "don't have to make sure that the AI",
+      "offset": 246.799,
+      "duration": 3.761
+    },
+    {
+      "lang": "en",
+      "text": "model is tuned to the GPU, right? We've",
+      "offset": 248.4,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "done all of that work for you. So, as",
+      "offset": 250.56,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "soon as you're downloading this locally",
+      "offset": 252.4,
+      "duration": 4.559
+    },
+    {
+      "lang": "en",
+      "text": "on your Dell Pro Max PC, it already",
+      "offset": 254.4,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "understands the kind of GPU it's running",
+      "offset": 256.959,
+      "duration": 4.041
+    },
+    {
+      "lang": "en",
+      "text": "on. The only thing you have to make sure",
+      "offset": 258.56,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "is, you know, the model you're",
+      "offset": 261,
+      "duration": 3.96
+    },
+    {
+      "lang": "en",
+      "text": "downloading fits onto your GPU memory",
+      "offset": 262.96,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "size. now. But with 96 gigs of memory,",
+      "offset": 264.96,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "you've got you've got the entire world",
+      "offset": 267.44,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "for you here. Nice. And so I've been",
+      "offset": 269.36,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "trying to as you've been speaking, I've",
+      "offset": 271.36,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "tried to kind of look up quickly online",
+      "offset": 273.28,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "what NIM stands for. It doesn't seem to",
+      "offset": 275.6,
+      "duration": 3.039
+    },
+    {
+      "lang": "en",
+      "text": "stand for anything that I can find",
+      "offset": 277.44,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "easily. It just sounds Oh, I'm going to",
+      "offset": 278.639,
+      "duration": 3.681
+    },
+    {
+      "lang": "en",
+      "text": "let the secrets out. It's actually",
+      "offset": 281.04,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "stands for Nvidia inference microser,",
+      "offset": 282.32,
+      "duration": 5.439
+    },
+    {
+      "lang": "en",
+      "text": "but then we also use name microser. So",
+      "offset": 285.44,
+      "duration": 5.039
+    },
+    {
+      "lang": "en",
+      "text": "it's like it's like chai tea kind of a",
+      "offset": 287.759,
+      "duration": 6.241
+    },
+    {
+      "lang": "en",
+      "text": "thing. They mean the same thing. Potato.",
+      "offset": 290.479,
+      "duration": 6.961
+    },
+    {
+      "lang": "en",
+      "text": "Yeah. A potato potato. Potato potato. A",
+      "offset": 294,
+      "duration": 6.4
+    },
+    {
+      "lang": "en",
+      "text": "potato brand potato. Exactly. Cheese",
+      "offset": 297.44,
+      "duration": 4.479
+    },
+    {
+      "lang": "en",
+      "text": "queso. That's what I always say. I go at",
+      "offset": 300.4,
+      "duration": 2.72
+    },
+    {
+      "lang": "en",
+      "text": "a restaurant, I'll say, &quot;I want cheese",
+      "offset": 301.919,
+      "duration": 2.801
+    },
+    {
+      "lang": "en",
+      "text": "queso.&quot; And then my wife always gives me",
+      "offset": 303.12,
+      "duration": 3.359
+    },
+    {
+      "lang": "en",
+      "text": "a hard time. But yeah, cheese queso.",
+      "offset": 304.72,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "Nice. Yeah, now I understand perfectly.",
+      "offset": 306.479,
+      "duration": 2.961
+    },
+    {
+      "lang": "en",
+      "text": "Uh, thank you for giving us that",
+      "offset": 308.32,
+      "duration": 2.879
+    },
+    {
+      "lang": "en",
+      "text": "insight. It It's interesting. It isn't",
+      "offset": 309.44,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "it isn't something that's very public.",
+      "offset": 311.199,
+      "duration": 3.201
+    },
+    {
+      "lang": "en",
+      "text": "So, people really are getting the inside",
+      "offset": 312.96,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "scoop on Nim. And yeah, it's just",
+      "offset": 314.4,
+      "duration": 5.359
+    },
+    {
+      "lang": "en",
+      "text": "spelled NIM for our listeners uh who are",
+      "offset": 316.56,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "wondering what word we're saying. It's",
+      "offset": 319.759,
+      "duration": 4.481
+    },
+    {
+      "lang": "en",
+      "text": "exactly like it sounds. NIM in all caps.",
+      "offset": 321.12,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "And I'll have a link to that in the show",
+      "offset": 324.24,
+      "duration": 2.64
+    },
+    {
+      "lang": "en",
+      "text": "notes, of course. Anyway, so I",
+      "offset": 325.6,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "interrupted you. Oh, go ahead. Oh, I I",
+      "offset": 326.88,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "was just on the same topic of name",
+      "offset": 329.12,
+      "duration": 3.28
+    },
+    {
+      "lang": "en",
+      "text": "microservices. I I was going to say",
+      "offset": 330.56,
+      "duration": 4.12
+    },
+    {
+      "lang": "en",
+      "text": "we've got a website called",
+      "offset": 332.4,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "build.envidia.com. Um that's where we",
+      "offset": 334.68,
+      "duration": 5.56
+    },
+    {
+      "lang": "en",
+      "text": "host all of these name microservices. U",
+      "offset": 336.88,
+      "duration": 5.759
+    },
+    {
+      "lang": "en",
+      "text": "it's a good website to not just just go",
+      "offset": 340.24,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "try out these different kinds of AI",
+      "offset": 342.639,
+      "duration": 3.28
+    },
+    {
+      "lang": "en",
+      "text": "models. You have the ability to",
+      "offset": 344.32,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "prototype on the website itself. There",
+      "offset": 345.919,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "are no charges for it at all. Um, you",
+      "offset": 348,
+      "duration": 5.199
+    },
+    {
+      "lang": "en",
+      "text": "can see models again by all kinds of",
+      "offset": 350.479,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "partners that you work with, including",
+      "offset": 353.199,
+      "duration": 3.201
+    },
+    {
+      "lang": "en",
+      "text": "Nvidia models as well. They're",
+      "offset": 354.639,
+      "duration": 4.081
+    },
+    {
+      "lang": "en",
+      "text": "segregated by the industry you work with",
+      "offset": 356.4,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "or the use case you're trying to build.",
+      "offset": 358.72,
+      "duration": 3.12
+    },
+    {
+      "lang": "en",
+      "text": "So, it's easy to kind of maneuver",
+      "offset": 360.4,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "around, find the exact model you want to",
+      "offset": 361.84,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "work with. Uh, and then once you want to",
+      "offset": 364.24,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "download this, uh, we've made it easier.",
+      "offset": 366.56,
+      "duration": 3.759
+    },
+    {
+      "lang": "en",
+      "text": "So, if you really sign up for our Nvidia",
+      "offset": 368.4,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "developer program, we actually let you",
+      "offset": 370.319,
+      "duration": 3.681
+    },
+    {
+      "lang": "en",
+      "text": "download the these models and then",
+      "offset": 372.16,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "continue to your do your testing",
+      "offset": 374,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "experimentation free of cost. There are",
+      "offset": 376,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "no charges at all. So you can continue",
+      "offset": 377.84,
+      "duration": 4.479
+    },
+    {
+      "lang": "en",
+      "text": "as a developer. Um I would want to go",
+      "offset": 380.16,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "try out different kinds of models, see",
+      "offset": 382.319,
+      "duration": 4.081
+    },
+    {
+      "lang": "en",
+      "text": "what's working with my um application.",
+      "offset": 383.68,
+      "duration": 4.639
+    },
+    {
+      "lang": "en",
+      "text": "So we we let you do that as well.",
+      "offset": 386.4,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "Fantastic. That was a great rundown.",
+      "offset": 388.319,
+      "duration": 2.961
+    },
+    {
+      "lang": "en",
+      "text": "What I was going to say and I'm glad",
+      "offset": 390.16,
+      "duration": 2.159
+    },
+    {
+      "lang": "en",
+      "text": "that you had more to say on NIM",
+      "offset": 391.28,
+      "duration": 3.12
+    },
+    {
+      "lang": "en",
+      "text": "microservices because my transition was",
+      "offset": 392.319,
+      "duration": 4.801
+    },
+    {
+      "lang": "en",
+      "text": "going to be that uh the last time I",
+      "offset": 394.4,
+      "duration": 4.239
+    },
+    {
+      "lang": "en",
+      "text": "interrupted you, you were about to I",
+      "offset": 397.12,
+      "duration": 3.519
+    },
+    {
+      "lang": "en",
+      "text": "think start talking about other aspects",
+      "offset": 398.639,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "other aspects of the AI enterprise. So",
+      "offset": 400.639,
+      "duration": 4.241
+    },
+    {
+      "lang": "en",
+      "text": "now I'll let you go on that. So outside",
+      "offset": 402.639,
+      "duration": 4.641
+    },
+    {
+      "lang": "en",
+      "text": "of me microservices, we've got uh Nemo,",
+      "offset": 404.88,
+      "duration": 5.039
+    },
+    {
+      "lang": "en",
+      "text": "which really helps you um build, train,",
+      "offset": 407.28,
+      "duration": 4.479
+    },
+    {
+      "lang": "en",
+      "text": "fine-tune your own models, but also gets",
+      "offset": 409.919,
+      "duration": 3.441
+    },
+    {
+      "lang": "en",
+      "text": "you the ability to add guardrails to",
+      "offset": 411.759,
+      "duration": 3.681
+    },
+    {
+      "lang": "en",
+      "text": "your model so that you know whenever",
+      "offset": 413.36,
+      "duration": 3.679
+    },
+    {
+      "lang": "en",
+      "text": "you're deploying your application, you",
+      "offset": 415.44,
+      "duration": 3.599
+    },
+    {
+      "lang": "en",
+      "text": "are making sure that the application",
+      "offset": 417.039,
+      "duration": 4.081
+    },
+    {
+      "lang": "en",
+      "text": "gets used exactly the way that you want",
+      "offset": 419.039,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "to do it itself. Uh we've got AI",
+      "offset": 421.12,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "blueprints. Uh think of these as",
+      "offset": 423.759,
+      "duration": 5.761
+    },
+    {
+      "lang": "en",
+      "text": "reference AI workflows. So we give you",
+      "offset": 426.08,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "the ability to build different kinds of",
+      "offset": 429.52,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "AI applications. So, we give you, think",
+      "offset": 431.36,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "of this as a recipe. You've got the",
+      "offset": 433.36,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "step-by-step process to actually build",
+      "offset": 434.96,
+      "duration": 3.4
+    },
+    {
+      "lang": "en",
+      "text": "an application. There's a reference",
+      "offset": 436.88,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "architecture, but we also get you the",
+      "offset": 438.36,
+      "duration": 4.2
+    },
+    {
+      "lang": "en",
+      "text": "ability to add your own data to it. And",
+      "offset": 440.72,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "that's what gets every company their own",
+      "offset": 442.56,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "uh edge, right? You want to add your",
+      "offset": 444.96,
+      "duration": 3.679
+    },
+    {
+      "lang": "en",
+      "text": "data, which is your differentiation at",
+      "offset": 446.88,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "this point in time. So, you have the",
+      "offset": 448.639,
+      "duration": 3.241
+    },
+    {
+      "lang": "en",
+      "text": "ability to build different kinds of",
+      "offset": 450.4,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "applications. Uh what else do we have?",
+      "offset": 451.88,
+      "duration": 3.64
+    },
+    {
+      "lang": "en",
+      "text": "Oh, we've got different kinds of",
+      "offset": 454.16,
+      "duration": 3.759
+    },
+    {
+      "lang": "en",
+      "text": "frameworks and tools. So we actually do",
+      "offset": 455.52,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "support different kinds of AI frameworks",
+      "offset": 457.919,
+      "duration": 5.521
+    },
+    {
+      "lang": "en",
+      "text": "like PyTorch, TensorFlow. Uh we also",
+      "offset": 460,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "have our CUDA library. So I think this",
+      "offset": 463.44,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "is a good time to kind of talk about",
+      "offset": 465.44,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "CUDA as well which really stands for uh",
+      "offset": 466.96,
+      "duration": 6.48
+    },
+    {
+      "lang": "en",
+      "text": "compute unified device architecture. I",
+      "offset": 470.4,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "didn't know that. I didn't know that.",
+      "offset": 473.44,
+      "duration": 3.599
+    },
+    {
+      "lang": "en",
+      "text": "I've been using that word for like a",
+      "offset": 475.28,
+      "duration": 4.319
+    },
+    {
+      "lang": "en",
+      "text": "decade now. Thank you.",
+      "offset": 477.039,
+      "duration": 5.121
+    },
+    {
+      "lang": "en",
+      "text": "So this really has been playing a",
+      "offset": 479.599,
+      "duration": 5.401
+    },
+    {
+      "lang": "en",
+      "text": "crucial role in AI development by",
+      "offset": 482.16,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "enabling efficient parallel computing on",
+      "offset": 485,
+      "duration": 6.68
+    },
+    {
+      "lang": "en",
+      "text": "Nvidia GPUs. Right? So the idea was this",
+      "offset": 488.16,
+      "duration": 7.52
+    },
+    {
+      "lang": "en",
+      "text": "entire architecture really helps you",
+      "offset": 491.68,
+      "duration": 6.16
+    },
+    {
+      "lang": "en",
+      "text": "train different kinds of models",
+      "offset": 495.68,
+      "duration": 4.079
+    },
+    {
+      "lang": "en",
+      "text": "significantly faster which means that",
+      "offset": 497.84,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "you can in some scenarios actually",
+      "offset": 499.759,
+      "duration": 4.641
+    },
+    {
+      "lang": "en",
+      "text": "reduce your training times from weeks to",
+      "offset": 501.68,
+      "duration": 6.48
+    },
+    {
+      "lang": "en",
+      "text": "days. Right? It is also helping you get",
+      "offset": 504.4,
+      "duration": 5.919
+    },
+    {
+      "lang": "en",
+      "text": "better and better inference. So you see",
+      "offset": 508.16,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "higher inference performance on Nvidia",
+      "offset": 510.319,
+      "duration": 5.361
+    },
+    {
+      "lang": "en",
+      "text": "GPUs because of this architecture of of",
+      "offset": 512.8,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "uh parallel processing. If you're",
+      "offset": 515.68,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "comparing it to just CPUon platforms, uh",
+      "offset": 517.36,
+      "duration": 6.479
+    },
+    {
+      "lang": "en",
+      "text": "we now have and I'll have to look up the",
+      "offset": 521.12,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "right number of how many CUDA libraries",
+      "offset": 523.839,
+      "duration": 4.481
+    },
+    {
+      "lang": "en",
+      "text": "we have, but we've got tons and tons of",
+      "offset": 525.92,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "these CUDA libraries and these are GPU",
+      "offset": 528.32,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "accelerated libraries. So a good example",
+      "offset": 531.12,
+      "duration": 5.24
+    },
+    {
+      "lang": "en",
+      "text": "I'll give you is of",
+      "offset": 533.44,
+      "duration": 6.72
+    },
+    {
+      "lang": "en",
+      "text": "um in uh rapid scudf right so the the",
+      "offset": 536.36,
+      "duration": 5.8
+    },
+    {
+      "lang": "en",
+      "text": "idea and um Logan touched on this",
+      "offset": 540.16,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "earlier as well is the way rapid scoof",
+      "offset": 542.16,
+      "duration": 5.84
+    },
+    {
+      "lang": "en",
+      "text": "works is that it tends to mimic the the",
+      "offset": 544.88,
+      "duration": 6.079
+    },
+    {
+      "lang": "en",
+      "text": "APIs of you know a lot of data frames",
+      "offset": 548,
+      "duration": 6.72
+    },
+    {
+      "lang": "en",
+      "text": "like pandas polars so if you are you",
+      "offset": 550.959,
+      "duration": 5.761
+    },
+    {
+      "lang": "en",
+      "text": "know in that process of pre-processing",
+      "offset": 554.72,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "your data in your data science workflow",
+      "offset": 556.72,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "it can actually accelerate that entire",
+      "offset": 559.6,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "IO your process by 100x on our on our",
+      "offset": 562.24,
+      "duration": 6.48
+    },
+    {
+      "lang": "en",
+      "text": "6,000 GPUs u without any kind of code",
+      "offset": 565.36,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "change. That's that's the beauty of it",
+      "offset": 568.72,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "that as a data scientist all I'm doing",
+      "offset": 570.32,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "is adding that one API line of code and",
+      "offset": 572.08,
+      "duration": 5.68
+    },
+    {
+      "lang": "en",
+      "text": "then it actually u accelerates the",
+      "offset": 574.88,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "entire process by 100x. So that's that's",
+      "offset": 577.76,
+      "duration": 5.199
+    },
+    {
+      "lang": "en",
+      "text": "like massive timesaving from a data",
+      "offset": 580,
+      "duration": 5.839
+    },
+    {
+      "lang": "en",
+      "text": "scientist perspective. U at GTC we",
+      "offset": 582.959,
+      "duration": 5.841
+    },
+    {
+      "lang": "en",
+      "text": "announced uh QML which is again one of",
+      "offset": 585.839,
+      "duration": 4.881
+    },
+    {
+      "lang": "en",
+      "text": "our CUDA libraries as well. This is",
+      "offset": 588.8,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "helping you accelerate your machine",
+      "offset": 590.72,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "learning tasks as well. So if you're",
+      "offset": 593.2,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "using using skit learn uh you have the",
+      "offset": 594.56,
+      "duration": 5.6
+    },
+    {
+      "lang": "en",
+      "text": "ability to go up to 50x acceleration uh",
+      "offset": 596.8,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "for your ML tasks as well. So each one",
+      "offset": 600.16,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "of these libraries and as I said we've",
+      "offset": 602.24,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "got tons of these right now but",
+      "offset": 603.92,
+      "duration": 3.919
+    },
+    {
+      "lang": "en",
+      "text": "depending on the data science task that",
+      "offset": 606.08,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "you're doing these are all designed to",
+      "offset": 607.839,
+      "duration": 4.481
+    },
+    {
+      "lang": "en",
+      "text": "then offload that work to the GPU so",
+      "offset": 610.48,
+      "duration": 3.12
+    },
+    {
+      "lang": "en",
+      "text": "that you can see that massive",
+      "offset": 612.32,
+      "duration": 4.28
+    },
+    {
+      "lang": "en",
+      "text": "acceleration.",
+      "offset": 613.6,
+      "duration": 3
+    }
+  ],
+  "cleanText": null,
+  "dumpedAt": "2025-07-21T18:43:24.897Z"
+}

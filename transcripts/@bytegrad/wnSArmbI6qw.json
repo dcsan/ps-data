@@ -1,0 +1,3736 @@
+{
+  "episodeId": "wnSArmbI6qw",
+  "channelSlug": "@bytegrad",
+  "title": "Handle Permissions Like A Pro - Every Developer Should Know This",
+  "publishedAt": "2025-03-13T07:00:43.000Z",
+  "rawLines": [
+    {
+      "lang": "en",
+      "text": "one of the biggest mistakes that I often",
+      "offset": 0.04,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "see other developers make is forgetting",
+      "offset": 1.48,
+      "duration": 4.359
+    },
+    {
+      "lang": "en",
+      "text": "about authorization or not really",
+      "offset": 3.8,
+      "duration": 4.079
+    },
+    {
+      "lang": "en",
+      "text": "knowing how to deal with it in fact if",
+      "offset": 5.839,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "we take a look at the top 10 web",
+      "offset": 7.879,
+      "duration": 3.88
+    },
+    {
+      "lang": "en",
+      "text": "application security risks we can see",
+      "offset": 9.599,
+      "duration": 4.401
+    },
+    {
+      "lang": "en",
+      "text": "that broken Access Control was actually",
+      "offset": 11.759,
+      "duration": 4.44
+    },
+    {
+      "lang": "en",
+      "text": "at the top so this is a big problem and",
+      "offset": 14,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "I can't really blame developers because",
+      "offset": 16.199,
+      "duration": 3.641
+    },
+    {
+      "lang": "en",
+      "text": "it is a little bit tricky there is rback",
+      "offset": 17.6,
+      "duration": 4.28
+    },
+    {
+      "lang": "en",
+      "text": "and there is aack there are all these",
+      "offset": 19.84,
+      "duration": 3.96
+    },
+    {
+      "lang": "en",
+      "text": "different strategies for implementing",
+      "offset": 21.88,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "permissions so in this video I'll",
+      "offset": 23.8,
+      "duration": 2.84
+    },
+    {
+      "lang": "en",
+      "text": "explain what you need to know about",
+      "offset": 25.24,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "authorization including something called",
+      "offset": 26.64,
+      "duration": 4.68
+    },
+    {
+      "lang": "en",
+      "text": "arback and EAC and what are these",
+      "offset": 28.84,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "different permission systems and also",
+      "offset": 31.32,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "how to practically Implement them so for",
+      "offset": 33.16,
+      "duration": 4.2
+    },
+    {
+      "lang": "en",
+      "text": "example if we have a blog or some kind",
+      "offset": 35,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "of content management system I can",
+      "offset": 37.36,
+      "duration": 4.519
+    },
+    {
+      "lang": "en",
+      "text": "currently view the posts but I also have",
+      "offset": 39.32,
+      "duration": 4.6
+    },
+    {
+      "lang": "en",
+      "text": "these buttons for updating a post and",
+      "offset": 41.879,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "deleting a post but you can imagine that",
+      "offset": 43.92,
+      "duration": 3.799
+    },
+    {
+      "lang": "en",
+      "text": "not everyone should get these buttons so",
+      "offset": 45.719,
+      "duration": 4.921
+    },
+    {
+      "lang": "en",
+      "text": "this is the realm of authorization of Z",
+      "offset": 47.719,
+      "duration": 4.84
+    },
+    {
+      "lang": "en",
+      "text": "which is different from authentication",
+      "offset": 50.64,
+      "duration": 4.2
+    },
+    {
+      "lang": "en",
+      "text": "right authentication basically will just",
+      "offset": 52.559,
+      "duration": 4.281
+    },
+    {
+      "lang": "en",
+      "text": "give you a user object right so the user",
+      "offset": 54.84,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "may have an email and it may have a name",
+      "offset": 56.84,
+      "duration": 3.8
+    },
+    {
+      "lang": "en",
+      "text": "it's just proving who they are it",
+      "offset": 58.92,
+      "duration": 3.2
+    },
+    {
+      "lang": "en",
+      "text": "doesn't mean that they suddenly should",
+      "offset": 60.64,
+      "duration": 4.12
+    },
+    {
+      "lang": "en",
+      "text": "be able to update posts or delete posts",
+      "offset": 62.12,
+      "duration": 4.6
+    },
+    {
+      "lang": "en",
+      "text": "so typically after the authentication",
+      "offset": 64.76,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "step you have an authorization step so",
+      "offset": 66.72,
+      "duration": 4.759
+    },
+    {
+      "lang": "en",
+      "text": "here we need to decide if the user is",
+      "offset": 69.72,
+      "duration": 4.759
+    },
+    {
+      "lang": "en",
+      "text": "even allowed to update post and you may",
+      "offset": 71.479,
+      "duration": 4.801
+    },
+    {
+      "lang": "en",
+      "text": "think oh I'm just going to check if",
+      "offset": 74.479,
+      "duration": 4.721
+    },
+    {
+      "lang": "en",
+      "text": "user. roll right maybe they have a role",
+      "offset": 76.28,
+      "duration": 5.24
+    },
+    {
+      "lang": "en",
+      "text": "if they're an admin we'll set it to true",
+      "offset": 79.2,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "and by default we want to be careful so",
+      "offset": 81.52,
+      "duration": 3.72
+    },
+    {
+      "lang": "en",
+      "text": "by default we will actually set it to",
+      "offset": 83.84,
+      "duration": 3.239
+    },
+    {
+      "lang": "en",
+      "text": "false right so typically I see this all",
+      "offset": 85.24,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "the time it's admin and not admin and",
+      "offset": 87.079,
+      "duration": 3.201
+    },
+    {
+      "lang": "en",
+      "text": "then of course we only only want to",
+      "offset": 89,
+      "duration": 3.2
+    },
+    {
+      "lang": "en",
+      "text": "render that update button they are",
+      "offset": 90.28,
+      "duration": 3.119
+    },
+    {
+      "lang": "en",
+      "text": "allowed to do",
+      "offset": 92.2,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "so so you can see when I save here it",
+      "offset": 93.399,
+      "duration": 4.121
+    },
+    {
+      "lang": "en",
+      "text": "disappears actually because the user",
+      "offset": 95.88,
+      "duration": 3.48
+    },
+    {
+      "lang": "en",
+      "text": "doesn't even have any role right now and",
+      "offset": 97.52,
+      "duration": 4.2
+    },
+    {
+      "lang": "en",
+      "text": "we could add the role to the user object",
+      "offset": 99.36,
+      "duration": 4.36
+    },
+    {
+      "lang": "en",
+      "text": "if we want so we can actually make this",
+      "offset": 101.72,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "user an admin so if I save it you can",
+      "offset": 103.72,
+      "duration": 3.96
+    },
+    {
+      "lang": "en",
+      "text": "see we do get the button back but this",
+      "offset": 105.64,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "is actually also not really what we want",
+      "offset": 107.68,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "to do for example what if we have other",
+      "offset": 109.56,
+      "duration": 3.8
+    },
+    {
+      "lang": "en",
+      "text": "roles as well like editor role right if",
+      "offset": 111.36,
+      "duration": 4.039
+    },
+    {
+      "lang": "en",
+      "text": "in a blog we have editors right so if",
+      "offset": 113.36,
+      "duration": 4.2
+    },
+    {
+      "lang": "en",
+      "text": "the user is admin or editor but maybe",
+      "offset": 115.399,
+      "duration": 4.801
+    },
+    {
+      "lang": "en",
+      "text": "only posts that are in draft mode can be",
+      "offset": 117.56,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "edited so now we also need some",
+      "offset": 120.2,
+      "duration": 3.279
+    },
+    {
+      "lang": "en",
+      "text": "information about the post right so we",
+      "offset": 121.88,
+      "duration": 3.96
+    },
+    {
+      "lang": "en",
+      "text": "can do something like post status is",
+      "offset": 123.479,
+      "duration": 4.76
+    },
+    {
+      "lang": "en",
+      "text": "draft and now actually we find out not",
+      "offset": 125.84,
+      "duration": 5.039
+    },
+    {
+      "lang": "en",
+      "text": "every editor can edit posts only senior",
+      "offset": 128.239,
+      "duration": 4.841
+    },
+    {
+      "lang": "en",
+      "text": "editors right so now the user that",
+      "offset": 130.879,
+      "duration": 4.561
+    },
+    {
+      "lang": "en",
+      "text": "experience level needs to be senior",
+      "offset": 133.08,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "right just as an example here you can",
+      "offset": 135.44,
+      "duration": 3.079
+    },
+    {
+      "lang": "en",
+      "text": "see how messy this is getting I'm",
+      "offset": 136.92,
+      "duration": 3.72
+    },
+    {
+      "lang": "en",
+      "text": "probably already making mistake because",
+      "offset": 138.519,
+      "duration": 4.521
+    },
+    {
+      "lang": "en",
+      "text": "this is very quickly going to grow into",
+      "offset": 140.64,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "a big ball of spaghetti cat that makes",
+      "offset": 143.04,
+      "duration": 4.36
+    },
+    {
+      "lang": "en",
+      "text": "it almost impossible for us to robustly",
+      "offset": 145.04,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "implement permission right we want to",
+      "offset": 147.4,
+      "duration": 4.04
+    },
+    {
+      "lang": "en",
+      "text": "build robust websites and web apps so we",
+      "offset": 149.12,
+      "duration": 4.44
+    },
+    {
+      "lang": "en",
+      "text": "need something that is better structured",
+      "offset": 151.44,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "than this you can imagine that we have",
+      "offset": 153.56,
+      "duration": 3.679
+    },
+    {
+      "lang": "en",
+      "text": "other places in our app where we also",
+      "offset": 155.28,
+      "duration": 4.239
+    },
+    {
+      "lang": "en",
+      "text": "need this type of logic so then are you",
+      "offset": 157.239,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "just going to copy this and paste that",
+      "offset": 159.519,
+      "duration": 3.481
+    },
+    {
+      "lang": "en",
+      "text": "in some other place what if you need to",
+      "offset": 161.319,
+      "duration": 3.64
+    },
+    {
+      "lang": "en",
+      "text": "change something maybe you can only edit",
+      "offset": 163,
+      "duration": 3.879
+    },
+    {
+      "lang": "en",
+      "text": "posts if they are archived now I would",
+      "offset": 164.959,
+      "duration": 3.681
+    },
+    {
+      "lang": "en",
+      "text": "have to update that in every place where",
+      "offset": 166.879,
+      "duration": 4.041
+    },
+    {
+      "lang": "en",
+      "text": "I use this type of logic so a better way",
+      "offset": 168.64,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "would be to centralize this",
+      "offset": 170.92,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "authorization logic somewhere so what I",
+      "offset": 172.8,
+      "duration": 4.519
+    },
+    {
+      "lang": "en",
+      "text": "could do is create an offz file let's",
+      "offset": 175.08,
+      "duration": 4.239
+    },
+    {
+      "lang": "en",
+      "text": "say so then in this file we want to have",
+      "offset": 177.319,
+      "duration": 4.161
+    },
+    {
+      "lang": "en",
+      "text": "a so-called policy basically have the",
+      "offset": 179.319,
+      "duration": 4.28
+    },
+    {
+      "lang": "en",
+      "text": "rules the permission rules here in one",
+      "offset": 181.48,
+      "duration": 4.039
+    },
+    {
+      "lang": "en",
+      "text": "file now to set up a policy like that",
+      "offset": 183.599,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "there are different ways of doing it so",
+      "offset": 185.519,
+      "duration": 3.881
+    },
+    {
+      "lang": "en",
+      "text": "there's rback there's aback so rback is",
+      "offset": 186.959,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "typically where you would start so this",
+      "offset": 189.4,
+      "duration": 3.88
+    },
+    {
+      "lang": "en",
+      "text": "is very focused around roles so you can",
+      "offset": 190.879,
+      "duration": 4.521
+    },
+    {
+      "lang": "en",
+      "text": "imagine that we have a fewer role a",
+      "offset": 193.28,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "fewer can view posts we may also have an",
+      "offset": 195.4,
+      "duration": 5.399
+    },
+    {
+      "lang": "en",
+      "text": "editor role in our blog or content",
+      "offset": 198.72,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "system and an editor can view but also",
+      "offset": 200.799,
+      "duration": 4.761
+    },
+    {
+      "lang": "en",
+      "text": "create and edit post and then an admin",
+      "offset": 203.36,
+      "duration": 4.439
+    },
+    {
+      "lang": "en",
+      "text": "typically also a role can typically do",
+      "offset": 205.56,
+      "duration": 3.879
+    },
+    {
+      "lang": "en",
+      "text": "everything right they can also delete",
+      "offset": 207.799,
+      "duration": 3.72
+    },
+    {
+      "lang": "en",
+      "text": "post so with arback it's very focused",
+      "offset": 209.439,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "around roles so you have admin as in",
+      "offset": 211.519,
+      "duration": 4.481
+    },
+    {
+      "lang": "en",
+      "text": "role so then we have actions which is",
+      "offset": 213.519,
+      "duration": 4.561
+    },
+    {
+      "lang": "en",
+      "text": "well what you can do on a particular",
+      "offset": 216,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "resource right so you always have a role",
+      "offset": 218.08,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "that can do something on a particular",
+      "offset": 220.64,
+      "duration": 3.56
+    },
+    {
+      "lang": "en",
+      "text": "resource so how could we Implement",
+      "offset": 222.56,
+      "duration": 3.319
+    },
+    {
+      "lang": "en",
+      "text": "something like that here well we could",
+      "offset": 224.2,
+      "duration": 3.64
+    },
+    {
+      "lang": "en",
+      "text": "come up with something ourselves so we",
+      "offset": 225.879,
+      "duration": 4.401
+    },
+    {
+      "lang": "en",
+      "text": "can perhaps create a permissions object",
+      "offset": 227.84,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "here and we can have one array here for",
+      "offset": 230.28,
+      "duration": 5
+    },
+    {
+      "lang": "en",
+      "text": "each role so there's a viewer role what",
+      "offset": 233.04,
+      "duration": 5.24
+    },
+    {
+      "lang": "en",
+      "text": "can a viewer do well they have an action",
+      "offset": 235.28,
+      "duration": 5.08
+    },
+    {
+      "lang": "en",
+      "text": "colon and then the resource this is",
+      "offset": 238.28,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "typically how this is typically how you",
+      "offset": 240.36,
+      "duration": 3.599
+    },
+    {
+      "lang": "en",
+      "text": "work with this in code so you have the",
+      "offset": 242.04,
+      "duration": 3.919
+    },
+    {
+      "lang": "en",
+      "text": "action colon and then the resource an",
+      "offset": 243.959,
+      "duration": 5.161
+    },
+    {
+      "lang": "en",
+      "text": "editor has some more permissions let say",
+      "offset": 245.959,
+      "duration": 5.761
+    },
+    {
+      "lang": "en",
+      "text": "they can also create a post and edit a",
+      "offset": 249.12,
+      "duration": 5.479
+    },
+    {
+      "lang": "en",
+      "text": "post and an admin uh even more right",
+      "offset": 251.72,
+      "duration": 5.079
+    },
+    {
+      "lang": "en",
+      "text": "they can also delete posts okay then we",
+      "offset": 254.599,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "can create a helper function typically",
+      "offset": 256.799,
+      "duration": 2.921
+    },
+    {
+      "lang": "en",
+      "text": "you want to have a function where you",
+      "offset": 258.519,
+      "duration": 3.161
+    },
+    {
+      "lang": "en",
+      "text": "can just pass in the user the action",
+      "offset": 259.72,
+      "duration": 3.479
+    },
+    {
+      "lang": "en",
+      "text": "they want to take on what specific",
+      "offset": 261.68,
+      "duration": 3.88
+    },
+    {
+      "lang": "en",
+      "text": "resource and then the function will just",
+      "offset": 263.199,
+      "duration": 3.921
+    },
+    {
+      "lang": "en",
+      "text": "return true or false this is this",
+      "offset": 265.56,
+      "duration": 3.479
+    },
+    {
+      "lang": "en",
+      "text": "function will just take that information",
+      "offset": 267.12,
+      "duration": 3.2
+    },
+    {
+      "lang": "en",
+      "text": "return true or false fall so it will",
+      "offset": 269.039,
+      "duration": 3.961
+    },
+    {
+      "lang": "en",
+      "text": "just essentially check if the user has",
+      "offset": 270.32,
+      "duration": 5.319
+    },
+    {
+      "lang": "en",
+      "text": "the required permission to do so right",
+      "offset": 273,
+      "duration": 4.479
+    },
+    {
+      "lang": "en",
+      "text": "so then we can use that function well",
+      "offset": 275.639,
+      "duration": 4.521
+    },
+    {
+      "lang": "en",
+      "text": "that's actually see to replace all of",
+      "offset": 277.479,
+      "duration": 4.481
+    },
+    {
+      "lang": "en",
+      "text": "that uh spaghetti code right in this",
+      "offset": 280.16,
+      "duration": 3.24
+    },
+    {
+      "lang": "en",
+      "text": "case we actually also have something",
+      "offset": 281.96,
+      "duration": 3.56
+    },
+    {
+      "lang": "en",
+      "text": "called attributes we'll talk about in a",
+      "offset": 283.4,
+      "duration": 3.48
+    },
+    {
+      "lang": "en",
+      "text": "second but what you would do is",
+      "offset": 285.52,
+      "duration": 3.8
+    },
+    {
+      "lang": "en",
+      "text": "typically just invoke one function here",
+      "offset": 286.88,
+      "duration": 4.039
+    },
+    {
+      "lang": "en",
+      "text": "check permission and I'm just going to",
+      "offset": 289.32,
+      "duration": 4.159
+    },
+    {
+      "lang": "en",
+      "text": "pass along the user what action they",
+      "offset": 290.919,
+      "duration": 5.201
+    },
+    {
+      "lang": "en",
+      "text": "want to take in this case uh edit and on",
+      "offset": 293.479,
+      "duration": 4.801
+    },
+    {
+      "lang": "en",
+      "text": "what resource might Post in this case so",
+      "offset": 296.12,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "you can see this is already much cleaner",
+      "offset": 298.28,
+      "duration": 4.68
+    },
+    {
+      "lang": "en",
+      "text": "you can see this user can indeed edit",
+      "offset": 299.96,
+      "duration": 5.32
+    },
+    {
+      "lang": "en",
+      "text": "posts right so we still have the uh well",
+      "offset": 302.96,
+      "duration": 4.079
+    },
+    {
+      "lang": "en",
+      "text": "actually I'm calling it update here but",
+      "offset": 305.28,
+      "duration": 3.479
+    },
+    {
+      "lang": "en",
+      "text": "it's the same as editing I can also have",
+      "offset": 307.039,
+      "duration": 3.961
+    },
+    {
+      "lang": "en",
+      "text": "a role of a viewer right just a viewer",
+      "offset": 308.759,
+      "duration": 4.081
+    },
+    {
+      "lang": "en",
+      "text": "and you can see then the editing button",
+      "offset": 311,
+      "duration": 3.479
+    },
+    {
+      "lang": "en",
+      "text": "disappears we can do the same for the",
+      "offset": 312.84,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "delete posts we can actually even write",
+      "offset": 314.479,
+      "duration": 3.72
+    },
+    {
+      "lang": "en",
+      "text": "it in one line right we can just call",
+      "offset": 316.36,
+      "duration": 3.32
+    },
+    {
+      "lang": "en",
+      "text": "the function in there right so for",
+      "offset": 318.199,
+      "duration": 3.641
+    },
+    {
+      "lang": "en",
+      "text": "deleting posts we can just reuse that",
+      "offset": 319.68,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "function you pass in the user the action",
+      "offset": 321.84,
+      "duration": 4.479
+    },
+    {
+      "lang": "en",
+      "text": "they want to take on what resource and",
+      "offset": 324.4,
+      "duration": 3.4
+    },
+    {
+      "lang": "en",
+      "text": "then we will just get a result here that",
+      "offset": 326.319,
+      "duration": 3.081
+    },
+    {
+      "lang": "en",
+      "text": "we can work with right so here we can",
+      "offset": 327.8,
+      "duration": 3.519
+    },
+    {
+      "lang": "en",
+      "text": "then do some conditional rendering you",
+      "offset": 329.4,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "can see a basic user a viewer cannot",
+      "offset": 331.319,
+      "duration": 4.401
+    },
+    {
+      "lang": "en",
+      "text": "edit or delete but if we make this user",
+      "offset": 333.72,
+      "duration": 3.599
+    },
+    {
+      "lang": "en",
+      "text": "an admin this user can suddenly do",
+      "offset": 335.72,
+      "duration": 2.8
+    },
+    {
+      "lang": "en",
+      "text": "everything so now if I need to make a",
+      "offset": 337.319,
+      "duration": 3.801
+    },
+    {
+      "lang": "en",
+      "text": "change you know what uh editors can also",
+      "offset": 338.52,
+      "duration": 5.64
+    },
+    {
+      "lang": "en",
+      "text": "delete posts I only have to go in here",
+      "offset": 341.12,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "and I just add it right here delete B",
+      "offset": 344.16,
+      "duration": 5.479
+    },
+    {
+      "lang": "en",
+      "text": "and now whenever wherever I'm using this",
+      "offset": 346.88,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "function in my code it would",
+      "offset": 349.639,
+      "duration": 3.161
+    },
+    {
+      "lang": "en",
+      "text": "automatically be updated right so this",
+      "offset": 350.96,
+      "duration": 4.079
+    },
+    {
+      "lang": "en",
+      "text": "is a better structure I would argue so",
+      "offset": 352.8,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "this is a very solid structure where you",
+      "offset": 355.039,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "have authentication maybe you're doing",
+      "offset": 356.72,
+      "duration": 3.759
+    },
+    {
+      "lang": "en",
+      "text": "that yourself you're not using a third",
+      "offset": 358.639,
+      "duration": 2.921
+    },
+    {
+      "lang": "en",
+      "text": "party maybe you have your own",
+      "offset": 360.479,
+      "duration": 2.881
+    },
+    {
+      "lang": "en",
+      "text": "authentication system but maybe you are",
+      "offset": 361.56,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "using a third party so my channel is",
+      "offset": 363.36,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "sponsored by kind I like using kind but",
+      "offset": 365.16,
+      "duration": 4.159
+    },
+    {
+      "lang": "en",
+      "text": "all of these authentication providers",
+      "offset": 367.28,
+      "duration": 3.96
+    },
+    {
+      "lang": "en",
+      "text": "essentially just give you a user object",
+      "offset": 369.319,
+      "duration": 3.401
+    },
+    {
+      "lang": "en",
+      "text": "basically some information about the",
+      "offset": 371.24,
+      "duration": 3.399
+    },
+    {
+      "lang": "en",
+      "text": "user and that is not sufficient so so",
+      "offset": 372.72,
+      "duration": 3.199
+    },
+    {
+      "lang": "en",
+      "text": "then you have a second step the",
+      "offset": 374.639,
+      "duration": 2.641
+    },
+    {
+      "lang": "en",
+      "text": "authorization step where you need to",
+      "offset": 375.919,
+      "duration": 4.081
+    },
+    {
+      "lang": "en",
+      "text": "check the the exact level of access that",
+      "offset": 377.28,
+      "duration": 4.319
+    },
+    {
+      "lang": "en",
+      "text": "the user should have access to right",
+      "offset": 380,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "really Access Control honestly the",
+      "offset": 381.599,
+      "duration": 4.361
+    },
+    {
+      "lang": "en",
+      "text": "authentication step is usually the",
+      "offset": 383.68,
+      "duration": 4.6
+    },
+    {
+      "lang": "en",
+      "text": "easier step it's the authorization step",
+      "offset": 385.96,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "that I would say is where the really",
+      "offset": 388.28,
+      "duration": 3.639
+    },
+    {
+      "lang": "en",
+      "text": "begins all right now the downside of",
+      "offset": 389.96,
+      "duration": 4.28
+    },
+    {
+      "lang": "en",
+      "text": "what we're doing here is that this is",
+      "offset": 391.919,
+      "duration": 5.321
+    },
+    {
+      "lang": "en",
+      "text": "still sort of hardcoded in our own code",
+      "offset": 394.24,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "so if we need to make a change right so",
+      "offset": 397.24,
+      "duration": 4.239
+    },
+    {
+      "lang": "en",
+      "text": "if I do want to allow uh editors to",
+      "offset": 399.36,
+      "duration": 4.839
+    },
+    {
+      "lang": "en",
+      "text": "delete posts changed my app code now I",
+      "offset": 401.479,
+      "duration": 4.84
+    },
+    {
+      "lang": "en",
+      "text": "have to deploy again so it my app now",
+      "offset": 404.199,
+      "duration": 4.12
+    },
+    {
+      "lang": "en",
+      "text": "needs to be built and go through the",
+      "offset": 406.319,
+      "duration": 3.961
+    },
+    {
+      "lang": "en",
+      "text": "deployment pipeline also what if you",
+      "offset": 408.319,
+      "duration": 3.521
+    },
+    {
+      "lang": "en",
+      "text": "have other people on your team like a",
+      "offset": 410.28,
+      "duration": 3.479
+    },
+    {
+      "lang": "en",
+      "text": "manager let's say that also wants to",
+      "offset": 411.84,
+      "duration": 4.12
+    },
+    {
+      "lang": "en",
+      "text": "change permissions also this is still a",
+      "offset": 413.759,
+      "duration": 4.481
+    },
+    {
+      "lang": "en",
+      "text": "simple rback type of setup once it gets",
+      "offset": 415.96,
+      "duration": 3.799
+    },
+    {
+      "lang": "en",
+      "text": "more complex especially when start",
+      "offset": 418.24,
+      "duration": 3.28
+    },
+    {
+      "lang": "en",
+      "text": "talking about aack this will also become",
+      "offset": 419.759,
+      "duration": 3.88
+    },
+    {
+      "lang": "en",
+      "text": "very complex to deal with so is there",
+      "offset": 421.52,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "perhaps a better way so I actually think",
+      "offset": 423.639,
+      "duration": 3.521
+    },
+    {
+      "lang": "en",
+      "text": "yes permit has a really nice solution",
+      "offset": 425.36,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "they are today sponsor and they make it",
+      "offset": 427.16,
+      "duration": 3.2
+    },
+    {
+      "lang": "en",
+      "text": "much much easier to deal with",
+      "offset": 429.12,
+      "duration": 2.68
+    },
+    {
+      "lang": "en",
+      "text": "permissions so let me quickly show you",
+      "offset": 430.36,
+      "duration": 3.48
+    },
+    {
+      "lang": "en",
+      "text": "how we can achieve the same as what we",
+      "offset": 431.8,
+      "duration": 4.119
+    },
+    {
+      "lang": "en",
+      "text": "were doing before but much easier here",
+      "offset": 433.84,
+      "duration": 4.759
+    },
+    {
+      "lang": "en",
+      "text": "in the UI here in the permit dashboard",
+      "offset": 435.919,
+      "duration": 5.201
+    },
+    {
+      "lang": "en",
+      "text": "in permit I can also create a policy",
+      "offset": 438.599,
+      "duration": 4.561
+    },
+    {
+      "lang": "en",
+      "text": "right so we were doing it in our code",
+      "offset": 441.12,
+      "duration": 4.6
+    },
+    {
+      "lang": "en",
+      "text": "ourselves before but I can actually also",
+      "offset": 443.16,
+      "duration": 4.28
+    },
+    {
+      "lang": "en",
+      "text": "much easier actually just do it here in",
+      "offset": 445.72,
+      "duration": 3.8
+    },
+    {
+      "lang": "en",
+      "text": "the dashboard so let's do rback in",
+      "offset": 447.44,
+      "duration": 3.879
+    },
+    {
+      "lang": "en",
+      "text": "permit so remember it's about a role",
+      "offset": 449.52,
+      "duration": 3.959
+    },
+    {
+      "lang": "en",
+      "text": "that can take some actions on some",
+      "offset": 451.319,
+      "duration": 4.44
+    },
+    {
+      "lang": "en",
+      "text": "resource right so let's actually create",
+      "offset": 453.479,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "a resource we will create a resource",
+      "offset": 455.759,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "here for post and we'll call it post",
+      "offset": 458.199,
+      "duration": 4.44
+    },
+    {
+      "lang": "en",
+      "text": "what type of actions can people take on",
+      "offset": 460.639,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "this well they can view let's call it",
+      "offset": 462.639,
+      "duration": 5.201
+    },
+    {
+      "lang": "en",
+      "text": "read create update delete all right that",
+      "offset": 464.879,
+      "duration": 5.241
+    },
+    {
+      "lang": "en",
+      "text": "sounds good to me we'll talk about aack",
+      "offset": 467.84,
+      "duration": 4.359
+    },
+    {
+      "lang": "en",
+      "text": "and actually also reback in a second we",
+      "offset": 470.12,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "are just doing rback now so that's",
+      "offset": 472.199,
+      "duration": 4.641
+    },
+    {
+      "lang": "en",
+      "text": "that's the resource okay so that's uh",
+      "offset": 474.12,
+      "duration": 4.479
+    },
+    {
+      "lang": "en",
+      "text": "step one you could say we also have",
+      "offset": 476.84,
+      "duration": 4.079
+    },
+    {
+      "lang": "en",
+      "text": "roles here but default actually permit",
+      "offset": 478.599,
+      "duration": 4.481
+    },
+    {
+      "lang": "en",
+      "text": "will create some basic roles so actually",
+      "offset": 480.919,
+      "duration": 4.801
+    },
+    {
+      "lang": "en",
+      "text": "they create an admin role an editor role",
+      "offset": 483.08,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "and a viewer role right so now we also",
+      "offset": 485.72,
+      "duration": 3.759
+    },
+    {
+      "lang": "en",
+      "text": "have roles so we have resources and",
+      "offset": 487.8,
+      "duration": 4.28
+    },
+    {
+      "lang": "en",
+      "text": "roles and the actions uh we also have",
+      "offset": 489.479,
+      "duration": 4.921
+    },
+    {
+      "lang": "en",
+      "text": "actually so now we can create an actual",
+      "offset": 492.08,
+      "duration": 4.6
+    },
+    {
+      "lang": "en",
+      "text": "policy so if we go to the policy editor",
+      "offset": 494.4,
+      "duration": 3.799
+    },
+    {
+      "lang": "en",
+      "text": "you can see we can actually just check",
+      "offset": 496.68,
+      "duration": 4.199
+    },
+    {
+      "lang": "en",
+      "text": "mark the actions that this particular",
+      "offset": 498.199,
+      "duration": 4.641
+    },
+    {
+      "lang": "en",
+      "text": "role should be able to take on that",
+      "offset": 500.879,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "resource so an admin should be able to",
+      "offset": 502.84,
+      "duration": 4.479
+    },
+    {
+      "lang": "en",
+      "text": "do all of this on the post resource an",
+      "offset": 505.039,
+      "duration": 4.641
+    },
+    {
+      "lang": "en",
+      "text": "editor should be able to do everything",
+      "offset": 507.319,
+      "duration": 5.001
+    },
+    {
+      "lang": "en",
+      "text": "accept delete on posts right and a",
+      "offset": 509.68,
+      "duration": 4.599
+    },
+    {
+      "lang": "en",
+      "text": "viewer well should only be able to read",
+      "offset": 512.32,
+      "duration": 4.12
+    },
+    {
+      "lang": "en",
+      "text": "posts cool so now we have our policy",
+      "offset": 514.279,
+      "duration": 4.961
+    },
+    {
+      "lang": "en",
+      "text": "basically for authorization how do I not",
+      "offset": 516.44,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "use it in my code well here I can go to",
+      "offset": 519.24,
+      "duration": 4.479
+    },
+    {
+      "lang": "en",
+      "text": "connect I'm actually using nextjs so we",
+      "offset": 521.64,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "are use we just using nodejs but you can",
+      "offset": 523.719,
+      "duration": 3.441
+    },
+    {
+      "lang": "en",
+      "text": "see they have all these other options as",
+      "offset": 525.72,
+      "duration": 3.72
+    },
+    {
+      "lang": "en",
+      "text": "well so they have a permit iio SDK let",
+      "offset": 527.16,
+      "duration": 4.6
+    },
+    {
+      "lang": "en",
+      "text": "me quickly install this okay all right",
+      "offset": 529.44,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "so then here if we scroll down a little",
+      "offset": 531.76,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "bit we can set permit up like this so",
+      "offset": 533.2,
+      "duration": 4.079
+    },
+    {
+      "lang": "en",
+      "text": "they will give you an API key don't show",
+      "offset": 535.36,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "it to anybody else I will delete it",
+      "offset": 537.279,
+      "duration": 3.481
+    },
+    {
+      "lang": "en",
+      "text": "after recording the video so I will",
+      "offset": 539.04,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "actually delete our own policy file so I",
+      "offset": 540.76,
+      "duration": 5.079
+    },
+    {
+      "lang": "en",
+      "text": "will delete that and I will create a new",
+      "offset": 543.68,
+      "duration": 4.76
+    },
+    {
+      "lang": "en",
+      "text": "file here I will import permit right",
+      "offset": 545.839,
+      "duration": 4.761
+    },
+    {
+      "lang": "en",
+      "text": "here and we will just export permit so",
+      "offset": 548.44,
+      "duration": 4.04
+    },
+    {
+      "lang": "en",
+      "text": "we can then use that all right so now I",
+      "offset": 550.6,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "can use this permit variable so if I go",
+      "offset": 552.48,
+      "duration": 4.12
+    },
+    {
+      "lang": "en",
+      "text": "back here and we will not have that",
+      "offset": 555,
+      "duration": 3.519
+    },
+    {
+      "lang": "en",
+      "text": "check permission from utility function",
+      "offset": 556.6,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "from our own code we will have permit",
+      "offset": 558.519,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "and permit has a check method on here",
+      "offset": 561.32,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "all right now to make this work we are",
+      "offset": 564.279,
+      "duration": 3.441
+    },
+    {
+      "lang": "en",
+      "text": "not going to pass the whole user object",
+      "offset": 565.72,
+      "duration": 4.799
+    },
+    {
+      "lang": "en",
+      "text": "we only pass a unique identifier for",
+      "offset": 567.72,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "permit we're only going to pass a unique",
+      "offset": 570.519,
+      "duration": 4.361
+    },
+    {
+      "lang": "en",
+      "text": "identifier so we could use an ID right",
+      "offset": 572.44,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "so typically the the user object will",
+      "offset": 574.88,
+      "duration": 4.079
+    },
+    {
+      "lang": "en",
+      "text": "have some ID now I will actually use the",
+      "offset": 576.68,
+      "duration": 4.44
+    },
+    {
+      "lang": "en",
+      "text": "email here so the email will also be",
+      "offset": 578.959,
+      "duration": 4.681
+    },
+    {
+      "lang": "en",
+      "text": "unique here and we do need to await this",
+      "offset": 581.12,
+      "duration": 5.32
+    },
+    {
+      "lang": "en",
+      "text": "so it will make a network call actually",
+      "offset": 583.64,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "to permit now what we're doing is hey",
+      "offset": 586.44,
+      "duration": 4.04
+    },
+    {
+      "lang": "en",
+      "text": "permit here is some user they want to",
+      "offset": 588.2,
+      "duration": 5
+    },
+    {
+      "lang": "en",
+      "text": "perform some action on this resource you",
+      "offset": 590.48,
+      "duration": 4.44
+    },
+    {
+      "lang": "en",
+      "text": "deal with all the logic and rules that",
+      "offset": 593.2,
+      "duration": 3.4
+    },
+    {
+      "lang": "en",
+      "text": "we actually set up in the dashboard and",
+      "offset": 594.92,
+      "duration": 3.72
+    },
+    {
+      "lang": "en",
+      "text": "you just give us a result here that's so",
+      "offset": 596.6,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "from our app we just going to send over",
+      "offset": 598.64,
+      "duration": 4.68
+    },
+    {
+      "lang": "en",
+      "text": "the user ID or some identifier what",
+      "offset": 600.68,
+      "duration": 4.159
+    },
+    {
+      "lang": "en",
+      "text": "action they want to take on what",
+      "offset": 603.32,
+      "duration": 3.4
+    },
+    {
+      "lang": "en",
+      "text": "particular resource permit will run that",
+      "offset": 604.839,
+      "duration": 4.041
+    },
+    {
+      "lang": "en",
+      "text": "policy logic and it will return true or",
+      "offset": 606.72,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "false now if you're worried about",
+      "offset": 608.88,
+      "duration": 3.04
+    },
+    {
+      "lang": "en",
+      "text": "latency if you're just testing out",
+      "offset": 610.24,
+      "duration": 3.12
+    },
+    {
+      "lang": "en",
+      "text": "permit they will actually Host this in",
+      "offset": 611.92,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "the cloud and so we are making a network",
+      "offset": 613.36,
+      "duration": 3.64
+    },
+    {
+      "lang": "en",
+      "text": "call and so there may be some latency",
+      "offset": 615.36,
+      "duration": 3.56
+    },
+    {
+      "lang": "en",
+      "text": "but this is just for uh trying it out",
+      "offset": 617,
+      "duration": 3.959
+    },
+    {
+      "lang": "en",
+      "text": "essentially the idea is is that you",
+      "offset": 618.92,
+      "duration": 5
+    },
+    {
+      "lang": "en",
+      "text": "would run permit in a container in a",
+      "offset": 620.959,
+      "duration": 4.601
+    },
+    {
+      "lang": "en",
+      "text": "let's say Docker container as part of",
+      "offset": 623.92,
+      "duration": 4.12
+    },
+    {
+      "lang": "en",
+      "text": "your own environment so then this call",
+      "offset": 625.56,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "to permit would be would be nearly",
+      "offset": 628.04,
+      "duration": 3.96
+    },
+    {
+      "lang": "en",
+      "text": "instant right so this would not be a",
+      "offset": 630.2,
+      "duration": 4.04
+    },
+    {
+      "lang": "en",
+      "text": "latency problem in that case so here we",
+      "offset": 632,
+      "duration": 4.92
+    },
+    {
+      "lang": "en",
+      "text": "are passing John gmail.com but permit",
+      "offset": 634.24,
+      "duration": 5.32
+    },
+    {
+      "lang": "en",
+      "text": "doesn't know about John gmail.com yet so",
+      "offset": 636.92,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "we do need to synchronize our user with",
+      "offset": 639.56,
+      "duration": 4.519
+    },
+    {
+      "lang": "en",
+      "text": "permit here as well so if we go to",
+      "offset": 642.36,
+      "duration": 3.719
+    },
+    {
+      "lang": "en",
+      "text": "directory here permit is not aware of",
+      "offset": 644.079,
+      "duration": 4.481
+    },
+    {
+      "lang": "en",
+      "text": "any users yet so I do have to add a user",
+      "offset": 646.079,
+      "duration": 4.121
+    },
+    {
+      "lang": "en",
+      "text": "here so here we need some unique",
+      "offset": 648.56,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "identifier for that user right so here",
+      "offset": 650.2,
+      "duration": 3.4
+    },
+    {
+      "lang": "en",
+      "text": "I'm actually using their email but if",
+      "offset": 652.16,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "you have some o provider they will give",
+      "offset": 653.6,
+      "duration": 4.799
+    },
+    {
+      "lang": "en",
+      "text": "you an ID so here I'm adding John and",
+      "offset": 655.6,
+      "duration": 5.6
+    },
+    {
+      "lang": "en",
+      "text": "John Let's make make John an admin okay",
+      "offset": 658.399,
+      "duration": 5.041
+    },
+    {
+      "lang": "en",
+      "text": "John is an admin so if I save here all",
+      "offset": 661.2,
+      "duration": 3.759
+    },
+    {
+      "lang": "en",
+      "text": "right so now we have our user so now",
+      "offset": 663.44,
+      "duration": 3.32
+    },
+    {
+      "lang": "en",
+      "text": "when we send over that user permit will",
+      "offset": 664.959,
+      "duration": 4.241
+    },
+    {
+      "lang": "en",
+      "text": "know about the users so you need to",
+      "offset": 666.76,
+      "duration": 5.519
+    },
+    {
+      "lang": "en",
+      "text": "synchronize your users with permit so as",
+      "offset": 669.2,
+      "duration": 5.72
+    },
+    {
+      "lang": "en",
+      "text": "an example um they have the sync user",
+      "offset": 672.279,
+      "duration": 4.601
+    },
+    {
+      "lang": "en",
+      "text": "method that you can pass and then permit",
+      "offset": 674.92,
+      "duration": 4.039
+    },
+    {
+      "lang": "en",
+      "text": "is aware of your user so for example if",
+      "offset": 676.88,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "I'm using kind kind will actually have",
+      "offset": 678.959,
+      "duration": 4.921
+    },
+    {
+      "lang": "en",
+      "text": "web hooks so when a user signs up um",
+      "offset": 681.44,
+      "duration": 4.36
+    },
+    {
+      "lang": "en",
+      "text": "they will send me a web hook so then in",
+      "offset": 683.88,
+      "duration": 4.639
+    },
+    {
+      "lang": "en",
+      "text": "that web hook I can I can call sync user",
+      "offset": 685.8,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "to automatically synchronize my users",
+      "offset": 688.519,
+      "duration": 3.641
+    },
+    {
+      "lang": "en",
+      "text": "with permit as well of course if you",
+      "offset": 690.6,
+      "duration": 3.96
+    },
+    {
+      "lang": "en",
+      "text": "have some small internal application you",
+      "offset": 692.16,
+      "duration": 4.119
+    },
+    {
+      "lang": "en",
+      "text": "can do it manually here as well on so",
+      "offset": 694.56,
+      "duration": 4.36
+    },
+    {
+      "lang": "en",
+      "text": "now if I refresh here we actually see a",
+      "offset": 696.279,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "delete button so clearly permit has",
+      "offset": 698.92,
+      "duration": 5.599
+    },
+    {
+      "lang": "en",
+      "text": "decided that John can delete post but we",
+      "offset": 702.279,
+      "duration": 4.36
+    },
+    {
+      "lang": "en",
+      "text": "don't see update post here because I'm",
+      "offset": 704.519,
+      "duration": 3.921
+    },
+    {
+      "lang": "en",
+      "text": "calling it edit but actually in the",
+      "offset": 706.639,
+      "duration": 4.161
+    },
+    {
+      "lang": "en",
+      "text": "dashboard we call it update so if I",
+      "offset": 708.44,
+      "duration": 4.6
+    },
+    {
+      "lang": "en",
+      "text": "change this to update you can see now we",
+      "offset": 710.8,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "also get the update post button back",
+      "offset": 713.04,
+      "duration": 4.239
+    },
+    {
+      "lang": "en",
+      "text": "again now we still have a rooll here but",
+      "offset": 715.12,
+      "duration": 4.6
+    },
+    {
+      "lang": "en",
+      "text": "now we have already specified the role",
+      "offset": 717.279,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "in permit right so we are not passing",
+      "offset": 719.72,
+      "duration": 4.2
+    },
+    {
+      "lang": "en",
+      "text": "the role to the user so now we are",
+      "offset": 721.839,
+      "duration": 4.161
+    },
+    {
+      "lang": "en",
+      "text": "centralizing all of this logic here in",
+      "offset": 723.92,
+      "duration": 4.479
+    },
+    {
+      "lang": "en",
+      "text": "permit the main benefits in my view are",
+      "offset": 726,
+      "duration": 3.839
+    },
+    {
+      "lang": "en",
+      "text": "that first of all we can set everything",
+      "offset": 728.399,
+      "duration": 3.841
+    },
+    {
+      "lang": "en",
+      "text": "up in a UI instead of hardcoding it in",
+      "offset": 729.839,
+      "duration": 4.161
+    },
+    {
+      "lang": "en",
+      "text": "code but if we have other people on our",
+      "offset": 732.24,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "team that also need to change these",
+      "offset": 734,
+      "duration": 3.56
+    },
+    {
+      "lang": "en",
+      "text": "permissions it's much easier for them a",
+      "offset": 735.68,
+      "duration": 3.32
+    },
+    {
+      "lang": "en",
+      "text": "lot of your a lot of the people that you",
+      "offset": 737.56,
+      "duration": 3.079
+    },
+    {
+      "lang": "en",
+      "text": "work with they may not be comfortable",
+      "offset": 739,
+      "duration": 3.24
+    },
+    {
+      "lang": "en",
+      "text": "with codes they don't want to change",
+      "offset": 740.639,
+      "duration": 2.88
+    },
+    {
+      "lang": "en",
+      "text": "anything in codes but they would be",
+      "offset": 742.24,
+      "duration": 4.2
+    },
+    {
+      "lang": "en",
+      "text": "comfortable here in a UI dashboard also",
+      "offset": 743.519,
+      "duration": 4.721
+    },
+    {
+      "lang": "en",
+      "text": "if we now make a change right so now",
+      "offset": 746.44,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "let's actually change John not an admin",
+      "offset": 748.24,
+      "duration": 4.719
+    },
+    {
+      "lang": "en",
+      "text": "well let's actually make John an editor",
+      "offset": 751,
+      "duration": 3.959
+    },
+    {
+      "lang": "en",
+      "text": "so editors should not be able to delete",
+      "offset": 752.959,
+      "duration": 3.601
+    },
+    {
+      "lang": "en",
+      "text": "posts right so now if I save it I",
+      "offset": 754.959,
+      "duration": 3.521
+    },
+    {
+      "lang": "en",
+      "text": "changed it here in the dashboard I don't",
+      "offset": 756.56,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "have to redeploy my app or anything I",
+      "offset": 758.48,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "can actually just refresh here and you",
+      "offset": 760.72,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "can see my app is automatically using",
+      "offset": 762.8,
+      "duration": 5.039
+    },
+    {
+      "lang": "en",
+      "text": "the latest up to dat right so it's very",
+      "offset": 765.6,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "nice to decouple that from our app",
+      "offset": 767.839,
+      "duration": 3.56
+    },
+    {
+      "lang": "en",
+      "text": "actually so they also give you an audit",
+      "offset": 769.68,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "log so you can actually see what",
+      "offset": 771.399,
+      "duration": 3.88
+    },
+    {
+      "lang": "en",
+      "text": "happened so it will show me for example",
+      "offset": 773.04,
+      "duration": 3.799
+    },
+    {
+      "lang": "en",
+      "text": "hey there was an attempt here by this",
+      "offset": 775.279,
+      "duration": 3.881
+    },
+    {
+      "lang": "en",
+      "text": "user to delete a post and this was the",
+      "offset": 776.839,
+      "duration": 4.041
+    },
+    {
+      "lang": "en",
+      "text": "decision it's permitted okay so what we",
+      "offset": 779.16,
+      "duration": 4.039
+    },
+    {
+      "lang": "en",
+      "text": "just did is rback role based access",
+      "offset": 780.88,
+      "duration": 4.44
+    },
+    {
+      "lang": "en",
+      "text": "control and that is typically way you",
+      "offset": 783.199,
+      "duration": 5
+    },
+    {
+      "lang": "en",
+      "text": "would start but over time you need more",
+      "offset": 785.32,
+      "duration": 5.48
+    },
+    {
+      "lang": "en",
+      "text": "Nuance you need more fine grade control",
+      "offset": 788.199,
+      "duration": 4.44
+    },
+    {
+      "lang": "en",
+      "text": "essentially and so a lot of",
+      "offset": 790.8,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "organizations tend to grow towards an",
+      "offset": 792.639,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "attribute based access control system so",
+      "offset": 795.76,
+      "duration": 4.28
+    },
+    {
+      "lang": "en",
+      "text": "you can imagine that uh well we still",
+      "offset": 798.079,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "have an editor right so an editor can",
+      "offset": 800.04,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "edit posts but now we have a bunch of",
+      "offset": 801.839,
+      "duration": 3.841
+    },
+    {
+      "lang": "en",
+      "text": "qualifiers essentially right so not",
+      "offset": 803.8,
+      "duration": 4.719
+    },
+    {
+      "lang": "en",
+      "text": "every editor can edit posts only senior",
+      "offset": 805.68,
+      "duration": 5.08
+    },
+    {
+      "lang": "en",
+      "text": "editors right so this senior is an",
+      "offset": 808.519,
+      "duration": 4.521
+    },
+    {
+      "lang": "en",
+      "text": "attribute for that editor so we still",
+      "offset": 810.76,
+      "duration": 3.759
+    },
+    {
+      "lang": "en",
+      "text": "have a you could say a role right an",
+      "offset": 813.04,
+      "duration": 3.799
+    },
+    {
+      "lang": "en",
+      "text": "editor role they can still have they",
+      "offset": 814.519,
+      "duration": 4.161
+    },
+    {
+      "lang": "en",
+      "text": "still have this action edit and we still",
+      "offset": 816.839,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "have our posts resource but we just have",
+      "offset": 818.68,
+      "duration": 3.719
+    },
+    {
+      "lang": "en",
+      "text": "a bunch of qualifiers here so another",
+      "offset": 820.519,
+      "duration": 3.841
+    },
+    {
+      "lang": "en",
+      "text": "one here is posts not every post can be",
+      "offset": 822.399,
+      "duration": 5
+    },
+    {
+      "lang": "en",
+      "text": "edited only posts that are in draft mode",
+      "offset": 824.36,
+      "duration": 5.24
+    },
+    {
+      "lang": "en",
+      "text": "right so that they that have a status of",
+      "offset": 827.399,
+      "duration": 4.12
+    },
+    {
+      "lang": "en",
+      "text": "draft right so this is also an attribute",
+      "offset": 829.6,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "here for the posts resource and what is",
+      "offset": 831.519,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "also very common is that you have more",
+      "offset": 833.6,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "like environmental attributes so for",
+      "offset": 835.519,
+      "duration": 4.68
+    },
+    {
+      "lang": "en",
+      "text": "example the time or the location so",
+      "offset": 838,
+      "duration": 4.199
+    },
+    {
+      "lang": "en",
+      "text": "editors can only edit post between",
+      "offset": 840.199,
+      "duration": 3.64
+    },
+    {
+      "lang": "en",
+      "text": "Monday and Friday right we don't want to",
+      "offset": 842.199,
+      "duration": 3.56
+    },
+    {
+      "lang": "en",
+      "text": "allow perhaps editing posts on the",
+      "offset": 843.839,
+      "duration": 3.961
+    },
+    {
+      "lang": "en",
+      "text": "weekend and location I didn't addit here",
+      "offset": 845.759,
+      "duration": 3.601
+    },
+    {
+      "lang": "en",
+      "text": "but location is actually also very",
+      "offset": 847.8,
+      "duration": 3
+    },
+    {
+      "lang": "en",
+      "text": "common maybe we only want to allow",
+      "offset": 849.36,
+      "duration": 4.399
+    },
+    {
+      "lang": "en",
+      "text": "editing posts in the city where we have",
+      "offset": 850.8,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "an office let's say right so you can see",
+      "offset": 853.759,
+      "duration": 3.88
+    },
+    {
+      "lang": "en",
+      "text": "that this is much more realistic and",
+      "offset": 855.68,
+      "duration": 4.04
+    },
+    {
+      "lang": "en",
+      "text": "this and these attributes give us the",
+      "offset": 857.639,
+      "duration": 4.2
+    },
+    {
+      "lang": "en",
+      "text": "power to become much more nuanced Much",
+      "offset": 859.72,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "More We Get Much More fine grain control",
+      "offset": 861.839,
+      "duration": 4.481
+    },
+    {
+      "lang": "en",
+      "text": "over the arback system right so let's",
+      "offset": 864.04,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "actually try implementing this as well",
+      "offset": 866.32,
+      "duration": 3.639
+    },
+    {
+      "lang": "en",
+      "text": "so let's let's actually take a look at",
+      "offset": 868.6,
+      "duration": 3.239
+    },
+    {
+      "lang": "en",
+      "text": "admins right so we have an admin and",
+      "offset": 869.959,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "previously we just had an admin can",
+      "offset": 871.839,
+      "duration": 4.201
+    },
+    {
+      "lang": "en",
+      "text": "delete posts period now let's actually",
+      "offset": 873.639,
+      "duration": 4.76
+    },
+    {
+      "lang": "en",
+      "text": "try aack as well so we have we will",
+      "offset": 876.04,
+      "duration": 4.599
+    },
+    {
+      "lang": "en",
+      "text": "still just have an admin so simple roll",
+      "offset": 878.399,
+      "duration": 3.88
+    },
+    {
+      "lang": "en",
+      "text": "can delete right so we still have an",
+      "offset": 880.639,
+      "duration": 4.241
+    },
+    {
+      "lang": "en",
+      "text": "action posts this still the resource but",
+      "offset": 882.279,
+      "duration": 5
+    },
+    {
+      "lang": "en",
+      "text": "now we have a qualifier only one for the",
+      "offset": 884.88,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "resource right so only posts that are in",
+      "offset": 887.279,
+      "duration": 4.721
+    },
+    {
+      "lang": "en",
+      "text": "archived mode can be deleted not every",
+      "offset": 889.68,
+      "duration": 5.159
+    },
+    {
+      "lang": "en",
+      "text": "post only those with a status of archive",
+      "offset": 892,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "so how would we go about doing that here",
+      "offset": 894.839,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "in permit it's actually very",
+      "offset": 896.56,
+      "duration": 3.079
+    },
+    {
+      "lang": "en",
+      "text": "straightforward right so we still have",
+      "offset": 898.199,
+      "duration": 3.801
+    },
+    {
+      "lang": "en",
+      "text": "our roles and we still have our posts",
+      "offset": 899.639,
+      "duration": 3.88
+    },
+    {
+      "lang": "en",
+      "text": "resource but now we want to add some",
+      "offset": 902,
+      "duration": 3.519
+    },
+    {
+      "lang": "en",
+      "text": "aback rules right so actually first I",
+      "offset": 903.519,
+      "duration": 4.841
+    },
+    {
+      "lang": "en",
+      "text": "need to specify uh for this resource for",
+      "offset": 905.519,
+      "duration": 4.601
+    },
+    {
+      "lang": "en",
+      "text": "posts that they now can also have",
+      "offset": 908.36,
+      "duration": 4.44
+    },
+    {
+      "lang": "en",
+      "text": "attributes so a post can also have an",
+      "offset": 910.12,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "attribute in this case status right it",
+      "offset": 912.8,
+      "duration": 6.24
+    },
+    {
+      "lang": "en",
+      "text": "can be in draft Mode live or uh archived",
+      "offset": 915.32,
+      "duration": 6.16
+    },
+    {
+      "lang": "en",
+      "text": "right so here um I'm only going to add",
+      "offset": 919.04,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "status here if I save here let's see",
+      "offset": 921.48,
+      "duration": 4.68
+    },
+    {
+      "lang": "en",
+      "text": "okay so now we told permit hey post can",
+      "offset": 923.6,
+      "duration": 3.88
+    },
+    {
+      "lang": "en",
+      "text": "also have some status so the way it",
+      "offset": 926.16,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "works now I need to go to a back rules I",
+      "offset": 927.48,
+      "duration": 4.68
+    },
+    {
+      "lang": "en",
+      "text": "need to tell permit how to group those",
+      "offset": 929.6,
+      "duration": 4.76
+    },
+    {
+      "lang": "en",
+      "text": "posts so we will have posts in draft",
+      "offset": 932.16,
+      "duration": 5.679
+    },
+    {
+      "lang": "en",
+      "text": "mode posts in archived mode permit right",
+      "offset": 934.36,
+      "duration": 5.159
+    },
+    {
+      "lang": "en",
+      "text": "now only knows that it can have a status",
+      "offset": 937.839,
+      "duration": 3.761
+    },
+    {
+      "lang": "en",
+      "text": "but it doesn't know what status yet so",
+      "offset": 939.519,
+      "duration": 3.841
+    },
+    {
+      "lang": "en",
+      "text": "we have all the posts but we are",
+      "offset": 941.6,
+      "duration": 3.88
+    },
+    {
+      "lang": "en",
+      "text": "essentially creating a subset of that",
+      "offset": 943.36,
+      "duration": 3.479
+    },
+    {
+      "lang": "en",
+      "text": "right so the posts that are going to be",
+      "offset": 945.48,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "in archived mode so here we will tell",
+      "offset": 946.839,
+      "duration": 4.92
+    },
+    {
+      "lang": "en",
+      "text": "permit hey there is a condition here for",
+      "offset": 949.24,
+      "duration": 5.279
+    },
+    {
+      "lang": "en",
+      "text": "post if if the if the status of that",
+      "offset": 951.759,
+      "duration": 5.681
+    },
+    {
+      "lang": "en",
+      "text": "post equals archived that those posts",
+      "offset": 954.519,
+      "duration": 4.44
+    },
+    {
+      "lang": "en",
+      "text": "should be in their own group as",
+      "offset": 957.44,
+      "duration": 3.12
+    },
+    {
+      "lang": "en",
+      "text": "essentially they're special that's a",
+      "offset": 958.959,
+      "duration": 3.041
+    },
+    {
+      "lang": "en",
+      "text": "safe condition this looks a bit",
+      "offset": 960.56,
+      "duration": 3.16
+    },
+    {
+      "lang": "en",
+      "text": "complicated but now the benefit is if I",
+      "offset": 962,
+      "duration": 4.399
+    },
+    {
+      "lang": "en",
+      "text": "go to the policy editor suddenly here we",
+      "offset": 963.72,
+      "duration": 5.84
+    },
+    {
+      "lang": "en",
+      "text": "have a new column here for posts but",
+      "offset": 966.399,
+      "duration": 5.641
+    },
+    {
+      "lang": "en",
+      "text": "specifically for posts that are archived",
+      "offset": 969.56,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "right so that have a status of archived",
+      "offset": 972.04,
+      "duration": 3.479
+    },
+    {
+      "lang": "en",
+      "text": "so now we can determine what we want to",
+      "offset": 973.8,
+      "duration": 4.399
+    },
+    {
+      "lang": "en",
+      "text": "allow so we want to allow admin users uh",
+      "offset": 975.519,
+      "duration": 4.721
+    },
+    {
+      "lang": "en",
+      "text": "Delete and we still have delete here as",
+      "offset": 978.199,
+      "duration": 3.88
+    },
+    {
+      "lang": "en",
+      "text": "well but this is for all post and this",
+      "offset": 980.24,
+      "duration": 4.159
+    },
+    {
+      "lang": "en",
+      "text": "is for the subset of posts that are",
+      "offset": 982.079,
+      "duration": 3.88
+    },
+    {
+      "lang": "en",
+      "text": "archived so here we actually should",
+      "offset": 984.399,
+      "duration": 3.081
+    },
+    {
+      "lang": "en",
+      "text": "remove it so we don't want to allow",
+      "offset": 985.959,
+      "duration": 4.041
+    },
+    {
+      "lang": "en",
+      "text": "deleting all posts right only if they",
+      "offset": 987.48,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "are archived right so only if they",
+      "offset": 990,
+      "duration": 4.519
+    },
+    {
+      "lang": "en",
+      "text": "belong to the subset of archived posts",
+      "offset": 991.72,
+      "duration": 4.559
+    },
+    {
+      "lang": "en",
+      "text": "that what that's what that's essentially",
+      "offset": 994.519,
+      "duration": 3.361
+    },
+    {
+      "lang": "en",
+      "text": "what I just set up an admin should still",
+      "offset": 996.279,
+      "duration": 4.201
+    },
+    {
+      "lang": "en",
+      "text": "be able to create read update for all",
+      "offset": 997.88,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "the post that's fine we can keep it like",
+      "offset": 1000.48,
+      "duration": 4.479
+    },
+    {
+      "lang": "en",
+      "text": "that the other roles well they can stay",
+      "offset": 1002.68,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "the same for now they can stay the same",
+      "offset": 1004.959,
+      "duration": 3.161
+    },
+    {
+      "lang": "en",
+      "text": "okay so now if I save here all right so",
+      "offset": 1006.6,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "now if I want to use ABAC I actually do",
+      "offset": 1008.12,
+      "duration": 4.959
+    },
+    {
+      "lang": "en",
+      "text": "need to self host uh permits right so",
+      "offset": 1010.36,
+      "duration": 4.599
+    },
+    {
+      "lang": "en",
+      "text": "now it will not work with their Cloud",
+      "offset": 1013.079,
+      "duration": 3.641
+    },
+    {
+      "lang": "en",
+      "text": "decision point right so this is called a",
+      "offset": 1014.959,
+      "duration": 3.641
+    },
+    {
+      "lang": "en",
+      "text": "policy decision point so this is the",
+      "offset": 1016.72,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "place is where the actual true or false",
+      "offset": 1018.6,
+      "duration": 4.239
+    },
+    {
+      "lang": "en",
+      "text": "decision is made it's going to run all",
+      "offset": 1021.12,
+      "duration": 3.559
+    },
+    {
+      "lang": "en",
+      "text": "of those all of those authorization",
+      "offset": 1022.839,
+      "duration": 3.401
+    },
+    {
+      "lang": "en",
+      "text": "rules if you're just trying it out it's",
+      "offset": 1024.679,
+      "duration": 3.481
+    },
+    {
+      "lang": "en",
+      "text": "actually very convenient that they run",
+      "offset": 1026.24,
+      "duration": 3.319
+    },
+    {
+      "lang": "en",
+      "text": "it in the cloud for you so you don't",
+      "offset": 1028.16,
+      "duration": 2.96
+    },
+    {
+      "lang": "en",
+      "text": "have to run a Docker container that's",
+      "offset": 1029.559,
+      "duration": 2.721
+    },
+    {
+      "lang": "en",
+      "text": "what we've been doing so all right so",
+      "offset": 1031.12,
+      "duration": 3.4
+    },
+    {
+      "lang": "en",
+      "text": "now if I want to use ABAC I actually do",
+      "offset": 1032.28,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "need to self-host uh permits right so",
+      "offset": 1034.52,
+      "duration": 4.559
+    },
+    {
+      "lang": "en",
+      "text": "now it will not work with their Cloud",
+      "offset": 1037.24,
+      "duration": 4.12
+    },
+    {
+      "lang": "en",
+      "text": "decision point so I will run a Docker",
+      "offset": 1039.079,
+      "duration": 4.84
+    },
+    {
+      "lang": "en",
+      "text": "container locally to make these policy",
+      "offset": 1041.36,
+      "duration": 4.479
+    },
+    {
+      "lang": "en",
+      "text": "decision they they're very easily showed",
+      "offset": 1043.919,
+      "duration": 3.4
+    },
+    {
+      "lang": "en",
+      "text": "here as well so here if we want to",
+      "offset": 1045.839,
+      "duration": 3.481
+    },
+    {
+      "lang": "en",
+      "text": "enforce a back here they have the docker",
+      "offset": 1047.319,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "image that we can pull now if you don't",
+      "offset": 1049.32,
+      "duration": 3.04
+    },
+    {
+      "lang": "en",
+      "text": "know anything about Docker or you",
+      "offset": 1050.919,
+      "duration": 3.361
+    },
+    {
+      "lang": "en",
+      "text": "haven't installed it yet that's okay uh",
+      "offset": 1052.36,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "if you do want to try it you can",
+      "offset": 1054.28,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "download Docker the docker desktop here",
+      "offset": 1055.96,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "on the docker website it's actually very",
+      "offset": 1058.12,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "straightforward you don't need to know",
+      "offset": 1060.12,
+      "duration": 3.679
+    },
+    {
+      "lang": "en",
+      "text": "much about Docker to be uh productive",
+      "offset": 1061.48,
+      "duration": 4.199
+    },
+    {
+      "lang": "en",
+      "text": "with it so I have already installed it",
+      "offset": 1063.799,
+      "duration": 3.601
+    },
+    {
+      "lang": "en",
+      "text": "so then you get an app called Docker",
+      "offset": 1065.679,
+      "duration": 3.601
+    },
+    {
+      "lang": "en",
+      "text": "desktop I have some other things running",
+      "offset": 1067.4,
+      "duration": 3.159
+    },
+    {
+      "lang": "en",
+      "text": "here because I've been using it all",
+      "offset": 1069.28,
+      "duration": 2.92
+    },
+    {
+      "lang": "en",
+      "text": "right so now we need to run a container",
+      "offset": 1070.559,
+      "duration": 3.561
+    },
+    {
+      "lang": "en",
+      "text": "so that we will actually run that policy",
+      "offset": 1072.2,
+      "duration": 3.599
+    },
+    {
+      "lang": "en",
+      "text": "decision Point locally on our own",
+      "offset": 1074.12,
+      "duration": 3.32
+    },
+    {
+      "lang": "en",
+      "text": "computer so I will open up my terminal",
+      "offset": 1075.799,
+      "duration": 3.88
+    },
+    {
+      "lang": "en",
+      "text": "app and I will paste this is right here",
+      "offset": 1077.44,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "right so the first time it may not have",
+      "offset": 1079.679,
+      "duration": 3.801
+    },
+    {
+      "lang": "en",
+      "text": "that Docker image as it's called so it",
+      "offset": 1081.6,
+      "duration": 3.8
+    },
+    {
+      "lang": "en",
+      "text": "may download the docker image but when",
+      "offset": 1083.48,
+      "duration": 3.319
+    },
+    {
+      "lang": "en",
+      "text": "it has the docker image it's going to",
+      "offset": 1085.4,
+      "duration": 3.159
+    },
+    {
+      "lang": "en",
+      "text": "run an instance of it all right so now",
+      "offset": 1086.799,
+      "duration": 3.841
+    },
+    {
+      "lang": "en",
+      "text": "this looks good so now if I go to",
+      "offset": 1088.559,
+      "duration": 3.801
+    },
+    {
+      "lang": "en",
+      "text": "Containers I can see indeed there is",
+      "offset": 1090.64,
+      "duration": 3.2
+    },
+    {
+      "lang": "en",
+      "text": "something running here with permit so",
+      "offset": 1092.36,
+      "duration": 3.199
+    },
+    {
+      "lang": "en",
+      "text": "basically that decision point is now",
+      "offset": 1093.84,
+      "duration": 3.64
+    },
+    {
+      "lang": "en",
+      "text": "running locally on my own computer so",
+      "offset": 1095.559,
+      "duration": 3.961
+    },
+    {
+      "lang": "en",
+      "text": "previously we were connecting to permit",
+      "offset": 1097.48,
+      "duration": 3.679
+    },
+    {
+      "lang": "en",
+      "text": "on their server right but now it's",
+      "offset": 1099.52,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "running on our own computer so the URL",
+      "offset": 1101.159,
+      "duration": 5.201
+    },
+    {
+      "lang": "en",
+      "text": "will now be Local Host Port 7766 so now",
+      "offset": 1103.44,
+      "duration": 4.119
+    },
+    {
+      "lang": "en",
+      "text": "we're still going to pass the same",
+      "offset": 1106.36,
+      "duration": 3.72
+    },
+    {
+      "lang": "en",
+      "text": "information right so um we right so we",
+      "offset": 1107.559,
+      "duration": 4.36
+    },
+    {
+      "lang": "en",
+      "text": "essentially added an attribute for",
+      "offset": 1110.08,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "admins to delete posts so we will still",
+      "offset": 1111.919,
+      "duration": 5.521
+    },
+    {
+      "lang": "en",
+      "text": "pass the user information so permit",
+      "offset": 1114.72,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "knows who this user is what action they",
+      "offset": 1117.44,
+      "duration": 3.239
+    },
+    {
+      "lang": "en",
+      "text": "want to take and now we added an",
+      "offset": 1119.28,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "attribute to this post resource so here",
+      "offset": 1120.679,
+      "duration": 5.601
+    },
+    {
+      "lang": "en",
+      "text": "now actually we will make it an object",
+      "offset": 1124.32,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "and we will say what type this is the",
+      "offset": 1126.28,
+      "duration": 3.32
+    },
+    {
+      "lang": "en",
+      "text": "post type and we need to specify the",
+      "offset": 1127.84,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "attributes for this so this post would",
+      "offset": 1129.6,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "typically come from our database and it",
+      "offset": 1132.08,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "will have some status that could be in a",
+      "offset": 1133.76,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "draft status so now if I save here if I",
+      "offset": 1135.6,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "uh re cresh here we don't see a delete",
+      "offset": 1138.24,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "button now let's actually make sure the",
+      "offset": 1140.4,
+      "duration": 3.88
+    },
+    {
+      "lang": "en",
+      "text": "user is actually an admin so you can see",
+      "offset": 1142.24,
+      "duration": 3.919
+    },
+    {
+      "lang": "en",
+      "text": "the user was still an editor let's",
+      "offset": 1144.28,
+      "duration": 3.72
+    },
+    {
+      "lang": "en",
+      "text": "actually change this so the user needs",
+      "offset": 1146.159,
+      "duration": 4.201
+    },
+    {
+      "lang": "en",
+      "text": "to be uh an admin let's make this user",
+      "offset": 1148,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "an admin so an admin can delete posts so",
+      "offset": 1150.36,
+      "duration": 3.96
+    },
+    {
+      "lang": "en",
+      "text": "let's see if that still work when I",
+      "offset": 1152.64,
+      "duration": 3.72
+    },
+    {
+      "lang": "en",
+      "text": "refresh we do not see a delete button",
+      "offset": 1154.32,
+      "duration": 3.719
+    },
+    {
+      "lang": "en",
+      "text": "because we are saying that this is going",
+      "offset": 1156.36,
+      "duration": 3.28
+    },
+    {
+      "lang": "en",
+      "text": "to be this resource because we are",
+      "offset": 1158.039,
+      "duration": 3.401
+    },
+    {
+      "lang": "en",
+      "text": "saying this resource this post is in",
+      "offset": 1159.64,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "draft mode right but we said only posts",
+      "offset": 1161.44,
+      "duration": 5.64
+    },
+    {
+      "lang": "en",
+      "text": "that are archived can be deleted so if I",
+      "offset": 1164.28,
+      "duration": 5
+    },
+    {
+      "lang": "en",
+      "text": "save here we get our deleted the post",
+      "offset": 1167.08,
+      "duration": 3.599
+    },
+    {
+      "lang": "en",
+      "text": "back it's really slick by the way that",
+      "offset": 1169.28,
+      "duration": 3.24
+    },
+    {
+      "lang": "en",
+      "text": "if you make an update here the locally",
+      "offset": 1170.679,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "running uh decision Point permit",
+      "offset": 1172.52,
+      "duration": 4.399
+    },
+    {
+      "lang": "en",
+      "text": "decision point is automatically updated",
+      "offset": 1175.159,
+      "duration": 4.161
+    },
+    {
+      "lang": "en",
+      "text": "for that as well it's actually really",
+      "offset": 1176.919,
+      "duration": 5
+    },
+    {
+      "lang": "en",
+      "text": "helpful right so you would get your user",
+      "offset": 1179.32,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "object from your authentication provider",
+      "offset": 1181.919,
+      "duration": 4.201
+    },
+    {
+      "lang": "en",
+      "text": "you pass along some unique identifier",
+      "offset": 1184.2,
+      "duration": 3.64
+    },
+    {
+      "lang": "en",
+      "text": "you tell permit what action we are",
+      "offset": 1186.12,
+      "duration": 4.28
+    },
+    {
+      "lang": "en",
+      "text": "checking for and then the resource so",
+      "offset": 1187.84,
+      "duration": 4.68
+    },
+    {
+      "lang": "en",
+      "text": "here I'm sort of hardcoding an object",
+      "offset": 1190.4,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "here you can imagine that we would",
+      "offset": 1192.52,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "actually get a post from our database",
+      "offset": 1193.84,
+      "duration": 3.959
+    },
+    {
+      "lang": "en",
+      "text": "and we would grab its status so we can",
+      "offset": 1195.88,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "make this more dynamic all right so now",
+      "offset": 1197.799,
+      "duration": 3.801
+    },
+    {
+      "lang": "en",
+      "text": "we saw rback aback there's also",
+      "offset": 1199.4,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "something called reback which is more",
+      "offset": 1201.6,
+      "duration": 4.68
+    },
+    {
+      "lang": "en",
+      "text": "centered around relationship typically",
+      "offset": 1203.72,
+      "duration": 4.6
+    },
+    {
+      "lang": "en",
+      "text": "or hierarchies the way I think about it",
+      "offset": 1206.28,
+      "duration": 4.36
+    },
+    {
+      "lang": "en",
+      "text": "is for example you can have a viewer",
+      "offset": 1208.32,
+      "duration": 4.52
+    },
+    {
+      "lang": "en",
+      "text": "with some active subscription can view",
+      "offset": 1210.64,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "posts on mobile let's say now if you",
+      "offset": 1212.84,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "have another user that is a family",
+      "offset": 1215.52,
+      "duration": 4.12
+    },
+    {
+      "lang": "en",
+      "text": "member of that viewer maybe they",
+      "offset": 1217.32,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "automatically inherit the same",
+      "offset": 1219.64,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "permissions so you can imagine uh",
+      "offset": 1221.48,
+      "duration": 4.559
+    },
+    {
+      "lang": "en",
+      "text": "Netflix you typically can share the",
+      "offset": 1223.64,
+      "duration": 4.039
+    },
+    {
+      "lang": "en",
+      "text": "account with other members of your",
+      "offset": 1226.039,
+      "duration": 3.681
+    },
+    {
+      "lang": "en",
+      "text": "household right so then you get more",
+      "offset": 1227.679,
+      "duration": 4.681
+    },
+    {
+      "lang": "en",
+      "text": "into a relationship or even hierarchy",
+      "offset": 1229.72,
+      "duration": 6.24
+    },
+    {
+      "lang": "en",
+      "text": "type of situation and maybe reback can",
+      "offset": 1232.36,
+      "duration": 5.84
+    },
+    {
+      "lang": "en",
+      "text": "be more convenient in that case right so",
+      "offset": 1235.96,
+      "duration": 3.959
+    },
+    {
+      "lang": "en",
+      "text": "typically you would begin with some kind",
+      "offset": 1238.2,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "of arback system and over time you kind",
+      "offset": 1239.919,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "of grow into one of these other systems",
+      "offset": 1242.12,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "I would say aack is probably more common",
+      "offset": 1244.159,
+      "duration": 3.801
+    },
+    {
+      "lang": "en",
+      "text": "I've actually really enjoyed working",
+      "offset": 1246.76,
+      "duration": 3.919
+    },
+    {
+      "lang": "en",
+      "text": "with permits they also have UI elements",
+      "offset": 1247.96,
+      "duration": 4.959
+    },
+    {
+      "lang": "en",
+      "text": "so if you want to allow your admin users",
+      "offset": 1250.679,
+      "duration": 4.841
+    },
+    {
+      "lang": "en",
+      "text": "for example assign roles invite people",
+      "offset": 1252.919,
+      "duration": 4.601
+    },
+    {
+      "lang": "en",
+      "text": "you can get like a UI element here you",
+      "offset": 1255.52,
+      "duration": 3.72
+    },
+    {
+      "lang": "en",
+      "text": "can set it up you can can configure",
+      "offset": 1257.52,
+      "duration": 3.12
+    },
+    {
+      "lang": "en",
+      "text": "things on the left side and this is what",
+      "offset": 1259.24,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "you would get inside your app so then",
+      "offset": 1260.64,
+      "duration": 4.039
+    },
+    {
+      "lang": "en",
+      "text": "that admin user could say hey I want to",
+      "offset": 1262.6,
+      "duration": 5.6
+    },
+    {
+      "lang": "en",
+      "text": "invite Bob I want to invite Bob and Bob",
+      "offset": 1264.679,
+      "duration": 5.721
+    },
+    {
+      "lang": "en",
+      "text": "needs to become an editor right then we",
+      "offset": 1268.2,
+      "duration": 4.2
+    },
+    {
+      "lang": "en",
+      "text": "could send an email let's say to Bob",
+      "offset": 1270.4,
+      "duration": 3.159
+    },
+    {
+      "lang": "en",
+      "text": "right so I actually really enjoyed",
+      "offset": 1272.4,
+      "duration": 3.12
+    },
+    {
+      "lang": "en",
+      "text": "working with permits it actually makes",
+      "offset": 1273.559,
+      "duration": 4.401
+    },
+    {
+      "lang": "en",
+      "text": "authorization with pretty complex logic",
+      "offset": 1275.52,
+      "duration": 4.6
+    },
+    {
+      "lang": "en",
+      "text": "very ergonomic to implement in any case",
+      "offset": 1277.96,
+      "duration": 3.599
+    },
+    {
+      "lang": "en",
+      "text": "hopefully this was helpful I want to",
+      "offset": 1280.12,
+      "duration": 2.919
+    },
+    {
+      "lang": "en",
+      "text": "thank permit for sponsoring this video",
+      "offset": 1281.559,
+      "duration": 2.761
+    },
+    {
+      "lang": "en",
+      "text": "definitely make sure to check them out",
+      "offset": 1283.039,
+      "duration": 2.681
+    },
+    {
+      "lang": "en",
+      "text": "you can find a link in the description",
+      "offset": 1284.32,
+      "duration": 2.88
+    },
+    {
+      "lang": "en",
+      "text": "and thank you for watching I hope to see",
+      "offset": 1285.72,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "you the next one bye",
+      "offset": 1287.2,
+      "duration": 2.76
+    }
+  ],
+  "cleanText": null,
+  "dumpedAt": "2025-07-21T18:43:24.460Z"
+}

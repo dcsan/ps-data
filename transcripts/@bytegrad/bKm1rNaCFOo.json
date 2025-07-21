@@ -1,0 +1,3094 @@
+{
+  "episodeId": "bKm1rNaCFOo",
+  "channelSlug": "@bytegrad",
+  "title": "This Next.js Data Fetching Pattern Is CRITICAL For Every Developer",
+  "publishedAt": "2025-05-14T09:01:02.000Z",
+  "rawLines": [
+    {
+      "lang": "en",
+      "text": "Everyone, a new data fetching pattern in",
+      "offset": 0.16,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "Nex.js has emerged and it has to do with",
+      "offset": 2.399,
+      "duration": 4.641
+    },
+    {
+      "lang": "en",
+      "text": "the React use hook. So maybe you've seen",
+      "offset": 4.88,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "it around or not, but this is an",
+      "offset": 7.04,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "important pattern to be aware of. I",
+      "offset": 9.28,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "think it has to do with data fetching on",
+      "offset": 10.88,
+      "duration": 3.839
+    },
+    {
+      "lang": "en",
+      "text": "the client side. So in client component,",
+      "offset": 12.8,
+      "duration": 4.479
+    },
+    {
+      "lang": "en",
+      "text": "so maybe you've heard of uh SWR or React",
+      "offset": 14.719,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "query. Probably you've heard of those.",
+      "offset": 17.279,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "But there is an alternative way to fetch",
+      "offset": 19.039,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "data and that is with the new React use",
+      "offset": 21.039,
+      "duration": 3.361
+    },
+    {
+      "lang": "en",
+      "text": "hook. So I'm going to show you in this",
+      "offset": 23.039,
+      "duration": 3.121
+    },
+    {
+      "lang": "en",
+      "text": "video how that works and why we even",
+      "offset": 24.4,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "want to use it. But I think this is a",
+      "offset": 26.16,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "really interesting pattern and allows us",
+      "offset": 28.32,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "to get data on the client side in a",
+      "offset": 30.08,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "really performant manner and it also",
+      "offset": 32,
+      "duration": 4.239
+    },
+    {
+      "lang": "en",
+      "text": "allows us to uh spread the data in",
+      "offset": 33.52,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "multiple client components in a very",
+      "offset": 36.239,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "performant manner with uh the context",
+      "offset": 38.32,
+      "duration": 4.079
+    },
+    {
+      "lang": "en",
+      "text": "API actually. So I'll show you that as",
+      "offset": 40.559,
+      "duration": 3.201
+    },
+    {
+      "lang": "en",
+      "text": "well. But let's actually just start with",
+      "offset": 42.399,
+      "duration": 3.521
+    },
+    {
+      "lang": "en",
+      "text": "a very simple example. We just have a",
+      "offset": 43.76,
+      "duration": 4.639
+    },
+    {
+      "lang": "en",
+      "text": "very basic NexJS application here and",
+      "offset": 45.92,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "it's just literally one page and right",
+      "offset": 48.399,
+      "duration": 5.041
+    },
+    {
+      "lang": "en",
+      "text": "now we don't have any data, right? So",
+      "offset": 51.44,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "now I want to fetch some data. So how do",
+      "offset": 53.44,
+      "duration": 3.04
+    },
+    {
+      "lang": "en",
+      "text": "we do that? Well, I can mark the",
+      "offset": 55.12,
+      "duration": 2.959
+    },
+    {
+      "lang": "en",
+      "text": "component as async as it's a React",
+      "offset": 56.48,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "server component by default and I can",
+      "offset": 58.079,
+      "duration": 4.881
+    },
+    {
+      "lang": "en",
+      "text": "fetch uh data from my own database or",
+      "offset": 60,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "some thirdparty API. So here I'm just",
+      "offset": 62.96,
+      "duration": 4.479
+    },
+    {
+      "lang": "en",
+      "text": "using some uh dummy data from a third",
+      "offset": 65.04,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "party API. But this could be you know",
+      "offset": 67.439,
+      "duration": 4.961
+    },
+    {
+      "lang": "en",
+      "text": "this could also just be uh prisma.todo",
+      "offset": 69.68,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "right from my own database right doesn't",
+      "offset": 72.4,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "really matter what the data source is.",
+      "offset": 74.72,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "The point is I'm in my React server",
+      "offset": 76.4,
+      "duration": 3.759
+    },
+    {
+      "lang": "en",
+      "text": "component here. So on my nextgs server",
+      "offset": 78.24,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "side and I'm fetching data and it's just",
+      "offset": 80.159,
+      "duration": 3.841
+    },
+    {
+      "lang": "en",
+      "text": "going to be a bunch of to-dos and so",
+      "offset": 82.56,
+      "duration": 2.8
+    },
+    {
+      "lang": "en",
+      "text": "we're going to get the to-dos here. And",
+      "offset": 84,
+      "duration": 2.96
+    },
+    {
+      "lang": "en",
+      "text": "now I want to output this on the page",
+      "offset": 85.36,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "and then I can take those to-dos and",
+      "offset": 86.96,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "let's say we just have a list of them.",
+      "offset": 89.2,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "So it's just going to be a ul and we map",
+      "offset": 91.28,
+      "duration": 4.479
+    },
+    {
+      "lang": "en",
+      "text": "over each one and we're just creating an",
+      "offset": 93.92,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "li for each one and we're just",
+      "offset": 95.759,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "displaying the title. So not really",
+      "offset": 98,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "doing anything just displaying. So if I",
+      "offset": 100.159,
+      "duration": 4.881
+    },
+    {
+      "lang": "en",
+      "text": "do that and now go to my website you can",
+      "offset": 102.32,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "see I just have this H1 and then here we",
+      "offset": 105.04,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "have our data right. So very simple very",
+      "offset": 107.6,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "basic. Now we often abstract this",
+      "offset": 110.32,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "fetching logic away into a dedicated",
+      "offset": 112.88,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "function. I will create uh just a file",
+      "offset": 115.28,
+      "duration": 4.479
+    },
+    {
+      "lang": "en",
+      "text": "where I can have some utils let's say",
+      "offset": 117.84,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "and here I can have a function get data",
+      "offset": 119.759,
+      "duration": 3.921
+    },
+    {
+      "lang": "en",
+      "text": "and I'm actually just going to put it in",
+      "offset": 122.24,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "here. So here we are getting the to-dos",
+      "offset": 123.68,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "and I'm just returning the to-dos right",
+      "offset": 125.84,
+      "duration": 4.639
+    },
+    {
+      "lang": "en",
+      "text": "here. Okay. And so now instead of doing",
+      "offset": 128,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "this, I just have my one function get",
+      "offset": 130.479,
+      "duration": 5.361
+    },
+    {
+      "lang": "en",
+      "text": "data that I can use. So let me actually",
+      "offset": 133.36,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "import this as well. And now of course",
+      "offset": 135.84,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "we will get the to-dos like this. Right.",
+      "offset": 137.84,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "So so far very straightforward. We just",
+      "offset": 139.52,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "are getting data. It doesn't really",
+      "offset": 141.44,
+      "duration": 3.2
+    },
+    {
+      "lang": "en",
+      "text": "matter if we write it in a separate",
+      "offset": 143.12,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "function or not. And this works the same",
+      "offset": 144.64,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "as what we had before. So this so this",
+      "offset": 146.8,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "is the same as just doing it like what",
+      "offset": 149.28,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "we just did, right? But this looks a bit",
+      "offset": 151.44,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "cleaner and it doesn't change anything",
+      "offset": 153.2,
+      "duration": 3.759
+    },
+    {
+      "lang": "en",
+      "text": "about the logic. Cool. So very basic",
+      "offset": 155.04,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "setup so far. We just have uh we're just",
+      "offset": 156.959,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "fetching data with await here in a React",
+      "offset": 159.68,
+      "duration": 3.199
+    },
+    {
+      "lang": "en",
+      "text": "server component. You've seen this",
+      "offset": 161.599,
+      "duration": 3.121
+    },
+    {
+      "lang": "en",
+      "text": "around, right? We can do that these days",
+      "offset": 162.879,
+      "duration": 4.161
+    },
+    {
+      "lang": "en",
+      "text": "in Nex.js in React. Okay. Now, what is",
+      "offset": 164.72,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "the problem with doing it this way? If I",
+      "offset": 167.04,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "just uh load the page here, everything",
+      "offset": 169.28,
+      "duration": 3.599
+    },
+    {
+      "lang": "en",
+      "text": "seems to work. So, what's the problem?",
+      "offset": 171.44,
+      "duration": 3.439
+    },
+    {
+      "lang": "en",
+      "text": "We can make this better because right",
+      "offset": 172.879,
+      "duration": 4.961
+    },
+    {
+      "lang": "en",
+      "text": "now the way this works is when I go to",
+      "offset": 174.879,
+      "duration": 5.281
+    },
+    {
+      "lang": "en",
+      "text": "this app, basically when I make a",
+      "offset": 177.84,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "request to this website, this page will",
+      "offset": 180.16,
+      "duration": 4.079
+    },
+    {
+      "lang": "en",
+      "text": "be rendered and so it will go line by",
+      "offset": 182.48,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "line. So, here it will first get the",
+      "offset": 184.239,
+      "duration": 4.961
+    },
+    {
+      "lang": "en",
+      "text": "data. So before it returns anything, we",
+      "offset": 186.08,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "first are awaiting this get data which",
+      "offset": 189.2,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "means that also other things on the page",
+      "offset": 191.84,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "like this H1 which doesn't depend on",
+      "offset": 193.84,
+      "duration": 4.319
+    },
+    {
+      "lang": "en",
+      "text": "this data. It's just some static piece",
+      "offset": 196.48,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "of markup. This H1 before it's shown to",
+      "offset": 198.159,
+      "duration": 4.481
+    },
+    {
+      "lang": "en",
+      "text": "the user is waiting for the data here.",
+      "offset": 200.56,
+      "duration": 3.599
+    },
+    {
+      "lang": "en",
+      "text": "And if I have other things here on the",
+      "offset": 202.64,
+      "duration": 3.679
+    },
+    {
+      "lang": "en",
+      "text": "page that is also not being shown to the",
+      "offset": 204.159,
+      "duration": 4.481
+    },
+    {
+      "lang": "en",
+      "text": "user while we are waiting for this data",
+      "offset": 206.319,
+      "duration": 4.081
+    },
+    {
+      "lang": "en",
+      "text": "here. Right? So this data fetch here",
+      "offset": 208.64,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "where we have a way to get data. It's",
+      "offset": 210.4,
+      "duration": 3.919
+    },
+    {
+      "lang": "en",
+      "text": "sort of blocking the whole page even",
+      "offset": 212.48,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "though we are only using it for this",
+      "offset": 214.319,
+      "duration": 3.441
+    },
+    {
+      "lang": "en",
+      "text": "piece here. And just to demonstrate it",
+      "offset": 216.08,
+      "duration": 3.2
+    },
+    {
+      "lang": "en",
+      "text": "to you, let me actually just make this",
+      "offset": 217.76,
+      "duration": 2.88
+    },
+    {
+      "lang": "en",
+      "text": "function take a little bit longer",
+      "offset": 219.28,
+      "duration": 3.519
+    },
+    {
+      "lang": "en",
+      "text": "because because my internet is fast and",
+      "offset": 220.64,
+      "duration": 3.679
+    },
+    {
+      "lang": "en",
+      "text": "this is all very fast. Let me actually",
+      "offset": 222.799,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "just simulate like let's say a 3se",
+      "offset": 224.319,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "secondond delay. Right? So now this to",
+      "offset": 226.239,
+      "duration": 4.161
+    },
+    {
+      "lang": "en",
+      "text": "get data it's going to take at least 3",
+      "offset": 228.239,
+      "duration": 4.161
+    },
+    {
+      "lang": "en",
+      "text": "seconds. Right? So now if I go to this",
+      "offset": 230.4,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "page if I press enter here you can see",
+      "offset": 232.4,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "I'm waiting and waiting and waiting. I",
+      "offset": 234.48,
+      "duration": 3.759
+    },
+    {
+      "lang": "en",
+      "text": "don't see anything and only after three",
+      "offset": 236.64,
+      "duration": 3.679
+    },
+    {
+      "lang": "en",
+      "text": "seconds finally do I see the whole page",
+      "offset": 238.239,
+      "duration": 4.161
+    },
+    {
+      "lang": "en",
+      "text": "at once. Right? Is this optimal?",
+      "offset": 240.319,
+      "duration": 3.361
+    },
+    {
+      "lang": "en",
+      "text": "Probably not. Right. Right. So",
+      "offset": 242.4,
+      "duration": 3.28
+    },
+    {
+      "lang": "en",
+      "text": "everything on the page right now request",
+      "offset": 243.68,
+      "duration": 3.919
+    },
+    {
+      "lang": "en",
+      "text": "the whole response is being sort of",
+      "offset": 245.68,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "blocked by this one data fetch that we",
+      "offset": 247.599,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "actually only need for this piece here.",
+      "offset": 250.56,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "And if we have anything else here on the",
+      "offset": 252.799,
+      "duration": 4.481
+    },
+    {
+      "lang": "en",
+      "text": "page maybe a form maybe other things",
+      "offset": 254.72,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "those are also being blocked now. And",
+      "offset": 257.28,
+      "duration": 3.359
+    },
+    {
+      "lang": "en",
+      "text": "that's not what we want. Ideally, in",
+      "offset": 258.88,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "this case, when I load the app, I can",
+      "offset": 260.639,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "immediately show, for example, the H1 so",
+      "offset": 262.88,
+      "duration": 3.759
+    },
+    {
+      "lang": "en",
+      "text": "that the user knows that they're on the",
+      "offset": 265.199,
+      "duration": 3.041
+    },
+    {
+      "lang": "en",
+      "text": "right app so that they can immediately",
+      "offset": 266.639,
+      "duration": 3.601
+    },
+    {
+      "lang": "en",
+      "text": "see to-do app. And maybe if we have a",
+      "offset": 268.24,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "form for submitting to-dos, that we can",
+      "offset": 270.24,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "already show a form perhaps. So, while",
+      "offset": 272.4,
+      "duration": 3.12
+    },
+    {
+      "lang": "en",
+      "text": "we're waiting for the other data, we can",
+      "offset": 274.16,
+      "duration": 3.12
+    },
+    {
+      "lang": "en",
+      "text": "already show things. In fact, the user",
+      "offset": 275.52,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "may already interact with a form, let's",
+      "offset": 277.28,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "say, and then the data will come later.",
+      "offset": 279.12,
+      "duration": 3.519
+    },
+    {
+      "lang": "en",
+      "text": "That would be ideal, right? So, is there",
+      "offset": 280.96,
+      "duration": 3.2
+    },
+    {
+      "lang": "en",
+      "text": "maybe a way to do that? And yes,",
+      "offset": 282.639,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "actually, there is a very nice pattern",
+      "offset": 284.16,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "with suspense. What we can do is we can",
+      "offset": 286.479,
+      "duration": 5.361
+    },
+    {
+      "lang": "en",
+      "text": "refactor this to be its own component.",
+      "offset": 289.12,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "So let's actually create a component.",
+      "offset": 291.84,
+      "duration": 5.84
+    },
+    {
+      "lang": "en",
+      "text": "Let's call it uh to-dos list.tsx. To-dos",
+      "offset": 293.36,
+      "duration": 6.399
+    },
+    {
+      "lang": "en",
+      "text": "list. So now I have a component here.",
+      "offset": 297.68,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "And I'm just going to copy this markup",
+      "offset": 299.759,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "and just return that from here. Okay. So",
+      "offset": 301.52,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "now of course it still needs it still",
+      "offset": 304.479,
+      "duration": 3.601
+    },
+    {
+      "lang": "en",
+      "text": "needs the data here, the to-dos. So here",
+      "offset": 306.16,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "I can take the data fetching that we had",
+      "offset": 308.08,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "on the page. Right? Now I'm going to",
+      "offset": 310.8,
+      "duration": 2.8
+    },
+    {
+      "lang": "en",
+      "text": "remove it from the page and I'm moving",
+      "offset": 312.08,
+      "duration": 3.839
+    },
+    {
+      "lang": "en",
+      "text": "it to this dedicated component. Right?",
+      "offset": 313.6,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "We can just mark this as async as well.",
+      "offset": 315.919,
+      "duration": 4.401
+    },
+    {
+      "lang": "en",
+      "text": "And I just need to import that here.",
+      "offset": 318,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "Okay. So now it's basically the same. We",
+      "offset": 320.32,
+      "duration": 4.319
+    },
+    {
+      "lang": "en",
+      "text": "just moved it into its own component.",
+      "offset": 322.56,
+      "duration": 4.479
+    },
+    {
+      "lang": "en",
+      "text": "Now I can uh go back here and I can",
+      "offset": 324.639,
+      "duration": 4.801
+    },
+    {
+      "lang": "en",
+      "text": "remove all of this and just replace that",
+      "offset": 327.039,
+      "duration": 3.761
+    },
+    {
+      "lang": "en",
+      "text": "with this component that we just",
+      "offset": 329.44,
+      "duration": 3.12
+    },
+    {
+      "lang": "en",
+      "text": "created. Let me also remove this. I need",
+      "offset": 330.8,
+      "duration": 3.839
+    },
+    {
+      "lang": "en",
+      "text": "to import this. Okay. So now what I just",
+      "offset": 332.56,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "did is I just moved a bunch of markup",
+      "offset": 334.639,
+      "duration": 4.241
+    },
+    {
+      "lang": "en",
+      "text": "essentially to its own component, the",
+      "offset": 336.96,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "to-dos list component. And we call that",
+      "offset": 338.88,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "get data function in here. This is what",
+      "offset": 340.72,
+      "duration": 3.28
+    },
+    {
+      "lang": "en",
+      "text": "it looks right now. So now if I try to",
+      "offset": 342.4,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "go to the page, if I now press enter,",
+      "offset": 344,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "you can see it's still we still don't",
+      "offset": 346,
+      "duration": 3.28
+    },
+    {
+      "lang": "en",
+      "text": "see anything. This actually hasn't",
+      "offset": 347.84,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "improved anything. But what we can do is",
+      "offset": 349.28,
+      "duration": 5.359
+    },
+    {
+      "lang": "en",
+      "text": "we can use suspense because we have",
+      "offset": 352.16,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "async await with this react component",
+      "offset": 354.639,
+      "duration": 3.441
+    },
+    {
+      "lang": "en",
+      "text": "which means the component will be",
+      "offset": 356.8,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "suspended as as it's called. We can do",
+      "offset": 358.08,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "something with that. We can wrap it in",
+      "offset": 360.16,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "suspense which basically isolates this",
+      "offset": 361.6,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "part on the page. So it will not block",
+      "offset": 364.56,
+      "duration": 4.479
+    },
+    {
+      "lang": "en",
+      "text": "the other parts on the page. So now if I",
+      "offset": 366.88,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "try going to my page again, I press",
+      "offset": 369.039,
+      "duration": 3.041
+    },
+    {
+      "lang": "en",
+      "text": "enter. You can see immediately I'm",
+      "offset": 370.8,
+      "duration": 3.519
+    },
+    {
+      "lang": "en",
+      "text": "seeing a page here with this to-do app",
+      "offset": 372.08,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "H1 and after a couple seconds I see the",
+      "offset": 374.319,
+      "duration": 5.201
+    },
+    {
+      "lang": "en",
+      "text": "data here. Right? So this is actually",
+      "offset": 377.84,
+      "duration": 2.96
+    },
+    {
+      "lang": "en",
+      "text": "much better than what we had before.",
+      "offset": 379.52,
+      "duration": 3.28
+    },
+    {
+      "lang": "en",
+      "text": "Right? So now if I if I load the page we",
+      "offset": 380.8,
+      "duration": 3.519
+    },
+    {
+      "lang": "en",
+      "text": "immediately see something. I know I'm on",
+      "offset": 382.8,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "the right app and the data is just",
+      "offset": 384.319,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "coming a little bit later. No problem.",
+      "offset": 386.88,
+      "duration": 3.039
+    },
+    {
+      "lang": "en",
+      "text": "But this is a much better user",
+      "offset": 388.639,
+      "duration": 2.56
+    },
+    {
+      "lang": "en",
+      "text": "experience. And we can make it even",
+      "offset": 389.919,
+      "duration": 2.881
+    },
+    {
+      "lang": "en",
+      "text": "better because while it's loading the",
+      "offset": 391.199,
+      "duration": 3.681
+    },
+    {
+      "lang": "en",
+      "text": "page we can also show a loading",
+      "offset": 392.8,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "indicator so that the user knows oh yeah",
+      "offset": 394.88,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "there's more coming. Right? So we can",
+      "offset": 396.72,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "use a fall back here and we can say",
+      "offset": 398.24,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "loading dot dot dot. So now when I go to",
+      "offset": 400.96,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "this page I see the H1 and I see a",
+      "offset": 402.88,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "loading indicator and then I see the",
+      "offset": 404.8,
+      "duration": 4.239
+    },
+    {
+      "lang": "en",
+      "text": "data. So I think this is already a nice",
+      "offset": 406.56,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "data fetching pattern but this is all",
+      "offset": 409.039,
+      "duration": 3.521
+    },
+    {
+      "lang": "en",
+      "text": "server side. So if you can do server",
+      "offset": 410.88,
+      "duration": 3.759
+    },
+    {
+      "lang": "en",
+      "text": "side only fetching then I think this is",
+      "offset": 412.56,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "a great pattern. Now in practice in many",
+      "offset": 414.639,
+      "duration": 6.481
+    },
+    {
+      "lang": "en",
+      "text": "cases we have interactivity. So if this",
+      "offset": 417.36,
+      "duration": 5.839
+    },
+    {
+      "lang": "en",
+      "text": "is a to-do app I want to allow users to",
+      "offset": 421.12,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "click on this to-do for example and then",
+      "offset": 423.199,
+      "duration": 4.081
+    },
+    {
+      "lang": "en",
+      "text": "it should mark it as completed. So when",
+      "offset": 424.96,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "you need to hook into these browser",
+      "offset": 427.28,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "events right so click event or change",
+      "offset": 429.12,
+      "duration": 4.079
+    },
+    {
+      "lang": "en",
+      "text": "event this event that can only happen on",
+      "offset": 431.36,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "the client side in the browser there is",
+      "offset": 433.199,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "no click event on the server side right",
+      "offset": 434.8,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "so here for example this li I would like",
+      "offset": 436.639,
+      "duration": 3.921
+    },
+    {
+      "lang": "en",
+      "text": "to hook into its click event so I would",
+      "offset": 438.72,
+      "duration": 3.599
+    },
+    {
+      "lang": "en",
+      "text": "like to do something like on click here",
+      "offset": 440.56,
+      "duration": 3.919
+    },
+    {
+      "lang": "en",
+      "text": "I would have a function and I would just",
+      "offset": 442.319,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "uh handle handle to-do click I would",
+      "offset": 444.479,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "just do something here so now I'm",
+      "offset": 447.039,
+      "duration": 3.681
+    },
+    {
+      "lang": "en",
+      "text": "hooking into the click event and when I",
+      "offset": 448.639,
+      "duration": 3.921
+    },
+    {
+      "lang": "en",
+      "text": "go to my app right now we actually get",
+      "offset": 450.72,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "an error because we are trying to work",
+      "offset": 452.56,
+      "duration": 4.639
+    },
+    {
+      "lang": "en",
+      "text": "with event handlers in a server",
+      "offset": 454.96,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "component. So that's not going to work.",
+      "offset": 457.199,
+      "duration": 3.12
+    },
+    {
+      "lang": "en",
+      "text": "Right? So here you can see I'm getting",
+      "offset": 458.88,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "this error here. Right? So it's possible",
+      "offset": 460.319,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "that you will need data in a client",
+      "offset": 462.4,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "component. And when I do this, you can",
+      "offset": 465.039,
+      "duration": 3.761
+    },
+    {
+      "lang": "en",
+      "text": "see we're getting an issue here because",
+      "offset": 466.88,
+      "duration": 4.319
+    },
+    {
+      "lang": "en",
+      "text": "a client component cannot have async",
+      "offset": 468.8,
+      "duration": 4.399
+    },
+    {
+      "lang": "en",
+      "text": "like this. So I need to remove the async",
+      "offset": 471.199,
+      "duration": 4.161
+    },
+    {
+      "lang": "en",
+      "text": "here. So now how should we fetch the",
+      "offset": 473.199,
+      "duration": 4.241
+    },
+    {
+      "lang": "en",
+      "text": "to-dos data? Well, if you if you",
+      "offset": 475.36,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "remember from your react learning days,",
+      "offset": 477.44,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "you have the use effect hook and you",
+      "offset": 479.44,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "could fetch data in here and then you",
+      "offset": 481.44,
+      "duration": 4.319
+    },
+    {
+      "lang": "en",
+      "text": "could set the state, right? And then you",
+      "offset": 483.28,
+      "duration": 4.319
+    },
+    {
+      "lang": "en",
+      "text": "would have uh your to-dos here. Now the",
+      "offset": 485.759,
+      "duration": 4.321
+    },
+    {
+      "lang": "en",
+      "text": "downside of doing this is now when I go",
+      "offset": 487.599,
+      "duration": 5.6
+    },
+    {
+      "lang": "en",
+      "text": "to this website there is a request going",
+      "offset": 490.08,
+      "duration": 6.559
+    },
+    {
+      "lang": "en",
+      "text": "from my browser to the server to the",
+      "offset": 493.199,
+      "duration": 5.68
+    },
+    {
+      "lang": "en",
+      "text": "server side. Then the server side needs",
+      "offset": 496.639,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "to send back this client component to",
+      "offset": 498.879,
+      "duration": 3.841
+    },
+    {
+      "lang": "en",
+      "text": "the browser and then in the browser the",
+      "offset": 501.039,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "JavaScript for everything here needs to",
+      "offset": 502.72,
+      "duration": 4.159
+    },
+    {
+      "lang": "en",
+      "text": "be loaded and only then will it start",
+      "offset": 504.479,
+      "duration": 4.321
+    },
+    {
+      "lang": "en",
+      "text": "fetching the data. The data fetching",
+      "offset": 506.879,
+      "duration": 4.481
+    },
+    {
+      "lang": "en",
+      "text": "starts later here if we do it this way.",
+      "offset": 508.8,
+      "duration": 5.359
+    },
+    {
+      "lang": "en",
+      "text": "So ideally we can still start fetching",
+      "offset": 511.36,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "the data on the server side get the data",
+      "offset": 514.159,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "here on the client side that would be",
+      "offset": 516.64,
+      "duration": 4.399
+    },
+    {
+      "lang": "en",
+      "text": "faster and we can do that with the use",
+      "offset": 518.719,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "hook. So instead of using use effect",
+      "offset": 521.039,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "here and use state and we're not going",
+      "offset": 523.279,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "to use the get data function in here.",
+      "offset": 525.519,
+      "duration": 3.521
+    },
+    {
+      "lang": "en",
+      "text": "What we're going to do is we're going to",
+      "offset": 527.279,
+      "duration": 3.441
+    },
+    {
+      "lang": "en",
+      "text": "our server side here. So this home",
+      "offset": 529.04,
+      "duration": 3.28
+    },
+    {
+      "lang": "en",
+      "text": "component is still on the server running",
+      "offset": 530.72,
+      "duration": 3.2
+    },
+    {
+      "lang": "en",
+      "text": "only on the server side. We're going to",
+      "offset": 532.32,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "get a so-called promise uh get data.",
+      "offset": 533.92,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "There are two things happening when you",
+      "offset": 536.72,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "do await get data. So get data by itself",
+      "offset": 538.08,
+      "duration": 5.68
+    },
+    {
+      "lang": "en",
+      "text": "will already start firing off a an",
+      "offset": 541.36,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "actual network request. And then we have",
+      "offset": 543.76,
+      "duration": 5.199
+    },
+    {
+      "lang": "en",
+      "text": "await which means don't continue until",
+      "offset": 545.6,
+      "duration": 5.359
+    },
+    {
+      "lang": "en",
+      "text": "that promise has been resolved. So",
+      "offset": 548.959,
+      "duration": 3.681
+    },
+    {
+      "lang": "en",
+      "text": "everything was being held up here",
+      "offset": 550.959,
+      "duration": 3.361
+    },
+    {
+      "lang": "en",
+      "text": "because we were awaiting it. And we can",
+      "offset": 552.64,
+      "duration": 4.319
+    },
+    {
+      "lang": "en",
+      "text": "actually just remove uh await and remove",
+      "offset": 554.32,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "this. If you just do this, it will still",
+      "offset": 556.959,
+      "duration": 4.401
+    },
+    {
+      "lang": "en",
+      "text": "fire off a network request. So it will",
+      "offset": 559.12,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "immediately start fetching data. We get",
+      "offset": 561.36,
+      "duration": 4.159
+    },
+    {
+      "lang": "en",
+      "text": "a promise here and we're not going to",
+      "offset": 563.44,
+      "duration": 3.839
+    },
+    {
+      "lang": "en",
+      "text": "await anything actually. We're just",
+      "offset": 565.519,
+      "duration": 5.121
+    },
+    {
+      "lang": "en",
+      "text": "going to pass this promise to our to-dos",
+      "offset": 567.279,
+      "duration": 5.601
+    },
+    {
+      "lang": "en",
+      "text": "list. So I can just pass that as a prop",
+      "offset": 570.64,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "and then I can go to that component to",
+      "offset": 572.88,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "just accept that as the prop here and",
+      "offset": 574.8,
+      "duration": 6.719
+    },
+    {
+      "lang": "en",
+      "text": "then I can use the uh use hook. Right?",
+      "offset": 577.6,
+      "duration": 5.84
+    },
+    {
+      "lang": "en",
+      "text": "So to consume that promise I can import",
+      "offset": 581.519,
+      "duration": 4.081
+    },
+    {
+      "lang": "en",
+      "text": "this from react. Now I have my to-dos",
+      "offset": 583.44,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "again and the nice thing is this will",
+      "offset": 585.6,
+      "duration": 4.239
+    },
+    {
+      "lang": "en",
+      "text": "suspend the component as well. So just",
+      "offset": 587.68,
+      "duration": 4.159
+    },
+    {
+      "lang": "en",
+      "text": "like with async await which also",
+      "offset": 589.839,
+      "duration": 4.081
+    },
+    {
+      "lang": "en",
+      "text": "suspended the component as it's called",
+      "offset": 591.839,
+      "duration": 4.641
+    },
+    {
+      "lang": "en",
+      "text": "um the use hook also suspends this",
+      "offset": 593.92,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "component and so if you wrap it in a",
+      "offset": 596.48,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "suspense it can stream in that data and",
+      "offset": 598.72,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "we can show this fallback here. So it's",
+      "offset": 601.04,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "integrates nicely with this suspense.",
+      "offset": 603.2,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "And so now if I load the page you can",
+      "offset": 605.2,
+      "duration": 5.199
+    },
+    {
+      "lang": "en",
+      "text": "see I immediately see the to-do app uh",
+      "offset": 607.2,
+      "duration": 6.079
+    },
+    {
+      "lang": "en",
+      "text": "H1 and I still see a fallback and then I",
+      "offset": 610.399,
+      "duration": 5.761
+    },
+    {
+      "lang": "en",
+      "text": "see this data here again and now I can",
+      "offset": 613.279,
+      "duration": 4.881
+    },
+    {
+      "lang": "en",
+      "text": "interact with my data if I want. Right?",
+      "offset": 616.16,
+      "duration": 4.239
+    },
+    {
+      "lang": "en",
+      "text": "So now I actually have this ability to",
+      "offset": 618.16,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "hook into browser event and also to use",
+      "offset": 620.399,
+      "duration": 4.241
+    },
+    {
+      "lang": "en",
+      "text": "other react hooks by the way. Right? So",
+      "offset": 622.64,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "react hooks can only be used on the",
+      "offset": 624.64,
+      "duration": 2.879
+    },
+    {
+      "lang": "en",
+      "text": "client side. If I load my app",
+      "offset": 626.24,
+      "duration": 2.96
+    },
+    {
+      "lang": "en",
+      "text": "immediately I can show other things on",
+      "offset": 627.519,
+      "duration": 4.401
+    },
+    {
+      "lang": "en",
+      "text": "the page but also it immediately fires",
+      "offset": 629.2,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "off a network call a network request to",
+      "offset": 631.92,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "get the data. So there is no delay there",
+      "offset": 634.48,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "and then later it's being streamed in as",
+      "offset": 637.12,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "it's called. Now I'm going to show you",
+      "offset": 639.76,
+      "duration": 2.319
+    },
+    {
+      "lang": "en",
+      "text": "something super interesting. So make",
+      "offset": 640.88,
+      "duration": 2.639
+    },
+    {
+      "lang": "en",
+      "text": "sure you watch the whole video. But",
+      "offset": 642.079,
+      "duration": 3.281
+    },
+    {
+      "lang": "en",
+      "text": "before I continue, I do quickly want to",
+      "offset": 643.519,
+      "duration": 3.841
+    },
+    {
+      "lang": "en",
+      "text": "let you know about Sneak's upcoming",
+      "offset": 645.36,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "event. So, we are coding our apps with",
+      "offset": 647.36,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "AI, and you've probably seen around that",
+      "offset": 649.68,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "there's a bunch of security risks that",
+      "offset": 651.68,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "can come from that. So, if you want to",
+      "offset": 653.6,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "be ready to secure the future of",
+      "offset": 655.04,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "AIdriven development, check out Sneak's",
+      "offset": 657.44,
+      "duration": 4.639
+    },
+    {
+      "lang": "en",
+      "text": "upcoming launch. They are today's",
+      "offset": 660.56,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "sponsor and they have a launch on May",
+      "offset": 662.079,
+      "duration": 4.641
+    },
+    {
+      "lang": "en",
+      "text": "28th. You can find a link in the",
+      "offset": 664.72,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "description all about the AI future that",
+      "offset": 666.72,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "we are entering right now. It's an",
+      "offset": 669.6,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "online event and you can pick a session",
+      "offset": 671.2,
+      "duration": 4.879
+    },
+    {
+      "lang": "en",
+      "text": "on the 28th at 10:00 a.m. or 6 p.m. So,",
+      "offset": 673.2,
+      "duration": 5.84
+    },
+    {
+      "lang": "en",
+      "text": "this Sneak Launch 2025 event is a free",
+      "offset": 676.079,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "virtual event for developers, devop, and",
+      "offset": 679.04,
+      "duration": 4.799
+    },
+    {
+      "lang": "en",
+      "text": "generally AI innovators who do not want",
+      "offset": 681.519,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "to trade speed for security. So, Sneak",
+      "offset": 683.839,
+      "duration": 4.801
+    },
+    {
+      "lang": "en",
+      "text": "is actually a developer first security",
+      "offset": 686.399,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "platform trusted by some of the world's",
+      "offset": 688.64,
+      "duration": 3.199
+    },
+    {
+      "lang": "en",
+      "text": "most innovative teams and they're going",
+      "offset": 690.399,
+      "duration": 4.961
+    },
+    {
+      "lang": "en",
+      "text": "to unveil their latest AI capability to",
+      "offset": 691.839,
+      "duration": 5.521
+    },
+    {
+      "lang": "en",
+      "text": "help us keep shipping fast with AI",
+      "offset": 695.36,
+      "duration": 4.719
+    },
+    {
+      "lang": "en",
+      "text": "without opening the door for new risks.",
+      "offset": 697.36,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "So what you're going to learn in this",
+      "offset": 700.079,
+      "duration": 3.681
+    },
+    {
+      "lang": "en",
+      "text": "event is addressing the AI security",
+      "offset": 701.2,
+      "duration": 4.639
+    },
+    {
+      "lang": "en",
+      "text": "challenge and why the traditional app",
+      "offset": 703.76,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "security cannot keep up with all of this",
+      "offset": 705.839,
+      "duration": 4.721
+    },
+    {
+      "lang": "en",
+      "text": "AI generated code and agentic apps and",
+      "offset": 708.16,
+      "duration": 5.119
+    },
+    {
+      "lang": "en",
+      "text": "so on and also to scale security for all",
+      "offset": 710.56,
+      "duration": 5.279
+    },
+    {
+      "lang": "en",
+      "text": "of this AI generated code. How to tackle",
+      "offset": 713.279,
+      "duration": 4.881
+    },
+    {
+      "lang": "en",
+      "text": "emerging AI threat factors. So some new",
+      "offset": 715.839,
+      "duration": 4.481
+    },
+    {
+      "lang": "en",
+      "text": "ways to attack have become available now",
+      "offset": 718.16,
+      "duration": 3.919
+    },
+    {
+      "lang": "en",
+      "text": "and also how to adapt a developer",
+      "offset": 720.32,
+      "duration": 4.079
+    },
+    {
+      "lang": "en",
+      "text": "workflow and leveling up app security",
+      "offset": 722.079,
+      "duration": 4.401
+    },
+    {
+      "lang": "en",
+      "text": "governance for generative AI. So, some",
+      "offset": 724.399,
+      "duration": 4.081
+    },
+    {
+      "lang": "en",
+      "text": "of the agenda highlights are going to be",
+      "offset": 726.48,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "a keynote from the CEO about the AI",
+      "offset": 728.48,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "enterprise not being secure and what",
+      "offset": 730.88,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "some of the other players in the",
+      "offset": 732.88,
+      "duration": 3.199
+    },
+    {
+      "lang": "en",
+      "text": "ecosystem are doing, how the broader",
+      "offset": 734.24,
+      "duration": 4.159
+    },
+    {
+      "lang": "en",
+      "text": "community is integrating Sneak AI",
+      "offset": 736.079,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "security into their stacks. So, why",
+      "offset": 738.399,
+      "duration": 3.361
+    },
+    {
+      "lang": "en",
+      "text": "should you be at the event? Well, you",
+      "offset": 740.399,
+      "duration": 3.281
+    },
+    {
+      "lang": "en",
+      "text": "you will get hands-on insights into",
+      "offset": 741.76,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "Sneak's realtime scanning and autofix",
+      "offset": 743.68,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "for human and AI generated code right",
+      "offset": 746.16,
+      "duration": 4.799
+    },
+    {
+      "lang": "en",
+      "text": "inside your IDE and some actionable",
+      "offset": 748.88,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "takeaways that you can bring to your own",
+      "offset": 750.959,
+      "duration": 3.521
+    },
+    {
+      "lang": "en",
+      "text": "team the same day to harden your",
+      "offset": 752.8,
+      "duration": 4.159
+    },
+    {
+      "lang": "en",
+      "text": "pipeline. catch these LLM hallucinations",
+      "offset": 754.48,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "and really govern AI usage at scale.",
+      "offset": 756.959,
+      "duration": 4.161
+    },
+    {
+      "lang": "en",
+      "text": "There will also be a live Q&amp;A with the",
+      "offset": 759.36,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "sneak expert. So, I would say secure",
+      "offset": 761.12,
+      "duration": 3.519
+    },
+    {
+      "lang": "en",
+      "text": "your spot for the event now. You can",
+      "offset": 762.88,
+      "duration": 3.28
+    },
+    {
+      "lang": "en",
+      "text": "find a link in the description and if",
+      "offset": 764.639,
+      "duration": 3.2
+    },
+    {
+      "lang": "en",
+      "text": "you go to that page, you can register",
+      "offset": 766.16,
+      "duration": 3.2
+    },
+    {
+      "lang": "en",
+      "text": "for the time that works for you. You can",
+      "offset": 767.839,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "bring your questions and your curiosity",
+      "offset": 769.36,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "and your ambition to build software in",
+      "offset": 771.519,
+      "duration": 5.361
+    },
+    {
+      "lang": "en",
+      "text": "the age of AI. So, make sure to mark May",
+      "offset": 774,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "28th in your calendar. And so just to",
+      "offset": 776.88,
+      "duration": 4.399
+    },
+    {
+      "lang": "en",
+      "text": "show you that in a diagram before if you",
+      "offset": 779.04,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "were fetching data from a client",
+      "offset": 781.279,
+      "duration": 3.201
+    },
+    {
+      "lang": "en",
+      "text": "component without the use hook. So",
+      "offset": 782.72,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "basically with use effect you have I'm",
+      "offset": 784.48,
+      "duration": 3.599
+    },
+    {
+      "lang": "en",
+      "text": "loading the right so I'm going to the",
+      "offset": 786.72,
+      "duration": 3.359
+    },
+    {
+      "lang": "en",
+      "text": "page. So that would be the initial ser",
+      "offset": 788.079,
+      "duration": 3.601
+    },
+    {
+      "lang": "en",
+      "text": "that would be the initial request for my",
+      "offset": 790.079,
+      "duration": 3.521
+    },
+    {
+      "lang": "en",
+      "text": "browser to the server side then the",
+      "offset": 791.68,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "server responds with uh the javascript",
+      "offset": 793.6,
+      "duration": 4.799
+    },
+    {
+      "lang": "en",
+      "text": "required for use effect and only then",
+      "offset": 796.32,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "can we start making a request to our",
+      "offset": 798.399,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "data source. So it's slower but also",
+      "offset": 800.24,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "what if the data source is actually our",
+      "offset": 802.959,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "own database and I want to use Prisma",
+      "offset": 804.8,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "for example I cannot do that in a use",
+      "offset": 806.959,
+      "duration": 3.841
+    },
+    {
+      "lang": "en",
+      "text": "effect right that that's not what we",
+      "offset": 809.04,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "want to do in a use effect so in that",
+      "offset": 810.8,
+      "duration": 3.599
+    },
+    {
+      "lang": "en",
+      "text": "case we have an even bigger problem so",
+      "offset": 812.48,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "ideally we can still fetch data on the",
+      "offset": 814.399,
+      "duration": 4.641
+    },
+    {
+      "lang": "en",
+      "text": "server side so with the use hook I will",
+      "offset": 816.8,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "go to my page here so there's the",
+      "offset": 819.04,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "initial request my server side can",
+      "offset": 820.8,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "immediately start fetching data from the",
+      "offset": 823.12,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "data source right that's what happens",
+      "offset": 825.76,
+      "duration": 3.759
+    },
+    {
+      "lang": "en",
+      "text": "here so there's an incoming request and",
+      "offset": 827.36,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "this will immediately start fetching",
+      "offset": 829.519,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "data and the one of the benefits is we",
+      "offset": 831.12,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "can also just use Prisma for example so",
+      "offset": 833.839,
+      "duration": 4.401
+    },
+    {
+      "lang": "en",
+      "text": "we can actually also go to our own",
+      "offset": 836.16,
+      "duration": 3.919
+    },
+    {
+      "lang": "en",
+      "text": "database but it's also a performance",
+      "offset": 838.24,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "benefit because it can immediately start",
+      "offset": 840.079,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "fetching that data and since we are",
+      "offset": 841.76,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "using suspense here that will not hold",
+      "offset": 843.519,
+      "duration": 4.241
+    },
+    {
+      "lang": "en",
+      "text": "up the rest of the page. So while we're",
+      "offset": 845.68,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "fetching the data, we can also",
+      "offset": 847.76,
+      "duration": 4.639
+    },
+    {
+      "lang": "en",
+      "text": "immediately send back this to-do app and",
+      "offset": 849.68,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "other things here on the page, right? So",
+      "offset": 852.399,
+      "duration": 3.841
+    },
+    {
+      "lang": "en",
+      "text": "we can already send something back to",
+      "offset": 854.48,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "the browser. The browser will see",
+      "offset": 856.24,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "something and actually can become",
+      "offset": 858.24,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "interactive already. And then when the",
+      "offset": 859.76,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "server side has retrieved that data, it",
+      "offset": 861.6,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "will stream it in to the browser. So",
+      "offset": 864.56,
+      "duration": 3.839
+    },
+    {
+      "lang": "en",
+      "text": "what does that look like in the network",
+      "offset": 867.12,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "tab? So if I load the page here, you can",
+      "offset": 868.399,
+      "duration": 4.081
+    },
+    {
+      "lang": "en",
+      "text": "see immediately there is a response here",
+      "offset": 870.56,
+      "duration": 4.079
+    },
+    {
+      "lang": "en",
+      "text": "for the document 84 milliseconds, but",
+      "offset": 872.48,
+      "duration": 4.159
+    },
+    {
+      "lang": "en",
+      "text": "only after 3 seconds is that actually",
+      "offset": 874.639,
+      "duration": 3.681
+    },
+    {
+      "lang": "en",
+      "text": "completed. So it sort of keeps that",
+      "offset": 876.639,
+      "duration": 3.841
+    },
+    {
+      "lang": "en",
+      "text": "connection open while it's getting the",
+      "offset": 878.32,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "data. And so if I load the page, you can",
+      "offset": 880.48,
+      "duration": 2.88
+    },
+    {
+      "lang": "en",
+      "text": "see immediately there is some response",
+      "offset": 881.92,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "after 64 milliseconds and and after 3",
+      "offset": 883.36,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "seconds, a little bit more is the",
+      "offset": 885.92,
+      "duration": 3.919
+    },
+    {
+      "lang": "en",
+      "text": "response completely finished meaning the",
+      "offset": 887.44,
+      "duration": 4.399
+    },
+    {
+      "lang": "en",
+      "text": "the data that we were waiting on has",
+      "offset": 889.839,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "been streamed in. So pretty interesting",
+      "offset": 891.839,
+      "duration": 3.281
+    },
+    {
+      "lang": "en",
+      "text": "data fetching pattern. I think it takes",
+      "offset": 893.519,
+      "duration": 3.361
+    },
+    {
+      "lang": "en",
+      "text": "some time to get your mind around it.",
+      "offset": 895.12,
+      "duration": 3.519
+    },
+    {
+      "lang": "en",
+      "text": "It's a little bit complex in my view,",
+      "offset": 896.88,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "but this is a more performant way to get",
+      "offset": 898.639,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "the data in client components than with",
+      "offset": 900.48,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "use effect. And we can also easily",
+      "offset": 902.639,
+      "duration": 3.841
+    },
+    {
+      "lang": "en",
+      "text": "retrieve the data from our own database",
+      "offset": 904.8,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "because the fetching is still",
+      "offset": 906.48,
+      "duration": 3.28
+    },
+    {
+      "lang": "en",
+      "text": "technically being done on the server",
+      "offset": 908.32,
+      "duration": 3.12
+    },
+    {
+      "lang": "en",
+      "text": "side. We're just consuming it here on",
+      "offset": 909.76,
+      "duration": 3.28
+    },
+    {
+      "lang": "en",
+      "text": "the client side. Now, it does not give",
+      "offset": 911.44,
+      "duration": 4.639
+    },
+    {
+      "lang": "en",
+      "text": "us things like uh background refetching",
+      "offset": 913.04,
+      "duration": 4.479
+    },
+    {
+      "lang": "en",
+      "text": "and some of the more sophisticated",
+      "offset": 916.079,
+      "duration": 3.281
+    },
+    {
+      "lang": "en",
+      "text": "features that you would expect from uh",
+      "offset": 917.519,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "React Query, for example, but I think",
+      "offset": 919.36,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "this is still uh a very decent",
+      "offset": 921.199,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "out-of-the-box solution that you get",
+      "offset": 923.6,
+      "duration": 3.359
+    },
+    {
+      "lang": "en",
+      "text": "with React and Next.js. JS. Now very",
+      "offset": 925.199,
+      "duration": 4.161
+    },
+    {
+      "lang": "en",
+      "text": "commonly we don't need this data only",
+      "offset": 926.959,
+      "duration": 4.721
+    },
+    {
+      "lang": "en",
+      "text": "inside this component but there may be",
+      "offset": 929.36,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "other components that also need access",
+      "offset": 931.68,
+      "duration": 3.519
+    },
+    {
+      "lang": "en",
+      "text": "to this data. So a more practical",
+      "offset": 933.44,
+      "duration": 4.399
+    },
+    {
+      "lang": "en",
+      "text": "solution for this is to fetch the data",
+      "offset": 935.199,
+      "duration": 5.041
+    },
+    {
+      "lang": "en",
+      "text": "once here on the server side pass that",
+      "offset": 937.839,
+      "duration": 5.521
+    },
+    {
+      "lang": "en",
+      "text": "to for example the context API which in",
+      "offset": 940.24,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "turn allows us to spread around that",
+      "offset": 943.36,
+      "duration": 4.159
+    },
+    {
+      "lang": "en",
+      "text": "data on the client side any client",
+      "offset": 945.44,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "component that may need it. So what",
+      "offset": 947.519,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "would that look like? Well let's say I",
+      "offset": 949.12,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "go to my app right. So here right. So I",
+      "offset": 950.959,
+      "duration": 5.68
+    },
+    {
+      "lang": "en",
+      "text": "press enter and now I have made a",
+      "offset": 953.44,
+      "duration": 6.48
+    },
+    {
+      "lang": "en",
+      "text": "request from my browser to my to the",
+      "offset": 956.639,
+      "duration": 5.601
+    },
+    {
+      "lang": "en",
+      "text": "server side right. So, so actually",
+      "offset": 959.92,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "commonly we can already fetch the data",
+      "offset": 962.24,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "in the root layout actually. So we can",
+      "offset": 964.24,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "then also use the data in multiple pages",
+      "offset": 966.32,
+      "duration": 3.439
+    },
+    {
+      "lang": "en",
+      "text": "right. So in the root layout we can",
+      "offset": 968.24,
+      "duration": 3.279
+    },
+    {
+      "lang": "en",
+      "text": "initiate the data fetch right not",
+      "offset": 969.759,
+      "duration": 4.161
+    },
+    {
+      "lang": "en",
+      "text": "awaited just getting the data here",
+      "offset": 971.519,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "getting a promise which means that",
+      "offset": 973.92,
+      "duration": 3.839
+    },
+    {
+      "lang": "en",
+      "text": "there's already a request to our data",
+      "offset": 975.519,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "source here and then at the same time",
+      "offset": 977.759,
+      "duration": 4.161
+    },
+    {
+      "lang": "en",
+      "text": "pass the promise to a context provider",
+      "offset": 979.199,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "actually so that we can then in turn",
+      "offset": 981.92,
+      "duration": 4.159
+    },
+    {
+      "lang": "en",
+      "text": "spread it around to any client component",
+      "offset": 983.839,
+      "duration": 3.601
+    },
+    {
+      "lang": "en",
+      "text": "that may need it. Right? So here I'm",
+      "offset": 986.079,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "going to pass it to my context provider",
+      "offset": 987.44,
+      "duration": 4.319
+    },
+    {
+      "lang": "en",
+      "text": "here. So here it will not only have the",
+      "offset": 989.519,
+      "duration": 4.481
+    },
+    {
+      "lang": "en",
+      "text": "children as a prop but also this promise",
+      "offset": 991.759,
+      "duration": 4.481
+    },
+    {
+      "lang": "en",
+      "text": "here. This context provider doesn't even",
+      "offset": 994,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "have any state or something. The only",
+      "offset": 996.24,
+      "duration": 3.839
+    },
+    {
+      "lang": "en",
+      "text": "reason we're using it is to transport it",
+      "offset": 998.16,
+      "duration": 3.679
+    },
+    {
+      "lang": "en",
+      "text": "around on our client side. So, it's just",
+      "offset": 1000.079,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "going to transport this to-dos promise",
+      "offset": 1001.839,
+      "duration": 4.721
+    },
+    {
+      "lang": "en",
+      "text": "around. So, then if you have a to-dos",
+      "offset": 1004.079,
+      "duration": 4.401
+    },
+    {
+      "lang": "en",
+      "text": "list on the page, we're not fetching the",
+      "offset": 1006.56,
+      "duration": 3.519
+    },
+    {
+      "lang": "en",
+      "text": "data here on this one page anymore.",
+      "offset": 1008.48,
+      "duration": 3.039
+    },
+    {
+      "lang": "en",
+      "text": "We're doing it I removed it from here.",
+      "offset": 1010.079,
+      "duration": 2.88
+    },
+    {
+      "lang": "en",
+      "text": "It's not going to retrieve it as a prop",
+      "offset": 1011.519,
+      "duration": 3.601
+    },
+    {
+      "lang": "en",
+      "text": "anymore. This component, if a component",
+      "offset": 1012.959,
+      "duration": 4.401
+    },
+    {
+      "lang": "en",
+      "text": "needs it, we're just going to do it with",
+      "offset": 1015.12,
+      "duration": 4.719
+    },
+    {
+      "lang": "en",
+      "text": "that context uh provider. So we're just",
+      "offset": 1017.36,
+      "duration": 4.399
+    },
+    {
+      "lang": "en",
+      "text": "going to use that context, take out that",
+      "offset": 1019.839,
+      "duration": 5.281
+    },
+    {
+      "lang": "en",
+      "text": "promise and use that as the input here",
+      "offset": 1021.759,
+      "duration": 5.361
+    },
+    {
+      "lang": "en",
+      "text": "for the use hook. And so now we have the",
+      "offset": 1025.12,
+      "duration": 3.919
+    },
+    {
+      "lang": "en",
+      "text": "same result as before. This use will",
+      "offset": 1027.12,
+      "duration": 3.839
+    },
+    {
+      "lang": "en",
+      "text": "still suspend the component. So we can",
+      "offset": 1029.039,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "wrap it nicely in a suspense. Rest of",
+      "offset": 1030.959,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "the page is not affected by the data",
+      "offset": 1032.799,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "fetch while we still have optimal data",
+      "offset": 1034.799,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "fetching because it's immediately",
+      "offset": 1036.959,
+      "duration": 3.681
+    },
+    {
+      "lang": "en",
+      "text": "initiated as the server responds to the",
+      "offset": 1038.559,
+      "duration": 3.921
+    },
+    {
+      "lang": "en",
+      "text": "request. And we can also reach out to",
+      "offset": 1040.64,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "our database with Prisma and so on. And",
+      "offset": 1042.48,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "then when the data is ready, it will be",
+      "offset": 1044.48,
+      "duration": 4.319
+    },
+    {
+      "lang": "en",
+      "text": "streamed into just that isolated piece.",
+      "offset": 1046.16,
+      "duration": 4.399
+    },
+    {
+      "lang": "en",
+      "text": "And now we can do it not only in this",
+      "offset": 1048.799,
+      "duration": 3.921
+    },
+    {
+      "lang": "en",
+      "text": "client component, but any other client",
+      "offset": 1050.559,
+      "duration": 4.081
+    },
+    {
+      "lang": "en",
+      "text": "component in our app as well. So I think",
+      "offset": 1052.72,
+      "duration": 3.839
+    },
+    {
+      "lang": "en",
+      "text": "this is a very interesting pattern that",
+      "offset": 1054.64,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "I think is good to be aware of. In any",
+      "offset": 1056.559,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "case, I want to thank Sneak for",
+      "offset": 1058.4,
+      "duration": 2.96
+    },
+    {
+      "lang": "en",
+      "text": "sponsoring the video. I want to thank",
+      "offset": 1059.919,
+      "duration": 2.721
+    },
+    {
+      "lang": "en",
+      "text": "you for watching. Hopefully you found it",
+      "offset": 1061.36,
+      "duration": 2.8
+    },
+    {
+      "lang": "en",
+      "text": "interesting. Have a nice day and I hope",
+      "offset": 1062.64,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "to see you the next one. by",
+      "offset": 1064.16,
+      "duration": 3.04
+    }
+  ],
+  "cleanText": null,
+  "dumpedAt": "2025-07-21T18:43:24.329Z"
+}

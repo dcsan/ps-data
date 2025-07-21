@@ -1,0 +1,4174 @@
+{
+  "episodeId": "M4glLwqDEBw",
+  "channelSlug": "@bytegrad",
+  "title": "The Ultimate Next.js Dashboard Stack (Shadcn, WebSocket / SSE, OLTP / OLAP Database)",
+  "publishedAt": "2025-04-28T09:00:35.000Z",
+  "rawLines": [
+    {
+      "lang": "en",
+      "text": "Hey everyone, in this video we're going",
+      "offset": 0,
+      "duration": 3.12
+    },
+    {
+      "lang": "en",
+      "text": "to talk about real time analytical",
+      "offset": 1.199,
+      "duration": 3.921
+    },
+    {
+      "lang": "en",
+      "text": "dashboards in Nex.js. So if you're",
+      "offset": 3.12,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "building an app and your app has a lot",
+      "offset": 5.12,
+      "duration": 3.519
+    },
+    {
+      "lang": "en",
+      "text": "of data that needs to be analyzed or",
+      "offset": 6.72,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "monitored, you probably need some kind",
+      "offset": 8.639,
+      "duration": 3.361
+    },
+    {
+      "lang": "en",
+      "text": "of dashboard and maybe you want to",
+      "offset": 10.48,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "continuously update basically real time.",
+      "offset": 12,
+      "duration": 5.119
+    },
+    {
+      "lang": "en",
+      "text": "Right now in this video, I'll show you",
+      "offset": 14.48,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "some of the tools that you can use, some",
+      "offset": 17.119,
+      "duration": 3.121
+    },
+    {
+      "lang": "en",
+      "text": "of the things you want to pay attention",
+      "offset": 18.72,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "to. But I have to say these days,",
+      "offset": 20.24,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "building a dashboard like this is much",
+      "offset": 22.56,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "easier than it used to be. There are",
+      "offset": 24.8,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "some new tools that make a lot of things",
+      "offset": 26.32,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "much easier. So in this case actually I",
+      "offset": 28.16,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "have an example of let's say a web",
+      "offset": 30.08,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "analytics dashboard. So maybe you are",
+      "offset": 32,
+      "duration": 4.239
+    },
+    {
+      "lang": "en",
+      "text": "monitoring the data for a particular uh",
+      "offset": 34.16,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "website or something like that and",
+      "offset": 36.239,
+      "duration": 3.281
+    },
+    {
+      "lang": "en",
+      "text": "there's continuously data here being",
+      "offset": 37.52,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "streamed into the dashboard. So let's",
+      "offset": 39.52,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "actually take a look and uh see how we",
+      "offset": 42.16,
+      "duration": 3.919
+    },
+    {
+      "lang": "en",
+      "text": "can build something like this. All right",
+      "offset": 44.8,
+      "duration": 3.759
+    },
+    {
+      "lang": "en",
+      "text": "so we're using nextjs in this video. Now",
+      "offset": 46.079,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "nextjs is a fullstack framework. So it",
+      "offset": 48.559,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "has both a client side as well as a",
+      "offset": 50.559,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "server side. And actually this",
+      "offset": 52.399,
+      "duration": 3.361
+    },
+    {
+      "lang": "en",
+      "text": "simplifies a lot of things. We don't",
+      "offset": 54.079,
+      "duration": 3.361
+    },
+    {
+      "lang": "en",
+      "text": "need a separate back end. It's just one",
+      "offset": 55.76,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "app essentially. Now to uh display data",
+      "offset": 57.44,
+      "duration": 5.759
+    },
+    {
+      "lang": "en",
+      "text": "and have these graphs and so on, you",
+      "offset": 60.8,
+      "duration": 3.679
+    },
+    {
+      "lang": "en",
+      "text": "probably want to use some kind of",
+      "offset": 63.199,
+      "duration": 3.121
+    },
+    {
+      "lang": "en",
+      "text": "component library. And typically they",
+      "offset": 64.479,
+      "duration": 3.121
+    },
+    {
+      "lang": "en",
+      "text": "are going to be client components",
+      "offset": 66.32,
+      "duration": 2.64
+    },
+    {
+      "lang": "en",
+      "text": "although they could also be server",
+      "offset": 67.6,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "components. It's not really important.",
+      "offset": 68.96,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "But basically for the UI itself, you",
+      "offset": 71.04,
+      "duration": 4.079
+    },
+    {
+      "lang": "en",
+      "text": "probably want to go with something like",
+      "offset": 73.36,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "well shad CN UI is really popular these",
+      "offset": 75.119,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "days. Um you've probably seen it around.",
+      "offset": 77.52,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "This is a bit different from other",
+      "offset": 79.439,
+      "duration": 3.601
+    },
+    {
+      "lang": "en",
+      "text": "component libraries because the code is",
+      "offset": 81.04,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "not abstracted away from you. You",
+      "offset": 83.04,
+      "duration": 4.399
+    },
+    {
+      "lang": "en",
+      "text": "basically copy paste the underlying code",
+      "offset": 84.96,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "like this directly into your own",
+      "offset": 87.439,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "codebase. So then you can customize it",
+      "offset": 89.04,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "exactly to fit your need. It's also",
+      "offset": 91.119,
+      "duration": 4.481
+    },
+    {
+      "lang": "en",
+      "text": "completely based on Tailwind actually.",
+      "offset": 93.28,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "So so if you're already familiar with",
+      "offset": 95.6,
+      "duration": 3.199
+    },
+    {
+      "lang": "en",
+      "text": "that, I think this is the way to go. But",
+      "offset": 97.04,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "there are some other options as well,",
+      "offset": 98.799,
+      "duration": 3.601
+    },
+    {
+      "lang": "en",
+      "text": "notably Tremor. Tremor is actually quite",
+      "offset": 100.4,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "an underrated option in my view. But",
+      "offset": 102.4,
+      "duration": 3.2
+    },
+    {
+      "lang": "en",
+      "text": "these are also some really nice",
+      "offset": 104.4,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "components for uh charts for any kind of",
+      "offset": 105.6,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "dashboard. And actually it's interesting",
+      "offset": 108.56,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "that they also recently joined forcell.",
+      "offset": 110.24,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "So chaten actually also joined forcell.",
+      "offset": 112.64,
+      "duration": 5.119
+    },
+    {
+      "lang": "en",
+      "text": "So now forcel so forcel seems to really",
+      "offset": 115.28,
+      "duration": 5.519
+    },
+    {
+      "lang": "en",
+      "text": "invest into these components for",
+      "offset": 117.759,
+      "duration": 5.281
+    },
+    {
+      "lang": "en",
+      "text": "building dashboards. Now with Tremor, if",
+      "offset": 120.799,
+      "duration": 4.721
+    },
+    {
+      "lang": "en",
+      "text": "we go to blocks and templates here, if",
+      "offset": 123.04,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "you take a look at some of the blocks",
+      "offset": 125.52,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "they have, which is basically just a",
+      "offset": 127.04,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "combination of those components, a more",
+      "offset": 129.28,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "fleshed out example essentially. They",
+      "offset": 131.92,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "actually also provide you with the raw",
+      "offset": 134,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "source code, you could say. Also nicely",
+      "offset": 136.4,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "using Tailwind. So quite similar already",
+      "offset": 138.4,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "to Shad Cen UI, I would say. But those",
+      "offset": 140.4,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "are some really modern uh options that I",
+      "offset": 143.04,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "think definitely deserve to get a good",
+      "offset": 145.2,
+      "duration": 4.399
+    },
+    {
+      "lang": "en",
+      "text": "look. I'm actually using Shad Cen in",
+      "offset": 147.44,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "this example. That's what I will use. By",
+      "offset": 149.599,
+      "duration": 2.961
+    },
+    {
+      "lang": "en",
+      "text": "the way, the reason you want to use a",
+      "offset": 151.2,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "component library in the first place is",
+      "offset": 152.56,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "because they have worked on a lot of",
+      "offset": 154.8,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "details that you don't have to think",
+      "offset": 156.72,
+      "duration": 3.12
+    },
+    {
+      "lang": "en",
+      "text": "about anymore. So, for example, if you",
+      "offset": 158.16,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "have a dialogue open like this, if I",
+      "offset": 159.84,
+      "duration": 5.679
+    },
+    {
+      "lang": "en",
+      "text": "press tab, you can see it tabs between",
+      "offset": 162.64,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "these buttons. So, the focus as it's",
+      "offset": 165.519,
+      "duration": 4.481
+    },
+    {
+      "lang": "en",
+      "text": "called is trapped within the model here.",
+      "offset": 167.76,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "If you don't trap the focus, if you",
+      "offset": 170,
+      "duration": 3.28
+    },
+    {
+      "lang": "en",
+      "text": "press tab, it will actually just",
+      "offset": 171.84,
+      "duration": 3.119
+    },
+    {
+      "lang": "en",
+      "text": "continue with the other things here on",
+      "offset": 173.28,
+      "duration": 4.239
+    },
+    {
+      "lang": "en",
+      "text": "the page, right? So, then it would uh",
+      "offset": 174.959,
+      "duration": 5.041
+    },
+    {
+      "lang": "en",
+      "text": "tap perhaps this input field here. And",
+      "offset": 177.519,
+      "duration": 4.401
+    },
+    {
+      "lang": "en",
+      "text": "also of course when I press escape the",
+      "offset": 180,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "dialogue should close again and the",
+      "offset": 181.92,
+      "duration": 2.88
+    },
+    {
+      "lang": "en",
+      "text": "button that you clicked should be",
+      "offset": 183.44,
+      "duration": 2.64
+    },
+    {
+      "lang": "en",
+      "text": "focused again. Right? So there's all",
+      "offset": 184.8,
+      "duration": 2.799
+    },
+    {
+      "lang": "en",
+      "text": "these little details that we don't have",
+      "offset": 186.08,
+      "duration": 2.799
+    },
+    {
+      "lang": "en",
+      "text": "to think about anymore because the",
+      "offset": 187.599,
+      "duration": 3.041
+    },
+    {
+      "lang": "en",
+      "text": "component library has already abstracted",
+      "offset": 188.879,
+      "duration": 3.681
+    },
+    {
+      "lang": "en",
+      "text": "that away. Now Shhatsen is actually",
+      "offset": 190.64,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "using radics under the hood and actually",
+      "offset": 192.56,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "a lot of the abstraction is actually",
+      "offset": 194.72,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "coming from radics. So is essentially",
+      "offset": 196.08,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "just a tillin CSS layer over radics in",
+      "offset": 198.56,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "my view. But that's what makes it really",
+      "offset": 201.28,
+      "duration": 3.28
+    },
+    {
+      "lang": "en",
+      "text": "good. So that's what I would use for the",
+      "offset": 203.12,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "UI. Now these uh components that you see",
+      "offset": 204.56,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "here of course they need actual data to",
+      "offset": 207.12,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "have something to display in the first",
+      "offset": 210.08,
+      "duration": 3.439
+    },
+    {
+      "lang": "en",
+      "text": "place. So the data will be coming from",
+      "offset": 211.76,
+      "duration": 3.759
+    },
+    {
+      "lang": "en",
+      "text": "your nextjs back end and if we want to",
+      "offset": 213.519,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "make a so-called realtime dashboard",
+      "offset": 215.519,
+      "duration": 4.161
+    },
+    {
+      "lang": "en",
+      "text": "right with real time I basically just",
+      "offset": 217.519,
+      "duration": 4.561
+    },
+    {
+      "lang": "en",
+      "text": "mean right continuously streaming in",
+      "offset": 219.68,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "data typically you want to have some",
+      "offset": 222.08,
+      "duration": 3.28
+    },
+    {
+      "lang": "en",
+      "text": "kind of connection between the client",
+      "offset": 223.76,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "side and server side. So we can use",
+      "offset": 225.36,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "something like websocket or what's",
+      "offset": 227.12,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "actually also underrated in my view is",
+      "offset": 228.72,
+      "duration": 4.239
+    },
+    {
+      "lang": "en",
+      "text": "server side event. Basically uh these",
+      "offset": 230.64,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "two options will set up a connection",
+      "offset": 232.959,
+      "duration": 5.601
+    },
+    {
+      "lang": "en",
+      "text": "between the browser and the server side",
+      "offset": 236,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "and this allows them to communicate",
+      "offset": 238.56,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "continuously. Now there are some slight",
+      "offset": 240.4,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "differences between them. They each have",
+      "offset": 242,
+      "duration": 3.12
+    },
+    {
+      "lang": "en",
+      "text": "their pros and cons. Typically",
+      "offset": 243.76,
+      "duration": 3.119
+    },
+    {
+      "lang": "en",
+      "text": "websockets are a little bit more",
+      "offset": 245.12,
+      "duration": 3.199
+    },
+    {
+      "lang": "en",
+      "text": "cumbersome to set up. There's a little",
+      "offset": 246.879,
+      "duration": 3.761
+    },
+    {
+      "lang": "en",
+      "text": "bit more work involved but I would say",
+      "offset": 248.319,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "they're a little bit more powerful. So",
+      "offset": 250.64,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "web with websockets you can communicate",
+      "offset": 252.319,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "from both server side to client side and",
+      "offset": 254.08,
+      "duration": 4.159
+    },
+    {
+      "lang": "en",
+      "text": "the client can also send back messages",
+      "offset": 256.239,
+      "duration": 4.481
+    },
+    {
+      "lang": "en",
+      "text": "to the server side. So it's birectional.",
+      "offset": 258.239,
+      "duration": 4.081
+    },
+    {
+      "lang": "en",
+      "text": "With server side events, it's a bit of",
+      "offset": 260.72,
+      "duration": 3.759
+    },
+    {
+      "lang": "en",
+      "text": "an easier setup. There are some more",
+      "offset": 262.32,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "limitation. So only the NextJS server",
+      "offset": 264.479,
+      "duration": 4.241
+    },
+    {
+      "lang": "en",
+      "text": "side is sending messages to the client",
+      "offset": 266.88,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "side, which in our case, if you're",
+      "offset": 268.72,
+      "duration": 2.96
+    },
+    {
+      "lang": "en",
+      "text": "building a dashboard like this, because",
+      "offset": 270.32,
+      "duration": 2.879
+    },
+    {
+      "lang": "en",
+      "text": "in a dashboard like this, I do not need",
+      "offset": 271.68,
+      "duration": 3.28
+    },
+    {
+      "lang": "en",
+      "text": "to send messages from the dashboard back",
+      "offset": 273.199,
+      "duration": 3.761
+    },
+    {
+      "lang": "en",
+      "text": "to the server again. It only needs to",
+      "offset": 274.96,
+      "duration": 3.679
+    },
+    {
+      "lang": "en",
+      "text": "get data from the server side. So then",
+      "offset": 276.96,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "it can update the UI here. It's a bit",
+      "offset": 278.639,
+      "duration": 3.761
+    },
+    {
+      "lang": "en",
+      "text": "easier to set up. So actually, that's",
+      "offset": 280.8,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "what I will use in the example in a",
+      "offset": 282.4,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "second. Your NextJS server side of",
+      "offset": 284.32,
+      "duration": 4.159
+    },
+    {
+      "lang": "en",
+      "text": "course will need some data source. Now",
+      "offset": 286.72,
+      "duration": 3.12
+    },
+    {
+      "lang": "en",
+      "text": "maybe you already have some data maybe",
+      "offset": 288.479,
+      "duration": 2.961
+    },
+    {
+      "lang": "en",
+      "text": "in your own database maybe you're",
+      "offset": 289.84,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "getting data from a third party and that",
+      "offset": 291.44,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "data may come in uh continuously so",
+      "offset": 293.28,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "maybe somebody else is sending you",
+      "offset": 295.44,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "continuously perhaps data you can choose",
+      "offset": 296.96,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "to put the data in a database or maybe",
+      "offset": 299.36,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "you immediately want to send it as a",
+      "offset": 301.6,
+      "duration": 4.159
+    },
+    {
+      "lang": "en",
+      "text": "message to the client side using one of",
+      "offset": 303.68,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "these protocol or maybe both you want to",
+      "offset": 305.759,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "put it in your in your own database and",
+      "offset": 307.84,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "also immediately send it to the client",
+      "offset": 309.919,
+      "duration": 4.481
+    },
+    {
+      "lang": "en",
+      "text": "side but you will need some kind of uh",
+      "offset": 312.32,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "data source right now typically you will",
+      "offset": 314.4,
+      "duration": 4.799
+    },
+    {
+      "lang": "en",
+      "text": "have some database and you will add data",
+      "offset": 316.4,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "to your database and you will also get",
+      "offset": 319.199,
+      "duration": 4.641
+    },
+    {
+      "lang": "en",
+      "text": "data read data from your database. What",
+      "offset": 321.52,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "I will do in this app is we will add",
+      "offset": 323.84,
+      "duration": 4.079
+    },
+    {
+      "lang": "en",
+      "text": "data to the database and then also read",
+      "offset": 326,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "data from the database. When we read",
+      "offset": 327.919,
+      "duration": 3.681
+    },
+    {
+      "lang": "en",
+      "text": "data from the database we will then",
+      "offset": 330,
+      "duration": 3.759
+    },
+    {
+      "lang": "en",
+      "text": "immediately send it to the client. Now",
+      "offset": 331.6,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "the database actually in my view is the",
+      "offset": 333.759,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "most important piece because as you'll",
+      "offset": 336,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "see a lot of these other things have",
+      "offset": 337.919,
+      "duration": 4.161
+    },
+    {
+      "lang": "en",
+      "text": "been made very easy. A few years ago, if",
+      "offset": 339.68,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "you wanted to build a dashboard like",
+      "offset": 342.08,
+      "duration": 2.959
+    },
+    {
+      "lang": "en",
+      "text": "this, this would be pretty hard and",
+      "offset": 343.68,
+      "duration": 2.959
+    },
+    {
+      "lang": "en",
+      "text": "there would be all sorts of bottlenecks",
+      "offset": 345.039,
+      "duration": 3.841
+    },
+    {
+      "lang": "en",
+      "text": "here. But honestly, a lot of the rough",
+      "offset": 346.639,
+      "duration": 4.481
+    },
+    {
+      "lang": "en",
+      "text": "edges here have been ironed out. The",
+      "offset": 348.88,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "biggest gains you can get essentially in",
+      "offset": 351.12,
+      "duration": 3.919
+    },
+    {
+      "lang": "en",
+      "text": "my view is by picking the right",
+      "offset": 353.28,
+      "duration": 3.28
+    },
+    {
+      "lang": "en",
+      "text": "database. Now, there are actually",
+      "offset": 355.039,
+      "duration": 4.241
+    },
+    {
+      "lang": "en",
+      "text": "different types of uh databases or ways",
+      "offset": 356.56,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "to store data. So, it's not just oh, I'm",
+      "offset": 359.28,
+      "duration": 3.919
+    },
+    {
+      "lang": "en",
+      "text": "just going to pick postgress, right? Or",
+      "offset": 361.6,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "my SQL or SQLite even. You need to be a",
+      "offset": 363.199,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "little bit more familiar with the",
+      "offset": 365.84,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "different types of queries that your app",
+      "offset": 367.199,
+      "duration": 3.681
+    },
+    {
+      "lang": "en",
+      "text": "is going to make. So if you're an app",
+      "offset": 369.28,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "developer, very often you are building",
+      "offset": 370.88,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "apps that have relatively simple",
+      "offset": 372.88,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "database queries. So as an example, you",
+      "offset": 374.96,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "may be building an app and you need to",
+      "offset": 377.52,
+      "duration": 4.239
+    },
+    {
+      "lang": "en",
+      "text": "simply create a new user in your table.",
+      "offset": 379.36,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "So you would do something like insert",
+      "offset": 381.759,
+      "duration": 4.081
+    },
+    {
+      "lang": "en",
+      "text": "into the users table user information,",
+      "offset": 383.44,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "right? Just creating one row into our",
+      "offset": 385.84,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "table or maybe you need to update",
+      "offset": 388.08,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "somebody's email. So basically you're",
+      "offset": 389.84,
+      "duration": 3.199
+    },
+    {
+      "lang": "en",
+      "text": "going to you're going to get the uh",
+      "offset": 391.52,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "particular row and you change the email",
+      "offset": 393.039,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "or just uh delete a user. And so these",
+      "offset": 395.28,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "are relatively simple queries and pretty",
+      "offset": 397.759,
+      "duration": 4.641
+    },
+    {
+      "lang": "en",
+      "text": "much any database system can deal with",
+      "offset": 400.24,
+      "duration": 5.32
+    },
+    {
+      "lang": "en",
+      "text": "these. Right? So this is called uh OLTP",
+      "offset": 402.4,
+      "duration": 5.84
+    },
+    {
+      "lang": "en",
+      "text": "online transactional processing. So",
+      "offset": 405.56,
+      "duration": 4.44
+    },
+    {
+      "lang": "en",
+      "text": "these are more transactional queries.",
+      "offset": 408.24,
+      "duration": 4.399
+    },
+    {
+      "lang": "en",
+      "text": "Very quick oneoff one row simple",
+      "offset": 410,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "queries. So if you're building a blog",
+      "offset": 412.639,
+      "duration": 4.801
+    },
+    {
+      "lang": "en",
+      "text": "app or an e-commerce website or a to-do",
+      "offset": 414.16,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "app, let's say, right? These are all",
+      "offset": 417.44,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "typically the only type of database",
+      "offset": 419.36,
+      "duration": 3.679
+    },
+    {
+      "lang": "en",
+      "text": "system you need is some kind of OLTP",
+      "offset": 420.96,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "setup. However, for an analytics",
+      "offset": 423.039,
+      "duration": 4.241
+    },
+    {
+      "lang": "en",
+      "text": "dashboard like this, you want to be a",
+      "offset": 425.68,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "little bit careful with that. An OLTP",
+      "offset": 427.28,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "database system is not optimized for a",
+      "offset": 429.36,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "very analytical workload. So there is",
+      "offset": 432.16,
+      "duration": 4.879
+    },
+    {
+      "lang": "en",
+      "text": "also something called OLAP, analytical",
+      "offset": 434.88,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "processing. A database system like that",
+      "offset": 437.039,
+      "duration": 4.641
+    },
+    {
+      "lang": "en",
+      "text": "is more optimized for an analytical type",
+      "offset": 438.72,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "of work and these typically involve",
+      "offset": 441.68,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "aggregation. So for example, we want to",
+      "offset": 443.44,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "see the average session duration among",
+      "offset": 445.68,
+      "duration": 5.359
+    },
+    {
+      "lang": "en",
+      "text": "all the users or we want to get all the",
+      "offset": 448.24,
+      "duration": 5.679
+    },
+    {
+      "lang": "en",
+      "text": "user interactions on a form let's say",
+      "offset": 451.039,
+      "duration": 4.961
+    },
+    {
+      "lang": "en",
+      "text": "between a particular date. Right? So now",
+      "offset": 453.919,
+      "duration": 3.521
+    },
+    {
+      "lang": "en",
+      "text": "you're not just dealing with one piece",
+      "offset": 456,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "of data essentially in your database.",
+      "offset": 457.44,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "You're dealing with multiple pieces of",
+      "offset": 459.36,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "data. So data needs to be aggregated. It",
+      "offset": 461.12,
+      "duration": 4.799
+    },
+    {
+      "lang": "en",
+      "text": "needs to be combined maybe by date. So",
+      "offset": 463.68,
+      "duration": 3.919
+    },
+    {
+      "lang": "en",
+      "text": "those types of queries can become much",
+      "offset": 465.919,
+      "duration": 4.801
+    },
+    {
+      "lang": "en",
+      "text": "more complex. So some examples would be",
+      "offset": 467.599,
+      "duration": 4.801
+    },
+    {
+      "lang": "en",
+      "text": "um if you want to do some analysis for",
+      "offset": 470.72,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "your e-commerce website, right? You",
+      "offset": 472.4,
+      "duration": 3.519
+    },
+    {
+      "lang": "en",
+      "text": "would maybe get from a particular",
+      "offset": 474.24,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "category some all the sales and then",
+      "offset": 475.919,
+      "duration": 3.921
+    },
+    {
+      "lang": "en",
+      "text": "group them by category or you want to",
+      "offset": 478.16,
+      "duration": 3.759
+    },
+    {
+      "lang": "en",
+      "text": "see some trends trends in your data.",
+      "offset": 479.84,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "Basically you're combining multiple",
+      "offset": 481.919,
+      "duration": 5.361
+    },
+    {
+      "lang": "en",
+      "text": "pieces of data and you're grouping it by",
+      "offset": 484,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "some way by date perhaps. And so this",
+      "offset": 487.28,
+      "duration": 3.919
+    },
+    {
+      "lang": "en",
+      "text": "can get really really complex for",
+      "offset": 489.52,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "workloads like that. You probably want",
+      "offset": 491.199,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "to use an OLAP database system. And so",
+      "offset": 493.36,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "you need to be aware of this. Now,",
+      "offset": 495.759,
+      "duration": 3.201
+    },
+    {
+      "lang": "en",
+      "text": "traditionally, this would be a problem",
+      "offset": 497.44,
+      "duration": 3.039
+    },
+    {
+      "lang": "en",
+      "text": "because if you're building an app,",
+      "offset": 498.96,
+      "duration": 3.2
+    },
+    {
+      "lang": "en",
+      "text": "you're probably going to have some",
+      "offset": 500.479,
+      "duration": 3.521
+    },
+    {
+      "lang": "en",
+      "text": "simple queries, right? Your your",
+      "offset": 502.16,
+      "duration": 3.759
+    },
+    {
+      "lang": "en",
+      "text": "standard transactional query, creating a",
+      "offset": 504,
+      "duration": 4.639
+    },
+    {
+      "lang": "en",
+      "text": "post in a database, editing a post in a",
+      "offset": 505.919,
+      "duration": 4.321
+    },
+    {
+      "lang": "en",
+      "text": "database, you pretty much always need",
+      "offset": 508.639,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "this. But then if you do want to add",
+      "offset": 510.24,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "some analytical power to your app or in",
+      "offset": 512.399,
+      "duration": 4.961
+    },
+    {
+      "lang": "en",
+      "text": "a separate app, but with the same data,",
+      "offset": 515.2,
+      "duration": 3.519
+    },
+    {
+      "lang": "en",
+      "text": "you would need to find some separate",
+      "offset": 517.36,
+      "duration": 3.2
+    },
+    {
+      "lang": "en",
+      "text": "solution. So then so then you would have",
+      "offset": 518.719,
+      "duration": 3.841
+    },
+    {
+      "lang": "en",
+      "text": "perhaps one database for your standard",
+      "offset": 520.56,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "queries and then you would maybe have",
+      "offset": 522.56,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "some other system for your analytical",
+      "offset": 524.72,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "workloads very cumbersome. However,",
+      "offset": 526.88,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "there are some solutions these days that",
+      "offset": 528.72,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "actually allow us to stick to one",
+      "offset": 530.8,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "database solution and we can use both of",
+      "offset": 532.32,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "these with the same system. So I'm",
+      "offset": 534.72,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "actually going to use duck DB in this",
+      "offset": 536.48,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "video. We can use duct DB in combination",
+      "offset": 538.48,
+      "duration": 4.479
+    },
+    {
+      "lang": "en",
+      "text": "with Postgress and duct DB is what",
+      "offset": 540.56,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "allows us to do these analytical type of",
+      "offset": 542.959,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "queries efficiently as well and we can",
+      "offset": 545.2,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "just stick to using Postgress. So we can",
+      "offset": 547.519,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "add duct DB to our Postgrass database",
+      "offset": 549.6,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "for those analytical type of queries.",
+      "offset": 551.839,
+      "duration": 3.841
+    },
+    {
+      "lang": "en",
+      "text": "It's open source. You can read all about",
+      "offset": 553.68,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "it here on their GitHub page. Now we",
+      "offset": 555.68,
+      "duration": 4.719
+    },
+    {
+      "lang": "en",
+      "text": "could manually add it to our Postgress",
+      "offset": 558.32,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "database and host it ourselves. It would",
+      "offset": 560.399,
+      "duration": 4.641
+    },
+    {
+      "lang": "en",
+      "text": "be nice if that was taken care of for us",
+      "offset": 562.56,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "and that's where Hydra comes into play.",
+      "offset": 565.04,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "They are today's sponsor and they allow",
+      "offset": 567.44,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "us to use Postgress with duct DB. So we",
+      "offset": 569.6,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "can use one database for our entire app",
+      "offset": 572.32,
+      "duration": 5.519
+    },
+    {
+      "lang": "en",
+      "text": "with that powerful analytical capability",
+      "offset": 574.88,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "as well. So I will use a Hydra database",
+      "offset": 577.839,
+      "duration": 5.68
+    },
+    {
+      "lang": "en",
+      "text": "in my setup here. Um so Hydra is a high",
+      "offset": 580.32,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "performance Postgress database with that",
+      "offset": 583.519,
+      "duration": 4.961
+    },
+    {
+      "lang": "en",
+      "text": "OLAP capability. We can use it both",
+      "offset": 586.08,
+      "duration": 4.879
+    },
+    {
+      "lang": "en",
+      "text": "locally as well as a cloud offering",
+      "offset": 588.48,
+      "duration": 3.919
+    },
+    {
+      "lang": "en",
+      "text": "which I will actually use because it",
+      "offset": 590.959,
+      "duration": 3.521
+    },
+    {
+      "lang": "en",
+      "text": "comes with a nice UI as well. So I can",
+      "offset": 592.399,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "inspect my data. But if we take a look",
+      "offset": 594.48,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "at the architecture that they have",
+      "offset": 596.399,
+      "duration": 3.921
+    },
+    {
+      "lang": "en",
+      "text": "basically what we can do in Postgress of",
+      "offset": 598.24,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "course we create tables. So we can",
+      "offset": 600.32,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "create a table under the analytics",
+      "offset": 602.32,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "schema. So basically you have the",
+      "offset": 605.2,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "analytics namespace. We're going to",
+      "offset": 607.6,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "create a table in that nameace and that",
+      "offset": 609.44,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "table will automatically be optimized",
+      "offset": 611.76,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "for us for analytical queries. And then",
+      "offset": 613.44,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "if we want we can also have our standard",
+      "offset": 615.36,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "tables basically for our transactional",
+      "offset": 618.64,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "queries just like how you may be used to",
+      "offset": 620.64,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "using Postgress. But now we get the",
+      "offset": 622.48,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "option to add it to the analytics schema",
+      "offset": 624.8,
+      "duration": 4.719
+    },
+    {
+      "lang": "en",
+      "text": "and then we're using duct DB here for",
+      "offset": 627.2,
+      "duration": 4.079
+    },
+    {
+      "lang": "en",
+      "text": "those table. You can read all about it",
+      "offset": 629.519,
+      "duration": 3.521
+    },
+    {
+      "lang": "en",
+      "text": "here in the docs. It's actually really",
+      "offset": 631.279,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "interesting. But let me show you how all",
+      "offset": 633.04,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "of this now works together. So here for",
+      "offset": 634.959,
+      "duration": 4.401
+    },
+    {
+      "lang": "en",
+      "text": "my database, a hydra database which is",
+      "offset": 637.04,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "basically just Postgress with duct DB",
+      "offset": 639.36,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "for the analytics table. Right? So I",
+      "offset": 642,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "would say this is a really powerful",
+      "offset": 644,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "setup for building a real time analytics",
+      "offset": 645.92,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "dashboard. But let's actually take a",
+      "offset": 648.8,
+      "duration": 2.88
+    },
+    {
+      "lang": "en",
+      "text": "look at some code and see how we would",
+      "offset": 650.16,
+      "duration": 3.359
+    },
+    {
+      "lang": "en",
+      "text": "implement this. So I will go back here",
+      "offset": 651.68,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "and I will delete. So let me actually go",
+      "offset": 653.519,
+      "duration": 4.641
+    },
+    {
+      "lang": "en",
+      "text": "to the code here and let's try building",
+      "offset": 656,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "this from scratch again. All right. So",
+      "offset": 658.16,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "where do we start? Well, I removed",
+      "offset": 659.92,
+      "duration": 5.039
+    },
+    {
+      "lang": "en",
+      "text": "everything and now we just have um the",
+      "offset": 661.92,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "homepage which is almost empty. We just",
+      "offset": 664.959,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "have a header right now. We just have",
+      "offset": 667.44,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "web analytics dashboard. That's this uh",
+      "offset": 669.519,
+      "duration": 4.801
+    },
+    {
+      "lang": "en",
+      "text": "H1 here. And here I want to display some",
+      "offset": 671.76,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "information about the connection that it",
+      "offset": 674.32,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "will try to make with the back end.",
+      "offset": 676.16,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "Right? So I'm just going to mark this as",
+      "offset": 678,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "use client. So this will run in the",
+      "offset": 679.76,
+      "duration": 4.079
+    },
+    {
+      "lang": "en",
+      "text": "browser and we want to connect to the",
+      "offset": 681.92,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "server so that we can receive data",
+      "offset": 683.839,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "continuously here in the client side",
+      "offset": 686.32,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "here in the browser so that we can then",
+      "offset": 688.959,
+      "duration": 3.681
+    },
+    {
+      "lang": "en",
+      "text": "display it nicely with the chat",
+      "offset": 690.72,
+      "duration": 3.359
+    },
+    {
+      "lang": "en",
+      "text": "component. But right now there is no",
+      "offset": 692.64,
+      "duration": 3.759
+    },
+    {
+      "lang": "en",
+      "text": "connection. I just hardcoded this here.",
+      "offset": 694.079,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "How do we set up a websocket or",
+      "offset": 696.399,
+      "duration": 5.68
+    },
+    {
+      "lang": "en",
+      "text": "serverside event connection in Nex.js?",
+      "offset": 698.959,
+      "duration": 5.201
+    },
+    {
+      "lang": "en",
+      "text": "Let's start there before we actually",
+      "offset": 702.079,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "install chat and make it look pretty.",
+      "offset": 704.16,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "Well, Nex.js JS actually gives us the",
+      "offset": 706.959,
+      "duration": 4.401
+    },
+    {
+      "lang": "en",
+      "text": "option to create a custom server and",
+      "offset": 709.12,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "this is actually a very underrated",
+      "offset": 711.36,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "feature in Nex.js JS in my view because",
+      "offset": 713.2,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "it allows us to set up a websocket",
+      "offset": 715.44,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "connection and SSE serverside events",
+      "offset": 717.44,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "very easily actually and a lot of people",
+      "offset": 720.16,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "think it's not possible because NexJS is",
+      "offset": 722.24,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "very focused around a request and",
+      "offset": 724.8,
+      "duration": 3.599
+    },
+    {
+      "lang": "en",
+      "text": "response cycle right so there are some",
+      "offset": 726.48,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "incoming requests to the server side the",
+      "offset": 728.399,
+      "duration": 3.921
+    },
+    {
+      "lang": "en",
+      "text": "server side responds and that's the end",
+      "offset": 730.32,
+      "duration": 3.759
+    },
+    {
+      "lang": "en",
+      "text": "of it and that is typically how an",
+      "offset": 732.32,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "nextjs app works right so if you make a",
+      "offset": 734.079,
+      "duration": 4.161
+    },
+    {
+      "lang": "en",
+      "text": "request that's how it works however for",
+      "offset": 735.92,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "continuously streaming data we need some",
+      "offset": 738.24,
+      "duration": 3.599
+    },
+    {
+      "lang": "en",
+      "text": "kind of connection like this which is a",
+      "offset": 740.16,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "longer running connection so that's It's",
+      "offset": 741.839,
+      "duration": 4.081
+    },
+    {
+      "lang": "en",
+      "text": "a little bit trickier to do in Nex.js.",
+      "offset": 743.6,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "However, with a custom server setup, we",
+      "offset": 745.92,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "can still do that here. So, let's",
+      "offset": 748.8,
+      "duration": 3.32
+    },
+    {
+      "lang": "en",
+      "text": "actually see. So, we need to create a",
+      "offset": 750.16,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "server.ts file. So, server.ts. And in",
+      "offset": 752.12,
+      "duration": 6.279
+    },
+    {
+      "lang": "en",
+      "text": "this server.ts file, we can essentially",
+      "offset": 755.6,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "create a server. So, Nex.js",
+      "offset": 758.399,
+      "duration": 5.201
+    },
+    {
+      "lang": "en",
+      "text": "automatically, of course, since it has a",
+      "offset": 761.6,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "backend, it has a server side, it would",
+      "offset": 763.6,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "automatically do this by itself",
+      "offset": 765.44,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "regularly speak usually. However, here",
+      "offset": 767.6,
+      "duration": 5.359
+    },
+    {
+      "lang": "en",
+      "text": "we can have some custom behavior when it",
+      "offset": 770.16,
+      "duration": 5.359
+    },
+    {
+      "lang": "en",
+      "text": "starts the server. So in this case for",
+      "offset": 772.959,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "example what we are doing is we are",
+      "offset": 775.519,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "still sort of bootstrapping a nextjs",
+      "offset": 777.839,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "server here. So we say next and then we",
+      "offset": 780.399,
+      "duration": 4.721
+    },
+    {
+      "lang": "en",
+      "text": "have the app then we call prepare on",
+      "offset": 782.639,
+      "duration": 4.961
+    },
+    {
+      "lang": "en",
+      "text": "that and in there we create a server.",
+      "offset": 785.12,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "The regular nextjs request will still be",
+      "offset": 787.6,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "handled here. However, here we have a",
+      "offset": 790.48,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "special route so that the client side",
+      "offset": 793.12,
+      "duration": 5.279
+    },
+    {
+      "lang": "en",
+      "text": "will be able to start listening on this",
+      "offset": 795.76,
+      "duration": 5.6
+    },
+    {
+      "lang": "en",
+      "text": "with this URL for our server side event.",
+      "offset": 798.399,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "And what are we doing in there? Well, we",
+      "offset": 801.36,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "are just sending continuously messages",
+      "offset": 802.959,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "to the client. So, what we're doing here",
+      "offset": 805.12,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "is every 3 seconds we are just sending a",
+      "offset": 806.639,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "an object actually with a message in",
+      "offset": 809.6,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "there. Hello from server, right? This is",
+      "offset": 811.839,
+      "duration": 4.881
+    },
+    {
+      "lang": "en",
+      "text": "just a very basic SSE setup here. and",
+      "offset": 813.76,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "and all the other nextjs requests will",
+      "offset": 816.72,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "be dealt with will be handled in a in",
+      "offset": 818.56,
+      "duration": 5.279
+    },
+    {
+      "lang": "en",
+      "text": "the normal manner very similar to",
+      "offset": 821.36,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "spinning up a an express server actually",
+      "offset": 823.839,
+      "duration": 4.161
+    },
+    {
+      "lang": "en",
+      "text": "so basically just setting up some custom",
+      "offset": 826.48,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "server behavior here only for this",
+      "offset": 828,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "particular URL for everything else it's",
+      "offset": 829.92,
+      "duration": 5.599
+    },
+    {
+      "lang": "en",
+      "text": "just nextjs as regular now what can we",
+      "offset": 832.72,
+      "duration": 5.6
+    },
+    {
+      "lang": "en",
+      "text": "do now with this URL well now we can go",
+      "offset": 835.519,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "to the browser here so on this homepage",
+      "offset": 838.32,
+      "duration": 5.199
+    },
+    {
+      "lang": "en",
+      "text": "what we can do here is we can say new",
+      "offset": 841.279,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "event source so sort of subscribe to",
+      "offset": 843.519,
+      "duration": 5.361
+    },
+    {
+      "lang": "en",
+      "text": "that uh stream of messages that we that",
+      "offset": 846.079,
+      "duration": 4.641
+    },
+    {
+      "lang": "en",
+      "text": "we'll be getting when it's opened up.",
+      "offset": 848.88,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "We'll display that here on the page as",
+      "offset": 850.72,
+      "duration": 3.919
+    },
+    {
+      "lang": "en",
+      "text": "well. So, we'll keep track of that here",
+      "offset": 853.12,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "in state. But here is where we deal with",
+      "offset": 854.639,
+      "duration": 3.361
+    },
+    {
+      "lang": "en",
+      "text": "all the messages that we'll be getting",
+      "offset": 856.56,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "every 3 seconds or so. So, we're just",
+      "offset": 858,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "going to parse it and we're just going",
+      "offset": 860.24,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "to add it to the messages array here.",
+      "offset": 861.76,
+      "duration": 3.759
+    },
+    {
+      "lang": "en",
+      "text": "Right? So in React if you change the",
+      "offset": 863.76,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "state the component will rerender which",
+      "offset": 865.519,
+      "duration": 4.241
+    },
+    {
+      "lang": "en",
+      "text": "means if we scroll down a little bit if",
+      "offset": 868,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "we just rerender this whenever messages",
+      "offset": 869.76,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "change we can uh make this list longer",
+      "offset": 871.92,
+      "duration": 5.599
+    },
+    {
+      "lang": "en",
+      "text": "and longer without refreshing right",
+      "offset": 875.04,
+      "duration": 4.239
+    },
+    {
+      "lang": "en",
+      "text": "because the state will automatically",
+      "offset": 877.519,
+      "duration": 3.361
+    },
+    {
+      "lang": "en",
+      "text": "because the state changes everything",
+      "offset": 879.279,
+      "duration": 3.201
+    },
+    {
+      "lang": "en",
+      "text": "here will rerender automatically. Now if",
+      "offset": 880.88,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "you try running the app with this setup",
+      "offset": 882.48,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "here it will not work yet right so here",
+      "offset": 884.24,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "um it will just be in connecting",
+      "offset": 886.8,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "forever. It will not be able to connect",
+      "offset": 889.12,
+      "duration": 4.159
+    },
+    {
+      "lang": "en",
+      "text": "right now. You can see there's a 404. So",
+      "offset": 890.72,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "it's not able to find it for some",
+      "offset": 893.279,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "reason. So what we need to do to make it",
+      "offset": 895.04,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "to make this custom server work as well.",
+      "offset": 896.639,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "We have to go to package.json here and",
+      "offset": 898.48,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "I'm going to change the dev script. So",
+      "offset": 900.639,
+      "duration": 5.121
+    },
+    {
+      "lang": "en",
+      "text": "I'm going to start the app by actually",
+      "offset": 903.12,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "running the server.ts file directly. Now",
+      "offset": 905.76,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "I have ts node installed globally. And I",
+      "offset": 908.32,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "will also set the type to modules here.",
+      "offset": 911.04,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "With this now it should work. So now if",
+      "offset": 913.44,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "we run the dev script, if I stop the",
+      "offset": 915.68,
+      "duration": 4.399
+    },
+    {
+      "lang": "en",
+      "text": "server here, I can still do mpm rundev",
+      "offset": 918,
+      "duration": 4.639
+    },
+    {
+      "lang": "en",
+      "text": "and it's going to invoke ts node for the",
+      "offset": 920.079,
+      "duration": 4.721
+    },
+    {
+      "lang": "en",
+      "text": "server.ts file. And now you can see",
+      "offset": 922.639,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "ready on localhost 3000. So let's",
+      "offset": 924.8,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "actually refresh here and see what",
+      "offset": 927.199,
+      "duration": 4.161
+    },
+    {
+      "lang": "en",
+      "text": "happened. So let's see it's connecting",
+      "offset": 929.04,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "now. And yeah, so now you can see it's",
+      "offset": 931.36,
+      "duration": 4.479
+    },
+    {
+      "lang": "en",
+      "text": "connected and it has already received",
+      "offset": 934.16,
+      "duration": 3.119
+    },
+    {
+      "lang": "en",
+      "text": "the first message and there's another",
+      "offset": 935.839,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "one. So now every 3 seconds you can see",
+      "offset": 937.279,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "it's getting more and more messages. Now",
+      "offset": 940.079,
+      "duration": 4.961
+    },
+    {
+      "lang": "en",
+      "text": "we have a serverside event stream in a",
+      "offset": 941.839,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "Nex.js app. I think that's pretty cool.",
+      "offset": 945.04,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "We could have used websockets as well,",
+      "offset": 946.959,
+      "duration": 4.161
+    },
+    {
+      "lang": "en",
+      "text": "but uh this will do for now. Right. So",
+      "offset": 949.04,
+      "duration": 4.239
+    },
+    {
+      "lang": "en",
+      "text": "now we have a way of allowing the server",
+      "offset": 951.12,
+      "duration": 5.279
+    },
+    {
+      "lang": "en",
+      "text": "side to push data to the client side.",
+      "offset": 953.279,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "When the client side receives the data,",
+      "offset": 956.399,
+      "duration": 3.841
+    },
+    {
+      "lang": "en",
+      "text": "we want to display it nicely with in",
+      "offset": 958.079,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "this case let's use shad CN. So let's",
+      "offset": 960.24,
+      "duration": 4.159
+    },
+    {
+      "lang": "en",
+      "text": "quickly set that up here as well. Let me",
+      "offset": 962.399,
+      "duration": 3.761
+    },
+    {
+      "lang": "en",
+      "text": "actually uh stop the server in the",
+      "offset": 964.399,
+      "duration": 3.761
+    },
+    {
+      "lang": "en",
+      "text": "meantime so we don't get some infinite",
+      "offset": 966.16,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "list here. All right. So shad cen we can",
+      "offset": 968.16,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "use the terminal here we can mpx shadcen",
+      "offset": 970.24,
+      "duration": 5.519
+    },
+    {
+      "lang": "en",
+      "text": "at latest and first of first we can",
+      "offset": 973.12,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "initialize everything it will try to",
+      "offset": 975.759,
+      "duration": 3.921
+    },
+    {
+      "lang": "en",
+      "text": "create a components.json JSON file",
+      "offset": 977.6,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "basically configuration for chats but it",
+      "offset": 979.68,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "actually already found one. So um",
+      "offset": 982.48,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "actually I already had it from the",
+      "offset": 984.88,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "preparation here. So this will just",
+      "offset": 986.32,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "specify how the components should be",
+      "offset": 988.48,
+      "duration": 3.919
+    },
+    {
+      "lang": "en",
+      "text": "configured like the color scheme and",
+      "offset": 990.56,
+      "duration": 3.04
+    },
+    {
+      "lang": "en",
+      "text": "things like that. So you can see I",
+      "offset": 992.399,
+      "duration": 3.761
+    },
+    {
+      "lang": "en",
+      "text": "picked zinc and then we can install the",
+      "offset": 993.6,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "actual components. We can use the same",
+      "offset": 996.16,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "command but now it's add card. We'll use",
+      "offset": 998.32,
+      "duration": 4.959
+    },
+    {
+      "lang": "en",
+      "text": "but now it's add and then it's card",
+      "offset": 1000.88,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "table and tabs. Those are the three",
+      "offset": 1003.279,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "components we will use. All right. So it",
+      "offset": 1005.44,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "has something about peer dependencies.",
+      "offset": 1007.519,
+      "duration": 4.401
+    },
+    {
+      "lang": "en",
+      "text": "Cool. So now if we take a look, it has",
+      "offset": 1009.36,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "actually added that in a new uh",
+      "offset": 1011.92,
+      "duration": 4.719
+    },
+    {
+      "lang": "en",
+      "text": "component UI folder here with all of the",
+      "offset": 1013.92,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "code here. So if we want to change",
+      "offset": 1016.639,
+      "duration": 3.281
+    },
+    {
+      "lang": "en",
+      "text": "something, we can do it directly in",
+      "offset": 1018.24,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "here. But we will leave these. Let's",
+      "offset": 1019.92,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "actually add them to our page. And with",
+      "offset": 1022.24,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "chat UI, we also get this utility",
+      "offset": 1024.24,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "function which helps with merging till",
+      "offset": 1026.48,
+      "duration": 4.559
+    },
+    {
+      "lang": "en",
+      "text": "classes. All right. So I added these",
+      "offset": 1028.88,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "components to the page. I changed the",
+      "offset": 1031.039,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "markup here. Right now we don't have",
+      "offset": 1033.52,
+      "duration": 2.96
+    },
+    {
+      "lang": "en",
+      "text": "data but let's actually but let's",
+      "offset": 1035.039,
+      "duration": 3.361
+    },
+    {
+      "lang": "en",
+      "text": "actually see what we get. So here now if",
+      "offset": 1036.48,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "I go to our page you can see we already",
+      "offset": 1038.4,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "get well bit of a boiler plate you could",
+      "offset": 1040.64,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "say it has some empty state for these",
+      "offset": 1043.28,
+      "duration": 4.399
+    },
+    {
+      "lang": "en",
+      "text": "cards and so on but it already looks",
+      "offset": 1045.76,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "really nice. Now of course we want to",
+      "offset": 1047.679,
+      "duration": 5.201
+    },
+    {
+      "lang": "en",
+      "text": "work with our own data and ideally it",
+      "offset": 1049.76,
+      "duration": 5.039
+    },
+    {
+      "lang": "en",
+      "text": "would automatically refresh or update",
+      "offset": 1052.88,
+      "duration": 4.799
+    },
+    {
+      "lang": "en",
+      "text": "the page as new data is coming in and of",
+      "offset": 1054.799,
+      "duration": 4.801
+    },
+    {
+      "lang": "en",
+      "text": "course we want everything to be as as",
+      "offset": 1057.679,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "performant as possible. Right? So now we",
+      "offset": 1059.6,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "have connection between client and",
+      "offset": 1061.919,
+      "duration": 4.241
+    },
+    {
+      "lang": "en",
+      "text": "server. We have our UI. Now we need to",
+      "offset": 1063.84,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "take care of our data. So what we will",
+      "offset": 1066.16,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "do with the custom server. We can make",
+      "offset": 1068.4,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "the custom server insert the data into",
+      "offset": 1070.4,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "our database. This can also be in an",
+      "offset": 1072.96,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "interface. Let's say every 5 seconds it",
+      "offset": 1074.4,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "just inserts a bunch of data just to",
+      "offset": 1076.64,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "seed the database continuously with some",
+      "offset": 1079.28,
+      "duration": 3.759
+    },
+    {
+      "lang": "en",
+      "text": "data. Of course your data can come from",
+      "offset": 1081.2,
+      "duration": 3.359
+    },
+    {
+      "lang": "en",
+      "text": "anywhere. Maybe you already have a bunch",
+      "offset": 1083.039,
+      "duration": 2.88
+    },
+    {
+      "lang": "en",
+      "text": "of data. Maybe you're using a third",
+      "offset": 1084.559,
+      "duration": 3.841
+    },
+    {
+      "lang": "en",
+      "text": "party. We'll have we'll need some way to",
+      "offset": 1085.919,
+      "duration": 5.041
+    },
+    {
+      "lang": "en",
+      "text": "add data to our database. We will also",
+      "offset": 1088.4,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "every couple seconds read data from the",
+      "offset": 1090.96,
+      "duration": 4.079
+    },
+    {
+      "lang": "en",
+      "text": "database and that's what we will then",
+      "offset": 1093.2,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "pass over to the client side. Now if you",
+      "offset": 1095.039,
+      "duration": 5.041
+    },
+    {
+      "lang": "en",
+      "text": "want to try out hydra locally if you go",
+      "offset": 1097.84,
+      "duration": 3.4
+    },
+    {
+      "lang": "en",
+      "text": "to",
+      "offset": 1100.08,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "start.hydra.so you'll find a quick start",
+      "offset": 1101.24,
+      "duration": 4.36
+    },
+    {
+      "lang": "en",
+      "text": "here where you can install hydra and",
+      "offset": 1103.52,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "start playing around with it locally.",
+      "offset": 1105.6,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "However I will actually use a hosted",
+      "offset": 1107.6,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "hydra in this video. So I'm going to use",
+      "offset": 1109.44,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "a postgress database managed for me by",
+      "offset": 1111.36,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "hydra. And again, the benefit is that I",
+      "offset": 1113.52,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "can create tables inside an analytics",
+      "offset": 1116.24,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "schema here, which will then use duct DB",
+      "offset": 1118.72,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "under the hood. And so they're going to",
+      "offset": 1121.36,
+      "duration": 3.28
+    },
+    {
+      "lang": "en",
+      "text": "be optimized for my analytical queries.",
+      "offset": 1122.72,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "I can still use my normal tables, right?",
+      "offset": 1124.64,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "Let's say I have some post table here. I",
+      "offset": 1126.88,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "just created this as an example. This",
+      "offset": 1129.2,
+      "duration": 3.28
+    },
+    {
+      "lang": "en",
+      "text": "would still be my transactional queries,",
+      "offset": 1130.72,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "my standard queries. However, for the",
+      "offset": 1132.48,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "data that really needs that analytical",
+      "offset": 1134.4,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "power, I'm going to put the tables in",
+      "offset": 1136.24,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "here. You can see currently there are no",
+      "offset": 1138.4,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "tables yet here. So, how do we add the",
+      "offset": 1140.24,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "tables here? Well, to actually interact",
+      "offset": 1142.32,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "with my database, I do like to use an",
+      "offset": 1144.32,
+      "duration": 4.479
+    },
+    {
+      "lang": "en",
+      "text": "OM. If you're an app developer, um you",
+      "offset": 1146.48,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "may be using Drizzle or Prisma. In this",
+      "offset": 1148.799,
+      "duration": 3.921
+    },
+    {
+      "lang": "en",
+      "text": "video, I will use Prisma. So, with",
+      "offset": 1151.2,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "Prisma, I can define my tables here as a",
+      "offset": 1152.72,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "model. So, the data will be about some",
+      "offset": 1155.12,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "kind of web analytics. So, there going",
+      "offset": 1157.52,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "to be uh sessions. I want to create",
+      "offset": 1159.2,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "these tables as part of the analytics",
+      "offset": 1161.2,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "schema, right? So, I can specify it like",
+      "offset": 1163.2,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "this. There's going to be page views.",
+      "offset": 1165.44,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "So, there's going to be page views in a",
+      "offset": 1167.36,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "particular session. And there's also",
+      "offset": 1169.44,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "going to be interactions. Right? So here",
+      "offset": 1171.36,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "um these tables are connected. By the",
+      "offset": 1174,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "way, if you have a table that is inside",
+      "offset": 1176.48,
+      "duration": 4.079
+    },
+    {
+      "lang": "en",
+      "text": "the analytics schema and another table",
+      "offset": 1177.84,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "that is not inside the analytic schema,",
+      "offset": 1180.559,
+      "duration": 4.161
+    },
+    {
+      "lang": "en",
+      "text": "you can still join them together",
+      "offset": 1183.2,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "actually with Hydra here. So uh you",
+      "offset": 1184.72,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "don't have to worry about that. Anyway,",
+      "offset": 1186.88,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "these are my models here. The these will",
+      "offset": 1188.48,
+      "duration": 4.559
+    },
+    {
+      "lang": "en",
+      "text": "become tables. So let's actually push",
+      "offset": 1191.2,
+      "duration": 4.719
+    },
+    {
+      "lang": "en",
+      "text": "that up. So I can do mpx prisma db push.",
+      "offset": 1193.039,
+      "duration": 4.241
+    },
+    {
+      "lang": "en",
+      "text": "Prisma will try to connect to my",
+      "offset": 1195.919,
+      "duration": 3.441
+    },
+    {
+      "lang": "en",
+      "text": "database. Right? So here you can see now",
+      "offset": 1197.28,
+      "duration": 4.6
+    },
+    {
+      "lang": "en",
+      "text": "my database should be in sync with my",
+      "offset": 1199.36,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "Prisma schema. So now if I go back here",
+      "offset": 1201.88,
+      "duration": 6.12
+    },
+    {
+      "lang": "en",
+      "text": "and refresh you can see here now I have",
+      "offset": 1205.12,
+      "duration": 5.679
+    },
+    {
+      "lang": "en",
+      "text": "three tables one for interactions page",
+      "offset": 1208,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "views and session. Cool. By the way my",
+      "offset": 1210.799,
+      "duration": 4.401
+    },
+    {
+      "lang": "en",
+      "text": "connection string everything you can",
+      "offset": 1213.76,
+      "duration": 3.279
+    },
+    {
+      "lang": "en",
+      "text": "find here in the dashboard. Um and",
+      "offset": 1215.2,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "actually I'm using Prisma here but you",
+      "offset": 1217.039,
+      "duration": 3.441
+    },
+    {
+      "lang": "en",
+      "text": "can see there are other OMS available",
+      "offset": 1218.72,
+      "duration": 3.199
+    },
+    {
+      "lang": "en",
+      "text": "but I'm using Prisma here. Make sure you",
+      "offset": 1220.48,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "don't show your secrets to anyone else.",
+      "offset": 1221.919,
+      "duration": 3.441
+    },
+    {
+      "lang": "en",
+      "text": "I will delete it after recording. All",
+      "offset": 1223.84,
+      "duration": 3.199
+    },
+    {
+      "lang": "en",
+      "text": "right. But now of course my tables are",
+      "offset": 1225.36,
+      "duration": 3.199
+    },
+    {
+      "lang": "en",
+      "text": "still empty. There is no data in the",
+      "offset": 1227.039,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "database yet. So we need to seed the",
+      "offset": 1228.559,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "database with some data. So what we're",
+      "offset": 1230.559,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "going to do is when we start our app,",
+      "offset": 1232.559,
+      "duration": 3.12
+    },
+    {
+      "lang": "en",
+      "text": "we're going to call this function here,",
+      "offset": 1234.159,
+      "duration": 3.601
+    },
+    {
+      "lang": "en",
+      "text": "generate dummy data, which will just",
+      "offset": 1235.679,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "insert a bunch of dummy data every",
+      "offset": 1237.76,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "couple seconds. So in this function,",
+      "offset": 1240.559,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "what are we doing? We're uh we just have",
+      "offset": 1242.24,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "some options here, some page URLs, some",
+      "offset": 1244.799,
+      "duration": 5.441
+    },
+    {
+      "lang": "en",
+      "text": "some just some dummy uh data here. And",
+      "offset": 1247.28,
+      "duration": 6.24
+    },
+    {
+      "lang": "en",
+      "text": "that is what we are inserting every uh 5",
+      "offset": 1250.24,
+      "duration": 4.799
+    },
+    {
+      "lang": "en",
+      "text": "seconds. Right? So here we're setting up",
+      "offset": 1253.52,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "an interval. And here it creates a",
+      "offset": 1255.039,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "session that we specified in our table",
+      "offset": 1257.52,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "right the exact right so it's just",
+      "offset": 1260.159,
+      "duration": 4.321
+    },
+    {
+      "lang": "en",
+      "text": "creating some random data adding some",
+      "offset": 1262.32,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "making it a more random distribution",
+      "offset": 1264.48,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "here um it's creating some page views",
+      "offset": 1266.32,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "for each session and then the",
+      "offset": 1268.64,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "interactions right so we have right so",
+      "offset": 1270.24,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "we have something for each table and",
+      "offset": 1272,
+      "duration": 3.28
+    },
+    {
+      "lang": "en",
+      "text": "actually it will update the active",
+      "offset": 1273.76,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "sessions as well but eventually it's",
+      "offset": 1275.28,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "going to update the actual database here",
+      "offset": 1277.76,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "and also here it will create one it will",
+      "offset": 1280.08,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "create data for the page views and also",
+      "offset": 1282.4,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "for the interactions Right. So there's a",
+      "offset": 1284.64,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "bunch of dummy data here. And so there's",
+      "offset": 1286.24,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "a bunch of stuff in there, but basically",
+      "offset": 1288.08,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "just adds data to our database every 5",
+      "offset": 1289.6,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "seconds. When the next JS server starts,",
+      "offset": 1292.32,
+      "duration": 4.479
+    },
+    {
+      "lang": "en",
+      "text": "every 5 seconds, it will actually",
+      "offset": 1294.64,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "populate the database with some data.",
+      "offset": 1296.799,
+      "duration": 5.441
+    },
+    {
+      "lang": "en",
+      "text": "But our UI doesn't know about that,",
+      "offset": 1299.6,
+      "duration": 4.559
+    },
+    {
+      "lang": "en",
+      "text": "right? So what we also need to do is we",
+      "offset": 1302.24,
+      "duration": 3.919
+    },
+    {
+      "lang": "en",
+      "text": "need to read data from the database. So",
+      "offset": 1304.159,
+      "duration": 4.721
+    },
+    {
+      "lang": "en",
+      "text": "here where we were uh sending a message",
+      "offset": 1306.159,
+      "duration": 5.841
+    },
+    {
+      "lang": "en",
+      "text": "to the client every couple seconds, we",
+      "offset": 1308.88,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "need to change it a little bit. So we're",
+      "offset": 1312,
+      "duration": 3.12
+    },
+    {
+      "lang": "en",
+      "text": "actually getting some data from the",
+      "offset": 1313.52,
+      "duration": 3.12
+    },
+    {
+      "lang": "en",
+      "text": "database. So I actually put it in a",
+      "offset": 1315.12,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "separate function as well. So here every",
+      "offset": 1316.64,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "3 seconds we're going to go into our",
+      "offset": 1318.72,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "database. We're going to have some",
+      "offset": 1320.48,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "query. Let's say take 10. We want to",
+      "offset": 1322.08,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "order by something. Maybe include it",
+      "offset": 1324.48,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "with some other data. And again here we",
+      "offset": 1326.72,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "can have some really complex queries,",
+      "offset": 1329.2,
+      "duration": 2.959
+    },
+    {
+      "lang": "en",
+      "text": "right? Really analytical type of",
+      "offset": 1330.88,
+      "duration": 3.2
+    },
+    {
+      "lang": "en",
+      "text": "queries. Uh we do we can do a bunch of",
+      "offset": 1332.159,
+      "duration": 4.481
+    },
+    {
+      "lang": "en",
+      "text": "aggregation. So here for example um",
+      "offset": 1334.08,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "we're going to group some things here.",
+      "offset": 1336.64,
+      "duration": 4.399
+    },
+    {
+      "lang": "en",
+      "text": "Uh count some things and we can make it",
+      "offset": 1338.96,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "much more complex if we want. Right. And",
+      "offset": 1341.039,
+      "duration": 3.921
+    },
+    {
+      "lang": "en",
+      "text": "here uh we're going to check the",
+      "offset": 1342.96,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "sessions that either ended or not ended",
+      "offset": 1344.96,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "yet and order them and so on. Right? Of",
+      "offset": 1347.6,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "course, we can make it much more",
+      "offset": 1350.4,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "complex. Let's actually see if all of",
+      "offset": 1351.52,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "this works now. So now if we start our",
+      "offset": 1354,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "server, let's see what happens if I go",
+      "offset": 1356,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "back to our page here. And actually I",
+      "offset": 1358.32,
+      "duration": 5.839
+    },
+    {
+      "lang": "en",
+      "text": "will make it port 3000. But let's",
+      "offset": 1362,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "actually try this. If we now run the app",
+      "offset": 1364.159,
+      "duration": 5.921
+    },
+    {
+      "lang": "en",
+      "text": "here. And now if we go to our page here,",
+      "offset": 1366.72,
+      "duration": 5.199
+    },
+    {
+      "lang": "en",
+      "text": "let's see what happens. Hopefully",
+      "offset": 1370.08,
+      "duration": 4.079
+    },
+    {
+      "lang": "en",
+      "text": "everything works. And here we go. Okay.",
+      "offset": 1371.919,
+      "duration": 4.561
+    },
+    {
+      "lang": "en",
+      "text": "So, here we have our boiler plate again.",
+      "offset": 1374.159,
+      "duration": 4.321
+    },
+    {
+      "lang": "en",
+      "text": "And let's wait a bit a couple seconds.",
+      "offset": 1376.48,
+      "duration": 3.679
+    },
+    {
+      "lang": "en",
+      "text": "And here you can see we are now getting",
+      "offset": 1378.48,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "data here into our app here. You can see",
+      "offset": 1380.159,
+      "duration": 4.081
+    },
+    {
+      "lang": "en",
+      "text": "it's automatically updating here. I",
+      "offset": 1382.48,
+      "duration": 3.199
+    },
+    {
+      "lang": "en",
+      "text": "don't have to refresh or anything like",
+      "offset": 1384.24,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "that. Um, so you can see it is able to",
+      "offset": 1385.679,
+      "duration": 5.921
+    },
+    {
+      "lang": "en",
+      "text": "get that data from the database, right?",
+      "offset": 1389.12,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "So, this is not hardcoded. We are",
+      "offset": 1391.6,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "actually getting data from our database,",
+      "offset": 1393.44,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "right? Um, yeah, I think this is really",
+      "offset": 1396.72,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "nice. If I actually go to my Hydra",
+      "offset": 1398.72,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "dashboard here, if I refresh, you can",
+      "offset": 1401.2,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "see we have all of our data here",
+      "offset": 1403.12,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "automatically added every couple seconds",
+      "offset": 1405.12,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "or so. And so this data here will be",
+      "offset": 1406.96,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "optimized for analytical workloads,",
+      "offset": 1409.76,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "right? So we can go we can go pretty",
+      "offset": 1411.76,
+      "duration": 3.2
+    },
+    {
+      "lang": "en",
+      "text": "crazy here. We can make it much more",
+      "offset": 1413.44,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "complex. But I think you get the point",
+      "offset": 1414.96,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "which is that by using in this case",
+      "offset": 1417.12,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "Hydra which is basically uh Postgress",
+      "offset": 1419.84,
+      "duration": 5.92
+    },
+    {
+      "lang": "en",
+      "text": "with duct DB managed for us we are able",
+      "offset": 1423.12,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "to have one database for both the",
+      "offset": 1425.76,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "transactional as well as analytical and",
+      "offset": 1428,
+      "duration": 4.159
+    },
+    {
+      "lang": "en",
+      "text": "it fits in really nicely with the",
+      "offset": 1430,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "overall stack here for real-time",
+      "offset": 1432.159,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "analytics dashboards with Nex.js jazz.",
+      "offset": 1434.4,
+      "duration": 3.759
+    },
+    {
+      "lang": "en",
+      "text": "And yeah, overall it's really",
+      "offset": 1436.799,
+      "duration": 3.841
+    },
+    {
+      "lang": "en",
+      "text": "mind-blowing to me how powerful, how",
+      "offset": 1438.159,
+      "duration": 4.961
+    },
+    {
+      "lang": "en",
+      "text": "sophisticated the apps and software is",
+      "offset": 1440.64,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "that we can build these days as",
+      "offset": 1443.12,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "developer using all of these tools. If",
+      "offset": 1444.48,
+      "duration": 3.679
+    },
+    {
+      "lang": "en",
+      "text": "you tried to build something like this a",
+      "offset": 1446.48,
+      "duration": 3.439
+    },
+    {
+      "lang": "en",
+      "text": "couple years ago, it would be so much",
+      "offset": 1448.159,
+      "duration": 3.841
+    },
+    {
+      "lang": "en",
+      "text": "work, but these days it's actually very",
+      "offset": 1449.919,
+      "duration": 3.601
+    },
+    {
+      "lang": "en",
+      "text": "doable. So actually, I think it's a",
+      "offset": 1452,
+      "duration": 2.799
+    },
+    {
+      "lang": "en",
+      "text": "great time to be a developer. So",
+      "offset": 1453.52,
+      "duration": 2.24
+    },
+    {
+      "lang": "en",
+      "text": "hopefully this helps you out with",
+      "offset": 1454.799,
+      "duration": 3.041
+    },
+    {
+      "lang": "en",
+      "text": "building your dashboard. In any case, I",
+      "offset": 1455.76,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "want to thank you for watching and I",
+      "offset": 1457.84,
+      "duration": 2.8
+    },
+    {
+      "lang": "en",
+      "text": "want to thank Hydra for sponsoring the",
+      "offset": 1459.12,
+      "duration": 2.96
+    },
+    {
+      "lang": "en",
+      "text": "video. Check them out. You can find a",
+      "offset": 1460.64,
+      "duration": 3.2
+    },
+    {
+      "lang": "en",
+      "text": "link in the description and I will see",
+      "offset": 1462.08,
+      "duration": 5.599
+    },
+    {
+      "lang": "en",
+      "text": "you in the next video. Have a nice day.",
+      "offset": 1463.84,
+      "duration": 3.839
+    }
+  ],
+  "cleanText": null,
+  "dumpedAt": "2025-07-21T18:43:25.778Z"
+}

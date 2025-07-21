@@ -1,0 +1,4048 @@
+{
+  "episodeId": "spvXj9tnWAQ",
+  "channelSlug": "@aidotengineer",
+  "title": "Engineering Better Evals: Scalable LLM Evaluation Pipelines That Work — Dat Ngo, Aman Khan, Arize",
+  "publishedAt": "2025-06-27T10:49:38.000Z",
+  "rawLines": [
+    {
+      "lang": "en",
+      "text": "[Music]",
+      "offset": 0.33,
+      "duration": 7.479
+    },
+    {
+      "lang": "en",
+      "text": "All right. Well, let's get started. Uh,",
+      "offset": 14.799,
+      "duration": 3.361
+    },
+    {
+      "lang": "en",
+      "text": "we don't have much time, but um, I hope",
+      "offset": 16.48,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "your conference is going well. Uh,",
+      "offset": 18.16,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "welcome to AI engineering worldfare. Uh,",
+      "offset": 20,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "my name is Dat No. Uh, today's talk is",
+      "offset": 22.4,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "about LME val pipelines. Um, so I never",
+      "offset": 24.88,
+      "duration": 4.799
+    },
+    {
+      "lang": "en",
+      "text": "know what I want to talk about till I",
+      "offset": 28.16,
+      "duration": 2.959
+    },
+    {
+      "lang": "en",
+      "text": "get into the room, so I don't prep too",
+      "offset": 29.679,
+      "duration": 4.241
+    },
+    {
+      "lang": "en",
+      "text": "hard. But by show of hands, who here uh",
+      "offset": 31.119,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "who here has built u an agent? Just",
+      "offset": 33.92,
+      "duration": 6.08
+    },
+    {
+      "lang": "en",
+      "text": "raise your hand. Okay. Uh, who here um",
+      "offset": 36.079,
+      "duration": 6.64
+    },
+    {
+      "lang": "en",
+      "text": "has run an eval?",
+      "offset": 40,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "Right. Who here has productionized an AI",
+      "offset": 42.719,
+      "duration": 3.761
+    },
+    {
+      "lang": "en",
+      "text": "product?",
+      "offset": 44.96,
+      "duration": 4.079
+    },
+    {
+      "lang": "en",
+      "text": "Nice. Okay. Some technical builders. Um,",
+      "offset": 46.48,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "let's get technical then. So, uh, my",
+      "offset": 49.039,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "name is, uh, Dat. Um, I'm an AI",
+      "offset": 51.52,
+      "duration": 6.32
+    },
+    {
+      "lang": "en",
+      "text": "architect at Arise AI. Um, this is Mochi",
+      "offset": 54.399,
+      "duration": 6.561
+    },
+    {
+      "lang": "en",
+      "text": "and Latte. Uh, Latte. They're uh dogs of",
+      "offset": 57.84,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "my friends. I figured let's let's keep",
+      "offset": 60.96,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "it spicy and interesting. Um, but I've",
+      "offset": 62.64,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "been building observability and eval",
+      "offset": 64.72,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "since since day zero. So, uh, since the",
+      "offset": 66.4,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "first uh I don't know if you guys know",
+      "offset": 68.96,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "what Arise AI is, but we are the largest",
+      "offset": 70.32,
+      "duration": 5.6
+    },
+    {
+      "lang": "en",
+      "text": "uh AI evals player uh in the space. So,",
+      "offset": 72.72,
+      "duration": 5.84
+    },
+    {
+      "lang": "en",
+      "text": "observability eval kind of beyond. Uh,",
+      "offset": 75.92,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "we work really heavily uh with with real",
+      "offset": 78.56,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "use cases. So, folks like Reddit, folks",
+      "offset": 80.88,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "like Dualingo. Um, so we work across the",
+      "offset": 83.04,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "best AI teams and we have a really",
+      "offset": 86.24,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "unique business. Being on the",
+      "offset": 88,
+      "duration": 4.079
+    },
+    {
+      "lang": "en",
+      "text": "observability side, we get to see what",
+      "offset": 89.68,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "everyone is building,",
+      "offset": 92.079,
+      "duration": 3.841
+    },
+    {
+      "lang": "en",
+      "text": "how they're tackling those problems,",
+      "offset": 94.24,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "what are their biggest pains, uh, and",
+      "offset": 95.92,
+      "duration": 3.12
+    },
+    {
+      "lang": "en",
+      "text": "what are the kind of the tips and tricks",
+      "offset": 97.6,
+      "duration": 3.839
+    },
+    {
+      "lang": "en",
+      "text": "that they use to to really productionize",
+      "offset": 99.04,
+      "duration": 3.759
+    },
+    {
+      "lang": "en",
+      "text": "these things. And just to give you a",
+      "offset": 101.439,
+      "duration": 4.081
+    },
+    {
+      "lang": "en",
+      "text": "hint, um, you know, Dualingo has massive",
+      "offset": 102.799,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "eval scale. They tend to run about 20",
+      "offset": 105.52,
+      "duration": 6.16
+    },
+    {
+      "lang": "en",
+      "text": "evals per per like um, trace. Um, so",
+      "offset": 107.759,
+      "duration": 5.601
+    },
+    {
+      "lang": "en",
+      "text": "they end up spending, you know, quite a",
+      "offset": 111.68,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "fair amount, uh, doing evals,",
+      "offset": 113.36,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "understanding their evals, optimizing",
+      "offset": 115.2,
+      "duration": 3.12
+    },
+    {
+      "lang": "en",
+      "text": "them. Uh, and the last thing about me, I",
+      "offset": 116.72,
+      "duration": 2.88
+    },
+    {
+      "lang": "en",
+      "text": "have a huge passion for the AI",
+      "offset": 118.32,
+      "duration": 3.28
+    },
+    {
+      "lang": "en",
+      "text": "community. Um, when I was in SF the last",
+      "offset": 119.6,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "5 years, uh, really loved to go to",
+      "offset": 121.6,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "pretty much every single event that I",
+      "offset": 123.68,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "could. I'm not a developer advocate. I'm",
+      "offset": 124.96,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "an engineering an engineer by by trade,",
+      "offset": 127.2,
+      "duration": 5.119
+    },
+    {
+      "lang": "en",
+      "text": "but I just love the community. So, um,",
+      "offset": 129.44,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "yeah, this is a little bit about Rise,",
+      "offset": 132.319,
+      "duration": 2.64
+    },
+    {
+      "lang": "en",
+      "text": "but I think I don't want to keep it too",
+      "offset": 133.68,
+      "duration": 2.559
+    },
+    {
+      "lang": "en",
+      "text": "salesy. I just want to keep it pretty",
+      "offset": 134.959,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "technical. So really three concepts that",
+      "offset": 136.239,
+      "duration": 3.921
+    },
+    {
+      "lang": "en",
+      "text": "I think everybody should be familiar",
+      "offset": 138.879,
+      "duration": 3.201
+    },
+    {
+      "lang": "en",
+      "text": "with and where eval really sit in the",
+      "offset": 140.16,
+      "duration": 4.159
+    },
+    {
+      "lang": "en",
+      "text": "space is is really as simple as this. Um",
+      "offset": 142.08,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "this is what I teach all my customers",
+      "offset": 144.319,
+      "duration": 3.201
+    },
+    {
+      "lang": "en",
+      "text": "really. The first thing is",
+      "offset": 146.64,
+      "duration": 2.319
+    },
+    {
+      "lang": "en",
+      "text": "observability. I think you guys have",
+      "offset": 147.52,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "kind of seen this before. Observability",
+      "offset": 148.959,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "really just answers the question of what",
+      "offset": 151.28,
+      "duration": 3.679
+    },
+    {
+      "lang": "en",
+      "text": "is the thing that I built actually",
+      "offset": 153.519,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "doing? Right? To some people it may be",
+      "offset": 154.959,
+      "duration": 5.681
+    },
+    {
+      "lang": "en",
+      "text": "traces uh traces in in spans. Um I'll",
+      "offset": 156.879,
+      "duration": 5.681
+    },
+    {
+      "lang": "en",
+      "text": "show you a little bit um you know",
+      "offset": 160.64,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "platform agnostic just just think about",
+      "offset": 162.56,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "the concepts. Um but traces might be one",
+      "offset": 164.64,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "one area for people. So traces represent",
+      "offset": 167.28,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "hey what's happening? Can I look at",
+      "offset": 169.76,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "things uh to an AI engineer makes a lot",
+      "offset": 171.28,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "of sense. Um let's say you're an AIPM",
+      "offset": 173.76,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "maybe not super technical or maybe uh",
+      "offset": 175.92,
+      "duration": 3.28
+    },
+    {
+      "lang": "en",
+      "text": "you want to think about things",
+      "offset": 178.4,
+      "duration": 2.8
+    },
+    {
+      "lang": "en",
+      "text": "differently. Maybe you want to look at",
+      "offset": 179.2,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "hey what are the conversations that are",
+      "offset": 181.2,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "happening. Turns out you can run evals",
+      "offset": 182.8,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "at these levels. Uh we'll get into that",
+      "offset": 184.56,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "in depth kind of later. Um you know",
+      "offset": 186.48,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "signal comes and observability comes in",
+      "offset": 189.28,
+      "duration": 3.599
+    },
+    {
+      "lang": "en",
+      "text": "different kind of flavors and forms.",
+      "offset": 191.44,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "Maybe it's it's analytics. Uh what we're",
+      "offset": 192.879,
+      "duration": 5.041
+    },
+    {
+      "lang": "en",
+      "text": "starting to really realize is that LLM",
+      "offset": 195.28,
+      "duration": 4.959
+    },
+    {
+      "lang": "en",
+      "text": "teams are getting split into two special",
+      "offset": 197.92,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "niches. There's platform teams, right?",
+      "offset": 200.239,
+      "duration": 4.561
+    },
+    {
+      "lang": "en",
+      "text": "And they they own things like the the",
+      "offset": 202.64,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "infrastructure. So who here has heard of",
+      "offset": 204.8,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "a model gateway router? It's like an",
+      "offset": 206.56,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "interface pattern behind it or all the",
+      "offset": 209.04,
+      "duration": 2.96
+    },
+    {
+      "lang": "en",
+      "text": "models, right? Well, turns out the",
+      "offset": 210.48,
+      "duration": 3.839
+    },
+    {
+      "lang": "en",
+      "text": "central LLM platform team tends to own",
+      "offset": 212,
+      "duration": 4.159
+    },
+    {
+      "lang": "en",
+      "text": "that. They care about cost, latency,",
+      "offset": 214.319,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "things like that. And then you have the",
+      "offset": 216.159,
+      "duration": 4.881
+    },
+    {
+      "lang": "en",
+      "text": "other LLM teams. these these LM teams s",
+      "offset": 218.239,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "team uh sit on the like the outer side",
+      "offset": 221.04,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "of the business so like a hub and spoke",
+      "offset": 223.599,
+      "duration": 3.441
+    },
+    {
+      "lang": "en",
+      "text": "they work for the business side so these",
+      "offset": 225.36,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "are like uh the people building the",
+      "offset": 227.04,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "applications to help the business so um",
+      "offset": 229.12,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "if anyone here comes from like the the",
+      "offset": 231.36,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "ML or or data science space it's",
+      "offset": 233.04,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "actually not far from that um and so",
+      "offset": 234.72,
+      "duration": 3.519
+    },
+    {
+      "lang": "en",
+      "text": "different teams care about different",
+      "offset": 237.12,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "metrics uh so maybe if you're an AIPM",
+      "offset": 238.239,
+      "duration": 4.321
+    },
+    {
+      "lang": "en",
+      "text": "sitting on the business side you care",
+      "offset": 241.2,
+      "duration": 3.679
+    },
+    {
+      "lang": "en",
+      "text": "about evals if you care about you know",
+      "offset": 242.56,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "the platform maybe you care about costs",
+      "offset": 244.879,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "latency things like that but TLDDR",
+      "offset": 246.56,
+      "duration": 6.8
+    },
+    {
+      "lang": "en",
+      "text": "uh observability oops uh observability",
+      "offset": 249.439,
+      "duration": 6.401
+    },
+    {
+      "lang": "en",
+      "text": "um represents what's happening and now",
+      "offset": 253.36,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "evals are really important in this space",
+      "offset": 255.84,
+      "duration": 3.519
+    },
+    {
+      "lang": "en",
+      "text": "because the reality of the fact is if",
+      "offset": 257.68,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "you've ever seen a trace or something",
+      "offset": 259.359,
+      "duration": 4.881
+    },
+    {
+      "lang": "en",
+      "text": "like that um you're not going to inspect",
+      "offset": 261.04,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "every single trace manually right it is",
+      "offset": 264.24,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "not scalable for you an AI engineer or",
+      "offset": 266.4,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "you the AIPM to look through these",
+      "offset": 268.56,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "things so what is eval used for it's",
+      "offset": 270.56,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "actually just a really clever word for",
+      "offset": 273.84,
+      "duration": 3.28
+    },
+    {
+      "lang": "en",
+      "text": "signal you're just trying to understand",
+      "offset": 275.28,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "what's going well and what's not going",
+      "offset": 277.12,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "well. So, I'm not here to sell you on",
+      "offset": 278.88,
+      "duration": 3.12
+    },
+    {
+      "lang": "en",
+      "text": "like evals. I think everybody knows how",
+      "offset": 280.56,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "important they are. But if you think",
+      "offset": 282,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "eval or LM as a judge only, uh there's",
+      "offset": 284,
+      "duration": 5.6
+    },
+    {
+      "lang": "en",
+      "text": "actually a lot of other tools that",
+      "offset": 288,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "you're missing. So, LM as a judge, raise",
+      "offset": 289.6,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "your hand if you used LM as a judge.",
+      "offset": 291.84,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "Okay, about half the room. Um it's super",
+      "offset": 294,
+      "duration": 4.639
+    },
+    {
+      "lang": "en",
+      "text": "great. Uh you use an LLM to give you",
+      "offset": 296.96,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "feedback or process on on any process,",
+      "offset": 298.639,
+      "duration": 5.361
+    },
+    {
+      "lang": "en",
+      "text": "including an LLM process. So, if you're",
+      "offset": 300.96,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "doing rag, this is a really good way to",
+      "offset": 304,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "to think about rag in terms of evals. um",
+      "offset": 305.44,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "rag would be like hey user has a",
+      "offset": 307.84,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "question um we retrieve some context to",
+      "offset": 309.84,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "be able to you know possibly answer that",
+      "offset": 312.56,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "question and then we generate an answer",
+      "offset": 314.72,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "turns out every arrow on this is",
+      "offset": 317.28,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "actually an eval you can run so hey I",
+      "offset": 319.52,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "retrieve some context and I want to",
+      "offset": 322.16,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "compare that to the query being asked",
+      "offset": 324.16,
+      "duration": 3.2
+    },
+    {
+      "lang": "en",
+      "text": "well that's rag relevance it's like is",
+      "offset": 325.68,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "the thing that I returned even helpful",
+      "offset": 327.36,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "in answering the question and so LM as a",
+      "offset": 329.44,
+      "duration": 5.759
+    },
+    {
+      "lang": "en",
+      "text": "judge is great it's super helpful um you",
+      "offset": 332,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "know I think most people understand why",
+      "offset": 335.199,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "it works But there's a whole there's a",
+      "offset": 336.8,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "whole research area on why they're",
+      "offset": 339.039,
+      "duration": 3.681
+    },
+    {
+      "lang": "en",
+      "text": "really good indicators. Um the original",
+      "offset": 340.32,
+      "duration": 4.879
+    },
+    {
+      "lang": "en",
+      "text": "task is not the eval task, right? So if",
+      "offset": 342.72,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "I asked you a human, hey, generate me a",
+      "offset": 345.199,
+      "duration": 4.641
+    },
+    {
+      "lang": "en",
+      "text": "summary on uh something long and complex",
+      "offset": 347.36,
+      "duration": 5.119
+    },
+    {
+      "lang": "en",
+      "text": "like the book War in Peace. Uh that's a",
+      "offset": 349.84,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "very different task than say, hey, I",
+      "offset": 352.479,
+      "duration": 4.081
+    },
+    {
+      "lang": "en",
+      "text": "wrote this summary for you. Is it a good",
+      "offset": 354.16,
+      "duration": 5.599
+    },
+    {
+      "lang": "en",
+      "text": "one or is it a bad one? But LM as a",
+      "offset": 356.56,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "judge is is a small part. Um it doesn't",
+      "offset": 359.759,
+      "duration": 3.841
+    },
+    {
+      "lang": "en",
+      "text": "always have to be a large language model",
+      "offset": 362.32,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "or auto reggressive model. Um things",
+      "offset": 363.6,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "like encoder only BERT type",
+      "offset": 365.68,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "architectures are super helpful. They're",
+      "offset": 368.24,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "about 10 times cheaper um about one or",
+      "offset": 370.56,
+      "duration": 5.199
+    },
+    {
+      "lang": "en",
+      "text": "two orders of magnitudes faster uh to",
+      "offset": 373.52,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "run that eval. But you know you don't",
+      "offset": 375.759,
+      "duration": 4.801
+    },
+    {
+      "lang": "en",
+      "text": "just have LLM at your disposal. You a",
+      "offset": 378.4,
+      "duration": 3.919
+    },
+    {
+      "lang": "en",
+      "text": "human also are really good way to",
+      "offset": 380.56,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "discern signal. So it turns out eval can",
+      "offset": 382.319,
+      "duration": 3.761
+    },
+    {
+      "lang": "en",
+      "text": "also come in the form of is your user",
+      "offset": 384.4,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "having a good or bad experience. So for",
+      "offset": 386.08,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "those people who've productionized uh",
+      "offset": 388.16,
+      "duration": 3.599
+    },
+    {
+      "lang": "en",
+      "text": "some sort of LLM application, do you",
+      "offset": 389.6,
+      "duration": 3.439
+    },
+    {
+      "lang": "en",
+      "text": "guys have user feedback? Raise your hand",
+      "offset": 391.759,
+      "duration": 3.601
+    },
+    {
+      "lang": "en",
+      "text": "if you've implemented user feedback and",
+      "offset": 393.039,
+      "duration": 5.361
+    },
+    {
+      "lang": "en",
+      "text": "okay about 30%. Uh it's actually",
+      "offset": 395.36,
+      "duration": 4.959
+    },
+    {
+      "lang": "en",
+      "text": "incredible signal. Um so that comes from",
+      "offset": 398.4,
+      "duration": 4.639
+    },
+    {
+      "lang": "en",
+      "text": "a human. Obviously you yourself can also",
+      "offset": 400.319,
+      "duration": 4.801
+    },
+    {
+      "lang": "en",
+      "text": "generate labels on stuff. So has anyone",
+      "offset": 403.039,
+      "duration": 4.081
+    },
+    {
+      "lang": "en",
+      "text": "here heard of a golden data set? Raise",
+      "offset": 405.12,
+      "duration": 5.359
+    },
+    {
+      "lang": "en",
+      "text": "your hand. Okay, most of the room. Um",
+      "offset": 407.12,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "and the way I encourage folks to think",
+      "offset": 410.479,
+      "duration": 3.28
+    },
+    {
+      "lang": "en",
+      "text": "about this, this is a pro tip actually.",
+      "offset": 411.84,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "If the first column represents scale, so",
+      "offset": 413.759,
+      "duration": 4.241
+    },
+    {
+      "lang": "en",
+      "text": "LM as a judge is valuable because I",
+      "offset": 416,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "don't have to grade it myself, right?",
+      "offset": 418,
+      "duration": 3.599
+    },
+    {
+      "lang": "en",
+      "text": "But let's say I don't necessarily trust",
+      "offset": 420,
+      "duration": 4.319
+    },
+    {
+      "lang": "en",
+      "text": "it off the bat. Use the third column to",
+      "offset": 421.599,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "help you out. So a golden data set",
+      "offset": 424.319,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "represents quality. So you yourself",
+      "offset": 426.319,
+      "duration": 4.081
+    },
+    {
+      "lang": "en",
+      "text": "graded it. You know that it's it's what",
+      "offset": 428.639,
+      "duration": 4.081
+    },
+    {
+      "lang": "en",
+      "text": "you expected, you know. Um well, turns",
+      "offset": 430.4,
+      "duration": 4.639
+    },
+    {
+      "lang": "en",
+      "text": "out you can run your LM as a judge on a",
+      "offset": 432.72,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "golden data set. Um what you're trying",
+      "offset": 435.039,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "to do is say, hey, can the LLM",
+      "offset": 437.28,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "approximate the thing that I trust?",
+      "offset": 439.599,
+      "duration": 4.401
+    },
+    {
+      "lang": "en",
+      "text": "Right? And what that allows you to do is",
+      "offset": 442,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "to actually quantify and tune your LM as",
+      "offset": 444,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "a judge. So we'll go over that in a",
+      "offset": 446.08,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "second, but strong pro tip. uh most",
+      "offset": 447.44,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "really strong LLM teams in the world",
+      "offset": 449.84,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "kind of do this today. Uh and it turns",
+      "offset": 451.68,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "out you don't always have to use an LLM",
+      "offset": 453.84,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "uh or a human. You can use what are",
+      "offset": 456.4,
+      "duration": 3.519
+    },
+    {
+      "lang": "en",
+      "text": "called like curistics or codebased",
+      "offset": 458.24,
+      "duration": 3.519
+    },
+    {
+      "lang": "en",
+      "text": "logic. So I'm going to take you into the",
+      "offset": 459.919,
+      "duration": 2.881
+    },
+    {
+      "lang": "en",
+      "text": "platform a little bit to talk through",
+      "offset": 461.759,
+      "duration": 3.28
+    },
+    {
+      "lang": "en",
+      "text": "it. But um in our platform you have a",
+      "offset": 462.8,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "way to to run evals. Great. Uh what code",
+      "offset": 465.039,
+      "duration": 5.681
+    },
+    {
+      "lang": "en",
+      "text": "evals actually are um are just um it's",
+      "offset": 467.52,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "much cheaper. So I'll just run a little",
+      "offset": 470.72,
+      "duration": 4.879
+    },
+    {
+      "lang": "en",
+      "text": "test here. But you know let's say you",
+      "offset": 472.96,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "want to say hey does this output contain",
+      "offset": 475.599,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "any keywords? I don't need to use an LLM",
+      "offset": 477.28,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "or human for that. I can just use code.",
+      "offset": 479.759,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "It's infinitely cheaper. Um faster to",
+      "offset": 481.68,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "run. Um does this match this reg x",
+      "offset": 483.919,
+      "duration": 5.521
+    },
+    {
+      "lang": "en",
+      "text": "pattern xyz? Is this a parsible JSON? So",
+      "offset": 486.4,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "the reality of it is you have this kind",
+      "offset": 489.44,
+      "duration": 4.879
+    },
+    {
+      "lang": "en",
+      "text": "of uh large toolbox in your kind of uh",
+      "offset": 491.12,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "eval set. So when you say evals, don't",
+      "offset": 494.319,
+      "duration": 3.761
+    },
+    {
+      "lang": "en",
+      "text": "just think of LLM as a judge. There's a",
+      "offset": 496.4,
+      "duration": 3.199
+    },
+    {
+      "lang": "en",
+      "text": "whole other set of smarter things that",
+      "offset": 498.08,
+      "duration": 3.119
+    },
+    {
+      "lang": "en",
+      "text": "you can use. They're actually more cost-",
+      "offset": 499.599,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "effective. And so really, you know, this",
+      "offset": 501.199,
+      "duration": 5.041
+    },
+    {
+      "lang": "en",
+      "text": "is a really good way to to emphasize",
+      "offset": 504.639,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "really the value of like the AI engineer",
+      "offset": 506.24,
+      "duration": 5.519
+    },
+    {
+      "lang": "en",
+      "text": "evals and observability. Most people",
+      "offset": 509.199,
+      "duration": 4.481
+    },
+    {
+      "lang": "en",
+      "text": "understand this this lefth hand circle,",
+      "offset": 511.759,
+      "duration": 3.921
+    },
+    {
+      "lang": "en",
+      "text": "this purple one. Um it actually",
+      "offset": 513.68,
+      "duration": 3.279
+    },
+    {
+      "lang": "en",
+      "text": "represents what we all want to do and",
+      "offset": 515.68,
+      "duration": 3.2
+    },
+    {
+      "lang": "en",
+      "text": "it's like hey build a better AI system,",
+      "offset": 516.959,
+      "duration": 3.281
+    },
+    {
+      "lang": "en",
+      "text": "right? So what you do is you collect",
+      "offset": 518.88,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "data observability traces things like",
+      "offset": 520.24,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "that. Then you run some evals to say hey",
+      "offset": 522.64,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "did this process go well or did this",
+      "offset": 525.68,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "process not go well? So you're",
+      "offset": 527.68,
+      "duration": 3.2
+    },
+    {
+      "lang": "en",
+      "text": "discerning signal from that, you know,",
+      "offset": 529.12,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "mass of data. You'll actually collect",
+      "offset": 530.88,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "where areas of things went right or",
+      "offset": 533.36,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "wrong, right? And you'll say, &quot;Hey,",
+      "offset": 535.12,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "turns out we hallucinated on this. It's",
+      "offset": 536.72,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "because our rag strategy is off or the",
+      "offset": 539.2,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "agent is is off, for example.&quot; Um,",
+      "offset": 541.12,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "you'll also annotate data sets as well",
+      "offset": 543.36,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "just to double check that those eval are",
+      "offset": 545.36,
+      "duration": 3.599
+    },
+    {
+      "lang": "en",
+      "text": "correct. And then of course, you always",
+      "offset": 547.04,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "come back in into your platform and you,",
+      "offset": 548.959,
+      "duration": 4.161
+    },
+    {
+      "lang": "en",
+      "text": "you know, you update the the prompt",
+      "offset": 551.44,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "template, right? you change the model",
+      "offset": 553.12,
+      "duration": 3.279
+    },
+    {
+      "lang": "en",
+      "text": "because it's it's it wasn't good enough",
+      "offset": 555.04,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "or you update the agent orchestration.",
+      "offset": 556.399,
+      "duration": 3.761
+    },
+    {
+      "lang": "en",
+      "text": "So, everybody understands that lefth",
+      "offset": 558.72,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "hand circle. Now, a lot of people",
+      "offset": 560.16,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "actually forget about the right hand",
+      "offset": 562.88,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "circle. And so, it turns out the first",
+      "offset": 564.24,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "time you run evals, what you'll quickly",
+      "offset": 566.72,
+      "duration": 5.92
+    },
+    {
+      "lang": "en",
+      "text": "realize is that um they're not perfect,",
+      "offset": 569.12,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "right? You actually have to tune those",
+      "offset": 572.64,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "evals over time. So, the way you collect",
+      "offset": 574.16,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "signal actually adjusts as your",
+      "offset": 576,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "application also, you know, gets better.",
+      "offset": 578.24,
+      "duration": 4.719
+    },
+    {
+      "lang": "en",
+      "text": "And so what I mean by that is that",
+      "offset": 580.88,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "process of running evals, what you might",
+      "offset": 582.959,
+      "duration": 3.521
+    },
+    {
+      "lang": "en",
+      "text": "notice if you annotate some of them is",
+      "offset": 584.64,
+      "duration": 3.199
+    },
+    {
+      "lang": "en",
+      "text": "that the eval said something",
+      "offset": 586.48,
+      "duration": 3.919
+    },
+    {
+      "lang": "en",
+      "text": "hallucinated or wasn't correct and it",
+      "offset": 587.839,
+      "duration": 5.281
+    },
+    {
+      "lang": "en",
+      "text": "actually was or vice versa. Um so what",
+      "offset": 590.399,
+      "duration": 4.401
+    },
+    {
+      "lang": "en",
+      "text": "you actually need to do is collect a set",
+      "offset": 593.12,
+      "duration": 3.839
+    },
+    {
+      "lang": "en",
+      "text": "of those failures, right? Say, hey, this",
+      "offset": 594.8,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "is where the eval was wrong and you'll",
+      "offset": 596.959,
+      "duration": 4.161
+    },
+    {
+      "lang": "en",
+      "text": "know that by annotating some data every",
+      "offset": 599.12,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "now and again. Um and then you'll want",
+      "offset": 601.12,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "to improve the eval prompt template,",
+      "offset": 603.44,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "right? because the way you collect",
+      "offset": 605.76,
+      "duration": 3.04
+    },
+    {
+      "lang": "en",
+      "text": "signal at first um you'll quickly",
+      "offset": 606.8,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "realize it's either too obscure, too",
+      "offset": 608.8,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "vague, uh not specific enough. So these",
+      "offset": 610.56,
+      "duration": 4.959
+    },
+    {
+      "lang": "en",
+      "text": "are the kind of two virtuous cycles that",
+      "offset": 613.6,
+      "duration": 3.679
+    },
+    {
+      "lang": "en",
+      "text": "you really want to get through very",
+      "offset": 615.519,
+      "duration": 3.841
+    },
+    {
+      "lang": "en",
+      "text": "quickly. And the way I describe it to AI",
+      "offset": 617.279,
+      "duration": 3.761
+    },
+    {
+      "lang": "en",
+      "text": "engineering teams is if you want to",
+      "offset": 619.36,
+      "duration": 5.039
+    },
+    {
+      "lang": "en",
+      "text": "build an like a quality AI product, uh",
+      "offset": 621.04,
+      "duration": 5.919
+    },
+    {
+      "lang": "en",
+      "text": "think about velocity. So the faster you",
+      "offset": 624.399,
+      "duration": 4.081
+    },
+    {
+      "lang": "en",
+      "text": "iterate through stuff, if you I can get",
+      "offset": 626.959,
+      "duration": 2.961
+    },
+    {
+      "lang": "en",
+      "text": "through four iterations in a month",
+      "offset": 628.48,
+      "duration": 2.96
+    },
+    {
+      "lang": "en",
+      "text": "rather than two, you're going to",
+      "offset": 629.92,
+      "duration": 3.12
+    },
+    {
+      "lang": "en",
+      "text": "exponentially have a better AI product",
+      "offset": 631.44,
+      "duration": 4.399
+    },
+    {
+      "lang": "en",
+      "text": "as you build. And so when we talk about",
+      "offset": 633.04,
+      "duration": 5.039
+    },
+    {
+      "lang": "en",
+      "text": "architectures and things like that, um",
+      "offset": 635.839,
+      "duration": 3.921
+    },
+    {
+      "lang": "en",
+      "text": "when the industry first started, this",
+      "offset": 638.079,
+      "duration": 4.081
+    },
+    {
+      "lang": "en",
+      "text": "was state-of-the-art. Um routers, right?",
+      "offset": 639.76,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "Um am I right? Um so routers are made up",
+      "offset": 642.16,
+      "duration": 4.799
+    },
+    {
+      "lang": "en",
+      "text": "of like components. Um this is a really",
+      "offset": 645.04,
+      "duration": 3.919
+    },
+    {
+      "lang": "en",
+      "text": "dumb example of booking.com's trip",
+      "offset": 646.959,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "planner. Um so booking, you know,",
+      "offset": 648.959,
+      "duration": 3.681
+    },
+    {
+      "lang": "en",
+      "text": "they're one of our largest customers.",
+      "offset": 651.279,
+      "duration": 3.841
+    },
+    {
+      "lang": "en",
+      "text": "Trip planner is basically a travel agent",
+      "offset": 652.64,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "in LLM form. It drives revenue for that",
+      "offset": 655.12,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "company. It helps you book, you know,",
+      "offset": 657.76,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "it'll book your flights, your hotels.",
+      "offset": 659.44,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "It'll give you an itinerary. And so um",
+      "offset": 661.2,
+      "duration": 5.6
+    },
+    {
+      "lang": "en",
+      "text": "you know when we think about evals evals",
+      "offset": 664.24,
+      "duration": 4.719
+    },
+    {
+      "lang": "en",
+      "text": "can be as complex as the application",
+      "offset": 666.8,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "application itself. So in kind of older",
+      "offset": 668.959,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "architectures",
+      "offset": 671.92,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "um where there's things like routing um",
+      "offset": 673.519,
+      "duration": 3.841
+    },
+    {
+      "lang": "en",
+      "text": "you can you can evout individual",
+      "offset": 675.76,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "components. I think most people get this",
+      "offset": 677.36,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "when you're looking inside of a trace",
+      "offset": 679.12,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "for example um maybe I want to evout a",
+      "offset": 680.8,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "specific uh component or trace. So this",
+      "offset": 683.76,
+      "duration": 5.759
+    },
+    {
+      "lang": "en",
+      "text": "one LLM call, right? But remember, oops,",
+      "offset": 686.24,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "I'll come up here. But remember that you",
+      "offset": 689.519,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "can um Okay, remember that you can zoom",
+      "offset": 691.12,
+      "duration": 4.399
+    },
+    {
+      "lang": "en",
+      "text": "out too. So it doesn't have to just be",
+      "offset": 694.079,
+      "duration": 3.121
+    },
+    {
+      "lang": "en",
+      "text": "this one specific component. Let's say",
+      "offset": 695.519,
+      "duration": 3.681
+    },
+    {
+      "lang": "en",
+      "text": "this one component is part of an agent",
+      "offset": 697.2,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "or a workflow. Uh maybe I just want to",
+      "offset": 699.2,
+      "duration": 4.879
+    },
+    {
+      "lang": "en",
+      "text": "evaluate the input output of that larger",
+      "offset": 701.6,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "workflow. So that larger workflow is",
+      "offset": 704.079,
+      "duration": 4.561
+    },
+    {
+      "lang": "en",
+      "text": "made up of LLM calls, API calls, right?",
+      "offset": 705.92,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "I have to find actual flights, actual",
+      "offset": 708.64,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "hotels that have vacancy. Um maybe some",
+      "offset": 710.64,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "huristics.",
+      "offset": 713.12,
+      "duration": 2.959
+    },
+    {
+      "lang": "en",
+      "text": "And then you can zoom out a little bit",
+      "offset": 714.8,
+      "duration": 3.279
+    },
+    {
+      "lang": "en",
+      "text": "more. Uh maybe you want to eval things",
+      "offset": 716.079,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "like the way control flow happens. It's",
+      "offset": 718.079,
+      "duration": 4.241
+    },
+    {
+      "lang": "en",
+      "text": "a really important component. If you",
+      "offset": 720.399,
+      "duration": 3.761
+    },
+    {
+      "lang": "en",
+      "text": "have components in your AI agents that",
+      "offset": 722.32,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "have control flow in them, uh it",
+      "offset": 724.16,
+      "duration": 3.919
+    },
+    {
+      "lang": "en",
+      "text": "actually makes way more sense to eval",
+      "offset": 726.48,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "your control flow first and you have",
+      "offset": 728.079,
+      "duration": 4.641
+    },
+    {
+      "lang": "en",
+      "text": "conditional evals. Meaning if you didn't",
+      "offset": 730.56,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "get the control flow right, why eval",
+      "offset": 732.72,
+      "duration": 3.679
+    },
+    {
+      "lang": "en",
+      "text": "anything down the line? Because it's",
+      "offset": 735.04,
+      "duration": 2.88
+    },
+    {
+      "lang": "en",
+      "text": "probably wrong, right? So save solve",
+      "offset": 736.399,
+      "duration": 3.601
+    },
+    {
+      "lang": "en",
+      "text": "yourself some some money and some um",
+      "offset": 737.92,
+      "duration": 4.159
+    },
+    {
+      "lang": "en",
+      "text": "some costs. So you can think about",
+      "offset": 740,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "conditional evals as well. And then of",
+      "offset": 742.079,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "course we have things like um people",
+      "offset": 744.8,
+      "duration": 3.2
+    },
+    {
+      "lang": "en",
+      "text": "want to run evals at at the highest",
+      "offset": 746.399,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "level. So imagine you have a back and",
+      "offset": 748,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "forth. So we call this a session in in",
+      "offset": 749.839,
+      "duration": 5.281
+    },
+    {
+      "lang": "en",
+      "text": "our platform. But uh the whole idea is",
+      "offset": 752.48,
+      "duration": 4.479
+    },
+    {
+      "lang": "en",
+      "text": "you know a session is made up of a",
+      "offset": 755.12,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "series of traces. So you can imagine",
+      "offset": 756.959,
+      "duration": 3.12
+    },
+    {
+      "lang": "en",
+      "text": "there's a back and forth between your",
+      "offset": 758.56,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "you and your agent. I just want to",
+      "offset": 760.079,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "understand, hey, at any point was the",
+      "offset": 761.92,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "customer frustrated, was the customer",
+      "offset": 763.839,
+      "duration": 4.641
+    },
+    {
+      "lang": "en",
+      "text": "XYZ. So when you start to think about",
+      "offset": 766.48,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "evals, there's no one-stop shop. If",
+      "offset": 768.48,
+      "duration": 4.159
+    },
+    {
+      "lang": "en",
+      "text": "anybody like says this is how you should",
+      "offset": 770.8,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "do evals and they never asked you about",
+      "offset": 772.639,
+      "duration": 3.841
+    },
+    {
+      "lang": "en",
+      "text": "how your application works, you probably",
+      "offset": 774.8,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "shouldn't trust them. Also, I have a hot",
+      "offset": 776.48,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "take and my hot take is that don't use",
+      "offset": 778.72,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "out of the box evals. If you get out of",
+      "offset": 780.8,
+      "duration": 2.88
+    },
+    {
+      "lang": "en",
+      "text": "the box, if you use out of the box",
+      "offset": 782.48,
+      "duration": 2.479
+    },
+    {
+      "lang": "en",
+      "text": "evals, you'll get out of the box",
+      "offset": 783.68,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "results. Um, so really customize them",
+      "offset": 784.959,
+      "duration": 4.081
+    },
+    {
+      "lang": "en",
+      "text": "very heavily. It's something that we've",
+      "offset": 787.68,
+      "duration": 2.88
+    },
+    {
+      "lang": "en",
+      "text": "learned really from some of the best",
+      "offset": 789.04,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "teams in the world. Um, okay, let me",
+      "offset": 790.56,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "come here. Um, then you have complexity.",
+      "offset": 793.12,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "Um, this is our own architecture for uh",
+      "offset": 795.76,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "our AI co-pilot. Uh, we built an AI",
+      "offset": 797.92,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "whose one purpose is to troubleshoot,",
+      "offset": 800.56,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "observe, build evals for your AI system.",
+      "offset": 802.8,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "It obviously takes advantage of our",
+      "offset": 805.68,
+      "duration": 2.959
+    },
+    {
+      "lang": "en",
+      "text": "platform. But, you know, the reason why",
+      "offset": 807.2,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "we go this route is take us forward 5 10",
+      "offset": 808.639,
+      "duration": 5.121
+    },
+    {
+      "lang": "en",
+      "text": "years from now. Do you guys really think",
+      "offset": 811.44,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "that you, a human, are going to be the",
+      "offset": 813.76,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "ones who are evaluating all these AI",
+      "offset": 815.44,
+      "duration": 4.399
+    },
+    {
+      "lang": "en",
+      "text": "systems like manually? Um, what do you",
+      "offset": 817.12,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "think would actually take your place?",
+      "offset": 819.839,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "Um, it's probably going to be an AI that",
+      "offset": 821.68,
+      "duration": 3.839
+    },
+    {
+      "lang": "en",
+      "text": "evaluates future AI. So, this is our",
+      "offset": 823.519,
+      "duration": 4.241
+    },
+    {
+      "lang": "en",
+      "text": "first iteration on this stuff. Um, we're",
+      "offset": 825.519,
+      "duration": 4.161
+    },
+    {
+      "lang": "en",
+      "text": "super excited about it. Um, we, you",
+      "offset": 827.76,
+      "duration": 3.12
+    },
+    {
+      "lang": "en",
+      "text": "know, it's been out for a year. It's",
+      "offset": 829.68,
+      "duration": 2.959
+    },
+    {
+      "lang": "en",
+      "text": "getting better and better. But maybe",
+      "offset": 830.88,
+      "duration": 2.56
+    },
+    {
+      "lang": "en",
+      "text": "I'll show you a little bit of the",
+      "offset": 832.639,
+      "duration": 2.32
+    },
+    {
+      "lang": "en",
+      "text": "workflows that we have in in our",
+      "offset": 833.44,
+      "duration": 4.399
+    },
+    {
+      "lang": "en",
+      "text": "platform really quickly. Um, who here is",
+      "offset": 834.959,
+      "duration": 5.68
+    },
+    {
+      "lang": "en",
+      "text": "is working with agents? Okay. Who here",
+      "offset": 837.839,
+      "duration": 6.081
+    },
+    {
+      "lang": "en",
+      "text": "is interested in like agent evaluation?",
+      "offset": 840.639,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "Okay, let's cover that then. Let's see.",
+      "offset": 843.92,
+      "duration": 2.64
+    },
+    {
+      "lang": "en",
+      "text": "I'll show you we'll show you how the",
+      "offset": 845.519,
+      "duration": 3.521
+    },
+    {
+      "lang": "en",
+      "text": "industry is doing agent evals. So, with",
+      "offset": 846.56,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "agent evals, things get like way more",
+      "offset": 849.04,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "complex, right? The calls are longer,",
+      "offset": 851.6,
+      "duration": 3.12
+    },
+    {
+      "lang": "en",
+      "text": "which you look at your traces, they're",
+      "offset": 853.44,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "much longer. Um, I'll actually show you",
+      "offset": 854.72,
+      "duration": 6.32
+    },
+    {
+      "lang": "en",
+      "text": "uh our agent um traces. So, this is one",
+      "offset": 857.6,
+      "duration": 6.08
+    },
+    {
+      "lang": "en",
+      "text": "that kind of failed, but our agent trace",
+      "offset": 861.04,
+      "duration": 4.159
+    },
+    {
+      "lang": "en",
+      "text": "kind of works like this. So, Copilot",
+      "offset": 863.68,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "works like this. it basically based off",
+      "offset": 865.199,
+      "duration": 3.521
+    },
+    {
+      "lang": "en",
+      "text": "what you say and where you're at in the",
+      "offset": 867.12,
+      "duration": 4.079
+    },
+    {
+      "lang": "en",
+      "text": "platform, there's there's agents that",
+      "offset": 868.72,
+      "duration": 5.119
+    },
+    {
+      "lang": "en",
+      "text": "kind of can do things. So, um and it has",
+      "offset": 871.199,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "tools. Each agent has access to a set of",
+      "offset": 873.839,
+      "duration": 4.881
+    },
+    {
+      "lang": "en",
+      "text": "tools that it's particularly good at. Um",
+      "offset": 875.839,
+      "duration": 4.641
+    },
+    {
+      "lang": "en",
+      "text": "so, the whole idea is that yes, we can",
+      "offset": 878.72,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "see what each individual um trace is",
+      "offset": 880.48,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "doing, right? We can say, hey, what's",
+      "offset": 884,
+      "duration": 3.519
+    },
+    {
+      "lang": "en",
+      "text": "happening in this particular area? we",
+      "offset": 885.68,
+      "duration": 4.399
+    },
+    {
+      "lang": "en",
+      "text": "can look at the traces but the reality",
+      "offset": 887.519,
+      "duration": 4.481
+    },
+    {
+      "lang": "en",
+      "text": "of of what people are actually asking in",
+      "offset": 890.079,
+      "duration": 4.721
+    },
+    {
+      "lang": "en",
+      "text": "the space is not is my a AI agent good",
+      "offset": 892,
+      "duration": 6.079
+    },
+    {
+      "lang": "en",
+      "text": "or bad what they're actually asking is",
+      "offset": 894.8,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "what are the failure modes in which my",
+      "offset": 898.079,
+      "duration": 4.241
+    },
+    {
+      "lang": "en",
+      "text": "agent fails right and so what I mean by",
+      "offset": 900,
+      "duration": 5.6
+    },
+    {
+      "lang": "en",
+      "text": "that is you can look at one individual",
+      "offset": 902.32,
+      "duration": 5.759
+    },
+    {
+      "lang": "en",
+      "text": "uh trace and the graph view of it but",
+      "offset": 905.6,
+      "duration": 3.919
+    },
+    {
+      "lang": "en",
+      "text": "the reality is you want to understand",
+      "offset": 908.079,
+      "duration": 3.841
+    },
+    {
+      "lang": "en",
+      "text": "and discern the signal with your",
+      "offset": 909.519,
+      "duration": 5.361
+    },
+    {
+      "lang": "en",
+      "text": "entirety of your AI agent so what is the",
+      "offset": 911.92,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "like what does the pathing look like",
+      "offset": 914.88,
+      "duration": 4.319
+    },
+    {
+      "lang": "en",
+      "text": "across Ross all of that particular AI",
+      "offset": 916.56,
+      "duration": 5.839
+    },
+    {
+      "lang": "en",
+      "text": "agents um calls. So for instance, if it",
+      "offset": 919.199,
+      "duration": 5.361
+    },
+    {
+      "lang": "en",
+      "text": "had access to to 10 tools, maybe you",
+      "offset": 922.399,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "want to answer questions like how often",
+      "offset": 924.56,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "did it call a specific tool, right? Um",
+      "offset": 926.639,
+      "duration": 5.041
+    },
+    {
+      "lang": "en",
+      "text": "what were the evals in a specific path?",
+      "offset": 929.04,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "So in our agent graph for example, um",
+      "offset": 931.68,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "it's framework agnostic. So whether you",
+      "offset": 933.92,
+      "duration": 5.68
+    },
+    {
+      "lang": "en",
+      "text": "use langraph, whether you use crew AI,",
+      "offset": 936.16,
+      "duration": 5.679
+    },
+    {
+      "lang": "en",
+      "text": "whether you use your handrolled code, um",
+      "offset": 939.6,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "this is an agnostic way to look at um",
+      "offset": 941.839,
+      "duration": 5.601
+    },
+    {
+      "lang": "en",
+      "text": "you know how how an agent's pathing",
+      "offset": 945.6,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "performs across the aggregate traces. Um",
+      "offset": 947.44,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "and so this helps you understand okay if",
+      "offset": 950.32,
+      "duration": 4.879
+    },
+    {
+      "lang": "en",
+      "text": "my agent hits component one then two",
+      "offset": 952.56,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "then three uh my evals look great but",
+      "offset": 955.199,
+      "duration": 4.241
+    },
+    {
+      "lang": "en",
+      "text": "for some reason when we hit component",
+      "offset": 958,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "four then two then three our evals are",
+      "offset": 959.44,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "dropping. And the reason is why? Well,",
+      "offset": 962.48,
+      "duration": 4.799
+    },
+    {
+      "lang": "en",
+      "text": "oh, turns out component 4 had a",
+      "offset": 964.8,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "dependency right on component 3 and it",
+      "offset": 967.279,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "needs that dependency in order to",
+      "offset": 969.68,
+      "duration": 3.2
+    },
+    {
+      "lang": "en",
+      "text": "perform. And so when you think about the",
+      "offset": 970.959,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "complexity of agent evals, um you need",
+      "offset": 972.88,
+      "duration": 5.759
+    },
+    {
+      "lang": "en",
+      "text": "kind of the ability to see across not",
+      "offset": 975.839,
+      "duration": 4.881
+    },
+    {
+      "lang": "en",
+      "text": "one instantiation but all of them. You",
+      "offset": 978.639,
+      "duration": 3.281
+    },
+    {
+      "lang": "en",
+      "text": "need to understand the distribution of",
+      "offset": 980.72,
+      "duration": 3.679
+    },
+    {
+      "lang": "en",
+      "text": "what's happening. And so we think about",
+      "offset": 981.92,
+      "duration": 4.719
+    },
+    {
+      "lang": "en",
+      "text": "eval across agents. Um that's one way",
+      "offset": 984.399,
+      "duration": 4.481
+    },
+    {
+      "lang": "en",
+      "text": "you can think about it. And then maybe",
+      "offset": 986.639,
+      "duration": 3.681
+    },
+    {
+      "lang": "en",
+      "text": "an easier way to kind of think about it",
+      "offset": 988.88,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "too is um you know trajectory uh we're",
+      "offset": 990.32,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "thinking about trajectory eval. So",
+      "offset": 993.92,
+      "duration": 3.839
+    },
+    {
+      "lang": "en",
+      "text": "imagine for a second um you have this",
+      "offset": 995.44,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "specific input right and the input is",
+      "offset": 997.759,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "like you know hey find me these hotels",
+      "offset": 1000.88,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "at trip planner and you know you should",
+      "offset": 1003.519,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "hit this component then that component",
+      "offset": 1005.6,
+      "duration": 3.12
+    },
+    {
+      "lang": "en",
+      "text": "this other component. So in this case",
+      "offset": 1007.519,
+      "duration": 3.921
+    },
+    {
+      "lang": "en",
+      "text": "it's like start agent tool agent. You",
+      "offset": 1008.72,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "might have a golden data set like very",
+      "offset": 1011.44,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "similar to how we have golden data sets",
+      "offset": 1013.44,
+      "duration": 2.959
+    },
+    {
+      "lang": "en",
+      "text": "for LM as a judge but this is for",
+      "offset": 1014.88,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "trajectories. So I expect us to be able",
+      "offset": 1016.399,
+      "duration": 3.761
+    },
+    {
+      "lang": "en",
+      "text": "to hit at least three or four of these",
+      "offset": 1018.56,
+      "duration": 3.519
+    },
+    {
+      "lang": "en",
+      "text": "components for example. So the reference",
+      "offset": 1020.16,
+      "duration": 3.599
+    },
+    {
+      "lang": "en",
+      "text": "trajectory is kind of mentioned like I",
+      "offset": 1022.079,
+      "duration": 3.441
+    },
+    {
+      "lang": "en",
+      "text": "need to hit these components. Then you",
+      "offset": 1023.759,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "can do do two two things one of two",
+      "offset": 1025.52,
+      "duration": 4.559
+    },
+    {
+      "lang": "en",
+      "text": "things. Either one you can pass in like",
+      "offset": 1027.919,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "here's what we did here's what we",
+      "offset": 1030.079,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "expected into an LLM and then an LLM can",
+      "offset": 1031.839,
+      "duration": 5.521
+    },
+    {
+      "lang": "en",
+      "text": "actually grade the trajectory. Um you",
+      "offset": 1034.799,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "can also just say hey did we explicitly",
+      "offset": 1037.36,
+      "duration": 3.679
+    },
+    {
+      "lang": "en",
+      "text": "hit these exact like trajectory strings?",
+      "offset": 1038.959,
+      "duration": 4.161
+    },
+    {
+      "lang": "en",
+      "text": "Great. Um but you don't always need a",
+      "offset": 1041.039,
+      "duration": 3.441
+    },
+    {
+      "lang": "en",
+      "text": "ground truth for that. You can start to",
+      "offset": 1043.12,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "get creative here. you can say, hey, you",
+      "offset": 1044.48,
+      "duration": 3.439
+    },
+    {
+      "lang": "en",
+      "text": "know, here's this process that I",
+      "offset": 1046.48,
+      "duration": 4.079
+    },
+    {
+      "lang": "en",
+      "text": "expected to hit. Do the does these nodes",
+      "offset": 1047.919,
+      "duration": 4.561
+    },
+    {
+      "lang": "en",
+      "text": "and the description of their nodes match",
+      "offset": 1050.559,
+      "duration": 3.761
+    },
+    {
+      "lang": "en",
+      "text": "the correct correct trajectory, for",
+      "offset": 1052.48,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "instance. Um, and then maybe you could",
+      "offset": 1054.32,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "do things like we're kind of playing",
+      "offset": 1057.28,
+      "duration": 3.12
+    },
+    {
+      "lang": "en",
+      "text": "around with this, but maybe here's the",
+      "offset": 1058.64,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "trajectory that I hit. Uh, here's the",
+      "offset": 1060.4,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "possible paths that are just possible.",
+      "offset": 1062.64,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "Did I do well in these specific areas,",
+      "offset": 1065.2,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "right? And you can pass in the pathing",
+      "offset": 1067.12,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "as a series of like nested key value",
+      "offset": 1068.88,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "pairs, for example. LM are pretty good",
+      "offset": 1070.96,
+      "duration": 4.719
+    },
+    {
+      "lang": "en",
+      "text": "at that. But we start to think about um",
+      "offset": 1072.64,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "you know Asian evals. You know the eval",
+      "offset": 1075.679,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "space is already complex enough and what",
+      "offset": 1078,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "we're seeing is even more complexity. Um",
+      "offset": 1079.919,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "but hopefully that makes sense. Um I'll",
+      "offset": 1082.64,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "pause here. Um hopefully that makes",
+      "offset": 1085.039,
+      "duration": 2.961
+    },
+    {
+      "lang": "en",
+      "text": "sense. But usually I like to make time",
+      "offset": 1086.88,
+      "duration": 2.48
+    },
+    {
+      "lang": "en",
+      "text": "for questions at the end and keep this",
+      "offset": 1088,
+      "duration": 3.919
+    },
+    {
+      "lang": "en",
+      "text": "pretty interactive. Um hope that's okay",
+      "offset": 1089.36,
+      "duration": 5.199
+    },
+    {
+      "lang": "en",
+      "text": "team. But any questions? Does this make",
+      "offset": 1091.919,
+      "duration": 5.601
+    },
+    {
+      "lang": "en",
+      "text": "sense?",
+      "offset": 1094.559,
+      "duration": 5.441
+    },
+    {
+      "lang": "en",
+      "text": "Cool. No questions. Oh yeah. Go ahead.",
+      "offset": 1097.52,
+      "duration": 5.48
+    },
+    {
+      "lang": "en",
+      "text": "mostly.",
+      "offset": 1100,
+      "duration": 3
+    },
+    {
+      "lang": "en",
+      "text": "Yeah, incredible question. So, a lot of",
+      "offset": 1111.12,
+      "duration": 5.6
+    },
+    {
+      "lang": "en",
+      "text": "people So, there's evals that can be um",
+      "offset": 1113.52,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "you know some people call them offline",
+      "offset": 1116.72,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "or online. Um I like to say is like is",
+      "offset": 1118.16,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "it in the path is it in orchestration or",
+      "offset": 1120.48,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "out of orchestration. So for some people",
+      "offset": 1122.4,
+      "duration": 5.279
+    },
+    {
+      "lang": "en",
+      "text": "there's a cost to in in orchestration",
+      "offset": 1125.36,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "evals and the cost is things like",
+      "offset": 1127.679,
+      "duration": 3.281
+    },
+    {
+      "lang": "en",
+      "text": "latency right some people might call",
+      "offset": 1129.2,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "those a guardrail too like hey can I",
+      "offset": 1130.96,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "continue or not continue um and so",
+      "offset": 1132.72,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "there's pros and cons to everything I",
+      "offset": 1135.2,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "think when it comes to guardrails this",
+      "offset": 1137.12,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "is something I I kind of coach my",
+      "offset": 1139.44,
+      "duration": 3.119
+    },
+    {
+      "lang": "en",
+      "text": "customers the way to think about",
+      "offset": 1140.88,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "guardrails um in general is you have",
+      "offset": 1142.559,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "system one system one is your",
+      "offset": 1145.2,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "orchestration system it's what you built",
+      "offset": 1147.039,
+      "duration": 3.921
+    },
+    {
+      "lang": "en",
+      "text": "it's your prompts it's everything else",
+      "offset": 1148.88,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "system two is your guardrail system",
+      "offset": 1150.96,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "Right? Guards are really nice because",
+      "offset": 1153.36,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "they they mitigate risk, right? But",
+      "offset": 1155.12,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "there is a cost and the cost is maybe",
+      "offset": 1157.6,
+      "duration": 4.319
+    },
+    {
+      "lang": "en",
+      "text": "it's latency in your users's experience.",
+      "offset": 1159.52,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "You can get around that by doing smart",
+      "offset": 1161.919,
+      "duration": 3.921
+    },
+    {
+      "lang": "en",
+      "text": "things like maybe embedding guardrails.",
+      "offset": 1164,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "They're, you know, two orders of",
+      "offset": 1165.84,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "magnitude shorter. Um, but a lot of",
+      "offset": 1167.36,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "people don't think about the other two",
+      "offset": 1170.24,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "cons here. The other con is complexity.",
+      "offset": 1171.28,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "Two systems is complex, especially when",
+      "offset": 1173.76,
+      "duration": 4.799
+    },
+    {
+      "lang": "en",
+      "text": "one system checks in with the first. The",
+      "offset": 1175.84,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "third thing is that a lot of people",
+      "offset": 1178.559,
+      "duration": 4.881
+    },
+    {
+      "lang": "en",
+      "text": "mistake guardrails as like the thing",
+      "offset": 1180.96,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "that needs to be adjusted. A lot of",
+      "offset": 1183.44,
+      "duration": 3.119
+    },
+    {
+      "lang": "en",
+      "text": "people will go to their guardrails first",
+      "offset": 1185.28,
+      "duration": 2.24
+    },
+    {
+      "lang": "en",
+      "text": "like, &quot;Oh, I need to adjust my",
+      "offset": 1186.559,
+      "duration": 2.801
+    },
+    {
+      "lang": "en",
+      "text": "guardrails.&quot; Reality is you need to",
+      "offset": 1187.52,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "adjust system one. That's the root",
+      "offset": 1189.36,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "cause, right? Your guardrails are really",
+      "offset": 1191.28,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "there to protect you. And then maybe the",
+      "offset": 1193.36,
+      "duration": 4.319
+    },
+    {
+      "lang": "en",
+      "text": "last thing I'll say too is guardrails",
+      "offset": 1196.08,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "are not infallible. They're they kind of",
+      "offset": 1197.679,
+      "duration": 4.161
+    },
+    {
+      "lang": "en",
+      "text": "act like unit tests. They're for known",
+      "offset": 1200,
+      "duration": 3.919
+    },
+    {
+      "lang": "en",
+      "text": "knowns, right? whereas observability",
+      "offset": 1201.84,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "plus eval",
+      "offset": 1203.919,
+      "duration": 3.361
+    },
+    {
+      "lang": "en",
+      "text": "because the reality is you don't know",
+      "offset": 1205.84,
+      "duration": 2.719
+    },
+    {
+      "lang": "en",
+      "text": "the distribution of what you're going to",
+      "offset": 1207.28,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "see until you get there right um ask",
+      "offset": 1208.559,
+      "duration": 4.961
+    },
+    {
+      "lang": "en",
+      "text": "anybody who's built in the LM space uh",
+      "offset": 1211.28,
+      "duration": 5.92
+    },
+    {
+      "lang": "en",
+      "text": "their users are just crazy and so um",
+      "offset": 1213.52,
+      "duration": 5.279
+    },
+    {
+      "lang": "en",
+      "text": "that that's the difference and I and I",
+      "offset": 1217.2,
+      "duration": 2.64
+    },
+    {
+      "lang": "en",
+      "text": "really caution people because people are",
+      "offset": 1218.799,
+      "duration": 3.521
+    },
+    {
+      "lang": "en",
+      "text": "like oh I need to fix my guardrail no go",
+      "offset": 1219.84,
+      "duration": 4.959
+    },
+    {
+      "lang": "en",
+      "text": "fix the prompt first and then worry",
+      "offset": 1222.32,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "about your guardrails but yeah inline we",
+      "offset": 1224.799,
+      "duration": 5.281
+    },
+    {
+      "lang": "en",
+      "text": "call those inline uh eval guardrails but",
+      "offset": 1227.2,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "really do you do the eval in the",
+      "offset": 1230.08,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "orchestration or outside of it. Um, and",
+      "offset": 1231.52,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "so you can there's pros and cons. So",
+      "offset": 1234.4,
+      "duration": 2.96
+    },
+    {
+      "lang": "en",
+      "text": "there's no right or wrong answer there,",
+      "offset": 1236.24,
+      "duration": 3.28
+    },
+    {
+      "lang": "en",
+      "text": "but good question.",
+      "offset": 1237.36,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "Yeah. So when we have a complex system",
+      "offset": 1239.52,
+      "duration": 6.32
+    },
+    {
+      "lang": "en",
+      "text": "that is taking a long time to run and we",
+      "offset": 1242.72,
+      "duration": 6.48
+    },
+    {
+      "lang": "en",
+      "text": "have timeouts in this and I know we all",
+      "offset": 1245.84,
+      "duration": 6.079
+    },
+    {
+      "lang": "en",
+      "text": "have something called span that limits",
+      "offset": 1249.2,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "what",
+      "offset": 1251.919,
+      "duration": 4.561
+    },
+    {
+      "lang": "en",
+      "text": "kind of view we're taking to a complex",
+      "offset": 1253.44,
+      "duration": 5.599
+    },
+    {
+      "lang": "en",
+      "text": "agent. So we have like a complex system",
+      "offset": 1256.48,
+      "duration": 4.079
+    },
+    {
+      "lang": "en",
+      "text": "that's really going to take time and",
+      "offset": 1259.039,
+      "duration": 3.601
+    },
+    {
+      "lang": "en",
+      "text": "then there's an asynchronous Is there",
+      "offset": 1260.559,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "support to manage something like that",
+      "offset": 1262.64,
+      "duration": 5.039
+    },
+    {
+      "lang": "en",
+      "text": "and eval across the whole system that we",
+      "offset": 1265.039,
+      "duration": 6.081
+    },
+    {
+      "lang": "en",
+      "text": "have?\n Oh yeah, amazing question. So um",
+      "offset": 1267.679,
+      "duration": 5.841
+    },
+    {
+      "lang": "en",
+      "text": "who here has ever heard of OTEL? Open",
+      "offset": 1271.12,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "telemetry. Okay, even less than Okay. Um",
+      "offset": 1273.52,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "one of the most important things to our",
+      "offset": 1276.48,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "enterprise customers is is being on open",
+      "offset": 1278,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "telemetry. Um so you know how I said LM",
+      "offset": 1280.08,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "teams are being split into two. Well,",
+      "offset": 1282.88,
+      "duration": 3.919
+    },
+    {
+      "lang": "en",
+      "text": "turns out LM services are also being",
+      "offset": 1284.72,
+      "duration": 4.319
+    },
+    {
+      "lang": "en",
+      "text": "split across services. And so the idea",
+      "offset": 1286.799,
+      "duration": 4.641
+    },
+    {
+      "lang": "en",
+      "text": "is like people want to understand um so",
+      "offset": 1289.039,
+      "duration": 4.321
+    },
+    {
+      "lang": "en",
+      "text": "maybe an asynchronous process in one",
+      "offset": 1291.44,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "service or one docker contain or you",
+      "offset": 1293.36,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "know one one docker or one kubernetes",
+      "offset": 1295.28,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "pod. Um oel propagation is a great way",
+      "offset": 1297.28,
+      "duration": 5.279
+    },
+    {
+      "lang": "en",
+      "text": "to get around that. Meaning you can have",
+      "offset": 1300.48,
+      "duration": 5.439
+    },
+    {
+      "lang": "en",
+      "text": "a process like application A sends data",
+      "offset": 1302.559,
+      "duration": 6.081
+    },
+    {
+      "lang": "en",
+      "text": "to my model router right and then that",
+      "offset": 1305.919,
+      "duration": 4.561
+    },
+    {
+      "lang": "en",
+      "text": "comes back to application A. Then",
+      "offset": 1308.64,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "application A hits application B for",
+      "offset": 1310.48,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "some reason and then it comes back to A.",
+      "offset": 1312.4,
+      "duration": 3.12
+    },
+    {
+      "lang": "en",
+      "text": "when you're actually creating those",
+      "offset": 1314.48,
+      "duration": 2.8
+    },
+    {
+      "lang": "en",
+      "text": "traces, you want to be able to see all",
+      "offset": 1315.52,
+      "duration": 3.12
+    },
+    {
+      "lang": "en",
+      "text": "that work, right? You don't want to just",
+      "offset": 1317.28,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "instrument one particular thing. You",
+      "offset": 1318.64,
+      "duration": 4.159
+    },
+    {
+      "lang": "en",
+      "text": "want to see it across work across. And",
+      "offset": 1321.12,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "so is an incredible pattern for that.",
+      "offset": 1322.799,
+      "duration": 4.801
+    },
+    {
+      "lang": "en",
+      "text": "It's a solved problem. So that's why we",
+      "offset": 1325.44,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "at Arise two and a half years ago when",
+      "offset": 1327.6,
+      "duration": 4.319
+    },
+    {
+      "lang": "en",
+      "text": "this crazy time started for all of us,",
+      "offset": 1329.6,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "we made a bet to be hotel first and it's",
+      "offset": 1331.919,
+      "duration": 6.401
+    },
+    {
+      "lang": "en",
+      "text": "it's really paid off. Um yeah.\n Yeah.",
+      "offset": 1334.08,
+      "duration": 9.4
+    },
+    {
+      "lang": "en",
+      "text": "So just ask your experience.",
+      "offset": 1338.32,
+      "duration": 5.16
+    },
+    {
+      "lang": "en",
+      "text": "Okay. So confidence scores on evals,",
+      "offset": 1352.48,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "right? Um yeah, I think it depends where",
+      "offset": 1354.64,
+      "duration": 3.039
+    },
+    {
+      "lang": "en",
+      "text": "you're getting your eval. If it's from",
+      "offset": 1356.48,
+      "duration": 3.439
+    },
+    {
+      "lang": "en",
+      "text": "an auto reggressive model, um companies",
+      "offset": 1357.679,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "like OpenAI have actually exposed the",
+      "offset": 1359.919,
+      "duration": 5.201
+    },
+    {
+      "lang": "en",
+      "text": "log prop. So the log probability is it's",
+      "offset": 1361.679,
+      "duration": 5.521
+    },
+    {
+      "lang": "en",
+      "text": "pseudo like confidence of like and since",
+      "offset": 1365.12,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "you're returning only one coat token and",
+      "offset": 1367.2,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "that token is like the the eval label",
+      "offset": 1369.12,
+      "duration": 3.919
+    },
+    {
+      "lang": "en",
+      "text": "log prop is a really good way for those",
+      "offset": 1371.52,
+      "duration": 3.519
+    },
+    {
+      "lang": "en",
+      "text": "auto reggressive models if you're using",
+      "offset": 1373.039,
+      "duration": 4.481
+    },
+    {
+      "lang": "en",
+      "text": "things like um small language models",
+      "offset": 1375.039,
+      "duration": 4.401
+    },
+    {
+      "lang": "en",
+      "text": "encoder only models they come with a",
+      "offset": 1377.52,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "probability uh of the classification. Um",
+      "offset": 1379.44,
+      "duration": 5.92
+    },
+    {
+      "lang": "en",
+      "text": "but really yeah it's tough but you have",
+      "offset": 1382.88,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "a bunch of tools in your toolbox and you",
+      "offset": 1385.36,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "generally use them together to discern",
+      "offset": 1386.88,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "where things go well or not well. log",
+      "offset": 1388.72,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "prop if you're using uh a model provider",
+      "offset": 1390.72,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "that exposes the log prop is is a really",
+      "offset": 1393.12,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "good way to start for auto reggressive",
+      "offset": 1395.12,
+      "duration": 3.039
+    },
+    {
+      "lang": "en",
+      "text": "models.",
+      "offset": 1396.64,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "Okay, last question and then we're time",
+      "offset": 1398.159,
+      "duration": 4.561
+    },
+    {
+      "lang": "en",
+      "text": "up. Yeah. Are you making your plans like",
+      "offset": 1400.24,
+      "duration": 5.439
+    },
+    {
+      "lang": "en",
+      "text": "going forward like how to shorten the",
+      "offset": 1402.72,
+      "duration": 7.319
+    },
+    {
+      "lang": "en",
+      "text": "loop between customer feedback?",
+      "offset": 1405.679,
+      "duration": 4.36
+    },
+    {
+      "lang": "en",
+      "text": "Oh, good question. Yeah, we want to",
+      "offset": 1412.4,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "automate in that area definitely. So,",
+      "offset": 1414,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "who here has heard of DSPY?",
+      "offset": 1416.32,
+      "duration": 4.239
+    },
+    {
+      "lang": "en",
+      "text": "All right. And okay, if you if you",
+      "offset": 1418.96,
+      "duration": 2.88
+    },
+    {
+      "lang": "en",
+      "text": "didn't raise your hand on any of this, I",
+      "offset": 1420.559,
+      "duration": 3.041
+    },
+    {
+      "lang": "en",
+      "text": "hope you learned a bunch. Um, DSPY",
+      "offset": 1421.84,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "obviously has something like MIRO. Uh,",
+      "offset": 1423.6,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "Miro is an optimizer. You get like 30",
+      "offset": 1425.36,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "inputs, 30 outputs, and then um it",
+      "offset": 1427.36,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "basically creates less fragile prompts",
+      "offset": 1429.52,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "that span across different models like",
+      "offset": 1431.36,
+      "duration": 3.439
+    },
+    {
+      "lang": "en",
+      "text": "so it does it works for OpenAI and then",
+      "offset": 1433.28,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "it works for Gemini, etc. Uh, in terms",
+      "offset": 1434.799,
+      "duration": 4.801
+    },
+    {
+      "lang": "en",
+      "text": "of like auto optimization, yeah, I think",
+      "offset": 1437.44,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "we have the ability to or we're",
+      "offset": 1439.6,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "releasing the ability to run uh prompt",
+      "offset": 1442.32,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "optim optimization. So some people call",
+      "offset": 1445.36,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "it we call it metapar prompting but",
+      "offset": 1446.96,
+      "duration": 3.599
+    },
+    {
+      "lang": "en",
+      "text": "basically we feed it a data set we said",
+      "offset": 1448.72,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "here's the input output pairs here's the",
+      "offset": 1450.559,
+      "duration": 4.881
+    },
+    {
+      "lang": "en",
+      "text": "eval on those things uh and where things",
+      "offset": 1452.64,
+      "duration": 5.039
+    },
+    {
+      "lang": "en",
+      "text": "failed and didn't fail look at the",
+      "offset": 1455.44,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "original prompt look at this data set",
+      "offset": 1457.679,
+      "duration": 4.401
+    },
+    {
+      "lang": "en",
+      "text": "can you give me a new prompt that fixes",
+      "offset": 1460.08,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "this data set yeah so we we have we call",
+      "offset": 1462.08,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "that meta prompting but it's basically",
+      "offset": 1464.32,
+      "duration": 4.239
+    },
+    {
+      "lang": "en",
+      "text": "use an LLM to just automate so you don't",
+      "offset": 1465.84,
+      "duration": 5.439
+    },
+    {
+      "lang": "en",
+      "text": "have to yeah but good question but",
+      "offset": 1468.559,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "really appreciate the time uh we're over",
+      "offset": 1471.279,
+      "duration": 3.361
+    },
+    {
+      "lang": "en",
+      "text": "at the booth uh feel free to come grab",
+      "offset": 1472.799,
+      "duration": 3.441
+    },
+    {
+      "lang": "en",
+      "text": "me if you want to talk architecture or",
+      "offset": 1474.64,
+      "duration": 3.12
+    },
+    {
+      "lang": "en",
+      "text": "or anything. But really nice to see you",
+      "offset": 1476.24,
+      "duration": 3.55
+    },
+    {
+      "lang": "en",
+      "text": "all.",
+      "offset": 1477.76,
+      "duration": 9.32
+    },
+    {
+      "lang": "en",
+      "text": "[Music]",
+      "offset": 1479.79,
+      "duration": 7.29
+    }
+  ],
+  "cleanText": "[Music]\nAll right.\nWell, let's get started.\nUh, we don't have much time, but um, I hope your conference is going well.\nUh, welcome to AI Engineer World's Fair.\nUh, my name is Dat Ngo.\nUh, today's talk is about LLM eval pipelines.\nUm, so I never know what I want to talk about till I get into the room, so I don't prep too hard.\nBut by show of hands, who here uh, who here has built an agent?\nJust raise your hand.\nOkay.\nUh, who here um, has run an eval?\nRight.\nWho here has productionized an AI product?\nNice.\nOkay.\nSome technical builders.\nUm, let's get technical then.\nSo, uh, my name is, uh, Dat.\nUm, I'm an AI architect at Arize AI.\nUm, this is Mochi and Latte.\nUh, Latte.\nThey're uh, dogs of my friends.\nI figured let's keep it spicy and interesting.\nUm, but I've been building observability and eval since day zero.\nSo, uh, since the first uh, I don't know if you guys know what Arize AI is, but we are the largest uh, AI evals player uh, in the space.\nSo, observability eval kind of beyond.\nUh, we work really heavily uh, with real use cases.\nSo, folks like Reddit, folks like Duolingo.\nUm, so we work across the best AI teams and we have a really unique business.\nBeing on the observability side, we get to see what everyone is building, how they're tackling those problems, what are their biggest pains, uh, and what are the kind of the tips and tricks that they use to really productionize these things.\nAnd just to give you a hint, um, you know, Duolingo has massive eval scale.\nThey tend to run about 20 evals per, per like um, trace.\nUm, so they end up spending, you know, quite a fair amount, uh, doing evals, understanding their evals, optimizing them.\nUh, and the last thing about me, I have a huge passion for the AI community.\nUm, when I was in the SF Bay Area the last 5 years, uh, really loved to go to pretty much every single event that I could.\nI'm not a developer advocate.\nI'm an engineer by trade, but I just love the community.\nSo, um, yeah, this is a little bit about Arize, but I think I don't want to keep it too salesy.\nI just want to keep it pretty technical.\nSo really three concepts that I think everybody should be familiar with and where eval really sit in the space is really as simple as this.\nUm, this is what I teach all my customers really.\nThe first thing is observability.\nI think you guys have kind of seen this before.\nObservability really just answers the question of what is the thing that I built actually doing?\nRight?\nTo some people it may be traces uh, traces in spans.\nUm, I'll show you a little bit um, you know, platform agnostic, just think about the concepts.\nUm, but traces might be one area for people.\nSo traces represent, hey, what's happening?\nCan I look at things?\nUh, to an AI engineer makes a lot of sense.\nUm, let's say you're an AIPM, maybe not super technical or maybe uh, you want to think about things differently.\nMaybe you want to look at, hey, what are the conversations that are happening.\nTurns out you can run evals at these levels.\nUh, we'll get into that in depth kind of later.\nUm, you know, signal comes and observability comes in different kind of flavors and forms.\nMaybe it's analytics.\nUh, what we're starting to really realize is that LLM teams are getting split into two special niches.\nThere's platform teams, right?\nAnd they own things like the infrastructure.\nSo who here has heard of a model gateway router?\nIt's like an interface pattern behind it or all the models, right?\nWell, turns out the central LLM platform team tends to own that.\nThey care about cost, latency, things like that.\nAnd then you have the other LLM teams.\nThese LLM teams sit on the like the outer side of the business, so like a hub and spoke, they work for the business side.\nSo these are like uh, the people building the applications to help the business.\nSo um, if anyone here comes from like the ML or data science space, it's actually not far from that.\nUm, and so different teams care about different metrics.\nUh, so maybe if you're an AIPM sitting on the business side, you care about evals.\nIf you care about, you know, the platform, maybe you care about costs, latency, things like that.\nBut TLDDR, uh, observability, oops, uh, observability, um, represents what's happening, and now evals are really important in this space because the reality of the fact is if you've ever seen a trace or something like that, um, you're not going to inspect every single trace manually, right?\nIt is not scalable for you, an AI engineer, or you, the AIPM, to look through these things.\nSo what is eval used for?\nIt's actually just a really clever word for signal.\nYou're just trying to understand what's going well and what's not going well.\nSo, I'm not here to sell you on like evals.\nI think everybody knows how important they are.\nBut if you think eval or LLM as a judge only, uh, there's actually a lot of other tools that you're missing.\nSo, LLM as a judge, raise your hand if you used LLM as a judge.\nOkay, about half the room.\nUm, it's super great.\nUh, you use an LLM to give you feedback or process on any process, including an LLM process.\nSo, if you're doing rag, this is a really good way to think about rag in terms of evals.\nUm, rag would be like, hey, user has a question, um, we retrieve some context to be able to, you know, possibly answer that question, and then we generate an answer.\nTurns out every arrow on this is actually an eval you can run.\nSo, hey, I retrieve some context and I want to compare that to the query being asked.\nWell, that's rag relevance.\nIt's like, is the thing that I returned even helpful in answering the question?\nAnd so LLM as a judge is great, it's super helpful.\nUm, you know, I think most people understand why it works.\nBut there's a whole research area on why they're really good indicators.\nUm, the original task is not the eval task, right?\nSo if I asked you a human, hey, generate me a summary on uh, something long and complex like the book War in Peace, that's a very different task than say, hey, I wrote this summary for you.\nIs it a good one or is it a bad one?\nBut LLM as a judge is a small part.\nUm, it doesn't always have to be a large language model or auto regressive model.\nUm, things like encoder only BERT type architectures are super helpful.\nThey're about 10 times cheaper, about one or two orders of magnitudes faster uh, to run that eval.\nBut you know, you don't just have LLM at your disposal.\nYou, a human, also are a really good way to discern signal.\nSo it turns out eval can also come in the form of is your user having a good or bad experience.\nSo for those people who've productionized uh, some sort of LLM application, do you guys have user feedback?\nRaise your hand if you've implemented user feedback, and okay, about 30%.\nUh, it's actually incredible signal.\nUm, so that comes from a human.\nObviously you yourself can also generate labels on stuff.\nSo has anyone here heard of a golden data set?\nRaise your hand.\nOkay, most of the room.\nUm, and the way I encourage folks to think about this, this is a pro tip actually.\nIf the first column represents scale, so LLM as a judge is valuable because I don't have to grade it myself, right?\nBut let's say I don't necessarily trust it off the bat.\nUse the third column to help you out.\nSo a golden data set represents quality.\nSo you yourself graded it.\nYou know that it's what you expected, you know.\nUm, well, turns out you can run your LLM as a judge on a golden data set.\nUm, what you're trying to do is say, hey, can the LLM approximate the thing that I trust?\nRight?\nAnd what that allows you to do is to actually quantify and tune your LLM as a judge.\nSo we'll go over that in a second, but strong pro tip.\nUh, most really strong LLM teams in the world kind of do this today.\nUh, and it turns out you don't always have to use an LLM uh, or a human.\nYou can use what are called like heuristics or code-based logic.\nSo I'm going to take you into the platform a little bit to talk through it.\nBut um, in our platform you have a way to run evals.\nGreat.\nUh, what code evals actually are, um, are just um, it's much cheaper.\nSo I'll just run a little test here.\nBut you know, let's say you want to say, hey, does this output contain any keywords?\nI don't need to use an LLM or human for that.\nI can just use code.\nIt's infinitely cheaper.\nUm, faster to run.\nUm, does this match this regex pattern XYZ?\nIs this a parsible JSON?\nSo the reality of it is you have this kind of uh, large toolbox in your kind of eval set.\nSo when you say evals, don't just think of LLM as a judge.\nThere's a whole other set of smarter things that you can use.\nThey're actually more cost-effective.\nAnd so really, you know, this is a really good way to emphasize really the value of like the AI engineer evals and observability.\nMost people understand this left-hand circle, this purple one.\nUm, it actually represents what we all want to do, and it's like, hey, build a better AI system, right?\nSo what you do is you collect data, observability traces, things like that.\nThen you run some evals to say, hey, did this process go well or did this process not go well?\nSo you're discerning signal from that, you know, mass of data.\nYou'll actually collect where areas of things went right or wrong, right?\nAnd you'll say, \"Hey, turns out we hallucinated on this.\nIt's because our rag strategy is off or the agent is off, for example.\"\nUm, you'll also annotate data sets as well just to double check that those evals are correct.\nAnd then of course, you always come back in into your platform and you, you know, you update the prompt template, right?\nYou change the model because it's it's it wasn't good enough or you update the agent orchestration.\nSo, everybody understands that left-hand circle.\nNow, a lot of people actually forget about the right-hand circle.\nAnd so, it turns out the first time you run evals, what you'll quickly realize is that um, they're not perfect, right?\nYou actually have to tune those evals over time.\nSo, the way you collect signal actually adjusts as your application also, you know, gets better.\nAnd so what I mean by that is that process of running evals, what you might notice if you annotate some of them is that the eval said something hallucinated or wasn't correct and it actually was or vice versa.\nUm, so what you actually need to do is collect a set of those failures, right?\nSay, hey, this is where the eval was wrong, and you'll know that by annotating some data every now and again.\nUm, and then you'll want to improve the eval prompt template, right?\nBecause the way you collect signal at first, um, you'll quickly realize it's either too obscure, too vague, uh, not specific enough.\nSo these are the kind of two virtuous cycles that you really want to get through very quickly.\nAnd the way I describe it to AI engineering teams is if you want to build an like a quality AI product, uh, think about velocity.\nSo the faster you iterate through stuff, if you I can get through four iterations in a month rather than two, you're going to exponentially have a better AI product as you build.\nAnd so when we talk about architectures and things like that, um, when the industry first started, this was state-of-the-art.\nUm, routers, right?\nUm, am I right?\nUm, so routers are made up of like components.\nUm, this is a really dumb example of Booking.com's trip planner.\nUm, so Booking, you know, they're one of our largest customers.\nTrip planner is basically a travel agent in LLM form.\nIt drives revenue for that company.\nIt helps you book, you know, it'll book your flights, your hotels.\nIt'll give you an itinerary.\nAnd so um, you know, when we think about evals, evals can be as complex as the application itself.\nSo in kind of older architectures, um, where there's things like routing, um, you can you can eval individual components.\nI think most people get this when you're looking inside of a trace, for example, um, maybe I want to eval a specific uh, component or trace.\nSo this one LLM call, right?\nBut remember, oops, I'll come up here.\nBut remember that you can, um, okay, remember that you can zoom out too.\nSo it doesn't have to just be this one specific component.\nLet's say this one component is part of an agent or a workflow.\nUh, maybe I just want to evaluate the input output of that larger workflow.\nSo that larger workflow is made up of LLM calls, API calls, right?\nI have to find actual flights, actual hotels that have vacancy.\nUm, maybe some heuristics.\nAnd then you can zoom out a little bit more.\nUh, maybe you want to eval things like the way control flow happens.\nIt's a really important component.\nIf you have components in your AI agents that have control flow in them, uh, it actually makes way more sense to eval your control flow first, and you have conditional evals.\nMeaning if you didn't get the control flow right, why eval anything down the line?\nBecause it's probably wrong, right?\nSo save solve yourself some some money and some um, some costs.\nSo you can think about conditional evals as well.\nAnd then of course we have things like um, people want to run evals at the highest level.\nSo imagine you have a back and forth.\nSo we call this a session in our platform.\nBut uh, the whole idea is, you know, a session is made up of a series of traces.\nSo you can imagine there's a back and forth between your you and your agent.\nI just want to understand, hey, at any point was the customer frustrated, was the customer XYZ.\nSo when you start to think about evals, there's no one-stop shop.\nIf anybody like says this is how you should do evals and they never asked you about how your application works, you probably shouldn't trust them.\nAlso, I have a hot take, and my hot take is that don't use out-of-the-box evals.\nIf you get out of the box, if you use out-of-the-box evals, you'll get out-of-the-box results.\nUm, so really customize them very heavily.\nIt's something that we've learned really from some of the best teams in the world.\nUm, okay, let me come here.\nUm, then you have\n\n\nComplexity.\nUm, this is our own architecture for our AI co-pilot.\nUh, we built an AI whose one purpose is to troubleshoot, observe, and build evals for your AI system.\nIt obviously takes advantage of our platform.\nBut, you know, the reason why we go this route is to take us forward five to ten years from now.\nDo you guys really think that you, a human, are going to be the ones who are evaluating all these AI systems like manually?\nUm, what do you think would actually take your place?\nUm, it's probably going to be an AI that evaluates future AI.\nSo, this is our first iteration on this stuff.\nUm, we're super excited about it.\nUm, we, you know, it's been out for a year.\nIt's getting better and better.\nBut maybe I'll show you a little bit of the workflows that we have in our platform really quickly.\nUm, who here is working with agents?\nOkay.\nWho here is interested in like agent evaluation?\nOkay, let's cover that then.\nLet's see.\nI'll show you, we'll show you how the industry is doing agent evals.\nSo, with agent evals, things get like way more complex, right?\nThe calls are longer, which you look at your traces, they're much longer.\nUm, I'll actually show you our agent traces.\nSo, this is one that kind of failed, but our agent trace kind of works like this.\nSo, Copilot works like this.\nIt basically, based off what you say and where you're at in the platform, there's agents that kind of can do things.\nSo, um, and it has tools.\nEach agent has access to a set of tools that it's particularly good at.\nUm, so, the whole idea is that yes, we can see what each individual trace is doing, right?\nWe can say, hey, what's happening in this particular area?\nWe can look at the traces, but the reality of what people are actually asking in the space is not, is my AI agent good or bad?\nWhat they're actually asking is what are the failure modes in which my agent fails, right?\nAnd so what I mean by that is you can look at one individual trace and the graph view of it, but the reality is you want to understand and discern the signal with your entirety of your AI agent.\nSo what is the, like, what does the pathing look like across all of that particular AI agents calls?\nSo for instance, if it had access to ten tools, maybe you want to answer questions like how often did it call a specific tool, right?\nUm, what were the evals in a specific path?\nSo in our agent graph, for example, um, it's framework agnostic.\nSo whether you use Langraph, whether you use Crew AI, whether you use your handrolled code, um, this is an agnostic way to look at um, you know, how an agent's pathing performs across the aggregate traces.\nUm, and so this helps you understand, okay, if my agent hits component one, then two, then three, uh, my evals look great, but for some reason when we hit component four, then two, then three, our evals are dropping.\nAnd the reason is why?\nWell, oh, turns out component four had a dependency right on component three and it needs that dependency in order to perform.\nAnd so when you think about the complexity of agent evals, um, you need kind of the ability to see across not one instantiation but all of them.\nYou need to understand the distribution of what's happening.\nAnd so we think about eval across agents.\nUm, that's one way you can think about it.\nAnd then maybe an easier way to kind of think about it too is um, you know, trajectory, uh, we're thinking about trajectory eval.\nSo imagine for a second, um, you have this specific input, right?\nAnd the input is like, you know, hey, find me these hotels at trip planner, and you know, you should hit this component, then that component, this other component.\nSo in this case, it's like start agent tool agent.\nYou might have a golden data set like very similar to how we have golden data sets for LLMs as a judge, but this is for trajectories.\nSo I expect us to be able to hit at least three or four of these components, for example.\nSo the reference trajectory is kind of mentioned like I need to hit these components.\nThen you can do two, two things, one of two things.\nEither one, you can pass in like, here's what we did, here's what we expected into an LLM, and then an LLM can actually grade the trajectory.\nUm, you can also just say, hey, did we explicitly hit these exact like trajectory strings?\nGreat.\nUm, but you don't always need a ground truth for that.\nYou can start to get creative here.\nYou can say, hey, you know, here's this process that I expected to hit.\nDo the, does these nodes and the description of their nodes match the correct, correct trajectory, for instance.\nUm, and then maybe you could do things like, we're kind of playing around with this, but maybe here's the trajectory that I hit.\nUh, here's the possible paths that are just possible.\nDid I do well in these specific areas, right?\nAnd you can pass in the pathing as a series of like nested key value pairs, for example.\nLLMs are pretty good at that.\nBut we start to think about um, you know, agent evals.\nYou know, the eval space is already complex enough and what we're seeing is even more complexity.\nUm, but hopefully that makes sense.\nUm, I'll pause here.\nUm, hopefully that makes sense.\nBut usually I like to make time for questions at the end and keep this pretty interactive.\nUm, hope that's okay, team.\nBut any questions?\nDoes this make sense?\nCool.\nNo questions.\nOh yeah.\nGo ahead.\nMostly.\nYeah, incredible question.\nSo, a lot of people, so, there's evals that can be um, you know, some people call them offline or online.\nUm, I like to say is like, is it in the path, is it in orchestration or out of orchestration?\nSo for some people, there's a cost to in, in orchestration evals, and the cost is things like latency, right?\nSome people might call those a guardrail too, like, hey, can I continue or not continue?\nUm, and so there's pros and cons to everything.\nI think when it comes to guardrails, this is something I, I kind of coach my customers, the way to think about guardrails, um, in general is you have system one.\nSystem one is your orchestration system, it's what you built, it's your prompts, it's everything else.\nSystem two is your guardrail system, right?\nGuards are really nice because they, they mitigate risk, right?\nBut there is a cost and the cost is maybe it's latency in your users's experience.\nYou can get around that by doing smart things like maybe embedding guardrails.\nThey're, you know, two orders of magnitude shorter.\nUm, but a lot of people don't think about the other two cons here.\nThe other con is complexity.\nTwo systems is complex, especially when one system checks in with the first.\nThe third thing is that a lot of people mistake guardrails as like the thing that needs to be adjusted.\nA lot of people will go to their guardrails first, like, \"Oh, I need to adjust my guardrails.\"\nReality is you need to adjust system one.\nThat's the root cause, right?\nYour guardrails are really there to protect you.\nAnd then maybe the last thing I'll say too is guardrails are not infallible.\nThey're, they kind of act like unit tests.\nThey're for known knowns, right?\nWhereas observability plus eval, because the reality is you don't know the distribution of what you're going to see until you get there, right?\nUm, ask anybody who's built in the LLM space, uh, their users are just crazy.\nAnd so, um, that, that's the difference and I, and I really caution people because people are like, oh, I need to fix my guardrail.\nNo, go fix the prompt first and then worry about your guardrails.\nBut yeah, inline, we call those inline, uh, eval guardrails, but really do you do the eval in the orchestration or outside of it?\nUm, and so you can, there's pros and cons.\nSo there's no right or wrong answer there, but good question.\nYeah.\nSo when we have a complex system that is taking a long time to run and we have timeouts in this and I know we all have something called span that limits what kind of view we're taking to a complex agent.\nSo we have like a complex system that's really going to take time and then there's an asynchronous.\nIs there support to manage something like that and eval across the whole system that we have?\nOh yeah, amazing question.\nSo, um, who here has ever heard of OTEL?\nOpen telemetry.\nOkay, even less than.\nOkay.\nUm, one of the most important things to our enterprise customers is is being on open telemetry.\nUm, so you know how I said LLM teams are being split into two?\nWell, turns out LLM services are also being split across services.\nAnd so the idea is like people want to understand um, so maybe an asynchronous process in one service or one docker container or you know, one, one docker or one Kubernetes pod.\nUm, OTEL propagation is a great way to get around that.\nMeaning you can have a process like application A sends data to my model router, right?\nAnd then that comes back to application A.\nThen application A hits application B for some reason and then it comes back to A.\nWhen you're actually creating those traces, you want to be able to see all that work, right?\nYou don't want to just instrument one particular thing.\nYou want to see it across work across.\nAnd so is an incredible pattern for that.\nIt's a solved problem.\nSo that's why we at Arize, two and a half years ago when this crazy time started for all of us, we made a bet to be OTEL first and it's, it's really paid off.\nUm, yeah.\nYeah.\nSo just ask your experience.\nOkay.\nSo confidence scores on evals, right?\nUm, yeah, I think it depends where you're getting your eval.\nIf it's from an auto regressive model, um, companies like OpenAI have actually exposed the log prop.\nSo the log probability is it's pseudo like confidence of like, and since you're returning only one coat token and that token is like the, the eval label, log prop is a really good way for those auto regressive models.\nIf you're using things like um, small language models, encoder only models, they come with a probability uh, of the classification.\nUm, but really, yeah, it's tough, but you have a bunch of tools in your toolbox and you generally use them together to discern where things go well or not well.\nLog prop, if you're using uh, a model provider that exposes the log prop, is is a really good way to start for auto regressive models.\nOkay, last question and then we're time up.\nYeah.\nAre you making your plans like going forward like how to shorten the loop between customer feedback?\nOh, good question.\nYeah, we want to automate in that area definitely.\nSo, who here has heard of DSPY?\nAll right.\nAnd okay, if you, if you didn't raise your hand on any of this, I hope you learned a bunch.\nUm, DSPY obviously has something like MIRO.\nUh, Miro is an optimizer.\nYou get like 30 inputs, 30 outputs, and then um, it basically creates less fragile prompts that span across different models like so it does, it works for OpenAI and then it works for Gemini, etc.\nUh, in terms of like auto optimization, yeah, I think we have the ability to or we're releasing the ability to run uh, prompt optimization.\nSo some people call it, we call it meta prompting, but basically we feed it a data set, we said, here's the input output pairs, here's the eval on those things, uh, and where things failed and didn't fail, look at the original prompt, look at this data set, can you give me a new prompt that fixes this data set?\nYeah, so we, we have, we call that meta prompting, but it's basically use an LLM to just automate so you don't have to.\nYeah, but good question, but really appreciate the time.\nUh, we're over at the booth, uh, feel free to come grab me if you want to talk architecture or or anything.\nBut really nice to see you all.\n[Music]\n",
+  "dumpedAt": "2025-07-21T18:43:24.574Z"
+}

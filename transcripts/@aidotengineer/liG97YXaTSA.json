@@ -1,0 +1,3136 @@
+{
+  "episodeId": "liG97YXaTSA",
+  "channelSlug": "@aidotengineer",
+  "title": "OpenThoughts: Data Recipes for Reasoning Models — Ryan Marten, Bespoke Labs",
+  "publishedAt": "2025-07-19T21:10:30.000Z",
+  "rawLines": [
+    {
+      "lang": "en",
+      "text": "[Music]",
+      "offset": 0.37,
+      "duration": 7.49
+    },
+    {
+      "lang": "en",
+      "text": "I'm Ryan. I'm a founding engineer at",
+      "offset": 15.28,
+      "duration": 3.839
+    },
+    {
+      "lang": "en",
+      "text": "Bespoke Labs. And today I'm going to",
+      "offset": 17.119,
+      "duration": 3.841
+    },
+    {
+      "lang": "en",
+      "text": "talk to you about Open Thoughts, which",
+      "offset": 19.119,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "is our project to create the best",
+      "offset": 20.96,
+      "duration": 5.6
+    },
+    {
+      "lang": "en",
+      "text": "open-source reasoning data sets. And",
+      "offset": 23.199,
+      "duration": 5.041
+    },
+    {
+      "lang": "en",
+      "text": "I'll be switching tack a little bit from",
+      "offset": 26.56,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "our earlier discussions on reasoning and",
+      "offset": 28.24,
+      "duration": 5.999
+    },
+    {
+      "lang": "en",
+      "text": "RL and focus on the reasoning part and",
+      "offset": 30.96,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "you'll see why. So just so we're on the",
+      "offset": 34.239,
+      "duration": 4.881
+    },
+    {
+      "lang": "en",
+      "text": "same page, we've talked a lot about",
+      "offset": 36.96,
+      "duration": 3.759
+    },
+    {
+      "lang": "en",
+      "text": "reasoning, but what's actually going on",
+      "offset": 39.12,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "here? So I like this graph from JSON",
+      "offset": 40.719,
+      "duration": 6.081
+    },
+    {
+      "lang": "en",
+      "text": "which shows this incredible performance",
+      "offset": 43.84,
+      "duration": 4.399
+    },
+    {
+      "lang": "en",
+      "text": "that's happened in the last several",
+      "offset": 46.8,
+      "duration": 3.759
+    },
+    {
+      "lang": "en",
+      "text": "months where models are getting much",
+      "offset": 48.239,
+      "duration": 4.401
+    },
+    {
+      "lang": "en",
+      "text": "much much better on certain benchmarks.",
+      "offset": 50.559,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "Um, and if you look at that, this is",
+      "offset": 52.64,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "reasoning. This is test time scaling. I",
+      "offset": 55.039,
+      "duration": 2.641
+    },
+    {
+      "lang": "en",
+      "text": "think everyone here is quite familiar",
+      "offset": 56.48,
+      "duration": 3.599
+    },
+    {
+      "lang": "en",
+      "text": "with this. And it seems that certain",
+      "offset": 57.68,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "tasks like Amy, which are competitive",
+      "offset": 60.079,
+      "duration": 6.08
+    },
+    {
+      "lang": "en",
+      "text": "math problems, really respond to models",
+      "offset": 62.96,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "when they're able to think step by step",
+      "offset": 66.159,
+      "duration": 5.841
+    },
+    {
+      "lang": "en",
+      "text": "and do these long chain of thoughts. Um,",
+      "offset": 68.4,
+      "duration": 6.48
+    },
+    {
+      "lang": "en",
+      "text": "so let's go back to DeepSeek R1. Now, I",
+      "offset": 72,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "think Deepseek R1 was really impressive",
+      "offset": 74.88,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "for a lot of people for a lot of reasons",
+      "offset": 77.04,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "and RL was a big part of that. But I was",
+      "offset": 79.52,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "also particularly interested because",
+      "offset": 82.32,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "Deepseek R1 at the end of the day is an",
+      "offset": 84.08,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "SFT model. So the final weights that",
+      "offset": 86.96,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "they've released are actually from",
+      "offset": 89.84,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "DeepSseek V3 base which is fine-tuned on",
+      "offset": 92.4,
+      "duration": 7.12
+    },
+    {
+      "lang": "en",
+      "text": "800K SFT examples. 600K of which are",
+      "offset": 95.84,
+      "duration": 6.319
+    },
+    {
+      "lang": "en",
+      "text": "reasoning. Of course you can see here",
+      "offset": 99.52,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "that RL was a big part of it and RL was",
+      "offset": 102.159,
+      "duration": 5.041
+    },
+    {
+      "lang": "en",
+      "text": "used heavily to create that model which",
+      "offset": 105.04,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "generated this data. Um but at the end",
+      "offset": 107.2,
+      "duration": 5.199
+    },
+    {
+      "lang": "en",
+      "text": "it was SFT and a little bit of RL for",
+      "offset": 110.24,
+      "duration": 3.519
+    },
+    {
+      "lang": "en",
+      "text": "alignment. So this was really",
+      "offset": 112.399,
+      "duration": 3.521
+    },
+    {
+      "lang": "en",
+      "text": "interesting and surprising. And the",
+      "offset": 113.759,
+      "duration": 3.281
+    },
+    {
+      "lang": "en",
+      "text": "other thing that was really interesting",
+      "offset": 115.92,
+      "duration": 3.839
+    },
+    {
+      "lang": "en",
+      "text": "and surprising to us was these small",
+      "offset": 117.04,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "reasoning models that Deepseek released",
+      "offset": 119.759,
+      "duration": 5.841
+    },
+    {
+      "lang": "en",
+      "text": "which were incredibly strong. Um and",
+      "offset": 121.6,
+      "duration": 7.2
+    },
+    {
+      "lang": "en",
+      "text": "this for us was a a huge motivation a",
+      "offset": 125.6,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "huge motivation to try to do this",
+      "offset": 128.8,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "ourselves. And why is that interesting?",
+      "offset": 130.8,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "Because if we go back to here, none no",
+      "offset": 133.04,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "additional detail was really given on",
+      "offset": 136.08,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "these data sets here. So if you want to",
+      "offset": 138.16,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "create strong reasoning models, we now",
+      "offset": 140.72,
+      "duration": 4.239
+    },
+    {
+      "lang": "en",
+      "text": "sort of have a training recipe, but we",
+      "offset": 142.64,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "don't have the data recipe. That's the",
+      "offset": 144.959,
+      "duration": 4.721
+    },
+    {
+      "lang": "en",
+      "text": "missing link. Okay. I want to also",
+      "offset": 146.72,
+      "duration": 5.92
+    },
+    {
+      "lang": "en",
+      "text": "include a slide here on why is it",
+      "offset": 149.68,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "interesting to train your own reasoning",
+      "offset": 152.64,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "models. So uh I'm partially taking this",
+      "offset": 154.16,
+      "duration": 5.359
+    },
+    {
+      "lang": "en",
+      "text": "from Amir's talk yesterday on open",
+      "offset": 157.36,
+      "duration": 3.599
+    },
+    {
+      "lang": "en",
+      "text": "source and enterprise which I really",
+      "offset": 159.519,
+      "duration": 3.041
+    },
+    {
+      "lang": "en",
+      "text": "liked. But there's these main points,",
+      "offset": 160.959,
+      "duration": 4.401
+    },
+    {
+      "lang": "en",
+      "text": "performance, privacy, speed and cost,",
+      "offset": 162.56,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "and then ownership and destiny. I think",
+      "offset": 165.36,
+      "duration": 5.92
+    },
+    {
+      "lang": "en",
+      "text": "um using reasoning is a is a great tool",
+      "offset": 167.68,
+      "duration": 6.559
+    },
+    {
+      "lang": "en",
+      "text": "to solve a problem, and you shouldn't li",
+      "offset": 171.28,
+      "duration": 5.599
+    },
+    {
+      "lang": "en",
+      "text": "limit yourself in your toolbox",
+      "offset": 174.239,
+      "duration": 4.161
+    },
+    {
+      "lang": "en",
+      "text": "if you're trying to solve a specific",
+      "offset": 176.879,
+      "duration": 4.161
+    },
+    {
+      "lang": "en",
+      "text": "domain task. So, uh as we talked about",
+      "offset": 178.4,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "before, RL is a great tool in this",
+      "offset": 181.04,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "toolbox to tackle to tackle reasoning",
+      "offset": 182.72,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "tasks. But we're going to see here that",
+      "offset": 185.44,
+      "duration": 4.159
+    },
+    {
+      "lang": "en",
+      "text": "SFT is, as Nathan put this morning,",
+      "offset": 186.8,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "extremely easy and extremely effective.",
+      "offset": 189.599,
+      "duration": 5.841
+    },
+    {
+      "lang": "en",
+      "text": "Okay, great. Now, the missing link. How",
+      "offset": 192.8,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "do we actually solve for this this",
+      "offset": 195.44,
+      "duration": 4.799
+    },
+    {
+      "lang": "en",
+      "text": "reasoning data recipe? There's all these",
+      "offset": 197.36,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "questions that we had when we started.",
+      "offset": 200.239,
+      "duration": 4.321
+    },
+    {
+      "lang": "en",
+      "text": "How much data do you really need? What",
+      "offset": 201.92,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "data creation steps are necessary?",
+      "offset": 204.56,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "What are the optimal choices for each",
+      "offset": 207.44,
+      "duration": 4.799
+    },
+    {
+      "lang": "en",
+      "text": "step in that data creation pipeline? And",
+      "offset": 209.44,
+      "duration": 4.719
+    },
+    {
+      "lang": "en",
+      "text": "then, how do you even go about figuring",
+      "offset": 212.239,
+      "duration": 4.801
+    },
+    {
+      "lang": "en",
+      "text": "all this out? And this this is the meat",
+      "offset": 214.159,
+      "duration": 5.681
+    },
+    {
+      "lang": "en",
+      "text": "of the Open Thoughts project. So today",
+      "offset": 217.04,
+      "duration": 4.559
+    },
+    {
+      "lang": "en",
+      "text": "we're excited to announce Open Thoughts",
+      "offset": 219.84,
+      "duration": 3.759
+    },
+    {
+      "lang": "en",
+      "text": "3, which is hot off the presses, just",
+      "offset": 221.599,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "came out two hours ago, which is our",
+      "offset": 223.599,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "latest and greatest version of our",
+      "offset": 225.599,
+      "duration": 6.28
+    },
+    {
+      "lang": "en",
+      "text": "reasoning data sets. And",
+      "offset": 227.599,
+      "duration": 4.28
+    },
+    {
+      "lang": "en",
+      "text": "thank you. And now we this is the",
+      "offset": 235.76,
+      "duration": 3.759
+    },
+    {
+      "lang": "en",
+      "text": "state-of-the-art reasoning data set",
+      "offset": 238,
+      "duration": 3.12
+    },
+    {
+      "lang": "en",
+      "text": "recipe.",
+      "offset": 239.519,
+      "duration": 4.401
+    },
+    {
+      "lang": "en",
+      "text": "So you can see here these graphs are",
+      "offset": 241.12,
+      "duration": 4.399
+    },
+    {
+      "lang": "en",
+      "text": "showing accuracy on three of these",
+      "offset": 243.92,
+      "duration": 3.519
+    },
+    {
+      "lang": "en",
+      "text": "reasoning benchmarks. Amy which is",
+      "offset": 245.519,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "competitive math, live codebench is",
+      "offset": 247.439,
+      "duration": 4.401
+    },
+    {
+      "lang": "en",
+      "text": "competitive code and GPQA diamond which",
+      "offset": 249.439,
+      "duration": 4.961
+    },
+    {
+      "lang": "en",
+      "text": "is our science questions. Um on the y-",
+      "offset": 251.84,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "axis you see accuracy is going up. Uh on",
+      "offset": 254.4,
+      "duration": 5.359
+    },
+    {
+      "lang": "en",
+      "text": "the x-axis you see the data scale is",
+      "offset": 257.12,
+      "duration": 4.399
+    },
+    {
+      "lang": "en",
+      "text": "going up. So we we heard before that",
+      "offset": 259.759,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "scaling is difficult particularly",
+      "offset": 261.519,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "difficult with RL. The good news is for",
+      "offset": 263.759,
+      "duration": 5.281
+    },
+    {
+      "lang": "en",
+      "text": "SFT scaling is quite easier. Um you can",
+      "offset": 265.919,
+      "duration": 5.361
+    },
+    {
+      "lang": "en",
+      "text": "see here we compare to other open",
+      "offset": 269.04,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "reasoning data sets. So Neimatron nano",
+      "offset": 271.28,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "Nvidia released this great model",
+      "offset": 273.68,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "Neimatron nano it's a 8b model and they",
+      "offset": 275.12,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "also released the data set to train on",
+      "offset": 277.44,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "it. So we compared directly by training",
+      "offset": 278.96,
+      "duration": 4.239
+    },
+    {
+      "lang": "en",
+      "text": "on the same base model between our data",
+      "offset": 281.04,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "set which is our data set recipe and the",
+      "offset": 283.199,
+      "duration": 5.121
+    },
+    {
+      "lang": "en",
+      "text": "neatron nano data which is the Nvidia",
+      "offset": 285.52,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "recipe and you can see here there's a",
+      "offset": 288.32,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "significant gap. So we we shifted this",
+      "offset": 290,
+      "duration": 5.759
+    },
+    {
+      "lang": "en",
+      "text": "scaling curve upwards.",
+      "offset": 292.32,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "Great. So the yeah this is the",
+      "offset": 295.759,
+      "duration": 3.681
+    },
+    {
+      "lang": "en",
+      "text": "state-of-the-art 7B open data reasoning",
+      "offset": 297.12,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "model. You can see we've had we have",
+      "offset": 299.44,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "measured across the domains of interest.",
+      "offset": 302.56,
+      "duration": 3.199
+    },
+    {
+      "lang": "en",
+      "text": "So science, code and math and then a",
+      "offset": 304.32,
+      "duration": 5
+    },
+    {
+      "lang": "en",
+      "text": "couple held out benchmarks.",
+      "offset": 305.759,
+      "duration": 3.561
+    },
+    {
+      "lang": "en",
+      "text": "So our original goal was to to reproduce",
+      "offset": 309.52,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "to find the missing link for the",
+      "offset": 312.8,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "deepseek distill models. And you can see",
+      "offset": 314.24,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "here we've crushed that goal. So we're",
+      "offset": 316.56,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "we're significantly outperforming the",
+      "offset": 318.96,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "deepseek R1 quen 7B model which we",
+      "offset": 321.28,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "started off trying to reproduce.",
+      "offset": 323.52,
+      "duration": 5.519
+    },
+    {
+      "lang": "en",
+      "text": "And then compared to the Neimatron nano",
+      "offset": 326.56,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "model which is trained on a different",
+      "offset": 329.039,
+      "duration": 4.241
+    },
+    {
+      "lang": "en",
+      "text": "base model um we are also outperforming",
+      "offset": 330.32,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "on some benchmarks and similarly",
+      "offset": 333.28,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "competitive on some others. So okay",
+      "offset": 335.6,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "let's actually talk about how we achieve",
+      "offset": 338,
+      "duration": 2.72
+    },
+    {
+      "lang": "en",
+      "text": "this. This is the interesting part for",
+      "offset": 339.44,
+      "duration": 4.319
+    },
+    {
+      "lang": "en",
+      "text": "you. So we go back to the scaling graph.",
+      "offset": 340.72,
+      "duration": 7.039
+    },
+    {
+      "lang": "en",
+      "text": "You can see um once again on the x-axis",
+      "offset": 343.759,
+      "duration": 7.681
+    },
+    {
+      "lang": "en",
+      "text": "we're scaling data set size. So uh this",
+      "offset": 347.759,
+      "duration": 8.16
+    },
+    {
+      "lang": "en",
+      "text": "is a a huge method to increase accuracy",
+      "offset": 351.44,
+      "duration": 7.039
+    },
+    {
+      "lang": "en",
+      "text": "and the thing here is it gets more and",
+      "offset": 355.919,
+      "duration": 4.161
+    },
+    {
+      "lang": "en",
+      "text": "more expensive exponentially more",
+      "offset": 358.479,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "expensive as you keep going. Um",
+      "offset": 360.08,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "and then uh on vertically you can see",
+      "offset": 363.199,
+      "duration": 4.481
+    },
+    {
+      "lang": "en",
+      "text": "that we've shifted this the scaling",
+      "offset": 366.08,
+      "duration": 2.88
+    },
+    {
+      "lang": "en",
+      "text": "curve up. So this is what I was talking",
+      "offset": 367.68,
+      "duration": 2.799
+    },
+    {
+      "lang": "en",
+      "text": "about before. This is the improving the",
+      "offset": 368.96,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "data set recipe. So given a fixed data",
+      "offset": 370.479,
+      "duration": 4.081
+    },
+    {
+      "lang": "en",
+      "text": "set recipe you can always scale it",
+      "offset": 373.12,
+      "duration": 2.799
+    },
+    {
+      "lang": "en",
+      "text": "larger and you can always have higher",
+      "offset": 374.56,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "performance. But um if you want to push",
+      "offset": 375.919,
+      "duration": 4.481
+    },
+    {
+      "lang": "en",
+      "text": "your performance to abs absolute",
+      "offset": 378.72,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "maximum, the real question is how do I",
+      "offset": 380.4,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "create the best data set and therefore",
+      "offset": 382.72,
+      "duration": 3.759
+    },
+    {
+      "lang": "en",
+      "text": "what is the best recipe for the data",
+      "offset": 384.88,
+      "duration": 5.759
+    },
+    {
+      "lang": "en",
+      "text": "set. Okay, so uh enough teasing here.",
+      "offset": 386.479,
+      "duration": 6.801
+    },
+    {
+      "lang": "en",
+      "text": "Let's go into the meat of it. So this is",
+      "offset": 390.639,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "this is how we approach this problem.",
+      "offset": 393.28,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "We broke down the data set pipeline into",
+      "offset": 395.919,
+      "duration": 5.201
+    },
+    {
+      "lang": "en",
+      "text": "sourcing questions, mixing different",
+      "offset": 398.4,
+      "duration": 4.799
+    },
+    {
+      "lang": "en",
+      "text": "sources of questions, filtering those",
+      "offset": 401.12,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "questions, filtering out the high",
+      "offset": 403.199,
+      "duration": 3.361
+    },
+    {
+      "lang": "en",
+      "text": "highest quality questions, generating",
+      "offset": 404.56,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "answers with a teacher model. So that's",
+      "offset": 406.56,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "distillation, and then filtering out bad",
+      "offset": 408.16,
+      "duration": 5.68
+    },
+    {
+      "lang": "en",
+      "text": "answers, um, and and lastly, at the end",
+      "offset": 411.36,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "of this entire experimentation, we",
+      "offset": 413.84,
+      "duration": 3.919
+    },
+    {
+      "lang": "en",
+      "text": "looked at what what are the best teacher",
+      "offset": 415.44,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "models, which which teacher model should",
+      "offset": 417.759,
+      "duration": 3.121
+    },
+    {
+      "lang": "en",
+      "text": "we select? So through this entire",
+      "offset": 419.28,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "pipeline, we've we've come down to this",
+      "offset": 420.88,
+      "duration": 5.039
+    },
+    {
+      "lang": "en",
+      "text": "final data set recipe. Now, this was a",
+      "offset": 422.8,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "ton of work. This is a screenshot of our",
+      "offset": 425.919,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "our hugging face page. So, you can see",
+      "offset": 427.52,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "created over 5,000 data sets and almost",
+      "offset": 429.599,
+      "duration": 5.521
+    },
+    {
+      "lang": "en",
+      "text": "3,000 models. Um, for this project, it",
+      "offset": 432.4,
+      "duration": 4.799
+    },
+    {
+      "lang": "en",
+      "text": "was only around a thousand experiments.",
+      "offset": 435.12,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "But it just to give you an idea of how",
+      "offset": 437.199,
+      "duration": 4.321
+    },
+    {
+      "lang": "en",
+      "text": "rigorously we looked at the different",
+      "offset": 440.08,
+      "duration": 2.8
+    },
+    {
+      "lang": "en",
+      "text": "decisions in each of these steps of the",
+      "offset": 441.52,
+      "duration": 2.959
+    },
+    {
+      "lang": "en",
+      "text": "pipeline. And also, I think this is",
+      "offset": 442.88,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "interesting because it it peels back the",
+      "offset": 444.479,
+      "duration": 3.921
+    },
+    {
+      "lang": "en",
+      "text": "curtain a little bit on maybe what the",
+      "offset": 446.4,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "frontier labs are doing. uh finding",
+      "offset": 448.4,
+      "duration": 5.199
+    },
+    {
+      "lang": "en",
+      "text": "signal at the smallest scale possible",
+      "offset": 450.88,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "and trying out as many things as",
+      "offset": 453.599,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "possible and empirically choosing the",
+      "offset": 455.36,
+      "duration": 4.239
+    },
+    {
+      "lang": "en",
+      "text": "best and then scaling. And often",
+      "offset": 457.199,
+      "duration": 4.641
+    },
+    {
+      "lang": "en",
+      "text": "sometimes when you scale you see okay",
+      "offset": 459.599,
+      "duration": 3.841
+    },
+    {
+      "lang": "en",
+      "text": "what was the best at the small scale",
+      "offset": 461.84,
+      "duration": 3.199
+    },
+    {
+      "lang": "en",
+      "text": "doesn't actually work but if you're",
+      "offset": 463.44,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "lucky um and you've done good science",
+      "offset": 465.039,
+      "duration": 5.361
+    },
+    {
+      "lang": "en",
+      "text": "then you'll you'll your yolo run will be",
+      "offset": 467.68,
+      "duration": 6.32
+    },
+    {
+      "lang": "en",
+      "text": "the best possible right",
+      "offset": 470.4,
+      "duration": 7.12
+    },
+    {
+      "lang": "en",
+      "text": "okay so these are the the key learnings",
+      "offset": 474,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "that we had from our data set recipe and",
+      "offset": 477.52,
+      "duration": 4.959
+    },
+    {
+      "lang": "en",
+      "text": "and this is what you can take away",
+      "offset": 479.44,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "so the first thing is that pretty",
+      "offset": 482.479,
+      "duration": 4.961
+    },
+    {
+      "lang": "en",
+      "text": "surprising sampling multiple answers so",
+      "offset": 484.24,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "multiple reasoning traces per question",
+      "offset": 487.44,
+      "duration": 4.319
+    },
+    {
+      "lang": "en",
+      "text": "in your data set works really really",
+      "offset": 489.68,
+      "duration": 5.68
+    },
+    {
+      "lang": "en",
+      "text": "well. Um the the performance does not go",
+      "offset": 491.759,
+      "duration": 5.761
+    },
+    {
+      "lang": "en",
+      "text": "down at a fixed scale. If you take a",
+      "offset": 495.36,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "fixed scale of questions, say 30k",
+      "offset": 497.52,
+      "duration": 7.44
+    },
+    {
+      "lang": "en",
+      "text": "questions um or 30 30k examples and of",
+      "offset": 500.16,
+      "duration": 6.96
+    },
+    {
+      "lang": "en",
+      "text": "those you if you take just 30k questions",
+      "offset": 504.96,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "and you only sample once per question",
+      "offset": 507.12,
+      "duration": 6.32
+    },
+    {
+      "lang": "en",
+      "text": "that performs pretty similarly to um if",
+      "offset": 510.16,
+      "duration": 7.439
+    },
+    {
+      "lang": "en",
+      "text": "you took 116th so 30k over 16 and then",
+      "offset": 513.44,
+      "duration": 7.599
+    },
+    {
+      "lang": "en",
+      "text": "for each you sampled 16 times which is",
+      "offset": 517.599,
+      "duration": 5.201
+    },
+    {
+      "lang": "en",
+      "text": "quite cool. So this allows you, this is",
+      "offset": 521.039,
+      "duration": 2.961
+    },
+    {
+      "lang": "en",
+      "text": "really cool because this allows you to",
+      "offset": 522.8,
+      "duration": 3.28
+    },
+    {
+      "lang": "en",
+      "text": "scale by 16x, which is more than an",
+      "offset": 524,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "order of magnitude. And if you remember",
+      "offset": 526.08,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "the graph from before, that corresponds",
+      "offset": 527.6,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "to a pretty large increase in accuracy.",
+      "offset": 529.76,
+      "duration": 4.639
+    },
+    {
+      "lang": "en",
+      "text": "Yeah. The other surprising thing that we",
+      "offset": 532.8,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "found was that a better model in terms",
+      "offset": 534.399,
+      "duration": 5.601
+    },
+    {
+      "lang": "en",
+      "text": "of its own performance on evaluation",
+      "offset": 538,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "benchmarks does not necessarily mean",
+      "offset": 540,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "it's a better teacher model. I think a",
+      "offset": 542.08,
+      "duration": 3.759
+    },
+    {
+      "lang": "en",
+      "text": "good way to think about this is a",
+      "offset": 544.24,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "brilliant researcher who's maybe a",
+      "offset": 545.839,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "terrible lecturer, right?",
+      "offset": 547.76,
+      "duration": 5.92
+    },
+    {
+      "lang": "en",
+      "text": "Um, we found specifically Quen 32B was a",
+      "offset": 550.399,
+      "duration": 6.241
+    },
+    {
+      "lang": "en",
+      "text": "stronger teacher model than Deepseek R1.",
+      "offset": 553.68,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "So, we switched to that in our our",
+      "offset": 556.64,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "recipe even though previously everyone",
+      "offset": 558.32,
+      "duration": 5.199
+    },
+    {
+      "lang": "en",
+      "text": "has been using R1.",
+      "offset": 560.24,
+      "duration": 5.599
+    },
+    {
+      "lang": "en",
+      "text": "We also found that the the sources of",
+      "offset": 563.519,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "data that had synthetic questions were",
+      "offset": 565.839,
+      "duration": 4.961
+    },
+    {
+      "lang": "en",
+      "text": "actually quite good. Um, some of the top",
+      "offset": 568.399,
+      "duration": 3.921
+    },
+    {
+      "lang": "en",
+      "text": "sources that we selected were entirely",
+      "offset": 570.8,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "synthetic and better than sources say",
+      "offset": 572.32,
+      "duration": 5.6
+    },
+    {
+      "lang": "en",
+      "text": "that scraped from forums or had humans",
+      "offset": 574.88,
+      "duration": 4.959
+    },
+    {
+      "lang": "en",
+      "text": "manually write things. And this is also",
+      "offset": 577.92,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "really good news because synthetic",
+      "offset": 579.839,
+      "duration": 4.241
+    },
+    {
+      "lang": "en",
+      "text": "question generation is scalable. So once",
+      "offset": 582,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "again we go back to the x-axis and we",
+      "offset": 584.08,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "can push even further which is is",
+      "offset": 586,
+      "duration": 5.68
+    },
+    {
+      "lang": "en",
+      "text": "accuracy boost.",
+      "offset": 588.72,
+      "duration": 7.28
+    },
+    {
+      "lang": "en",
+      "text": "So question filtering also works well",
+      "offset": 591.68,
+      "duration": 7.599
+    },
+    {
+      "lang": "en",
+      "text": "here. We we filtered questions by having",
+      "offset": 596,
+      "duration": 5.6
+    },
+    {
+      "lang": "en",
+      "text": "asking a language model how difficult is",
+      "offset": 599.279,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "this question and then taking only the",
+      "offset": 601.6,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "hardest questions.",
+      "offset": 603.519,
+      "duration": 4.481
+    },
+    {
+      "lang": "en",
+      "text": "We also had a language model try to",
+      "offset": 605.36,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "answer that question and looked at the",
+      "offset": 608,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "length of that answer. So these are sort",
+      "offset": 609.68,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "of proxies for the same thing. You can",
+      "offset": 612,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "imagine that if a problem is a lot",
+      "offset": 613.44,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "harder then a language model will think",
+      "offset": 615.36,
+      "duration": 4.719
+    },
+    {
+      "lang": "en",
+      "text": "more and it will produce more text. So",
+      "offset": 617.76,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "its answer will be longer and these",
+      "offset": 620.079,
+      "duration": 4.721
+    },
+    {
+      "lang": "en",
+      "text": "things worked better than embeddings",
+      "offset": 622.88,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "based approaches or fast text",
+      "offset": 624.8,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "classifiers which is interesting as so",
+      "offset": 626.56,
+      "duration": 5.6
+    },
+    {
+      "lang": "en",
+      "text": "much that those those approaches were",
+      "offset": 628.72,
+      "duration": 5.119
+    },
+    {
+      "lang": "en",
+      "text": "typical for pre-training. So it seems",
+      "offset": 632.16,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "that the the filtering for data in post-",
+      "offset": 633.839,
+      "duration": 3.041
+    },
+    {
+      "lang": "en",
+      "text": "training is quite different than",
+      "offset": 635.92,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "pre-training.",
+      "offset": 636.88,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "Okay. Some things that didn't work that",
+      "offset": 639.36,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "were also quite interesting. Uh through",
+      "offset": 640.8,
+      "duration": 3.599
+    },
+    {
+      "lang": "en",
+      "text": "our experiments, you saw that choosing a",
+      "offset": 642.72,
+      "duration": 3.359
+    },
+    {
+      "lang": "en",
+      "text": "smaller number of high quality sources",
+      "offset": 644.399,
+      "duration": 3.281
+    },
+    {
+      "lang": "en",
+      "text": "was much better than trying to optimize",
+      "offset": 646.079,
+      "duration": 3.921
+    },
+    {
+      "lang": "en",
+      "text": "for diversity by going for a larger",
+      "offset": 647.68,
+      "duration": 3.599
+    },
+    {
+      "lang": "en",
+      "text": "number of sources. That's very",
+      "offset": 650,
+      "duration": 2.72
+    },
+    {
+      "lang": "en",
+      "text": "counterintuitive, right? You'd think,",
+      "offset": 651.279,
+      "duration": 3.041
+    },
+    {
+      "lang": "en",
+      "text": "okay, I'm always going to go for for",
+      "offset": 652.72,
+      "duration": 2.88
+    },
+    {
+      "lang": "en",
+      "text": "higher diversity, but this is actually",
+      "offset": 654.32,
+      "duration": 4.079
+    },
+    {
+      "lang": "en",
+      "text": "not what we saw. Um the last thing we",
+      "offset": 655.6,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "was interesting is that people talk a",
+      "offset": 658.399,
+      "duration": 3.281
+    },
+    {
+      "lang": "en",
+      "text": "lot about um verification which is",
+      "offset": 660.16,
+      "duration": 4.239
+    },
+    {
+      "lang": "en",
+      "text": "obviously very important for RL and we",
+      "offset": 661.68,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "actually see for SFT and distillation it",
+      "offset": 664.399,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "didn't seem that filtering based off of",
+      "offset": 667.04,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "the answer or verifying the answer",
+      "offset": 668.959,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "really helped at all. This is quite",
+      "offset": 671.6,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "surprising. Um, and I think there's",
+      "offset": 673.279,
+      "duration": 4.721
+    },
+    {
+      "lang": "en",
+      "text": "there's some some good research in the",
+      "offset": 675.36,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "literature about maybe why this is",
+      "offset": 678,
+      "duration": 3.839
+    },
+    {
+      "lang": "en",
+      "text": "because if you have the the hardest",
+      "offset": 679.76,
+      "duration": 4.319
+    },
+    {
+      "lang": "en",
+      "text": "problem, it might be still helpful even",
+      "offset": 681.839,
+      "duration": 3.841
+    },
+    {
+      "lang": "en",
+      "text": "if you have an incorrect answer to that",
+      "offset": 684.079,
+      "duration": 4.161
+    },
+    {
+      "lang": "en",
+      "text": "hardest problem. Um, keeping it in and",
+      "offset": 685.68,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "and seeing how the teacher model",
+      "offset": 688.24,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "attempts. It's not just the final output",
+      "offset": 689.76,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "that matters.",
+      "offset": 692.16,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "Okay, great. Okay, so this is those are",
+      "offset": 694.64,
+      "duration": 3.04
+    },
+    {
+      "lang": "en",
+      "text": "all like the amazing learnings that we",
+      "offset": 696.24,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "had for open thoughts 3, which super",
+      "offset": 697.68,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "excited to share. But now you're",
+      "offset": 699.68,
+      "duration": 3.04
+    },
+    {
+      "lang": "en",
+      "text": "probably thinking, okay, they they've",
+      "offset": 701.2,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "done a thousand experiments. I don't",
+      "offset": 702.72,
+      "duration": 3.28
+    },
+    {
+      "lang": "en",
+      "text": "want to do a thousand experiments. I",
+      "offset": 704.56,
+      "duration": 3.04
+    },
+    {
+      "lang": "en",
+      "text": "still want to create reasoning models.",
+      "offset": 706,
+      "duration": 4.079
+    },
+    {
+      "lang": "en",
+      "text": "Uh how do I adapt this if I want to",
+      "offset": 707.6,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "create specialized reasoning models? Um",
+      "offset": 710.079,
+      "duration": 4.561
+    },
+    {
+      "lang": "en",
+      "text": "so I guess the first thing I would say",
+      "offset": 713.04,
+      "duration": 4.479
+    },
+    {
+      "lang": "en",
+      "text": "is be aware that based off of your",
+      "offset": 714.64,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "domain, these exact choices might be a",
+      "offset": 717.519,
+      "duration": 3.521
+    },
+    {
+      "lang": "en",
+      "text": "little bit different. I would suggest",
+      "offset": 719.68,
+      "duration": 3.12
+    },
+    {
+      "lang": "en",
+      "text": "okay, start with our recipe and then",
+      "offset": 721.04,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "iterate on it. If you have um capacity",
+      "offset": 722.8,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "and compute, try a couple different",
+      "offset": 725.12,
+      "duration": 3.279
+    },
+    {
+      "lang": "en",
+      "text": "choices for each step in the pipeline.",
+      "offset": 726.88,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "And I think a good example of this is we",
+      "offset": 728.399,
+      "duration": 4.961
+    },
+    {
+      "lang": "en",
+      "text": "studied each step in the pipeline",
+      "offset": 730.88,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "differently by domain. So we studied it",
+      "offset": 733.36,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "distinctly for code, science and math.",
+      "offset": 735.6,
+      "duration": 4.239
+    },
+    {
+      "lang": "en",
+      "text": "And we saw for example in the question",
+      "offset": 737.92,
+      "duration": 4.719
+    },
+    {
+      "lang": "en",
+      "text": "filtering which I talked about before um",
+      "offset": 739.839,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "using difficulty labels worked well for",
+      "offset": 742.639,
+      "duration": 5.681
+    },
+    {
+      "lang": "en",
+      "text": "code questions but for math and science",
+      "offset": 745.279,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "it was response length. And if you think",
+      "offset": 748.32,
+      "duration": 3.12
+    },
+    {
+      "lang": "en",
+      "text": "about that for a second, it makes a",
+      "offset": 749.839,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "little it makes sense because the",
+      "offset": 751.44,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "response length for coding questions are",
+      "offset": 753.519,
+      "duration": 4.641
+    },
+    {
+      "lang": "en",
+      "text": "very different, right? For for um Amy",
+      "offset": 756,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "math, it's literally just a number",
+      "offset": 758.16,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "between zero and a thousand. So the the",
+      "offset": 760,
+      "duration": 4.959
+    },
+    {
+      "lang": "en",
+      "text": "answer is not it's not considering a",
+      "offset": 762.56,
+      "duration": 3.839
+    },
+    {
+      "lang": "en",
+      "text": "large portion of the length, but you can",
+      "offset": 764.959,
+      "duration": 3.12
+    },
+    {
+      "lang": "en",
+      "text": "imagine there's very simple coding",
+      "offset": 766.399,
+      "duration": 4.161
+    },
+    {
+      "lang": "en",
+      "text": "questions in which the answer is still a",
+      "offset": 768.079,
+      "duration": 4.401
+    },
+    {
+      "lang": "en",
+      "text": "lot of lines of code. Um so yeah, this",
+      "offset": 770.56,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "is one thing to be aware of. The other",
+      "offset": 772.48,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "thing which I talked about previously is",
+      "offset": 774.88,
+      "duration": 3.519
+    },
+    {
+      "lang": "en",
+      "text": "synthetic question generation because it",
+      "offset": 776.32,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "works so well. Um and if if your",
+      "offset": 778.399,
+      "duration": 4.721
+    },
+    {
+      "lang": "en",
+      "text": "specialized domain if you're if you",
+      "offset": 781.2,
+      "duration": 3.28
+    },
+    {
+      "lang": "en",
+      "text": "don't have a lot of data for your",
+      "offset": 783.12,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "particular problem then uh go ahead",
+      "offset": 784.48,
+      "duration": 4.159
+    },
+    {
+      "lang": "en",
+      "text": "transform that existing data into",
+      "offset": 787.2,
+      "duration": 4.319
+    },
+    {
+      "lang": "en",
+      "text": "questions expand it um throw those as in",
+      "offset": 788.639,
+      "duration": 5.521
+    },
+    {
+      "lang": "en",
+      "text": "context examples and just and generate",
+      "offset": 791.519,
+      "duration": 4.401
+    },
+    {
+      "lang": "en",
+      "text": "more data. So yeah we built an open",
+      "offset": 794.16,
+      "duration": 2.88
+    },
+    {
+      "lang": "en",
+      "text": "source library for this. It's called",
+      "offset": 795.92,
+      "duration": 2.56
+    },
+    {
+      "lang": "en",
+      "text": "curator and you can you can try that",
+      "offset": 797.04,
+      "duration": 3.039
+    },
+    {
+      "lang": "en",
+      "text": "out.",
+      "offset": 798.48,
+      "duration": 3.12
+    },
+    {
+      "lang": "en",
+      "text": "And then lastly, I feel like everyone",
+      "offset": 800.079,
+      "duration": 3.601
+    },
+    {
+      "lang": "en",
+      "text": "says this, but it can't be said enough.",
+      "offset": 801.6,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "Like the evaluation is paramount. If you",
+      "offset": 803.68,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "don't know how well your models are",
+      "offset": 805.92,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "doing or improving, then you cannot make",
+      "offset": 808.16,
+      "duration": 3.919
+    },
+    {
+      "lang": "en",
+      "text": "good principled decisions about your",
+      "offset": 810,
+      "duration": 4.639
+    },
+    {
+      "lang": "en",
+      "text": "data set recipe. Um, we spent a lot of",
+      "offset": 812.079,
+      "duration": 4.241
+    },
+    {
+      "lang": "en",
+      "text": "time on this. We also have this open",
+      "offset": 814.639,
+      "duration": 3.521
+    },
+    {
+      "lang": "en",
+      "text": "source library on GitHub called",
+      "offset": 816.32,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "Evalchemy uh which takes a care takes",
+      "offset": 818.16,
+      "duration": 5.119
+    },
+    {
+      "lang": "en",
+      "text": "care of this and also takes care of the",
+      "offset": 820.88,
+      "duration": 4.959
+    },
+    {
+      "lang": "en",
+      "text": "um sharding and parallelism. And and the",
+      "offset": 823.279,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "key thing here is for very small",
+      "offset": 825.839,
+      "duration": 3.521
+    },
+    {
+      "lang": "en",
+      "text": "evaluation sets. If you if you only have",
+      "offset": 827.279,
+      "duration": 4.161
+    },
+    {
+      "lang": "en",
+      "text": "a handful of questions, you should run",
+      "offset": 829.36,
+      "duration": 4.719
+    },
+    {
+      "lang": "en",
+      "text": "your model on those evaluation sets many",
+      "offset": 831.44,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "times in average. So going back again to",
+      "offset": 834.079,
+      "duration": 4.961
+    },
+    {
+      "lang": "en",
+      "text": "Amy competitive math questions, there's",
+      "offset": 836.88,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "only 30 per year. So uh for our",
+      "offset": 839.04,
+      "duration": 6.32
+    },
+    {
+      "lang": "en",
+      "text": "evaluations, we gave the model those 30",
+      "offset": 842.24,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "questions 10 times and then we averaged",
+      "offset": 845.36,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "to get the the the final signal to",
+      "offset": 847.6,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "determine um which data strategies were",
+      "offset": 849.92,
+      "duration": 4.159
+    },
+    {
+      "lang": "en",
+      "text": "working better than others because",
+      "offset": 853.04,
+      "duration": 3.2
+    },
+    {
+      "lang": "en",
+      "text": "otherwise there's too much noise.",
+      "offset": 854.079,
+      "duration": 4.161
+    },
+    {
+      "lang": "en",
+      "text": "Okay, this is also very very interesting",
+      "offset": 856.24,
+      "duration": 4.959
+    },
+    {
+      "lang": "en",
+      "text": "and surprising and promising for you if",
+      "offset": 858.24,
+      "duration": 4.719
+    },
+    {
+      "lang": "en",
+      "text": "you're specializing.",
+      "offset": 861.199,
+      "duration": 3.601
+    },
+    {
+      "lang": "en",
+      "text": "It seems that you can actually surpass",
+      "offset": 862.959,
+      "duration": 3.361
+    },
+    {
+      "lang": "en",
+      "text": "the teacher in some domains with",
+      "offset": 864.8,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "distillation. This is this is super",
+      "offset": 866.32,
+      "duration": 3.759
+    },
+    {
+      "lang": "en",
+      "text": "cool. Usually you think about only RL",
+      "offset": 868.16,
+      "duration": 3.919
+    },
+    {
+      "lang": "en",
+      "text": "can push the frontier. Distillation is",
+      "offset": 870.079,
+      "duration": 3.681
+    },
+    {
+      "lang": "en",
+      "text": "just about catching up to the teacher,",
+      "offset": 872.079,
+      "duration": 3.521
+    },
+    {
+      "lang": "en",
+      "text": "but no, that's not the case. So we have",
+      "offset": 873.76,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "an example, it's in our paper where um",
+      "offset": 875.6,
+      "duration": 4.799
+    },
+    {
+      "lang": "en",
+      "text": "we looked at the legal reasoning domain.",
+      "offset": 878.24,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "So the problem of classifying Supreme",
+      "offset": 880.399,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "Court decisions.",
+      "offset": 882.88,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "What we did is we took 2k unique",
+      "offset": 885.279,
+      "duration": 6.081
+    },
+    {
+      "lang": "en",
+      "text": "questions. We sampled five answers per",
+      "offset": 887.36,
+      "duration": 7.2
+    },
+    {
+      "lang": "en",
+      "text": "question and then we did do verification",
+      "offset": 891.36,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "here which which did matter. So we threw",
+      "offset": 894.56,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "away any questions any answers that were",
+      "offset": 896.72,
+      "duration": 5.119
+    },
+    {
+      "lang": "en",
+      "text": "incorrect. Um and when you fine-tune the",
+      "offset": 899.44,
+      "duration": 5.839
+    },
+    {
+      "lang": "en",
+      "text": "7B model, it surpasses R1 which is a",
+      "offset": 901.839,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "very strong reasoning model and also a",
+      "offset": 905.279,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "very huge reasoning model. So this is",
+      "offset": 907.199,
+      "duration": 2.88
+    },
+    {
+      "lang": "en",
+      "text": "very exciting. I think there's a lot",
+      "offset": 908.959,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "more um research and also application to",
+      "offset": 910.079,
+      "duration": 6.081
+    },
+    {
+      "lang": "en",
+      "text": "be done here.",
+      "offset": 912.959,
+      "duration": 6.721
+    },
+    {
+      "lang": "en",
+      "text": "Okay, cool. So, everything's open. It's",
+      "offset": 916.16,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "open thoughts and open thoughts means",
+      "offset": 919.68,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "open. Go out and build. We have all of",
+      "offset": 921.36,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "our uh we've got our detailed paper.",
+      "offset": 923.76,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "It's just out this morning. We've got",
+      "offset": 925.76,
+      "duration": 3.759
+    },
+    {
+      "lang": "en",
+      "text": "the weights data set. Uh we have a ton",
+      "offset": 927.36,
+      "duration": 5.68
+    },
+    {
+      "lang": "en",
+      "text": "of repos for code for data generation",
+      "offset": 929.519,
+      "duration": 6.721
+    },
+    {
+      "lang": "en",
+      "text": "for evaluation and synthetic data. So,",
+      "offset": 933.04,
+      "duration": 6.239
+    },
+    {
+      "lang": "en",
+      "text": "check those out. Um this is this is the",
+      "offset": 936.24,
+      "duration": 5.279
+    },
+    {
+      "lang": "en",
+      "text": "team. It was a huge group of people, a",
+      "offset": 939.279,
+      "duration": 4.401
+    },
+    {
+      "lang": "en",
+      "text": "lot of work over many months. Uh, I",
+      "offset": 941.519,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "think we're all very proud of what we",
+      "offset": 943.68,
+      "duration": 3.12
+    },
+    {
+      "lang": "en",
+      "text": "did, but there's lots of people to",
+      "offset": 945.279,
+      "duration": 3.841
+    },
+    {
+      "lang": "en",
+      "text": "recognize here. If you scan that QR",
+      "offset": 946.8,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "code, it goes to the tweet and",
+      "offset": 949.12,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "everything uh about the Open Thoughts",
+      "offset": 951.12,
+      "duration": 4.079
+    },
+    {
+      "lang": "en",
+      "text": "project is linked in from there. Yeah.",
+      "offset": 953.36,
+      "duration": 5.08
+    },
+    {
+      "lang": "en",
+      "text": "Thank you.",
+      "offset": 955.199,
+      "duration": 3.241
+    },
+    {
+      "lang": "en",
+      "text": "All right. Thank you so much, Ryan. Um,",
+      "offset": 962.639,
+      "duration": 3.921
+    },
+    {
+      "lang": "en",
+      "text": "that was fascinating. Looks like we're",
+      "offset": 964.959,
+      "duration": 3.041
+    },
+    {
+      "lang": "en",
+      "text": "already getting we have at least one",
+      "offset": 966.56,
+      "duration": 3.04
+    },
+    {
+      "lang": "en",
+      "text": "question lined up. Again, we have time",
+      "offset": 968,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "for maybe a couple of questions. So, if",
+      "offset": 969.6,
+      "duration": 4.479
+    },
+    {
+      "lang": "en",
+      "text": "you have questions, um, please line up",
+      "offset": 972,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "and and we'll do it. Um, actually,",
+      "offset": 974.079,
+      "duration": 3.361
+    },
+    {
+      "lang": "en",
+      "text": "before we get to those questions, I will",
+      "offset": 976,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "say as people are leaving, um, we are",
+      "offset": 977.44,
+      "duration": 5.92
+    },
+    {
+      "lang": "en",
+      "text": "going to be back here at 2:00. We've got",
+      "offset": 980,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "an excellent afternoon planned on this",
+      "offset": 983.36,
+      "duration": 3.919
+    },
+    {
+      "lang": "en",
+      "text": "track. We've got Nathan Lambert. Um,",
+      "offset": 985.12,
+      "duration": 3.519
+    },
+    {
+      "lang": "en",
+      "text": "we've got the, uh, we've got Christian",
+      "offset": 987.279,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "Seed, who's the co-founder of X. Um, and",
+      "offset": 988.639,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "it's going to be a really great track at",
+      "offset": 991.199,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "2 o'clock back in this room. Also, one",
+      "offset": 992.399,
+      "duration": 4.081
+    },
+    {
+      "lang": "en",
+      "text": "more thing. If you do have questions for",
+      "offset": 994.639,
+      "duration": 3.601
+    },
+    {
+      "lang": "en",
+      "text": "any of the speakers from this morning,",
+      "offset": 996.48,
+      "duration": 2.96
+    },
+    {
+      "lang": "en",
+      "text": "um, hopefully they're going to be able",
+      "offset": 998.24,
+      "duration": 2.399
+    },
+    {
+      "lang": "en",
+      "text": "to stick around. Don't let them go to",
+      "offset": 999.44,
+      "duration": 2
+    },
+    {
+      "lang": "en",
+      "text": "lunch. They're going to be they're",
+      "offset": 1000.639,
+      "duration": 1.841
+    },
+    {
+      "lang": "en",
+      "text": "they're sitting up here at the front, so",
+      "offset": 1001.44,
+      "duration": 2.16
+    },
+    {
+      "lang": "en",
+      "text": "swarm them as soon as we're done. But",
+      "offset": 1002.48,
+      "duration": 2.4
+    },
+    {
+      "lang": "en",
+      "text": "for now, let's uh let's get a couple",
+      "offset": 1003.6,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "questions for uh Go ahead. Um yes, over",
+      "offset": 1004.88,
+      "duration": 4.639
+    },
+    {
+      "lang": "en",
+      "text": "there. Uh thank you. Great talk. So, uh",
+      "offset": 1007.68,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "two questions. One is um if you're just",
+      "offset": 1009.519,
+      "duration": 5.281
+    },
+    {
+      "lang": "en",
+      "text": "using SFT on this data, what's the",
+      "offset": 1012.24,
+      "duration": 5.039
+    },
+    {
+      "lang": "en",
+      "text": "difference between this and regular SFT?",
+      "offset": 1014.8,
+      "duration": 4.959
+    },
+    {
+      "lang": "en",
+      "text": "This is just regular SFT. Oh, yeah. Oh,",
+      "offset": 1017.279,
+      "duration": 5.201
+    },
+    {
+      "lang": "en",
+      "text": "okay. So then how is regular SFT able to",
+      "offset": 1019.759,
+      "duration": 4.721
+    },
+    {
+      "lang": "en",
+      "text": "make the models like think longer?",
+      "offset": 1022.48,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "Because I thought for the reason models",
+      "offset": 1024.48,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "they have like a thinking block and they",
+      "offset": 1026.48,
+      "duration": 3.839
+    },
+    {
+      "lang": "en",
+      "text": "think for you know hours and minutes and",
+      "offset": 1028.16,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "exactly so how do you how do you how",
+      "offset": 1030.319,
+      "duration": 3.841
+    },
+    {
+      "lang": "en",
+      "text": "does SFT make it think for hours? So",
+      "offset": 1031.6,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "you're you're doing supervised",
+      "offset": 1034.16,
+      "duration": 3.759
+    },
+    {
+      "lang": "en",
+      "text": "fine-tuning on the questions and the",
+      "offset": 1035.52,
+      "duration": 4.799
+    },
+    {
+      "lang": "en",
+      "text": "answers also contain the thinking. So",
+      "offset": 1037.919,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "the model learns to use its context",
+      "offset": 1040.319,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "window and produce these long thinking",
+      "offset": 1042.319,
+      "duration": 4.561
+    },
+    {
+      "lang": "en",
+      "text": "traces. So it can do this people call",
+      "offset": 1044.079,
+      "duration": 6.241
+    },
+    {
+      "lang": "en",
+      "text": "SFT imitation. Um but it it can learn to",
+      "offset": 1046.88,
+      "duration": 5.919
+    },
+    {
+      "lang": "en",
+      "text": "learn this format in the same way. Yeah.",
+      "offset": 1050.32,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "Thanks. All right, we'll take one from",
+      "offset": 1052.799,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "this side. Um, great presentation, Ryan.",
+      "offset": 1054.72,
+      "duration": 6.16
+    },
+    {
+      "lang": "en",
+      "text": "Uh, one question. Uh, why do you think,",
+      "offset": 1057.679,
+      "duration": 6.641
+    },
+    {
+      "lang": "en",
+      "text": "um, a smaller model like Quen 32B was a",
+      "offset": 1060.88,
+      "duration": 6.159
+    },
+    {
+      "lang": "en",
+      "text": "better teacher than a Deep Sea Car1?",
+      "offset": 1064.32,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "What was your insight in figuring out",
+      "offset": 1067.039,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "that like a good professor makes a bad",
+      "offset": 1068.96,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "lecturer? Yeah, that's a great question.",
+      "offset": 1071.679,
+      "duration": 4.081
+    },
+    {
+      "lang": "en",
+      "text": "Um I think this is something we need to",
+      "offset": 1073.76,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "investigate more but you can see that uh",
+      "offset": 1075.76,
+      "duration": 5.6
+    },
+    {
+      "lang": "en",
+      "text": "when you look at charts of the length of",
+      "offset": 1078.48,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "reasoning traces you can see the",
+      "offset": 1081.36,
+      "duration": 3.679
+    },
+    {
+      "lang": "en",
+      "text": "distributions are different. So uh it",
+      "offset": 1082.72,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "might be the case that you're using more",
+      "offset": 1085.039,
+      "duration": 3.121
+    },
+    {
+      "lang": "en",
+      "text": "of your context window using more tokens",
+      "offset": 1086.4,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "more steps. It also might be the case",
+      "offset": 1088.16,
+      "duration": 4.399
+    },
+    {
+      "lang": "en",
+      "text": "that you just have a better formatted",
+      "offset": 1089.84,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "response better output. Um this is like",
+      "offset": 1092.559,
+      "duration": 5.841
+    },
+    {
+      "lang": "en",
+      "text": "an another great open research question.",
+      "offset": 1095.28,
+      "duration": 4.399
+    },
+    {
+      "lang": "en",
+      "text": "Interesting. I'll also say on this point",
+      "offset": 1098.4,
+      "duration": 3.12
+    },
+    {
+      "lang": "en",
+      "text": "we also tried Claude as a teacher which",
+      "offset": 1099.679,
+      "duration": 3.681
+    },
+    {
+      "lang": "en",
+      "text": "is like a very as a good strong model",
+      "offset": 1101.52,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "and it was just a terrible teacher. Um",
+      "offset": 1103.36,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "so there's yeah it's interesting what",
+      "offset": 1105.44,
+      "duration": 4.479
+    },
+    {
+      "lang": "en",
+      "text": "can what actually creates a good",
+      "offset": 1108.32,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "teacher. Yeah. All right we'll take one",
+      "offset": 1109.919,
+      "duration": 4.081
+    },
+    {
+      "lang": "en",
+      "text": "more very brief question from this side",
+      "offset": 1112.4,
+      "duration": 3.12
+    },
+    {
+      "lang": "en",
+      "text": "and then those of you still waiting on",
+      "offset": 1114,
+      "duration": 3.919
+    },
+    {
+      "lang": "en",
+      "text": "questions um after uh after we have",
+      "offset": 1115.52,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "closed this up it's swarming. Sorry um",
+      "offset": 1117.919,
+      "duration": 4.801
+    },
+    {
+      "lang": "en",
+      "text": "great talk Ryan. Um we're doing similar",
+      "offset": 1120.64,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "kind of thing but I just had a question.",
+      "offset": 1122.72,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "Do you guys have any like pattern map as",
+      "offset": 1124.16,
+      "duration": 5.519
+    },
+    {
+      "lang": "en",
+      "text": "to in the reasoning chain of thought",
+      "offset": 1126.72,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "when things don't work at what level you",
+      "offset": 1129.679,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "know in the eval do you find out that",
+      "offset": 1132.48,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "things are not working or it's not",
+      "offset": 1134.559,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "reasoning correctly is there a pattern",
+      "offset": 1136.4,
+      "duration": 3.519
+    },
+    {
+      "lang": "en",
+      "text": "map or something that you have in your",
+      "offset": 1138.559,
+      "duration": 3.601
+    },
+    {
+      "lang": "en",
+      "text": "open source rap is sorry I didn't catch",
+      "offset": 1139.919,
+      "duration": 4.161
+    },
+    {
+      "lang": "en",
+      "text": "that is there a so if there are five",
+      "offset": 1142.16,
+      "duration": 3.759
+    },
+    {
+      "lang": "en",
+      "text": "steps of reasoning to reach a final",
+      "offset": 1144.08,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "conclusion uh at what step does a",
+      "offset": 1145.919,
+      "duration": 4.561
+    },
+    {
+      "lang": "en",
+      "text": "reasoning go arai yeah this is this is a",
+      "offset": 1148.32,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "great question we don't do this fine",
+      "offset": 1150.48,
+      "duration": 3.28
+    },
+    {
+      "lang": "en",
+      "text": "grain analysis but there is a ton in in",
+      "offset": 1152.08,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "the literature about this um where yeah",
+      "offset": 1153.76,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "there's a sort of critical step where it",
+      "offset": 1156.4,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "get gets things wrong. Um there we did",
+      "offset": 1158.48,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "like the simplest thing possible right",
+      "offset": 1161.52,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "you could also go in and try to do more",
+      "offset": 1163.28,
+      "duration": 5.759
+    },
+    {
+      "lang": "en",
+      "text": "complicated things um at evaluation time",
+      "offset": 1165.52,
+      "duration": 6.88
+    },
+    {
+      "lang": "en",
+      "text": "where you're doing interventions to uh",
+      "offset": 1169.039,
+      "duration": 5.361
+    },
+    {
+      "lang": "en",
+      "text": "maybe detect steps that have gone arry",
+      "offset": 1172.4,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "and and changed or you can do this in",
+      "offset": 1174.4,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "the when you're creating the data set.",
+      "offset": 1176.96,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "So you could potentially rewrite things,",
+      "offset": 1178.72,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "but everything that we tried in terms of",
+      "offset": 1180.48,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "like messing with the reasoning trace,",
+      "offset": 1182.64,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "it wasn't helpful. Um, so yeah, I think",
+      "offset": 1184.96,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "there's still more to explore there.",
+      "offset": 1188.4,
+      "duration": 2.8
+    },
+    {
+      "lang": "en",
+      "text": "There's like this is really just the",
+      "offset": 1189.76,
+      "duration": 5.799
+    },
+    {
+      "lang": "en",
+      "text": "start of everything in reasoning.",
+      "offset": 1191.2,
+      "duration": 4.359
+    },
+    {
+      "lang": "en",
+      "text": "[Music]",
+      "offset": 1197.42,
+      "duration": 2.619
+    }
+  ],
+  "cleanText": "[Music]\nI'm Ryan, I'm a founding engineer at Bespoke Labs. And today I'm going to talk to you about OpenThoughts, which is our project to create the best open-source reasoning data sets. And I'll be switching tack a little bit from our earlier discussions on reasoning and RL and focus on the reasoning part, and you'll see why. So just so we're on the same page, we've talked a lot about reasoning, but what's actually going on here? So I like this graph from JSON which shows this incredible performance that's happened in the last several months where models are getting much, much, much better on certain benchmarks. Um, and if you look at that, this is reasoning. This is test time scaling. I think everyone here is quite familiar with this. And it seems that certain tasks like Amy, which are competitive math problems, really respond to models when they're able to think step by step and do these long chain of thoughts. Um, so let's go back to DeepSeek R1. Now, I think Deepseek R1 was really impressive for a lot of people for a lot of reasons, and RL was a big part of that. But I was also particularly interested because Deepseek R1 at the end of the day is an SFT model. So the final weights that they've released are actually from DeepSseek V3 base which is fine-tuned on 800K SFT examples, 600K of which are reasoning. Of course you can see here that RL was a big part of it, and RL was used heavily to create that model which generated this data. Um, but at the end it was SFT and a little bit of RL for alignment. So this was really interesting and surprising. And the other thing that was really interesting and surprising to us was these small reasoning models that Deepseek released which were incredibly strong. Um, and this for us was a a huge motivation, a huge motivation to try to do this ourselves. And why is that interesting? Because if we go back to here, no additional detail was really given on these data sets here. So if you want to create strong reasoning models, we now sort of have a training recipe, but we don't have the data recipe. That's the missing link. Okay. I want to also include a slide here on why is it interesting to train your own reasoning models. So uh I'm partially taking this from Amir's talk yesterday on open source and enterprise which I really liked. But there's these main points: performance, privacy, speed and cost, and then ownership and destiny. I think um using reasoning is a is a great tool to solve a problem, and you shouldn't limit yourself in your toolbox if you're trying to solve a specific domain task. So, uh as we talked about before, RL is a great tool in this toolbox to tackle to tackle reasoning tasks. But we're going to see here that SFT is, as Nathan put this morning, extremely easy and extremely effective. Okay, great. Now, the missing link. How do we actually solve for this this reasoning data recipe? There's all these questions that we had when we started. How much data do you really need? What data creation steps are necessary? What are the optimal choices for each step in that data creation pipeline? And then, how do you even go about figuring all this out? And this this is the meat of the OpenThoughts project. So today we're excited to announce OpenThinker3, which is hot off the presses, just came out two hours ago, which is our latest and greatest version of our reasoning data sets. And thank you. And now we this is the state-of-the-art reasoning data set recipe.\nSo you can see here these graphs are showing accuracy on three of these reasoning benchmarks: Amy which is competitive math, live codebench is competitive code, and GPQA diamond which is our science questions. Um on the y-axis you see accuracy is going up. Uh on the x-axis you see the data scale is going up. So we we heard before that scaling is difficult, particularly difficult with RL. The good news is for SFT scaling is quite easier. Um you can see here we compare to other open reasoning data sets. So Neimatron nano, Nvidia released this great model Neimatron nano, it's a 8b model, and they also released the data set to train on it. So we compared directly by training on the same base model between our data set which is our data set recipe and the neatron nano data which is the Nvidia recipe, and you can see here there's a significant gap. So we we shifted this scaling curve upwards.\nGreat. So the yeah this is the state-of-the-art 7B open data reasoning model. You can see we've had we have measured across the domains of interest. So science, code and math and then a couple held out benchmarks.\nSo our original goal was to to reproduce to find the missing link for the DeepSeek distill models. And you can see here we've crushed that goal. So we're we're significantly outperforming the Deepseek R1 quen 7B model which we started off trying to reproduce.\nAnd then compared to the Neimatron nano model which is trained on a different base model um we are also outperforming on some benchmarks and similarly competitive on some others. So okay let's actually talk about how we achieve this. This is the interesting part for you. So we go back to the scaling graph. You can see um once again on the x-axis we're scaling data set size. So uh this is a a huge method to increase accuracy, and the thing here is it gets more and more expensive, exponentially more expensive as you keep going. Um and then uh on vertically you can see that we've shifted this the scaling curve up. So this is what I was talking about before. This is the improving the data set recipe. So given a fixed data set recipe you can always scale it larger and you can always have higher performance. But um if you want to push your performance to abs absolute maximum, the real question is how do I create the best data set and therefore what is the best recipe for the data set. Okay, so uh enough teasing here. Let's go into the meat of it. So this is this is how we approach this problem. We broke down the data set pipeline into sourcing questions, mixing different sources of questions, filtering those questions, filtering out the high highest quality questions, generating answers with a teacher model. So that's distillation, and then filtering out bad answers, um, and and lastly, at the end of this entire experimentation, we looked at what what are the best teacher models, which which teacher model should we select? So through this entire pipeline, we've we've come down to this final data set recipe. Now, this was a ton of work. This is a screenshot of our our hugging face page. So, you can see created over 5,000 data sets and almost 3,000 models. Um, for this project, it was only around a thousand experiments. But it just to give you an idea of how rigorously we looked at the different decisions in each of these steps of the pipeline. And also, I think this is interesting because it it peels back the curtain a little bit on maybe what the frontier labs are doing. uh finding signal at the smallest scale possible and trying out as many things as possible and empirically choosing the best and then scaling. And often sometimes when you scale you see okay what was the best at the small scale doesn't actually work, but if you're lucky um and you've done good science then you'll you'll your yolo run will be the best possible, right?\nOkay, so these are the the key learnings that we had from our data set recipe, and and this is what you can take away.\nSo the first thing is that pretty surprising sampling multiple answers, so multiple reasoning traces per question in your data set works really, really well. Um, the the performance does not go down at a fixed scale. If you take a fixed scale of questions, say 30k questions um or 30 30k examples and of those you if you take just 30k questions and you only sample once per question, that performs pretty similarly to um if you took 1/16th, so 30k over 16, and then for each you sampled 16 times, which is quite cool. So this allows you, this is really cool because this allows you to scale by 16x, which is more than an order of magnitude. And if you remember the graph from before, that corresponds to a pretty large increase in accuracy.\nYeah. The other surprising thing that we found was that a better model in terms of its own performance on evaluation benchmarks does not necessarily mean it's a better teacher model. I think a good way to think about this is a brilliant researcher who's maybe a terrible lecturer, right?\nUm, we found specifically Quen 32B was a stronger teacher model than Deepseek R1. So, we switched to that in our our recipe even though previously everyone has been using R1.\nWe also found that the the sources of data that had synthetic questions were actually quite good. Um, some of the top sources that we selected were entirely synthetic and better than sources say that scraped from forums or had humans manually write things. And this is also really good news because synthetic question generation is scalable. So once again we go back to the x-axis and we can push even further which is is accuracy boost.\nSo question filtering also works well here. We we filtered questions by having asking a language model how difficult is this question and then taking only the hardest questions.\nWe also had a language model try to answer that question and looked at the length of that answer. So these are sort of proxies for the same thing. You can imagine that if a problem is a lot harder then a language model will think more and it will produce more text. So its answer will be longer, and these things worked better than embeddings based approaches or fast text classifiers which is interesting as so much that those those approaches were typical for pre-training. So it seems that the the filtering for data in post-training is quite different than pre-training.\nOkay. Some things that didn't work that were also quite interesting. Uh through our experiments, you saw that choosing a smaller number of high quality sources was much better than trying to optimize for diversity by going for a larger number of sources. That's very counterintuitive, right? You'd think, okay, I'm always going to go for for higher diversity, but this is actually not what we saw. Um the last thing we was interesting is that people talk a lot about um verification which is obviously very important for RL, and we actually see for SFT and distillation it didn't seem that filtering based off of the answer or verifying the answer really helped at all. This is quite surprising. Um, and I think there's there's some some good research in the literature about maybe why this is because if you have the the hardest problem, it might be still helpful even if you have an incorrect answer to that hardest problem. Um, keeping it in and and seeing how the teacher model attempts. It's not just the final output that matters.\nOkay, great. Okay, so this is those are all like the amazing learnings that we had for open thoughts 3, which super excited to share. But now you're probably thinking, okay, they they've done a thousand experiments. I don't want to do a thousand experiments. I still want to create reasoning models. Uh how do I adapt this if I want to create specialized reasoning models? Um so I guess the first thing I would say is be aware that based off of your domain, these exact choices might be a little bit different. I would suggest okay, start with our recipe and then iterate on it. If you have um capacity and compute, try a couple different choices for each step in the pipeline. And I think a good example of this is we studied each step in the pipeline differently by domain. So we studied it distinctly for code, science and math. And we saw for example in the question filtering which I talked about before um using difficulty labels worked well for code questions, but for math and science it was response length. And if you think about that for a second, it makes a little it makes sense because the response length for coding questions are very different, right? For for um Amy math, it's literally just a number between zero and a thousand. So the the answer is not it's not considering a large portion of the length, but you can imagine there's very simple coding questions in which the answer is still a lot of lines of code. Um so yeah, this is one thing to be aware of. The other thing which I talked about previously is synthetic question generation because it works so well. Um and if if your specialized domain if you're if you don't have a lot of data for your particular problem then uh go ahead transform that existing data into questions, expand it, um throw those as in context examples and just and generate more data. So yeah we built an open source library for this. It's called curator and you can you can try that out.\nAnd then lastly, I feel like everyone says this, but it can't be said enough. Like the evaluation is paramount. If you don't know how well your models are doing or improving, then you cannot make good principled decisions about your data set recipe. Um, we spent a lot of time on this. We also have this open source library on GitHub called Evalchemy uh which takes a care takes care of this and also takes care of the um sharding and parallelism. And and the key thing here is for very small evaluation sets. If you if you only have a handful of questions, you should run your model on those evaluation sets many times in average. So going back again to Amy competitive math questions, there's only 30 per year. So uh for our evaluations, we gave the model those 30 questions 10 times and then we averaged to get the the the final signal to determine um which data strategies were working better than others because otherwise there's too much noise.\nOkay, this is also very very interesting and surprising and promising for you if you're specializing.\nIt seems that you can actually surpass the teacher in some domains with distillation. This is this is super cool. Usually you think about only RL can push the frontier. Distillation is just about catching up to the teacher, but no, that's not the case. So we have an example, it's in our paper where um we looked at the legal reasoning domain. So the problem of classifying Supreme Court decisions.\nWhat we did is we took 2k unique questions. We sampled five answers per question and then we did do verification here which which did matter. So we threw away any questions any answers that were incorrect. Um and when you fine-tune the 7B model, it surpasses R1 which is a very strong reasoning model and also a very huge reasoning model. So this is very exciting. I think there's a lot more um research and also application to be done here.\nOkay, cool. So, everything's open. It's open thoughts and open thoughts means open. Go out and build. We have all of our uh we've got our detailed paper. It's just out this morning. We've got the weights data set. Uh we have a ton of repos for code for data generation for evaluation and synthetic data. So, check those out. Um this is this\n\n\nis the team.\nIt was a huge group of people, a lot of work over many months.\nUh, I think we're all very proud of what we did, but there's lots of people to recognize here.\nIf you scan that QR code, it goes to the tweet and everything uh about the OpenThoughts project is linked in from there.\nYeah.\nThank you.\nAll right.\nThank you so much, Ryan.\nUm, that was fascinating.\nLooks like we're already getting we have at least one question lined up.\nAgain, we have time for maybe a couple of questions.\nSo, if you have questions, um, please line up and and we'll do it.\nUm, actually, before we get to those questions, I will say as people are leaving, um, we are going to be back here at 2:00.\nWe've got an excellent afternoon planned on this track.\nWe've got Nathan Lambert.\nUm, we've got the, uh, we've got Christian Seed, who's the co-founder of X.\nUm, and it's going to be a really great track at 2 o'clock back in this room.\nAlso, one more thing.\nIf you do have questions for any of the speakers from this morning, um, hopefully they're going to be able to stick around.\nDon't let them go to lunch.\nThey're going to be they're they're sitting up here at the front, so swarm them as soon as we're done.\nBut for now, let's uh let's get a couple questions for uh Go ahead.\nUm yes, over there.\nUh thank you.\nGreat talk.\nSo, uh two questions.\nOne is um if you're just using SFT on this data, what's the difference between this and regular SFT?\nThis is just regular SFT.\nOh, yeah.\nOh, okay.\nSo then how is regular SFT able to make the models like think longer?\nBecause I thought for the reason models they have like a thinking block and they think for you know hours and minutes and exactly so how do you how do you how does SFT make it think for hours?\nSo you're you're doing Supervised Fine-Tuning on the questions and the answers also contain the thinking.\nSo the model learns to use its context window and produce these long thinking traces.\nSo it can do this people call SFT imitation.\nUm but it it can learn to learn this format in the same way.\nYeah.\nThanks.\nAll right, we'll take one from this side.\nUm, great presentation, Ryan.\nUh, one question.\nUh, why do you think, um, a smaller model like Quen 32B was a better teacher than a Deep Sea Car1?\nWhat was your insight in figuring out that like a good professor makes a bad lecturer?\nYeah, that's a great question.\nUm I think this is something we need to investigate more but you can see that uh when you look at charts of the length of reasoning traces you can see the distributions are different.\nSo uh it might be the case that you're using more of your context window using more tokens more steps.\nIt also might be the case that you just have a better formatted response better output.\nUm this is like an another great open research question.\nInteresting.\nI'll also say on this point we also tried Claude as a teacher which is like a very as a good strong model and it was just a terrible teacher.\nUm so there's yeah it's interesting what can what actually creates a good teacher.\nYeah.\nAll right we'll take one more very brief question from this side and then those of you still waiting on questions um after uh after we have closed this up it's swarming.\nSorry um great talk Ryan.\nUm we're doing similar kind of thing but I just had a question.\nDo you guys have any like pattern map as to in the reasoning chain of thought when things don't work at what level you know in the eval do you find out that things are not working or it's not reasoning correctly is there a pattern map or something that you have in your open source rap is sorry I didn't catch that is there a so if there are five steps of reasoning to reach a final conclusion uh at what step does a reasoning go arai yeah this is this is a great question we don't do this fine grain analysis but there is a ton in in the literature about this um where yeah there's a sort of critical step where it get gets things wrong.\nUm there we did like the simplest thing possible right you could also go in and try to do more complicated things um at evaluation time where you're doing interventions to uh maybe detect steps that have gone arry and and changed or you can do this in the when you're creating the data set.\nSo you could potentially rewrite things, but everything that we tried in terms of like messing with the reasoning trace, it wasn't helpful.\nUm, so yeah, I think there's still more to explore there.\nThere's like this is really just the start of everything in reasoning.\n[Music]\n",
+  "dumpedAt": "2025-07-21T18:43:25.793Z"
+}

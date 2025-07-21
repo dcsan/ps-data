@@ -1,0 +1,5590 @@
+{
+  "episodeId": "AdhG64NF76E",
+  "channelSlug": "@howardjeremyp",
+  "title": "Lesson 6: Practical Deep Learning for Coders 2022",
+  "publishedAt": "2022-07-21T22:47:59.000Z",
+  "rawLines": [
+    {
+      "lang": "en",
+      "text": "Practical Deep Learning for Coders, Lesson 6",
+      "offset": 0,
+      "duration": 0.18
+    },
+    {
+      "lang": "en",
+      "text": "OK, so welcome back to lesson 6… not welcome \nback to, welcome to lesson 6 — first time we've  ",
+      "offset": 0.18,
+      "duration": 6.66
+    },
+    {
+      "lang": "en",
+      "text": "been in lesson 6! Welcome back to Practical Deep \nLearning for Coders. We just started looking at  ",
+      "offset": 6.84,
+      "duration": 8.94
+    },
+    {
+      "lang": "en",
+      "text": "tabular data last time, and for those of \nyou who've forgotten what we did was: We  ",
+      "offset": 16.68,
+      "duration": 10.5
+    },
+    {
+      "lang": "en",
+      "text": "were looking at the Titanic data set and \nwe were looking at creating binary splits  ",
+      "offset": 28.86,
+      "duration": 7.92
+    },
+    {
+      "lang": "en",
+      "text": "by looking at categorical variables \nor binary variables like sex and  ",
+      "offset": 37.5,
+      "duration": 8.82
+    },
+    {
+      "lang": "en",
+      "text": "continuous variables, like the \nlog of the fare that they paid,  ",
+      "offset": 47.82,
+      "duration": 4.2
+    },
+    {
+      "lang": "en",
+      "text": "and using those. You know, we also kind of \ncame up with a score which was basically: How  ",
+      "offset": 53.4,
+      "duration": 9.3
+    },
+    {
+      "lang": "en",
+      "text": "good a job did that split do of grouping the \nsurvival characteristics into two groups,  ",
+      "offset": 64.2,
+      "duration": 6.42
+    },
+    {
+      "lang": "en",
+      "text": "you know, all of, nearly all of one of \nwhom survived, nearly all of whom the  ",
+      "offset": 70.62,
+      "duration": 3.42
+    },
+    {
+      "lang": "en",
+      "text": "other didn't survive so they had like \nsmall standard deviation in each group.",
+      "offset": 74.04,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "And so then we created the world's simplest \nlittle UI to allow us to fiddle around and  ",
+      "offset": 80.1,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "try to find a good binary split. And we did… \nwe did come up with a very good binary split,  ",
+      "offset": 83.94,
+      "duration": 9.96
+    },
+    {
+      "lang": "en",
+      "text": "which was on sex and actually we created \nthis all automated version. And so this is,  ",
+      "offset": 95.28,
+      "duration": 7.74
+    },
+    {
+      "lang": "en",
+      "text": "I think, the first time we can —well not \nquite the first time is it?—no, this is,  ",
+      "offset": 103.02,
+      "duration": 3
+    },
+    {
+      "lang": "en",
+      "text": "this is yet another time, I should say, that \nwe have successfully created a uh, actual  ",
+      "offset": 107.04,
+      "duration": 5.1
+    },
+    {
+      "lang": "en",
+      "text": "machine learning algorithm from scratch, this one \nis about the world's simplest one, it's “OneR”,  ",
+      "offset": 112.86,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "creating the single rule which does \na good job of splitting your data  ",
+      "offset": 118.08,
+      "duration": 4.62
+    },
+    {
+      "lang": "en",
+      "text": "set into two parts which differ as much \nas possible on the dependent variable.",
+      "offset": 122.7,
+      "duration": 5.58
+    },
+    {
+      "lang": "en",
+      "text": "“OneR” is probably not going to \ncut it for a lot of things, though,  ",
+      "offset": 130.38,
+      "duration": 3.3
+    },
+    {
+      "lang": "en",
+      "text": "it's surprisingly effective but it's uh maybe \nwe could go a step further. And the other  ",
+      "offset": 133.68,
+      "duration": 6.24
+    },
+    {
+      "lang": "en",
+      "text": "step further we could go is we could create \nlike a “TwoR”, what if we took each of those  ",
+      "offset": 139.92,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "groups: males and females in the Titanic data set \nand split each of those into two other groups,  ",
+      "offset": 145.02,
+      "duration": 7.08
+    },
+    {
+      "lang": "en",
+      "text": "so split the males into two groups \nand split the females into two groups.",
+      "offset": 152.1,
+      "duration": 3.3
+    },
+    {
+      "lang": "en",
+      "text": "So, to do that we can repeat the exact same piece \nof code we just did but let's remove sex from it  ",
+      "offset": 157.38,
+      "duration": 12.66
+    },
+    {
+      "lang": "en",
+      "text": "and then split the data set into males and females  ",
+      "offset": 171.48,
+      "duration": 2.58
+    },
+    {
+      "lang": "en",
+      "text": "and run the same piece of code that we \njust did before but just for the males.  ",
+      "offset": 175.5,
+      "duration": 3.24
+    },
+    {
+      "lang": "en",
+      "text": "And so this is going to be like a “OneR” rule for \nhow do we predict which males survive the Titanic.",
+      "offset": 179.94,
+      "duration": 7.02
+    },
+    {
+      "lang": "en",
+      "text": "And let's have a look: 38, 37, 38, 38, 38. Okay, \nso it's ‘Age’, were they greater than or less than  ",
+      "offset": 187.86,
+      "duration": 8.58
+    },
+    {
+      "lang": "en",
+      "text": "six. Turns out to be for the males the biggest \npredictor of whether they were going to survive  ",
+      "offset": 196.44,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "that shipwreck. And we can do the same \nthing for females, so for females…  ",
+      "offset": 202.74,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "there we go, no great surprise, ‘Pclass’. \nSo whether they were in first class or not  ",
+      "offset": 213.06,
+      "duration": 6.42
+    },
+    {
+      "lang": "en",
+      "text": "was the biggest predictor for females of \nwhether they would survive the shipwreck.",
+      "offset": 220.2,
+      "duration": 4.44
+    },
+    {
+      "lang": "en",
+      "text": "So that has now given us a decision tree. It is \na series of binary splits which will gradually  ",
+      "offset": 228.72,
+      "duration": 11.82
+    },
+    {
+      "lang": "en",
+      "text": "split up our data more and more such that in \nthe end, in these in the leaf nodes —as we call  ",
+      "offset": 241.38,
+      "duration": 6.42
+    },
+    {
+      "lang": "en",
+      "text": "them— we will hopefully get as, you know, much \nstronger prediction as possible about survival.",
+      "offset": 247.8,
+      "duration": 7.38
+    },
+    {
+      "lang": "en",
+      "text": "So we could just repeat this step for each \nof the four groups we've now created: males,  ",
+      "offset": 256.8,
+      "duration": 5.4
+    },
+    {
+      "lang": "en",
+      "text": "kids and older than six. Females, first class \nand everybody else, and we can do it again. And  ",
+      "offset": 262.98,
+      "duration": 8.52
+    },
+    {
+      "lang": "en",
+      "text": "then we'd have eight groups. We could do that \nmanually with another couple of lines of code  ",
+      "offset": 271.5,
+      "duration": 5.64
+    },
+    {
+      "lang": "en",
+      "text": "or we can just use a decision tree classifier, \nwhich is a class which does exactly that for us.",
+      "offset": 277.14,
+      "duration": 5.82
+    },
+    {
+      "lang": "en",
+      "text": "So there's no magic in here, just \ndoing what we've just described.  ",
+      "offset": 283.68,
+      "duration": 3.72
+    },
+    {
+      "lang": "en",
+      "text": "And a decision tree classifier comes \nfrom a library called scikit-learn.  ",
+      "offset": 288.54,
+      "duration": 6.06
+    },
+    {
+      "lang": "en",
+      "text": "scikit-learn is a fantastic library \nthat focuses on, kind of, classical  ",
+      "offset": 296.58,
+      "duration": 5.1
+    },
+    {
+      "lang": "en",
+      "text": "non-deep learning ish machine \nlearning methods like decision trees.",
+      "offset": 302.88,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "So we can, so to create the exact same \ndecision tree we can say: please create  ",
+      "offset": 309.96,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "a decision tree classifier with at most four \nleaf nodes. And one very nice thing it has  ",
+      "offset": 314.28,
+      "duration": 8.1
+    },
+    {
+      "lang": "en",
+      "text": "is it can draw the tree for us. So \nhere's a tiny little draw_tree function.  ",
+      "offset": 323.88,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "And you can see here it's going to first of all \nsplit on sex, now, it looks a bit weird to say sex  ",
+      "offset": 331.44,
+      "duration": 6.3
+    },
+    {
+      "lang": "en",
+      "text": "is less than or equal to 0.5 but remember what our \nbinary characteristics are coded as zero or one,  ",
+      "offset": 337.74,
+      "duration": 7.5
+    },
+    {
+      "lang": "en",
+      "text": "so that's just how we, you know, \neasy way to say males versus females.  ",
+      "offset": 345.24,
+      "duration": 4.62
+    },
+    {
+      "lang": "en",
+      "text": "And then here we've got for the females, \nwhat class are they in, and for the males  ",
+      "offset": 352.5,
+      "duration": 6.9
+    },
+    {
+      "lang": "en",
+      "text": "what age are they. And here's our four leaf \nnodes. So for the females in first class  ",
+      "offset": 359.4,
+      "duration": 7.32
+    },
+    {
+      "lang": "en",
+      "text": "116 of them survived and four of them didn't \nso… very good idea to be a “well to do”  ",
+      "offset": 369.12,
+      "duration": 6.96
+    },
+    {
+      "lang": "en",
+      "text": "woman on the Titanic. On the \nother hand, males adults:  ",
+      "offset": 376.68,
+      "duration": 8.82
+    },
+    {
+      "lang": "en",
+      "text": "68 survived 350 died so, very bad idea \nto be a male adult on the Titanic.",
+      "offset": 387.96,
+      "duration": 7.86
+    },
+    {
+      "lang": "en",
+      "text": "So you can see you can kind of get a quick summary \nof what's going on and one of the reasons people  ",
+      "offset": 397.44,
+      "duration": 4.98
+    },
+    {
+      "lang": "en",
+      "text": "tend to like decision trees, particularly for \nexploratory data analysis, is it does allow us to  ",
+      "offset": 402.42,
+      "duration": 5.94
+    },
+    {
+      "lang": "en",
+      "text": "get a quick picture of what are the key \ndriving variables in this data set and  ",
+      "offset": 408.36,
+      "duration": 6.12
+    },
+    {
+      "lang": "en",
+      "text": "how much do they kind of predict \nwhat was happening in the data.",
+      "offset": 414.48,
+      "duration": 4.26
+    },
+    {
+      "lang": "en",
+      "text": "Okay, so it's around the same splits as \nus and it's got one additional piece of  ",
+      "offset": 420.18,
+      "duration": 5.46
+    },
+    {
+      "lang": "en",
+      "text": "information we haven't seen before, this \nis something called “Gini”. “Gini” is just  ",
+      "offset": 425.64,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "another way of measuring how good a split is, \nand I've put the code to calculate “Gini” here.  ",
+      "offset": 430.44,
+      "duration": 7.8
+    },
+    {
+      "lang": "en",
+      "text": "Here's how you can think of “Gini”: How \nlikely is it that, if you go into that sample  ",
+      "offset": 439.98,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "and grab one item and then go in again and grab \nanother item, how likely is it that you're going  ",
+      "offset": 446.22,
+      "duration": 6.72
+    },
+    {
+      "lang": "en",
+      "text": "to grab the same item each time. And so, if \nthat, if the entire leaf node is just people  ",
+      "offset": 452.94,
+      "duration": 10.92
+    },
+    {
+      "lang": "en",
+      "text": "who survived or just people who didn't survive the \nprobability would be one, you get the same time,  ",
+      "offset": 463.86,
+      "duration": 3.96
+    },
+    {
+      "lang": "en",
+      "text": "same every time. If it was an exactly \nequal mix, the probability would be 0.5.  ",
+      "offset": 467.82,
+      "duration": 3.9
+    },
+    {
+      "lang": "en",
+      "text": "So that's why we just, yeah, that's where this \nformula comes from in the binary case. And in fact  ",
+      "offset": 472.74,
+      "duration": 8.76
+    },
+    {
+      "lang": "en",
+      "text": "you can see it here, right, this group here is \npretty much 50-50 so “Gini” is 0.5. Or else this  ",
+      "offset": 481.5,
+      "duration": 5.46
+    },
+    {
+      "lang": "en",
+      "text": "grip here is nearly 100% in one class so “Gini” \nis nearly zero —so that backwards is one minus.  ",
+      "offset": 486.96,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "And I think I've written it backwards \nhere as well, so… I've got to fix that.",
+      "offset": 497.94,
+      "duration": 3.66
+    },
+    {
+      "lang": "en",
+      "text": "So this decision tree is, you know, we \nwould expect it to be more accurate so we  ",
+      "offset": 507.24,
+      "duration": 5.58
+    },
+    {
+      "lang": "en",
+      "text": "can calculate its mean absolute error. And for \nthe “OneR”, so just doing males versus females,  ",
+      "offset": 512.82,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "what was our score? Here we go, 0.407.  ",
+      "offset": 521.34,
+      "duration": 5.34
+    },
+    {
+      "lang": "en",
+      "text": "Uh, should we have a, do we have an accuracy \nscore, somewhere, here we are, 0.336.  ",
+      "offset": 527.64,
+      "duration": 4.2
+    },
+    {
+      "lang": "en",
+      "text": "Oh that was for ‘LogFare’ and for ‘Sex’ it was \n0.215, okay so 0.215. So that was for the “OneR”  ",
+      "offset": 535.32,
+      "duration": 10.38
+    },
+    {
+      "lang": "en",
+      "text": "version, for the decision tree with four leaf \nnodes 0.224 so it's actually a little worse,  ",
+      "offset": 545.7,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "right? And I think it just reflects the \nfact that this is such a small data set  ",
+      "offset": 551.7,
+      "duration": 4.68
+    },
+    {
+      "lang": "en",
+      "text": "and the “OneR” version was so good we \nhaven't really improved it that much,  ",
+      "offset": 557.94,
+      "duration": 6.72
+    },
+    {
+      "lang": "en",
+      "text": "or not enough to really see it amongst the \nrandomness of such a small validation set.",
+      "offset": 565.56,
+      "duration": 5.22
+    },
+    {
+      "lang": "en",
+      "text": "We could go further to 50, a minimum of \n50 samples per Leaf node. So that means  ",
+      "offset": 573.06,
+      "duration": 7.32
+    },
+    {
+      "lang": "en",
+      "text": "that in each of these, see how it says “samples”, \nwhich in this case is passengers on the Titanic,  ",
+      "offset": 580.38,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "there's at least... there's 67 people \nthat were... were female first class  ",
+      "offset": 585.9,
+      "duration": 7.08
+    },
+    {
+      "lang": "en",
+      "text": "less than 28. That's how you define that. \nSo this decision tree keeps building,  ",
+      "offset": 593.76,
+      "duration": 5.46
+    },
+    {
+      "lang": "en",
+      "text": "keep splitting until it gets to a point where \nthere's going to be less than 50 at which point  ",
+      "offset": 599.22,
+      "duration": 4.2
+    },
+    {
+      "lang": "en",
+      "text": "it stops splitting that... that leaf. So you \ncan see they're all got at least 50 samples  ",
+      "offset": 603.42,
+      "duration": 4.38
+    },
+    {
+      "lang": "en",
+      "text": "and so here's the decision tree that builds. As \nyou can see, it doesn't have to be like constant  ",
+      "offset": 609.12,
+      "duration": 5.16
+    },
+    {
+      "lang": "en",
+      "text": "depth, right? So this group here, which is males \nwho had cheaper fares and who were older than 20  ",
+      "offset": 614.28,
+      "duration": 11.46
+    },
+    {
+      "lang": "en",
+      "text": "but younger than 32... yeah actually \nyounger than 24. and actually  ",
+      "offset": 627.06,
+      "duration": 7.14
+    },
+    {
+      "lang": "en",
+      "text": "super cheap fares and so forth right. So it \nkeeps going down until we get to that group. So  ",
+      "offset": 635.04,
+      "duration": 5.82
+    },
+    {
+      "lang": "en",
+      "text": "let's try that decision tree. That decision \ntree has an absolute error of 0.183 so not  ",
+      "offset": 642,
+      "duration": 6.48
+    },
+    {
+      "lang": "en",
+      "text": "surprisingly you know once we get there it's \nstarting to look like it's a little bit better.",
+      "offset": 648.48,
+      "duration": 3
+    },
+    {
+      "lang": "en",
+      "text": "So there's a model and this is a Kaggle \ncompetition so therefore we should submit  ",
+      "offset": 655.08,
+      "duration": 7.08
+    },
+    {
+      "lang": "en",
+      "text": "it to the leaderboard. And. you know.one of \nthe... you know... biggest mistakes I see  ",
+      "offset": 662.16,
+      "duration": 7.5
+    },
+    {
+      "lang": "en",
+      "text": "not just beginners but every level of \npractitioner make on Kaggle is not to  ",
+      "offset": 670.74,
+      "duration": 4.2
+    },
+    {
+      "lang": "en",
+      "text": "submit to the leaderboard, spend months making \nsome perfect thing right but you actually got  ",
+      "offset": 674.94,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "to see how you're going and you should try and \nsubmit something to the leaderboard every day.  ",
+      "offset": 680.94,
+      "duration": 3.48
+    },
+    {
+      "lang": "en",
+      "text": "So you know, regardless of \nhow rubbish it is because  ",
+      "offset": 687.06,
+      "duration": 2.82
+    },
+    {
+      "lang": "en",
+      "text": "you want to improve every day. So you want to \nkeep iterating. So to submit something to the  ",
+      "offset": 691.02,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "leaderboard you generally have to provide a CSV \nfile and so we're going to create a CSV file.",
+      "offset": 696.54,
+      "duration": 8.7
+    },
+    {
+      "lang": "en",
+      "text": "And we're going to apply the category codes to \nget the category for each one in our test set.  ",
+      "offset": 708.78,
+      "duration": 6.78
+    },
+    {
+      "lang": "en",
+      "text": "we're going to set the survived \ncolumn to our predictions  ",
+      "offset": 716.22,
+      "duration": 2.76
+    },
+    {
+      "lang": "en",
+      "text": "and then we're going to send that off to a CSV.",
+      "offset": 720.54,
+      "duration": 2.04
+    },
+    {
+      "lang": "en",
+      "text": "And so yeah so I submitted that and I got to score \na little bit worse than most of our linear models  ",
+      "offset": 725.7,
+      "duration": 6.96
+    },
+    {
+      "lang": "en",
+      "text": "and neural nets but not terrible, you know. \nIt was... it's... it's just doing an okay job.",
+      "offset": 732.66,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "Now one interesting thing for the decision tree \nis there was a lot less preprocessing to do,  ",
+      "offset": 742.26,
+      "duration": 5.16
+    },
+    {
+      "lang": "en",
+      "text": "did you notice that? We didn't have to create \nany dummy variables for... for our categories  ",
+      "offset": 747.42,
+      "duration": 4.98
+    },
+    {
+      "lang": "en",
+      "text": "and like, you certainly can create dummy variables \nbut you often don't have to. So for example  ",
+      "offset": 754.14,
+      "duration": 6.72
+    },
+    {
+      "lang": "en",
+      "text": "you know... for… for “class” you know it's... it's \none two or three, you can just split on one, two,  ",
+      "offset": 762.48,
+      "duration": 5.34
+    },
+    {
+      "lang": "en",
+      "text": "or three, you know. Even for like, what was that \nthing... like the... the “embarkation city code”,  ",
+      "offset": 767.82,
+      "duration": 8.22
+    },
+    {
+      "lang": "en",
+      "text": "like we just convert them kind of arbitrarily to \nnumbers one, two, and three, and you can split on  ",
+      "offset": 776.04,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "those numbers. So with Random Forest also... not \nRandom Forest, not there yet... decision trees,  ",
+      "offset": 781.32,
+      "duration": 5.22
+    },
+    {
+      "lang": "en",
+      "text": "yeah... you can generally get away with not doing \nstuff like dummy variables. In fact, even taking  ",
+      "offset": 787.5,
+      "duration": 8.46
+    },
+    {
+      "lang": "en",
+      "text": "the log of “fair” we only did that to make our \ngraph look better but if you think about it,  ",
+      "offset": 795.96,
+      "duration": 6.54
+    },
+    {
+      "lang": "en",
+      "text": "splitting on log fare less than 2.7 is exactly the \nsame as splitting on Fair is less than e to the  ",
+      "offset": 803.1,
+      "duration": 7.32
+    },
+    {
+      "lang": "en",
+      "text": "2.7 you know or whatever log base we used, I can't \nremember. So all that a decision tree cares about  ",
+      "offset": 810.42,
+      "duration": 8.64
+    },
+    {
+      "lang": "en",
+      "text": "is the ordering of the data and this is another \nreason that decision tree based approaches are  ",
+      "offset": 819.06,
+      "duration": 5.1
+    },
+    {
+      "lang": "en",
+      "text": "fantastic because they don't care at all about \noutliers, you know... long tail distributions,  ",
+      "offset": 824.16,
+      "duration": 7.02
+    },
+    {
+      "lang": "en",
+      "text": "categorical variables whatever. You can throw \nit all in and it'll do a perfectly fine job. So  ",
+      "offset": 832.02,
+      "duration": 8.1
+    },
+    {
+      "lang": "en",
+      "text": "for tabular data I would always start by using a \ndecision tree based approach and kind of create  ",
+      "offset": 842.04,
+      "duration": 9.3
+    },
+    {
+      "lang": "en",
+      "text": "some baselines and so forth because it's... it's \nreally hard to mess it up and that's important.",
+      "offset": 851.34,
+      "duration": 6.9
+    },
+    {
+      "lang": "en",
+      "text": "So yeah... so here for example is “Embarked”, \nright? It... it was coded originally as  ",
+      "offset": 861.42,
+      "duration": 6.9
+    },
+    {
+      "lang": "en",
+      "text": "the first letter of the city they embarked in,  ",
+      "offset": 869.1,
+      "duration": 2.88
+    },
+    {
+      "lang": "en",
+      "text": "but we turned it into a categorical variable and \nso pandas for us creates this this vocab this list  ",
+      "offset": 872.82,
+      "duration": 6.48
+    },
+    {
+      "lang": "en",
+      "text": "of all of the possible values and if you look at \nthe codes attribute you can see it's that S is  ",
+      "offset": 879.3,
+      "duration": 8.04
+    },
+    {
+      "lang": "en",
+      "text": "the... zero one two... so S has become 2, C has \nbecome zero and so forth, right. So that's how  ",
+      "offset": 887.34,
+      "duration": 7.68
+    },
+    {
+      "lang": "en",
+      "text": "we're converting the categories, the strings \ninto numbers that we can sort and group by.",
+      "offset": 895.02,
+      "duration": 6.6
+    },
+    {
+      "lang": "en",
+      "text": "So yeah... so if we wanted to split C into one \ngroup and Q and S in the other we can just do,  ",
+      "offset": 905.34,
+      "duration": 4.68
+    },
+    {
+      "lang": "en",
+      "text": "okay, less than a quarter one point 0.5. Now \nof course if we wanted to split C and S into  ",
+      "offset": 910.02,
+      "duration": 6.72
+    },
+    {
+      "lang": "en",
+      "text": "one group and Q into the other we would need two \nbinary splits first C on one side and Q and S on  ",
+      "offset": 916.74,
+      "duration": 7.56
+    },
+    {
+      "lang": "en",
+      "text": "the other and then Q and S into Q versus S and \nthen the Q and S leaf nodes could get similar  ",
+      "offset": 924.3,
+      "duration": 6.3
+    },
+    {
+      "lang": "en",
+      "text": "predictions. So like you do have, like sometimes \nit can take a little bit more messing around but  ",
+      "offset": 930.6,
+      "duration": 6.42
+    },
+    {
+      "lang": "en",
+      "text": "most of the time I find categorical variables work \nfine as numeric in decision tree based approaches  ",
+      "offset": 937.74,
+      "duration": 6.9
+    },
+    {
+      "lang": "en",
+      "text": "and as I say here I tend to use dummy variables \nonly if there's like less than four levels.",
+      "offset": 944.64,
+      "duration": 4.44
+    },
+    {
+      "lang": "en",
+      "text": "Now, what if we wanted to make this more \naccurate? could we grow the tree further?  ",
+      "offset": 953.04,
+      "duration": 5.88
+    },
+    {
+      "lang": "en",
+      "text": "I mean, we could, but, you know, there's only 50 \nsamples in these leaves, right? it's not really…  ",
+      "offset": 960.54,
+      "duration": 11.58
+    },
+    {
+      "lang": "en",
+      "text": "you know, if I keep splitting it, the \nleaf nodes are going to have so little  ",
+      "offset": 977.64,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "data that's not really going to make very useful \npredictions. Now there are limitations to how  ",
+      "offset": 981.72,
+      "duration": 6.3
+    },
+    {
+      "lang": "en",
+      "text": "accurate a decision tree can be. So what can we \ndo? We can do something that's actually very,  ",
+      "offset": 988.02,
+      "duration": 11.1
+    },
+    {
+      "lang": "en",
+      "text": "I mean, I find it amazing and fascinating, \ncomes from a guy called Leo Breiman.  ",
+      "offset": 999.78,
+      "duration": 6.06
+    },
+    {
+      "lang": "en",
+      "text": "And Leo Breiman came up with… came \nup with this idea called bagging.",
+      "offset": 1007.28,
+      "duration": 5.64
+    },
+    {
+      "lang": "en",
+      "text": "And here's the basic idea of bagging: let's \nsay we've got a model that's not very good  ",
+      "offset": 1012.92,
+      "duration": 7.02
+    },
+    {
+      "lang": "en",
+      "text": "because, let's say, it's a decision tree, it's \nreally small, we've hardly used any data for it  ",
+      "offset": 1021.26,
+      "duration": 5.34
+    },
+    {
+      "lang": "en",
+      "text": "right, it's not very good so, it's got \nerror, it's got errors on predictions.  ",
+      "offset": 1026.6,
+      "duration": 4.5
+    },
+    {
+      "lang": "en",
+      "text": "It's not a systematically biased error, it's not \nalways predicting too high or always predicting  ",
+      "offset": 1032.66,
+      "duration": 4.02
+    },
+    {
+      "lang": "en",
+      "text": "too low, I mean, decision trees, you know, \non average will predict the average, right?  ",
+      "offset": 1036.68,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "but it has errors. So what I could do \nis I could build another decision tree  ",
+      "offset": 1042.38,
+      "duration": 5.7
+    },
+    {
+      "lang": "en",
+      "text": "in some slightly different way that would have \ndifferent splits and it would also be not a  ",
+      "offset": 1049.34,
+      "duration": 6.6
+    },
+    {
+      "lang": "en",
+      "text": "great model, but it predicts the correct thing on \naverage, it's not completely hopeless and again,  ",
+      "offset": 1055.94,
+      "duration": 6.84
+    },
+    {
+      "lang": "en",
+      "text": "you know, some of the errors are a bit \ntoo high and some are a bit too low.",
+      "offset": 1062.78,
+      "duration": 2.76
+    },
+    {
+      "lang": "en",
+      "text": "And I could keep doing this so, if I could \ncreate building lots and lots of slightly  ",
+      "offset": 1066.44,
+      "duration": 3.78
+    },
+    {
+      "lang": "en",
+      "text": "different decision trees I'm going to end \nup with say a hundred different models,  ",
+      "offset": 1070.22,
+      "duration": 5.94
+    },
+    {
+      "lang": "en",
+      "text": "all of which are unbiased, all of which are \nbetter than nothing, and all of which have  ",
+      "offset": 1076.16,
+      "duration": 5.64
+    },
+    {
+      "lang": "en",
+      "text": "some errors a bit high, some bit low, whatever. So \nwhat would happen if I averaged their predictions?  ",
+      "offset": 1081.8,
+      "duration": 5.7
+    },
+    {
+      "lang": "en",
+      "text": "Assuming that the models are \nnot correlated with each other  ",
+      "offset": 1089.06,
+      "duration": 4.14
+    },
+    {
+      "lang": "en",
+      "text": "then you're going to end up with errors on \neither side of the curve: the correct prediction,  ",
+      "offset": 1093.98,
+      "duration": 6.66
+    },
+    {
+      "lang": "en",
+      "text": "some are a bit high, some are a bit low, \nthere'll be this kind of distribution of errors,  ",
+      "offset": 1100.64,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "right? And the average of those errors will \nbe zero, and so that means the average of the  ",
+      "offset": 1105.44,
+      "duration": 9.36
+    },
+    {
+      "lang": "en",
+      "text": "predictions of these multiple uncorrelated models \n—each of which is unbiased— will be the correct  ",
+      "offset": 1114.8,
+      "duration": 7.26
+    },
+    {
+      "lang": "en",
+      "text": "prediction because they have an error of zero. And \nthis is a mind-blowing insight, it says that if  ",
+      "offset": 1122.06,
+      "duration": 7.02
+    },
+    {
+      "lang": "en",
+      "text": "we can generate a whole bunch of uncorrelated, \nunbiased models, we can average them and get  ",
+      "offset": 1129.08,
+      "duration": 11.28
+    },
+    {
+      "lang": "en",
+      "text": "something better than any of the individual models \nbecause the average of the error will be zero.",
+      "offset": 1140.36,
+      "duration": 5.88
+    },
+    {
+      "lang": "en",
+      "text": "So all we need is a way to \ngenerate lots of models.  ",
+      "offset": 1147.14,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "Well we already have a great way to build \nmodels —which is to create a decision tree—  ",
+      "offset": 1152.84,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "how do we create lots of them? how to create \nlots of unbiased but different models? Well,  ",
+      "offset": 1157.4,
+      "duration": 7.32
+    },
+    {
+      "lang": "en",
+      "text": "let's just grab a different subset of the data \neach time, let's just grab at random half the rows  ",
+      "offset": 1166.04,
+      "duration": 6.54
+    },
+    {
+      "lang": "en",
+      "text": "and build a decision tree, and then grab another \nhalf of the rows and build a decision tree,  ",
+      "offset": 1173.24,
+      "duration": 4.86
+    },
+    {
+      "lang": "en",
+      "text": "and grab another half the rows and build \na decision tree. Each of those decision  ",
+      "offset": 1178.7,
+      "duration": 3.18
+    },
+    {
+      "lang": "en",
+      "text": "trees is going to be not great \n—it's only using half the data—  ",
+      "offset": 1181.88,
+      "duration": 2.82
+    },
+    {
+      "lang": "en",
+      "text": "but it will be unbiased, it will be predicting the \naverage on average, it will certainly be better  ",
+      "offset": 1185.24,
+      "duration": 4.98
+    },
+    {
+      "lang": "en",
+      "text": "than nothing because it's using, you know, some \nreal data to try and create a real decision tree.  ",
+      "offset": 1190.22,
+      "duration": 4.2
+    },
+    {
+      "lang": "en",
+      "text": "They won't be correlated with each other because \nthey're each random subsets. So that meets all  ",
+      "offset": 1196.7,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "of our criteria for bagging. When you do this \nyou create something called a “Random Forest”.  ",
+      "offset": 1202.22,
+      "duration": 6.84
+    },
+    {
+      "lang": "en",
+      "text": "So let's create one in four lines of code. So  ",
+      "offset": 1210.8,
+      "duration": 6.48
+    },
+    {
+      "lang": "en",
+      "text": "here is a function to create a decision tree, \nso let's say, what —this is just the proportion  ",
+      "offset": 1218.06,
+      "duration": 5.46
+    },
+    {
+      "lang": "en",
+      "text": "of data— so let's say we put 75% of the data in \neach time —or we could change it to 50%— whatever,  ",
+      "offset": 1223.52,
+      "duration": 6.18
+    },
+    {
+      "lang": "en",
+      "text": "so this is the number of samples in this subset \n—I call it n— and so let's at random choose  ",
+      "offset": 1230.72,
+      "duration": 8.4
+    },
+    {
+      "lang": "en",
+      "text": "n times the proportion we requested from the \nsample and build a decision tree from that.  ",
+      "offset": 1240.32,
+      "duration": 6.84
+    },
+    {
+      "lang": "en",
+      "text": "And so now let's, 100 times, get a tree, and stick \nthem all in a list using a list comprehension.",
+      "offset": 1248.78,
+      "duration": 8.52
+    },
+    {
+      "lang": "en",
+      "text": "And now let's grab the predictions \nfor each one of those trees  ",
+      "offset": 1259.46,
+      "duration": 4.14
+    },
+    {
+      "lang": "en",
+      "text": "and then let's stack all those predictions \nup together and take their mean.  ",
+      "offset": 1264.86,
+      "duration": 2.88
+    },
+    {
+      "lang": "en",
+      "text": "And that is a Random Forest. And, what do \nwe get?, one, two, three, four, five, six,  ",
+      "offset": 1270.44,
+      "duration": 7.02
+    },
+    {
+      "lang": "en",
+      "text": "seven, eight, that's some, yeah, seven lines \nof code. So Random Forests are very simple.  ",
+      "offset": 1277.46,
+      "duration": 6.78
+    },
+    {
+      "lang": "en",
+      "text": "This is a slight simplification, there's \none other difference that Random Forests  ",
+      "offset": 1285.56,
+      "duration": 4.38
+    },
+    {
+      "lang": "en",
+      "text": "do which is when they build the decision tree \nthey also randomly select a subset of columns  ",
+      "offset": 1289.94,
+      "duration": 6.42
+    },
+    {
+      "lang": "en",
+      "text": "and they select a different random subset \nof columns each time they do a split.  ",
+      "offset": 1297.08,
+      "duration": 4.74
+    },
+    {
+      "lang": "en",
+      "text": "And so the idea is you kind of want it to be \nas random as possible but also somewhat useful.",
+      "offset": 1302.54,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "So we can do that by creating \na “RandomForestClassifier”,  ",
+      "offset": 1319.4,
+      "duration": 2.64
+    },
+    {
+      "lang": "en",
+      "text": "say how many trees do we want, \nhow many samples per leaf  ",
+      "offset": 1323.18,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "and then fit —that is what we just did— \nand here's our mean absolute error which…  ",
+      "offset": 1328.46,
+      "duration": 5.16
+    },
+    {
+      "lang": "en",
+      "text": "Yeah, again, it's like not as good as \nour decision tree but it's still pretty  ",
+      "offset": 1336.62,
+      "duration": 3.18
+    },
+    {
+      "lang": "en",
+      "text": "good and again it's such a small data set \nit's hard to tell if that means anything  ",
+      "offset": 1339.8,
+      "duration": 3.3
+    },
+    {
+      "lang": "en",
+      "text": "and so we can submit that to Kaggle. So \nearlier on I created little function to  ",
+      "offset": 1344,
+      "duration": 3.54
+    },
+    {
+      "lang": "en",
+      "text": "submit to Kaggle, so now I just create \nsome predictions and I submit to Kaggle.  ",
+      "offset": 1347.54,
+      "duration": 4.2
+    },
+    {
+      "lang": "en",
+      "text": "And, yeah, looks like it gave nearly \nidentical results to a single tree.",
+      "offset": 1351.74,
+      "duration": 3.54
+    },
+    {
+      "lang": "en",
+      "text": "Now to one of my favorite things about Random \nForest —and I should say, in… in most real world  ",
+      "offset": 1359.12,
+      "duration": 7.08
+    },
+    {
+      "lang": "en",
+      "text": "data sets of reasonable size, Random Forest \nbasically always give you much better results  ",
+      "offset": 1366.2,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "than decision trees, this is just a small data set \nto show you what to do. One of my favorite things  ",
+      "offset": 1371,
+      "duration": 7.02
+    },
+    {
+      "lang": "en",
+      "text": "about Random Forests is we can do something quite \ncool with it, what we can do is we can look at the  ",
+      "offset": 1378.02,
+      "duration": 6.42
+    },
+    {
+      "lang": "en",
+      "text": "underlying decision trees they create, \nso we've now got 100 decision trees,  ",
+      "offset": 1385.04,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "and we can see what columns did it find a split \non and so, say here, okay well the first thing it  ",
+      "offset": 1390.5,
+      "duration": 7.02
+    },
+    {
+      "lang": "en",
+      "text": "spit on was ‘Sex’, and it improved the Gini from \n0.47 to —now just take the weighted average of  ",
+      "offset": 1397.52,
+      "duration": 10.32
+    },
+    {
+      "lang": "en",
+      "text": "0.38 and 0.31 weighted by the samples— so that's \nprobably going to be, I don't know, about 0.33.  ",
+      "offset": 1407.84,
+      "duration": 6.24
+    },
+    {
+      "lang": "en",
+      "text": "So I'd say, okay, it's like 0.14 Improvement in \nGini thanks to ‘Sex’. And we can do that again:  ",
+      "offset": 1414.68,
+      "duration": 8.1
+    },
+    {
+      "lang": "en",
+      "text": "okay, we'll then ‘PClass’, you know, how much did \nthat improve Gini, again, we keep weighting it  ",
+      "offset": 1422.78,
+      "duration": 5.22
+    },
+    {
+      "lang": "en",
+      "text": "by the number of samples as well. ‘LogFare’, how \nmuch does that improve Gini and we can keep track:  ",
+      "offset": 1428,
+      "duration": 4.98
+    },
+    {
+      "lang": "en",
+      "text": "for each column of, how much in total did \nthey improve the Gini in this decision tree.  ",
+      "offset": 1433.82,
+      "duration": 7.44
+    },
+    {
+      "lang": "en",
+      "text": "And then do that for every decision \ntree, and then add them up per column  ",
+      "offset": 1442.34,
+      "duration": 5.22
+    },
+    {
+      "lang": "en",
+      "text": "and that gives you something called a \nfeature importance plot, and here it is.",
+      "offset": 1448.1,
+      "duration": 5.7
+    },
+    {
+      "lang": "en",
+      "text": "And a feature importance plot tells \nyou how important is each feature,  ",
+      "offset": 1456.02,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "how often did the trees pick it and how \nmuch did it improve the Gini when it did.  ",
+      "offset": 1461.18,
+      "duration": 4.98
+    },
+    {
+      "lang": "en",
+      "text": "And so, we can see from the feature importance \nplot that ‘Sex’ was the most important, and  ",
+      "offset": 1466.76,
+      "duration": 6.9
+    },
+    {
+      "lang": "en",
+      "text": "class was the second most important and \neverything else was a long way back.  ",
+      "offset": 1474.26,
+      "duration": 4.5
+    },
+    {
+      "lang": "en",
+      "text": "And this is another reason, by the way, why a \nRandom Forest isn't really particularly helpful:  ",
+      "offset": 1479.66,
+      "duration": 4.02
+    },
+    {
+      "lang": "en",
+      "text": "because it's just such a easy split to \ndo, right? basically all that matters is,  ",
+      "offset": 1483.68,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "you know, what class you're in \nand whether you're male or female.",
+      "offset": 1491.18,
+      "duration": 3.18
+    },
+    {
+      "lang": "en",
+      "text": "And these feature importance plots, remember:  ",
+      "offset": 1496.76,
+      "duration": 4.38
+    },
+    {
+      "lang": "en",
+      "text": "because they're built on Random Forests, \nand Random Forests don't care about, really,  ",
+      "offset": 1501.86,
+      "duration": 7.02
+    },
+    {
+      "lang": "en",
+      "text": "the distribution of your data and they can handle \ncategorical variables and stuff like that, that  ",
+      "offset": 1509.54,
+      "duration": 4.74
+    },
+    {
+      "lang": "en",
+      "text": "means that you can basically, any tabular data \nset you have, you can just plot this, right away,  ",
+      "offset": 1514.28,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "and Random Forests, you know, for most data sets, \nonly take a few seconds to train, you know, really  ",
+      "offset": 1520.88,
+      "duration": 5.94
+    },
+    {
+      "lang": "en",
+      "text": "most of a minute or two. And so, if you've got a \nbig data set and, you know, hundreds of columns:  ",
+      "offset": 1526.82,
+      "duration": 7.92
+    },
+    {
+      "lang": "en",
+      "text": "do this first and find the 30 columns that \nmight matter, it's such a helpful thing to do.  ",
+      "offset": 1535.64,
+      "duration": 10.26
+    },
+    {
+      "lang": "en",
+      "text": "So I've done that, for example, I did some work in \ncredit scoring, so we're trying to find out which  ",
+      "offset": 1545.9,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "things would predict who's going to default on a \nloan and I was given something like seven thousand  ",
+      "offset": 1551.36,
+      "duration": 7.2
+    },
+    {
+      "lang": "en",
+      "text": "columns from the database, now I put it straight \ninto a Random Forest and found, I think, there was  ",
+      "offset": 1559.22,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "about 30 columns that seemed kind of interesting. \nI did that like two hours after I started the job  ",
+      "offset": 1565.22,
+      "duration": 6.6
+    },
+    {
+      "lang": "en",
+      "text": "and I went to the head of marketing \nand the head of risk and I told them:  ",
+      "offset": 1572.9,
+      "duration": 5.46
+    },
+    {
+      "lang": "en",
+      "text": "here's the columns I think that we should \nfocus on, and they were like: “oh my God,  ",
+      "offset": 1578.36,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "we just finished a two-year consulting \nproject with one of the big consultants,  ",
+      "offset": 1584.12,
+      "duration": 3.9
+    },
+    {
+      "lang": "en",
+      "text": "paid the millions of dollars, and they \ncame up with a subset of these… «laughs»",
+      "offset": 1589.04,
+      "duration": 7.02
+    },
+    {
+      "lang": "en",
+      "text": "There are other things that you can do with \nRandom Forests along this path, I'll touch  ",
+      "offset": 1598.4,
+      "duration": 7.44
+    },
+    {
+      "lang": "en",
+      "text": "on them briefly, and specifically I'm going to \nlook at Chapter 8 of the book, which goes into  ",
+      "offset": 1605.84,
+      "duration": 13.26
+    },
+    {
+      "lang": "en",
+      "text": "this in a lot more detail. And particularly \ninterestingly Chapter 8 of the book uses a  ",
+      "offset": 1619.1,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "much bigger and more interesting data set which \nis auction prices of heavy industrial equipment,  ",
+      "offset": 1623.9,
+      "duration": 6.72
+    },
+    {
+      "lang": "en",
+      "text": "I mean, it's less interesting historically \nbut more interestingly numerically.",
+      "offset": 1630.62,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "And so, some of the things I \ndid there on this data set —  ",
+      "offset": 1639.98,
+      "duration": 4.36
+    },
+    {
+      "lang": "en",
+      "text": "sorry this isn’t from the data set, this \nis from the scikit-learn documentation—  ",
+      "offset": 1645.86,
+      "duration": 3.12
+    },
+    {
+      "lang": "en",
+      "text": "they looked at how, as you increase the \nnumber of estimators, so the number of trees,  ",
+      "offset": 1649.7,
+      "duration": 4.62
+    },
+    {
+      "lang": "en",
+      "text": "how much does the accuracy improve. So I then did \nthe same thing on our data set, so I actually just  ",
+      "offset": 1655.64,
+      "duration": 6.54
+    },
+    {
+      "lang": "en",
+      "text": "added up to 40, more and more and more trees,  ",
+      "offset": 1663.38,
+      "duration": 3.54
+    },
+    {
+      "lang": "en",
+      "text": "and you can see that basically —as \npredicted by that kind of an initial bit of  ",
+      "offset": 1667.94,
+      "duration": 6.12
+    },
+    {
+      "lang": "en",
+      "text": "hand wavy theory I gave you— that you'd expect the \nmore trees, the lower the error, because the more  ",
+      "offset": 1675.2,
+      "duration": 6.36
+    },
+    {
+      "lang": "en",
+      "text": "things you're averaging and that's exactly what we \nfind: the accuracy improves as we have more trees.",
+      "offset": 1681.56,
+      "duration": 5.58
+    },
+    {
+      "lang": "en",
+      "text": "John what's up…",
+      "offset": 1687.8,
+      "duration": 1.28
+    },
+    {
+      "lang": "en",
+      "text": "John: Oh, Víctor… it is possible you \nmight have just answered his question  ",
+      "offset": 1689.08,
+      "duration": 4.6
+    },
+    {
+      "lang": "en",
+      "text": "actually as he typed it— but he's asking \non the same theme: the number of trees in  ",
+      "offset": 1693.68,
+      "duration": 4.86
+    },
+    {
+      "lang": "en",
+      "text": "a Random Forest. Does increasing the number \nof trees always translate to a better error?",
+      "offset": 1698.54,
+      "duration": 4.98
+    },
+    {
+      "lang": "en",
+      "text": "Jeremy: yes it does, always, I mean: tiny bumps, \nright? but yeah, once you smoothed it out.  ",
+      "offset": 1703.52,
+      "duration": 7.38
+    },
+    {
+      "lang": "en",
+      "text": "But decreasing returns and… if you end \nup productionizing a Random Forest, then,  ",
+      "offset": 1713.06,
+      "duration": 10.62
+    },
+    {
+      "lang": "en",
+      "text": "of course, every one of these trees, you have \nto, you know, go through for, at inference time,  ",
+      "offset": 1723.68,
+      "duration": 5.94
+    },
+    {
+      "lang": "en",
+      "text": "so it's not that there's no cost, I mean, \nhaving said that, zipping through a binary  ",
+      "offset": 1730.52,
+      "duration": 6.06
+    },
+    {
+      "lang": "en",
+      "text": "tree is the kind of thing you can really do fast, \nin fact, it's it's quite easy to like literally  ",
+      "offset": 1736.58,
+      "duration": 9
+    },
+    {
+      "lang": "en",
+      "text": "spit out C++ code with a bunch of if statements \nand compile it and get extremely fast performance.  ",
+      "offset": 1746.3,
+      "duration": 9.18
+    },
+    {
+      "lang": "en",
+      "text": "I don't often use more than 100 \ntrees, this is a rule of thumb…  ",
+      "offset": 1758.42,
+      "duration": 3.9
+    },
+    {
+      "lang": "en",
+      "text": "is that the only one John? okay",
+      "offset": 1766.52,
+      "duration": 3.06
+    },
+    {
+      "lang": "en",
+      "text": "So, then there's another interesting \nfeature of Random Forests which is:  ",
+      "offset": 1773.18,
+      "duration": 3.3
+    },
+    {
+      "lang": "en",
+      "text": "remember how in our example we trained \nwith 75% of the data on each tree,  ",
+      "offset": 1776.48,
+      "duration": 7.62
+    },
+    {
+      "lang": "en",
+      "text": "so that means for each tree there was 25% of the \ndata we didn't train on. Now this actually means  ",
+      "offset": 1784.82,
+      "duration": 5.94
+    },
+    {
+      "lang": "en",
+      "text": "if you don't have much data, in some situations \nyou can get away with not having a validation set,  ",
+      "offset": 1790.76,
+      "duration": 5.16
+    },
+    {
+      "lang": "en",
+      "text": "and the reason why is because for each tree we \ncan pick the 25% of rows that weren't in that tree  ",
+      "offset": 1797.12,
+      "duration": 9.06
+    },
+    {
+      "lang": "en",
+      "text": "and see how accurate that tree was on those rows \nand we can average for each row their accuracy on  ",
+      "offset": 1806.96,
+      "duration": 8.88
+    },
+    {
+      "lang": "en",
+      "text": "all of the trees in which they were not part of \nthe training, and that is called the Out-of-Bag  ",
+      "offset": 1815.84,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "Error or OOB error. And this is built in, also, \nscikit-learn you can ask for an OOB prediction…",
+      "offset": 1821.84,
+      "duration": 9.36
+    },
+    {
+      "lang": "en",
+      "text": "Uhm, John!",
+      "offset": 1833.3,
+      "duration": 1.06
+    },
+    {
+      "lang": "en",
+      "text": "John: Just before we move on, \nZakia has a question about bagging:  ",
+      "offset": 1834.92,
+      "duration": 8.88
+    },
+    {
+      "lang": "en",
+      "text": "so we know that bagging is powerful as an \nensemble approach to machine learning, would  ",
+      "offset": 1844.52,
+      "duration": 4.62
+    },
+    {
+      "lang": "en",
+      "text": "it be advisable to try out bagging being first \nwhen approaching a particular, say, tabular task,  ",
+      "offset": 1849.14,
+      "duration": 6.36
+    },
+    {
+      "lang": "en",
+      "text": "before deep learning? So that's \nthe first part of the question,  ",
+      "offset": 1856.16,
+      "duration": 3.3
+    },
+    {
+      "lang": "en",
+      "text": "and the second part is: could we create a bagging \nmodel which includes fast.ai deep learning models?",
+      "offset": 1860.42,
+      "duration": 8.54
+    },
+    {
+      "lang": "en",
+      "text": "Jeremy: Yes, absolutely. So, to be \nclear, you know, bagging is kind of like  ",
+      "offset": 1868.96,
+      "duration": 5.32
+    },
+    {
+      "lang": "en",
+      "text": "a meta method, it's not a prediction, it's not a \nmethod of modeling itself, it's just a method of  ",
+      "offset": 1874.88,
+      "duration": 6.9
+    },
+    {
+      "lang": "en",
+      "text": "combining other models. So Random Forests, in \nparticular, as a particular approach to bagging.  ",
+      "offset": 1882.44,
+      "duration": 7.86
+    },
+    {
+      "lang": "en",
+      "text": "is a, you know, I would probably always start, \npersonally, a tabular project with a Random  ",
+      "offset": 1891.8,
+      "duration": 5.88
+    },
+    {
+      "lang": "en",
+      "text": "Forest because they're nearly impossible \nto mess up, and they give good insight,  ",
+      "offset": 1897.68,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "and they give a good base case. But \nyeah, your question then about “can  ",
+      "offset": 1901.28,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "you bag other models?” is a very interesting \none, and the answer is: you absolutely can.  ",
+      "offset": 1907.04,
+      "duration": 6.06
+    },
+    {
+      "lang": "en",
+      "text": "And people very rarely do, but we will, \nwe will, quite soon, maybe even today.",
+      "offset": 1913.94,
+      "duration": 9.24
+    },
+    {
+      "lang": "en",
+      "text": "So I, you know… you might be getting the \nimpression I'm a bit of a fan of Random Forests,  ",
+      "offset": 1928.94,
+      "duration": 4.02
+    },
+    {
+      "lang": "en",
+      "text": "and (~before I was…) before, you know, people \nthought of me as the Deep Learning guy, people  ",
+      "offset": 1932.96,
+      "duration": 5.58
+    },
+    {
+      "lang": "en",
+      "text": "thought of me as the Random Forest guy. I used to \ngo on about Random Forests all the time and one of  ",
+      "offset": 1938.54,
+      "duration": 6.24
+    },
+    {
+      "lang": "en",
+      "text": "the reasons I'm so enthused about them isn't just \nthat they're very accurate or (~that they require,  ",
+      "offset": 1944.78,
+      "duration": 4.44
+    },
+    {
+      "lang": "en",
+      "text": "you know…) that they're very hard to mess up and \nrequire very little (~processing…) pre-processing,  ",
+      "offset": 1949.22,
+      "duration": 3.54
+    },
+    {
+      "lang": "en",
+      "text": "but they give you a lot of quick and easy insight. \nAnd specifically these are the five things  ",
+      "offset": 1952.76,
+      "duration": 8.04
+    },
+    {
+      "lang": "en",
+      "text": "which I think that we're interested \nin and all of which are things that  ",
+      "offset": 1961.76,
+      "duration": 3.06
+    },
+    {
+      "lang": "en",
+      "text": "random for us are good at. They will tell \nus how confident are we in our predictions  ",
+      "offset": 1964.82,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "on some particular row? So when somebody, you \nknow… when we're giving a loan to somebody  ",
+      "offset": 1969.62,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "we don't necessarily just want to know “How \nlikely are they to repay?” but we'd also like  ",
+      "offset": 1975.14,
+      "duration": 5.4
+    },
+    {
+      "lang": "en",
+      "text": "to know “How confident are we that we know?” \nbecause if we're… if we're like well we think  ",
+      "offset": 1980.54,
+      "duration": 7.5
+    },
+    {
+      "lang": "en",
+      "text": "they'll repay but we're not confident of that we \nwould probably want to give them less of a loan.  ",
+      "offset": 1988.04,
+      "duration": 4.98
+    },
+    {
+      "lang": "en",
+      "text": "And another thing that's very important is \nwhen we're then making a prediction… so again,  ",
+      "offset": 1994.82,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "for example, for credit… let's say you rejected \nthat person's loan… “Why?...” And a Random Forest  ",
+      "offset": 1999.38,
+      "duration": 9.12
+    },
+    {
+      "lang": "en",
+      "text": "will tell us “What what is the… what is the reason \nthat we made a prediction.” And you'll see why,  ",
+      "offset": 2008.5,
+      "duration": 5.4
+    },
+    {
+      "lang": "en",
+      "text": "and all these things. Which columns are the \nstrongest predictors - you've already seen  ",
+      "offset": 2013.9,
+      "duration": 4.26
+    },
+    {
+      "lang": "en",
+      "text": "that one, right, that's the Feature Importance \nPlot. Which columns are effectively redundant  ",
+      "offset": 2018.16,
+      "duration": 5.94
+    },
+    {
+      "lang": "en",
+      "text": "with each other, i.e. they're basically \nhighly correlated with each other.",
+      "offset": 2024.1,
+      "duration": 3.54
+    },
+    {
+      "lang": "en",
+      "text": "And then one of the most important ones… \nAs you vary a column how does it vary  ",
+      "offset": 2030.34,
+      "duration": 4.44
+    },
+    {
+      "lang": "en",
+      "text": "the predictions? So for example in your \ncredit model, how does your prediction of  ",
+      "offset": 2034.78,
+      "duration": 6.36
+    },
+    {
+      "lang": "en",
+      "text": "risk vary as you vary… (well something that \nprobably the regulator would want to know might  ",
+      "offset": 2042.76,
+      "duration": 7.8
+    },
+    {
+      "lang": "en",
+      "text": "be some, you know…) some protected variable \nlike you know race or some socio-demographic  ",
+      "offset": 2050.56,
+      "duration": 6.12
+    },
+    {
+      "lang": "en",
+      "text": "characteristics that you're not allowed to use in \nyour model. So they might check things like that.",
+      "offset": 2056.68,
+      "duration": 3.42
+    },
+    {
+      "lang": "en",
+      "text": "For the first thing: “How confident are we \nin our predictions using a particular row  ",
+      "offset": 2062.92,
+      "duration": 4.92
+    },
+    {
+      "lang": "en",
+      "text": "of data?” There's a really simple thing we can \ndo which is… remember how when we calculated  ",
+      "offset": 2067.84,
+      "duration": 6.24
+    },
+    {
+      "lang": "en",
+      "text": "our predictions manually we stacked up the \npredictions together and took their mean?  ",
+      "offset": 2074.08,
+      "duration": 3.78
+    },
+    {
+      "lang": "en",
+      "text": "Well what if you took their \nstandard deviation instead?  ",
+      "offset": 2079,
+      "duration": 2.82
+    },
+    {
+      "lang": "en",
+      "text": "So if you stack up your predictions and take \ntheir standard deviation, and if that standard  ",
+      "offset": 2082.9,
+      "duration": 5.82
+    },
+    {
+      "lang": "en",
+      "text": "deviation is high, that means all of them (all of \nthe trees) are predicting something different!!  ",
+      "offset": 2088.72,
+      "duration": 4.98
+    },
+    {
+      "lang": "en",
+      "text": "And that suggests that we don't really know what \nwe're doing. And so that would happen if different  ",
+      "offset": 2094.72,
+      "duration": 4.5
+    },
+    {
+      "lang": "en",
+      "text": "subsets of the data end up getting completely \ndifferent trees for this particular row. So  ",
+      "offset": 2099.22,
+      "duration": 8.46
+    },
+    {
+      "lang": "en",
+      "text": "there is (like…) a really simple thing you can \ndo to get a sense of your prediction confidence.",
+      "offset": 2107.68,
+      "duration": 5.4
+    },
+    {
+      "lang": "en",
+      "text": "Okay, “Feature Importance” we've already discussed",
+      "offset": 2114.4,
+      "duration": 2.1
+    },
+    {
+      "lang": "en",
+      "text": "After I do feature importance (you know…) \nlike I said when I had the (what) 7,000 or  ",
+      "offset": 2120.64,
+      "duration": 3.9
+    },
+    {
+      "lang": "en",
+      "text": "so columns I got rid of like all-but \n30. That doesn't tend to improve the  ",
+      "offset": 2124.54,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "predictions of your Random Forest very much, \nif at all, but it certainly helps (like,  ",
+      "offset": 2130.06,
+      "duration": 5.94
+    },
+    {
+      "lang": "en",
+      "text": "you know…) kind of logistically thinking about \ncleaning up the data, you can focus on cleaning  ",
+      "offset": 2137.2,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "those 30 columns, and stuff like that. So I \ntend to remove the low importance variables.",
+      "offset": 2141.76,
+      "duration": 3.54
+    },
+    {
+      "lang": "en",
+      "text": "I'm going to skip over this bit about removing \nredundant features because it's a little bit  ",
+      "offset": 2148.84,
+      "duration": 4.2
+    },
+    {
+      "lang": "en",
+      "text": "outside what we're talking about, but \ndefinitely check it out in the book,  ",
+      "offset": 2153.04,
+      "duration": 2.22
+    },
+    {
+      "lang": "en",
+      "text": "something called a “Dendrogram.” \nBut what I do want to mention  ",
+      "offset": 2156.1,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "is the “Partial Dependence.” \nThis is the thing which says,  ",
+      "offset": 2160.18,
+      "duration": 3.54
+    },
+    {
+      "lang": "en",
+      "text": "“What is the relationship between a column and \nthe dependent variable - and so this is something  ",
+      "offset": 2165.22,
+      "duration": 8.58
+    },
+    {
+      "lang": "en",
+      "text": "called a “Partial Dependence Plot.” Now this \none's actually not specific to Random Forests.  ",
+      "offset": 2173.8,
+      "duration": 4.2
+    },
+    {
+      "lang": "en",
+      "text": "A partial dependence plot is something you can \ndo for basically any machine learning model.  ",
+      "offset": 2178.54,
+      "duration": 4.26
+    },
+    {
+      "lang": "en",
+      "text": "Let's first of all look at one and then talk \nabout how we make it. So in this dataset we're  ",
+      "offset": 2183.64,
+      "duration": 6.48
+    },
+    {
+      "lang": "en",
+      "text": "looking at the relationship… we're looking at \nthe sale price at auction of heavy industrial  ",
+      "offset": 2190.12,
+      "duration": 6.12
+    },
+    {
+      "lang": "en",
+      "text": "equipment like bulldozers - this is specifically \nthe blue books for bulldozers Kaggle competition.  ",
+      "offset": 2196.24,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "And a partial dependence plot between the \nyear that the bulldozer -or whatever was made-  ",
+      "offset": 2203.08,
+      "duration": 5.64
+    },
+    {
+      "lang": "en",
+      "text": "and the price it was sold for \n(this is actually the log price)  ",
+      "offset": 2209.5,
+      "duration": 3
+    },
+    {
+      "lang": "en",
+      "text": "is that it goes up. More recent bulldozers… more \nrecently made bulldozers are more expensive.  ",
+      "offset": 2213.22,
+      "duration": 6.12
+    },
+    {
+      "lang": "en",
+      "text": "And as you go back… back to older and older \nbulldozers, they're less and less expensive,  ",
+      "offset": 2220.96,
+      "duration": 5.58
+    },
+    {
+      "lang": "en",
+      "text": "to a point. And maybe these ones are some \nclassic bulldozers you pay a bit extra for.",
+      "offset": 2226.54,
+      "duration": 6.06
+    },
+    {
+      "lang": "en",
+      "text": "Now you might think that you could easily create \nthis plot by simply looking at your data at each  ",
+      "offset": 2233.74,
+      "duration": 6.78
+    },
+    {
+      "lang": "en",
+      "text": "year and taking the average sale price, but \nthat doesn't really work very well. I mean  ",
+      "offset": 2240.52,
+      "duration": 6.36
+    },
+    {
+      "lang": "en",
+      "text": "it kind of does, but it kind of doesn't. Let me \ngive an example. It turns out that one of the  ",
+      "offset": 2246.88,
+      "duration": 5.22
+    },
+    {
+      "lang": "en",
+      "text": "biggest predictors of sale price for industrial \nequipment is whether it has air conditioning  ",
+      "offset": 2252.1,
+      "duration": 5.1
+    },
+    {
+      "lang": "en",
+      "text": "and so air conditioning is, you know… it's \nan expensive thing to add and it makes the  ",
+      "offset": 2258.04,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "equipment more expensive to buy. And most things \ndidn't have air conditioning back in the 60s and  ",
+      "offset": 2263.56,
+      "duration": 5.7
+    },
+    {
+      "lang": "en",
+      "text": "70s and most of them do now. So if you plot \nthe relationship between year made and price  ",
+      "offset": 2269.26,
+      "duration": 5.46
+    },
+    {
+      "lang": "en",
+      "text": "you're actually going to be seeing a whole \nbunch of when… you know… “How popular was  ",
+      "offset": 2275.74,
+      "duration": 5.34
+    },
+    {
+      "lang": "en",
+      "text": "air conditioning?” right, so you get \nthis this cross-correlation going on.",
+      "offset": 2281.08,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "But we just want to know… what's just the impact \nof the year it was made all else being equal.  ",
+      "offset": 2285.16,
+      "duration": 5.82
+    },
+    {
+      "lang": "en",
+      "text": "So there's actually a really easy way to \ndo that, which is: We take our data set  ",
+      "offset": 2292.9,
+      "duration": 4.62
+    },
+    {
+      "lang": "en",
+      "text": "~(we take the we…) and we leave it exactly as \nit is, so just use the training dataset… but  ",
+      "offset": 2298.3,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "we take every single row - and for the year made \ncolumn we set it to 1950. And so then we predict  ",
+      "offset": 2302.62,
+      "duration": 7.26
+    },
+    {
+      "lang": "en",
+      "text": "for every row what would the sale price of that \nhave been if it was made in 1950, and then we  ",
+      "offset": 2309.88,
+      "duration": 6.72
+    },
+    {
+      "lang": "en",
+      "text": "repeat it for 1951, and then repeat it for 1952 \nand so forth, and then we plot the averages.  ",
+      "offset": 2316.6,
+      "duration": 5.34
+    },
+    {
+      "lang": "en",
+      "text": "And that does exactly what I just said, remember \nI said the special words, “all else being equal…”  ",
+      "offset": 2322.78,
+      "duration": 4.44
+    },
+    {
+      "lang": "en",
+      "text": "This is setting everything else equal. It's \nthe… Everything else is the data as it actually  ",
+      "offset": 2328,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "occurred and we're only varying YearMade. \nAnd that's what a partial dependence plot is!  ",
+      "offset": 2332.8,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "That works just as well for Deep Learning or \nGradient Boosting Trees or Logistic Regressions  ",
+      "offset": 2339.58,
+      "duration": 5.46
+    },
+    {
+      "lang": "en",
+      "text": "or whatever. It's a really cool thing you \ncan do. And you can do more than one column  ",
+      "offset": 2345.04,
+      "duration": 9.6
+    },
+    {
+      "lang": "en",
+      "text": "at a time, you know… You can do two-way \npartial dependence plots, for example.",
+      "offset": 2354.64,
+      "duration": 5.58
+    },
+    {
+      "lang": "en",
+      "text": "Okay so then another one I mentioned was: “Can \nyou describe why a particular prediction was  ",
+      "offset": 2362.38,
+      "duration": 7.5
+    },
+    {
+      "lang": "en",
+      "text": "made? So how did you decide for this particular \nrow to predict this particular value?” And  ",
+      "offset": 2369.88,
+      "duration": 8.28
+    },
+    {
+      "lang": "en",
+      "text": "this is actually pretty easy to do - there's \na thing called Tree Interpreter but we could  ",
+      "offset": 2378.82,
+      "duration": 3.54
+    },
+    {
+      "lang": "en",
+      "text": "you could easily create this in about \na half a dozen lines of code. All we do  ",
+      "offset": 2382.36,
+      "duration": 4.26
+    },
+    {
+      "lang": "en",
+      "text": "is we're saying, okay this customers \ncome in, they've asked her a loan,  ",
+      "offset": 2388.84,
+      "duration": 6.06
+    },
+    {
+      "lang": "en",
+      "text": "we put in all of that data through the \nRandom Forest, spat out a prediction…  ",
+      "offset": 2394.9,
+      "duration": 4.38
+    },
+    {
+      "lang": "en",
+      "text": "We can actually have a look and say okay, “Well \nthat in Tree #1 what's the path that went down  ",
+      "offset": 2400.12,
+      "duration": 6.12
+    },
+    {
+      "lang": "en",
+      "text": "through the tree to get to the leaf node?” And we \ncan say, oh well, first of all it looked at sex,  ",
+      "offset": 2406.24,
+      "duration": 4.62
+    },
+    {
+      "lang": "en",
+      "text": "and then it looked at postcode, and then \nit looked at income, and so we can see  ",
+      "offset": 2410.86,
+      "duration": 4.62
+    },
+    {
+      "lang": "en",
+      "text": "exactly in Tree #1 which variables were used and \nwhat was the change in ginni for each one. And  ",
+      "offset": 2416.8,
+      "duration": 8.52
+    },
+    {
+      "lang": "en",
+      "text": "then we could do the same in Tree #2, same in Tree \n#3, same in Tree #4… Does this sound familiar?  ",
+      "offset": 2425.32,
+      "duration": 4.2
+    },
+    {
+      "lang": "en",
+      "text": "It's basically the same as our \nFeature Importance Plot, right,  ",
+      "offset": 2430.3,
+      "duration": 2.64
+    },
+    {
+      "lang": "en",
+      "text": "but it's just for this one row of data. And \nso that will tell you basically the Feature  ",
+      "offset": 2432.94,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "Importances for that one particular prediction. \nAnd so then we can plot them, like this.",
+      "offset": 2437.74,
+      "duration": 6.42
+    },
+    {
+      "lang": "en",
+      "text": "So for example, this is an example \nof an auction price prediction,  ",
+      "offset": 2444.16,
+      "duration": 5.1
+    },
+    {
+      "lang": "en",
+      "text": "and according to this plot, you know, \nso we predicted that the net would be…  ",
+      "offset": 2450.7,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "(oh, this is just a change from…) So I \ndon't actually know what the price is,  ",
+      "offset": 2460.48,
+      "duration": 3.48
+    },
+    {
+      "lang": "en",
+      "text": "but this is how much each one \nimpacted the price. So Year Made,  ",
+      "offset": 2463.96,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "I guess this must have been an older tractor - \nit caused our prediction of the price to go down.  ",
+      "offset": 2468.52,
+      "duration": 4.44
+    },
+    {
+      "lang": "en",
+      "text": "But then it must have been a larger machine \n- the Product Size caused it to go up,  ",
+      "offset": 2473.56,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "a Coupler System made it go up, Model ID made it \ngo up, and so forth, right. So you can see the  ",
+      "offset": 2478.36,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "Reds says this made our prediction go down. Green \nmade our prediction go up. And so overall you can  ",
+      "offset": 2483.88,
+      "duration": 6.66
+    },
+    {
+      "lang": "en",
+      "text": "see which things had the biggest impact on the \nprediction and what was the direction for each  ",
+      "offset": 2490.54,
+      "duration": 6.3
+    },
+    {
+      "lang": "en",
+      "text": "one. So it's basically a feature importance plot \nbut just ~(for a single roll) for a single row",
+      "offset": 2496.84,
+      "duration": 5.88
+    },
+    {
+      "lang": "en",
+      "text": "Any questions John?",
+      "offset": 2506.02,
+      "duration": 1.32
+    },
+    {
+      "lang": "en",
+      "text": "John: Yeah, there are a couple that have, that \nhave sort of queued up, this is a, this is a  ",
+      "offset": 2507.34,
+      "duration": 6.36
+    },
+    {
+      "lang": "en",
+      "text": "good spot to, to jump to them. So, first of all, \nAndrew is asking, jumping back to the OOB era:  ",
+      "offset": 2513.7,
+      "duration": 11.52
+    },
+    {
+      "lang": "en",
+      "text": "“would you ever exclude a tree from a forest \nyou've had if it had a bad Out of Bag Error?”  ",
+      "offset": 2525.22,
+      "duration": 5.34
+    },
+    {
+      "lang": "en",
+      "text": "Like if you, if you have a bogus, if you \nhad a particularly bad tree in your ensemble",
+      "offset": 2531.58,
+      "duration": 4.89
+    },
+    {
+      "lang": "en",
+      "text": "Jeremy: Yeah…",
+      "offset": 2536.47,
+      "duration": 0.63
+    },
+    {
+      "lang": "en",
+      "text": "John: Might you just drop… Would you delete a tree  ",
+      "offset": 2537.1,
+      "duration": 3.3
+    },
+    {
+      "lang": "en",
+      "text": "that was not doing its thing? \nIt's not playing its part.",
+      "offset": 2540.4,
+      "duration": 3.18
+    },
+    {
+      "lang": "en",
+      "text": "Jeremy: No you wouldn't. If you start \ndeleting trees then you are no longer  ",
+      "offset": 2543.58,
+      "duration": 6.48
+    },
+    {
+      "lang": "en",
+      "text": "having an unbiased prediction of the \ndependent variable. You are biasing it  ",
+      "offset": 2550.96,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "by making a choice so, even the bad ones, will \nbe improving the quality of the overall average.",
+      "offset": 2556.48,
+      "duration": 9.08
+    },
+    {
+      "lang": "en",
+      "text": "John: All right, thank you. Zakia followed up with \nthe question about bagging and we're just going,  ",
+      "offset": 2565.56,
+      "duration": 7.9
+    },
+    {
+      "lang": "en",
+      "text": "you know, layers and layers here, you know: we \ncould go on and create ensembles of bagged models?  ",
+      "offset": 2573.46,
+      "duration": 6.36
+    },
+    {
+      "lang": "en",
+      "text": "and, you know, is it reasonable to \nassume that they would continue…",
+      "offset": 2580.54,
+      "duration": 3.06
+    },
+    {
+      "lang": "en",
+      "text": "Jeremy: So that's not going to make much \ndifference, right? If they're all like…  ",
+      "offset": 2583.6,
+      "duration": 2.94
+    },
+    {
+      "lang": "en",
+      "text": "you could take your 100 trees, split them into \ngroups of ten, create ten bagged ensembles and  ",
+      "offset": 2586.54,
+      "duration": 6.54
+    },
+    {
+      "lang": "en",
+      "text": "then average those but the average of an average \nis the same as the average. You could like have  ",
+      "offset": 2593.08,
+      "duration": 6.12
+    },
+    {
+      "lang": "en",
+      "text": "a wider range of other kinds of models, you could \nhave like Neural Nets trained on different subsets  ",
+      "offset": 2599.2,
+      "duration": 4.44
+    },
+    {
+      "lang": "en",
+      "text": "as well but again, it's just the average of \nan average, we'll still give you the average.",
+      "offset": 2603.64,
+      "duration": 3.06
+    },
+    {
+      "lang": "en",
+      "text": "John: Right, so there's not a lot of value in, \nkind of, structuring the ensemble you just…",
+      "offset": 2606.7,
+      "duration": 5.58
+    },
+    {
+      "lang": "en",
+      "text": "Jeremy: I mean, some, some \nensembles you can structure,  ",
+      "offset": 2612.28,
+      "duration": 3.48
+    },
+    {
+      "lang": "en",
+      "text": "but not bagging. Bagging's the simplest \none, it's the one I mainly use,  ",
+      "offset": 2615.76,
+      "duration": 3.72
+    },
+    {
+      "lang": "en",
+      "text": "there are more sophisticated approaches \nbut this one is nice and easy.",
+      "offset": 2620.38,
+      "duration": 4.26
+    },
+    {
+      "lang": "en",
+      "text": "John: All right, and there's one that is a bit \nspecific and it's referencing content you haven't  ",
+      "offset": 2624.64,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "covered but we're here now so... and it's on \nexplainability so, feature importance of Random  ",
+      "offset": 2630.64,
+      "duration": 7.8
+    },
+    {
+      "lang": "en",
+      "text": "Forest models sometimes has different results when \nyou compare it to other explainability techniques  ",
+      "offset": 2638.44,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "like SHAP, S-H-A-P, or LIME. And \nwe haven't covered these in the  ",
+      "offset": 2644.62,
+      "duration": 5.1
+    },
+    {
+      "lang": "en",
+      "text": "course but Amir is just curious if \nyou've got any thoughts on which is  ",
+      "offset": 2649.72,
+      "duration": 3.66
+    },
+    {
+      "lang": "en",
+      "text": "more accurate or reliable: Random Forest \nfeature importance or other techniques",
+      "offset": 2653.38,
+      "duration": 4.68
+    },
+    {
+      "lang": "en",
+      "text": "Jeremy: I would lean towards, more immediately, \ntrusting Random Forest Feature Importances over  ",
+      "offset": 2659.38,
+      "duration": 11.64
+    },
+    {
+      "lang": "en",
+      "text": "other techniques on the whole, on the basis \nthat it's very hard to mess up a Random Forest.  ",
+      "offset": 2671.02,
+      "duration": 6.06
+    },
+    {
+      "lang": "en",
+      "text": "So, yeah, I feel like pretty confident that \na Random Forest Feature Importance is gonna  ",
+      "offset": 2681.04,
+      "duration": 6.78
+    },
+    {
+      "lang": "en",
+      "text": "be pretty reasonable as long as this is the kind \nof data which a Random Forest is likely to be  ",
+      "offset": 2689.14,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "pretty good at, you know, doing, you know, if it's \nlike a computer vision model Random Forest aren’t  ",
+      "offset": 2694.9,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "particularly good at that and so, one \nof the things that Breiman talked about  ",
+      "offset": 2700.96,
+      "duration": 3.42
+    },
+    {
+      "lang": "en",
+      "text": "a lot was explainability and he's got \na great essay called the two cultures  ",
+      "offset": 2704.38,
+      "duration": 3.78
+    },
+    {
+      "lang": "en",
+      "text": "of statistics (“Statistical Modeling: The \nTwo Cultures”) in which he talks about —I  ",
+      "offset": 2708.16,
+      "duration": 2.76
+    },
+    {
+      "lang": "en",
+      "text": "guess what nowadays call kind of like data \nscientists, machine learning folks versus  ",
+      "offset": 2710.92,
+      "duration": 3.9
+    },
+    {
+      "lang": "en",
+      "text": "classic statisticians—. And he was, you know, \ndefinitely a data scientist well before the  ",
+      "offset": 2714.82,
+      "duration": 7.2
+    },
+    {
+      "lang": "en",
+      "text": "label existed. And he pointed out, yeah, \nyou know, first and foremost you need a  ",
+      "offset": 2723.52,
+      "duration": 5.16
+    },
+    {
+      "lang": "en",
+      "text": "model that's accurate. It needs to make good \npredictions. A model that makes bad predictions,  ",
+      "offset": 2728.68,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "will also be bad for making explanations because \nit doesn't actually know what's going on.  ",
+      "offset": 2733.96,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "So if, you know, if you, if you've got a Deep \nLearning model that's far more accurate than your  ",
+      "offset": 2739.72,
+      "duration": 4.14
+    },
+    {
+      "lang": "en",
+      "text": "Random Forest then it's, you know, explainability \nmethods from the Deep Learning model world  ",
+      "offset": 2743.86,
+      "duration": 4.38
+    },
+    {
+      "lang": "en",
+      "text": "probably be more useful because it's \nexplaining a model that's actually correct.",
+      "offset": 2748.78,
+      "duration": 4.2
+    },
+    {
+      "lang": "en",
+      "text": "All right, let's take a 10 minute break \nand we'll come back at five past seven.",
+      "offset": 2756.52,
+      "duration": 7.32
+    },
+    {
+      "lang": "en",
+      "text": "Welcome back, one person pointed \nout I noticed I got the chapter  ",
+      "offset": 2769.72,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "wrong — it's Chapter 9 not Chapter \n8 in the book, I guess I can't read.  ",
+      "offset": 2773.8,
+      "duration": 4.02
+    },
+    {
+      "lang": "en",
+      "text": "Somebody asked during the break \nabout overfitting. Can you overfit  ",
+      "offset": 2780.76,
+      "duration": 6.48
+    },
+    {
+      "lang": "en",
+      "text": "a Random Forest?. Basically no, not really, \nadding more trees will make it more accurate.  ",
+      "offset": 2787.96,
+      "duration": 8.22
+    },
+    {
+      "lang": "en",
+      "text": "It kind of asymptotes so you can't make it \ninfinitely accurate by using infinite trees but  ",
+      "offset": 2799.42,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "certainly you know adding more trees won't make it \nworse. If you don't have enough trees and you let  ",
+      "offset": 2804.7,
+      "duration": 9.6
+    },
+    {
+      "lang": "en",
+      "text": "the trees grow very deep: that could overfit. So \nyou just have to make sure you have enough trees.",
+      "offset": 2814.3,
+      "duration": 6.48
+    },
+    {
+      "lang": "en",
+      "text": "Radek told me about this experiment he did \nduring… Radek talked to me during the break  ",
+      "offset": 2829.24,
+      "duration": 4.5
+    },
+    {
+      "lang": "en",
+      "text": "about an experiment he did, which is something \nI've done something similar, which is adding  ",
+      "offset": 2833.74,
+      "duration": 5.16
+    },
+    {
+      "lang": "en",
+      "text": "lots and lots of randomly generated columns to \na data set and try to break the Random Forest.  ",
+      "offset": 2838.9,
+      "duration": 7.02
+    },
+    {
+      "lang": "en",
+      "text": "And if you tried it, it basically doesn't work, \nit's like, it's really hard to confuse a Random  ",
+      "offset": 2846.7,
+      "duration": 6.72
+    },
+    {
+      "lang": "en",
+      "text": "Forest by giving it lots of meaningless data, \nit does an amazingly good job of picking out  ",
+      "offset": 2853.42,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "the useful stuff. As I said, you know, I had 30 \nuseful columns out of 7,000 and it found them  ",
+      "offset": 2860.14,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "perfectly well. And often, you know, when you \nfind those 30 columns, you know, you could go to,  ",
+      "offset": 2866.74,
+      "duration": 7.44
+    },
+    {
+      "lang": "en",
+      "text": "you know —I was doing consulting at the time— \ngo back to the client and say like: tell me  ",
+      "offset": 2874.18,
+      "duration": 3.66
+    },
+    {
+      "lang": "en",
+      "text": "more about these columns, and say like: “oh! well \nthat one there we've actually got a better version  ",
+      "offset": 2877.84,
+      "duration": 3.66
+    },
+    {
+      "lang": "en",
+      "text": "of that now, there's a new system, you know, we \nshould grab that… and, oh, this column actually  ",
+      "offset": 2881.5,
+      "duration": 4.74
+    },
+    {
+      "lang": "en",
+      "text": "that was because of this thing that happened \nlast year but we don't do it anymore…” or,  ",
+      "offset": 2886.24,
+      "duration": 3.12
+    },
+    {
+      "lang": "en",
+      "text": "you know, like you can really have this kind of \ndiscussion about the stuff you've zoomed into.",
+      "offset": 2889.36,
+      "duration": 3.9
+    },
+    {
+      "lang": "en",
+      "text": "You know, there are other things that you \nhave to think about with lots of kinds of  ",
+      "offset": 2906.22,
+      "duration": 3.48
+    },
+    {
+      "lang": "en",
+      "text": "models like, particularly regression \nmodels; things like interactions.  ",
+      "offset": 2909.7,
+      "duration": 2.58
+    },
+    {
+      "lang": "en",
+      "text": "You don't have to worry about that \nwith Random Forests like, because you  ",
+      "offset": 2913,
+      "duration": 3.06
+    },
+    {
+      "lang": "en",
+      "text": "split on one column and then split on another \ncolumn you get interactions for free as well.",
+      "offset": 2916.06,
+      "duration": 6.6
+    },
+    {
+      "lang": "en",
+      "text": "Normalization you don't have to worry about, you \nknow you don't have to have normally distributed  ",
+      "offset": 2925.24,
+      "duration": 4.14
+    },
+    {
+      "lang": "en",
+      "text": "columns. So yeah, definitely worth a try.",
+      "offset": 2929.38,
+      "duration": 4.44
+    },
+    {
+      "lang": "en",
+      "text": "Now something I haven't gone \ninto… is Gradient Boosting.  ",
+      "offset": 2934.9,
+      "duration": 10.56
+    },
+    {
+      "lang": "en",
+      "text": "But if you go to explain.ai, you'll \nsee that my friend Terence and I have  ",
+      "offset": 2948.52,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "a three-part series about Gradient Boosting, \nincluding pictures of golf made by Terence.  ",
+      "offset": 2954.28,
+      "duration": 6.18
+    },
+    {
+      "lang": "en",
+      "text": "But to explain Gradient Boosting is a \nlot like Random Forests but rather than  ",
+      "offset": 2962.38,
+      "duration": 6.3
+    },
+    {
+      "lang": "en",
+      "text": "fitting a tree again and again and again \non different random subsets of the data…  ",
+      "offset": 2972.7,
+      "duration": 4.86
+    },
+    {
+      "lang": "en",
+      "text": "instead, what we do is we fit very, very, \nvery small trees, so hardly ever any splits  ",
+      "offset": 2978.94,
+      "duration": 6.42
+    },
+    {
+      "lang": "en",
+      "text": "and we then say: “okay, what's the error”. So, \nyou know, so, imagine the simplest tree would be  ",
+      "offset": 2985.36,
+      "duration": 7.32
+    },
+    {
+      "lang": "en",
+      "text": "our “OneR” raw tree of male versus female, say, \nand then you take what's called the residual:  ",
+      "offset": 2992.68,
+      "duration": 7.98
+    },
+    {
+      "lang": "en",
+      "text": "that's the difference between the prediction and \nthe actual, it's the error. And then you create  ",
+      "offset": 3000.66,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "another tree, which attempts to predict that —a \nvery small tree— and then you create another very  ",
+      "offset": 3005.46,
+      "duration": 8.82
+    },
+    {
+      "lang": "en",
+      "text": "small tree which tries to predict the error from \nthat and so forth, right? Each one is predicting  ",
+      "offset": 3014.28,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "the residual from all of the previous ones. And so \nthen to calculate a prediction, rather than taking  ",
+      "offset": 3019.8,
+      "duration": 6.72
+    },
+    {
+      "lang": "en",
+      "text": "the average of all the trees, you take the sum \nof all the trees, because each one is predicting  ",
+      "offset": 3026.52,
+      "duration": 5.46
+    },
+    {
+      "lang": "en",
+      "text": "the difference between the actual and all of \nthe previous trees. And that's called boosting  ",
+      "offset": 3031.98,
+      "duration": 6.12
+    },
+    {
+      "lang": "en",
+      "text": "—versus bagging— so boosting and bagging \nare two kind of meta ensembling techniques,  ",
+      "offset": 3038.94,
+      "duration": 5.16
+    },
+    {
+      "lang": "en",
+      "text": "and when bagging is applied to trees it's \ncalled a Random Forest and when boosting is  ",
+      "offset": 3044.64,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "applied to trees it's called a Gradient Boosting \nMachine or Gradient Boosted Decision Trees.",
+      "offset": 3050.16,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "Gradient Boosting is, generally speaking, \nmore accurate than Random Forests,  ",
+      "offset": 3059.4,
+      "duration": 5.64
+    },
+    {
+      "lang": "en",
+      "text": "but you can absolutely overfit and so \ntherefore it's not necessarily my first  ",
+      "offset": 3066.3,
+      "duration": 6.6
+    },
+    {
+      "lang": "en",
+      "text": "go-to thing. Having said that there are ways to \navoid overfitting, but yeah, (it's just, it's not,  ",
+      "offset": 3072.9,
+      "duration": 6.6
+    },
+    {
+      "lang": "en",
+      "text": "you know) because it's breakable, it's not my \nfirst choice. But yeah, check out our stuff  ",
+      "offset": 3083.34,
+      "duration": 6.54
+    },
+    {
+      "lang": "en",
+      "text": "here if you're interested and, you know, there \nis stuff which largely automates the process,  ",
+      "offset": 3089.88,
+      "duration": 5.1
+    },
+    {
+      "lang": "en",
+      "text": "there's lots of hyper parameters you have \nto select. People generally just, you know,  ",
+      "offset": 3094.98,
+      "duration": 4.14
+    },
+    {
+      "lang": "en",
+      "text": "try every combination of hyper parameters and, \nin the end, you generally should be able to get  ",
+      "offset": 3099.12,
+      "duration": 5.82
+    },
+    {
+      "lang": "en",
+      "text": "a more accurate Gradient Boosting model than \nRandom Forest… but not necessarily by much.",
+      "offset": 3104.94,
+      "duration": 5.7
+    },
+    {
+      "lang": "en",
+      "text": "Okay, so that was the  ",
+      "offset": 3115.74,
+      "duration": 3.24
+    },
+    {
+      "lang": "en",
+      "text": "Kaggle notebook on Random Forests: \n“How random forests really work”.",
+      "offset": 3123.6,
+      "duration": 7.32
+    },
+    {
+      "lang": "en",
+      "text": "So, what we've been doing is having \nthis daily walk-through where me and  ",
+      "offset": 3135.06,
+      "duration": 9.24
+    },
+    {
+      "lang": "en",
+      "text": "—I don't know how many— 20 or 30 folks get \ntogether on a Zoom call and chat about,  ",
+      "offset": 3144.3,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "you know, getting through the course, and \nsetting up machines, and stuff like that. And,  ",
+      "offset": 3150.72,
+      "duration": 7.92
+    },
+    {
+      "lang": "en",
+      "text": "you know, we've been trying to kind of \npractice what, you know, things along the way  ",
+      "offset": 3159.72,
+      "duration": 3.54
+    },
+    {
+      "lang": "en",
+      "text": "and so, a couple of weeks ago, I wanted to show:  ",
+      "offset": 3164.34,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "what does it look like to pick a Kaggle \ncompetition and just like do the normal, sensible,  ",
+      "offset": 3170.1,
+      "duration": 7.14
+    },
+    {
+      "lang": "en",
+      "text": "kind of mechanical steps that you \nwould do for any computer vision model.",
+      "offset": 3179.28,
+      "duration": 3.48
+    },
+    {
+      "lang": "en",
+      "text": "And so the competition I picked \nwas Paddy Disease Classification,  ",
+      "offset": 3185.46,
+      "duration": 6.6
+    },
+    {
+      "lang": "en",
+      "text": "which is about recognizing diseases, \nrice diseases and rice paddies.  ",
+      "offset": 3193.26,
+      "duration": 5.58
+    },
+    {
+      "lang": "en",
+      "text": "And yeah I spent —I don't know— a couple of \nhours, or three —I can't remember—. A few hours,  ",
+      "offset": 3200.16,
+      "duration": 3.66
+    },
+    {
+      "lang": "en",
+      "text": "throwing together something and I found that I \nwas number one on the leaderboard and I thought:  ",
+      "offset": 3205.5,
+      "duration": 8.04
+    },
+    {
+      "lang": "en",
+      "text": "“oh, that's interesting”, like, because you never \nquite have a sense of how well these things work.  ",
+      "offset": 3213.54,
+      "duration": 7.5
+    },
+    {
+      "lang": "en",
+      "text": "And then I thought: “well there's all these other \nthings we should be doing as well”, and I tried  ",
+      "offset": 3222.48,
+      "duration": 3.48
+    },
+    {
+      "lang": "en",
+      "text": "three more things, and each time I tried another \nthing, I got further ahead at the top of the  ",
+      "offset": 3226.92,
+      "duration": 6.36
+    },
+    {
+      "lang": "en",
+      "text": "leaderboard. So I thought it'd be cool to take you \nthrough the process. I'm going to do it reasonably  ",
+      "offset": 3233.28,
+      "duration": 9.24
+    },
+    {
+      "lang": "en",
+      "text": "quickly because the walkthroughs are all available \nfor you to see the entire thing in, you know,  ",
+      "offset": 3242.52,
+      "duration": 9.12
+    },
+    {
+      "lang": "en",
+      "text": "seven hours of detail —or however long we probably \nwere, six to seven hours of conversations—  ",
+      "offset": 3251.64,
+      "duration": 4.98
+    },
+    {
+      "lang": "en",
+      "text": "but I want to kind of take you through \nthe basic process that I went through.",
+      "offset": 3258.36,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "So since I've been studied to do more stuff \non Kaggle, you know, I realized there's some  ",
+      "offset": 3268.5,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "kind of manual steps I have to do \neach time, particularly because I  ",
+      "offset": 3275.7,
+      "duration": 4.26
+    },
+    {
+      "lang": "en",
+      "text": "like to run stuff on my own machine \nand then kind of upload it to Kaggle.  ",
+      "offset": 3279.96,
+      "duration": 4.38
+    },
+    {
+      "lang": "en",
+      "text": "So to do, to to make my life easier I created \na little module called fastKaggle which you'll  ",
+      "offset": 3286.02,
+      "duration": 6.66
+    },
+    {
+      "lang": "en",
+      "text": "see in my notebooks from now on, which \nyou can download from pip or conda,  ",
+      "offset": 3292.68,
+      "duration": 4.38
+    },
+    {
+      "lang": "en",
+      "text": "and as you'll see it makes some things a bit \neasier. For example: downloading the data for  ",
+      "offset": 3299.4,
+      "duration": 4.92
+    },
+    {
+      "lang": "en",
+      "text": "the Paddy Disease Classification, if you just \nrun “setup_comp()” and pass in the name of  ",
+      "offset": 3304.32,
+      "duration": 6.54
+    },
+    {
+      "lang": "en",
+      "text": "the competition, if you are on Kaggle, it will \nreturn a path to that competition data that's  ",
+      "offset": 3310.86,
+      "duration": 9.06
+    },
+    {
+      "lang": "en",
+      "text": "already on Kaggle; if you are not on Kaggle and \nyou haven't downloaded it, it will download and  ",
+      "offset": 3319.92,
+      "duration": 4.5
+    },
+    {
+      "lang": "en",
+      "text": "unzip the data for you. If you're not on Kaggle \nand you have downloaded and unzip the data,  ",
+      "offset": 3324.42,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "it will return a path to the one that you've \nalready downloaded. Also if you are on Kaggle  ",
+      "offset": 3328.74,
+      "duration": 4.2
+    },
+    {
+      "lang": "en",
+      "text": "you can ask it to make sure that pip things are \ninstalled —that might not be up to date otherwise—  ",
+      "offset": 3332.94,
+      "duration": 6.36
+    },
+    {
+      "lang": "en",
+      "text": "so that's basically one line of code \nnow gets us all set up and ready to go.  ",
+      "offset": 3340.38,
+      "duration": 3.48
+    },
+    {
+      "lang": "en",
+      "text": "So this path… so I ran this particular one on \nmy own machine, so it downloaded and unzipped  ",
+      "offset": 3344.94,
+      "duration": 6.84
+    },
+    {
+      "lang": "en",
+      "text": "the data. I've also got links to the six \nwalkthrus so far: these are the videos. Oh yes,  ",
+      "offset": 3352.38,
+      "duration": 10.26
+    },
+    {
+      "lang": "en",
+      "text": "and here's my result after these four attempts, \nthat's a few fiddling around at the start.  ",
+      "offset": 3362.64,
+      "duration": 8.4
+    },
+    {
+      "lang": "en",
+      "text": "So the overall approach at, is, well and \nthis is not just a Kaggle competition,  ",
+      "offset": 3374.4,
+      "duration": 6.06
+    },
+    {
+      "lang": "en",
+      "text": "right? the reason I like looking \nat Kaggle competitions is  ",
+      "offset": 3380.46,
+      "duration": 3
+    },
+    {
+      "lang": "en",
+      "text": "you can't hide from the truth in a Kaggle \ncompetition, you know, when you're working on  ",
+      "offset": 3385.14,
+      "duration": 5.64
+    },
+    {
+      "lang": "en",
+      "text": "some work project or something, you might be able \nto convince yourself and everybody around you that  ",
+      "offset": 3390.78,
+      "duration": 5.88
+    },
+    {
+      "lang": "en",
+      "text": "you've done a fantastic job of not overfitting, \nand that your model's better than what anybody  ",
+      "offset": 3396.66,
+      "duration": 5.94
+    },
+    {
+      "lang": "en",
+      "text": "else could have made, and whatever else; but \nthe brutal assessment of the private leaderboard  ",
+      "offset": 3402.6,
+      "duration": 6.18
+    },
+    {
+      "lang": "en",
+      "text": "will tell you the truth. Is your model actually \npredicting things correctly? and, is it overfit?",
+      "offset": 3409.74,
+      "duration": 8.1
+    },
+    {
+      "lang": "en",
+      "text": "Until you've been through that process, \nyou know, you're never going to know. And  ",
+      "offset": 3422.04,
+      "duration": 4.68
+    },
+    {
+      "lang": "en",
+      "text": "a lot of people don't go through that process \nbecause at some level they don't want to know.  ",
+      "offset": 3426.72,
+      "duration": 3.12
+    },
+    {
+      "lang": "en",
+      "text": "But it's okay, you know, nobody needs it, \nyou don't have to put your own name there.  ",
+      "offset": 3432.78,
+      "duration": 4.14
+    },
+    {
+      "lang": "en",
+      "text": "I always did, right from the very first one \nI wanted, you know, if I was going to screw  ",
+      "offset": 3438.84,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "up royally I wanted to have the pressure on \nmyself of people seeing me in last place.  ",
+      "offset": 3443.16,
+      "duration": 4.26
+    },
+    {
+      "lang": "en",
+      "text": "But you know, it's fine, you can do it \nall anonymously and you'll actually find  ",
+      "offset": 3448.38,
+      "duration": 5.16
+    },
+    {
+      "lang": "en",
+      "text": "as you improve you'll have so much \nself-confidence, you know. And the  ",
+      "offset": 3455.16,
+      "duration": 7.44
+    },
+    {
+      "lang": "en",
+      "text": "stuff we do in a Kaggle competition is indeed a \nsubset of the things we need to do in real life,  ",
+      "offset": 3462.6,
+      "duration": 4.62
+    },
+    {
+      "lang": "en",
+      "text": "but it's an important subset, you know. Building \na model that actually predicts things correctly  ",
+      "offset": 3467.94,
+      "duration": 6.12
+    },
+    {
+      "lang": "en",
+      "text": "and doesn't overfit is important. And furthermore \nstructuring your code and analysis in such a way  ",
+      "offset": 3474.06,
+      "duration": 6.78
+    },
+    {
+      "lang": "en",
+      "text": "that you can keep improving over a three-month \nperiod without gradually getting into more and  ",
+      "offset": 3480.84,
+      "duration": 4.14
+    },
+    {
+      "lang": "en",
+      "text": "more of a tangled mess of impossible to understand \ncode and having no idea what UntitledCopy13 was,  ",
+      "offset": 3484.98,
+      "duration": 8.22
+    },
+    {
+      "lang": "en",
+      "text": "and why it was better than 25, right, this is \nall stuff you want to be practicing, ideally  ",
+      "offset": 3493.2,
+      "duration": 8.28
+    },
+    {
+      "lang": "en",
+      "text": "well away from customers or whatever, you \nknow, before you've kind of figured things out.",
+      "offset": 3502.5,
+      "duration": 4.98
+    },
+    {
+      "lang": "en",
+      "text": "So the things I talk about here about doing \nthings well in this Kaggle competition  ",
+      "offset": 3509.4,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "should work, you know, in other settings as well. \nAnd so these are the two focuses that I recommend:  ",
+      "offset": 3516.12,
+      "duration": 7.38
+    },
+    {
+      "lang": "en",
+      "text": "Get a really good validation set together - we've \ntalked about that before, right, and in a Kaggle  ",
+      "offset": 3524.52,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "competition (that's like…) it's very rare to see \npeople do well in a Kaggle competition who don't  ",
+      "offset": 3530.04,
+      "duration": 4.74
+    },
+    {
+      "lang": "en",
+      "text": "have a good validation set. Sometimes that's \neasy, and this competition actually it is easy,  ",
+      "offset": 3534.78,
+      "duration": 5.88
+    },
+    {
+      "lang": "en",
+      "text": "because the the the test set seems to be a random \nsample, but most of the time it's not actually,  ",
+      "offset": 3540.66,
+      "duration": 7.38
+    },
+    {
+      "lang": "en",
+      "text": "I would say. And then how quickly can you iterate? \nHow quickly can you try things and find out what  ",
+      "offset": 3548.04,
+      "duration": 7.68
+    },
+    {
+      "lang": "en",
+      "text": "worked? So obviously you need a good validation \nset otherwise it's impossible to iterate.  ",
+      "offset": 3555.72,
+      "duration": 4.02
+    },
+    {
+      "lang": "en",
+      "text": "And so “quickly iterating” means \nnot saying what is the biggest,  ",
+      "offset": 3561.3,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "you know, OpenAI takes four months \non 100 TPUs model that I can train.  ",
+      "offset": 3567.6,
+      "duration": 6.66
+    },
+    {
+      "lang": "en",
+      "text": "It's what can I do that's going to train in a \nminute or so and will quickly give me a sense  ",
+      "offset": 3575.22,
+      "duration": 5.64
+    },
+    {
+      "lang": "en",
+      "text": "of… like well I could try this, I could try \nthat, what things going to work, and then try,  ",
+      "offset": 3580.86,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "you know, 80 things. It also doesn't mean that \nsaying like… Oh I heard this is amazing new  ",
+      "offset": 3586.44,
+      "duration": 6.36
+    },
+    {
+      "lang": "en",
+      "text": "Bayesian hyper parameter tuning approach, I'm \ngoing to spend three months implementing that,  ",
+      "offset": 3593.88,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "because that's gonna, like, give you one thing. \nBut actually to do well in these competitions or  ",
+      "offset": 3598.68,
+      "duration": 8.94
+    },
+    {
+      "lang": "en",
+      "text": "in machine learning in general, you actually have \nto do everything reasonably well. And doing just  ",
+      "offset": 3607.62,
+      "duration": 6.18
+    },
+    {
+      "lang": "en",
+      "text": "one thing really well will still put you somewhere \nabout last place. So I actually saw that a couple  ",
+      "offset": 3613.8,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "of years ago, an Aussie guy who's a very very \ndistinguished machine learning practitioner,  ",
+      "offset": 3619.8,
+      "duration": 6.6
+    },
+    {
+      "lang": "en",
+      "text": "actually put together a team and entered a Kaggle \ncompetition and literally came in last place,  ",
+      "offset": 3628.26,
+      "duration": 5.58
+    },
+    {
+      "lang": "en",
+      "text": "because they spent the entire three months \ntrying to build this amazing new fancy thing and  ",
+      "offset": 3634.44,
+      "duration": 8.46
+    },
+    {
+      "lang": "en",
+      "text": "never actually, never actually iterated. If you \niterate I guarantee you won't be in last place.",
+      "offset": 3642.9,
+      "duration": 6.12
+    },
+    {
+      "lang": "en",
+      "text": "Okay, so here's how we can grab our data,  ",
+      "offset": 3652.8,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "with FastKaggle, and it gives \nus (tells us) what path it's in.  ",
+      "offset": 3656.16,
+      "duration": 3.18
+    },
+    {
+      "lang": "en",
+      "text": "And then I set my random seed - and I only do \nthis because I'm creating a notebook to share.  ",
+      "offset": 3663.42,
+      "duration": 7.44
+    },
+    {
+      "lang": "en",
+      "text": "You know, when I share a notebook I like to be \nable to say “as you can see this is 0.83 blah blah  ",
+      "offset": 3670.86,
+      "duration": 4.5
+    },
+    {
+      "lang": "en",
+      "text": "blah right and know that when you see it, it'll be \n0.83 as well. But when I'm doing stuff otherwise,  ",
+      "offset": 3675.36,
+      "duration": 5.64
+    },
+    {
+      "lang": "en",
+      "text": "I would never set a random seed. I want to be able \nto run things multiple times and see how much it  ",
+      "offset": 3681,
+      "duration": 4.98
+    },
+    {
+      "lang": "en",
+      "text": "changes each time, all right, because that'll \ngive me a sense of like… are the modifications  ",
+      "offset": 3685.98,
+      "duration": 5.16
+    },
+    {
+      "lang": "en",
+      "text": "I'm making, changing it because they're improving \nit or making it worse, or is it just random  ",
+      "offset": 3691.14,
+      "duration": 3.78
+    },
+    {
+      "lang": "en",
+      "text": "variation. So if you (or if you) always set \na random seed, that's a bad idea because you  ",
+      "offset": 3694.92,
+      "duration": 5.58
+    },
+    {
+      "lang": "en",
+      "text": "won't be able to see the random variation. So \nthis is just here for presenting a notebook.",
+      "offset": 3700.5,
+      "duration": 4.2
+    },
+    {
+      "lang": "en",
+      "text": "Okay, so the data they've given us, as usual, \nthey've got a sample submission, they've got  ",
+      "offset": 3706.5,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "some test set images, they've got some training \nset images, a CSV file about the training set  ",
+      "offset": 3712.5,
+      "duration": 6.6
+    },
+    {
+      "lang": "en",
+      "text": "and then these other two you can \nignore because I created them.  ",
+      "offset": 3720.24,
+      "duration": 2.76
+    },
+    {
+      "lang": "en",
+      "text": "So let's grab a path to train \nimages… and so do you remember  ",
+      "offset": 3724.14,
+      "duration": 5.16
+    },
+    {
+      "lang": "en",
+      "text": "get_image_files()... so that gets us a list of \nthe file names of all the images here recursively,  ",
+      "offset": 3730.62,
+      "duration": 6.3
+    },
+    {
+      "lang": "en",
+      "text": "so we could just grab the first \none, and take a look - so it's 480  ",
+      "offset": 3738.48,
+      "duration": 4.26
+    },
+    {
+      "lang": "en",
+      "text": "by 640. Now we've got to be careful. This is a \npillow image (Python Imaging Library image.) In  ",
+      "offset": 3743.4,
+      "duration": 8.22
+    },
+    {
+      "lang": "en",
+      "text": "the imaging world they generally say columns \nby rows. In the array slash tensor world we  ",
+      "offset": 3751.62,
+      "duration": 7.8
+    },
+    {
+      "lang": "en",
+      "text": "always say rows by columns. So if you ask pytorch \nwhat the size of this is it'll say 640 by 480,  ",
+      "offset": 3759.42,
+      "duration": 6.54
+    },
+    {
+      "lang": "en",
+      "text": "and I guarantee at some point this is going \nto bite you. So try to recognize it now.",
+      "offset": 3765.96,
+      "duration": 4.86
+    },
+    {
+      "lang": "en",
+      "text": "Okay so they're kind of taller than they are… \nat least this one is taller than it is wide.  ",
+      "offset": 3771.9,
+      "duration": 3.66
+    },
+    {
+      "lang": "en",
+      "text": "So I actually like to know \nwere they all this size,  ",
+      "offset": 3778.56,
+      "duration": 2.1
+    },
+    {
+      "lang": "en",
+      "text": "because it's really helpful if they all \nare all the same size, or at least similar.  ",
+      "offset": 3780.66,
+      "duration": 3.54
+    },
+    {
+      "lang": "en",
+      "text": "Believe it or not the amount of time it takes \nto decode a JPEG is actually quite significant  ",
+      "offset": 3786.9,
+      "duration": 5.82
+    },
+    {
+      "lang": "en",
+      "text": "and so figuring out what size these things \nare is actually going to be pretty slow,  ",
+      "offset": 3793.26,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "but my fastcore library has a parallel sub module \nwhich can basically do anything that you can do  ",
+      "offset": 3799.98,
+      "duration": 6.12
+    },
+    {
+      "lang": "en",
+      "text": "in Python, it can do it in parallel. So in this \ncase we wanted to create a pillow image and get  ",
+      "offset": 3806.1,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "its size. So if we create a function that does \nthat and pass it to parallel, passing in the  ",
+      "offset": 3810.9,
+      "duration": 5.82
+    },
+    {
+      "lang": "en",
+      "text": "function and the list of files, it does it in \nparallel and that actually runs pretty fast.  ",
+      "offset": 3816.72,
+      "duration": 4.38
+    },
+    {
+      "lang": "en",
+      "text": "And so here is the answer… (I don't know how \nthis happened…) 10,403 images are indeed 480 by  ",
+      "offset": 3822.24,
+      "duration": 7.74
+    },
+    {
+      "lang": "en",
+      "text": "640 and four of them aren't. So basically what \nthis says to me is that we should pre-process  ",
+      "offset": 3829.98,
+      "duration": 5.88
+    },
+    {
+      "lang": "en",
+      "text": "them or you know at some point process them \nso that they're probably all 480 by 640,  ",
+      "offset": 3835.86,
+      "duration": 4.68
+    },
+    {
+      "lang": "en",
+      "text": "or all basically kind of the same size. \nWe'll pretend they're all this size  ",
+      "offset": 3840.54,
+      "duration": 3.06
+    },
+    {
+      "lang": "en",
+      "text": "but we can't not do some initial resizing \notherwise this is going to screw things up.",
+      "offset": 3845.22,
+      "duration": 4.68
+    },
+    {
+      "lang": "en",
+      "text": "So like the probably the easiest way to do \nthings, the most common way to do things,  ",
+      "offset": 3857.7,
+      "duration": 3.54
+    },
+    {
+      "lang": "en",
+      "text": "is to either squish or crop \nevery image to be a square.  ",
+      "offset": 3862.08,
+      "duration": 4.92
+    },
+    {
+      "lang": "en",
+      "text": "So squishing is when you just… (in this \ncase…) squish the aspect ratio down as  ",
+      "offset": 3868.62,
+      "duration": 7.92
+    },
+    {
+      "lang": "en",
+      "text": "opposed to cropping randomly a section out. So if \nwe call Resize() ‘squish’ it will squish it down,  ",
+      "offset": 3876.54,
+      "duration": 5.7
+    },
+    {
+      "lang": "en",
+      "text": "and so this is 480 by 480 squared. So this is \nwhat it's going to do to all of the images first,  ",
+      "offset": 3883.56,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "on the CPU, that allows them to be all \nbatched together into a single mini batch  ",
+      "offset": 3889.62,
+      "duration": 7.32
+    },
+    {
+      "lang": "en",
+      "text": "(everything in a mini batch has to be the \nsame shape otherwise the GPU won't like it,)  ",
+      "offset": 3896.94,
+      "duration": 5.16
+    },
+    {
+      "lang": "en",
+      "text": "and then that many batches put through data \naugmentation, and it will grab a random subset  ",
+      "offset": 3903.3,
+      "duration": 9.12
+    },
+    {
+      "lang": "en",
+      "text": "of the image, and make it a 128 by 128 pixels. \nAnd here's what that looks like, here's our data.  ",
+      "offset": 3912.42,
+      "duration": 7.62
+    },
+    {
+      "lang": "en",
+      "text": "So show_batch() works for pretty much \neverything, not just in the fast AI library,  ",
+      "offset": 3921.6,
+      "duration": 4.92
+    },
+    {
+      "lang": "en",
+      "text": "but even for things like FastAudio which are \nkind of community based things. You should  ",
+      "offset": 3926.52,
+      "duration": 5.94
+    },
+    {
+      "lang": "en",
+      "text": "better use show_batch() on anything and see, or \nhear, or whatever, what your data looks like.",
+      "offset": 3932.46,
+      "duration": 5.22
+    },
+    {
+      "lang": "en",
+      "text": "I don't know anything about \nrice disease but apparently  ",
+      "offset": 3940.02,
+      "duration": 3.9
+    },
+    {
+      "lang": "en",
+      "text": "these are various rice diseases \nand this is what they look like.",
+      "offset": 3943.92,
+      "duration": 2.34
+    },
+    {
+      "lang": "en",
+      "text": "So I jump into creating models much more quickly \nthan most people, because I find… model, you know,  ",
+      "offset": 3951.42,
+      "duration": 9
+    },
+    {
+      "lang": "en",
+      "text": "models… are a great way to understand my data, \nas we've seen before. So I basically build a  ",
+      "offset": 3960.42,
+      "duration": 5.22
+    },
+    {
+      "lang": "en",
+      "text": "model as soon as I can, and I want to create a \nmodel that's going to let me iterate quickly.  ",
+      "offset": 3965.64,
+      "duration": 8.88
+    },
+    {
+      "lang": "en",
+      "text": "So that means that I'm going to need a model that \ncan train quickly. So Thomas Capell and I recently  ",
+      "offset": 3975.06,
+      "duration": 8.34
+    },
+    {
+      "lang": "en",
+      "text": "did this big project “The Best Vision Models For \nFine Tuning” where we looked at nearly a hundred  ",
+      "offset": 3985.68,
+      "duration": 7.8
+    },
+    {
+      "lang": "en",
+      "text": "different architectures from Ross Whiteman's \nTimm Library (Pytorch Image Model Library)  ",
+      "offset": 3993.48,
+      "duration": 9.6
+    },
+    {
+      "lang": "en",
+      "text": "and looked at which ones could we fine-tune - \nwhich ones had the best transfer learning results.  ",
+      "offset": 4004.1,
+      "duration": 8.16
+    },
+    {
+      "lang": "en",
+      "text": "And we tried two different datasets, very \ndifferent datasets. One is the pets dataset  ",
+      "offset": 4013.52,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "that we've seen before - so trying to predict \nwhat breed of pet is from 37 different breeds.  ",
+      "offset": 4018.32,
+      "duration": 7.08
+    },
+    {
+      "lang": "en",
+      "text": "And the other was a satellite \nimagery data set called planet.  ",
+      "offset": 4026.3,
+      "duration": 4.44
+    },
+    {
+      "lang": "en",
+      "text": "So very very different data sets in terms of \nwhat they contain and also very different sizes.  ",
+      "offset": 4031.34,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "The planet one is a lot smaller the Pets \none is a lot bigger. And so the main things  ",
+      "offset": 4036.92,
+      "duration": 5.1
+    },
+    {
+      "lang": "en",
+      "text": "we measured were how much memory did it use, how \naccurate was it, and how long did it take to fit.  ",
+      "offset": 4042.02,
+      "duration": 5.7
+    },
+    {
+      "lang": "en",
+      "text": "And then I created this score which can… which \ncombines the fit, time and error rate together.",
+      "offset": 4048.32,
+      "duration": 4.68
+    },
+    {
+      "lang": "en",
+      "text": "And so this is a really useful table for picking \na model. And now in this case I want to pick  ",
+      "offset": 4055.52,
+      "duration": 9.6
+    },
+    {
+      "lang": "en",
+      "text": "something that's really fast, and there's one \nclear winner on speed, which is resnet26d.  ",
+      "offset": 4065.12,
+      "duration": 8.1
+    },
+    {
+      "lang": "en",
+      "text": "And so its accuracy was 6% versus the best was \nlike 4.1% - so okay it's not amazingly accurate,  ",
+      "offset": 4074.48,
+      "duration": 7.74
+    },
+    {
+      "lang": "en",
+      "text": "but it's still pretty good, and it's going to be \nreally fast, so that's why I picked “resnet26d.  ",
+      "offset": 4082.22,
+      "duration": 6.96
+    },
+    {
+      "lang": "en",
+      "text": "A lot of people think that when they do deep \nlearning they're going to spend all of their time  ",
+      "offset": 4090.38,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "learning about exactly how a resnet26d is made and \nconvolutions and resonant blocks and transformers  ",
+      "offset": 4095.9,
+      "duration": 7.56
+    },
+    {
+      "lang": "en",
+      "text": "and blah blah blah. We will cover all that stuff \nin Part Two and a little bit of it next week  ",
+      "offset": 4103.46,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "but it almost never matters, right, it's \njust a function, right, and what matters  ",
+      "offset": 4110.06,
+      "duration": 6.72
+    },
+    {
+      "lang": "en",
+      "text": "is the inputs to it, and the outputs to it, \nand how fast it is, and how accurate it is.",
+      "offset": 4116.78,
+      "duration": 4.92
+    },
+    {
+      "lang": "en",
+      "text": "So let's create a learner which with \na resnet26d from our data loaders,  ",
+      "offset": 4123.08,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "and let's run lr_find(). So lr_find() will put \nthrough one mini-batch at a time starting at a  ",
+      "offset": 4130.04,
+      "duration": 9.24
+    },
+    {
+      "lang": "en",
+      "text": "very very very low learning rate, and gradually \nincrease the learning rate, and track the loss.  ",
+      "offset": 4139.28,
+      "duration": 4.5
+    },
+    {
+      "lang": "en",
+      "text": "And initially the loss won't improve because the \nlearning rate is so small it doesn't really do  ",
+      "offset": 4144.68,
+      "duration": 6.24
+    },
+    {
+      "lang": "en",
+      "text": "anything, and at some point the learning rate is \nhigh enough that the loss will start coming down,  ",
+      "offset": 4150.92,
+      "duration": 4.26
+    },
+    {
+      "lang": "en",
+      "text": "and then at some other point the learning rate \nis so high that it's going to start jumping past  ",
+      "offset": 4155.18,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "the answer and it's going to predict worse. \nAnd so somewhere around here is a learning  ",
+      "offset": 4160.22,
+      "duration": 6.54
+    },
+    {
+      "lang": "en",
+      "text": "rate we'd want to pick. We've got a couple \nof different ways of making suggestions.  ",
+      "offset": 4166.76,
+      "duration": 6.48
+    },
+    {
+      "lang": "en",
+      "text": "I generally ignore them because these suggestions \nare specifically designed to be conservative.  ",
+      "offset": 4176.12,
+      "duration": 5.46
+    },
+    {
+      "lang": "en",
+      "text": "They're a bit lower than perhaps optimal, in \norder to make sure we don't recommend something  ",
+      "offset": 4181.58,
+      "duration": 4.5
+    },
+    {
+      "lang": "en",
+      "text": "that totally screws up, but I kind of like \nto say, like well… How far right can I go and  ",
+      "offset": 4186.08,
+      "duration": 4.92
+    },
+    {
+      "lang": "en",
+      "text": "still see it, like, clearly really improving \nquickly, and so I'd pick somewhere around  ",
+      "offset": 4191,
+      "duration": 4.62
+    },
+    {
+      "lang": "en",
+      "text": "0.01 for this. So I can now fine-tune \nour model with a learning rate of 0.01,  ",
+      "offset": 4197.3,
+      "duration": 7.2
+    },
+    {
+      "lang": "en",
+      "text": "three epochs, so look!... the whole thing took \na minute! That's what we want, right, we want to  ",
+      "offset": 4205.22,
+      "duration": 4.44
+    },
+    {
+      "lang": "en",
+      "text": "be able to iterate, rapidly, just a minute or so. \nSo that's enough time for me to go and you know,  ",
+      "offset": 4209.66,
+      "duration": 5.58
+    },
+    {
+      "lang": "en",
+      "text": "grab a glass of water, or do some reading, \nlike I’m not going to get too distracted.  ",
+      "offset": 4215.24,
+      "duration": 4.86
+    },
+    {
+      "lang": "en",
+      "text": "And what did we do before we submit? \nNothing! We submit as soon as we can. Okay,  ",
+      "offset": 4221.42,
+      "duration": 7.02
+    },
+    {
+      "lang": "en",
+      "text": "let's get our submission in. So we've got \na model, let's get it in. So we read in  ",
+      "offset": 4228.44,
+      "duration": 6.9
+    },
+    {
+      "lang": "en",
+      "text": "our CSV file of the sample submission and \nso the CSV file basically looks like we're  ",
+      "offset": 4235.34,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "going to have to have a list of the image file \nnames, in order, and then a column of labels.",
+      "offset": 4240.86,
+      "duration": 6.18
+    },
+    {
+      "lang": "en",
+      "text": "So we can grab all the image files in the \ntest image —like so— and we can sort them.  ",
+      "offset": 4250.76,
+      "duration": 5.58
+    },
+    {
+      "lang": "en",
+      "text": "And so now we want is —what \nwe want is— a dataloader,  ",
+      "offset": 4257.96,
+      "duration": 3.72
+    },
+    {
+      "lang": "en",
+      "text": "which is exactly like the dataloader we use to \ntrain the model, except pointing at the test set,  ",
+      "offset": 4262.52,
+      "duration": 7.2
+    },
+    {
+      "lang": "en",
+      "text": "we want to use exactly the same transformations \nso there's actually a dls.test_dl() method  ",
+      "offset": 4269.72,
+      "duration": 6.6
+    },
+    {
+      "lang": "en",
+      "text": "—which does that— you just pass in the \nnew set of items, so the test set files.  ",
+      "offset": 4276.32,
+      "duration": 5.16
+    },
+    {
+      "lang": "en",
+      "text": "So this is a dataloader which we can use for our \ntest set. A test dataloader has a key difference  ",
+      "offset": 4282.62,
+      "duration": 10.74
+    },
+    {
+      "lang": "en",
+      "text": "to a normal data loader which is that it does \nnot have any labels. So that's a key distinction.",
+      "offset": 4293.36,
+      "duration": 5.82
+    },
+    {
+      "lang": "en",
+      "text": "So we can get the predictions \nfor our learner, passing in  ",
+      "offset": 4302.12,
+      "duration": 3.18
+    },
+    {
+      "lang": "en",
+      "text": "that dataloader and in the case of a \nclassification problem you can also  ",
+      "offset": 4306.02,
+      "duration": 5.58
+    },
+    {
+      "lang": "en",
+      "text": "ask for them to be decoded, decoded means rather \nthan just get returned the probability of every  ",
+      "offset": 4311.6,
+      "duration": 7.08
+    },
+    {
+      "lang": "en",
+      "text": "rice disease for every class, it'll tell you what \nis the index of the most probable rice disease,  ",
+      "offset": 4319.76,
+      "duration": 7.5
+    },
+    {
+      "lang": "en",
+      "text": "that's what decoded means. So this is returning \nthe probabilities, targets —which obviously will  ",
+      "offset": 4327.26,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "be empty because it's a test set, so throw \nthem away— and those decoded indexes which  ",
+      "offset": 4333.26,
+      "duration": 4.92
+    },
+    {
+      "lang": "en",
+      "text": "look like this: numbers from naught (0) to nine \n(9) because there's ten possible rice diseases.  ",
+      "offset": 4338.18,
+      "duration": 3.66
+    },
+    {
+      "lang": "en",
+      "text": "The Kaggle submission does not expect numbers \nnaught (0) to nine (9), it expects to see  ",
+      "offset": 4343.58,
+      "duration": 4.14
+    },
+    {
+      "lang": "en",
+      "text": "strings like these. So, what do those numbers \nfrom naught (0) to nine (9) represent?  ",
+      "offset": 4348.92,
+      "duration": 5.82
+    },
+    {
+      "lang": "en",
+      "text": "We can look up our vocab to get a list, so \nthat's zero, that's one, et cetera, that's nine.  ",
+      "offset": 4355.88,
+      "duration": 6.9
+    },
+    {
+      "lang": "en",
+      "text": "So, I realized later this is a \nslightly inefficient way to do it,  ",
+      "offset": 4364.7,
+      "duration": 4.2
+    },
+    {
+      "lang": "en",
+      "text": "but it does the job I need to \nbe able to map these to strings  ",
+      "offset": 4368.9,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "so, if I enumerate the vocab, that gives me pairs \nof numbers; zero (0): bacterial leaf blight,  ",
+      "offset": 4374.6,
+      "duration": 6.36
+    },
+    {
+      "lang": "en",
+      "text": "one (1): bacterial leaf streak, etc. I \ncan then create a dictionary out of that,  ",
+      "offset": 4380.96,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "and then I can use pandas to look up each thing \nin a dictionary: they call that map. If you're a  ",
+      "offset": 4386.18,
+      "duration": 8.46
+    },
+    {
+      "lang": "en",
+      "text": "pandas user you've probably seen map used before \nbeing passed a function —which is really, really  ",
+      "offset": 4394.64,
+      "duration": 5.46
+    },
+    {
+      "lang": "en",
+      "text": "slow— but if you pass map a dict it's actually \nreally, really fast, so do it this way if you can.",
+      "offset": 4400.1,
+      "duration": 5.64
+    },
+    {
+      "lang": "en",
+      "text": "So here's our predictions, so we've got our  ",
+      "offset": 4406.94,
+      "duration": 7.2
+    },
+    {
+      "lang": "en",
+      "text": "submission sample: submission file “ss”, so if \nwe replace this column label with our predictions  ",
+      "offset": 4417.08,
+      "duration": 5.22
+    },
+    {
+      "lang": "en",
+      "text": "—like so— then we can turn that into a CSV,  ",
+      "offset": 4423.56,
+      "duration": 3.96
+    },
+    {
+      "lang": "en",
+      "text": "and remember, this means, this means: \nrun a bash command —a shell command—,  ",
+      "offset": 4428.72,
+      "duration": 6.66
+    },
+    {
+      "lang": "en",
+      "text": "head is the first few rows —let's just \ntake a look. That looks reasonable!",
+      "offset": 4435.38,
+      "duration": 3.72
+    },
+    {
+      "lang": "en",
+      "text": "So we can now submit that to Kaggle. Now, \niterating rapidly means everything needs to be  ",
+      "offset": 4441.14,
+      "duration": 7.26
+    },
+    {
+      "lang": "en",
+      "text": "fast and easy. Things that are slow and hard \ndon't just take up your time but they take up your  ",
+      "offset": 4449.48,
+      "duration": 5.94
+    },
+    {
+      "lang": "en",
+      "text": "mental energy, so even submitting to Kaggle needs \nto be fast. So I put it into a cell, so I can just  ",
+      "offset": 4455.42,
+      "duration": 7.14
+    },
+    {
+      "lang": "en",
+      "text": "run this cell: api.competition_submit_cli(), this \nCSV file, give it a description, so just run the  ",
+      "offset": 4462.56,
+      "duration": 10.92
+    },
+    {
+      "lang": "en",
+      "text": "cell and it submits to Kaggle. And as you can see \nit says: here we go!, “successfully submitted”.  ",
+      "offset": 4473.48,
+      "duration": 4.86
+    },
+    {
+      "lang": "en",
+      "text": "So that submission was terrible: top eighty \npercent also known as bottom twenty percent,  ",
+      "offset": 4480.02,
+      "duration": 7.92
+    },
+    {
+      "lang": "en",
+      "text": "which is not too surprising, right?, I \nmean, it's one minute of training time.",
+      "offset": 4488.84,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "But it's something that we can \nstart with and that would be like:  ",
+      "offset": 4497.36,
+      "duration": 3.66
+    },
+    {
+      "lang": "en",
+      "text": "however long it takes to get to this point, \nthat you put in our submission, now you've  ",
+      "offset": 4501.62,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "really started, right? because then tomorrow \nyou can try to make a slightly better one.",
+      "offset": 4505.94,
+      "duration": 5.46
+    },
+    {
+      "lang": "en",
+      "text": "So I'd like to share my notebooks \nand so, even sharing the notebook,  ",
+      "offset": 4515.78,
+      "duration": 3.54
+    },
+    {
+      "lang": "en",
+      "text": "I've automated. So part of fastkaggle is: \nyou can use this thing called push_notebook  ",
+      "offset": 4519.32,
+      "duration": 5.22
+    },
+    {
+      "lang": "en",
+      "text": "and that sends it off to Kaggle to create…  ",
+      "offset": 4525.08,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "a notebook on Kaggle, there \nit is, and there's my score.",
+      "offset": 4532.58,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "As you can see it's exactly the same thing.",
+      "offset": 4541.46,
+      "duration": 1.68
+    },
+    {
+      "lang": "en",
+      "text": "Why would you create public notebooks on Kaggle? \nWell, it's the same brutality of feedback that  ",
+      "offset": 4550.82,
+      "duration": 13.98
+    },
+    {
+      "lang": "en",
+      "text": "you get for entering a competition, but this time \nrather than finding out, in no uncertain terms,  ",
+      "offset": 4564.8,
+      "duration": 6.3
+    },
+    {
+      "lang": "en",
+      "text": "whether you can predict things accurately; this \ntime you can find out —no it's no uncertain  ",
+      "offset": 4571.1,
+      "duration": 4.86
+    },
+    {
+      "lang": "en",
+      "text": "terms— whether you can communicate things in \nthe way that people find interesting and useful.  ",
+      "offset": 4575.96,
+      "duration": 3.96
+    },
+    {
+      "lang": "en",
+      "text": "And if you get zero votes, you know, so be \nit, right? that's something to know and then,  ",
+      "offset": 4580.94,
+      "duration": 6.48
+    },
+    {
+      "lang": "en",
+      "text": "you know, ideally go and ask some friends, \nlike: what do you think I could do to  ",
+      "offset": 4587.42,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "improve? and if they say: oh, nothing, it's \nfantastic! you can tell: no, that's not true,  ",
+      "offset": 4592.94,
+      "duration": 4.26
+    },
+    {
+      "lang": "en",
+      "text": "I didn't get any votes, I'll try again, this \nisn't good, how do I make it better, you know,  ",
+      "offset": 4597.2,
+      "duration": 5.16
+    },
+    {
+      "lang": "en",
+      "text": "and you can try and improve because if you \ncan create models that predict things well,  ",
+      "offset": 4603.5,
+      "duration": 6.78
+    },
+    {
+      "lang": "en",
+      "text": "and you can communicate your results \nin a way that is clear and compelling,  ",
+      "offset": 4611,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "you're a pretty good data scientist, you \nknow, like they're two pretty important  ",
+      "offset": 4615.98,
+      "duration": 4.5
+    },
+    {
+      "lang": "en",
+      "text": "things and so here's a great way to test \nyourself out on those things and improve.",
+      "offset": 4620.48,
+      "duration": 5.16
+    },
+    {
+      "lang": "en",
+      "text": "Yes John.",
+      "offset": 4625.64,
+      "duration": 0.78
+    },
+    {
+      "lang": "en",
+      "text": "John: yes Jeremy we have a sort of \n—I think— a timely question here  ",
+      "offset": 4627.2,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "from Zakia about your iterative \napproach. And they're asking:  ",
+      "offset": 4631.04,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "“do you create different Kaggle \nnotebooks for each model that you try?”",
+      "offset": 4636.08,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "Jeremy: yeah…",
+      "offset": 4640.16,
+      "duration": 0.54
+    },
+    {
+      "lang": "en",
+      "text": "John: so one Kaggle book for the first one, \nthen separate notebooks subsequently, or do you,  ",
+      "offset": 4640.7,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "do append to the bottom of us — Jeremy: \nyeah, yeah — but what's your strategy? ",
+      "offset": 4645.98,
+      "duration": 3.06
+    },
+    {
+      "lang": "en",
+      "text": "Jeremy: that's a great question. \nAnd I know Zaki is going through the  ",
+      "offset": 4649.04,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "daily walkthroughs but isn't quite caught \nup yet so, I would say: keep it up because  ",
+      "offset": 4654.5,
+      "duration": 4.14
+    },
+    {
+      "lang": "en",
+      "text": "in the six hours of going through this \nyou'll see me create all the notebooks…",
+      "offset": 4659.3,
+      "duration": 4.92
+    },
+    {
+      "lang": "en",
+      "text": "but, if I go to the actual directory I used,  ",
+      "offset": 4666.56,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "you can see them. So basically: yeah. I started \nwith, you know, what you just saw, a bit messier  ",
+      "offset": 4674.84,
+      "duration": 8.1
+    },
+    {
+      "lang": "en",
+      "text": "without the pros, but that same basic thing, I \nthen duplicated it to create the next one —which  ",
+      "offset": 4682.94,
+      "duration": 8.04
+    },
+    {
+      "lang": "en",
+      "text": "is here— and because I duplicated it, you know, \nthis stuff which I still need it's still there,  ",
+      "offset": 4690.98,
+      "duration": 4.68
+    },
+    {
+      "lang": "en",
+      "text": "right? and so I run it. And I don't always know \nwhat I'm doing, you know, and so, at first,  ",
+      "offset": 4695.66,
+      "duration": 7.5
+    },
+    {
+      "lang": "en",
+      "text": "if I don't really know what I'm doing next \nI'm going to duplicate it, it will be called,  ",
+      "offset": 4703.16,
+      "duration": 3.54
+    },
+    {
+      "lang": "en",
+      "text": "you know, “first steps in the road to the top part \none dash copy one”, you know, and that's okay.  ",
+      "offset": 4706.7,
+      "duration": 7.26
+    },
+    {
+      "lang": "en",
+      "text": "As soon as I can I'll try to rename that, \nonce I know what I'm doing, you know,  ",
+      "offset": 4715.22,
+      "duration": 6.72
+    },
+    {
+      "lang": "en",
+      "text": "or if it doesn't seem to go anywhere I'll rename \nit into something like, you know, experiment  ",
+      "offset": 4723.92,
+      "duration": 5.64
+    },
+    {
+      "lang": "en",
+      "text": "blah blah blah and I'll put some notes at the \nbottom and I might put it into a failed folder  ",
+      "offset": 4729.56,
+      "duration": 4.14
+    },
+    {
+      "lang": "en",
+      "text": "or something. But yeah, it's like, it's a very low \ntech approach that I find works really well: which  ",
+      "offset": 4733.7,
+      "duration": 10.02
+    },
+    {
+      "lang": "en",
+      "text": "is just duplicating notebooks and editing them and \nnaming them carefully and putting them in order  ",
+      "offset": 4743.72,
+      "duration": 5.34
+    },
+    {
+      "lang": "en",
+      "text": "and, you know, put the file name in when you \nsubmit as well. And then of course also if  ",
+      "offset": 4751.34,
+      "duration": 7.44
+    },
+    {
+      "lang": "en",
+      "text": "you've got things in git, you know, you can have \na link to the git commit so you'll know exactly  ",
+      "offset": 4758.78,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "what it is… generally speaking from me, you know, \nmy notebooks will only have one submission in and  ",
+      "offset": 4763.34,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "then I'll move on and create a new notebook so \nI don't really worry about versioning so much,  ",
+      "offset": 4768.62,
+      "duration": 4.14
+    },
+    {
+      "lang": "en",
+      "text": "but you can do that as well if that helps you.",
+      "offset": 4774.44,
+      "duration": 2.1
+    },
+    {
+      "lang": "en",
+      "text": "Yeah, so that's basically what I do \nand and I've worked with a lot of  ",
+      "offset": 4778.82,
+      "duration": 4.92
+    },
+    {
+      "lang": "en",
+      "text": "people who use much more sophisticated and \ncomplex processes and tools and stuff but  ",
+      "offset": 4783.74,
+      "duration": 4.62
+    },
+    {
+      "lang": "en",
+      "text": "none of them seem to be able to stay as well \norganized as I am, I think they kind of get  ",
+      "offset": 4789.74,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "a bit lost in their tools, sometimes. And \nfile systems and file names I think are good.",
+      "offset": 4794.3,
+      "duration": 6.96
+    },
+    {
+      "lang": "en",
+      "text": "John: oh great thanks so, away from that kind \nof dev process, more towards the specifics of,  ",
+      "offset": 4802.24,
+      "duration": 9.7
+    },
+    {
+      "lang": "en",
+      "text": "you know, finding the best model and all that \nsort of stuff. We've got a couple of questions  ",
+      "offset": 4811.94,
+      "duration": 3.24
+    },
+    {
+      "lang": "en",
+      "text": "that are in the same space, which is, you know, \nwe've got some people here talking about AutoML  ",
+      "offset": 4815.18,
+      "duration": 5.46
+    },
+    {
+      "lang": "en",
+      "text": "Frameworks which you might want to, you know, \ntouch on for people who haven't heard of those.  ",
+      "offset": 4820.64,
+      "duration": 3.66
+    },
+    {
+      "lang": "en",
+      "text": "If you've got any particular AutoML Frameworks \nyou think are worth recommending. Or just,  ",
+      "offset": 4825.14,
+      "duration": 7.02
+    },
+    {
+      "lang": "en",
+      "text": "more generally, how do you go trying \ndifferent models. Random Forest,  ",
+      "offset": 4832.16,
+      "duration": 3
+    },
+    {
+      "lang": "en",
+      "text": "Gradient Boosting, Neural Networks… it \njust so in that space if you can comment it",
+      "offset": 4835.16,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "Jeremy: sure. I use AutoML less than anybody \nI know, I would guess, which is to say: never.  ",
+      "offset": 4839.96,
+      "duration": 13.2
+    },
+    {
+      "lang": "en",
+      "text": "Hyper parameter optimization: never. And the \nreason why is I like being highly intentional,  ",
+      "offset": 4856.28,
+      "duration": 10.62
+    },
+    {
+      "lang": "en",
+      "text": "you know, I like to think more like a scientist \nand have hypotheses and test them carefully  ",
+      "offset": 4866.9,
+      "duration": 6.78
+    },
+    {
+      "lang": "en",
+      "text": "and come up with conclusions —which then \nI implement, you know—. So for example,  ",
+      "offset": 4875,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "in this “best vision models for fine tuning” I \ndidn't try a huge “grid search” of every possible  ",
+      "offset": 4881.54,
+      "duration": 7.86
+    },
+    {
+      "lang": "en",
+      "text": "model, every possible learning rate, every \npossible pre-processing approach blah blah  ",
+      "offset": 4890.24,
+      "duration": 3.72
+    },
+    {
+      "lang": "en",
+      "text": "blah right. Instead, step one was to find \nout: well, which things matter, right? So,  ",
+      "offset": 4893.96,
+      "duration": 7.02
+    },
+    {
+      "lang": "en",
+      "text": "for example, “does whether we squish or crop make \na difference?” you know, “are some models better  ",
+      "offset": 4903.74,
+      "duration": 7.14
+    },
+    {
+      "lang": "en",
+      "text": "with squish and some models better with crop?” \nand so we just chested that for… and again,  ",
+      "offset": 4910.88,
+      "duration": 6.96
+    },
+    {
+      "lang": "en",
+      "text": "not for every possible architecture but for one \nor two versions of each of the main families,  ",
+      "offset": 4917.84,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "that took: 20 minutes. And the \nanswer was: no, in every single case  ",
+      "offset": 4921.68,
+      "duration": 4.14
+    },
+    {
+      "lang": "en",
+      "text": "the same thing was better. So we don't \nneed to do a grid search over that anymore,  ",
+      "offset": 4926.9,
+      "duration": 4.2
+    },
+    {
+      "lang": "en",
+      "text": "you know. Or another classic one is like, learning \nrates, most people do a, kind of, grid search  ",
+      "offset": 4931.1,
+      "duration": 7.32
+    },
+    {
+      "lang": "en",
+      "text": "over learning rates or they'll train a thousand \nmodels, you know, with different learning rates.  ",
+      "offset": 4938.42,
+      "duration": 3.54
+    },
+    {
+      "lang": "en",
+      "text": "But this fantastic researcher named Leslie Smith \ninvented the learning rate finder a few years ago,  ",
+      "offset": 4942.74,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "we implemented it, I think, within days of \nit (first) coming out as a technical report,  ",
+      "offset": 4948.68,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "and that's what I've used ever since: it \nworks well and runs in a minute or so.",
+      "offset": 4954.2,
+      "duration": 8.1
+    },
+    {
+      "lang": "en",
+      "text": "Yeah, I mean, then like Neural Nets versus \nGBMs versus Random Forests, I mean, that's…  ",
+      "offset": 4967.76,
+      "duration": 5.16
+    },
+    {
+      "lang": "en",
+      "text": "that shouldn't be too much of a question \non the whole, like: they have pretty clear  ",
+      "offset": 4973.94,
+      "duration": 5.34
+    },
+    {
+      "lang": "en",
+      "text": "places that they go. Like, if I'm doing \ncomputer vision I'm obviously going to use a  ",
+      "offset": 4980.48,
+      "duration": 8.22
+    },
+    {
+      "lang": "en",
+      "text": "computer vision Deep Learning model and which one \nI would use, well, if I'm transfer learning —which  ",
+      "offset": 4988.7,
+      "duration": 5.7
+    },
+    {
+      "lang": "en",
+      "text": "hopefully is, always— I would look up the two \ntables here: this is my table for pets which is,  ",
+      "offset": 4994.4,
+      "duration": 5.1
+    },
+    {
+      "lang": "en",
+      "text": "which are the best at fine tuning to very \nsimilar things to what they're pre-trained on,  ",
+      "offset": 4999.5,
+      "duration": 4.62
+    },
+    {
+      "lang": "en",
+      "text": "and then the same thing for planet is: “which ones \nare best for fine tuning for two data sets that  ",
+      "offset": 5004.66,
+      "duration": 6.72
+    },
+    {
+      "lang": "en",
+      "text": "are very different on what they're trained on”? \nAnd it happens in both case they're very similar,  ",
+      "offset": 5011.38,
+      "duration": 3.78
+    },
+    {
+      "lang": "en",
+      "text": "in particular “convnext” is right \nup towards the top in both cases,  ",
+      "offset": 5015.16,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "so I just like to have these rules of thumb \nand… yeah, my rule of thumb for tabular is:  ",
+      "offset": 5020.5,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "Random Forest is going to be the fastest \neasiest way to get a pretty good result, GBMs  ",
+      "offset": 5026.8,
+      "duration": 4.26
+    },
+    {
+      "lang": "en",
+      "text": "probably going to give me a slightly better result \nif I need it, and can be bothered fussing around",
+      "offset": 5031.84,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "GBM I would probably, yeah, actually \nI probably would run a hyper parameter  ",
+      "offset": 5039.88,
+      "duration": 6.42
+    },
+    {
+      "lang": "en",
+      "text": "sweep because it is fiddly and \nit's fast, so you may as well.",
+      "offset": 5046.3,
+      "duration": 4.98
+    },
+    {
+      "lang": "en",
+      "text": "So, yeah, you know, we were able to \nmake a slightly better submission,  ",
+      "offset": 5059.2,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "a slightly better model. And so, I had a couple \nof thoughts about this. The first thing was:  ",
+      "offset": 5064.96,
+      "duration": 7.44
+    },
+    {
+      "lang": "en",
+      "text": "that thing trained in a minute \non my home computer and then,  ",
+      "offset": 5073.78,
+      "duration": 6.42
+    },
+    {
+      "lang": "en",
+      "text": "when I uploaded it to Kaggle, it took about \nfour minutes per epoch —which was horrifying—.  ",
+      "offset": 5080.2,
+      "duration": 5.34
+    },
+    {
+      "lang": "en",
+      "text": "And, Kaggle GPUs are not amazing but they're \nnot that bad so I knew something was up,  ",
+      "offset": 5086.5,
+      "duration": 7.02
+    },
+    {
+      "lang": "en",
+      "text": "and what was up is I realized that they only \nhave two virtual CPUs which nowadays is tiny,  ",
+      "offset": 5094.6,
+      "duration": 7.86
+    },
+    {
+      "lang": "en",
+      "text": "like, you know, you generally want —as a rule \nof thumb— about eight physical CPUs per GPU.",
+      "offset": 5102.46,
+      "duration": 6.3
+    },
+    {
+      "lang": "en",
+      "text": "And so, spending all of its time just reading the \ndamn data. Now, the data was 640 by 480 and we  ",
+      "offset": 5112.12,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "were ending up with only 128 pixel size bits for \nspeed. So there's no point doing that every epoch  ",
+      "offset": 5117.88,
+      "duration": 6.36
+    },
+    {
+      "lang": "en",
+      "text": "so, step one was to make my \nKaggle iteration faster, as well,  ",
+      "offset": 5125.14,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "and so a very simple thing to do: resize \nthe images, so fastai has a function called  ",
+      "offset": 5131.08,
+      "duration": 6.48
+    },
+    {
+      "lang": "en",
+      "text": "resize_images() and you say: “okay, take all the \ntrain images and stick them in the destination,  ",
+      "offset": 5137.56,
+      "duration": 6.72
+    },
+    {
+      "lang": "en",
+      "text": "making them this size recursively”, and that will \nrecreate the same folder structure over here.  ",
+      "offset": 5145.06,
+      "duration": 7.56
+    },
+    {
+      "lang": "en",
+      "text": "And so that's why I call this the training \npath: because this is now my training data  ",
+      "offset": 5153.22,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "and so, when I then, trained on that, on Kaggle, \nit went down to four times faster with no loss of  ",
+      "offset": 5160.06,
+      "duration": 11.82
+    },
+    {
+      "lang": "en",
+      "text": "accuracy so, that was kind of step one was: \nto actually get my first iteration working.  ",
+      "offset": 5171.88,
+      "duration": 6.06
+    },
+    {
+      "lang": "en",
+      "text": "Now, still, I bet it's a long time and on Kaggle \nyou can actually see this little graph showing:  ",
+      "offset": 5180.94,
+      "duration": 6.3
+    },
+    {
+      "lang": "en",
+      "text": "how much the CPU is being used, how much \nthe GPU is being used; on your own home  ",
+      "offset": 5187.24,
+      "duration": 3.42
+    },
+    {
+      "lang": "en",
+      "text": "machine you can —there are tools free GPU— \nyou know, free tools to do the same thing.  ",
+      "offset": 5190.66,
+      "duration": 4.2
+    },
+    {
+      "lang": "en",
+      "text": "I saw that the GPU was still hardly being used \nso it's still CPU was being driven pretty hard,  ",
+      "offset": 5194.86,
+      "duration": 6.3
+    },
+    {
+      "lang": "en",
+      "text": "I wanted to use a better model anyway —to \nmove up the leaderboard— so I moved from a…  ",
+      "offset": 5202.36,
+      "duration": 6.24
+    },
+    {
+      "lang": "en",
+      "text": "Oh, by the way, this graph is very useful, so this \nis… this is speed versus error rate by family.  ",
+      "offset": 5212.44,
+      "duration": 11.04
+    },
+    {
+      "lang": "en",
+      "text": "And so we're about to be \nlooking at these convnext models  ",
+      "offset": 5224.98,
+      "duration": 5.88
+    },
+    {
+      "lang": "en",
+      "text": "so we're going to be looking \nat this one convnext_tiny…",
+      "offset": 5232.78,
+      "duration": 2.34
+    },
+    {
+      "lang": "en",
+      "text": "Here it is convnext_tiny. So we were looking at \nresnet26d, which took this long on this data set,  ",
+      "offset": 5239.14,
+      "duration": 6.12
+    },
+    {
+      "lang": "en",
+      "text": "but this one here is nearly the best (I think \nit's third best) but it's still very fast,  ",
+      "offset": 5246.4,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "and so it's the best overall score. So let's \nuse this, particularly because, you know, we're  ",
+      "offset": 5253.42,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "still spending all of our time waiting for the CPU \nanyway. So it turned out that when I switched my  ",
+      "offset": 5258.7,
+      "duration": 5.34
+    },
+    {
+      "lang": "en",
+      "text": "architecture to convnext it basically ran just \nas fast, on Kaggle, so we can then train that.  ",
+      "offset": 5264.04,
+      "duration": 8.88
+    },
+    {
+      "lang": "en",
+      "text": "Let me switch to the Kaggle version because \nmy outputs are missing for some reason.",
+      "offset": 5274.84,
+      "duration": 4.02
+    },
+    {
+      "lang": "en",
+      "text": "So yeah… so I started out by running the resnet26d \non the resized images and got similar error rate,  ",
+      "offset": 5282.4,
+      "duration": 7.5
+    },
+    {
+      "lang": "en",
+      "text": "but I ran a few more epochs, got 12% error rate. \nAnd so then I do exactly the same thing but with  ",
+      "offset": 5289.9,
+      "duration": 7.44
+    },
+    {
+      "lang": "en",
+      "text": "convnext_small and 4.5% error rate, so I don't \nthink that different architectures are just  ",
+      "offset": 5297.34,
+      "duration": 7.2
+    },
+    {
+      "lang": "en",
+      "text": "tiny little differences - this is over twice as \ngood. And a lot of folks you talk to will never  ",
+      "offset": 5305.26,
+      "duration": 11.88
+    },
+    {
+      "lang": "en",
+      "text": "have heard of this convnext because it's very \nnew and I've noticed a lot of people tend not to  ",
+      "offset": 5317.14,
+      "duration": 7.26
+    },
+    {
+      "lang": "en",
+      "text": "keep up to date with new things. They kind of \nlearn something at University and then they  ",
+      "offset": 5325.54,
+      "duration": 4.74
+    },
+    {
+      "lang": "en",
+      "text": "stop… stop learning. So if somebody's still \njust using resnets all the time, you know,  ",
+      "offset": 5330.28,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "you can tell them, we've actually… we've moved on, \nyou know. Resnets is still probably the fastest  ",
+      "offset": 5335.8,
+      "duration": 7.32
+    },
+    {
+      "lang": "en",
+      "text": "but for the mix of speed and performance, you \nknow, not so much. Convnext, you know again,  ",
+      "offset": 5344.14,
+      "duration": 8.52
+    },
+    {
+      "lang": "en",
+      "text": "you want these rules of thumb, right. If you're \nnot sure what to do, this convnext, okay,  ",
+      "offset": 5352.66,
+      "duration": 6.3
+    },
+    {
+      "lang": "en",
+      "text": "and then like most things there's different sizes \n- there's a tiny, there's a small, there's a base,  ",
+      "offset": 5358.96,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "there's a large, there's an extra large, and you \nknow it's just… well let's look at the picture.  ",
+      "offset": 5364.96,
+      "duration": 5.34
+    },
+    {
+      "lang": "en",
+      "text": "This is it here, right, large takes longer \nbut lower error, tiny takes less time but  ",
+      "offset": 5375.22,
+      "duration": 10.56
+    },
+    {
+      "lang": "en",
+      "text": "higher error, right, so you pick about \nyour speed versus accuracy trade-off,  ",
+      "offset": 5385.78,
+      "duration": 6.06
+    },
+    {
+      "lang": "en",
+      "text": "for you. So for us small is great. And so yeah \nnow we've got a 4.5% error, that's terrific!",
+      "offset": 5391.84,
+      "duration": 9.48
+    },
+    {
+      "lang": "en",
+      "text": "Now let's iterate! On Kaggle this is \ntaking about a minute per epoch. On  ",
+      "offset": 5403.78,
+      "duration": 5.46
+    },
+    {
+      "lang": "en",
+      "text": "my computer it's probably taking about \n20 seconds per epoch, so not too bad.  ",
+      "offset": 5409.24,
+      "duration": 3.9
+    },
+    {
+      "lang": "en",
+      "text": "So you know, one thing we could try is \ninstead of using squish as our pre-processing,  ",
+      "offset": 5414.4,
+      "duration": 7.86
+    },
+    {
+      "lang": "en",
+      "text": "let's try using crop. So that will randomly \ncrop out an area, and that's the default,  ",
+      "offset": 5422.26,
+      "duration": 5.82
+    },
+    {
+      "lang": "en",
+      "text": "so if I remove the “method=squish” that will crop. \nSo you see how I've tried to get everything into  ",
+      "offset": 5428.08,
+      "duration": 5.4
+    },
+    {
+      "lang": "en",
+      "text": "a single function, right, the single function. I \ncan tell it… (let's go and find the definition…)  ",
+      "offset": 5433.48,
+      "duration": 6.3
+    },
+    {
+      "lang": "en",
+      "text": "what architecture do I want to train, how do \nI want to transform the items, how do I want  ",
+      "offset": 5441.46,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "to transform the batches, and how many epochs \ndo I want to do - that's basically it, right.  ",
+      "offset": 5446.02,
+      "duration": 4.68
+    },
+    {
+      "lang": "en",
+      "text": "So this time I want to use the same architecture \nconvnext, I want to resize without cropping,  ",
+      "offset": 5451.9,
+      "duration": 5.82
+    },
+    {
+      "lang": "en",
+      "text": "and then use the same data augmentation, \nand okay, error rate's about the same.  ",
+      "offset": 5457.72,
+      "duration": 5.46
+    },
+    {
+      "lang": "en",
+      "text": "So not particularly… it's a tiny bit \nworse, but not enough to be interesting.  ",
+      "offset": 5464.32,
+      "duration": 4.14
+    },
+    {
+      "lang": "en",
+      "text": "Instead of cropping, we can pad. Now padding is \ninteresting… do you see how these are all square,  ",
+      "offset": 5470.92,
+      "duration": 4.74
+    },
+    {
+      "lang": "en",
+      "text": "right, but they've got black borders…  ",
+      "offset": 5476.62,
+      "duration": 1.92
+    },
+    {
+      "lang": "en",
+      "text": "so padding is interesting because it's the only \nway of pre-processing images which doesn't distort  ",
+      "offset": 5479.74,
+      "duration": 6.06
+    },
+    {
+      "lang": "en",
+      "text": "them and doesn't lose anything. If you crop, you \nlose things. If you squish, you distort things.  ",
+      "offset": 5485.8,
+      "duration": 6.18
+    },
+    {
+      "lang": "en",
+      "text": "This does neither. Now of course the downside \nis that there's pixels that are literally  ",
+      "offset": 5493,
+      "duration": 5.46
+    },
+    {
+      "lang": "en",
+      "text": "pointless - they contain zeros. So every way of \ngetting this working has its compromises but this  ",
+      "offset": 5498.46,
+      "duration": 7.38
+    },
+    {
+      "lang": "en",
+      "text": "approach of resizing where we pad with zeros is \nnot used enough - and it can actually often work  ",
+      "offset": 5505.84,
+      "duration": 6.54
+    },
+    {
+      "lang": "en",
+      "text": "quite well - in this case it was about as good as \nour best so far, but no, not huge differences yet.",
+      "offset": 5512.38,
+      "duration": 8.52
+    },
+    {
+      "lang": "en",
+      "text": "What else could we do? Well, what we could do is… \nsee these pictures? This is all the same picture  ",
+      "offset": 5522.76,
+      "duration": 14.04
+    },
+    {
+      "lang": "en",
+      "text": "but it's gone through our data augmentation, \nso sometimes it's a bit darker, sometimes it's  ",
+      "offset": 5538,
+      "duration": 5.16
+    },
+    {
+      "lang": "en",
+      "text": "flipped horizontally, sometimes it's slightly \nrotated, sometimes it's slightly warped,  ",
+      "offset": 5543.16,
+      "duration": 4.26
+    },
+    {
+      "lang": "en",
+      "text": "sometimes it's zooming into a slightly different \nsection, but this is all the same picture.  ",
+      "offset": 5547.42,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "Maybe our model would like some of \nthese versions better than others,  ",
+      "offset": 5554.5,
+      "duration": 2.94
+    },
+    {
+      "lang": "en",
+      "text": "so what we can do is we can \npass all of these to our model,  ",
+      "offset": 5559,
+      "duration": 3.42
+    },
+    {
+      "lang": "en",
+      "text": "get predictions for all of them, and take \nthe average, right. So it's our own kind of  ",
+      "offset": 5563.02,
+      "duration": 6.96
+    },
+    {
+      "lang": "en",
+      "text": "like little mini-bagging approach, and \nthis is called Test Time Augmentation.  ",
+      "offset": 5569.98,
+      "duration": 4.44
+    },
+    {
+      "lang": "en",
+      "text": "Fast.ai is very unusual in making that \navailable in a single method. You just  ",
+      "offset": 5575.68,
+      "duration": 5.82
+    },
+    {
+      "lang": "en",
+      "text": "pass TTA and it will pass multiple augmented \nversions of the image and average them for you.",
+      "offset": 5581.5,
+      "duration": 9.42
+    },
+    {
+      "lang": "en",
+      "text": "And so this is the same model as before, which had \na 4.5%, so if instead if we get TTA predictions  ",
+      "offset": 5592.96,
+      "duration": 9.12
+    },
+    {
+      "lang": "en",
+      "text": "and then get the error rate, wait why does it say \n4.8?... last time I did this it was way better.  ",
+      "offset": 5604.54,
+      "duration": 6.3
+    },
+    {
+      "lang": "en",
+      "text": "Well that's messing things up isn't it?  ",
+      "offset": 5611.74,
+      "duration": 1.62
+    },
+    {
+      "lang": "en",
+      "text": "So when I did this originally on my home \ncomputer it went from like 4.5 to 3.9,  ",
+      "offset": 5619.36,
+      "duration": 4.44
+    },
+    {
+      "lang": "en",
+      "text": "so possibly I got a very bad luck this \ntime. So this is the first time I've  ",
+      "offset": 5624.4,
+      "duration": 6.48
+    },
+    {
+      "lang": "en",
+      "text": "actually ever seen TTA give a worst result. \nSo that's very weird. I wonder if it's…  ",
+      "offset": 5630.88,
+      "duration": 9.12
+    },
+    {
+      "lang": "en",
+      "text": "if I should use something other than the \ncrop-n-padding. All right, I'll have to  ",
+      "offset": 5642.22,
+      "duration": 3.06
+    },
+    {
+      "lang": "en",
+      "text": "check that out, and I'll try and come back to you \nand find out why in this case this one was worse.  ",
+      "offset": 5645.28,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "Anyway take my word for it every other time I've \ntried it TTA has been better, so then you know  ",
+      "offset": 5653.56,
+      "duration": 7.62
+    },
+    {
+      "lang": "en",
+      "text": "now that we've got a pretty good way of resizing, \nwe've got TTA, we've got a good training process,  ",
+      "offset": 5661.18,
+      "duration": 7.38
+    },
+    {
+      "lang": "en",
+      "text": "let's just make bigger images, and something \nthat's really interesting and a lot of people  ",
+      "offset": 5669.52,
+      "duration": 4.86
+    },
+    {
+      "lang": "en",
+      "text": "don't realize is your images don't have to be \nsquare, they just all have to be the same size,  ",
+      "offset": 5674.38,
+      "duration": 4.74
+    },
+    {
+      "lang": "en",
+      "text": "and given that nearly all of our images are \n640x480 we can just pick, you know, that aspect  ",
+      "offset": 5679.84,
+      "duration": 6.06
+    },
+    {
+      "lang": "en",
+      "text": "ratio (so for example 256x192) and we'll resize \neverything to the same aspect ratio rectangular,  ",
+      "offset": 5685.9,
+      "duration": 8.16
+    },
+    {
+      "lang": "en",
+      "text": "and that should work even better still. \nSo if we do that we'll do 12 epochs…  ",
+      "offset": 5694.96,
+      "duration": 3.72
+    },
+    {
+      "lang": "en",
+      "text": "okay now our error rate is down to 2.2%",
+      "offset": 5701.62,
+      "duration": 2.52
+    },
+    {
+      "lang": "en",
+      "text": "And then we'll do TTA. Okay this time you can \nsee it actually improving, down to under 2%  ",
+      "offset": 5706.48,
+      "duration": 6.6
+    },
+    {
+      "lang": "en",
+      "text": "so that's pretty cool, right… we've got our error \nrate… at the start of this notebook we were at  ",
+      "offset": 5714.4,
+      "duration": 4.68
+    },
+    {
+      "lang": "en",
+      "text": "12% and by the time we've got \nthrough our little experiments  ",
+      "offset": 5723.22,
+      "duration": 6.48
+    },
+    {
+      "lang": "en",
+      "text": "we're down to under 2%. And nothing \nabout this is in any way specific to  ",
+      "offset": 5732.4,
+      "duration": 6.06
+    },
+    {
+      "lang": "en",
+      "text": "rice, or this competition, you \nknow, it's like this is a very  ",
+      "offset": 5739.48,
+      "duration": 4.44
+    },
+    {
+      "lang": "en",
+      "text": "mechanistic, you know, standardized approach, \nwhich you can use for certainly any kind of this  ",
+      "offset": 5745.42,
+      "duration": 10.32
+    },
+    {
+      "lang": "en",
+      "text": "type of computer vision competition - they'd have \ncomputer vision data set almost. But you know, it  ",
+      "offset": 5755.74,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "looked very similar for a collaborative filtering \nmodel, a tabular model, NLP model, whatever.",
+      "offset": 5761.5,
+      "duration": 4.5
+    },
+    {
+      "lang": "en",
+      "text": "So, of course, again, I want \nto submit as soon as I can. So,  ",
+      "offset": 5768.46,
+      "duration": 2.94
+    },
+    {
+      "lang": "en",
+      "text": "just copy and paste the exact same steps I took \nlast time basically for creating a submission.",
+      "offset": 5771.4,
+      "duration": 5.16
+    },
+    {
+      "lang": "en",
+      "text": "So, as I said last time, we did it using \npandas, but there's actually an easier way.  ",
+      "offset": 5779.26,
+      "duration": 3.54
+    },
+    {
+      "lang": "en",
+      "text": "So the step where here I've got \nthe numbers from naught to nine,  ",
+      "offset": 5783.34,
+      "duration": 3.72
+    },
+    {
+      "lang": "en",
+      "text": "which is like, which… which rice disease is it? \nso here's a cute idea; we can take our vocab,  ",
+      "offset": 5787.06,
+      "duration": 7.56
+    },
+    {
+      "lang": "en",
+      "text": "and make it an array so that's going to be a list \nof 10 things and then we can index into that vocab  ",
+      "offset": 5795.52,
+      "duration": 7.44
+    },
+    {
+      "lang": "en",
+      "text": "with our indices which is kind of weird this is a \nlist of 10 things this is a list of… I don't know  ",
+      "offset": 5803.56,
+      "duration": 6.12
+    },
+    {
+      "lang": "en",
+      "text": "four or five thousand things? so this will give \nme four or five thousand results which is each  ",
+      "offset": 5809.68,
+      "duration": 6.36
+    },
+    {
+      "lang": "en",
+      "text": "vocab item for that thing? So this is another way \nof doing the same mapping, and I would spend time  ",
+      "offset": 5816.04,
+      "duration": 7.14
+    },
+    {
+      "lang": "en",
+      "text": "playing with this code to understand what it does, \nbecause it's the kind of like very fast, what,  ",
+      "offset": 5824.02,
+      "duration": 6.54
+    },
+    {
+      "lang": "en",
+      "text": "you know, not just in terms of writing, but this \nthis… the… this would optimize… you know on on  ",
+      "offset": 5830.56,
+      "duration": 6.96
+    },
+    {
+      "lang": "en",
+      "text": "the CPU very very well.This is the kind of coding \nyou want to get used to, this kind of indexing.  ",
+      "offset": 5837.52,
+      "duration": 7.62
+    },
+    {
+      "lang": "en",
+      "text": "Anyway, so then we can submit it just like \nlast time, and when I did that I got in the  ",
+      "offset": 5846.82,
+      "duration": 6.42
+    },
+    {
+      "lang": "en",
+      "text": "top 25 percent, and that's… that's where you \nwant to be, right? Like generally speaking,  ",
+      "offset": 5853.24,
+      "duration": 5.16
+    },
+    {
+      "lang": "en",
+      "text": "I find in Kaggle competitions the top 25 percent \nis like, you're kind of like solid competent  ",
+      "offset": 5858.4,
+      "duration": 8.46
+    },
+    {
+      "lang": "en",
+      "text": "level? you know? look it's not to say like, it's \nnot easy you've got to know what you're doing,  ",
+      "offset": 5867.52,
+      "duration": 5.88
+    },
+    {
+      "lang": "en",
+      "text": "but if you get in the top 25, and I think you \ncan really feel like yeah this is… this is a…  ",
+      "offset": 5874.6,
+      "duration": 4.44
+    },
+    {
+      "lang": "en",
+      "text": "you know very reasonable attempt, and so that's \nI think, this is a very reasonable attempt.  ",
+      "offset": 5879.76,
+      "duration": 6.72
+    },
+    {
+      "lang": "en",
+      "text": "Okay before we wrap up, John any last questions?",
+      "offset": 5888.16,
+      "duration": 2.46
+    },
+    {
+      "lang": "en",
+      "text": "John: Um yeah, there's there's two I think that \nwould be good if we could touch on quickly before  ",
+      "offset": 5894.12,
+      "duration": 5.08
+    },
+    {
+      "lang": "en",
+      "text": "you wrap up; one from Victor asking about TTA: \n“when I use TTA during my training process do I  ",
+      "offset": 5899.2,
+      "duration": 8.7
+    },
+    {
+      "lang": "en",
+      "text": "need to do something special during inference or \nis this something you use only during validate?”",
+      "offset": 5907.9,
+      "duration": 4.5
+    },
+    {
+      "lang": "en",
+      "text": "Jeremy: Okay so just to explain TTA means \n“test time augmentation” so, specifically it  ",
+      "offset": 5912.4,
+      "duration": 5.34
+    },
+    {
+      "lang": "en",
+      "text": "means inference. I think you mean augmentation \nduring training? so yeah… so during training,  ",
+      "offset": 5917.74,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "you basically always do augmentation which \nmeans you're varying each image slightly so  ",
+      "offset": 5923.26,
+      "duration": 6.6
+    },
+    {
+      "lang": "en",
+      "text": "that the model never sees the same image exactly \nthe same twice, and so it can't memorize it.  ",
+      "offset": 5929.86,
+      "duration": 5.7
+    },
+    {
+      "lang": "en",
+      "text": "On Fast Ai – and as I say I don't think anybody \nelse does this as far as I know – if you call TTA,  ",
+      "offset": 5937.6,
+      "duration": 5.58
+    },
+    {
+      "lang": "en",
+      "text": "it will use the exact same augmentation approach \non whatever data set you pass it, and average out  ",
+      "offset": 5943.78,
+      "duration": 8.28
+    },
+    {
+      "lang": "en",
+      "text": "the prediction, but… but like multiple times \non the same image, and will average them out,  ",
+      "offset": 5952.06,
+      "duration": 4.14
+    },
+    {
+      "lang": "en",
+      "text": "so you don't have to do anything different, but if \nyou didn't have any data augmentation in training  ",
+      "offset": 5956.2,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "you can't use TTA. It uses the same… by default \nthe same data augmentation you use for training.",
+      "offset": 5961,
+      "duration": 5.22
+    },
+    {
+      "lang": "en",
+      "text": "John: Great! thank you! and \nthe other one is about how  ",
+      "offset": 5966.22,
+      "duration": 4.68
+    },
+    {
+      "lang": "en",
+      "text": "you know when you first started this example you \nsquared the models and you the images rather,  ",
+      "offset": 5971.92,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "and you talked about squashing versus cropping \nversus you know, clipping and scaling, and so on,  ",
+      "offset": 5976.24,
+      "duration": 5.58
+    },
+    {
+      "lang": "en",
+      "text": "but then you went on to say that these models \ncan actually take rectangular inputs right?  ",
+      "offset": 5981.82,
+      "duration": 6.84
+    },
+    {
+      "lang": "en",
+      "text": "so there's a question that's kind of probing at \nthat… you know, if the…” if the models can take  ",
+      "offset": 5988.66,
+      "duration": 7.02
+    },
+    {
+      "lang": "en",
+      "text": "rectangular inputs why would you ever even \ncare as long as they're all the same size?”",
+      "offset": 5995.68,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "Jeremy: So, I find most of the time data sets \ntend to have a wide variety of input sizes and  ",
+      "offset": 6001.68,
+      "duration": 9.12
+    },
+    {
+      "lang": "en",
+      "text": "aspect ratios, so you know if there's just as many \ntall skinny ones as wide short ones you know you  ",
+      "offset": 6010.8,
+      "duration": 11.7
+    },
+    {
+      "lang": "en",
+      "text": "doesn't make sense to create a rectangle because \nsome of them… you're going to really destroy them,  ",
+      "offset": 6022.5,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "so a square is the kind of best compromise in \nsome ways there are better things we can do  ",
+      "offset": 6027.06,
+      "duration": 9.3
+    },
+    {
+      "lang": "en",
+      "text": "which we don't have any off-the-shelf Library \nsupport for yet, and I don't think… I don't know,  ",
+      "offset": 6037.02,
+      "duration": 6.96
+    },
+    {
+      "lang": "en",
+      "text": "that anybody else has even published about this, \nbut we've experimented with kind of trying to  ",
+      "offset": 6043.98,
+      "duration": 3.96
+    },
+    {
+      "lang": "en",
+      "text": "batch things that are similar \naspect ratios together, and use  ",
+      "offset": 6049.2,
+      "duration": 3.9
+    },
+    {
+      "lang": "en",
+      "text": "the kind of median rectangle for those and have \nhad some good results with that, but honestly  ",
+      "offset": 6053.64,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "not 89, 99 percent of people, given a wide variety \nof aspect ratios, chuck everything into a square.",
+      "offset": 6060.18,
+      "duration": 5.72
+    },
+    {
+      "lang": "en",
+      "text": "John: A follow-up! this is my own \ninterest, “have you ever looked at  ",
+      "offset": 6065.9,
+      "duration": 4.9
+    },
+    {
+      "lang": "en",
+      "text": "you know so the issue with with padding as you say \nis that you're putting you know black pixels there  ",
+      "offset": 6071.76,
+      "duration": 5.58
+    },
+    {
+      "lang": "en",
+      "text": "those are not NANs, those are black pixels, \nthat's right, and so there's something problematic  ",
+      "offset": 6078.78,
+      "duration": 5.22
+    },
+    {
+      "lang": "en",
+      "text": "to me you know conceptually about that,  ",
+      "offset": 6084.54,
+      "duration": 2.1
+    },
+    {
+      "lang": "en",
+      "text": "you know, when you… when you see for example \nfour to three aspect ratio footage presented  ",
+      "offset": 6088.38,
+      "duration": 7.2
+    },
+    {
+      "lang": "en",
+      "text": "for broadcast on 16 to nine you get the kind \nof the Blurred stretch? that kind of stuff?",
+      "offset": 6095.58,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "Jeremy: No, we played with that a lot yeah? I \nused to be really into it actually, and fastai,  ",
+      "offset": 6099.9,
+      "duration": 5.34
+    },
+    {
+      "lang": "en",
+      "text": "still by default uses a reflection padding which \nmeans if this is… I don't know, let's say this is  ",
+      "offset": 6105.24,
+      "duration": 4.92
+    },
+    {
+      "lang": "en",
+      "text": "a 20 pixel wide thing it takes the 20 pixels next \nto it and flips it over and sticks it here and  ",
+      "offset": 6110.16,
+      "duration": 6.06
+    },
+    {
+      "lang": "en",
+      "text": "it looks pretty good you know another one \nis copy which simply takes the outside  ",
+      "offset": 6116.22,
+      "duration": 5.4
+    },
+    {
+      "lang": "en",
+      "text": "pixel and it's a bit more like TV you \nknow um…you know, much too much. Again,  ",
+      "offset": 6121.62,
+      "duration": 6.96
+    },
+    {
+      "lang": "en",
+      "text": "it turns out none of them really helped! plus, \nyou know, if anything they make it worse,  ",
+      "offset": 6129.78,
+      "duration": 3.66
+    },
+    {
+      "lang": "en",
+      "text": "because in the end the computer wants \nto know “no this is the end of the  ",
+      "offset": 6135.72,
+      "duration": 4.02
+    },
+    {
+      "lang": "en",
+      "text": "image there's nothing else here”, \nand if you reflect it for example,  ",
+      "offset": 6139.74,
+      "duration": 3.66
+    },
+    {
+      "lang": "en",
+      "text": "then you're kind of creating weird spikes that \ndidn't exist, and the computer's got to be like,  ",
+      "offset": 6144.24,
+      "duration": 3.96
+    },
+    {
+      "lang": "en",
+      "text": "“oh I wonder what that spike is?”, so yeah it's \na great question, and I obviously spent like a  ",
+      "offset": 6148.2,
+      "duration": 5.58
+    },
+    {
+      "lang": "en",
+      "text": "couple of years assuming that we should be doing \nthings that look more image like, but actually  ",
+      "offset": 6153.78,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "the computer likes things to be presented to \nit in as straightforward a way as possible.",
+      "offset": 6159.06,
+      "duration": 5.1
+    },
+    {
+      "lang": "en",
+      "text": "All right! thanks everybody! and hope \nto see some of you in the walkthroughs,  ",
+      "offset": 6165.42,
+      "duration": 4.68
+    },
+    {
+      "lang": "en",
+      "text": "and otherwise see you next time!",
+      "offset": 6170.1,
+      "duration": 1.44
+    }
+  ],
+  "cleanText": null,
+  "dumpedAt": "2025-07-21T18:43:25.700Z"
+}

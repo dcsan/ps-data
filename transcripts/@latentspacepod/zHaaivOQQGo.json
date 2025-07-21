@@ -1,0 +1,2698 @@
+{
+  "episodeId": "zHaaivOQQGo",
+  "channelSlug": "@latentspacepod",
+  "title": "What is an RL environment? w/ Nous Research's Roger Jin",
+  "publishedAt": "2025-04-29T23:47:58.000Z",
+  "rawLines": [
+    {
+      "lang": "en",
+      "text": "Hey guys. Uh so I'm Roger from News",
+      "offset": 5.68,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "Research. We train open source language",
+      "offset": 8.4,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "models. Um today we're going to be",
+      "offset": 10.24,
+      "duration": 3.96
+    },
+    {
+      "lang": "en",
+      "text": "talking about uh some of our RL",
+      "offset": 12.08,
+      "duration": 4.279
+    },
+    {
+      "lang": "en",
+      "text": "infrastructure.",
+      "offset": 14.2,
+      "duration": 5.4
+    },
+    {
+      "lang": "en",
+      "text": "Um so I'll first give a motivation for",
+      "offset": 16.359,
+      "duration": 5.321
+    },
+    {
+      "lang": "en",
+      "text": "like reinforcement learning in general",
+      "offset": 19.6,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "or like how how I like to think about",
+      "offset": 21.68,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "reinforcement learning. Um and I'll talk",
+      "offset": 23.68,
+      "duration": 3.519
+    },
+    {
+      "lang": "en",
+      "text": "about a little bit about like the RL",
+      "offset": 25.76,
+      "duration": 3.279
+    },
+    {
+      "lang": "en",
+      "text": "infrastructure news. Um and specifically",
+      "offset": 27.199,
+      "duration": 5.761
+    },
+    {
+      "lang": "en",
+      "text": "I'll focus on um our environment",
+      "offset": 29.039,
+      "duration": 3.921
+    },
+    {
+      "lang": "en",
+      "text": "abstraction. Um so start with like",
+      "offset": 33.32,
+      "duration": 4.6
+    },
+    {
+      "lang": "en",
+      "text": "supervised learning. Um yeah you know is",
+      "offset": 35.52,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "you guys kind of like know the deal. You",
+      "offset": 37.92,
+      "duration": 2.56
+    },
+    {
+      "lang": "en",
+      "text": "have some model you have some data set",
+      "offset": 39.12,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "some loss function. Um and you want to",
+      "offset": 40.48,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "like take some steps on your model. You",
+      "offset": 42.48,
+      "duration": 3.2
+    },
+    {
+      "lang": "en",
+      "text": "want to make small updates to your model",
+      "offset": 44.32,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "to to optimize that loss. So it kind of",
+      "offset": 45.68,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "like looks like this right? um like you",
+      "offset": 48,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "have some like kind of like nice loss",
+      "offset": 50,
+      "duration": 2.879
+    },
+    {
+      "lang": "en",
+      "text": "function, well behaved like smooth,",
+      "offset": 51.44,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "continuous um and um and like a step of",
+      "offset": 52.879,
+      "duration": 4.801
+    },
+    {
+      "lang": "en",
+      "text": "training in supervised learning kind of",
+      "offset": 56.48,
+      "duration": 3.759
+    },
+    {
+      "lang": "en",
+      "text": "looks like you take this like um like",
+      "offset": 57.68,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "this ball um and you like you press play",
+      "offset": 60.239,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "on this picture and you kind of like",
+      "offset": 63.12,
+      "duration": 3.359
+    },
+    {
+      "lang": "en",
+      "text": "pause it and the ball moves over like a",
+      "offset": 64.159,
+      "duration": 3.921
+    },
+    {
+      "lang": "en",
+      "text": "little bit and then that's like one step",
+      "offset": 66.479,
+      "duration": 3.96
+    },
+    {
+      "lang": "en",
+      "text": "to training.",
+      "offset": 68.08,
+      "duration": 5.68
+    },
+    {
+      "lang": "en",
+      "text": "Um but like does this work for like any",
+      "offset": 70.439,
+      "duration": 4.761
+    },
+    {
+      "lang": "en",
+      "text": "arbitrary like loss function you can",
+      "offset": 73.76,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "write down. Um and the answer is like no",
+      "offset": 75.2,
+      "duration": 3.599
+    },
+    {
+      "lang": "en",
+      "text": "like consider accuracy, right? It takes",
+      "offset": 77.2,
+      "duration": 3.599
+    },
+    {
+      "lang": "en",
+      "text": "on n plus one like discrete values if",
+      "offset": 78.799,
+      "duration": 3.601
+    },
+    {
+      "lang": "en",
+      "text": "you have like data set of size n like 0",
+      "offset": 80.799,
+      "duration": 4.401
+    },
+    {
+      "lang": "en",
+      "text": "over n to like dot dot like um n / n,",
+      "offset": 82.4,
+      "duration": 5.84
+    },
+    {
+      "lang": "en",
+      "text": "right? Um what would like the same plot",
+      "offset": 85.2,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "look like if we use like accuracy",
+      "offset": 88.24,
+      "duration": 3.199
+    },
+    {
+      "lang": "en",
+      "text": "instead? I guess like error rate or",
+      "offset": 89.84,
+      "duration": 2.72
+    },
+    {
+      "lang": "en",
+      "text": "something um if you want to make it like",
+      "offset": 91.439,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "a decision problem. Um so that that's",
+      "offset": 92.56,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "going to look like a piece constant",
+      "offset": 95.119,
+      "duration": 3.441
+    },
+    {
+      "lang": "en",
+      "text": "function of like any any weight that you",
+      "offset": 96.4,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "pick from your model. Um right so um the",
+      "offset": 98.56,
+      "duration": 5.8
+    },
+    {
+      "lang": "en",
+      "text": "ball doesn't like doesn't roll anymore.",
+      "offset": 101.6,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "Um and uh so that that's like this is",
+      "offset": 104.36,
+      "duration": 4.439
+    },
+    {
+      "lang": "en",
+      "text": "like one limitation of supervised",
+      "offset": 107.36,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "learning. Um like and um like where does",
+      "offset": 108.799,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "this like sort of show up? Well like if",
+      "offset": 111.92,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "you're doing language modeling um every",
+      "offset": 114.079,
+      "duration": 4.881
+    },
+    {
+      "lang": "en",
+      "text": "time you're picking a token like um you",
+      "offset": 115.84,
+      "duration": 4.639
+    },
+    {
+      "lang": "en",
+      "text": "can't back prop through that picking",
+      "offset": 118.96,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "operation anymore because like um the",
+      "offset": 120.479,
+      "duration": 5.041
+    },
+    {
+      "lang": "en",
+      "text": "next token would be like kind of like a",
+      "offset": 123.04,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "um the index of the chosen token is like",
+      "offset": 125.52,
+      "duration": 3.359
+    },
+    {
+      "lang": "en",
+      "text": "a peacewise constant function like",
+      "offset": 127.52,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "anyway. So um you introduce like that",
+      "offset": 128.879,
+      "duration": 3.761
+    },
+    {
+      "lang": "en",
+      "text": "this piewise constant node into your",
+      "offset": 131.36,
+      "duration": 3.04
+    },
+    {
+      "lang": "en",
+      "text": "compute graph at that point. Um and then",
+      "offset": 132.64,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "like that means you can't really back",
+      "offset": 134.4,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "prop through like multiple um picking",
+      "offset": 136,
+      "duration": 6.48
+    },
+    {
+      "lang": "en",
+      "text": "operations for for these tokens. Um so",
+      "offset": 138.72,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "what that means is like under like",
+      "offset": 142.48,
+      "duration": 2.96
+    },
+    {
+      "lang": "en",
+      "text": "greedy sampling supervised learning",
+      "offset": 143.92,
+      "duration": 3.039
+    },
+    {
+      "lang": "en",
+      "text": "can't really help you with objectives on",
+      "offset": 145.44,
+      "duration": 3.28
+    },
+    {
+      "lang": "en",
+      "text": "multiple tokens. If you're if you're",
+      "offset": 146.959,
+      "duration": 3.601
+    },
+    {
+      "lang": "en",
+      "text": "interested in like rewarding a language",
+      "offset": 148.72,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "model for like how funny like a joke is",
+      "offset": 150.56,
+      "duration": 3.12
+    },
+    {
+      "lang": "en",
+      "text": "or something you can't like directly",
+      "offset": 152.4,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "approach that with supervised",
+      "offset": 153.68,
+      "duration": 2.96
+    },
+    {
+      "lang": "en",
+      "text": "learning. Um okay. Okay, so these are",
+      "offset": 156.92,
+      "duration": 3.88
+    },
+    {
+      "lang": "en",
+      "text": "some limitations of supervised learning.",
+      "offset": 159.44,
+      "duration": 2.72
+    },
+    {
+      "lang": "en",
+      "text": "It only works with like nice loss",
+      "offset": 160.8,
+      "duration": 3.12
+    },
+    {
+      "lang": "en",
+      "text": "functions, right? U doesn't play well",
+      "offset": 162.16,
+      "duration": 3.28
+    },
+    {
+      "lang": "en",
+      "text": "with objectives over like multi-step",
+      "offset": 163.92,
+      "duration": 3.2
+    },
+    {
+      "lang": "en",
+      "text": "trajectories that don't decompose well",
+      "offset": 165.44,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "into like these singlestep objectives.",
+      "offset": 167.12,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "Um and um the main medium that the",
+      "offset": 169.36,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "modeler has to communicate with the",
+      "offset": 171.68,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "model is data. So we need like expert",
+      "offset": 173.36,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "samples of what is good. Um and there's",
+      "offset": 175.2,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "like a kind of deficit which is like",
+      "offset": 177.68,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "there's no way to demonstrate what is",
+      "offset": 179.36,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "bad in supervised learning. You kind of",
+      "offset": 181.12,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "just you have to tell the model very",
+      "offset": 182.8,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "well like what is good. Um and uh there",
+      "offset": 184.48,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "there are like kind of surprising",
+      "offset": 187.92,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "results like uh like weak to strong",
+      "offset": 189.2,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "generalization but like in general like",
+      "offset": 191.28,
+      "duration": 2.64
+    },
+    {
+      "lang": "en",
+      "text": "the model outperforming the expert",
+      "offset": 192.56,
+      "duration": 4.599
+    },
+    {
+      "lang": "en",
+      "text": "labelers would be like kind of very",
+      "offset": 193.92,
+      "duration": 6.959
+    },
+    {
+      "lang": "en",
+      "text": "surprising. Okay. So moving on to RL. Um",
+      "offset": 197.159,
+      "duration": 5.561
+    },
+    {
+      "lang": "en",
+      "text": "in RL we have this like different setup",
+      "offset": 200.879,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "where we have this like agent in an",
+      "offset": 202.72,
+      "duration": 3.439
+    },
+    {
+      "lang": "en",
+      "text": "environment and it can take actions and",
+      "offset": 204.319,
+      "duration": 4.081
+    },
+    {
+      "lang": "en",
+      "text": "influence the environment um and then uh",
+      "offset": 206.159,
+      "duration": 5.041
+    },
+    {
+      "lang": "en",
+      "text": "get rewards and um the rewards can sort",
+      "offset": 208.4,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "of like be anything. very like up to us",
+      "offset": 211.2,
+      "duration": 4.319
+    },
+    {
+      "lang": "en",
+      "text": "and um they they're usually kind of like",
+      "offset": 213.12,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "weird looking behave functions like they",
+      "offset": 215.519,
+      "duration": 3.601
+    },
+    {
+      "lang": "en",
+      "text": "can be discreet they can be like points",
+      "offset": 217.84,
+      "duration": 3.8
+    },
+    {
+      "lang": "en",
+      "text": "in a game they can be like the accuracy",
+      "offset": 219.12,
+      "duration": 5.92
+    },
+    {
+      "lang": "en",
+      "text": "um so um and um that that's really fine",
+      "offset": 221.64,
+      "duration": 5.159
+    },
+    {
+      "lang": "en",
+      "text": "in RL and normal and the goal is to",
+      "offset": 225.04,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "learn this like policy which controls",
+      "offset": 226.799,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "this agent to to maximize the sum of",
+      "offset": 228.4,
+      "duration": 5.839
+    },
+    {
+      "lang": "en",
+      "text": "like discounted rewards over time",
+      "offset": 230.319,
+      "duration": 6.48
+    },
+    {
+      "lang": "en",
+      "text": "um so like going back to a language",
+      "offset": 234.239,
+      "duration": 5.041
+    },
+    {
+      "lang": "en",
+      "text": "modeling world like um how does this how",
+      "offset": 236.799,
+      "duration": 4.241
+    },
+    {
+      "lang": "en",
+      "text": "does like RL directly map onto language",
+      "offset": 239.28,
+      "duration": 3.599
+    },
+    {
+      "lang": "en",
+      "text": "modeling or language modeling map onto",
+      "offset": 241.04,
+      "duration": 3.199
+    },
+    {
+      "lang": "en",
+      "text": "RL. So the states are like the text",
+      "offset": 242.879,
+      "duration": 3.601
+    },
+    {
+      "lang": "en",
+      "text": "prefixes. So the initial states like the",
+      "offset": 244.239,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "prompt. Um the actions are the next",
+      "offset": 246.48,
+      "duration": 4.399
+    },
+    {
+      "lang": "en",
+      "text": "tokens. Um that means like a language",
+      "offset": 248.319,
+      "duration": 4.081
+    },
+    {
+      "lang": "en",
+      "text": "model is like exactly what a policy is,",
+      "offset": 250.879,
+      "duration": 2.961
+    },
+    {
+      "lang": "en",
+      "text": "right? A policy maps a state to a",
+      "offset": 252.4,
+      "duration": 2.88
+    },
+    {
+      "lang": "en",
+      "text": "probably distribution of next actions. A",
+      "offset": 253.84,
+      "duration": 2.88
+    },
+    {
+      "lang": "en",
+      "text": "language model maps a text prefix to a",
+      "offset": 255.28,
+      "duration": 3.359
+    },
+    {
+      "lang": "en",
+      "text": "probability distribution of next tokens.",
+      "offset": 256.72,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "Um so all we have to do really is like",
+      "offset": 258.639,
+      "duration": 3.041
+    },
+    {
+      "lang": "en",
+      "text": "specify our favorite reward function",
+      "offset": 260.16,
+      "duration": 2.88
+    },
+    {
+      "lang": "en",
+      "text": "like how funny like our joke is,",
+      "offset": 261.68,
+      "duration": 3.04
+    },
+    {
+      "lang": "en",
+      "text": "whatever. Um and then we can optimize",
+      "offset": 263.04,
+      "duration": 3.599
+    },
+    {
+      "lang": "en",
+      "text": "our model against this with like all the",
+      "offset": 264.72,
+      "duration": 5.88
+    },
+    {
+      "lang": "en",
+      "text": "fancy algorithms from RL.",
+      "offset": 266.639,
+      "duration": 3.961
+    },
+    {
+      "lang": "en",
+      "text": "Um, so this is just like some write up",
+      "offset": 271.04,
+      "duration": 5.68
+    },
+    {
+      "lang": "en",
+      "text": "of like the RL objective. Um, and it",
+      "offset": 273.6,
+      "duration": 6.4
+    },
+    {
+      "lang": "en",
+      "text": "kind of shows like um the like the trick",
+      "offset": 276.72,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "here is like there's this expectation,",
+      "offset": 280,
+      "duration": 3.04
+    },
+    {
+      "lang": "en",
+      "text": "right? You're taking an expectation over",
+      "offset": 281.36,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "the policy. Um, and so the thing on the",
+      "offset": 283.04,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "inside that that thing might be like",
+      "offset": 285.44,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "discreet that's like reward like you",
+      "offset": 286.72,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "might have some like accuracy thing as",
+      "offset": 288.88,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "your reward, but we're kind of like um",
+      "offset": 290.8,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "we kind of like describe the reward",
+      "offset": 293.12,
+      "duration": 2.96
+    },
+    {
+      "lang": "en",
+      "text": "using this like highle language of like",
+      "offset": 294.56,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "how humans might assign rewards. But",
+      "offset": 296.08,
+      "duration": 3.28
+    },
+    {
+      "lang": "en",
+      "text": "then we're kind of like compiling this",
+      "offset": 298,
+      "duration": 3.199
+    },
+    {
+      "lang": "en",
+      "text": "back into like a differentiable loss",
+      "offset": 299.36,
+      "duration": 3.2
+    },
+    {
+      "lang": "en",
+      "text": "function with this expectation thing of",
+      "offset": 301.199,
+      "duration": 3.601
+    },
+    {
+      "lang": "en",
+      "text": "like smoothing out smoothing out. So",
+      "offset": 302.56,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "that's like kind of the trick here. So",
+      "offset": 304.8,
+      "duration": 2.64
+    },
+    {
+      "lang": "en",
+      "text": "in that sense like rewards are sort of",
+      "offset": 306.16,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "this like abstraction like we end up",
+      "offset": 307.44,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "with a smooth like differentiable loss",
+      "offset": 309.68,
+      "duration": 3.519
+    },
+    {
+      "lang": "en",
+      "text": "at the end. Um but like we have this",
+      "offset": 311.12,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "like language of rewards to communicate",
+      "offset": 313.199,
+      "duration": 4.28
+    },
+    {
+      "lang": "en",
+      "text": "intent to the",
+      "offset": 315.36,
+      "duration": 6.08
+    },
+    {
+      "lang": "en",
+      "text": "model. Um yeah um and like you can like",
+      "offset": 317.479,
+      "duration": 6.041
+    },
+    {
+      "lang": "en",
+      "text": "do some math to like optimize the model.",
+      "offset": 321.44,
+      "duration": 3.24
+    },
+    {
+      "lang": "en",
+      "text": "Um",
+      "offset": 323.52,
+      "duration": 6.239
+    },
+    {
+      "lang": "en",
+      "text": "pause. Okay. So um uh the like you know",
+      "offset": 324.68,
+      "duration": 7.079
+    },
+    {
+      "lang": "en",
+      "text": "the the map that's the algorithm that's",
+      "offset": 329.759,
+      "duration": 4.081
+    },
+    {
+      "lang": "en",
+      "text": "implied by like policy gradient is is",
+      "offset": 331.759,
+      "duration": 4.841
+    },
+    {
+      "lang": "en",
+      "text": "sort of like reinforced um where you can",
+      "offset": 333.84,
+      "duration": 5.359
+    },
+    {
+      "lang": "en",
+      "text": "like take rollouts um you can take",
+      "offset": 336.6,
+      "duration": 6.52
+    },
+    {
+      "lang": "en",
+      "text": "samples from your model um and um and uh",
+      "offset": 339.199,
+      "duration": 6.401
+    },
+    {
+      "lang": "en",
+      "text": "kind of like estimate this uh this",
+      "offset": 343.12,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "gradient in uh policy gradient with the",
+      "offset": 345.6,
+      "duration": 5.84
+    },
+    {
+      "lang": "en",
+      "text": "with the mean of these uh the reward",
+      "offset": 348.32,
+      "duration": 7.439
+    },
+    {
+      "lang": "en",
+      "text": "returns from the the rollouts. Um and um",
+      "offset": 351.44,
+      "duration": 6.479
+    },
+    {
+      "lang": "en",
+      "text": "this is like a you know quite a simple",
+      "offset": 355.759,
+      "duration": 3.921
+    },
+    {
+      "lang": "en",
+      "text": "algorithm if if you kind of like look at",
+      "offset": 357.919,
+      "duration": 3.761
+    },
+    {
+      "lang": "en",
+      "text": "if you kind of stare at like this part.",
+      "offset": 359.68,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "Um it sort of looks like just like",
+      "offset": 361.68,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "weighted supervised fine-tuning right",
+      "offset": 364.16,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "like you have this like log of like the",
+      "offset": 366.4,
+      "duration": 3.359
+    },
+    {
+      "lang": "en",
+      "text": "the probability of a token and like some",
+      "offset": 368.08,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "like weight on it. Um and reinforce this",
+      "offset": 369.759,
+      "duration": 3.201
+    },
+    {
+      "lang": "en",
+      "text": "is like the return but it doesn't have",
+      "offset": 371.84,
+      "duration": 2.72
+    },
+    {
+      "lang": "en",
+      "text": "to be that like you can replace it with",
+      "offset": 372.96,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "like some advantage. Um like GRPO does",
+      "offset": 374.56,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "that right? It's like the reward norm uh",
+      "offset": 376.72,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "the the the uh the mean uh like the the",
+      "offset": 378.8,
+      "duration": 8.16
+    },
+    {
+      "lang": "en",
+      "text": "normalized rewards. Um and",
+      "offset": 381.84,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "uh and uh this like uh this is kind of",
+      "offset": 387.08,
+      "duration": 6.679
+    },
+    {
+      "lang": "en",
+      "text": "like nice, right? Uh so in RL like we",
+      "offset": 390.4,
+      "duration": 4.799
+    },
+    {
+      "lang": "en",
+      "text": "can work with like nearly arbitrary",
+      "offset": 393.759,
+      "duration": 3.521
+    },
+    {
+      "lang": "en",
+      "text": "rewards. So discrete, non-ifferiable,",
+      "offset": 395.199,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "whatever. Um you can have objectives",
+      "offset": 397.28,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "over these like multi-step trajectories.",
+      "offset": 399.759,
+      "duration": 4.081
+    },
+    {
+      "lang": "en",
+      "text": "uh you can communicate intent to the",
+      "offset": 402.16,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "model like in this like additional way",
+      "offset": 403.84,
+      "duration": 3.359
+    },
+    {
+      "lang": "en",
+      "text": "and you can also demonstrate like what",
+      "offset": 405.84,
+      "duration": 2.96
+    },
+    {
+      "lang": "en",
+      "text": "is bad in addition to like what is good",
+      "offset": 407.199,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "simply through like negative rewards. Um",
+      "offset": 408.8,
+      "duration": 3.839
+    },
+    {
+      "lang": "en",
+      "text": "the model outperforming expert labelers",
+      "offset": 410.639,
+      "duration": 3.761
+    },
+    {
+      "lang": "en",
+      "text": "is is possible the model learning like",
+      "offset": 412.639,
+      "duration": 4.321
+    },
+    {
+      "lang": "en",
+      "text": "self-correction is like expected. Um and",
+      "offset": 414.4,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "um yeah we've seen like kind of cool",
+      "offset": 416.96,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "emergent behaviors of like the like 01",
+      "offset": 418.88,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "03 R1 kind of like kind of these like",
+      "offset": 421.12,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "thinking models that kind of learn their",
+      "offset": 423.36,
+      "duration": 3.64
+    },
+    {
+      "lang": "en",
+      "text": "own approach to to solving",
+      "offset": 424.8,
+      "duration": 5.519
+    },
+    {
+      "lang": "en",
+      "text": "problems. Okay. Um so we we're now like",
+      "offset": 427,
+      "duration": 4.919
+    },
+    {
+      "lang": "en",
+      "text": "kind of moving into this era of",
+      "offset": 430.319,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "experience. So like since you know 2020",
+      "offset": 431.919,
+      "duration": 4.241
+    },
+    {
+      "lang": "en",
+      "text": "or so like maybe even before that we've",
+      "offset": 434.479,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "been scaling up data um pre-training",
+      "offset": 436.16,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "data SFT. Um the goal being to get to to",
+      "offset": 437.919,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "get this like very diverse large pool of",
+      "offset": 440.88,
+      "duration": 5.439
+    },
+    {
+      "lang": "en",
+      "text": "uh of of good inputs high quality inputs",
+      "offset": 443.199,
+      "duration": 6.161
+    },
+    {
+      "lang": "en",
+      "text": "to train our model. Um and now like we",
+      "offset": 446.319,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "were kind of motivated to do the same",
+      "offset": 449.36,
+      "duration": 3.88
+    },
+    {
+      "lang": "en",
+      "text": "thing for RL environments. And",
+      "offset": 450.639,
+      "duration": 5.441
+    },
+    {
+      "lang": "en",
+      "text": "um like previously I guess like the",
+      "offset": 453.24,
+      "duration": 4.44
+    },
+    {
+      "lang": "en",
+      "text": "format of the data wasn't so important",
+      "offset": 456.08,
+      "duration": 3.04
+    },
+    {
+      "lang": "en",
+      "text": "because like there was there were these",
+      "offset": 457.68,
+      "duration": 3.12
+    },
+    {
+      "lang": "en",
+      "text": "like you know share GPT or open AAI",
+      "offset": 459.12,
+      "duration": 3.04
+    },
+    {
+      "lang": "en",
+      "text": "format whatever but and it was kind of",
+      "offset": 460.8,
+      "duration": 2.399
+    },
+    {
+      "lang": "en",
+      "text": "annoying that there was like multiple",
+      "offset": 462.16,
+      "duration": 2.879
+    },
+    {
+      "lang": "en",
+      "text": "formats but it was kind of easy to",
+      "offset": 463.199,
+      "duration": 4.481
+    },
+    {
+      "lang": "en",
+      "text": "interconvert between them. Um but these",
+      "offset": 465.039,
+      "duration": 3.841
+    },
+    {
+      "lang": "en",
+      "text": "environments are sort of like written in",
+      "offset": 467.68,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "code and it's like much harder to kind",
+      "offset": 468.88,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "of like share these environments. So,",
+      "offset": 471.36,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "um, in open source, we kind of like want",
+      "offset": 473.44,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "to build up our collection of like just",
+      "offset": 475.52,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "like how we built up this like huge pool",
+      "offset": 477.68,
+      "duration": 3.28
+    },
+    {
+      "lang": "en",
+      "text": "of like data, we want to build up this",
+      "offset": 479.28,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "like huge pool of environments. Um, and",
+      "offset": 480.96,
+      "duration": 4.079
+    },
+    {
+      "lang": "en",
+      "text": "so like there just needs to be some kind",
+      "offset": 483.36,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "of like standard for open source",
+      "offset": 485.039,
+      "duration": 3.761
+    },
+    {
+      "lang": "en",
+      "text": "developers to um to all like work",
+      "offset": 486.72,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "together to like build up this, you",
+      "offset": 488.8,
+      "duration": 2.799
+    },
+    {
+      "lang": "en",
+      "text": "know, to scale environments up to like",
+      "offset": 490.16,
+      "duration": 3.039
+    },
+    {
+      "lang": "en",
+      "text": "millions and millions of environments.",
+      "offset": 491.599,
+      "duration": 4.081
+    },
+    {
+      "lang": "en",
+      "text": "Um, so like so we want to pose a",
+      "offset": 493.199,
+      "duration": 3.361
+    },
+    {
+      "lang": "en",
+      "text": "question here like what is the",
+      "offset": 495.68,
+      "duration": 2.48
+    },
+    {
+      "lang": "en",
+      "text": "abstraction that will allow open source",
+      "offset": 496.56,
+      "duration": 3.12
+    },
+    {
+      "lang": "en",
+      "text": "to scale up to a million environments?",
+      "offset": 498.16,
+      "duration": 4.159
+    },
+    {
+      "lang": "en",
+      "text": "What would that look like?",
+      "offset": 499.68,
+      "duration": 6.799
+    },
+    {
+      "lang": "en",
+      "text": "Um okay so um I guess like first like we",
+      "offset": 502.319,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "can think about like where where do the",
+      "offset": 506.479,
+      "duration": 2.321
+    },
+    {
+      "lang": "en",
+      "text": "environments like live in the larger",
+      "offset": 507.599,
+      "duration": 2.6
+    },
+    {
+      "lang": "en",
+      "text": "picture of like some training",
+      "offset": 508.8,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "infrastructure. Um so in news we have",
+      "offset": 510.199,
+      "duration": 3.801
+    },
+    {
+      "lang": "en",
+      "text": "this like distributed training like",
+      "offset": 512.24,
+      "duration": 2.88
+    },
+    {
+      "lang": "en",
+      "text": "infrastructure. It's it's pretty",
+      "offset": 514,
+      "duration": 3.279
+    },
+    {
+      "lang": "en",
+      "text": "standard. Um we've got these like three",
+      "offset": 515.12,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "microservices. So the trainer is one",
+      "offset": 517.279,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "microser handles like back prop. Um",
+      "offset": 519.2,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "inference um is another microser right?",
+      "offset": 521.599,
+      "duration": 5.281
+    },
+    {
+      "lang": "en",
+      "text": "It's like an open AI API um that that",
+      "offset": 524.24,
+      "duration": 4.719
+    },
+    {
+      "lang": "en",
+      "text": "serves the model um the current policy.",
+      "offset": 526.88,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "Um and we also have this like",
+      "offset": 528.959,
+      "duration": 3.761
+    },
+    {
+      "lang": "en",
+      "text": "environment manager like rollout service",
+      "offset": 530.56,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "which which handles all the",
+      "offset": 532.72,
+      "duration": 3.04
+    },
+    {
+      "lang": "en",
+      "text": "environments. Um and each of these",
+      "offset": 536.12,
+      "duration": 3.719
+    },
+    {
+      "lang": "en",
+      "text": "environments if you have like multiple",
+      "offset": 538.64,
+      "duration": 2.879
+    },
+    {
+      "lang": "en",
+      "text": "of them is it's also its like own",
+      "offset": 539.839,
+      "duration": 3.761
+    },
+    {
+      "lang": "en",
+      "text": "microser. So um that means that each",
+      "offset": 541.519,
+      "duration": 3.681
+    },
+    {
+      "lang": "en",
+      "text": "environment can have its own like kind",
+      "offset": 543.6,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "of code execution environment or like",
+      "offset": 545.2,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "like Python environment or like it can",
+      "offset": 547.68,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "run on its own hardware. If for some",
+      "offset": 549.6,
+      "duration": 2.96
+    },
+    {
+      "lang": "en",
+      "text": "reason you want to like run an",
+      "offset": 551.6,
+      "duration": 2
+    },
+    {
+      "lang": "en",
+      "text": "environment like on your phone or",
+      "offset": 552.56,
+      "duration": 2.24
+    },
+    {
+      "lang": "en",
+      "text": "something like you could you could just",
+      "offset": 553.6,
+      "duration": 3.2
+    },
+    {
+      "lang": "en",
+      "text": "do that. Um, and these these",
+      "offset": 554.8,
+      "duration": 3.599
+    },
+    {
+      "lang": "en",
+      "text": "environments run like async from the",
+      "offset": 556.8,
+      "duration": 3.039
+    },
+    {
+      "lang": "en",
+      "text": "trainer, right? So, um, so they don't",
+      "offset": 558.399,
+      "duration": 2.641
+    },
+    {
+      "lang": "en",
+      "text": "like really care about the trainer.",
+      "offset": 559.839,
+      "duration": 2.56
+    },
+    {
+      "lang": "en",
+      "text": "They're just like their goal is just",
+      "offset": 561.04,
+      "duration": 2.72
+    },
+    {
+      "lang": "en",
+      "text": "like constantly produce robots,",
+      "offset": 562.399,
+      "duration": 3.641
+    },
+    {
+      "lang": "en",
+      "text": "constantly produce like data in",
+      "offset": 563.76,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "Ever um, if you wanted to like resurrect",
+      "offset": 566.04,
+      "duration": 4.28
+    },
+    {
+      "lang": "en",
+      "text": "some kind of ancient environment from",
+      "offset": 568.72,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "like 2019. Um, like yeah, you you can",
+      "offset": 570.32,
+      "duration": 5.199
+    },
+    {
+      "lang": "en",
+      "text": "just like make like a Docker container",
+      "offset": 573.68,
+      "duration": 3.599
+    },
+    {
+      "lang": "en",
+      "text": "or something and um, and you can you can",
+      "offset": 575.519,
+      "duration": 4.721
+    },
+    {
+      "lang": "en",
+      "text": "run like this like ancient",
+      "offset": 577.279,
+      "duration": 2.961
+    },
+    {
+      "lang": "en",
+      "text": "environment. Okay. And um the the",
+      "offset": 580.279,
+      "duration": 4.921
+    },
+    {
+      "lang": "en",
+      "text": "environment interface like I guess the",
+      "offset": 583.279,
+      "duration": 3.441
+    },
+    {
+      "lang": "en",
+      "text": "minimal environment interface that that",
+      "offset": 585.2,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "we try we kind of expose is rather",
+      "offset": 586.72,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "simple. So just like these like two",
+      "offset": 588.56,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "things there's like a lot of other stuff",
+      "offset": 590.48,
+      "duration": 3.2
+    },
+    {
+      "lang": "en",
+      "text": "that you can do like you know like",
+      "offset": 591.92,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "logging and whatever. Um but like at a",
+      "offset": 593.68,
+      "duration": 4.159
+    },
+    {
+      "lang": "en",
+      "text": "minimum like these two things. So get",
+      "offset": 596.16,
+      "duration": 3.28
+    },
+    {
+      "lang": "en",
+      "text": "item and collect trajectories. So get",
+      "offset": 597.839,
+      "duration": 3.281
+    },
+    {
+      "lang": "en",
+      "text": "item is like kind of like you know just",
+      "offset": 599.44,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "a data loader kind of like a function.",
+      "offset": 601.12,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "Um so you can get like a row from your",
+      "offset": 603.36,
+      "duration": 3.919
+    },
+    {
+      "lang": "en",
+      "text": "data set or if you like are working with",
+      "offset": 605.12,
+      "duration": 3.839
+    },
+    {
+      "lang": "en",
+      "text": "like larger batches you can kind of get",
+      "offset": 607.279,
+      "duration": 4.881
+    },
+    {
+      "lang": "en",
+      "text": "a batch from your data set. Um if if you",
+      "offset": 608.959,
+      "duration": 4.721
+    },
+    {
+      "lang": "en",
+      "text": "have like some fancy curriculum you want",
+      "offset": 612.16,
+      "duration": 3.119
+    },
+    {
+      "lang": "en",
+      "text": "to do um get item kind of can manage",
+      "offset": 613.68,
+      "duration": 3.599
+    },
+    {
+      "lang": "en",
+      "text": "that curriculum for you. Uh and then",
+      "offset": 615.279,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "collect trajectories takes in any kind",
+      "offset": 617.279,
+      "duration": 4.321
+    },
+    {
+      "lang": "en",
+      "text": "of item that's returned by get item and",
+      "offset": 619.279,
+      "duration": 5.401
+    },
+    {
+      "lang": "en",
+      "text": "then maps it to a group of uh scored",
+      "offset": 621.6,
+      "duration": 6.799
+    },
+    {
+      "lang": "en",
+      "text": "rollouts. Um so uh I I guess it's kind",
+      "offset": 624.68,
+      "duration": 5.88
+    },
+    {
+      "lang": "en",
+      "text": "of like",
+      "offset": 628.399,
+      "duration": 3.801
+    },
+    {
+      "lang": "en",
+      "text": "uh good that we",
+      "offset": 630.56,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "uh uh or okay so I'll try to like",
+      "offset": 632.2,
+      "duration": 4.6
+    },
+    {
+      "lang": "en",
+      "text": "motivate why we why we have this like",
+      "offset": 635.12,
+      "duration": 3.839
+    },
+    {
+      "lang": "en",
+      "text": "collect trajectories function. Um so",
+      "offset": 636.8,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "like I guess another like common kind of",
+      "offset": 638.959,
+      "duration": 3.841
+    },
+    {
+      "lang": "en",
+      "text": "abstraction is like that we split up the",
+      "offset": 640.56,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "rollout part from the scoring part or",
+      "offset": 642.8,
+      "duration": 2.88
+    },
+    {
+      "lang": "en",
+      "text": "the inference part from the scoring",
+      "offset": 644.56,
+      "duration": 2.959
+    },
+    {
+      "lang": "en",
+      "text": "part. But collect trajectories is is a",
+      "offset": 645.68,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "fusion of both of these. It handles both",
+      "offset": 647.519,
+      "duration": 3.201
+    },
+    {
+      "lang": "en",
+      "text": "inference and scoring. And we",
+      "offset": 649.04,
+      "duration": 3.359
+    },
+    {
+      "lang": "en",
+      "text": "deliberately chose that because like",
+      "offset": 650.72,
+      "duration": 2.96
+    },
+    {
+      "lang": "en",
+      "text": "what happens when you try to like do",
+      "offset": 652.399,
+      "duration": 4.161
+    },
+    {
+      "lang": "en",
+      "text": "like multi-turn or like like multi- aent",
+      "offset": 653.68,
+      "duration": 4.719
+    },
+    {
+      "lang": "en",
+      "text": "um with like a separate scorer function",
+      "offset": 656.56,
+      "duration": 3.279
+    },
+    {
+      "lang": "en",
+      "text": "um then then things kind of get like",
+      "offset": 658.399,
+      "duration": 4.241
+    },
+    {
+      "lang": "en",
+      "text": "weird. Um so we have this like fused um",
+      "offset": 659.839,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "inference and scoring function collect",
+      "offset": 662.64,
+      "duration": 2.96
+    },
+    {
+      "lang": "en",
+      "text": "trajectories where we're we're kind of",
+      "offset": 664.079,
+      "duration": 3.281
+    },
+    {
+      "lang": "en",
+      "text": "agnostic to how many like in how many",
+      "offset": 665.6,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "times like inference and scoring happen.",
+      "offset": 667.36,
+      "duration": 4.159
+    },
+    {
+      "lang": "en",
+      "text": "Um so u multi-step multi- aent are kind",
+      "offset": 669.36,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "of like automatically supported by by",
+      "offset": 671.519,
+      "duration": 2.44
+    },
+    {
+      "lang": "en",
+      "text": "this",
+      "offset": 673.04,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "method. Okay. And um the atomic unit of",
+      "offset": 673.959,
+      "duration": 4.761
+    },
+    {
+      "lang": "en",
+      "text": "training data that's produced by this",
+      "offset": 677.04,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "function is a is a group. Um so this",
+      "offset": 678.72,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "kind of encapsulates like what the data",
+      "offset": 680.88,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "preparation would look like for like DPO",
+      "offset": 682.32,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "grpo um SFT with like you know group",
+      "offset": 684.24,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "size one. Um, it also allows you to",
+      "offset": 686.64,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "customize like what a group even means,",
+      "offset": 688.72,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "right? So, gRPO is like has a setup",
+      "offset": 690.16,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "where like a group is like um you have",
+      "offset": 692.24,
+      "duration": 3.039
+    },
+    {
+      "lang": "en",
+      "text": "like multiple rollouts for the same",
+      "offset": 694.16,
+      "duration": 2.239
+    },
+    {
+      "lang": "en",
+      "text": "problem, but it doesn't like kind of",
+      "offset": 695.279,
+      "duration": 3.201
+    },
+    {
+      "lang": "en",
+      "text": "have to be that way. Um, if you wanted",
+      "offset": 696.399,
+      "duration": 4.321
+    },
+    {
+      "lang": "en",
+      "text": "to like for example sample a batch of",
+      "offset": 698.48,
+      "duration": 3.599
+    },
+    {
+      "lang": "en",
+      "text": "like similar problems, for example, I",
+      "offset": 700.72,
+      "duration": 3.28
+    },
+    {
+      "lang": "en",
+      "text": "have this example here of like same like",
+      "offset": 702.079,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "chess position, but it's just like black",
+      "offset": 704,
+      "duration": 3.279
+    },
+    {
+      "lang": "en",
+      "text": "to move in one and white to move in the",
+      "offset": 705.519,
+      "duration": 4.401
+    },
+    {
+      "lang": "en",
+      "text": "other. Um, on the left it's like uh mate",
+      "offset": 707.279,
+      "duration": 3.761
+    },
+    {
+      "lang": "en",
+      "text": "and one for black, on the right it's",
+      "offset": 709.92,
+      "duration": 3.12
+    },
+    {
+      "lang": "en",
+      "text": "like mate and 18 for white, right? So,",
+      "offset": 711.04,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "um, so if you want to like group like",
+      "offset": 713.04,
+      "duration": 2.799
+    },
+    {
+      "lang": "en",
+      "text": "similar problems together instead of",
+      "offset": 714.56,
+      "duration": 2.719
+    },
+    {
+      "lang": "en",
+      "text": "like having the same problem and like",
+      "offset": 715.839,
+      "duration": 2.721
+    },
+    {
+      "lang": "en",
+      "text": "doing multiple rollouts, like you can",
+      "offset": 717.279,
+      "duration": 2.8
+    },
+    {
+      "lang": "en",
+      "text": "totally do that with with this. We we",
+      "offset": 718.56,
+      "duration": 2.959
+    },
+    {
+      "lang": "en",
+      "text": "don't lock you into like the GRPO",
+      "offset": 720.079,
+      "duration": 4.721
+    },
+    {
+      "lang": "en",
+      "text": "official like definition of what a group",
+      "offset": 721.519,
+      "duration": 3.281
+    },
+    {
+      "lang": "en",
+      "text": "is. Um, another like kind of weird",
+      "offset": 724.839,
+      "duration": 6.281
+    },
+    {
+      "lang": "en",
+      "text": "quirky thing about uh our design is that",
+      "offset": 727.68,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "uh at least for text, the thing that's",
+      "offset": 731.12,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "returned by each of these environments",
+      "offset": 733.12,
+      "duration": 4.159
+    },
+    {
+      "lang": "en",
+      "text": "is like the literal tokens. So it's not",
+      "offset": 734.72,
+      "duration": 3.919
+    },
+    {
+      "lang": "en",
+      "text": "like it's not text, it's not like",
+      "offset": 737.279,
+      "duration": 4.321
+    },
+    {
+      "lang": "en",
+      "text": "messages, it's it's the tokens. Um, and",
+      "offset": 738.639,
+      "duration": 4.401
+    },
+    {
+      "lang": "en",
+      "text": "um, this allows you to deal with like",
+      "offset": 741.6,
+      "duration": 3.2
+    },
+    {
+      "lang": "en",
+      "text": "weird little quirks about like",
+      "offset": 743.04,
+      "duration": 3.2
+    },
+    {
+      "lang": "en",
+      "text": "inference. Like for example, like maybe",
+      "offset": 744.8,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "your your inference API um, gives you",
+      "offset": 746.24,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "like an EOS token even if like your uh,",
+      "offset": 749.2,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "your max context length was is like",
+      "offset": 751.68,
+      "duration": 3.599
+    },
+    {
+      "lang": "en",
+      "text": "executed. So it inserts this like kind",
+      "offset": 753.44,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "of fake EOS, the model didn't want to",
+      "offset": 755.279,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "stop, but it was like forced to stop.",
+      "offset": 757.04,
+      "duration": 3.12
+    },
+    {
+      "lang": "en",
+      "text": "Um, so you kind of like want to strip",
+      "offset": 758.639,
+      "duration": 2.801
+    },
+    {
+      "lang": "en",
+      "text": "that out when you're training on it so",
+      "offset": 760.16,
+      "duration": 2.88
+    },
+    {
+      "lang": "en",
+      "text": "it model doesn't like stop in the middle",
+      "offset": 761.44,
+      "duration": 3.48
+    },
+    {
+      "lang": "en",
+      "text": "of it like generation.",
+      "offset": 763.04,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "Um say say you wanted to like make a uh",
+      "offset": 764.92,
+      "duration": 5.159
+    },
+    {
+      "lang": "en",
+      "text": "like a waifu group chat environment or",
+      "offset": 767.92,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "something, right? So um and um you have",
+      "offset": 770.079,
+      "duration": 4.241
+    },
+    {
+      "lang": "en",
+      "text": "like the the roles being like the",
+      "offset": 772.88,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "usernames or something, right? Um and",
+      "offset": 774.32,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "that that requires a custom chat",
+      "offset": 776.24,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "template. Um and that's that's totally",
+      "offset": 777.68,
+      "duration": 3.599
+    },
+    {
+      "lang": "en",
+      "text": "fine. We can support a per environment",
+      "offset": 779.76,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "chat template in in this framework. Um",
+      "offset": 781.279,
+      "duration": 4.641
+    },
+    {
+      "lang": "en",
+      "text": "another thing you can do like with in in",
+      "offset": 784.16,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "like the token world is like the trainer",
+      "offset": 785.92,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "is now like agnostic to like chat versus",
+      "offset": 787.6,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "model. Um, and what that means is like",
+      "offset": 790.16,
+      "duration": 3.2
+    },
+    {
+      "lang": "en",
+      "text": "you can you can do all like the cool",
+      "offset": 792.16,
+      "duration": 2.96
+    },
+    {
+      "lang": "en",
+      "text": "like R10 zero kind of style like",
+      "offset": 793.36,
+      "duration": 3.599
+    },
+    {
+      "lang": "en",
+      "text": "experiments. Um, but it also means that",
+      "offset": 795.12,
+      "duration": 3.839
+    },
+    {
+      "lang": "en",
+      "text": "you can mix together instruction uh",
+      "offset": 796.959,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "instruct and base model fine-tuning like",
+      "offset": 798.959,
+      "duration": 5.601
+    },
+    {
+      "lang": "en",
+      "text": "all at once, right? So um uh so for",
+      "offset": 801.279,
+      "duration": 4.881
+    },
+    {
+      "lang": "en",
+      "text": "example, you can do like if you we're",
+      "offset": 804.56,
+      "duration": 3.2
+    },
+    {
+      "lang": "en",
+      "text": "training this like code assistant model,",
+      "offset": 806.16,
+      "duration": 3.119
+    },
+    {
+      "lang": "en",
+      "text": "right? You can do chat code assistant",
+      "offset": 807.76,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "style RL um um but you can also mix that",
+      "offset": 809.279,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "with like base model style like autocomp",
+      "offset": 812.56,
+      "duration": 5.279
+    },
+    {
+      "lang": "en",
+      "text": "completion um RL. Um, and another thing",
+      "offset": 814.399,
+      "duration": 4.961
+    },
+    {
+      "lang": "en",
+      "text": "you can do if you have like to the",
+      "offset": 817.839,
+      "duration": 3.281
+    },
+    {
+      "lang": "en",
+      "text": "environment return tokens is you can",
+      "offset": 819.36,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "override the GRPO advantages. So the the",
+      "offset": 821.12,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "GRPO advantages are like just like kind",
+      "offset": 823.68,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "of token level weights on on the SFT,",
+      "offset": 825.36,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "right? Um, and um if you had some reason",
+      "offset": 827.6,
+      "duration": 5.6
+    },
+    {
+      "lang": "en",
+      "text": "to like um some way to like kind of get",
+      "offset": 830.88,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "token level rewards, for example, you",
+      "offset": 833.2,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "have like some stack trace from your um",
+      "offset": 834.72,
+      "duration": 3.919
+    },
+    {
+      "lang": "en",
+      "text": "from your like interpreter um and you",
+      "offset": 836.8,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "see like exactly which lines are are",
+      "offset": 838.639,
+      "duration": 3.921
+    },
+    {
+      "lang": "en",
+      "text": "like involved in the error. um the these",
+      "offset": 840.32,
+      "duration": 3.759
+    },
+    {
+      "lang": "en",
+      "text": "environments can then override the",
+      "offset": 842.56,
+      "duration": 2.8
+    },
+    {
+      "lang": "en",
+      "text": "advantages like competed by the trainer",
+      "offset": 844.079,
+      "duration": 3.041
+    },
+    {
+      "lang": "en",
+      "text": "and you can have like um token level",
+      "offset": 845.36,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "rewards or like you know weird like",
+      "offset": 847.12,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "token level like reweighings of the",
+      "offset": 848.88,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "advantages. Okay. Um and um we wanted to",
+      "offset": 852.839,
+      "duration": 6.44
+    },
+    {
+      "lang": "en",
+      "text": "make this kind of like extensible. So um",
+      "offset": 856.56,
+      "duration": 4.959
+    },
+    {
+      "lang": "en",
+      "text": "this is just an example of like some uh",
+      "offset": 859.279,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "kind of like extension that I thought",
+      "offset": 861.519,
+      "duration": 3.281
+    },
+    {
+      "lang": "en",
+      "text": "of. Um like suppose that you wanted",
+      "offset": 862.959,
+      "duration": 2.801
+    },
+    {
+      "lang": "en",
+      "text": "different environments to support",
+      "offset": 864.8,
+      "duration": 2.24
+    },
+    {
+      "lang": "en",
+      "text": "different like attention masking",
+      "offset": 865.76,
+      "duration": 2.96
+    },
+    {
+      "lang": "en",
+      "text": "schemes. So like if you had like super",
+      "offset": 867.04,
+      "duration": 3.28
+    },
+    {
+      "lang": "en",
+      "text": "long context for some environment, maybe",
+      "offset": 868.72,
+      "duration": 2.96
+    },
+    {
+      "lang": "en",
+      "text": "you would want to use like sliding",
+      "offset": 870.32,
+      "duration": 3.519
+    },
+    {
+      "lang": "en",
+      "text": "window attention for that one. Um if you",
+      "offset": 871.68,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "had some kind of like uh some kind of",
+      "offset": 873.839,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "like smarter way to do like sliding",
+      "offset": 876.56,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "window like you know if you maybe just",
+      "offset": 878.639,
+      "duration": 4.721
+    },
+    {
+      "lang": "en",
+      "text": "like if you have some like protein um",
+      "offset": 880.88,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "question answer environment where you",
+      "offset": 883.36,
+      "duration": 3.2
+    },
+    {
+      "lang": "en",
+      "text": "put in the protein sequence you try to",
+      "offset": 885.12,
+      "duration": 2.8
+    },
+    {
+      "lang": "en",
+      "text": "ask a question about it. Maybe you want",
+      "offset": 886.56,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "to only do attention um where like the",
+      "offset": 887.92,
+      "duration": 4.159
+    },
+    {
+      "lang": "en",
+      "text": "contact points of the of the tertiary",
+      "offset": 889.92,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "structure are. Um so like maybe you want",
+      "offset": 892.079,
+      "duration": 4.801
+    },
+    {
+      "lang": "en",
+      "text": "to do something where you like um your",
+      "offset": 894.72,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "your environment passes the uh inputs to",
+      "offset": 896.88,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "like a flex attention block mass getter",
+      "offset": 899.12,
+      "duration": 3.839
+    },
+    {
+      "lang": "en",
+      "text": "um within the this like score data group",
+      "offset": 901.12,
+      "duration": 2.519
+    },
+    {
+      "lang": "en",
+      "text": "that's",
+      "offset": 902.959,
+      "duration": 3.281
+    },
+    {
+      "lang": "en",
+      "text": "returned. So so these environments are",
+      "offset": 903.639,
+      "duration": 3.961
+    },
+    {
+      "lang": "en",
+      "text": "are kind of like extensible. You can",
+      "offset": 906.24,
+      "duration": 2.8
+    },
+    {
+      "lang": "en",
+      "text": "come up with your own like weird wacky",
+      "offset": 907.6,
+      "duration": 3
+    },
+    {
+      "lang": "en",
+      "text": "things that you want to like give the",
+      "offset": 909.04,
+      "duration": 5.84
+    },
+    {
+      "lang": "en",
+      "text": "trainer. Okay. Um and um so all of this",
+      "offset": 910.6,
+      "duration": 6.039
+    },
+    {
+      "lang": "en",
+      "text": "was like joint work with uh Dakota",
+      "offset": 914.88,
+      "duration": 4.319
+    },
+    {
+      "lang": "en",
+      "text": "Shannon J Chen and Technomium. And",
+      "offset": 916.639,
+      "duration": 7.481
+    },
+    {
+      "lang": "en",
+      "text": "thanks to Allesia and Switz for hosting.",
+      "offset": 919.199,
+      "duration": 4.921
+    }
+  ],
+  "cleanText": null,
+  "dumpedAt": "2025-07-21T18:43:24.533Z"
+}

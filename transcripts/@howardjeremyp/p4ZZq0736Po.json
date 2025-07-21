@@ -1,0 +1,5770 @@
+{
+  "episodeId": "p4ZZq0736Po",
+  "channelSlug": "@howardjeremyp",
+  "title": "Lesson 7: Practical Deep Learning for Coders 2022",
+  "publishedAt": "2022-07-21T22:47:59.000Z",
+  "rawLines": [
+    {
+      "lang": "en",
+      "text": "All right. Welcome to lesson 7, the penultimate \nlesson, of Practical Deep Learning for Coders  ",
+      "offset": 1.92,
+      "duration": 6.96
+    },
+    {
+      "lang": "en",
+      "text": "Part 1, and today we're going to be digging \ninto what's inside a neural net. We've already  ",
+      "offset": 8.88,
+      "duration": 10.48
+    },
+    {
+      "lang": "en",
+      "text": "seen what's inside a kind of the most basic \npossible neural net, which is a sandwich of  ",
+      "offset": 19.36,
+      "duration": 8
+    },
+    {
+      "lang": "en",
+      "text": "fully connected layers, or linear layers, and \nvalues. And so we built that from scratch,  ",
+      "offset": 30.32,
+      "duration": 7.68
+    },
+    {
+      "lang": "en",
+      "text": "but there's a lot of tweaks that we can \ndo, and so most of the tweaks actually  ",
+      "offset": 39.2,
+      "duration": 7.04
+    },
+    {
+      "lang": "en",
+      "text": "that we probably care about are tweaking the \nvery first layer, or the very last layer.",
+      "offset": 46.24,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "So that's where we'll focus. But over \nthe next couple of weeks we'll look  ",
+      "offset": 55.68,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "at some of the tricks we can do inside as well.",
+      "offset": 60.32,
+      "duration": 2.64
+    },
+    {
+      "lang": "en",
+      "text": "So I'm going to do this through the lens of  ",
+      "offset": 65.52,
+      "duration": 2.56
+    },
+    {
+      "lang": "en",
+      "text": "the Paddy… the Rice Paddy \ncompetition we've been talking about,  ",
+      "offset": 71.36,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "and we got to a point where — let's have a look…",
+      "offset": 76.72,
+      "duration": 9.12
+    },
+    {
+      "lang": "en",
+      "text": "So we created a ConvNeXt model, we tried a few \ndifferent types of basic pre-processing, we added  ",
+      "offset": 90.72,
+      "duration": 10.64
+    },
+    {
+      "lang": "en",
+      "text": "Test time augmentation (TTA) and then we scaled \nthat up to large images, and rectangular images.",
+      "offset": 101.36,
+      "duration": 12.48
+    },
+    {
+      "lang": "en",
+      "text": "And that got us into the top \n25 percent of the competition,  ",
+      "offset": 116,
+      "duration": 6.56
+    },
+    {
+      "lang": "en",
+      "text": "so that's Part 2 of the \nso-called Road to the Top series,  ",
+      "offset": 123.92,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "which is increasingly misnamed, since \nwe've been presenting these notebooks,  ",
+      "offset": 129.04,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "more and more of our students have \nbeen passing me on the leaderboard, so,  ",
+      "offset": 137.36,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "currently first and second place are both \npeople from this class: Kurian and Nick.",
+      "offset": 146.88,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "“Go to hell, you're in my target, \nand leave my class immediately!”",
+      "offset": 154.96,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "And congratulations, good luck to you.",
+      "offset": 163.44,
+      "duration": 2.08
+    },
+    {
+      "lang": "en",
+      "text": "So in Part 3 I'm going to show you a really \ninteresting trick —a very simple trick—  ",
+      "offset": 167.04,
+      "duration": 9.12
+    },
+    {
+      "lang": "en",
+      "text": "for scaling up these models further.  ",
+      "offset": 176.16,
+      "duration": 2.08
+    },
+    {
+      "lang": "en",
+      "text": "What you'll discover if you've tried to use larger \nmodels… so you can replace the word small with the  ",
+      "offset": 179.52,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "word large in those architectures, and try to \ntrain a larger model: a larger model has more  ",
+      "offset": 184.48,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "parameters, more parameters means it can find \nmore tricky little features, and broadly speaking  ",
+      "offset": 190,
+      "duration": 6.96
+    },
+    {
+      "lang": "en",
+      "text": "models with more parameters, therefore, ought \nto be more accurate. The problem is that those  ",
+      "offset": 196.96,
+      "duration": 5.92
+    },
+    {
+      "lang": "en",
+      "text": "activations — or more specifically — \nthe gradients that have to be calculated  ",
+      "offset": 204.08,
+      "duration": 5.68
+    },
+    {
+      "lang": "en",
+      "text": "chews up memory on your GPU, and your GPU is not \nas clever as your CPU at kind of sticking stuff  ",
+      "offset": 211.04,
+      "duration": 8.32
+    },
+    {
+      "lang": "en",
+      "text": "it doesn't need right now into virtual memory \non the hard drive — when it runs out of memory:  ",
+      "offset": 219.36,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "it runs out of memory. And it also doesn't do such \na good job as your CPU at kind of shuffling things  ",
+      "offset": 223.36,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "around to try and find memory, it just allocates \nblocks of memory and it stays allocated until you  ",
+      "offset": 229.12,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "remove them. So if you try to scale up your models \nto bigger models, unless you have very expensive  ",
+      "offset": 234.88,
+      "duration": 8.08
+    },
+    {
+      "lang": "en",
+      "text": "GPUs, you will run out of space, and you'll get an \nerror, something like “CUDA out of memory error.”  ",
+      "offset": 242.96,
+      "duration": 7.92
+    },
+    {
+      "lang": "en",
+      "text": "So if that happens, first thing I \nmentioned is: it's not a bad idea to  ",
+      "offset": 251.84,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "restart your notebook because they can be \na bit tricky to recover from otherwise,  ",
+      "offset": 256.96,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "and then I'll show you how you can \nuse as large a model as you like.  ",
+      "offset": 262,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "Almost it's, you know, basically you'll be able to \nuse a x-large model on Kaggle. So, let me explain.",
+      "offset": 267.04,
+      "duration": 10.96
+    },
+    {
+      "lang": "en",
+      "text": "Now, I want… when you run something on Kaggle \n— like actually on Kaggle — you're generally  ",
+      "offset": 280.72,
+      "duration": 7.12
+    },
+    {
+      "lang": "en",
+      "text": "going to be on a 16 Gig GPU. And you don't have \nto run stuff on Kaggle, you can run stuff on  ",
+      "offset": 287.84,
+      "duration": 6.4
+    },
+    {
+      "lang": "en",
+      "text": "your home computer or Paperspace or whatever, but \nsometimes you'll have — if you want to do Kaggle  ",
+      "offset": 294.24,
+      "duration": 5.92
+    },
+    {
+      "lang": "en",
+      "text": "competition— sometimes you'll have to run stuff \non Kaggle because a lot of competitions are what  ",
+      "offset": 300.16,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "they call “Code Competitions” which is where the \nonly way to submit is from a notebook that you're  ",
+      "offset": 304,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "running on Kaggle, and then a second reason to run \nstuff on kaggle is that, you know, your notebooks  ",
+      "offset": 308.88,
+      "duration": 9.76
+    },
+    {
+      "lang": "en",
+      "text": "will appear, you know, with the leaderboard score \non them, and so people can see which notebooks are  ",
+      "offset": 319.2,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "actually good. And I kind of like, even in things \nthat aren’t code competitions, I love trying to  ",
+      "offset": 324.56,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "be the person who's number one on the notebook \nscore leaderboard because that's something which,  ",
+      "offset": 330.56,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "you know, you can't just work at NVIDIA, and use \na thousand GPUs and win a competition through  ",
+      "offset": 336.8,
+      "duration": 6.64
+    },
+    {
+      "lang": "en",
+      "text": "a combination of skill and brute force. Everybody \nhas the same nine hour timeout to work with,  ",
+      "offset": 343.44,
+      "duration": 7.04
+    },
+    {
+      "lang": "en",
+      "text": "so I think it's a good way of keeping \nthe, you know, things a bit more fair.  ",
+      "offset": 351.44,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "Now… so, my home GPU has 24 Gig so I wanted to \nfind out what can I get away with, you know,  ",
+      "offset": 358.08,
+      "duration": 8.08
+    },
+    {
+      "lang": "en",
+      "text": "in 16 Gig, and the way I did that is, I think, \na useful thing to discuss because, again, it's  ",
+      "offset": 366.16,
+      "duration": 6.24
+    },
+    {
+      "lang": "en",
+      "text": "all about fast iteration. So I wanted to really \nquickly find out how much memory will a model use,  ",
+      "offset": 372.4,
+      "duration": 7.44
+    },
+    {
+      "lang": "en",
+      "text": "so there's a really quick hacky way I can do \nthat which is to say: “okay, for the training set  ",
+      "offset": 382.24,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "let's not use… (so here's the value counts \nof labels, so the number of each disease…)  ",
+      "offset": 386.96,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "let's not look at all the diseases, let's just \npick one, the smallest one, right?, and let's  ",
+      "offset": 392.08,
+      "duration": 5.92
+    },
+    {
+      "lang": "en",
+      "text": "make that our training set. Our training set is \nthe “bacterial_panicle_blight” images, and now I  ",
+      "offset": 398,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "can train a model with just 337 images without \nchanging anything else. Not that I care about  ",
+      "offset": 403.76,
+      "duration": 6.16
+    },
+    {
+      "lang": "en",
+      "text": "that model but then I can see how much memory it \nused. It's important to realize that, you know,  ",
+      "offset": 410.56,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "each image you pass through is the same size, \neach batch size is the same size, so training  ",
+      "offset": 416.56,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "for longer won't use more memory, so that'll \ntell us how much memory we're going to need.",
+      "offset": 420.72,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "So what I then did was I then tried training \ndifferent models to see how much memory  ",
+      "offset": 429.44,
+      "duration": 10
+    },
+    {
+      "lang": "en",
+      "text": "they… they used up. Now, what happens if we \ntrain a model? So obviously Convnext_small  ",
+      "offset": 439.44,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "doesn't use too much memory. So here's something \nthat reports the amount of GPU memory just by  ",
+      "offset": 444.64,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "basically printing out cuda's GPU processes, \nand you can see Convnext_small took up 4GB.  ",
+      "offset": 450.4,
+      "duration": 7.92
+    },
+    {
+      "lang": "en",
+      "text": "And also this might be interesting \nto you, if you then call Python's  ",
+      "offset": 461.12,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "garbage collection gc.collect(), and \nthen call Pytorch's empty_cache()  ",
+      "offset": 465.76,
+      "duration": 5.92
+    },
+    {
+      "lang": "en",
+      "text": "that should basically get your GPU back to \na clean state of not using any more memory  ",
+      "offset": 471.68,
+      "duration": 6.08
+    },
+    {
+      "lang": "en",
+      "text": "than it needs to, when you can start training \nthe next model without restarting the kernel.",
+      "offset": 477.76,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "So what would happen if we tried to train this \nlittle model, and it crashed with a “cuda out  ",
+      "offset": 484.72,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "of memory error”. What do we do? We can use a \ncool little trick called gradient accumulation.  ",
+      "offset": 489.76,
+      "duration": 8.08
+    },
+    {
+      "lang": "en",
+      "text": "What's gradient accumulation? So what's gradient \naccumulation? Well I added this parameter to my  ",
+      "offset": 498.72,
+      "duration": 8.16
+    },
+    {
+      "lang": "en",
+      "text": "train method here. That's my train method, \ncreates my data loaders, creates my learner,  ",
+      "offset": 506.88,
+      "duration": 6.32
+    },
+    {
+      "lang": "en",
+      "text": "and then —depending on whether I'm fine \ntuning or not— either fits or fine-tunes it.  ",
+      "offset": 514.64,
+      "duration": 5.92
+    },
+    {
+      "lang": "en",
+      "text": "But there's one other thing it does… it \ndoes this gradient accumulation thing.  ",
+      "offset": 524.16,
+      "duration": 2.8
+    },
+    {
+      "lang": "en",
+      "text": "What's that about? Well, the key step is here. \nI set my batch size (so that's the number of  ",
+      "offset": 526.96,
+      "duration": 6.4
+    },
+    {
+      "lang": "en",
+      "text": "images that I pass through to the GPU all at \nonce) to 64, which is my default. Divided by…  ",
+      "offset": 533.36,
+      "duration": 8.4
+    },
+    {
+      "lang": "en",
+      "text": "(slash-slash means integer divide in Python..). \ndivided by this number. So if I pass 2,  ",
+      "offset": 541.76,
+      "duration": 5.84
+    },
+    {
+      "lang": "en",
+      "text": "it's going to use a batch size of 32. If \nI pass 4, it'll use a batch size of 16.  ",
+      "offset": 548.48,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "Now that obviously should let me cure any memory \nproblems, use a smaller batch size. But the  ",
+      "offset": 555.28,
+      "duration": 7.28
+    },
+    {
+      "lang": "en",
+      "text": "problem is that now, the dynamics of my training \nare different, right? The smaller your batch size,  ",
+      "offset": 562.56,
+      "duration": 5.84
+    },
+    {
+      "lang": "en",
+      "text": "the more volatility there is from batch to \nbatch. So now your learning rates are all  ",
+      "offset": 568.4,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "messed up. You don't want to be messing around \nwith trying to, you know, find a different set of,  ",
+      "offset": 572.32,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "kind of, optimal parameters for every \nbatch size, for every architecture.  ",
+      "offset": 577.6,
+      "duration": 2.88
+    },
+    {
+      "lang": "en",
+      "text": "So what we want to do is find a way to run just, \nlet's say accum is two, accumulate equals two,  ",
+      "offset": 584,
+      "duration": 6.56
+    },
+    {
+      "lang": "en",
+      "text": "let's say we just want to run \n32 images at a time through.  ",
+      "offset": 591.12,
+      "duration": 2.8
+    },
+    {
+      "lang": "en",
+      "text": "How do we make it behave as if it was 64 images? \nWell, the solution to that problem is to consider  ",
+      "offset": 595.52,
+      "duration": 8.72
+    },
+    {
+      "lang": "en",
+      "text": "our training loop. This is the… basically \nthe training loop we used from a couple of  ",
+      "offset": 604.24,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "lessons ago, the one we created manually. We \ngo through each (x,y) pair in the data loader.  ",
+      "offset": 608.16,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "We calculate the loss using some \ncoefficients based on that (x,y) pair,  ",
+      "offset": 615.12,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "and then we call backward() on that \nloss to calculate the gradients,  ",
+      "offset": 620,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "and then we subtract from the coefficients, the \ngradients times the learning rate. And then we  ",
+      "offset": 624.88,
+      "duration": 5.92
+    },
+    {
+      "lang": "en",
+      "text": "zero out the gradient. So I've skipped a bit \nof stuff like the… with torch.no_grad() thing.  ",
+      "offset": 630.8,
+      "duration": 6.72
+    },
+    {
+      "lang": "en",
+      "text": "Actually, no, I don't need that because I've \ngot .data, no that's it. That should all work  ",
+      "offset": 637.52,
+      "duration": 2.96
+    },
+    {
+      "lang": "en",
+      "text": "fine. That skipped out printing the loss, that's \nabout it. So here is a variation of that loop…",
+      "offset": 640.48,
+      "duration": 9.84
+    },
+    {
+      "lang": "en",
+      "text": "where I do not always subtract the \ngradient times the learning rate. Instead I  ",
+      "offset": 652.8,
+      "duration": 7.52
+    },
+    {
+      "lang": "en",
+      "text": "go through each (x,y) pair in the data \nloader, I calculate the loss, I look at  ",
+      "offset": 660.32,
+      "duration": 7.2
+    },
+    {
+      "lang": "en",
+      "text": "how many images are in this batch. So initially I \nstart at zero, and this count is going to be 32,  ",
+      "offset": 668.32,
+      "duration": 6.4
+    },
+    {
+      "lang": "en",
+      "text": "say if I've divided the batch size by 2. \nAnd then if “count” is greater than 64,  ",
+      "offset": 674.72,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "I do my gradient… my coefficients update. \nWell it's not, so I skip back to here,",
+      "offset": 680.8,
+      "duration": 7.04
+    },
+    {
+      "lang": "en",
+      "text": "and I do this again. And if you remember there \nwas this interesting subtlety in Pytorch,  ",
+      "offset": 689.92,
+      "duration": 6.32
+    },
+    {
+      "lang": "en",
+      "text": "which is if you call backward() again \nwithout zeroing out the gradients,  ",
+      "offset": 696.24,
+      "duration": 5.6
+    },
+    {
+      "lang": "en",
+      "text": "then it adds this set of gradients to the old \ngradients. So by doing these two half size batches  ",
+      "offset": 703.28,
+      "duration": 8.88
+    },
+    {
+      "lang": "en",
+      "text": "without zeroing out the gradients between \nthem, it's adding them up. So I'm going to  ",
+      "offset": 712.72,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "end up with the total gradient of a 64 image \nbatch size but passing only 32 at a time.",
+      "offset": 717.2,
+      "duration": 8
+    },
+    {
+      "lang": "en",
+      "text": "If I used accumulate equals four. It would go \nthrough this four times, adding them up before  ",
+      "offset": 727.76,
+      "duration": 5.92
+    },
+    {
+      "lang": "en",
+      "text": "it subtracted out the coefficients.grad \ntimes learning rate, and zeroed it out.  ",
+      "offset": 733.68,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "If I put in accum equals 64, it would go \nthrough and do a single image one at a time,  ",
+      "offset": 740.96,
+      "duration": 6.08
+    },
+    {
+      "lang": "en",
+      "text": "and after 64 passes through eventually, \ncount would be greater than 64, and we  ",
+      "offset": 748.08,
+      "duration": 5.68
+    },
+    {
+      "lang": "en",
+      "text": "would do the update. So that's gradient \naccumulation, right? It's… it's a very  ",
+      "offset": 753.76,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "simple idea, right, which is that you don't \nhave to actually update your weights every  ",
+      "offset": 759.36,
+      "duration": 8
+    },
+    {
+      "lang": "en",
+      "text": "loop through, for every minI batch. \nYou can just do it from time to time.  ",
+      "offset": 768.88,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "But it has quite significant \nimplications, which I find  ",
+      "offset": 774.88,
+      "duration": 3.2
+    },
+    {
+      "lang": "en",
+      "text": "most people seem not to realize, which is if you \nlook on, like, Twitter or Reddit or whatever,  ",
+      "offset": 779.84,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "people could say “oh I need to buy a \nbigger GPU to train bigger models”.  ",
+      "offset": 786.56,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "But they don't. They could just \nuse gradient accumulation, and so  ",
+      "offset": 791.68,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "given the huge price differential between, \nsay, a RTX3080, and an RTX3090 Ti, huge  ",
+      "offset": 798.72,
+      "duration": 8.08
+    },
+    {
+      "lang": "en",
+      "text": "price differential… the performance is not that \ndifferent. The big difference is the memory. So  ",
+      "offset": 806.8,
+      "duration": 6.2
+    },
+    {
+      "lang": "en",
+      "text": "what? Just put in a bit smaller batch size, and \ndo gradient accumulation. So there's actually  ",
+      "offset": 813.84,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "not that much reason to buy giant GPUs.",
+      "offset": 819.68,
+      "duration": 3.12
+    },
+    {
+      "lang": "en",
+      "text": "John?",
+      "offset": 823.84,
+      "duration": 0.24
+    },
+    {
+      "lang": "en",
+      "text": "JOHN: Are the results with gradient \naccumulation numerically identical?",
+      "offset": 824.08,
+      "duration": 6.24
+    },
+    {
+      "lang": "en",
+      "text": "JEREMY: They're numerically identical \nfor this particular architecture.  ",
+      "offset": 830.32,
+      "duration": 6.72
+    },
+    {
+      "lang": "en",
+      "text": "There is something called batch normalization, \nwhich we will look at in Part 2 of the course,  ",
+      "offset": 838.88,
+      "duration": 6.48
+    },
+    {
+      "lang": "en",
+      "text": "which keeps track of the moving average \nof… standard deviations and averages,  ",
+      "offset": 846.64,
+      "duration": 9.2
+    },
+    {
+      "lang": "en",
+      "text": "and does it in a mathematically slightly incorrect \nway. As a result of which, if you've got batch  ",
+      "offset": 858,
+      "duration": 6.56
+    },
+    {
+      "lang": "en",
+      "text": "normalization, then it could… it basically \nwill introduce more volatility. Which is not  ",
+      "offset": 864.56,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "necessarily a bad thing, but because it's not \nmathematically identical, you won't necessarily  ",
+      "offset": 869.68,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "get the same results. Convnext doesn't use batch \nnormalization, so it is the same. And in fact,  ",
+      "offset": 873.2,
+      "duration": 7.84
+    },
+    {
+      "lang": "en",
+      "text": "a lot of the models people want to use, really \nbig versions of which, is NLP ones, Transformers,  ",
+      "offset": 881.04,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "tend not to use batch normalization, but instead \nthey use something called layer normalization,  ",
+      "offset": 887.92,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "which, yeah, doesn't have the same issue. I \nthink that's probably fair to say. I haven't  ",
+      "offset": 893.36,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "thought about it that deeply. In practice I found \nadding gradient accumulation for Convnext has not  ",
+      "offset": 898.8,
+      "duration": 8.64
+    },
+    {
+      "lang": "en",
+      "text": "caused any issues for me, and I don't have \nto change any parameters when I do it.",
+      "offset": 907.44,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "Any other questions on the forum, John?",
+      "offset": 914.24,
+      "duration": 1.52
+    },
+    {
+      "lang": "en",
+      "text": "JOHN: Tamori asking shouldn't it \nbe count&gt;=64 if bs=64, I haven't…",
+      "offset": 917.4,
+      "duration": 8.52
+    },
+    {
+      "lang": "en",
+      "text": "JEREMY: No, I don't think so, oh yeah, is that… \nso we start at zero, then it's gonna be 32,  ",
+      "offset": 925.92,
+      "duration": 7.28
+    },
+    {
+      "lang": "en",
+      "text": "then it's gonna be… yeah yeah, probably yeah, you \ncan probably tell I didn't actually run this code.",
+      "offset": 933.2,
+      "duration": 6.48
+    },
+    {
+      "lang": "en",
+      "text": "JOHN: Madav is asking: does this mean that  ",
+      "offset": 939.68,
+      "duration": 2.24
+    },
+    {
+      "lang": "en",
+      "text": "lr_find() is based on the batch \nsize set during the data block?",
+      "offset": 941.92,
+      "duration": 5.16
+    },
+    {
+      "lang": "en",
+      "text": "JEREMY: Yeah, so lr_find() just \nuses your data loaders batch size.",
+      "offset": 947.08,
+      "duration": 6.76
+    },
+    {
+      "lang": "en",
+      "text": "JOHN: Edward is asking: why do we need \ngradient accumulation rather than just  ",
+      "offset": 954.88,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "using a smaller batch size, and follows up \nwith how would we pick a good batch size?",
+      "offset": 960.08,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "JEREMY: Well just, if you use a smaller \nbatch size… here's the thing right,  ",
+      "offset": 964.48,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "different architectures have different amounts of \nmemory, you know, which they which they take up,  ",
+      "offset": 969.36,
+      "duration": 8.08
+    },
+    {
+      "lang": "en",
+      "text": "and so you'll end up with different \nbatch sizes for different architectures,  ",
+      "offset": 978.72,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "which is not necessarily a bad thing but each of \nthem is going to then need a different learning  ",
+      "offset": 985.84,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "rate, and maybe even different weight decay \nor whatever, like, the kind of… the settings  ",
+      "offset": 989.68,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "thats working really well for batch size 64 won't \nnecessarily work really well for batch size 32.  ",
+      "offset": 994.96,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "And you know, you want to be able to \nexperiment as easily, and quickly as possible.  ",
+      "offset": 1000.56,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "I think the second part of the question was “how \ndo you pick a optimal batch size?” Honestly,  ",
+      "offset": 1006.64,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "the standard approach is to \npick the largest one you can,  ",
+      "offset": 1013.6,
+      "duration": 2.4
+    },
+    {
+      "lang": "en",
+      "text": "just because it's faster that way – you're \ngetting more parallel processing going on.  ",
+      "offset": 1016.96,
+      "duration": 6.88
+    },
+    {
+      "lang": "en",
+      "text": "Although to be honest I quite often use batch \nsizes that are quite a bit smaller than I need  ",
+      "offset": 1024.8,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "because quite often it doesn't \nmake that much difference,  ",
+      "offset": 1031.2,
+      "duration": 2.32
+    },
+    {
+      "lang": "en",
+      "text": "but yeah, the rule of thumb would be, you know, \npick a batch size that fits in your GPU, and for  ",
+      "offset": 1034.72,
+      "duration": 7.76
+    },
+    {
+      "lang": "en",
+      "text": "performance reasons I think it's generally a good \nidea to have it be a multiple of eight. Everybody  ",
+      "offset": 1042.48,
+      "duration": 6.16
+    },
+    {
+      "lang": "en",
+      "text": "seems to always use powers of two, I don't \nknow, like, I don't think it actually matters.",
+      "offset": 1048.64,
+      "duration": 3.2
+    },
+    {
+      "lang": "en",
+      "text": "JOHN: And look there's one other, \njust a clarification or a check,  ",
+      "offset": 1052.96,
+      "duration": 3.28
+    },
+    {
+      "lang": "en",
+      "text": "if the learning rate should be \nscaled according to the batch size?",
+      "offset": 1056.24,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "JEREMY: Yeah so generally speaking the rule of \nthumb is that if you divide the batch size by two,  ",
+      "offset": 1060.08,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "you divide the learning rate by two, but \nunfortunately it's not quite perfect.",
+      "offset": 1064.72,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "Did you have a question Nick? If \nyou do you can, okay cool yeah.",
+      "offset": 1070,
+      "duration": 4.04
+    },
+    {
+      "lang": "en",
+      "text": "JOHN: Yeah no, that's us all \ncaught up, thanks Jeremy.",
+      "offset": 1074.04,
+      "duration": 2.76
+    },
+    {
+      "lang": "en",
+      "text": "JEREMY: Good questions thank you.",
+      "offset": 1076.8,
+      "duration": 3.04
+    },
+    {
+      "lang": "en",
+      "text": "So gradient accumulation in fastai \nis very straightforward, you just  ",
+      "offset": 1082.4,
+      "duration": 6.72
+    },
+    {
+      "lang": "en",
+      "text": "divide the batch size by however much you \nwant to divide it by, and then add a… you  ",
+      "offset": 1090.16,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "got something called a callback, and a callback is \nsomething which changes the way the model trains.  ",
+      "offset": 1094.72,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "This callback is called GradientAccumulation, and \nyou pass in the effective batch size you want,  ",
+      "offset": 1100.24,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "and then you say, when you create the learner \nyou say, these are the callbacks I want,  ",
+      "offset": 1106.24,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "and so it's going to pass in GradientAccumulation \ncallback. So it's going to only  ",
+      "offset": 1110.96,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "update the weights once it's got 64 images.",
+      "offset": 1115.6,
+      "duration": 6.24
+    },
+    {
+      "lang": "en",
+      "text": "So if we pass in accum=1 it won't \ndo any gradient accumulation,  ",
+      "offset": 1125.12,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "and that uses 4GB. If we use accum=2 about 3GB, \naccum=4 about 2.5GB, and generally the bigger  ",
+      "offset": 1129.68,
+      "duration": 12.48
+    },
+    {
+      "lang": "en",
+      "text": "the model the closer you'll get to a kind of \na linear scaling because models have a kind of  ",
+      "offset": 1142.16,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "a bit of overhead that they have anyway. \nSo what I then did, was I just went through  ",
+      "offset": 1148.16,
+      "duration": 6.8
+    },
+    {
+      "lang": "en",
+      "text": "all the different models I wanted to try. So I \nwanted to try convnext_large at a 320 by 240,  ",
+      "offset": 1154.96,
+      "duration": 6.64
+    },
+    {
+      "lang": "en",
+      "text": "vit_large, swinv2_large, swin_large, and on each \nof these I just tried running it with accum=1, and  ",
+      "offset": 1162.64,
+      "duration": 8.4
+    },
+    {
+      "lang": "en",
+      "text": "actually every single time for all of these I got \nan “out of memory” error. And then I tried each of  ",
+      "offset": 1171.04,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "them independently with accum=2, and it turns out \nthat all of these worked with accum=2, and it only  ",
+      "offset": 1175.52,
+      "duration": 5.84
+    },
+    {
+      "lang": "en",
+      "text": "took me 12 seconds each time, so that was a very \nquick thing for me. Then okay, I now know how to  ",
+      "offset": 1181.36,
+      "duration": 5.6
+    },
+    {
+      "lang": "en",
+      "text": "train all of these models on a 16GB card. So I \ncan check here, they're all in less than 16GB.  ",
+      "offset": 1186.96,
+      "duration": 6.08
+    },
+    {
+      "lang": "en",
+      "text": "So then I just created a little dictionary \nof all the architectures I wanted,  ",
+      "offset": 1196.16,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "and for each architecture all of the resize \nmethods I wanted, and final sizes I wanted.  ",
+      "offset": 1203.52,
+      "duration": 6.08
+    },
+    {
+      "lang": "en",
+      "text": "Now these models vit, swinv2, and \nswin, are all Transformers models,  ",
+      "offset": 1211.36,
+      "duration": 6.64
+    },
+    {
+      "lang": "en",
+      "text": "which means that, well, most Transformers models, \nnearly all of them, have a fixed size – this one's  ",
+      "offset": 1219.36,
+      "duration": 7.44
+    },
+    {
+      "lang": "en",
+      "text": "224, this one's 192, this one's 224. So I have \nto make sure that my final sizes are square,  ",
+      "offset": 1226.8,
+      "duration": 5.6
+    },
+    {
+      "lang": "en",
+      "text": "of the size required, otherwise I get an error.  ",
+      "offset": 1232.96,
+      "duration": 2.64
+    },
+    {
+      "lang": "en",
+      "text": "There are… there is a way of working around this \nbut I haven't experimented with it enough to know  ",
+      "offset": 1236.8,
+      "duration": 7.52
+    },
+    {
+      "lang": "en",
+      "text": "when when it works well, and when it doesn't, \nso we'll probably come back to that in Part 2.  ",
+      "offset": 1244.32,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "So for now we're just going to use \nthe size that they ask us to use.",
+      "offset": 1249.36,
+      "duration": 3.28
+    },
+    {
+      "lang": "en",
+      "text": "So with this dictionary of architectures, and for \neach architecture, kind of pre-processing details,  ",
+      "offset": 1253.28,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "we switch the training path \nback to using all of our images,  ",
+      "offset": 1259.76,
+      "duration": 2.8
+    },
+    {
+      "lang": "en",
+      "text": "and then we can loop through each architecture,  ",
+      "offset": 1263.28,
+      "duration": 2.64
+    },
+    {
+      "lang": "en",
+      "text": "and loop through each item transfer– transforms \nand sizes, and train the model, and then  ",
+      "offset": 1266.88,
+      "duration": 10.08
+    },
+    {
+      "lang": "en",
+      "text": "the training script, if you're \nfine-tuning, returns the tta predictions.  ",
+      "offset": 1280.72,
+      "duration": 10.08
+    },
+    {
+      "lang": "en",
+      "text": "So I append all those tta predictions, \nfor each model for each type, into a list,  ",
+      "offset": 1298.32,
+      "duration": 5.92
+    },
+    {
+      "lang": "en",
+      "text": "and after each one it's a good idea to do this \ngarbage collection, and empty cache that… because  ",
+      "offset": 1304.24,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "otherwise I find what happens is your GPU memory \nkind of, I don't know, I think it gets fragmented  ",
+      "offset": 1309.36,
+      "duration": 6.56
+    },
+    {
+      "lang": "en",
+      "text": "or something, and after a while it runs out \nof memory even when you thought it wouldn't.  ",
+      "offset": 1315.92,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "So this way you can really do as much as you like \nwithout running out of memory. So they all train,  ",
+      "offset": 1319.52,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "train, train, train, and one key thing \nto note here, is that in my train script,  ",
+      "offset": 1326.16,
+      "duration": 6.16
+    },
+    {
+      "lang": "en",
+      "text": "my data loaders does not have the seed= parameter, \nso I'm using a different training set every time.",
+      "offset": 1335.92,
+      "duration": 9.92
+    },
+    {
+      "lang": "en",
+      "text": "So that means that for  ",
+      "offset": 1347.28,
+      "duration": 1.2
+    },
+    {
+      "lang": "en",
+      "text": "each of these different runs they're using also \ndifferent validation sets, so they're not directly  ",
+      "offset": 1353.44,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "comparable, but you can kind of see they're all \ndoing pretty well, 2.1%, 2.3%, 1.7%, and so forth.  ",
+      "offset": 1357.68,
+      "duration": 7.84
+    },
+    {
+      "lang": "en",
+      "text": "So why am I using different training \nand validation sets for each of these?  ",
+      "offset": 1367.2,
+      "duration": 3.2
+    },
+    {
+      "lang": "en",
+      "text": "That's because I want to ensemble \nthem, so I'm going to use bagging,  ",
+      "offset": 1371.6,
+      "duration": 7.28
+    },
+    {
+      "lang": "en",
+      "text": "which is I am going to take the average of \ntheir predictions. Now I mean really, when  ",
+      "offset": 1381.92,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "we talked about random forest bagging, we were \ntaking the average of, like, intentionally weak  ",
+      "offset": 1387.36,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "models. These are not intentionally weak models, \nthey're meant to be good models, but they're all  ",
+      "offset": 1393.12,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "different – they're using different architectures, \nand different pre-processing approaches, and so  ",
+      "offset": 1396.48,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "in general we would hope that these different \napproaches… some might work well for some images,  ",
+      "offset": 1400.64,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "and some might work well for other images. And \nso when we average them out, hopefully we'll get  ",
+      "offset": 1405.52,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "a good blend of, kind of, different ideas, \nwhich is kind of what you want in bagging.",
+      "offset": 1410.56,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "So we can stack up that list of different… of all \nthe different probabilities, and take their mean,  ",
+      "offset": 1416.4,
+      "duration": 6.72
+    },
+    {
+      "lang": "en",
+      "text": "and so that's going to give us \n3469 predictions, that's our  ",
+      "offset": 1425.52,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "that's our test set size, and each one has 10 \nprobabilities, the probability of each disease.  ",
+      "offset": 1429.76,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "And so then we can use argmax() to find \nwhich probability index is the highest,  ",
+      "offset": 1440.64,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "so that's going to give us our list of indexes.  ",
+      "offset": 1445.68,
+      "duration": 2
+    },
+    {
+      "lang": "en",
+      "text": "So this is basically the same steps as we \nused before to create our CSV submission file.",
+      "offset": 1449.68,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "So at the time of creating this analysis that \ngot me to the top of the leaderboard, and in fact  ",
+      "offset": 1457.36,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "these are my four submissions, and \nyou can see each one got better.  ",
+      "offset": 1463.92,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "Now you're not always going to get \nthis nice monotonic improvement,  ",
+      "offset": 1468.96,
+      "duration": 3.04
+    },
+    {
+      "lang": "en",
+      "text": "right, but you want to be trying \nto submit something every day,  ",
+      "offset": 1472,
+      "duration": 2.56
+    },
+    {
+      "lang": "en",
+      "text": "to kind of, like, try out something new, right, \nand the more you practice the more you'll get a  ",
+      "offset": 1475.76,
+      "duration": 7.6
+    },
+    {
+      "lang": "en",
+      "text": "good intuition of what's going to help, right. So \npartly I'm showing you this to say, it's not like  ",
+      "offset": 1483.36,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "purely random as to whether things work or don't, \nonce you've been doing this for a while, you know,  ",
+      "offset": 1490,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "you will generally be improving things most of the \ntime. So as you can see from the descriptions my  ",
+      "offset": 1494.72,
+      "duration": 8.56
+    },
+    {
+      "lang": "en",
+      "text": "first submission was our convnext_small for 12 \nepochs with TTA. And then ensemble of convnext,  ",
+      "offset": 1503.28,
+      "duration": 8.4
+    },
+    {
+      "lang": "en",
+      "text": "so it's basically this exact same thing \nbut just retraining a few with different  ",
+      "offset": 1511.68,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "training subsets. And then this is the same thing \nagain, this is the thing we just saw, basically  ",
+      "offset": 1516.56,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "the ensemble of large models with TTA. And then \nthe last one was something I skipped over, which  ",
+      "offset": 1523.28,
+      "duration": 7.36
+    },
+    {
+      "lang": "en",
+      "text": "was I… the VIT models were the best in my testing, \nso I basically weighted them as double in the  ",
+      "offset": 1530.64,
+      "duration": 8.88
+    },
+    {
+      "lang": "en",
+      "text": "ensemble – pretty unscientific but again it gave \nit another boost, and so that was that was it.",
+      "offset": 1539.52,
+      "duration": 8.56
+    },
+    {
+      "lang": "en",
+      "text": "all right, John!",
+      "offset": 1551.36,
+      "duration": 0.72
+    },
+    {
+      "lang": "en",
+      "text": "JOHN: Yes, thanks Jeremy. So in no particular \norder Kurian is asking, would trying out cross  ",
+      "offset": 1553.92,
+      "duration": 6.08
+    },
+    {
+      "lang": "en",
+      "text": "validation with k-folds with the same architecture \nmakes sense as an ensembling of models?",
+      "offset": 1560,
+      "duration": 6.4
+    },
+    {
+      "lang": "en",
+      "text": "JEREMY: Yeah, so a popular thing is \nto do k-fold cross-validation. So  ",
+      "offset": 1566.4,
+      "duration": 6.16
+    },
+    {
+      "lang": "en",
+      "text": "k-fold cross-validation is something \nvery very similar to what I've done here.",
+      "offset": 1572.56,
+      "duration": 3.28
+    },
+    {
+      "lang": "en",
+      "text": "So what I've done here is I've trained a bunch of \nmodels with different training sets, each one is  ",
+      "offset": 1575.84,
+      "duration": 9.2
+    },
+    {
+      "lang": "en",
+      "text": "a different random 80% of the data. Five-fold \ncross-validation does something as similar,  ",
+      "offset": 1585.04,
+      "duration": 7.76
+    },
+    {
+      "lang": "en",
+      "text": "but what it says is rather than picking, like say \nfive samples out with different random subsets,  ",
+      "offset": 1592.8,
+      "duration": 7.36
+    },
+    {
+      "lang": "en",
+      "text": "in fact, instead, first like… do all except for \nthe first 20% of the data, and then all but the  ",
+      "offset": 1600.96,
+      "duration": 7.36
+    },
+    {
+      "lang": "en",
+      "text": "second 20%, and then all but the third, and so \nforth, and so you end up with five subsets each  ",
+      "offset": 1608.32,
+      "duration": 6.32
+    },
+    {
+      "lang": "en",
+      "text": "of which have non-overlapping validation sets, \nand then you'll ensemble those. You know in theory  ",
+      "offset": 1614.64,
+      "duration": 10
+    },
+    {
+      "lang": "en",
+      "text": "maybe that could be slightly better because \nyou're kind of guaranteed that every row is…  ",
+      "offset": 1624.64,
+      "duration": 6.56
+    },
+    {
+      "lang": "en",
+      "text": "appears… four times, you know, effectively. \nIt also has a benefit that you could average  ",
+      "offset": 1632.88,
+      "duration": 6.48
+    },
+    {
+      "lang": "en",
+      "text": "those five validation sets because there's no kind \nof overlap between them to get a cross validation.  ",
+      "offset": 1639.36,
+      "duration": 6.4
+    },
+    {
+      "lang": "en",
+      "text": "Personally, I generally don't bother, and \nthe reason I don't is because this way  ",
+      "offset": 1646.64,
+      "duration": 6.96
+    },
+    {
+      "lang": "en",
+      "text": "I can add and remove models very \neasily. I don't, you know… I can just,  ",
+      "offset": 1653.6,
+      "duration": 7.36
+    },
+    {
+      "lang": "en",
+      "text": "you know… add another architecture and whatever \nto my ensemble without trying to find a  ",
+      "offset": 1662.08,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "different overlapping non-overlapping \nsubset. So yeah, cross-validation is  ",
+      "offset": 1666.64,
+      "duration": 6.72
+    },
+    {
+      "lang": "en",
+      "text": "therefore something that I use probably less \nthan most people or almost… or almost never.",
+      "offset": 1673.36,
+      "duration": 7.12
+    },
+    {
+      "lang": "en",
+      "text": "JOHN: Awesome, thank you. Are there \nany… just coming back to gradient  ",
+      "offset": 1680.48,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "accumulation… any other kind of drawbacks or \npotential gotchas with gradient accumulation?",
+      "offset": 1685.68,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "JEREMY: No, not really! Yeah, like, amazingly \nit doesn't even really slow things down much,  ",
+      "offset": 1689.84,
+      "duration": 9.6
+    },
+    {
+      "lang": "en",
+      "text": "you know, going from a batch \nsize of 64 to a batch size of 32.  ",
+      "offset": 1699.44,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "By definition you had to do it because your GPU \nis full so you're obviously giving a lot of data.  ",
+      "offset": 1704.32,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "So it's probably going to be using its processing \nspeed pretty effectively, so yeah, no it's just…  ",
+      "offset": 1709.68,
+      "duration": 8.32
+    },
+    {
+      "lang": "en",
+      "text": "it's just a good technique that… we should all be \nbuying cheaper graphics cards with less memory in  ",
+      "offset": 1718,
+      "duration": 5.68
+    },
+    {
+      "lang": "en",
+      "text": "them, and using you know, have like… I don't know \nthe prices, I suspect it's like you could probably  ",
+      "offset": 1723.68,
+      "duration": 5.6
+    },
+    {
+      "lang": "en",
+      "text": "buy like two 3080s for the price of one 3090Ti \nor something, that would be a very good deal.",
+      "offset": 1729.28,
+      "duration": 6.24
+    },
+    {
+      "lang": "en",
+      "text": "JOHN: Yes, clearly you're \nnot on the Nvidia payroll.  ",
+      "offset": 1736.64,
+      "duration": 3.2
+    },
+    {
+      "lang": "en",
+      "text": "So look this is a good segue then, we did have \na question about sort of GPU recommendations,  ",
+      "offset": 1741.6,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "and there's been a bit of chat on that \nas well. (JEREMY: I bet) So any… any,  ",
+      "offset": 1746.32,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "you know, commentary… any additional \ncommentary around GPU recommendations.",
+      "offset": 1750.8,
+      "duration": 2.96
+    },
+    {
+      "lang": "en",
+      "text": "JEREMY: No, not really. I mean obviously at the \nmoment Nvidia is the only game in town, you know.  ",
+      "offset": 1754.92,
+      "duration": 8.04
+    },
+    {
+      "lang": "en",
+      "text": "If you buy… if you trying to use a you know Apple \nM1 or M2 or an AMD card you're basically in for  ",
+      "offset": 1762.96,
+      "duration": 8.08
+    },
+    {
+      "lang": "en",
+      "text": "a world of pain in terms of compatibility and \nstuff, and unoptimized libraries, and whatever.  ",
+      "offset": 1771.04,
+      "duration": 7.44
+    },
+    {
+      "lang": "en",
+      "text": "The Nvidia consumer cards, so the ones that start \nwith RTX are much cheaper but are just as good  ",
+      "offset": 1781.04,
+      "duration": 11.12
+    },
+    {
+      "lang": "en",
+      "text": "as the expensive enterprise cards. So you might \nbe wondering why anybody would buy the expensive  ",
+      "offset": 1792.8,
+      "duration": 6.64
+    },
+    {
+      "lang": "en",
+      "text": "enterprise cards, and the reason is that there's a \nlicensing issue that Nvidia will not allow you to  ",
+      "offset": 1799.44,
+      "duration": 6.4
+    },
+    {
+      "lang": "en",
+      "text": "use an RTX consumer card in a data center – which \nis also why cloud computing is more expensive than  ",
+      "offset": 1805.84,
+      "duration": 8.4
+    },
+    {
+      "lang": "en",
+      "text": "they, kind of, ought to be, because everybody \nselling cloud computing GPUs is selling  ",
+      "offset": 1815.2,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "these cards that are like, I can’t remember, I \nthink they're like three times more expensive  ",
+      "offset": 1820.88,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "for kind of the same features. So yeah, if you do \nget serious about deep learning to the point that  ",
+      "offset": 1824.24,
+      "duration": 6.72
+    },
+    {
+      "lang": "en",
+      "text": "you're prepared to invest, you know, a few \ndays in administering a box, and you know,  ",
+      "offset": 1830.96,
+      "duration": 7.92
+    },
+    {
+      "lang": "en",
+      "text": "I guess depending on prices, hopefully will start \nto come down, but currently a thousand or two  ",
+      "offset": 1838.88,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "thousand dollars, and buying a GPU then you know, \nthat'll probably pay you back pretty quickly.",
+      "offset": 1843.36,
+      "duration": 6.48
+    },
+    {
+      "lang": "en",
+      "text": "JOHN: Great, thank you. Let's see, \nanother one has come in. If you have a…  ",
+      "offset": 1849.84,
+      "duration": 7.36
+    },
+    {
+      "lang": "en",
+      "text": "back on models, not hardware… if you have \na well functioning but large model, can it  ",
+      "offset": 1857.2,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "make sense to train a smaller model to produce \nthe same final activations as the larger model?",
+      "offset": 1862.16,
+      "duration": 6.32
+    },
+    {
+      "lang": "en",
+      "text": "JEREMY: Oh yeah, absolutely. I'm not sure \nwe'll get into that this time around but  ",
+      "offset": 1868.48,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "yeah we'll cover that in Part 2, I think, but \nyeah basically there's teacher/student models,  ",
+      "offset": 1875.6,
+      "duration": 6.96
+    },
+    {
+      "lang": "en",
+      "text": "and model distillation, which \nbroadly speaking there are ways to  ",
+      "offset": 1882.56,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "make inference faster by training small \nmodels that work the same way as large models.",
+      "offset": 1888.16,
+      "duration": 5.84
+    },
+    {
+      "lang": "en",
+      "text": "JOHN: Great thank you, all caught up.",
+      "offset": 1894,
+      "duration": 1.84
+    },
+    {
+      "lang": "en",
+      "text": "JEREMY: All right, so… that is the actual real \nend of Road to the Top, because beyond that  ",
+      "offset": 1895.84,
+      "duration": 8.56
+    },
+    {
+      "lang": "en",
+      "text": "we don't actually cover how to get closer to \nthe top – you'd have to ask Kurian to share his  ",
+      "offset": 1904.4,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "techniques to find out that, or Nick, to get the \nsecond place from the top. Part 4 is actually  ",
+      "offset": 1909.2,
+      "duration": 6.48
+    },
+    {
+      "lang": "en",
+      "text": "something that I think is very useful to know \nabout for learning, and it's going to teach  ",
+      "offset": 1918.48,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "us a whole lot about how the last layer \nof a neural net works. And specifically,  ",
+      "offset": 1921.92,
+      "duration": 8.32
+    },
+    {
+      "lang": "en",
+      "text": "what we're going to try to do is we're going to \ntry to build a model that doesn't just predict  ",
+      "offset": 1930.24,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "the disease but also predicts the type of rice.  ",
+      "offset": 1937.04,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "So how would you do that? So here's the \nData Loader we're going to try to build –  ",
+      "offset": 1941.76,
+      "duration": 7.08
+    },
+    {
+      "lang": "en",
+      "text": "it's going to be something that for each image \nit tells us the disease, and the type of rice.  ",
+      "offset": 1950.32,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "I say disease, sometimes normal, I \nguess some of them are not diseased.",
+      "offset": 1955.84,
+      "duration": 6.32
+    },
+    {
+      "lang": "en",
+      "text": "So to build a model that can predict two \nthings, the first thing is you're going  ",
+      "offset": 1962.16,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "to need data loaders that have two dependent \nvariables, and that is shockingly easy to do  ",
+      "offset": 1966.88,
+      "duration": 7.36
+    },
+    {
+      "lang": "en",
+      "text": "in fastai thanks to the DataBlock. So we've seen \nthe DataBlock before. We haven't been using it  ",
+      "offset": 1975.52,
+      "duration": 7.92
+    },
+    {
+      "lang": "en",
+      "text": "for the Paddy competition so far because \nwe haven't needed it – we could just use  ",
+      "offset": 1983.44,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "ImageDataLoader.from_folder(). So that's like the \nhighest level API, the simplest API. If we go down  ",
+      "offset": 1987.36,
+      "duration": 7.12
+    },
+    {
+      "lang": "en",
+      "text": "a level deeper into the DataBlock we have a lot \nmore flexibility. So if you've been following the  ",
+      "offset": 1994.48,
+      "duration": 7.52
+    },
+    {
+      "lang": "en",
+      "text": "walkthroughs you'll know that as I built this \nthe first thing I actually did was to simply  ",
+      "offset": 2002,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "replicate the previous notebook but replace the \nImageDataloader.from_folder() with a DataBlock to  ",
+      "offset": 2006.64,
+      "duration": 7.12
+    },
+    {
+      "lang": "en",
+      "text": "try to do, first of all, exactly the same thing, \nand then I added the second dependent variable.",
+      "offset": 2013.76,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "So if we look at the previous \nImageDataLoader.from_folder() thingy,  ",
+      "offset": 2019.68,
+      "duration": 7.36
+    },
+    {
+      "lang": "en",
+      "text": "here it is. We were passing in some item \ntransforms, and some batch transforms,  ",
+      "offset": 2028.32,
+      "duration": 8.96
+    },
+    {
+      "lang": "en",
+      "text": "and we had something saying what \npercentage should be the validation set",
+      "offset": 2038.8,
+      "duration": 3.12
+    },
+    {
+      "lang": "en",
+      "text": "So in a DataBlock if you remember we have to \npass in a “blocks” argument saying what kind  ",
+      "offset": 2046.96,
+      "duration": 6.24
+    },
+    {
+      "lang": "en",
+      "text": "of data is the independent variable, and what \nis the dependent variable. So to replicate what  ",
+      "offset": 2053.2,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "we had before we would just pass an ImageBlock \ncomma CategoryBlock, because we've got an image  ",
+      "offset": 2058.32,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "as our independent variable, and a category, \none type of rice, is the dependent variable.",
+      "offset": 2062.96,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "So the new thing I'm going to show you here,is \nthat you don't have to “only put in two things.”  ",
+      "offset": 2068.64,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "You can put in as many as you like, so if you put \nin three things we're going to generate one image,  ",
+      "offset": 2072.24,
+      "duration": 6.96
+    },
+    {
+      "lang": "en",
+      "text": "and two categories. Now fastai, if you're saying \nI want three things… fastai doesn't know which  ",
+      "offset": 2079.2,
+      "duration": 6.4
+    },
+    {
+      "lang": "en",
+      "text": "of those is the independent variable, \nand which is the dependent variable,  ",
+      "offset": 2085.6,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "so the next thing you have to tell it is how \nmany inputs are there, “number of inputs,”  ",
+      "offset": 2089.92,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "And so here I've said there's one \ninput, so that means this is the input,  ",
+      "offset": 2094,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "and therefore by definition two categories will \nbe the output because remember we're trying to  ",
+      "offset": 2097.68,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "predict two things the type of rice, and the \ndisease. Okay this is the same as what we've  ",
+      "offset": 2102.48,
+      "duration": 5.68
+    },
+    {
+      "lang": "en",
+      "text": "seen before, to find out… to get our list of \nitems we'll call get_image_files(). Now here  ",
+      "offset": 2108.16,
+      "duration": 5.728
+    },
+    {
+      "lang": "en",
+      "text": "is something we haven't seen before – get_y is \nour labeling function. Normally we pass to get_y  ",
+      "offset": 2113.888,
+      "duration": 6.352
+    },
+    {
+      "lang": "en",
+      "text": "a single thing such as the parent_label function \nwhich looks at the name of the parent directory,  ",
+      "offset": 2120.24,
+      "duration": 5.84
+    },
+    {
+      "lang": "en",
+      "text": "which remembers how these images are structured, \nand that would tell us the label. But get_y  ",
+      "offset": 2127.28,
+      "duration": 7.12
+    },
+    {
+      "lang": "en",
+      "text": "can also take an array, and in this case we want \ntwo different labels. One is the name of the  ",
+      "offset": 2134.4,
+      "duration": 7.28
+    },
+    {
+      "lang": "en",
+      "text": "parent directory, because that's the disease. The \nsecond is the variety. So what is get_variety()?",
+      "offset": 2141.68,
+      "duration": 5.84
+    },
+    {
+      "lang": "en",
+      "text": "get_variety() is a function. So let \nme explain how this function works.  ",
+      "offset": 2148.4,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "So we can create a data frame containing \nour trainings... our training data that  ",
+      "offset": 2153.92,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "came from Kaggle. So for each image it \ntells us the disease, and the variety.",
+      "offset": 2158.88,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "And what I did is something I haven't shown \nbefore. In pandas you can set one column to  ",
+      "offset": 2167.36,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "be the index, and when you do that, \nin this case image_id, it makes this  ",
+      "offset": 2171.28,
+      "duration": 5.6
+    },
+    {
+      "lang": "en",
+      "text": "series... this... sorry… this data frame, kind \nof like a dictionary. I can index into it by  ",
+      "offset": 2177.44,
+      "duration": 6.64
+    },
+    {
+      "lang": "en",
+      "text": "saying tell me the row for this image, and to do \nthat you use the “loc” attribute, the location.  ",
+      "offset": 2184.08,
+      "duration": 7.04
+    },
+    {
+      "lang": "en",
+      "text": "So we want in the data frame, the location of  ",
+      "offset": 2192.08,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "this image, and then you can also say optionally \nwhat column you want – this column. And so  ",
+      "offset": 2197.12,
+      "duration": 7.2
+    },
+    {
+      "lang": "en",
+      "text": "here's this image, and here's this column, \nand as you can see it returns that thing.  ",
+      "offset": 2205.2,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "So hopefully now you can see it's pretty \neasy for us to create a function that takes  ",
+      "offset": 2211.68,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "a row... sorry, a path, and returns \nthe location in the data frame  ",
+      "offset": 2220.16,
+      "duration": 8.08
+    },
+    {
+      "lang": "en",
+      "text": "of the name of that file, because remember these \nare the names of files, for the variety column.",
+      "offset": 2228.24,
+      "duration": 6.64
+    },
+    {
+      "lang": "en",
+      "text": "So that's our second get_y  ",
+      "offset": 2237.92,
+      "duration": 1.36
+    },
+    {
+      "lang": "en",
+      "text": "okay, and then we've seen this before, \nrandomly split the data into the 20% and 80%.",
+      "offset": 2241.04,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "And so we could just switch them \nall to 192 just for this example,  ",
+      "offset": 2249.04,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "and then use data augmentation to get us down \nto 128 square images just for this example.  ",
+      "offset": 2253.84,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "And so that's what we get when we say \nshow batch. We get what we just discussed.",
+      "offset": 2262.96,
+      "duration": 6.88
+    },
+    {
+      "lang": "en",
+      "text": "So now we need a model that predicts two things.  ",
+      "offset": 2271.44,
+      "duration": 6.72
+    },
+    {
+      "lang": "en",
+      "text": "How do we create a model that predicts two \nthings? Well, the key thing to realize is we never  ",
+      "offset": 2279.76,
+      "duration": 6.16
+    },
+    {
+      "lang": "en",
+      "text": "actually had a model that predicts two things. \nWe had a model that predicts ten things, before.  ",
+      "offset": 2285.92,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "The ten things we predicted is the probability \nof each disease. So we don't actually now want  ",
+      "offset": 2292.64,
+      "duration": 6.8
+    },
+    {
+      "lang": "en",
+      "text": "a model that predicts two things, we \nwant a model that predicts 20 things:  ",
+      "offset": 2299.44,
+      "duration": 3.28
+    },
+    {
+      "lang": "en",
+      "text": "the probability of each of the 10 diseases, and \nthe probability of each of the 10 varieties.",
+      "offset": 2303.44,
+      "duration": 8.64
+    },
+    {
+      "lang": "en",
+      "text": "So, how could we do that? Well let's first \nof all try to just create the same disease  ",
+      "offset": 2312.08,
+      "duration": 10.56
+    },
+    {
+      "lang": "en",
+      "text": "model we had before with our new data loader. So \nthis is going to be reasonably straightforward.  ",
+      "offset": 2322.64,
+      "duration": 5.84
+    },
+    {
+      "lang": "en",
+      "text": "The key thing to know is that since we told \nfastai that there's one input, and therefore  ",
+      "offset": 2329.36,
+      "duration": 7.84
+    },
+    {
+      "lang": "en",
+      "text": "by definition there's two outputs, it's going to \npass to our metrics, and to our loss functions,  ",
+      "offset": 2337.2,
+      "duration": 8.56
+    },
+    {
+      "lang": "en",
+      "text": "three things instead of two: the predictions \nfrom the model, and the disease, and the variety.",
+      "offset": 2347.28,
+      "duration": 7.6
+    },
+    {
+      "lang": "en",
+      "text": "So if we're gonna... so we can't just use \nerror rate as our metric anymore because  ",
+      "offset": 2355.6,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "error rate takes two things. Instead we have \nto create a function that takes three things,  ",
+      "offset": 2360.16,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "and return error rate of the two things we \nwant, which is the predictions from the model,  ",
+      "offset": 2365.28,
+      "duration": 6.4
+    },
+    {
+      "lang": "en",
+      "text": "and the disease, okay? So this is \npredictions of the model, this is the target.  ",
+      "offset": 2372.8,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "So that's actually all we need to do to define a \nmetric that's going to work with our new dataset…  ",
+      "offset": 2377.6,
+      "duration": 6.8
+    },
+    {
+      "lang": "en",
+      "text": "with a new dataloader, and this is not going \nto actually tell us anything about variety,  ",
+      "offset": 2385.04,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "first we're just going to try to replicate \nsomething that can do just disease.  ",
+      "offset": 2389.12,
+      "duration": 3.12
+    },
+    {
+      "lang": "en",
+      "text": "So when we create our learner we’ll \npass in this new disease error function.",
+      "offset": 2393.12,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "Okay, so we're halfway there. The \nother thing we're going to need  ",
+      "offset": 2400.16,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "is to change our loss function. Now we never \nactually talked about what loss function to use,  ",
+      "offset": 2404.4,
+      "duration": 6.08
+    },
+    {
+      "lang": "en",
+      "text": "and that's because vision_learner guessed what \nloss function to use. vision_learner saw that our  ",
+      "offset": 2412,
+      "duration": 8.16
+    },
+    {
+      "lang": "en",
+      "text": "dependent variable was a single category, and it \nknows the best loss function that's probably going  ",
+      "offset": 2420.16,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "to be the case for things with a single category, \nand it knows how big the category is. So it just  ",
+      "offset": 2425.52,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "didn't bother us at all. It just said okay “I'll \nfigure it out for you”. So the only time we've  ",
+      "offset": 2430.88,
+      "duration": 7.28
+    },
+    {
+      "lang": "en",
+      "text": "provided our own loss function is when we were \nkind of doing linear models and neural nets from  ",
+      "offset": 2438.16,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "scratch, and we did, I think, mean-squared-error. \nWe might also have done mean-absolute-error.",
+      "offset": 2443.28,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "Neither of those work when the dependent variable  ",
+      "offset": 2451.12,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "is a category. Now how would you use \nmean-squared-error or mean-absolute-error  ",
+      "offset": 2455.6,
+      "duration": 6.16
+    },
+    {
+      "lang": "en",
+      "text": "to say, how close were these 10 probability \npredictions to this one correct answer.",
+      "offset": 2461.76,
+      "duration": 5.84
+    },
+    {
+      "lang": "en",
+      "text": "So in this case we have to use a \ndifferent loss function. We have  ",
+      "offset": 2470.08,
+      "duration": 2.56
+    },
+    {
+      "lang": "en",
+      "text": "to use something called cross entropy loss, \nand this is actually the loss function that  ",
+      "offset": 2472.64,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "fastai picked for us before without us \nknowing. But now that we are having to  ",
+      "offset": 2477.92,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "pick it out manually I'm going to explain to \nyou exactly what cross-entropy loss does, okay?",
+      "offset": 2482.64,
+      "duration": 6.88
+    },
+    {
+      "lang": "en",
+      "text": "And you know these details are very important \nindeed. Like... remember I said at the start  ",
+      "offset": 2492.64,
+      "duration": 6.16
+    },
+    {
+      "lang": "en",
+      "text": "of this class, the stuff that happens in the \nmiddle of the model you're not going to have  ",
+      "offset": 2498.8,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "to care about much in your life, if ever, but \nthe stuff that happens in the first layer, and  ",
+      "offset": 2502.88,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "the last layer including the loss function that \nsits between the last layer and the loss, you're  ",
+      "offset": 2508.08,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "going to have to care about a lot, right? This \nstuff comes up all the time, so you definitely  ",
+      "offset": 2512,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "want to know about cross-entropy loss, and so \nI'm going to explain it using a spreadsheet.",
+      "offset": 2516.8,
+      "duration": 7.36
+    },
+    {
+      "lang": "en",
+      "text": "This spreadsheet's in the course repo, and so \nlet's say you are predicting something like  ",
+      "offset": 2526.88,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "a... kind of a... mini imagenet thing where you're \ntrying to predict whether something... an image,  ",
+      "offset": 2531.92,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "is a cat, a dog, a plane, a fish or a building. \nSo you set up some model, whatever it is,  ",
+      "offset": 2536.96,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "a convnext model, or a just a big bunch of \nlinear layers connected up, or whatever, and  ",
+      "offset": 2542.72,
+      "duration": 7.36
+    },
+    {
+      "lang": "en",
+      "text": "initially you've got some random \nweights, and it spits out at the end,  ",
+      "offset": 2551.36,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "five predictions, right? So remember, to predict \nsomething with five categories, your model will  ",
+      "offset": 2556.88,
+      "duration": 5.6
+    },
+    {
+      "lang": "en",
+      "text": "spit out five probabilities. Now it doesn't \ninitially spit out probabilities. There's nothing  ",
+      "offset": 2562.48,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "making them probabilities, it \njust spits out five numbers;  ",
+      "offset": 2568.08,
+      "duration": 2.8
+    },
+    {
+      "lang": "en",
+      "text": "could be negative, could be positive, \nokay? So here's the output of the model.",
+      "offset": 2571.92,
+      "duration": 5.92
+    },
+    {
+      "lang": "en",
+      "text": "So what we want to do is: we want \nto convert these into probabilities.  ",
+      "offset": 2579.92,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "And so we do that in two steps. \nThe first thing we do is we go…  ",
+      "offset": 2588.08,
+      "duration": 6.64
+    },
+    {
+      "lang": "en",
+      "text": "EXP, that's e-to-the-power-of. We go \ne-to-the-power-of each of those things,  ",
+      "offset": 2597.6,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "like so... okay? And so here's the mathematical \nformula we're using. This is called the softmax,  ",
+      "offset": 2603.12,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "what we're working through. We're going \nto go through each of the categories.  ",
+      "offset": 2608.32,
+      "duration": 6.08
+    },
+    {
+      "lang": "en",
+      "text": "So these are our five categories – \nso here k is five. We've got to go  ",
+      "offset": 2617.52,
+      "duration": 3.04
+    },
+    {
+      "lang": "en",
+      "text": "through each of our categories, and \nwe're going to go e-to-the-power-of  ",
+      "offset": 2620.56,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "the output, so zj is the output for the j-th \ncategory. So here's that, and then we're going to  ",
+      "offset": 2626.16,
+      "duration": 8.08
+    },
+    {
+      "lang": "en",
+      "text": "sum them all together. Here it is... sum up \ntogether, okay? So this is the denominator,  ",
+      "offset": 2634.24,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "and then the numerator is just e-to-the-power-of \nthe thing we care about. So this row.",
+      "offset": 2641.36,
+      "duration": 6.48
+    },
+    {
+      "lang": "en",
+      "text": "So the numerator is e-to-the-power-of cat on \nthis row, e-to-the-power-of dog on this row,  ",
+      "offset": 2648.4,
+      "duration": 10.4
+    },
+    {
+      "lang": "en",
+      "text": "and so forth. Now if you think about it, since the \ndenominator adds up all the e-to-the-power-ofs,  ",
+      "offset": 2660,
+      "duration": 7.68
+    },
+    {
+      "lang": "en",
+      "text": "then when we do each one divided by the sum, that \nmeans the sum of these will equal 1 by definition,  ",
+      "offset": 2669.2,
+      "duration": 7.44
+    },
+    {
+      "lang": "en",
+      "text": "right? And so now we have things that can be \ntreated as probabilities. They're all numbers  ",
+      "offset": 2677.44,
+      "duration": 6.64
+    },
+    {
+      "lang": "en",
+      "text": "between 0 and 1. Numbers that were bigger in \nthe output will be bigger here. But there's  ",
+      "offset": 2684.08,
+      "duration": 7.52
+    },
+    {
+      "lang": "en",
+      "text": "something else interesting, which is, because we \ndid e-to-the-power-of, it means that the bigger  ",
+      "offset": 2691.6,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "numbers will be, like, pushed up to numbers \ncloser to one, like we're saying, like, “oh  ",
+      "offset": 2697.12,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "really try to pick one thing” as having most of \nthe probability, because we are trying to predict,  ",
+      "offset": 2702,
+      "duration": 6.24
+    },
+    {
+      "lang": "en",
+      "text": "you know, one thing. We're trying to predict \nwhich one is it, and so this is called softmax.",
+      "offset": 2709.68,
+      "duration": 8.16
+    },
+    {
+      "lang": "en",
+      "text": "So sometimes you'll see people complaining about \nthe fact that their model, which they said...  ",
+      "offset": 2718.56,
+      "duration": 6.8
+    },
+    {
+      "lang": "en",
+      "text": "let's say, is it a teddy bear or a grizzly bear or \na black bear, and they feed it a picture of a cat,  ",
+      "offset": 2725.36,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "and they say “oh the model's wrong because \nit predicted grizzly bear but it's not a  ",
+      "offset": 2731.6,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "grizzly bear“. As you can see there's no \nway for this to predict anything other than  ",
+      "offset": 2735.2,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "the categories we're giving it – we're forcing \nit to that. Now we don't... if you want that,  ",
+      "offset": 2739.92,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "like, there's something else you could do which \nis you could actually have them not add up to one,  ",
+      "offset": 2745.2,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "right? You could instead have something which \nsimply says: what's the probability it's a cat,  ",
+      "offset": 2751.84,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "what's the probability it's a dog, what's the \nprobability it’s a plane, totally separately  ",
+      "offset": 2756.08,
+      "duration": 2.72
+    },
+    {
+      "lang": "en",
+      "text": "they could add up to less than one, and in that \nsituation you can cert... you know... or or more  ",
+      "offset": 2759.44,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "than one in which case you could have like more \nthan one thing being true or zero things being  ",
+      "offset": 2764.48,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "true. But in this particular case where we want \nto predict one and one thing only, we use softmax.",
+      "offset": 2769.04,
+      "duration": 6.4
+    },
+    {
+      "lang": "en",
+      "text": "The first part of the cross entropy formula...",
+      "offset": 2777.68,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "The first part of the cross entry formula... \nin fact let's look it up, nn.CrossEntropyLoss.",
+      "offset": 2784.08,
+      "duration": 6.56
+    },
+    {
+      "lang": "en",
+      "text": "The first part of what cross-entropy loss \nin Pytorch does is to calculate the softmax.  ",
+      "offset": 2794.56,
+      "duration": 10.64
+    },
+    {
+      "lang": "en",
+      "text": "It's actually the log of the softmax but don't \nworry about that too much, it's just a... slightly  ",
+      "offset": 2806.08,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "faster to do the log, okay? So now for each \none of our five things we've got a probability.",
+      "offset": 2810.48,
+      "duration": 9.84
+    },
+    {
+      "lang": "en",
+      "text": "The next step is the actual cross-entropy \ncalculation, which is we take our five things,  ",
+      "offset": 2823.6,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "we've got our five probabilities, and then we've \ngot our actuals. Now the truth is the actual, you  ",
+      "offset": 2828.88,
+      "duration": 7.68
+    },
+    {
+      "lang": "en",
+      "text": "know, the five things would have indices, right? \nZero, one, two, three or four, and the actual  ",
+      "offset": 2836.56,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "turned out to be the number one, but what we tend \nto do is we think of it as being one-hot-encoded,  ",
+      "offset": 2841.68,
+      "duration": 6.08
+    },
+    {
+      "lang": "en",
+      "text": "which is we put a one next to the thing for \nwhich it's true, and a zero everywhere else.  ",
+      "offset": 2847.76,
+      "duration": 6.24
+    },
+    {
+      "lang": "en",
+      "text": "And so now we can compare these five numbers to \nthese five numbers, and we would expect to have  ",
+      "offset": 2855.76,
+      "duration": 7.52
+    },
+    {
+      "lang": "en",
+      "text": "a smaller loss if the softmax was high where the \nactual is high. And so here's how we calculate...  ",
+      "offset": 2864.24,
+      "duration": 10.24
+    },
+    {
+      "lang": "en",
+      "text": "this is the formula... the cross-entropy loss.",
+      "offset": 2875.36,
+      "duration": 3.2
+    },
+    {
+      "lang": "en",
+      "text": "We sum up… (they switch to M this time for some \nreason, but the same thing…) we sum up across  ",
+      "offset": 2880.64,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "the five categories so M is 5, and for each one we \nmultiply the actual target value, so that's zero…  ",
+      "offset": 2885.2,
+      "duration": 8.56
+    },
+    {
+      "lang": "en",
+      "text": "so here it is here the actual target value,  ",
+      "offset": 2894.48,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "and we multiply that by the log of \nthe predicted probability… the log of  ",
+      "offset": 2903.6,
+      "duration": 6.4
+    },
+    {
+      "lang": "en",
+      "text": "(red) the predicted probability. \nAnd so, of course, for four of these  ",
+      "offset": 2910.72,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "that value is zero, because see \nhere: y-j equals zero, by definition,  ",
+      "offset": 2917.36,
+      "duration": 6.96
+    },
+    {
+      "lang": "en",
+      "text": "for all but one of them, because it’s one \nhot encoded. So for the one that it's not  ",
+      "offset": 2924.88,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "we've got our actual times the log softmax, \nokay, and so now actually you can see why  ",
+      "offset": 2933.12,
+      "duration": 8.72
+    },
+    {
+      "lang": "en",
+      "text": "pytorch prefers to use log softmax because then it \nkind of skips over having to do this log at all.",
+      "offset": 2943.92,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "So this equation looks slightly frightening but \nwhen you think about it all it's actually doing  ",
+      "offset": 2951.36,
+      "duration": 7.52
+    },
+    {
+      "lang": "en",
+      "text": "is: it's finding the probability \nfor the one that is one,  ",
+      "offset": 2959.6,
+      "duration": 3.12
+    },
+    {
+      "lang": "en",
+      "text": "and taking its log, right. It's kind of weird \ndoing it as a sum but in math it could be a  ",
+      "offset": 2963.76,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "little bit tricky to kind of say, oh look this up \nin an array, which is basically what it's doing,  ",
+      "offset": 2968.8,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "but yeah basically, at least in this case for \na single result with soft max this is all it's  ",
+      "offset": 2973.76,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "doing, it's finding the 0.87 where it's 1 for, \nand taking the log, and then finally negative.",
+      "offset": 2979.2,
+      "duration": 6.08
+    },
+    {
+      "lang": "en",
+      "text": "So that is what cross-entropy loss does.  ",
+      "offset": 2987.76,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "We add that together for every row.  ",
+      "offset": 2997.04,
+      "duration": 3.28
+    },
+    {
+      "lang": "en",
+      "text": "So here's what it looks like if we add it \ntogether over every row, right, so N is the  ",
+      "offset": 3003.28,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "number of rows. And here's a special case, this \nis called “binary cross-entropy”. What happens  ",
+      "offset": 3008.4,
+      "duration": 7.28
+    },
+    {
+      "lang": "en",
+      "text": "if we're not predicting which of five things \nit is but we're just predicting “is it a cat?”  ",
+      "offset": 3015.68,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "So in that case if you look at this approach \nyou end up with this formula, which it's  ",
+      "offset": 3021.44,
+      "duration": 7.2
+    },
+    {
+      "lang": "en",
+      "text": "exactly… this is identical to this formula but \nin for just two cases, which is you've either:  ",
+      "offset": 3028.64,
+      "duration": 8.56
+    },
+    {
+      "lang": "en",
+      "text": "you either are a cat; or you're not a cat, \nright, and so if you're not-a-cat, it's one minus  ",
+      "offset": 3037.2,
+      "duration": 6.48
+    },
+    {
+      "lang": "en",
+      "text": "you-are-a-cat, and same with the probability \nyou've got the probability you-are-a-cat,  ",
+      "offset": 3043.68,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "and then not-a-cat is one minus that. So here's \nthis special case of binary cross entropy,  ",
+      "offset": 3048.8,
+      "duration": 7.04
+    },
+    {
+      "lang": "en",
+      "text": "and now our rows represent rows of data, okay, \nso each one of these is a different image,  ",
+      "offset": 3055.84,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "a different prediction, and so for each \none I'm just predicting are-you-a-cat,  ",
+      "offset": 3060.64,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "and this is the actual, and so the actual \nare-you-not-a-cat is just one minus that.  ",
+      "offset": 3066.24,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "And so then these are the predictions \nthat came out of the model,  ",
+      "offset": 3072.8,
+      "duration": 3.28
+    },
+    {
+      "lang": "en",
+      "text": "again we can use soft max or it's \nbinary equivalent, and so that will  ",
+      "offset": 3077.12,
+      "duration": 6.24
+    },
+    {
+      "lang": "en",
+      "text": "give you a prediction that you're-a-cat, and the \nprediction that it's not-a-cat is one minus that.",
+      "offset": 3083.36,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "And so here is:  ",
+      "offset": 3091.28,
+      "duration": 0.96
+    },
+    {
+      "lang": "en",
+      "text": "each of the part “y-i” times log of “p-y-i”, \nand here is…(why did I subtract that's weird,  ",
+      "offset": 3095.36,
+      "duration": 8.24
+    },
+    {
+      "lang": "en",
+      "text": "oh because I've got minus of both, so I \njust do it this way, avoids parentheses…)  ",
+      "offset": 3109.2,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "yeah, minus the are-you-not-a-cat times \nthe log of the prediction value not-a-cat,  ",
+      "offset": 3115.44,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "and then we can add those together, and so that  ",
+      "offset": 3121.52,
+      "duration": 2.16
+    },
+    {
+      "lang": "en",
+      "text": "would be the binary cross-entropy loss of \nthis dataset of five cat or not-cat images.",
+      "offset": 3123.68,
+      "duration": 14.16
+    },
+    {
+      "lang": "en",
+      "text": "Now if you've got an eagle \neye, you may have noticed that  ",
+      "offset": 3140.4,
+      "duration": 6.8
+    },
+    {
+      "lang": "en",
+      "text": "I am currently looking at the documentation \nfor something called “nn.CrossEntropyLoss”  ",
+      "offset": 3148.16,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "but over here I had something \ncalled “F.cross_entropy()”.  ",
+      "offset": 3154.24,
+      "duration": 2.48
+    },
+    {
+      "lang": "en",
+      "text": "Basically it turns out that all of the loss \nfunctions in pytorch have two versions – there's  ",
+      "offset": 3159.04,
+      "duration": 6.4
+    },
+    {
+      "lang": "en",
+      "text": "a version which is a class, this is a class, \nwhich you can instantiate passing in various  ",
+      "offset": 3165.44,
+      "duration": 7.44
+    },
+    {
+      "lang": "en",
+      "text": "tweaks you might want, and there's also \na version which is just a function,  ",
+      "offset": 3173.76,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "and so if you don't need any of these tweaks \nyou can just use the function. The functions  ",
+      "offset": 3178.88,
+      "duration": 6.24
+    },
+    {
+      "lang": "en",
+      "text": "live in a… I can’t even remember what the \nsub module called, I think it might be like  ",
+      "offset": 3186,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "torch.nn.functional but everybody including the \npytorch official docs just calls it capital-F,  ",
+      "offset": 3191.6,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "so that's what this capital-F refers to.",
+      "offset": 3197.76,
+      "duration": 1.76
+    },
+    {
+      "lang": "en",
+      "text": "So our loss, if we just care about disease \n(we're going to be passed the three things)  ",
+      "offset": 3201.84,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "we're just going to calculate cross_entropy \non our input versus disease. All right  ",
+      "offset": 3205.84,
+      "duration": 5.68
+    },
+    {
+      "lang": "en",
+      "text": "so that's all fine… we passed… so now when \nwe create a vision learner you can't rely on  ",
+      "offset": 3212.24,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "fastaI to know what loss function to use, because \nwe've got multiple targets, so you have to say:  ",
+      "offset": 3217.68,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "this is the loss function I want to use, this \nis the metrics I want to use. And the other  ",
+      "offset": 3222.88,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "thing you can't rely on is that fastaI no \nlonger knows how many activations to create,  ",
+      "offset": 3227.12,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "because again it… there's more than one target, \nso you have to say the number of outputs to create  ",
+      "offset": 3233.28,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "at the last layer is 10. So this is just \nsaying what's the size of the last matrix.",
+      "offset": 3238.32,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "And once we've done that we can train it, and we \nget, you know, basically the same kind of result  ",
+      "offset": 3246.8,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "as we always get, because this model at this \npoint is identical to our previous convnext_small  ",
+      "offset": 3252.32,
+      "duration": 6.48
+    },
+    {
+      "lang": "en",
+      "text": "model – we've just done it in a slightly more \nroundabout way. So finally, before our break,  ",
+      "offset": 3259.44,
+      "duration": 8.16
+    },
+    {
+      "lang": "en",
+      "text": "I'll show you how to expand this \nnow into a multi-target model.  ",
+      "offset": 3268.24,
+      "duration": 3.04
+    },
+    {
+      "lang": "en",
+      "text": "And the trick is actually very simple, and you \nmight have almost got the idea of it when I talked  ",
+      "offset": 3272.96,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "about it earlier – our vision learner now requires \ntwenty outputs – we now need that last matrix  ",
+      "offset": 3277.92,
+      "duration": 7.52
+    },
+    {
+      "lang": "en",
+      "text": "to have to produce twenty activations not ten. \nTen of those activations are going to predict  ",
+      "offset": 3287.36,
+      "duration": 6.32
+    },
+    {
+      "lang": "en",
+      "text": "the disease, and ten of the activations \nare going to predict the variety. So you  ",
+      "offset": 3294.24,
+      "duration": 6.8
+    },
+    {
+      "lang": "en",
+      "text": "might be then asking, like well, how does the \nmodel know what it's meant to be predicting,  ",
+      "offset": 3301.04,
+      "duration": 3.2
+    },
+    {
+      "lang": "en",
+      "text": "and the answer is with the loss function, \nyou're going to have to tell it.",
+      "offset": 3305.36,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "So for example disease_loss – \nremember it's going to get the input,  ",
+      "offset": 3313.44,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "the disease, and the variety – this \nis now going to have 20 columns in.  ",
+      "offset": 3317.44,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "So we're just going to decide, all right, we're \njust going to decide the first 10 columns,  ",
+      "offset": 3324.08,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "we're going to decide are the \nprediction of what the disease is,  ",
+      "offset": 3327.68,
+      "duration": 3.2
+    },
+    {
+      "lang": "en",
+      "text": "which is the probability of each disease. \nSo we can now pass to cross_entropy  ",
+      "offset": 3330.88,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "the first 10 columns, and the disease target. \nSo the way you read this colon means every row,  ",
+      "offset": 3336.8,
+      "duration": 8.32
+    },
+    {
+      "lang": "en",
+      "text": "and then colon 10 means every column up to the \n10th. So these are the first 10 columns, and that  ",
+      "offset": 3346.56,
+      "duration": 10.08
+    },
+    {
+      "lang": "en",
+      "text": "will… that's a loss function that just works on \npredicting disease using the first ten columns.",
+      "offset": 3356.64,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "For variety, we'll use cross_entropy \nloss with the target of variety,  ",
+      "offset": 3363.92,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "and this time we'll use the second 10 \ncolumns, so here's column ten onwards.  ",
+      "offset": 3368.32,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "So then the overall loss function is the sum of \nthose two things disease_loss plus variety_loss.  ",
+      "offset": 3375.12,
+      "duration": 7.12
+    },
+    {
+      "lang": "en",
+      "text": "And that's actually it! That's all the model \nneeds to basically… it's now going to… if  ",
+      "offset": 3386.96,
+      "duration": 6.96
+    },
+    {
+      "lang": "en",
+      "text": "you kind of think through the manual neural nets \nwe've created, this loss function will be reduced  ",
+      "offset": 3393.92,
+      "duration": 7.28
+    },
+    {
+      "lang": "en",
+      "text": "when the first 10 columns are doing good \njob of predicting the disease probabilities  ",
+      "offset": 3402.16,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "and the second 10 columns are doing a good \njob of predicting the variety probabilities  ",
+      "offset": 3406.48,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "and therefore the gradients will point in an \nappropriate direction that the coefficients  ",
+      "offset": 3410.08,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "will ~(be getter and…) get better and better \nat using those columns for those purposes.",
+      "offset": 3414.72,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "It would be nice to see the error rate \nas well for each of disease and variety,  ",
+      "offset": 3423.12,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "so we can call error_rate passing in the first \n10 columns and disease, and then variety,  ",
+      "offset": 3427.28,
+      "duration": 5.92
+    },
+    {
+      "lang": "en",
+      "text": "the second 10 columns and variety. And we may \nas well also add to the metrics the losses.  ",
+      "offset": 3433.2,
+      "duration": 7.04
+    },
+    {
+      "lang": "en",
+      "text": "And so now when we create our learner \nwe're going to pass in as the loss function  ",
+      "offset": 3442.16,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "the combined_loss – and as the metrics, our list \nof all the metrics and n_out=20 and now look what  ",
+      "offset": 3446.88,
+      "duration": 9.76
+    },
+    {
+      "lang": "en",
+      "text": "happens when we train! As well as telling us the \noverall train and valid loss, it also tells us the  ",
+      "offset": 3456.64,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "disease and variety error and the disease and \nvariety loss and you can see our disease error  ",
+      "offset": 3462.64,
+      "duration": 5.68
+    },
+    {
+      "lang": "en",
+      "text": "is getting down to a similar level as it was \nbefore. It's slightly less good but it's similar.  ",
+      "offset": 3469.2,
+      "duration": 7.68
+    },
+    {
+      "lang": "en",
+      "text": "It's not surprising it's slightly less good \nbecause we've only given it the same number  ",
+      "offset": 3478.48,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "of epochs and we're now asking it to try to do \nmore stuff, which is to learn to recognize what  ",
+      "offset": 3483.52,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "the rice variety looks like, and also learns \nto recognize what the disease looks like.",
+      "offset": 3488.8,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "Here's the counterintuitive thing \nthough if we train it for longer  ",
+      "offset": 3495.2,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "it may well turn out that this model \nwhich is trying to predict two things  ",
+      "offset": 3500.64,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "actually gets better at predicting disease than \nour disease specific model. Why is that?... like  ",
+      "offset": 3505.84,
+      "duration": 7.2
+    },
+    {
+      "lang": "en",
+      "text": "that sounds weird, right, because we're trying to \ndo more stuff, [and] that's the same size model.  ",
+      "offset": 3513.04,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "Well the reason is that quite often it'll turn out \nthat the kinds of features that help you recognize  ",
+      "offset": 3519.84,
+      "duration": 7.04
+    },
+    {
+      "lang": "en",
+      "text": "a variety of rice are also useful for recognizing \nthe disease. You know, maybe there are certain  ",
+      "offset": 3527.44,
+      "duration": 6.88
+    },
+    {
+      "lang": "en",
+      "text": "textures, right, or maybe some diseases \nimpact different varieties different ways,  ",
+      "offset": 3534.32,
+      "duration": 6.56
+    },
+    {
+      "lang": "en",
+      "text": "so it'd be really helpful to know what variety \nit was. So I haven't tried training this for  ",
+      "offset": 3541.84,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "a long time and I don't know the answer is… In \nthis particular case does a multi-target model  ",
+      "offset": 3547.36,
+      "duration": 5.6
+    },
+    {
+      "lang": "en",
+      "text": "do better than a single target model at predicting \ndisease, but I just want to let you know sometimes  ",
+      "offset": 3552.96,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "it does, right. So for example a few years ago \nthere was a Kaggle competition for recognizing  ",
+      "offset": 3558,
+      "duration": 5.68
+    },
+    {
+      "lang": "en",
+      "text": "the kinds of fish on a boat, and I remember \nwe ended up doing a multi-target model  ",
+      "offset": 3563.68,
+      "duration": 6.56
+    },
+    {
+      "lang": "en",
+      "text": "where we tried to predict a second thing… (I can't \neven remember what it was, maybe it was a type of  ",
+      "offset": 3571.6,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "boat or something…) and it definitely turned \nout in that Kaggle competition that predicting  ",
+      "offset": 3576.16,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "two things helped you predict the type of fish \nbetter than predicting just the type of fish.  ",
+      "offset": 3580.08,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "So there's at least, you know, there's two reasons \nto learn about multi-target models: one is that  ",
+      "offset": 3586.4,
+      "duration": 5.92
+    },
+    {
+      "lang": "en",
+      "text": "sometimes you just want to be able to predict \nmore than one thing, so this is useful;  ",
+      "offset": 3593.28,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "and the second is, sometimes this will actually \nbe better at predicting just one thing,  ",
+      "offset": 3597.2,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "than a just one thing model. And of course \nthe third reason is it really forced us to  ",
+      "offset": 3601.68,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "dig quite deeply into these loss functions and \nactivations in a way we haven't quite done before",
+      "offset": 3607.84,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "So it's okay, it's absolutely okay, if this \nis confusing. The way to make it not confusing  ",
+      "offset": 3616.16,
+      "duration": 13.12
+    },
+    {
+      "lang": "en",
+      "text": "is… well… the first thing I do is, like, go \nback to our earlier models where we did stuff  ",
+      "offset": 3629.92,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "by hand, on like the titanic dataset and built \nour own architectures, and maybe you could try  ",
+      "offset": 3634.8,
+      "duration": 6.56
+    },
+    {
+      "lang": "en",
+      "text": "to build a model that predicts two things in the \ntitanic dataset. Maybe you could try to predict  ",
+      "offset": 3641.36,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "both sex &amp; survival or something like that, \nor class &amp; survival, because that's going to,  ",
+      "offset": 3646.88,
+      "duration": 9.44
+    },
+    {
+      "lang": "en",
+      "text": "kind of, force you to look at it on very small \ndatasets. And then the other thing I'd say is  ",
+      "offset": 3656.32,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "run this notebook and really experiment at \ntrying to see what kind of outputs you get,  ",
+      "offset": 3660.16,
+      "duration": 8.56
+    },
+    {
+      "lang": "en",
+      "text": "like actually look at the inputs and look at the \noutputs and look at the data loaders and so forth.",
+      "offset": 3668.72,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "All right let's have a six minute break, so \nI'll see you back here at ten past seven.",
+      "offset": 3673.52,
+      "duration": 10.32
+    },
+    {
+      "lang": "en",
+      "text": "Okay, welcome back. Before I continue, I \nvery rudely forgot to mention this very nice  ",
+      "offset": 3684.48,
+      "duration": 8.16
+    },
+    {
+      "lang": "en",
+      "text": "equation image here is from an article by \nChris Said called “Things that confused me  ",
+      "offset": 3693.84,
+      "duration": 6.08
+    },
+    {
+      "lang": "en",
+      "text": "about cross-entropy.” It's a very good article, \nso I recommend you check it out if you want to  ",
+      "offset": 3699.92,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "go a bit deeper there. There's a \nlink to it inside the spreadsheet.",
+      "offset": 3705.84,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "So the next notebook we're going to be looking \nat is this one called Collaborative Filtering  ",
+      "offset": 3717.44,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "Deep Dive, and this is going to cover our \nlast of the four major application areas,  ",
+      "offset": 3721.28,
+      "duration": 7.84
+    },
+    {
+      "lang": "en",
+      "text": "collaborative filtering.",
+      "offset": 3729.92,
+      "duration": 0.96
+    },
+    {
+      "lang": "en",
+      "text": "And this is actually the first time I'm going \nto be presenting a chapter of the book largely  ",
+      "offset": 3735.2,
+      "duration": 6.16
+    },
+    {
+      "lang": "en",
+      "text": "without variation because this is one where \nI looked back at the chapter and I was like,  ",
+      "offset": 3742.4,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "“oh I can't think of any way to improve this.” So \nI thought I'll just leave it as is, but we have  ",
+      "offset": 3747.92,
+      "duration": 6.96
+    },
+    {
+      "lang": "en",
+      "text": "put the whole chapter up on Kaggle, so that's \nfor the way I'm going to be showing it to you.",
+      "offset": 3754.88,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "And so we're going to be looking at a \ndataset called the MovieLens dataset,  ",
+      "offset": 3762.96,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "which is a dataset of movie ratings,  ",
+      "offset": 3769.68,
+      "duration": 2.88
+    },
+    {
+      "lang": "en",
+      "text": "and we're going to grab a smaller version \nof it, 100 000 record version of it,",
+      "offset": 3774.56,
+      "duration": 7.28
+    },
+    {
+      "lang": "en",
+      "text": "and it comes as a csv file which we can read in,  ",
+      "offset": 3783.68,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "well, it's not really a csv file, it's a \ntsv file, this here means a tab in Python.",
+      "offset": 3787.36,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "These are the names of the columns. So here's \nwhat it looks like. It's got a user, a movie,  ",
+      "offset": 3796.88,
+      "duration": 6.88
+    },
+    {
+      "lang": "en",
+      "text": "a rating, and a timestamp. We're not going to \nuse the timestamp at all. So basically three  ",
+      "offset": 3803.76,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "columns we care about. This is a user id, so \nmaybe 196 is Jeremy, and maybe 186 is Rachel,  ",
+      "offset": 3809.12,
+      "duration": 7.2
+    },
+    {
+      "lang": "en",
+      "text": "and 22 is John, I don't know. Maybe this movie \nis Return Of The Jedi, and this one's Casablanca,  ",
+      "offset": 3817.6,
+      "duration": 7.76
+    },
+    {
+      "lang": "en",
+      "text": "this one's LA Confidential. And then this rating \nsays how did Jeremy feel about Return Of The Jedi,  ",
+      "offset": 3825.36,
+      "duration": 6.8
+    },
+    {
+      "lang": "en",
+      "text": "he gave it a three out of five. That's how we \ncan read this dataset. This kind of data is very  ",
+      "offset": 3832.16,
+      "duration": 9.2
+    },
+    {
+      "lang": "en",
+      "text": "common. Anytime you've got a \nuser and a product or service,  ",
+      "offset": 3842,
+      "duration": 6.56
+    },
+    {
+      "lang": "en",
+      "text": "and you might not even have ratings, \nmaybe just the fact that they  ",
+      "offset": 3849.6,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "bought that product, you could have a similar \ntable with zeros and ones. So, for example  ",
+      "offset": 3853.84,
+      "duration": 6.88
+    },
+    {
+      "lang": "en",
+      "text": "Radek, who's in the audience here, is now at \nNvidia doing, like, basically just this, right,  ",
+      "offset": 3864,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "recommendation systems. So recommendation \nsystems, you know, it's a huge industry,  ",
+      "offset": 3868,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "and so what we're learning today is, you \nknow, a really key foundation of it. Um…",
+      "offset": 3874,
+      "duration": 5.84
+    },
+    {
+      "lang": "en",
+      "text": "So these are the first few rows. This is not a \nparticularly great way to see it. I prefer to kind  ",
+      "offset": 3882.32,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "of cross tabulate it, like that, like this. This \nis the same information. So for each movie, for  ",
+      "offset": 3886.72,
+      "duration": 7.84
+    },
+    {
+      "lang": "en",
+      "text": "each user, here's the rating. So user 212 never \nwatched movie 49. Now if you're wondering, uh…",
+      "offset": 3894.56,
+      "duration": 9.2
+    },
+    {
+      "lang": "en",
+      "text": "why there's so few empty cells here, I actually \ngrabbed the most watched movies and the most movie  ",
+      "offset": 3906.32,
+      "duration": 8.08
+    },
+    {
+      "lang": "en",
+      "text": "watching users for this particular sample matrix. \nSo that's why it's particularly full. So yeah,  ",
+      "offset": 3914.4,
+      "duration": 8.72
+    },
+    {
+      "lang": "en",
+      "text": "so this is what kind of a collaborative filtering \ndataset looks like when we cross tabulate it.",
+      "offset": 3923.12,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "So how do we fill in this gap? So maybe \nuser 212 is Nick, and review 49… what's  ",
+      "offset": 3930.96,
+      "duration": 10.56
+    },
+    {
+      "lang": "en",
+      "text": "a movie you haven't seen, Nick, and you'd \nquite like to? Maybe, not sure about it,  ",
+      "offset": 3941.52,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "the new Elvis movie, Bez Luhmann? Good choice. \nAustralian director, filmed in Queensland. Yeah,  ",
+      "offset": 3947.28,
+      "duration": 6.72
+    },
+    {
+      "lang": "en",
+      "text": "okay, so that's movie two… that's movie number \n49. So is Nick gonna like the new Elvis movie?  ",
+      "offset": 3954.56,
+      "duration": 6.48
+    },
+    {
+      "lang": "en",
+      "text": "Well, to figure this out, what we could do, \nideally, would like to know: for each movie…  ",
+      "offset": 3961.92,
+      "duration": 11.28
+    },
+    {
+      "lang": "en",
+      "text": "what kind of movie is it? Like, what are the \nkind of features of it. Is it like actiony,  ",
+      "offset": 3975.68,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "science fictiony, dialogue \ndriven, critical acclaimed,  ",
+      "offset": 3981.2,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "you know. So let's say, for example, we were \ntrying to look at The Last Skywalker –maybe  ",
+      "offset": 3985.28,
+      "duration": 6.8
+    },
+    {
+      "lang": "en",
+      "text": "that was the movie the… Nick's wondering \nabout watching. And so if we like, had,  ",
+      "offset": 3992.08,
+      "duration": 5.68
+    },
+    {
+      "lang": "en",
+      "text": "three categories, being science fiction, action, \nor kind of classic old movies, would say The Last  ",
+      "offset": 3999.12,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "Skywalker is very science fiction. Let's \nsee this is from like negative one to one,  ",
+      "offset": 4004.32,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "pretty action, definitely not an \nold classic, or at least not yet.",
+      "offset": 4010.24,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "And so then, maybe we then could say, \nlike, okay, well, maybe like Nick’s tastes  ",
+      "offset": 4018.64,
+      "duration": 6.16
+    },
+    {
+      "lang": "en",
+      "text": "in movies are that he really likes science \nfiction, quite likes action movies,  ",
+      "offset": 4024.8,
+      "duration": 6.16
+    },
+    {
+      "lang": "en",
+      "text": "and doesn't really like old classics, right. \nSo then we could, kind of, like, match these up  ",
+      "offset": 4030.96,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "to see how much we think this \nuser might like this movie  ",
+      "offset": 4036.64,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "to calculate the match, we could just \nmultiply the corresponding values  ",
+      "offset": 4042.72,
+      "duration": 5.92
+    },
+    {
+      "lang": "en",
+      "text": "user1 times The Last Skywalker, and add \nthem up, point nine (0.9) times point nine  ",
+      "offset": 4048.64,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "eight (0.98), plus point eight (0.8) times point \nnine (0.9), plus negative point six (-0.6) times  ",
+      "offset": 4053.12,
+      "duration": 3.12
+    },
+    {
+      "lang": "en",
+      "text": "negative point nine (-0.9). That's going to give \nus a pretty high number, right, with a maximum  ",
+      "offset": 4056.24,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "of three. So that would suggest Nick probably \nwould like The Last Skywalker. On the other hand,  ",
+      "offset": 4060.96,
+      "duration": 6.96
+    },
+    {
+      "lang": "en",
+      "text": "the movie Casablanca we would say \ndefinitely not very science fiction,  ",
+      "offset": 4070.64,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "not really very action, definitely very old \nclassic. So then we'd do exactly the same  ",
+      "offset": 4075.68,
+      "duration": 5.84
+    },
+    {
+      "lang": "en",
+      "text": "calculation and get this negative result here. \nSo you probably wouldn't like Casablanca. This  ",
+      "offset": 4083.76,
+      "duration": 6.32
+    },
+    {
+      "lang": "en",
+      "text": "thing here, when we multiply the corresponding \nparts of a vector together and add them up,  ",
+      "offset": 4090.08,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "is called a dot product in math. So this is \nthe dot product of the user's preferences and  ",
+      "offset": 4096.08,
+      "duration": 8.32
+    },
+    {
+      "lang": "en",
+      "text": "the type of movie. Now the problem \nis, we weren't given that information.  ",
+      "offset": 4104.4,
+      "duration": 6.08
+    },
+    {
+      "lang": "en",
+      "text": "We know nothing about these users or about \nthe movies. So what are we going to do? ",
+      "offset": 4111.92,
+      "duration": 5.92
+    },
+    {
+      "lang": "en",
+      "text": "We want to try to create these \nfactors without knowing ahead of time  ",
+      "offset": 4120.24,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "what they are. We wouldn't even know what \nfactors to create, what are other things  ",
+      "offset": 4125.44,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "that really matters when it says people \ndecide what movies they want to watch?",
+      "offset": 4130.24,
+      "duration": 2.96
+    },
+    {
+      "lang": "en",
+      "text": "What we can do is we can create things called \nlatent factors. Latent factors is this weird  ",
+      "offset": 4135.68,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "idea that we can say: I don't know what \nthings about movies matter to people,  ",
+      "offset": 4140.72,
+      "duration": 5.68
+    },
+    {
+      "lang": "en",
+      "text": "but there's probably something and let's just \ntry, like, using SGD to find them. And we can  ",
+      "offset": 4147.76,
+      "duration": 9.6
+    },
+    {
+      "lang": "en",
+      "text": "do it in everybody's favorite mathematical \noptimization software: Microsoft Excel.",
+      "offset": 4157.36,
+      "duration": 7.84
+    },
+    {
+      "lang": "en",
+      "text": "So here is that table.",
+      "offset": 4167.76,
+      "duration": 6.08
+    },
+    {
+      "lang": "en",
+      "text": "And, what we can do –let's head over here \nactually– here's that table. So, what we  ",
+      "offset": 4175.12,
+      "duration": 6.56
+    },
+    {
+      "lang": "en",
+      "text": "could do is we could say: for each of those \nmovies –so let's say for movie 27– let's assume  ",
+      "offset": 4181.68,
+      "duration": 7.36
+    },
+    {
+      "lang": "en",
+      "text": "there are five latent factors –I don't know what \nthey're for–, they're just five latent factors,  ",
+      "offset": 4189.04,
+      "duration": 7.2
+    },
+    {
+      "lang": "en",
+      "text": "we'll figure them out later. And for now I \ncertainly don't know what the value of those  ",
+      "offset": 4197.28,
+      "duration": 5.6
+    },
+    {
+      "lang": "en",
+      "text": "five latent factors for movie 27, so we're going \nto just chuck a little random numbers in them,  ",
+      "offset": 4202.88,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "and we're going to do the same thing for movie 49 \n–pick another five random numbers– and the same  ",
+      "offset": 4211.04,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "thing for movie 57 –pick another five numbers. And \nyou might not be surprised to hear we're going to  ",
+      "offset": 4215.92,
+      "duration": 6.08
+    },
+    {
+      "lang": "en",
+      "text": "do the same thing for each user, so for user 14: \nwe're going to pick five random numbers for them,  ",
+      "offset": 4222,
+      "duration": 6.24
+    },
+    {
+      "lang": "en",
+      "text": "and for user 29: we'll pick \nfive random numbers for them,  ",
+      "offset": 4228.88,
+      "duration": 2.64
+    },
+    {
+      "lang": "en",
+      "text": "and so the idea is that this number here 0.19 \nis saying –if it was true– that user id 14  ",
+      "offset": 4232.16,
+      "duration": 7.52
+    },
+    {
+      "lang": "en",
+      "text": "feels not very strongly about the fact that for \nmovie 27 has a value of 0.71. So therefore in here  ",
+      "offset": 4242.4,
+      "duration": 8.32
+    },
+    {
+      "lang": "en",
+      "text": "we do the dot product. The details of why don't \nmatter too much but, well, actually you can  ",
+      "offset": 4251.68,
+      "duration": 8
+    },
+    {
+      "lang": "en",
+      "text": "figure this out from what we've said so far: if \nyou go back to our definition of matrix product  ",
+      "offset": 4259.68,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "you might notice that the matrix product of a row \nwith a column is the same thing as a dot product  ",
+      "offset": 4265.44,
+      "duration": 8.32
+    },
+    {
+      "lang": "en",
+      "text": "and so here in excel I have a row and a column \nso, therefore I say matrix multiply that by that:  ",
+      "offset": 4274.32,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "that gives us the dot product. So here's the dot \nproduct of that by that –or the matrix multiply,  ",
+      "offset": 4280.08,
+      "duration": 6.4
+    },
+    {
+      "lang": "en",
+      "text": "given that they're row and column. The only other \nslight quirk here is that if the actual rating  ",
+      "offset": 4287.2,
+      "duration": 10.32
+    },
+    {
+      "lang": "en",
+      "text": "is zero –is empty– I'm just going to leave it \nblank, I'm going to set it to zero actually.",
+      "offset": 4298.4,
+      "duration": 6.4
+    },
+    {
+      "lang": "en",
+      "text": "So here is everybody's rating, \npredicted rating of movies.  ",
+      "offset": 4306.32,
+      "duration": 6.4
+    },
+    {
+      "lang": "en",
+      "text": "I say predicted –of course these are currently \nrandom numbers so they are terrible predictions.  ",
+      "offset": 4313.68,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "But when we have some way to predict things \nand we start with terrible random predictions,  ",
+      "offset": 4319.36,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "we know how to make them better, don't \nwe?, we use static gradient descent.  ",
+      "offset": 4323.92,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "Now to do that we're going to need a \nloss function, so that's easy enough,  ",
+      "offset": 4329.44,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "we can just calculate the sum of x \nminus y squared divided by the count,  ",
+      "offset": 4334.88,
+      "duration": 6.56
+    },
+    {
+      "lang": "en",
+      "text": "that is the mean squared error –and if we take the \nsquare root, that is the root mean squared error–  ",
+      "offset": 4341.44,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "so here is the root mean squared error, in Excel, \nbetween these predictions and these actuals.",
+      "offset": 4347.2,
+      "duration": 8.64
+    },
+    {
+      "lang": "en",
+      "text": "And so now that we have a loss function, \nwe can optimize it. Data solver,  ",
+      "offset": 4358.16,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "set objective (this one here) by changing \ncells (these ones here) and (these ones here).  ",
+      "offset": 4364.72,
+      "duration": 11.6
+    },
+    {
+      "lang": "en",
+      "text": "Solve. Okay, and initially our loss is 2.81 –so \nwe hope it's going to go down– and as it solves  ",
+      "offset": 4379.52,
+      "duration": 10.56
+    },
+    {
+      "lang": "en",
+      "text": "–not a great choice of background color– but \nit says 0.68 so this number is going down. So  ",
+      "offset": 4390.08,
+      "duration": 5.6
+    },
+    {
+      "lang": "en",
+      "text": "this is using… actually an Excel it's not quite \nusing stochastic gradient descent because excel  ",
+      "offset": 4396.4,
+      "duration": 6.64
+    },
+    {
+      "lang": "en",
+      "text": "doesn't know how to calculate gradients, \nthere are actually optimization techniques  ",
+      "offset": 4403.04,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "that don't need gradients: they calculate them \nnumerically as they go but that's a minor quirk.  ",
+      "offset": 4407.28,
+      "duration": 5.84
+    },
+    {
+      "lang": "en",
+      "text": "One thing you'll notice is \nit's doing it very, very slowly  ",
+      "offset": 4414.32,
+      "duration": 2.56
+    },
+    {
+      "lang": "en",
+      "text": "–there's not much data here and it's still going– \none reason for that is that… it's because it's  ",
+      "offset": 4418.64,
+      "duration": 6.48
+    },
+    {
+      "lang": "en",
+      "text": "not using gradients it's much slower and \nthe second is Excel is much slower than  ",
+      "offset": 4425.12,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "Pytorch. Anyway, it's come up with an answer, \nand look at that: it's got to 0.42. So it's  ",
+      "offset": 4430.48,
+      "duration": 7.44
+    },
+    {
+      "lang": "en",
+      "text": "got a pretty good prediction and so, we can \nkind of get a sense of this, for example,  ",
+      "offset": 4437.92,
+      "duration": 6.24
+    },
+    {
+      "lang": "en",
+      "text": "looking at the last three,  ",
+      "offset": 4447.84,
+      "duration": 1.2
+    },
+    {
+      "lang": "en",
+      "text": "movie user 14 likes, dislikes, likes. Let's see \nsomebody else like that. Here's somebody else,  ",
+      "offset": 4453.2,
+      "duration": 8
+    },
+    {
+      "lang": "en",
+      "text": "this person likes, dislikes, likes. So, based \non our kind of approach we're saying: okay,  ",
+      "offset": 4461.2,
+      "duration": 5.6
+    },
+    {
+      "lang": "en",
+      "text": "since they have the same feeling about these three \nmovies, maybe they'll feel the same about these  ",
+      "offset": 4466.8,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "three movies. So this person likes all three \nof those movies and this person likes two out  ",
+      "offset": 4471.12,
+      "duration": 7.12
+    },
+    {
+      "lang": "en",
+      "text": "of three of them so, you know, you kind of… this \nis the idea, right?, as if somebody says to you:  ",
+      "offset": 4478.24,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "“I like this movie, this movie, this movie” and \nyou're like: “oh, they like those movies too” what  ",
+      "offset": 4482.96,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "other movies do you like? and they'll say: “oh, \nhow about this?” There's a chance, good chance,  ",
+      "offset": 4488,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "that you're going to like the same thing. That's \nthe basis of collaborative filtering, okay, it's…  ",
+      "offset": 4492.32,
+      "duration": 6.16
+    },
+    {
+      "lang": "en",
+      "text": "and mathematically we call this matrix completion. \nSo this matrix is missing values, we just want to…  ",
+      "offset": 4498.48,
+      "duration": 6.72
+    },
+    {
+      "lang": "en",
+      "text": "complete them. So the core of collaborative \nfiltering is, it's a matrix completion exercise.",
+      "offset": 4506,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "Can you grab a microphone?",
+      "offset": 4514.96,
+      "duration": 1.36
+    },
+    {
+      "lang": "en",
+      "text": "NICK:  ",
+      "offset": 4520.52,
+      "duration": 1
+    },
+    {
+      "lang": "en",
+      "text": "Is that better? Okay, my question was, \nis, with the dot products, right?, so,  ",
+      "offset": 4521.52,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "if we think about the math of that for a minute \nis, yeah, if we think about the cosine of the  ",
+      "offset": 4527.6,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "angle between the two vectors that's going \nto roughly approximate the correlation,  ",
+      "offset": 4531.6,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "is that essentially what's going \non here in one sense? with…",
+      "offset": 4535.92,
+      "duration": 2.96
+    },
+    {
+      "lang": "en",
+      "text": "JEREMY: Okay so is the cosine of the \nangle between the vectors much the same  ",
+      "offset": 4538.88,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "thing as the dot product? The answer is yes, \nthey're the same, once you normalize them so.",
+      "offset": 4543.28,
+      "duration": 6.64
+    },
+    {
+      "lang": "en",
+      "text": "Is that still on…",
+      "offset": 4553.76,
+      "duration": 0.64
+    },
+    {
+      "lang": "en",
+      "text": "NICK: It’s correlation what we're \ndoing here at scale, as well?",
+      "offset": 4556.76,
+      "duration": 3.56
+    },
+    {
+      "lang": "en",
+      "text": "JEREMY: Yeah, you can, yeah, \nyou can think of it that way.",
+      "offset": 4560.32,
+      "duration": 2.48
+    },
+    {
+      "lang": "en",
+      "text": "NICK: Okay cool…",
+      "offset": 4562.8,
+      "duration": 3.12
+    },
+    {
+      "lang": "en",
+      "text": "JEREMY: Now,  ",
+      "offset": 4565.92,
+      "duration": 1.92
+    },
+    {
+      "lang": "en",
+      "text": "this looks pretty different to how Pytorch looks.  ",
+      "offset": 4571.84,
+      "duration": 2.4
+    },
+    {
+      "lang": "en",
+      "text": "Pytorch has things in rows, right?, \nwe've got a user, a movie rating,  ",
+      "offset": 4575.76,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "user movie rating, right? So, how do we \ndo the same kind of thing in Pytorch?  ",
+      "offset": 4581.28,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "So, let's do the same kind of thing in Excel, \nbut using the table in the same format that  ",
+      "offset": 4587.68,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "Pytorch has it. Okay. So to do that in Excel the \nfirst thing I'm going to do is I'm going to, see,  ",
+      "offset": 4593.04,
+      "duration": 6.24
+    },
+    {
+      "lang": "en",
+      "text": "okay, this… I've got to look at user number \n14 and I want to know what index –like how far  ",
+      "offset": 4599.28,
+      "duration": 7.04
+    },
+    {
+      "lang": "en",
+      "text": "down this list is 14. Okay, so we'll just match \nmeans find the index. So this is user index one.",
+      "offset": 4606.32,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "And then what I'm going to \ndo is, I'm going to say the…  ",
+      "offset": 4613.68,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "these five numbers is, basically I want to find  ",
+      "offset": 4619.52,
+      "duration": 2.72
+    },
+    {
+      "lang": "en",
+      "text": "row one over here, and in excel that's called \nOFFSET. So we're going to offset from here by  ",
+      "offset": 4623.2,
+      "duration": 7.76
+    },
+    {
+      "lang": "en",
+      "text": "one row, and so you can see here it is 0.19, 0.63, \n0.19, 0.63 et cetera, right? So here's the second  ",
+      "offset": 4632,
+      "duration": 9.36
+    },
+    {
+      "lang": "en",
+      "text": "user: 0.25, 0.83 etc. And we can do the same \nthing for movies, right? So movie 417 is index 14,  ",
+      "offset": 4641.36,
+      "duration": 11.76
+    },
+    {
+      "lang": "en",
+      "text": "that's going to be: 0.75, 0.47 et cetera. And so \nsame thing, right?, but now we're going to offset  ",
+      "offset": 4654.24,
+      "duration": 5.6
+    },
+    {
+      "lang": "en",
+      "text": "from here, by 14, to get this row which is 0.75, \n0.47 et cetera. And so the prediction now is… the  ",
+      "offset": 4659.84,
+      "duration": 14.8
+    },
+    {
+      "lang": "en",
+      "text": "dot product is called SUMPRODUCT \nin excel, this is a SUMPRODUCT  ",
+      "offset": 4676.64,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "of those two things. So this is exactly the \nsame as we had before, right?, but when we  ",
+      "offset": 4680.16,
+      "duration": 6.96
+    },
+    {
+      "lang": "en",
+      "text": "kind of put everything next to each other we \nhave to, like manually, look up the index.",
+      "offset": 4687.12,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "And so then for each one we can calculate \nthe error squared prediction minus  ",
+      "offset": 4694.48,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "rating squared and then we could add those all \nup and –if you remember– this is actually the  ",
+      "offset": 4698.96,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "same root mean squared error we had before \n–we optimized before. 2.81 because we've  ",
+      "offset": 4704.72,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "got the same numbers as before and \nso this is mathematically identical.",
+      "offset": 4709.36,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "So what's this weird word up here: \n“embedding”. You've probably heard it before  ",
+      "offset": 4716.4,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "and you might have come across the impression \nit's some very complex fancy mathematical thing,  ",
+      "offset": 4722.08,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "but actually, it turns out, that it is \njust looking something up in an array:  ",
+      "offset": 4727.76,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "that is what an embedding is. So \nwe call this an “embedding matrix”,  ",
+      "offset": 4733.44,
+      "duration": 7.92
+    },
+    {
+      "lang": "en",
+      "text": "and these are our “user embeddings” \nand our “movie embeddings”.",
+      "offset": 4743.68,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "So let's take a look at that in Pytorch, and, \nyou know, at this point if you've heard about  ",
+      "offset": 4751.44,
+      "duration": 5.92
+    },
+    {
+      "lang": "en",
+      "text": "embeddings before you might be thinking: that \ncan't be it. And yeah, it's just as complex  ",
+      "offset": 4757.36,
+      "duration": 6.8
+    },
+    {
+      "lang": "en",
+      "text": "as the rectified linear unit which turned \nout to be: replace negatives with zeros.  ",
+      "offset": 4764.16,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "Embedding actually means: “look something up in \nan array”. So there's a lot of things that we use,  ",
+      "offset": 4769.76,
+      "duration": 5.84
+    },
+    {
+      "lang": "en",
+      "text": "as deep learning practitioners, to try \nto make you as intimidated as possible  ",
+      "offset": 4775.6,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "so that you don't wander into our territory \nand start winning our Kaggle competitions.  ",
+      "offset": 4781.6,
+      "duration": 5.6
+    },
+    {
+      "lang": "en",
+      "text": "And unfortunately, once you \ndiscover the simplicity of it,  ",
+      "offset": 4787.2,
+      "duration": 2.96
+    },
+    {
+      "lang": "en",
+      "text": "you might start to think that you can do \nit yourself and then it turns out you can.  ",
+      "offset": 4791.12,
+      "duration": 3.12
+    },
+    {
+      "lang": "en",
+      "text": "So yeah, that's what basically, it turns out \npretty much all of this jargon turns out to be.  ",
+      "offset": 4795.36,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "So we're going to try to \nlearn these latent factors,  ",
+      "offset": 4803.28,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "which is exactly what we just did in \nExcel, we just learned the latent factors.",
+      "offset": 4808.4,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "All right, so, if we're going to learn things \nin Pytorch we're going to need data loaders.  ",
+      "offset": 4815.2,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "One thing I did is, there is actually a movies  ",
+      "offset": 4821.2,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "table as well, with the names of the movies, so \nI merged that together with the ratings so that  ",
+      "offset": 4825.52,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "then we've now got the user id and the actual name \nof the movie –we don't need that, obviously, for  ",
+      "offset": 4831.04,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "the model, but it's just going to make it a bit \nmore fun to interpret later–. So this is called:  ",
+      "offset": 4835.84,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "ratings. We have something called \nCollabDataLoaders –so collaborative filtering data  ",
+      "offset": 4843.12,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "loaders– and we can get that from a data frame, \nby passing in the data frame, and it expects a  ",
+      "offset": 4848.88,
+      "duration": 7.52
+    },
+    {
+      "lang": "en",
+      "text": "user column and an item column. So the user column \nis what it sounds like: the person that is rating  ",
+      "offset": 4856.4,
+      "duration": 6.48
+    },
+    {
+      "lang": "en",
+      "text": "this thing, and the item column is the product or \nservice that they're rating. In our case the user  ",
+      "offset": 4862.88,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "column is called “user” –so we don't have to pass \nthat in– and the item column is called “title”  ",
+      "offset": 4868.24,
+      "duration": 5.84
+    },
+    {
+      "lang": "en",
+      "text": "–so we do have to pass this in– because by \ndefault the user column should be called “user”  ",
+      "offset": 4874.08,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "and the item column will be called “item”. Give it \na batch size, and as usual we can call show batch,  ",
+      "offset": 4878.4,
+      "duration": 7.68
+    },
+    {
+      "lang": "en",
+      "text": "and so, here's our data loaders… a batch \nof data loaders –or at least a bit of it–.  ",
+      "offset": 4886.96,
+      "duration": 7.04
+    },
+    {
+      "lang": "en",
+      "text": "And so now, since we told it the names, we \nactually get to see the names which is nice.",
+      "offset": 4895.28,
+      "duration": 6.56
+    },
+    {
+      "lang": "en",
+      "text": "All right, so, now we're going to create \nthe user_factors and movie_factors -ie-  ",
+      "offset": 4904.96,
+      "duration": 10.88
+    },
+    {
+      "lang": "en",
+      "text": "this one and this one. So the number of \nrows of the movie factors will be equal to  ",
+      "offset": 4917.36,
+      "duration": 7.36
+    },
+    {
+      "lang": "en",
+      "text": "the number of movies and the number of rows of \nthe user factors will be equal to the number of  ",
+      "offset": 4924.72,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "users. And the number of columns will be whatever \nwe want: however many factors we want to create.",
+      "offset": 4929.12,
+      "duration": 5.68
+    },
+    {
+      "lang": "en",
+      "text": "John!",
+      "offset": 4937.76,
+      "duration": 0.36
+    },
+    {
+      "lang": "en",
+      "text": "JOHN: This might be a pertinent \ntime to jump in with a question:  ",
+      "offset": 4938.12,
+      "duration": 3.64
+    },
+    {
+      "lang": "en",
+      "text": "any comments about choosing the number of factors",
+      "offset": 4941.76,
+      "duration": 2.4
+    },
+    {
+      "lang": "en",
+      "text": "JEREMY: Uhm… not really. We have defaults \nthat we use –for embeddings– in fastai.  ",
+      "offset": 4944.88,
+      "duration": 13.12
+    },
+    {
+      "lang": "en",
+      "text": "It's a very obscure formula and people often \nask me for like the mathematical derivation of  ",
+      "offset": 4960.56,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "where it came from, but what actually happened \nis, it's, I wrote down how many factors I think  ",
+      "offset": 4964.8,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "is appropriate for different size categories on a \npiece of paper in a table –well actually in Excel–  ",
+      "offset": 4970.08,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "and then I fitted a function to that and \nthat's the function. So it's basically a  ",
+      "offset": 4975.52,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "mathematical function that fits my \nintuition about what works well.  ",
+      "offset": 4979.84,
+      "duration": 2.96
+    },
+    {
+      "lang": "en",
+      "text": "But it seems to work pretty well, I've \nseen it’s used in lots of other places now,  ",
+      "offset": 4984.32,
+      "duration": 3.04
+    },
+    {
+      "lang": "en",
+      "text": "lots of papers will be like: “using fastai's rule \nof thumb for embedding sizes… here's the formula…”",
+      "offset": 4988.64,
+      "duration": 5.08
+    },
+    {
+      "lang": "en",
+      "text": "JOHN: Cool, thank you.",
+      "offset": 4993.72,
+      "duration": 1.64
+    },
+    {
+      "lang": "en",
+      "text": "JEREMY: It's pretty fast to train \nthese things so you can try a few.",
+      "offset": 4998.4,
+      "duration": 3.12
+    },
+    {
+      "lang": "en",
+      "text": "So we're going to create… so the number \nof users is just the length of how many  ",
+      "offset": 5003.68,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "users there are, number of movies is \nthe length of how many titles there are;  ",
+      "offset": 5008.4,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "so create a matrix of random numbers of \nusers by five and movies: of movies by five.",
+      "offset": 5011.84,
+      "duration": 7.76
+    },
+    {
+      "lang": "en",
+      "text": "And now we need to look up the index of the \nmovie in our movie latent factor matrix.  ",
+      "offset": 5022.64,
+      "duration": 5.6
+    },
+    {
+      "lang": "en",
+      "text": "The thing is, when we've learned about \ndeep learning, we learnt that we do matrix  ",
+      "offset": 5029.84,
+      "duration": 6.32
+    },
+    {
+      "lang": "en",
+      "text": "multiplications, not lock-something-up \nin a matrix –in an array. So in Excel  ",
+      "offset": 5036.16,
+      "duration": 8.16
+    },
+    {
+      "lang": "en",
+      "text": "we were saying OFFSET, which is to say, \nfind element number 14 in the table;  ",
+      "offset": 5047.68,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "which, that's not a matrix multiply, \nhow does that work? Well actually it is,  ",
+      "offset": 5054.72,
+      "duration": 6.88
+    },
+    {
+      "lang": "en",
+      "text": "it actually is for the same \nreason that we talked about  ",
+      "offset": 5064,
+      "duration": 5.84
+    },
+    {
+      "lang": "en",
+      "text": "here, which is: we can represent \n–find– the element number-one-thing  ",
+      "offset": 5071.84,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "–in this list– is actually the same as multiplying \nby a one hot encoded matrix. So remember how,  ",
+      "offset": 5079.52,
+      "duration": 9.52
+    },
+    {
+      "lang": "en",
+      "text": "if we –let's just take off the log for a moment.",
+      "offset": 5091.2,
+      "duration": 6.64
+    },
+    {
+      "lang": "en",
+      "text": "Look, this has returned 0.87 –and particularly if \nI take the negative off here, if I add this up–  ",
+      "offset": 5099.36,
+      "duration": 6.88
+    },
+    {
+      "lang": "en",
+      "text": "this is 0.87, which is the result of finding \nthe index number-one-thing in this list.  ",
+      "offset": 5107.76,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "But we didn't do it that way, we did this by \ntaking the dot product of this (sorry) of this  ",
+      "offset": 5114.64,
+      "duration": 6.96
+    },
+    {
+      "lang": "en",
+      "text": "and this, but that's actually the same thing, \nright? taking the dot product of a one hot encoded  ",
+      "offset": 5122.56,
+      "duration": 7.36
+    },
+    {
+      "lang": "en",
+      "text": "vector with something is the same as looking \nup this index in the vector. So that means that  ",
+      "offset": 5129.92,
+      "duration": 10.32
+    },
+    {
+      "lang": "en",
+      "text": "this exercise here of looking up the 14th thing \nis the same as doing a matrix multiply with a  ",
+      "offset": 5142.08,
+      "duration": 7.68
+    },
+    {
+      "lang": "en",
+      "text": "one-hot-encoded vector. And we can see that here: \nthis is how we create a one hot encoded vector  ",
+      "offset": 5149.76,
+      "duration": 10
+    },
+    {
+      "lang": "en",
+      "text": "of length and users in which the third element \nis set to one and everything else is zero.",
+      "offset": 5160.4,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "And if we multiply that –so \n“at” (@) means, to remember,  ",
+      "offset": 5167.68,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "matrix multiply in python– so if we \nmultiply that by our user_factors,  ",
+      "offset": 5171.2,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "we get back this answer. And if we \njust ask for user_factors number three  ",
+      "offset": 5175.84,
+      "duration": 6.4
+    },
+    {
+      "lang": "en",
+      "text": "we get back the exact same answer –they're the \nsame thing. So you can think of “an embedding”  ",
+      "offset": 5182.24,
+      "duration": 7.6
+    },
+    {
+      "lang": "en",
+      "text": "as being a computational shortcut for multiplying \nsomething by a one-hot-encoded vector.",
+      "offset": 5191.2,
+      "duration": 6.24
+    },
+    {
+      "lang": "en",
+      "text": "And so if you think back to what we did with \ndummy variables, right, this basically means  ",
+      "offset": 5198.8,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "embeddings are like a cool math trick \nfor speeding up doing matrix multipliers  ",
+      "offset": 5204.8,
+      "duration": 7.36
+    },
+    {
+      "lang": "en",
+      "text": "with dummy variables. Not just speeding up. We \nnever even have to create the dummy variables.  ",
+      "offset": 5212.16,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "We never have to create the one-hot-encoded \nvectors. We can just look up in an array.",
+      "offset": 5216.32,
+      "duration": 7.52
+    },
+    {
+      "lang": "en",
+      "text": "All right, so we're now ready \nto build a collaborative filter…  ",
+      "offset": 5232.16,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "a collaborative filtering model and \nwe're going to create one from scratch.  ",
+      "offset": 5236.08,
+      "duration": 6.72
+    },
+    {
+      "lang": "en",
+      "text": "And as we've discussed before, \nin Pytorch a model is a class.",
+      "offset": 5244.56,
+      "duration": 8.32
+    },
+    {
+      "lang": "en",
+      "text": "And so, we briefly touched on this, \nbut I've got to touch on it again.  ",
+      "offset": 5256.72,
+      "duration": 2.32
+    },
+    {
+      "lang": "en",
+      "text": "This is how we create a class \nin Python. You give it a name,",
+      "offset": 5260.64,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "and then you say how to initialize \nit, how to construct it. So in Python,  ",
+      "offset": 5268.24,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "remember they call these things “dunder \nwhatever”. This is dunder init, these are magic  ",
+      "offset": 5272.48,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "methods that Python will call for you at \ncertain times. The method called dunder init  ",
+      "offset": 5278.48,
+      "duration": 7.76
+    },
+    {
+      "lang": "en",
+      "text": "is called when you create an object of this class. \nSo we could pass it a value, and so now we set the  ",
+      "offset": 5286.8,
+      "duration": 10
+    },
+    {
+      "lang": "en",
+      "text": "attribute called “a equal to that value”, and so \nthen later on we could call a method called “say”,  ",
+      "offset": 5296.8,
+      "duration": 6.16
+    },
+    {
+      "lang": "en",
+      "text": "that will say hello to whatever you passed \nin here. And this is what it will say. So,  ",
+      "offset": 5304.88,
+      "duration": 6.32
+    },
+    {
+      "lang": "en",
+      "text": "for example, if you construct an object \nof type Example(), passing in Sylvain,  ",
+      "offset": 5311.2,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "self.a now equals Sylvain. So if you say use the \ndot method, the say method “nice to meet you”,  ",
+      "offset": 5317.6,
+      "duration": 7.12
+    },
+    {
+      "lang": "en",
+      "text": "x is now “nice to meet you”. So it will \nsay hello Sylvain, nice to meet you.  ",
+      "offset": 5324.72,
+      "duration": 6.24
+    },
+    {
+      "lang": "en",
+      "text": "So that's… that's kind of all you need \nto know about object-oriented programming  ",
+      "offset": 5332.72,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "in Pytorch to create a mode. Oh, there's one \nmore thing we need to know, sorry, which is  ",
+      "offset": 5337.6,
+      "duration": 7.68
+    },
+    {
+      "lang": "en",
+      "text": "you can put something in \nparentheses after your class name,  ",
+      "offset": 5346.96,
+      "duration": 2.88
+    },
+    {
+      "lang": "en",
+      "text": "and that's called the superclass. It's basically \ngoing to give you some stuff for free, give you  ",
+      "offset": 5350.56,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "some functionality for free. And if you create \na model in Pytorch, you have to make Module your  ",
+      "offset": 5356.56,
+      "duration": 9.68
+    },
+    {
+      "lang": "en",
+      "text": "super class. This is actually fastai's version \nof Module, but it's nearly the same as Pytorch’s.",
+      "offset": 5366.24,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "So when we create this dot product object, it's \ngoing to call dunder init, and we say well how  ",
+      "offset": 5373.52,
+      "duration": 6.08
+    },
+    {
+      "lang": "en",
+      "text": "many users are going to be in our model, \nand how many movies, and how many factors,  ",
+      "offset": 5379.6,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "and so we can now create an \nembedding of users by factors  ",
+      "offset": 5385.28,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "for users, and an embedding of movies \nby vectors for movies, and so then",
+      "offset": 5389.76,
+      "duration": 6.16
+    },
+    {
+      "lang": "en",
+      "text": "Pytorch does something quite magic, \nwhich is that if you create a",
+      "offset": 5398.32,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "dot product object like so, it then… you can \ntreat it like a function. You can call it  ",
+      "offset": 5405.04,
+      "duration": 6.8
+    },
+    {
+      "lang": "en",
+      "text": "up and calculate values on \nit. And when you do that,  ",
+      "offset": 5412.56,
+      "duration": 3.04
+    },
+    {
+      "lang": "en",
+      "text": "this is really important to know, Pytorch is going \nto call a method called “forward” in your class.  ",
+      "offset": 5416.96,
+      "duration": 6.48
+    },
+    {
+      "lang": "en",
+      "text": "So this is where you put your calculation of \nyour model. It has to be called “forward”,  ",
+      "offset": 5423.44,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "and it's going to be passed the object itself, \nand the thing you're calculating on. In this case,  ",
+      "offset": 5427.6,
+      "duration": 7.76
+    },
+    {
+      "lang": "en",
+      "text": "the user and movie for a batch. So this is your \nbatch of data, each row will be one user and movie  ",
+      "offset": 5436.72,
+      "duration": 12.4
+    },
+    {
+      "lang": "en",
+      "text": "combination, and the columns will be users \nand movies. So we can grab the first column,  ",
+      "offset": 5449.12,
+      "duration": 7.6
+    },
+    {
+      "lang": "en",
+      "text": "right, so this is every row of the first column, \nand look it up in the user factors embedding,  ",
+      "offset": 5457.84,
+      "duration": 6.32
+    },
+    {
+      "lang": "en",
+      "text": "to get our users embeddings. So that is the same \nas doing this. Let's say this is one mini batch.",
+      "offset": 5464.8,
+      "duration": 8.16
+    },
+    {
+      "lang": "en",
+      "text": "And then we do exactly the same thing for the \nsecond column, passing it into our movie factors  ",
+      "offset": 5475.2,
+      "duration": 6.72
+    },
+    {
+      "lang": "en",
+      "text": "to look up the movie embeddings, and \nthen take the dot product. dim equals one  ",
+      "offset": 5481.92,
+      "duration": 8.16
+    },
+    {
+      "lang": "en",
+      "text": "because we're summing across the columns for each \nrow. We're calculating a prediction for each row",
+      "offset": 5490.96,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "so once we've got that",
+      "offset": 5499.36,
+      "duration": 1.2
+    },
+    {
+      "lang": "en",
+      "text": "we can pass it to a learner, passing \nin our data loaders, and our model,  ",
+      "offset": 5502.8,
+      "duration": 5.68
+    },
+    {
+      "lang": "en",
+      "text": "and our loss function mean squared \nerror, and we can call fit.",
+      "offset": 5509.52,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "And the way it goes.",
+      "offset": 5517.44,
+      "duration": 0.72
+    },
+    {
+      "lang": "en",
+      "text": "And this by the way is running on cpu. Now \nthese are very fast to run. So this is doing  ",
+      "offset": 5520.4,
+      "duration": 7.76
+    },
+    {
+      "lang": "en",
+      "text": "100 000 rows in 10 seconds, which is a whole \nlot faster than our few dozen rows in Excel.",
+      "offset": 5528.16,
+      "duration": 7.52
+    },
+    {
+      "lang": "en",
+      "text": "and so you can see the loss going \ndown. And so we've trained a",
+      "offset": 5538.24,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "model. Um…",
+      "offset": 5541.76,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "it's not going to be a great model,  ",
+      "offset": 5549.84,
+      "duration": 1.28
+    },
+    {
+      "lang": "en",
+      "text": "and one of the problems is that, let's \nsee if we can see this in our Excel one…",
+      "offset": 5552.96,
+      "duration": 6.88
+    },
+    {
+      "lang": "en",
+      "text": "Look at this one here. This \nprediction is bigger than five.",
+      "offset": 5561.92,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "But nothing's bigger than five. \nSo that seems like a problem.  ",
+      "offset": 5567.52,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "We're predicting things that are bigger \nthan the highest possible number.",
+      "offset": 5571.68,
+      "duration": 2.8
+    },
+    {
+      "lang": "en",
+      "text": "And in fact these are very much movie \nenthusiasts that… nobody gave anything a one.  ",
+      "offset": 5576.8,
+      "duration": 5.6
+    },
+    {
+      "lang": "en",
+      "text": "Yeah nobody even gave anything a one here. So…",
+      "offset": 5584.4,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "do you remember when we learned about Sigmoid. \nThe idea of squishing things between zero and one.  ",
+      "offset": 5590,
+      "duration": 6.08
+    },
+    {
+      "lang": "en",
+      "text": "We could do stuff still without a Sigmoid, \nbut when we added a Sigmoid, it trained better  ",
+      "offset": 5597.28,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "because the model didn't have to work so \nhard to get it, kind of, into the right zone.  ",
+      "offset": 5601.6,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "Now if you think about it, if you take something \nand put it through a Sigmoid, and then multiply it  ",
+      "offset": 5606.16,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "by five, now you've got something that's going \nto be between zero and five. We used to have  ",
+      "offset": 5611.04,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "something which is between zero and one, So we \ncould do that in fact we could do that in Excel.",
+      "offset": 5615.68,
+      "duration": 6.32
+    },
+    {
+      "lang": "en",
+      "text": "I'll leave that as an exercise to the \nreader. Let's do it over here in Pytorch.",
+      "offset": 5625.12,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "So if we take the exact same class as before  ",
+      "offset": 5633.2,
+      "duration": 2.32
+    },
+    {
+      "lang": "en",
+      "text": "and this time we call sigmoid_range and \nso sigmoid_range is something which will  ",
+      "offset": 5636.4,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "take our prediction and then squash it into our \nrange and by default we'll use a range of zero  ",
+      "offset": 5642.4,
+      "duration": 8.4
+    },
+    {
+      "lang": "en",
+      "text": "through to 5.5. so it can't be smaller than zero, \ncan't be bigger than 5.5. Why didn't I use five?  ",
+      "offset": 5650.8,
+      "duration": 7.04
+    },
+    {
+      "lang": "en",
+      "text": "That's because a sigmoid can never hit one, \nright? and a sigmoid times five can never hit five  ",
+      "offset": 5658.64,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "but some people do give things... movies a five so \nyou want to make it a bit bigger than our highest.",
+      "offset": 5665.2,
+      "duration": 6.64
+    },
+    {
+      "lang": "en",
+      "text": "So this one got a loss of 0.8628",
+      "offset": 5672.88,
+      "duration": 2.64
+    },
+    {
+      "lang": "en",
+      "text": "86 oh it's not better. Isn't that always the way?  ",
+      "offset": 5679.12,
+      "duration": 2.96
+    },
+    {
+      "lang": "en",
+      "text": "All right, didn't actually \nhelp; doesn't always. So be it.",
+      "offset": 5683.12,
+      "duration": 2.72
+    },
+    {
+      "lang": "en",
+      "text": "Let's keep trying to improve it. \nLet me show you something I noticed.  ",
+      "offset": 5689.36,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "Some of the users, like this one... this \nperson here just loves movies. They give  ",
+      "offset": 5697.2,
+      "duration": 9.52
+    },
+    {
+      "lang": "en",
+      "text": "nearly everything a four or five. Their worst \nscore is a three, all right? This person... oh,  ",
+      "offset": 5706.72,
+      "duration": 6.32
+    },
+    {
+      "lang": "en",
+      "text": "here's a one. This person's got much more range. \nSome things are twos, some ones, some fives.",
+      "offset": 5713.04,
+      "duration": 5.6
+    },
+    {
+      "lang": "en",
+      "text": "This person doesn't seem to like movies very \nmuch considering how many they watch. Nothing  ",
+      "offset": 5722,
+      "duration": 3.28
+    },
+    {
+      "lang": "en",
+      "text": "gets a five. They've got discerning tastes, I \nguess. At the moment we don't have any way in  ",
+      "offset": 5725.28,
+      "duration": 8.48
+    },
+    {
+      "lang": "en",
+      "text": "our kind of formulation of this model to say this \nuser tends to give low scores and this user tends  ",
+      "offset": 5733.76,
+      "duration": 8.32
+    },
+    {
+      "lang": "en",
+      "text": "to give high scores. There's just nothing like \nthat, right? But that would be very easy to add.",
+      "offset": 5742.08,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "Let's add one more number to \nour five factors, just here,  ",
+      "offset": 5750.08,
+      "duration": 6.8
+    },
+    {
+      "lang": "en",
+      "text": "for each user and now, rather than doing \njust the matrix multiply let's add...",
+      "offset": 5757.6,
+      "duration": 12.24
+    },
+    {
+      "lang": "en",
+      "text": "Oh it's actually the top one. Let's add this \nnumber to it h19 and so for this one let's  ",
+      "offset": 5771.2,
+      "duration": 8
+    },
+    {
+      "lang": "en",
+      "text": "add i19 to it. Yeah so I've got it wrong. \nThis one here, so this... this row here...",
+      "offset": 5779.2,
+      "duration": 6.48
+    },
+    {
+      "lang": "en",
+      "text": "We're going to add to each rating and then \nwe're going to do the same thing here.",
+      "offset": 5788.08,
+      "duration": 10.24
+    },
+    {
+      "lang": "en",
+      "text": "Each movie's now got an extra number \nhere that again we're going to  ",
+      "offset": 5798.32,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "add a 26. So it's our matrix multiplication \nplus, we call it, the bias. The user bias plus  ",
+      "offset": 5804.72,
+      "duration": 7.92
+    },
+    {
+      "lang": "en",
+      "text": "the movie bias so effectively that's like making \nit so we don't have an intercept of zero anymore.",
+      "offset": 5813.6,
+      "duration": 5.6
+    },
+    {
+      "lang": "en",
+      "text": "And so if we now train this model...",
+      "offset": 5822.24,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "Data -&gt; Solver -&gt; Solve.",
+      "offset": 5827.76,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "So previously we got to 0.42, okay? and so \nwe're going to let that go along for a while  ",
+      "offset": 5834.96,
+      "duration": 6.88
+    },
+    {
+      "lang": "en",
+      "text": "and then let's also go back and \nlook at the Pytorch version.  ",
+      "offset": 5841.84,
+      "duration": 2.64
+    },
+    {
+      "lang": "en",
+      "text": "So for Pytorch, now we're going to \nhave a user_bias which is an embedding  ",
+      "offset": 5846.08,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "of n_users by 1, right? Remember there was just \none number for each user and movie bias is an  ",
+      "offset": 5851.68,
+      "duration": 7.12
+    },
+    {
+      "lang": "en",
+      "text": "embedding of n_movies also by 1 and so we can now \nlook up the user embedding the movie embedding,  ",
+      "offset": 5858.8,
+      "duration": 10.48
+    },
+    {
+      "lang": "en",
+      "text": "do the dot product and then look up the \nuser_bias and the movie_bias and add them.",
+      "offset": 5870.48,
+      "duration": 7.12
+    },
+    {
+      "lang": "en",
+      "text": "Chuck that through the sigmoid. Let's \ntrain that, see if we beat 0.865.",
+      "offset": 5880,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "Wow we're not training very well, \nare we? Still not too great. 0.894.  ",
+      "offset": 5891.2,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "I think Excel normally does \ndo better though. Let's see.",
+      "offset": 5895.52,
+      "duration": 2.96
+    },
+    {
+      "lang": "en",
+      "text": "Okay Excel... oh Excel's done a lot \nbetter. It's gone from 0.42 to 0.35.",
+      "offset": 5902.24,
+      "duration": 7.6
+    },
+    {
+      "lang": "en",
+      "text": "Okay so what happened here? Why did it get worse? \nWell, look at this the valid loss got better  ",
+      "offset": 5913.52,
+      "duration": 7.12
+    },
+    {
+      "lang": "en",
+      "text": "and then it started getting worse again. \nSo we think we might be overfitting,",
+      "offset": 5921.76,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "which you know we have got a lot of parameters in \nour embeddings. So how do we avoid overfitting?",
+      "offset": 5929.04,
+      "duration": 9.76
+    },
+    {
+      "lang": "en",
+      "text": "So a classic way to avoid overfitting \nis to use something called weight decay.",
+      "offset": 5941.36,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "Also known as L2 regularization, \nwhich sounds much more fancy.",
+      "offset": 5947.76,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "What we're going to do",
+      "offset": 5955.52,
+      "duration": 0.8
+    },
+    {
+      "lang": "en",
+      "text": "is when we can compute the gradients, we're \ngoing to first add to our loss function,  ",
+      "offset": 5958.4,
+      "duration": 7.44
+    },
+    {
+      "lang": "en",
+      "text": "the sum of the weights squared. This is something \nyou should go back and add to your titanic model,  ",
+      "offset": 5966.56,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "not that it's overfitting, but just to \ntry it, right? So previously our gradients  ",
+      "offset": 5972.32,
+      "duration": 5.92
+    },
+    {
+      "lang": "en",
+      "text": "have just been and our loss function has \njust been about the difference between our  ",
+      "offset": 5978.8,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "predictions and our actuals, right? And so \nour gradients were based on the derivative  ",
+      "offset": 5983.84,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "of that with respect to the derivative \nof that with respect to the coefficients  ",
+      "offset": 5988.96,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "but we're saying now “let's add the \nsum of the square of the weights  ",
+      "offset": 5995.04,
+      "duration": 6.56
+    },
+    {
+      "lang": "en",
+      "text": "times some small number”. So what \nwould make that loss function go down?  ",
+      "offset": 6003.2,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "That loss function would go \ndown if we reduce our weights.",
+      "offset": 6009.36,
+      "duration": 2.88
+    },
+    {
+      "lang": "en",
+      "text": "For example if we reduce all \nof our weights to zero...  ",
+      "offset": 6014.4,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "I should say we reduce the magnitude of our \nweights. If we reduce them all to zero, that  ",
+      "offset": 6019.52,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "part of the loss function will be zero because \nthe sum of zero squared is zero. Now, problem is  ",
+      "offset": 6024.4,
+      "duration": 7.36
+    },
+    {
+      "lang": "en",
+      "text": "if our weights are all zero, our model doesn't do \nanything, right? So we'd have crappy predictions.  ",
+      "offset": 6031.76,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "So it would want to increase the weights so \nthat's actually predicting something useful.",
+      "offset": 6038.4,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "But if it increases the weights too much then it \nstarts overfitting. So how is it going to actually  ",
+      "offset": 6047.2,
+      "duration": 7.44
+    },
+    {
+      "lang": "en",
+      "text": "get the lowest possible value of the \nloss function? By finding the right mix.  ",
+      "offset": 6054.64,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "Weights not too high, right? But high \nenough to be useful at predicting.",
+      "offset": 6059.68,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "If there's some parameter that's not \nuseful, for example, say we asked for  ",
+      "offset": 6065.92,
+      "duration": 6.72
+    },
+    {
+      "lang": "en",
+      "text": "five factors and we only need four,  ",
+      "offset": 6072.64,
+      "duration": 1.68
+    },
+    {
+      "lang": "en",
+      "text": "it can just set the weights for the fifth \nfactor to zero, right? And then problem solved,  ",
+      "offset": 6075.68,
+      "duration": 7.12
+    },
+    {
+      "lang": "en",
+      "text": "right? It won't be used to predict anything but \nit also won't contribute to our weight decay part.",
+      "offset": 6082.8,
+      "duration": 9.04
+    },
+    {
+      "lang": "en",
+      "text": "So previously we had something calculating the \nloss function. So now we're going to do exactly  ",
+      "offset": 6097.04,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "the same thing but we're going to square \nthe parameters, we're going to sum them up,  ",
+      "offset": 6101.92,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "and we're going to multiply them by \nsome small number like 0.01 or 0.001.",
+      "offset": 6107.2,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "And in fact we don't even need to do this  ",
+      "offset": 6115.76,
+      "duration": 2.8
+    },
+    {
+      "lang": "en",
+      "text": "because remember the whole purpose of the loss is \nto take its gradient, right? And to print it out.  ",
+      "offset": 6119.76,
+      "duration": 7.6
+    },
+    {
+      "lang": "en",
+      "text": "The gradient of parameters squared is two times \nparameters. It's okay if you don't remember that  ",
+      "offset": 6129.28,
+      "duration": 6.72
+    },
+    {
+      "lang": "en",
+      "text": "from high school but you can take my word for \nit. The gradient of y equals x squared is 2x.  ",
+      "offset": 6136,
+      "duration": 7.52
+    },
+    {
+      "lang": "en",
+      "text": "So actually all we need to do \nis take our gradient and add  ",
+      "offset": 6144.96,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "the weight decay coefficient 0.01 or whatever \ntimes two times parameters. And given this is just  ",
+      "offset": 6150.16,
+      "duration": 6.24
+    },
+    {
+      "lang": "en",
+      "text": "number... some number we get to pick, we might as \nwell pull the 2 into it and just get rid of it.",
+      "offset": 6156.4,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "So when you call fit you can pass in a wd \nparameter which does... adds this times the  ",
+      "offset": 6163.6,
+      "duration": 7.52
+    },
+    {
+      "lang": "en",
+      "text": "parameters to the gradient for you. And \nso that's going to ask the model...it's  ",
+      "offset": 6171.12,
+      "duration": 6.32
+    },
+    {
+      "lang": "en",
+      "text": "going to save the model... “please don't make \nthe weights any bigger than they have to be”.",
+      "offset": 6177.44,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "And yay! Finally our loss actually improved, okay? \nAnd you can see it getting better and better.",
+      "offset": 6185.76,
+      "duration": 6.32
+    },
+    {
+      "lang": "en",
+      "text": "In fastai applications like vision we \ntry to set this for you appropriately  ",
+      "offset": 6196.32,
+      "duration": 6.64
+    },
+    {
+      "lang": "en",
+      "text": "and we generally do a reasonably good job. Just \nthe defaults are normally fine. But in things  ",
+      "offset": 6202.96,
+      "duration": 6.24
+    },
+    {
+      "lang": "en",
+      "text": "like tabular and collaborative filtering, we don't \nreally know enough about your data to know what  ",
+      "offset": 6209.2,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "to use here. So you should just try a few things. \nLet’s... try a few multiples of 10. Start at 0.1  ",
+      "offset": 6214,
+      "duration": 6.48
+    },
+    {
+      "lang": "en",
+      "text": "and then divide by 10 a few times, you know, and \njust see which one gives you the best result.",
+      "offset": 6221.04,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "So this is called regularization. So \nregularization is about making your bottle...  ",
+      "offset": 6229.28,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "model no more complex than it has to be, right? \nIt has a lower capacity and so the higher the  ",
+      "offset": 6235.12,
+      "duration": 6.48
+    },
+    {
+      "lang": "en",
+      "text": "weights, the more they're moving the model around, \nright? So we want to keep the weights down but not  ",
+      "offset": 6241.6,
+      "duration": 7.04
+    },
+    {
+      "lang": "en",
+      "text": "so far down that they don't make good predictions \nand so the value of this if it's higher, will keep  ",
+      "offset": 6248.64,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "the weights down more, it will reduce overfitting \nbut it will also reduce the capacity of your model  ",
+      "offset": 6254,
+      "duration": 5.92
+    },
+    {
+      "lang": "en",
+      "text": "to make good predictions and if it's lower it \nincreases the capacity of model and increases",
+      "offset": 6259.92,
+      "duration": 5.92
+    },
+    {
+      "lang": "en",
+      "text": "overfitting. All right,  ",
+      "offset": 6265.84,
+      "duration": 8.8
+    },
+    {
+      "lang": "en",
+      "text": "I'm going to take this bit for next time. Before \nwe wrap up, John, are there any more questions?",
+      "offset": 6274.64,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "JOHN: Yeah there are. The... there's \nsome from... from back at the start of  ",
+      "offset": 6284.64,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "the collaborative filtering. So we had a bit of \na conversation a while back about this... the  ",
+      "offset": 6289.28,
+      "duration": 8.72
+    },
+    {
+      "lang": "en",
+      "text": "size of the embedding vectors and you talked \nabout your fastai rule of thumb. So there was  ",
+      "offset": 6298.64,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "a question if anyone has ever done a kind of \na hyperparameter search, an exploration for…",
+      "offset": 6304.16,
+      "duration": 5.92
+    },
+    {
+      "lang": "en",
+      "text": "JEREMY: I mean people often will do \na hyperparameter search, for sure.",
+      "offset": 6310.08,
+      "duration": 3.2
+    },
+    {
+      "lang": "en",
+      "text": "JOHN: I beg your pardon.",
+      "offset": 6313.28,
+      "duration": 0.56
+    },
+    {
+      "lang": "en",
+      "text": "JEREMY: People will often do a hyperparameter \nsearch for their model but I haven't seen a...  ",
+      "offset": 6313.84,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "I haven't seen any other rules \nother than my rule of thumb.",
+      "offset": 6319.68,
+      "duration": 2.48
+    },
+    {
+      "lang": "en",
+      "text": "JOHN: Right, so not not \nproductively to your knowledge?",
+      "offset": 6322.68,
+      "duration": 3
+    },
+    {
+      "lang": "en",
+      "text": "JEREMY: Oh productively for an \nindividual model that somebody's built.",
+      "offset": 6325.68,
+      "duration": 3.12
+    },
+    {
+      "lang": "en",
+      "text": "JOHN: And then there's a... there's a question \nhere from Zakia which I didn't quite wrap my head  ",
+      "offset": 6330.64,
+      "duration": 7.44
+    },
+    {
+      "lang": "en",
+      "text": "around so Zakia if you want to maybe clarify in \nthe... in the chat as well but “can recommendation  ",
+      "offset": 6338.08,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "systems be built based on average ratings of users \nexperience rather than collaborative filtering?”",
+      "offset": 6343.44,
+      "duration": 6.08
+    },
+    {
+      "lang": "en",
+      "text": "JEREMY: Not really, right? I mean if you've got \nlots of metadata, you could, right? So if you've  ",
+      "offset": 6349.52,
+      "duration": 5.6
+    },
+    {
+      "lang": "en",
+      "text": "got, you know, like lots of information about \ndemographic data about where the user's from and  ",
+      "offset": 6355.12,
+      "duration": 5.6
+    },
+    {
+      "lang": "en",
+      "text": "you know what loyalty scheme results they've \nhad and blah blah blah and then for products  ",
+      "offset": 6362.64,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "there's metadata about that as well then sure \naverages would be fine but if all you've got is  ",
+      "offset": 6366.96,
+      "duration": 6.4
+    },
+    {
+      "lang": "en",
+      "text": "kind of purchasing history then you really want \nthe granular data otherwise how could you say  ",
+      "offset": 6373.92,
+      "duration": 6.48
+    },
+    {
+      "lang": "en",
+      "text": "like... they like this movie, this movie, and this \nmovie therefore they might also like that movie  ",
+      "offset": 6380.4,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "or you've got... it's like oh they kind of like \nmovies. There's just not enough information there.",
+      "offset": 6385.2,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "JOHN: Yeah great. That's about it.",
+      "offset": 6389.36,
+      "duration": 1.52
+    },
+    {
+      "lang": "en",
+      "text": "thanks okay great alright thanks everybody \nsee you next time for our last lesson",
+      "offset": 6390.88,
+      "duration": 8.96
+    }
+  ],
+  "cleanText": null,
+  "dumpedAt": "2025-07-21T18:43:26.054Z"
+}

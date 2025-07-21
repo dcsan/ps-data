@@ -1,0 +1,2836 @@
+{
+  "episodeId": "Lcqat4iP_lE",
+  "channelSlug": "@aidotengineer",
+  "title": "The State of MCP observability: Observable.tools — Alex Volkov and Benjamin Eckel, W&B and Dylibso",
+  "publishedAt": "2025-06-20T07:00:06.000Z",
+  "rawLines": [
+    {
+      "lang": "en",
+      "text": "[Music]",
+      "offset": 3.53,
+      "duration": 4.33
+    },
+    {
+      "lang": "en",
+      "text": "Hey folks. Um, my name is Alex Volov.",
+      "offset": 15.12,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "I'm an AI evangelist with Weights and",
+      "offset": 17.92,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "Biases. I'm Benjamin Eckle. I am",
+      "offset": 19.76,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "co-founder CTO of DIPso. We're creators",
+      "offset": 22,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "of MCP.Run.",
+      "offset": 24.4,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "All right. And we're here to talk to you",
+      "offset": 26.56,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "about MCP observability.",
+      "offset": 27.76,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "Hey Ben, I want to ask you a question.",
+      "offset": 30.48,
+      "duration": 3.919
+    },
+    {
+      "lang": "en",
+      "text": "Somebody who worked at Data Dog before",
+      "offset": 32.96,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "and somebody who runs multiple MCP",
+      "offset": 34.399,
+      "duration": 4.561
+    },
+    {
+      "lang": "en",
+      "text": "servers and uh clients on production. Uh",
+      "offset": 36.48,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "something that happened advice that",
+      "offset": 38.96,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "happened something in my agent uh in",
+      "offset": 40.8,
+      "duration": 5.279
+    },
+    {
+      "lang": "en",
+      "text": "production the other day. Okay. Uh yeah,",
+      "offset": 43.28,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "I mean we've been running MCP clients",
+      "offset": 46.079,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "and servers in production since the",
+      "offset": 48.48,
+      "duration": 4.559
+    },
+    {
+      "lang": "en",
+      "text": "beginning. Uh yeah, but wait, aren't you",
+      "offset": 50.239,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "like working at an observability",
+      "offset": 53.039,
+      "duration": 3.04
+    },
+    {
+      "lang": "en",
+      "text": "company, Weights and Biases? And don't",
+      "offset": 54.239,
+      "duration": 2.96
+    },
+    {
+      "lang": "en",
+      "text": "you work on like what's it called?",
+      "offset": 56.079,
+      "duration": 3.441
+    },
+    {
+      "lang": "en",
+      "text": "Weave. Yep, that's true. I I work about",
+      "offset": 57.199,
+      "duration": 4.561
+    },
+    {
+      "lang": "en",
+      "text": "weave and but since I started adding",
+      "offset": 59.52,
+      "duration": 5.359
+    },
+    {
+      "lang": "en",
+      "text": "some powers to my agent via MCP all that",
+      "offset": 61.76,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "observability that I'm used to from just",
+      "offset": 64.879,
+      "duration": 4.321
+    },
+    {
+      "lang": "en",
+      "text": "having my own code run end to end has",
+      "offset": 66.88,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "gone a little bit dark. Gotcha. So this",
+      "offset": 69.2,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "is what we're here to talk to you guys",
+      "offset": 72.32,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "about. U the rise of MCP is creating an",
+      "offset": 73.52,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "observability blind spot. As AI agents",
+      "offset": 76.08,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "become more uh prevalent, the problem",
+      "offset": 78.96,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "can compound with more and more tools",
+      "offset": 80.96,
+      "duration": 4.159
+    },
+    {
+      "lang": "en",
+      "text": "via MCPS. The less they the developers",
+      "offset": 82.56,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "can know about the endto-end happenings",
+      "offset": 85.119,
+      "duration": 4.881
+    },
+    {
+      "lang": "en",
+      "text": "within their agent. Yeah. Um, yeah. So,",
+      "offset": 87.04,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "on MCP Run, we're running both clients",
+      "offset": 90,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "and servers. And because it's a new",
+      "offset": 91.92,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "ecosystem, we've had to like cobble",
+      "offset": 93.84,
+      "duration": 3.599
+    },
+    {
+      "lang": "en",
+      "text": "together a lot of our own ways to do",
+      "offset": 95.36,
+      "duration": 4.079
+    },
+    {
+      "lang": "en",
+      "text": "observability. And I've been looking",
+      "offset": 97.439,
+      "duration": 3.441
+    },
+    {
+      "lang": "en",
+      "text": "around. It seems like everyone is sort",
+      "offset": 99.439,
+      "duration": 2.961
+    },
+    {
+      "lang": "en",
+      "text": "of doing this in isolation. They're sort",
+      "offset": 100.88,
+      "duration": 5.279
+    },
+    {
+      "lang": "en",
+      "text": "of solving the same problems. Um, so,",
+      "offset": 102.4,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "you know, we wanted to bring the",
+      "offset": 106.159,
+      "duration": 2.561
+    },
+    {
+      "lang": "en",
+      "text": "community together on this issue. And",
+      "offset": 107.28,
+      "duration": 2.879
+    },
+    {
+      "lang": "en",
+      "text": "so, today we're going to talk about the",
+      "offset": 108.72,
+      "duration": 3.439
+    },
+    {
+      "lang": "en",
+      "text": "state of observability in the MCP",
+      "offset": 110.159,
+      "duration": 3.521
+    },
+    {
+      "lang": "en",
+      "text": "ecosystem.",
+      "offset": 112.159,
+      "duration": 3.841
+    },
+    {
+      "lang": "en",
+      "text": "Yep. So, why do we care about this? And",
+      "offset": 113.68,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "why do we think that you guys should",
+      "offset": 116,
+      "duration": 2.799
+    },
+    {
+      "lang": "en",
+      "text": "care about this? So if you don't have",
+      "offset": 117.28,
+      "duration": 3.439
+    },
+    {
+      "lang": "en",
+      "text": "the ability to quickly understand why",
+      "offset": 118.799,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "things went wrong on production, where",
+      "offset": 120.719,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "they went wrong and how, your ability to",
+      "offset": 122.479,
+      "duration": 4.401
+    },
+    {
+      "lang": "en",
+      "text": "quickly respond is greatly diminished.",
+      "offset": 124.479,
+      "duration": 5.601
+    },
+    {
+      "lang": "en",
+      "text": "And we care deeply about we both build",
+      "offset": 126.88,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "tools that need MCP observability. And",
+      "offset": 130.08,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "we support MCP and we both care deeply",
+      "offset": 132.08,
+      "duration": 4.159
+    },
+    {
+      "lang": "en",
+      "text": "about developer experience as well.",
+      "offset": 134.72,
+      "duration": 3.2
+    },
+    {
+      "lang": "en",
+      "text": "Yeah, it's it's really important to me",
+      "offset": 136.239,
+      "duration": 3.761
+    },
+    {
+      "lang": "en",
+      "text": "because enterprise engineering teams",
+      "offset": 137.92,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "don't ship something to production",
+      "offset": 140,
+      "duration": 2.8
+    },
+    {
+      "lang": "en",
+      "text": "unless they know for sure that they're",
+      "offset": 141.28,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "going to be able to identify security",
+      "offset": 142.8,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "and reliability problems before their",
+      "offset": 144.72,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "customers do. Um, and that's why they",
+      "offset": 146.48,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "invest a ton of money in observability",
+      "offset": 148.4,
+      "duration": 4.559
+    },
+    {
+      "lang": "en",
+      "text": "platforms. And uh, so if you're going to",
+      "offset": 150.4,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "ship MCP to these production",
+      "offset": 152.959,
+      "duration": 3.521
+    },
+    {
+      "lang": "en",
+      "text": "environments, you must seamlessly",
+      "offset": 154.48,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "integrate with these observability",
+      "offset": 156.48,
+      "duration": 4.479
+    },
+    {
+      "lang": "en",
+      "text": "platforms. Yep. So, because we care",
+      "offset": 158.08,
+      "duration": 5.519
+    },
+    {
+      "lang": "en",
+      "text": "deeply about uh developer experience at",
+      "offset": 160.959,
+      "duration": 4.961
+    },
+    {
+      "lang": "en",
+      "text": "W&amp;B Weave, uh I'm happy to announce here",
+      "offset": 163.599,
+      "duration": 5.041
+    },
+    {
+      "lang": "en",
+      "text": "on stage that we've supports MCP. Yay.",
+      "offset": 165.92,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "As long as you're a developer of both",
+      "offset": 168.64,
+      "duration": 3.04
+    },
+    {
+      "lang": "en",
+      "text": "the client and the server, all you need",
+      "offset": 169.92,
+      "duration": 3.599
+    },
+    {
+      "lang": "en",
+      "text": "to do is set this MCP trace list",
+      "offset": 171.68,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "operation environment variable on your",
+      "offset": 173.519,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "client and server. And uh we'll show you",
+      "offset": 175.36,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "the the list tool calls and we'll show",
+      "offset": 177.519,
+      "duration": 4.961
+    },
+    {
+      "lang": "en",
+      "text": "you the the duration of your MCP calls.",
+      "offset": 179.84,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "This works currently with our Python",
+      "offset": 182.48,
+      "duration": 3.759
+    },
+    {
+      "lang": "en",
+      "text": "based clients. And this is how it looks",
+      "offset": 183.84,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "super quick. With the red arrows, you",
+      "offset": 186.239,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "can see the client traces, for example.",
+      "offset": 188.56,
+      "duration": 5.039
+    },
+    {
+      "lang": "en",
+      "text": "And with the blue arrows, you can see",
+      "offset": 190.319,
+      "duration": 4.881
+    },
+    {
+      "lang": "en",
+      "text": "we're pointing to the calculate BMI tool",
+      "offset": 193.599,
+      "duration": 3.761
+    },
+    {
+      "lang": "en",
+      "text": "and and the other tool. And that's it.",
+      "offset": 195.2,
+      "duration": 3.759
+    },
+    {
+      "lang": "en",
+      "text": "Observability solves, right? Let's get",
+      "offset": 197.36,
+      "duration": 3.28
+    },
+    {
+      "lang": "en",
+      "text": "off the stage. We're done. Wait a",
+      "offset": 198.959,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "second. So, uh what about this like",
+      "offset": 200.64,
+      "duration": 4.959
+    },
+    {
+      "lang": "en",
+      "text": "calculate BMI tool? This uh MCP server.",
+      "offset": 202.879,
+      "duration": 5.761
+    },
+    {
+      "lang": "en",
+      "text": "Why can't I see into that? Um you Yeah,",
+      "offset": 205.599,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "we're working on this.",
+      "offset": 208.64,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "Uh yeah, also this seems like this is",
+      "offset": 210.799,
+      "duration": 3.761
+    },
+    {
+      "lang": "en",
+      "text": "specific to Weave, right? Um is there",
+      "offset": 212.48,
+      "duration": 3.759
+    },
+    {
+      "lang": "en",
+      "text": "not like a vendor neutral way to do this",
+      "offset": 214.56,
+      "duration": 3.28
+    },
+    {
+      "lang": "en",
+      "text": "that's standardized? Yeah, that's right.",
+      "offset": 216.239,
+      "duration": 3.841
+    },
+    {
+      "lang": "en",
+      "text": "Uh this is a bespoke integration that we",
+      "offset": 217.84,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "built into weave into our SDKs in",
+      "offset": 220.08,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "Python. And while working on this, while",
+      "offset": 221.68,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "our developers have been building this",
+      "offset": 223.76,
+      "duration": 4.559
+    },
+    {
+      "lang": "en",
+      "text": "like u integration within our MCP",
+      "offset": 225.36,
+      "duration": 4.879
+    },
+    {
+      "lang": "en",
+      "text": "tooling, I was advocating internally and",
+      "offset": 228.319,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "externally that we should align with the",
+      "offset": 230.239,
+      "duration": 4.321
+    },
+    {
+      "lang": "en",
+      "text": "open nature of MCP as a concept and",
+      "offset": 232.159,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "created observable. Maybe some of you",
+      "offset": 234.56,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "have seen this. This is a manifesto to",
+      "offset": 236.799,
+      "duration": 3.761
+    },
+    {
+      "lang": "en",
+      "text": "drive a conversation that this is a",
+      "offset": 238.72,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "problem that needs solving and uh",
+      "offset": 240.56,
+      "duration": 4.399
+    },
+    {
+      "lang": "en",
+      "text": "between observability providers uh such",
+      "offset": 242.56,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "as us and other folks that's been on",
+      "offset": 244.959,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "stage before and going to be on the evol",
+      "offset": 246.64,
+      "duration": 4.159
+    },
+    {
+      "lang": "en",
+      "text": "tomorrow uh to do observability in a",
+      "offset": 248.319,
+      "duration": 4.881
+    },
+    {
+      "lang": "en",
+      "text": "vendor neutral and standardized way. And",
+      "offset": 250.799,
+      "duration": 4.481
+    },
+    {
+      "lang": "en",
+      "text": "so while working on observable tools I",
+      "offset": 253.2,
+      "duration": 3.599
+    },
+    {
+      "lang": "en",
+      "text": "realized I I did some search realized",
+      "offset": 255.28,
+      "duration": 3.12
+    },
+    {
+      "lang": "en",
+      "text": "that a vendor neutral scalable way to",
+      "offset": 256.799,
+      "duration": 4.321
+    },
+    {
+      "lang": "en",
+      "text": "add observability exists uh and there",
+      "offset": 258.4,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "could be a great way to marry the two",
+      "offset": 261.12,
+      "duration": 4.079
+    },
+    {
+      "lang": "en",
+      "text": "open protocols to work together. Yeah,",
+      "offset": 262.72,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "exactly. Uh fortunately MCP powered",
+      "offset": 265.199,
+      "duration": 3.841
+    },
+    {
+      "lang": "en",
+      "text": "agents are really just another",
+      "offset": 267.6,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "distributed system and we've been doing",
+      "offset": 269.04,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "that for decades. So open telemetry is",
+      "offset": 270.96,
+      "duration": 4.239
+    },
+    {
+      "lang": "en",
+      "text": "just the way that's that we've like",
+      "offset": 273.52,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "settled on doing that. Um we're going to",
+      "offset": 275.199,
+      "duration": 4.401
+    },
+    {
+      "lang": "en",
+      "text": "talk about OTL a little bit. If you're",
+      "offset": 277.84,
+      "duration": 3.2
+    },
+    {
+      "lang": "en",
+      "text": "not uh familiar with it, we need to",
+      "offset": 279.6,
+      "duration": 4.159
+    },
+    {
+      "lang": "en",
+      "text": "learn about a few primitives first. So",
+      "offset": 281.04,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "the main primitive that we need to learn",
+      "offset": 283.759,
+      "duration": 3.601
+    },
+    {
+      "lang": "en",
+      "text": "about is the trace. So a trace is kind",
+      "offset": 285.12,
+      "duration": 4.079
+    },
+    {
+      "lang": "en",
+      "text": "of like an atomic operation in your",
+      "offset": 287.36,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "system. It's made up of a treel like",
+      "offset": 289.199,
+      "duration": 4.401
+    },
+    {
+      "lang": "en",
+      "text": "structure of steps that we call spans.",
+      "offset": 290.8,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "And a span represents the duration and",
+      "offset": 293.6,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "some arbitrary metadata for each step.",
+      "offset": 295.6,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "And what this step is exactly is",
+      "offset": 298.16,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "completely up to you to define. It can",
+      "offset": 300.08,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "be as high level as like an HTTP",
+      "offset": 302.08,
+      "duration": 3.28
+    },
+    {
+      "lang": "en",
+      "text": "request. It can be as low level as a",
+      "offset": 303.84,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "tiny little function call. Um here's an",
+      "offset": 305.36,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "example of like a checkout experience,",
+      "offset": 308,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "an API for a checkout. The size and",
+      "offset": 310,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "position of each of these spans",
+      "offset": 312.56,
+      "duration": 3.28
+    },
+    {
+      "lang": "en",
+      "text": "correspond to how long it took and where",
+      "offset": 314,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "it sits in the call graph respectively.",
+      "offset": 315.84,
+      "duration": 3.919
+    },
+    {
+      "lang": "en",
+      "text": "And just from this data, you can tell a",
+      "offset": 318.08,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "lot about a system and how to observe",
+      "offset": 319.759,
+      "duration": 3.201
+    },
+    {
+      "lang": "en",
+      "text": "it.",
+      "offset": 321.44,
+      "duration": 3.039
+    },
+    {
+      "lang": "en",
+      "text": "Um the other primitive you need to be",
+      "offset": 322.96,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "aware of is syncs. So a sync is kind of",
+      "offset": 324.479,
+      "duration": 4.961
+    },
+    {
+      "lang": "en",
+      "text": "like a centralized database where all",
+      "offset": 327.44,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "your telemetry goes, but often they come",
+      "offset": 329.44,
+      "duration": 3.759
+    },
+    {
+      "lang": "en",
+      "text": "in the form of this like whole platform",
+      "offset": 331.52,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "with like a UI and dashboards and",
+      "offset": 333.199,
+      "duration": 3.681
+    },
+    {
+      "lang": "en",
+      "text": "alerting and monitoring and all those",
+      "offset": 334.96,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "things. So there's a lot of logos here,",
+      "offset": 336.88,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "Ben. Uh basically a sync is an open",
+      "offset": 339.12,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "standard way for folks like collectors",
+      "offset": 341.6,
+      "duration": 4.159
+    },
+    {
+      "lang": "en",
+      "text": "to like receive those spans. As long as",
+      "offset": 343.84,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "the developer instrumented their",
+      "offset": 345.759,
+      "duration": 4.321
+    },
+    {
+      "lang": "en",
+      "text": "application code in a certain standard",
+      "offset": 348.16,
+      "duration": 3.759
+    },
+    {
+      "lang": "en",
+      "text": "spec way, everybody can just receive",
+      "offset": 350.08,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "those in in the same unified way. Right.",
+      "offset": 351.919,
+      "duration": 3.441
+    },
+    {
+      "lang": "en",
+      "text": "Exactly. Yeah. It's if you squint, it's",
+      "offset": 353.6,
+      "duration": 3.28
+    },
+    {
+      "lang": "en",
+      "text": "just kind of like a bunch of databases",
+      "offset": 355.36,
+      "duration": 3.04
+    },
+    {
+      "lang": "en",
+      "text": "that all support the same schema and",
+      "offset": 356.88,
+      "duration": 3.599
+    },
+    {
+      "lang": "en",
+      "text": "wired protocol. You could switch them",
+      "offset": 358.4,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "out and in fact they don't have to",
+      "offset": 360.479,
+      "duration": 3.201
+    },
+    {
+      "lang": "en",
+      "text": "change much of their code or even change",
+      "offset": 361.84,
+      "duration": 2.799
+    },
+    {
+      "lang": "en",
+      "text": "the code at all. It could be just",
+      "offset": 363.68,
+      "duration": 2.88
+    },
+    {
+      "lang": "en",
+      "text": "config. Right. Right. Uh by the way",
+      "offset": 364.639,
+      "duration": 4.161
+    },
+    {
+      "lang": "en",
+      "text": "observability tools like W&amp;B weave and",
+      "offset": 366.56,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "some friends Simon from Lockfire here",
+      "offset": 368.8,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "before and some other friends all have",
+      "offset": 370.72,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "switched to support otel as well. Open",
+      "offset": 372.72,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "telemetry is becoming like this global",
+      "offset": 374.4,
+      "duration": 3.2
+    },
+    {
+      "lang": "en",
+      "text": "standard.",
+      "offset": 376.08,
+      "duration": 2.959
+    },
+    {
+      "lang": "en",
+      "text": "Great. Uh yeah, another great thing",
+      "offset": 377.6,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "about having a centralized sync uh is",
+      "offset": 379.039,
+      "duration": 3.681
+    },
+    {
+      "lang": "en",
+      "text": "the last concept distributed tracing. So",
+      "offset": 380.96,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "going back to our checkout endpoint, if",
+      "offset": 382.72,
+      "duration": 5.68
+    },
+    {
+      "lang": "en",
+      "text": "the uh fraud service sends its span to",
+      "offset": 385.12,
+      "duration": 5.68
+    },
+    {
+      "lang": "en",
+      "text": "the same sync, then we can stitch back",
+      "offset": 388.4,
+      "duration": 4.079
+    },
+    {
+      "lang": "en",
+      "text": "the together the traces and show the",
+      "offset": 390.8,
+      "duration": 2.88
+    },
+    {
+      "lang": "en",
+      "text": "whole context. So maybe you're kind of",
+      "offset": 392.479,
+      "duration": 3.28
+    },
+    {
+      "lang": "en",
+      "text": "seeing where the MCP server stuff comes",
+      "offset": 393.68,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "in here. Yeah. So, hey Ben, if it's",
+      "offset": 395.759,
+      "duration": 5.121
+    },
+    {
+      "lang": "en",
+      "text": "possible via the integration to the open",
+      "offset": 398.8,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "protocol, um what if I want to use MCP",
+      "offset": 400.88,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "servers that other people host like",
+      "offset": 403.52,
+      "duration": 3.679
+    },
+    {
+      "lang": "en",
+      "text": "GitHub, like Stripe, like other folks?",
+      "offset": 405.36,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "Yeah, it's a good question. So, um with",
+      "offset": 407.199,
+      "duration": 4.321
+    },
+    {
+      "lang": "en",
+      "text": "MCP enabled agents or really just any",
+      "offset": 409.44,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "distributed system, there are kind of",
+      "offset": 411.52,
+      "duration": 3.679
+    },
+    {
+      "lang": "en",
+      "text": "two scenarios. There's when the client",
+      "offset": 413.52,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "and server are in different domains and",
+      "offset": 415.199,
+      "duration": 4.081
+    },
+    {
+      "lang": "en",
+      "text": "then there's when they're in the same",
+      "offset": 418,
+      "duration": 2.96
+    },
+    {
+      "lang": "en",
+      "text": "domain. And by domain here, I don't",
+      "offset": 419.28,
+      "duration": 3.759
+    },
+    {
+      "lang": "en",
+      "text": "necessarily mean the literal definition.",
+      "offset": 420.96,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "I mean like the administration",
+      "offset": 423.039,
+      "duration": 3.28
+    },
+    {
+      "lang": "en",
+      "text": "administrative domain of control, right?",
+      "offset": 424.72,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "like do like do you own this MCP server?",
+      "offset": 426.319,
+      "duration": 4.081
+    },
+    {
+      "lang": "en",
+      "text": "Do you own this MCP client or is it a",
+      "offset": 428.72,
+      "duration": 4.879
+    },
+    {
+      "lang": "en",
+      "text": "third party thing? So your GitHub stripe",
+      "offset": 430.4,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "example is like a great example of like",
+      "offset": 433.599,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "the different domain scenario. So um",
+      "offset": 435.84,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "this is a trace of an agent that is",
+      "offset": 438.479,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "executing the prompt read and summarize",
+      "offset": 440.88,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "the top article on hacker news. So it's",
+      "offset": 443.199,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "going to reach out to this like remote",
+      "offset": 445.52,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "fetch server to read hacker news, but it",
+      "offset": 447.039,
+      "duration": 4.081
+    },
+    {
+      "lang": "en",
+      "text": "appears to us in the trace as a single",
+      "offset": 449.52,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "service span because it's it runs",
+      "offset": 451.12,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "outside of our domain of control. So it",
+      "offset": 453.12,
+      "duration": 5.199
+    },
+    {
+      "lang": "en",
+      "text": "appears to black box to us.",
+      "offset": 454.8,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "Um but suppose we do own the server like",
+      "offset": 458.319,
+      "duration": 3.521
+    },
+    {
+      "lang": "en",
+      "text": "maybe it's running in a different data",
+      "offset": 460.24,
+      "duration": 4.799
+    },
+    {
+      "lang": "en",
+      "text": "center than the client. Um how do we get",
+      "offset": 461.84,
+      "duration": 5.6
+    },
+    {
+      "lang": "en",
+      "text": "actually the whole context? Uh it's",
+      "offset": 465.039,
+      "duration": 3.681
+    },
+    {
+      "lang": "en",
+      "text": "pretty simple. So with distributed",
+      "offset": 467.44,
+      "duration": 3.759
+    },
+    {
+      "lang": "en",
+      "text": "tracing and context propagation, we can",
+      "offset": 468.72,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "have the remote fetch server send its",
+      "offset": 471.199,
+      "duration": 3.921
+    },
+    {
+      "lang": "en",
+      "text": "spans to the same sync as the client and",
+      "offset": 472.96,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "the sync will just stitch together the",
+      "offset": 475.12,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "missing uh parts of the trace back for",
+      "offset": 476.56,
+      "duration": 4.079
+    },
+    {
+      "lang": "en",
+      "text": "us. So in this graphic you can see that",
+      "offset": 478.56,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "we can now break into that fetch server",
+      "offset": 480.639,
+      "duration": 3.521
+    },
+    {
+      "lang": "en",
+      "text": "and we can see what it's doing. It's",
+      "offset": 482.72,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "making some HTTP request that's taking",
+      "offset": 484.16,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "roughly 350 milliseconds and then it's",
+      "offset": 486.4,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "doing a little uh crunching to to create",
+      "offset": 488.4,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "some markdown.",
+      "offset": 491.12,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "Okay, so that that is great in theory",
+      "offset": 494.16,
+      "duration": 3.759
+    },
+    {
+      "lang": "en",
+      "text": "and we went through this. We could have",
+      "offset": 496.24,
+      "duration": 3.359
+    },
+    {
+      "lang": "en",
+      "text": "a whole hour talking about hotel. Not",
+      "offset": 497.919,
+      "duration": 3.761
+    },
+    {
+      "lang": "en",
+      "text": "that we got an hour. Uh but how do we",
+      "offset": 499.599,
+      "duration": 3.841
+    },
+    {
+      "lang": "en",
+      "text": "can actually marry those two protocols",
+      "offset": 501.68,
+      "duration": 3.199
+    },
+    {
+      "lang": "en",
+      "text": "together? Right. Uh is there a standard",
+      "offset": 503.44,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "way? Did the MCP spec folk deploy a way",
+      "offset": 504.879,
+      "duration": 5.361
+    },
+    {
+      "lang": "en",
+      "text": "for us for observability? Um not quite.",
+      "offset": 507.44,
+      "duration": 4.959
+    },
+    {
+      "lang": "en",
+      "text": "It was it was uh pretty tricky to get to",
+      "offset": 510.24,
+      "duration": 5.039
+    },
+    {
+      "lang": "en",
+      "text": "get working. um it does work today but",
+      "offset": 512.399,
+      "duration": 4.801
+    },
+    {
+      "lang": "en",
+      "text": "uh it required a little bit more work",
+      "offset": 515.279,
+      "duration": 3.521
+    },
+    {
+      "lang": "en",
+      "text": "than it should have. So in order to do",
+      "offset": 517.2,
+      "duration": 3.839
+    },
+    {
+      "lang": "en",
+      "text": "this we need to as I said propagate the",
+      "offset": 518.8,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "trace context from the client to the",
+      "offset": 521.039,
+      "duration": 5.041
+    },
+    {
+      "lang": "en",
+      "text": "server. So here's a TypeScript example",
+      "offset": 523.2,
+      "duration": 5.759
+    },
+    {
+      "lang": "en",
+      "text": "and when we call a tool in the client um",
+      "offset": 526.08,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "we're going to extract our current span",
+      "offset": 528.959,
+      "duration": 5.281
+    },
+    {
+      "lang": "en",
+      "text": "and we're going to uh pass it along to",
+      "offset": 531.2,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "the server. And we achieve this by",
+      "offset": 534.24,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "basically just shuttling the data",
+      "offset": 535.92,
+      "duration": 6.24
+    },
+    {
+      "lang": "en",
+      "text": "through the protocol's meta payload.",
+      "offset": 537.92,
+      "duration": 6.479
+    },
+    {
+      "lang": "en",
+      "text": "And uh now that we're inside the server,",
+      "offset": 542.16,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "uh this would be like in the fetch",
+      "offset": 544.399,
+      "duration": 3.281
+    },
+    {
+      "lang": "en",
+      "text": "server, we can pull that trace context",
+      "offset": 545.6,
+      "duration": 5.76
+    },
+    {
+      "lang": "en",
+      "text": "out, inherit it as our current span, and",
+      "offset": 547.68,
+      "duration": 5.279
+    },
+    {
+      "lang": "en",
+      "text": "then when we send our spans off to the",
+      "offset": 551.36,
+      "duration": 4.8
+    },
+    {
+      "lang": "en",
+      "text": "sync, uh it it's as if it came from that",
+      "offset": 552.959,
+      "duration": 4.961
+    },
+    {
+      "lang": "en",
+      "text": "parent span, and they the sync can",
+      "offset": 556.16,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "stitch it back together. Then this is",
+      "offset": 557.92,
+      "duration": 3.599
+    },
+    {
+      "lang": "en",
+      "text": "awesome. So you basically used an",
+      "offset": 559.68,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "undocumented kind of property of the",
+      "offset": 561.519,
+      "duration": 4.081
+    },
+    {
+      "lang": "en",
+      "text": "sending the payload together with the",
+      "offset": 564.24,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "payload between clients and servers um",
+      "offset": 565.6,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "to pass along the data that hotel needs",
+      "offset": 568,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "to connect those things together, right?",
+      "offset": 570.24,
+      "duration": 3.2
+    },
+    {
+      "lang": "en",
+      "text": "Yeah, sort of. I just kind of had to",
+      "offset": 571.76,
+      "duration": 3.519
+    },
+    {
+      "lang": "en",
+      "text": "abuse the lower level interface reserved",
+      "offset": 573.44,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "for the protocol, but a higher level way",
+      "offset": 575.279,
+      "duration": 4.401
+    },
+    {
+      "lang": "en",
+      "text": "should be provided through tooling. And",
+      "offset": 577.68,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "that's something we should talk about a",
+      "offset": 579.68,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "little bit later in the talk. Yep.",
+      "offset": 581.36,
+      "duration": 5.039
+    },
+    {
+      "lang": "en",
+      "text": "That's all. Oh, yeah. So, by the way,",
+      "offset": 584.24,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "this is uh this is not just um a",
+      "offset": 586.399,
+      "duration": 5.281
+    },
+    {
+      "lang": "en",
+      "text": "screenshot. This is a working demo. So,",
+      "offset": 588.8,
+      "duration": 4.479
+    },
+    {
+      "lang": "en",
+      "text": "um it's a lot more code than what I",
+      "offset": 591.68,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "showed in the slide. So, if you want to",
+      "offset": 593.279,
+      "duration": 3.521
+    },
+    {
+      "lang": "en",
+      "text": "actually go see how this works and adapt",
+      "offset": 595.2,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "this for your needs, uh go check out",
+      "offset": 596.8,
+      "duration": 3.52
+    },
+    {
+      "lang": "en",
+      "text": "this GitHub link. And I think actually",
+      "offset": 598.72,
+      "duration": 3.2
+    },
+    {
+      "lang": "en",
+      "text": "you did that to to get it to work with",
+      "offset": 600.32,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "weave, right? Yeah. So now that we know",
+      "offset": 601.92,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "how to pass context after you you you",
+      "offset": 604.24,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "showed me the way, uh let's see how",
+      "offset": 605.92,
+      "duration": 3.28
+    },
+    {
+      "lang": "en",
+      "text": "amazing the solution actually is in",
+      "offset": 607.6,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "practice. While Weave MCP, the thing I",
+      "offset": 609.2,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "showed you guys before was a bespoke",
+      "offset": 611.2,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "solution baked into our Python SDK for",
+      "offset": 613.2,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "Weave. The huge benefit of MCP generally",
+      "offset": 615.6,
+      "duration": 4.479
+    },
+    {
+      "lang": "en",
+      "text": "not only observability related is that",
+      "offset": 618.16,
+      "duration": 3.919
+    },
+    {
+      "lang": "en",
+      "text": "servers and clients don't have to run on",
+      "offset": 620.079,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "the same environment or share the same",
+      "offset": 622.079,
+      "duration": 3.601
+    },
+    {
+      "lang": "en",
+      "text": "code or be from the same programming",
+      "offset": 624.079,
+      "duration": 3.681
+    },
+    {
+      "lang": "en",
+      "text": "language. So while we were working on",
+      "offset": 625.68,
+      "duration": 3.839
+    },
+    {
+      "lang": "en",
+      "text": "the Python SDK, you built an agent in",
+      "offset": 627.76,
+      "duration": 5.519
+    },
+    {
+      "lang": "en",
+      "text": "Typescript and so because Wave WB weave",
+      "offset": 629.519,
+      "duration": 5.681
+    },
+    {
+      "lang": "en",
+      "text": "supports hotel open telemetry and it's",
+      "offset": 633.279,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "an open protocol uh your TypeScript",
+      "offset": 635.2,
+      "duration": 4.48
+    },
+    {
+      "lang": "en",
+      "text": "agent it took me a few minutes to by",
+      "offset": 637.279,
+      "duration": 4.401
+    },
+    {
+      "lang": "en",
+      "text": "without changing much code to just send",
+      "offset": 639.68,
+      "duration": 3.599
+    },
+    {
+      "lang": "en",
+      "text": "those traces into weave from a",
+      "offset": 641.68,
+      "duration": 3.12
+    },
+    {
+      "lang": "en",
+      "text": "TypeScript agent and not necessarily",
+      "offset": 643.279,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "from a Python edge. So here uh here you",
+      "offset": 644.8,
+      "duration": 6.56
+    },
+    {
+      "lang": "en",
+      "text": "could see in the green the the client",
+      "offset": 648.399,
+      "duration": 4.401
+    },
+    {
+      "lang": "en",
+      "text": "traces are in the green and then the",
+      "offset": 651.36,
+      "duration": 3.28
+    },
+    {
+      "lang": "en",
+      "text": "server traces actually show what happens",
+      "offset": 652.8,
+      "duration": 5.039
+    },
+    {
+      "lang": "en",
+      "text": "within those calls uh",
+      "offset": 654.64,
+      "duration": 5.52
+    },
+    {
+      "lang": "en",
+      "text": "on kind of the the server side as well.",
+      "offset": 657.839,
+      "duration": 3.761
+    },
+    {
+      "lang": "en",
+      "text": "Yeah, that's really cool. So how did how",
+      "offset": 660.16,
+      "duration": 2.799
+    },
+    {
+      "lang": "en",
+      "text": "did you actually get the traces into",
+      "offset": 661.6,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "weave? So this is very very simple way",
+      "offset": 662.959,
+      "duration": 4.081
+    },
+    {
+      "lang": "en",
+      "text": "simpler than before. Uh we just define",
+      "offset": 665.04,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "W&amp;B weave as the OTLP endpoint standard",
+      "offset": 667.04,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "that you kind of like showed me around.",
+      "offset": 669.76,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "Uh and then folks can send their traces",
+      "offset": 671.76,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "into 1b.ai I/O hotel and all you need to",
+      "offset": 673.6,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "do in addition to this is authorize. So",
+      "offset": 676.48,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "add authorization headers and specify",
+      "offset": 678.72,
+      "duration": 4.799
+    },
+    {
+      "lang": "en",
+      "text": "which project you want to go into. Cool.",
+      "offset": 680.72,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "Yep. So while we talk to you about",
+      "offset": 683.519,
+      "duration": 3.521
+    },
+    {
+      "lang": "en",
+      "text": "thoseability, while I was working on",
+      "offset": 685.6,
+      "duration": 2.72
+    },
+    {
+      "lang": "en",
+      "text": "this, I had a magic moment happening",
+      "offset": 687.04,
+      "duration": 2.72
+    },
+    {
+      "lang": "en",
+      "text": "with MCP. I wanted to share this with",
+      "offset": 688.32,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "everybody and I love you as well. MCP",
+      "offset": 689.76,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "story. Yeah. So um",
+      "offset": 692,
+      "duration": 5.92
+    },
+    {
+      "lang": "en",
+      "text": "I used quadopus 4 that just came out to",
+      "offset": 695.12,
+      "duration": 5.2
+    },
+    {
+      "lang": "en",
+      "text": "weify your agent that you built and to",
+      "offset": 697.92,
+      "duration": 5.359
+    },
+    {
+      "lang": "en",
+      "text": "add this uh MCP observability and W&amp;B",
+      "offset": 700.32,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "weave is going to get a little meta.",
+      "offset": 703.279,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "Stay with us. Uh also has an MCP server.",
+      "offset": 705.04,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "Okay. What what does it do? So we have",
+      "offset": 707.519,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "an MCP server that lets your agents or",
+      "offset": 709.2,
+      "duration": 4.639
+    },
+    {
+      "lang": "en",
+      "text": "or chats etc talk to your traces and see",
+      "offset": 710.959,
+      "duration": 4.961
+    },
+    {
+      "lang": "en",
+      "text": "the data and summarize the data for you.",
+      "offset": 713.839,
+      "duration": 3.44
+    },
+    {
+      "lang": "en",
+      "text": "Okay. So we have this MCP. it's been",
+      "offset": 715.92,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "configured in my windsurf uh and and CL",
+      "offset": 717.279,
+      "duration": 6.321
+    },
+    {
+      "lang": "en",
+      "text": "code uh OPUS 4 uh was able to use this",
+      "offset": 719.92,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "MCP server to kind of work through it.",
+      "offset": 723.6,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "So here you see an example. Um the agent",
+      "offset": 725.2,
+      "duration": 5.84
+    },
+    {
+      "lang": "en",
+      "text": "basically started working on your code",
+      "offset": 728,
+      "duration": 4.639
+    },
+    {
+      "lang": "en",
+      "text": "and then decided okay I'm going to run",
+      "offset": 731.04,
+      "duration": 3.12
+    },
+    {
+      "lang": "en",
+      "text": "the code and then said okay I'm going to",
+      "offset": 732.639,
+      "duration": 3.041
+    },
+    {
+      "lang": "en",
+      "text": "go and actually see if the traces showed",
+      "offset": 734.16,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "up at at W&amp;BWeave. Then it noticed that",
+      "offset": 735.68,
+      "duration": 4.719
+    },
+    {
+      "lang": "en",
+      "text": "they showed up but they showed up",
+      "offset": 739.04,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "incorrectly. So some input or output a",
+      "offset": 740.399,
+      "duration": 3.921
+    },
+    {
+      "lang": "en",
+      "text": "specific parameter that it needed to do.",
+      "offset": 742.8,
+      "duration": 2.96
+    },
+    {
+      "lang": "en",
+      "text": "It didn't know how to do it wasn't part",
+      "offset": 744.32,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "of the documentation. And so uh the next",
+      "offset": 745.76,
+      "duration": 5.28
+    },
+    {
+      "lang": "en",
+      "text": "moment just absolutely blew my mind.",
+      "offset": 748.88,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "this OPUS 4 discovered that our MCP",
+      "offset": 751.04,
+      "duration": 6.16
+    },
+    {
+      "lang": "en",
+      "text": "server exposes a support bot. So",
+      "offset": 754.24,
+      "duration": 5.68
+    },
+    {
+      "lang": "en",
+      "text": "essentially another agent uh decided to",
+      "offset": 757.2,
+      "duration": 5.439
+    },
+    {
+      "lang": "en",
+      "text": "write a query for it, received the the",
+      "offset": 759.92,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "right information after a while and",
+      "offset": 762.639,
+      "duration": 3.681
+    },
+    {
+      "lang": "en",
+      "text": "acted upon this information, learned how",
+      "offset": 764.32,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "to fix the thing that it needed to fix,",
+      "offset": 766.32,
+      "duration": 4.639
+    },
+    {
+      "lang": "en",
+      "text": "fixed it and then went back to notice",
+      "offset": 768.16,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "whether or not the fix was correct. So",
+      "offset": 770.959,
+      "duration": 5.521
+    },
+    {
+      "lang": "en",
+      "text": "my um my coding agent talked to another",
+      "offset": 773.2,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "agent via support vcb that it discovered",
+      "offset": 776.48,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "on its own. I didn't even know that this",
+      "offset": 778.56,
+      "duration": 4.399
+    },
+    {
+      "lang": "en",
+      "text": "ability exists to work on your coding",
+      "offset": 780.16,
+      "duration": 4.72
+    },
+    {
+      "lang": "en",
+      "text": "agent in in things. Things got a little",
+      "offset": 782.959,
+      "duration": 2.961
+    },
+    {
+      "lang": "en",
+      "text": "bit meta and my head was like",
+      "offset": 784.88,
+      "duration": 2.079
+    },
+    {
+      "lang": "en",
+      "text": "absolutely. I was sitting like this",
+      "offset": 785.92,
+      "duration": 2.719
+    },
+    {
+      "lang": "en",
+      "text": "while all this happened. Didn't touch",
+      "offset": 786.959,
+      "duration": 3.921
+    },
+    {
+      "lang": "en",
+      "text": "the keyboard once.",
+      "offset": 788.639,
+      "duration": 4.081
+    },
+    {
+      "lang": "en",
+      "text": "That's awesome. Yeah, it's pretty meta.",
+      "offset": 790.88,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "Uh yeah, before we go, I also wanted to",
+      "offset": 792.72,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "have uh take a moment to have an",
+      "offset": 795.04,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "announcement. So um MCP run will also be",
+      "offset": 796.32,
+      "duration": 5.92
+    },
+    {
+      "lang": "en",
+      "text": "exporting telemetry to hotel compatible",
+      "offset": 799.92,
+      "duration": 5.44
+    },
+    {
+      "lang": "en",
+      "text": "syncs. Um so as I mentioned before, we",
+      "offset": 802.24,
+      "duration": 6.24
+    },
+    {
+      "lang": "en",
+      "text": "run both servers and clients. Uh so for",
+      "offset": 805.36,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "servers we have this concept called",
+      "offset": 808.48,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "profiles and these allow you to like",
+      "offset": 809.76,
+      "duration": 5.199
+    },
+    {
+      "lang": "en",
+      "text": "slice and dice multiple MCP servers into",
+      "offset": 812.56,
+      "duration": 6.399
+    },
+    {
+      "lang": "en",
+      "text": "one single virtual server and on on uh",
+      "offset": 814.959,
+      "duration": 6
+    },
+    {
+      "lang": "en",
+      "text": "we also have the an MCP client called",
+      "offset": 818.959,
+      "duration": 5.041
+    },
+    {
+      "lang": "en",
+      "text": "task and this is like a single prompt",
+      "offset": 820.959,
+      "duration": 5.281
+    },
+    {
+      "lang": "en",
+      "text": "agent that could be triggered via URL or",
+      "offset": 824,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "a schedule and it also just sort of",
+      "offset": 826.24,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "marries with the idea of profiles. Um,",
+      "offset": 827.92,
+      "duration": 3.84
+    },
+    {
+      "lang": "en",
+      "text": "but yeah, soon you'll be able to get",
+      "offset": 830.56,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "Otel out of both of these and hopefully,",
+      "offset": 831.76,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "you know, we'll uh connect up to weights",
+      "offset": 834.32,
+      "duration": 3.12
+    },
+    {
+      "lang": "en",
+      "text": "and biases and have a little party.",
+      "offset": 836,
+      "duration": 2.639
+    },
+    {
+      "lang": "en",
+      "text": "Yeah, you can send those to Wave",
+      "offset": 837.44,
+      "duration": 4.399
+    },
+    {
+      "lang": "en",
+      "text": "Straighter from MCP.Run.",
+      "offset": 838.639,
+      "duration": 5.841
+    },
+    {
+      "lang": "en",
+      "text": "Okay, so uh to recap, um observability",
+      "offset": 841.839,
+      "duration": 5.521
+    },
+    {
+      "lang": "en",
+      "text": "is here at in MCP today, but it's not",
+      "offset": 844.48,
+      "duration": 6.08
+    },
+    {
+      "lang": "en",
+      "text": "evenly distributed. Uh should get you",
+      "offset": 847.36,
+      "duration": 5.599
+    },
+    {
+      "lang": "en",
+      "text": "most of the way there, but the community",
+      "offset": 850.56,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "needs to come together uh create",
+      "offset": 852.959,
+      "duration": 4.721
+    },
+    {
+      "lang": "en",
+      "text": "creating tooling and conventions to make",
+      "offset": 855.12,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "it smoother. um you shouldn't need to be",
+      "offset": 857.68,
+      "duration": 4.56
+    },
+    {
+      "lang": "en",
+      "text": "an expert in observability to like get",
+      "offset": 860.48,
+      "duration": 3.919
+    },
+    {
+      "lang": "en",
+      "text": "this stuff working.",
+      "offset": 862.24,
+      "duration": 4.24
+    },
+    {
+      "lang": "en",
+      "text": "So how do you get involved? Well AI",
+      "offset": 864.399,
+      "duration": 3.841
+    },
+    {
+      "lang": "en",
+      "text": "engineers just start thinking about",
+      "offset": 866.48,
+      "duration": 3.919
+    },
+    {
+      "lang": "en",
+      "text": "observability via MCP tooling and",
+      "offset": 868.24,
+      "duration": 4
+    },
+    {
+      "lang": "en",
+      "text": "whether or not you're getting uh",
+      "offset": 870.399,
+      "duration": 4.481
+    },
+    {
+      "lang": "en",
+      "text": "observability to the end to end of of",
+      "offset": 872.24,
+      "duration": 5.279
+    },
+    {
+      "lang": "en",
+      "text": "your execution chain. Um for tool",
+      "offset": 874.88,
+      "duration": 5.04
+    },
+    {
+      "lang": "en",
+      "text": "builders and platform providers we",
+      "offset": 877.519,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "should join and work on higher level",
+      "offset": 879.92,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "SDKs. So uh arises as open inference for",
+      "offset": 881.279,
+      "duration": 4.881
+    },
+    {
+      "lang": "en",
+      "text": "example is a great start but all of us",
+      "offset": 884.24,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "should help with instrumentation for our",
+      "offset": 886.16,
+      "duration": 4.4
+    },
+    {
+      "lang": "en",
+      "text": "clients who use bespoke SDKs to work on",
+      "offset": 888,
+      "duration": 4.399
+    },
+    {
+      "lang": "en",
+      "text": "conventions also together. Ben can you",
+      "offset": 890.56,
+      "duration": 3.279
+    },
+    {
+      "lang": "en",
+      "text": "explain semantic conventions super",
+      "offset": 892.399,
+      "duration": 3.361
+    },
+    {
+      "lang": "en",
+      "text": "quick? Yeah sure. So as we learned",
+      "offset": 893.839,
+      "duration": 5.601
+    },
+    {
+      "lang": "en",
+      "text": "earlier um spans they carry userdefined",
+      "offset": 895.76,
+      "duration": 5.759
+    },
+    {
+      "lang": "en",
+      "text": "attributes right so if they're",
+      "offset": 899.44,
+      "duration": 4.32
+    },
+    {
+      "lang": "en",
+      "text": "userdefined how does the sync know that",
+      "offset": 901.519,
+      "duration": 4.88
+    },
+    {
+      "lang": "en",
+      "text": "a span is actually say an HTTP request",
+      "offset": 903.76,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "with a 200 status code or how does it",
+      "offset": 906.399,
+      "duration": 5.521
+    },
+    {
+      "lang": "en",
+      "text": "know that it's an MCP tool call that has",
+      "offset": 908.88,
+      "duration": 6.16
+    },
+    {
+      "lang": "en",
+      "text": "an error. Um that's where semantic",
+      "offset": 911.92,
+      "duration": 5.359
+    },
+    {
+      "lang": "en",
+      "text": "conventions come in. Um and you can be a",
+      "offset": 915.04,
+      "duration": 3.76
+    },
+    {
+      "lang": "en",
+      "text": "part of defining what the conventions",
+      "offset": 917.279,
+      "duration": 3.441
+    },
+    {
+      "lang": "en",
+      "text": "are for agents that all observability",
+      "offset": 918.8,
+      "duration": 4.08
+    },
+    {
+      "lang": "en",
+      "text": "platforms agree on. And if you're",
+      "offset": 920.72,
+      "duration": 3.28
+    },
+    {
+      "lang": "en",
+      "text": "interested in this, I would suggest",
+      "offset": 922.88,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "going to check out the uh Genai semantic",
+      "offset": 924,
+      "duration": 6.079
+    },
+    {
+      "lang": "en",
+      "text": "conventions effort by the hotel team.",
+      "offset": 926.8,
+      "duration": 4.96
+    },
+    {
+      "lang": "en",
+      "text": "And um yeah, lastly, for platform",
+      "offset": 930.079,
+      "duration": 4.721
+    },
+    {
+      "lang": "en",
+      "text": "builders such as MCP Run, um you know,",
+      "offset": 931.76,
+      "duration": 6.56
+    },
+    {
+      "lang": "en",
+      "text": "go add hotel support, help review RFC's.",
+      "offset": 934.8,
+      "duration": 5.12
+    },
+    {
+      "lang": "en",
+      "text": "And finally, yeah, just come like talk",
+      "offset": 938.32,
+      "duration": 3.92
+    },
+    {
+      "lang": "en",
+      "text": "to us about ideas because we're just",
+      "offset": 939.92,
+      "duration": 3.279
+    },
+    {
+      "lang": "en",
+      "text": "everything's just kind of coming",
+      "offset": 942.24,
+      "duration": 2.399
+    },
+    {
+      "lang": "en",
+      "text": "together. Everything's so new and fresh",
+      "offset": 943.199,
+      "duration": 3.2
+    },
+    {
+      "lang": "en",
+      "text": "and we don't really know exactly what to",
+      "offset": 944.639,
+      "duration": 3.521
+    },
+    {
+      "lang": "en",
+      "text": "do. There's an additional track here at",
+      "offset": 946.399,
+      "duration": 4.481
+    },
+    {
+      "lang": "en",
+      "text": "at uh AI engineer. this called the",
+      "offset": 948.16,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "hallway track and I've learned more",
+      "offset": 950.88,
+      "duration": 2.8
+    },
+    {
+      "lang": "en",
+      "text": "about the stuff that we were talking",
+      "offset": 952.32,
+      "duration": 3.36
+    },
+    {
+      "lang": "en",
+      "text": "about uh out there by actually talking",
+      "offset": 953.68,
+      "duration": 3.599
+    },
+    {
+      "lang": "en",
+      "text": "to people who implement this than I",
+      "offset": 955.68,
+      "duration": 3.279
+    },
+    {
+      "lang": "en",
+      "text": "learned while preparing uh before the",
+      "offset": 957.279,
+      "duration": 5.521
+    },
+    {
+      "lang": "en",
+      "text": "talk. It's quite incredible. So, um",
+      "offset": 958.959,
+      "duration": 6.88
+    },
+    {
+      "lang": "en",
+      "text": "yeah, sure. Um yeah, so again, I'm Ben.",
+      "offset": 962.8,
+      "duration": 6.08
+    },
+    {
+      "lang": "en",
+      "text": "Uh my call to action here just be go",
+      "offset": 965.839,
+      "duration": 4.641
+    },
+    {
+      "lang": "en",
+      "text": "check out MCP Run. You can get a free",
+      "offset": 968.88,
+      "duration": 4.399
+    },
+    {
+      "lang": "en",
+      "text": "account, try it out. Uh yeah, that's it.",
+      "offset": 970.48,
+      "duration": 6.24
+    },
+    {
+      "lang": "en",
+      "text": "And I'm Alex. Uh uh check out W&amp;BWeave",
+      "offset": 973.279,
+      "duration": 7.281
+    },
+    {
+      "lang": "en",
+      "text": "MCPOP to learn how to trace MCP with",
+      "offset": 976.72,
+      "duration": 6.16
+    },
+    {
+      "lang": "en",
+      "text": "hotel. Uh I'm also I did the observable",
+      "offset": 980.56,
+      "duration": 3.68
+    },
+    {
+      "lang": "en",
+      "text": "tools initiative. I would love for you",
+      "offset": 982.88,
+      "duration": 2.959
+    },
+    {
+      "lang": "en",
+      "text": "to check out the manifesto to see if",
+      "offset": 984.24,
+      "duration": 3.599
+    },
+    {
+      "lang": "en",
+      "text": "this resonates with you to join forces",
+      "offset": 985.839,
+      "duration": 4.881
+    },
+    {
+      "lang": "en",
+      "text": "to talk about observability and uh we",
+      "offset": 987.839,
+      "duration": 4.881
+    },
+    {
+      "lang": "en",
+      "text": "yeah please visit us at the booth. We",
+      "offset": 990.72,
+      "duration": 3.6
+    },
+    {
+      "lang": "en",
+      "text": "have some very interesting surprises for",
+      "offset": 992.72,
+      "duration": 3.28
+    },
+    {
+      "lang": "en",
+      "text": "you. We have a robotic dog right here uh",
+      "offset": 994.32,
+      "duration": 3.519
+    },
+    {
+      "lang": "en",
+      "text": "that's observable. I also run the",
+      "offset": 996,
+      "duration": 4.16
+    },
+    {
+      "lang": "en",
+      "text": "Thursday I podcast. I want to send Swix",
+      "offset": 997.839,
+      "duration": 5.36
+    },
+    {
+      "lang": "en",
+      "text": "a huge huge shout out for uh having uh",
+      "offset": 1000.16,
+      "duration": 4.64
+    },
+    {
+      "lang": "en",
+      "text": "giving me the support to show up here",
+      "offset": 1003.199,
+      "duration": 3.281
+    },
+    {
+      "lang": "en",
+      "text": "and give if you guys are interested in",
+      "offset": 1004.8,
+      "duration": 3.2
+    },
+    {
+      "lang": "en",
+      "text": "AI news, we're going to record an",
+      "offset": 1006.48,
+      "duration": 3.2
+    },
+    {
+      "lang": "en",
+      "text": "episode tomorrow. That's it. Thank you",
+      "offset": 1008,
+      "duration": 4.839
+    },
+    {
+      "lang": "en",
+      "text": "so much.",
+      "offset": 1009.68,
+      "duration": 3.159
+    },
+    {
+      "lang": "en",
+      "text": "[Music]",
+      "offset": 1015.49,
+      "duration": 2.259
+    }
+  ],
+  "cleanText": "[Music]\nHey folks. My name is Alex Volkov. I'm an AI evangelist with Weights & Biases. I'm Benjamin Eckel. I am co-founder CTO of Dylibso. We're creators of mcp.run. All right. And we're here to talk to you about MCP observability.\n\nHey Ben, I want to ask you a question. Somebody who worked at Datadog before and somebody who runs multiple MCP servers and clients on production, something that happened, advice that happened, something in my agent in production the other day. Okay. Uh yeah, I mean we've been running MCP clients and servers in production since the beginning. Uh yeah, but wait, aren't you like working at an observability company, Weights & Biases? And don't you work on like what's it called? Weave. Yep, that's true. I work about Weave, but since I started adding some powers to my agent via MCP, all that observability that I'm used to from just having my own code run end to end has gone a little bit dark. Gotcha. So this is what we're here to talk to you guys about. The rise of MCP is creating an observability blind spot. As AI agents become more prevalent, the problem can compound with more and more tools via MCPs. The less the developers can know about the end-to-end happenings within their agent. Yeah. Um, yeah. So, on mcp.run, we're running both clients and servers. And because it's a new ecosystem, we've had to cobble together a lot of our own ways to do observability. And I've been looking around. It seems like everyone is sort of doing this in isolation. They're sort of solving the same problems. Um, so, you know, we wanted to bring the community together on this issue. And so, today we're going to talk about the state of observability in the MCP ecosystem.\n\nYep. So, why do we care about this? And why do we think that you guys should care about this? So if you don't have the ability to quickly understand why things went wrong on production, where they went wrong and how, your ability to quickly respond is greatly diminished. And we care deeply about, we both build tools that need MCP observability. And we support MCP and we both care deeply about developer experience as well.\n\nYeah, it's really important to me because enterprise engineering teams don't ship something to production unless they know for sure that they're going to be able to identify security and reliability problems before their customers do. Um, and that's why they invest a ton of money in observability platforms. And uh, so if you're going to ship MCP to these production environments, you must seamlessly integrate with these observability platforms. Yep. So, because we care deeply about developer experience at W&B Weave, I'm happy to announce here on stage that we've supports MCP. Yay. As long as you're a developer of both the client and the server, all you need to do is set this MCP trace list operation environment variable on your client and server. And we'll show you the list tool calls and we'll show you the duration of your MCP calls. This works currently with our Python based clients. And this is how it looks super quick. With the red arrows, you can see the client traces, for example. And with the blue arrows, you can see we're pointing to the calculate BMI tool and and the other tool. And that's it. Observability solves, right? Let's get off the stage. We're done. Wait a second. So, uh what about this like calculate BMI tool? This MCP server. Why can't I see into that? Um you Yeah, we're working on this.\n\nUh yeah, also this seems like this is specific to Weave, right? Um is there not like a vendor neutral way to do this that's standardized? Yeah, that's right. Uh this is a bespoke integration that we built into Weave into our SDKs in Python. And while working on this, while our developers have been building this integration within our MCP tooling, I was advocating internally and externally that we should align with the open nature of MCP as a concept and created Observable. Maybe some of you have seen this. This is a manifesto to drive a conversation that this is a problem that needs solving and between observability providers such as us and other folks that's been on stage before and going to be on the evol tomorrow to do observability in a vendor neutral and standardized way. And so while working on Observable tools I realized I did some search realized that a vendor neutral scalable way to add observability exists and there could be a great way to marry the two open protocols to work together. Yeah, exactly. Uh fortunately MCP powered agents are really just another distributed system and we've been doing that for decades. So open telemetry is just the way that's that we've like settled on doing that. Um we're going to talk about OTL a little bit. If you're not familiar with it, we need to learn about a few primitives first. So the main primitive that we need to learn about is the trace. So a trace is kind of like an atomic operation in your system. It's made up of a treel like structure of steps that we call spans. And a span represents the duration and some arbitrary metadata for each step. And what this step is exactly is completely up to you to define. It can be as high level as like an HTTP request. It can be as low level as a tiny little function call. Um here's an example of like a checkout experience, an API for a checkout. The size and position of each of these spans correspond to how long it took and where it sits in the call graph respectively. And just from this data, you can tell a lot about a system and how to observe it.\n\nUm the other primitive you need to be aware of is syncs. So a sync is kind of like a centralized database where all your telemetry goes, but often they come in the form of this like whole platform with like a UI and dashboards and alerting and monitoring and all those things. So there's a lot of logos here, Ben. Uh basically a sync is an open standard way for folks like collectors to like receive those spans. As long as the developer instrumented their application code in a certain standard spec way, everybody can just receive those in in the same unified way. Right. Exactly. Yeah. It's if you squint, it's just kind of like a bunch of databases that all support the same schema and wired protocol. You could switch them out and in fact they don't have to change much of their code or even change the code at all. It could be just config. Right. Right. Uh by the way observability tools like W&B Weave and some friends Simon from Lockfire here before and some other friends all have switched to support otel as well. Open telemetry is becoming like this global standard.\n\nGreat. Uh yeah, another great thing about having a centralized sync is the last concept distributed tracing. So going back to our checkout endpoint, if the fraud service sends its span to the same sync, then we can stitch back the together the traces and show the whole context. So maybe you're kind of seeing where the MCP server stuff comes in here. Yeah. So, hey Ben, if it's possible via the integration to the open protocol, um what if I want to use MCP servers that other people host like GitHub, like Stripe, like other folks?\n\nYeah, it's a good question. So, um with MCP enabled agents or really just any distributed system, there are kind of two scenarios. There's when the client and server are in different domains and then there's when they're in the same domain. And by domain here, I don't necessarily mean the literal definition. I mean like the administration administrative domain of control, right? like do you own this MCP server? Do you own this MCP client or is it a third party thing? So your GitHub stripe example is like a great example of like the different domain scenario. So um this is a trace of an agent that is executing the prompt read and summarize the top article on hacker news. So it's going to reach out to this like remote fetch server to read hacker news, but it appears to us in the trace as a single service span because it's it runs outside of our domain of control. So it appears to black box to us.\n\nUm but suppose we do own the server like maybe it's running in a different data center than the client. Um how do we get actually the whole context? Uh it's pretty simple. So with distributed tracing and context propagation, we can have the remote fetch server send its spans to the same sync as the client and the sync will just stitch together the missing parts of the trace back for us. So in this graphic you can see that we can now break into that fetch server and we can see what it's doing. It's making some HTTP request that's taking roughly 350 milliseconds and then it's doing a little crunching to to create some markdown.\n\nOkay, so that that is great in theory and we went through this. We could have a whole hour talking about hotel. Not that we got an hour. Uh but how do we can actually marry those two protocols together? Right. Uh is there a standard way? Did the MCP spec folk deploy a way for us for observability? Um not quite. It was it was pretty tricky to get to get working. um it does work today but uh it required a little bit more work than it should have. So in order to do this we need to as I said propagate the trace context from the client to the server. So here's a TypeScript example and when we call a tool in the client um we're going to extract our current span and we're going to uh pass it along to the server. And we achieve this by basically just shuttling the data through the protocol's meta payload. And uh now that we're inside the server, uh this would be like in the fetch server, we can pull that trace context out, inherit it as our current span, and then when we send our spans off to the sync, uh it it's as if it came from that parent span, and they the sync can stitch it back together. Then this is awesome. So you basically used an undocumented kind of property of the sending the payload together with the payload between clients and servers um to pass along the data that hotel needs to connect those things together, right?\n\nYeah, sort of. I just kind of had to abuse the lower level interface reserved for the protocol, but a higher level way should be provided through tooling. And that's something we should talk about a little bit later in the talk. Yep. That's all. Oh, yeah. So, by the way, this is this is not just um a screenshot. This is a working demo. So, um it's a lot more code than what I showed in the slide. So, if you want to actually go see how this works and adapt this for your needs, uh go check out this GitHub link. And I think actually you did that to to get it to work with Weave, right? Yeah. So now that we know how to pass context after you you showed me the way, uh let's see how amazing the solution actually is in practice. While Weave MCP, the thing I showed you guys before was a bespoke solution baked into our Python SDK for Weave. The huge benefit of MCP generally not only observability related is that servers and clients don't have to run on the same environment or share the same code or be from the same programming language. So while we were working on the Python SDK, you built an agent in Typescript and so because Wave WB weave supports hotel open telemetry and it's an open protocol your TypeScript agent it took me a few minutes to by without changing much code to just send those traces into Weave from a TypeScript agent and not necessarily from a Python edge. So here you could see in the green the client traces are in the green and then the server traces actually show what happens within those calls on kind of the the server side as well.\n\nYeah, that's really cool. So how did how did you actually get the traces into Weave? So this is very very simple way simpler than before. Uh we just define W&B Weave as the OTLP endpoint standard that you kind of like showed me around. Uh and then folks can send their traces into 1b.ai I/O hotel and all you need to do in addition to this is authorize. So add authorization headers and specify which project you want to go into. Cool.\n\nYep. So while we talk to you about thoseability, while I was working on this, I had a magic moment happening with MCP. I wanted to share this with everybody and I love you as well. MCP story. Yeah. So um I used quadopus 4 that just came out to weify your agent that you built and to add this MCP observability and W&B Weave is going to get a little meta. Stay with us. Uh also has an MCP server. Okay. What what does it do? So we have an MCP server that lets your agents or or chats etc talk to your traces and see the data and summarize the data for you. Okay. So we have this MCP. it's been configured in my windsurf and and CL code OPUS 4 was able to use this MCP server to kind of work through it. So here you see an example. Um the agent basically started working on your code and then decided okay I'm going to run the code and then said okay I'm going to go and actually see if the traces showed up at W&BWeave. Then it noticed that they showed up but they showed up incorrectly. So some input or output a specific parameter that it needed to do. It didn't know how to do it wasn't part of the documentation. And so the next moment just absolutely blew my mind. this OPUS 4 discovered that our MCP server exposes a support bot. So essentially another agent decided to write a query for it, received the the right information after a while and acted upon this information, learned how to fix the thing that it needed to fix, fixed it and then went back to notice whether or not the fix was correct. So my um my coding agent talked to another agent via support vcb that it discovered on its own. I didn't even know that this ability exists to work on your coding agent in in things. Things got a little bit meta and my head was like absolutely. I was sitting like this while all this happened. Didn't touch the keyboard once.\n\nThat's awesome. Yeah, it's pretty meta. Uh yeah, before we go, I also wanted to have take a moment to have an announcement. So um MCP run will also be exporting telemetry to hotel compatible syncs. Um so as I mentioned before, we run both servers and clients. Uh so for servers we have this concept called profiles and these allow you to like slice and dice\n\n\nMultiple MCP servers into one single virtual server. And, on, on, uh, we also have the an MCP client called Task, and this is like a single prompt agent that could be triggered via URL or a schedule, and it also just sort of marries with the idea of profiles.\nUm, but yeah, soon you'll be able to get Otel out of both of these, and hopefully, you know, we'll uh connect up to Weights & Biases and have a little party.\nYeah, you can send those to Wave Straighter from mcp.run.\nOkay, so uh to recap, um observability is here at in MCP today, but it's not evenly distributed.\nUh should get you most of the way there, but the community needs to come together uh create creating tooling and conventions to make it smoother.\nUm, you shouldn't need to be an expert in observability to like get this stuff working.\nSo how do you get involved?\nWell AI engineers just start thinking about observability via MCP tooling and whether or not you're getting uh observability to the end to end of of your execution chain.\nUm for tool builders and platform providers we should join and work on higher level SDKs.\nSo uh arises as open inference for example is a great start, but all of us should help with instrumentation for our clients who use bespoke SDKs to work on conventions also together.\nBen, can you explain semantic conventions super quick?\nYeah, sure.\nSo as we learned earlier, um spans, they carry user-defined attributes, right?\nSo if they're user-defined, how does the sync know that a span is actually say an HTTP request with a 200 status code, or how does it know that it's an MCP tool call that has an error?\nUm, that's where semantic conventions come in.\nUm, and you can be a part of defining what the conventions are for agents that all observability platforms agree on.\nAnd if you're interested in this, I would suggest going to check out the uh GenAI semantic conventions effort by the hotel team.\nAnd um yeah, lastly, for platform builders such as mcp.run, um you know, go add hotel support, help review RFC's.\nAnd finally, yeah, just come like talk to us about ideas because we're just everything's just kind of coming together.\nEverything's so new and fresh, and we don't really know exactly what to do.\nThere's an additional track here at at uh AI engineer.\nThis called the hallway track, and I've learned more about the stuff that we were talking about uh out there by actually talking to people who implement this than I learned while preparing uh before the talk.\nIt's quite incredible.\nSo, um yeah, sure.\nUm yeah, so again, I'm Ben.\nUh my call to action here just be go check out mcp.run.\nYou can get a free account, try it out.\nUh yeah, that's it.\nAnd I'm Alex.\nUh uh check out W&BWeave MCPOP to learn how to trace MCP with hotel.\nUh I'm also I did the Observable.tools initiative.\nI would love for you to check out the manifesto to see if this resonates with you to join forces to talk about observability and uh we yeah please visit us at the booth.\nWe have some very interesting surprises for you.\nWe have a robotic dog right here uh that's observable.\nI also run the ThursdAI podcast.\nI want to send Swix a huge huge shout out for uh having uh giving me the support to show up here and give if you guys are interested in AI news, we're going to record an episode tomorrow.\nThat's it.\nThank you so much.\n[Music]\n",
+  "dumpedAt": "2025-07-21T18:43:26.238Z"
+}
